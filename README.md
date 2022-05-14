@@ -1,0 +1,1 @@
+# well just a thing that let us look at what bedwars devs did on the new update
