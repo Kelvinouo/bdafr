@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__Players__1 = game:GetService("Players");
@@ -153,3 +154,4 @@ function v3.Create(p5, p6)
 	p5.thumbstickFrame.Parent = p6;
 end;
 return v3;
+

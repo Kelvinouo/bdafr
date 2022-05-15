@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 return {
@@ -6,3 +7,4 @@ return {
 		ACTIVE_COOLDOWN = 10
 	}
 };
+

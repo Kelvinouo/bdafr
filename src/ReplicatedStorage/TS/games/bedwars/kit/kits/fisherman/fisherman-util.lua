@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 return {
@@ -15,3 +16,4 @@ return {
 		drainAmount = 0.0025
 	}
 };
+

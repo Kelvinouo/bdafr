@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -73,3 +74,4 @@ l__Reflect__2.defineMetadata(v4, "flamework:decorators.$:flamework@Controller", 
 return {
 	default = v4
 };
+

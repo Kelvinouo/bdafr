@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -154,3 +155,4 @@ if l__RunService__12:IsServer() then
 	l__PhysicsService__11:CollisionGroupSetCollidable("InflatedBalloons", "Players", false);
 end;
 return {};
+

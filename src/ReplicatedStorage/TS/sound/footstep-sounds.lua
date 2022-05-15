@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -44,3 +45,4 @@ return {
 		[Enum.Material.Rock] = v2.STONE
 	}
 };
+

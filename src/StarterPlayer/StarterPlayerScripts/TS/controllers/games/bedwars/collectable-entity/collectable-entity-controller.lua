@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -120,7 +121,7 @@ end;
 local l__Players__14 = v4.Players;
 function v6.collectEntity(p10, p11, p12, p13)
 	if p11 == l__Players__14.LocalPlayer then
-		l__default__2.Client:Get("ADcgdbfStnalkHmzvdkRyg"):SendToServer({
+		l__default__2.Client:Get("zwdajqgrbiohB"):SendToServer({
 			id = p12:GetAttribute("Id"), 
 			collectableName = p13
 		});
@@ -133,3 +134,4 @@ u1 = {
 	CollectableEntityController = v6
 };
 return u1;
+

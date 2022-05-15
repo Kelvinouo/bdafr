@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {
@@ -21,3 +22,4 @@ return {
 	PlaceId = v1, 
 	GameId = v2
 };
+

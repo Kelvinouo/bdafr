@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 return {
@@ -5,3 +6,4 @@ return {
 	WIND_SPEED = 20, 
 	WIND_POWER = 0.5
 };
+

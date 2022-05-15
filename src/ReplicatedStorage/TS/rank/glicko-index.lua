@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -15,3 +16,4 @@ v1[3] = "SCORE";
 return {
 	GlickoIndex = v2
 };
+

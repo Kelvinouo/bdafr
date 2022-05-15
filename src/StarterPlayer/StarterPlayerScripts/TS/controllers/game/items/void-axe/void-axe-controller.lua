@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -85,7 +86,7 @@ function v6.useVoidAxe(p5)
 		cooldownBar = {}
 	});
 	l__SoundManager__5:playSound(l__GameSound__6.VOID_AXE_LEAP);
-	l__default__3.Client:Get("rqjuatdGyvhrjhg"):SendToServer();
+	l__default__3.Client:Get("qmmfojbuuMxpaiqkycYqzsdxQn"):SendToServer();
 	local v11 = l__KnitClient__10.Controllers.SprintController:getMovementStatusModifier():addModifier({
 		moveSpeedMultiplier = 0, 
 		blockSprint = true
@@ -120,7 +121,7 @@ function v6.useVoidAxe(p5)
 				v15 = v15:getItemTypeInHand();
 			end;
 			if v15 == l__ItemType__16.VOID_AXE then
-				l__default__3.Client:Get("Adgofcvvqxc"):SendToServer();
+				l__default__3.Client:Get("bfmxOlpanuloqily"):SendToServer();
 			end;
 			v11.Destroy();
 		end);
@@ -191,3 +192,4 @@ end;
 u1 = l__KnitClient__12.CreateController;
 u1 = u1(v6.new());
 return nil;
+

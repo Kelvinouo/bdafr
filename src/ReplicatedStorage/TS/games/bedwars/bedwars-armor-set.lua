@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__ItemType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
@@ -11,3 +12,4 @@ return {
 		WARRIOR = { l__ItemType__1.WARRIOR_HELMET, l__ItemType__1.WARRIOR_CHESTPLATE, l__ItemType__1.WARRIOR_BOOTS }
 	}
 };
+

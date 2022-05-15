@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -160,3 +161,4 @@ function v4.Destroy(p12)
 end;
 v4.Tag = "NpcModel";
 return v4;
+

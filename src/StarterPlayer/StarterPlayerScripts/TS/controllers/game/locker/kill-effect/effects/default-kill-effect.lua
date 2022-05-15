@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__KillEffect__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, script.Parent.Parent, "kill-effect").KillEffect;
@@ -21,3 +22,4 @@ function v2.onKill(p3, p4, p5, p6)
 	p5:BreakJoints();
 end;
 return v2;
+

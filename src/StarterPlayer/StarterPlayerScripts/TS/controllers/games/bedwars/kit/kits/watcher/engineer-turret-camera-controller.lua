@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -25,9 +26,9 @@ function u1.constructor(p1)
 	u2.constructor(p1);
 	p1.Name = "CameraTurretCameraController";
 	p1.turretToMaid = {};
-	p1.aimTurret = l__default__3.Client:Get("fjdklyzdVqkiDKfdupbmofyvkvKxkzjoHSeqxwRh");
+	p1.aimTurret = l__default__3.Client:Get("nzrjXvqmyjgC");
 	p1.nextSendAim = -1;
-	p1.switchTurret = l__default__3.Client:Get("WscLjmawpyurI");
+	p1.switchTurret = l__default__3.Client:Get("Denrbhxcjgsajpryzueukkivm");
 	p1.angleX = 0;
 	p1.angleY = 0;
 	p1.angleMotor = u4.GroupMotor.new({
@@ -264,3 +265,4 @@ u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;
 return u1;
+

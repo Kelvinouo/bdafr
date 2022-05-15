@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -39,7 +40,7 @@ local l__default__6 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 function u1.createBindable(p4)
 	local v7 = Instance.new("BindableEvent");
 	v7.Event:Connect(function()
-		l__default__6.Client:Get("ezRmhcorTreamc"):SendToServer();
+		l__default__6.Client:Get("IvhtRkt"):SendToServer();
 	end);
 	return v7;
 end;
@@ -48,3 +49,4 @@ u1 = u1.new;
 u2(u1());
 u2 = nil;
 return u2;
+

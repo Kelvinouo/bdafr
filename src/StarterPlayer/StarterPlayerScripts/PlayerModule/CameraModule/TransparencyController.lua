@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -161,3 +162,4 @@ function v1.Update(p18)
 	p18.lastUpdate = v12;
 end;
 return v1;
+

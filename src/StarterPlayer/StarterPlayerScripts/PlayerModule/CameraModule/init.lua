@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -422,3 +423,4 @@ if v2 or v3 then
 	return {};
 end;
 return v1.new();
+

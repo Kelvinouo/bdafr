@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -80,3 +81,4 @@ return {
 	end, 
 	App = v2
 };
+

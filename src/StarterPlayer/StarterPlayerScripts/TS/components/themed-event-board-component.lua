@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -20,3 +21,4 @@ function v2.Destroy(p3)
 end;
 v2.Tag = "ThemedEventBoard";
 return v2;
+

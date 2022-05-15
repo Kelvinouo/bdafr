@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -27,7 +28,7 @@ return {
 			name = "Lunar Bundle 2022", 
 			price = 999, 
 			image = "rbxassetid://8666432622", 
-			gamepassId = l__Gamepass__9.HOLIDAY_BUNDLE_2021, 
+			gamepassId = l__Gamepass__9.LUNAR_BUNDLE_2022, 
 			devProductId = l__DevProduct__8.LUNAR_NEW_YEAR_BUNDLE_2022_GIFT, 
 			titles = { l__TitleType__7.YEAR_OF_THE_TIGER, l__TitleType__7.SPRING_FESTIVAL, l__TitleType__7.LUNAR_NEW_YEAR }, 
 			killEffects = { l__KillEffectType__5.LANTERN }, 
@@ -63,3 +64,4 @@ return {
 		}
 	}
 };
+

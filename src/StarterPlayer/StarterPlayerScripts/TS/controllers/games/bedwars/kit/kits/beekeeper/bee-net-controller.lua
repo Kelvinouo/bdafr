@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -37,7 +38,7 @@ function u1.trigger(p5, p6, p7)
 	if p6 == l__Players__4.LocalPlayer then
 		l__GameAnimationUtil__5.playAnimation(l__Players__4.LocalPlayer, l__AnimationType__6.NET_CATCH);
 		l__SoundManager__7:playSound(l__GameSound__8.BEE_NET_SWING);
-		l__default__9.Client:Get("zvxjsoau"):SendToServer({
+		l__default__9.Client:Get("OrapnsxJwLThgJx"):SendToServer({
 			beeId = p7:GetAttribute("BeeId")
 		});
 	end;
@@ -64,3 +65,4 @@ u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;
 return u1;
+

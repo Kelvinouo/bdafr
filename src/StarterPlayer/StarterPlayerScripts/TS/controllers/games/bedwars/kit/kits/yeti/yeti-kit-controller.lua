@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -121,7 +122,7 @@ function u1.useAbility(p7)
 	if l__Character__8 == nil then
 		return nil;
 	end;
-	l__default__15.Client:Get("xvjREilutmPrzQlvmhdylRmk"):SendToServer({
+	l__default__15.Client:Get("fndzrogiIbzVCbuAUYhphCheliAdwgegFcBnI"):SendToServer({
 		cframe = l__Character__8.HumanoidRootPart.CFrame
 	});
 	l__GameAnimationUtil__16.playAnimation(l__Players__14.LocalPlayer, l__AnimationType__17.YETI_ROAR);
@@ -133,3 +134,4 @@ u1 = {
 	YetiKitController = u2
 };
 return u1;
+

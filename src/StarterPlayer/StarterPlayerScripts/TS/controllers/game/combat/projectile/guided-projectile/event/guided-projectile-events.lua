@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = setmetatable({}, {
@@ -62,3 +63,4 @@ return {
 	GuidedProjectileDisablingEvent = v5, 
 	GuidedProjectileEnablingEvent = v7
 };
+

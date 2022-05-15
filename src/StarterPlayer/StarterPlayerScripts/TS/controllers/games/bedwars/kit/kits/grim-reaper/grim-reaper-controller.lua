@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -75,7 +76,7 @@ local l__AnimationType__10 = v1.import(script, game:GetService("ReplicatedStorag
 function u1.consumeSoul(p10, p11)
 	local v11 = p11:GetAttribute("GrimReaperSoulSecret");
 	l__GameAnimationUtil__9.playAnimation(l__Players__7.LocalPlayer, l__AnimationType__10.GRIM_REAPER_CONSUME);
-	l__default__3.Client:Get("FHxgGthyXnrbbhbssmytq"):CallServer({
+	l__default__3.Client:Get("YgqdvsgdUgSful"):CallServer({
 		secret = v11
 	});
 end;
@@ -237,3 +238,4 @@ u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;
 return u1;
+

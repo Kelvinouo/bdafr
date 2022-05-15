@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__Players__1 = game:GetService("Players");
@@ -367,3 +368,4 @@ function v3.Update(p42, p43, p44, p45)
 	return p44, p45;
 end;
 return v3;
+

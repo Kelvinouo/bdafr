@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local u1 = {
@@ -29,3 +30,4 @@ return {
 		return p1;
 	end
 };
+

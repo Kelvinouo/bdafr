@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -106,7 +107,7 @@ function v6.KnitStart(p2)
 			return nil;
 		end);
 		v8.Triggered:Connect(function(p5)
-			local v11 = l__default__17.Client:Get("oqkvbydJaqM"):CallServer(p3);
+			local v11 = l__default__17.Client:Get("bzlBuydjkowniEwarfOuextC"):CallServer(p3);
 		end);
 	end);
 	l__CollectionTagAdded__7("enchant-table", function(p6)
@@ -390,7 +391,7 @@ function v6.researchEnchant(p24, p25)
 		return nil;
 	end;
 	l__Flamework__12.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):closeApp(l__BedwarsAppIds__19.ENCHANT_TABLE);
-	local v58 = l__default__17.Client:Get("hmpdmztzkjxwnobjgdugmjnpqUoaydndo"):CallServer({
+	local v58 = l__default__17.Client:Get("xlpywqkoTxfttgqdgzpwvrdWcrsipvowB"):CallServer({
 		researchType = p25, 
 		enchantTable = v57
 	});
@@ -404,3 +405,4 @@ end;
 u1 = v3.KnitClient.CreateController;
 u1 = u1(v6.new());
 return nil;
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -69,7 +70,7 @@ function v6.KnitStart(p2)
 			if p4 == l__Players__8.LocalPlayer and v9.Enabled == true then
 				if p3:GetAttribute("Enabled") ~= true then
 					l__SoundManager__11:playSound(l__GameSound__12.DEPOSIT_BEE);
-					l__default__13.Client:WaitFor("ckbjpdQjnMoOdgki"):expect():SendToServer({
+					l__default__13.Client:WaitFor("nxvxXLsAuydrffm"):expect():SendToServer({
 						cauldron = p3
 					});
 					return;
@@ -123,3 +124,4 @@ end;
 u1 = v3.KnitClient.CreateController;
 u1 = u1(v6.new());
 return nil;
+

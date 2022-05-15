@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -73,3 +74,4 @@ v4.defaultProps = {
 	CloseSpeed = 6
 };
 return v4;
+

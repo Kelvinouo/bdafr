@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1, v2 = pcall(function()
@@ -175,3 +176,4 @@ function v7.EnableMouseLock(p20, p21)
 	end;
 end;
 return v7;
+

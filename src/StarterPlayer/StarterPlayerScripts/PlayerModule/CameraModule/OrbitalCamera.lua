@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = Vector3.new(0, 0, 1);
@@ -211,3 +212,4 @@ function v4.Update(p19, p20)
 	return v17, l__Focus__18;
 end;
 return v4;
+

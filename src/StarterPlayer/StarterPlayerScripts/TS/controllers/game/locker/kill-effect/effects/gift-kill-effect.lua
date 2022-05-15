@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -139,3 +140,4 @@ function v4.buildBox(p12, p13)
 	return v34;
 end;
 return v4;
+

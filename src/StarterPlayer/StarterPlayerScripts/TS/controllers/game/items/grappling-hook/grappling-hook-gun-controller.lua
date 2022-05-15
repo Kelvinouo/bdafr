@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -41,7 +42,7 @@ local l__GameSound__17 = v1.import(script, game:GetService("ReplicatedStorage"),
 local l__Workspace__18 = v3.Workspace;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:Get("kpxwrrDEryBuxhJUnqwv"):Connect(function(p3)
+	l__default__2.Client:Get("msbRissuZatfqlsufowilvfxkDyxParkjybvcot"):Connect(function(p3)
 		local v8 = p2:getHookState() == l__GrapplingHookFunctions__3.HOOK_FORWARD_TRANSIT;
 		local v9 = p2:getHookState() == l__GrapplingHookFunctions__3.HOOK_BACKWARD_TRANSIT;
 		local v10 = p2:getHookState() == l__GrapplingHookFunctions__3.PLAYER_IN_TRANSIT;
@@ -234,3 +235,4 @@ end;
 u1 = l__KnitClient__15.CreateController;
 u1 = u1(v6.new());
 return nil;
+

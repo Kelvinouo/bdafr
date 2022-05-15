@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(script.Parent:WaitForChild("CameraUtils"));
@@ -145,3 +146,4 @@ function v3.LeaveFirstPerson(p17)
 	end;
 end;
 return v3;
+

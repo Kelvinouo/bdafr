@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(script.Parent:WaitForChild("BaseCharacterController"));
@@ -159,3 +160,4 @@ function v2.Create(p18)
 	p18.jumpButton.Parent = p18.parentUIFrame;
 end;
 return v2;
+

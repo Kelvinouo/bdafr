@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -131,7 +132,7 @@ function v4.fortifyBlock(p16, p17)
 	});
 	p16:playFortifyEffect(l__Players__9.LocalPlayer, p17);
 	v1.try(function()
-		l__default__10.Client:Get("edqjw"):SendToServer(p17);
+		l__default__10.Client:Get("jmapkZrtxQgopyWifzBbP"):SendToServer(p17);
 	end, function(p18)
 		warn("Failed block placement:", p18);
 	end);
@@ -182,3 +183,4 @@ end;
 return {
 	BlockFortifier = v4
 };
+

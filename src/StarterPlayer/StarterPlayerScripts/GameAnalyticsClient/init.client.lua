@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__GuiService__1 = game:GetService("GuiService");
@@ -26,3 +27,4 @@ v3.SetCallback("getPlatform", function()
 	end;
 	return "Desktop";
 end);
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -16,3 +17,4 @@ return {
 		return l__getItemMeta__2(v2.items[1].itemType).image;
 	end
 };
+

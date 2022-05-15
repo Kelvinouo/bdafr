@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local u1 = {
@@ -12,3 +13,4 @@ return {
 	end, 
 	VehicleMeta = u1
 };
+

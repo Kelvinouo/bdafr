@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -23,7 +24,7 @@ local l__ReplicatedStorage__3 = v1.import(script, v1.getModule(script, "@rbxts",
 function v3.KnitStart(p2)
 	local function u4()
 		task.wait(math.random(20, 60));
-		l__default__2.Client:Get("scNHshmqthykhacajqNyxsUrvpyhJrdjs"):SendToServer();
+		l__default__2.Client:Get("ekiSdkdaiukauefxQixsl"):SendToServer();
 	end;
 	task.defer(function()
 		task.wait(20);
@@ -41,3 +42,4 @@ end;
 u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
 u1 = u1(v3.new());
 return nil;
+

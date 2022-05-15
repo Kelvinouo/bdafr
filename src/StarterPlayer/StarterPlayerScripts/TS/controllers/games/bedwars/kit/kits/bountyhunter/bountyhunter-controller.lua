@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -44,7 +45,7 @@ function v4.KnitStart(p2)
 			bountyHunterTarget = v7
 		});
 	end);
-	l__default__4.Client:WaitFor("wyehHtTtDcoeZnjgkcytbmuztmswOjSiNatchSwF"):andThen(function(p4)
+	l__default__4.Client:WaitFor("gaDhzhayYNdgAVulxthzrqjxsTx"):andThen(function(p4)
 		p4:CallServerAsync():andThen(function(p5)
 			if p5 ~= 0 and p5 == p5 and p5 then
 				local v8 = l__Players__5:GetPlayerByUserId(p5);
@@ -107,3 +108,4 @@ end;
 u1 = v2.KnitClient.CreateController;
 u1 = u1(v4.new());
 return nil;
+

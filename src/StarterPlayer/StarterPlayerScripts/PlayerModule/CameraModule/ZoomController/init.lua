@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(script:WaitForChild("Popper"));
@@ -82,3 +83,4 @@ function v13.ReleaseSpring()
 	u7.v = 0;
 end;
 return v13;
+

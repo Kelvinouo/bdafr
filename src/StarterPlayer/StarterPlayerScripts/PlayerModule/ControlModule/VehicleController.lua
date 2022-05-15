@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -128,3 +129,4 @@ function v1.SetupAutoPilot(p42)
 	p42.autoPilot.MaxSteeringAngle = 35;
 end;
 return v1;
+

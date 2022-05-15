@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -48,7 +49,7 @@ function u1.useFlamethrower(p3)
 		return nil;
 	end;
 	l__Flamework__4.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):setOnCooldown(l__FLAMETHROWER_USE__5, l__PyroUtil__6.FLAMETHROWER_COOLDOWN_SEC);
-	l__default__7.Client:Get("CidVrqweiiuxRxlpidumzmzsvmttgjdhlaBppr"):CallServerAsync();
+	l__default__7.Client:Get("nldsgsazohDwaUgpyobuciNpcuzk"):CallServerAsync();
 	local v9 = l__KnitClient__8.Controllers.SprintController:getMovementStatusModifier():addModifier({
 		moveSpeedMultiplier = 0.2
 	});
@@ -182,3 +183,4 @@ u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;
 return u1;
+

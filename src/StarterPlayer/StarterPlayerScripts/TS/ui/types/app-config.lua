@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -33,3 +34,4 @@ return {
 		NOTIFICATIONS = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).GameCoreDefaultAppConfiguration.NOTIFICATIONS.appId
 	}
 };
+

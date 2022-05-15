@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__Workspace__1 = game:GetService("Workspace");
@@ -250,3 +251,4 @@ function u1.getDefaultParent()
 	return l__RunService__4:IsServer() and l__Workspace__1 or l__Workspace__1.CurrentCamera;
 end;
 return u1;
+

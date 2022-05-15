@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -161,7 +162,7 @@ function u1.startAiming(p10, p11)
 		while true do
 			local l__CurrentCamera__13 = l__Workspace__14.CurrentCamera;
 			if l__CurrentCamera__13 then
-				l__default__9.Client:Get("IERlTajszkxrnnQriiVxd"):SendToServer({
+				l__default__9.Client:Get("ywspfV"):SendToServer({
 					cannonBlockPos = l__BlockEngine__12:getBlockPosition(p11.Position), 
 					lookVector = l__CurrentCamera__13.CFrame.LookVector
 				});
@@ -214,3 +215,4 @@ u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;
 return u1;
+

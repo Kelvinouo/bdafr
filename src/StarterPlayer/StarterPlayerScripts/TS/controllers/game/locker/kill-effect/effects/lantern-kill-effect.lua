@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -98,3 +99,4 @@ function v5.onKill(p3, p4, p5, p6)
 	return v7;
 end;
 return v5;
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -15,3 +16,4 @@ v1.dash = "DASH";
 return {
 	AbilityId = v2
 };
+

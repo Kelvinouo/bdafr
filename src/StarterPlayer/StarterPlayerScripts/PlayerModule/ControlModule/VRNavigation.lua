@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__VRService__1 = game:GetService("VRService");
@@ -355,3 +356,4 @@ function v14.Enable(p36, p37)
 	p36.enabled = false;
 end;
 return v14;
+

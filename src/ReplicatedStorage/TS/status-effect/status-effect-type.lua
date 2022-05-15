@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -73,3 +74,4 @@ v1.big_head = "BIG_HEAD";
 return {
 	StatusEffectType = v2
 };
+

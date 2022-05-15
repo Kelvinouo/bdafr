@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "util", "typesafe-attributes");
@@ -27,3 +28,4 @@ function v2.handleAttribute(p4, p5)
 	end);
 end;
 return v2;
+

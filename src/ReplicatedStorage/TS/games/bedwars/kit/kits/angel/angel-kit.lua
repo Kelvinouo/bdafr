@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -84,3 +85,4 @@ v8.ANGEL_KILL_REQUIREMENT = u1;
 v8.AngelType = v2;
 v8.AngelKitUtil = v3;
 return v8;
+

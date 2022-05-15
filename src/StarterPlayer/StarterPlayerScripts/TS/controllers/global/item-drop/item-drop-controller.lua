@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -60,7 +61,7 @@ local l__ClientStore__10 = v1.import(script, script.Parent.Parent.Parent.Parent,
 function u1.dropItemInHand(p7)
 	local l__hand__9 = l__ClientStore__10:getState().Inventory.observedInventory.inventory.hand;
 	if l__hand__9 ~= nil then
-		local v10 = l__default__6.Client:Get("HgoDhavZkichr"):CallServer({
+		local v10 = l__default__6.Client:Get("JjooHwjlMg"):CallServer({
 			item = l__hand__9.tool
 		});
 		l__SoundManager__8:playSound(l__GameSound__9.DROP_ITEM);
@@ -159,7 +160,7 @@ function u1.checkForPickup(p8)
 				local v41 = v34[v39 + 1];
 				v41:SetAttribute("ClientPickupAttemptTime", tick());
 				local u16 = v38;
-				l__default__6.Client:Get("duwmoimQzdLcshuqcsmdzcfBhHpqr"):CallServerAsync({
+				l__default__6.Client:Get("kpdxarqwkg"):CallServerAsync({
 					itemDrop = v41
 				}):andThen(function(p13)
 					if p13 and not u16 then
@@ -178,3 +179,4 @@ u1 = {
 	ItemDropController = u2
 };
 return u1;
+

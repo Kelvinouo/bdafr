@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -220,7 +221,7 @@ function u1.attackEntity(p14, p15, p16)
 		v38.chargeRatio = v40;
 		v37.chargedAttack = v38;
 		p14.chargeTime = 0;
-		if not l__default__13.Client:Get("pcnxaobtaglihzmAdoBmP"):CallServer(v37) and p14.lastAttack == v30 then
+		if not l__default__13.Client:Get("lhnnwacjmkBdryhjfwMZOwGfyerSifdakaqV"):CallServer(v37) and p14.lastAttack == v30 then
 			p14.lastAttack = p14.lastAttack;
 			return;
 		end;
@@ -577,7 +578,7 @@ function u1.onEnable(p25, p26)
 					v110 = v111 and v95.projectileSource == nil;
 				end;
 				if v110 then
-					l__default__13.Client:Get("KtthjxtGzahydaQrzfzyF"):CallServer({
+					l__default__13.Client:Get("ubkawlbtzaxcsbvwaytxmasckizkoygh"):CallServer({
 						weapon = v109, 
 						chargedAttack = {
 							chargeRatio = tick() - u29
@@ -657,7 +658,7 @@ function u1.onEnable(p25, p26)
 			if v117 ~= nil then
 				v117 = v117.tool;
 			end;
-			l__default__13.Client:Get("KtthjxtGzahydaQrzfzyF"):CallServer({
+			l__default__13.Client:Get("ubkawlbtzaxcsbvwaytxmasckizkoygh"):CallServer({
 				weapon = v117, 
 				chargedAttack = {
 					chargeRatio = v115
@@ -756,3 +757,4 @@ u1 = {
 	SwordController = u2
 };
 return v9;
+

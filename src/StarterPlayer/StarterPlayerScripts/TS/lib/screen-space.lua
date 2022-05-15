@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -83,3 +84,4 @@ function v1.ScreenToWorldByWidth(p31, p32, p33, p34)
 	return Vector3.new((p31 / v22 * 2 - 1) * -v21 * v24, (p32 / v23 * 2 - 1) * v20 * v24, v24);
 end;
 return v1;
+

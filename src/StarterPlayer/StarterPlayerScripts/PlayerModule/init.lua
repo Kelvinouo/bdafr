@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -18,3 +19,4 @@ function v1.GetClickToMoveController(p3)
 	return p3.controls:GetClickToMoveController();
 end;
 return v1.new();
+

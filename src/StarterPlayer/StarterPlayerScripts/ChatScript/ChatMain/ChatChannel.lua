@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1, v2 = pcall(function()
@@ -137,3 +138,4 @@ function v3.new(p19, p20)
 	return v16;
 end;
 return v3;
+

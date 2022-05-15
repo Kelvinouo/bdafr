@@ -1,3 +1,4 @@
+
 --[[VARIABLE DEFINITION ANOMALY DETECTED, DECOMPILATION OUTPUT POTENTIALLY INCORRECT]]--
 -- Decompiled with the Synapse X Luau decompiler.
 
@@ -203,3 +204,4 @@ u1 = {
 	ProjectileEffectController = u2
 };
 return u1;
+

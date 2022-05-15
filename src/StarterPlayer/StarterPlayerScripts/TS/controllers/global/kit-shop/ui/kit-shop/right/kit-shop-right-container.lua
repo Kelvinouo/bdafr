@@ -1,3 +1,4 @@
+
 --[[VARIABLE DEFINITION ANOMALY DETECTED, DECOMPILATION OUTPUT POTENTIALLY INCORRECT]]--
 -- Decompiled with the Synapse X Luau decompiler.
 
@@ -469,3 +470,4 @@ end;
 return {
 	KitShopRight = v6
 };
+

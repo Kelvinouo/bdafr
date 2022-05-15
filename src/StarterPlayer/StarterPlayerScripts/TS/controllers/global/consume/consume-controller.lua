@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -68,7 +69,7 @@ function u1.onEnable(p5, p6)
 			u22:Stop();
 		end;
 		u23 = -1;
-		l__default__6.Client:Get("ktpzfwvcdhzrPJ"):CallServerAsync({
+		l__default__6.Client:Get("ozoxuflewnogfmenpqcboxfpdaapKstmgmkEry"):CallServerAsync({
 			item = p6.tool
 		}):andThen(function()
 
@@ -212,3 +213,4 @@ u1 = {
 	ConsumeController = u2
 };
 return u1;
+

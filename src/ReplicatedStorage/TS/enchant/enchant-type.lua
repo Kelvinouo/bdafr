@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -85,3 +86,4 @@ return {
 	EnchantElement = v4, 
 	EnchantResearchType = v6
 };
+

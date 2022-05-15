@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local function u1(p1)
@@ -83,3 +84,4 @@ return function(p7)
 	l__Humanoid__13.HipHeight = l__Humanoid__13.HipHeight * v16;
 	l__RootPart__14.CFrame = v15 * CFrame.new(0, l__RootPart__14.Size.Y / 2 + l__Humanoid__13.HipHeight, 0);
 end;
+

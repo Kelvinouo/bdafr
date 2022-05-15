@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -9,3 +10,4 @@ return {
 		twirlbladeAttackCountAttribute = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "typesafe-attributes").Attribute.new("TwirlbladeAttackCount", l__t__2.optional(l__t__2.number))
 	}
 };
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = math.rad(15);
@@ -239,3 +240,4 @@ function v11.GetSubjectPosition(p25)
 	return v33;
 end;
 return v11;
+

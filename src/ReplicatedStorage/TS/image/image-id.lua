@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -157,3 +158,4 @@ v5.SKULL_ICON = "rbxassetid://9557802359";
 return {
 	BedwarsImageId = v5
 };
+

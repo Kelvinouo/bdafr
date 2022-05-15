@@ -1,3 +1,4 @@
+
 --[[VARIABLE DEFINITION ANOMALY DETECTED, DECOMPILATION OUTPUT POTENTIALLY INCORRECT]]--
 -- Decompiled with the Synapse X Luau decompiler.
 
@@ -23,7 +24,7 @@ local l__Maid__3 = v3.Maid;
 function v6.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "InfernalShieldController";
-	p1.infernalShieldState = l__default__2.Client:Get("rzjTu");
+	p1.infernalShieldState = l__default__2.Client:Get("uzVsMmunnzeitGqgWhjYsIqtnsUciqLbie");
 	p1.maid = l__Maid__3.new();
 	p1.raisedMaid = l__Maid__3.new();
 end;
@@ -32,10 +33,10 @@ local l__GameSound__5 = v1.import(script, game:GetService("ReplicatedStorage"), 
 local l__Players__6 = v4.Players;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("jybdmqwkdgDfjflpjemwbatrpqKwleGSNvlzJwr", function(p3)
+	l__default__2.Client:OnEvent("WujvdIfbektXswrwfyossKplfaxpnqznj", function(p3)
 		p2:playEffects(p3.player);
 	end);
-	l__default__2.Client:OnEvent("pibszbnl", function(p4)
+	l__default__2.Client:OnEvent("inbsywaFbzsweIbbavUanhqtgsm", function(p4)
 		local v8 = {};
 		if p4.deflector == l__Players__6.LocalPlayer then
 			local v9 = nil;
@@ -205,3 +206,4 @@ end;
 u1 = l__KnitClient__14.CreateController;
 u1 = u1(v6.new());
 return nil;
+

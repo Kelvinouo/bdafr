@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = { 0.10999999999999999, 0.30000000000000004, 0.4, 0.5, 0.6, 0.7, 0.75 };
@@ -438,3 +439,4 @@ function v8.Create(p28, p29)
 	end;
 end;
 return v8;
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -54,7 +55,7 @@ function u1.useJadeHammer(p3)
 	l__Flamework__4.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):setOnCooldown(l__CooldownId__5.JADE_HAMMER, 6, {
 		cooldownBar = {}
 	});
-	l__default__6.Client:Get("kovGMpzpgtmeihkIxhnjrmaznGTmrsrjoXz"):SendToServer();
+	l__default__6.Client:Get("ryfyhicpPhngTAldtzalenguOw"):SendToServer();
 	local v9 = l__KnitClient__7.Controllers.SprintController:getMovementStatusModifier():addModifier({
 		moveSpeedMultiplier = 0, 
 		blockSprint = true
@@ -89,7 +90,7 @@ function u1.useJadeHammer(p3)
 				v13 = v13:getItemTypeInHand();
 			end;
 			if v13 == l__ItemType__13.JADE_HAMMER then
-				l__default__6.Client:Get("BhtjyweVsfnxedwbxq"):SendToServer();
+				l__default__6.Client:Get("rxyfhogw"):SendToServer();
 				l__SoundManager__14:playSound(l__GameSound__15.JADE_HAMMER_THUD, {
 					position = l__PrimaryPart__16.Position
 				});
@@ -165,3 +166,4 @@ u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;
 return u1;
+

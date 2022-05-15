@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -124,7 +125,7 @@ function v5.attemptLaunch(p6, p7, p8)
 		l__Character__16.PrimaryPart:ApplyImpulse(Vector3.new(0, l__Character__16.PrimaryPart.AssemblyMass * 100 * v19, 0));
 		p6.lastLaunch = l__Workspace__12:GetServerTimeNow();
 		p6.launched = true;
-		l__default__10.Client:Get("BxCvzdj"):SendToServer({
+		l__default__10.Client:Get("YogvdHljxvyPch"):SendToServer({
 			launchPad = p7
 		});
 		l__ClientSyncEvents__11.LaunchPadUsed:fire(p7);
@@ -133,3 +134,4 @@ end;
 u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());
 return nil;
+

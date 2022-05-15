@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -33,3 +34,4 @@ return v2.Definitions.Namespace({
 	SetPlayerMaxHealth = v2.Definitions.ServerAsyncFunction(), 
 	HostPanelUpdate = v2.Definitions.ServerToClientEvent()
 });
+

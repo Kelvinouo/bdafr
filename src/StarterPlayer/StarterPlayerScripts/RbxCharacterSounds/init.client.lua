@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = nil;
@@ -302,3 +303,4 @@ else
 		v41(v46);
 	end;
 end;
+

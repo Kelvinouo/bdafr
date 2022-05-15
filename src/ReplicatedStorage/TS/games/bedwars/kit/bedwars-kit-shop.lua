@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -33,25 +34,27 @@ v6[v19 + 2] = l__BedwarsKit__4.LUMEN;
 v6[v19 + 3] = l__BedwarsKit__4.CYBER;
 v6[v19 + 4] = l__BedwarsKit__4.MINER;
 v6[v19 + 5] = l__BedwarsKit__4.DASHER;
-v6[v19 + 6] = l__BedwarsKit__4.TRIPLE_SHOT;
-v6[v19 + 7] = l__BedwarsKit__4.AXOLOTL;
-v6[v19 + 8] = l__BedwarsKit__4.BARBARIAN;
-v6[v19 + 9] = l__BedwarsKit__4.ANGEL;
-v6[v19 + 10] = l__BedwarsKit__4.VULCAN;
-v6[v19 + 11] = l__BedwarsKit__4.WIZARD;
-v6[v19 + 12] = l__BedwarsKit__4.GRIM_REAPER;
-v6[v19 + 13] = l__BedwarsKit__4.COWGIRL;
-v6[v19 + 14] = l__BedwarsKit__4.BIGMAN;
-v6[v19 + 15] = l__BedwarsKit__4.DAVEY;
-v6[v19 + 16] = l__BedwarsKit__4.FARMER_CLETUS;
-v6[v19 + 17] = l__BedwarsKit__4.MELODY;
-v6[v19 + 18] = l__BedwarsKit__4.ARCHER;
-v6[v19 + 19] = l__BedwarsKit__4.SHIELDER;
-v6[v19 + 20] = l__BedwarsKit__4.BAKER;
-v6[v19 + 21] = l__BedwarsKit__4.BUILDER;
+v6[v19 + 6] = l__BedwarsKit__4.ICE_QUEEN;
+v6[v19 + 7] = l__BedwarsKit__4.TRIPLE_SHOT;
+v6[v19 + 8] = l__BedwarsKit__4.AXOLOTL;
+v6[v19 + 9] = l__BedwarsKit__4.BARBARIAN;
+v6[v19 + 10] = l__BedwarsKit__4.ANGEL;
+v6[v19 + 11] = l__BedwarsKit__4.VULCAN;
+v6[v19 + 12] = l__BedwarsKit__4.WIZARD;
+v6[v19 + 13] = l__BedwarsKit__4.GRIM_REAPER;
+v6[v19 + 14] = l__BedwarsKit__4.COWGIRL;
+v6[v19 + 15] = l__BedwarsKit__4.BIGMAN;
+v6[v19 + 16] = l__BedwarsKit__4.DAVEY;
+v6[v19 + 17] = l__BedwarsKit__4.FARMER_CLETUS;
+v6[v19 + 18] = l__BedwarsKit__4.MELODY;
+v6[v19 + 19] = l__BedwarsKit__4.ARCHER;
+v6[v19 + 20] = l__BedwarsKit__4.SHIELDER;
+v6[v19 + 21] = l__BedwarsKit__4.BAKER;
+v6[v19 + 22] = l__BedwarsKit__4.BUILDER;
 v5.ShopKits = v6;
 v5.FeaturedKits = { l__BedwarsKit__4.CYBER, l__BedwarsKit__4.MINER, l__BedwarsKit__4.DASHER, l__BedwarsKit__4.AXOLOTL };
 v5.BattlePassPodiumKits = l__BedwarsBPKits__3.season4;
 return {
 	BedwarsKitShop = v5
 };
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -44,3 +45,4 @@ v1.async(function()
 		Name = "ClientFlameReady"
 	});
 end)();
+

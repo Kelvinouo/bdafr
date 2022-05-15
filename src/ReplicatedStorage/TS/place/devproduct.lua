@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {
@@ -27,3 +28,4 @@ end;
 return {
 	DevProduct = v1
 };
+

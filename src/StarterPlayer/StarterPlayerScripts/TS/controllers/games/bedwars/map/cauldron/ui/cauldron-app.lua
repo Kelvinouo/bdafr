@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -42,7 +43,7 @@ function v4.render(p2)
 			} };
 		v8.Upgrade = v9;
 		function v8.Purchased()
-			l__default__4.Client:WaitFor("UcpElauyr"):andThen(function(p5)
+			l__default__4.Client:WaitFor("lxvrbRrpaQl"):andThen(function(p5)
 				p5:CallServerAsync({
 					cauldron = p2.props.cauldron, 
 					potion = p3
@@ -94,3 +95,4 @@ return {
 	end, 
 	CauldronApp = v4
 };
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -33,7 +34,7 @@ function v6.KnitStart(p2)
 	l__CollectionTagAdded__2("teleport_block", function(p3)
 		p3.Touched:Connect(function(p4)
 			if l__Players__3.LocalPlayer.Character and p4.Parent == l__Players__3.LocalPlayer.Character then
-				l__default__4.Client:Get("sqeatVn"):SendToServer({
+				l__default__4.Client:Get("wayfXdcsmloLqftg"):SendToServer({
 					teleportBlock = p3
 				});
 			end;
@@ -61,3 +62,4 @@ end;
 u1 = v3.KnitClient.CreateController;
 u1 = u1(v6.new());
 return nil;
+

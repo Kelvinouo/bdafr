@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -47,3 +48,4 @@ v1.grappling_hook = "GRAPPLING_HOOK";
 return {
 	CooldownId = v2
 };
+

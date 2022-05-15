@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1, v2 = pcall(function()
@@ -934,3 +935,4 @@ function v71.MoveTo(p120, p121, p122, p123)
 	return true;
 end;
 return v71;
+

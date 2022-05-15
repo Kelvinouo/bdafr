@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = setmetatable({}, {
@@ -17,3 +18,4 @@ v1.COOLDOWN = 0.55;
 return {
 	PaintShotgunConstants = v1
 };
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = Vector3.new(0, 0, 1);
@@ -784,3 +785,4 @@ if not u1 then
 	end;
 end;
 return v30;
+

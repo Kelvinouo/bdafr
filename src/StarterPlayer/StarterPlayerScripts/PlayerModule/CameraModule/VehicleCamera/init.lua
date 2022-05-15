@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = math.rad(80);
@@ -128,3 +129,4 @@ function v11.LeaveFirstPerson(p18)
 	p18:UpdateMouseBehavior();
 end;
 return v11;
+

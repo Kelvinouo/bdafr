@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__BattlePassSeason__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-seasons").BattlePassSeason;
@@ -110,7 +111,8 @@ return {
 	BedwarsBPKits = {
 		[l__BattlePassSeason__1.season1] = { v3.PYRO, v3.RAVEN, v3.BEEKEEPER, v3.SPIRIT_CATCHER, v3.BOUNTY_HUNTER, v3.JADE, v3.WARRIOR }, 
 		[l__BattlePassSeason__1.season2] = { v3.SPEARMAN, v3.FISHERMAN, v3.TRAPPER, v3.OIL_MAN, v3.GHOST_CATCHER }, 
-		[l__BattlePassSeason__1.season3] = { v3.FROSTY, v3.SANTA, v3.SMOKE, v3.YETI, v3.AERY, v3.GINGERBREAD_MAN, v3.ICE_QUEEN }, 
+		[l__BattlePassSeason__1.season3] = { v3.FROSTY, v3.SANTA, v3.SMOKE, v3.YETI, v3.AERY, v3.GINGERBREAD_MAN }, 
 		[l__BattlePassSeason__1.season4] = { v3.MIDNIGHT, v3.ALCHEMIST, v3.BEAST, v3.SHEEP_HERDER, v3.METAL_DETECTOR, v3.CONQUEROR }
 	}
 };
+

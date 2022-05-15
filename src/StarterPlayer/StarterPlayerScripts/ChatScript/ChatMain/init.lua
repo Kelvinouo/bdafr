@@ -1,3 +1,4 @@
+
 --[[VARIABLE DEFINITION ANOMALY DETECTED, DECOMPILATION OUTPUT POTENTIALLY INCORRECT]]--
 -- Decompiled with the Synapse X Luau decompiler.
 
@@ -887,3 +888,4 @@ for v90, v91 in pairs(v87.Channels) do
 	end;
 end;
 return u14;
+

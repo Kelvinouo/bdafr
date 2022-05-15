@@ -1,3 +1,4 @@
+
 --[[VARIABLE DEFINITION ANOMALY DETECTED, DECOMPILATION OUTPUT POTENTIALLY INCORRECT]]--
 -- Decompiled with the Synapse X Luau decompiler.
 
@@ -225,7 +226,7 @@ function u1.spawnRaven(p9)
 	end;
 	l__AnimationUtil__18.playAnimation(l__Players__4.LocalPlayer, l__GameAnimationUtil__19.getAssetId(l__AnimationType__20.RAVEN_THROW));
 	p9.spawningRaven = true;
-	l__default__6.Client:Get("Ktnvxx"):CallServerAsync():andThen(function(p10)
+	l__default__6.Client:Get("fouugdiwdRhwmgua"):CallServerAsync():andThen(function(p10)
 		if not p10 then
 			p9.spawningRaven = false;
 			return nil;
@@ -239,7 +240,7 @@ function u1.spawnRaven(p9)
 	end);
 end;
 u1.detonateRaven = v1.async(function(p11)
-	return l__default__6.Client:WaitFor("qhstMmqc"):andThen(function(p12)
+	return l__default__6.Client:WaitFor("wuupxtT"):andThen(function(p12)
 		return p12:CallServerAsync();
 	end);
 end);
@@ -366,3 +367,4 @@ u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;
 return u1;
+

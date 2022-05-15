@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1, v2 = pcall(function()
@@ -211,3 +212,4 @@ if v3 or v4 then
 	end;
 end;
 return v8;
+

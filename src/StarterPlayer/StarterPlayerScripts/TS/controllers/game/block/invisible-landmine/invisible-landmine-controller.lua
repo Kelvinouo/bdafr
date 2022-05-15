@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -166,7 +167,7 @@ function v8.handleTouch(p10, p11)
 			v23.isDetonating = true;
 			if v27 then
 				p11:SetAttribute("LandmineDetonating", true);
-				l__default__4.Client:Get("MwqnvnJu"):SendToServer({
+				l__default__4.Client:Get("SlerFrgGtXhtolkLaxtr"):SendToServer({
 					invisibleLandmine = p11
 				});
 			end;
@@ -247,3 +248,4 @@ end;
 u1 = v3.KnitClient.CreateController;
 u1 = u1(v8.new());
 return nil;
+

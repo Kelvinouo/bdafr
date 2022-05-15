@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -106,7 +107,7 @@ function u1.KnitStart(p2)
 			usingKitSkin = p10.usingSkin
 		});
 	end);
-	l__default__9.Client:WaitFor("ArVmbTtGqjmqznz"):andThen(function(p11)
+	l__default__9.Client:WaitFor("ocjipaqwglBfxmtQ"):andThen(function(p11)
 		for v22, v23 in pairs(p11:CallServer()) do
 			l__ClientStore__8:dispatch({
 				type = "BedwarsSetKits", 
@@ -174,3 +175,4 @@ u1 = {
 	BedwarsController = u2
 };
 return u1;
+

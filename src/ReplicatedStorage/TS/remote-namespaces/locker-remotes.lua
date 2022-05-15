@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -12,3 +13,4 @@ return v2.Definitions.Namespace({
 	GetLocker = v2.Definitions.ServerFunction(), 
 	LockerUpdate = v2.Definitions.ServerToClientEvent()
 });
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = { { 0.25, 0.25, -0.25 }, { -0.25, 0.25, -0.25 }, { 0.25, 0.25, 0.25 }, { -0.25, 0.25, 0.25 }, { 0.25, -0.25, -0.25 }, { -0.25, -0.25, -0.25 }, { 0.25, -0.25, 0.25 }, { -0.25, -0.25, 0.25 } };
@@ -40,3 +41,4 @@ local function u2(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
 end;
 v2.GetNeighborsWithinRadius = u2;
 return v2;
+

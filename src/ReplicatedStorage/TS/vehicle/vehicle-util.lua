@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = setmetatable({}, {
@@ -48,3 +49,4 @@ end;
 return {
 	VehicleUtil = v1
 };
+

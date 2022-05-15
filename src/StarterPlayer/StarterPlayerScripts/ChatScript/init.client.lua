@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = false;
@@ -143,3 +144,4 @@ if not game:GetService("GuiService"):IsTenFootInterface() and not game:GetServic
 else
 	l__ReplicatedStorage__4:WaitForChild("DefaultChatSystemChatEvents").GetInitDataRequest:InvokeServer();
 end;
+

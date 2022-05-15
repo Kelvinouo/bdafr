@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__BPRewardDisplayType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, script.Parent, "battle-pass-reward-display-type").BPRewardDisplayType;
@@ -33,3 +34,4 @@ return {
 		}
 	}
 };
+

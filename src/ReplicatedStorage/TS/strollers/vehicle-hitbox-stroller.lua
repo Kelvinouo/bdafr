@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -31,3 +32,4 @@ l__Reflect__2.defineMetadata(v3, "flamework:decorators.$:flamework@Controller", 
 return {
 	VehicleHitboxStroller = v3
 };
+

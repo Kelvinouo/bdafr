@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local function u1(p1, p2)
@@ -63,3 +64,4 @@ return {
 	end, 
 	Attribute = v4
 };
+

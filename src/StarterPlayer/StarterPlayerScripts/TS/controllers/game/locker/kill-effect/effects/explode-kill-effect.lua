@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -21,3 +22,4 @@ function v3.onKill(p2, p3, p4, p5)
 	l__KnitClient__1.Controllers.ExplosionController:playExplodeEffect(p5.Position, 0.5);
 end;
 return v3;
+

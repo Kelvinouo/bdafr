@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -30,3 +31,4 @@ return {
 	StoreReducer = v8, 
 	ClientStore = v2.Store.new(v8, {})
 };
+

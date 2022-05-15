@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__AnimationType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
@@ -163,3 +164,4 @@ return {
 		[l__AnimationType__1.FP_HEAVENLY_SWORD_CHARGE] = "rbxassetid://9611583074"
 	}
 };
+

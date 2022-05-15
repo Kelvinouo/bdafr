@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -131,3 +132,4 @@ function v5.buildSnowman(p10, p11)
 	return v36;
 end;
 return v5;
+

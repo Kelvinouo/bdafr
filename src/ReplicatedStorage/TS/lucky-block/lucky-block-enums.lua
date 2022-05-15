@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -28,3 +29,4 @@ return {
 	LuckyBlockRarity = v2, 
 	LuckyBlockPolarity = v4
 };
+

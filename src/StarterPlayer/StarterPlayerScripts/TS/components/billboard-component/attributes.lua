@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -11,3 +12,4 @@ return {
 	BillboardStudsOffsetAttr = l__Attribute__3.new("BillboardStudsOffset", l__t__2.optional(l__t__2.Vector3)), 
 	BillboardAlwaysOnTopAttr = l__Attribute__3.new("AlwaysOnTop", l__t__2.optional(l__t__2.boolean))
 };
+

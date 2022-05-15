@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -262,3 +263,4 @@ return {
 	EmoteDisplayType = v2, 
 	EmoteType = v4
 };
+

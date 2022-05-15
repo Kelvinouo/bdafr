@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__EmoteHandler__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, script.Parent.Parent, "emote-handler").EmoteHandler;
@@ -26,3 +27,4 @@ u1 = {
 	BaseEmoteHandler = v2
 };
 return l__EmoteHandler__1;
+

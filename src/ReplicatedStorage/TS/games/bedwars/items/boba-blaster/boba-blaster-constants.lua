@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = setmetatable({}, {
@@ -17,3 +18,4 @@ v1.EXPLOSION_TIME_SECONDS = 3;
 return {
 	BobaBlasterConstants = v1
 };
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -13,3 +14,4 @@ v1.power = "POWER";
 return {
 	FlamethrowerUpgrade = v2
 };
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -10,3 +11,4 @@ return {
 		ProjectileHit = l__SyncEvent__2.new(v1.import(script, game:GetService("ReplicatedStorage"), "TS", "combat", "event", "projectile-hit-event").ProjectileHitEvent)
 	}
 };
+

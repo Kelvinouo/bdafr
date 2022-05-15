@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = nil;
@@ -1030,3 +1031,4 @@ end;
 return {
 	BedwarsShop = v10
 };
+

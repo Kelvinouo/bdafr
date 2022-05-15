@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {
@@ -100,3 +101,4 @@ function v1.renderPath()
 	v2.Parent = workspace.CurrentCamera;
 end;
 return v1;
+

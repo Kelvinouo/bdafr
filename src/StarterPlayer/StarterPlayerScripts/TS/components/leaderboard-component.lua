@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -36,3 +37,4 @@ function v3.Destroy(p3)
 end;
 v3.Tag = "Leaderboard";
 return v3;
+

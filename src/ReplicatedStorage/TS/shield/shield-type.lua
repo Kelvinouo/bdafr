@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -21,3 +22,4 @@ v1.LIFE_STEAL_SHIELD = "LIFE_STEAL_SHIELD";
 return {
 	ShieldType = v2
 };
+

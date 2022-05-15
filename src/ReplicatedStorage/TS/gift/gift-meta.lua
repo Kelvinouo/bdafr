@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = nil;
@@ -106,3 +107,4 @@ function v5.getGiftMeta(p7)
 	return v5.GiftMeta[p7];
 end;
 return v5;
+

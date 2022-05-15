@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -32,13 +33,13 @@ function v6.onStart(p2)
 	if l__PlaceUtil__1.isLobbyServer() then
 		return nil;
 	end;
-	l__default__2.Client:Get("jnNfxitWjnwipbXgljvybykRgzuqc"):Connect(function(p3)
+	l__default__2.Client:Get("awzpksiotgzslsna"):Connect(function(p3)
 		if l__ClientStore__3:getState().Game.matchState == l__MatchState__4.PRE then
 			return nil;
 		end;
 		p2:createIndicator(p3.location, p3.creator);
 	end);
-	local u10 = l__default__2.Client:Get("tbznanpQVnhDcoMadnigjjvjehavkdmxujnOlo");
+	local u10 = l__default__2.Client:Get("olzjqoceMdrxfe");
 	l__ContextActionService__5:BindAction("ping-location", function(p4, p5, p6)
 		if p5 ~= Enum.UserInputState.Begin then
 			return nil;
@@ -182,3 +183,4 @@ l__Reflect__3.defineMetadata(v6, "flamework:decorators.$:flamework@Controller", 
 return {
 	PingController = v6
 };
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = setmetatable({}, {
@@ -24,3 +25,4 @@ function v1.Destroy(p3)
 end;
 v1.Tag = "DebrisComponent";
 return v1;
+

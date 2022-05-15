@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -28,3 +29,4 @@ end;
 u1 = l__KnitClient__2.CreateController;
 u1 = u1(v3.new());
 return nil;
+

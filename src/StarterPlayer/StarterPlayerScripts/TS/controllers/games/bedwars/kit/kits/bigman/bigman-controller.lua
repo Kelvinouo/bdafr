@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -68,7 +69,7 @@ function u1.KnitStart(p2)
 				l__GameAnimationUtil__13.playAnimation(p5, l__AnimationType__14.PUNCH);
 				l__KnitClient__4.Controllers.ViewmodelController:playAnimation(l__AnimationType__14.FP_USE_ITEM);
 				l__SoundManager__15:playSound(l__GameSound__16.CROP_HARVEST);
-				if l__default__3.Client:Get("knWaezLfefqyswzycnloqmfgyjzuAytd"):CallServer({
+				if l__default__3.Client:Get("rudpWxodzvlG"):CallServer({
 					treeOrbSecret = p4:GetAttribute("TreeOrbSecret")
 				}) then
 					p4:Destroy();
@@ -108,3 +109,4 @@ u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;
 return u1;
+

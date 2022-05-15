@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {
@@ -9,3 +10,4 @@ if not require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"
 	v1.BattlePassGiftDevProduct = 1200006467;
 end;
 return v1;
+

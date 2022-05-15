@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -34,7 +35,7 @@ local l__UnmountDodoApp__10 = v1.import(script, script.Parent, "ui", "unmount-do
 local l__Maid__11 = v3.Maid;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	local u12 = l__default__2.Client:Get("tsEdbgkkdajnddcbhiNjcalbtSGyDotOdimlrk");
+	local u12 = l__default__2.Client:Get("hwggdxwToyrnbskiidvzjxHtdimOcfLwysicvyj");
 	l__CollectionTagAdded__3("dodo-bird", function(p3)
 		p3:SetAttribute("NextSquawk", -1);
 		local v8 = {
@@ -200,3 +201,4 @@ end;
 u1 = v3.KnitClient.CreateController;
 u1 = u1(v6.new());
 return nil;
+

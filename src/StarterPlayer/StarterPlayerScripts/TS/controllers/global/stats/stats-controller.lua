@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -22,7 +23,7 @@ end;
 local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function u1.KnitStart(p2)
-	l__default__3.Client:WaitFor("YnbfWwpmdeHqoe"):andThen(function(p3)
+	l__default__3.Client:WaitFor("YnkTqytdcixpvand"):andThen(function(p3)
 		local v5 = p3:CallServer();
 		l__ClientStore__4:dispatch({
 			type = "SetStats", 
@@ -37,3 +38,4 @@ u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;
 return u1;
+

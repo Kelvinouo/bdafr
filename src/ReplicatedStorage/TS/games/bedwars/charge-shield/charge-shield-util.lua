@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 return {
@@ -13,3 +14,4 @@ return {
 		HORIZONTAL_KNOCKBACK = 1.8
 	}
 };
+

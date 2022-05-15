@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = setmetatable({}, {
@@ -18,3 +19,4 @@ v1.COST_AMOUNT = 8;
 return {
 	VendingMachineConst = v1
 };
+

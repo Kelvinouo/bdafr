@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -61,3 +62,4 @@ u2 = {
 	GlassBlockHandler = v9
 };
 return l__GreedyBlockHandler__2;
+

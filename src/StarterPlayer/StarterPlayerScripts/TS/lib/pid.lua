@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -63,3 +64,4 @@ function v1.Debug(p14, p15, p16)
 	v5.Parent = p16;
 end;
 return v1;
+

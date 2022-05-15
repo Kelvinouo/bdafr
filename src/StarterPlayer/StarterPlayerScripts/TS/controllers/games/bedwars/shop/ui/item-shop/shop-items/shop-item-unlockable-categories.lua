@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -282,3 +283,4 @@ return {
 		return u7.createElement(l__Empty__9, v53, v54);
 	end)
 };
+

@@ -1,3 +1,4 @@
+
 --[[VARIABLE DEFINITION ANOMALY DETECTED, DECOMPILATION OUTPUT POTENTIALLY INCORRECT]]--
 -- Decompiled with the Synapse X Luau decompiler.
 
@@ -946,3 +947,4 @@ function v13.onUnhandledRejection(p141)
 	end;
 end;
 return v13;
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(script.Settings);
@@ -205,3 +206,4 @@ function v7.SetDefaultSettings(p19, p20)
 	p19:UpdateObjectSettings(script, p20);
 end;
 return v7;
+

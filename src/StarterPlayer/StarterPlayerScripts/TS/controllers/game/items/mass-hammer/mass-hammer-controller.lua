@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -59,23 +60,23 @@ function v6.KnitStart(p2)
 			l__ContextActionService__7:UnbindAction("use-mass_hammer");
 		end);
 	end);
-	l__default__8.Client:OnEvent("uzYeGCtKlto", function(p3)
+	l__default__8.Client:OnEvent("jSrDozPChqccmoh", function(p3)
 		if not l__Players__9.LocalPlayer.Character then
 			return nil;
 		end;
 		p2:speedScale(l__Players__9.LocalPlayer.Character, p3.speed);
 	end);
-	l__default__8.Client:OnEvent("EwYupaykwqddwsDrVhi", function()
+	l__default__8.Client:OnEvent("Vfshyeyjkzjoe", function()
 		p2.cooldownHasEnded = true;
 	end);
-	l__default__8.Client:OnEvent("kbXgxrJiinzzteDpMrad", function()
+	l__default__8.Client:OnEvent("mAoneNynDckhfwkokbdnsesowgh", function()
 		p2:cleanUpDuty();
 		p2.cooldownHasEnded = false;
 	end);
 end;
 function v6.activateAbility(p4)
 	p4.cooldownHasEnded = false;
-	l__default__8.Client:Get("jpuismnmte"):SendToServer();
+	l__default__8.Client:Get("oiBcsioylbexlaqmcotlaqa"):SendToServer();
 end;
 local l__ItemType__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
 function v6.isRelevantItem(p5, p6)
@@ -108,3 +109,4 @@ end;
 u1 = v2.KnitClient.CreateController;
 u1 = u1(v6.new());
 return nil;
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__Players__1 = game:GetService("Players");
@@ -185,3 +186,4 @@ function v10.setCameraModeToastOpen(p6)
 	l__TweenService__13:Create(u11, u14, v17):Play();
 end;
 return v10;
+

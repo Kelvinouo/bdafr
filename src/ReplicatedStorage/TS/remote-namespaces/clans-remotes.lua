@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -19,3 +20,4 @@ return v2.Definitions.Namespace({
 	InvitePlayerToClan = v2.Definitions.ServerFunction(), 
 	ClanInviteDecision = v2.Definitions.ServerAsyncFunction()
 });
+

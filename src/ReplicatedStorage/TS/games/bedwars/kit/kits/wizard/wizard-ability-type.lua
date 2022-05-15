@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -11,3 +12,4 @@ v1["Electricity Orb"] = "ElectricityOrb";
 return {
 	WizardAbilityType = v2
 };
+

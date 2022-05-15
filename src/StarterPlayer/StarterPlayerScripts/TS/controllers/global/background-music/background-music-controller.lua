@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -62,7 +63,7 @@ function v4.mute(p7)
 			backgroundMusicVolume = 0
 		}
 	});
-	l__default__9.Client:Get("pOocafqnccowahlFhWXlxMdrhcThytzgP"):SendToServer({
+	l__default__9.Client:Get("mweptuBoeglkbxEoozkgqWmehFtiqrQfYa"):SendToServer({
 		volume = 0
 	});
 end;
@@ -152,10 +153,11 @@ function v4.unmute(p9)
 			backgroundMusicVolume = 1
 		}
 	});
-	l__default__9.Client:Get("pOocafqnccowahlFhWXlxMdrhcThytzgP"):SendToServer({
+	l__default__9.Client:Get("mweptuBoeglkbxEoozkgqWmehFtiqrQfYa"):SendToServer({
 		volume = 1
 	});
 end;
 u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
 u1 = u1(v4.new());
 return nil;
+

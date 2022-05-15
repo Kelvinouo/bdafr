@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -104,7 +105,7 @@ function v5.KnitStart(p3)
 			end;
 			if u9 and u10 < p3.allowedAirJumps and u12 < time() then
 				u12 = time() + 0.25;
-				l__default__8.Client:Get("vuMzyssamjktxwqa"):SendToServer();
+				l__default__8.Client:Get("wvcKctdhyutwkypryyiyIacghbjQm"):SendToServer();
 				u10 = u10 + 1;
 				l__Humanoid__17:ChangeState(Enum.HumanoidStateType.Jumping);
 			end;
@@ -127,3 +128,4 @@ end;
 u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());
 return nil;
+

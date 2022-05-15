@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__ContextActionService__1 = game:GetService("ContextActionService");
@@ -379,3 +380,4 @@ function v22.disableCameraToggleInput()
 	end;
 end;
 return v22;
+

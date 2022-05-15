@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -15,7 +16,7 @@ return {
 			actionName = "release-item"
 		};
 		function v5.onActivated()
-			l__default__5.Client:Get("ykhiTAsZciyuqbt"):SendToServer({
+			l__default__5.Client:Get("ikVacafhe"):SendToServer({
 				position = p1.drone:GetPrimaryPartCFrame().Position, 
 				direction = p1.drone:GetPrimaryPartCFrame().LookVector
 			});
@@ -39,3 +40,4 @@ return {
 		return u1.createFragment(v4);
 	end)
 };
+

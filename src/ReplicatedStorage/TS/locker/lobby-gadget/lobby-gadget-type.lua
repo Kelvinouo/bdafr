@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -29,3 +30,4 @@ v1.raven = "RAVEN";
 return {
 	LobbyGadgetType = v2
 };
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -86,3 +87,4 @@ u4 = function(p23, p24)
 end;
 u3.OnCameraSubjectChanged = u4;
 return u3;
+

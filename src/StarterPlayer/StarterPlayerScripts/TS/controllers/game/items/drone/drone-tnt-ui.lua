@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -28,7 +29,7 @@ return {
 				onActivated = function()
 					if time() - u5.value > 0.3 then
 						u5.value = time();
-						l__default__4.Client:Get("ohcwAfzwvyqubN"):SendToServer();
+						l__default__4.Client:Get("wZPfntesifcVvnrYddgdatvRwjfnooxl"):SendToServer();
 					end;
 				end, 
 				interactionKey = Enum.KeyCode.Z, 
@@ -39,3 +40,4 @@ return {
 		end, { p1.store.Inventory.observedInventory.inventory.items });
 	end)
 };
+

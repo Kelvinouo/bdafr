@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -15,3 +16,4 @@ v1.lobbyGadget = "LOBBY_GADGET";
 return {
 	BPRewardDisplayType = v2
 };
+

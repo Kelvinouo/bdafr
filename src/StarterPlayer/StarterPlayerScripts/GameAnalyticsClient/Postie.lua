@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = nil;
@@ -123,3 +124,4 @@ l__Sent__6.OnClientEvent:Connect(function(p16, p17, ...)
 	v1:FireServer(p17, v15 and v15(...));
 end);
 return v5;
+

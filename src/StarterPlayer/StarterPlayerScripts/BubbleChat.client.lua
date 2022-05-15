@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__Players__1 = game:GetService("Players");
@@ -690,3 +691,4 @@ l__OnMessageDoneFiltering__103.OnClientEvent:connect(function(p111, p112)
 	end;
 	u6:OnPlayerChatMessage(v105, p111.Message, nil);
 end);
+

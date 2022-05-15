@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -17,3 +18,4 @@ v1.duck = "DUCK";
 return {
 	MonsterType = v2
 };
+

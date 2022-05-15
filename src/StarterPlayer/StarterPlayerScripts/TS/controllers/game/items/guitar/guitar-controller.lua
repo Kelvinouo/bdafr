@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -251,7 +252,7 @@ function u1.stopPlaying(p17)
 	p17.playing = false;
 	p17.playingMaid:DoCleaning();
 	task.spawn(function()
-		l__default__4.Client:Get("hyaaPvkxwywxFHdhed"):SendToServer();
+		l__default__4.Client:Get("ubsGqqrmmn"):SendToServer();
 	end);
 end;
 local l__EntityUtil__30 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
@@ -326,7 +327,7 @@ function u1.performHeal(p18)
 			v31 = v56[1]:getInstance();
 		end;
 	end;
-	l__default__4.Client:Get("lzjXvvfKbzx"):SendToServer({
+	l__default__4.Client:Get("xygarjvczhdsmpA"):SendToServer({
 		healTarget = v31
 	});
 end;
@@ -337,3 +338,4 @@ u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;
 return u1;
+

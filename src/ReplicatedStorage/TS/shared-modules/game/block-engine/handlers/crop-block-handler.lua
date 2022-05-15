@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -63,3 +64,4 @@ u1 = {
 	CropBlockHandler = v4
 };
 return l__BlockHandler__3;
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -19,3 +20,4 @@ v1["gun-game"] = "GUN_GAME";
 return {
 	GameType = v2
 };
+

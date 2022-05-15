@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = Vector2.new();
@@ -73,3 +74,4 @@ function v4.Update(p4, p5)
 	return v8, v9;
 end;
 return v4;
+

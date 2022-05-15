@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(script.Parent.Parent.CameraUtils);
@@ -95,3 +96,4 @@ function v22.setTransform(p28, p29)
 	p28.vrs:setGoal(p29);
 end;
 return v22;
+

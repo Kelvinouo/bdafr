@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local function u1(p1, p2)
@@ -197,3 +198,4 @@ function v7.destroy(p20)
 	debug.profileend();
 end;
 return v7;
+

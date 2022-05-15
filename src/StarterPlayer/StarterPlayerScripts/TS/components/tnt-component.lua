@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -68,3 +69,4 @@ function v3.Destroy(p5)
 end;
 v3.Tag = "tnt";
 return v3;
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(script.Parent:WaitForChild("BaseCharacterController"));
@@ -140,3 +141,4 @@ function v2.DisconnectFocusEventListeners(p26)
 	end;
 end;
 return v2;
+

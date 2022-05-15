@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -163,3 +164,4 @@ function v5.Destroy(p4)
 end;
 v5.Tag = "LobbyKitDisplayComponent";
 return v5;
+

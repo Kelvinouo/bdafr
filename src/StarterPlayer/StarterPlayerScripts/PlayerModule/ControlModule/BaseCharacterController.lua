@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -28,3 +29,4 @@ function v1.Enable(p6, p7)
 	return false;
 end;
 return v1;
+

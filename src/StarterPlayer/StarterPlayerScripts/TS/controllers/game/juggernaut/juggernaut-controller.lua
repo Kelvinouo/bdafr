@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -72,7 +73,7 @@ function v4.KnitStart(p2)
 			end);
 		end);
 		v6.Triggered:Connect(function(p10)
-			l__default__6.Client:Get("ilzBiJlnrc"):SendToServer({
+			l__default__6.Client:Get("yrkxstjhhaiviTQfwHcgxhiuoAomIsNddwzrj"):SendToServer({
 				blockInstance = p3
 			});
 		end);
@@ -81,3 +82,4 @@ end;
 u1 = v2.KnitClient.CreateController;
 u1 = u1(v4.new());
 return nil;
+

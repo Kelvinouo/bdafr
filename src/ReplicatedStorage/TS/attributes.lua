@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,3 +15,4 @@ return {
 	NpcCollectionServiceTag = l__Attribute__3.new("NpcCollectionServiceTag", l__t__2.optional(l__t__2.string)), 
 	NpcVerticalOffset = l__Attribute__3.new("NpcVerticalOffset", l__t__2.optional(l__t__2.number))
 };
+

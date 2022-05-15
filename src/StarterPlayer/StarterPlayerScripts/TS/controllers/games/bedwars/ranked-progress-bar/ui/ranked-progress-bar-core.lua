@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -509,3 +510,4 @@ return {
 		return u10.createElement(l__SlideIn__14, {}, v32);
 	end)
 };
+

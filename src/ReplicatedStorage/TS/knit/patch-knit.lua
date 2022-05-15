@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local function u1(p1)
@@ -13,3 +14,4 @@ return {
 		p4.CreateService = u1(p4.CreateService);
 	end
 };
+

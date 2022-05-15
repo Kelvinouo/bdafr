@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = setmetatable({}, {
@@ -20,3 +21,4 @@ end;
 return {
 	ProjectileRenderEvent = v1
 };
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__Players__1 = game:GetService("Players");
@@ -216,3 +217,4 @@ return function(p19, p20, p21)
 	debug.profileend();
 	return v49;
 end;
+

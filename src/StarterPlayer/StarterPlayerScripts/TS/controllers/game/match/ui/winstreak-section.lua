@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -106,3 +107,4 @@ return v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(
 					TextScaled = true
 				}) }) }) });
 end);
+

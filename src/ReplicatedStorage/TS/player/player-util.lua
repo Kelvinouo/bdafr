@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -14,3 +15,4 @@ v1.UserId = {
 return {
 	GamePlayerUtil = v1
 };
+

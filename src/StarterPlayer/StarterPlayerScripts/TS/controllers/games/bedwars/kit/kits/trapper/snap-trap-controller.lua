@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -85,7 +86,7 @@ function v5.KnitStart(p2)
 			end);
 			p3.Touched:Connect(function(p5)
 				if p3:GetAttribute("SnapTrapState") == l__SnapTrapState__10.ACTIVE and l__Players__3.LocalPlayer.Character and p5.Parent == l__Players__3.LocalPlayer.Character then
-					l__default__11.Client:Get("mkeoXnqzMghnecisruks"):SendToServer({
+					l__default__11.Client:Get("zvgetdyiPjktbcn"):SendToServer({
 						snapTrap = p3
 					});
 				end;
@@ -147,3 +148,4 @@ end;
 u1 = l__KnitClient__14.CreateController;
 u1 = u1(v5.new());
 return nil;
+

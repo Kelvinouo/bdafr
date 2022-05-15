@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -35,3 +36,4 @@ v1.farmer_cletus_spirit = "FARMER_CLETUS_SPIRIT";
 return {
 	BedwarsKitSkin = v2
 };
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -45,7 +46,7 @@ function v6.KnitStart(p2)
 			return nil;
 		end;
 		if p3.chargedAttack.chargeTime >= 0.5 then
-			l__default__8.Client:Get("ercekcjsykGAgWwp"):SendToServer({
+			l__default__8.Client:Get("uuxtnsZFfbtxyqlLrusbptucapw"):SendToServer({
 				chargeTime = p3.chargedAttack.chargeTime, 
 				player = p3.fromPlayer, 
 				weapon = p3.weapon
@@ -253,3 +254,4 @@ end;
 u1 = l__KnitClient__3.CreateController;
 u1 = u1(v6.new());
 return nil;
+

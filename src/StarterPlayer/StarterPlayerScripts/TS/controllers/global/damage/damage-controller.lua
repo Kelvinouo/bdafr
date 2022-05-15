@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -37,7 +38,7 @@ function u1.requestSelfDamage(p3, p4, p5, p6, p7)
 	end;
 	v5.fromEntity = v6;
 	v5.banjo = p6;
-	l__default__3.Client:Get("pfdhoWmxwwtqwrry"):SendToServer(v5);
+	l__default__3.Client:Get("xsfwzfmwejsmrplBqNwkejwveqeWzcqazmxsziypvdfN"):SendToServer(v5);
 end;
 u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
@@ -46,3 +47,4 @@ u1 = {
 	DamageController = u2
 };
 return u1;
+

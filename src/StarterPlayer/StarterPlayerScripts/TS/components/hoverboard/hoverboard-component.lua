@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -208,7 +209,7 @@ function v3.setCharacterMassless(p17, p18)
 end;
 local l__default__17 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function v3.dismountHoverboard(p19)
-	l__default__17.Client:Get("zmlelewfklEikmdas"):SendToServer();
+	l__default__17.Client:Get("zuqiByttslpCSwfmglmrpgrh"):SendToServer();
 end;
 function v3.Destroy(p20)
 	if not p20:isOwn() then
@@ -232,3 +233,4 @@ function v3.isOwn(p21)
 end;
 v3.Tag = "Hoverboard";
 return v3;
+

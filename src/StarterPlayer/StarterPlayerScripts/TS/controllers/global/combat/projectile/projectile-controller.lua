@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -240,7 +241,7 @@ u1.launchProjectileWithValues = v1.async(function(p21, p22, p23, p24, p25, p26, 
 	if v39 == nil then
 		return nil;
 	end;
-	local v40 = v1.await(l__default__7.Client:WaitFor("hTvxTuqpoAtdjeM"):andThen(function(p28)
+	local v40 = v1.await(l__default__7.Client:WaitFor("osatzdhhzqDtopcxkFYvsEqdfgbxrAjudv"):andThen(function(p28)
 		return p28:CallServerAsync(p23, p25, v25, l__positionFrom__27, v39, l__initialVelocity__26, v35, p26);
 	end));
 	if v40 and v40.PrimaryPart then
@@ -290,7 +291,7 @@ function u1.createLocalProjectile(p29, p30, p31, p32, p33, p34, p35, p36)
 		if v51 ~= nil then
 			v51 = v51:getInstance();
 		end;
-		l__default__7.Client:Get("kepTjsheaunbqqViuFgRoda"):SendToServer(p34, v51);
+		l__default__7.Client:Get("lphkMohTvk"):SendToServer(p34, v51);
 		l__ClientSyncEvents__14.LocalProjectileImpact:fire(v42, p37, v50, p38);
 		if not v41.keepProjectileOnHit or not v50 then
 			v42:Destroy();
@@ -411,3 +412,4 @@ u1 = {
 	ProjectileController = u2
 };
 return u1;
+

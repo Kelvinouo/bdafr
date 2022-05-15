@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {
@@ -141,3 +142,4 @@ function v1.Destroy(p13)
 	end;
 end;
 return v1;
+

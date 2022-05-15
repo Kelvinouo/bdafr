@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = Vector2.new(0, 0);
@@ -191,3 +192,4 @@ function v3.LeaveFirstPerson(p7)
 	p7:UpdateMouseBehavior();
 end;
 return v3;
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -317,3 +318,4 @@ v1[154] = "FP_HEAVENLY_SWORD_CHARGE";
 return {
 	AnimationType = v2
 };
+

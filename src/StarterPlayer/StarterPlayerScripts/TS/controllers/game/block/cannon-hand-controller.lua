@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -80,14 +81,14 @@ function u1.fireCannon(p12, p13)
 	if not v11 then
 		return nil;
 	end;
-	l__default__5.Client:Get("MesdzbticznnaqenytshcfbbuxkogdPvuojy"):SendToServer({
+	l__default__5.Client:Get("rsurdHteVokeqhebbygklgSwkm"):SendToServer({
 		cannonBlockPos = l__BlockEngine__6:getBlockPosition(p13.Position), 
 		itemType = v11.itemType
 	});
 end;
 local l__Players__7 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 function u1.launchSelf(p14, p15)
-	if not l__default__5.Client:Get("twoeszi"):CallServer({
+	if not l__default__5.Client:Get("hrIrckodk"):CallServer({
 		cannonBlockPos = l__BlockEngine__6:getBlockPosition(p15.Position)
 	}) then
 		return nil;
@@ -121,3 +122,4 @@ u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;
 return u1;
+

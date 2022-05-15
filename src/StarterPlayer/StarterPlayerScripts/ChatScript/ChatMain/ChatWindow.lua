@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -498,3 +499,4 @@ function v1.new()
 	return v60;
 end;
 return v1;
+

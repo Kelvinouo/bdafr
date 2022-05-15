@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -425,7 +426,7 @@ function v7.onKitEnabled(p26)
 			end);
 		end);
 		v72.Triggered:Connect(function(p29)
-			l__default__4.Client:Get("lUtbwPaguNyL"):SendToServer({
+			l__default__4.Client:Get("glopzVz"):SendToServer({
 				petrifyId = p27:GetAttribute("PetrifyId")
 			});
 		end);
@@ -465,3 +466,4 @@ end;
 u1 = l__KnitClient__14.CreateController;
 u1 = u1(v7.new());
 return nil;
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(script.Parent.Promise);
@@ -192,3 +193,4 @@ function v2.generator(p19)
 	return v26;
 end;
 return v2;
+

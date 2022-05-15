@@ -1,3 +1,5 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 return nil;
+

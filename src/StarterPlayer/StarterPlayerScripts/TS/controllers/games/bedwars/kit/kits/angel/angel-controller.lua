@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -43,7 +44,7 @@ function u1.onKitEnabled(p4)
 	local l__LocalPlayer__6 = l__Players__8.LocalPlayer;
 	p4.maid:GiveTask((l__Flamework__9.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(l__BuildRoduxApp__10(l__AngelUi__11, {
 		SelectAngel = function(p5)
-			l__default__5.Client:Get("kzLpmxjPLpssvajnmaRykQjbjmawrglrrjjxivovs"):SendToServer({
+			l__default__5.Client:Get("dQloghdjyVZau"):SendToServer({
 				angel = p5
 			});
 		end
@@ -62,3 +63,4 @@ u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;
 return u1;
+

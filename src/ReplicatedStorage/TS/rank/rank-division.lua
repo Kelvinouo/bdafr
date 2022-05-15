@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -49,3 +50,4 @@ v1[20] = "NIGHTMARE_1";
 return {
 	RankDivision = v2
 };
+

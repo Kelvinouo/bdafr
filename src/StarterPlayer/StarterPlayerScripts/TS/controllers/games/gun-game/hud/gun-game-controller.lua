@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -44,7 +45,7 @@ function v5.KnitStart(p2)
 			u11:DoCleaning();
 		end;
 	end);
-	l__default__3.Client:WaitFor("TbtjhzndrfhvoKhzbiwdOyDzQkgegpioDoo"):expect():Connect(function(p4)
+	l__default__3.Client:WaitFor("ihswhqnSlyizwyLhvBft"):expect():Connect(function(p4)
 		if p4.onLastWeapon then
 			p2:createRay(p4.player);
 			return;
@@ -104,3 +105,4 @@ end;
 u1 = v2.KnitClient.CreateController;
 u1 = u1(v5.new());
 return nil;
+

@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, script.Parent, "client-status-effect-handler").ClientStatusEffectHandler;
@@ -26,3 +27,4 @@ u1 = {
 	BurnStatusEffectHandler = v2
 };
 return v1;
+

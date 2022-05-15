@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -43,3 +44,4 @@ v5.ExplosionEffectEvent = l__SyncEvent__2.new(v1.import(script, script.Parent, "
 return {
 	ClientSyncEvents = v5
 };
+

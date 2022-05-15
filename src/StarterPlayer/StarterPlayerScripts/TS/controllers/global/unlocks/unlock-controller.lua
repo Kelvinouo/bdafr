@@ -1,3 +1,4 @@
+
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -67,6 +68,7 @@ function u1.KnitStart(p2)
 		task.spawn(function()
 			if l__Players__6.LocalPlayer:GetRankInGroup(5774246) >= 100 then
 				p2.allItemsUnlocked = true;
+				p2.allKitsUnlocked = true;
 			end;
 		end);
 	end;
@@ -81,3 +83,4 @@ u1 = {
 	UnlockController = u2
 };
 return u1;
+
