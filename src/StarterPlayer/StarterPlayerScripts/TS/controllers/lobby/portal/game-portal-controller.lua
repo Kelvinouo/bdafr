@@ -34,7 +34,7 @@ function u1.hookPortal(p3, p4)
 		l__Portal__6.Touched:Connect(function(p5)
 			if l__Players__4.LocalPlayer.Character and p5.Parent == l__Players__4.LocalPlayer.Character and u1.TELEPORT_COOLDOWN <= tick() - p3.teleportTime then
 				p3.teleportTime = tick();
-				l__default__5.Client:Get("TeleportToGame"):SendToServer({
+				l__default__5.Client:Get("RemoteName"):SendToServer({
 					game = "islands"
 				});
 			end;

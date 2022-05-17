@@ -30,7 +30,7 @@ local u7 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__RespawnTimerWrapper__8 = v1.import(script, script.Parent, "ui", "respawn-timer").RespawnTimerWrapper;
 local l__WatchCharacter__9 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchCharacter;
 function u1.KnitStart(p2)
-	l__default__3.Client:OnEvent("EntityDeathEvent", function(p3)
+	l__default__3.Client:OnEvent("RemoteName", function(p3)
 		if p3.entityInstance == l__Players__4.LocalPlayer.Character then
 			if l__GamePlayerUtil__5.getGamePlayer(l__Players__4.LocalPlayer):isSpectator() then
 				return nil;

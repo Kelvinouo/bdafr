@@ -47,10 +47,10 @@ u1.KnitStart = v1.async(function(p2)
 					if p5 == "" or not p5 then
 						return nil;
 					end;
-					print("Join match response", (v1.await(v1.await(u12:WaitFor("JoinByCode")):CallServerAsync(p5))));
+					print("Join match response", (v1.await(v1.await(u12:WaitFor("RemoteName")):CallServerAsync(p5))));
 				end);
 				function v7.OnCreateMatch(p6, p7)
-					print("Create match response", (u12:WaitFor("CreateCustomMatch"):expect():CallServerAsync(p6, p7):expect()));
+					print("Create match response", (u12:WaitFor("RemoteName"):expect():CallServerAsync(p6, p7):expect()));
 				end;
 				function v7.OnClose()
 					l__Flamework__8.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):closeApp(l__BedwarsAppIds__9.CUSTOM_MATCHES);

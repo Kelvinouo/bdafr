@@ -63,7 +63,7 @@ function v5.KnitStart(p2)
 		end;
 		p2.spiritToMaid[p4] = nil;
 	end);
-	l__default__4.Client:OnEvent("SpiritExplosion", v1.async(function(p5)
+	l__default__4.Client:OnEvent("RemoteName", v1.async(function(p5)
 		l__SoundManager__5:playSound(l__GameSound__6.SPIRIT_EXPLODE, {
 			position = p5.position, 
 			rollOffMaxDistance = u7.ExplosionSoundMaxDistance

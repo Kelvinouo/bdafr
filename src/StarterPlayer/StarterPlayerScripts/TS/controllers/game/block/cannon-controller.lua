@@ -115,7 +115,7 @@ function u1.KnitStart(p2)
 		end);
 		u13();
 	end);
-	l__default__9.Client:WaitFor("CannonFired"):andThen(function(p8)
+	l__default__9.Client:WaitFor("RemoteName"):andThen(function(p8)
 		p8:Connect(function(p9)
 			local v10 = {};
 			if p9.player == l__Players__7.LocalPlayer then
@@ -162,7 +162,7 @@ function u1.startAiming(p10, p11)
 		while true do
 			local l__CurrentCamera__13 = l__Workspace__14.CurrentCamera;
 			if l__CurrentCamera__13 then
-				l__default__9.Client:Get("krezhnvJsxedl"):SendToServer({
+				l__default__9.Client:Get("RemoteName"):SendToServer({
 					cannonBlockPos = l__BlockEngine__12:getBlockPosition(p11.Position), 
 					lookVector = l__CurrentCamera__13.CFrame.LookVector
 				});

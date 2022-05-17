@@ -87,7 +87,7 @@ function v6.KnitStart(p2)
 			end);
 		end);
 		u29.Triggered:Connect(function(p5)
-			l__default__3.Client:GetNamespace("VendingMachine"):Get("OpenVendingMachine"):CallServer(p3);
+			l__default__3.Client:GetNamespace("VendingMachine"):Get("RemoteName"):CallServer(p3);
 		end);
 	end);
 	l__WatchCharacter__15(function(p6, p7)
@@ -252,7 +252,7 @@ function v6.KnitStart(p2)
 			end;
 		end);
 	end);
-	p2.vendingMachineNamespace:OnEvent("VendingMachineSelfDestruct", function(p15)
+	p2.vendingMachineNamespace:OnEvent("RemoteName", function(p15)
 		p15 = p15 + Vector3.new(0, 5, 0);
 		task.spawn(function()
 			l__SoundManager__26:playSound(l__GameSound__27.TNT_EXPLODE_1, {

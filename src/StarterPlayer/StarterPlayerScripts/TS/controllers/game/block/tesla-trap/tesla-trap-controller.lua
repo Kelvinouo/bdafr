@@ -27,7 +27,7 @@ local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 local l__CollectionService__3 = v4.CollectionService;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("TeslaTrapTargetsChanged", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		local v8 = {};
 		for v9, v10 in ipairs(p3.targets) do
 			v8[v10] = true;

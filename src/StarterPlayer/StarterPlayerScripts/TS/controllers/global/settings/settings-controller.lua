@@ -23,7 +23,7 @@ local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 local l__ClientStore__3 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:WaitFor("icpg"):andThen(function(p3)
+	l__default__2.Client:WaitFor("RemoteName"):andThen(function(p3)
 		local v5 = p3:CallServer();
 		if v5 then
 			l__ClientStore__3:dispatch({

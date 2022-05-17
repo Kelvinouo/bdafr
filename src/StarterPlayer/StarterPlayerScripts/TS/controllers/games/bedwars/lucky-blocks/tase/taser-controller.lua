@@ -22,7 +22,7 @@ end;
 local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("Tase", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		p2:taseSelf(p3.duration);
 	end);
 end;

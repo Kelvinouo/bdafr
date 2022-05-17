@@ -23,7 +23,7 @@ local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("PlayGameMusic", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		l__KnitClient__3.Controllers.BackgroundMusicController:startMusic(p3.soundId);
 	end);
 end;

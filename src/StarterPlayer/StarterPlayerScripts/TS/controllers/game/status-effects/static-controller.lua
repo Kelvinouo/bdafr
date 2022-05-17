@@ -28,7 +28,7 @@ local l__ReplicatedStorage__6 = v2.ReplicatedStorage;
 local l__TweenService__7 = v2.TweenService;
 function v4.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("StaticHit", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		print("static hit:", p3);
 		local v6 = {};
 		for v7, v8 in ipairs(p3.hitEntities) do

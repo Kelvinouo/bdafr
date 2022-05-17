@@ -24,7 +24,7 @@ local l__Flamework__3 = v1.import(script, v1.getModule(script, "@flamework", "co
 local l__BedwarsAppIds__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "types", "app-config").BedwarsAppIds;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("ShowPremiumPlayerRestriction", function()
+	l__default__2.Client:OnEvent("RemoteName", function()
 		l__Flamework__3.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__4.RANKED_PAID_RESTRICTION, {});
 	end);
 end;

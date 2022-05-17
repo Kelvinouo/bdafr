@@ -36,7 +36,7 @@ function v2.enable(p4, p5)
 		u4 = false;
 	end);
 	task.spawn(function()
-		local v5 = l__default__3.Client:GetNamespace("Vehicle"):Get("SetEnginePower");
+		local v5 = l__default__3.Client:GetNamespace("Vehicle"):Get("RemoteName");
 		local v6 = -1;
 		while true do
 			local v7 = task.wait(0.1);

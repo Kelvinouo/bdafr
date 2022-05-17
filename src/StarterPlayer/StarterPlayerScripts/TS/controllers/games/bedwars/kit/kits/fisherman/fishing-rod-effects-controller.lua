@@ -44,7 +44,7 @@ local u15 = v2.ConstantManager.registerConstants(script, {
 local l__RunService__16 = v4.RunService;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:WaitFor("FishCaught"):andThen(function(p3)
+	l__default__2.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
 			local v8 = p4.catchingPlayer.Character;
 			if v8 ~= nil then

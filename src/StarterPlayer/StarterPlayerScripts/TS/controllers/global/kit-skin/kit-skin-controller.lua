@@ -28,7 +28,7 @@ local l__ClientStore__3 = v1.import(script, script.Parent.Parent.Parent.Parent, 
 local l__SoundManager__4 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).SoundManager;
 local l__GameSound__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function v4.equipKitSkin(p3, p4, p5)
-	l__default__2.Client:Get("BedwarsEquipKitSkin"):CallServerAsync({
+	l__default__2.Client:Get("RemoteName"):CallServerAsync({
 		kit = p4, 
 		kitSkin = p5
 	}):andThen(function()

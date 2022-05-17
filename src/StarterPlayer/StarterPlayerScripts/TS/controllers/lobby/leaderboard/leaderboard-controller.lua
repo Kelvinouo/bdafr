@@ -23,10 +23,10 @@ function u1.constructor(p1, ...)
 	p1.leaderboardNamespace = l__default__3.Client:GetNamespace("Leaderboard");
 end;
 u1.KnitStart = v1.async(function(p2)
-	v1.await(p2.leaderboardNamespace:WaitFor("OnLeaderboardsUpdate")):Connect(function(p3)
+	v1.await(p2.leaderboardNamespace:WaitFor("RemoteName")):Connect(function(p3)
 		return p2:updateLeaderboardStore(p3);
 	end);
-	p2:updateLeaderboardStore((v1.await(v1.await(p2.leaderboardNamespace:WaitFor("RequestLeaderboardData")):CallServerAsync())));
+	p2:updateLeaderboardStore((v1.await(v1.await(p2.leaderboardNamespace:WaitFor("RemoteName")):CallServerAsync())));
 end);
 local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function u1.updateLeaderboardStore(p4, p5)

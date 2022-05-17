@@ -34,13 +34,13 @@ local l__BuildRoduxApp__9 = v1.import(script, script.Parent.Parent.Parent.Parent
 local l__LumenProgressBar__10 = v1.import(script, script.Parent, "ui", "lumen-progress-bar").LumenProgressBar;
 function u1.KnitStart(p2)
 	u2.KnitStart(p2);
-	l__default__4.Client:OnEvent("LumenProgress", function(p3)
+	l__default__4.Client:OnEvent("RemoteName", function(p3)
 		l__ClientStore__5:dispatch({
 			type = "KitLumenIncrementProgress", 
 			progress = p3.incrementProgress / p2.upgradeRequirement
 		});
 	end);
-	l__default__4.Client:OnEvent("aGeklxmmxgvroO", function(p4)
+	l__default__4.Client:OnEvent("RemoteName", function(p4)
 		p2:createEffect(p4.player);
 	end);
 	l__KnitClient__6.Controllers.KitController:watchLocalKit(function(p5)

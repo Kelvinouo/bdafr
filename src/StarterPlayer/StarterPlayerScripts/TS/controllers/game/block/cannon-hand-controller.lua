@@ -81,14 +81,14 @@ function u1.fireCannon(p12, p13)
 	if not v11 then
 		return nil;
 	end;
-	l__default__5.Client:Get("rozambgywi"):SendToServer({
+	l__default__5.Client:Get("RemoteName"):SendToServer({
 		cannonBlockPos = l__BlockEngine__6:getBlockPosition(p13.Position), 
 		itemType = v11.itemType
 	});
 end;
 local l__Players__7 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 function u1.launchSelf(p14, p15)
-	if not l__default__5.Client:Get("rGlfQzrcjlxYqvABf"):CallServer({
+	if not l__default__5.Client:Get("RemoteName"):CallServer({
 		cannonBlockPos = l__BlockEngine__6:getBlockPosition(p15.Position)
 	}) then
 		return nil;

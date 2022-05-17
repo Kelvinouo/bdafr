@@ -26,7 +26,7 @@ local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 function v4.KnitStart(p2)
 	u1.KnitStart(p2);
 	p2:beamCleanupTicker();
-	l__default__2.Client:OnEvent("LifeStealHit", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		p2:playRegenEffect(p3.healer, p3.enemy);
 		p2:playRegenSound(p3.healer, p3.overHeal);
 	end);

@@ -36,7 +36,7 @@ local l__SoundManager__9 = v1.import(script, v1.getModule(script, "@easy-games",
 local l__GameSound__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__4.Client:GetNamespace("Disaster"):OnEvent("SpawnMeteor", function(p3, p4, p5, p6, p7)
+	l__default__4.Client:GetNamespace("Disaster"):OnEvent("RemoteName", function(p3, p4, p5, p6, p7)
 		local v7 = Random.new(p7);
 		local v8 = l__Maid__5.new();
 		local v9 = CFrame.new(p3) * CFrame.Angles(v7:NextNumber() * math.pi * 2, v7:NextNumber() * math.pi * 2, v7:NextNumber() * math.pi * 2);

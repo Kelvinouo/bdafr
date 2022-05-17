@@ -54,7 +54,7 @@ return {
 			if u16 or not u17 then
 				return nil;
 			end;
-			l__default__1.Client:Get("BedwarsPurchaseTeamUpgrade"):CallServerAsync({
+			l__default__1.Client:Get("RemoteName"):CallServerAsync({
 				upgradeId = p1.Upgrade.id, 
 				tier = 0
 			}):andThen(function()

@@ -60,7 +60,7 @@ function u1.KnitStart(p2)
 				if l__Character__8 and v9 then
 					local l__Value__10 = p3.ZiplineDestination.Value;
 					if l__Value__10 then
-						local v11 = l__default__8.Client:Get("wibbIZyaqloqqxzIupixonb"):CallServer({
+						local v11 = l__default__8.Client:Get("RemoteName"):CallServer({
 							ziplineBasePosition = l__BlockEngine__9:getBlockPosition(p3.Position)
 						});
 						if v11 then
@@ -120,7 +120,7 @@ function u1.KnitStart(p2)
 							v14:GiveTask(function()
 								l__RunService__11:UnbindFromRenderStep("zipline");
 							end);
-							v14:GiveTask(l__default__8.Client:Get("EntityDamageEvent"):Connect(function(p7)
+							v14:GiveTask(l__default__8.Client:Get("RemoteName"):Connect(function(p7)
 								if p7.entityInstance == l__Players__7.LocalPlayer.Character then
 									v14:DoCleaning();
 								end;

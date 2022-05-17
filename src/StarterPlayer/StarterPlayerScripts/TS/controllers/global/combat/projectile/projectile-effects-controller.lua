@@ -52,7 +52,7 @@ function u1.KnitStart(p2)
 			end;
 		end;
 	end);
-	l__default__6.Client:WaitFor("ProjectileImpact"):andThen(function(p4)
+	l__default__6.Client:WaitFor("RemoteName"):andThen(function(p4)
 		return p4:Connect(function(p5)
 			local v8 = l__ProjectileMeta__7[p5.projectile];
 			if v8.impactSound then
@@ -81,7 +81,7 @@ function u1.KnitStart(p2)
 			u1:destroyProjectile(p5.projectileModel);
 		end);
 	end);
-	l__default__6.Client:WaitFor("ProjectileLaunch"):andThen(function(p6)
+	l__default__6.Client:WaitFor("RemoteName"):andThen(function(p6)
 		return p6:Connect(function(p7)
 			local v13 = l__ProjectileMeta__7[p7.projectile.Name];
 			if p7.shootingPlayer == l__Players__4.LocalPlayer and not v13.useServerModel then

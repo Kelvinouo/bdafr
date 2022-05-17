@@ -26,7 +26,7 @@ local l__Maid__4 = v2.Maid;
 local l__KnitClient__5 = v2.KnitClient;
 function v4.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("EntityDamageEvent", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		local v6 = p3.extra.projectileData;
 		if v6 ~= nil then
 			v6 = v6.projectileType;

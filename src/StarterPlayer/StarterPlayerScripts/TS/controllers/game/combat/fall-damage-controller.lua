@@ -30,7 +30,7 @@ local l__BlockEngine__8 = v1.import(script, v1.getModule(script, "@easy-games", 
 local l__Workspace__9 = v2.Workspace;
 local l__ClientSyncEvents__10 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
 function u1.KnitStart(p2)
-	local u11 = l__default__3.Client:Get("GroundHit");
+	local u11 = l__default__3.Client:Get("RemoteName");
 	l__WatchCharacter__4(function(p3, p4)
 		if l__Players__5.LocalPlayer == p3 then
 			local u12 = false;

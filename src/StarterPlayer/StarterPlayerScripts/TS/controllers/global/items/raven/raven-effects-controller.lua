@@ -94,7 +94,7 @@ function u1.KnitStart(p2)
 			v7(p3:GetAttribute("RavenPoisonEndTime"));
 		end));
 	end);
-	l__default__8.Client:WaitFor("RavenExploded"):andThen(function(p7)
+	l__default__8.Client:WaitFor("RemoteName"):andThen(function(p7)
 		return p7:Connect(function(p8)
 			local l__position__11 = p8.position;
 			l__SoundManager__9:playSound(l__GameSound__10.TNT_EXPLODE_1, {

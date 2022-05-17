@@ -244,75 +244,11 @@ local function u9(p51)
 	return v32;
 end;
 function u6.CreateBillboardGuiHelper(p52, p53, p54)
-	if p53 and not u6.CharacterSortedMsg:Get(p53).BillboardGui then
-		if not p54 and p53:IsA("BasePart") then
-			u6.CharacterSortedMsg:Get(p53).BillboardGui = u9(p53);
-			return;
-		end;
-		if p53:IsA("Model") then
+	if p53 and not u6.CharacterSortedMsg:Get("RemoteName") then
+			u6.CharacterSortedMsg:Get("RemoteName") then
 			local l__Head__34 = p53:FindFirstChild("Head");
 			if l__Head__34 and l__Head__34:IsA("BasePart") then
-				u6.CharacterSortedMsg:Get(p53).BillboardGui = u9(l__Head__34);
-			end;
-		end;
-	end;
-end;
-local function u11(p55)
-	if not p55 or not l__Players__1.LocalPlayer.Character then
-		return;
-	end;
-	return p55:IsDescendantOf(l__Players__1.LocalPlayer.Character);
-end;
-function u6.SetBillboardLODNear(p56, p57)
-	local v35 = u11(p57.Adornee);
-	p57.Size = UDim2.new(0, 400, 0, 250);
-	if v35 then
-		local v36 = 1.5;
-	else
-		v36 = 2.5;
-	end;
-	if v35 then
-		local v37 = 2;
-	else
-		v37 = 0.1;
-	end;
-	p57.StudsOffset = Vector3.new(0, v36, v37);
-	p57.Enabled = true;
-	local v38 = p57.BillboardFrame:GetChildren();
-	for v39 = 1, #v38 do
-		v38[v39].Visible = true;
-	end;
-	p57.BillboardFrame.SmallTalkBubble.Visible = false;
-end;
-function u6.SetBillboardLODDistant(p58, p59)
-	p59.Size = UDim2.new(4, 0, 3, 0);
-	if u11(p59.Adornee) then
-		local v40 = 2;
-	else
-		v40 = 0.1;
-	end;
-	p59.StudsOffset = Vector3.new(0, 3, v40);
-	p59.Enabled = true;
-	local v41 = p59.BillboardFrame:GetChildren();
-	for v42 = 1, #v41 do
-		v41[v42].Visible = false;
-	end;
-	p59.BillboardFrame.SmallTalkBubble.Visible = true;
-end;
-function u6.SetBillboardLODVeryFar(p60, p61)
-	p61.Enabled = false;
-end;
-local function u12(p62)
-	if not p62 then
-		return 100000;
-	end;
-	return (p62.Position - game.Workspace.CurrentCamera.CoordinateFrame.Position).magnitude;
-end;
-function u6.SetBillboardGuiLOD(p63, p64, p65)
-	if not p65 then
-		return;
-	end;
-	if p65:IsA("Model") then
+				u6.CharacterSortedMsg:Get("RemoteName") then
 		local l__Head__43 = p65:FindFirstChild("Head");
 		if not l__Head__43 then
 			p65 = p65.PrimaryPart;
@@ -383,19 +319,7 @@ function u6.CreateSmallTalkBubble(p70, p71)
 	return v50;
 end;
 function u6.UpdateChatLinesForOrigin(p72, p73, p74)
-	local l__Fifo__52 = u6.CharacterSortedMsg:Get(p73).Fifo;
-	local v53 = l__Fifo__52:Size();
-	local v54 = l__Fifo__52:GetData();
-	if #v54 <= 1 then
-		return;
-	end;
-	for v55 = #v54 - 1, 1, -1 do
-		local l__RenderBubble__56 = v54[v55].RenderBubble;
-		if not l__RenderBubble__56 then
-			return;
-		end;
-		if v53 - v55 + 1 > 1 then
-			local l__ChatBubbleTail__57 = l__RenderBubble__56:FindFirstChild("ChatBubbleTail");
+	local l__Fifo__52 = u6.CharacterSortedMsg:Get("RemoteName");
 			if l__ChatBubbleTail__57 then
 				l__ChatBubbleTail__57:Destroy();
 			end;
@@ -451,108 +375,7 @@ function u6.CreateChatLineRender(p78, p79, p80, p81, p82, p83)
 	if not p79 then
 		return;
 	end;
-	if not u6.CharacterSortedMsg:Get(p79).BillboardGui then
-		u6:CreateBillboardGuiHelper(p79, p81);
-	end;
-	local l__BillboardGui__64 = u6.CharacterSortedMsg:Get(p79).BillboardGui;
-	if l__BillboardGui__64 then
-		local v65 = nil;
-		local v66 = u6.ChatBubbleWithTail[p80.BubbleColor]:Clone();
-		v66.Visible = false;
-		local v67 = u6:CreateBubbleText(p80.Message, p83);
-		v67.Parent = v66;
-		v66.Parent = l__BillboardGui__64.BillboardFrame;
-		p80.RenderBubble = v66;
-		local v68 = l__TextService__4:GetTextSize(v67.Text, 24, l__Enum_Font_SourceSans__14, Vector2.new(400, 250));
-		v65 = v68.Y / 24;
-		if u13 then
-			local v69 = math.ceil(v68.X + 24);
-			local v70 = v65 * 34;
-			v66.Size = UDim2.fromOffset(0, 0);
-			v66.Position = UDim2.fromScale(0.5, 1);
-			v66:TweenSizeAndPosition(UDim2.fromOffset(v69, v70), UDim2.new(0.5, -v69 / 2, 1, -v70), Enum.EasingDirection.Out, Enum.EasingStyle.Elastic, 0.1, true, function()
-				v67.Visible = true;
-			end);
-			u6:SetBillboardGuiLOD(l__BillboardGui__64, p80.Origin);
-			u6:UpdateChatLinesForOrigin(p80.Origin, -v70);
-		else
-			local v71 = math.max((v68.X + 30) / 400, 0.1);
-			v66.Size = UDim2.new(0, 0, 0, 0);
-			v66.Position = UDim2.new(0.5, 0, 1, 0);
-			local v72 = v65 * 34;
-			v66:TweenSizeAndPosition(UDim2.new(v71, 0, 0, v72), UDim2.new((1 - v71) / 2, 0, 1, -v72), Enum.EasingDirection.Out, Enum.EasingStyle.Elastic, 0.1, true, function()
-				v67.Visible = true;
-			end);
-			u6:SetBillboardGuiLOD(l__BillboardGui__64, p80.Origin);
-			u6:UpdateChatLinesForOrigin(p80.Origin, -v72);
-		end;
-		delay(p80.BubbleDieDelay, function()
-			u6:DestroyBubble(p82, v66);
-		end);
-	end;
-end;
-local function u17(p84, p85, p86)
-	local v73 = u4(p85, u5.WHITE, p86);
-	if p84 then
-		v73.User = p84.Name;
-		v73.Origin = p84.Character;
-	end;
-	return v73;
-end;
-function u6.OnPlayerChatMessage(p87, p88, p89, p90)
-	if not u6:BubbleChatEnabled() then
-		return;
-	end;
-	local l__LocalPlayer__74 = l__Players__1.LocalPlayer;
-	local v75 = false;
-	if l__LocalPlayer__74 ~= nil then
-		v75 = p88 ~= l__LocalPlayer__74;
-	end;
-	local v76 = u17(p88, u6:SanitizeChatLine(p89), not v75);
-	if p88 and v76.Origin then
-		local l__Fifo__77 = u6.CharacterSortedMsg:Get(v76.Origin).Fifo;
-		l__Fifo__77:PushBack(v76);
-		u6:CreateChatLineRender(p88.Character, v76, true, l__Fifo__77, false);
-	end;
-end;
-local u18 = v11 or v12;
-local u19 = v13 or v14;
-local function u20(p91, p92, p93, p94)
-	local v78 = u4(p92, p94, p93);
-	v78.Origin = p91;
-	return v78;
-end;
-local u21 = v7 or v8;
-function u6.OnGameChatMessage(p95, p96, p97, p98)
-	if u18 or u19 and l__Chat__3.BubbleChatEnabled then
-		return;
-	end;
-	local l__LocalPlayer__79 = l__Players__1.LocalPlayer;
-	local v80 = false;
-	if l__LocalPlayer__79 ~= nil then
-		v80 = l__LocalPlayer__79.Character ~= p96;
-	end;
-	local v81 = u5.WHITE;
-	if p98 == Enum.ChatColor.Blue then
-		v81 = u5.BLUE;
-	elseif p98 == Enum.ChatColor.Green then
-		v81 = u5.GREEN;
-	elseif p98 == Enum.ChatColor.Red then
-		v81 = u5.RED;
-	end;
-	local v82 = u20(p96, u6:SanitizeChatLine(p97), not v80, v81);
-	u6.CharacterSortedMsg:Get(v82.Origin).Fifo:PushBack(v82);
-	if u21 then
-		u6:CreateChatLineRender(p96, v82, false, u6.CharacterSortedMsg:Get(v82.Origin).Fifo, true);
-		return;
-	end;
-	u6:CreateChatLineRender(p96, v82, false, u6.CharacterSortedMsg:Get(v82.Origin).Fifo, false);
-end;
-function u6.BubbleChatEnabled(p99)
-	if u18 or u19 and l__Chat__3.BubbleChatEnabled then
-		return false;
-	end;
-	local l__ClientChatModules__83 = l__Chat__3:FindFirstChild("ClientChatModules");
+	if not u6.CharacterSortedMsg:Get("RemoteName");
 	if l__ClientChatModules__83 then
 		local l__ChatSettings__84 = l__ClientChatModules__83:FindFirstChild("ChatSettings");
 		if l__ChatSettings__84 then

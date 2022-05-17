@@ -26,7 +26,7 @@ return {
 		local u14 = l__Maid__1.new();
 		p2.useEffect(function()
 			local u15 = nil;
-			u4:WaitFor("VerificationStatusResolved"):andThen(function(p3)
+			u4:WaitFor("RemoteName"):andThen(function(p3)
 				u14:GiveTask(p3:Connect(function(p4)
 					if p4.verificationCode ~= p1.store.SocialConnections.connections.discord.verificationCode then
 						l__KnitClient__3.Controllers.SocialConnectionsController:updateDiscordStore(p4);

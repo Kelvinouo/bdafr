@@ -28,7 +28,7 @@ function v3.KnitStart(p2)
 	local l__LocalPlayer__5 = l__Players__3.LocalPlayer;
 	if l__LocalPlayer__5:GetAttribute("LobbyGadgetType") ~= nil then
 		local v6 = l__LocalPlayer__5:GetAttribute("LobbyGadgetType");
-		p2.lockerNamespace:Get("GiveLobbyGadget"):CallServer({
+		p2.lockerNamespace:Get("RemoteName"):CallServer({
 			lobbyGadget = v6
 		});
 		p2:setupGadgetRefill(l__LocalPlayer__5, v6);
@@ -95,7 +95,7 @@ function v3.refillItemLoop(p8, p9, p10, p11)
 				v21 = v18.amount < v22;
 			end;
 			if v21 then
-				local v23 = p8.lockerNamespace:Get("RefillLobbyGadgetItem"):CallServer({
+				local v23 = p8.lockerNamespace:Get("RemoteName"):CallServer({
 					lobbyGadgetItem = p10
 				});
 			end;		

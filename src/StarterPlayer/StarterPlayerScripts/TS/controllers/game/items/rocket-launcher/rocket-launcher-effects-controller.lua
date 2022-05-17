@@ -33,7 +33,7 @@ local l__ItemType__10 = v1.import(script, game:GetService("ReplicatedStorage"), 
 local l__WeldUtil__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "weld-util").WeldUtil;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:WaitFor("RocketLauncherMissileExplode"):andThen(function(p3)
+	l__default__2.Client:WaitFor("RemoteName"):andThen(function(p3)
 		return p3:Connect(function(p4)
 			task.spawn(function()
 				local v7 = l__ReplicatedStorage__3.Assets.Effects.RocketLauncherExplode:Clone();

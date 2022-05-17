@@ -41,7 +41,7 @@ function u1.KnitStart(p2)
 			p2:playNextMatchEndScreens(v5.displayOrder);
 		end;
 	end);
-	l__default__5.Client:OnEvent("MatchEndEvent", function(p4)
+	l__default__5.Client:OnEvent("RemoteName", function(p4)
 		p2.currDisplayOrder = l__MatchEndScreensMeta__4[1].displayOrder;
 		l__ClientStore__6:dispatch({
 			type = "GameSetMatchState", 
@@ -49,7 +49,7 @@ function u1.KnitStart(p2)
 		});
 		p2:renderPostGameApp(p4);
 	end);
-	l__default__5.Client:GetNamespace("BattlePass"):OnEvent("MatchExperienceEarned", function(p5)
+	l__default__5.Client:GetNamespace("BattlePass"):OnEvent("RemoteName", function(p5)
 		p2.currDisplayOrder = l__MatchEndScreensMeta__4[0].displayOrder;
 		if not l__Flamework__8.resolveDependency("@easy-games/lobby:client/controllers/lobby-client-controller@LobbyClientController"):getQueueMeta(l__ClientStore__6:getState().Game.queueType).rankCategory then
 			p2:renderPostGameBattlePassProgressApp(p5);
@@ -57,7 +57,7 @@ function u1.KnitStart(p2)
 		end;
 		p2:renderPostGameBattlePassProgressApp(p5, 2);
 	end);
-	l__default__5.Client:OnEvent("MatchRankReport", function(p6)
+	l__default__5.Client:OnEvent("RemoteName", function(p6)
 		if not p6.rankChange or not l__Flamework__8.resolveDependency("@easy-games/lobby:client/controllers/lobby-client-controller@LobbyClientController"):getQueueMeta(l__ClientStore__6:getState().Game.queueType).rankCategory then
 			return nil;
 		end;

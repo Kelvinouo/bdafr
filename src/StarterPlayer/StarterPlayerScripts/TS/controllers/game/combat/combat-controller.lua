@@ -31,7 +31,7 @@ local l__RandomUtil__7 = v2.RandomUtil;
 local l__GameSound__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 local l__SoundManager__9 = v2.SoundManager;
 function u1.KnitStart(p2)
-	l__default__3.Client:WaitFor("EntityDamageEvent"):andThen(function(p3)
+	l__default__3.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
 			debug.profilebegin("damage-highlight");
 			local v8 = l__EntityUtil__4:getEntity(p4.entityInstance);
@@ -48,7 +48,7 @@ function u1.KnitStart(p2)
 			debug.profileend();
 		end);
 	end);
-	l__default__3.Client:WaitFor("EntityDamageEvent"):andThen(function(p5)
+	l__default__3.Client:WaitFor("RemoteName"):andThen(function(p5)
 		p5:Connect(function(p6)
 			local l__damageSoundId__10 = p6.damageSoundId;
 			if l__damageSoundId__10 ~= "" and l__damageSoundId__10 then
@@ -70,7 +70,7 @@ function u1.KnitStart(p2)
 			l__SoundManager__9:playSound(v11, v12);
 		end);
 	end);
-	l__default__3.Client:WaitFor("EntityDeathEvent"):andThen(function(p7)
+	l__default__3.Client:WaitFor("RemoteName"):andThen(function(p7)
 		p7:Connect(function(p8)
 			if p8.fromEntity and p8.fromEntity == l__Players__6.LocalPlayer.Character then
 				l__SoundManager__9:playSound(l__GameSound__8.KILL);

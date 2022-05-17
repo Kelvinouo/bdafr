@@ -47,7 +47,7 @@ function v4.KnitStart(p2)
 				u10:DoCleaning();
 			end;
 		end);
-		u10:GiveTask(l__default__6.Client:Get("EntityDamageEvent"):Connect(function(p6)
+		u10:GiveTask(l__default__6.Client:Get("RemoteName"):Connect(function(p6)
 			if p6.entityInstance == l__Players__7.LocalPlayer.Character then
 				v6:InputHoldEnd();
 			end;
@@ -73,7 +73,7 @@ function v4.KnitStart(p2)
 			end);
 		end);
 		v6.Triggered:Connect(function(p10)
-			l__default__6.Client:Get("ymmopjznFj"):SendToServer({
+			l__default__6.Client:Get("RemoteName"):SendToServer({
 				blockInstance = p3
 			});
 		end);

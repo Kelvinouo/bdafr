@@ -19,7 +19,7 @@ return {
 		local v6 = u1.createRef();
 		p2.useEffect(function()
 			if not l__DeviceUtil__2.isHoarceKat() then
-				l__default__3.Client:Get("LoadMissionData"):CallServerAsync():andThen(function(p3)
+				l__default__3.Client:Get("RemoteName"):CallServerAsync():andThen(function(p3)
 					v5(p3);
 				end);
 			end;

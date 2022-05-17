@@ -124,7 +124,7 @@ function v4.render(p2)
 		Text = "<b>LOBBY</b>", 
 		Size = UDim2.fromScale(0.28, 1), 
 		OnClick = function()
-			l__default__9.Client:Get("TeleportToLobby"):SendToServer();
+			l__default__9.Client:Get("RemoteName"):SendToServer();
 		end, 
 		LayoutOrder = 5
 	}, { v3.createElement("UIAspectRatioConstraint", {

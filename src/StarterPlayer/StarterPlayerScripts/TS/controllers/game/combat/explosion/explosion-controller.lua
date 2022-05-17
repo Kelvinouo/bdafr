@@ -36,7 +36,7 @@ local l__GameQueryUtil__9 = v2.GameQueryUtil;
 local l__Debris__10 = v3.Debris;
 local l__GetTarmacAsset__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "tarmac", "tarmac-helpers").GetTarmacAsset;
 function u1.KnitStart(p2)
-	l__default__5.Client:WaitFor("ExplosionEffect"):andThen(function(p3)
+	l__default__5.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
 			l__ClientSyncEvents__6.ExplosionEffectEvent:fire(p4.position, p4.explosionType);
 			if p4.disableDefaultEffect then

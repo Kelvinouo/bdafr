@@ -40,7 +40,7 @@ local l__default__6 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 function u1.createBindable(p4)
 	local v7 = Instance.new("BindableEvent");
 	v7.Event:Connect(function()
-		l__default__6.Client:Get("skmmwxybkuokmadwsbJvkmbMvxisCpzcEqhii"):SendToServer();
+		l__default__6.Client:Get("RemoteName"):SendToServer();
 	end);
 	return v7;
 end;

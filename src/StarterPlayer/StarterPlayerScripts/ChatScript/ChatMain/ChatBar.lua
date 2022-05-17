@@ -119,9 +119,9 @@ end;
 function v14.DoLockChatBar(p6)
 	if p6.TextLabel then
 		if v6.UserId > 0 then
-			p6.TextLabel.Text = u1:Get("GameChat_ChatMessageValidator_SettingsError", "To chat in game, turn on chat in your Privacy Settings.");
+			p6.TextLabel.Text = u1:Get("RemoteName");
 		else
-			p6.TextLabel.Text = u1:Get("GameChat_SwallowGuestChat_Message", "Sign up to chat in game.");
+			p6.TextLabel.Text = u1:Get("RemoteName");
 		end;
 		p6:CalculateSize();
 	end;
@@ -348,7 +348,7 @@ function v14.ResetCustomState(p46)
 		p46.InCustomState = false;
 		p46.ChatBarParentFrame:ClearAllChildren();
 		p46:CreateGuiObjects(p46.ChatBarParentFrame);
-		p46:SetTextLabelText(u1:Get("GameChat_ChatMain_ChatBarText", "To chat click here or press \"/\" key"));
+		p46:SetTextLabelText(u1:Get("RemoteName"));
 	end;
 end;
 function v14.EnterWhisperState(p47, p48)

@@ -53,7 +53,7 @@ local l__WeldUtil__27 = v1.import(script, game:GetService("ReplicatedStorage"), 
 local l__EffectUtil__28 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "effect", "effect-util").EffectUtil;
 function v7.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__4.Client:OnEvent("PetrifiedPlayerDestroyed", function(p3)
+	l__default__4.Client:OnEvent("RemoteName", function(p3)
 		l__default__6.Debug("Petrified player was destroyed");
 		local v9 = p2:getPetrifyModel(p3.petrifyId);
 		local v10 = v9;
@@ -80,7 +80,7 @@ function v7.KnitStart(p2)
 		end;
 		p2:destroyPetrifyModel(v9, p3.destroyer);
 	end);
-	l__default__4.Client:OnEvent("Petrified", function(p4)
+	l__default__4.Client:OnEvent("RemoteName", function(p4)
 		p4.to.Archivable = true;
 		local v13 = p4.to:Clone();
 		v13.Parent = l__Workspace__9;
@@ -426,7 +426,7 @@ function v7.onKitEnabled(p26)
 			end);
 		end);
 		v72.Triggered:Connect(function(p29)
-			l__default__4.Client:Get("txdqdjumakpriimombpwslwhlk"):SendToServer({
+			l__default__4.Client:Get("RemoteName"):SendToServer({
 				petrifyId = p27:GetAttribute("PetrifyId")
 			});
 		end);

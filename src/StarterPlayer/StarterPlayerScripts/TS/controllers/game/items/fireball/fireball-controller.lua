@@ -32,7 +32,7 @@ local l__GameQueryUtil__9 = v2.GameQueryUtil;
 local l__Debris__10 = v3.Debris;
 local l__TweenService__11 = v3.TweenService;
 function u1.KnitStart(p2)
-	l__default__3.Client:WaitFor("FireballExplode"):andThen(function(p3)
+	l__default__3.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
 			l__SoundManager__4:playSound(l__RandomUtil__5.fromList(l__GameSound__6.TNT_EXPLODE_1, l__GameSound__6.FIREBALL_EXPLODE), {
 				position = p4.position, 

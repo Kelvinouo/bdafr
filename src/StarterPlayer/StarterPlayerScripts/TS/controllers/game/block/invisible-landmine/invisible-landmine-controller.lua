@@ -54,7 +54,7 @@ function v8.KnitStart(p2)
 			p2:handleTouch(p3);
 		end;
 	end);
-	l__default__4.Client:OnEvent("LandmineExplode", function(p4)
+	l__default__4.Client:OnEvent("RemoteName", function(p4)
 		local v10 = {};
 		if l__Players__5.LocalPlayer.Character and l__Players__5.LocalPlayer.Character == p4.targetEntityInstance then
 			local v11 = nil;
@@ -167,7 +167,7 @@ function v8.handleTouch(p10, p11)
 			v23.isDetonating = true;
 			if v27 then
 				p11:SetAttribute("LandmineDetonating", true);
-				l__default__4.Client:Get("ttbnsYcdivtaMbpvijyetdmivdbgbqc"):SendToServer({
+				l__default__4.Client:Get("RemoteName"):SendToServer({
 					invisibleLandmine = p11
 				});
 			end;

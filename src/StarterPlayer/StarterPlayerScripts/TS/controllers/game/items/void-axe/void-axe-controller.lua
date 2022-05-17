@@ -31,7 +31,7 @@ local l__GameSound__6 = v1.import(script, game:GetService("ReplicatedStorage"), 
 local l__DamageType__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "damage", "damage-type").DamageType;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__3.Client:OnEvent("VoidAxeLeap", function(p3)
+	l__default__3.Client:OnEvent("RemoteName", function(p3)
 		if p3.entity.PrimaryPart then
 			if p3.entity ~= l__Players__4.LocalPlayer.Character then
 				l__SoundManager__5:playSound(l__GameSound__6.VOID_AXE_LEAP, {
@@ -45,7 +45,7 @@ function v6.KnitStart(p2)
 		end;
 		return nil;
 	end);
-	l__default__3.Client:OnEvent("EntityDamageEvent", function(p4)
+	l__default__3.Client:OnEvent("RemoteName", function(p4)
 		if p4.damageType == l__DamageType__7.VOID_AXE_SLASH then
 			local v8 = {};
 			if l__Players__4.LocalPlayer.Character == p4.entityInstance then
@@ -86,7 +86,7 @@ function v6.useVoidAxe(p5)
 		cooldownBar = {}
 	});
 	l__SoundManager__5:playSound(l__GameSound__6.VOID_AXE_LEAP);
-	l__default__3.Client:Get("tcfjRJMbGLq"):SendToServer();
+	l__default__3.Client:Get("RemoteName"):SendToServer();
 	local v11 = l__KnitClient__10.Controllers.SprintController:getMovementStatusModifier():addModifier({
 		moveSpeedMultiplier = 0, 
 		blockSprint = true
@@ -121,7 +121,7 @@ function v6.useVoidAxe(p5)
 				v15 = v15:getItemTypeInHand();
 			end;
 			if v15 == l__ItemType__16.VOID_AXE then
-				l__default__3.Client:Get("phwctfgRswvtkydathfiqdzytEbqyko"):SendToServer();
+				l__default__3.Client:Get("RemoteName"):SendToServer();
 			end;
 			v11.Destroy();
 		end);

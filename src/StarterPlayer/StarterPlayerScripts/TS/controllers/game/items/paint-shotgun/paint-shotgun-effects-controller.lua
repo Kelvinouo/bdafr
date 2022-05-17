@@ -66,7 +66,7 @@ function v6.KnitStart(p2)
 			end);
 		end);
 	end);
-	l__default__11.Client:OnEvent("EntityDamageEvent", function(p8)
+	l__default__11.Client:OnEvent("RemoteName", function(p8)
 		if p8.entityInstance.PrimaryPart and p8.fromEntity and l__Players__3:GetPlayerFromCharacter(p8.fromEntity) == l__Players__3.LocalPlayer and p8.extra.paintBlast then
 			p2.hitMarkerOverflow = math.min(p2.hitMarkerOverflow + 1, 3);
 		end;

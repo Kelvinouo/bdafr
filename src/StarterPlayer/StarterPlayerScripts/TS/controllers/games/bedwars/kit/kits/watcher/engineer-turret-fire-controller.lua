@@ -72,7 +72,7 @@ function u1.KnitStart(p2)
 			end;
 		end);
 	end);
-	l__default__9.Client:OnEvent("EntityDamageEvent", function(p12)
+	l__default__9.Client:OnEvent("RemoteName", function(p12)
 		if p12.extra.projectileData and p12.extra.projectileData.projectileType == "turretBullet" and p12.entityInstance == l__Players__10.LocalPlayer.Character then
 			local v11 = l__Maid__3.new();
 			v11:GiveTask(l__KnitClient__3.Controllers.SprintController:getMovementStatusModifier():addModifier({

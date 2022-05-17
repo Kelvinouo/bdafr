@@ -38,7 +38,7 @@ function u1.trigger(p5, p6, p7)
 	if p6 == l__Players__4.LocalPlayer then
 		l__GameAnimationUtil__5.playAnimation(l__Players__4.LocalPlayer, l__AnimationType__6.NET_CATCH);
 		l__SoundManager__7:playSound(l__GameSound__8.BEE_NET_SWING);
-		l__default__9.Client:Get("DtczywkvpbhiaoxGYpnpgjjUkOpKfzozpjlPdim"):SendToServer({
+		l__default__9.Client:Get("RemoteName"):SendToServer({
 			beeId = p7:GetAttribute("BeeId")
 		});
 	end;

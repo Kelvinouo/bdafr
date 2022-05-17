@@ -68,7 +68,7 @@ return {
 			Text = "<b>BACK TO LOBBY</b>", 
 			Size = UDim2.fromScale(0.4, 1), 
 			OnClick = function()
-				l__default__7.Client:Get("TeleportToLobby"):SendToServer();
+				l__default__7.Client:Get("RemoteName"):SendToServer();
 			end
 		}, { u1.createElement("UIAspectRatioConstraint", {
 				AspectRatio = 3.795918367346939, 

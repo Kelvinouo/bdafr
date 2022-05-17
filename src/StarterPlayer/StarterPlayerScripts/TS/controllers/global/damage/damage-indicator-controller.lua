@@ -38,7 +38,7 @@ function u1.KnitStart(p2)
 		p2.hitEffectPart.Parent = l__Workspace__4;
 		l__GameQueryUtil__5:setQueryIgnored(p2.hitEffectPart, true);
 	end);
-	l__default__6.Client:OnEvent("EntityDamageEvent", function(p3)
+	l__default__6.Client:OnEvent("RemoteName", function(p3)
 		if p3.entityInstance.PrimaryPart then
 			local v8 = l__Workspace__4.CurrentCamera;
 			if v8 then
@@ -106,7 +106,7 @@ function u1.KnitStart(p2)
 			end;
 		end;
 	end);
-	l__default__6.Client:OnEvent("EntityHeal", function(p4)
+	l__default__6.Client:OnEvent("RemoteName", function(p4)
 		if p4.noHealIndicator then
 			return nil;
 		end;

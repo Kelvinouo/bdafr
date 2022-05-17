@@ -196,7 +196,7 @@ function u1.KnitStart(p19)
 	if l__PlaceUtil__12.isLobbyServer() then
 		return nil;
 	end;
-	l__default__13.Client:WaitFor("TeamsUpdateEvent"):expect():Connect(function(p20)
+	l__default__13.Client:WaitFor("RemoteName"):expect():Connect(function(p20)
 		l__ClientStore__10:dispatch({
 			type = "TabListSetTeams", 
 			teams = p20.teams

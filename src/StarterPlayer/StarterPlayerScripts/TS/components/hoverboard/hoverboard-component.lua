@@ -209,7 +209,7 @@ function v3.setCharacterMassless(p17, p18)
 end;
 local l__default__17 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function v3.dismountHoverboard(p19)
-	l__default__17.Client:Get("uwGnwKbfkjcqqqyJnxwcvzIzdFNoloExeiwdysxzx"):SendToServer();
+	l__default__17.Client:Get("RemoteName"):SendToServer();
 end;
 function v3.Destroy(p20)
 	if not p20:isOwn() then

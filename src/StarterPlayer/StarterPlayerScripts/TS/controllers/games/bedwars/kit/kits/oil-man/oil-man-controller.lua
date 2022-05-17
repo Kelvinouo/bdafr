@@ -27,7 +27,7 @@ local l__Maid__3 = v3.Maid;
 local l__Workspace__4 = v4.Workspace;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("OilSpill", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		local v8 = Random.new(p3.seed);
 		local v9 = v8:NextNumber(8, 36);
 		local v10 = l__Maid__3.new();

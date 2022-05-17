@@ -39,7 +39,7 @@ local l__SoundManager__14 = v1.import(script, v1.getModule(script, "@easy-games"
 local l__GameSound__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function u1.KnitStart(p2)
 	u2.KnitStart(p2);
-	l__default__4.Client:OnEvent("LightningStrike", function(p3)
+	l__default__4.Client:OnEvent("RemoteName", function(p3)
 		local l__position__8 = p3.position;
 		local u16 = u5.new(l__position__8, l__position__8 + Vector3.new(0, 300, 0), u6, p3.color, 12, 2);
 		v1.Promise.delay(p3.duration):andThen(function()
@@ -75,7 +75,7 @@ function u1.KnitStart(p2)
 			return l__projectile__10:Destroy();
 		end);
 	end);
-	l__default__4.Client:OnEvent("AttachElectricOrb", function(p6)
+	l__default__4.Client:OnEvent("RemoteName", function(p6)
 		local l__player__14 = p6.player;
 		local v15 = l__ClientProjectileMap__9[p6.source];
 		if not v15 then
@@ -91,7 +91,7 @@ function u1.KnitStart(p2)
 			v18[l__player__14] = v17;
 		end;
 	end);
-	l__default__4.Client:OnEvent("DetachElectricOrb", function(p7)
+	l__default__4.Client:OnEvent("RemoteName", function(p7)
 		local l__player__19 = p7.player;
 		local v20 = l__ClientProjectileMap__9[p7.source];
 		if not v20 then
@@ -110,7 +110,7 @@ function u1.KnitStart(p2)
 			v22[l__player__19] = nil;
 		end;
 	end);
-	l__default__4.Client:OnEvent("EntityDamageEvent", function(p8)
+	l__default__4.Client:OnEvent("RemoteName", function(p8)
 		if p8.damageType == l__DamageType__11.WIZARD_ORB and p8.entityInstance == l__Players__12.LocalPlayer.Character then
 			local v23 = l__Maid__13.new();
 			v23:GiveTask(l__KnitClient__3.Controllers.SprintController:getMovementStatusModifier():addModifier({
@@ -121,7 +121,7 @@ function u1.KnitStart(p2)
 			end);
 		end;
 	end);
-	l__default__4.Client:OnEvent("ProjectileLaunch", function(p9)
+	l__default__4.Client:OnEvent("RemoteName", function(p9)
 		local v24 = l__Players__12.LocalPlayer == p9.shootingPlayer;
 		if p9.projectile.Name == "lightning_strike" then
 			local v25 = {};

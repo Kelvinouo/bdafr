@@ -23,7 +23,7 @@ local u4 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__DistractionWrapper__5 = v1.import(script, script.Parent, "distraction").DistractionWrapper;
 local l__Players__6 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 function v3.onStart(p2)
-	l__default__1.Client:Get("Distraction"):Connect(function(p3)
+	l__default__1.Client:Get("RemoteName"):Connect(function(p3)
 		l__SoundManager__2:playSound(l__GameSound__3.TV_STATIC);
 		l__SoundManager__2:playSound(l__GameSound__3.TURRET_ON);
 		local u7 = u4.mount(u4.createElement(l__DistractionWrapper__5), l__Players__6.LocalPlayer:FindFirstChildOfClass("PlayerGui"));

@@ -41,7 +41,7 @@ local l__MapUtil__16 = v1.import(script, v1.getModule(script, "@easy-games", "da
 local l__ExpireList__17 = v2.ExpireList;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("BobaStickEvent", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		local v8 = u3("Part", {
 			Name = "BobaPearl", 
 			Position = p3.position, 

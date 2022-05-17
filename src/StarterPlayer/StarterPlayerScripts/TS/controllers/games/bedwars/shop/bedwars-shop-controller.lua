@@ -41,7 +41,7 @@ function u1.KnitStart(p2)
 			l__Flamework__4.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__5.BEDWARS_ITEM_SHOP, {});
 		end
 	});
-	l__default__6.Client:Get("BedwarsSetAllTeamUpgrades"):Connect(function(p3)
+	l__default__6.Client:Get("RemoteName"):Connect(function(p3)
 		local v6 = nil;
 		local l__purchasedTeamUpgrades__7 = p3.purchasedTeamUpgrades;
 		v6 = {};
@@ -57,7 +57,7 @@ function u1.KnitStart(p2)
 			teamUpgrades = local v10
 		});
 	end);
-	l__default__6.Client:Get("BedwarsSetTeamUpgradeTier"):Connect(function(p6)
+	l__default__6.Client:Get("RemoteName"):Connect(function(p6)
 		l__ClientStore__7:dispatch({
 			type = "BedwarsSetTeamUpgradeTier", 
 			upgradeId = p6.upgradeId, 

@@ -32,7 +32,7 @@ local l__SantaUtil__9 = v1.import(script, game:GetService("ReplicatedStorage"), 
 local l__Linear__10 = v1.import(script, v1.getModule(script, "@rbxts", "easing-functions")).Linear;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:WaitFor("SantaStrafeEffect"):andThen(function(p3)
+	l__default__2.Client:WaitFor("RemoteName"):andThen(function(p3)
 		return p3:Connect(function(p4)
 			local v7 = l__ReplicatedStorage__3.Assets.Misc:WaitForChild("santa"):WaitForChild("santa_sleigh"):Clone();
 			v7.Parent = l__Workspace__4;

@@ -179,7 +179,7 @@ function u1.KnitStart(p2)
 		end;
 		u18((l__Humanoid__11:WaitForChild("Animator")));
 	end);
-	l__default__13.Client:WaitFor("EntityDamageEvent"):andThen(function(p13)
+	l__default__13.Client:WaitFor("RemoteName"):andThen(function(p13)
 		p13:Connect(function(p14)
 			local v24 = p14.extra;
 			if v24 ~= nil then

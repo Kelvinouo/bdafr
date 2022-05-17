@@ -28,7 +28,7 @@ local l__SoundManager__6 = v1.import(script, v1.getModule(script, "@easy-games",
 local l__GameSound__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function v4.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("ProjectileImpact", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		if p3.projectile == "sleep_splash_potion" then
 			local v6 = l__ReplicatedStorage__3.Assets.Effects.Potion.SleepSplashPotion:Clone();
 			v6.CFrame = CFrame.new(p3.position);

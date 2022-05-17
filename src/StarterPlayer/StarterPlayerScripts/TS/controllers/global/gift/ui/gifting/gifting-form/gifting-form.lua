@@ -74,7 +74,7 @@ return {
 					p6(l__Players__7:GetNameFromUserIdAsync(p5));
 				end);
 			end;
-			local u12 = u4:WaitFor("GiftSent"):andThen(function(p8)
+			local u12 = u4:WaitFor("RemoteName"):andThen(function(p8)
 				return p8:Connect(function(p9)
 					u11(p9.giftedPlayerUserId):andThen(function(p10)
 						l__SoundManager__5:playSound(l__GameSound__7.BEDWARS_UPGRADE_SUCCESS);
@@ -176,7 +176,7 @@ return {
 			Text = "Gift " .. p3.Gift.name
 		};
 		local function u13()
-			u4:WaitFor("SendGift"):andThen(function(p12)
+			u4:WaitFor("RemoteName"):andThen(function(p12)
 				local v34 = {};
 				for v35, v36 in pairs(p3.Gift) do
 					v34[v35] = v36;

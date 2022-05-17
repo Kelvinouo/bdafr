@@ -23,7 +23,7 @@ local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 local l__Players__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("Fling", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		local l__Character__5 = l__Players__3.LocalPlayer.Character;
 		if l__Character__5 then
 			l__Character__5.Humanoid:ChangeState(Enum.HumanoidStateType.Physics);

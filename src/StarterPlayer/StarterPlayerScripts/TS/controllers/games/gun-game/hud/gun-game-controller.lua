@@ -34,7 +34,7 @@ local l__RunService__10 = v3.RunService;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
 	local u11 = l__Maid__2.new();
-	l__default__3.Client:WaitFor("MatchStateEvent"):expect():Connect(function(p3)
+	l__default__3.Client:WaitFor("RemoteName"):expect():Connect(function(p3)
 		if p3.matchState == l__MatchState__5.RUNNING and l__ClientStore__4:getState().Game.queueType == l__QueueType__6.GUN_GAME then
 			local u12 = u7.mount(l__HudProgressWrapper__8(), l__Players__9.LocalPlayer:WaitForChild("PlayerGui"));
 			u11:GiveTask(function()
@@ -45,7 +45,7 @@ function v5.KnitStart(p2)
 			u11:DoCleaning();
 		end;
 	end);
-	l__default__3.Client:WaitFor("aiVldGp"):expect():Connect(function(p4)
+	l__default__3.Client:WaitFor("RemoteName"):expect():Connect(function(p4)
 		if p4.onLastWeapon then
 			p2:createRay(p4.player);
 			return;

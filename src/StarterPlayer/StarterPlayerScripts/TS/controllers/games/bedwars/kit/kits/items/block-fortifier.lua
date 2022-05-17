@@ -72,7 +72,7 @@ function v4.constructor(p1)
 	p1.blockHighlighter:setOnHighlightEnded(function()
 		p1.highlightMaid:DoCleaning();
 	end);
-	l__default__10.Client:WaitFor("BlockFortified"):andThen(function(p6)
+	l__default__10.Client:WaitFor("RemoteName"):andThen(function(p6)
 		return p6:Connect(function(p7, p8)
 			p1:playFortifyEffect(p7, p8);
 		end);
@@ -132,7 +132,7 @@ function v4.fortifyBlock(p16, p17)
 	});
 	p16:playFortifyEffect(l__Players__9.LocalPlayer, p17);
 	v1.try(function()
-		l__default__10.Client:Get("pebjgAhscraGg"):SendToServer(p17);
+		l__default__10.Client:Get("RemoteName"):SendToServer(p17);
 	end, function(p18)
 		warn("Failed block placement:", p18);
 	end);

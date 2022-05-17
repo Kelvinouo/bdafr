@@ -84,7 +84,7 @@ end;
 local l__default__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function v5.openChest(p7, p8)
 	task.spawn(function()
-		l__default__15.Client:GetNamespace("Inventory"):Get("SetObservedChest"):SendToServer(p8);
+		l__default__15.Client:GetNamespace("Inventory"):Get("RemoteName"):SendToServer(p8);
 	end);
 end;
 u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;

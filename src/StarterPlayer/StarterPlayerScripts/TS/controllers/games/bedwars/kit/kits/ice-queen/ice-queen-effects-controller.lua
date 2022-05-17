@@ -28,7 +28,7 @@ local l__SoundManager__6 = v1.import(script, v1.getModule(script, "@easy-games",
 local l__GameSound__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function v4.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("IceQueenFreeze", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		local v6 = l__EntityUtil__3:getEntity(p3.to);
 		if v6 then
 			local l__HumanoidRootPart__7 = v6:getInstance():FindFirstChild("HumanoidRootPart");

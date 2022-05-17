@@ -56,7 +56,7 @@ local l__BedwarsKit__20 = v1.import(script, game:GetService("ReplicatedStorage")
 local l__default__21 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__3.Client:OnEvent("EntityDeathEvent", function(p3)
+	l__default__3.Client:OnEvent("RemoteName", function(p3)
 		if p3.entityInstance == l__Players__4.LocalPlayer.Character then
 			p2.activeMidnightMaid:DoCleaning();
 		end;

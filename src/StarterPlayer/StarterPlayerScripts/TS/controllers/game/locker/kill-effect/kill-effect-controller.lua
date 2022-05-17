@@ -50,7 +50,7 @@ function u1.KnitStart(p2)
 			p2.killEffects[v9] = u5;
 		end;	
 	end;
-	l__default__6.Client:OnEvent("EntityDeathEvent", function(p3)
+	l__default__6.Client:OnEvent("RemoteName", function(p3)
 		local v11 = l__Players__7:GetPlayerFromCharacter(p3.fromEntity);
 		local v12 = l__Players__7:GetPlayerFromCharacter(p3.entityInstance);
 		if l__ClientSyncEvents__8.KillEffect:fire(p3.entityInstance, p3.fromEntity):isCancelled() then

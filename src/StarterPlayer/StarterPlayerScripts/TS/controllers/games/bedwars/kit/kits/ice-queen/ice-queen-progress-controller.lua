@@ -29,7 +29,7 @@ local l__SoundManager__7 = v1.import(script, v1.getModule(script, "@easy-games",
 local l__GameSound__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__4.Client:OnEvent("IceQueenProgress", function(p3)
+	l__default__4.Client:OnEvent("RemoteName", function(p3)
 		l__ClientStore__5:dispatch({
 			type = "KitIceQueenSetProgress", 
 			progress = p3.damage / l__IceQueenKit__6.DAMAGE_REQUIREMENT

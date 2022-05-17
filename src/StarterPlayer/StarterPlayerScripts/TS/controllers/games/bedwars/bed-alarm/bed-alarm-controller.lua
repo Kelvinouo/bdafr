@@ -34,7 +34,7 @@ local l__Workspace__10 = v4.Workspace;
 local l__CollectionService__11 = v4.CollectionService;
 local l__TweenService__12 = v4.TweenService;
 function v6.KnitStart(p2)
-	l__default__2.Client:OnEvent("BedAlarmTriggered", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		local v8 = l__ClientStore__3:getState().Game.myTeam;
 		if v8 ~= nil then
 			v8 = v8.id;

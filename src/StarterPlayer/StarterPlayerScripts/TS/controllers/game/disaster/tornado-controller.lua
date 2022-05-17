@@ -118,7 +118,7 @@ function v5.KnitStart(p2)
 			end;
 		end);
 	end);
-	l__default__11.Client:GetNamespace("Disaster"):OnEvent("TornadoSucked", function(p8, p9)
+	l__default__11.Client:GetNamespace("Disaster"):OnEvent("RemoteName", function(p8, p9)
 		local v30 = l__EntityUtil__12:getLocalPlayerEntity();
 		if v30 == nil then
 			return nil;

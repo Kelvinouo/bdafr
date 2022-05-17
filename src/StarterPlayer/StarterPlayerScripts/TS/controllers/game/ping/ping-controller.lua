@@ -33,13 +33,13 @@ function v6.onStart(p2)
 	if l__PlaceUtil__1.isLobbyServer() then
 		return nil;
 	end;
-	l__default__2.Client:Get("ztobkVn"):Connect(function(p3)
+	l__default__2.Client:Get("RemoteName"):Connect(function(p3)
 		if l__ClientStore__3:getState().Game.matchState == l__MatchState__4.PRE then
 			return nil;
 		end;
 		p2:createIndicator(p3.location, p3.creator);
 	end);
-	local u10 = l__default__2.Client:Get("xovkcdldnjhRoODa");
+	local u10 = l__default__2.Client:Get("RemoteName");
 	l__ContextActionService__5:BindAction("ping-location", function(p4, p5, p6)
 		if p5 ~= Enum.UserInputState.Begin then
 			return nil;

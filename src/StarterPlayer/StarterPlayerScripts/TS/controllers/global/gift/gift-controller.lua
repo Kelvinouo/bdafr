@@ -31,7 +31,7 @@ local u10 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
 local l__BedwarsKitMeta__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit-meta").BedwarsKitMeta;
 local l__UILayers__12 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).UILayers;
 function v3.KnitStart(p2)
-	l__default__2.Client:GetNamespace("Gift"):WaitFor("GiftReceived"):andThen(function(p3)
+	l__default__2.Client:GetNamespace("Gift"):WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
 			if l__PlaceUtil__3.isGameServer() then
 				return nil;

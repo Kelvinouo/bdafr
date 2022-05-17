@@ -40,7 +40,7 @@ local l__WatchPlayer__11 = v2.WatchPlayer;
 local l__KnitClient__12 = v3.KnitClient;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("AngelOrb", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		local v8 = l__Workspace__3:GetServerTimeNow() - p3.timeStarted;
 		local l__Character__9 = p3.target.Character;
 		local l__Character__10 = p3.from.Character;

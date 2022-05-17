@@ -69,7 +69,7 @@ function u1.onEnable(p5, p6)
 			u22:Stop();
 		end;
 		u23 = -1;
-		l__default__6.Client:Get("embwxijxnmcvhebYqc"):CallServerAsync({
+		l__default__6.Client:Get("RemoteName"):CallServerAsync({
 			item = p6.tool
 		}):andThen(function()
 
@@ -98,7 +98,7 @@ function u1.onEnable(p5, p6)
 	end);
 	if v9.consumable.cancelOnDamage then
 		task.spawn(function()
-			p5.maid:GiveTask(l__default__6.Client:Get("EntityDamageEvent"):Connect(function(p8)
+			p5.maid:GiveTask(l__default__6.Client:Get("RemoteName"):Connect(function(p8)
 				if p8.entityInstance == l__Players__11.LocalPlayer.Character then
 					v10:cancelClick();
 				end;

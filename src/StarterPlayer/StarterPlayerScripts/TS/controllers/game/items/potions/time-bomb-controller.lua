@@ -25,7 +25,7 @@ local l__GameSound__4 = v1.import(script, game:GetService("ReplicatedStorage"), 
 local l__KnitClient__5 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:WaitFor("mDpterbstAeigxb"):andThen(function(p3)
+	l__default__2.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
 			l__SoundManager__3:playSound(l__GameSound__4.TNT_EXPLODE_1, {
 				position = p4.position, 

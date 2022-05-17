@@ -26,10 +26,10 @@ function u1.constructor(p1)
 end;
 local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function u1.KnitStart(p2)
-	l__default__3.Client:OnEvent("SpawnGrimReaperSoul", function(p3)
+	l__default__3.Client:OnEvent("RemoteName", function(p3)
 		p2:spawnSoul(p3.position, p3.secret, p3.soulOfPlayer);
 	end);
-	l__default__3.Client:OnEvent("EntityConsumeGrimReaperSoul", function(p4)
+	l__default__3.Client:OnEvent("RemoteName", function(p4)
 		p2:startChannel(p4.entity, p4.position);
 	end);
 end;
@@ -76,7 +76,7 @@ local l__AnimationType__10 = v1.import(script, game:GetService("ReplicatedStorag
 function u1.consumeSoul(p10, p11)
 	local v11 = p11:GetAttribute("GrimReaperSoulSecret");
 	l__GameAnimationUtil__9.playAnimation(l__Players__7.LocalPlayer, l__AnimationType__10.GRIM_REAPER_CONSUME);
-	l__default__3.Client:Get("ngvxtFhdziWgYuUsWyku"):CallServer({
+	l__default__3.Client:Get("RemoteName"):CallServer({
 		secret = v11
 	});
 end;

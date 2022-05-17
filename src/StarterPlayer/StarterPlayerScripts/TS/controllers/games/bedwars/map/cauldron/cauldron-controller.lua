@@ -70,7 +70,7 @@ function v6.KnitStart(p2)
 			if p4 == l__Players__8.LocalPlayer and v9.Enabled == true then
 				if p3:GetAttribute("Enabled") ~= true then
 					l__SoundManager__11:playSound(l__GameSound__12.DEPOSIT_BEE);
-					l__default__13.Client:WaitFor("bcirBaHiau"):expect():SendToServer({
+					l__default__13.Client:WaitFor("RemoteName"):expect():SendToServer({
 						cauldron = p3
 					});
 					return;

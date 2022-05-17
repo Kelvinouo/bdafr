@@ -28,7 +28,7 @@ local l__KnitClient__6 = v2.KnitClient;
 local l__AnimationType__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
 function v4.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("TwirlbladeSpin", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		if p3.executingPlayer ~= l__Players__3.LocalPlayer then
 			l__SoundManager__4:playSound(l__GameSound__5.TWIRLBLADE_SPIN, {
 				position = p3.position

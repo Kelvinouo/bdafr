@@ -86,7 +86,7 @@ function v4.render(p2)
 			if v30 == nil then
 				v30 = -1;
 			end;
-			l__default__4.Client:Get("BedwarsPurchaseTeamUpgrade"):CallServerAsync({
+			l__default__4.Client:Get("RemoteName"):CallServerAsync({
 				upgradeId = p6.id, 
 				tier = v30 + 1
 			}):andThen(function()

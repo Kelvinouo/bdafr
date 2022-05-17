@@ -34,7 +34,7 @@ local l__HttpService__11 = v3.HttpService;
 local l__RunService__12 = v3.RunService;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("AeryGiveButterfly", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		if not l__Players__3.LocalPlayer.Character then
 			return nil;
 		end;

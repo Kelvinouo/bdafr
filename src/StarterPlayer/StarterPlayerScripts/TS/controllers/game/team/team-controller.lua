@@ -27,14 +27,14 @@ end;
 local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function u1.KnitStart(p2)
-	l__default__3.Client:Get("TeamsUpdateEvent"):Connect(function(p3)
+	l__default__3.Client:Get("RemoteName"):Connect(function(p3)
 		l__ClientStore__4:dispatch({
 			type = "GameSetTeams", 
 			teams = p3.teams
 		});
 		p2.teams = p3.teams;
 	end);
-	l__default__3.Client:Get("RequestTeamsUpdateEvent"):SendToServer();
+	l__default__3.Client:Get("RemoteName"):SendToServer();
 end;
 function u1.getPlayerTeamMap(p4)
 	local v5 = nil;

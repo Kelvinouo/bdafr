@@ -33,7 +33,7 @@ local l__TargetMarkerWrapper__10 = v1.import(script, script.Parent, "ui", "targe
 local u11 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 function v4.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__4.Client:OnEvent("BountyHunterTargetChanged", function(p3)
+	l__default__4.Client:OnEvent("RemoteName", function(p3)
 		local l__newTargetUserId__6 = p3.newTargetUserId;
 		if l__newTargetUserId__6 ~= 0 and l__newTargetUserId__6 == l__newTargetUserId__6 and l__newTargetUserId__6 then
 			local v7 = l__Players__5:GetPlayerByUserId(p3.newTargetUserId);
@@ -45,7 +45,7 @@ function v4.KnitStart(p2)
 			bountyHunterTarget = v7
 		});
 	end);
-	l__default__4.Client:WaitFor("vrdvXvvkgNuh"):andThen(function(p4)
+	l__default__4.Client:WaitFor("RemoteName"):andThen(function(p4)
 		p4:CallServerAsync():andThen(function(p5)
 			if p5 ~= 0 and p5 == p5 and p5 then
 				local v8 = l__Players__5:GetPlayerByUserId(p5);
@@ -58,7 +58,7 @@ function v4.KnitStart(p2)
 			});
 		end);
 	end);
-	l__default__4.Client:OnEvent("BountyHunterRewardClaimed", function(p6)
+	l__default__4.Client:OnEvent("RemoteName", function(p6)
 		l__SoundManager__7:playSound(l__GameSound__8.BOUNTY_CLAIMED);
 	end);
 	l__ClientStore__6.changed:connect(function(p7, p8)
@@ -81,7 +81,7 @@ function v4.KnitStart(p2)
 			v10:GiveTask(l__bountyHunterTarget__9.CharacterRemoving:Connect(function()
 				v10:DoCleaning();
 			end));
-			v10:GiveTask(l__default__4.Client:Get("EntityDeathEvent"):Connect(function(p10)
+			v10:GiveTask(l__default__4.Client:Get("RemoteName"):Connect(function(p10)
 				if p10.entityInstance == p9 then
 					v10:DoCleaning();
 				end;

@@ -40,7 +40,7 @@ local l__SoundManager__14 = v2.SoundManager;
 local l__GameSound__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:WaitFor("CarrotRocketExplode"):andThen(function(p3)
+	l__default__2.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
 			if p4.shooter ~= l__Players__3.LocalPlayer then
 				p2:playExplosion(p4.position);
@@ -76,7 +76,7 @@ function v6.KnitStart(p2)
 			end);
 		end);
 	end);
-	l__default__2.Client:OnEvent("EntityDamageEvent", function(p11)
+	l__default__2.Client:OnEvent("RemoteName", function(p11)
 		if p11.entityInstance.PrimaryPart and p11.fromEntity and p11.entityInstance ~= l__Players__3.LocalPlayer.Character and l__Players__3:GetPlayerFromCharacter(p11.fromEntity) == l__Players__3.LocalPlayer and p11.extra.paintBlast then
 			p2.hitMarkerOverflow = math.min(p2.hitMarkerOverflow + 1, 3);
 		end;

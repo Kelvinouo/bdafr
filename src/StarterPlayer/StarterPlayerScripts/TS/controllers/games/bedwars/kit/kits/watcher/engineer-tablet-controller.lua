@@ -103,7 +103,7 @@ function u1.attemptToActivate(p5)
 		end;
 	end);
 	p5:setupYield(function()
-		local u20 = l__default__15.Client:Get("EntityDamageEvent"):Connect(function(p7)
+		local u20 = l__default__15.Client:Get("RemoteName"):Connect(function(p7)
 			if l__Players__7.LocalPlayer.Character and p7.entityInstance == l__Players__7.LocalPlayer.Character then
 				p5.maid:DoCleaning();
 			end;

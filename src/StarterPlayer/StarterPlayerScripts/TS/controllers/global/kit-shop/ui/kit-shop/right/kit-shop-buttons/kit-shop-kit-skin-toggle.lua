@@ -19,7 +19,7 @@ return {
 		v3.Text = "<b>USE KIT SKIN" .. v4 .. "</b>";
 		v3.Value = p1.UseKitSkin;
 		function v3.SetValue(p3)
-			l__default__4.Client:Get("BedwarsSetUseKitSkin"):CallServerAsync({
+			l__default__4.Client:Get("RemoteName"):CallServerAsync({
 				useKitSkin = p3
 			}):andThen(function()
 

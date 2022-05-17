@@ -16,7 +16,7 @@ return {
 			actionName = "release-item"
 		};
 		function v5.onActivated()
-			l__default__5.Client:Get("uwljejbnseyxtQdyhfzvk"):SendToServer({
+			l__default__5.Client:Get("RemoteName"):SendToServer({
 				position = p1.drone:GetPrimaryPartCFrame().Position, 
 				direction = p1.drone:GetPrimaryPartCFrame().LookVector
 			});

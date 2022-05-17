@@ -44,7 +44,7 @@ return {
 			if v8 == nil then
 				v8 = -1;
 			end;
-			l__default__2.Client:Get("BedwarsPurchaseTeamUpgrade"):CallServerAsync({
+			l__default__2.Client:Get("RemoteName"):CallServerAsync({
 				upgradeId = v7, 
 				tier = v8 + 1
 			}):andThen(function()

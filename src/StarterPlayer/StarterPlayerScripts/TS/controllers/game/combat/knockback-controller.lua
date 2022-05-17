@@ -28,7 +28,7 @@ local l__Players__5 = v2.Players;
 local l__Workspace__6 = v2.Workspace;
 local l__KnockbackUtil__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "damage", "knockback-util").KnockbackUtil;
 function u1.KnitStart(p2)
-	l__default__3.Client:WaitFor("EntityDamageEvent"):andThen(function(p3)
+	l__default__3.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
 			debug.profilebegin("knockback");
 			if p4.damageType ~= l__DamageType__4.FALL and p4.entityInstance == l__Players__5.LocalPlayer.Character then

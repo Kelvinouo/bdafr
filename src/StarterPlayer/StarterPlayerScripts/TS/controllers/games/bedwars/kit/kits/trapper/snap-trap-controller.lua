@@ -86,7 +86,7 @@ function v5.KnitStart(p2)
 			end);
 			p3.Touched:Connect(function(p5)
 				if p3:GetAttribute("SnapTrapState") == l__SnapTrapState__10.ACTIVE and l__Players__3.LocalPlayer.Character and p5.Parent == l__Players__3.LocalPlayer.Character then
-					l__default__11.Client:Get("nRiUghScRtMrNlwdCcbG"):SendToServer({
+					l__default__11.Client:Get("RemoteName"):SendToServer({
 						snapTrap = p3
 					});
 				end;
@@ -99,7 +99,7 @@ function v5.KnitStart(p2)
 			end;
 		end);
 	end);
-	l__default__11.Client:OnEvent("SnapTrapSnared", function(p6)
+	l__default__11.Client:OnEvent("RemoteName", function(p6)
 		local v17 = {};
 		if p6.entityInstance == l__Players__3.LocalPlayer.Character then
 			local v18 = nil;
@@ -116,7 +116,7 @@ function v5.KnitStart(p2)
 			v19:AdjustSpeed(0);
 		end);
 	end);
-	l__default__11.Client:OnEvent("SnapTrapMarkConsumed", function(p7)
+	l__default__11.Client:OnEvent("RemoteName", function(p7)
 		local v20 = true;
 		if p7.entity ~= l__Players__3.LocalPlayer.Character then
 			v20 = p7.consumer == l__Players__3.LocalPlayer.Character;

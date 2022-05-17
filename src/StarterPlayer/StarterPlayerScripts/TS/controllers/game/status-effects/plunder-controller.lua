@@ -29,7 +29,7 @@ local l__ReplicatedStorage__6 = v3.ReplicatedStorage;
 local l__KnitClient__7 = v2.KnitClient;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("PlunderProc", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		local l__PrimaryPart__7 = p3.entityInstance.PrimaryPart;
 		if not l__PrimaryPart__7 then
 			return nil;

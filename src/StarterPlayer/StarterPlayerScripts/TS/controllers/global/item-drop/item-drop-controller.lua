@@ -42,7 +42,7 @@ function u1.KnitStart(p2)
 			p2:dropItemInHand();
 		end;
 	end, false, Enum.KeyCode.Q, Enum.KeyCode.Backspace, Enum.KeyCode.ButtonX);
-	l__default__6.Client:Get("PickupItemEvent"):Connect(function(p6)
+	l__default__6.Client:Get("RemoteName"):Connect(function(p6)
 		if p6.player ~= l__Players__7.LocalPlayer then
 			local v7 = Vector3.new(p6.position.X, p6.position.Y, p6.position.Z);
 			local v8 = l__Players__7.LocalPlayer.Character;
@@ -61,7 +61,7 @@ local l__ClientStore__10 = v1.import(script, script.Parent.Parent.Parent.Parent,
 function u1.dropItemInHand(p7)
 	local l__hand__9 = l__ClientStore__10:getState().Inventory.observedInventory.inventory.hand;
 	if l__hand__9 ~= nil then
-		local v10 = l__default__6.Client:Get("sgguIcEygqmqQb"):CallServer({
+		local v10 = l__default__6.Client:Get("RemoteName"):CallServer({
 			item = l__hand__9.tool
 		});
 		l__SoundManager__8:playSound(l__GameSound__9.DROP_ITEM);
@@ -160,7 +160,7 @@ function u1.checkForPickup(p8)
 				local v41 = v34[v39 + 1];
 				v41:SetAttribute("ClientPickupAttemptTime", tick());
 				local u16 = v38;
-				l__default__6.Client:Get("bjjdvqMlvlnhyoHxiBqxdCIjbaofYdhrlPyIre"):CallServerAsync({
+				l__default__6.Client:Get("RemoteName"):CallServerAsync({
 					itemDrop = v41
 				}):andThen(function(p13)
 					if p13 and not u16 then

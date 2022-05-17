@@ -38,7 +38,7 @@ end;
 local l__default__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__CollectionService__6 = v3.CollectionService;
 function u1.KnitStart(p2)
-	l__default__5.Client:OnEvent("BeeSpawn", function(p3)
+	l__default__5.Client:OnEvent("RemoteName", function(p3)
 		local v8 = {
 			id = p3.beeId, 
 			origin = p3.position, 
@@ -53,7 +53,7 @@ function u1.KnitStart(p2)
 		v8.includeProximityPrompt = true;
 		p2:createLocalBee(v8);
 	end);
-	l__default__5.Client:OnEvent("BeeRemoved", function(p4)
+	l__default__5.Client:OnEvent("RemoteName", function(p4)
 		local v10 = l__CollectionService__6:GetTagged("bee");
 		local function v11(p5)
 			return p5:GetAttribute("BeeId") == p4.beeId;

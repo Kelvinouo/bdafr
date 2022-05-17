@@ -103,9 +103,9 @@ v15:RegisterChatWindow(v29);
 local v34 = require(script:WaitForChild("MessageSender"));
 v34:RegisterSayMessageFunction(u3.SayMessageRequest);
 if l__UserInputService__20.TouchEnabled then
-	v33:SetTextLabelText(u1:Get("GameChat_ChatMain_ChatBarTextTouch", "Tap here to chat"));
+	v33:SetTextLabelText(u1:Get("RemoteName"));
 else
-	v33:SetTextLabelText(u1:Get("GameChat_ChatMain_ChatBarText", "To chat click here or press \"/\" key"));
+	v33:SetTextLabelText(u1:Get("RemoteName"));
 end;
 local l__script__5 = script;
 spawn(function()
@@ -798,28 +798,7 @@ if u22 then
 			else
 				v78 = p84.Name;
 			end;
-			SendSystemMessageToSelf(u1:Get("GameChat_ChatMain_SpeakerHasBeenBlocked", string.format("Speaker '%s' has been blocked.", v78), {
-				RBX_NAME = v78
-			}));
-		end;
-	end);
-end;
-if u23 then
-	u23.Event:connect(function(p85)
-		if MutePlayer(p85) then
-			if v14.PlayerDisplayNamesEnabled then
-				local v79 = p85.DisplayName;
-			else
-				v79 = p85.Name;
-			end;
-			SendSystemMessageToSelf(u1:Get("GameChat_ChatMain_SpeakerHasBeenMuted", string.format("Speaker '%s' has been muted.", v79), {
-				RBX_NAME = v79
-			}));
-		end;
-	end);
-end;
-function UnmutePlayer(p86)
-	local l__UnMutePlayerRequest__80 = v10:FindFirstChild("UnMutePlayerRequest");
+			SendSystemMessageToSelf(u1:Get("RemoteName");
 	if l__UnMutePlayerRequest__80 then
 
 	else
@@ -835,30 +814,7 @@ if u24 then
 			else
 				v81 = p87.Name;
 			end;
-			SendSystemMessageToSelf(u1:Get("GameChat_ChatMain_SpeakerHasBeenUnBlocked", string.format("Speaker '%s' has been unblocked.", v81), {
-				RBX_NAME = v81
-			}));
-		end;
-	end);
-end;
-if u25 then
-	u25.Event:connect(function(p88)
-		if UnmutePlayer(p88) then
-			if v14.PlayerDisplayNamesEnabled then
-				local v82 = p88.DisplayName;
-			else
-				v82 = p88.Name;
-			end;
-			SendSystemMessageToSelf(u1:Get("GameChat_ChatMain_SpeakerHasBeenUnMuted", string.format("Speaker '%s' has been unmuted.", v82), {
-				RBX_NAME = v82
-			}));
-		end;
-	end);
-end;
-spawn(function()
-	if v23.UserId > 0 then
-		pcall(function()
-			local v83 = l__StarterGui__8:GetCore("GetBlockedUserIds");
+			SendSystemMessageToSelf(u1:Get("RemoteName");
 			if #v83 > 0 then
 				local l__SetBlockedUserIdsRequest__84 = v10:FindFirstChild("SetBlockedUserIdsRequest");
 				if l__SetBlockedUserIdsRequest__84 then

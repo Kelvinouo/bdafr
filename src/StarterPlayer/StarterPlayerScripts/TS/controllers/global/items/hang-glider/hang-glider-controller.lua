@@ -42,7 +42,7 @@ local l__TweenService__8 = v4.TweenService;
 local l__Players__9 = v4.Players;
 function u1.KnitStart(p2)
 	u2.KnitStart(p2);
-	l__default__4.Client:OnEvent("HangGliderStateChanged", function(p3)
+	l__default__4.Client:OnEvent("RemoteName", function(p3)
 		local l__player__8 = p3.player;
 		local l__Character__9 = l__player__8.Character;
 		if p3.active and l__Character__9 then
@@ -74,7 +74,7 @@ function u1.KnitStart(p2)
 	l__Players__9.LocalPlayer.CharacterAdded:Connect(function(p4)
 		p2:registerCharacter(p4);
 	end);
-	l__default__4.Client:OnEvent("HangGliderStateChanged", function(p5)
+	l__default__4.Client:OnEvent("RemoteName", function(p5)
 		if p5.active == false and p5.player.UserId == l__Players__9.LocalPlayer.UserId then
 			p2:closeHangGlider();
 		end;
@@ -108,7 +108,7 @@ function u1.openHangGlider(p10)
 	if not l__Character__14 then
 		return nil;
 	end;
-	l__default__4.Client:Get("HangGliderUse"):SendToServer({});
+	l__default__4.Client:Get("RemoteName"):SendToServer({});
 	p10.hangGliderActive = true;
 	p10.activeGliderMaid:GiveTask((l__KnitClient__10.Controllers.SprintController:getMovementStatusModifier():addModifier({
 		blockSprint = true, 
@@ -247,7 +247,7 @@ function u1.closeHangGlider(p15)
 	p15.activeGliderMaid:DoCleaning();
 end;
 function u1.sendCloseHangGliderEvent(p16)
-	l__default__4.Client:Get("HangGliderClose"):SendToServer({});
+	l__default__4.Client:Get("RemoteName"):SendToServer({});
 end;
 function u1.canOpenHangGlider(p17)
 	if p17.acceptedGlidingStates[l__Players__9.LocalPlayer.Character:FindFirstChild("Humanoid"):GetState()] ~= nil then

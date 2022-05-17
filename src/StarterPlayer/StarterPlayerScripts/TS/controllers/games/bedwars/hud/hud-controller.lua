@@ -49,7 +49,7 @@ function u1.KnitStart(p2)
 		l__ContentProvider__7:PreloadAsync(v9);
 	end);
 	v1.Promise.defer(function()
-		l__default__8.Client:WaitFor("FetchServerRegion"):andThen(function(p4)
+		l__default__8.Client:WaitFor("RemoteName"):andThen(function(p4)
 			l__ClientStore__9:dispatch({
 				type = "SetServerRegion", 
 				serverRegion = p4:CallServer()

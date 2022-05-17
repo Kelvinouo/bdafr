@@ -40,7 +40,7 @@ local l__SoundManager__15 = v2.SoundManager;
 local l__GameSound__16 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 local l__TweenService__17 = v5.TweenService;
 function u1.KnitStart(p2)
-	l__default__3.Client:OnEvent("TreeOrbSpawn", function(p3)
+	l__default__3.Client:OnEvent("RemoteName", function(p3)
 		local v9 = l__ReplicatedStorage__4:WaitForChild("Assets"):WaitForChild("Misc"):WaitForChild("TreeOrb"):Clone();
 		v9:SetPrimaryPartCFrame(CFrame.new(p3.position));
 		v9:SetAttribute("TreeOrbSecret", p3.treeOrbSecret);
@@ -69,7 +69,7 @@ function u1.KnitStart(p2)
 				l__GameAnimationUtil__13.playAnimation(p5, l__AnimationType__14.PUNCH);
 				l__KnitClient__4.Controllers.ViewmodelController:playAnimation(l__AnimationType__14.FP_USE_ITEM);
 				l__SoundManager__15:playSound(l__GameSound__16.CROP_HARVEST);
-				if l__default__3.Client:Get("uidsciKnpvtyafpcxp"):CallServer({
+				if l__default__3.Client:Get("RemoteName"):CallServer({
 					treeOrbSecret = p4:GetAttribute("TreeOrbSecret")
 				}) then
 					p4:Destroy();

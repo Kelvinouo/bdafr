@@ -26,9 +26,9 @@ function u1.constructor(p1)
 	u2.constructor(p1);
 	p1.Name = "CameraTurretCameraController";
 	p1.turretToMaid = {};
-	p1.aimTurret = l__default__3.Client:Get("hulkpnndXvpeiHrzxKutugpv");
+	p1.aimTurret = l__default__3.Client:Get("RemoteName");
 	p1.nextSendAim = -1;
-	p1.switchTurret = l__default__3.Client:Get("yRtgnigwPhet");
+	p1.switchTurret = l__default__3.Client:Get("RemoteName");
 	p1.angleX = 0;
 	p1.angleY = 0;
 	p1.angleMotor = u4.GroupMotor.new({

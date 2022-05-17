@@ -24,7 +24,7 @@ local l__SoundManager__4 = v1.import(script, v1.getModule(script, "@easy-games",
 local l__GameSound__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 local l__TweenService__6 = v3.TweenService;
 function v4.onStart(p2)
-	l__default__1.Client:OnEvent("Nuke", function(p3)
+	l__default__1.Client:OnEvent("RemoteName", function(p3)
 		local v6 = u2("Part", {
 			Name = "NukePart", 
 			Anchored = true, 

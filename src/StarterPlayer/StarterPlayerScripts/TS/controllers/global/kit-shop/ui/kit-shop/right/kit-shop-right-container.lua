@@ -67,7 +67,7 @@ function v6.didMount(p6)
 			return nil;
 		end;
 		local v8 = not p6.props.store.Bedwars.useKitSkin;
-		l__default__7.Client:Get("BedwarsSetUseKitSkin"):CallServerAsync({
+		l__default__7.Client:Get("RemoteName"):CallServerAsync({
 			useKitSkin = v8
 		}):andThen(function()
 
@@ -90,7 +90,7 @@ local l__SoundManager__9 = v2.SoundManager;
 local l__GameSound__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function v6.equip(p14)
 	local v9 = p14.props.SelectedKit and nil;
-	l__default__7.Client:Get("BedwarsActivateKit"):CallServerAsync({
+	l__default__7.Client:Get("RemoteName"):CallServerAsync({
 		kit = v9
 	}):andThen(function(p15)
 		if p15 then

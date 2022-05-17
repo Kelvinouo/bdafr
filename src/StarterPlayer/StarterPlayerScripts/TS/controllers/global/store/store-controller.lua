@@ -32,7 +32,7 @@ function v4.KnitStart(p2)
 			l__SoundManager__4:playSound(l__GameSound__5.BEDWARS_UPGRADE_SUCCESS);
 		end;
 	end);
-	l__default__6.Client:OnEvent("RobuxPurchaseSuccess", function(p6)
+	l__default__6.Client:OnEvent("RemoteName", function(p6)
 		l__SoundManager__4:playSound(l__GameSound__5.BEDWARS_UPGRADE_SUCCESS);
 	end);
 end;

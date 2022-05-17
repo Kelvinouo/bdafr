@@ -27,7 +27,7 @@ local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent, 
 local l__PlaceUtil__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "place-util").PlaceUtil;
 local l__Players__6 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 function u1.KnitStart(p2)
-	l__default__3.Client:WaitFor("KitUpdate"):andThen(function(p3)
+	l__default__3.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
 			if p4.ownedKits then
 				l__ClientStore__4:dispatch({
@@ -60,7 +60,7 @@ function u1.KnitStart(p2)
 				});
 			end;
 		end);
-		l__default__3.Client:WaitFor("RequestKitUpdate"):andThen(function(p5)
+		l__default__3.Client:WaitFor("RemoteName"):andThen(function(p5)
 			p5:SendToServer();
 		end);
 	end);

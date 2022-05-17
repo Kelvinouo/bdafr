@@ -24,7 +24,7 @@ local l__AnimationUtil__3 = v1.import(script, v1.getModule(script, "@easy-games"
 local l__Players__4 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("ForcePlayAnimation", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		local v5 = l__AnimationUtil__3.playAnimation(l__Players__4.LocalPlayer, p3.animation, {
 			looped = p3.looped ~= nil
 		});

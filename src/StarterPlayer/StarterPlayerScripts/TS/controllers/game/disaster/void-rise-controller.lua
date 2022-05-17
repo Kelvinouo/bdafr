@@ -37,7 +37,7 @@ local l__Lighting__12 = v5.Lighting;
 local l__RunService__13 = v5.RunService;
 function v7.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:GetNamespace("Disaster"):OnEvent("VoidRise", function(p3)
+	l__default__2.Client:GetNamespace("Disaster"):OnEvent("RemoteName", function(p3)
 		local v9 = l__SoundManager__3:playSound(l__GameSound__4.RAVEN_SPACE_AMBIENT);
 		v9.Looped = true;
 		v9.Volume = 0;

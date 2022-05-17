@@ -33,7 +33,7 @@ function v3.getPlayerPermissions(p3, p4)
 	elseif p3.playerPermissions[p4.UserId] ~= nil then
 		return p3.playerPermissions[p4.UserId];
 	end;
-	local v6 = l__default__2.Client:Get("GetPlayerPermissions"):CallServer(p4);
+	local v6 = l__default__2.Client:Get("RemoteName"):CallServer(p4);
 	if v6 then
 		if type(p4) ~= "number" then
 			p3.playerPermissions[p4.UserId] = v6;

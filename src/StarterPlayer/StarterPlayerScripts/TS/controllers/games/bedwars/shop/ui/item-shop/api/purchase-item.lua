@@ -19,7 +19,7 @@ return {
 			v2();
 			return l__resolve__3(false);
 		end;
-		return l__default__4.Client:Get("BedwarsPurchaseItem"):CallServerAsync({
+		return l__default__4.Client:Get("RemoteName"):CallServerAsync({
 			shopItem = p1
 		}):andThen(function(p2)
 			if not p2 then

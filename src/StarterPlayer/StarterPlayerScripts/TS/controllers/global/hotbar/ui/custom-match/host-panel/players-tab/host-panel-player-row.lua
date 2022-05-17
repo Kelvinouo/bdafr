@@ -128,7 +128,7 @@ return {
 					l__SoundManager__5:playSound(l__GameSound__6.UI_CLICK);
 					local v25 = l__OfflinePlayerUtil__1.getPlayer(p1.OfflinePlayer);
 					if v25 then
-						l__default__7.Client:Get("BanPlayer"):CallServerAsync(v25);
+						l__default__7.Client:Get("RemoteName"):CallServerAsync(v25);
 					end;
 				end
 			});

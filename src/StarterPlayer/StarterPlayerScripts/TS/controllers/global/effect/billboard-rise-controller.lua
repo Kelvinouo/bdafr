@@ -24,7 +24,7 @@ function u1.constructor(p1)
 end;
 local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function u1.KnitStart(p2)
-	l__default__3.Client:WaitFor("BillboardRiseEffect"):andThen(function(p3)
+	l__default__3.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
 			p2:playEffect(p4.position, {
 				image = p4.image, 

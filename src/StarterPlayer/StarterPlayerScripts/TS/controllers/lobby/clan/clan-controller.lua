@@ -35,7 +35,7 @@ local l__Players__11 = v3.Players;
 local l__ClanUtil__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "clan", "clan-util").ClanUtil;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:GetNamespace("Clans"):OnEvent("ClanUpdate", function(p3)
+	l__default__2.Client:GetNamespace("Clans"):OnEvent("RemoteName", function(p3)
 		local v7 = p3.newClan and p3.clanId;
 		if v7 ~= "" and v7 then
 			l__Flamework__3.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__4.CLAN_PROFILE, {
@@ -54,7 +54,7 @@ function v5.KnitStart(p2)
 			l__Flamework__3.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):closeApp(l__BedwarsAppIds__4.CLAN_PROFILE);
 		end;
 	end);
-	l__default__2.Client:GetNamespace("Clans"):OnEvent("ClanInvite", function(p4)
+	l__default__2.Client:GetNamespace("Clans"):OnEvent("RemoteName", function(p4)
 		l__ClientStore__7:dispatch({
 			type = "ClanInviteIncoming", 
 			clanId = p4.clanId, 
@@ -68,7 +68,7 @@ function v5.KnitStart(p2)
 			end
 		});
 	end);
-	l__default__2.Client:GetNamespace("Clans"):OnEvent("OpenClanMenu", function(p5)
+	l__default__2.Client:GetNamespace("Clans"):OnEvent("RemoteName", function(p5)
 		if p5.open then
 			l__Flamework__3.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__4.CLAN_MENU, {});
 			return;
@@ -83,7 +83,7 @@ function v5.KnitStart(p2)
 	end);
 end;
 v5.submitClanCreateForm = v1.async(function(p6, p7)
-	return v1.await(p6.clansRemotes:Get("SubmitClanCreateForm"):CallServerAsync(p7):andThen(function(p8)
+	return v1.await(p6.clansRemotes:Get("RemoteName"):CallServerAsync(p7):andThen(function(p8)
 		return p8;
 	end));
 end);
@@ -95,29 +95,29 @@ function v5.promptClanPassPurchase(p9)
 	end;
 end;
 function v5.fetchClanDisplay(p10, p11)
-	local v8 = p10.clansRemotes:Get("FetchClanGuestView"):CallServer(p11);
+	local v8 = p10.clansRemotes:Get("RemoteName"):CallServer(p11);
 	if v8 ~= nil then
 		v8 = v8.clanProfile;
 	end;
 	return v8;
 end;
 function v5.promoteMember(p12, p13, p14)
-	return p12.clansRemotes:Get("PromoteMember"):CallServerAsync(p13, p14);
+	return p12.clansRemotes:Get("RemoteName"):CallServerAsync(p13, p14);
 end;
 function v5.demoteMember(p15, p16, p17)
-	return p15.clansRemotes:Get("DemoteMember"):CallServerAsync(p16, p17);
+	return p15.clansRemotes:Get("RemoteName"):CallServerAsync(p16, p17);
 end;
 function v5.kickPlayer(p18, p19, p20)
-	return p18.clansRemotes:Get("KickMember"):CallServerAsync(p19, p20);
+	return p18.clansRemotes:Get("RemoteName"):CallServerAsync(p19, p20);
 end;
 v5.upgrade = v1.async(function(p21, p22, p23)
-	return p21.clansRemotes:Get("Upgrade"):CallServerAsync(p22, p23);
+	return p21.clansRemotes:Get("RemoteName"):CallServerAsync(p22, p23);
 end);
 function v5.updateClanInfo(p24, p25, p26)
-	return p24.clansRemotes:Get("UpdateClanInfo"):CallServerAsync(p25, p26);
+	return p24.clansRemotes:Get("RemoteName"):CallServerAsync(p25, p26);
 end;
 function v5.deleteClan(p27, p28)
-	if p27.clansRemotes:Get("DeleteClan"):CallServer(p28) then
+	if p27.clansRemotes:Get("RemoteName"):CallServer(p28) then
 		l__Flamework__3.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):closeApp(l__BedwarsAppIds__4.CLAN_PROFILE);
 		l__SoundManager__5:playSound(l__GameSound__6.ARMOR_UNEQUIP);
 	end;
@@ -136,7 +136,7 @@ function v5.leaveClan(p29)
 		}
 	};
 	function v9.OnPrimaryBtnClick()
-		if not p29.clansRemotes:Get("LeaveClan"):CallServer() then
+		if not p29.clansRemotes:Get("RemoteName"):CallServer() then
 			l__SoundManager__5:playSound(l__GameSound__6.ERROR_NOTIFICATION);
 			return;
 		end;
@@ -149,10 +149,10 @@ function v5.leaveClan(p29)
 	l__Flamework__3.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__4.CONFIRMATION_MODAL, v9);
 end;
 function v5.invitePlayerToClan(p30, p31, p32)
-	p30.clansRemotes:Get("InvitePlayerToClan"):CallServer(p31, p32);
+	p30.clansRemotes:Get("RemoteName"):CallServer(p31, p32);
 end;
 function v5.clanInviteDecision(p33, p34, p35)
-	p33.clansRemotes:Get("ClanInviteDecision"):CallServerAsync(p34, p35):andThen(function(p36)
+	p33.clansRemotes:Get("RemoteName"):CallServerAsync(p34, p35):andThen(function(p36)
 		local v10 = p36.joinedClan and p36.clanId;
 		if v10 ~= "" and v10 and not l__Flamework__3.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):isAppOpen(l__BedwarsAppIds__4.CLAN_PROFILE) then
 			l__Flamework__3.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__4.CLAN_PROFILE, {
@@ -168,7 +168,7 @@ function v5.clanInviteDecision(p33, p34, p35)
 	});
 end;
 function v5.kitShopPurchase(p38, p39)
-	local v11 = p38.clansRemotes:Get("KitShopPurchase"):CallServerAsync(p39);
+	local v11 = p38.clansRemotes:Get("RemoteName"):CallServerAsync(p39);
 	v11:andThen(function(p40)
 		if p40 then
 			l__SoundManager__5:playSound(l__GameSound__6.BEDWARS_UPGRADE_SUCCESS);

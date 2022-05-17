@@ -24,7 +24,7 @@ end;
 local l__ClientStore__3 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	p2.remotes:OnEvent("SendThemedEventStats", function(p3)
+	p2.remotes:OnEvent("RemoteName", function(p3)
 		l__ClientStore__3:dispatch({
 			type = "SetPteCollectables", 
 			personalCollectables = p3

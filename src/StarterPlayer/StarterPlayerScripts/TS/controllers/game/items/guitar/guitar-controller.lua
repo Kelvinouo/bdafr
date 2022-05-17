@@ -49,7 +49,7 @@ local l__CollectionTagAdded__19 = v2.CollectionTagAdded;
 local l__CollectionService__20 = v5.CollectionService;
 function u1.KnitStart(p2)
 	u2.KnitStart(p2);
-	l__default__4.Client:WaitFor("GuitarHeal"):andThen(function(p3)
+	l__default__4.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
 			local v9 = p4.targetEntity.PrimaryPart;
 			if v9 ~= nil then
@@ -252,7 +252,7 @@ function u1.stopPlaying(p17)
 	p17.playing = false;
 	p17.playingMaid:DoCleaning();
 	task.spawn(function()
-		l__default__4.Client:Get("cQyurjiogthdxWxmBE"):SendToServer();
+		l__default__4.Client:Get("RemoteName"):SendToServer();
 	end);
 end;
 local l__EntityUtil__30 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
@@ -327,7 +327,7 @@ function u1.performHeal(p18)
 			v31 = v56[1]:getInstance();
 		end;
 	end;
-	l__default__4.Client:Get("rGonjjSpleaaPhsdoMzJdqoIfwqypfsYtm"):SendToServer({
+	l__default__4.Client:Get("RemoteName"):SendToServer({
 		healTarget = v31
 	});
 end;

@@ -146,7 +146,7 @@ function v8.createWeaponLabel(p7, p8, p9, p10)
 end;
 local l__default__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function v8.listenForProgressUpdates(p11)
-	p11.connectionMaid:GiveTask((l__default__5.Client:WaitFor("phalaFdzjcooCPeqq"):expect():Connect(function(p12)
+	p11.connectionMaid:GiveTask((l__default__5.Client:WaitFor("RemoteName"):expect():Connect(function(p12)
 		if p12.progress == p11.props.start then
 			local v14 = u2.lastImageId;
 			local v15 = u2.currentImageId;
@@ -172,7 +172,7 @@ function v8.listenForProgressUpdates(p11)
 	end)));
 end;
 function v8.listenForLeaderboardUpdates(p13)
-	p13.connectionMaid:GiveTask((l__default__5.Client:WaitFor("qdfBbzAiljvjWvjhCaysiitefcphsdwnpv"):expect():Connect(function(p14)
+	p13.connectionMaid:GiveTask((l__default__5.Client:WaitFor("RemoteName"):expect():Connect(function(p14)
 		local v17 = p13:ordinalSuffix(p14.place);
 		if p14.tied then
 			v17 = v17 .. " (tied)";
