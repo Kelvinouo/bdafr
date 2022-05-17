@@ -86,7 +86,7 @@ function v5.KnitStart(p2)
 			end);
 			p3.Touched:Connect(function(p5)
 				if p3:GetAttribute("SnapTrapState") == l__SnapTrapState__10.ACTIVE and l__Players__3.LocalPlayer.Character and p5.Parent == l__Players__3.LocalPlayer.Character then
-					l__default__11.Client:Get("zvgetdyiPjktbcn"):SendToServer({
+					l__default__11.Client:Get("nRiUghScRtMrNlwdCcbG"):SendToServer({
 						snapTrap = p3
 					});
 				end;

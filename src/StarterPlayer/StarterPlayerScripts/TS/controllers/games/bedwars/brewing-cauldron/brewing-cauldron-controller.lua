@@ -47,7 +47,7 @@ function v4.KnitStart(p2)
 		p2.activeBillboards[l__Position__10] = nil;
 		p2.activeStatus[l__Position__10] = nil;
 	end);
-	l__default__4.Client:WaitFor("SwjvviebegfjooseZdQl"):andThen(function(p5)
+	l__default__4.Client:WaitFor("ixLozSZnlivlx"):andThen(function(p5)
 		p5:Connect(function(p6)
 			local v11 = nil;
 			local l__craftingEntity__12 = p6.craftingEntity;
@@ -84,7 +84,7 @@ function v4.KnitStart(p2)
 			p2:updatePrompt(l__craftingEntity__12, "Collect");
 		end);
 	end);
-	l__default__4.Client:WaitFor("nBBBZzsIngapVuvr"):andThen(function(p7)
+	l__default__4.Client:WaitFor("TulQbtIOtJKm"):andThen(function(p7)
 		p7:Connect(function(p8)
 			local v15 = {};
 			for v16, v17 in pairs(p8.craftingEntity) do
@@ -243,7 +243,7 @@ function v4.createPrompts(p27, p28)
 			end;
 			l__GameAnimationUtil__15.playAnimation(p29, l__AnimationType__16.PUNCH);
 			l__KnitClient__7.Controllers.ViewmodelController:playAnimation(l__AnimationType__16.FP_USE_ITEM);
-			l__default__4.Client:Get("aopikckwadkVfuruiwxoggvyghWvtPRwfWte"):SendToServer({
+			l__default__4.Client:Get("xBdCvra"):SendToServer({
 				craftingEntity = p28, 
 				itemInHand = v33
 			});

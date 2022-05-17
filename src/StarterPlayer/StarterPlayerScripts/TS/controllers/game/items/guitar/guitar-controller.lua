@@ -252,7 +252,7 @@ function u1.stopPlaying(p17)
 	p17.playing = false;
 	p17.playingMaid:DoCleaning();
 	task.spawn(function()
-		l__default__4.Client:Get("ubsGqqrmmn"):SendToServer();
+		l__default__4.Client:Get("cQyurjiogthdxWxmBE"):SendToServer();
 	end);
 end;
 local l__EntityUtil__30 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
@@ -327,7 +327,7 @@ function u1.performHeal(p18)
 			v31 = v56[1]:getInstance();
 		end;
 	end;
-	l__default__4.Client:Get("xygarjvczhdsmpA"):SendToServer({
+	l__default__4.Client:Get("rGonjjSpleaaPhsdoMzJdqoIfwqypfsYtm"):SendToServer({
 		healTarget = v31
 	});
 end;

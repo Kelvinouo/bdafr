@@ -45,7 +45,7 @@ function v5.KnitStart(p2)
 			u11:DoCleaning();
 		end;
 	end);
-	l__default__3.Client:WaitFor("ihswhqnSlyizwyLhvBft"):expect():Connect(function(p4)
+	l__default__3.Client:WaitFor("aiVldGp"):expect():Connect(function(p4)
 		if p4.onLastWeapon then
 			p2:createRay(p4.player);
 			return;

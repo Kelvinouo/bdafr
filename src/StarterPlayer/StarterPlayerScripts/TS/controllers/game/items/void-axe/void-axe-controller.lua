@@ -86,7 +86,7 @@ function v6.useVoidAxe(p5)
 		cooldownBar = {}
 	});
 	l__SoundManager__5:playSound(l__GameSound__6.VOID_AXE_LEAP);
-	l__default__3.Client:Get("qmmfojbuuMxpaiqkycYqzsdxQn"):SendToServer();
+	l__default__3.Client:Get("tcfjRJMbGLq"):SendToServer();
 	local v11 = l__KnitClient__10.Controllers.SprintController:getMovementStatusModifier():addModifier({
 		moveSpeedMultiplier = 0, 
 		blockSprint = true
@@ -121,7 +121,7 @@ function v6.useVoidAxe(p5)
 				v15 = v15:getItemTypeInHand();
 			end;
 			if v15 == l__ItemType__16.VOID_AXE then
-				l__default__3.Client:Get("bfmxOlpanuloqily"):SendToServer();
+				l__default__3.Client:Get("phwctfgRswvtkydathfiqdzytEbqyko"):SendToServer();
 			end;
 			v11.Destroy();
 		end);

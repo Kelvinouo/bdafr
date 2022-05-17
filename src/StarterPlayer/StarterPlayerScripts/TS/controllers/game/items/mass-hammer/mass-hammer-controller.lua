@@ -60,23 +60,23 @@ function v6.KnitStart(p2)
 			l__ContextActionService__7:UnbindAction("use-mass_hammer");
 		end);
 	end);
-	l__default__8.Client:OnEvent("jSrDozPChqccmoh", function(p3)
+	l__default__8.Client:OnEvent("bvybiAoWzkstym", function(p3)
 		if not l__Players__9.LocalPlayer.Character then
 			return nil;
 		end;
 		p2:speedScale(l__Players__9.LocalPlayer.Character, p3.speed);
 	end);
-	l__default__8.Client:OnEvent("Vfshyeyjkzjoe", function()
+	l__default__8.Client:OnEvent("uNnxAeRthpbujkvsPkbsLliC", function()
 		p2.cooldownHasEnded = true;
 	end);
-	l__default__8.Client:OnEvent("mAoneNynDckhfwkokbdnsesowgh", function()
+	l__default__8.Client:OnEvent("pjrlukBzusjhUuohgIhjxkzImsuSmfisigoof", function()
 		p2:cleanUpDuty();
 		p2.cooldownHasEnded = false;
 	end);
 end;
 function v6.activateAbility(p4)
 	p4.cooldownHasEnded = false;
-	l__default__8.Client:Get("oiBcsioylbexlaqmcotlaqa"):SendToServer();
+	l__default__8.Client:Get("hmmfnkgmxxkt"):SendToServer();
 end;
 local l__ItemType__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
 function v6.isRelevantItem(p5, p6)

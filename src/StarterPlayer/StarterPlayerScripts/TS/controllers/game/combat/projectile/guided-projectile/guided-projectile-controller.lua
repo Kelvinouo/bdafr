@@ -22,7 +22,7 @@ local u3 = v1.import(script, v1.getModule(script, "@rbxts", "flipper").src);
 function v5.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "GuidedProjectileController";
-	p1.fireGuidedProjectile = l__default__2.Client:Get("wdvpvuBspRNhqsvybjtfcjekbdl");
+	p1.fireGuidedProjectile = l__default__2.Client:Get("IxseidLYvYTcy");
 	p1.angleX = 0;
 	p1.angleY = 0;
 	p1.directionMotor = u3.GroupMotor.new({

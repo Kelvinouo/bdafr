@@ -73,7 +73,7 @@ function v4.KnitStart(p2)
 			end);
 		end);
 		v6.Triggered:Connect(function(p10)
-			l__default__6.Client:Get("yrkxstjhhaiviTQfwHcgxhiuoAomIsNddwzrj"):SendToServer({
+			l__default__6.Client:Get("ymmopjznFj"):SendToServer({
 				blockInstance = p3
 			});
 		end);

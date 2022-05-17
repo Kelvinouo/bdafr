@@ -121,7 +121,7 @@ end;
 local l__Players__14 = v4.Players;
 function v6.collectEntity(p10, p11, p12, p13)
 	if p11 == l__Players__14.LocalPlayer then
-		l__default__2.Client:Get("zwdajqgrbiohB"):SendToServer({
+		l__default__2.Client:Get("wtjulqjzrxgszd"):SendToServer({
 			id = p12:GetAttribute("Id"), 
 			collectableName = p13
 		});

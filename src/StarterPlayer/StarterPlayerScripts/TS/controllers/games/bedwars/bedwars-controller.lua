@@ -107,7 +107,7 @@ function u1.KnitStart(p2)
 			usingKitSkin = p10.usingSkin
 		});
 	end);
-	l__default__9.Client:WaitFor("ocjipaqwglBfxmtQ"):andThen(function(p11)
+	l__default__9.Client:WaitFor("tbbEcqojkkcfGcpyvsdeNujGSdir"):andThen(function(p11)
 		for v22, v23 in pairs(p11:CallServer()) do
 			l__ClientStore__8:dispatch({
 				type = "BedwarsSetKits", 

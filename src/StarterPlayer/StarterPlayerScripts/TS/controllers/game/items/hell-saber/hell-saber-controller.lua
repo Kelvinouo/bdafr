@@ -46,7 +46,7 @@ function v6.KnitStart(p2)
 			return nil;
 		end;
 		if p3.chargedAttack.chargeTime >= 0.5 then
-			l__default__8.Client:Get("uuxtnsZFfbtxyqlLrusbptucapw"):SendToServer({
+			l__default__8.Client:Get("jedhdgjxjomkhakM"):SendToServer({
 				chargeTime = p3.chargedAttack.chargeTime, 
 				player = p3.fromPlayer, 
 				weapon = p3.weapon

@@ -55,10 +55,10 @@ function u1.KnitStart(p2)
 			v6(v8, v7 - 1, l__denyRegions__5);
 		end;
 	end);
-	l__default__7.Client:OnEvent("RMPjzcWmYAjNVzZqskjhddjwBopoijEauhzK", function(p7)
+	l__default__7.Client:OnEvent("IpbcxmasolnuvpkuvemuZpjTq", function(p7)
 		p2.denyRegions = p7.blockPlaceDisabledRegions;
 	end);
-	p2.denyRegions = l__default__7.Client:Get("poajHkeXvkconTrYmk"):CallServer().blockPlaceDisabledRegions;
+	p2.denyRegions = l__default__7.Client:Get("bgkqsKfp"):CallServer().blockPlaceDisabledRegions;
 end;
 u1.waitForCFrame = v1.async(function(p8, p9)
 	return p8:getCFramesFolder():WaitForChild(p9).Value;

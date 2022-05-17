@@ -138,7 +138,7 @@ function v5.findGhosts(p16)
 	if not v13 then
 		return nil;
 	end;
-	l__default__15.Client:Get("zwdajqgrbiohB"):SendToServer({
+	l__default__15.Client:Get("wtjulqjzrxgszd"):SendToServer({
 		id = v13:GetAttribute("Id")
 	});
 end;

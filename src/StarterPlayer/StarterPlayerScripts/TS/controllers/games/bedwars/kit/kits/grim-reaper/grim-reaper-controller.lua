@@ -76,7 +76,7 @@ local l__AnimationType__10 = v1.import(script, game:GetService("ReplicatedStorag
 function u1.consumeSoul(p10, p11)
 	local v11 = p11:GetAttribute("GrimReaperSoulSecret");
 	l__GameAnimationUtil__9.playAnimation(l__Players__7.LocalPlayer, l__AnimationType__10.GRIM_REAPER_CONSUME);
-	l__default__3.Client:Get("YgqdvsgdUgSful"):CallServer({
+	l__default__3.Client:Get("ngvxtFhdziWgYuUsWyku"):CallServer({
 		secret = v11
 	});
 end;

@@ -45,7 +45,7 @@ function v4.KnitStart(p2)
 			bountyHunterTarget = v7
 		});
 	end);
-	l__default__4.Client:WaitFor("gaDhzhayYNdgAVulxthzrqjxsTx"):andThen(function(p4)
+	l__default__4.Client:WaitFor("vrdvXvvkgNuh"):andThen(function(p4)
 		p4:CallServerAsync():andThen(function(p5)
 			if p5 ~= 0 and p5 == p5 and p5 then
 				local v8 = l__Players__5:GetPlayerByUserId(p5);

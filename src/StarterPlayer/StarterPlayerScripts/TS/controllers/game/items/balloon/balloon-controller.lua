@@ -188,7 +188,7 @@ function u1.dropTNT(p17)
 		return false;
 	end;
 	p17.lastTntDrop = tick();
-	l__default__12.Client:Get("wZPfntesifcVvnrYddgdatvRwjfnooxl"):SendToServer();
+	l__default__12.Client:Get("bvpuaLpN"):SendToServer();
 	return true;
 end;
 local u19 = v2.ConstantManager.registerConstants(script, {
@@ -322,11 +322,11 @@ function u1.inflateBalloon(p23)
 		return nil;
 	end;
 	l__KnitClient__4.Controllers.ViewmodelController:playAnimation(l__AnimationType__33.FP_USE_ITEM);
-	l__default__12.Client:Get("ncsytddaYku"):SendToServer();
+	l__default__12.Client:Get("liqrwelMGxaurbWOKsLhjzgrufgubox"):SendToServer();
 end;
 function u1.deflateBalloon(p24)
 	l__KnitClient__4.Controllers.ViewmodelController:playAnimation(l__AnimationType__33.FP_USE_ITEM);
-	l__default__12.Client:Get("soddZfzGbZqdgbMjqpiligm"):SendToServer();
+	l__default__12.Client:Get("ndvhridAsyPt"):SendToServer();
 end;
 function u1.isRelevantItem(p25, p26)
 	return p26.itemType == l__ItemType__11.BALLOON;

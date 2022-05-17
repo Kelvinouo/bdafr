@@ -223,7 +223,7 @@ function v4.equipArmorItem(p26, p27, p28)
 		local v46 = p26.instance:FindFirstChild("ArmorInvItem_" .. tostring(p28));
 		if v46 then
 			v46.Value = p27;
-			l__default__11.Client:Get("soMwcMin"):CallServerAsync({
+			l__default__11.Client:Get("dkyenqnofd"):CallServerAsync({
 				item = p27, 
 				armorSlot = p28
 			}):andThen(function()
@@ -245,7 +245,7 @@ function v4.unequipArmorSlot(p30, p31)
 		local v51 = p30.instance:FindFirstChild("ArmorInvItem_" .. tostring(p31));
 		if v51 then
 			v51.Value = nil;
-			l__default__11.Client:Get("soMwcMin"):CallServerAsync({
+			l__default__11.Client:Get("dkyenqnofd"):CallServerAsync({
 				item = false, 
 				armorSlot = p31
 			}):andThen(function()
@@ -303,7 +303,7 @@ function v4.equipItem(p33, p34)
 	if p33:isAlive() and l__Players__3.LocalPlayer.Character == p33.instance and p33.instance:FindFirstChild("HandInvItem") then
 		p33.instance.HandInvItem.Value = p34;
 		task.spawn(function()
-			l__default__11.Client:Get("QcjmvtklnavylplmdabkjTnwc"):CallServerAsync({
+			l__default__11.Client:Get("noheZwetpkrqdyTetC"):CallServerAsync({
 				hand = p34
 			}):andThen(function()
 
@@ -319,7 +319,7 @@ function v4.unequipItemInHand(p37)
 	if p37:isAlive() and l__Players__3.LocalPlayer.Character == p37.instance and p37.instance:FindFirstChild("HandInvItem") then
 		p37.instance.HandInvItem.Value = nil;
 		task.spawn(function()
-			l__default__11.Client:Get("QcjmvtklnavylplmdabkjTnwc"):CallServerAsync({
+			l__default__11.Client:Get("noheZwetpkrqdyTetC"):CallServerAsync({
 				hand = false
 			}):andThen(function()
 

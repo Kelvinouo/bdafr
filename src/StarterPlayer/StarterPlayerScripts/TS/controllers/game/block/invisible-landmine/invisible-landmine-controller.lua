@@ -167,7 +167,7 @@ function v8.handleTouch(p10, p11)
 			v23.isDetonating = true;
 			if v27 then
 				p11:SetAttribute("LandmineDetonating", true);
-				l__default__4.Client:Get("SlerFrgGtXhtolkLaxtr"):SendToServer({
+				l__default__4.Client:Get("ttbnsYcdivtaMbpvijyetdmivdbgbqc"):SendToServer({
 					invisibleLandmine = p11
 				});
 			end;

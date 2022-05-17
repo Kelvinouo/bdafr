@@ -125,7 +125,7 @@ function v5.attemptLaunch(p6, p7, p8)
 		l__Character__16.PrimaryPart:ApplyImpulse(Vector3.new(0, l__Character__16.PrimaryPart.AssemblyMass * 100 * v19, 0));
 		p6.lastLaunch = l__Workspace__12:GetServerTimeNow();
 		p6.launched = true;
-		l__default__10.Client:Get("YogvdHljxvyPch"):SendToServer({
+		l__default__10.Client:Get("hndwpyvyhzFimddHhtqkeoHhrScziliPwQnZGhtKYi"):SendToServer({
 			launchPad = p7
 		});
 		l__ClientSyncEvents__11.LaunchPadUsed:fire(p7);

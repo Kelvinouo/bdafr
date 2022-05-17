@@ -63,7 +63,7 @@ function v4.mute(p7)
 			backgroundMusicVolume = 0
 		}
 	});
-	l__default__9.Client:Get("mweptuBoeglkbxEoozkgqWmehFtiqrQfYa"):SendToServer({
+	l__default__9.Client:Get("ysxhxqtsbXoed"):SendToServer({
 		volume = 0
 	});
 end;
@@ -153,7 +153,7 @@ function v4.unmute(p9)
 			backgroundMusicVolume = 1
 		}
 	});
-	l__default__9.Client:Get("mweptuBoeglkbxEoozkgqWmehFtiqrQfYa"):SendToServer({
+	l__default__9.Client:Get("ysxhxqtsbXoed"):SendToServer({
 		volume = 1
 	});
 end;

@@ -24,7 +24,7 @@ local l__ReplicatedStorage__3 = v1.import(script, v1.getModule(script, "@rbxts",
 function v3.KnitStart(p2)
 	local function u4()
 		task.wait(math.random(20, 60));
-		l__default__2.Client:Get("obhHuduk"):SendToServer();
+		l__default__2.Client:Get("mrUqcTZkiybixictbc"):SendToServer();
 	end;
 	task.defer(function()
 		task.wait(20);
@@ -40,7 +40,7 @@ function v3.KnitStart(p2)
 	end);
 end;
 function v3.sendCustomEvent(p4, p5, p6)
-	l__default__2.Client:Get("bLqm"):SendToServer(p5, p6);
+	l__default__2.Client:Get("UVglkKifCFoeiqyg"):SendToServer(p5, p6);
 end;
 u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
 u1 = u1(v3.new());

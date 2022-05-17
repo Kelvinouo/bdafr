@@ -40,7 +40,7 @@ function u1.KnitStart(p2)
 			progress = p3.incrementProgress / p2.upgradeRequirement
 		});
 	end);
-	l__default__4.Client:OnEvent("pCkahuvtlsxy", function(p4)
+	l__default__4.Client:OnEvent("gIEiCWgticyZpmkrjbukzfNirt", function(p4)
 		p2:createEffect(p4.player);
 	end);
 	l__KnitClient__6.Controllers.KitController:watchLocalKit(function(p5)

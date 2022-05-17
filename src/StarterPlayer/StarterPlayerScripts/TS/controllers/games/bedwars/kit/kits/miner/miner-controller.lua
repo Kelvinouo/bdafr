@@ -426,7 +426,7 @@ function v7.onKitEnabled(p26)
 			end);
 		end);
 		v72.Triggered:Connect(function(p29)
-			l__default__4.Client:Get("glopzVz"):SendToServer({
+			l__default__4.Client:Get("txdqdjumakpriimombpwslwhlk"):SendToServer({
 				petrifyId = p27:GetAttribute("PetrifyId")
 			});
 		end);

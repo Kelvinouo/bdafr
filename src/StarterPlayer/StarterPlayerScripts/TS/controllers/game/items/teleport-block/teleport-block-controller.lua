@@ -34,7 +34,7 @@ function v6.KnitStart(p2)
 	l__CollectionTagAdded__2("teleport_block", function(p3)
 		p3.Touched:Connect(function(p4)
 			if l__Players__3.LocalPlayer.Character and p4.Parent == l__Players__3.LocalPlayer.Character then
-				l__default__4.Client:Get("wayfXdcsmloLqftg"):SendToServer({
+				l__default__4.Client:Get("hGwfhTobkrhtqNgurcxVmhuq"):SendToServer({
 					teleportBlock = p3
 				});
 			end;

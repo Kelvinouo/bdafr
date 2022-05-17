@@ -105,7 +105,7 @@ function v5.KnitStart(p3)
 			end;
 			if u9 and u10 < p3.allowedAirJumps and u12 < time() then
 				u12 = time() + 0.25;
-				l__default__8.Client:Get("wvcKctdhyutwkypryyiyIacghbjQm"):SendToServer();
+				l__default__8.Client:Get("UnzpvuOqzremzTdgdollhsaw"):SendToServer();
 				u10 = u10 + 1;
 				l__Humanoid__17:ChangeState(Enum.HumanoidStateType.Jumping);
 			end;

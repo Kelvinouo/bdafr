@@ -91,7 +91,7 @@ return {
 		end;
 		v20.Text = v22;
 		function v20.OnClick()
-			l__default__8.Client:Get("njxliaeaTlwekyaConRaqoiBofSkq"):CallServerAsync(p1.Upgrade):andThen(function(p3)
+			l__default__8.Client:Get("avitUr"):CallServerAsync(p1.Upgrade):andThen(function(p3)
 				if p3 then
 					l__KnitClient__9.Controllers.FlamethrowerController:upgrade();
 					p1.SetUpgrades(p3);

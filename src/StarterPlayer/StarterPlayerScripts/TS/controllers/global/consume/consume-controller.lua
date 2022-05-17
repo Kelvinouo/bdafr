@@ -69,7 +69,7 @@ function u1.onEnable(p5, p6)
 			u22:Stop();
 		end;
 		u23 = -1;
-		l__default__6.Client:Get("ozoxuflewnogfmenpqcboxfpdaapKstmgmkEry"):CallServerAsync({
+		l__default__6.Client:Get("embwxijxnmcvhebYqc"):CallServerAsync({
 			item = p6.tool
 		}):andThen(function()
 

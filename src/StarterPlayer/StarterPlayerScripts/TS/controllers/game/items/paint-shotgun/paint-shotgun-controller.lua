@@ -113,7 +113,7 @@ function v5.fire(p14)
 		if v10 then
 			l__Character__9:SetPrimaryPartCFrame(CFrame.new(l__Character__9:GetPrimaryPartCFrame().Position, l__Character__9:GetPrimaryPartCFrame().Position + v10 * Vector3.new(1, 0, 1)));
 			local v11 = l__Character__9:GetPrimaryPartCFrame();
-			l__default__18.Client:Get("ruzwBgdqcSYpHhFeCiwFalhb"):SendToServer(v11.Position, v10);
+			l__default__18.Client:Get("nzyKhsbukoveortsrbhnojbjxGwlB"):SendToServer(v11.Position, v10);
 			local function v12()
 				if v11 then
 					l__KnitClient__19.Controllers.ScreenShakeController:shake(v11.Position, v11 * Vector3.new(-0.25, 0, -1) - v11.Position, {

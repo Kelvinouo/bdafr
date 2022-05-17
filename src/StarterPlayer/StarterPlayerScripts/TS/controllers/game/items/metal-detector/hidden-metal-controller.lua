@@ -127,7 +127,7 @@ function v5.createLocalModel(p10, p11)
 	function v20.Triggered(p12)
 		l__GameAnimationUtil__8.playAnimation(p12, l__AnimationType__9.SHOVEL_DIG);
 		l__SoundManager__16:playSound(l__GameSound__17.SNAP_TRAP_CONSUME_MARK);
-		l__default__3.Client:Get("zwdajqgrbiohB"):SendToServer({
+		l__default__3.Client:Get("wtjulqjzrxgszd"):SendToServer({
 			id = p11.id
 		});
 	end;

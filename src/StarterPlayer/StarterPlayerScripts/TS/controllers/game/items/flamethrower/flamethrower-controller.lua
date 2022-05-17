@@ -49,7 +49,7 @@ function u1.useFlamethrower(p3)
 		return nil;
 	end;
 	l__Flamework__4.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):setOnCooldown(l__FLAMETHROWER_USE__5, l__PyroUtil__6.FLAMETHROWER_COOLDOWN_SEC);
-	l__default__7.Client:Get("nldsgsazohDwaUgpyobuciNpcuzk"):CallServerAsync();
+	l__default__7.Client:Get("pnef"):CallServerAsync();
 	local v9 = l__KnitClient__8.Controllers.SprintController:getMovementStatusModifier():addModifier({
 		moveSpeedMultiplier = 0.2
 	});

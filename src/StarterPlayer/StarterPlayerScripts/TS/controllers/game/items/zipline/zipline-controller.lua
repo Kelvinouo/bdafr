@@ -60,7 +60,7 @@ function u1.KnitStart(p2)
 				if l__Character__8 and v9 then
 					local l__Value__10 = p3.ZiplineDestination.Value;
 					if l__Value__10 then
-						local v11 = l__default__8.Client:Get("ljnarsnsucumrmtfqhWsiEwrb"):CallServer({
+						local v11 = l__default__8.Client:Get("wibbIZyaqloqqxzIupixonb"):CallServer({
 							ziplineBasePosition = l__BlockEngine__9:getBlockPosition(p3.Position)
 						});
 						if v11 then
