@@ -129,24 +129,22 @@ u22 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u
 		if l__DeviceUtil__1.isHoarceKat() then
 			return nil;
 		end;
-		local u25 = nil;
-		l__KnitClient__12.Controllers.PermissionController:playerHasAnyPermissions(l__Players__11.LocalPlayer, { 2, 0, 4, 6 }):andThen(function(p7)
-			if p7 then
-				v5(true);
-				return;
-			end;
-			u25 = l__Players__11.LocalPlayer:GetAttributeChangedSignal("Cohost"):Connect(function()
+		local v43 = nil;
+		if l__KnitClient__12.Controllers.PermissionController:playerHasAnyPermissions(l__Players__11.LocalPlayer, { 2, 0, 4, 6 }) then
+			v5(true);
+		else
+			v43 = l__Players__11.LocalPlayer:GetAttributeChangedSignal("Cohost"):Connect(function()
 				v5(l__Players__11.LocalPlayer:GetAttribute("Cohost") == true);
 			end);
-		end);
+		end;
 		return function()
-			u25:Disconnect();
+			v43:Disconnect();
 		end;
 	end, {});
-	local v43 = {
+	local v44 = {
 		Size = UDim2.fromScale(1, 1)
 	};
-	local v44 = {
+	local v45 = {
 		ServerRegionDisplay = u5.createElement("TextLabel", {
 			AnchorPoint = Vector2.new(0, 1), 
 			Position = UDim2.fromScale(0, 1), 
@@ -168,7 +166,7 @@ u22 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u
 			PaddingLeft = UDim.new(0.01, 0)
 		}))
 	};
-	local v45 = {
+	local v46 = {
 		Size = UDim2.fromScale(0.1, 0.035), 
 		AnchorPoint = Vector2.new(1, 0), 
 		AutomaticSize = Enum.AutomaticSize.X, 
@@ -176,16 +174,16 @@ u22 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u
 		BorderSizePixel = 0, 
 		BackgroundTransparency = 1
 	};
-	local v46 = { u5.createElement("UIListLayout", {
+	local v47 = { u5.createElement("UIListLayout", {
 			FillDirection = Enum.FillDirection.Horizontal, 
 			VerticalAlignment = Enum.VerticalAlignment.Top, 
 			HorizontalAlignment = Enum.HorizontalAlignment.Right, 
 			SortOrder = Enum.SortOrder.LayoutOrder, 
 			Padding = UDim.new(0, l__Theme__14.topBarGuiSpacing)
 		}) };
-	local v47 = false;
+	local v48 = false;
 	if v7.winConInfoHud ~= nil then
-		v47 = u5.createElement(l__HudCard__15, {
+		v48 = u5.createElement(l__HudCard__15, {
 			BackgroundColor3 = l__ColorUtil__13.hexColor(16755200), 
 			LayoutOrder = 0
 		}, { u5.createElement("TextLabel", {
@@ -200,81 +198,81 @@ u22 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u
 				TextColor3 = l__ColorUtil__13.WHITE
 			}) });
 	end;
-	if v47 then
-		v46[#v46 + 1] = v47;
-	end;
-	v46[#v46 + 1] = v8;
-	v46[#v46 + 1] = v15;
-	local v48 = false;
-	if v42 == "beds" then
-		v48 = v32;
-	end;
 	if v48 then
-		v46[#v46 + 1] = v48;
+		v47[#v47 + 1] = v48;
 	end;
+	v47[#v47 + 1] = v8;
+	v47[#v47 + 1] = v15;
 	local v49 = false;
-	if v42 == "players-alive" then
-		v49 = v39;
+	if v42 == "beds" then
+		v49 = v32;
 	end;
 	if v49 then
-		v46[#v46 + 1] = v49;
+		v47[#v47 + 1] = v49;
 	end;
-	local v50 = #v46;
-	local v51 = v42 == "score";
-	if v51 then
-		local l__teamScores__52 = p1.store.Game.teamScores;
-		local function v53(p8, p9)
+	local v50 = false;
+	if v42 == "players-alive" then
+		v50 = v39;
+	end;
+	if v50 then
+		v47[#v47 + 1] = v50;
+	end;
+	local v51 = #v47;
+	local v52 = v42 == "score";
+	if v52 then
+		local l__teamScores__53 = p1.store.Game.teamScores;
+		local function v54(p7, p8)
 			return u5.createElement(l__HudScore__16, {
-				teamId = p8.teamId, 
-				score = p8.score, 
+				teamId = p7.teamId, 
+				score = p7.score, 
 				LayoutOrder = 3, 
 				store = p1.store
 			});
 		end;
-		local v54 = table.create(#l__teamScores__52);
-		for v55, v56 in ipairs(l__teamScores__52) do
-			v54[v55] = v53(v56, v55 - 1, l__teamScores__52);
+		local v55 = table.create(#l__teamScores__53);
+		for v56, v57 in ipairs(l__teamScores__53) do
+			v55[v56] = v54(v57, v56 - 1, l__teamScores__53);
 		end;
-		v51 = v54;
+		v52 = v55;
 	end;
-	if v51 then
-		for v57, v58 in ipairs(v51) do
-			v46[v50 + v57] = v58;
+	if v52 then
+		for v58, v59 in ipairs(v52) do
+			v47[v51 + v58] = v59;
 		end;
 	end;
-	local v59 = v6 == l__QueueType__2.SURVIVAL;
-	if v59 then
-		local v60 = {};
-		local l__backgroundMusicVolume__61 = p1.store.Settings.backgroundMusicVolume;
-		if l__backgroundMusicVolume__61 ~= 0 and l__backgroundMusicVolume__61 == l__backgroundMusicVolume__61 and l__backgroundMusicVolume__61 then
-			local v62 = l__ImageId__17.VOLUME_UP_SOLID;
+	local v60 = v6 == l__QueueType__2.SURVIVAL;
+	if v60 then
+		local v61 = {};
+		local l__backgroundMusicVolume__62 = p1.store.Settings.backgroundMusicVolume;
+		if l__backgroundMusicVolume__62 ~= 0 and l__backgroundMusicVolume__62 == l__backgroundMusicVolume__62 and l__backgroundMusicVolume__62 then
+			local v63 = l__ImageId__17.VOLUME_UP_SOLID;
 		else
-			v62 = l__ImageId__17.VOLUME_MUTE_SOLID;
+			v63 = l__ImageId__17.VOLUME_MUTE_SOLID;
 		end;
-		v60.Image = v62;
-		function v60.OnClick()
-			local l__backgroundMusicVolume__63 = p1.store.Settings.backgroundMusicVolume;
-			if l__backgroundMusicVolume__63 ~= 0 and l__backgroundMusicVolume__63 == l__backgroundMusicVolume__63 and l__backgroundMusicVolume__63 then
+		v61.Image = v63;
+		function v61.OnClick()
+			local l__backgroundMusicVolume__64 = p1.store.Settings.backgroundMusicVolume;
+			if l__backgroundMusicVolume__64 ~= 0 and l__backgroundMusicVolume__64 == l__backgroundMusicVolume__64 and l__backgroundMusicVolume__64 then
 				l__KnitClient__12.Controllers.BackgroundMusicController:mute();
 				return;
 			end;
 			l__KnitClient__12.Controllers.BackgroundMusicController:unmute();
 		end;
-		v60.LayoutOrder = 7;
-		v59 = u5.createElement(l__TopBarButton__18, v60);
+		v61.LayoutOrder = 7;
+		v60 = u5.createElement(l__TopBarButton__18, v61);
 	end;
-	if v59 then
-		v46[#v46 + 1] = v59;
+	if v60 then
+		v47[#v47 + 1] = v60;
 	end;
-	local v64 = #v46;
-	v46[v64 + 1] = u5.createElement(l__TopBarButton__18, {
+	local v65 = #v47;
+	v47[v65 + 1] = u5.createElement(l__TopBarButton__18, {
 		Image = "rbxassetid://8531706273", 
 		LayoutOrder = 4, 
 		OnClick = function()
 			l__KnitClient__12.Controllers.EmoteController:emote();
 		end
 	});
-	local v65 = l__DeviceUtil__1.isMobileControls() and u5.createElement(l__TopBarButton__18, {
+	local v66 = l__DeviceUtil__1.isMobileControls() and u5.createElement(l__TopBarButton__18, {
 		Image = l__BedwarsImageId__19.HUD_MOBILE_SHIFT_LOCK, 
 		LayoutOrder = 5, 
 		Selected = l__KnitClient__12.Controllers.MobileShiftLockController:isEnabled(), 
@@ -286,10 +284,10 @@ u22 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u
 			l__KnitClient__12.Controllers.MobileShiftLockController:disable();
 		end
 	});
-	if v65 then
-		v46[v64 + 2] = v65;
+	if v66 then
+		v47[v65 + 2] = v66;
 	end;
-	local v66 = v7.rankCategory and u5.createElement(l__TopBarButton__18, {
+	local v67 = v7.rankCategory and u5.createElement(l__TopBarButton__18, {
 		Text = "Report", 
 		LayoutOrder = 6, 
 		OnClick = function()
@@ -298,11 +296,11 @@ u22 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u
 			});
 		end
 	});
-	if v66 then
-		v46[#v46 + 1] = v66;
+	if v67 then
+		v47[#v47 + 1] = v67;
 	end;
 	if not v41 then
-		local v67 = v4 and u5.createElement(l__TopBarButton__18, {
+		local v68 = v4 and u5.createElement(l__TopBarButton__18, {
 			Text = "Host Panel", 
 			LayoutOrder = 6, 
 			OnClick = function()
@@ -310,7 +308,7 @@ u22 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u
 			end
 		});
 	else
-		v67 = u5.createElement(l__TopBarButton__18, {
+		v68 = u5.createElement(l__TopBarButton__18, {
 			Text = "Host Panel", 
 			LayoutOrder = 6, 
 			OnClick = function()
@@ -318,22 +316,22 @@ u22 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u
 			end
 		});
 	end;
-	if v67 then
-		v46[#v46 + 1] = v67;
+	if v68 then
+		v47[#v47 + 1] = v68;
 	end;
-	v44.TopBarHud = u5.createElement("Frame", v45, v46);
-	return u5.createElement(l__Empty__21, v43, v44);
+	v45.TopBarHud = u5.createElement("Frame", v46, v47);
+	return u5.createElement(l__Empty__21, v44, v45);
 end);
 return {
-	HudAppWrapper = function(p10)
+	HudAppWrapper = function(p9)
 		return u5.createElement("ScreenGui", {
 			DisplayOrder = 20, 
 			IgnoreGuiInset = true, 
 			ResetOnSpawn = false
 		}, { u5.createElement(u22, {
 				localPlayerId = l__Players__11.LocalPlayer.UserId, 
-				ToggleTabList = p10.ToggleTabList, 
-				store = p10.store
+				ToggleTabList = p9.ToggleTabList, 
+				store = p9.store
 			}) });
 	end, 
 	HudApp = u22

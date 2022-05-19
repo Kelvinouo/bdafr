@@ -29,7 +29,7 @@ function v3.KnitStart(p2)
 	if l__PlaceUtil__3.isGameServer() then
 		return nil;
 	end;
-	p2.remotes:WaitFor("RemoteName"):andThen(function(p3)
+	p2.remotes:WaitFor("FetchGameUpdates"):andThen(function(p3)
 		local v5 = p3:CallServer();
 		if not v5.success then
 			return nil;

@@ -74,7 +74,7 @@ function v6.tameSheep(p7, p8)
 	if not l__Value__12 then
 		return nil;
 	end;
-	p7.sheepNamespace:Get("RemoteName"):SendToServer(l__Value__12);
+	p7.sheepNamespace:Get("TameSheep"):SendToServer(l__Value__12);
 end;
 u1 = v3.KnitClient.CreateController;
 u1 = u1(v6.new());

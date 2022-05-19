@@ -34,10 +34,10 @@ function v5.KnitStart(p2)
 	v1.Promise.defer(function()
 		p2.policyDiscordAllowed = table.find(l__PolicyService__3:GetPolicyInfoForPlayerAsync(l__Players__4.LocalPlayer).AllowedExternalLinkReferences, "Discord") ~= nil;
 	end);
-	p2.remotes:WaitFor("RemoteName"):andThen(function(p3)
+	p2.remotes:WaitFor("GetSocialConnections"):andThen(function(p3)
 		p2:updateSocialConnectionsReducer((p3:CallServer()));
 	end);
-	p2.remotes:WaitFor("RemoteName"):andThen(function(p4)
+	p2.remotes:WaitFor("SocialConnectionsUpdate"):andThen(function(p4)
 		p4:Connect(function(p5)
 			p2:updateSocialConnectionsReducer(p5);
 		end);
@@ -45,14 +45,14 @@ function v5.KnitStart(p2)
 	l__preloadImages__5({ l__ImageId__6.CHECK_CIRCLE_SOLID, l__ImageId__6.UNLOCK_SOLID });
 end;
 function v5.getDiscordValidationStatus(p6)
-	p6.remotes:WaitFor("RemoteName"):andThen(function(p7)
+	p6.remotes:WaitFor("QueueValidationStatus"):andThen(function(p7)
 		p7:SendToServer({
 			player = l__Players__4.LocalPlayer
 		});
 	end);
 end;
 v5.getJoinedGroupStatus = v1.async(function(p8)
-	return v1.await(p8.remotes:WaitFor("RemoteName"):andThen(function(p9)
+	return v1.await(p8.remotes:WaitFor("VerifyJoinedGroup"):andThen(function(p9)
 		local v7 = p9:CallServer();
 		p8:updateJoinedGroupStore(v7);
 		return v7;

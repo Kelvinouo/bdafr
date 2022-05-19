@@ -91,7 +91,7 @@ function v4.render(p2)
 					v21 = v21.Value;
 				end;
 				if v21 then
-					return v1.await(l__default__4.Client:GetNamespace("Inventory"):Get("RemoteName"):CallServer(v20.Value, v16.tool));
+					return v1.await(l__default__4.Client:GetNamespace("Inventory"):Get("ChestGiveItem"):CallServer(v20.Value, v16.tool));
 				end;
 			end;
 		end);
@@ -205,7 +205,7 @@ function v4.render(p2)
 end;
 function v4.willUnmount(p7)
 	task.spawn(function()
-		l__default__4.Client:GetNamespace("Inventory"):Get("RemoteName"):SendToServer(nil);
+		l__default__4.Client:GetNamespace("Inventory"):Get("SetObservedChest"):SendToServer(nil);
 	end);
 end;
 return {

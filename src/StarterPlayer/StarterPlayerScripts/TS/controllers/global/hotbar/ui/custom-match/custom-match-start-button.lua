@@ -25,7 +25,7 @@ return {
 				BackgroundColor3 = l__Theme__4.backgroundSuccess, 
 				OnClick = function()
 					l__SoundManager__5:playSound(l__GameSound__6.UI_CLICK);
-					l__default__7.Client:GetNamespace("CustomMatches"):Get("RemoteName"):CallServerAsync():andThen(function(p3)
+					l__default__7.Client:GetNamespace("CustomMatches"):Get("StartGame"):CallServerAsync():andThen(function(p3)
 
 					end);
 				end

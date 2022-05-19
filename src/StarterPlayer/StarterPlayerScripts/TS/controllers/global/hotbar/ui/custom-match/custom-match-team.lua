@@ -106,7 +106,7 @@ return {
 			if v33 == nil then
 				v33 = "spectators";
 			end;
-			l__default__7.Client:GetNamespace("CustomMatches"):Get("RemoteName"):CallServerAsync(v33):andThen(function(p5)
+			l__default__7.Client:GetNamespace("CustomMatches"):Get("SelectTeam"):CallServerAsync(v33):andThen(function(p5)
 
 			end);
 		end;

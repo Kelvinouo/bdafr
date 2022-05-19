@@ -24,7 +24,7 @@ local l__default__3 = v1.import(script, v1.getModule(script, "@rbxts", "log").ou
 local l__ClientSyncEvents__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:GetNamespace("Disaster"):OnEvent("RemoteName", function(p3)
+	l__default__2.Client:GetNamespace("Disaster"):OnEvent("DisasterBegan", function(p3)
 		l__default__3.Debug("Received disaster {disastertype}", p3.disasterType);
 		l__ClientSyncEvents__4.DisasterBegan:fire(p3.disasterType, p3.endTime);
 	end);

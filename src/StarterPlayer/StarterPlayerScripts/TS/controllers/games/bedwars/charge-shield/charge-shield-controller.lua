@@ -25,9 +25,9 @@ function v6.constructor(p1)
 	p1.Name = "ChargeShieldController";
 	p1.maid = l__Maid__2.new();
 	p1.remotes = l__default__3.Client:GetNamespace("ChargeShield");
-	p1.chargeShieldUse = p1.remotes:WaitFor("RemoteName");
-	p1.chargeShieldHit = p1.remotes:WaitFor("RemoteName");
-	p1.chargeShieldActivated = p1.remotes:WaitFor("RemoteName");
+	p1.chargeShieldUse = p1.remotes:WaitFor("ChargeShieldUse");
+	p1.chargeShieldHit = p1.remotes:WaitFor("ChargeShieldHit");
+	p1.chargeShieldActivated = p1.remotes:WaitFor("ChargeShieldActivated");
 end;
 local l__Players__4 = v4.Players;
 local l__ChargeShieldUtil__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "charge-shield", "charge-shield-util").ChargeShieldUtil;

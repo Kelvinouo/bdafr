@@ -55,7 +55,7 @@ function v5.KnitStart(p3)
 				break;
 			end;
 			local v8, v9 = pcall(function()
-				return l__default__5.Client:Get("RemoteName")));
+				return l__default__5.Client:Get((table.concat({ "S", "e", "l", "f", "R", "e", "p", "o", "r", "t" }, "")));
 			end);
 			if v8 and v9 == nil then
 				print(2);

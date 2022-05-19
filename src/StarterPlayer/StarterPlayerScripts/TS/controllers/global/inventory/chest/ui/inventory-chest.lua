@@ -50,7 +50,7 @@ return {
 						v13 = v13.Value;
 					end;
 					if v13 then
-						return v1.await(l__default__5.Client:GetNamespace("Inventory"):Get("RemoteName"):CallServer(v12.Value, v7.tool));
+						return v1.await(l__default__5.Client:GetNamespace("Inventory"):Get("ChestGetItem"):CallServer(v12.Value, v7.tool));
 					end;
 				end;
 			end);

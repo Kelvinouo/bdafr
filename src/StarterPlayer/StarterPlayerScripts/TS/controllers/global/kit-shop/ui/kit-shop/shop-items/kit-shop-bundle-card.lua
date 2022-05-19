@@ -64,7 +64,7 @@ function v6.render(p4)
 				table.insert(v9, p5);
 				return;
 			end;
-			if not l__DeviceUtil__8.isHoarceKat() and l__KnitClient__9.Controllers.UnlockController.allItemsUnlocked then
+			if not l__DeviceUtil__8.isHoarceKat() and l__KnitClient__9.Controllers.UnlockController.allKitsUnlocked then
 				table.insert(v9, p5);
 				return;
 			end;

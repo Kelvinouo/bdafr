@@ -111,24 +111,24 @@ function v3.UpdateThirdPersonTransform(p10, p11, p12, p13, p14, p15)
 		if v24 and not p10.needsReset then
 			p13 = p10.lastCameraFocus;
 			p10.VRCameraFocusFrozen = true;
-		else
-			local v25 = true;
-			if p10.lastCameraResetPosition ~= nil then
-				v25 = (p15 - p10.lastCameraResetPosition).Magnitude > 1;
-			end;
-			if not (not p10.VRCameraFocusFrozen) and not (not v25) or p10.needsReset then
-				l__VRService__3:RecenterUserHeadCFrame();
-				p10.VRCameraFocusFrozen = false;
-				p10.needsReset = false;
-				p10.lastCameraResetPosition = p15;
-				p10:ResetZoom();
-				p10:StartFadeFromBlack();
-				local v26 = p10:GetHumanoid();
-				local v27 = v26.Torso and v26.Torso.CFrame.lookVector or Vector3.new(1, 0, 0);
-				local v28 = p13.Position - Vector3.new(v27.X, 0, v27.Z) * v22;
-				local v29 = Vector3.new(p13.x, v28.y, p13.z);
-				p12 = CFrame.new(v28, (Vector3.new(p13.Position.X, v28.Y, p13.Position.Z)));
-			end;
+			return p12, p13;
+		end;
+		local v25 = true;
+		if p10.lastCameraResetPosition ~= nil then
+			v25 = (p15 - p10.lastCameraResetPosition).Magnitude > 1;
+		end;
+		if not (not p10.VRCameraFocusFrozen) and not (not v25) or p10.needsReset then
+			l__VRService__3:RecenterUserHeadCFrame();
+			p10.VRCameraFocusFrozen = false;
+			p10.needsReset = false;
+			p10.lastCameraResetPosition = p15;
+			p10:ResetZoom();
+			p10:StartFadeFromBlack();
+			local v26 = p10:GetHumanoid();
+			local v27 = v26.Torso and v26.Torso.CFrame.lookVector or Vector3.new(1, 0, 0);
+			local v28 = p13.Position - Vector3.new(v27.X, 0, v27.Z) * v22;
+			local v29 = Vector3.new(p13.x, v28.y, p13.z);
+			p12 = CFrame.new(v28, (Vector3.new(p13.Position.X, v28.Y, p13.Position.Z)));
 		end;
 	end;
 	return p12, p13;

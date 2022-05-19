@@ -55,7 +55,7 @@ function v6.render(p4)
 		v8 = true;
 	elseif table.find(p4.props.store.Bedwars.ownedKits, p4.props.Kit) ~= nil then
 		v8 = true;
-	elseif not l__DeviceUtil__8.isHoarceKat() and l__KnitClient__9.Controllers.UnlockController.allItemsUnlocked then
+	elseif not l__DeviceUtil__8.isHoarceKat() and l__KnitClient__9.Controllers.UnlockController.allKitsUnlocked then
 		v8 = true;
 	end;
 	local v10 = p4.props.store.Bedwars.kit == p4.props.Kit;

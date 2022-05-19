@@ -25,7 +25,7 @@ end;
 local l__ClientStore__3 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 local l__Players__4 = v2.Players;
 function v4.KnitStart(p2)
-	p2.remotes:WaitFor("RemoteName"):andThen(function(p3)
+	p2.remotes:WaitFor("GetBattlePass"):andThen(function(p3)
 		l__ClientStore__3:dispatch({
 			type = "BattlePassUpdateAll", 
 			battlePass = p3:CallServer()

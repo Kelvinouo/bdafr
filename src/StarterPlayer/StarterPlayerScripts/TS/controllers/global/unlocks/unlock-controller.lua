@@ -2,20 +2,21 @@
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local l__KnitController__2 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
-local v3 = setmetatable({}, {
+local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local l__KnitController__3 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
+local v4 = setmetatable({}, {
 	__tostring = function()
 		return "UnlockController";
 	end, 
-	__index = l__KnitController__2
+	__index = l__KnitController__3
 });
-v3.__index = v3;
-local u1 = v3;
+v4.__index = v4;
+local u1 = v4;
 function u1.new(...)
-	local v4 = setmetatable({}, u1);
-	return v4:constructor(...) and v4;
+	local v5 = setmetatable({}, u1);
+	return v5:constructor(...) and v5;
 end;
-local u2 = l__KnitController__2;
+local u2 = l__KnitController__3;
 function u1.constructor(p1)
 	u2.constructor(p1);
 	p1.Name = "UnlockController";
@@ -26,6 +27,7 @@ local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 local l__PlaceUtil__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "place-util").PlaceUtil;
 local l__Players__6 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
+local l__KnitClient__7 = v2.KnitClient;
 function u1.KnitStart(p2)
 	l__default__3.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
@@ -69,6 +71,10 @@ function u1.KnitStart(p2)
 			if l__Players__6.LocalPlayer:GetRankInGroup(5774246) >= 100 then
 				p2.allItemsUnlocked = true;
 				p2.allKitsUnlocked = true;
+				return;
+			end;
+			if l__KnitClient__7.Controllers.PermissionController:hasAllKitsUnlocked(l__Players__6.LocalPlayer) then
+				p2.allKitsUnlocked = true;
 			end;
 		end);
 	end;
@@ -76,7 +82,7 @@ end;
 function u1.isKitOwned(p6, p7)
 	return table.find(l__ClientStore__4:getState().Bedwars.ownedKits, p7) ~= nil;
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v2.KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

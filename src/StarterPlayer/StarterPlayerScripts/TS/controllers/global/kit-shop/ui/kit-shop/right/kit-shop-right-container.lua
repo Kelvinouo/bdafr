@@ -50,7 +50,7 @@ function v6.didMount(p6)
 					elseif table.find(l__BedwarsKitShop__3.FreeKits, p6.props.SelectedKit) ~= nil then
 						v7 = true;
 					end;
-					if not l__DeviceUtil__4.isHoarceKat() and l__KnitClient__5.Controllers.UnlockController.allItemsUnlocked then
+					if not l__DeviceUtil__4.isHoarceKat() and l__KnitClient__5.Controllers.UnlockController.allKitsUnlocked then
 						v7 = true;
 					end;
 				end;
@@ -156,7 +156,7 @@ function v6.render(p17)
 	if p17.props.SelectedKit and l__myClan__18 and l__myClan__18.kitShop.unlocks[p17.props.SelectedKit] ~= nil then
 		v11 = true;
 	end;
-	if not l__DeviceUtil__4.isHoarceKat() and l__KnitClient__5.Controllers.UnlockController.allItemsUnlocked then
+	if not l__DeviceUtil__4.isHoarceKat() and l__KnitClient__5.Controllers.UnlockController.allKitsUnlocked then
 		v11 = true;
 	end;
 	if not p17.props.store.Bedwars.kit and not p17.props.SelectedKit then

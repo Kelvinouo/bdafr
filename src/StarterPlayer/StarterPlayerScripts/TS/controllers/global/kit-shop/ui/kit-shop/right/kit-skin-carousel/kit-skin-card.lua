@@ -19,7 +19,7 @@ return {
 		local l__useState__3 = p2.useState;
 		local v4 = p1.Skin == l__BedwarsKitSkin__2.DEFAULT;
 		local v5 = v4 or table.find(p1.store.Bedwars.ownedKitSkins, p1.Skin) ~= nil;
-		if not l__DeviceUtil__3.isHoarceKat() and l__KnitClient__4.Controllers.UnlockController.allItemsUnlocked then
+		if not l__DeviceUtil__3.isHoarceKat() and l__KnitClient__4.Controllers.UnlockController.allKitsUnlocked then
 			v5 = true;
 		end;
 		local v6 = false;

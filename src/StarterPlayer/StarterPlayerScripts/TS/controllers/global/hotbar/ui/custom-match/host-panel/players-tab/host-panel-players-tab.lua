@@ -57,12 +57,8 @@ return {
 			if v19 then
 				v16(v19);
 			end;
-			if not l__DeviceUtil__1.isHoarceKat() then
-				l__KnitClient__4.Controllers.PermissionController:playerHasAnyPermissions(l__Players__2.LocalPlayer, { 2, 0, 4, 6 }):andThen(function(p4)
-					if p4 then
-						v18(true);
-					end;
-				end);
+			if not l__DeviceUtil__1.isHoarceKat() and l__KnitClient__4.Controllers.PermissionController:playerHasAnyPermissions(l__Players__2.LocalPlayer, { 2, 0, 4, 6 }) then
+				v18(true);
 			end;
 		end, {});
 		local v20 = { u5.createElement("UIListLayout", {
@@ -90,22 +86,22 @@ return {
 			Size = UDim2.new(1, 0, 0, 30)
 		};
 		v4 = {};
-		local function v23(p5, p6)
-			table.insert(p5, p6.name);
-			table.insert(p5, p6.displayName);
-			return p5;
+		local function v23(p4, p5)
+			table.insert(p4, p5.name);
+			table.insert(p4, p5.displayName);
+			return p4;
 		end;
 		for v24 = 1, #v11 do
 			v4 = v23(v4, v11[v24], v24 - 1, v11);
 		end;
 		v22.Items = local v25;
 		v22.Item = "";
-		function v22.OnSubmit(p7, p8)
-			if p7 == "" then
+		function v22.OnSubmit(p6, p7)
+			if p6 == "" then
 				return v13(v11);
 			end;
-			local function v26(p9)
-				return table.find(p8, p9.displayName) ~= nil or table.find(p8, p9.name) ~= nil;
+			local function v26(p8)
+				return table.find(p7, p8.displayName) ~= nil or table.find(p7, p8.name) ~= nil;
 			end;
 			local v27 = {};
 			local v28 = 0;
@@ -197,14 +193,14 @@ return {
 		});
 		local v31 = next(v15) ~= nil;
 		if v31 then
-			table.sort(v12, function(p10, p11)
-				return string.lower(p10.displayName) < string.lower(p11.displayName);
+			table.sort(v12, function(p9, p10)
+				return string.lower(p9.displayName) < string.lower(p10.displayName);
 			end);
-			local function v32(p12, p13)
+			local function v32(p11, p12)
 				return u5.createElement(l__HostPanelPlayerRow__10, {
-					OfflinePlayer = p12, 
-					Index = p13, 
-					Team = v15[p12.userId], 
+					OfflinePlayer = p11, 
+					Index = p12, 
+					Team = v15[p11.userId], 
 					HasGameBanPermission = v17, 
 					store = p1.store
 				});

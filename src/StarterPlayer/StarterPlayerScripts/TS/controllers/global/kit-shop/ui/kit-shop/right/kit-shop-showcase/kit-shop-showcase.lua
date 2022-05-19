@@ -56,7 +56,7 @@ return {
 			end;
 			v9 = v12;
 		end;
-		if not l__DeviceUtil__3.isHoarceKat() and l__KnitClient__4.Controllers.UnlockController.allItemsUnlocked then
+		if not l__DeviceUtil__3.isHoarceKat() and l__KnitClient__4.Controllers.UnlockController.allKitsUnlocked then
 			v8 = true;
 		end;
 		local v14 = {};

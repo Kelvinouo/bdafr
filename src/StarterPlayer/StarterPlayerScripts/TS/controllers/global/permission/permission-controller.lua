@@ -47,15 +47,15 @@ function v3.getPlayerPermissions(p3, p4)
 	p3.playerPermissions[p4] = v6;
 	return v6;
 end;
-v3.playerHasPermission = v1.async(function(p5, p6, p7)
-	local v7 = v1.await(p5:getPlayerPermissions(p6));
+function v3.playerHasPermission(p5, p6, p7)
+	local v7 = p5:getPlayerPermissions(p6);
 	if not v7 then
 		return false;
 	end;
 	return table.find(v7, p7) ~= nil;
-end);
-v3.playerHasPermissions = v1.async(function(p8, p9, p10)
-	local v8 = v1.await(p8:getPlayerPermissions(p9));
+end;
+function v3.playerHasPermissions(p8, p9, p10)
+	local v8 = p8:getPlayerPermissions(p9);
 	if not v8 then
 		return false;
 	end;
@@ -70,9 +70,9 @@ v3.playerHasPermissions = v1.async(function(p8, p9, p10)
 		end;
 	end;
 	return v10;
-end);
-v3.playerHasAnyPermissions = v1.async(function(p12, p13, p14)
-	local v13 = v1.await(p12:getPlayerPermissions(p13));
+end;
+function v3.playerHasAnyPermissions(p12, p13, p14)
+	local v13 = p12:getPlayerPermissions(p13);
 	if not v13 then
 		return false;
 	end;
@@ -87,7 +87,23 @@ v3.playerHasAnyPermissions = v1.async(function(p12, p13, p14)
 		end;
 	end;
 	return v15;
-end);
+end;
+function v3.playerIsStaffMember(p16, p17)
+	return p16:playerHasAnyPermissions(p17, { 0, 2, 4, 6, 5, 1 });
+end;
+function v3.hasAllKitsUnlocked(p18, p19)
+	local v18 = p18:getPlayerPermissions(p19.UserId);
+	if v18 and table.find(v18, 9) ~= nil then
+		return true;
+	end;
+	if p18:playerIsStaffMember(p19) then
+		return true;
+	end;
+	if p19:GetRankInGroup(5774246) >= 100 then
+		return true;
+	end;
+	return false;
+end;
 u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
 u1 = u1(v3.new());
 return nil;
