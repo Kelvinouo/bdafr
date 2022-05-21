@@ -1,4 +1,4 @@
--- Script Hash: ef060cfd8a6aa3c5fcab7394d0864ea3837fbfa2a54bcd6f1b9d93e07a84de2056f2b0e1cb0e1d4a4f59b0a0e2b9e6a9
+-- Script Hash: e4a989fc7fa066e9904f96159073e789a1134982d03fa0b9a742a092ee384b3094361b2b5270ba6e02f6c6031863e062
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -42,12 +42,11 @@ local l__BedwarsKitShop__10 = v1.import(script, game:GetService("ReplicatedStora
 local l__ColorUtil__11 = v2.ColorUtil;
 local l__Theme__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local l__TweenService__13 = v5.TweenService;
-local l__ImageId__14 = v2.ImageId;
+local l__BedwarsImageId__14 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "image", "image-id").BedwarsImageId;
 local l__TooltipContainer__15 = v2.TooltipContainer;
 local l__AutoSizedText__16 = v2.AutoSizedText;
-local l__BedwarsImageId__17 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "image", "image-id").BedwarsImageId;
-local l__Empty__18 = v2.Empty;
-local l__KitViewport__19 = v1.import(script, script.Parent.Parent.Parent, "misc", "kit-viewport").KitViewport;
+local l__Empty__17 = v2.Empty;
+local l__KitViewport__18 = v1.import(script, script.Parent.Parent.Parent, "misc", "kit-viewport").KitViewport;
 function v6.render(p4)
 	local v8 = false;
 	local v9 = l__getBedwarsKitMeta__6(p4.props.Kit);
@@ -67,42 +66,62 @@ function v6.render(p4)
 	if v12 == nil then
 		v12 = false;
 	end;
-	local v13 = {
+	local v13 = p4.props.store.Clans.myClan;
+	if v13 ~= nil then
+		v13 = v13.kitShop.unlocks[p4.props.Kit] ~= nil;
+	end;
+	local v14 = v13;
+	if v14 == nil then
+		v14 = false;
+	end;
+	local v15 = {
 		[v4.Ref] = p4.ref, 
 		Size = UDim2.fromScale(1, 1)
 	};
 	if p4.props.Selected then
-		local v14 = l__ColorUtil__11.hexColor(2500410);
+		local v16 = l__ColorUtil__11.hexColor(2500410);
 	else
-		v14 = l__Theme__12.backgroundSecondary;
+		v16 = l__Theme__12.backgroundSecondary;
 	end;
-	v13.BackgroundColor3 = v14;
+	v15.BackgroundColor3 = v16;
 	if p4.props.Selected then
-		local v15 = 0;
+		local v17 = 0;
 	else
-		v15 = 0;
+		v17 = 0;
 	end;
-	v13.BackgroundTransparency = v15;
+	v15.BackgroundTransparency = v17;
 	if v10 then
-		local v16 = 1;
+		local v18 = 1;
 	else
-		v16 = 0;
+		v18 = 0;
 	end;
-	v13.BorderSizePixel = v16;
-	v13.BorderMode = "Outline";
-	v13.BorderColor3 = l__ColorUtil__11.hexColor(16771973);
-	v13.LayoutOrder = p4.props.LayoutOrder;
-	v13.AutoButtonColor = false;
-	v13.Selectable = true;
-	v13[v4.Event.MouseButton1Click] = function()
+	v15.BorderSizePixel = v18;
+	v15.BorderMode = "Outline";
+	v15.BorderColor3 = l__ColorUtil__11.hexColor(16771973);
+	v15.LayoutOrder = p4.props.LayoutOrder;
+	v15.AutoButtonColor = false;
+	v15.Selectable = true;
+	v15[v4.Event.MouseButton1Click] = function()
 		l__SoundManager__3:playSound(l__GameSound__4.UI_CLICK);
 		p4.props.OnClick();
 	end;
-	v13[v4.Event.MouseEnter] = function(p5)
+	v15[v4.Event.MouseEnter] = function(p5)
 		p4.hoverMaid:DoCleaning();
 		if not p4.props.Selected then
-			local u20 = l__TweenService__13:Create(p5, TweenInfo.new(0.12), {
+			local u19 = l__TweenService__13:Create(p5, TweenInfo.new(0.12), {
 				BackgroundColor3 = l__ColorUtil__11.darken(l__Theme__12.backgroundSecondary, 0.8)
+			});
+			p4.hoverMaid:GiveTask(function()
+				u19:Cancel();
+			end);
+			u19:Play();
+		end;
+	end;
+	v15[v4.Event.MouseLeave] = function(p6)
+		p4.hoverMaid:DoCleaning();
+		if not p4.props.Selected then
+			local u20 = l__TweenService__13:Create(p6, TweenInfo.new(0.12), {
+				BackgroundColor3 = l__Theme__12.backgroundSecondary
 			});
 			p4.hoverMaid:GiveTask(function()
 				u20:Cancel();
@@ -110,27 +129,15 @@ function v6.render(p4)
 			u20:Play();
 		end;
 	end;
-	v13[v4.Event.MouseLeave] = function(p6)
-		p4.hoverMaid:DoCleaning();
-		if not p4.props.Selected then
-			local u21 = l__TweenService__13:Create(p6, TweenInfo.new(0.12), {
-				BackgroundColor3 = l__Theme__12.backgroundSecondary
-			});
-			p4.hoverMaid:GiveTask(function()
-				u21:Cancel();
-			end);
-			u21:Play();
-		end;
-	end;
-	local v17 = { v4.createElement("UICorner", {
+	local v19 = { v4.createElement("UICorner", {
 			CornerRadius = UDim.new(0.03, 0)
 		}), v4.createElement("UIStroke", {
 			Color = Color3.fromRGB(70, 72, 117), 
 			Thickness = 2
 		}) };
-	local v18 = v11 and v4.createElement("ImageLabel", {
+	local v20 = v11 and v4.createElement("ImageLabel", {
 		Size = UDim2.fromScale(1, 0.22), 
-		Image = l__ImageId__14.BANNER_HORIZONTAL, 
+		Image = l__BedwarsImageId__14.BANNER_HORIZONTAL, 
 		Position = UDim2.fromScale(0.5, -0.01), 
 		AnchorPoint = Vector2.new(0.5, 0), 
 		ImageColor3 = Color3.fromRGB(255, 255, 255), 
@@ -150,12 +157,12 @@ function v6.render(p4)
 			BorderSizePixel = 0, 
 			TextColor3 = Color3.fromRGB(255, 255, 255)
 		}) });
-	if v18 then
-		v17[#v17 + 1] = v18;
+	if v20 then
+		v19[#v19 + 1] = v20;
 	end;
-	local v19 = v9.limitedTime and v4.createElement("ImageLabel", {
+	local v21 = v9.limitedTime and v4.createElement("ImageLabel", {
 		Size = UDim2.fromScale(1, 0.22), 
-		Image = l__ImageId__14.BANNER_HORIZONTAL, 
+		Image = l__BedwarsImageId__14.BANNER_HORIZONTAL, 
 		Position = UDim2.fromScale(0.5, -0.01), 
 		AnchorPoint = Vector2.new(0.5, 0), 
 		ImageColor3 = Color3.fromRGB(252, 122, 122), 
@@ -175,15 +182,35 @@ function v6.render(p4)
 			BorderSizePixel = 0, 
 			TextColor3 = Color3.fromRGB(255, 255, 255)
 		}) });
-	if v19 then
-		v17[#v17 + 1] = v19;
+	if v21 then
+		v19[#v19 + 1] = v21;
 	end;
-	local v20 = {};
+	local v22 = { v4.createElement("UIListLayout", {
+			FillDirection = "Horizontal", 
+			HorizontalAlignment = "Right", 
+			VerticalAlignment = "Center", 
+			Padding = UDim.new(0.05, 0)
+		}) };
+	local v23 = v14 and v4.createElement("ImageLabel", {
+		Size = UDim2.fromScale(1, 1), 
+		SizeConstraint = "RelativeYY", 
+		Image = l__BedwarsImageId__14.CLAN, 
+		ScaleType = "Fit", 
+		BackgroundTransparency = 1
+	}, { v4.createElement(l__TooltipContainer__15, {}, { v4.createElement(l__AutoSizedText__16, {
+				Text = "Unlocked by Clan", 
+				Font = Enum.Font.SourceSansBold, 
+				TextSize = 16, 
+				Limits = Vector2.new(300, 60)
+			}) }) });
+	if v23 then
+		v22[#v22 + 1] = v23;
+	end;
 	if not v11 and not v8 and not v12 then
-		local v21 = v4.createElement("ImageLabel", {
+		local v24 = v4.createElement("ImageLabel", {
 			Size = UDim2.fromScale(1, 1), 
 			SizeConstraint = "RelativeYY", 
-			Image = l__ImageId__14.GEM, 
+			Image = l__BedwarsImageId__14.GEM, 
 			ScaleType = "Fit", 
 			BackgroundTransparency = 1
 		}, { v4.createElement(l__TooltipContainer__15, {}, { v4.createElement(l__AutoSizedText__16, {
@@ -193,10 +220,10 @@ function v6.render(p4)
 					Limits = Vector2.new(300, 60)
 				}) }) });
 	elseif v9.battlepassSeason then
-		v21 = v4.createElement("ImageLabel", {
+		v24 = v4.createElement("ImageLabel", {
 			Size = UDim2.fromScale(1, 1), 
 			SizeConstraint = "RelativeYY", 
-			Image = l__BedwarsImageId__17.BattlePassIcons[v9.battlepassSeason], 
+			Image = l__BedwarsImageId__14.BattlePassIcons[v9.battlepassSeason], 
 			ScaleType = "Fit", 
 			BackgroundTransparency = 1
 		}, { v4.createElement(l__TooltipContainer__15, {}, { v4.createElement(l__AutoSizedText__16, {
@@ -206,22 +233,16 @@ function v6.render(p4)
 					Limits = Vector2.new(300, 60)
 				}) }) });
 	else
-		v21 = v4.createFragment();
+		v24 = v4.createFragment();
 	end;
-	v20[1] = v4.createElement("UIListLayout", {
-		FillDirection = "Horizontal", 
-		HorizontalAlignment = "Right", 
-		VerticalAlignment = "Center", 
-		Padding = UDim.new(0.05, 0)
-	});
-	v20[2] = v21;
-	v17.KitCategoryIcons = v4.createElement("Frame", {
+	v22[#v22 + 1] = v24;
+	v19.KitCategoryIcons = v4.createElement("Frame", {
 		Size = UDim2.fromScale(1, 0.16), 
 		AnchorPoint = Vector2.new(1, 0), 
 		Position = UDim2.fromScale(0.97, 0.03), 
 		BackgroundTransparency = 1
-	}, v20);
-	v17[#v17 + 1] = v9 and v4.createFragment({
+	}, v22);
+	v19[#v19 + 1] = v9 and v4.createFragment({
 		KitNameTag = v4.createElement("Frame", {
 			Size = UDim2.fromScale(1, 0.16), 
 			Position = UDim2.fromScale(0, 1), 
@@ -245,21 +266,21 @@ function v6.render(p4)
 				ZIndex = 10
 			}) })
 	});
-	local v22 = {};
-	local v23 = {};
+	local v25 = {};
+	local v26 = {};
 	if p4.props.Kit == l__BedwarsKit__7.NONE then
-		local v24 = nil;
+		local v27 = nil;
 	else
-		v24 = p4.props.Kit;
+		v27 = p4.props.Kit;
 	end;
-	v23.Kit = v24;
-	v22[1] = v4.createElement(l__KitViewport__19, v23);
-	v17[#v17 + 1] = v4.createElement(l__Empty__18, {
+	v26.Kit = v27;
+	v25[1] = v4.createElement(l__KitViewport__18, v26);
+	v19[#v19 + 1] = v4.createElement(l__Empty__17, {
 		Size = UDim2.fromScale(0.92, 0.92), 
 		Position = UDim2.fromScale(0.5, 0.5), 
 		AnchorPoint = Vector2.new(0.5, 0.5)
-	}, v22);
-	return v4.createElement("ImageButton", v13, v17);
+	}, v25);
+	return v4.createElement("ImageButton", v15, v19);
 end;
 return {
 	KitShopItemCard = v6

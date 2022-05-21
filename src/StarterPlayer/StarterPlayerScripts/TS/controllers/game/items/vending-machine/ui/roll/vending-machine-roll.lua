@@ -1,4 +1,4 @@
--- Script Hash: e90be73c117a2987048f750738635282fcad3175770983cc334ff0ba0f995572ff51abe82edc967fab52510da7163cd7
+-- Script Hash: 600787d7a4a92f9d14f885b2de420aa64a8f2873caf0cc0ed9a02ae1813c3c5eb12a97b55139fbe15f44722c67218579
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -6,13 +6,13 @@ local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").ou
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local u1 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local u2 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
-local l__VendingMachineRewardId__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "items", "vending-machine", "vending-machine-reward").VendingMachineRewardId;
-local l__RandomUtil__4 = v2.RandomUtil;
-local l__Workspace__5 = v3.Workspace;
-local l__SoundManager__6 = v2.SoundManager;
-local l__GameSound__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__TweenService__8 = v3.TweenService;
-local l__VendingMachineRewardMeta__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "items", "vending-machine", "vending-machine-reward-meta").VendingMachineRewardMeta;
+local l__VendingMachineRewardMeta__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "items", "vending-machine", "vending-machine-reward-meta").VendingMachineRewardMeta;
+local l__VendingMachineRewardId__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "items", "vending-machine", "vending-machine-reward").VendingMachineRewardId;
+local l__RandomUtil__5 = v2.RandomUtil;
+local l__Workspace__6 = v3.Workspace;
+local l__SoundManager__7 = v2.SoundManager;
+local l__GameSound__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local l__TweenService__9 = v3.TweenService;
 local l__BedwarsImageId__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "image", "image-id").BedwarsImageId;
 local l__ItemViewport__11 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent, "global", "inventory", "ui", "item-viewport").ItemViewport;
 local l__Empty__12 = v2.Empty;
@@ -21,29 +21,39 @@ return {
 		local l__useState__4 = p2.useState;
 		local l__useEffect__5 = p2.useEffect;
 		local v6 = u1.createRef();
+		local v7 = u2.values(l__VendingMachineRewardMeta__3);
 		local u13 = nil;
-		local function v7()
-			local v8 = u2.values(l__VendingMachineRewardId__3);
-			local function v9(p3)
-				local v10 = false;
-				if p3 ~= l__VendingMachineRewardId__3.NONE then
-					v10 = p3 ~= u13;
-				end;
-				return v10;
-			end;
-			local v11 = {};
-			local v12 = 0;
-			for v13, v14 in ipairs(v8) do
-				if v9(v14, v13 - 1, v8) == true then
-					v12 = v12 + 1;
-					v11[v12] = v14;
+		local function v8(p3)
+			local v9 = false;
+			if p3.id ~= l__VendingMachineRewardId__4.NONE then
+				v9 = false;
+				if p3.id ~= u13 then
+					v9 = not p3.disabled;
 				end;
 			end;
-			return l__RandomUtil__4.fromList(unpack(v11));
+			return v9;
 		end;
-		local v15, v16 = l__useState__4(tick());
-		local v17, v18 = l__useState__4(v7());
-		local v19, v20 = l__useState__4(false);
+		local v10 = {};
+		local v11 = 0;
+		for v12, v13 in ipairs(v7) do
+			if v8(v13, v12 - 1, v7) == true then
+				v11 = v11 + 1;
+				v10[v11] = v13;
+			end;
+		end;
+		local function v14(p4)
+			return p4.id;
+		end;
+		local v15 = table.create(#v10);
+		for v16, v17 in ipairs(v10) do
+			v15[v16] = v14(v17, v16 - 1, v10);
+		end;
+		local function v18()
+			return l__RandomUtil__5.fromList(unpack(v15));
+		end;
+		local v19, v20 = l__useState__4(tick());
+		local v21, v22 = l__useState__4(v18());
+		local v23, v24 = l__useState__4(false);
 		local u14 = false;
 		l__useEffect__5(function()
 			if u14 == true then
@@ -54,40 +64,40 @@ return {
 				if p1.dispenseTime == 0 then
 					return nil;
 				end;
-				task.delay(p1.dispenseTime - l__Workspace__5:GetServerTimeNow(), function()
+				task.delay(p1.dispenseTime - l__Workspace__6:GetServerTimeNow(), function()
 					if not u15 then
 						return nil;
 					end;
 					u14 = true;
-					v18(p1.choosenReward);
-					v20(true);
+					v22(p1.choosenReward);
+					v24(true);
 					task.spawn(function()
-						l__SoundManager__6:playSound(l__GameSound__7.VENDING_ROLL_PRIZE, {
+						l__SoundManager__7:playSound(l__GameSound__8.VENDING_ROLL_PRIZE, {
 							position = p1.soundPosition
 						});
 					end);
 				end);
 				while true do
-					local v21 = tick() - v15;
-					local v22 = v7();
-					u13 = v22;
-					v18(v22);
+					local v25 = tick() - v19;
+					local v26 = v18();
+					u13 = v26;
+					v22(v26);
 					task.spawn(function()
-						l__SoundManager__6:playSound(l__GameSound__7.VENDING_ROLL_TICK, {
+						l__SoundManager__7:playSound(l__GameSound__8.VENDING_ROLL_TICK, {
 							position = p1.soundPosition
 						});
 					end);
-					local v23 = task.wait(math.clamp(v21 / 4, 0.1, 1) * 0.8);
-					if v23 ~= 0 and v23 == v23 and v23 then
-						v23 = u15 and not u14;
+					local v27 = task.wait(math.clamp(v25 / 4, 0.1, 1) * 0.8);
+					if v27 ~= 0 and v27 == v27 and v27 then
+						v27 = u15 and not u14;
 					end;
-					if v23 == 0 then
+					if v27 == 0 then
 						break;
 					end;
-					if v23 ~= v23 then
+					if v27 ~= v27 then
 						break;
 					end;
-					if not v23 then
+					if not v27 then
 						break;
 					end;				
 				end;
@@ -95,36 +105,36 @@ return {
 			return function()
 				u15 = false;
 			end;
-		end, { p1.choosenReward, v15, p1.dispenseTime });
+		end, { p1.choosenReward, v19, p1.dispenseTime });
 		l__useEffect__5(function()
-			if not v19 then
+			if not v23 then
 				return nil;
 			end;
-			local v24 = v6:getValue();
-			if not v24 then
+			local v28 = v6:getValue();
+			if not v28 then
 				return nil;
 			end;
 			local u16 = true;
 			task.spawn(function()
-				local v25 = true;
+				local v29 = true;
 				while true do
-					local v26 = {};
-					if v25 then
-						local v27 = 0.4;
+					local v30 = {};
+					if v29 then
+						local v31 = 0.4;
 					else
-						v27 = 0.6;
+						v31 = 0.6;
 					end;
-					v26.ImageTransparency = v27;
-					if v25 then
-						local v28 = UDim2.fromScale(0.2, 0.2);
+					v30.ImageTransparency = v31;
+					if v29 then
+						local v32 = UDim2.fromScale(0.2, 0.2);
 					else
-						v28 = UDim2.fromScale(-0.2, -0.2);
+						v32 = UDim2.fromScale(-0.2, -0.2);
 					end;
-					v26.Size = v24.Size + v28;
-					local v29 = l__TweenService__8:Create(v24, TweenInfo.new(2.5, Enum.EasingStyle.Quad), v26);
-					v29:Play();
-					v29.Completed:Wait();
-					v25 = not v25;
+					v30.Size = v28.Size + v32;
+					local v33 = l__TweenService__9:Create(v28, TweenInfo.new(2.5, Enum.EasingStyle.Quad), v30);
+					v33:Play();
+					v33.Completed:Wait();
+					v29 = not v29;
 					if not u16 then
 						break;
 					end;				
@@ -133,20 +143,20 @@ return {
 			return function()
 				u16 = false;
 			end;
-		end, { v19 });
-		print("shown item:", v17);
-		local v30 = nil;
-		if v17 ~= 0 and v17 == v17 and v17 then
-			v30 = l__VendingMachineRewardMeta__9[v17];
+		end, { v23 });
+		print("shown item:", v21);
+		local v34 = nil;
+		if v21 ~= 0 and v21 == v21 and v21 then
+			v34 = l__VendingMachineRewardMeta__3[v21];
 		end;
-		local v31 = UDim2.fromScale(0.5, 0.5);
-		if v19 then
-			v31 = UDim2.fromScale(0.7, 0.7);
+		local v35 = UDim2.fromScale(0.5, 0.5);
+		if v23 then
+			v35 = UDim2.fromScale(0.7, 0.7);
 		end;
-		local v32 = v30 ~= nil;
-		if v32 then
-			local v33 = {};
-			local v34 = v19 and u1.createElement("ImageLabel", {
+		local v36 = v34 ~= nil;
+		if v36 then
+			local v37 = {};
+			local v38 = v23 and u1.createElement("ImageLabel", {
 				[u1.Ref] = v6, 
 				Image = l__BedwarsImageId__10.VENDING_RING, 
 				Size = UDim2.fromScale(2.5, 2.5), 
@@ -157,47 +167,47 @@ return {
 				SizeConstraint = "RelativeXX", 
 				ImageTransparency = 0.8
 			});
-			if v34 then
-				v33[#v33 + 1] = v34;
+			if v38 then
+				v37[#v37 + 1] = v38;
 			end;
-			local v35 = false;
-			if v30.item ~= nil then
-				v35 = u1.createElement(l__ItemViewport__11, {
-					ItemType = v30.item.itemType, 
+			local v39 = false;
+			if v34.item ~= nil then
+				v39 = u1.createElement(l__ItemViewport__11, {
+					ItemType = v34.item.itemType, 
 					BackgroundTransparency = 1, 
 					BorderSizePixel = 0, 
-					Size = v31, 
+					Size = v35, 
 					Position = UDim2.fromScale(0.5, 0.5), 
 					AnchorPoint = Vector2.new(0.5, 0.5), 
 					SizeConstraint = "RelativeXX"
 				});
 			end;
-			if v35 then
-				v33[#v33 + 1] = v35;
+			if v39 then
+				v37[#v37 + 1] = v39;
 			end;
-			local v36 = false;
-			if v30.custom ~= nil then
-				v36 = u1.createElement("ImageLabel", {
-					Image = v30.custom.image, 
+			local v40 = false;
+			if v34.custom ~= nil then
+				v40 = u1.createElement("ImageLabel", {
+					Image = v34.custom.image, 
 					BackgroundTransparency = 1, 
 					BorderSizePixel = 0, 
-					Size = v31, 
+					Size = v35, 
 					Position = UDim2.fromScale(0.5, 0.5), 
 					AnchorPoint = Vector2.new(0.5, 0.5), 
 					SizeConstraint = "RelativeXX"
 				});
 			end;
-			if v36 then
-				v33[#v33 + 1] = v36;
+			if v40 then
+				v37[#v37 + 1] = v40;
 			end;
-			v32 = u1.createFragment(v33);
+			v36 = u1.createFragment(v37);
 		end;
-		local v37 = {};
-		if v32 then
-			v37[#v37 + 1] = v32;
+		local v41 = {};
+		if v36 then
+			v41[#v41 + 1] = v36;
 		end;
 		return u1.createElement(l__Empty__12, {
 			Size = UDim2.fromScale(1, 1)
-		}, v37);
+		}, v41);
 	end)
 };
