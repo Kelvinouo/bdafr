@@ -1,0 +1,47 @@
+-- Script Hash: 25d8722e044941bc139a64c74c3ffadc463f837178dddc7dcadde8690bbf207c1eba8555ed9fb23bb5fc764e7f812166
+-- Decompiled with the Synapse X Luau decompiler.
+
+local v1 = {};
+local v2 = setmetatable({}, {
+	__index = v1
+});
+v2.GRASS = 0;
+v1[0] = "GRASS";
+v2.STONE = 1;
+v1[1] = "STONE";
+v2.WOOD = 2;
+v1[2] = "WOOD";
+v2.SAND = 3;
+v1[3] = "SAND";
+return {
+	BlockFootstepSound = v2, 
+	FootstepSounds = {
+		[v2.GRASS] = {
+			walk = { "rbxassetid://6345664026", "rbxassetid://6345663913" }, 
+			run = { "rbxassetid://6345664026", "rbxassetid://6345663913" }
+		}, 
+		[v2.STONE] = {
+			walk = { "rbxassetid://6343101162", "rbxassetid://6343101129" }, 
+			run = { "rbxassetid://6343101162", "rbxassetid://6343101129" }
+		}, 
+		[v2.WOOD] = {
+			walk = { "rbxassetid://6343101162", "rbxassetid://6343101129" }, 
+			run = { "rbxassetid://6343101162", "rbxassetid://6343101129" }
+		}, 
+		[v2.SAND] = {
+			walk = { "rbxassetid://6342794392", "rbxassetid://6342794345", "rbxassetid://6345664026", "rbxassetid://6345663913" }, 
+			run = { "rbxassetid://6342794392", "rbxassetid://6342794345", "rbxassetid://6345664026", "rbxassetid://6345663913" }
+		}
+	}, 
+	DefaultFootstepSound = v2.WOOD, 
+	TerrainFootstepSounds = {
+		[Enum.Material.Grass] = v2.GRASS, 
+		[Enum.Material.LeafyGrass] = v2.GRASS, 
+		[Enum.Material.Mud] = v2.GRASS, 
+		[Enum.Material.Ground] = v2.GRASS, 
+		[Enum.Material.Cobblestone] = v2.STONE, 
+		[Enum.Material.CrackedLava] = v2.STONE, 
+		[Enum.Material.Asphalt] = v2.STONE, 
+		[Enum.Material.Rock] = v2.STONE
+	}
+};

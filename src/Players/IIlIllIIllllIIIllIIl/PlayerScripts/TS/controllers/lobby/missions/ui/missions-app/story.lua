@@ -1,0 +1,15 @@
+-- Script Hash: 26f7f59db86084bf39da2fdfc6e3e966761db7afacb619d3f39b8524468498073c5a9be3b0a5bb64a5f191a6d531703a
+-- Decompiled with the Synapse X Luau decompiler.
+
+local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
+local l__CreateRoduxApp__1 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "rodux", "create-rodux-app").CreateRoduxApp;
+local l__MissionsApp__2 = v1.import(script, script.Parent, "missions-app").MissionsApp;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
+return function(p1)
+	local u4 = l__CreateRoduxApp__1("MissionsApp", l__MissionsApp__2, {}, {}, {
+		Parent = p1
+	});
+	return function()
+		u3.unmount(u4);
+	end;
+end;
