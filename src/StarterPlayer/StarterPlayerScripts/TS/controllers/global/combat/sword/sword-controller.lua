@@ -1,4 +1,4 @@
--- Script Hash: d8a5552f077832398a29c5d8783c28e11b02ec276fe1006c80a90c7d5709b19aa6c6dd5fad0613b81ff43cbc1e6c33d6
+-- Script Hash: ea999bdde74df2d1ec718554e9cb573cbb1fa1309452669fee39b433508c1666feb8e0b6fe50d75d3520167ad1fa5b03
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -264,9 +264,6 @@ function u1.playSwordEffect(p17, p18)
 		if v47 then
 			v46 = p18.sword.swingSounds;
 		end;
-		l__default__13.Client:Get("RemoteName"):CallServer({
-			weapon = p19
-		});
 		l__SoundManager__18:playSound(l__RandomUtil__15.fromList(unpack(v46)));
 	end;
 	local v48 = p17:getHandItem();
@@ -509,15 +506,14 @@ function u1.onEnable(p26, p27)
 				local v105 = l__Players__5.LocalPlayer:GetAttribute("IsCasting");
 				if v105 ~= 0 and v105 == v105 and v105 ~= "" and v105 then
 					return nil;
-				else
-					local v106 = v95.sword;
-					if v106 ~= nil then
-						v106 = v106.chargedAttack;
-					end;
-					if v106 == nil or v95.projectileSource then
-						p26:swingSwordAtMouse();
-						return;
-					elseif u29 ~= v7.Idle then
+				end;
+				local v106 = v95.sword;
+				if v106 ~= nil then
+					v106 = v106.chargedAttack;
+				end;
+				if v106 ~= nil and not v95.projectileSource then
+					p30:setCancelled(true);
+					if u29 ~= v7.Idle then
 						return nil;
 					else
 						p26:chargeWeapon(v95, v99, v101, u29);
@@ -534,6 +530,10 @@ function u1.onEnable(p26, p27)
 							end;
 							task.wait(v107);
 							if not p26.chargedWeapons[v102] then
+								if v101 ~= nil then
+									v101:endClick();
+								end;
+								v99:DoCleaning();
 								return nil;
 							end;
 							if u30 == u30 and u29 == v7.Charging then
@@ -551,21 +551,21 @@ function u1.onEnable(p26, p27)
 						return;
 					end;
 				end;
-			end;
-			if p30.state == "up" then
+			elseif p30.state == "up" then
 				local v108 = tick() - u30;
 				local v109 = v95.sword;
 				if v109 ~= nil then
 					v109 = v109.chargedAttack;
 				end;
-				if v109 == nil or v95.projectileSource then
+				local v110 = v109 == nil or v95.projectileSource;
+				if v110 then
 					return nil;
 				end;
-				local v110 = v95.sword;
-				if v110 ~= nil then
-					v110 = v110.chargedAttack;
+				local v111 = v95.sword;
+				if v111 ~= nil then
+					v111 = v111.chargedAttack;
 				end;
-				if v110 then
+				if v111 then
 					p26.chargeTime = v108;
 					if u29 ~= v7.Idle then
 						p26:chargeWeapon(v95, v99, v101, u29);
@@ -575,27 +575,28 @@ function u1.onEnable(p26, p27)
 				if u29 ~= v7.Idle then
 					l__ClientSyncEvents__9.SwordCharge:fire(v7.Idle, p27);
 				end;
-				local v111 = v95.sword;
-				if v111 ~= nil then
-					v111 = v111.chargedAttack;
+				local v112 = v95.sword;
+				if v112 ~= nil then
+					v112 = v112.chargedAttack;
 				end;
-				if v111 and u29 == v7.Idle then
+				local v113 = v112 and u29 == v7.Idle;
+				if v113 then
 					return nil;
 				end;
-				local v112 = p26:getHandItem();
-				if v112 ~= nil then
-					v112 = v112.tool;
+				local v114 = p26:getHandItem();
+				if v114 ~= nil then
+					v114 = v114.tool;
 				end;
-				local v113 = v112;
-				if v113 then
-					local v114 = v95.sword;
-					if v114 ~= nil then
-						v114 = v114.chargedAttack;
+				local v115 = v114;
+				if v115 then
+					local v116 = v95.sword;
+					if v116 ~= nil then
+						v116 = v116.chargedAttack;
 					end;
-					v113 = v114 and v95.projectileSource == nil;
+					v115 = v116 and v95.projectileSource == nil;
 				end;
-				if v113 then
-					l__SharedSyncEvents__26.SwordChargedSwing:fire(l__Players__5.LocalPlayer, v112, {
+				if v115 then
+					l__SharedSyncEvents__26.SwordChargedSwing:fire(l__Players__5.LocalPlayer, v114, {
 						chargeTime = tick() - u30
 					});
 				end;
@@ -603,18 +604,16 @@ function u1.onEnable(p26, p27)
 			end;
 		end));
 	end;
-	local v115 = "swing-sword:" .. l__HttpService__23:GenerateGUID(false);
+	local v117 = "swing-sword:" .. l__HttpService__23:GenerateGUID(false);
 	local u31 = 0;
 	local u32 = l__Idle__100;
-	l__ContextActionService__27:BindAction(v115, function(p31, p32, p33)
+	l__ContextActionService__27:BindAction(v117, function(p31, p32, p33)
 		if p32 == Enum.UserInputState.Begin then
 			u31 = tick();
-			local v116 = l__Players__5.LocalPlayer:GetAttribute("IsCasting");
-			if v116 ~= 0 and v116 == v116 and v116 ~= "" and v116 then
+			local v118 = l__Players__5.LocalPlayer:GetAttribute("IsCasting");
+			if v118 ~= 0 and v118 == v118 and v118 ~= "" and v118 then
 				return nil;
 			else
-				local v117 = nil;
-				local v118 = nil;
 				local v119 = nil;
 				local v120 = nil;
 				local v121 = nil;
@@ -623,26 +622,28 @@ function u1.onEnable(p26, p27)
 				local v124 = nil;
 				local v125 = nil;
 				local v126 = nil;
-				local v127 = v95.sword;
-				if v127 ~= nil then
-					v127 = v127.chargedAttack;
+				local v127 = nil;
+				local v128 = nil;
+				local v129 = v95.sword;
+				if v129 ~= nil then
+					v129 = v129.chargedAttack;
 				end;
-				if v127 == nil then
+				if v129 == nil then
 					p26:swingSwordAtMouse();
-					v117 = l__ClientSyncEvents__9;
-					v118 = "SwordSwingDown";
-					v119 = v117;
-					v120 = v118;
-					v121 = v119[v120];
-					local v128 = "fire";
-					v122 = v121;
-					local v129 = v122;
-					v123 = v121;
-					v124 = v128;
-					local v130 = v123[v124];
-					v125 = v130;
-					v126 = v129;
-					v125(v126);
+					v119 = l__ClientSyncEvents__9;
+					v120 = "SwordSwingDown";
+					v121 = v119;
+					v122 = v120;
+					v123 = v121[v122];
+					local v130 = "fire";
+					v124 = v123;
+					local v131 = v124;
+					v125 = v123;
+					v126 = v130;
+					local v132 = v125[v126];
+					v127 = v132;
+					v128 = v131;
+					v127(v128);
 					return;
 				elseif u32 ~= v7.Idle then
 					return nil;
@@ -652,15 +653,19 @@ function u1.onEnable(p26, p27)
 					l__ClientSyncEvents__9.SwordCharge:fire(v7.Charging, p27);
 					task.spawn(function()
 						p26.chargedWeapons[v102] = true;
-						local v131 = v95.sword;
-						if v131 ~= nil then
-							v131 = v131.chargedAttack;
-							if v131 ~= nil then
-								v131 = v131.maxChargeTimeSec;
+						local v133 = v95.sword;
+						if v133 ~= nil then
+							v133 = v133.chargedAttack;
+							if v133 ~= nil then
+								v133 = v133.maxChargeTimeSec;
 							end;
 						end;
-						task.wait(v131);
+						task.wait(v133);
 						if not p26.chargedWeapons[v102] then
+							if v101 ~= nil then
+								v101:endClick();
+							end;
+							v99:DoCleaning();
 							return nil;
 						end;
 						if u31 == u31 and u32 == v7.Charging then
@@ -675,83 +680,93 @@ function u1.onEnable(p26, p27)
 							end;
 						end;
 					end);
-					v117 = l__ClientSyncEvents__9;
-					v118 = "SwordSwingDown";
-					v119 = v117;
-					v120 = v118;
-					v121 = v119[v120];
-					v128 = "fire";
-					v122 = v121;
-					v129 = v122;
-					v123 = v121;
-					v124 = v128;
-					v130 = v123[v124];
-					v125 = v130;
-					v126 = v129;
-					v125(v126);
+					v119 = l__ClientSyncEvents__9;
+					v120 = "SwordSwingDown";
+					v121 = v119;
+					v122 = v120;
+					v123 = v121[v122];
+					v130 = "fire";
+					v124 = v123;
+					v131 = v124;
+					v125 = v123;
+					v126 = v130;
+					v132 = v125[v126];
+					v127 = v132;
+					v128 = v131;
+					v127(v128);
 					return;
 				end;
 			end;
 		end;
 		if p32 == Enum.UserInputState.End then
-			local v132 = tick() - u31;
-			local v133 = v95.sword;
-			if v133 ~= nil then
-				v133 = v133.chargedAttack;
+			local v134 = tick() - u31;
+			local v135 = v95.sword;
+			if v135 ~= nil then
+				v135 = v135.chargedAttack;
 			end;
-			if v133 then
-				p26.chargeTime = v132;
+			if v135 then
+				p26.chargeTime = v134;
 				if u32 ~= v7.Idle then
 					p26:chargeWeapon(v95, v99, v101, u32);
 					p26:swingSwordAtMouse();
+				else
+					if v101 ~= nil then
+						v101:endClick();
+					end;
+					v99:DoCleaning();
 				end;
 			end;
 			if u32 ~= v7.Idle then
 				l__ClientSyncEvents__9.SwordCharge:fire(v7.Idle, p27);
 			end;
-			local v134 = v95.sword;
-			if v134 ~= nil then
-				v134 = v134.chargedAttack;
+			local v136 = v95.sword;
+			if v136 ~= nil then
+				v136 = v136.chargedAttack;
 			end;
-			if v134 and u32 == v7.Idle then
+			if v136 and u32 == v7.Idle then
 				return nil;
 			end;
 			u32 = v7.Idle;
 			l__ClientSyncEvents__9.SwordSwingUp:fire();
-			local v135 = p26:getHandItem();
-			if v135 ~= nil then
-				v135 = v135.tool;
+			local v137 = p26:getHandItem();
+			if v137 ~= nil then
+				v137 = v137.tool;
 			end;
-			l__SharedSyncEvents__26.SwordChargedSwing:fire(l__Players__5.LocalPlayer, v135, {
-				chargeTime = v132
+			l__SharedSyncEvents__26.SwordChargedSwing:fire(l__Players__5.LocalPlayer, v137, {
+				chargeTime = v134
 			});
 		end;
 	end, false, Enum.UserInputType.MouseButton1);
 	p26.maid:GiveTask(function()
-		l__ContextActionService__27:UnbindAction(v115);
+		l__ContextActionService__27:UnbindAction(v117);
 		if v101 ~= nil then
 			v101:disable();
 		end;
-		local v136 = l__getItemMeta__4(p27.itemType).sword;
-		if v136 ~= nil then
-			v136 = v136.chargedAttack;
+		local v138 = l__getItemMeta__4(p27.itemType).sword;
+		if v138 ~= nil then
+			v138 = v138.chargedAttack;
 		end;
-		if v136 ~= nil then
+		if v138 ~= nil then
 			p26.chargedWeapons[v102] = false;
 			l__ClientSyncEvents__9.SwordCharge:fire(v7.Idle, p27);
 		end;
 	end);
 	if p26.bufferedMobileAttack then
 		p26.bufferedMobileAttack = false;
-		p26:mobileSwingPressed();
+		p26:setupYield(function()
+			p26:mobileSwingPressed();
+			return function()
+
+			end;
+		end);
 	end;
 end;
 local l__KnitClient__33 = v3.KnitClient;
 function u1.chargeWeapon(p34, p35, p36, p37, p38)
-	local l__chargedAttack__137 = p35.sword.chargedAttack;
-	local v138 = l__chargedAttack__137.chargeSlowDelay;
-	if v138 == nil then
-		v138 = 0;
+	local l__chargedAttack__139 = p35.sword.chargedAttack;
+	local v140 = l__chargedAttack__139.chargeSlowDelay;
+	if v140 == nil then
+		v140 = 0;
 	end;
 	local function u34()
 		p37:endClick();
@@ -762,11 +777,11 @@ function u1.chargeWeapon(p34, p35, p36, p37, p38)
 	end);
 	if p38 == v7.Idle then
 		(function()
-			task.delay(v138, function()
-				local v139 = l__Players__5.LocalPlayer:GetAttribute("IsCharging");
-				if v139 ~= 0 and v139 == v139 and v139 ~= "" and v139 then
+			task.delay(v140, function()
+				local v141 = l__Players__5.LocalPlayer:GetAttribute("IsCharging");
+				if v141 ~= 0 and v141 == v141 and v141 ~= "" and v141 then
 					p36:GiveTask(l__KnitClient__33.Controllers.SprintController:getMovementStatusModifier():addModifier({
-						moveSpeedMultiplier = l__chargedAttack__137.walkSpeedMultiplier
+						moveSpeedMultiplier = l__chargedAttack__139.walkSpeedMultiplier
 					}));
 					return;
 				end;
@@ -795,14 +810,14 @@ function u1.heavenlySwordMobileHandler(p41)
 	if not l__UserInputService__25.TouchEnabled then
 		return nil;
 	end;
-	local v140 = l__EntityUtil__19:getEntity(l__Players__5.LocalPlayer);
-	if v140 ~= nil then
-		v140 = v140:getItemInHand();
-		if v140 ~= nil then
-			v140 = v140.Name;
+	local v142 = l__EntityUtil__19:getEntity(l__Players__5.LocalPlayer);
+	if v142 ~= nil then
+		v142 = v142:getItemInHand();
+		if v142 ~= nil then
+			v142 = v142.Name;
 		end;
 	end;
-	if v140 ~= l__ItemType__35.HEAVENLY_SWORD then
+	if v142 ~= l__ItemType__35.HEAVENLY_SWORD then
 		return nil;
 	end;
 	p41:swingSwordInRegion();
