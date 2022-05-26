@@ -1,4 +1,4 @@
--- Script Hash: be03094e45b29688b67c00f498f65b8c324873e11b65cb3062cd96b00380cc90b8d5440b31549061219a87d85dfdff7c
+-- Script Hash: 6987a2b791c8a2d9e2fddd1765d96d98dc002620b2bc97b7147c7b378fb5a999887e7e71bf308e80e996645fe14cfdff
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -6,92 +6,104 @@ v1.__index = v1;
 local l__Players__2 = game:GetService("Players");
 local l__RunService__3 = game:GetService("RunService");
 local l__UserInputService__4 = game:GetService("UserInputService");
-local l__Workspace__5 = game:GetService("Workspace");
-local l__UserGameSettings__6 = UserSettings():GetService("UserGameSettings");
-local l__VRService__7 = game:GetService("VRService");
-local v8 = require(script:WaitForChild("Keyboard"));
-local v9 = require(script:WaitForChild("Gamepad"));
-local v10 = require(script:WaitForChild("DynamicThumbstick"));
-local v11, v12 = pcall(function()
+local l__GuiService__5 = game:GetService("GuiService");
+local l__Workspace__6 = game:GetService("Workspace");
+local l__UserGameSettings__7 = UserSettings():GetService("UserGameSettings");
+local l__VRService__8 = game:GetService("VRService");
+local v9 = require(script:WaitForChild("Keyboard"));
+local v10 = require(script:WaitForChild("Gamepad"));
+local v11 = require(script:WaitForChild("DynamicThumbstick"));
+local v12, v13 = pcall(function()
 	return UserSettings():IsUserFeatureEnabled("UserFlagEnableNewVRSystem");
 end);
-local v13, v14 = pcall(function()
+local v14, v15 = pcall(function()
 	return UserSettings():IsUserFeatureEnabled("UserCameraControlLastInputTypeUpdate");
 end);
-local v15 = require(script:WaitForChild("TouchThumbstick"));
-local v16 = require(script:WaitForChild("ClickToMoveController"));
-local u1 = v13 or v14;
+local v16, v17 = pcall(function()
+	return UserSettings():IsUserFeatureEnabled("UserUpdatePlayerScriptsTouchControlsEnabled");
+end);
+local v18 = require(script:WaitForChild("TouchThumbstick"));
+local v19 = require(script:WaitForChild("ClickToMoveController"));
+local u1 = v14 or v15;
 local u2 = require(script:WaitForChild("VehicleController"));
 local l__Value__3 = Enum.ContextActionPriority.Default.Value;
+local u4 = v16 or v17;
 function v1.new()
-	local v17 = setmetatable({}, v1);
-	v17.controllers = {};
-	v17.activeControlModule = nil;
-	v17.activeController = nil;
-	v17.touchJumpController = nil;
-	v17.moveFunction = l__Players__2.LocalPlayer.Move;
-	v17.humanoid = nil;
-	v17.lastInputType = Enum.UserInputType.None;
+	local v20 = setmetatable({}, v1);
+	v20.controllers = {};
+	v20.activeControlModule = nil;
+	v20.activeController = nil;
+	v20.touchJumpController = nil;
+	v20.moveFunction = l__Players__2.LocalPlayer.Move;
+	v20.humanoid = nil;
+	v20.lastInputType = Enum.UserInputType.None;
 	if u1 then
-		v17.controlsEnabled = true;
+		v20.controlsEnabled = true;
 	end;
-	v17.humanoidSeatedConn = nil;
-	v17.vehicleController = nil;
-	v17.touchControlFrame = nil;
-	v17.vehicleController = u2.new(l__Value__3);
+	v20.humanoidSeatedConn = nil;
+	v20.vehicleController = nil;
+	v20.touchControlFrame = nil;
+	v20.vehicleController = u2.new(l__Value__3);
 	l__Players__2.LocalPlayer.CharacterAdded:Connect(function(p1)
-		v17:OnCharacterAdded(p1);
+		v20:OnCharacterAdded(p1);
 	end);
 	l__Players__2.LocalPlayer.CharacterRemoving:Connect(function(p2)
-		v17:OnCharacterRemoving(p2);
+		v20:OnCharacterRemoving(p2);
 	end);
 	if l__Players__2.LocalPlayer.Character then
-		v17:OnCharacterAdded(l__Players__2.LocalPlayer.Character);
+		v20:OnCharacterAdded(l__Players__2.LocalPlayer.Character);
 	end;
 	l__RunService__3:BindToRenderStep("ControlScriptRenderstep", Enum.RenderPriority.Input.Value, function(p3)
-		v17:OnRenderStepped(p3);
+		v20:OnRenderStepped(p3);
 	end);
 	l__UserInputService__4.LastInputTypeChanged:Connect(function(p4)
-		v17:OnLastInputTypeChanged(p4);
+		v20:OnLastInputTypeChanged(p4);
 	end);
-	l__UserGameSettings__6:GetPropertyChangedSignal("TouchMovementMode"):Connect(function()
-		v17:OnTouchMovementModeChange();
+	l__UserGameSettings__7:GetPropertyChangedSignal("TouchMovementMode"):Connect(function()
+		v20:OnTouchMovementModeChange();
 	end);
 	l__Players__2.LocalPlayer:GetPropertyChangedSignal("DevTouchMovementMode"):Connect(function()
-		v17:OnTouchMovementModeChange();
+		v20:OnTouchMovementModeChange();
 	end);
-	l__UserGameSettings__6:GetPropertyChangedSignal("ComputerMovementMode"):Connect(function()
-		v17:OnComputerMovementModeChange();
+	l__UserGameSettings__7:GetPropertyChangedSignal("ComputerMovementMode"):Connect(function()
+		v20:OnComputerMovementModeChange();
 	end);
 	l__Players__2.LocalPlayer:GetPropertyChangedSignal("DevComputerMovementMode"):Connect(function()
-		v17:OnComputerMovementModeChange();
+		v20:OnComputerMovementModeChange();
 	end);
-	v17.playerGui = nil;
-	v17.touchGui = nil;
-	v17.playerGuiAddedConn = nil;
-	l__UserInputService__4:GetPropertyChangedSignal("ModalEnabled"):Connect(function()
-		v17:UpdateTouchGuiVisibility();
-	end);
-	if not l__UserInputService__4.TouchEnabled then
-		v17:OnLastInputTypeChanged(l__UserInputService__4:GetLastInputType());
-		return v17;
+	v20.playerGui = nil;
+	v20.touchGui = nil;
+	v20.playerGuiAddedConn = nil;
+	if u4 then
+		l__GuiService__5:GetPropertyChangedSignal("TouchControlsEnabled"):Connect(function()
+			v20:UpdateTouchGuiVisibility();
+			v20:UpdateActiveControlModuleEnabled();
+		end);
+	else
+		l__UserInputService__4:GetPropertyChangedSignal("ModalEnabled"):Connect(function()
+			v20:UpdateTouchGuiVisibility();
+		end);
 	end;
-	v17.playerGui = l__Players__2.LocalPlayer:FindFirstChildOfClass("PlayerGui");
-	if not v17.playerGui then
-		v17.playerGuiAddedConn = l__Players__2.LocalPlayer.ChildAdded:Connect(function(p5)
+	if not l__UserInputService__4.TouchEnabled then
+		v20:OnLastInputTypeChanged(l__UserInputService__4:GetLastInputType());
+		return v20;
+	end;
+	v20.playerGui = l__Players__2.LocalPlayer:FindFirstChildOfClass("PlayerGui");
+	if not v20.playerGui then
+		v20.playerGuiAddedConn = l__Players__2.LocalPlayer.ChildAdded:Connect(function(p5)
 			if p5:IsA("PlayerGui") then
-				v17.playerGui = p5;
-				v17:CreateTouchGuiContainer();
-				v17.playerGuiAddedConn:Disconnect();
-				v17.playerGuiAddedConn = nil;
-				v17:OnLastInputTypeChanged(l__UserInputService__4:GetLastInputType());
+				v20.playerGui = p5;
+				v20:CreateTouchGuiContainer();
+				v20.playerGuiAddedConn:Disconnect();
+				v20.playerGuiAddedConn = nil;
+				v20:OnLastInputTypeChanged(l__UserInputService__4:GetLastInputType());
 			end;
 		end);
-		return v17;
+		return v20;
 	end;
-	v17:CreateTouchGuiContainer();
-	v17:OnLastInputTypeChanged(l__UserInputService__4:GetLastInputType());
-	return v17;
+	v20:CreateTouchGuiContainer();
+	v20:OnLastInputTypeChanged(l__UserInputService__4:GetLastInputType());
+	return v20;
 end;
 function v1.GetMoveVector(p6)
 	if not p6.activeController then
@@ -103,7 +115,7 @@ function v1.GetActiveController(p7)
 	return p7.activeController;
 end;
 function v1.EnableActiveControlModule(p8)
-	if p8.activeControlModule == v16 then
+	if p8.activeControlModule == v19 then
 		p8.activeController:Enable(true, l__Players__2.LocalPlayer.DevComputerMovementMode == Enum.DevComputerMovementMode.UserChoice, p8.touchJumpController);
 		return;
 	end;
@@ -113,315 +125,363 @@ function v1.EnableActiveControlModule(p8)
 	end;
 	p8.activeController:Enable(true, p8.touchControlFrame);
 end;
-function v1.Enable(p9, p10)
-	if u1 then
-		if p10 == nil then
-			p10 = true;
+function v1.UpdateActiveControlModuleEnabled(p9)
+	local function v21()
+		p9.activeController:Enable(false);
+		if p9.moveFunction then
+			p9.moveFunction(l__Players__2.LocalPlayer, Vector3.new(0, 0, 0), true);
 		end;
-		p9.controlsEnabled = p10;
 	end;
 	if not p9.activeController then
 		return;
 	end;
-	if not u1 and p10 == nil then
-		p10 = true;
-	end;
-	if p10 then
-		p9:EnableActiveControlModule();
+	if not p9.controlsEnabled then
+		v21();
 		return;
 	end;
-	p9:Disable();
-end;
-function v1.Disable(p11)
-	if u1 then
-		p11.controlsEnabled = false;
+	if not l__GuiService__5.TouchControlsEnabled and l__UserInputService__4.TouchEnabled and (p9.activeControlModule == v19 or p9.activeControlModule == v18 or p9.activeControlModule == v11) then
+		v21();
+		return;
 	end;
-	if p11.activeController then
-		p11.activeController:Enable(false);
-		if p11.moveFunction then
-			p11.moveFunction(l__Players__2.LocalPlayer, Vector3.new(0, 0, 0), true);
+	(function()
+		if p9.activeControlModule == v19 then
+			p9.activeController:Enable(true, l__Players__2.LocalPlayer.DevComputerMovementMode == Enum.DevComputerMovementMode.UserChoice, p9.touchJumpController);
+			return;
+		end;
+		if not p9.touchControlFrame then
+			p9.activeController:Enable(true);
+			return;
+		end;
+		p9.activeController:Enable(true, p9.touchControlFrame);
+	end)();
+end;
+function v1.Enable(p10, p11)
+	if u1 then
+		if p11 == nil then
+			p11 = true;
+		end;
+		p10.controlsEnabled = p11;
+	end;
+	if not p10.activeController then
+		return;
+	end;
+	if not u1 and p11 == nil then
+		p11 = true;
+	end;
+	if u4 then
+		p10:UpdateActiveControlModuleEnabled();
+		return;
+	end;
+	if p11 then
+		p10:EnableActiveControlModule();
+		return;
+	end;
+	p10:Disable();
+end;
+function v1.Disable(p12)
+	if u1 then
+		p12.controlsEnabled = false;
+	end;
+	if u4 then
+		p12:UpdateActiveControlModuleEnabled();
+		return;
+	end;
+	if p12.activeController then
+		p12.activeController:Enable(false);
+		if p12.moveFunction then
+			p12.moveFunction(l__Players__2.LocalPlayer, Vector3.new(0, 0, 0), true);
 		end;
 	end;
 end;
-local u4 = {
-	[Enum.UserInputType.Keyboard] = v8, 
-	[Enum.UserInputType.MouseButton1] = v8, 
-	[Enum.UserInputType.MouseButton2] = v8, 
-	[Enum.UserInputType.MouseButton3] = v8, 
-	[Enum.UserInputType.MouseWheel] = v8, 
-	[Enum.UserInputType.MouseMovement] = v8, 
-	[Enum.UserInputType.Gamepad1] = v9, 
-	[Enum.UserInputType.Gamepad2] = v9, 
-	[Enum.UserInputType.Gamepad3] = v9, 
-	[Enum.UserInputType.Gamepad4] = v9
+local u5 = {
+	[Enum.UserInputType.Keyboard] = v9, 
+	[Enum.UserInputType.MouseButton1] = v9, 
+	[Enum.UserInputType.MouseButton2] = v9, 
+	[Enum.UserInputType.MouseButton3] = v9, 
+	[Enum.UserInputType.MouseWheel] = v9, 
+	[Enum.UserInputType.MouseMovement] = v9, 
+	[Enum.UserInputType.Gamepad1] = v10, 
+	[Enum.UserInputType.Gamepad2] = v10, 
+	[Enum.UserInputType.Gamepad3] = v10, 
+	[Enum.UserInputType.Gamepad4] = v10
 };
-local u5 = nil;
-local u6 = {
-	[Enum.TouchMovementMode.DPad] = v10, 
-	[Enum.DevTouchMovementMode.DPad] = v10, 
-	[Enum.TouchMovementMode.Thumbpad] = v10, 
-	[Enum.DevTouchMovementMode.Thumbpad] = v10, 
-	[Enum.TouchMovementMode.Thumbstick] = v15, 
-	[Enum.DevTouchMovementMode.Thumbstick] = v15, 
-	[Enum.TouchMovementMode.DynamicThumbstick] = v10, 
-	[Enum.DevTouchMovementMode.DynamicThumbstick] = v10, 
-	[Enum.TouchMovementMode.ClickToMove] = v16, 
-	[Enum.DevTouchMovementMode.ClickToMove] = v16, 
-	[Enum.TouchMovementMode.Default] = v10, 
-	[Enum.ComputerMovementMode.Default] = v8, 
-	[Enum.ComputerMovementMode.KeyboardMouse] = v8, 
-	[Enum.DevComputerMovementMode.KeyboardMouse] = v8, 
+local u6 = nil;
+local u7 = {
+	[Enum.TouchMovementMode.DPad] = v11, 
+	[Enum.DevTouchMovementMode.DPad] = v11, 
+	[Enum.TouchMovementMode.Thumbpad] = v11, 
+	[Enum.DevTouchMovementMode.Thumbpad] = v11, 
+	[Enum.TouchMovementMode.Thumbstick] = v18, 
+	[Enum.DevTouchMovementMode.Thumbstick] = v18, 
+	[Enum.TouchMovementMode.DynamicThumbstick] = v11, 
+	[Enum.DevTouchMovementMode.DynamicThumbstick] = v11, 
+	[Enum.TouchMovementMode.ClickToMove] = v19, 
+	[Enum.DevTouchMovementMode.ClickToMove] = v19, 
+	[Enum.TouchMovementMode.Default] = v11, 
+	[Enum.ComputerMovementMode.Default] = v9, 
+	[Enum.ComputerMovementMode.KeyboardMouse] = v9, 
+	[Enum.DevComputerMovementMode.KeyboardMouse] = v9, 
 	[Enum.DevComputerMovementMode.Scriptable] = nil, 
-	[Enum.ComputerMovementMode.ClickToMove] = v16, 
-	[Enum.DevComputerMovementMode.ClickToMove] = v16
+	[Enum.ComputerMovementMode.ClickToMove] = v19, 
+	[Enum.DevComputerMovementMode.ClickToMove] = v19
 };
-function v1.SelectComputerMovementModule(p12)
+function v1.SelectComputerMovementModule(p13)
 	if not l__UserInputService__4.KeyboardEnabled and not l__UserInputService__4.GamepadEnabled then
 		return nil, false;
 	end;
-	local l__DevComputerMovementMode__18 = l__Players__2.LocalPlayer.DevComputerMovementMode;
-	if l__DevComputerMovementMode__18 == Enum.DevComputerMovementMode.UserChoice then
-		local v19 = u4[u5];
-		if l__UserGameSettings__6.ComputerMovementMode == Enum.ComputerMovementMode.ClickToMove and v19 == v8 then
-			v19 = v16;
+	local l__DevComputerMovementMode__22 = l__Players__2.LocalPlayer.DevComputerMovementMode;
+	if l__DevComputerMovementMode__22 == Enum.DevComputerMovementMode.UserChoice then
+		local v23 = u5[u6];
+		if l__UserGameSettings__7.ComputerMovementMode == Enum.ComputerMovementMode.ClickToMove and v23 == v9 then
+			v23 = v19;
 		end;
 	else
-		v19 = u6[l__DevComputerMovementMode__18];
-		if not v19 and l__DevComputerMovementMode__18 ~= Enum.DevComputerMovementMode.Scriptable then
-			warn("No character control module is associated with DevComputerMovementMode ", l__DevComputerMovementMode__18);
+		v23 = u7[l__DevComputerMovementMode__22];
+		if not v23 and l__DevComputerMovementMode__22 ~= Enum.DevComputerMovementMode.Scriptable then
+			warn("No character control module is associated with DevComputerMovementMode ", l__DevComputerMovementMode__22);
 		end;
 	end;
-	if v19 then
-		return v19, true;
+	if v23 then
+		return v23, true;
 	end;
-	if l__DevComputerMovementMode__18 == Enum.DevComputerMovementMode.Scriptable then
+	if l__DevComputerMovementMode__22 == Enum.DevComputerMovementMode.Scriptable then
 		return nil, true;
 	end;
 	return nil, false;
 end;
-function v1.SelectTouchModule(p13)
+function v1.SelectTouchModule(p14)
 	if not l__UserInputService__4.TouchEnabled then
 		return nil, false;
 	end;
-	local l__DevTouchMovementMode__20 = l__Players__2.LocalPlayer.DevTouchMovementMode;
-	if l__DevTouchMovementMode__20 == Enum.DevTouchMovementMode.UserChoice then
-		local v21 = u6[l__UserGameSettings__6.TouchMovementMode];
+	local l__DevTouchMovementMode__24 = l__Players__2.LocalPlayer.DevTouchMovementMode;
+	if l__DevTouchMovementMode__24 == Enum.DevTouchMovementMode.UserChoice then
+		local v25 = u7[l__UserGameSettings__7.TouchMovementMode];
 	else
-		if l__DevTouchMovementMode__20 == Enum.DevTouchMovementMode.Scriptable then
+		if l__DevTouchMovementMode__24 == Enum.DevTouchMovementMode.Scriptable then
 			return nil, true;
 		end;
-		v21 = u6[l__DevTouchMovementMode__20];
+		v25 = u7[l__DevTouchMovementMode__24];
 	end;
-	return v21, true;
+	return v25, true;
 end;
-local u7 = v11 or v12;
-local function u8(p14, p15)
-	local l__CurrentCamera__22 = l__Workspace__5.CurrentCamera;
-	if not l__CurrentCamera__22 then
-		return p15;
+local u8 = v12 or v13;
+local function u9(p15, p16)
+	local l__CurrentCamera__26 = l__Workspace__6.CurrentCamera;
+	if not l__CurrentCamera__26 then
+		return p16;
 	end;
-	if p14:GetState() == Enum.HumanoidStateType.Swimming then
-		return l__CurrentCamera__22.CFrame:VectorToWorldSpace(p15);
+	if p15:GetState() == Enum.HumanoidStateType.Swimming then
+		return l__CurrentCamera__26.CFrame:VectorToWorldSpace(p16);
 	end;
-	local v23 = l__CurrentCamera__22.CFrame;
-	if l__VRService__7.VREnabled and u7 and p14.RootPart and (p14.RootPart.CFrame.Position - v23.Position).Magnitude < 3 then
-		v23 = v23 * l__VRService__7:GetUserCFrame(Enum.UserCFrame.Head);
+	local v27 = l__CurrentCamera__26.CFrame;
+	if l__VRService__8.VREnabled and u8 and p15.RootPart and (p15.RootPart.CFrame.Position - v27.Position).Magnitude < 3 then
+		v27 = v27 * l__VRService__8:GetUserCFrame(Enum.UserCFrame.Head);
 	end;
-	local v24, v25, v26, v27, v28, v29, v30, v31, v32, v33, v34, v35 = v23:GetComponents();
-	if v32 < 1 and v32 > -1 then
-		local v36 = v35;
-		local v37 = v29;
+	local v28, v29, v30, v31, v32, v33, v34, v35, v36, v37, v38, v39 = v27:GetComponents();
+	if v36 < 1 and v36 > -1 then
+		local v40 = v39;
+		local v41 = v33;
 	else
-		v36 = v27;
-		v37 = -v28 * math.sign(v32);
+		v40 = v31;
+		v41 = -v32 * math.sign(v36);
 	end;
-	local v38 = math.sqrt(v36 * v36 + v37 * v37);
-	return Vector3.new((v36 * p15.x + v37 * p15.z) / v38, 0, (v36 * p15.z - v37 * p15.x) / v38);
+	local v42 = math.sqrt(v40 * v40 + v41 * v41);
+	return Vector3.new((v40 * p16.x + v41 * p16.z) / v42, 0, (v40 * p16.z - v41 * p16.x) / v42);
 end;
-function v1.OnRenderStepped(p16, p17)
-	if p16.activeController and p16.activeController.enabled and p16.humanoid then
-		p16.activeController:OnRenderStepped(p17);
-		local v39 = p16.activeController:GetMoveVector();
-		local v40 = p16.activeController:IsMoveVectorCameraRelative();
-		local v41 = p16:GetClickToMoveController();
-		if p16.activeController ~= v41 then
-			if v39.magnitude > 0 then
-				v41:CleanupPath();
+function v1.OnRenderStepped(p17, p18)
+	if p17.activeController and p17.activeController.enabled and p17.humanoid then
+		p17.activeController:OnRenderStepped(p18);
+		local v43 = p17.activeController:GetMoveVector();
+		local v44 = p17.activeController:IsMoveVectorCameraRelative();
+		local v45 = p17:GetClickToMoveController();
+		if p17.activeController ~= v45 then
+			if v43.magnitude > 0 then
+				v45:CleanupPath();
 			else
-				v41:OnRenderStepped(p17);
-				v39 = v41:GetMoveVector();
-				v40 = v41:IsMoveVectorCameraRelative();
+				v45:OnRenderStepped(p18);
+				v43 = v45:GetMoveVector();
+				v44 = v45:IsMoveVectorCameraRelative();
 			end;
 		end;
-		if p16.vehicleController then
-			local v42, v43 = p16.vehicleController:Update(v39, v40, p16.activeControlModule == v9);
-			v39 = v42;
+		if p17.vehicleController then
+			local v46, v47 = p17.vehicleController:Update(v43, v44, p17.activeControlModule == v10);
+			v43 = v46;
 		end;
-		if v40 then
-			v39 = u8(p16.humanoid, v39);
+		if v44 then
+			v43 = u9(p17.humanoid, v43);
 		end;
-		p16.moveFunction(l__Players__2.LocalPlayer, v39, false);
-		p16.humanoid.Jump = p16.activeController:GetIsJumping() or p16.touchJumpController and p16.touchJumpController:GetIsJumping();
+		p17.moveFunction(l__Players__2.LocalPlayer, v43, false);
+		p17.humanoid.Jump = p17.activeController:GetIsJumping() or p17.touchJumpController and p17.touchJumpController:GetIsJumping();
 	end;
 end;
-function v1.OnHumanoidSeated(p18, p19, p20)
-	if p19 then
-		if p20 and p20:IsA("VehicleSeat") then
-			if not p18.vehicleController then
-				p18.vehicleController = p18.vehicleController.new(l__Value__3);
+function v1.OnHumanoidSeated(p19, p20, p21)
+	if p20 then
+		if p21 and p21:IsA("VehicleSeat") then
+			if not p19.vehicleController then
+				p19.vehicleController = p19.vehicleController.new(l__Value__3);
 			end;
-			p18.vehicleController:Enable(true, p20);
+			p19.vehicleController:Enable(true, p21);
 			return;
 		end;
-	elseif p18.vehicleController then
-		p18.vehicleController:Enable(false, p20);
+	elseif p19.vehicleController then
+		p19.vehicleController:Enable(false, p21);
 	end;
 end;
-function v1.OnCharacterAdded(p21, p22)
-	p21.humanoid = p22:FindFirstChildOfClass("Humanoid");
-	while not p21.humanoid do
-		p22.ChildAdded:wait();
-		p21.humanoid = p22:FindFirstChildOfClass("Humanoid");	
+function v1.OnCharacterAdded(p22, p23)
+	p22.humanoid = p23:FindFirstChildOfClass("Humanoid");
+	while not p22.humanoid do
+		p23.ChildAdded:wait();
+		p22.humanoid = p23:FindFirstChildOfClass("Humanoid");	
 	end;
-	p21:UpdateTouchGuiVisibility();
-	if p21.humanoidSeatedConn then
-		p21.humanoidSeatedConn:Disconnect();
-		p21.humanoidSeatedConn = nil;
+	p22:UpdateTouchGuiVisibility();
+	if p22.humanoidSeatedConn then
+		p22.humanoidSeatedConn:Disconnect();
+		p22.humanoidSeatedConn = nil;
 	end;
-	p21.humanoidSeatedConn = p21.humanoid.Seated:Connect(function(p23, p24)
-		p21:OnHumanoidSeated(p23, p24);
+	p22.humanoidSeatedConn = p22.humanoid.Seated:Connect(function(p24, p25)
+		p22:OnHumanoidSeated(p24, p25);
 	end);
 end;
-function v1.OnCharacterRemoving(p25, p26)
-	p25.humanoid = nil;
-	p25:UpdateTouchGuiVisibility();
+function v1.OnCharacterRemoving(p26, p27)
+	p26.humanoid = nil;
+	p26:UpdateTouchGuiVisibility();
 end;
-function v1.UpdateTouchGuiVisibility(p27)
-	if p27.touchGui then
-		p27.touchGui.Enabled = not (not p27.humanoid) and not l__UserInputService__4.ModalEnabled;
-	end;
-end;
-local u9 = require(script:WaitForChild("TouchJump"));
-function v1.SwitchToController(p28, p29)
-	if u1 then
-		if not p29 then
-			if p28.activeController then
-				p28.activeController:Enable(false);
-			end;
-			p28.activeController = nil;
-			p28.activeControlModule = nil;
+function v1.UpdateTouchGuiVisibility(p28)
+	if p28.touchGui then
+		if not u4 then
+			p28.touchGui.Enabled = not (not p28.humanoid) and not l__UserInputService__4.ModalEnabled;
 			return;
 		end;
-		if not p28.controllers[p29] then
-			p28.controllers[p29] = p29.new(l__Value__3);
+	else
+		return;
+	end;
+	p28.touchGui.Enabled = not (not p28.humanoid) and not (not l__GuiService__5.TouchControlsEnabled);
+end;
+local u10 = require(script:WaitForChild("TouchJump"));
+function v1.SwitchToController(p29, p30)
+	if u1 then
+		if not p30 then
+			if p29.activeController then
+				p29.activeController:Enable(false);
+			end;
+			p29.activeController = nil;
+			p29.activeControlModule = nil;
+			return;
 		end;
-		if p28.activeController ~= p28.controllers[p29] then
-			if p28.activeController then
-				p28.activeController:Enable(false);
+		if not p29.controllers[p30] then
+			p29.controllers[p30] = p30.new(l__Value__3);
+		end;
+		if p29.activeController ~= p29.controllers[p30] then
+			if p29.activeController then
+				p29.activeController:Enable(false);
 			end;
-			p28.activeController = p28.controllers[p29];
-			p28.activeControlModule = p29;
-			if p28.touchControlFrame and (p28.activeControlModule == v16 or p28.activeControlModule == v15 or p28.activeControlModule == v10) then
-				if not p28.controllers[u9] then
-					p28.controllers[u9] = u9.new();
+			p29.activeController = p29.controllers[p30];
+			p29.activeControlModule = p30;
+			if p29.touchControlFrame and (p29.activeControlModule == v19 or p29.activeControlModule == v18 or p29.activeControlModule == v11) then
+				if not p29.controllers[u10] then
+					p29.controllers[u10] = u10.new();
 				end;
-				p28.touchJumpController = p28.controllers[u9];
-				p28.touchJumpController:Enable(true, p28.touchControlFrame);
-			elseif p28.touchJumpController then
-				p28.touchJumpController:Enable(false);
+				p29.touchJumpController = p29.controllers[u10];
+				p29.touchJumpController:Enable(true, p29.touchControlFrame);
+			elseif p29.touchJumpController then
+				p29.touchJumpController:Enable(false);
 			end;
-			if p28.controlsEnabled then
-				p28:EnableActiveControlModule();
+			if u4 then
+				p29:UpdateActiveControlModuleEnabled();
+				return;
+			end;
+			if p29.controlsEnabled then
+				p29:EnableActiveControlModule();
 				return;
 			end;
 		end;
 	else
-		if not p29 then
-			if p28.activeController then
-				p28.activeController:Enable(false);
+		if not p30 then
+			if p29.activeController then
+				p29.activeController:Enable(false);
 			end;
-			p28.activeController = nil;
-			p28.activeControlModule = nil;
+			p29.activeController = nil;
+			p29.activeControlModule = nil;
 			return;
 		end;
-		if not p28.controllers[p29] then
-			p28.controllers[p29] = p29.new(l__Value__3);
+		if not p29.controllers[p30] then
+			p29.controllers[p30] = p30.new(l__Value__3);
 		end;
-		if p28.activeController ~= p28.controllers[p29] then
-			if p28.activeController then
-				p28.activeController:Enable(false);
+		if p29.activeController ~= p29.controllers[p30] then
+			if p29.activeController then
+				p29.activeController:Enable(false);
 			end;
-			p28.activeController = p28.controllers[p29];
-			p28.activeControlModule = p29;
-			if p28.touchControlFrame and (p28.activeControlModule == v16 or p28.activeControlModule == v15 or p28.activeControlModule == v10) then
-				if not p28.controllers[u9] then
-					p28.controllers[u9] = u9.new();
+			p29.activeController = p29.controllers[p30];
+			p29.activeControlModule = p30;
+			if p29.touchControlFrame and (p29.activeControlModule == v19 or p29.activeControlModule == v18 or p29.activeControlModule == v11) then
+				if not p29.controllers[u10] then
+					p29.controllers[u10] = u10.new();
 				end;
-				p28.touchJumpController = p28.controllers[u9];
-				p28.touchJumpController:Enable(true, p28.touchControlFrame);
-			elseif p28.touchJumpController then
-				p28.touchJumpController:Enable(false);
+				p29.touchJumpController = p29.controllers[u10];
+				p29.touchJumpController:Enable(true, p29.touchControlFrame);
+			elseif p29.touchJumpController then
+				p29.touchJumpController:Enable(false);
 			end;
-			p28:EnableActiveControlModule();
+			p29:EnableActiveControlModule();
 		end;
 	end;
 end;
-function v1.OnLastInputTypeChanged(p30, p31)
-	if u5 == p31 then
+function v1.OnLastInputTypeChanged(p31, p32)
+	if u6 == p32 then
 		warn("LastInputType Change listener called with current type.");
 	end;
-	u5 = p31;
-	if u5 == Enum.UserInputType.Touch then
-		local v44, v45 = p30:SelectTouchModule();
-		if v45 then
-			while not p30.touchControlFrame do
+	u6 = p32;
+	if u6 == Enum.UserInputType.Touch then
+		local v48, v49 = p31:SelectTouchModule();
+		if v49 then
+			while not p31.touchControlFrame do
 				wait();			
 			end;
-			p30:SwitchToController(v44);
+			p31:SwitchToController(v48);
 		end;
-	elseif u4[u5] ~= nil then
-		local v46 = p30:SelectComputerMovementModule();
-		if v46 then
-			p30:SwitchToController(v46);
+	elseif u5[u6] ~= nil then
+		local v50 = p31:SelectComputerMovementModule();
+		if v50 then
+			p31:SwitchToController(v50);
 		end;
 	end;
-	p30:UpdateTouchGuiVisibility();
+	p31:UpdateTouchGuiVisibility();
 end;
-function v1.OnComputerMovementModeChange(p32)
-	local v47, v48 = p32:SelectComputerMovementModule();
-	if v48 then
-		p32:SwitchToController(v47);
+function v1.OnComputerMovementModeChange(p33)
+	local v51, v52 = p33:SelectComputerMovementModule();
+	if v52 then
+		p33:SwitchToController(v51);
 	end;
 end;
-function v1.OnTouchMovementModeChange(p33)
-	local v49, v50 = p33:SelectTouchModule();
-	if v50 then
-		while not p33.touchControlFrame do
+function v1.OnTouchMovementModeChange(p34)
+	local v53, v54 = p34:SelectTouchModule();
+	if v54 then
+		while not p34.touchControlFrame do
 			wait();		
 		end;
-		p33:SwitchToController(v49);
+		p34:SwitchToController(v53);
 	end;
 end;
-function v1.CreateTouchGuiContainer(p34)
-	if p34.touchGui then
-		p34.touchGui:Destroy();
+function v1.CreateTouchGuiContainer(p35)
+	if p35.touchGui then
+		p35.touchGui:Destroy();
 	end;
-	p34.touchGui = Instance.new("ScreenGui");
-	p34.touchGui.Name = "TouchGui";
-	p34.touchGui.ResetOnSpawn = false;
-	p34.touchGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
-	p34:UpdateTouchGuiVisibility();
-	p34.touchControlFrame = Instance.new("Frame");
-	p34.touchControlFrame.Name = "TouchControlFrame";
-	p34.touchControlFrame.Size = UDim2.new(1, 0, 1, 0);
-	p34.touchControlFrame.BackgroundTransparency = 1;
-	p34.touchControlFrame.Parent = p34.touchGui;
-	p34.touchGui.Parent = p34.playerGui;
+	p35.touchGui = Instance.new("ScreenGui");
+	p35.touchGui.Name = "TouchGui";
+	p35.touchGui.ResetOnSpawn = false;
+	p35.touchGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+	p35:UpdateTouchGuiVisibility();
+	p35.touchControlFrame = Instance.new("Frame");
+	p35.touchControlFrame.Name = "TouchControlFrame";
+	p35.touchControlFrame.Size = UDim2.new(1, 0, 1, 0);
+	p35.touchControlFrame.BackgroundTransparency = 1;
+	p35.touchControlFrame.Parent = p35.touchGui;
+	p35.touchGui.Parent = p35.playerGui;
 end;
-function v1.GetClickToMoveController(p35)
-	if not p35.controllers[v16] then
-		p35.controllers[v16] = v16.new(l__Value__3);
+function v1.GetClickToMoveController(p36)
+	if not p36.controllers[v19] then
+		p36.controllers[v19] = v19.new(l__Value__3);
 	end;
-	return p35.controllers[v16];
+	return p36.controllers[v19];
 end;
 return v1.new();
