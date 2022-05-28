@@ -1,4 +1,4 @@
--- Script Hash: 0376ae0d03b2df2ac1e04f343f39a8fdd9dc7191abe4dedcf07ef99bf35b0ad7d5b7cb7caa7fe88efe223d0f65bed91c
+-- Script Hash: 6c46b38faf288a78829e866c4616703ef48db154a8684328ee9957f577cfadc828cc39d315924759882628d3fb216c3b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -151,6 +151,15 @@ return {
 			renderImage = "rbxassetid://9439139472", 
 			product = {
 				devProductId = l__DevProduct__3.FARMER_CLETUS_SPIRIT_SKIN, 
+				priceRobux = 799
+			}
+		}, 
+		[l__BedwarsKitSkin__5.CYBER_DJ] = {
+			name = "DJ Cyber", 
+			kit = l__BedwarsKit__4.CYBER, 
+			renderImage = "rbxassetid://9742654484", 
+			product = {
+				devProductId = l__DevProduct__3.CYBER_DJ, 
 				priceRobux = 799
 			}
 		}

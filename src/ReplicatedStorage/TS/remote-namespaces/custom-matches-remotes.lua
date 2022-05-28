@@ -1,4 +1,4 @@
--- Script Hash: dde2e2fc542a152c533c2dc193c5ac94de012b69f667103058f76d5b20c5b3268a72b84486f94abca216d2ef69785daf
+-- Script Hash: cd72c4a63fb5774eaf8e57060eab3b73c85bed779b83880200ee50f9407110334f4a636e9e3e0fdd159990779820ba01
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -24,6 +24,7 @@ return v2.Definitions.Namespace({
 	SetLockServer = v2.Definitions.ServerAsyncFunction(), 
 	SetPvP = v2.Definitions.ServerAsyncFunction(), 
 	SetBedBreaking = v2.Definitions.ServerAsyncFunction(), 
+	SetBlockBreaking = v2.Definitions.ServerAsyncFunction(), 
 	SetKitDisabled = v2.Definitions.ServerAsyncFunction(), 
 	SetAllKitsDisabled = v2.Definitions.ServerAsyncFunction(), 
 	SetItemDisabled = v2.Definitions.ServerAsyncFunction(), 

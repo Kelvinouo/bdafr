@@ -1,4 +1,4 @@
--- Script Hash: 847386677b89f767652622bb3ed5e091b83cc1ce3605a2e237fa13a582e9d0c6b98a467c8b0359f200eadac4451c86b0
+-- Script Hash: 07741eeda9626bc80374d4b589ec39c5a7665e4542b61a8a9e105fc9e78b6d49a91b6f5357edee59b9576f58cdcc8b2f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -204,6 +204,7 @@ return {
 			LayoutOrder = 2, 
 			ClearTextOnFocus = false
 		};
+		v27.MaxCharacters = 60;
 		v16[v17 + 2] = u1.createElement(l__TextInputComponent__11, v27, { u1.createElement("UIPadding", {
 				PaddingTop = UDim.new(0.05, 0), 
 				PaddingBottom = UDim.new(0.05, 0), 

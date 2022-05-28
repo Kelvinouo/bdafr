@@ -1,4 +1,4 @@
--- Script Hash: 346904d0d5789049cf5d505a90e7556812eabfcacf18f79f0fd44b5bc72c41e4f23d1e2cf4eb9dbea9130865a4874049
+-- Script Hash: 63cb6effa85ad43590ee26eec83f36ccfb5db3e1438f101a242de030a4f86f0476a2acd9ec87b41cecf6a0a4959a855f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -445,7 +445,8 @@ v7[l__BedwarsKit__6.CYBER] = {
 	description = "Deploy and control drones to pickup resources from around the map. Drones can also airdrop primed TNT.", 
 	renderImage = "rbxassetid://9507126891", 
 	priceRobux = 399, 
-	gamepassId = 42490369
+	gamepassId = 42490369, 
+	skins = { l__BedwarsKitSkin__5.CYBER_DJ }
 };
 v7[l__BedwarsKit__6.EMBER] = {
 	name = "Ember", 

@@ -1,4 +1,4 @@
--- Script Hash: 86d77d112ecf033e1f0eccc3794ce5cf58c397504e65b04fcf64ae84d64f7a6cda043a91d79ecc38fb881bda0ddc93a5
+-- Script Hash: ee32dd8c596427d6cb00eb7c13156296a1be7bf53c1e8ff7da44239e78cf8a76bef402a79574e54c9a3e5c4f5368e64a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {
@@ -12,7 +12,8 @@ local v1 = {
 	MINER_BUNDLE = 29973548, 
 	CLAN_CREATE_PASS = 32610830, 
 	MINER = 33821514, 
-	EMBER_LUMEN_KIT_BUNDLE = 44594629
+	EMBER_LUMEN_KIT_BUNDLE = 44594629, 
+	EMBER_LUMEN_KIT_BUNDLE_PERM = 47400080
 };
 if not require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "util", "place-util").PlaceUtil.isProduction() then
 	v1.VIP = 18302069;
@@ -24,6 +25,7 @@ if not require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"
 	v1.CLAN_CREATE_PASS = 32610141;
 	v1.MINER = 33821514;
 	v1.EMBER_LUMEN_KIT_BUNDLE = 35362319;
+	v1.EMBER_LUMEN_KIT_BUNDLE_PERM = 47400080;
 end;
 return {
 	Gamepass = v1

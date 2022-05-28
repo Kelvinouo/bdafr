@@ -1,4 +1,4 @@
--- Script Hash: 56a3d8bd8219a51bf06cf8f8186f1d022e48da316d839aa5204b692753658741066302118e4eec319e8a73446941d303
+-- Script Hash: 7d886cb5ace03022077528e816080aca0725bfd14fb217da7c07739d7357c141d48dfab5dfbd45a1bb5b317ea4569d20
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -489,6 +489,8 @@ v2.HEAL_BANNER = "heal_banner";
 v1.heal_banner = "HEAL_BANNER";
 v2.HELICOPTER_DEPLOY = "helicopter_deploy";
 v1.helicopter_deploy = "HELICOPTER_DEPLOY";
+v2.FLAG = "flag";
+v1.flag = "FLAG";
 v2.PLAYER_VACUUM = "player_vacuum";
 v1.player_vacuum = "PLAYER_VACUUM";
 return {

@@ -1,4 +1,4 @@
--- Script Hash: 83df563c9a638b4732ca29382fc4627f93fde4107b7bb896e1388afda06e90addf0542d9fe26e8d1311e49ddf26fea64
+-- Script Hash: 3a1664b3d536a09d6aa711f311e21b97998106042b8b21d28d4f73f371dcca4624ddaf9f69395db0ebbfe687ad3fad71
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__ItemType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
@@ -7,8 +7,8 @@ local v2 = {
 };
 local v3 = DateTime.fromUniversalTime(2021, 8, 27, 19);
 v2.SEASON_START_DATE = v3;
-v2.DAILY_MISSION_XP = 2500;
-v2.WEEKKLY_MISSION_XP = 14000;
+v2.DAILY_MISSION_XP = 3500;
+v2.WEEKKLY_MISSION_XP = 18000;
 local u1 = v3;
 local function v4()
 	return math.ceil(math.max(DateTime.now().UnixTimestamp - u1.UnixTimestamp, 0) / 86400);

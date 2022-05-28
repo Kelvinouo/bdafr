@@ -1,4 +1,4 @@
--- Script Hash: 16f9ecda67c4ad3715b144c2044f51e61dd6233dfc27c678949d01ca0c2bc8e42c9a53ba1c88b47e50c62b3bb35a3329
+-- Script Hash: 703c67e603a0798217952e33377d122d6ee7d39d3d90974bc3cc9020d67ac3380e17f4f53648858977bd03896a824221
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__MapType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "game", "map", "map-type").MapType;
@@ -12,19 +12,26 @@ local v3 = {
 	[l__MapType__1.BEDWARS_DUELS] = { "duels_Volatile", "duels_Ruins", "duels_Glacier", "duels_Blossom", "duels_Sand-Temple", "duels_Glade", "duels_Canyon" }, 
 	[l__MapType__1.BEDWARS_THIRTY_VS_THIRTY] = { "to30_Aztec", "to30_Castle", "to30_Campsite", "to30_Fortress", "to30_Ships-Ahoy", "to30_Reservoir", "to30_Spring" }
 };
-local v4 = {};
-for v5, v6 in pairs(v3) do
-	v4[v5] = v6;
+local v4 = {
+	[l__MapType__1.FLAG_CAPTURE_MAP_TYPE] = { "to30_Campsite", "to30_Ships-Ahoy", "to30_Reservoir", "to30_Castle", "to30_Fortress", "to30_Fortress" }
+};
+local v5 = {};
+for v6, v7 in pairs(v3) do
+	v5[v6] = v7;
 end;
-for v7, v8 in pairs(v2) do
-	v4[v7] = v8;
+for v8, v9 in pairs(v2) do
+	v5[v8] = v9;
 end;
-v4[l__MapType__1.ROYALE] = { "royale_Mega-Plains", "royale_Mega-Tundra", "royale_Gorge" };
-v4[l__MapType__1.INFECTED] = { "infected_Industry", "infected_Frost-Site" };
-v4[l__MapType__1.PVE] = { "pve_Iceberg" };
-v4[l__MapType__1.GUN_GAME] = { "gg_siege", "gg_ruins", "gg_treetop" };
+for v10, v11 in pairs(v4) do
+	v5[v10] = v11;
+end;
+v5[l__MapType__1.ROYALE] = { "royale_Mega-Plains", "royale_Mega-Tundra", "royale_Gorge" };
+v5[l__MapType__1.INFECTED] = { "infected_Industry", "infected_Frost-Site" };
+v5[l__MapType__1.PVE] = { "pve_Iceberg" };
+v5[l__MapType__1.GUN_GAME] = { "gg_siege", "gg_ruins", "gg_treetop" };
 return {
 	SkywarsMaps = v2, 
 	BedwarsMaps = v3, 
-	Maps = v4
+	FlagCaptureMaps = v4, 
+	Maps = v5
 };

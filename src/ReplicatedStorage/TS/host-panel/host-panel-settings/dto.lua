@@ -1,4 +1,4 @@
--- Script Hash: 73307302d9bc0572633a40c41503c7154a641434069f7ef27885fca4fa2617c9e90df09a4f8559822a46affc34e2459b
+-- Script Hash: 5893f41ad577324de44322bd3c073197c40010c954b13889b0c83a14225b660b4bf8bec9e2dbd4cfb9df0078768fa32f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__ItemType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
@@ -20,6 +20,8 @@ v3.PvP = 5;
 v2[5] = "PvP";
 v3.BedBreaking = 6;
 v2[6] = "BedBreaking";
+v3.BlockBreaking = 7;
+v2[7] = "BlockBreaking";
 return {
 	HostPanelGeneralToggle = v3, 
 	starterHostPanelSettings = {
@@ -37,7 +39,8 @@ return {
 			[v3.BypassPlacementLimits] = false, 
 			[v3.LockServer] = false, 
 			[v3.PvP] = true, 
-			[v3.BedBreaking] = true
+			[v3.BedBreaking] = true, 
+			[v3.BlockBreaking] = true
 		}, 
 		disabledKits = {}, 
 		disabledItems = {}

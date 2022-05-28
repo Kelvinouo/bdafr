@@ -1,4 +1,4 @@
--- Script Hash: b2af974cf33cbd8bf4d4e80462e01d3190f5bcd04159dfb3c2c725b504b6fd28b0b896d90653dba2598aed4a94f85d3c
+-- Script Hash: a4859a32d450e157431285f04dd4ae5773bdeb76a3ab672135b363b77c4b75f53f701c5cbf0a2e1d36f5006d228b4ec6
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -13,7 +13,7 @@ local l__MapType__9 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 local l__QueueType__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "game", "queue-type").QueueType;
 local l__TeamColorHex__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "game", "team", "team-color-hex").TeamColorHex;
 return {
-	StudioQueueType = l__QueueType__10.BEDWARS_LUCKY_BLOCK, 
+	StudioQueueType = l__QueueType__10.FLAG_CAPTURE, 
 	QueueMeta = {
 		[l__QueueType__10.BEDWARS_TEST] = {
 			title = "BedWars (Testing)", 
@@ -840,6 +840,31 @@ return {
 			placeId = l__PlaceId__3.GAME, 
 			game = l__GameType__7.BEDWARS, 
 			disasters = true
+		}, 
+		[l__QueueType__10.FLAG_CAPTURE] = {
+			title = "Capture the Flag", 
+			eventText = "\240\159\154\168 <font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__6.mcRed) .. "\">LIMITED TIME MODE!</font> \240\159\154\168", 
+			teams = { {
+					id = "1", 
+					maxPlayers = 12, 
+					colorHex = l__TeamColorHex__11.lightBlue, 
+					displayName = "Blue"
+				}, {
+					id = "2", 
+					maxPlayers = 12, 
+					colorHex = l__TeamColorHex__11.yellow, 
+					displayName = "Yellow"
+				} }, 
+			maps = l__Maps__8[l__MapType__9.FLAG_CAPTURE_MAP_TYPE], 
+			queueSize = {
+				min = 1, 
+				max = 12
+			}, 
+			noKits = true, 
+			placeId = l__PlaceId__3.GAME, 
+			game = l__GameType__7.FLAG_CAPTURE, 
+			noTopHud = true, 
+			winConInfoHud = "Ends at 20:00"
 		}, 
 		[l__QueueType__10.GUN_GAME] = {
 			title = "Gun Game", 

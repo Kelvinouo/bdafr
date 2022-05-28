@@ -1,4 +1,4 @@
--- Script Hash: f9a7707284612a8242dac80b0df130dbf85bd2f5019b0c2d1fce6eca8609df6558d988b067bdb656255ebf3373bd7321
+-- Script Hash: 566184e396c2a0a91f0de575ad275e19739e1ecc91ae0927c0cfe4ae903c506e9ad852653a910cb8d8c9c93b9ad88bf4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -6,8 +6,8 @@ local v2 = {
 	MAX_LEVEL = 50, 
 	PAID_MULTIPLIER = 1.2, 
 	SOCIAL_CONNECTIONS_MULTIPLIER = 1.2, 
-	EXPERIENCE_BOOST_ENABLED = false, 
-	EXPERIENCE_BOOST_MULT = 2
+	EXPERIENCE_BOOST_ENABLED = true, 
+	EXPERIENCE_BOOST_MULT = 3
 };
 local l__season4__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-seasons").BattlePassSeason.season4;
 v2.BATTLE_PASS_SEASON = l__season4__3;

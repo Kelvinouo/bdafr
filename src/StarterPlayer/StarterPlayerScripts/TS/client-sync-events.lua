@@ -1,4 +1,4 @@
--- Script Hash: 504662f392e6dfbfaee9e05c3d61d5d88a2ddcbd50e43d9560017fea5ea38e9ef5fe5d0142f6108062703ce2f8ddb6a5
+-- Script Hash: 64bf1b7da1c4e13d5bf16645d4299707e6150a23612070833571162a1b8fe487e2dcabc5fd98c87ac7c32c22c05f9276
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -18,6 +18,7 @@ v5.SwordCharge = l__SyncEvent__2.new(v1.import(script, script.Parent, "controlle
 v5.SwordSwingDown = l__SyncEvent__2.new(v4.SwordPressDownEvent);
 v5.SwordSwingUp = l__SyncEvent__2.new(v4.SwordPressUpEvent);
 v5.PerformCombat = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "game", "combat", "event", "perform-combat-event").PerformCombatEvent);
+v5.BeginProjectileTargeting = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "game", "combat", "projectile", "event", "begin-projectile-targeting-event").BeginProjectileTargetingEvent);
 v5.StartLaunchProjectile = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "game", "combat", "projectile", "event", "start-projectile-launch-event").StartProjectileLaunchEvent);
 v5.ProjectileLaunched = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "game", "combat", "projectile", "event", "projectile-launched-event").ProjectileLaunchedEvent);
 v5.ProjectileDestroy = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "game", "combat", "projectile", "event", "projectile-destroy-event").ProjectileDestroyEvent);
@@ -41,6 +42,7 @@ v5.ItemAdded = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers
 v5.MobileSwordButtonPressed = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "global", "combat", "sword", "event", "mobile-sword-button-pressed-event").MobileSwordButtonPressedEvent);
 v5.CancelEmoteEvent = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "global", "locker", "emote", "event", "cancel-emote-event").CancelEmoteClientEvent);
 v5.ExplosionEffectEvent = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "game", "combat", "explosion", "explosion-sync-events").ExplosionEffectEvent);
+v5.ZiplineMount = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "game", "items", "zipline", "event", "zipline-mount-event").ZiplineMountEvent);
 return {
 	ClientSyncEvents = v5
 };

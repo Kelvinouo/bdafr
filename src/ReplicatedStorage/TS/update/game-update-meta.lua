@@ -1,4 +1,4 @@
--- Script Hash: bf443a577497619b338c4f7ea5640cd2492a017c9babf75511e461248cfa9f942d474f4ece06344bd6e67fcd9b5036d3
+-- Script Hash: 39ad8b05a8c24ecf8b2cb89c5545879421451cd04af1c37389ae466365111fe4b7cf16b943f0c3d44604d6be0a63fe60
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -11,6 +11,17 @@ return {
 		newestKitBG = "rbxassetid://8795128315"
 	}, 
 	GameUpdateMeta = { {
+			updateLogId = 35, 
+			visible = true, 
+			title = "Capture The Flag + Cyber Skin + \240\159\142\130 1 Year Anniversary", 
+			date = "5/27/2022", 
+			body = "<b>\240\159\148\165 TRIPLE XP WEEKEND \240\159\148\165</b>\n\n\240\159\154\169 <b>Capture The Flag (NEW LTM)</b>\nGo for the enemy\226\128\153s flag while protecting your own in this new 12v12 gamemode! You can't capture the enemies flag unless you have control of you own. The first team to capture two flags wins!\n\n\240\159\142\130 <b>BedWars 1 Year Anniversary</b>\nWe\226\128\153ve hit the 1 year mark! We\226\128\153ve got some amazing updates lined up to make the 2nd year even crazier!\194\160\240\159\165\179  \n\n<b>\240\159\146\168\194\160Zipline Returns</b>\nThe Zipline has made it back into BedWars at a great discount!\n\n\240\159\142\167 <b>DJ Cyber Skin (NEW)</b>\nA new Cyber skin has been released for 799 Robux. DJ Cyber comes with a unique drone.\n\n<b>\240\159\134\147 Free Kits of the Week</b>\n\240\159\142\163 Fisherman <b>(First Time Free!)</b>\n\226\154\148\239\184\143 Barbarian\n\240\159\142\184 Melody\n\n<b>\226\154\153\239\184\143 Other Changes</b>\n\240\159\165\149\194\160Buffed Cletus\226\128\153 carrot seeds price (110 Iron \226\134\146 70 Iron)\n\240\159\146\168\194\160Zipline price reduced (3 Emeralds \226\134\146 60 Iron)\n\240\159\146\168\194\160Fixed bugs causing you to instantly eject from Zipline\n\240\159\146\168\194\160You now get 1 in-air jump after ejecting from Zipline\n\240\159\142\159\239\184\143 Mission xp buffed", 
+			image = {
+				assetId = "rbxassetid://9742721700", 
+				aspectRatio = 1, 
+				height = 150
+			}
+		}, {
 			updateLogId = 34, 
 			visible = true, 
 			title = "Lassy Rework + Vacuum Item + Clan Chat", 

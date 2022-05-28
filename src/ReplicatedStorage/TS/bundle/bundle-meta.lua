@@ -1,4 +1,4 @@
--- Script Hash: b0d4dddc4d9220830af4e82b38a4096fec13d528d5d63ce3cd52529bf62a3041ef30a0a0c8ad1cb7a2d2a912f066fe04
+-- Script Hash: 0aac7ae4f6828f672c72b8fd1ca4ff68a9f33bea07e9e8d2ec2f1f456283769c428f4bde824882efdc35deed0e854597
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -59,7 +59,21 @@ return {
 			kitShopBundle = {
 				name = "Ember & Lumen Kit Bundle", 
 				image = "rbxassetid://9630018755", 
-				description = "Purchase this limited time bundle to unlock the following:\n\226\152\128\239\184\143\194\160<b>LUMEN (Kit)</b>\n\240\159\148\165\194\160<b>EMBER (Kit)</b>\n- Unlocks limited lobby titles: <font color=\"rgb(140, 5, 56)\"><b>Infernal \240\159\148\165</b></font> & <font color=\"rgb(242, 209, 0)\"><b>Light \240\159\148\133</b></font>\n- Unlocks limited time lobby gadgets: Infernal Saber & Light Sword\n"
+				description = "Purchase this limited time bundle to unlock the following:\n\226\152\128\239\184\143\194\160<b>LUMEN (Kit)</b>\n\240\159\148\165\194\160<b>EMBER (Kit)</b>\n- Unlocks limited lobby titles: <font color=\"rgb(140, 5, 56)\"><b>Infernal \240\159\148\165</b></font> & <font color=\"rgb(242, 209, 0)\"><b>Light \240\159\148\133</b></font>\n- Unlocks limited time lobby gadgets: Infernal Saber & Light Sword\n", 
+				disabled = true
+			}
+		}, 
+		[l__BundleType__10.EMBER_LUMEN_KIT_BUNDLE_PERM] = {
+			name = "Ember & Lumen Kit Bundle", 
+			price = 799, 
+			image = "rbxassetid://9630018755", 
+			gamepassId = l__Gamepass__9.EMBER_LUMEN_KIT_BUNDLE_PERM, 
+			devProductId = l__DevProduct__8.EMBER_LUMEN_KIT_BUNDLE_PERM, 
+			kits = { l__BedwarsKit__3.EMBER, l__BedwarsKit__3.LUMEN }, 
+			kitShopBundle = {
+				name = "Ember & Lumen Kit Bundle", 
+				image = "rbxassetid://9630018755", 
+				description = "This bundle unlocks the following:\n\226\152\128\239\184\143\194\160<b>LUMEN (Kit)</b>\n\240\159\148\165\194\160<b>EMBER (Kit)</b>"
 			}
 		}
 	}

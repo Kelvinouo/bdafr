@@ -1,4 +1,4 @@
--- Script Hash: 30475546e510b44583957303c91277b11c32ab6d75d42c1053ba199947e338e297837158ff4b4d5fea283f2c81e6cc70
+-- Script Hash: 4f3fb2f8d56513562ea9c1feb9816f8e9514a39cb4f3424be99df84d76d0798693c5b4ee819e2dde98b2b62c031a278d
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -26,48 +26,58 @@ local v6 = {};
 local v7 = setmetatable({}, {
 	__index = v6
 });
-v7.ROYALE = "royale";
-v6.royale = "ROYALE";
-v7.INFECTED = "infected";
-v6.infected = "INFECTED";
-v7.PVE = "pve";
-v6.pve = "PVE";
-v7.GUN_GAME = "gg";
-v6.gg = "GUN_GAME";
+v7.FLAG_CAPTURE_MAP_TYPE = "ctf_to12";
+v6.ctf_to12 = "FLAG_CAPTURE_MAP_TYPE";
 local v8 = {};
-for v9, v10 in pairs(v3) do
-	v8[v9] = v10;
+local v9 = setmetatable({}, {
+	__index = v8
+});
+v9.ROYALE = "royale";
+v8.royale = "ROYALE";
+v9.INFECTED = "infected";
+v8.infected = "INFECTED";
+v9.PVE = "pve";
+v8.pve = "PVE";
+v9.GUN_GAME = "gg";
+v8.gg = "GUN_GAME";
+local v10 = {};
+for v11, v12 in pairs(v3) do
+	v10[v11] = v12;
 end;
-for v11, v12 in pairs(v5) do
-	v8[v11] = v12;
+for v13, v14 in pairs(v5) do
+	v10[v13] = v14;
 end;
-for v13, v14 in pairs(v7) do
-	v8[v13] = v14;
+for v15, v16 in pairs(v9) do
+	v10[v15] = v16;
+end;
+for v17, v18 in pairs(v7) do
+	v10[v17] = v18;
 end;
 local u1 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
 return {
 	BedwarsMapType = v3, 
 	SkywarsMapType = v5, 
-	MiscMapType = v7, 
-	MapType = v8, 
+	FlagCaptureMapType = v7, 
+	MiscMapType = v9, 
+	MapType = v10, 
 	getMapTypeFromVal = function(p1)
-		local v15 = u1.entries(v8);
-		local function v16(p2)
-			local v17 = p2[1];
-			local v18 = p2[2];
-			return v18 == v18;
+		local v19 = u1.entries(v10);
+		local function v20(p2)
+			local v21 = p2[1];
+			local v22 = p2[2];
+			return v22 == v22;
 		end;
-		local v19 = nil;
-		for v20, v21 in ipairs(v15) do
-			if v16(v21, v20 - 1, v15) == true then
-				v19 = v21;
+		local v23 = nil;
+		for v24, v25 in ipairs(v19) do
+			if v20(v25, v24 - 1, v19) == true then
+				v23 = v25;
 				break;
 			end;
 		end;
-		local v22 = v19;
-		if v22 ~= nil then
-			v22 = v22[1];
+		local v26 = v23;
+		if v26 ~= nil then
+			v26 = v26[1];
 		end;
-		return v22;
+		return v26;
 	end
 };

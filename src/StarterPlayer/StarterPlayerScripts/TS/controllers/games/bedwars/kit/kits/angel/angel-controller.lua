@@ -1,4 +1,4 @@
--- Script Hash: f3040c6bea2b8b285596e22aa8391103b8f7585eb8fb3d64a2d11bea5d97c7493700b8f497c840fec8b3400fcb147578
+-- Script Hash: 4d2b4244b04b192607cafaf7f24cd3ff18827d20f39df147c1e0713ce557b519ff97ee277f6119d283a9443ba4ef247a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));

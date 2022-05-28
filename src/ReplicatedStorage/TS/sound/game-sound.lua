@@ -1,4 +1,4 @@
--- Script Hash: 9a1b5a60a7ea5235c53c33c83e923cb7388e1a5d0a34c00fdc3d5ed238df5fd842f7fd29f2b612c4ed233b7f6b1d3385
+-- Script Hash: e6344ba222196da73f6d55b6e893f6588c9a45f5f1ecbe56489b3d67774dbf00718a8a62b71cd5c49186e3a347340536
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -299,6 +299,7 @@ local v4 = {
 	LIFE_STEAL_OVERHEAL = "rbxassetid://9614320049", 
 	EXECUTE = "rbxassetid://9611290880", 
 	CRITICAL_STRIKE = "rbxassetid://9620298037", 
+	FLAG_CAPTURE = "rbxassetid://9742662673", 
 	VACUUM_CATCH = "rbxassetid://9677230868", 
 	ACTIVE_VACUUM_LOOP = "rbxassetid://9679118787"
 };

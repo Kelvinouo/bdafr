@@ -1,4 +1,4 @@
--- Script Hash: 5b829747b210e6730d5ed4ad1a89e71fa5d101808c9c11d278de2d56472cb8f3dc73c6fd386d1ef7ff73fcfb68724425
+-- Script Hash: 85e350d44d0c315627a4c95db8a7575bd143dedde6dd96d415d9d69a61cfb9834488b5c525a31305fb509d54e0dbad0b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -17,6 +17,8 @@ v2.JUGGERNAUT = "juggernaut";
 v1.juggernaut = "JUGGERNAUT";
 v2.GUN_GAME = "gun-game";
 v1["gun-game"] = "GUN_GAME";
+v2.FLAG_CAPTURE = "FLAG_CAPTURE";
+v1.FLAG_CAPTURE = "FLAG_CAPTURE";
 return {
 	GameType = v2
 };

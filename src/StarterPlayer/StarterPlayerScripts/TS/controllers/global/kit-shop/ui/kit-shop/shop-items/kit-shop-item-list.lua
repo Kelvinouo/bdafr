@@ -1,4 +1,4 @@
--- Script Hash: 59874288cc7c8c616903b4434e20cedbda73ccc42afc70bae3fe9fee3d6f94adfc3297610dd56ed89135939e118c3729
+-- Script Hash: e4ec474488badeae1f4b42a6022d8dd1594688a7800815aa3a7404f5d47068dbcb19a1cc91b58d5caa44138b92270ee2
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -211,67 +211,74 @@ return {
 			local function v77(p18)
 				local v78 = l__BundleMeta__2[p18];
 				if v78.kitShopBundle ~= nil and v78.kits then
-					local l__kits__79 = v78.kits;
-					local function v80(p19)
+					local v79 = v78.kitShopBundle;
+					if v79 ~= nil then
+						v79 = v79.disabled;
+					end;
+					if v79 then
+						return nil;
+					end;
+					local l__kits__80 = v78.kits;
+					local function v81(p19)
 						return table.find(p1.store.Bedwars.ownedKits, p19) ~= nil;
 					end;
-					local v81 = true;
-					for v82, v83 in ipairs(l__kits__79) do
-						if not v80(v83, v82 - 1, l__kits__79) then
-							v81 = false;
+					local v82 = true;
+					for v83, v84 in ipairs(l__kits__80) do
+						if not v81(v84, v83 - 1, l__kits__80) then
+							v82 = false;
 							break;
 						end;
 					end;
-					if not v81 then
+					if not v82 then
 						return true;
 					end;
 				end;
 				return false;
 			end;
-			local v84 = {};
-			local v85 = 0;
-			for v86, v87 in ipairs(v76) do
-				if v77(v87, v86 - 1, v76) == true then
-					v85 = v85 + 1;
-					v84[v85] = v87;
+			local v85 = {};
+			local v86 = 0;
+			for v87, v88 in ipairs(v76) do
+				if v77(v88, v87 - 1, v76) == true then
+					v86 = v86 + 1;
+					v85[v86] = v88;
 				end;
 			end;
-			table.sort(v84, function(p20, p21)
+			table.sort(v85, function(p20, p21)
 				return l__BundleMeta__2[p20].name < l__BundleMeta__2[p21].name;
 			end);
-			local function v88(p22)
+			local function v89(p22)
 				return {
 					kitBundle = p22
 				};
 			end;
-			local v89 = table.create(#v84);
-			for v90, v91 in ipairs(v84) do
-				v89[v90] = v88(v91, v90 - 1, v84);
+			local v90 = table.create(#v85);
+			for v91, v92 in ipairs(v85) do
+				v90[v91] = v89(v92, v91 - 1, v85);
 			end;
-			local v92 = {};
-			local v93 = #v92;
-			local v94 = #v64;
-			table.move(v64, 1, v94, v93 + 1, v92);
-			local v95 = v93 + v94;
-			local v96 = #v89;
-			table.move(v89, 1, v96, v95 + 1, v92);
-			local v97 = v95 + v96;
-			local v98 = #local v99;
-			table.move(v99, 1, v98, v97 + 1, v92);
-			table.move(v75, 1, #v75, v97 + v98 + 1, v92);
-			v17(v92);
-			local v100 = {};
-			local v101 = #v100;
-			local v102 = #v64;
-			table.move(v64, 1, v102, v101 + 1, v100);
-			local v103 = v101 + v102;
-			local v104 = #v89;
-			table.move(v89, 1, v104, v103 + 1, v100);
-			local v105 = v103 + v104;
-			local v106 = #v99;
-			table.move(v99, 1, v106, v105 + 1, v100);
-			table.move(v75, 1, #v75, v105 + v106 + 1, v100);
-			v19(v100);
+			local v93 = {};
+			local v94 = #v93;
+			local v95 = #v64;
+			table.move(v64, 1, v95, v94 + 1, v93);
+			local v96 = v94 + v95;
+			local v97 = #v90;
+			table.move(v90, 1, v97, v96 + 1, v93);
+			local v98 = v96 + v97;
+			local v99 = #local v100;
+			table.move(v100, 1, v99, v98 + 1, v93);
+			table.move(v75, 1, #v75, v98 + v99 + 1, v93);
+			v17(v93);
+			local v101 = {};
+			local v102 = #v101;
+			local v103 = #v64;
+			table.move(v64, 1, v103, v102 + 1, v101);
+			local v104 = v102 + v103;
+			local v105 = #v90;
+			table.move(v90, 1, v105, v104 + 1, v101);
+			local v106 = v104 + v105;
+			local v107 = #v100;
+			table.move(v100, 1, v107, v106 + 1, v101);
+			table.move(v75, 1, #v75, v106 + v107 + 1, v101);
+			v19(v101);
 		end, { v12, v14, p1.store.Bedwars.ownedKits });
 		l__useEffect__7(function()
 			if #v16 == 0 then
@@ -279,163 +286,163 @@ return {
 			end;
 			v19((u19()));
 		end, { v12, v14 });
-		local v107 = {};
-		local v108 = {
+		local v108 = {};
+		local v109 = {
 			Size = UDim2.fromScale(1, 0.05), 
 			LayoutOrder = 1
 		};
-		function v108.SetKitOwnedToggle(p23)
+		function v109.SetKitOwnedToggle(p23)
 			v13(p23);
 		end;
-		function v108.SetBattlePassKitsToggle(p24)
+		function v109.SetBattlePassKitsToggle(p24)
 			v15(p24);
 		end;
-		v108.KitOwnedToggle = v12;
-		v108.BattlePassKitsToggle = v14;
-		v107[1] = u12.createElement("UIPadding", {
+		v109.KitOwnedToggle = v12;
+		v109.BattlePassKitsToggle = v14;
+		v108[1] = u12.createElement("UIPadding", {
 			PaddingTop = UDim.new(0.03, 0), 
 			PaddingBottom = UDim.new(0.05, 0), 
 			PaddingLeft = UDim.new(0.03, 0), 
 			PaddingRight = UDim.new(0.03, 0)
 		});
-		v107[2] = u12.createElement("UIListLayout", {
+		v108[2] = u12.createElement("UIListLayout", {
 			FillDirection = "Vertical", 
 			SortOrder = "LayoutOrder", 
 			Padding = UDim.new(0.01, 0)
 		});
-		v107[3] = u12.createElement(l__KitShopFilters__13, v108);
-		local v109 = #v107;
-		local v110 = {};
+		v108[3] = u12.createElement(l__KitShopFilters__13, v109);
+		local v110 = #v108;
+		local v111 = {};
 		if l__DeviceUtil__4.isSmallScreen() then
-			local v111 = 0.08;
+			local v112 = 0.08;
 		else
-			v111 = 0.06;
+			v112 = 0.06;
 		end;
-		v110.Size = UDim2.new(0.6, 0, v111, 0);
+		v111.Size = UDim2.new(0.6, 0, v112, 0);
 		v5 = {};
-		local function v112(p25, p26)
+		local function v113(p25, p26)
 			if p26.bedwarsKit then
 				table.insert(p25, l__getBedwarsKitMeta__1(p26.bedwarsKit).name);
 				return p25;
 			end;
 			if p26.kitBundle then
-				local l__kitShopBundle__113 = l__BundleMeta__2[p26.kitBundle].kitShopBundle;
-				if l__kitShopBundle__113 then
-					table.insert(p25, l__kitShopBundle__113.name);
+				local l__kitShopBundle__114 = l__BundleMeta__2[p26.kitBundle].kitShopBundle;
+				if l__kitShopBundle__114 then
+					table.insert(p25, l__kitShopBundle__114.name);
 				end;
 			end;
 			return p25;
 		end;
-		for v114 = 1, #v16 do
-			v5 = v112(v5, v16[v114], v114 - 1, v16);
+		for v115 = 1, #v16 do
+			v5 = v113(v5, v16[v115], v115 - 1, v16);
 		end;
-		v110.Items = local v115;
-		v110.Item = "";
+		v111.Items = local v116;
+		v111.Item = "";
 		local function u21(p27, p28)
 			if p27 == "" then
 				v21({});
 				return u19();
 			end;
 			local u22 = {};
-			local function v116(p29)
-				local function v117(p30)
+			local function v117(p29)
+				local function v118(p30)
 					if p30.bedwarsKit then
 						return string.lower(l__getBedwarsKitMeta__1(p30.bedwarsKit).name) == string.lower(p29);
 					end;
 					if not p30.kitBundle then
 						return;
 					end;
-					local v118 = l__BundleMeta__2[p30.kitBundle].kitShopBundle;
-					if v118 ~= nil then
-						v118 = string.lower(v118.name);
+					local v119 = l__BundleMeta__2[p30.kitBundle].kitShopBundle;
+					if v119 ~= nil then
+						v119 = string.lower(v119.name);
 					end;
-					return v118 == string.lower(p29);
+					return v119 == string.lower(p29);
 				end;
-				local v119 = nil;
-				for v120, v121 in ipairs(v16) do
-					if v117(v121, v120 - 1, v16) == true then
-						v119 = v121;
+				local v120 = nil;
+				for v121, v122 in ipairs(v16) do
+					if v118(v122, v121 - 1, v16) == true then
+						v120 = v122;
 						break;
 					end;
 				end;
-				if v119 then
-					table.insert(u22, v119);
+				if v120 then
+					table.insert(u22, v120);
 				end;
 			end;
-			for v122, v123 in ipairs(p28) do
-				v116(v123, v122 - 1, p28);
+			for v123, v124 in ipairs(p28) do
+				v117(v124, v123 - 1, p28);
 			end;
 			v21(u22);
 			return u22;
 		end;
-		function v110.OnSubmit(p31, p32)
+		function v111.OnSubmit(p31, p32)
 			v19(u21(p31, p32));
 		end;
-		v110.PlaceHolderText = "Search Kit";
-		v110.LayoutOrder = 2;
-		v107[v109 + 1] = u12.createElement(l__AutoCompleteSearchbar__14, v110);
-		local v124 = {};
+		v111.PlaceHolderText = "Search Kit";
+		v111.LayoutOrder = 2;
+		v108[v110 + 1] = u12.createElement(l__AutoCompleteSearchbar__14, v111);
+		local v125 = {};
 		if l__DeviceUtil__4.isSmallScreen() then
-			local v125 = 0.87;
+			local v126 = 0.87;
 		else
-			v125 = 0.89;
+			v126 = 0.89;
 		end;
-		v124.Size = UDim2.new(1, 0, v125, 0);
-		v124.CanvasSize = UDim2.new(1, 0, 0, v10 + 36);
-		v124.ScrollingDirection = "Y";
-		v124.ScrollBarThickness = 6;
-		v124.BackgroundTransparency = 1;
-		v124.BorderSizePixel = 0;
-		v124.Selectable = false;
-		v124[u12.Change.AbsoluteSize] = function(p33)
+		v125.Size = UDim2.new(1, 0, v126, 0);
+		v125.CanvasSize = UDim2.new(1, 0, 0, v10 + 36);
+		v125.ScrollingDirection = "Y";
+		v125.ScrollBarThickness = 6;
+		v125.BackgroundTransparency = 1;
+		v125.BorderSizePixel = 0;
+		v125.Selectable = false;
+		v125[u12.Change.AbsoluteSize] = function(p33)
 			v9(p33.AbsoluteSize);
 		end;
-		v124.LayoutOrder = 2;
-		local v126 = {};
-		local function v127(p34, p35)
+		v125.LayoutOrder = 2;
+		local v127 = {};
+		local function v128(p34, p35)
 			if p34.bedwarsKit then
-				local l__bedwarsKit__128 = p34.bedwarsKit;
-				local v129 = {
-					Kit = l__bedwarsKit__128, 
-					Selected = p1.SelectedKit == l__bedwarsKit__128, 
+				local l__bedwarsKit__129 = p34.bedwarsKit;
+				local v130 = {
+					Kit = l__bedwarsKit__129, 
+					Selected = p1.SelectedKit == l__bedwarsKit__129, 
 					LayoutOrder = p35, 
 					store = p1.store
 				};
-				function v129.OnClick()
-					p1.SetSelectedKit(l__bedwarsKit__128);
+				function v130.OnClick()
+					p1.SetSelectedKit(l__bedwarsKit__129);
 				end;
-				return u12.createElement(l__KitShopItemCard__15, v129);
+				return u12.createElement(l__KitShopItemCard__15, v130);
 			end;
 			if not p34.kitBundle then
 				return;
 			end;
-			local l__kitBundle__130 = p34.kitBundle;
-			local v131 = {
-				Bundle = l__kitBundle__130, 
+			local l__kitBundle__131 = p34.kitBundle;
+			local v132 = {
+				Bundle = l__kitBundle__131, 
 				LayoutOrder = p35, 
-				Selected = p1.SelectedBundle == l__kitBundle__130
+				Selected = p1.SelectedBundle == l__kitBundle__131
 			};
-			function v131.OnClick()
-				p1.SetSelectedBundle(l__kitBundle__130);
+			function v132.OnClick()
+				p1.SetSelectedBundle(l__kitBundle__131);
 			end;
-			v131.store = p1.store;
-			return u12.createElement(l__KitShopBundleCard__16, v131);
+			v132.store = p1.store;
+			return u12.createElement(l__KitShopBundleCard__16, v132);
 		end;
-		local v132 = {};
-		local v133 = 0;
-		for v134, v135 in ipairs(v18) do
-			local v136 = v127(v135, v134 - 1, v18);
-			if v136 ~= nil then
-				v133 = v133 + 1;
-				v132[v133] = v136;
+		local v133 = {};
+		local v134 = 0;
+		for v135, v136 in ipairs(v18) do
+			local v137 = v128(v136, v135 - 1, v18);
+			if v137 ~= nil then
+				v134 = v134 + 1;
+				v133[v134] = v137;
 			end;
 		end;
-		local v137 = {
+		local v138 = {
 			Position = UDim2.fromScale(0, 0.01), 
 			Size = UDim2.fromScale(0.99, 0.9)
 		};
-		local v138 = {};
-		local v139 = {
+		local v139 = {};
+		local v140 = {
 			CellSize = UDim2.fromOffset(v22, v22), 
 			CellPadding = UDim2.fromOffset(v23, v23), 
 			HorizontalAlignment = "Center", 
@@ -443,11 +450,11 @@ return {
 			SortOrder = "LayoutOrder", 
 			FillDirectionMaxCells = 4
 		};
-		v139[u12.Change.AbsoluteCellCount] = function(p36)
+		v140[u12.Change.AbsoluteCellCount] = function(p36)
 			v11(p36.AbsoluteContentSize.Y);
 		end;
-		v138[1] = u12.createElement("UIGridLayout", v139);
-		v138[2] = u12.createElement(l__KitShopItemCard__15, {
+		v139[1] = u12.createElement("UIGridLayout", v140);
+		v139[2] = u12.createElement(l__KitShopItemCard__15, {
 			Kit = l__BedwarsKit__17.NONE, 
 			Selected = p1.SelectedKit == l__BedwarsKit__17.NONE, 
 			LayoutOrder = -2, 
@@ -456,16 +463,16 @@ return {
 				p1.SetSelectedKit(l__BedwarsKit__17.NONE);
 			end
 		});
-		local v140 = #v138;
-		for v141, v142 in ipairs(v132) do
-			v138[v140 + v141] = v142;
+		local v141 = #v139;
+		for v142, v143 in ipairs(v133) do
+			v139[v141 + v142] = v143;
 		end;
-		v126[#v126 + 1] = u12.createElement(l__Empty__18, v137, v138);
-		v107[v109 + 2] = u12.createElement("ScrollingFrame", v124, v126);
+		v127[#v127 + 1] = u12.createElement(l__Empty__18, v138, v139);
+		v108[v110 + 2] = u12.createElement("ScrollingFrame", v125, v127);
 		return u12.createElement("Frame", {
 			Size = p1.Size, 
 			BackgroundColor3 = l__Theme__11.backgroundPrimary, 
 			BorderSizePixel = 0
-		}, v107);
+		}, v108);
 	end)
 };

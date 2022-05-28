@@ -1,4 +1,4 @@
--- Script Hash: 46790c81698d0c26a162459c55dd0d6a1da50572415e4d87727642213c19064100becfca9a41ebcdbc32e95db907696b
+-- Script Hash: 13fb7edc7443383d8aec1867c0785baff1c9daaf803d19d375999b157115d89cf37b47fe3b0255556f5356e89e3d8cc0
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -137,6 +137,14 @@ return {
 					Value = p1.store.CustomMatch.generalToggles[l__HostPanelGeneralToggle__7.BedBreaking], 
 					SetValue = function(p11)
 						l__KnitClient__8.Controllers.CustomMatchController:setToggle(l__HostPanelGeneralToggle__7.BedBreaking, p11);
+					end
+				}) }), u1.createElement(l__HostPanelSetting__4, {
+				Name = "Block Breaking", 
+				Size = u5
+			}, { u1.createElement(l__HostPanelToggle__6, {
+					Value = p1.store.CustomMatch.generalToggles[l__HostPanelGeneralToggle__7.BlockBreaking], 
+					SetValue = function(p12)
+						l__KnitClient__8.Controllers.CustomMatchController:setToggle(l__HostPanelGeneralToggle__7.BlockBreaking, p12);
 					end
 				}) }) });
 	end)

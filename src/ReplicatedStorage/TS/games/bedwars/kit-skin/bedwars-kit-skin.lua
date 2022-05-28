@@ -1,4 +1,4 @@
--- Script Hash: 8fbc2b1dfcc9b307f456b822909c6fef6ae921690927021a878e2dbd4606d38aa11d9a2b86e971ded0981e7362b40b22
+-- Script Hash: a5b5d96d47b472b3044b1803f1e3433d7d99c71b83b6d8de8ac093b95f7cd634419a3523a6b5efde98bff5a882c132c6
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -33,6 +33,8 @@ v2.AXOLOTL_EASTER_BUNNY = "axolotl_easter_bunny";
 v1.axolotl_easter_bunny = "AXOLOTL_EASTER_BUNNY";
 v2.FARMER_CLETUS_SPIRIT = "farmer_cletus_spirit";
 v1.farmer_cletus_spirit = "FARMER_CLETUS_SPIRIT";
+v2.CYBER_DJ = "cyber_dj";
+v1.cyber_dj = "CYBER_DJ";
 return {
 	BedwarsKitSkin = v2
 };

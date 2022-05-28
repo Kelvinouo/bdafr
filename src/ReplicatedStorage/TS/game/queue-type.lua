@@ -1,4 +1,4 @@
--- Script Hash: 760bcd46fa37ed625dccf490ad81413720c457fc03ca397db8c35d9afb341f3c5fe396290a8ecd67a75474bbf04b723a
+-- Script Hash: dfef7852da31c16379e12274872c01983bc70ed0e6e9a8285fa8ee2d49d66d9562ff3b3f28daa7ce784572469e96c77e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -47,6 +47,8 @@ v2.BEDWARS_DISASTERS_20v20 = "bedwars_disasters_20v20";
 v1.bedwars_disasters_20v20 = "BEDWARS_DISASTERS_20v20";
 v2.GUN_GAME = "gun_game";
 v1.gun_game = "GUN_GAME";
+v2.FLAG_CAPTURE = "flag_capture";
+v1.flag_capture = "FLAG_CAPTURE";
 return {
 	QueueType = v2
 };
