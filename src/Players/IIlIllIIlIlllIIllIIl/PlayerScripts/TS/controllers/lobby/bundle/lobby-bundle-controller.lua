@@ -1,4 +1,4 @@
--- Script Hash: 1c6de4c4376c64c93502b573c2ba38a4ae59648535ab9091cda29d38b66fbea842136be018fd68e6e54c9017e8d2c9f4
+-- Script Hash: ecbc82faa0e5c60b93afbee2e2ed92f9d2181a7ed8b6a01ab1cf966e256d3979b96f83e42561b981bc19ceebf39b9579
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -22,11 +22,11 @@ function v5.constructor(p1)
 	p1.Name = "LobbyBundleController";
 end;
 local l__WatchCollectionTag__2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchCollectionTag;
-local l__BundleType__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "bundle", "bundle-type").BundleType;
+local l__BedwarsKitSkin__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit-skin", "bedwars-kit-skin").BedwarsKitSkin;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
 	l__WatchCollectionTag__2("holiday-bundle-prompt", function(p3)
-		p2:setupLobbyBundlePrompt(p3, l__BundleType__3.EMBER_LUMEN_KIT_BUNDLE);
+		p2:setupKitSkinPrompt(p3, l__BedwarsKitSkin__3.CYBER_DJ);
 	end);
 end;
 local l__BundleMeta__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "bundle", "bundle-meta").BundleMeta;

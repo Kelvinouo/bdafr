@@ -1,4 +1,4 @@
--- Script Hash: 83b5313540b0bdb0808b54d551ad0c9fe17b6009b073fb17e376c5b7d52793ea5c2268659bef3bead37c2e6efb409b29
+-- Script Hash: ed5e3106e7f6bf2d650c1ac01fda1848b0860f3ae25ee208e5982988300a101857db5cfd22dbcb23b8816233f03bd5d2
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -70,8 +70,9 @@ function v4.KnitStart(p2)
 				return nil;
 			end;
 		end;
-		l__KnitClient__8.Controllers.SwordController:mobileSwingPressed();
-		l__ClientSyncEvents__12.MobileSwordButtonPressed:fire("down");
+		if not l__ClientSyncEvents__12.MobileSwordButtonPressed:fire("down"):isCancelled() then
+			l__KnitClient__8.Controllers.SwordController:mobileSwingPressed();
+		end;
 	end;
 	function v7.OnPressUp()
 		l__ClientSyncEvents__12.MobileSwordButtonPressed:fire("up");

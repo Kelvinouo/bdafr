@@ -1,4 +1,4 @@
--- Script Hash: a9b797ad665b9fc2b72416e6f6370572fa88f340770afae5c58860dd606a1dd2539b9d01eb9d89ee4636db8c0809ccdb
+-- Script Hash: f1cb555def056ce49ad2eb8a65abad2bc144c1f1b2680698ee4912c6405e86d2539010c4dc5f74543e5ac9c926fa8789
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -87,6 +87,8 @@ function v3.setToggle(p14, p15, p16)
 		p14.customMatchRemotes:Get("SetPvP"):CallServerAsync(p16);
 	elseif p15 == l__HostPanelGeneralToggle__5.BedBreaking then
 		p14.customMatchRemotes:Get("SetBedBreaking"):CallServerAsync(p16);
+	elseif p15 == l__HostPanelGeneralToggle__5.BlockBreaking then
+		p14.customMatchRemotes:Get("SetBlockBreaking"):CallServerAsync(p16);
 	end;
 	l__ClientStore__3:dispatch({
 		type = "CustomMatchUpdateGeneralToggle", 

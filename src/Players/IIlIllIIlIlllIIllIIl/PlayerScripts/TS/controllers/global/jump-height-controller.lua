@@ -1,4 +1,4 @@
--- Script Hash: bfd65441e3a93f4c30ced1ecd54f4fc2cd88c9b9aabb6c7af58e0271f84ede7cced19ebb39a54eb4e7b92dea8ef8ecf5
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -84,13 +84,22 @@ function v5.KnitStart(p3)
 		local u9 = false;
 		local u10 = 0;
 		p6:GiveTask(l__Humanoid__17.StateChanged:Connect(function(p7, p8)
-			if p8 == Enum.HumanoidStateType.Landed then
-				u9 = false;
-				u10 = 0;
+			if p8 ~= Enum.HumanoidStateType.Landed then
+				if p8 == Enum.HumanoidStateType.Freefall then
+					u9 = true;
+				end;
 				return;
 			end;
-			if p8 == Enum.HumanoidStateType.Freefall then
-				u9 = true;
+			u9 = false;
+			u10 = 0;
+			local v18 = p3.jumpModifier:getModifiers();
+			local function v19(p9)
+				if p9.deleteWhenLanded then
+					p3.jumpModifier:removeModifier(p9);
+				end;
+			end;
+			for v20, v21 in pairs(v18) do
+				v19(v20, v20, v18);
 			end;
 		end));
 		local u11 = false;
@@ -99,10 +108,10 @@ function v5.KnitStart(p3)
 			if u11 then
 				return nil;
 			end;
-			u11 = true;
 			if p3.allowedAirJumps < 1 then
 				return nil;
 			end;
+			u11 = true;
 			if u9 and u10 < p3.allowedAirJumps and u12 < time() then
 				u12 = time() + 0.25;
 				l__default__8.Client:Get("RemoteName"):SendToServer();
@@ -114,16 +123,16 @@ function v5.KnitStart(p3)
 		end));
 	end);
 end;
-function v5.setJumpHeight(p9, p10)
+function v5.setJumpHeight(p10, p11)
 	if l__Players__5.LocalPlayer.Character then
-		local l__Humanoid__18 = l__Players__5.LocalPlayer.Character:WaitForChild("Humanoid");
-		if l__Humanoid__18 then
-			l__Humanoid__18.JumpHeight = p10 * p9.jumpSpeedMultiplier;
+		local l__Humanoid__22 = l__Players__5.LocalPlayer.Character:WaitForChild("Humanoid");
+		if l__Humanoid__22 then
+			l__Humanoid__22.JumpHeight = p11 * p10.jumpSpeedMultiplier;
 		end;
 	end;
 end;
-function v5.getJumpModifier(p11)
-	return p11.jumpModifier;
+function v5.getJumpModifier(p12)
+	return p12.jumpModifier;
 end;
 u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());

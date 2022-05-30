@@ -1,4 +1,4 @@
--- Script Hash: 667693321ffbd06d14b7963b6f6ff646fce7ef34be94d236e85ebd33a5832896bf06f798dc72d5f70ea5ade1b14abb61
+-- Script Hash: b877c28d4d3a9385f0989ba02a450a22bfb09e87e0b4d49537703752e285347e1fe13168552005bdb48b37ddca772fcc
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -233,6 +233,9 @@ local l__EntityUtil__23 = v1.import(script, game:GetService("ReplicatedStorage")
 local l__ProjectileController__24 = v1.import(script, script.Parent, "projectile-controller").ProjectileController;
 local l__SprintController__25 = v1.import(script, script.Parent.Parent.Parent, "sprint", "sprint-controller").SprintController;
 function v6.beginHolding(p13, p14, p15, p16)
+	if l__ClientSyncEvents__13.BeginProjectileTargeting:fire(p14):isCancelled() then
+		return nil;
+	end;
 	local v29 = p13:getProjectileSource(p14);
 	local v30 = l__getItemMeta__5(p14.itemType);
 	local v31 = p13:getAmmoType(p14.itemType);

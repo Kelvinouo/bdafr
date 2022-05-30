@@ -1,4 +1,4 @@
--- Script Hash: ee4845e449838a8c78d374b5dbd6e070f77110345a13f76f31fc2485cc9feb0b087617245168f5f25c84e11baf243fab
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -45,42 +45,61 @@ function u1.KnitStart(p2)
 	l__BlockEngineClientEvents__6.PlaceBlock:connect(function(p5)
 		local l__denyRegions__5 = p2.denyRegions;
 		local function v6(p6)
+			if p6.box then
+				local v7 = p5.blockPosition - p6.center;
+				if math.abs(v7.X) <= p6.radius.X and math.abs(v7.Z) <= p6.radius.X and math.abs(v7.Y) <= p6.radius.Y then
+					p5:setCancelled(true);
+				end;
+				return nil;
+			end;
 			if not ((p5.blockPosition * Vector3.new(1, 0, 1) - p6.center * Vector3.new(1, 0, 1)).Magnitude <= p6.radius.X) or not (math.abs(p5.blockPosition.Y - p6.center.Y) <= p6.radius.Y) then
 				return;
 			end;
 			p5:setCancelled(true);
 			return nil;
 		end;
-		for v7, v8 in ipairs(l__denyRegions__5) do
-			v6(v8, v7 - 1, l__denyRegions__5);
+		for v8, v9 in ipairs(l__denyRegions__5) do
+			v6(v9, v8 - 1, l__denyRegions__5);
 		end;
 	end);
 	l__default__7.Client:OnEvent("RemoteName", function(p7)
-		p2.denyRegions = p7.blockPlaceDisabledRegions;
+		if not p7.update then
+			p2.denyRegions = p7.blockPlaceDisabledRegions;
+			return;
+		end;
+		local v10 = p7.blockPlaceDisabledRegions;
+		local function v11(p8)
+			local l__denyRegions__12 = p2.denyRegions;
+			table.insert(l__denyRegions__12, p8);
+			return #l__denyRegions__12;
+		end;
+		for v13, v14 in ipairs(v10) do
+			v11(v14, v13 - 1, v10);
+		end;
 	end);
 	p2.denyRegions = l__default__7.Client:Get("RemoteName"):CallServer().blockPlaceDisabledRegions;
 end;
-u1.waitForCFrame = v1.async(function(p8, p9)
-	return p8:getCFramesFolder():WaitForChild(p9).Value;
+u1.waitForCFrame = v1.async(function(p9, p10)
+	return p9:getCFramesFolder():WaitForChild(p10).Value;
 end);
-function u1.getCFrame(p10, p11)
-	local v9 = p10:getCFramesFolder():FindFirstChild(p11);
-	if v9 ~= nil then
-		v9 = v9.Value;
+function u1.getCFrame(p11, p12)
+	local v15 = p11:getCFramesFolder():FindFirstChild(p12);
+	if v15 ~= nil then
+		v15 = v15.Value;
 	end;
-	return v9;
+	return v15;
 end;
-function u1.getCFramesFolder(p12)
-	local v10 = p12.mapCFrames:GetAttribute("Setup");
-	if v10 == 0 or v10 ~= v10 or v10 == "" or not v10 then
-		while p12.mapCFrames.AttributeChanged:Wait() ~= "Setup" do
+function u1.getCFramesFolder(p13)
+	local v16 = p13.mapCFrames:GetAttribute("Setup");
+	if v16 == 0 or v16 ~= v16 or v16 == "" or not v16 then
+		while p13.mapCFrames.AttributeChanged:Wait() ~= "Setup" do
 		
 		end;
 	end;
-	return p12.mapCFrames;
+	return p13.mapCFrames;
 end;
-function u1.getMapBounds(p13)
-	return p13.mapBounds;
+function u1.getMapBounds(p14)
+	return p14.mapBounds;
 end;
 u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
 u1 = u1.new;

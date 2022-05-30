@@ -1,4 +1,4 @@
--- Script Hash: 6fe8ebbe5dded1fb8baf735bef3ca87ea8d40c21dba32cf1ae9cc120f3801028dd40261f9efcb126da72538f9d6f8c61
+-- Script Hash: nil
 --[[VARIABLE DEFINITION ANOMALY DETECTED, DECOMPILATION OUTPUT POTENTIALLY INCORRECT]]--
 -- Decompiled with the Synapse X Luau decompiler.
 

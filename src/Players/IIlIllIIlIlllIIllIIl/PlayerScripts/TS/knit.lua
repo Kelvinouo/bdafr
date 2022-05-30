@@ -1,4 +1,4 @@
--- Script Hash: 8fe606503f3218e426105181f05537003854b98ab6504045f8a497a98ce3a11ae67863748ac6fef78141f3f319c5fde7
+-- Script Hash: eb1c559ad4ac1bcf073184415f885039087347312a4760e7241285bfbf77c1978aac649bdb3a74585f8f6222a3410b5e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -44,6 +44,7 @@ return {
 			u10(l__controllers__4:FindFirstChild("game"), true);
 			u10(l__controllers__4:FindFirstChild("games"):FindFirstChild("bedwars"), true);
 			u10(l__controllers__4:FindFirstChild("games"):FindFirstChild("gun-game"), true);
+			u10(l__controllers__4:FindFirstChild("games"):FindFirstChild("capture-flag"), true);
 		end;
 		u10(script.Parent.Parent:FindFirstChild("Modules"):FindFirstChild("anticheat"), true);
 		local u11 = os.clock();
