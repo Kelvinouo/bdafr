@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: ae9afa0180f9f02d116305458e1e469196e7fabca59326ce7d73ea7a5ac9fec6cfa4b6f096287c9c8cf00ea064d2b649
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -19,7 +19,7 @@ return {
 		v3.Text = "<b>USE KIT SKIN" .. v4 .. "</b>";
 		v3.Value = p1.UseKitSkin;
 		function v3.SetValue(p3)
-			l__default__4.Client:Get("RemoteName"):CallServerAsync({
+			l__default__4.Client:Get("BedwarsSetUseKitSkin"):CallServerAsync({
 				useKitSkin = p3
 			}):andThen(function()
 

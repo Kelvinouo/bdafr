@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 65c969f400cfe86621a4a29d585d50abdc8e154570c92fe8b2f0392475f147aa0806b1a9290481b77b3d49ef12ff5b2a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -138,7 +138,7 @@ function v5.findGhosts(p16)
 	if not v13 then
 		return nil;
 	end;
-	l__default__15.Client:Get("RemoteName"):SendToServer({
+	l__default__15.Client:Get("CollectCollectableEntity"):SendToServer({
 		id = v13:GetAttribute("Id")
 	});
 end;

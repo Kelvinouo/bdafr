@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 0cace1aaa183ccc590975e2c1a7e79eb9c026f3562a676dd2f48b043e0c297f4a38c4056b7cf70a85f6736187e1d3272
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -34,7 +34,7 @@ local l__RunService__10 = v3.RunService;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
 	local u11 = l__Maid__2.new();
-	l__default__3.Client:WaitFor("RemoteName"):expect():Connect(function(p3)
+	l__default__3.Client:WaitFor("MatchStateEvent"):expect():Connect(function(p3)
 		if p3.matchState == l__MatchState__5.RUNNING and l__ClientStore__4:getState().Game.queueType == l__QueueType__6.GUN_GAME then
 			local u12 = u7.mount(l__HudProgressWrapper__8(), l__Players__9.LocalPlayer:WaitForChild("PlayerGui"));
 			u11:GiveTask(function()
@@ -45,7 +45,7 @@ function v5.KnitStart(p2)
 			u11:DoCleaning();
 		end;
 	end);
-	l__default__3.Client:WaitFor("RemoteName"):expect():Connect(function(p4)
+	l__default__3.Client:WaitFor("GunGameLastWeaponUpdate"):expect():Connect(function(p4)
 		if p4.onLastWeapon then
 			p2:createRay(p4.player);
 			return;

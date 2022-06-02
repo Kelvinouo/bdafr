@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 4211a661135eaaff0284ff4fbb8ce67efae23822a422c458761fa248a66dbc2666432565597a081c10bc2753e7de15b5
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -27,14 +27,14 @@ end;
 local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function u1.KnitStart(p2)
-	l__default__3.Client:Get("RemoteName"):Connect(function(p3)
+	l__default__3.Client:Get("TeamsUpdateEvent"):Connect(function(p3)
 		l__ClientStore__4:dispatch({
 			type = "GameSetTeams", 
 			teams = p3.teams
 		});
 		p2.teams = p3.teams;
 	end);
-	l__default__3.Client:Get("RemoteName"):SendToServer();
+	l__default__3.Client:Get("RequestTeamsUpdateEvent"):SendToServer();
 end;
 function u1.getPlayerTeamMap(p4)
 	local v5 = nil;

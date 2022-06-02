@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: afd6aa53bfaf2b4c658b8c01df5d1b14dfdb6d49ee9f5b1ea87e8da3a4be482c95b65bfbe4ccbf1c7d9fe4fbc33789ed
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -19,7 +19,7 @@ return {
 		local v6 = u1.createRef();
 		p2.useEffect(function()
 			if not l__DeviceUtil__2.isHoarceKat() then
-				l__default__3.Client:Get("RemoteName"):CallServerAsync():andThen(function(p3)
+				l__default__3.Client:Get("LoadMissionData"):CallServerAsync():andThen(function(p3)
 					v5(p3);
 				end);
 			end;

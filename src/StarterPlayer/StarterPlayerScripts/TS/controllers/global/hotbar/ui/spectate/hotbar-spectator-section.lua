@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 689fc7b3970f1afe5346281409fe9ee781fc26b039f1bc6a8bc46801c1c2af22f324da376bdd541e769373e70199230a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -124,7 +124,7 @@ function v4.render(p2)
 		Text = "<b>LOBBY</b>", 
 		Size = UDim2.fromScale(0.28, 1), 
 		OnClick = function()
-			l__default__9.Client:Get("RemoteName"):SendToServer();
+			l__default__9.Client:Get("TeleportToLobby"):SendToServer();
 		end, 
 		LayoutOrder = 5
 	}, { v3.createElement("UIAspectRatioConstraint", {

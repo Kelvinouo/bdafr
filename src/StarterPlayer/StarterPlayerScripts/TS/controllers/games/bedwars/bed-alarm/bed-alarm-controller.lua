@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 9e2be3facfab4ec6d7e46aacf41e6c1415b80887b2b3bc50e99f4124a48810b5893e7310e41066ea2403c3d9eb60557b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -34,7 +34,7 @@ local l__Workspace__10 = v4.Workspace;
 local l__CollectionService__11 = v4.CollectionService;
 local l__TweenService__12 = v4.TweenService;
 function v6.KnitStart(p2)
-	l__default__2.Client:OnEvent("RemoteName", function(p3)
+	l__default__2.Client:OnEvent("BedAlarmTriggered", function(p3)
 		local v8 = l__ClientStore__3:getState().Game.myTeam;
 		if v8 ~= nil then
 			v8 = v8.id;

@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 6213fee4b84314e7293a4782b2838b348fc74da57defaa9d5e8f88ad9705633aa51e52c961df9f103e198a1f928f5417
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -34,7 +34,7 @@ local l__HttpService__11 = v3.HttpService;
 local l__RunService__12 = v3.RunService;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("RemoteName", function(p3)
+	l__default__2.Client:OnEvent("AeryGiveButterfly", function(p3)
 		if not l__Players__3.LocalPlayer.Character then
 			return nil;
 		end;

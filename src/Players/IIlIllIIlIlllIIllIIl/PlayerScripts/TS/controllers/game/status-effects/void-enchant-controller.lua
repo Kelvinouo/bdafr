@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: e1420298cdb7021665a549f000ed41501461f26bf8af8d5e6d14cc50f7cdabd9ed692792c6efed554598af8a07d754f8
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -92,7 +92,7 @@ function v6.updateStacks(p7, p8, p9)
 			end;
 			v15:SetPrimaryPartCFrame(CFrame.new(l__Head__17.Position + Vector3.new(0, 5, 0)) * CFrame.Angles(math.pi * 2 * (u15 % 2), math.pi * 2 * (u15 % 3), math.pi * 2 * (u15 % 1.5)));
 		end);
-		v16:GiveTask(l__default__9.Client:Get("RemoteName"):Connect(function(p11)
+		v16:GiveTask(l__default__9.Client:Get("EntityDeathEvent"):Connect(function(p11)
 			if p11.entityInstance == p8 and v15 then
 				local v19 = v15.PrimaryPart;
 				if v19 ~= nil then

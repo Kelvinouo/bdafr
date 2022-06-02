@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 6fe6e7a2e120a12932ce7d8f4b5c75e14e87cc65bd9b383ed7fd3747b19da94a2cf999db1ddff8bf14bd243d16b68c59
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -49,7 +49,7 @@ local l__CollectionTagAdded__19 = v2.CollectionTagAdded;
 local l__CollectionService__20 = v5.CollectionService;
 function u1.KnitStart(p2)
 	u2.KnitStart(p2);
-	l__default__4.Client:WaitFor("RemoteName"):andThen(function(p3)
+	l__default__4.Client:WaitFor("GuitarHeal"):andThen(function(p3)
 		p3:Connect(function(p4)
 			local v9 = p4.targetEntity.PrimaryPart;
 			if v9 ~= nil then
@@ -252,7 +252,7 @@ function u1.stopPlaying(p17)
 	p17.playing = false;
 	p17.playingMaid:DoCleaning();
 	task.spawn(function()
-		l__default__4.Client:Get("RemoteName"):SendToServer();
+		l__default__4.Client:Get("StopPlayingGuitar"):SendToServer();
 	end);
 end;
 local l__EntityUtil__30 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
@@ -327,7 +327,7 @@ function u1.performHeal(p18)
 			v31 = v56[1]:getInstance();
 		end;
 	end;
-	l__default__4.Client:Get("RemoteName"):SendToServer({
+	l__default__4.Client:Get("PlayGuitar"):SendToServer({
 		healTarget = v31
 	});
 end;

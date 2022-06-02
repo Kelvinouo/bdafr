@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 991a73ae362a3f8e2386aa8c669e302648e9aed7c6388d2605b850b9550db2488823b616253a124ce0cb780d48c97553
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -60,7 +60,7 @@ local l__default__11 = v1.import(script, game:GetService("ReplicatedStorage"), "
 local l__Players__12 = v5.Players;
 function v7.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__BlockEngineRemotes__7.Client:OnEvent("RemoteName", function(p3)
+	l__BlockEngineRemotes__7.Client:OnEvent("BreakBlockEvent", function(p3)
 		local v13 = tostring(l__BlockEngine__8:getWorldPosition(p3.blockRef.blockPosition));
 		local v14 = p2.frozenBlockParts[v13];
 		if v14 then
@@ -71,7 +71,7 @@ function v7.KnitStart(p2)
 			p2.partCache:ReturnPart(v14);
 		end;
 	end);
-	l__default__11.Client:OnEvent("RemoteName", function(p4)
+	l__default__11.Client:OnEvent("YetiAbility", function(p4)
 		local v15 = {};
 		if l__Players__12:GetPlayerFromCharacter(p4.senderEntityInstance) == l__Players__12.LocalPlayer then
 			local v16 = nil;

@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 9fa90c69eaed647c7ed2f07131290682ec49e19df2d76623e0f95e599fa9d935dc4bc86d9fb14abc8f33b855691fd701
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -34,7 +34,7 @@ function v6.KnitStart(p2)
 	l__CollectionTagAdded__2("teleport_block", function(p3)
 		p3.Touched:Connect(function(p4)
 			if l__Players__3.LocalPlayer.Character and p4.Parent == l__Players__3.LocalPlayer.Character then
-				l__default__4.Client:Get("RemoteName"):SendToServer({
+				l__default__4.Client:Get("StepOnTeleportBlock"):SendToServer({
 					teleportBlock = p3
 				});
 			end;

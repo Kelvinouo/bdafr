@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 6fd2792dc4f3dffba1c15f8cd5cc5bfa3f2d62cedb66b1c2af3e18ab5d452b6a94a9fde3d6708c8e08cbb4cbd38dd034
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -55,7 +55,7 @@ function v6.KnitStart(p2)
 			end;
 		end;
 	end);
-	l__default__3.Client:OnEvent("RemoteName", function(p3)
+	l__default__3.Client:OnEvent("StopwatchActivated", function(p3)
 		local l__character__11 = p3.character;
 		local v12 = p2:createOriginMarker(p3.cframe);
 		local v13 = l__Players__4:GetPlayerFromCharacter(l__character__11);
@@ -105,7 +105,7 @@ function v6.KnitStart(p2)
 			};
 		end;
 	end);
-	l__default__3.Client:OnEvent("RemoteName", v1.async(function(p4)
+	l__default__3.Client:OnEvent("StopwatchExpired", v1.async(function(p4)
 		local l__character__21 = p4.character;
 		local v22 = p2:getCurrentAnimationOfCharacter(l__character__21);
 		if v22 == nil then

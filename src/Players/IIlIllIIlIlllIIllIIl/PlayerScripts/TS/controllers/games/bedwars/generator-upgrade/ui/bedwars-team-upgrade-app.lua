@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: a78681508e9e47ee3fde32c40b2132fd6f409a3659ada7d636286742f5c47fea5d2e141e4ce6d752e02bc1392e2f5c39
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -86,7 +86,7 @@ function v4.render(p2)
 			if v30 == nil then
 				v30 = -1;
 			end;
-			l__default__4.Client:Get("RemoteName"):CallServerAsync({
+			l__default__4.Client:Get("BedwarsPurchaseTeamUpgrade"):CallServerAsync({
 				upgradeId = p6.id, 
 				tier = v30 + 1
 			}):andThen(function()

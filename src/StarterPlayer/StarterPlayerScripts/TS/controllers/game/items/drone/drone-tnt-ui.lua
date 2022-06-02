@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: f30cf556b02e29ac8af2dabf2ebd3a164a45b66b451adabe12c68433feeff4532c1392f8964f7701d31ee4c57905756a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -29,7 +29,7 @@ return {
 				onActivated = function()
 					if time() - u5.value > 0.3 then
 						u5.value = time();
-						l__default__4.Client:Get("RemoteName"):SendToServer();
+						l__default__4.Client:Get("DropTnt"):SendToServer();
 					end;
 				end, 
 				interactionKey = Enum.KeyCode.Z, 

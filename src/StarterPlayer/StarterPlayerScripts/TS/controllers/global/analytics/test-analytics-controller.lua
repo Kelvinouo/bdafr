@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: b2044aab196ddde438c6a165e8b8d5e1c6b4e4df4911894a2a727b83f6d4aa7a9014772bbc8bcc21e483d53afa466b6f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -24,7 +24,7 @@ local l__ReplicatedStorage__3 = v1.import(script, v1.getModule(script, "@rbxts",
 function v3.KnitStart(p2)
 	local function u4()
 		task.wait(math.random(20, 60));
-		l__default__2.Client:Get("RemoteName"):SendToServer();
+		l__default__2.Client:Get("DetectionTest"):SendToServer();
 	end;
 	task.defer(function()
 		task.wait(20);

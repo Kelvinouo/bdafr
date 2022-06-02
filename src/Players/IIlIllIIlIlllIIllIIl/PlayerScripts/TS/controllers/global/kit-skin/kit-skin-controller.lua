@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: af4e03206106d7388481907b6e538308f5cf9560b17e7054482931612c47dd6848744cdb749091bf453c93ec519c25b7
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -28,7 +28,7 @@ local l__ClientStore__3 = v1.import(script, script.Parent.Parent.Parent.Parent, 
 local l__SoundManager__4 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).SoundManager;
 local l__GameSound__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function v4.equipKitSkin(p3, p4, p5)
-	l__default__2.Client:Get("RemoteName"):CallServerAsync({
+	l__default__2.Client:Get("BedwarsEquipKitSkin"):CallServerAsync({
 		kit = p4, 
 		kitSkin = p5
 	}):andThen(function()

@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: e7da8646c93afe119e2b0e41f684312f4860b60d6891f76c4756483c19d2a04f924a3fad91f273ba5a8f712ef0a88de8
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -26,7 +26,7 @@ local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 function v4.KnitStart(p2)
 	u1.KnitStart(p2);
 	p2:beamCleanupTicker();
-	l__default__2.Client:OnEvent("RemoteName", function(p3)
+	l__default__2.Client:OnEvent("LifeStealHit", function(p3)
 		p2:playRegenEffect(p3.healer, p3.enemy);
 		p2:playRegenSound(p3.healer, p3.overHeal);
 	end);

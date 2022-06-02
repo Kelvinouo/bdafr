@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 49183db62d9482b60686e2e71c7e3e4e2d1e5e01b2d6fe5a196cf6c4b8f412788ce4b47af83047cc9c66b580cc7a688a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -27,7 +27,7 @@ local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 local l__CollectionService__3 = v4.CollectionService;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("RemoteName", function(p3)
+	l__default__2.Client:OnEvent("TeslaTrapTargetsChanged", function(p3)
 		local v8 = {};
 		for v9, v10 in ipairs(p3.targets) do
 			v8[v10] = true;

@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: adf3000cd9cf1cc9c3f8a537ccfa60a9e8bc4cf03d6321b43127d281ccc5bce97ab9de69d0c257415102f85f11dab942
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -94,7 +94,7 @@ function u1.KnitStart(p2)
 			v7(p3:GetAttribute("RavenPoisonEndTime"));
 		end));
 	end);
-	l__default__8.Client:WaitFor("RemoteName"):andThen(function(p7)
+	l__default__8.Client:WaitFor("RavenExploded"):andThen(function(p7)
 		return p7:Connect(function(p8)
 			local l__position__11 = p8.position;
 			l__SoundManager__9:playSound(l__GameSound__10.TNT_EXPLODE_1, {

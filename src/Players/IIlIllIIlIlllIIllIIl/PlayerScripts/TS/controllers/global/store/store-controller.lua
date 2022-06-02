@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 4c30f04fec1fa860a9b41b9bdf576e360764ff1644a3d5e1873c062288f943c1c8f3492d3f8f695b9abc82c52a6a9927
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -32,7 +32,7 @@ function v4.KnitStart(p2)
 			l__SoundManager__4:playSound(l__GameSound__5.BEDWARS_UPGRADE_SUCCESS);
 		end;
 	end);
-	l__default__6.Client:OnEvent("RemoteName", function(p6)
+	l__default__6.Client:OnEvent("RobuxPurchaseSuccess", function(p6)
 		l__SoundManager__4:playSound(l__GameSound__5.BEDWARS_UPGRADE_SUCCESS);
 	end);
 end;

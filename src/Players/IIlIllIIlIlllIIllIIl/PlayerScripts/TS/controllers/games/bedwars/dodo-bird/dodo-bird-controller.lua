@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 3c7d523a9c95dcf23bd6ed6fb641226e8e7e568e6758325073b03467451120f690c0c9a43cd232feaa374241d411a407
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -35,7 +35,7 @@ local l__UnmountDodoApp__10 = v1.import(script, script.Parent, "ui", "unmount-do
 local l__Maid__11 = v3.Maid;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	local u12 = l__default__2.Client:Get("RemoteName");
+	local u12 = l__default__2.Client:Get("InteractDodoBird");
 	l__CollectionTagAdded__3("dodo-bird", function(p3)
 		p3:SetAttribute("NextSquawk", -1);
 		local v8 = {
@@ -55,7 +55,7 @@ function v6.KnitStart(p2)
 		v8.Parent = p3;
 		u4("ProximityPrompt", v8);
 	end);
-	l__default__2.Client:Get("RemoteName"):Connect(function(p4)
+	l__default__2.Client:Get("DodoBirdInteraction"):Connect(function(p4)
 		if p4.action == l__DodoAction__6.Mount then
 			if p4.player == l__Players__7.LocalPlayer then
 				local v9 = l__Flamework__8.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(u9.createElement(l__UnmountDodoApp__10, {

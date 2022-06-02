@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 82123abcf0caac96704414bcb90c8b196ca4b1220e10a15d379ae51e438e88e20186add08428c763a225917205e1d580
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -34,13 +34,13 @@ local l__BuildRoduxApp__9 = v1.import(script, script.Parent.Parent.Parent.Parent
 local l__EmberProgressBar__10 = v1.import(script, script.Parent, "emberUI", "ember-progress-bar").EmberProgressBar;
 function u1.KnitStart(p2)
 	u2.KnitStart(p2);
-	l__default__4.Client:OnEvent("RemoteName", function(p3)
+	l__default__4.Client:OnEvent("EmberProgress", function(p3)
 		l__ClientStore__5:dispatch({
 			type = "KitEmberIncrementProgress", 
 			progress = p3.incrementProgress / p2.upgradeRequirement
 		});
 	end);
-	l__default__4.Client:OnEvent("RemoteName", function(p4)
+	l__default__4.Client:OnEvent("PlayEmberEffect", function(p4)
 		p2:createEffect(p4.player);
 	end);
 	l__KnitClient__6.Controllers.KitController:watchLocalKit(function(p5)

@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: f8649149c4f5bb88963883c29997921e1a3690dbd27cbcdcb7c7027314f22905198d16cf0c09df5b757b8dd8773f599b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -42,7 +42,7 @@ local l__GameSound__17 = v1.import(script, game:GetService("ReplicatedStorage"),
 local l__Workspace__18 = v3.Workspace;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:Get("RemoteName"):Connect(function(p3)
+	l__default__2.Client:Get("GrapplingHookFunctions"):Connect(function(p3)
 		local v8 = p2:getHookState() == l__GrapplingHookFunctions__3.HOOK_FORWARD_TRANSIT;
 		local v9 = p2:getHookState() == l__GrapplingHookFunctions__3.HOOK_BACKWARD_TRANSIT;
 		local v10 = p2:getHookState() == l__GrapplingHookFunctions__3.PLAYER_IN_TRANSIT;

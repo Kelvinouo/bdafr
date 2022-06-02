@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 06ea9d34cd0d1c28f5b34e567ee459d3b42c3c7d8f4e4022b72456f40b84460f778557245cde1961a69a11cb224694ec
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -26,7 +26,7 @@ local l__Maid__4 = v2.Maid;
 local l__KnitClient__5 = v2.KnitClient;
 function v4.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("RemoteName", function(p3)
+	l__default__2.Client:OnEvent("EntityDamageEvent", function(p3)
 		local v6 = p3.extra.projectileData;
 		if v6 ~= nil then
 			v6 = v6.projectileType;

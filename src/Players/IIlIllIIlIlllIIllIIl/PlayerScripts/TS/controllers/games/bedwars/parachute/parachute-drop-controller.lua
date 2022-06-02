@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 5699eaa850cf307f1362beaf27520b25e160db408cc0ada1a1a6fe82205bfcb56aa4b25aeb2bb07418bef7e91b3b5127
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -25,7 +25,7 @@ local l__Workspace__4 = v1.import(script, v1.getModule(script, "@rbxts", "servic
 local l__Linear__5 = v1.import(script, v1.getModule(script, "@rbxts", "easing-functions")).Linear;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("RemoteName", function(p3)
+	l__default__2.Client:OnEvent("ParachuteDrop", function(p3)
 		for v5, v6 in ipairs(p3) do
 			task.spawn(function()
 				if v6.model.PrimaryPart == nil then

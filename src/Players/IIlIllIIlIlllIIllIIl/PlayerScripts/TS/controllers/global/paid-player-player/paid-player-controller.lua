@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 1afaca4db105e0aeb3ff43e07e1b616dc28740443dc08c0f3ab37a5d4252ca3ac9d2e83c91dddc2b56cc4ef7801b3ac0
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -24,7 +24,7 @@ local l__Flamework__3 = v1.import(script, v1.getModule(script, "@flamework", "co
 local l__BedwarsAppIds__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "types", "app-config").BedwarsAppIds;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("RemoteName", function()
+	l__default__2.Client:OnEvent("ShowPremiumPlayerRestriction", function()
 		l__Flamework__3.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__4.RANKED_PAID_RESTRICTION, {});
 	end);
 end;

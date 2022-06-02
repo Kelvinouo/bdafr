@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: ddb74479faba2597626f7dfc66099466d513e4fdee1c07a390ffc984342c5046a8fcb258e64835fd1e0682c309da6a99
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -103,7 +103,7 @@ function u1.attemptToActivate(p5)
 		end;
 	end);
 	p5:setupYield(function()
-		local u20 = l__default__15.Client:Get("RemoteName"):Connect(function(p7)
+		local u20 = l__default__15.Client:Get("EntityDamageEvent"):Connect(function(p7)
 			if l__Players__7.LocalPlayer.Character and p7.entityInstance == l__Players__7.LocalPlayer.Character then
 				p5.maid:DoCleaning();
 			end;

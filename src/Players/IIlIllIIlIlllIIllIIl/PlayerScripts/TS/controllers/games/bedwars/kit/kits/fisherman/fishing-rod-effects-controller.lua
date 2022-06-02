@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: cd426a69e9dfa8c2a1e2709e481971d093ff60cb5fd968ca174b35a217e53e6bfac99f67a303b41bf79ab696c09db807
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -44,7 +44,7 @@ local u15 = v2.ConstantManager.registerConstants(script, {
 local l__RunService__16 = v4.RunService;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:WaitFor("RemoteName"):andThen(function(p3)
+	l__default__2.Client:WaitFor("FishCaught"):andThen(function(p3)
 		p3:Connect(function(p4)
 			local v8 = p4.catchingPlayer.Character;
 			if v8 ~= nil then

@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 63e46d2a8b736bf30b10daae582fcfcb1b8c58056359b85cd5a7235f78716eaaba9a2188fa6a048211e4445061a1adc4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -29,7 +29,7 @@ local l__Workspace__7 = v2.Workspace;
 local l__EffectUtil__8 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "effect", "effect-util").EffectUtil;
 function v4.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("RemoteName", function(p3)
+	l__default__2.Client:OnEvent("OpenLuckyBlock", function(p3)
 		local v6 = nil;
 		if p3.rarity <= l__LuckyBlockRarity__3.RARE and l__LuckyBlockRarity__3.EPIC < p3.rarity then
 			v6 = l__ReplicatedStorage__4.Assets.Effects.LuckyBlock.OpenRare:Clone();

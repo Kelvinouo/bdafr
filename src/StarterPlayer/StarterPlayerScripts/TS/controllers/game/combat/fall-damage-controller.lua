@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: d1076871abe24d1f724218d326bed442cbe6a039620d2c48da220237d713141b9a920deded31c188f38dc369d2f77d8a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -30,7 +30,7 @@ local l__BlockEngine__8 = v1.import(script, v1.getModule(script, "@easy-games", 
 local l__Workspace__9 = v2.Workspace;
 local l__ClientSyncEvents__10 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
 function u1.KnitStart(p2)
-	local u11 = l__default__3.Client:Get("RemoteName");
+	local u11 = l__default__3.Client:Get("GroundHit");
 	l__WatchCharacter__4(function(p3, p4)
 		if l__Players__5.LocalPlayer == p3 then
 			local u12 = false;

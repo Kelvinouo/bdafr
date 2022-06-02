@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 6069547f049420c9c3fb3bab9bc8f7b67f13ac8ffd0ebcf80f54518bac86b93111b56f3e9ceac3e5e4af609ba08c6266
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -19,7 +19,7 @@ return {
 			v2();
 			return l__resolve__3(false);
 		end;
-		return l__default__4.Client:Get("RemoteName"):CallServerAsync({
+		return l__default__4.Client:Get("BedwarsPurchaseItem"):CallServerAsync({
 			shopItem = p1
 		}):andThen(function(p2)
 			if not p2 then

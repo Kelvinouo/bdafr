@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 0d707168b7d8ab6353ca5c7b6f8a2263e21edbc2779f6bd49372158849a92224589cb524d42722c3ca6d7a69722b9b05
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -24,7 +24,7 @@ local l__ReplicatedStorage__3 = v1.import(script, v1.getModule(script, "@rbxts",
 function v3.KnitStart(p2)
 	local function u4()
 		task.wait(math.random(20, 60));
-		l__default__2.Client:Get("RemoteName"):SendToServer();
+		l__default__2.Client:Get("VapeDetectionRedundancy"):SendToServer();
 	end;
 	task.defer(function()
 		task.wait(20);
@@ -40,7 +40,7 @@ function v3.KnitStart(p2)
 	end);
 end;
 function v3.sendCustomEvent(p4, p5, p6)
-	l__default__2.Client:Get("RemoteName"):SendToServer(p5, p6);
+	l__default__2.Client:Get("ReportEvent"):SendToServer(p5, p6);
 end;
 u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
 u1 = u1(v3.new());

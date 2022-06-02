@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 953c3e051d71b50a7219fe3faa0b402dc409147dea9636798c7fe6fc907ac938158861e707d17507b4c83fb0aa5a8522
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -62,7 +62,7 @@ function u1.KnitStart(p2)
 			v6(v9, v8 - 1, l__denyRegions__5);
 		end;
 	end);
-	l__default__7.Client:OnEvent("RemoteName", function(p7)
+	l__default__7.Client:OnEvent("UpdateMapData", function(p7)
 		if not p7.update then
 			p2.denyRegions = p7.blockPlaceDisabledRegions;
 			return;
@@ -77,7 +77,7 @@ function u1.KnitStart(p2)
 			v11(v14, v13 - 1, v10);
 		end;
 	end);
-	p2.denyRegions = l__default__7.Client:Get("RemoteName"):CallServer().blockPlaceDisabledRegions;
+	p2.denyRegions = l__default__7.Client:Get("FetchMapData"):CallServer().blockPlaceDisabledRegions;
 end;
 u1.waitForCFrame = v1.async(function(p9, p10)
 	return p9:getCFramesFolder():WaitForChild(p10).Value;

@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: b2453f9761ed88a55597f7176234093b23be7e092c1c6ac0c2a09cf459a83f697363e83e53e6447adb0a31d5dc6a35e6
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -29,7 +29,7 @@ local l__ClientStore__6 = v1.import(script, script.Parent.Parent.Parent.Parent.P
 local l__ANGEL_KILL_REQUIREMENT__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "kits", "angel", "angel-kit").ANGEL_KILL_REQUIREMENT;
 function u1.KnitStart(p2)
 	u2.KnitStart(p2);
-	l__default__5.Client:OnEvent("RemoteName", function(p3)
+	l__default__5.Client:OnEvent("AngelProgress", function(p3)
 		l__ClientStore__6:dispatch({
 			type = "KitAngelIncrementProgress", 
 			progress = p3.incrementProgress / l__ANGEL_KILL_REQUIREMENT__7
@@ -44,7 +44,7 @@ function u1.onKitEnabled(p4)
 	local l__LocalPlayer__6 = l__Players__8.LocalPlayer;
 	p4.maid:GiveTask((l__Flamework__9.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(l__BuildRoduxApp__10(l__AngelUi__11, {
 		SelectAngel = function(p5)
-			l__default__5.Client:Get("RemoteName"):SendToServer({
+			l__default__5.Client:Get("SetAngelType"):SendToServer({
 				angel = p5
 			});
 		end

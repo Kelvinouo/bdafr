@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 5aa0d76b5aef3e52144d96dd8c7b8701c39df3838b8fbc7ba7b50da8e49abd563dcfc9896e948254ccd64745221fa610
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -28,7 +28,7 @@ local l__SoundManager__6 = v1.import(script, v1.getModule(script, "@easy-games",
 local l__GameSound__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function v4.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("RemoteName", function(p3)
+	l__default__2.Client:OnEvent("ProjectileImpact", function(p3)
 		if p3.projectile == "sleep_splash_potion" then
 			local v6 = l__ReplicatedStorage__3.Assets.Effects.Potion.SleepSplashPotion:Clone();
 			v6.CFrame = CFrame.new(p3.position);

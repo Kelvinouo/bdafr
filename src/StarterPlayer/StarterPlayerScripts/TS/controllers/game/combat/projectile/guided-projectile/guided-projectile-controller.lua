@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: ec18a0765521e0c37b212d3aa5957002e8b7623e8321bbd28f4edd256d27acc232ea4b01f8789597939bdf902f8e891b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -22,7 +22,7 @@ local u3 = v1.import(script, v1.getModule(script, "@rbxts", "flipper").src);
 function v5.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "GuidedProjectileController";
-	p1.fireGuidedProjectile = l__default__2.Client:Get("RemoteName");
+	p1.fireGuidedProjectile = l__default__2.Client:Get("FireGuidedProjectile");
 	p1.angleX = 0;
 	p1.angleY = 0;
 	p1.directionMotor = u3.GroupMotor.new({
@@ -115,7 +115,7 @@ function v5.KnitStart(p2)
 			});
 		end;
 	end);
-	l__default__2.Client:OnEvent("RemoteName", function(p3)
+	l__default__2.Client:OnEvent("GuidedProjectileDetonated", function(p3)
 		local v23 = p3.position;
 		if p2.currentlyGuidingProjectile ~= nil and p2.currentlyGuidingProjectile.model == p3.model then
 			v23 = p2.currentlyGuidingProjectile.model:GetPrimaryPartCFrame().Position;

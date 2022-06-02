@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: bd0c32abf8f41f3041b4c83d83fd0c1d75560f896bb9118fe69e08a786ca4b87986b065f5a3ac160f272a1ad5fe570d8
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -179,7 +179,7 @@ function u1.KnitStart(p2)
 		end;
 		u18((l__Humanoid__11:WaitForChild("Animator")));
 	end);
-	l__default__13.Client:WaitFor("RemoteName"):andThen(function(p13)
+	l__default__13.Client:WaitFor("EntityDamageEvent"):andThen(function(p13)
 		p13:Connect(function(p14)
 			local v24 = p14.extra;
 			if v24 ~= nil then

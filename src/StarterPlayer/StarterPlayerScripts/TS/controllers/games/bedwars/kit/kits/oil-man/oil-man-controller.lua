@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: bbd009b02c18399a1b04c27b2bfc1bc8dd19560608405e6a7e449206c7e3c38722df993233ffc32a2649153e46a0420f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -27,7 +27,7 @@ local l__Maid__3 = v3.Maid;
 local l__Workspace__4 = v4.Workspace;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("RemoteName", function(p3)
+	l__default__2.Client:OnEvent("OilSpill", function(p3)
 		local v8 = Random.new(p3.seed);
 		local v9 = v8:NextNumber(8, 36);
 		local v10 = l__Maid__3.new();

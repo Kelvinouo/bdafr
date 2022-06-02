@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 7eb2dce9bffa71992f1450127d90622372d28ff2a443577c05ec5070e4cc14e2d24e386a10978061707b692c23e6c2e4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -90,7 +90,7 @@ function u1.KnitStart(p2)
 		p2:dropTNT();
 		return Enum.ContextActionResult.Sink;
 	end, false, 4000, Enum.UserInputType.MouseButton1, Enum.KeyCode.ButtonR2);
-	l__default__12.Client:WaitFor("RemoteName"):andThen(function(p6)
+	l__default__12.Client:WaitFor("BalloonPopped"):andThen(function(p6)
 		p6:Connect(function(p7)
 			p7.inflatedBalloon.Balloon.PopEffect:Emit(20);
 			local v15 = nil;
@@ -188,7 +188,7 @@ function u1.dropTNT(p17)
 		return false;
 	end;
 	p17.lastTntDrop = tick();
-	l__default__12.Client:Get("RemoteName"):SendToServer();
+	l__default__12.Client:Get("DropTnt"):SendToServer();
 	return true;
 end;
 local u19 = v2.ConstantManager.registerConstants(script, {
@@ -322,11 +322,11 @@ function u1.inflateBalloon(p23)
 		return nil;
 	end;
 	l__KnitClient__4.Controllers.ViewmodelController:playAnimation(l__AnimationType__33.FP_USE_ITEM);
-	l__default__12.Client:Get("RemoteName"):SendToServer();
+	l__default__12.Client:Get("InflateBalloon"):SendToServer();
 end;
 function u1.deflateBalloon(p24)
 	l__KnitClient__4.Controllers.ViewmodelController:playAnimation(l__AnimationType__33.FP_USE_ITEM);
-	l__default__12.Client:Get("RemoteName"):SendToServer();
+	l__default__12.Client:Get("DeflateBalloon"):SendToServer();
 end;
 function u1.isRelevantItem(p25, p26)
 	return p26.itemType == l__ItemType__11.BALLOON;

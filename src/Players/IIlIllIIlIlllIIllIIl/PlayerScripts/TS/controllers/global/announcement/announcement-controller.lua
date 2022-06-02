@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: fc4dfd2c73e89b9907c83513c806eef99f776d774524f094b570c1c0b75702778e5314b0fdfee863b1ea981b17d5305c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -24,7 +24,7 @@ local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 local l__ClientSyncEvents__3 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:WaitFor("RemoteName"):andThen(function(p3)
+	l__default__2.Client:WaitFor("AnnouncementEvent"):andThen(function(p3)
 		p3:Connect(function(p4)
 			p2:sendNewAnnouncement(p4.announcement);
 		end);

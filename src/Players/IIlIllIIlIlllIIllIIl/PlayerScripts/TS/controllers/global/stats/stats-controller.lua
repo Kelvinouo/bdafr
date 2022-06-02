@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: ac7664d2ce89e892d5680accd39fe9e086b3c3ab2452d7d54baf2a0ebc85e062150c80d7b6c7a36264a37b56f93d4c8c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -23,7 +23,7 @@ end;
 local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function u1.KnitStart(p2)
-	l__default__3.Client:WaitFor("RemoteName"):andThen(function(p3)
+	l__default__3.Client:WaitFor("FetchStats"):andThen(function(p3)
 		local v5 = p3:CallServer();
 		l__ClientStore__4:dispatch({
 			type = "SetStats", 

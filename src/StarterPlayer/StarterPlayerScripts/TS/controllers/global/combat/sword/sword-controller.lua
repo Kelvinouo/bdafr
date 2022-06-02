@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 963d350f56163fcff7d0fc61942f46b393dbbe65557a426f9848b05b315b2286aa00d428fd3f7089fc72b37d6461108e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -221,7 +221,7 @@ function u1.attackEntity(p14, p15, p16)
 		v38.chargeRatio = v40;
 		v37.chargedAttack = v38;
 		p14.chargeTime = 0;
-		if not l__default__13.Client:Get("RemoteName"):CallServer(v37) and p14.lastAttack == v30 then
+		if not l__default__13.Client:Get("SwordHit"):CallServer(v37) and p14.lastAttack == v30 then
 			p14.lastAttack = p14.lastAttack;
 			return;
 		end;

@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 9108cd40163426504f5f675ee4b448e782fd011ba4ffa3a3f95ee17c15bbe82b39716d128bba170e07ed0b59c25699b4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -41,7 +41,7 @@ local l__MapUtil__16 = v1.import(script, v1.getModule(script, "@easy-games", "da
 local l__ExpireList__17 = v2.ExpireList;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("RemoteName", function(p3)
+	l__default__2.Client:OnEvent("BobaStickEvent", function(p3)
 		local v8 = u3("Part", {
 			Name = "BobaPearl", 
 			Position = p3.position, 

@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 19616efc3c19f726b297f5edb2702dc40db4d0d8596f67484d64693ceaac019a82c0cf47797c4bda66191b2b954878f9
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -29,7 +29,7 @@ local l__SoundManager__6 = v2.SoundManager;
 local l__GameSound__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 local l__Players__8 = v3.Players;
 function u1.KnitStart(p2)
-	l__default__3.Client:OnEvent("RemoteName", function(p3)
+	l__default__3.Client:OnEvent("ShieldBlocked", function(p3)
 		local v7 = p3.entity:FindFirstChild(l__ItemType__4.INFERNAL_SHIELD);
 		if v7 and (v7.Handle.BlockEffectAttachment.WorldCFrame.Position - l__Workspace__5.CurrentCamera.CFrame.Position).Magnitude <= 150 then
 			p2:spawnShieldBlockParticles(v7.Handle.BlockEffectAttachment.WorldCFrame.Position, {

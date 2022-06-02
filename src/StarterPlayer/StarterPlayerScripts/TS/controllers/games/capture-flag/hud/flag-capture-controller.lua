@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 2c862b7cbea79c273e99a9b1d90fe38c5ad62f93a61aa4d403aa80c211ba26a8e841356139d162a4712b5971ee60d4c7
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -46,7 +46,7 @@ local l__CollectionTagAdded__17 = v2.CollectionTagAdded;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
 	local u18 = l__Maid__2.new();
-	l__default__3.Client:WaitFor("RemoteName"):expect():Connect(function(p3)
+	l__default__3.Client:WaitFor("MatchStateEvent"):expect():Connect(function(p3)
 		if p3.matchState == l__MatchState__5.RUNNING and l__ClientStore__4:getState().Game.queueType == l__QueueType__6.FLAG_CAPTURE then
 			local u19 = u7.mount(l__ScoreBoardWrapper__8(), l__Players__9.LocalPlayer:WaitForChild("PlayerGui"));
 			u18:GiveTask(function()
@@ -92,12 +92,12 @@ function v6.KnitStart(p2)
 		l__SoundManager__13:playSound(l__GameTheme__14.sound.uiDisabled);
 		p6:setCancelled(true);
 	end);
-	l__default__3.Client:Get("RemoteName"):Connect(function(p7)
+	l__default__3.Client:Get("PlayerCaptureFlag"):Connect(function(p7)
 		print("[FLAG EFFECT] " .. p7.player.Name .. " captured.");
 		p2:addSlow(p7.player);
 		p2:createRay(p7.player);
 	end);
-	l__default__3.Client:Get("RemoteName"):Connect(function(p8)
+	l__default__3.Client:Get("FlagHolderRemove"):Connect(function(p8)
 		print("[FLAG EFFECT] " .. p8.player.Name .. " dropped.");
 		p2:removeSlow(p8.player);
 		local v8 = p2.rayMap[p8.player];
@@ -111,7 +111,7 @@ function v6.KnitStart(p2)
 			p2.flagMap[p8.player] = nil;
 		end;
 	end);
-	l__default__3.Client:Get("RemoteName"):Connect(function(p9)
+	l__default__3.Client:Get("FlagHolderUpdate"):Connect(function(p9)
 		if not p9.teamFlag then
 			l__SoundManager__13:playSound(l__GameSound__15.FLAG_CAPTURE);
 		end;
@@ -176,7 +176,7 @@ function v6.KnitStart(p2)
 				return nil;
 			end;
 			p2.cooldown = tick() + 0.2;
-			l__default__3.Client:Get("RemoteName"):SendToServer({
+			l__default__3.Client:Get("TouchedBlock"):SendToServer({
 				block = p14
 			});
 		end);

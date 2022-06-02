@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: f2e18f00a41ae8c38eba635679714fc45e0b5971a9c9a2c9a0caeb8a26ad370535e76ae2f37102522410c1920f4df386
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -70,7 +70,7 @@ function v6.KnitStart(p2)
 			if p4 == l__Players__8.LocalPlayer and v9.Enabled == true then
 				if p3:GetAttribute("Enabled") ~= true then
 					l__SoundManager__11:playSound(l__GameSound__12.DEPOSIT_BEE);
-					l__default__13.Client:WaitFor("RemoteName"):expect():SendToServer({
+					l__default__13.Client:WaitFor("RepairCauldron"):expect():SendToServer({
 						cauldron = p3
 					});
 					return;

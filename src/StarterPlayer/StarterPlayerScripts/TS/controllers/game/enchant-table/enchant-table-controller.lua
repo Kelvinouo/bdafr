@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 81a681566205987b9cd5253b3eb542a596b6f14f0ecc764a3cb1974d138d3fc3859f4a121e43d7b30b8b7ac8b292c689
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -107,7 +107,7 @@ function v6.KnitStart(p2)
 			return nil;
 		end);
 		v8.Triggered:Connect(function(p5)
-			local v11 = l__default__17.Client:Get("RemoteName"):CallServer(p3);
+			local v11 = l__default__17.Client:Get("RepairEnchantTable"):CallServer(p3);
 		end);
 	end);
 	l__CollectionTagAdded__7("enchant-table", function(p6)
@@ -256,7 +256,7 @@ function v6.KnitStart(p2)
 			end);
 		end);
 	end);
-	l__default__17.Client:OnEvent("RemoteName", function(p12)
+	l__default__17.Client:OnEvent("EnchantTableResearch", function(p12)
 		local v35 = p12.entityInstance.PrimaryPart;
 		if v35 ~= nil then
 			v35 = v35.Position;
@@ -391,7 +391,7 @@ function v6.researchEnchant(p24, p25)
 		return nil;
 	end;
 	l__Flamework__12.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):closeApp(l__BedwarsAppIds__19.ENCHANT_TABLE);
-	local v58 = l__default__17.Client:Get("RemoteName"):CallServer({
+	local v58 = l__default__17.Client:Get("ResearchEnchant"):CallServer({
 		researchType = p25, 
 		enchantTable = v57
 	});

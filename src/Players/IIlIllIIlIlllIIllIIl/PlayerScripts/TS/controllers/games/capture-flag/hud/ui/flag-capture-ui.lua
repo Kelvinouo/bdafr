@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 55632957ec1f2cd7d38445205e1e35e81597d573565d960b2dd564438b37aae0d178eb54fc38cba4f9e9f1e9eb23c463
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -23,7 +23,7 @@ local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 local l__Players__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 function v3.listenToFlagUpdate(p5)
 	local u4 = nil;
-	u4 = l__default__2.Client:WaitFor("RemoteName"):expect():Connect(function(p6)
+	u4 = l__default__2.Client:WaitFor("FlagHolderUpdate"):expect():Connect(function(p6)
 		local v4 = l__Players__3.LocalPlayer.Team;
 		if v4 ~= nil then
 			v4 = v4.Name;
@@ -46,7 +46,7 @@ function v3.listenToScoreUpdate(p7)
 	local u5 = 0;
 	local u6 = 0;
 	local u7 = nil;
-	u7 = l__default__2.Client:WaitFor("RemoteName"):expect():Connect(function(p8)
+	u7 = l__default__2.Client:WaitFor("FlagScoreUpdate"):expect():Connect(function(p8)
 		local v5 = l__Players__3.LocalPlayer.Team;
 		if v5 ~= nil then
 			v5 = v5.Name;

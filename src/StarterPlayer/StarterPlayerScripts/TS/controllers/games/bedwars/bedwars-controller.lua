@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: f2888078ad9b923db55b0aa633df04445486ba39fc1aa293b3062d8e8543d6a45c31ed6acbda02383792cb997ff21f17
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -81,7 +81,7 @@ function u1.KnitStart(p2)
 		end;
 	end);
 	local u12 = nil;
-	l__default__9.Client:WaitFor("RemoteName"):andThen(function(p8)
+	l__default__9.Client:WaitFor("EntityDeathEvent"):andThen(function(p8)
 		p8:Connect(function(p9)
 			v1.Promise.defer(function()
 				local v21 = l__Players__10:GetPlayerFromCharacter(p9.fromEntity);
@@ -95,7 +95,7 @@ function u1.KnitStart(p2)
 			end);
 		end);
 	end);
-	l__default__9.Client:WaitFor("RemoteName"):expect():Connect(function(p10)
+	l__default__9.Client:WaitFor("KitsUpdateEvent"):expect():Connect(function(p10)
 		l__ClientStore__8:dispatch({
 			type = "BedwarsSetKits", 
 			userId = p10.userId, 
@@ -107,7 +107,7 @@ function u1.KnitStart(p2)
 			usingKitSkin = p10.usingSkin
 		});
 	end);
-	l__default__9.Client:WaitFor("RemoteName"):andThen(function(p11)
+	l__default__9.Client:WaitFor("GetKits"):andThen(function(p11)
 		for v22, v23 in pairs(p11:CallServer()) do
 			l__ClientStore__8:dispatch({
 				type = "BedwarsSetKits", 
@@ -134,7 +134,7 @@ function u1.KnitStart(p2)
 			});
 		end;
 	end;
-	l__default__9.Client:WaitFor("RemoteName"):andThen(function(p13)
+	l__default__9.Client:WaitFor("BedwarsBedBreak"):andThen(function(p13)
 		p13:Connect(function(p14)
 			l__ClientStore__8:dispatch({
 				type = "BedwarsSetBedAlive", 
@@ -152,7 +152,7 @@ function u1.KnitStart(p2)
 			l__ClientStore__8:dispatch(v25);
 		end);
 	end);
-	l__default__9.Client:WaitFor("RemoteName"):andThen(function(p15)
+	l__default__9.Client:WaitFor("BedwarsSuddenDeath"):andThen(function(p15)
 		p15:Connect(function(p16)
 			l__ClientStore__8:dispatch({
 				type = "BedwarsSetBedAliveSuddenDeath"

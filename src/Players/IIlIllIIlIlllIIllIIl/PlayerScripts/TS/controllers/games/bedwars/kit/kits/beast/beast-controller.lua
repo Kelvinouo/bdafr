@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 6357927450a081ca87c5ca331d8d9f23138ccf1961ae7e8e88a374e230c71eb5b51596308ecd8158f2bb08472b36bb4c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -42,7 +42,7 @@ local l__default__18 = v1.import(script, v1.getModule(script, "@rbxts", "tween")
 local l__InQuad__19 = v1.import(script, v1.getModule(script, "@rbxts", "easing-functions")).InQuad;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("RemoteName", function(p3)
+	l__default__2.Client:OnEvent("ActivateBeast", function(p3)
 		local v8 = l__EntityUtil__3:getEntity(p3.entityInstance);
 		if v8 == nil then
 			return nil;

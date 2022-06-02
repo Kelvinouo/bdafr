@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 575d1ae716d97bede95bbeb6e2e5ce2acb53077cdcd99f59a05c6154bde1fda4421c5fce2feb9cc9d1009699326b7e63
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -31,7 +31,7 @@ local l__GameSound__8 = v1.import(script, game:GetService("ReplicatedStorage"), 
 local l__Players__9 = v3.Players;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("RemoteName", function(p3)
+	l__default__2.Client:OnEvent("PlayClientStatusEffect", function(p3)
 		if p3.effect ~= l__StatusEffectType__3.CLINGY_2 then
 			return nil;
 		end;
@@ -39,7 +39,7 @@ function v5.KnitStart(p2)
 			position = p3.position
 		});
 	end);
-	l__default__2.Client:OnEvent("RemoteName", function(p4)
+	l__default__2.Client:OnEvent("RespawnClingyItems", function(p4)
 		local v7 = p4.player.Character;
 		if v7 ~= nil then
 			v7 = v7.PrimaryPart;

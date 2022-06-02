@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 535e39b7f4ccbe4926123e8ff1986342779a41ae3f3415e7a08f122793a52aea7aae19ae3a0e1c4a7a91430a5bd9f946
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -38,7 +38,7 @@ local l__ItemViewport__14 = v1.import(script, script.Parent.Parent.Parent.Parent
 local l__TweenService__15 = v4.TweenService;
 function u1.KnitStart(p2)
 	u2.KnitStart(p2);
-	l__default__4.Client:WaitFor("RemoteName"):andThen(function(p3)
+	l__default__4.Client:WaitFor("HarvestCrop"):andThen(function(p3)
 		p3:Connect(function(p4)
 			if l__Players__5.LocalPlayer.Character and l__Players__5.LocalPlayer:DistanceFromCharacter(l__BlockEngine__6:getWorldPosition(p4.blockPosition)) <= 100 then
 				local v8 = l__BlockEngine__6:getWorldPosition(p4.blockPosition);
@@ -105,7 +105,7 @@ function u1.onKitEnabled(p5)
 		}).Triggered:Connect(function(p7)
 			l__GameAnimationUtil__20.playAnimation(p7, l__AnimationType__21.PUNCH);
 			l__SoundManager__7:playSound(l__GameSound__8.CROP_HARVEST);
-			l__default__4.Client:Get("RemoteName"):CallServer({
+			l__default__4.Client:Get("BedwarsHarvestCrop"):CallServer({
 				position = l__BlockEngine__6:getBlockPosition(p6.Position)
 			});
 		end));

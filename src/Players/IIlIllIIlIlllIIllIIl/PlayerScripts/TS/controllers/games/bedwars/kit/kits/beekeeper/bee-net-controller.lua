@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 8758c2932578978f2c0332f031d0043c8e31b606a929d1dafa0b3a1611b5d2aaa98498ccea5923a2f4c436ccd8bc6e6f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -38,7 +38,7 @@ function u1.trigger(p5, p6, p7)
 	if p6 == l__Players__4.LocalPlayer then
 		l__GameAnimationUtil__5.playAnimation(l__Players__4.LocalPlayer, l__AnimationType__6.NET_CATCH);
 		l__SoundManager__7:playSound(l__GameSound__8.BEE_NET_SWING);
-		l__default__9.Client:Get("RemoteName"):SendToServer({
+		l__default__9.Client:Get("PickUpBee"):SendToServer({
 			beeId = p7:GetAttribute("BeeId")
 		});
 	end;

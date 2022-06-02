@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 2bfe134ae176856984e94e5aaba0b8622dec2d3c69a3d083da16a9ab2a973cdba229c5be835a5ee13d269882adf0ab92
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -47,7 +47,7 @@ function v4.KnitStart(p2)
 			end);
 		end;
 	end);
-	l__default__7.Client:OnEvent("RemoteName", function(p4)
+	l__default__7.Client:OnEvent("EntityDamageEvent", function(p4)
 		if p4.entityInstance.PrimaryPart and p4.fromEntity and l__Players__8:GetPlayerFromCharacter(p4.fromEntity) == l__Players__8.LocalPlayer and p4.extra.guidedProjectile == "guided_missile" then
 			l__SoundManager__5:playSound(l__GameSound__6.ARROW_HIT, {
 				position = p4.entityInstance.PrimaryPart.Position, 

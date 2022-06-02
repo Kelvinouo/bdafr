@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 797839a8d3d7c0043527b5a9b56d475a794d60caae5d602082bf0185c076f17abe904108de713e2f0cb990d8f3119053
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -24,7 +24,7 @@ function u1.constructor(p1)
 end;
 local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function u1.KnitStart(p2)
-	l__default__3.Client:WaitFor("RemoteName"):andThen(function(p3)
+	l__default__3.Client:WaitFor("BillboardRiseEffect"):andThen(function(p3)
 		p3:Connect(function(p4)
 			p2:playEffect(p4.position, {
 				image = p4.image, 

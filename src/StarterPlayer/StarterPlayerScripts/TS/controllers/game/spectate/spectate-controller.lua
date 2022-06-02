@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 2403a78d2029bce6e3485ad4a45aa5b915764276dabab85ec6c497b0a6a3781caff599abc64ae38cbed303b42b2740b6
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -32,7 +32,7 @@ local l__OfflinePlayerUtil__6 = v1.import(script, game:GetService("ReplicatedSto
 local l__Players__7 = v4.Players;
 local l__Workspace__8 = v4.Workspace;
 function u1.KnitStart(p2)
-	l__default__4.Client:WaitFor("RemoteName"):andThen(function(p3)
+	l__default__4.Client:WaitFor("SpectatePlayer"):andThen(function(p3)
 		p3:Connect(function(p4)
 			if not p4.target then
 				p2:switchSpectateTargets("next");
@@ -45,7 +45,7 @@ function u1.KnitStart(p2)
 			});
 		end);
 	end);
-	l__default__4.Client:WaitFor("RemoteName"):andThen(function(p5)
+	l__default__4.Client:WaitFor("StopSpectating"):andThen(function(p5)
 		p5:Connect(function(p6)
 			p2:stopSpectatingPlayer();
 		end);
@@ -74,7 +74,7 @@ function u1.KnitStart(p2)
 			p2:stopSpectatingPlayer();
 		end;
 	end);
-	l__default__4.Client:OnEvent("RemoteName", function(p9)
+	l__default__4.Client:OnEvent("EntityDeathEvent", function(p9)
 		local v9 = l__ClientStore__5:getState();
 		if v9.Game.spectating and v9.Game.spectatingPlayer and v9.Game.spectatingPlayer.userId ~= l__Players__7.LocalPlayer.UserId then
 			local v10 = l__OfflinePlayerUtil__6.getPlayer(v9.Game.spectatingPlayer);

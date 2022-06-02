@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 356b2074e6c75aa12438d4a86a7a245b41accb28873b191671e9c5cc650b696efb46046957ccd60ad46bb6d0c93f724b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -31,7 +31,7 @@ local l__GameSound__6 = v1.import(script, game:GetService("ReplicatedStorage"), 
 local l__DamageType__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "damage", "damage-type").DamageType;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__3.Client:OnEvent("RemoteName", function(p3)
+	l__default__3.Client:OnEvent("VoidAxeLeap", function(p3)
 		if p3.entity.PrimaryPart then
 			if p3.entity ~= l__Players__4.LocalPlayer.Character then
 				l__SoundManager__5:playSound(l__GameSound__6.VOID_AXE_LEAP, {
@@ -45,7 +45,7 @@ function v6.KnitStart(p2)
 		end;
 		return nil;
 	end);
-	l__default__3.Client:OnEvent("RemoteName", function(p4)
+	l__default__3.Client:OnEvent("EntityDamageEvent", function(p4)
 		if p4.damageType == l__DamageType__7.VOID_AXE_SLASH then
 			local v8 = {};
 			if l__Players__4.LocalPlayer.Character == p4.entityInstance then
@@ -122,7 +122,7 @@ function v6.useVoidAxe(p5)
 				v15 = v15:getItemTypeInHand();
 			end;
 			if v15 == l__ItemType__17.VOID_AXE then
-				l__default__3.Client:Get("RemoteName"):SendToServer();
+				l__default__3.Client:Get("UseVoidAxeSlash"):SendToServer();
 			end;
 			v11.Destroy();
 		end);

@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 4af1439081bf109032f2996c93e63cac68dfe069a7e7fceced980c67d62daab8a02a5d4591349ef8d14916b4885e842c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -24,7 +24,7 @@ local l__AnimationUtil__3 = v1.import(script, v1.getModule(script, "@easy-games"
 local l__Players__4 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("RemoteName", function(p3)
+	l__default__2.Client:OnEvent("ForcePlayAnimation", function(p3)
 		local v5 = l__AnimationUtil__3.playAnimation(l__Players__4.LocalPlayer, p3.animation, {
 			looped = p3.looped ~= nil
 		});

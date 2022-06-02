@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 70348515eda3bb3be810d1edf1230ddc5861b7afb9d5be2e858d05846d3aed1e5ffb990803213da046be13cf88be4382
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -91,7 +91,7 @@ function u1.useJadeHammer(p3)
 				v13 = v13:getItemTypeInHand();
 			end;
 			if v13 == l__ItemType__13.JADE_HAMMER then
-				l__default__14.Client:Get("RemoteName"):SendToServer();
+				l__default__14.Client:Get("JadeHammerSlam"):SendToServer();
 				l__SoundManager__15:playSound(l__GameSound__16.JADE_HAMMER_THUD, {
 					position = l__PrimaryPart__17.Position
 				});

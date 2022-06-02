@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: f6abb143ceea4acc842fed82d13eb8fecbc05ffee29d8e3d67e092ba3c3f3271fa7f31148ba9c6ad5643209cd889ae3e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -24,7 +24,7 @@ function u1.constructor(p1)
 	u2.constructor(p1);
 	p1.Name = "ConnectController";
 	if l__PlaceUtil__3.isGameServer() then
-		l__default__4.Client:WaitFor("RemoteName"):expect():Connect(function(p2)
+		l__default__4.Client:WaitFor("MatchStateEvent"):expect():Connect(function(p2)
 			l__ClientStore__5:dispatch({
 				type = "GameSetMatchState", 
 				matchState = p2.matchState
@@ -42,7 +42,7 @@ function u1.constructor(p1)
 				});
 			end;
 		end);
-		l__default__4.Client:WaitFor("RemoteName"):expect():Connect(function(p3)
+		l__default__4.Client:WaitFor("QueueTypeEvent"):expect():Connect(function(p3)
 			l__ClientStore__5:dispatch({
 				type = "GameSetQueueType", 
 				queueType = p3.queueType
@@ -59,7 +59,7 @@ local l__HttpService__11 = v2.HttpService;
 local l__StudioQueueType__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "game", "queue-meta").StudioQueueType;
 function u1.KnitStart(p4)
 	v1.Promise.retry(v1.async(function()
-		return v1.await(l__default__4.Client:WaitFor("RemoteName"));
+		return v1.await(l__default__4.Client:WaitFor("PlayerConnect"));
 	end), 50):andThen(function(p5)
 		local v6 = l__TeleportService__6:GetLocalPlayerTeleportData();
 		if v6 then
@@ -93,7 +93,7 @@ function u1.KnitStart(p4)
 		end;
 	end);
 	v1.Promise.retry(v1.async(function()
-		return v1.await(l__default__4.Client:WaitFor("RemoteName"));
+		return v1.await(l__default__4.Client:WaitFor("PlayerReady"));
 	end), 50):andThen(function(p6)
 		p6:SendToServer();
 	end);

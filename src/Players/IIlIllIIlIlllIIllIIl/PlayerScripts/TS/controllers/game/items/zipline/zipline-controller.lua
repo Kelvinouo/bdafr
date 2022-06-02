@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: a3aed39e4636883dc5f7fd312af250543e7dde4b86aeecbe490ba4057a8f7a0eaf0ca48ea554c52df04477101a2614e1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -65,7 +65,7 @@ function u1.KnitStart(p2)
 				if l__Character__8 and v9 then
 					local l__Value__10 = p3.ZiplineDestination.Value;
 					if l__Value__10 then
-						local v11 = l__default__9.Client:Get("RemoteName"):CallServer({
+						local v11 = l__default__9.Client:Get("MountZipline"):CallServer({
 							ziplineBasePosition = l__BlockEngine__10:getBlockPosition(p3.Position)
 						});
 						if v11 then
@@ -143,7 +143,7 @@ function u1.KnitStart(p2)
 							u20:GiveTask(function()
 								l__RunService__13:UnbindFromRenderStep("zipline");
 							end);
-							u20:GiveTask(l__default__9.Client:Get("RemoteName"):Connect(function(p7)
+							u20:GiveTask(l__default__9.Client:Get("EntityDamageEvent"):Connect(function(p7)
 								if p7.entityInstance == l__Players__7.LocalPlayer.Character then
 									u20:DoCleaning();
 								end;

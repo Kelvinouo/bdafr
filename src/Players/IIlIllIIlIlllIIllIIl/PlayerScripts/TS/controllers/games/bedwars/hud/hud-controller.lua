@@ -1,4 +1,4 @@
--- Script Hash: nil
+-- Script Hash: 18bf6993493db74c52afc04202412459102e92ebf5a0ae9628ee878a379ee70ca0a929c967c09da6647ea5cf2cfc5d23
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -49,7 +49,7 @@ function u1.KnitStart(p2)
 		l__ContentProvider__7:PreloadAsync(v9);
 	end);
 	v1.Promise.defer(function()
-		l__default__8.Client:WaitFor("RemoteName"):andThen(function(p4)
+		l__default__8.Client:WaitFor("FetchServerRegion"):andThen(function(p4)
 			l__ClientStore__9:dispatch({
 				type = "SetServerRegion", 
 				serverRegion = p4:CallServer()
