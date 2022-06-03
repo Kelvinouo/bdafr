@@ -1,4 +1,4 @@
--- Script Hash: 39ad8b05a8c24ecf8b2cb89c5545879421451cd04af1c37389ae466365111fe4b7cf16b943f0c3d44604d6be0a63fe60
+-- Script Hash: 2757451895ae84ac69f19b51b1c7832d1a4bf32cbd633fc89d34a051544c6b631625184e8ea9df145baafce62e0417c6
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -11,6 +11,17 @@ return {
 		newestKitBG = "rbxassetid://8795128315"
 	}, 
 	GameUpdateMeta = { {
+			updateLogId = 36, 
+			visible = true, 
+			title = "Balance Changes + Season 5 Countdown", 
+			date = "6/03/2022", 
+			body = "<b>\226\143\179 Season 5 Progress Update</b>\nWe\226\128\153re down to the final week until the Season 5 Summer release. This week\226\128\153s update is light while the entire team is focused on making Season 5 one of our biggest and most out of this world updates.\n\n<b>\240\159\148\165 TRIPLE XP WEEK \240\159\148\165</b>\nThis is the last week to grind for battle pass rewards. Enjoy triple xp as you work your way towards level 50!\n\n<b>\240\159\134\147 Free Kits of the Week</b>\n\226\173\144 Axolotl Amy\n\240\159\155\161\239\184\143 Infernal Shielder\n\240\159\148\168 Builder\n\n\240\159\140\153 <b>Nyx Buffs</b>\n- Midnight duration: (12 \226\134\146 14 seconds)\n- Reduce damage needed to charge ability (140 \226\134\146 120 dmg)\n- Increase armor penetration at max stacks (20% \226\134\146 25%)\n\n\226\154\153\239\184\143 <b>Other Changes</b>\n\240\159\146\142\194\160Buff diamond generator speed (25s \226\134\146 20s)\n\240\159\146\142\194\160Increase max diamond stack size (5 \226\134\146 6)\n\240\159\146\142\194\160Added Tier III damage upgrade (+50% damage)\n\240\159\148\167 Fix switching to default kit skins\n\240\159\146\168\194\160Fix a bug that could cause infinite zipline flight\n\226\154\161\239\184\143 Reduce lag caused by Tesla traps\n\240\159\146\165\194\160Fixed a bug that caused lobby servers to crash", 
+			image = {
+				assetId = "rbxassetid://9809498916", 
+				aspectRatio = 1, 
+				height = 150
+			}
+		}, {
 			updateLogId = 35, 
 			visible = true, 
 			title = "Capture The Flag + Cyber Skin + \240\159\142\130 1 Year Anniversary", 

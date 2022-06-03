@@ -1,4 +1,4 @@
--- Script Hash: 3d85ac69b2cc7bab31dc9706fa39387b885f428e7e112177813229faf4c80543b18bab4596a32ff1c53e9b709bee9b85
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -16,7 +16,7 @@ return {
 			actionName = "release-item"
 		};
 		function v5.onActivated()
-			l__default__5.Client:Get("DropDroneItem"):SendToServer({
+			l__default__5.Client:Get("RemoteName"):SendToServer({
 				position = p1.drone:GetPrimaryPartCFrame().Position, 
 				direction = p1.drone:GetPrimaryPartCFrame().LookVector
 			});

@@ -1,4 +1,4 @@
--- Script Hash: cf816ac564cf8d1c57625a6b49d8c099dfacf1a990cec1d22cbc961408115de51fe345c8e8a3d0b0bf6249ded349ca63
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -34,7 +34,7 @@ local l__SharedSyncEvents__5 = v1.import(script, game:GetService("ReplicatedStor
 local l__Players__6 = v3.Players;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__4.Client:Get("CutGrappleLine"):Connect(function(p3)
+	l__default__4.Client:Get("RemoteName"):Connect(function(p3)
 		p2.transitMaid:DoCleaning();
 	end);
 	l__SharedSyncEvents__5.HookFunctionSwapEvent:connect(function(p4)

@@ -1,4 +1,4 @@
--- Script Hash: b01982b0a102a7fafeab296acf33a403b36bdfaf3fed783e9f1509dcf607089d6176649f14a7bf7283404e0346a338da
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -54,7 +54,7 @@ function v8.KnitStart(p2)
 			p2:handleTouch(p3);
 		end;
 	end);
-	l__default__4.Client:OnEvent("LandmineExplode", function(p4)
+	l__default__4.Client:OnEvent("RemoteName", function(p4)
 		local v10 = {};
 		if l__Players__5.LocalPlayer.Character and l__Players__5.LocalPlayer.Character == p4.targetEntityInstance then
 			local v11 = nil;
@@ -167,7 +167,7 @@ function v8.handleTouch(p10, p11)
 			v23.isDetonating = true;
 			if v27 then
 				p11:SetAttribute("LandmineDetonating", true);
-				l__default__4.Client:Get("TriggerInvisibleLandmine"):SendToServer({
+				l__default__4.Client:Get("RemoteName"):SendToServer({
 					invisibleLandmine = p11
 				});
 			end;

@@ -1,4 +1,4 @@
--- Script Hash: 0d11cef50d586082e8f3ff2921bc13b8dd2396817bd9d60482906637372791d73752ca7b57643be3cc07baa62442b2fd
+-- Script Hash: nil
 --[[VARIABLE DEFINITION ANOMALY DETECTED, DECOMPILATION OUTPUT POTENTIALLY INCORRECT]]--
 -- Decompiled with the Synapse X Luau decompiler.
 
@@ -69,7 +69,7 @@ function u1.handleRaven(p3, p4)
 		moveSpeedMultiplier = 0, 
 		blockSprint = true
 	}));
-	v9:GiveTask(l__default__6.Client:Get("EntityDeathEvent"):Connect(function(p5)
+	v9:GiveTask(l__default__6.Client:Get("RemoteName"):Connect(function(p5)
 		local v13 = l__EntityUtil__5:getEntity(l__LocalPlayer__10);
 		if v13 ~= nil then
 			v13 = v13:getInstance();
@@ -226,7 +226,7 @@ function u1.spawnRaven(p9)
 	end;
 	l__AnimationUtil__18.playAnimation(l__Players__4.LocalPlayer, l__GameAnimationUtil__19.getAssetId(l__AnimationType__20.RAVEN_THROW));
 	p9.spawningRaven = true;
-	l__default__6.Client:Get("SpawnRaven"):CallServerAsync():andThen(function(p10)
+	l__default__6.Client:Get("RemoteName"):CallServerAsync():andThen(function(p10)
 		if not p10 then
 			p9.spawningRaven = false;
 			return nil;
@@ -240,7 +240,7 @@ function u1.spawnRaven(p9)
 	end);
 end;
 u1.detonateRaven = v1.async(function(p11)
-	return l__default__6.Client:WaitFor("DetonateRaven"):andThen(function(p12)
+	return l__default__6.Client:WaitFor("RemoteName"):andThen(function(p12)
 		return p12:CallServerAsync();
 	end);
 end);

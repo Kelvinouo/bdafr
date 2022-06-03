@@ -1,4 +1,4 @@
--- Script Hash: 49183db62d9482b60686e2e71c7e3e4e2d1e5e01b2d6fe5a196cf6c4b8f412788ce4b47af83047cc9c66b580cc7a688a
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -22,12 +22,13 @@ function v6.constructor(p1, ...)
 	u1.constructor(p1, ...);
 	p1.Name = "TeslaTrapController";
 	p1.teslaTrapToTargets = {};
+	p1.lastEffectReconcileTime = {};
 end;
 local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__CollectionService__3 = v4.CollectionService;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("TeslaTrapTargetsChanged", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		local v8 = {};
 		for v9, v10 in ipairs(p3.targets) do
 			v8[v10] = true;
@@ -78,57 +79,81 @@ v6.updateTeamIndicator = v1.async(function(p7, p8)
 	}):Play();
 end);
 local u8 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
+local l__EntityUtil__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
 function v6.reconcileEffects(p9, p10, p11)
-	local v20 = p9.teslaTrapToTargets[p10] or {};
-	for v21, v22 in pairs(v20) do
-		if p11[v21] == nil then
-			v22:DoCleaning();
-			v20[v21] = nil;
+	local v20 = os.clock();
+	p9.lastEffectReconcileTime[p10] = v20;
+	local v21 = p9.teslaTrapToTargets[p10] or {};
+	for v22, v23 in pairs(v21) do
+		if p11[v22] == nil then
+			v23:DoCleaning();
+			v21[v22] = nil;
 		end;
 	end;
-	local v23 = u8.copy(v20);
-	for v24, v25 in pairs(p11) do
-		if v20[v24] == nil then
-			v23[v24] = p9:createTeslaTrapEffect(p10, v24);
+	local v24 = u8.copy(v21);
+	for v25, v26 in pairs(p11) do
+		if v21[v25] == nil then
+			local v27 = v25.PrimaryPart;
+			if v27 ~= nil then
+				v27 = (v27.Position - p10.Position).Magnitude;
+			end;
+			local v28 = v27;
+			if v28 == nil then
+				v28 = 100;
+			end;
+			if not (v28 > 18) then
+				local v29 = l__EntityUtil__9:getEntity(v25);
+				if v29 ~= nil then
+					v29 = v29:isAlive();
+				end;
+				if v29 then
+					v24[v25] = p9:createTeslaTrapEffect(p10, v25);
+				end;
+			end;
 		end;
 	end;
-	p9.teslaTrapToTargets[p10] = v23;
+	p9.teslaTrapToTargets[p10] = v24;
+	task.delay(1, function()
+		if p9.lastEffectReconcileTime[p10] == v20 then
+			p9:reconcileEffects(p10, {});
+		end;
+	end);
 end;
-local u9 = v1.import(script, v1.getModule(script, "@rbxts", "electric-arc").lib);
-local l__Maid__10 = v3.Maid;
-local l__Players__11 = v4.Players;
-local l__SoundManager__12 = v2.SoundManager;
-local l__GameSound__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local u10 = v1.import(script, v1.getModule(script, "@rbxts", "electric-arc").lib);
+local l__Maid__11 = v3.Maid;
+local l__Players__12 = v4.Players;
+local l__SoundManager__13 = v2.SoundManager;
+local l__GameSound__14 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function v6.createTeslaTrapEffect(p12, p13, p14)
-	local l__BodyFrontAttachment__26 = p14:FindFirstChild("UpperTorso"):FindFirstChild("BodyFrontAttachment");
-	if not l__BodyFrontAttachment__26 then
+	local l__BodyFrontAttachment__30 = p14:FindFirstChild("UpperTorso"):FindFirstChild("BodyFrontAttachment");
+	if not l__BodyFrontAttachment__30 then
 		error("Could not find targetAttachment");
 	end;
-	local v27 = l__default__4(p13);
-	if v27 then
-		local v28 = v27.color;
+	local v31 = l__default__4(p13);
+	if v31 then
+		local v32 = v31.color;
 	else
-		v28 = Color3.fromRGB(0, 0, 0);
+		v32 = Color3.fromRGB(0, 0, 0);
 	end;
-	local v29 = l__Maid__10.new();
-	v29:GiveTask((u9.link(l__BodyFrontAttachment__26, p13.SourceAttachment, v28)));
-	local v30 = {};
-	if p14 == l__Players__11.LocalPlayer.Character then
-		local v31 = nil;
+	local v33 = l__Maid__11.new();
+	v33:GiveTask((u10.link(l__BodyFrontAttachment__30, p13.SourceAttachment, v32)));
+	local v34 = {};
+	if p14 == l__Players__12.LocalPlayer.Character then
+		local v35 = nil;
 	else
-		v31 = p13.Position;
+		v35 = p13.Position;
 	end;
-	v30.position = v31;
-	local v32 = l__SoundManager__12:playSound(l__GameSound__13.TESLA_ZAP, v30);
-	if v32 then
-		v32.Looped = true;
-		v29:GiveTask(function()
-			if v32 ~= nil then
-				v32:Stop();
+	v34.position = v35;
+	local v36 = l__SoundManager__13:playSound(l__GameSound__14.TESLA_ZAP, v34);
+	if v36 then
+		v36.Looped = true;
+		v33:GiveTask(function()
+			if v36 ~= nil then
+				v36:Stop();
 			end;
 		end);
 	end;
-	return v29;
+	return v33;
 end;
 u1 = v3.KnitClient.CreateController;
 u1 = u1(v6.new());

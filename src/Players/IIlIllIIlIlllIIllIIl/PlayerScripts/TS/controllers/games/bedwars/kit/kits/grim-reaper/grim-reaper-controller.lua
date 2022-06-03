@@ -1,4 +1,4 @@
--- Script Hash: 7ffeeed98a8bd4b045cc90c86493f79387b99d34ede6db9bbefcd2b6b98a750c8f38d1d6c8e9201f54d666338dc855ba
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -26,10 +26,10 @@ function u1.constructor(p1)
 end;
 local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function u1.KnitStart(p2)
-	l__default__3.Client:OnEvent("SpawnGrimReaperSoul", function(p3)
+	l__default__3.Client:OnEvent("RemoteName", function(p3)
 		p2:spawnSoul(p3.position, p3.secret, p3.soulOfPlayer);
 	end);
-	l__default__3.Client:OnEvent("EntityConsumeGrimReaperSoul", function(p4)
+	l__default__3.Client:OnEvent("RemoteName", function(p4)
 		p2:startChannel(p4.entity, p4.position);
 	end);
 end;
@@ -76,7 +76,7 @@ local l__AnimationType__10 = v1.import(script, game:GetService("ReplicatedStorag
 function u1.consumeSoul(p10, p11)
 	local v11 = p11:GetAttribute("GrimReaperSoulSecret");
 	l__GameAnimationUtil__9.playAnimation(l__Players__7.LocalPlayer, l__AnimationType__10.GRIM_REAPER_CONSUME);
-	l__default__3.Client:Get("ConsumeGrimReaperSoul"):CallServer({
+	l__default__3.Client:Get("RemoteName"):CallServer({
 		secret = v11
 	});
 end;

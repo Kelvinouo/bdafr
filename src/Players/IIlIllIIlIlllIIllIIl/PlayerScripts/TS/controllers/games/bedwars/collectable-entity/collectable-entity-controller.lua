@@ -1,4 +1,4 @@
--- Script Hash: f7036f20bc50ce40ed07a4210e6792dff0c3c075ebf59b9f9077cda31018be79058453a586c3a3e2fc51f5edfe666a92
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -25,7 +25,7 @@ local l__Maid__3 = v3.Maid;
 local l__CollectionService__4 = v4.CollectionService;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:WaitFor("CollectableEntitySpawn"):andThen(function(p3)
+	l__default__2.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
 			if table.find(p2:validCollectableEntityTypes(), p4.entityType) == nil then
 				return nil;
@@ -43,7 +43,7 @@ function v6.KnitStart(p2)
 			p2:createLocalModel(v8);
 		end);
 	end);
-	l__default__2.Client:OnEvent("CollectableEntityRemoved", function(p5)
+	l__default__2.Client:OnEvent("RemoteName", function(p5)
 		if table.find(p2:validCollectableEntityTypes(), p5.entityType) == nil then
 			return nil;
 		end;
@@ -121,7 +121,7 @@ end;
 local l__Players__14 = v4.Players;
 function v6.collectEntity(p10, p11, p12, p13)
 	if p11 == l__Players__14.LocalPlayer then
-		l__default__2.Client:Get("CollectCollectableEntity"):SendToServer({
+		l__default__2.Client:Get("RemoteName"):SendToServer({
 			id = p12:GetAttribute("Id"), 
 			collectableName = p13
 		});

@@ -1,4 +1,4 @@
--- Script Hash: eb923d94aa6d76ebfbc3856bd6062eabb9e84af7e2f3fd396a14478a70fa2e92827ab0ef24b223a201f53da94078ecd9
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -122,7 +122,7 @@ function u1.useAbility(p7)
 	if l__Character__8 == nil then
 		return nil;
 	end;
-	l__default__15.Client:Get("UseYetiAbility"):SendToServer({
+	l__default__15.Client:Get("RemoteName"):SendToServer({
 		cframe = l__Character__8.HumanoidRootPart.CFrame
 	});
 	l__GameAnimationUtil__16.playAnimation(l__Players__14.LocalPlayer, l__AnimationType__17.YETI_ROAR);

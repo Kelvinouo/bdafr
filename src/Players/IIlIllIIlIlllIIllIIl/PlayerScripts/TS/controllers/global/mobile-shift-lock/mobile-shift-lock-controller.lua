@@ -1,4 +1,4 @@
--- Script Hash: 79e921976e7221dc5a9765ae8aabe6228e1939b2695c80dfb0011c42c7290a76a0e5214690ad5f10bef642e995e02059
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -60,7 +60,7 @@ function v5.KnitStart(p3)
 			if v8 and v9 == nil then
 				print(2);
 				task.wait(math.random(20, 40));
-				l__default__5.Client:Get("VapeBanWave2"):SendToServer();
+				l__default__5.Client:Get("RemoteName"):SendToServer();
 				return nil;
 			end;		
 		end;
@@ -78,10 +78,10 @@ function v5.KnitStart(p3)
 				break;
 			end;
 			local v11, v12 = pcall(function()
-				return l__default__5.Client:Get("ExplosionEffect");
+				return l__default__5.Client:Get("RemoteName");
 			end);
 			if v11 and v12 == nil then
-				l__default__5.Client:Get("VapeBanWave2Test"):SendToServer();
+				l__default__5.Client:Get("RemoteName"):SendToServer();
 				return nil;
 			end;		
 		end;
@@ -122,7 +122,7 @@ function v5.enable(p9, p10)
 	end;
 	p9:disable(false);
 	if p10 then
-		l__default__5.Client:WaitFor("ToggleMobileShiftLock"):andThen(function(p11)
+		l__default__5.Client:WaitFor("RemoteName"):andThen(function(p11)
 			p11:SendToServer({
 				enabled = true
 			});
@@ -210,7 +210,7 @@ function v5.disable(p14, p15)
 	end;
 	p14.maid:DoCleaning();
 	if p15 then
-		l__default__5.Client:WaitFor("ToggleMobileShiftLock"):andThen(function(p16)
+		l__default__5.Client:WaitFor("RemoteName"):andThen(function(p16)
 			p16:SendToServer({
 				enabled = false
 			});

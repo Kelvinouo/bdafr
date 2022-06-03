@@ -1,4 +1,4 @@
--- Script Hash: a3aed39e4636883dc5f7fd312af250543e7dde4b86aeecbe490ba4057a8f7a0eaf0ca48ea554c52df04477101a2614e1
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -65,7 +65,7 @@ function u1.KnitStart(p2)
 				if l__Character__8 and v9 then
 					local l__Value__10 = p3.ZiplineDestination.Value;
 					if l__Value__10 then
-						local v11 = l__default__9.Client:Get("MountZipline"):CallServer({
+						local v11 = l__default__9.Client:Get("RemoteName"):CallServer({
 							ziplineBasePosition = l__BlockEngine__10:getBlockPosition(p3.Position)
 						});
 						if v11 then
@@ -95,9 +95,7 @@ function u1.KnitStart(p2)
 								if not u19 then
 									return nil;
 								end;
-								v9.Jump = true;
-								wait(0.1);
-								v9.Jump = false;
+								v9.Sit = false;
 							end);
 							v11.CFrame = v12;
 							local u22 = (l__Character__8:GetPrimaryPartCFrame().Position - l__Value__10.Position).Magnitude;
@@ -128,7 +126,7 @@ function u1.KnitStart(p2)
 										end;
 									end;
 								end;
-								local l__Magnitude__19 = (v11.Position - l__Value__10.Position).Magnitude;
+								local l__Magnitude__19 = (v11.Position - v13.Position).Magnitude;
 								if u22 < l__Magnitude__19 and tick() - u23 > 1.5 then
 									u20:DoCleaning();
 									return nil;
@@ -143,7 +141,7 @@ function u1.KnitStart(p2)
 							u20:GiveTask(function()
 								l__RunService__13:UnbindFromRenderStep("zipline");
 							end);
-							u20:GiveTask(l__default__9.Client:Get("EntityDamageEvent"):Connect(function(p7)
+							u20:GiveTask(l__default__9.Client:Get("RemoteName"):Connect(function(p7)
 								if p7.entityInstance == l__Players__7.LocalPlayer.Character then
 									u20:DoCleaning();
 								end;

@@ -1,4 +1,4 @@
--- Script Hash: b5026a8465d8baa1aca0a448b9091fa1492830fc6fbc8a95e0dbf02cab96e935557842729ae67c5376612719520a77dd
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -49,7 +49,7 @@ function u1.useFlamethrower(p3)
 		return nil;
 	end;
 	l__Flamework__4.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):setOnCooldown(l__FLAMETHROWER_USE__5, l__PyroUtil__6.FLAMETHROWER_COOLDOWN_SEC);
-	l__default__7.Client:Get("UseFlamethrower"):CallServerAsync();
+	l__default__7.Client:Get("RemoteName"):CallServerAsync();
 	local v9 = l__KnitClient__8.Controllers.SprintController:getMovementStatusModifier():addModifier({
 		moveSpeedMultiplier = 0.2
 	});

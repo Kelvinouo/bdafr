@@ -1,4 +1,4 @@
--- Script Hash: 84f34d1bc968487b2e4e8bbba9bca7dcf35f0620246f634d3eaf38f69078f73937b9a1fbc0fd9a3a3710f328dd032980
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -81,14 +81,14 @@ function u1.fireCannon(p12, p13)
 	if not v11 then
 		return nil;
 	end;
-	l__default__5.Client:Get("FireCannon"):SendToServer({
+	l__default__5.Client:Get("RemoteName"):SendToServer({
 		cannonBlockPos = l__BlockEngine__6:getBlockPosition(p13.Position), 
 		itemType = v11.itemType
 	});
 end;
 local l__Players__7 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 function u1.launchSelf(p14, p15)
-	if not l__default__5.Client:Get("LaunchSelfFromCannon"):CallServer({
+	if not l__default__5.Client:Get("RemoteName"):CallServer({
 		cannonBlockPos = l__BlockEngine__6:getBlockPosition(p15.Position)
 	}) then
 		return nil;

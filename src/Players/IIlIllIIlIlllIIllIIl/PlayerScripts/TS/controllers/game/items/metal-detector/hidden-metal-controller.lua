@@ -1,4 +1,4 @@
--- Script Hash: 8d8239719b25492255b95cd340910f491aef54718faa154e9f2a46afe477efa8368d05170cfe0763913953feb11c06f8
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -35,7 +35,7 @@ local l__ReplicatedStorage__11 = v3.ReplicatedStorage;
 local l__WeldUtil__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "weld-util").WeldUtil;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__3.Client:OnEvent("CollectableEntitySpawn", function(p3)
+	l__default__3.Client:OnEvent("RemoteName", function(p3)
 		if p3.entityType ~= l__CollectableEntityType__4.HIDDEN_METAL then
 			return nil;
 		end;
@@ -44,7 +44,7 @@ function v5.KnitStart(p2)
 			origin = p3.position
 		});
 	end);
-	l__default__3.Client:OnEvent("CollectableEntityRemoved", function(p4)
+	l__default__3.Client:OnEvent("RemoteName", function(p4)
 		local v7 = l__CollectionService__5:GetTagged("hidden-metal");
 		local function v8(p5)
 			return p5:GetAttribute("Id") == p4.id;
@@ -127,7 +127,7 @@ function v5.createLocalModel(p10, p11)
 	function v20.Triggered(p12)
 		l__GameAnimationUtil__8.playAnimation(p12, l__AnimationType__9.SHOVEL_DIG);
 		l__SoundManager__16:playSound(l__GameSound__17.SNAP_TRAP_CONSUME_MARK);
-		l__default__3.Client:Get("CollectCollectableEntity"):SendToServer({
+		l__default__3.Client:Get("RemoteName"):SendToServer({
 			id = p11.id
 		});
 	end;

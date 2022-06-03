@@ -1,4 +1,4 @@
--- Script Hash: 1418c37587d1b07146ddfd3ec032fcf8566cd6535d26daa90e25d5ea35cb696513034eeb2932eaaf032eb7f381218589
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -38,7 +38,7 @@ function u1.requestSelfDamage(p3, p4, p5, p6, p7)
 	end;
 	v5.fromEntity = v6;
 	v5.banjo = p6;
-	l__default__3.Client:Get("RequestSelfDamage"):SendToServer(v5);
+	l__default__3.Client:Get("RemoteName"):SendToServer(v5);
 end;
 u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
 u1 = u1.new;

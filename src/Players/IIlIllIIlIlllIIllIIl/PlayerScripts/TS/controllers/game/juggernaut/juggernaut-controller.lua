@@ -1,4 +1,4 @@
--- Script Hash: bb3bdb091a45ca42862628a631bae5bc7bda0e0e5cec5a80d703a9eeee11ab3c1e85952feb125d0628d31ebc27696868
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -47,7 +47,7 @@ function v4.KnitStart(p2)
 				u10:DoCleaning();
 			end;
 		end);
-		u10:GiveTask(l__default__6.Client:Get("EntityDamageEvent"):Connect(function(p6)
+		u10:GiveTask(l__default__6.Client:Get("RemoteName"):Connect(function(p6)
 			if p6.entityInstance == l__Players__7.LocalPlayer.Character then
 				v6:InputHoldEnd();
 			end;
@@ -73,7 +73,7 @@ function v4.KnitStart(p2)
 			end);
 		end);
 		v6.Triggered:Connect(function(p10)
-			l__default__6.Client:Get("OpenJuggernautCrate"):SendToServer({
+			l__default__6.Client:Get("RemoteName"):SendToServer({
 				blockInstance = p3
 			});
 		end);

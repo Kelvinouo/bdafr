@@ -1,4 +1,4 @@
--- Script Hash: e29fb5f4c1acbf8927d7ae591ca3b088a7e7132f384f219853dd1348ba6108611c5501058c2cef860749fd1da0daf5e3
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -50,7 +50,7 @@ function u1.KnitStart(p2)
 		Parent = l__Workspace__6, 
 		Name = "ProjectileTargeting"
 	});
-	l__default__7.Client:OnEvent("ProjectileLaunchClient", function(p3)
+	l__default__7.Client:OnEvent("RemoteName", function(p3)
 		p2:createLocalProjectile(nil, p3.ammoType, p3.projectileType, p3.positionFrom, p3.projectileRefId, p3.initialVelocity, {
 			drawDurationSeconds = p3.drawDurationSeconds
 		});
@@ -241,7 +241,7 @@ u1.launchProjectileWithValues = v1.async(function(p21, p22, p23, p24, p25, p26, 
 	if v39 == nil then
 		return nil;
 	end;
-	local v40 = v1.await(l__default__7.Client:WaitFor("ProjectileFire"):andThen(function(p28)
+	local v40 = v1.await(l__default__7.Client:WaitFor("RemoteName"):andThen(function(p28)
 		return p28:CallServerAsync(p23, p25, v25, l__positionFrom__27, v39, l__initialVelocity__26, v35, p26);
 	end));
 	if v40 and v40.PrimaryPart then
@@ -291,7 +291,7 @@ function u1.createLocalProjectile(p29, p30, p31, p32, p33, p34, p35, p36)
 		if v51 ~= nil then
 			v51 = v51:getInstance();
 		end;
-		l__default__7.Client:Get("ProjectileHit"):SendToServer(p34, v51);
+		l__default__7.Client:Get("RemoteName"):SendToServer(p34, v51);
 		l__ClientSyncEvents__14.LocalProjectileImpact:fire(v42, p37, v50, p38);
 		if not v41.keepProjectileOnHit or not v50 then
 			v42:Destroy();

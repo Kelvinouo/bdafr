@@ -1,4 +1,4 @@
--- Script Hash: 35e4a803b889bca1a8f51477e2427b68bef6a067f5e72f70104fd2ee6c700213499fa01f66aa18aa41a41955cdbad471
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -91,7 +91,7 @@ return {
 		end;
 		v20.Text = v22;
 		function v20.OnClick()
-			l__default__8.Client:Get("UpgradeFlamethrower"):CallServerAsync(p1.Upgrade):andThen(function(p3)
+			l__default__8.Client:Get("RemoteName"):CallServerAsync(p1.Upgrade):andThen(function(p3)
 				if p3 then
 					l__KnitClient__9.Controllers.FlamethrowerController:upgrade();
 					p1.SetUpgrades(p3);

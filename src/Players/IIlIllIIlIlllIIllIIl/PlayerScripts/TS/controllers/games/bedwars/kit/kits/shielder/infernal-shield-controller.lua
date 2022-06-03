@@ -1,4 +1,4 @@
--- Script Hash: e6654e86e3472b5846b4fd352ed26cfd762842f018602de70c6d8f5b2d7c7a4b1d78de96ea1cf06670ff361705e53698
+-- Script Hash: nil
 --[[VARIABLE DEFINITION ANOMALY DETECTED, DECOMPILATION OUTPUT POTENTIALLY INCORRECT]]--
 -- Decompiled with the Synapse X Luau decompiler.
 
@@ -24,7 +24,7 @@ local l__Maid__3 = v3.Maid;
 function v6.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "InfernalShieldController";
-	p1.infernalShieldState = l__default__2.Client:Get("UseInfernalShield");
+	p1.infernalShieldState = l__default__2.Client:Get("RemoteName");
 	p1.maid = l__Maid__3.new();
 	p1.raisedMaid = l__Maid__3.new();
 end;
@@ -33,10 +33,10 @@ local l__GameSound__5 = v1.import(script, game:GetService("ReplicatedStorage"), 
 local l__Players__6 = v4.Players;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("ReflectProjectileEffects", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		p2:playEffects(p3.player);
 	end);
-	l__default__2.Client:OnEvent("ProjectileDeflected", function(p4)
+	l__default__2.Client:OnEvent("RemoteName", function(p4)
 		local v8 = {};
 		if p4.deflector == l__Players__6.LocalPlayer then
 			local v9 = nil;

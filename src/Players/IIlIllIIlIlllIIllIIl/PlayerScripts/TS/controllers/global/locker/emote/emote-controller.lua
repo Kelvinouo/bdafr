@@ -1,4 +1,4 @@
--- Script Hash: ea99a56b0c41dbc31ab418aa9e2fcd636f974953893454aab33681de96e253a8b4b592760e5e4d7065010ea82e3e8de3
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -41,10 +41,10 @@ function u1.KnitStart(p2)
 			p2:preloadEmote();
 		end;
 	end);
-	l__default__6.Client:OnEvent("EmotePlaying", function(p8)
+	l__default__6.Client:OnEvent("RemoteName", function(p8)
 		local v8 = p2:playEmoteBeginSounds(p8.emote, p8.sourcePlayer);
 	end);
-	l__default__6.Client:OnEvent("EmoteEnded", function(p9)
+	l__default__6.Client:OnEvent("RemoteName", function(p9)
 		local v9 = p2.emoteSoundMaid[p9.sourcePlayer.UserId];
 		if v9 ~= nil then
 			v9:DoCleaning();
@@ -65,7 +65,7 @@ function u1.emote(p10)
 	p10.emoteCooldowns:add(l__LocalPlayer__11.UserId);
 	local l__selectedSpray__12 = l__ClientStore__5:getState().Locker.selectedSpray;
 	local v13 = l__EmoteMeta__8[l__selectedSpray__12];
-	local v14 = l__default__6.Client:Get("Emote"):CallServer({
+	local v14 = l__default__6.Client:Get("RemoteName"):CallServer({
 		emoteType = l__selectedSpray__12
 	});
 	local v15 = v13.animation;
@@ -107,7 +107,7 @@ function u1.playEmoteAnimation(p11, p12, p13)
 		if v17 ~= nil then
 			v17:Destroy();
 		end;
-		l__default__6.Client:Get("EmoteCancelled"):CallServer({
+		l__default__6.Client:Get("RemoteName"):CallServer({
 			emoteType = l__ClientStore__5:getState().Locker.selectedSpray
 		});
 	end);

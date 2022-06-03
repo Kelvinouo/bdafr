@@ -1,4 +1,4 @@
--- Script Hash: e9b99237fd196d4d308f9eaec4ccc2d1f6783375c83b06c8f39ac3dee7ac15b24cc772445b979661b8d228872bf00992
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -63,7 +63,7 @@ function v4.mute(p7)
 			backgroundMusicVolume = 0
 		}
 	});
-	l__default__9.Client:Get("SetBackgroundMusicVolume"):SendToServer({
+	l__default__9.Client:Get("RemoteName"):SendToServer({
 		volume = 0
 	});
 end;
@@ -153,7 +153,7 @@ function v4.unmute(p9)
 			backgroundMusicVolume = 1
 		}
 	});
-	l__default__9.Client:Get("SetBackgroundMusicVolume"):SendToServer({
+	l__default__9.Client:Get("RemoteName"):SendToServer({
 		volume = 1
 	});
 end;

@@ -1,4 +1,4 @@
--- Script Hash: 5795b746adb2e30b2c63356abd19c6599ce0ed40bd5bc7764cf0051626601effaee7c3a5c84dec70fc53e8bbb2bc85f6
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -223,7 +223,7 @@ function v4.equipArmorItem(p26, p27, p28)
 		local v46 = p26.instance:FindFirstChild("ArmorInvItem_" .. tostring(p28));
 		if v46 then
 			v46.Value = p27;
-			l__default__11.Client:Get("SetArmorInvItem"):CallServerAsync({
+			l__default__11.Client:Get("RemoteName"):CallServerAsync({
 				item = p27, 
 				armorSlot = p28
 			}):andThen(function()
@@ -245,7 +245,7 @@ function v4.unequipArmorSlot(p30, p31)
 		local v51 = p30.instance:FindFirstChild("ArmorInvItem_" .. tostring(p31));
 		if v51 then
 			v51.Value = nil;
-			l__default__11.Client:Get("SetArmorInvItem"):CallServerAsync({
+			l__default__11.Client:Get("RemoteName"):CallServerAsync({
 				item = false, 
 				armorSlot = p31
 			}):andThen(function()
@@ -303,7 +303,7 @@ function v4.equipItem(p33, p34)
 	if p33:isAlive() and l__Players__3.LocalPlayer.Character == p33.instance and p33.instance:FindFirstChild("HandInvItem") then
 		p33.instance.HandInvItem.Value = p34;
 		task.spawn(function()
-			l__default__11.Client:Get("SetInvItem"):CallServerAsync({
+			l__default__11.Client:Get("RemoteName"):CallServerAsync({
 				hand = p34
 			}):andThen(function()
 
@@ -319,7 +319,7 @@ function v4.unequipItemInHand(p37)
 	if p37:isAlive() and l__Players__3.LocalPlayer.Character == p37.instance and p37.instance:FindFirstChild("HandInvItem") then
 		p37.instance.HandInvItem.Value = nil;
 		task.spawn(function()
-			l__default__11.Client:Get("SetInvItem"):CallServerAsync({
+			l__default__11.Client:Get("RemoteName"):CallServerAsync({
 				hand = false
 			}):andThen(function()
 

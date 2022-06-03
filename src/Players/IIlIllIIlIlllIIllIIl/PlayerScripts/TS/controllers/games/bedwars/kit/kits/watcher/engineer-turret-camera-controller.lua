@@ -1,4 +1,4 @@
--- Script Hash: 774cedf76c8cf0fa5ef143ab97c803dc9f38298d3ab925f4d35eadd9d3852720e733a8ce8e30da1db45ee3012a9391db
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -26,9 +26,9 @@ function u1.constructor(p1)
 	u2.constructor(p1);
 	p1.Name = "CameraTurretCameraController";
 	p1.turretToMaid = {};
-	p1.aimTurret = l__default__3.Client:Get("AimTurret");
+	p1.aimTurret = l__default__3.Client:Get("RemoteName");
 	p1.nextSendAim = -1;
-	p1.switchTurret = l__default__3.Client:Get("SwitchTurret");
+	p1.switchTurret = l__default__3.Client:Get("RemoteName");
 	p1.angleX = 0;
 	p1.angleY = 0;
 	p1.angleMotor = u4.GroupMotor.new({

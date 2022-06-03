@@ -1,4 +1,4 @@
--- Script Hash: 72d95c31461c0513e7d6632b640271566a24b05437e952b7be4ac8f94ab566cca358deedd50576a60c175aef376c703b
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -41,7 +41,7 @@ function v6.KnitStart(p2)
 		animations = { l__AnimationType__5.INFERNO_SWORD_CHARGE }, 
 		sounds = { l__GameSound__6.INFERNAL_SWORD_CHARGE }
 	});
-	l__default__7.Client:Get("HellBladeSpinEffect"):Connect(function(p3)
+	l__default__7.Client:Get("RemoteName"):Connect(function(p3)
 		p2:playEffects(p3.player);
 	end);
 	l__ClientSyncEvents__8.SwordChargedSwing:connect(function(p4)
@@ -49,7 +49,7 @@ function v6.KnitStart(p2)
 			return nil;
 		end;
 		if p4.chargedAttack.chargeTime >= 0.5 then
-			l__default__7.Client:Get("HellBladeRelease"):SendToServer({
+			l__default__7.Client:Get("RemoteName"):SendToServer({
 				chargeTime = p4.chargedAttack.chargeTime, 
 				player = p4.fromPlayer, 
 				weapon = p4.weapon

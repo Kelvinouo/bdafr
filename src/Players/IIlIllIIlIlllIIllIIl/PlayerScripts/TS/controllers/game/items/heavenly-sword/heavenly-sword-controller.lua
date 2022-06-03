@@ -1,4 +1,4 @@
--- Script Hash: ac2fe8d2ab9768a53902bfb7018087c17869749e43d14ca44de10f959525641e931de7fec8b423e549576db9a88a1559
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -40,7 +40,7 @@ function v6.KnitStart(p2)
 		animations = { l__AnimationType__5.HEAVENLY_SWORD_CHARGE, l__AnimationType__5.HEAVENLY_SWORD_SWING }, 
 		sounds = { l__GameSound__6.LIGHT_SWORD_CHARGE }
 	});
-	l__default__7.Client:Get("PlayerLightSwordSwing"):Connect(function(p3)
+	l__default__7.Client:Get("RemoteName"):Connect(function(p3)
 		p2:playEffect(p3.cFrame);
 	end);
 	l__ClientSyncEvents__8.SwordChargedSwing:connect(function(p4)

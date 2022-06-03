@@ -1,4 +1,4 @@
--- Script Hash: be254e14da1ffec3fc3e3d578677308db67e57feee70d33955766d4397dfd09224666494c82d292e369ee310ea9c38d6
+-- Script Hash: e88eb58694091a912ed42d3d22281eb205db93d05f6de020e0b903d2c74b1e3cbc93df5d4481915baea4884e823b2ae4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = nil;
@@ -877,6 +877,11 @@ local v56 = { {
 				name = "Tier II: +35% Damage", 
 				price = 12, 
 				values = { 35 }, 
+				currency = l__ItemType__6.DIAMOND
+			}, {
+				name = "Tier III: +50% Damage", 
+				price = 22, 
+				values = { 50 }, 
 				currency = l__ItemType__6.DIAMOND
 			} }
 	}, {
