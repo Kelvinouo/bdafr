@@ -1,4 +1,4 @@
--- Script Hash: 40239d02e2618e355f5bb3fcefe3e2884aef6a7d8cc05c0fd89b7181efc92fcc973671653a9d01765bd72ff196dee4e6
+-- Script Hash: 7fc4b6105ae2ccfe980f581cd391d9f563c7fc05828a66612a00f9e3fc526c85c364660e098929fe08efa86c8610e101
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -7,7 +7,7 @@ local u1 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__DeviceUtil__2 = v2.DeviceUtil;
 local u3 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
 local l__OfflinePlayerUtil__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "player", "offline-player-util").OfflinePlayerUtil;
-local l__KnitClient__5 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__5 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local u6 = v1.import(script, script.Parent, "gifting-friends-list-element").GiftingFriendsListElement;
 local l__AutoCanvasScrollingFrame__7 = v2.AutoCanvasScrollingFrame;
 local l__Theme__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;

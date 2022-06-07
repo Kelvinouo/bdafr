@@ -1,8 +1,8 @@
--- Script Hash: 65ff06f40e626bbbd5402f8e8c4cf84630a1aedb7ba6fa8d134ad1a90ae25bd1876077294282b09aacdeea1d91596744
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v5 = setmetatable({}, {
@@ -33,7 +33,7 @@ local l__ItemType__10 = v1.import(script, game:GetService("ReplicatedStorage"), 
 local l__WeldUtil__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "weld-util").WeldUtil;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:WaitFor("RocketLauncherMissileExplode"):andThen(function(p3)
+	l__default__2.Client:WaitFor("RemoteName"):andThen(function(p3)
 		return p3:Connect(function(p4)
 			task.spawn(function()
 				local v7 = l__ReplicatedStorage__3.Assets.Effects.RocketLauncherExplode:Clone();

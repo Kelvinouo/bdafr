@@ -1,4 +1,4 @@
--- Script Hash: 25c15f20aa274621b812f09bc3cb4a09adb3c70780d0420eca90b52a8388d1cee81da5393a18634a4a96cf4fea8fc952
+-- Script Hash: 5b07665f0e6da1092083a74e74d11d12a0b3490c30b3665072297b8dbb68c40833bf62440a4d926a8e0f3f5ebb02e45b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -157,6 +157,6 @@ v3.fuzzySearchFriends = v1.async(function(p8, p9)
 		return u6;
 	end));
 end);
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v3.new());
 return nil;

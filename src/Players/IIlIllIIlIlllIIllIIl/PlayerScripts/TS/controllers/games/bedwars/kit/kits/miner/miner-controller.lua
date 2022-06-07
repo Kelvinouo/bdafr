@@ -3,8 +3,8 @@
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "easing-functions"));
-local v4 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
+local v4 = v1.import(script, v1.getModule(script, "@rbxts", "easing-functions"));
 local v5 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__LegacyKitKnitController__6 = v1.import(script, script.Parent.Parent.Parent, "legacy-kit-controller").LegacyKitKnitController;
 local v7 = setmetatable({}, {
@@ -29,24 +29,24 @@ end;
 local l__default__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__Players__5 = v5.Players;
 local l__default__6 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
-local l__KnitClient__7 = v4.KnitClient;
+local l__KnitClient__7 = v3.KnitClient;
 local l__EntityUtil__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
 local l__Workspace__9 = v5.Workspace;
 local l__CollectionService__10 = v5.CollectionService;
 local l__GameQueryUtil__11 = v2.GameQueryUtil;
 local l__SoundManager__12 = v2.SoundManager;
 local l__GameSound__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__KnitClient__14 = v4.KnitClient;
+local l__KnitClient__14 = v3.KnitClient;
 local u15 = Color3.fromRGB(120, 120, 120);
 local l__ArmorSlot__16 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "inventory", "armor-slot").ArmorSlot;
 local l__default__17 = v1.import(script, v1.getModule(script, "@rbxts", "tween")).default;
-local l__InOutQuart__18 = v3.InOutQuart;
-local l__Linear__19 = v3.Linear;
+local l__InOutQuart__18 = v4.InOutQuart;
+local l__Linear__19 = v4.Linear;
 local l__WatchCharacter__20 = v2.WatchCharacter;
 local l__AnimatorAdded__21 = v2.AnimatorAdded;
 local l__GameAnimationUtil__22 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
 local l__AnimationType__23 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
-local l__Maid__24 = v4.Maid;
+local u24 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__BedwarsKitSkin__25 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit-skin", "bedwars-kit-skin").BedwarsKitSkin;
 local l__ReplicatedStorage__26 = v5.ReplicatedStorage;
 local l__WeldUtil__27 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "weld-util").WeldUtil;
@@ -173,7 +173,7 @@ function v7.KnitStart(p2)
 					if not v33 then
 						return nil;
 					end;
-					local v34 = l__Maid__24.new();
+					local v34 = u24.new();
 					local v35 = l__EntityUtil__8:getEntity(p8);
 					if v35 ~= nil then
 						v35 = v35:getItemInHandClient();
@@ -411,7 +411,7 @@ function v7.onKitEnabled(p26)
 				});
 				return nil;
 			end;
-			local v74 = l__Maid__24.new();
+			local v74 = u24.new();
 			local u41 = l__GameAnimationUtil__22.playAnimation(l__Players__5.LocalPlayer, l__AnimationType__23.MINER_MINE_STONE);
 			v74:GiveTask(function()
 				if u41 ~= nil then

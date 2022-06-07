@@ -3,7 +3,7 @@
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local l__KnitClient__4 = v3.KnitClient;
 local v5 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local v6 = {};
@@ -30,11 +30,11 @@ function u1.new(...)
 	return v10:constructor(...) and v10;
 end;
 local u2 = l__HandKnitController__8;
-local l__Maid__3 = v3.Maid;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function u1.constructor(p1)
 	u2.constructor(p1);
 	p1.Name = "SwordController";
-	p1.maid = l__Maid__3.new();
+	p1.maid = u3.new();
 	p1.lastAttack = 0;
 	p1.lastSwing = 0;
 	p1.chargeTime = 0;
@@ -159,7 +159,7 @@ function u1.attackEntity(p14, p15, p16)
 		if p14.cooldownMaid ~= nil then
 			p14.cooldownMaid:DoCleaning();
 		end;
-		p14.cooldownMaid = l__Maid__3.new();
+		p14.cooldownMaid = u3.new();
 		p14.cooldownMaid:GiveTask(l__Flamework__10.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):createCooldownBar(l__CooldownId__11.SWORD));
 		l__Flamework__10.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):setOnCooldown(l__CooldownId__11.SWORD, l__getItemMeta__4(v22.Name).sword.attackSpeed, l__sword__24.cooldown);
 		p14.cooldownMaid:GiveTask(function()
@@ -474,7 +474,7 @@ function u1.onEnable(p26, p27)
 	else
 		v98 = false;
 	end;
-	local v99 = l__Maid__3.new();
+	local v99 = u3.new();
 	local l__Idle__100 = v7.Idle;
 	local v101 = nil;
 	local v102 = l__HttpService__23:GenerateGUID();

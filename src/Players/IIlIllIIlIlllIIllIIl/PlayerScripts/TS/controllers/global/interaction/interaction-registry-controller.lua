@@ -1,4 +1,4 @@
--- Script Hash: 78c5ca209885cca3f981198e19d97fa9d8cb4ad611c50c4ba82fafdd43e6a4ec1736e510c32f82a950481f173e2c45f6
+-- Script Hash: 6427084921a869731d8ec325bb68bdd201e157be0e32c6bbec852b36a1ccffac23e63c703ab3e1374e0e44d477cd9990
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -120,7 +120,7 @@ function u1.givePartProximityPrompt(p9, p10, p11)
 	v24[v25 + v26 + 1] = v22;
 	p9.proximityPrompts[p11.interactionTag] = v24;
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

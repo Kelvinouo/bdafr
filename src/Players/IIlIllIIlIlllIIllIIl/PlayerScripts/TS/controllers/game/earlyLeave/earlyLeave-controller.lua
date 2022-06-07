@@ -1,4 +1,4 @@
--- Script Hash: 5a94993f260b130f4bd17fd84b9e8703e15f197ab49add6545c0c5ef7fa56d2eb2dc81a487a3ddcc1d44489a811078e5
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -23,7 +23,7 @@ end;
 local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function u1.KnitStart(p2)
-	l__default__3.Client:WaitFor("PlayerEarlyLeaveEvent"):andThen(function(p3)
+	l__default__3.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
 			print("early leave for", p4.player.userId);
 			l__ClientStore__4:dispatch({
@@ -42,7 +42,7 @@ function u1.KnitStart(p2)
 		end);
 	end);
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;

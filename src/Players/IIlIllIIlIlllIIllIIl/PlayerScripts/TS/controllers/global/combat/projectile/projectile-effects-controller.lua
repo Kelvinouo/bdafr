@@ -1,10 +1,10 @@
--- Script Hash: 5b11642a91182b18a48634a32d27db02537fb0c9e75696f771868cfbd2685713363e88eda7e26dff28c7749cb508c0ab
+-- Script Hash: nil
 --[[VARIABLE DEFINITION ANOMALY DETECTED, DECOMPILATION OUTPUT POTENTIALLY INCORRECT]]--
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v5 = setmetatable({}, {
 	__tostring = function()
@@ -32,7 +32,7 @@ local l__SoundManager__8 = v2.SoundManager;
 local l__RandomUtil__9 = v2.RandomUtil;
 local l__getItemMeta__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
 local l__ProjectileUtil__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "combat", "projectile-util").ProjectileUtil;
-local l__Maid__12 = v3.Maid;
+local u12 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function u1.KnitStart(p2)
 	l__ClientSyncEvents__3.StartLaunchProjectile:connect(function(p3)
 		if p3:isCancelled() then
@@ -52,7 +52,7 @@ function u1.KnitStart(p2)
 			end;
 		end;
 	end);
-	l__default__6.Client:WaitFor("ProjectileImpact"):andThen(function(p4)
+	l__default__6.Client:WaitFor("RemoteName"):andThen(function(p4)
 		return p4:Connect(function(p5)
 			local v8 = l__ProjectileMeta__7[p5.projectile];
 			if v8.impactSound then
@@ -81,7 +81,7 @@ function u1.KnitStart(p2)
 			u1:destroyProjectile(p5.projectileModel);
 		end);
 	end);
-	l__default__6.Client:WaitFor("ProjectileLaunch"):andThen(function(p6)
+	l__default__6.Client:WaitFor("RemoteName"):andThen(function(p6)
 		return p6:Connect(function(p7)
 			local v13 = l__ProjectileMeta__7[p7.projectile.Name];
 			if p7.shootingPlayer == l__Players__4.LocalPlayer and not v13.useServerModel then
@@ -167,7 +167,7 @@ function u1.KnitStart(p2)
 				v29 = v29.Character;
 			end;
 			u1:createProjectile(p7.projectile, v22, p7.launchVelocity, p7.position, v29);
-			local v30 = l__Maid__12.new();
+			local v30 = u12.new();
 			v30:GiveTask(function()
 				u1:destroyProjectile(p7.projectile);
 			end);

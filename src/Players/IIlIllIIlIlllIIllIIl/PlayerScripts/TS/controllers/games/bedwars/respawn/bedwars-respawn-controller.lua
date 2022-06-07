@@ -1,4 +1,4 @@
--- Script Hash: 2eb77ef8c83d22a0532fdb454456a0e6db421bc12285f0e759274e17ab75a48e01c6694bc4409ae42d4508860735a899
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -30,7 +30,7 @@ local u7 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__RespawnTimerWrapper__8 = v1.import(script, script.Parent, "ui", "respawn-timer").RespawnTimerWrapper;
 local l__WatchCharacter__9 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchCharacter;
 function u1.KnitStart(p2)
-	l__default__3.Client:OnEvent("EntityDeathEvent", function(p3)
+	l__default__3.Client:OnEvent("RemoteName", function(p3)
 		if p3.entityInstance == l__Players__4.LocalPlayer.Character then
 			if l__GamePlayerUtil__5.getGamePlayer(l__Players__4.LocalPlayer):isSpectator() then
 				return nil;
@@ -69,7 +69,7 @@ function u1.KnitStart(p2)
 		end;
 	end);
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

@@ -2,36 +2,35 @@
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
-local l__LegacyKitKnitController__4 = v1.import(script, script.Parent.Parent.Parent, "legacy-kit-controller").LegacyKitKnitController;
-local v5 = setmetatable({}, {
+local v2 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
+local l__LegacyKitKnitController__3 = v1.import(script, script.Parent.Parent.Parent, "legacy-kit-controller").LegacyKitKnitController;
+local v4 = setmetatable({}, {
 	__tostring = function()
 		return "YetiKitController";
 	end, 
-	__index = l__LegacyKitKnitController__4
+	__index = l__LegacyKitKnitController__3
 });
-v5.__index = v5;
-local u1 = v5;
+v4.__index = v4;
+local u1 = v4;
 function u1.new(...)
-	local v6 = setmetatable({}, u1);
-	return v6:constructor(...) and v6;
+	local v5 = setmetatable({}, u1);
+	return v5:constructor(...) and v5;
 end;
-local u2 = l__LegacyKitKnitController__4;
+local u2 = l__LegacyKitKnitController__3;
 local l__BedwarsKit__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
-local l__Maid__4 = v2.Maid;
+local u4 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function u1.constructor(p1)
 	u2.constructor(p1, { l__BedwarsKit__3.YETI });
 	p1.Name = "YetiKitController";
-	p1.maid = l__Maid__4.new();
+	p1.maid = u4.new();
 end;
-local l__RunService__5 = v3.RunService;
-local l__Workspace__6 = v3.Workspace;
+local l__RunService__5 = v2.RunService;
+local l__Workspace__6 = v2.Workspace;
 local l__ClientStore__7 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 local l__Flamework__8 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 local u9 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__ActionButton__10 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).ActionButton;
-local l__ContextActionService__11 = v3.ContextActionService;
+local l__ContextActionService__11 = v2.ContextActionService;
 local l__CooldownId__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "cooldown", "cooldown-id").CooldownId;
 function u1.KnitStart(p2)
 	u2.KnitStart(p2);
@@ -46,7 +45,7 @@ function u1.KnitStart(p2)
 		if p2.useAbilityMaid ~= nil then
 			return nil;
 		end;
-		p2.useAbilityMaid = l__Maid__4.new();
+		p2.useAbilityMaid = u4.new();
 		local u13 = l__Flamework__8.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(u9.createElement(l__ActionButton__10, {
 			actionName = "use-yeti-ability", 
 			interactionKey = Enum.KeyCode.Z, 
@@ -68,10 +67,10 @@ function u1.KnitStart(p2)
 			print(p3.Kit.canUseYetiAbilityNext);
 			if l__Workspace__6:GetServerTimeNow() <= p3.Kit.canUseYetiAbilityNext then
 				if p2.cooldownbarMaid == nil then
-					local v7 = p3.Kit.canUseYetiAbilityNext - l__Workspace__6:GetServerTimeNow();
-					p2.cooldownbarMaid = l__Maid__4.new();
+					local v6 = p3.Kit.canUseYetiAbilityNext - l__Workspace__6:GetServerTimeNow();
+					p2.cooldownbarMaid = u4.new();
 					p2.cooldownbarMaid:GiveTask(l__Flamework__8.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):createCooldownBar(l__CooldownId__12.YETI_ABILITY));
-					l__Flamework__8.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):setOnCooldown(l__CooldownId__12.YETI_ABILITY, v7, {
+					l__Flamework__8.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):setOnCooldown(l__CooldownId__12.YETI_ABILITY, v6, {
 						cooldownBar = {
 							color = Color3.fromRGB(48, 255, 245)
 						}
@@ -79,7 +78,7 @@ function u1.KnitStart(p2)
 					p2.cooldownbarMaid:GiveTask(function()
 						l__Flamework__8.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):removeCooldown(l__CooldownId__12.YETI_ABILITY);
 					end);
-					task.delay(v7, function()
+					task.delay(v6, function()
 						if p2.cooldownbarMaid then
 							p2.cooldownbarMaid:DoCleaning();
 							p2.cooldownbarMaid = nil;
@@ -96,7 +95,7 @@ function u1.KnitStart(p2)
 		return nil;
 	end);
 end;
-local l__Players__14 = v3.Players;
+local l__Players__14 = v2.Players;
 function u1.onKitEnabled(p5)
 	if l__Players__14.LocalPlayer:GetAttribute("CanUseYetiAbilityNext") ~= nil then
 		l__ClientStore__7:dispatch({
@@ -118,16 +117,16 @@ local l__default__15 = v1.import(script, game:GetService("ReplicatedStorage"), "
 local l__GameAnimationUtil__16 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
 local l__AnimationType__17 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
 function u1.useAbility(p7)
-	local l__Character__8 = l__Players__14.LocalPlayer.Character;
-	if l__Character__8 == nil then
+	local l__Character__7 = l__Players__14.LocalPlayer.Character;
+	if l__Character__7 == nil then
 		return nil;
 	end;
 	l__default__15.Client:Get("RemoteName"):SendToServer({
-		cframe = l__Character__8.HumanoidRootPart.CFrame
+		cframe = l__Character__7.HumanoidRootPart.CFrame
 	});
 	l__GameAnimationUtil__16.playAnimation(l__Players__14.LocalPlayer, l__AnimationType__17.YETI_ROAR);
 end;
-u2 = v2.KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

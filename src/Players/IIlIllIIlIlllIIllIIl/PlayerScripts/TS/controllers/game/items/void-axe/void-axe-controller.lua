@@ -3,7 +3,7 @@
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__HandKnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
 local v6 = setmetatable({}, {
@@ -18,11 +18,11 @@ function v6.new(...)
 	return v7:constructor(...) and v7;
 end;
 local u1 = l__HandKnitController__5;
-local l__Maid__2 = v3.Maid;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v6.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "VoidAxeController";
-	p1.maid = l__Maid__2.new();
+	p1.maid = u2.new();
 end;
 local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__Players__4 = v4.Players;

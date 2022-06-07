@@ -1,9 +1,9 @@
--- Script Hash: 4842faffe66713ffc6f27757a6f0017d3f020dc22cfd61fe730f468d8842ccdec01c300e34d0c0b1710d27d678cef1da
+-- Script Hash: bad0c355e195ed278df68ac39426c168822e1d2bd5d7f1152f6554344b517a1f01b6fb81a19d175878e4fc904473784f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local v5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "typesafe-attributes");
 local l__HandKnitController__6 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;

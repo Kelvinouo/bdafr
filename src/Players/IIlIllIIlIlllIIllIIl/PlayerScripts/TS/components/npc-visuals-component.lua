@@ -1,4 +1,4 @@
--- Script Hash: 1bf7499644942f713258e91dd7a71c3430f6a048fbfedcbdbc36c69a6247ae1f33a97124566bbfab08547fefcd3655a4
+-- Script Hash: 19fcf94b8e2950236380dba20c622dae306a6c1921b2be463f4a6c47a2de811827abf3c80d9e9e6cdbb72cae45402399
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,7 +14,7 @@ function v4.new(...)
 	local v5 = setmetatable({}, v4);
 	return v5:constructor(...) and v5;
 end;
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local u2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "attribute-config");
 local l__NpcNameAttr__3 = v3.NpcNameAttr;
 local l__NpcAutoPlaceAttr__4 = v3.NpcAutoPlaceAttr;
@@ -29,7 +29,7 @@ local l__Workspace__12 = v2.Workspace;
 local l__Players__13 = v2.Players;
 function v4.constructor(p1, p2)
 	p1.npcModel = p2;
-	p1.maid = l__Maid__1.new();
+	p1.maid = u1.new();
 	p1.lastUpdate = 0;
 	p1.config = u2.new(p2.Parent, { l__NpcNameAttr__3, l__NpcAutoPlaceAttr__4, l__NpcAnimationAttr__5, u6, l__NpcLookAtPlayerAttr__7, l__NpcLookMinDistanceAttr__8, l__NpcScale__9, l__NpcCollectionServiceTag__10, l__NpcVerticalOffset__11 });
 	if not l__Workspace__12:FindFirstChild("NpcContainer") then

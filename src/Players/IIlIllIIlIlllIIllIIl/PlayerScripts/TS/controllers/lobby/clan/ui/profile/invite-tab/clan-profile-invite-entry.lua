@@ -1,12 +1,11 @@
--- Script Hash: 103ce854673a581bb870aa0b1823536e324535e3536a6bba763d84b3625e918f5b7486364520bc38664f7ab7c2f6f498
+-- Script Hash: a9a4e18b495c6700e9c22c1d664d50c1919d9102eeca659b9a455932f50a06f564f04b203e4158da647956251d6156ed
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
-local l__Maid__1 = v3.Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__DeviceUtil__2 = v2.DeviceUtil;
-local l__KnitClient__3 = v3.KnitClient;
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 local u5 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__Empty__6 = v2.Empty;
@@ -19,9 +18,9 @@ local l__ColorUtil__12 = v2.ColorUtil;
 local l__ImageId__13 = v2.ImageId;
 return {
 	ClanProfileInviteEntry = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u5)(function(p1, p2)
-		local v4, v5 = p2.useState(false);
-		local v6 = {};
-		local v7 = {
+		local v3, v4 = p2.useState(false);
+		local v5 = {};
+		local v6 = {
 			Size = UDim2.new(0.9, 0, 1, 0), 
 			BackgroundColor3 = l__Theme__7.backgroundPrimary, 
 			BackgroundTransparency = 0, 
@@ -36,41 +35,41 @@ return {
 			end;
 			l__KnitClient__3.Controllers.ClanController:invitePlayerToClan(p1.Player, l__ClientStore__4:getState().Clans.myClanId);
 		end;
-		v7[u5.Event.MouseButton1Click] = function()
+		v6[u5.Event.MouseButton1Click] = function()
 			l__SoundManager__8:playSound(l__LobbyClientConfig__9.sounds.UI_CLICK);
-			v5(true);
+			v4(true);
 			u14();
 		end;
-		local u15 = l__Maid__1.new();
-		v7[u5.Event.MouseEnter] = function(p3)
-			if v4 then
+		local u15 = u1.new();
+		v6[u5.Event.MouseEnter] = function(p3)
+			if v3 then
 				return nil;
 			end;
 			u15:DoCleaning();
-			local v8 = l__TweenService__10:Create(p3, TweenInfo.new(0.12), {
+			local v7 = l__TweenService__10:Create(p3, TweenInfo.new(0.12), {
 				BackgroundTransparency = 0.3
+			});
+			v7:Play();
+			u15:GiveTask(function()
+				v7:Cancel();
+			end);
+		end;
+		v6[u5.Event.MouseLeave] = function(p4)
+			if v3 then
+				return nil;
+			end;
+			u15:DoCleaning();
+			local v8 = l__TweenService__10:Create(p4, TweenInfo.new(0.12), {
+				BackgroundTransparency = 0
 			});
 			v8:Play();
 			u15:GiveTask(function()
 				v8:Cancel();
 			end);
 		end;
-		v7[u5.Event.MouseLeave] = function(p4)
-			if v4 then
-				return nil;
-			end;
-			u15:DoCleaning();
-			local v9 = l__TweenService__10:Create(p4, TweenInfo.new(0.12), {
-				BackgroundTransparency = 0
-			});
-			v9:Play();
-			u15:GiveTask(function()
-				v9:Cancel();
-			end);
-		end;
-		local v10 = {};
-		if v4 then
-			local v11 = u5.createElement("TextLabel", {
+		local v9 = {};
+		if v3 then
+			local v10 = u5.createElement("TextLabel", {
 				Size = UDim2.fromScale(0.3, 1), 
 				Text = "(Invited)", 
 				TextColor3 = l__ColorUtil__12.hexColor(16777215), 
@@ -87,7 +86,7 @@ return {
 					MaxTextSize = 16
 				}) });
 		else
-			v11 = u5.createElement(l__Empty__6, {
+			v10 = u5.createElement(l__Empty__6, {
 				Size = UDim2.fromScale(0.3, 1)
 			}, { u5.createElement("ImageLabel", {
 					Position = UDim2.fromScale(1, 0.5), 
@@ -102,19 +101,19 @@ return {
 					LayoutOrder = 3
 				}) });
 		end;
-		v10[1] = u5.createElement("UICorner", {
+		v9[1] = u5.createElement("UICorner", {
 			CornerRadius = UDim.new(0.1, 0)
 		});
-		v10[2] = u5.createElement("UIPadding", {
+		v9[2] = u5.createElement("UIPadding", {
 			PaddingLeft = UDim.new(0.05, 0), 
 			PaddingRight = UDim.new(0.05, 0)
 		});
-		v10[3] = u5.createElement("UIListLayout", {
+		v9[3] = u5.createElement("UIListLayout", {
 			FillDirection = "Horizontal", 
 			VerticalAlignment = "Center", 
 			SortOrder = "LayoutOrder"
 		});
-		v10[4] = u5.createElement(l__Empty__6, {
+		v9[4] = u5.createElement(l__Empty__6, {
 			Size = UDim2.fromScale(0.7, 1)
 		}, { u5.createElement("UIListLayout", {
 				FillDirection = "Horizontal", 
@@ -153,10 +152,10 @@ return {
 			}, { u5.createElement("UITextSizeConstraint", {
 					MaxTextSize = 16
 				}) }) });
-		v10[5] = v11;
-		v6[1] = u5.createElement("ImageButton", v7, v10);
+		v9[5] = v10;
+		v5[1] = u5.createElement("ImageButton", v6, v9);
 		return u5.createElement(l__Empty__6, {
 			Size = UDim2.new(1, 0, 0, 40)
-		}, v6);
+		}, v5);
 	end)
 };

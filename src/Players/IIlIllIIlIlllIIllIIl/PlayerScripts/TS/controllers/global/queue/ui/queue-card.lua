@@ -1,15 +1,15 @@
--- Script Hash: 36d690c94275910554319194d2d21f5de23d5e66ad19c5fbcdb54d1a8596577a0ca20f47ccaf1aae8ac92ec1db9cff42
+-- Script Hash: d9d588ab537e6452af29512bee7ce96c6ba1ac33a4ad0b58db7a00707299afb5ae727957c607660b3e01b4a544adfba3
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local v4 = v3.Component:extend("QueueCard");
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v4.init(p1, p2)
 	p1.wrapperRef = v3.createRef();
 	p1.alive = true;
-	p1.leaveButtonHoverMaid = l__Maid__1.new();
+	p1.leaveButtonHoverMaid = u1.new();
 	p1.matchFoundTime = -1;
 	p1.timeStarted = tick();
 	p1:setState({

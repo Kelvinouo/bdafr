@@ -2,7 +2,7 @@
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent, "global", "combat", "projectile", "projectile-source-controller").ProjectileSourceController;
 local v4 = setmetatable({}, {
 	__tostring = function()

@@ -2,9 +2,8 @@
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
-local l__Players__1 = v3.Players;
+local v2 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
+local l__Players__1 = v2.Players;
 local function u2(p1)
 	if l__Players__1.LocalPlayer.Character then
 		p1(l__Players__1.LocalPlayer.Character);
@@ -16,48 +15,48 @@ local function u2(p1)
 		p1(l__Players__1.LocalPlayer.Character);
 	end);
 end;
-local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
-local v5 = setmetatable({}, {
+local l__KnitController__3 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
+local v4 = setmetatable({}, {
 	__tostring = function()
 		return "MobileShiftLockController";
 	end, 
-	__index = l__KnitController__4
+	__index = l__KnitController__3
 });
-v5.__index = v5;
-function v5.new(...)
-	local v6 = setmetatable({}, v5);
-	return v6:constructor(...) and v6;
+v4.__index = v4;
+function v4.new(...)
+	local v5 = setmetatable({}, v4);
+	return v5:constructor(...) and v5;
 end;
-local u3 = l__KnitController__4;
-local l__Maid__4 = v2.Maid;
-function v5.constructor(p2, ...)
+local u3 = l__KnitController__3;
+local u4 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+function v4.constructor(p2, ...)
 	u3.constructor(p2, ...);
 	p2.Name = "MobileShiftLockController";
-	p2.maid = l__Maid__4.new();
+	p2.maid = u4.new();
 	p2.enabled = false;
 end;
 local l__default__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__DeviceUtil__6 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).DeviceUtil;
 local l__PlaceUtil__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "place-util").PlaceUtil;
 local l__ClientStore__8 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
-function v5.KnitStart(p3)
+function v4.KnitStart(p3)
 	u3.KnitStart(p3);
 	task.spawn(function()
 		while true do
-			local v7 = task.wait(3);
-			if v7 == 0 then
+			local v6 = task.wait(3);
+			if v6 == 0 then
 				break;
 			end;
-			if v7 ~= v7 then
+			if v6 ~= v6 then
 				break;
 			end;
-			if not v7 then
+			if not v6 then
 				break;
 			end;
-			local v8, v9 = pcall(function()
+			local v7, v8 = pcall(function()
 				return l__default__5.Client:Get((table.concat({ "S", "e", "l", "f", "R", "e", "p", "o", "r", "t" }, "")));
 			end);
-			if v8 and v9 == nil then
+			if v7 and v8 == nil then
 				print(2);
 				task.wait(math.random(20, 40));
 				l__default__5.Client:Get("RemoteName"):SendToServer();
@@ -67,20 +66,20 @@ function v5.KnitStart(p3)
 	end);
 	task.spawn(function()
 		while true do
-			local v10 = task.wait(3);
-			if v10 == 0 then
+			local v9 = task.wait(3);
+			if v9 == 0 then
 				break;
 			end;
-			if v10 ~= v10 then
+			if v9 ~= v9 then
 				break;
 			end;
-			if not v10 then
+			if not v9 then
 				break;
 			end;
-			local v11, v12 = pcall(function()
+			local v10, v11 = pcall(function()
 				return l__default__5.Client:Get("RemoteName");
 			end);
-			if v11 and v12 == nil then
+			if v10 and v11 == nil then
 				l__default__5.Client:Get("RemoteName"):SendToServer();
 				return nil;
 			end;		
@@ -112,11 +111,11 @@ local function u9(p6)
 		end);
 	end);
 end;
-local l__RunService__10 = v3.RunService;
-local l__Workspace__11 = v3.Workspace;
+local l__RunService__10 = v2.RunService;
+local l__Workspace__11 = v2.Workspace;
 local u12 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
-local l__UserInputService__13 = v3.UserInputService;
-function v5.enable(p9, p10)
+local l__UserInputService__13 = v2.UserInputService;
+function v4.enable(p9, p10)
 	if p10 == nil then
 		p10 = true;
 	end;
@@ -188,15 +187,15 @@ function v5.enable(p9, p10)
 	l__RunService__10:BindToRenderStep("MSL_PostCamera", Enum.RenderPriority.Camera.Value + 1, function()
 		l__UserInputService__13.MouseBehavior = Enum.MouseBehavior.LockCenter;
 		l__UserInputService__13.MouseIconEnabled = false;
-		local l__CurrentCamera__13 = l__Workspace__11.CurrentCamera;
-		p9.savedFrame = l__CurrentCamera__13.CFrame;
+		local l__CurrentCamera__12 = l__Workspace__11.CurrentCamera;
+		p9.savedFrame = l__CurrentCamera__12.CFrame;
 		u9(function(p13)
-			local l__RootPart__14 = p13.RootPart;
-			local l__CFrame__15 = l__RootPart__14.CFrame;
-			local v16, v17, v18 = l__CFrame__15:ToOrientation();
-			local v19, v20 = l__CurrentCamera__13.CFrame:ToOrientation();
-			l__RootPart__14.CFrame = CFrame.new(l__CFrame__15.Position) * CFrame.Angles(0, v20, 0);
-			l__CurrentCamera__13.CFrame = l__CurrentCamera__13.CFrame * CFrame.new(Vector3.new(2, 0, 0));
+			local l__RootPart__13 = p13.RootPart;
+			local l__CFrame__14 = l__RootPart__13.CFrame;
+			local v15, v16, v17 = l__CFrame__14:ToOrientation();
+			local v18, v19 = l__CurrentCamera__12.CFrame:ToOrientation();
+			l__RootPart__13.CFrame = CFrame.new(l__CFrame__14.Position) * CFrame.Angles(0, v19, 0);
+			l__CurrentCamera__12.CFrame = l__CurrentCamera__12.CFrame * CFrame.new(Vector3.new(2, 0, 0));
 		end);
 	end);
 	p9.maid:GiveTask(function()
@@ -204,7 +203,7 @@ function v5.enable(p9, p10)
 		l__RunService__10:UnbindFromRenderStep("MSL_PostCamera");
 	end);
 end;
-function v5.disable(p14, p15)
+function v4.disable(p14, p15)
 	if p15 == nil then
 		p15 = true;
 	end;
@@ -223,9 +222,9 @@ function v5.disable(p14, p15)
 		});
 	end;
 end;
-function v5.isEnabled(p17)
+function v4.isEnabled(p17)
 	return p17.enabled;
 end;
-u3 = v2.KnitClient.CreateController;
-u3 = u3(v5.new());
+u3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
+u3 = u3(v4.new());
 return nil;

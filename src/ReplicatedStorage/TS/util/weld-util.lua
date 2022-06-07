@@ -1,4 +1,4 @@
--- Script Hash: bbf4a111d5b45611efcc2fe9717b6e6844867cb2a56f8144bc6de4cd0cf659ae7d33a4ebe4c6979660f821bb1ee7cada
+-- Script Hash: dae35184dd1a9b2e44409958aaa34f16d8b9a613f9796f33065ae94b9b83313254db3526a79d2fc269e3cbb967ade0c3
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -51,7 +51,7 @@ local function u2(p8, p9)
 	end;
 	return nil;
 end;
-local l__Maid__3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v2.weldCharacterAccessories(p10)
 	local v11, v12, v13 = ipairs(p10:GetChildren());
 	while true do
@@ -66,7 +66,7 @@ function v2.weldCharacterAccessories(p10)
 					if v18:IsA("Attachment") then
 						local v19 = u2(p10, v18.Name);
 						if v19 then
-							local v20 = l__Maid__3.new();
+							local v20 = u3.new();
 							local u4 = v3(v19, v18);
 							v20:GiveTask(function()
 								u4:Destroy();

@@ -1,4 +1,4 @@
--- Script Hash: 0b9523e85ae174647eb2ba82bb0d90f0b33faaf68153632f28cd516f7e8eec25fbe867c213244e4308f44969167b5765
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -196,7 +196,7 @@ function u1.KnitStart(p19)
 	if l__PlaceUtil__12.isLobbyServer() then
 		return nil;
 	end;
-	l__default__13.Client:WaitFor("TeamsUpdateEvent"):expect():Connect(function(p20)
+	l__default__13.Client:WaitFor("RemoteName"):expect():Connect(function(p20)
 		l__ClientStore__10:dispatch({
 			type = "TabListSetTeams", 
 			teams = p20.teams
@@ -207,7 +207,7 @@ function u1.KnitStart(p19)
 		});
 	end);
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

@@ -17,7 +17,7 @@ v6.LAST = 2;
 v5[2] = "LAST";
 local v7 = { l__ItemType__4.TACTICAL_CROSSBOW, l__ItemType__4.TWIRLBLADE, l__ItemType__4.CARROT_CANNON, l__ItemType__4.DIAMOND_SWORD, l__ItemType__4.FIREBALL, l__ItemType__4.BEAR_CLAWS, l__ItemType__4.ROCKET_LAUNCHER, l__ItemType__4.RAGEBLADE, l__ItemType__4.PAINT_SHOTGUN, l__ItemType__4.FRYING_PAN, l__ItemType__4.WOOD_CROSSBOW, l__ItemType__4.IRON_SWORD, l__ItemType__4.GOLDEN_BOW, l__ItemType__4.BOBA_BLASTER, l__ItemType__4.BAGUETTE };
 local v8 = v2.Component:extend("HudProgress");
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local u2 = {
 	start = 1, 
 	progress = 1, 
@@ -31,7 +31,7 @@ local u2 = {
 	highlightLast = false
 };
 function v8.init(p1, p2)
-	p1.connectionMaid = l__Maid__1.new();
+	p1.connectionMaid = u1.new();
 	p1:setState({
 		progress = u2.progress, 
 		lastImageId = u2.lastImageId, 

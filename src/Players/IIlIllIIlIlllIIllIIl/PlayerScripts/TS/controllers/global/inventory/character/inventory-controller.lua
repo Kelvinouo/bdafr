@@ -1,36 +1,35 @@
--- Script Hash: 53406bb4ceb961419456acb6d024bfb1fdff39a67fcef738be6a2e608e7327da500aa664c209628f954d9caa1addf2e6
+-- Script Hash: e0d81608d554923346eadaeb7af703600d6c6143d905a35382fb99c112953c09461e58ae721f017f74db57ec62265556
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
-local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
-local v5 = setmetatable({}, {
+local v2 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
+local l__KnitController__3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
+local v4 = setmetatable({}, {
 	__tostring = function()
 		return "InventoryController";
 	end, 
-	__index = l__KnitController__4
+	__index = l__KnitController__3
 });
-v5.__index = v5;
-local u1 = v5;
+v4.__index = v4;
+local u1 = v4;
 function u1.new(...)
-	local v6 = setmetatable({}, u1);
-	return v6:constructor(...) and v6;
+	local v5 = setmetatable({}, u1);
+	return v5:constructor(...) and v5;
 end;
-local u2 = l__KnitController__4;
-local l__Maid__3 = v2.Maid;
-local l__StarterGui__4 = v3.StarterGui;
+local u2 = l__KnitController__3;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+local l__StarterGui__4 = v2.StarterGui;
 function u1.constructor(p1)
 	u2.constructor(p1);
 	p1.Name = "InventoryController";
-	p1.playerMaid = l__Maid__3.new();
+	p1.playerMaid = u3.new();
 	task.spawn(function()
 		l__StarterGui__4:SetCoreGuiEnabled(Enum.CoreGuiType.Backpack, false);
 	end);
 end;
 local l__ClientStore__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
-local l__Players__6 = v3.Players;
-local l__ContextActionService__7 = v3.ContextActionService;
+local l__Players__6 = v2.Players;
+local l__ContextActionService__7 = v2.ContextActionService;
 local l__Flamework__8 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 local l__BedwarsAppIds__9 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "types", "app-config").BedwarsAppIds;
 local l__UILayers__10 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).UILayers;
@@ -44,57 +43,57 @@ function u1.KnitStart(p2)
 			end);
 		end;
 	end);
-	local l__observedPlayer__7 = l__ClientStore__5:getState().Inventory.observedPlayer;
-	if l__observedPlayer__7 then
-		p2:hookObservedPlayer(l__Players__6.LocalPlayer, l__observedPlayer__7);
+	local l__observedPlayer__6 = l__ClientStore__5:getState().Inventory.observedPlayer;
+	if l__observedPlayer__6 then
+		p2:hookObservedPlayer(l__Players__6.LocalPlayer, l__observedPlayer__6);
 	end;
 	l__ContextActionService__7:BindActionAtPriority("inventory-toggle", function(p5, p6, p7)
-		local v8 = nil;
+		local v7 = nil;
 		if p6 == Enum.UserInputState.Begin then
-			v8 = l__Flamework__8.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController");
-			if not v8:isAppOpen(l__BedwarsAppIds__9.INVENTORY) then
-				v8:openApp(l__BedwarsAppIds__9.INVENTORY, {});
+			v7 = l__Flamework__8.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController");
+			if not v7:isAppOpen(l__BedwarsAppIds__9.INVENTORY) then
+				v7:openApp(l__BedwarsAppIds__9.INVENTORY, {});
 				return;
 			end;
 		else
 			return;
 		end;
-		v8:closeApp(l__BedwarsAppIds__9.INVENTORY);
+		v7:closeApp(l__BedwarsAppIds__9.INVENTORY);
 	end, false, Enum.ContextActionPriority.Low.Value, Enum.KeyCode.E, Enum.KeyCode.ButtonY);
 	l__ContextActionService__7:BindAction("close-ui-gamepad", function(p8, p9, p10)
-		local v9 = l__Flamework__8.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController");
+		local v8 = l__Flamework__8.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController");
 		if p9 == Enum.UserInputState.Begin then
-			v9:closeLayer(l__UILayers__10.MAIN);
+			v8:closeLayer(l__UILayers__10.MAIN);
 		end;
 	end, false, Enum.KeyCode.ButtonB);
-	local l__items__10 = l__ClientStore__5:getState().Inventory.observedInventory.inventory.items;
-	local v11 = 0;
-	local v12 = false;
+	local l__items__9 = l__ClientStore__5:getState().Inventory.observedInventory.inventory.items;
+	local v10 = 0;
+	local v11 = false;
 	while true do
-		if v12 then
-			v11 = v11 + 1;
+		if v11 then
+			v10 = v10 + 1;
 		else
-			v12 = true;
+			v11 = true;
 		end;
-		if not (v11 < 9) then
+		if not (v10 < 9) then
 			break;
 		end;
-		if not (v11 < #l__items__10) then
+		if not (v10 < #l__items__9) then
 			break;
 		end;
 		l__ClientStore__5:dispatch({
 			type = "InventoryAddToHotbar", 
-			item = l__items__10[v11 + 1], 
-			slot = v11
+			item = l__items__9[v10 + 1], 
+			slot = v10
 		});	
 	end;
-	for v13, v14 in ipairs(l__ClientStore__5:getState().Inventory.observedInventory.inventory.items) do
-		local v15 = l__getItemMeta__11(v14.itemType);
-		if v15.armor and l__ClientStore__5:getState().Inventory.observedInventory.inventory.armor[v15.armor.slot + 1] == "empty" then
+	for v12, v13 in ipairs(l__ClientStore__5:getState().Inventory.observedInventory.inventory.items) do
+		local v14 = l__getItemMeta__11(v13.itemType);
+		if v14.armor and l__ClientStore__5:getState().Inventory.observedInventory.inventory.armor[v14.armor.slot + 1] == "empty" then
 			l__ClientStore__5:dispatch({
 				type = "InventorySetArmorItem", 
-				armorSlot = v15.armor.slot, 
-				item = v14
+				armorSlot = v14.armor.slot, 
+				item = v13
 			});
 		end;
 	end;
@@ -109,52 +108,52 @@ function u1.inventoryReplication(p11)
 		if l__Players__6.LocalPlayer.Name == p12.Name then
 			return nil;
 		end;
-		local v16 = l__Maid__3.new();
-		local v17 = l__EntityUtil__14:getEntity(p12);
-		if not v17 then
+		local v15 = u3.new();
+		local v16 = l__EntityUtil__14:getEntity(p12);
+		if not v16 then
 			error("Failed to find entity during client entity replication.");
 		end;
 		p12:WaitForChild("HandInvItem");
-		local function v18(p13)
+		local function v17(p13)
 			if p13 then
-				v17:equipItem(p13);
+				v16:equipItem(p13);
 				return;
 			end;
-			v17:unequipItemInHand();
+			v16:unequipItemInHand();
 		end;
-		v18(p12.HandInvItem.Value);
-		v16:GiveTask(p12.HandInvItem.Changed:Connect(function(p14)
-			v18(p14);
+		v17(p12.HandInvItem.Value);
+		v15:GiveTask(p12.HandInvItem.Changed:Connect(function(p14)
+			v17(p14);
 		end));
-		local v19 = 0;
-		local v20 = false;
+		local v18 = 0;
+		local v19 = false;
 		while true do
-			local v21 = v19;
-			if v20 then
-				v21 = v21 + 1;
+			local v20 = v18;
+			if v19 then
+				v20 = v20 + 1;
 			else
-				v20 = true;
+				v19 = true;
 			end;
-			if not (v21 < #u15.values(l__ArmorSlot__16)) then
+			if not (v20 < #u15.values(l__ArmorSlot__16)) then
 				break;
 			end;
-			local v22 = p12:WaitForChild("ArmorInvItem_" .. tostring(v21));
-			local function v23(p15, p16)
+			local v21 = p12:WaitForChild("ArmorInvItem_" .. tostring(v20));
+			local function v22(p15, p16)
 				if not p16 then
-					v17:unequipArmorSlot(p15);
+					v16:unequipArmorSlot(p15);
 					return;
 				end;
-				v17:equipArmorItem(p16, p15);
+				v16:equipArmorItem(p16, p15);
 			end;
-			v23(v21, v22.Value);
-			v16:GiveTask(v22.Changed:Connect(function(p17)
-				return v23(v21, p17);
+			v22(v20, v21.Value);
+			v15:GiveTask(v21.Changed:Connect(function(p17)
+				return v22(v20, p17);
 			end));
-			v19 = v21;		
+			v18 = v20;		
 		end;
-		v16:GiveTask(p12.AncestryChanged:Connect(function(p18, p19)
+		v15:GiveTask(p12.AncestryChanged:Connect(function(p18, p19)
 			if p19 == nil then
-				v16:DoCleaning();
+				v15:DoCleaning();
 			end;
 		end));
 	end);
@@ -163,24 +162,24 @@ local l__ClientSyncEvents__17 = v1.import(script, script.Parent.Parent.Parent.Pa
 function u1.hookObservedPlayer(p20, p21, p22)
 	p20.playerMaid:DoCleaning();
 	local u18 = {};
-	local u19 = l__Maid__3.new();
+	local u19 = u3.new();
 	local function u20(p23)
 		u18[p23] = true;
-		local v24 = l__Maid__3.new();
-		u19:GiveTask(v24);
-		v24:GiveTask(p23:GetAttributeChangedSignal("Amount"):Connect(function()
+		local v23 = u3.new();
+		u19:GiveTask(v23);
+		v23:GiveTask(p23:GetAttributeChangedSignal("Amount"):Connect(function()
 			l__ClientStore__5:dispatch({
 				type = "InventorySetItemAmount", 
 				tool = p23, 
 				amount = p23:GetAttribute("Amount")
 			});
 		end));
-		v24:GiveTask(p23.AncestryChanged:Connect(function(p24, p25)
+		v23:GiveTask(p23.AncestryChanged:Connect(function(p24, p25)
 			if p25 == nil then
-				v24:DoCleaning();
+				v23:DoCleaning();
 			end;
 		end));
-		v24:GiveTask(function()
+		v23:GiveTask(function()
 			u18[p23] = nil;
 			l__ClientStore__5:dispatch({
 				type = "InventoryRemoveItem", 
@@ -190,24 +189,24 @@ function u1.hookObservedPlayer(p20, p21, p22)
 		task.spawn(function()
 			l__ClientSyncEvents__17.ItemAdded:fire(p23);
 		end);
-		return v24;
+		return v23;
 	end;
 	local function u21(p26)
-		local v25 = nil;
+		local v24 = nil;
 		print("hooking character..");
 		u19:DoCleaning();
-		local v26 = l__EntityUtil__14:getEntity(p26);
-		if not v26 then
+		local v25 = l__EntityUtil__14:getEntity(p26);
+		if not v25 then
 			error("character not found!");
 		end;
-		local function v27(p27)
-			for v28, v29 in ipairs(p27:GetChildren()) do
-				if u18[v29] == nil then
+		local function v26(p27)
+			for v27, v28 in ipairs(p27:GetChildren()) do
+				if u18[v28] == nil then
 					l__ClientStore__5:dispatch({
 						type = "InventoryAddItem", 
-						tool = v29
+						tool = v28
 					});
-					u20(v29);
+					u20(v28);
 				end;
 			end;
 			u19:GiveTask(p27.ChildAdded:Connect(function(p28)
@@ -220,12 +219,12 @@ function u1.hookObservedPlayer(p20, p21, p22)
 				end;
 			end));
 		end;
-		local v30 = v26:getInventoryFolder();
-		if v30 then
-			v27(v30);
+		local v29 = v25:getInventoryFolder();
+		if v29 then
+			v26(v29);
 		end;
-		u19:GiveTask(v26:inventoryFolderAddedEvent(function(p29)
-			v27(p29);
+		u19:GiveTask(v25:inventoryFolderAddedEvent(function(p29)
+			v26(p29);
 		end));
 		u19:GiveTask(p26.AncestryChanged:Connect(function(p30, p31)
 			if p31 == nil then
@@ -235,7 +234,7 @@ function u1.hookObservedPlayer(p20, p21, p22)
 		u19:GiveTask(function()
 			print("unhooking character.");
 		end);
-		local u22 = l__Maid__3.new();
+		local u22 = u3.new();
 		local function u23()
 			u22:DoCleaning();
 			l__ClientStore__5:dispatch({
@@ -246,7 +245,7 @@ function u1.hookObservedPlayer(p20, p21, p22)
 			u23();
 		end);
 		local function u24(p32)
-			local function v31(p33)
+			local function v30(p33)
 				u22:GiveTask(p33:GetAttributeChangedSignal("Amount"):Connect(function()
 					l__ClientStore__5:dispatch({
 						type = "ChestItemSetAmount", 
@@ -255,13 +254,13 @@ function u1.hookObservedPlayer(p20, p21, p22)
 					});
 				end));
 			end;
-			for v32, v33 in ipairs(p32:GetChildren()) do
-				if v33:IsA("Accessory") then
+			for v31, v32 in ipairs(p32:GetChildren()) do
+				if v32:IsA("Accessory") then
 					l__ClientStore__5:dispatch({
 						type = "ChestAddItem", 
-						itemInstance = v33
+						itemInstance = v32
 					});
-					v31(v33);
+					v30(v32);
 				end;
 			end;
 			u22:GiveTask(p32.ChildAdded:Connect(function(p34)
@@ -270,7 +269,7 @@ function u1.hookObservedPlayer(p20, p21, p22)
 						type = "ChestAddItem", 
 						itemInstance = p34
 					});
-					v31(p34);
+					v30(p34);
 				end;
 			end));
 			u22:GiveTask(p32.ChildRemoved:Connect(function(p35)
@@ -280,7 +279,7 @@ function u1.hookObservedPlayer(p20, p21, p22)
 				});
 			end));
 		end;
-		v25 = function(p36)
+		v24 = function(p36)
 			if p36.Value then
 				u24(p36.Value);
 			end;
@@ -293,12 +292,12 @@ function u1.hookObservedPlayer(p20, p21, p22)
 			end));
 		end;
 		if p26:FindFirstChild("ObservedChestFolder") then
-			v25((p26:FindFirstChild("ObservedChestFolder")));
+			v24((p26:FindFirstChild("ObservedChestFolder")));
 			return;
 		end;
 		u19:GiveTask(p26.ChildAdded:Connect(function(p38)
 			if p38.Name == "ObservedChestFolder" then
-				v25(p38);
+				v24(p38);
 			end;
 		end));
 	end;
@@ -314,11 +313,11 @@ function u1.hookObservedPlayer(p20, p21, p22)
 end;
 local l__InventoryUtil__25 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "inventory", "inventory-util").InventoryUtil;
 function u1.fullUpdateInventory(p40)
-	local l__observedPlayer__34 = l__ClientStore__5:getState().Inventory.observedPlayer;
-	if l__observedPlayer__34 then
+	local l__observedPlayer__33 = l__ClientStore__5:getState().Inventory.observedPlayer;
+	if l__observedPlayer__33 then
 		l__ClientStore__5:dispatch({
 			type = "InventoryFullUpdate", 
-			inventory = l__InventoryUtil__25.getInventory(l__observedPlayer__34)
+			inventory = l__InventoryUtil__25.getInventory(l__observedPlayer__33)
 		});
 	end;
 end;
@@ -329,25 +328,25 @@ function u1.setObservedPlayer(p41, p42)
 	});
 end;
 function u1.getEquippedArmor(p43, p44)
-	local v35 = nil;
-	local v36 = p44 or l__ClientStore__5:getState().Inventory.observedInventory.inventory.armor;
-	v35 = {};
-	local function v37(p45, p46)
+	local v34 = nil;
+	local v35 = p44 or l__ClientStore__5:getState().Inventory.observedInventory.inventory.armor;
+	v34 = {};
+	local function v36(p45, p46)
 		if p46 == "empty" then
 			return p45;
 		end;
-		local v38 = l__getItemMeta__11(p46.itemType);
-		if v38.armor then
-			p45[v38.armor.slot] = p46.itemType;
+		local v37 = l__getItemMeta__11(p46.itemType);
+		if v37.armor then
+			p45[v37.armor.slot] = p46.itemType;
 		end;
 		return p45;
 	end;
-	for v39 = 1, #v36 do
-		v35 = v37(v35, v36[v39], v39 - 1, v36);
+	for v38 = 1, #v35 do
+		v34 = v36(v34, v35[v38], v38 - 1, v35);
 	end;
-	return local v40;
+	return local v39;
 end;
-u2 = v2.KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

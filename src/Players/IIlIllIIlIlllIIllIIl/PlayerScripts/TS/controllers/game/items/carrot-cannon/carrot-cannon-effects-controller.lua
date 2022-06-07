@@ -1,9 +1,9 @@
--- Script Hash: de22bc8f9535dbcca45a980b73bf4cd607db1298fa99e571417fd7fd97999ad2b7e5d456b30c942a8caa151031085eaf
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v6 = setmetatable({}, {
@@ -40,7 +40,7 @@ local l__SoundManager__14 = v2.SoundManager;
 local l__GameSound__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:WaitFor("CarrotRocketExplode"):andThen(function(p3)
+	l__default__2.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
 			if p4.shooter ~= l__Players__3.LocalPlayer then
 				p2:playExplosion(p4.position);
@@ -76,7 +76,7 @@ function v6.KnitStart(p2)
 			end);
 		end);
 	end);
-	l__default__2.Client:OnEvent("EntityDamageEvent", function(p11)
+	l__default__2.Client:OnEvent("RemoteName", function(p11)
 		if p11.entityInstance.PrimaryPart and p11.fromEntity and p11.entityInstance ~= l__Players__3.LocalPlayer.Character and l__Players__3:GetPlayerFromCharacter(p11.fromEntity) == l__Players__3.LocalPlayer and p11.extra.paintBlast then
 			p2.hitMarkerOverflow = math.min(p2.hitMarkerOverflow + 1, 3);
 		end;

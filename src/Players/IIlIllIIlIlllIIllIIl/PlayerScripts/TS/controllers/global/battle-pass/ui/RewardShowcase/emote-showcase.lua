@@ -1,11 +1,11 @@
--- Script Hash: 5b5cd42b011b9810d92ab98dd84218905d3d94eab26e4d68fb1f4faeefe32418ffde9a046d83e650e4ab239eae88f38b
+-- Script Hash: ded72485d3667b82d8bea28e71f982bbe72a13d53d732793ca55bbeb7751a016f1dfaddd50377306d6a92f6823bb940c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local l__EmoteMeta__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "locker", "emote", "emote-meta").EmoteMeta;
 local u2 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__DeviceUtil__3 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).DeviceUtil;
-local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__KitViewport__5 = v1.import(script, script.Parent.Parent.Parent.Parent, "kit-shop", "ui", "misc", "kit-viewport").KitViewport;
 return {
 	EmoteShowcase = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u2)(function(p1, p2)

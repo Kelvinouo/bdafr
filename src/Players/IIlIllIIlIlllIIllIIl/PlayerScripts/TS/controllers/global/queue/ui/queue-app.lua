@@ -1,4 +1,4 @@
--- Script Hash: 99a29dbea3147c875249378492c6e76dbe3f28c65f9e7028022be0361f45e8c40eabe53c7694aae34eb575e7cb16ab03
+-- Script Hash: 3d409a352a993785a06856c1f5c719cfd0d8f30aa5a619e26fac5b18fd328c751fe8245a3ebf1fd5e82ea7a5896a37a2
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -9,7 +9,7 @@ function v3.init(p1)
 end;
 local l__QueueState__1 = v1.import(script, v1.getModule(script, "@easy-games", "lobby").out).QueueState;
 local l__QueueCard__2 = v1.import(script, script.Parent, "queue-card").QueueCard;
-local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 function v3.render(p2)
 	local v4 = {};
 	local v5 = false;

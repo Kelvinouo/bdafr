@@ -1,4 +1,4 @@
--- Script Hash: f3dff8b1ec9f4489d74cf1bbd6d67420b14cbefb7a48fd67f033b5ab677f0be9e3113667f4b9a8525c728e6d43105ef6
+-- Script Hash: 714d22965eaed2d68bd043f963f322e8fdcde20f1c3552134c66b6e4b91ada890acb1efe31e6fe0180a4514b01f8e540
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -58,6 +58,6 @@ function v4.promptBattlePassPurchase(p6)
 		l__MarketplaceService__6:PromptGamePassPurchase(l__Players__4.LocalPlayer, l__Gamepass__7.BATTLE_PASS_S4);
 	end;
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v4.new());
 return nil;

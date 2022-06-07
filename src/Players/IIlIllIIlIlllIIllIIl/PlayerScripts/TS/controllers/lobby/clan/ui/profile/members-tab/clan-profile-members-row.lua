@@ -1,11 +1,11 @@
--- Script Hash: 96aa317823de76a65037614646c2ba32622454e3e1334c86b0f41a1578992535d720303b7012d9d02ba6b6518fa1950d
+-- Script Hash: 25bd1694ffc1d369b56abda36e0724b9e2eba38aff7bc5f2a998dbf2f5509865ba11c7e1c163f31f88c3c530359c2258
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
 local l__ClanUtil__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "clan", "clan-util").ClanUtil;
 local l__ClanMemberRank__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "clan", "clan-member").ClanMemberRank;
-local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__Theme__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local u5 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__Empty__6 = v2.Empty;

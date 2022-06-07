@@ -1,8 +1,8 @@
--- Script Hash: 563605ef5360a9a44a77cf392a7606fe39068d82e1715c742af26583bf449b9fdda53e8673d187238ecdc4c6438b9988
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v5 = setmetatable({}, {
@@ -17,11 +17,11 @@ function v5.new(...)
 	return v6:constructor(...) and v6;
 end;
 local u1 = l__KnitController__4;
-local l__Maid__2 = v2.Maid;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v5.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "MidnightAbilityController";
-	p1.activeMidnightMaid = l__Maid__2.new();
+	p1.activeMidnightMaid = u2.new();
 end;
 local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__Players__4 = v3.Players;
@@ -56,7 +56,7 @@ local l__BedwarsKit__20 = v1.import(script, game:GetService("ReplicatedStorage")
 local l__default__21 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__3.Client:OnEvent("EntityDeathEvent", function(p3)
+	l__default__3.Client:OnEvent("RemoteName", function(p3)
 		if p3.entityInstance == l__Players__4.LocalPlayer.Character then
 			p2.activeMidnightMaid:DoCleaning();
 		end;
@@ -177,7 +177,7 @@ function v5.KnitStart(p2)
 end;
 local l__Flamework__26 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 function v5.onEnabled(p7)
-	local v25 = l__Maid__2.new();
+	local v25 = u2.new();
 	p7.kitMaid = v25;
 	l__default__21.Warn("Is using midnight kit");
 	v25:GiveTask(l__Flamework__26.resolveDependency("@easy-games/game-core:client/controllers/ability/ability-controller@AbilityController"):enableAbility(l__AbilityId__6.MIDNIGHT, {

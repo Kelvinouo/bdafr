@@ -1,4 +1,4 @@
--- Script Hash: ca2c32dc3aad81c3a7b400e91b2abb75ee30b7183b9a5137d30754bb77b36a6e679dc1fa9df00026ed7f53a49c6a009f
+-- Script Hash: c145c51822e14d2056cfa19b01157ffdf6cfbedfc1b4ff861b20c4942d1e096ec0700d947ff7c9c846b35531600c5338
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -109,6 +109,6 @@ function v4.closeFishingMinigameApp(p8)
 		end;
 	end;
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v4.new());
 return nil;

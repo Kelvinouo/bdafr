@@ -1,4 +1,4 @@
--- Script Hash: 8b3d48b227148eb3b21c03a71735aef77d0fb7a87e3c60f22494b11f4174a4436c93cd644557d466991ce9f715e32916
+-- Script Hash: 1f83290ba20376ab5d671593be8280b294c774609f56326da4ad36b5eb02852f41978b2b174dfbf8f450c1516c1b798b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -19,7 +19,7 @@ function v3.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "UpdraftEnchantController";
 end;
-local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__StatusEffectType__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "status-effect", "status-effect-type").StatusEffectType;
 local u4 = v1.import(script, script.Parent, "updraft-status-effect-handler").UpdraftStatusEffectHandler;
 function v3.KnitStart(p2)

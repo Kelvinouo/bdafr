@@ -40,7 +40,7 @@ function u1.requestSelfDamage(p3, p4, p5, p6, p7)
 	v5.banjo = p6;
 	l__default__3.Client:Get("RemoteName"):SendToServer(v5);
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

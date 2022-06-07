@@ -1,4 +1,4 @@
--- Script Hash: 1045f44484c4a19fc3464336c554f7b4d9779ac76c2594f2b099162e88870c1e7a39625f3d3e5efaf8c15ed4ce6491de
+-- Script Hash: 390eba0dd5ac514c6963fbbf0b337960c2cf068fe9266292e8d946fbfacf14eac29946b0d5183042d80b4690f023fec4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -6,7 +6,7 @@ local v2 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__CollectionService__1 = v2.CollectionService;
 local l__Players__2 = v2.Players;
 local l__PlaceUtil__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "place-util").PlaceUtil;
-local l__KnitServer__4 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitServer;
+local l__KnitServer__4 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitServer;
 local l__RankDistribution__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "rank", "rank-distribution").RankDistribution;
 local l__RankMeta__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "rank", "rank-meta").RankMeta;
 local l__HostPanelGeneralToggle__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "host-panel", "host-panel-settings.dto").HostPanelGeneralToggle;
@@ -145,7 +145,7 @@ return {
 				Size = UDim2.fromScale(0, 1), 
 				AutomaticSize = "X", 
 				TextColor3 = Color3.fromRGB(219, 219, 219), 
-				Font = Enum.Font.GothamSemibold, 
+				Font = Enum.Font.GothamMedium, 
 				BackgroundTransparency = 1, 
 				TextScaled = true, 
 				RichText = true, 
@@ -168,7 +168,7 @@ return {
 		v28.Size = UDim2.fromScale(v29, 1);
 		v28.AutomaticSize = "X";
 		v28.TextColor3 = Color3.fromRGB(255, 255, 255);
-		v28.Font = Enum.Font.GothamSemibold;
+		v28.Font = Enum.Font.GothamMedium;
 		v28.BackgroundTransparency = 1;
 		v28.TextScaled = true;
 		v28.RichText = true;

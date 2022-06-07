@@ -1,9 +1,9 @@
--- Script Hash: cfaa2692f2555b6efd27ebc6265b41c319b5162d92c1ae96af3383904945de8d4eb6f874ea606843b004f61ac26a20bb
+-- Script Hash: 7fa72b540b3d1cb1c7217c34a177496226c6f3296f08a1286ec2b285874e97bbd2139102971f81aa92f8b20e3578cba3
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local u2 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__ColorUtil__3 = v2.ColorUtil;
 local l__SoundManager__4 = v2.SoundManager;
@@ -40,7 +40,7 @@ return {
 			p1.SetTab(p1.Tab);
 			l__SoundManager__4:playSound(l__GameSound__5.UI_CLICK);
 		end;
-		local u7 = l__Maid__1.new();
+		local u7 = u1.new();
 		v5[u2.Event.MouseEnter] = function(p3)
 			if v4 then
 				return nil;

@@ -1,12 +1,12 @@
--- Script Hash: 39479016e38b218316e7c3d728d2755d2d5fbd04b11a72d8311119a17de24cb8b79a4bea4bf9d89df6e6ca83489bbf46
+-- Script Hash: deac705c687bf4a93e36ef12bb9628f3672f9bcc7a4e5fff91d70db23aed03568beab48a88110c1e2bda71336387befa
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local v3 = v2.Component:extend("UnmountDodoApp");
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v3.init(p1)
-	p1.maid = l__Maid__1.new();
+	p1.maid = u1.new();
 end;
 local l__Theme__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local l__UIUtil__3 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).UIUtil;

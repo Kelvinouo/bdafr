@@ -1,9 +1,9 @@
--- Script Hash: b8311c58fea423e48577094b85d3b830b7697cf6a38d7087a2a37dcb67faaa6bfb19d9a9691192c7395fac6b12ae4b21
+-- Script Hash: 3395a1e3085dee51e8ed74e4a76d416622362d2a15e96bb97831811933247ab9f601924123be6ab262e5db82649b0a74
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local l__KnitClient__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local u2 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__Empty__3 = v2.Empty;
 local l__BedwarsImageId__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "image", "image-id").BedwarsImageId;

@@ -1,8 +1,8 @@
--- Script Hash: 6ec33dc74fba6406b76e3d50f3d698af26c3472b6397066508aedb0d7cee7be36464147532dee83f91cd85c97b4d1eaf
+-- Script Hash: 493d173a2ee943ab9f9cd1f226157cacd54eba4d87a1cbca6103ab13a6ef15d25fcb1fa92339422673fb142c1bb84123
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v5 = setmetatable({}, {
@@ -25,7 +25,7 @@ function v5.KnitStart(p2)
 	u1.KnitStart(p2);
 end;
 local l__Workspace__2 = v3.Workspace;
-local l__Maid__3 = v2.Maid;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__RunService__4 = v3.RunService;
 local u5 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "screen-space");
 local l__KnitClient__6 = v2.KnitClient;
@@ -42,7 +42,7 @@ function v5.createVignette(p3, p4)
 	local v10 = p3:createVignettePart();
 	p3:initializeParticles(v10, p4.particleEmitters, Enum.NormalId.Top, p4.speed);
 	v10.Parent = l__Workspace__2.CurrentCamera;
-	local v11 = l__Maid__3.new();
+	local v11 = u3.new();
 	v11:GiveTask(l__RunService__4.RenderStepped:Connect(function()
 		if p4.shouldShow and p4.shouldShow() == false then
 			v7.CFrame = CFrame.new(math.huge, 0, 0);

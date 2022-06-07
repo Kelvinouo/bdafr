@@ -1,8 +1,8 @@
--- Script Hash: 18bf6993493db74c52afc04202412459102e92ebf5a0ae9628ee878a379ee70ca0a929c967c09da6647ea5cf2cfc5d23
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v5 = setmetatable({}, {
@@ -49,7 +49,7 @@ function u1.KnitStart(p2)
 		l__ContentProvider__7:PreloadAsync(v9);
 	end);
 	v1.Promise.defer(function()
-		l__default__8.Client:WaitFor("FetchServerRegion"):andThen(function(p4)
+		l__default__8.Client:WaitFor("RemoteName"):andThen(function(p4)
 			l__ClientStore__9:dispatch({
 				type = "SetServerRegion", 
 				serverRegion = p4:CallServer()

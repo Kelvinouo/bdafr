@@ -3,7 +3,7 @@
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local l__KnitClient__4 = v3.KnitClient;
 local v5 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__HandKnitController__6 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
@@ -20,11 +20,11 @@ function u1.new(...)
 	return v8:constructor(...) and v8;
 end;
 local u2 = l__HandKnitController__6;
-local l__Maid__3 = v3.Maid;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function u1.constructor(p1, ...)
 	u2.constructor(p1, ...);
 	p1.Name = "JadeHammerController";
-	p1.maid = l__Maid__3.new();
+	p1.maid = u3.new();
 end;
 function u1.KnitStart(p2)
 	u2.KnitStart(p2);

@@ -1,27 +1,26 @@
--- Script Hash: 165b4cf14c391a775430578a5407b99be87229454f9aaa4950d9f2ca8be1e1682b0c80c70c8e029e45788c358e615f46
+-- Script Hash: 70195d7d375b0568437f79fc86f2501fa0caf34f495f459bb215da8288044522a988bbfdf5d692f77cc7192a5d08c75e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
-local l__KnitController__3 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
-local v4 = setmetatable({}, {
+local l__KnitController__2 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
+local v3 = setmetatable({}, {
 	__tostring = function()
 		return "SpectateUIController";
 	end, 
-	__index = l__KnitController__3
+	__index = l__KnitController__2
 });
-v4.__index = v4;
-local u1 = v4;
+v3.__index = v3;
+local u1 = v3;
 function u1.new(...)
-	local v5 = setmetatable({}, u1);
-	return v5:constructor(...) and v5;
+	local v4 = setmetatable({}, u1);
+	return v4:constructor(...) and v4;
 end;
-local u2 = l__KnitController__3;
-local l__Maid__3 = v2.Maid;
+local u2 = l__KnitController__2;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function u1.constructor(p1)
 	u2.constructor(p1);
 	p1.Name = "SpectateUIController";
-	p1.maid = l__Maid__3.new();
+	p1.maid = u3.new();
 end;
 local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 local l__CreateRoduxApp__5 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "rodux", "create-rodux-app").CreateRoduxApp;
@@ -47,7 +46,7 @@ function u1.KnitStart(p2)
 		end);
 	end);
 end;
-u2 = v2.KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;

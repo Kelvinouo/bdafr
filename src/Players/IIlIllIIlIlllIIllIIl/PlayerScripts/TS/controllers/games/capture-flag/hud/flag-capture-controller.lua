@@ -3,7 +3,7 @@
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v6 = setmetatable({}, {
@@ -18,7 +18,7 @@ function v6.new(...)
 	return v7:constructor(...) and v7;
 end;
 local u1 = l__KnitController__5;
-local l__Maid__2 = v3.Maid;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v6.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "FlagCaptureController";
@@ -26,7 +26,7 @@ function v6.constructor(p1)
 	p1.flagMap = {};
 	p1.flagLocation = {};
 	p1.cooldown = 0;
-	p1.slowMaid = l__Maid__2.new();
+	p1.slowMaid = u2.new();
 end;
 local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
@@ -45,7 +45,7 @@ local l__RunService__16 = v4.RunService;
 local l__CollectionTagAdded__17 = v2.CollectionTagAdded;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	local u18 = l__Maid__2.new();
+	local u18 = u2.new();
 	l__default__3.Client:WaitFor("RemoteName"):expect():Connect(function(p3)
 		if p3.matchState == l__MatchState__5.RUNNING and l__ClientStore__4:getState().Game.queueType == l__QueueType__6.FLAG_CAPTURE then
 			local u19 = u7.mount(l__ScoreBoardWrapper__8(), l__Players__9.LocalPlayer:WaitForChild("PlayerGui"));

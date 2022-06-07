@@ -1,27 +1,26 @@
--- Script Hash: 3272e2308470866e138a3ee6716900438d7181d82756715ec9cdf3ade04e9afda3776eac0f7844f61033714614041122
+-- Script Hash: 169d66416ae7e8534bf7d935b30034a0f8c1b3236a0435c728bc170a2c9c229366bf44e7caf2bbd1c6b311be3339c281
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
-local v3 = v1.import(script, script.Parent.Parent.Parent.Parent, "global", "combat", "projectile", "projectile-source-controller").ProjectileSourceController;
-local v4 = setmetatable({}, {
+local v2 = v1.import(script, script.Parent.Parent.Parent.Parent, "global", "combat", "projectile", "projectile-source-controller").ProjectileSourceController;
+local v3 = setmetatable({}, {
 	__tostring = function()
 		return "LassoController";
 	end, 
-	__index = v3
+	__index = v2
 });
-v4.__index = v4;
-local u1 = v4;
+v3.__index = v3;
+local u1 = v3;
 function u1.new(...)
-	local v5 = setmetatable({}, u1);
-	return v5:constructor(...) and v5;
+	local v4 = setmetatable({}, u1);
+	return v4:constructor(...) and v4;
 end;
-local u2 = v3;
-local l__Maid__3 = v2.Maid;
+local u2 = v2;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function u1.constructor(p1, ...)
 	u2.constructor(p1, ...);
 	p1.Name = "LassoController";
-	p1.stopChargingMaid = l__Maid__3.new();
+	p1.stopChargingMaid = u3.new();
 end;
 local l__ClientSyncEvents__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
 local l__Flamework__5 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
@@ -42,10 +41,10 @@ end;
 function u1.onEnable(p6, p7, p8)
 	u2.onEnable(p6, p7, p8);
 	p6:setupYield(function()
-		local v6 = l__Maid__3.new();
-		v6:GiveTask(l__Flamework__5.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):createCooldownBar(l__CooldownId__6.LASSO_THROW));
+		local v5 = u3.new();
+		v5:GiveTask(l__Flamework__5.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):createCooldownBar(l__CooldownId__6.LASSO_THROW));
 		return function()
-			v6:DoCleaning();
+			v5:DoCleaning();
 		end;
 	end);
 end;
@@ -55,10 +54,10 @@ local l__AnimationType__11 = v1.import(script, game:GetService("ReplicatedStorag
 local l__SoundManager__12 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).SoundManager;
 local l__GameSound__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function u1.onStartCharging(p9)
-	local v7 = l__GameAnimationUtil__9.playAnimation(l__Players__10.LocalPlayer, l__AnimationType__11.LASSO_CHARGE, {
+	local v6 = l__GameAnimationUtil__9.playAnimation(l__Players__10.LocalPlayer, l__AnimationType__11.LASSO_CHARGE, {
 		looped = true
 	});
-	if v7 then
+	if v6 then
 		local u14 = true;
 		v1.Promise.defer(function()
 			while v1.Promise.delay(0.5):await() and u14 do
@@ -70,7 +69,7 @@ function u1.onStartCharging(p9)
 			return u14;
 		end);
 		p9.stopChargingMaid:GiveTask(function()
-			v7:Stop();
+			v6:Stop();
 		end);
 	end;
 end;
@@ -83,7 +82,7 @@ end;
 function u1.onStartReload(p12)
 
 end;
-u2 = v2.KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;

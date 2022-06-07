@@ -1,4 +1,4 @@
--- Script Hash: 3b8f2ed51727d7acacbbce0ce4260c3795ee650c19c6cf1388fdc7ee74d5a5ae3dbe70bc8f113a74261094e6db3d5937
+-- Script Hash: 52b3838ed20aa704a9ac1accf7a9b90790c77018969fb1803856bdcb764ae8eb0f5e2d1c25261101e27be98d6af751e1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -53,6 +53,6 @@ function v4.handleTexture(p5, p6, p7)
 		end;
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v4.new());
 return nil;

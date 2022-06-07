@@ -1,4 +1,4 @@
--- Script Hash: a7b1a7159dcdc8d16721ce43aa1d3269901c6351a44e63ca2b2893bb944a3509b803bfe151b7ea88809e5ac58cafe8a1
+-- Script Hash: f365b67ff85679de5921bd59dbf20ae247c0e3bbc8bfacb98b5ad529eac93ae2b04a5619609110eb8e4e112f5ae92f20
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -30,7 +30,7 @@ local l__Workspace__7 = v4.Workspace;
 local l__ModelUtil__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "model-util").ModelUtil;
 local l__InOutExpo__9 = v3.InOutExpo;
 local l__GameQueryUtil__10 = v2.GameQueryUtil;
-local l__KnitClient__11 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__11 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__CameraPerspective__12 = v1.import(script, script.Parent.Parent.Parent.Parent, "global", "first-person", "camera-perspective").CameraPerspective;
 local l__RunService__13 = v4.RunService;
 local l__default__14 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;

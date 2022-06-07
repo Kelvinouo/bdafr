@@ -1,8 +1,8 @@
--- Script Hash: eb9917192364ba7492ee5b6528e98ab7c927dabea96777d34963726b2ddcf1db21f5b3b98fa9c1e46ac276b93428c930
+-- Script Hash: d87bb7c750c24cad18a5e1bf39f6c4e8646a9ebea7852578c8f8cd0e3b6dac78f5eda85e429733ed1c7aa01ba616eb92
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local u2 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__VendingMachineApp__3 = v1.import(script, script.Parent, "vending-machine-app").VendingMachineApp;
 return {
@@ -12,7 +12,7 @@ return {
 		local v5, v6 = l__useState__2(p1.vendingMachine:GetAttribute("ChoosenReward"));
 		local v7, v8 = l__useState__2(p1.vendingMachine:GetAttribute("VendingMachineDispenseTime"));
 		p2.useEffect(function()
-			local v9 = l__Maid__1.new();
+			local v9 = u1.new();
 			v9:GiveTask(p1.vendingMachine:GetAttributeChangedSignal("VendingMachineState"):Connect(function()
 				v4(p1.vendingMachine:GetAttribute("VendingMachineState"));
 			end));

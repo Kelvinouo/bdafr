@@ -1,4 +1,4 @@
--- Script Hash: b0fd15db9d0ac2b7406c7a82537e6575ed228a15099a678d182472471973dc2e5a43e73b549b56ad42867b87fce2ee92
+-- Script Hash: aa62e5f111ef5787003d06b5b842628e497448571c35c6d34e3e3f731c3973d4c112f4e46c1099fbeeca2e1fcbcfe9dd
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -21,7 +21,7 @@ function v5.constructor(p1, ...)
 	u1.constructor(p1, ...);
 end;
 local l__Players__2 = v3.Players;
-local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__SoundManager__4 = v2.SoundManager;
 local l__GameSound__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 local l__ReplicatedStorage__6 = v3.ReplicatedStorage;

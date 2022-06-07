@@ -2,7 +2,7 @@
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v5 = setmetatable({}, {
@@ -18,12 +18,12 @@ function u1.new(...)
 	return v6:constructor(...) and v6;
 end;
 local u2 = l__KnitController__4;
-local l__Maid__3 = v2.Maid;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function u1.constructor(p1, ...)
 	u2.constructor(p1, ...);
 	p1.Name = "LumenKitController";
 	p1.upgradeRequirement = 10;
-	p1.maid = l__Maid__3.new();
+	p1.maid = u3.new();
 end;
 local l__default__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__ClientStore__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;

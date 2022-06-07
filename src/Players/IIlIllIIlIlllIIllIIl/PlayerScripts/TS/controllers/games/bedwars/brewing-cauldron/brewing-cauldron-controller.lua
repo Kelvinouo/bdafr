@@ -29,7 +29,7 @@ local l__Workspace__3 = v2.Workspace;
 local l__default__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__CraftingStatus__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "crafting-entity", "crafting-entity-types").CraftingStatus;
 local l__Players__6 = v2.Players;
-local l__KnitClient__7 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__7 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 function v4.KnitStart(p2)
 	u1.KnitStart(p2);
 	local v6 = l__CollectionService__2:GetTagged("brewing_cauldron");

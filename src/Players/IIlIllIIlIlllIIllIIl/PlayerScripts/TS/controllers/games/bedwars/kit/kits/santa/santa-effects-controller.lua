@@ -1,4 +1,4 @@
--- Script Hash: 2adbaa6f9649479a915b58fe17470a3bfbd13c2fbd0ec8e2865c4944944c297bd2342413e6ddee4d87cfa66d5195ea99
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -32,7 +32,7 @@ local l__SantaUtil__9 = v1.import(script, game:GetService("ReplicatedStorage"), 
 local l__Linear__10 = v1.import(script, v1.getModule(script, "@rbxts", "easing-functions")).Linear;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:WaitFor("SantaStrafeEffect"):andThen(function(p3)
+	l__default__2.Client:WaitFor("RemoteName"):andThen(function(p3)
 		return p3:Connect(function(p4)
 			local v7 = l__ReplicatedStorage__3.Assets.Misc:WaitForChild("santa"):WaitForChild("santa_sleigh"):Clone();
 			v7.Parent = l__Workspace__4;
@@ -75,6 +75,6 @@ function v5.KnitStart(p2)
 		end);
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());
 return nil;

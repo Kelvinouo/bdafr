@@ -2,7 +2,7 @@
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__MASS_HAMMER__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "cooldown", "cooldown-id").CooldownId.MASS_HAMMER;
 local l__HandKnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
@@ -18,11 +18,11 @@ function v6.new(...)
 	return v7:constructor(...) and v7;
 end;
 local u1 = l__HandKnitController__5;
-local l__Maid__2 = v2.Maid;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v6.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "MassHammerController";
-	p1.maid = l__Maid__2.new();
+	p1.maid = u2.new();
 	p1.cooldownHasEnded = true;
 	p1.hasWeapon = false;
 end;
@@ -46,7 +46,7 @@ function v6.KnitStart(p2)
 		if p2.useAbilityMaid ~= nil then
 			return nil;
 		end;
-		p2.useAbilityMaid = l__Maid__2.new();
+		p2.useAbilityMaid = u2.new();
 		p2.useAbilityMaid:GiveTask((l__Flamework__4.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(u5.createElement(l__ActionButton__6, {
 			actionName = "use-mass_hammer", 
 			interactionKey = Enum.KeyCode.F, 

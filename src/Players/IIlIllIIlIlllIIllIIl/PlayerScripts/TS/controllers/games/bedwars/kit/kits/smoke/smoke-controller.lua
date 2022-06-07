@@ -1,4 +1,4 @@
--- Script Hash: 94ca3209dc70c5cca30294446d09d6e756a5e33b915d87c38ebb8bcf312aed5d5829ef8f2bc2a2b9e747085c2fd9f34c
+-- Script Hash: 8a8c6387b34615959121a2e24c82261bc50a9bc2288a4f05cafc49e0938fb7cc2225ebd0d9118015e119a38f964f4cb8
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -19,7 +19,7 @@ function v3.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "SmokeController";
 end;
-local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__StatusEffectType__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "status-effect", "status-effect-type").StatusEffectType;
 local l__SmokeStatusEffectHandler__4 = v1.import(script, script.Parent, "smoke-status-effect-handler").SmokeStatusEffectHandler;
 function v3.KnitStart(p2)

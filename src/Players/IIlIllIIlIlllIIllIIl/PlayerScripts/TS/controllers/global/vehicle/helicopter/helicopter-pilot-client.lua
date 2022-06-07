@@ -1,4 +1,4 @@
--- Script Hash: 8773115d71fd448bbe0daccbc761b6593f27e5ad9fe1700e01693e1d8daca154b7c27a248fddb3c051cc0fa770efb9fa
+-- Script Hash: d7ccfbe7a00dc1d4f4da99347956f10c0a1a12ad2031661c6715d3f85780a62e7d9132f72f874b8d8c7aab36dfdc9dc3
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -17,7 +17,7 @@ function v5.new(...)
 	return v6:constructor(...) and v6;
 end;
 local u1 = l__VehicleClient__4;
-local l__Maid__2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local u3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "pid");
 local l__Workspace__4 = v2.Workspace;
 local l__Players__5 = v2.Players;
@@ -34,7 +34,7 @@ local u13 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__HelicopterUi__14 = v1.import(script, script.Parent, "helicopter-ui").HelicopterUi;
 function v5.constructor(p6, p7)
 	u1.constructor(p6, p7);
-	p6.maid = l__Maid__2.new();
+	p6.maid = u2.new();
 	p6.pitchPid = u3.new(-5, 5, 0.04, 0, 0.03);
 	p6.yawPid = u3.new(-10, 10, 0.009, 0, 0);
 	p6.rollPid = u3.new(-10, 10, 0.07, 0, 0);
@@ -46,7 +46,7 @@ function v5.constructor(p6, p7)
 	p6.holdingDown = false;
 	p6.entryTime = l__Workspace__4:GetServerTimeNow();
 	p6.enginePowerScale = 0.6;
-	p6.maid = l__Maid__2.new();
+	p6.maid = u2.new();
 	local l__Character__7 = l__Players__5.LocalPlayer.Character;
 	if not l__Character__7 then
 		return nil;

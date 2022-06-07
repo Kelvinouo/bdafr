@@ -1,4 +1,4 @@
--- Script Hash: 5bcaf9f9aea3bf9ed8d27bf1c6f6940c48252e39cda9285f856346f06715871c6c0a4df5bb1dec24ea8b2930c493c86c
+-- Script Hash: b0b5a2300e515fce361c544631c7c4b1a9075fdc069e6702ff8e61d98bd87fb58f39cafb6fa2780ea72044f94ea65480
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -41,7 +41,7 @@ function u1.playAnimation(p7, p8)
 		v6:AdjustSpeed(1);
 	end;
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

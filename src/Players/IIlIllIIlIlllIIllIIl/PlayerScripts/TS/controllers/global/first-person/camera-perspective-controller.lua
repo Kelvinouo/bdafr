@@ -1,4 +1,4 @@
--- Script Hash: 2bc80f3334555aee424a7c146494a39fc120fda84610da9cd07761a244085be947b7d4f92728a046bd19c4afd710c7cd
+-- Script Hash: 440f1ba0cc3bd1ffc7012608b3c497cc44eb1d5b89a490401dd4d8fd62c9545e07144bc5bf1018f7e3babda6e159f01e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -47,7 +47,7 @@ end;
 function u1.getCameraPerspective(p5)
 	return p5.cachedCameraPerspective;
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

@@ -1,8 +1,8 @@
--- Script Hash: ddb74479faba2597626f7dfc66099466d513e4fdee1c07a390ffc984342c5046a8fcb258e64835fd1e0682c309da6a99
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local l__KnitClient__3 = v2.KnitClient;
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__HandKnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
@@ -19,12 +19,12 @@ function u1.new(...)
 	return v7:constructor(...) and v7;
 end;
 local u2 = l__HandKnitController__5;
-local l__Maid__3 = v2.Maid;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function u1.constructor(p1)
 	u2.constructor(p1);
 	p1.Name = "EngineerTabletController";
 	p1.nextAllowActivation = -1;
-	p1.maid = l__Maid__3.new();
+	p1.maid = u3.new();
 end;
 local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function u1.KnitStart(p2)
@@ -103,7 +103,7 @@ function u1.attemptToActivate(p5)
 		end;
 	end);
 	p5:setupYield(function()
-		local u20 = l__default__15.Client:Get("EntityDamageEvent"):Connect(function(p7)
+		local u20 = l__default__15.Client:Get("RemoteName"):Connect(function(p7)
 			if l__Players__7.LocalPlayer.Character and p7.entityInstance == l__Players__7.LocalPlayer.Character then
 				p5.maid:DoCleaning();
 			end;

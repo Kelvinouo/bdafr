@@ -1,8 +1,8 @@
--- Script Hash: 548d7811f6961d3e3baf273b53692ab7719270939fe001ff48e7bcb9f7e29423d1e9405ec148e5d2346a01262ae530f8
+-- Script Hash: d481f870ebaff64d03e93ed901aa7b5c5ca9f6d84622485a44102827481bbacdd169585f6505f74329c9fcb6a26a7cbc
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local l__KnitController__3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v4 = setmetatable({}, {
 	__tostring = function()
@@ -16,11 +16,11 @@ function v4.new(...)
 	return v5:constructor(...) and v5;
 end;
 local u1 = l__KnitController__3;
-local l__Maid__2 = v2.Maid;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v4.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "EffectBootsController";
-	p1.maid = l__Maid__2.new();
+	p1.maid = u2.new();
 end;
 local l__ClientStore__3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 local l__ItemType__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;

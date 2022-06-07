@@ -131,6 +131,6 @@ function v5.attemptLaunch(p6, p7, p8)
 		l__ClientSyncEvents__11.LaunchPadUsed:fire(p7);
 	end;
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());
 return nil;

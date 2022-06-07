@@ -1,10 +1,10 @@
--- Script Hash: 53dea4dad660cb088dffaea799a6c76979cab781a970d37bfa449e62ee41a32d13a92ed773ad3cee86e02522faad649a
+-- Script Hash: 457e0d88384bcc6fcbda48cdd86bb42ee999f2375364f497a65bc7b2ab105618eb8be251d91841c7f5537d82e062e9b1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
 local l__DeviceUtil__1 = v2.DeviceUtil;
-local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local u3 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__DropdownComponent__4 = v2.DropdownComponent;
 local u5 = UDim2.new(1, 0, 0, 50);

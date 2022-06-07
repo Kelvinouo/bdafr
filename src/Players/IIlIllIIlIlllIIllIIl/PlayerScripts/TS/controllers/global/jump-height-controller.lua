@@ -134,6 +134,6 @@ end;
 function v5.getJumpModifier(p12)
 	return p12.jumpModifier;
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());
 return nil;

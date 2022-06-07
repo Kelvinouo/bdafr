@@ -1,4 +1,4 @@
--- Script Hash: 2fef0575e5b2f2aa6518a1fe63411155241f15f09139e05422db0767bc7525c05fc027ada0d2942b898f92b229134fca
+-- Script Hash: 6f3967d56562c04822816f04736de145b446a8a870bb563d85c686722073e3416b5ad2065aa173526e6ec004fe941bed
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -19,7 +19,7 @@ function v3.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "NoKnockbackEnchantController";
 end;
-local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__StatusEffectType__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "status-effect", "status-effect-type").StatusEffectType;
 local u4 = v1.import(script, script.Parent, "no-knockback-status-effect-handler").NoKnockbackStatusEffectHandler;
 function v3.KnitStart(p2)

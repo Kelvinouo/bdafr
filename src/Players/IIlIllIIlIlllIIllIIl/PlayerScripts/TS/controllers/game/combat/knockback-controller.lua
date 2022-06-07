@@ -1,4 +1,4 @@
--- Script Hash: d128cac323f7c3652e2baf29c8971f23aeee88ddf77de983fe15d41478e662224c34a0aa5f5ee3d7e34328db39906d73
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -28,7 +28,7 @@ local l__Players__5 = v2.Players;
 local l__Workspace__6 = v2.Workspace;
 local l__KnockbackUtil__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "damage", "knockback-util").KnockbackUtil;
 function u1.KnitStart(p2)
-	l__default__3.Client:WaitFor("EntityDamageEvent"):andThen(function(p3)
+	l__default__3.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
 			debug.profilebegin("knockback");
 			if p4.damageType ~= l__DamageType__4.FALL and p4.entityInstance == l__Players__5.LocalPlayer.Character then
@@ -66,7 +66,7 @@ function u1.KnitStart(p2)
 		end);
 	end);
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

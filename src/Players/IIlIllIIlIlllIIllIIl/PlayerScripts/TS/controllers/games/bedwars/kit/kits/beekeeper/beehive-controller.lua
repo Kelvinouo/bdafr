@@ -1,9 +1,9 @@
--- Script Hash: e757bbf621f5699f0ab72cd36652272a04912a3cf51d76f2c8fdda41b103372af58cf6edd6aeceac696d00bc32e8d26a
+-- Script Hash: deb3bb87fd5d6c67ea08a90ebd5b0ea0d968cfe8b7157757964dd42a62e9b0756a2571a5a551ddeefc43d2dc329efdda
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v6 = setmetatable({}, {
@@ -24,14 +24,14 @@ function v6.constructor(p1)
 	p1.beehiveData = {};
 end;
 local l__CollectionTagAdded__2 = v2.CollectionTagAdded;
-local l__Maid__3 = v3.Maid;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__SoundManager__4 = v2.SoundManager;
 local l__GameSound__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 local l__CollectionService__6 = v4.CollectionService;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
 	l__CollectionTagAdded__2("beehive", function(p3)
-		local v8 = l__Maid__3.new();
+		local v8 = u3.new();
 		p2.beehiveData[p3] = {
 			bees = {}, 
 			maid = v8

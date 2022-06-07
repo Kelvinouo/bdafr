@@ -34,7 +34,7 @@ local l__SnapTrapState__10 = v1.import(script, game:GetService("ReplicatedStorag
 local l__default__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__ContentProvider__12 = v3.ContentProvider;
 local l__WatchCharacter__13 = v2.WatchCharacter;
-local l__KnitClient__14 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__14 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__BedwarsImageId__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "image", "image-id").BedwarsImageId;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);

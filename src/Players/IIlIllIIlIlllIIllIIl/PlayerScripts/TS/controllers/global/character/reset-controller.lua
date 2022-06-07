@@ -44,7 +44,7 @@ function u1.createBindable(p4)
 	end);
 	return v7;
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2(u1());
 u2 = nil;

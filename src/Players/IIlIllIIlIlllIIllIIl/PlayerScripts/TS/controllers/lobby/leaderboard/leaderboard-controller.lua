@@ -1,4 +1,4 @@
--- Script Hash: 54b06775b62b29043bca7e74e9c803d69666c558fd4c8e12cdc105bd421077963dfccb0dbfd79b5585216f9547a327de
+-- Script Hash: d14c60e663c8928facb11f7465a40f8d8c923aadfd740ca057f3ab9749f718039b0db4dc6e73073858474c0b79736275
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -35,7 +35,7 @@ function u1.updateLeaderboardStore(p4, p5)
 		leaderboards = p5
 	});
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

@@ -1,4 +1,4 @@
--- Script Hash: 5ac74ac4764899c0549adb587d8736434fd19603456edc9cd6c8a05b0477bee138bee8405e8aed0cdd6f42921137b045
+-- Script Hash: 11931b76b650d39a41e313fd8b8a0a7b7a195723a28235260c807e5f83b45ad20f74be065390c4811dcd8935cd3a5921
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -6,7 +6,7 @@ local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").ou
 local v3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "clan", "upgrade", "clan-upgrade-meta");
 local l__ClanUpgradeTypeMeta__1 = v3.ClanUpgradeTypeMeta;
 local l__ClanUpgradeMeta__2 = v3.ClanUpgradeMeta;
-local l__Maid__3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local u4 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__Theme__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local l__SoundManager__6 = v2.SoundManager;
@@ -38,7 +38,7 @@ return {
 		v9.BorderMode = "Inset";
 		v9.LayoutOrder = 1;
 		v9.AutoButtonColor = false;
-		local u10 = l__Maid__3.new();
+		local u10 = u3.new();
 		v9[u4.Event.Activated] = function(p3)
 			p1.OnClick(p1.UpgradeTier);
 			l__SoundManager__6:playSound(l__GameSound__7.UI_CLICK);

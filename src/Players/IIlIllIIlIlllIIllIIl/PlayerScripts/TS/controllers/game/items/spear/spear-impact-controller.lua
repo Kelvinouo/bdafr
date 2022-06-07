@@ -1,8 +1,8 @@
--- Script Hash: b463ed39cb95d10014bf548d6060c0134741a27f45ce83a393fbd57cbade0a75352d57d27e1595a918b3495e57b3d8af
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v5 = setmetatable({}, {
@@ -23,7 +23,7 @@ function v5.constructor(p1, ...)
 	p1.random = Random.new();
 end;
 local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-local l__Maid__3 = v2.Maid;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__SoundManager__4 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).SoundManager;
 local l__GameSound__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 local l__ReplicatedStorage__6 = v3.ReplicatedStorage;
@@ -34,8 +34,8 @@ local u10 = v1.import(script, v1.getModule(script, "@rbxts", "lightning-beams").
 local l__KnitClient__11 = v2.KnitClient;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("SpearImpactEffect", function(p3)
-		local v7 = l__Maid__3.new();
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
+		local v7 = u3.new();
 		l__SoundManager__4:playSound(l__GameSound__5.SPEAR_HIT, {
 			position = p3.position, 
 			rollOffMaxDistance = 100

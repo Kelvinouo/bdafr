@@ -1,4 +1,4 @@
--- Script Hash: 80b19ba035817f3bfa48d779bbaf56a830d5de141dc138a4f76f49b5a86f7d0e3033742ad16c702028c45df41e21631f
+-- Script Hash: ffd5702b4a8b4fb44056dcc15fbd38fdbbe6c88b53b82a698c979d75b9d78a2c67565cb6c85d898166ef9a6b70b05c18
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -175,7 +175,7 @@ function u1.getColorTheme(p27, p28)
 		Neon = l__ColorUtil__18.hexColor(13591065)
 	};
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;

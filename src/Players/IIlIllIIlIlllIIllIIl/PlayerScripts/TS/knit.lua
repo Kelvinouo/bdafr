@@ -1,4 +1,4 @@
--- Script Hash: eb1c559ad4ac1bcf073184415f885039087347312a4760e7241285bfbf77c1978aac649bdb3a74585f8f6222a3410b5e
+-- Script Hash: a58e185c1fefba1568318937ff09cdf83279b19e4d550a97b7e181eab5a80c9d4c4e5a2e943668b02f6668103bc1f5f2
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -7,7 +7,7 @@ local l__ClientBlockEngine__2 = v1.import(script, script.Parent, "lib", "block-e
 local l__SharedModules__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "shared-modules", "shared-modules").SharedModules;
 local l__PlaceUtil__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "place-util").PlaceUtil;
 local l__patchKnitClient__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "knit", "patch-knit").patchKnitClient;
-local l__KnitClient__6 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__6 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local u7 = v1.import(script, v1.getModule(script, "@rbxts", "string-utils"));
 local u8 = v1.import(script, v1.getModule(script, "@rbxts", "inspect").inspect);
 return {

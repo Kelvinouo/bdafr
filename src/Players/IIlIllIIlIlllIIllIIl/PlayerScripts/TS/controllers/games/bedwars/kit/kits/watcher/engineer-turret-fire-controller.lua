@@ -1,8 +1,8 @@
--- Script Hash: f626d4f27428dd95e45481fac2a65b307801f83155dc8b21c446c0c6d0a2e8757e30bd0d59f716f04b379ebd726ff41c
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local l__KnitClient__3 = v2.KnitClient;
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
@@ -19,13 +19,13 @@ function u1.new(...)
 	return v7:constructor(...) and v7;
 end;
 local u2 = l__KnitController__5;
-local l__Maid__3 = v2.Maid;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function u1.constructor(p1)
 	u2.constructor(p1);
 	p1.Name = "CameraTurretFireController";
 	p1.mouseDown = false;
 	p1.nextAllowedShot = -1;
-	p1.maid = l__Maid__3.new();
+	p1.maid = u3.new();
 end;
 local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 local l__UserInputService__5 = v4.UserInputService;
@@ -72,9 +72,9 @@ function u1.KnitStart(p2)
 			end;
 		end);
 	end);
-	l__default__9.Client:OnEvent("EntityDamageEvent", function(p12)
+	l__default__9.Client:OnEvent("RemoteName", function(p12)
 		if p12.extra.projectileData and p12.extra.projectileData.projectileType == "turretBullet" and p12.entityInstance == l__Players__10.LocalPlayer.Character then
-			local v11 = l__Maid__3.new();
+			local v11 = u3.new();
 			v11:GiveTask(l__KnitClient__3.Controllers.SprintController:getMovementStatusModifier():addModifier({
 				moveSpeedMultiplier = 0.5
 			}));

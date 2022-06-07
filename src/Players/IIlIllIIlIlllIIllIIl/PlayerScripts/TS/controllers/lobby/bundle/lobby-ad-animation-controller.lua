@@ -1,4 +1,4 @@
--- Script Hash: d21e4f3f00feaa3686d7c9980b9d0c4185bd8b70bc076b618d44e499e7001b5812fb26ed3bfcb43326818ca513bad4c0
+-- Script Hash: 2c92e20cdb84ef690b5246be40fc1d51310200cafadc1c2022810ce63b2ce12395405558268e16538ded35e55beb492f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -57,6 +57,6 @@ function v4.KnitStart(p2)
 		v7:Play();
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v4.new());
 return nil;

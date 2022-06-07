@@ -1,4 +1,4 @@
--- Script Hash: 1a41e416eb2235dd65e5f5bbcad9267dc4a5ceba527b7bbbd7c376473dbab23b690c86105f6e03296e778607a192bc57
+-- Script Hash: 377de251c379f403ed21c8e799e7dd0a00e3b3e81e674b3e68ad0b514b8a2df24ce13e4dd6c5d6c0c398adb27eae6522
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -7,7 +7,7 @@ local v3 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local v4 = v3.Component:extend("EngineerCameraView");
 local u1 = v1.import(script, v1.getModule(script, "@rbxts", "flipper").src);
 local l__ClientStore__2 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
-local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 function v4.init(p1, p2)
 	p1.filmTransparencyMotor = u1.SingleMotor.new(0.9);
 	local v5, v6 = v3.createBinding(0.9);

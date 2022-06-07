@@ -1,4 +1,4 @@
--- Script Hash: caa8d987cfbef65520fee49db29e19dd7b3fda9298aeea90c97e9fadd9ae56773bbb826f9a84ba243e261a8a6f8ff47e
+-- Script Hash: ed801537559461e3375f2571eba132780356e77f48aba53c6a718041b3e3fa722e7460e2f9324da4370e05af9ea714f2
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -10,7 +10,7 @@ local u4 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__AutoCanvasScrollingFrame__5 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).AutoCanvasScrollingFrame;
 local l__GameUpdatePromoCard__6 = v1.import(script, script.Parent, "promo-card", "game-update-promo-card").GameUpdatePromoCard;
 local l__BattlePassUtils__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-utils").BattlePassUtils;
-local l__KnitClient__8 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__8 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 return {
 	GameUpdatePromoCardsList = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u4)(function(p1, p2)
 		local v3, v4 = p2.useState(nil);

@@ -1,4 +1,4 @@
--- Script Hash: 4d1ecc67a07fa336ab1595a007dcb766d984453eca36ec8f0680f3c21ee42c63c18f3acebb2e093cabf38753ffd2f787
+-- Script Hash: fb9a7d63d3d164391dd7d5df9ebd1f793ddefbf32034339b02394b5cc65d082ddf53830063c439a2b9025c1cf6500bb4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -6,11 +6,11 @@ local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").ou
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local v5 = v3.Component:extend("HotbarHealthbar");
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v5.init(p1, p2)
 	p1.progressFrame = v3.createRef();
-	p1.maid = l__Maid__1.new();
-	p1.characterMaid = l__Maid__1.new();
+	p1.maid = u1.new();
+	p1.characterMaid = u1.new();
 	p1:setState({
 		health = 100, 
 		shield = 0

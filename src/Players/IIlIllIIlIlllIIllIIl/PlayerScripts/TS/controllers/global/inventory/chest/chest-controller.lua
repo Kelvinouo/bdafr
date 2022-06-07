@@ -1,4 +1,4 @@
--- Script Hash: 1cb2caaf286c3e3fd4764c21e5271b70cb3c62180d04dfa54aec766ba0855518ca67ef77470a7e8277a1bc2299b87791
+-- Script Hash: 492e771fd88dea8bd5c613267d7c1bb6d9e85157393c53d1be3c4a99e84d1518c075a5a2b60e6b617e57ed1ce1427206
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -87,6 +87,6 @@ function v5.openChest(p7, p8)
 		l__default__15.Client:GetNamespace("Inventory"):Get("SetObservedChest"):SendToServer(p8);
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());
 return nil;

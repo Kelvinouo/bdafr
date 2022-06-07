@@ -1,4 +1,4 @@
--- Script Hash: e143c52707426195a2a0aafacf7035d753163790543862178087b912df95df488243734597471568cc038906f6a16c2b
+-- Script Hash: 21cbb0ea11e62b10d9d65d2085345eefcf517fb92c17f855a473bd9ad2da50f034680a207cd6b500eb114d3b0f551e85
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -61,7 +61,7 @@ function u1.onDisable(p7)
 
 end;
 u1.ITEMS = { l__ItemType__3.IRON, l__ItemType__3.DIAMOND, l__ItemType__3.EMERALD, l__ItemType__3.ARROW, l__ItemType__3.TELEPEARL, l__ItemType__3.TNT, l__ItemType__3.STONE_BRICK, l__ItemType__3.BLASTPROOF_CERAMIC, l__ItemType__3.WOOD_PLANK_OAK, l__ItemType__3.OBSIDIAN, l__ItemType__3.SLIME_BLOCK };
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

@@ -1,4 +1,4 @@
--- Script Hash: b7761ea0e53c2e55513fee4bfa78c53b1232b162e1eadd6d403090aeab8d092b882e77f18773e7b4133f793151715731
+-- Script Hash: d11bbffa9adc227bb3e4f23ecb7f826cca97296af66739025b49f485a864afc988f32a6b3ef8723d1164df479ac951be
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -120,6 +120,6 @@ function v5.getFloorBlock(p3)
 	v24:Destroy();
 	return v28;
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());
 return nil;

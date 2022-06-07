@@ -1,4 +1,4 @@
--- Script Hash: b4de756ca2330927b1288277ea6611dcc49c0b4a97f47c8a9d5fbceb5201bda13bc9cab929110a03e96839776da80542
+-- Script Hash: ebb36c0353052d3d8b468aa423e04337b01aebc35afdd24f329724b58ab6f80000532f5c2077c0bcc0644e715d530b44
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -22,7 +22,7 @@ end;
 local l__WatchCharacter__2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchCharacter;
 local l__Players__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 local u4 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
-local l__KnitClient__5 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__5 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__ClientSyncEvents__6 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);

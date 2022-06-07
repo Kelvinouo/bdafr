@@ -141,6 +141,6 @@ function v5.createLocalModel(p10, p11)
 	l__CollectionService__5:AddTag(v19, "hidden-metal");
 	return v19;
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());
 return nil;

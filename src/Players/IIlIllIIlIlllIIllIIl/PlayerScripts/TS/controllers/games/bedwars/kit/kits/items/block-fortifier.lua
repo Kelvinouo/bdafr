@@ -14,7 +14,7 @@ function v4.new(...)
 	local v5 = setmetatable({}, v4);
 	return v5:constructor(...) and v5;
 end;
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local u2 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__BlockHighlighter__3 = v1.import(script, v1.getModule(script, "@easy-games", "block-engine").out.client.highlight["block-highlighter"]).BlockHighlighter;
 local l__ClientBlockEngine__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "block-engine", "client-block-engine").ClientBlockEngine;
@@ -25,8 +25,8 @@ local l__ItemViewport__8 = v1.import(script, script.Parent.Parent.Parent.Parent.
 local l__Players__9 = v3.Players;
 local l__default__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function v4.constructor(p1)
-	p1.maid = l__Maid__1.new();
-	p1.highlightMaid = l__Maid__1.new();
+	p1.maid = u1.new();
+	p1.highlightMaid = u1.new();
 	p1.costGuiRef = u2.createRef();
 	p1.blockHighlighter = l__BlockHighlighter__3.new(l__ClientBlockEngine__4, l__BlockSelectorMode__5.SELECT);
 	p1.blockHighlighter:setAllowHighlight(function(p2, p3)

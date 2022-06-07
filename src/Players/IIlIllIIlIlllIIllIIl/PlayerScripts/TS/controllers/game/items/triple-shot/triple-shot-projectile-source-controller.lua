@@ -1,8 +1,8 @@
--- Script Hash: 97b6ea9ab263989d081b869b1747e2cc03112ef0c855828b5293c1d03cdd58600d29baf48b137d838b66f4ea3bc26edf
+-- Script Hash: 45fc37c008a734723eb1c37d97de5d5387f7565973af9a0b4569c3c37c985f4b0c9de4ecbcb9864ad4b12696899906c5
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local v4 = v1.import(script, script.Parent.Parent.Parent.Parent, "global", "combat", "projectile", "projectile-source-controller").ProjectileSourceController;
 local v5 = setmetatable({}, {
@@ -17,12 +17,12 @@ function v5.new(...)
 	return v6:constructor(...) and v6;
 end;
 local u1 = v4;
-local l__Maid__2 = v2.Maid;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v5.constructor(p1, ...)
 	u1.constructor(p1, ...);
 	p1.Name = "TripleShotProjectileController";
 	p1.Client = {};
-	p1.chargeMaid = l__Maid__2.new();
+	p1.chargeMaid = u2.new();
 	p1.overchargeStartTime = 0;
 end;
 function v5.KnitStart(p2)

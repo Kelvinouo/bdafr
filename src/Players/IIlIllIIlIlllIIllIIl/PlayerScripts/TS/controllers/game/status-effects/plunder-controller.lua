@@ -1,8 +1,8 @@
--- Script Hash: 81fdfa2dc555ba5d59a851c8da20865262030d764af675d2c99334819e91f07ca9cbf253900fe5fcf406600c5eaa76e3
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v5 = setmetatable({}, {
@@ -29,7 +29,7 @@ local l__ReplicatedStorage__6 = v3.ReplicatedStorage;
 local l__KnitClient__7 = v2.KnitClient;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("PlunderProc", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		local l__PrimaryPart__7 = p3.entityInstance.PrimaryPart;
 		if not l__PrimaryPart__7 then
 			return nil;

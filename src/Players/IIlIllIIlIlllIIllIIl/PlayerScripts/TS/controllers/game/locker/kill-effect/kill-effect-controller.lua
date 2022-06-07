@@ -1,4 +1,4 @@
--- Script Hash: 5761facb6c53c6dfddcfdd3bfc83e2d8dc0f390478e1ff854fae88e173c77ab425c65ecc1676f512cd5c2fc32a05a911
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -50,7 +50,7 @@ function u1.KnitStart(p2)
 			p2.killEffects[v9] = u5;
 		end;	
 	end;
-	l__default__6.Client:OnEvent("EntityDeathEvent", function(p3)
+	l__default__6.Client:OnEvent("RemoteName", function(p3)
 		local v11 = l__Players__7:GetPlayerFromCharacter(p3.fromEntity);
 		local v12 = l__Players__7:GetPlayerFromCharacter(p3.entityInstance);
 		if l__ClientSyncEvents__8.KillEffect:fire(p3.entityInstance, p3.fromEntity):isCancelled() then
@@ -93,7 +93,7 @@ function u1.KnitStart(p2)
 		end;
 	end);
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;

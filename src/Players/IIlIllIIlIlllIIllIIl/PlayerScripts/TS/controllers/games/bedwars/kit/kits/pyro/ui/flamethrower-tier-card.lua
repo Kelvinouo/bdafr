@@ -11,7 +11,7 @@ local l__ColorUtil__5 = v2.ColorUtil;
 local l__LineFrame__6 = v2.LineFrame;
 local l__LineButton__7 = v2.LineButton;
 local l__default__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-local l__KnitClient__9 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__9 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 return {
 	FlamethrowerTierCard = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u4)(function(p1, p2)
 		local l__useState__3 = p2.useState;

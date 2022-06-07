@@ -3,7 +3,7 @@
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v6 = setmetatable({}, {
@@ -21,7 +21,7 @@ end;
 local u2 = l__KnitController__5;
 local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local u4 = v1.import(script, v1.getModule(script, "@rbxts", "flipper").src);
-local l__Maid__5 = v3.Maid;
+local u5 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function u1.constructor(p1)
 	u2.constructor(p1);
 	p1.Name = "CameraTurretCameraController";
@@ -35,7 +35,7 @@ function u1.constructor(p1)
 		x = 0, 
 		y = 0
 	});
-	p1.maid = l__Maid__5.new();
+	p1.maid = u5.new();
 end;
 local l__Workspace__6 = v4.Workspace;
 local l__ClientStore__7 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
@@ -138,7 +138,7 @@ function u1.KnitStart(p2)
 	end;
 	l__CollectionService__12:GetInstanceAddedSignal("engineer-turret"):Connect(function(p5)
 		if l__isEngineerTurretBlock__13(p5) then
-			local v20 = l__Maid__5.new();
+			local v20 = u5.new();
 			local function v21()
 				if l__ClientStore__7:getState().Kit.engineerSelectedTurret ~= p5 then
 					p2:updateAngleOfTurret(p5);

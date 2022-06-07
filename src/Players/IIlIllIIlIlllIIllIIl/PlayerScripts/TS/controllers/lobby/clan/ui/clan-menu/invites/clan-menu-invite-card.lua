@@ -1,13 +1,12 @@
--- Script Hash: 218e51d933e702484088d599e9380b772fc2f1b1759446eb5eb3d39d96a3407ac245a52a0c1bf21840735917940ada03
+-- Script Hash: b006ccc6da6920db79e64ea0e6d35dc4161c350a76bd98e575923b98ea92d6d7a5e2d7980a7bf7cd7e14766063c47b92
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
-local l__Maid__1 = v3.Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__Flamework__2 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 local l__BedwarsAppIds__3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "types", "app-config").BedwarsAppIds;
-local l__KnitClient__4 = v3.KnitClient;
+local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local u5 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__Theme__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local l__SoundManager__7 = v2.SoundManager;
@@ -19,8 +18,8 @@ local l__IconButton__12 = v2.IconButton;
 local l__BedwarsImageId__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "image", "image-id").BedwarsImageId;
 return {
 	ClanMenuInviteCard = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u5)(function(p1, p2)
-		local l__useState__4 = p2.useState;
-		local v5 = {
+		local l__useState__3 = p2.useState;
+		local v4 = {
 			Size = UDim2.new(1, 0, 0, 80), 
 			BackgroundColor3 = l__Theme__6.backgroundPrimary, 
 			BackgroundTransparency = 0, 
@@ -33,40 +32,40 @@ return {
 				ClanId = p1.ClanId
 			});
 		end;
-		v5[u5.Event.Activated] = function()
+		v4[u5.Event.Activated] = function()
 			l__SoundManager__7:playSound(l__LobbyClientConfig__8.sounds.UI_CLICK);
 			u14();
 		end;
-		local u15 = l__Maid__1.new();
-		v5[u5.Event.MouseEnter] = function(p3)
+		local u15 = u1.new();
+		v4[u5.Event.MouseEnter] = function(p3)
 			u15:DoCleaning();
-			local v6 = l__TweenService__9:Create(p3, TweenInfo.new(0.12), {
+			local v5 = l__TweenService__9:Create(p3, TweenInfo.new(0.12), {
 				BackgroundTransparency = 0.3
+			});
+			v5:Play();
+			u15:GiveTask(function()
+				v5:Cancel();
+			end);
+		end;
+		v4[u5.Event.MouseLeave] = function(p4)
+			u15:DoCleaning();
+			local v6 = l__TweenService__9:Create(p4, TweenInfo.new(0.12), {
+				BackgroundTransparency = 0
 			});
 			v6:Play();
 			u15:GiveTask(function()
 				v6:Cancel();
 			end);
 		end;
-		v5[u5.Event.MouseLeave] = function(p4)
-			u15:DoCleaning();
-			local v7 = l__TweenService__9:Create(p4, TweenInfo.new(0.12), {
-				BackgroundTransparency = 0
-			});
-			v7:Play();
-			u15:GiveTask(function()
-				v7:Cancel();
-			end);
-		end;
-		local v8 = {};
-		local v9 = { (u5.createElement("UIListLayout", {
+		local v7 = {};
+		local v8 = { (u5.createElement("UIListLayout", {
 				FillDirection = "Horizontal", 
 				HorizontalAlignment = "Right", 
 				VerticalAlignment = "Center", 
 				Padding = UDim.new(0.1, 0), 
 				SortOrder = "LayoutOrder"
 			})) };
-		local v10 = {
+		local v9 = {
 			Size = UDim2.fromScale(0.5, 0.5), 
 			SizeConstraint = "RelativeYY", 
 			Image = l__BedwarsImageId__13.CHECK_SOLID, 
@@ -78,11 +77,11 @@ return {
 		local function u16(p5)
 			l__KnitClient__4.Controllers.ClanController:clanInviteDecision(p1.ClanId, p5);
 		end;
-		function v10.OnClick()
+		function v9.OnClick()
 			u16(true);
 		end;
-		v9.Accept = u5.createElement(l__IconButton__12, v10);
-		v9.Decline = u5.createElement(l__IconButton__12, {
+		v8.Accept = u5.createElement(l__IconButton__12, v9);
+		v8.Decline = u5.createElement(l__IconButton__12, {
 			Size = UDim2.fromScale(0.5, 0.5), 
 			SizeConstraint = "RelativeYY", 
 			Image = l__BedwarsImageId__13.X, 
@@ -94,21 +93,21 @@ return {
 				u16(false);
 			end
 		});
-		v8[1] = u5.createElement("UICorner", {
+		v7[1] = u5.createElement("UICorner", {
 			CornerRadius = UDim.new(0.1, 0)
 		});
-		v8[2] = u5.createElement("UIPadding", {
+		v7[2] = u5.createElement("UIPadding", {
 			PaddingLeft = UDim.new(0.05, 0), 
 			PaddingRight = UDim.new(0.05, 0), 
 			PaddingTop = UDim.new(0.05, 0), 
 			PaddingBottom = UDim.new(0.05, 0)
 		});
-		v8[3] = u5.createElement("UIListLayout", {
+		v7[3] = u5.createElement("UIListLayout", {
 			FillDirection = "Horizontal", 
 			Padding = UDim.new(0, 10), 
 			SortOrder = "LayoutOrder"
 		});
-		v8[4] = u5.createElement(l__Empty__10, {
+		v7[4] = u5.createElement(l__Empty__10, {
 			Size = UDim2.fromScale(0.7, 1)
 		}, {
 			ClanName = u5.createElement("TextLabel", {
@@ -168,9 +167,9 @@ return {
 				SortOrder = "LayoutOrder"
 			}))
 		});
-		v8[5] = u5.createElement(l__Empty__10, {
+		v7[5] = u5.createElement(l__Empty__10, {
 			Size = UDim2.fromScale(0.3, 1)
-		}, v9);
-		return u5.createElement("ImageButton", v5, v8);
+		}, v8);
+		return u5.createElement("ImageButton", v4, v7);
 	end)
 };

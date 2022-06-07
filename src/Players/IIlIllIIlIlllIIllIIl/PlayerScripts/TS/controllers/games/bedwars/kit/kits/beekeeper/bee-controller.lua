@@ -1,8 +1,8 @@
--- Script Hash: 3ffb4f7d4c3e52fc8c0df5885a44498b8655d9ed83097d0775bd9d1ecb68b004c5e62cd275122c87556dd1fdaa06c787
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v5 = setmetatable({}, {
@@ -38,7 +38,7 @@ end;
 local l__default__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__CollectionService__6 = v3.CollectionService;
 function u1.KnitStart(p2)
-	l__default__5.Client:OnEvent("BeeSpawn", function(p3)
+	l__default__5.Client:OnEvent("RemoteName", function(p3)
 		local v8 = {
 			id = p3.beeId, 
 			origin = p3.position, 
@@ -53,7 +53,7 @@ function u1.KnitStart(p2)
 		v8.includeProximityPrompt = true;
 		p2:createLocalBee(v8);
 	end);
-	l__default__5.Client:OnEvent("BeeRemoved", function(p4)
+	l__default__5.Client:OnEvent("RemoteName", function(p4)
 		local v10 = l__CollectionService__6:GetTagged("bee");
 		local function v11(p5)
 			return p5:GetAttribute("BeeId") == p4.beeId;

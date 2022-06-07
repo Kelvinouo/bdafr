@@ -42,6 +42,6 @@ end;
 function v3.sendCustomEvent(p4, p5, p6)
 	l__default__2.Client:Get("RemoteName"):SendToServer(p5, p6);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v3.new());
 return nil;

@@ -3,28 +3,27 @@
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
-local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
-local l__HandKnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
-local v6 = setmetatable({}, {
+local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
+local l__HandKnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
+local v5 = setmetatable({}, {
 	__tostring = function()
 		return "HellSaberController";
 	end, 
-	__index = l__HandKnitController__5
+	__index = l__HandKnitController__4
 });
-v6.__index = v6;
-function v6.new(...)
-	local v7 = setmetatable({}, v6);
-	return v7:constructor(...) and v7;
+v5.__index = v5;
+function v5.new(...)
+	local v6 = setmetatable({}, v5);
+	return v6:constructor(...) and v6;
 end;
-local u1 = l__HandKnitController__5;
-local l__Maid__2 = v3.Maid;
-function v6.constructor(p1)
+local u1 = l__HandKnitController__4;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+function v5.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "HellSaberController";
-	p1.animationMaid = l__Maid__2.new();
+	p1.animationMaid = u2.new();
 end;
-local l__KnitClient__3 = v3.KnitClient;
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__ItemType__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
 local l__AnimationType__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
 local l__GameSound__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
@@ -32,10 +31,10 @@ local l__default__7 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 local l__ClientSyncEvents__8 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
 local l__EntityUtil__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
 local l__ChargeState__10 = v1.import(script, script.Parent.Parent.Parent.Parent, "global", "combat", "sword", "sword-controller").ChargeState;
-local l__Players__11 = v4.Players;
+local l__Players__11 = v3.Players;
 local l__getItemMeta__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
 local l__GameAnimationUtil__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
-function v6.KnitStart(p2)
+function v5.KnitStart(p2)
 	u1.KnitStart(p2);
 	l__KnitClient__3.Controllers.PreloadController:preloadForItemType(l__ItemType__4.HELL_SABER, {
 		animations = { l__AnimationType__5.INFERNO_SWORD_CHARGE }, 
@@ -55,32 +54,32 @@ function v6.KnitStart(p2)
 				weapon = p4.weapon
 			});
 			l__KnitClient__3.Controllers.ViewmodelController:playAnimation(l__AnimationType__5.FP_INFERNO_SWORD_SPIN);
-			local v8 = false;
+			local v7 = false;
 			if p4.chargedAttack.chargeTime >= 1.5 then
-				v8 = p4.fromPlayer:GetAttribute("EmberUpgraded");
+				v7 = p4.fromPlayer:GetAttribute("EmberUpgraded");
 			end;
-			if v8 ~= 0 and v8 == v8 and v8 ~= "" and v8 then
+			if v7 ~= 0 and v7 == v7 and v7 ~= "" and v7 then
 				wait(0.2);
 				v1.Promise.defer(function()
-					local v9 = 0;
-					local v10 = false;
+					local v8 = 0;
+					local v9 = false;
 					while true do
-						if v10 then
-							v9 = v9 + 1;
+						if v9 then
+							v8 = v8 + 1;
 						else
-							v10 = true;
+							v9 = true;
 						end;
-						if not (v9 < 3) then
+						if not (v8 < 3) then
 							break;
 						end;
-						local v11 = l__EntityUtil__9:getEntity(p4.fromPlayer);
-						if v11 ~= nil then
-							v11 = v11:getItemInHand();
-							if v11 ~= nil then
-								v11 = v11.Name;
+						local v10 = l__EntityUtil__9:getEntity(p4.fromPlayer);
+						if v10 ~= nil then
+							v10 = v10:getItemInHand();
+							if v10 ~= nil then
+								v10 = v10.Name;
 							end;
 						end;
-						if v11 ~= l__ItemType__4.HELL_SABER then
+						if v10 ~= l__ItemType__4.HELL_SABER then
 							return nil;
 						end;
 						wait(0.3);
@@ -96,30 +95,30 @@ function v6.KnitStart(p2)
 		if p5.itemType.itemType ~= l__ItemType__4.HELL_SABER then
 			return nil;
 		end;
-		local l__chargingSound__12 = p2.chargingSound;
-		if l__chargingSound__12 ~= nil then
-			l__chargingSound__12:Stop();
+		local l__chargingSound__11 = p2.chargingSound;
+		if l__chargingSound__11 ~= nil then
+			l__chargingSound__11:Stop();
 		end;
 		if p5.chargeState == l__ChargeState__10.Charging then
-			local v13 = l__Players__11.LocalPlayer.Character;
-			if v13 ~= nil then
-				v13 = v13:FindFirstChild("Humanoid");
-				if v13 ~= nil then
-					v13 = v13:FindFirstChild("Animator");
+			local v12 = l__Players__11.LocalPlayer.Character;
+			if v12 ~= nil then
+				v12 = v12:FindFirstChild("Humanoid");
+				if v12 ~= nil then
+					v12 = v12:FindFirstChild("Animator");
 				end;
+			end;
+			if not v12 then
+				return nil;
+			end;
+			local v13 = l__getItemMeta__12(p5.itemType.itemType).sword;
+			if v13 ~= nil then
+				v13 = v13.chargedAttack;
 			end;
 			if not v13 then
 				return nil;
 			end;
-			local v14 = l__getItemMeta__12(p5.itemType.itemType).sword;
-			if v14 ~= nil then
-				v14 = v14.chargedAttack;
-			end;
-			if not v14 then
-				return nil;
-			end;
 			p2:playSound();
-			u14 = v13:LoadAnimation(l__GameAnimationUtil__13.getAnimation(l__AnimationType__5.INFERNO_SWORD_CHARGE));
+			u14 = v12:LoadAnimation(l__GameAnimationUtil__13.getAnimation(l__AnimationType__5.INFERNO_SWORD_CHARGE));
 			u14:Play();
 			u14:AdjustSpeed(1.83);
 			u14:GetMarkerReachedSignal("end"):Connect(function()
@@ -150,9 +149,9 @@ function v6.KnitStart(p2)
 				end;
 			end);
 		elseif p5.chargeState == l__ChargeState__10.Charged then
-			local l__chargingSound__15 = p2.chargingSound;
-			if l__chargingSound__15 ~= nil then
-				l__chargingSound__15:Stop();
+			local l__chargingSound__14 = p2.chargingSound;
+			if l__chargingSound__14 ~= nil then
+				l__chargingSound__14:Stop();
 			end;
 		end;
 		if p5.chargeState == l__ChargeState__10.Idle then
@@ -172,81 +171,81 @@ function v6.KnitStart(p2)
 		end;
 	end);
 end;
-function v6.isRelevantItem(p6, p7)
+function v5.isRelevantItem(p6, p7)
 	return p7.itemType == l__ItemType__4.HELL_SABER;
 end;
-function v6.onEnable(p8, p9)
+function v5.onEnable(p8, p9)
 	print(p9);
 end;
-function v6.onDisable(p10)
+function v5.onDisable(p10)
 
 end;
 local l__SoundManager__16 = v2.SoundManager;
-function v6.playSound(p11)
+function v5.playSound(p11)
 	p11.chargingSound = l__SoundManager__16:playSound(l__GameSound__6.INFERNAL_SWORD_CHARGE);
 	if p11.chargingSound then
 		p11.animationMaid:GiveTask(function()
-			local l__chargingSound__16 = p11.chargingSound;
-			if l__chargingSound__16 ~= nil then
-				l__chargingSound__16:Stop();
+			local l__chargingSound__15 = p11.chargingSound;
+			if l__chargingSound__15 ~= nil then
+				l__chargingSound__15:Stop();
 			end;
 		end);
 	end;
 end;
-local l__ReplicatedStorage__17 = v4.ReplicatedStorage;
+local l__ReplicatedStorage__17 = v3.ReplicatedStorage;
 local l__scaleModel__18 = v1.import(script, v1.getModule(script, "@rbxts", "scale-model").out).scaleModel;
-local l__Workspace__19 = v4.Workspace;
+local l__Workspace__19 = v3.Workspace;
 local l__GameQueryUtil__20 = v2.GameQueryUtil;
 local l__ModelUtil__21 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "model-util").ModelUtil;
 local l__InOutExpo__22 = v1.import(script, v1.getModule(script, "@rbxts", "easing-functions")).InOutExpo;
-local l__RunService__23 = v4.RunService;
+local l__RunService__23 = v3.RunService;
 local l__default__24 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
-function v6.playEffects(p12, p13)
-	local v17 = l__EntityUtil__9:getEntity(p13);
-	if v17 == nil then
+function v5.playEffects(p12, p13)
+	local v16 = l__EntityUtil__9:getEntity(p13);
+	if v16 == nil then
 		return nil;
 	end;
-	local v18 = l__Maid__2.new();
-	local v19 = l__ReplicatedStorage__17.Assets.Effects.InfernalSwordSpin:Clone();
-	v19:SetPrimaryPartCFrame(v17:getInstance():GetPrimaryPartCFrame());
-	l__scaleModel__18(v19, 0.04);
-	v19.Parent = l__Workspace__19;
-	for v20, v21 in ipairs(v19:GetChildren()) do
-		if v21:IsA("BasePart") then
-			l__GameQueryUtil__20:setQueryIgnored(v21, true);
+	local v17 = u2.new();
+	local v18 = l__ReplicatedStorage__17.Assets.Effects.InfernalSwordSpin:Clone();
+	v18:SetPrimaryPartCFrame(v16:getInstance():GetPrimaryPartCFrame());
+	l__scaleModel__18(v18, 0.04);
+	v18.Parent = l__Workspace__19;
+	for v19, v20 in ipairs(v18:GetChildren()) do
+		if v20:IsA("BasePart") then
+			l__GameQueryUtil__20:setQueryIgnored(v20, true);
 		end;
 	end;
-	l__ModelUtil__21.tweenModelSize(v19, 0, l__InOutExpo__22, 10);
+	l__ModelUtil__21.tweenModelSize(v18, 0, l__InOutExpo__22, 10);
 	local u25 = 0;
 	local u26 = l__RunService__23.Heartbeat:Connect(function(p14)
-		local v22 = v17:getInstance():GetPrimaryPartCFrame();
-		if not p12:validPlayerConditions(v17) then
-			v18:DoCleaning();
+		local v21 = v16:getInstance():GetPrimaryPartCFrame();
+		if not p12:validPlayerConditions(v16) then
+			v17:DoCleaning();
 			return nil;
 		end;
 		u25 = u25 + p14;
-		if v19.PrimaryPart ~= nil then
+		if v18.PrimaryPart ~= nil then
 			return;
 		end;
 		l__default__24.Error("Shield effect has no primary part");
 		return nil;
 	end);
 	task.delay(0.1, function()
-		v18:DoCleaning();
+		v17:DoCleaning();
 		u26:Disconnect();
-		v19:Destroy();
+		v18:Destroy();
 		return nil;
 	end);
 end;
-function v6.validPlayerConditions(p15, p16)
+function v5.validPlayerConditions(p15, p16)
 	if not p16:isAlive() then
 		return false;
 	end;
-	local v23 = p16:getItemInHand();
-	if v23 ~= nil then
-		v23 = v23.Name;
+	local v22 = p16:getItemInHand();
+	if v22 ~= nil then
+		v22 = v22.Name;
 	end;
-	if v23 ~= l__ItemType__4.HELL_SABER then
+	if v22 ~= l__ItemType__4.HELL_SABER then
 		return false;
 	end;
 	if p16:getInstance().PrimaryPart == nil then
@@ -255,5 +254,5 @@ function v6.validPlayerConditions(p15, p16)
 	return true;
 end;
 u1 = l__KnitClient__3.CreateController;
-u1 = u1(v6.new());
+u1 = u1(v5.new());
 return nil;

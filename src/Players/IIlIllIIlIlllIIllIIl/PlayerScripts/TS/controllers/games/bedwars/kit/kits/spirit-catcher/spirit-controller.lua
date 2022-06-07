@@ -1,9 +1,9 @@
--- Script Hash: 501f29b237e4cbb0ba9bb961ca73b6058267f9d09dd8b6a6c0b352c663a450fa1fc60461e3cd8a1c4bb9bf28c2b3f64a
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v5 = setmetatable({}, {
 	__tostring = function()
@@ -24,7 +24,7 @@ function v5.constructor(p1, ...)
 	p1.spiritToMaid = {};
 end;
 local l__CollectionService__2 = v1.import(script, v1.getModule(script, "@rbxts", "services")).CollectionService;
-local l__Maid__3 = v3.Maid;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__default__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__SoundManager__5 = v2.SoundManager;
 local l__GameSound__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
@@ -38,7 +38,7 @@ local l__KnitClient__8 = v3.KnitClient;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
 	l__CollectionService__2:GetInstanceAddedSignal("spirit"):Connect(function(p3)
-		local v7 = l__Maid__3.new();
+		local v7 = u3.new();
 		p2.spiritToMaid[p3] = v7;
 		local v8 = p2:setupSpiritAnimationTracks(p3);
 		v8.idle:Play();
@@ -63,7 +63,7 @@ function v5.KnitStart(p2)
 		end;
 		p2.spiritToMaid[p4] = nil;
 	end);
-	l__default__4.Client:OnEvent("SpiritExplosion", v1.async(function(p5)
+	l__default__4.Client:OnEvent("RemoteName", v1.async(function(p5)
 		l__SoundManager__5:playSound(l__GameSound__6.SPIRIT_EXPLODE, {
 			position = p5.position, 
 			rollOffMaxDistance = u7.ExplosionSoundMaxDistance

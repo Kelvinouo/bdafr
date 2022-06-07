@@ -1,4 +1,4 @@
--- Script Hash: ed5e3106e7f6bf2d650c1ac01fda1848b0860f3ae25ee208e5982988300a101857db5cfd22dbcb23b8816233f03bd5d2
+-- Script Hash: 37ff78ec2ff2d6f2ee31e69468b5a14a97839067ff31aed930ee43b96ba119cae98ee38655b35f87d51af704b0c9f96e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -26,7 +26,7 @@ local l__MobileButton__4 = v2.MobileButton;
 local l__BedwarsImageId__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "image", "image-id").BedwarsImageId;
 local l__BedwarsUI__6 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "bedwars-ui").BedwarsUI;
 local l__ClientStore__7 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
-local l__KnitClient__8 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__8 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__Players__9 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 local l__EntityUtil__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
 local l__getItemMeta__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;

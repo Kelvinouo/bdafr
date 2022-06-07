@@ -1,4 +1,4 @@
--- Script Hash: 75e7fe4475ade32ae906db30659ad81c14982a8687708f557fd08b0c4aa9f6c5ac78a31049bbe64f741ca4ff36aaa7ff
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -20,10 +20,10 @@ function v3.constructor(p1)
 	p1.Name = "GameMusicController";
 end;
 local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("PlayGameMusic", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		l__KnitClient__3.Controllers.BackgroundMusicController:startMusic(p3.soundId);
 	end);
 end;
