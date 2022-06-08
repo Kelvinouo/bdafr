@@ -1,4 +1,4 @@
--- Script Hash: 147c26ccd017927b8814144365aed4b5a631fe24149adfc231bce91a592a5d4fa5492586dabadb9acbaf164adeee3acb
+-- Script Hash: 7503a2bfd3fd0d5c2e960ce1df1226346e1a4f1a06b860e184042b4d9de32c1a18a5345dd3a9ed823398d6ac876cad25
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -373,7 +373,7 @@ function v1.Update(p19, p20)
 		game.Workspace.CurrentCamera.CFrame = v53;
 		game.Workspace.CurrentCamera.Focus = v54;
 		if p19.activeTransparencyController then
-			p19.activeTransparencyController:Update();
+			p19.activeTransparencyController:Update(p20);
 		end;
 		if v18.getInputEnabled() then
 			v18.resetInputForFrameEnd();
