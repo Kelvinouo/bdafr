@@ -1,4 +1,4 @@
--- Script Hash: fede2bf25eec97b910113b3ea82ea671bc0cda3c494219d59b93dec4385ceab2e1fb960fa4be6abb9e27011a54420f80
+-- Script Hash: 8d462577e704799098617918e67a43f7f9a25f38b2cfc93ba1c611081226e1f2b7bc155231ef4559035c73e220be79e6
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -6,7 +6,7 @@ local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").ou
 local u1 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__SoundManager__2 = v2.SoundManager;
 local l__GameSound__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__Flamework__5 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 local l__BedwarsAppIds__6 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "types", "app-config").BedwarsAppIds;
 local l__Theme__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;

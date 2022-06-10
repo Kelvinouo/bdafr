@@ -1,4 +1,4 @@
--- Script Hash: 460d8e27bec3d504f7b4afd6914ded6cac48199a4c63f80355b1ac60f2598d67b49cddc5d3e6584329ff3f0d9ce18480
+-- Script Hash: 1633171c9b9068c95198ea0891faf42b7c3048d282273f947f27927d20aa97d07436366e96e8845131e98e69bf0f34ec
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -20,7 +20,7 @@ function v4.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "FireAspectController";
 end;
-local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__StatusEffectType__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "status-effect", "status-effect-type").StatusEffectType;
 local u4 = v1.import(script, script.Parent.Parent.Parent, "global", "status-effect", "handlers", "client-status-effect-handler").ClientStatusEffectHandler;
 local l__Players__5 = v2.Players;

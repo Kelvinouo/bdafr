@@ -1,4 +1,4 @@
--- Script Hash: f54b334d31ecbbbdb8fd7582055beeb3b0a9f04920a9d9d674e1d58b6c600bdb1f5989ea8f60b4d08584df58b24c08a3
+-- Script Hash: 6cd15bebd97ce7b9765fb5b12ad54f74152ad22d98301209964f6285ca821277d0efba1df58335c1607b999713bbca3b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,7 +14,7 @@ local u8 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
 local l__HudBeds__9 = v1.import(script, script.Parent, "hud-beds").HudBeds;
 local l__HudAlivePlayersCount__10 = v1.import(script, script.Parent, "hud-player-count").HudAlivePlayersCount;
 local l__Players__11 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
-local l__KnitClient__12 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__12 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__ColorUtil__13 = v2.ColorUtil;
 local l__Theme__14 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local l__HudCard__15 = v1.import(script, script.Parent, "hud-card").HudCard;

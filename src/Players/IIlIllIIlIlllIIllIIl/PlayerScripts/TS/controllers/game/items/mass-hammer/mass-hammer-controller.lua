@@ -1,8 +1,8 @@
--- Script Hash: 25269bb653edf80f5fe8309c862cc91f3ccd6d3e1144e08da9f0e4c743a2fa048f3137503651ad9a8810875db2a1c14a
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__MASS_HAMMER__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "cooldown", "cooldown-id").CooldownId.MASS_HAMMER;
 local l__HandKnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
@@ -18,11 +18,11 @@ function v6.new(...)
 	return v7:constructor(...) and v7;
 end;
 local u1 = l__HandKnitController__5;
-local l__Maid__2 = v2.Maid;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v6.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "MassHammerController";
-	p1.maid = l__Maid__2.new();
+	p1.maid = u2.new();
 	p1.cooldownHasEnded = true;
 	p1.hasWeapon = false;
 end;
@@ -46,7 +46,7 @@ function v6.KnitStart(p2)
 		if p2.useAbilityMaid ~= nil then
 			return nil;
 		end;
-		p2.useAbilityMaid = l__Maid__2.new();
+		p2.useAbilityMaid = u2.new();
 		p2.useAbilityMaid:GiveTask((l__Flamework__4.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(u5.createElement(l__ActionButton__6, {
 			actionName = "use-mass_hammer", 
 			interactionKey = Enum.KeyCode.F, 
@@ -60,23 +60,23 @@ function v6.KnitStart(p2)
 			l__ContextActionService__7:UnbindAction("use-mass_hammer");
 		end);
 	end);
-	l__default__8.Client:OnEvent("MassHammerSpeedMod", function(p3)
+	l__default__8.Client:OnEvent("RemoteName", function(p3)
 		if not l__Players__9.LocalPlayer.Character then
 			return nil;
 		end;
 		p2:speedScale(l__Players__9.LocalPlayer.Character, p3.speed);
 	end);
-	l__default__8.Client:OnEvent("EndMassHammerCooldown", function()
+	l__default__8.Client:OnEvent("RemoteName", function()
 		p2.cooldownHasEnded = true;
 	end);
-	l__default__8.Client:OnEvent("MassHammerCleanUp", function()
+	l__default__8.Client:OnEvent("RemoteName", function()
 		p2:cleanUpDuty();
 		p2.cooldownHasEnded = false;
 	end);
 end;
 function v6.activateAbility(p4)
 	p4.cooldownHasEnded = false;
-	l__default__8.Client:Get("UseMassHammer"):SendToServer();
+	l__default__8.Client:Get("RemoteName"):SendToServer();
 end;
 local l__ItemType__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
 function v6.isRelevantItem(p5, p6)

@@ -1,9 +1,9 @@
--- Script Hash: ce781cd800ec1811aa87bb0d801c36b8f780db5ea7f58b97b01dd351c0bca1a9f07ce46e98434b7564bdead80dd2b6ec
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__HandKnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
 local v6 = setmetatable({}, {
@@ -48,7 +48,7 @@ function v6.KnitStart(p2)
 			end;
 		end;
 	end);
-	l__default__5.Client:OnEvent("PlayerReleasedFromVacuum", function(p3)
+	l__default__5.Client:OnEvent("RemoteName", function(p3)
 		local v10 = l__EntityUtil__6:getEntity(p3.victimEntityInstance);
 		local v11 = l__EntityUtil__6:getEntity(p3.attackerEntityInstance);
 		local v12 = {};
@@ -101,7 +101,7 @@ function v6.KnitStart(p2)
 			end;
 		end;
 	end);
-	l__default__5.Client:OnEvent("PlayerVacuumed", function(p4)
+	l__default__5.Client:OnEvent("RemoteName", function(p4)
 		local v22 = l__EntityUtil__6:getEntity(p4.victimEntityInstance);
 		local v23 = l__EntityUtil__6:getEntity(p4.attackerEntityInstance);
 		local v24 = v23;
@@ -176,7 +176,7 @@ function v6.KnitStart(p2)
 			end);
 		end;
 	end);
-	l__default__5.Client:OnEvent("PlayerVacuuming", function(p5)
+	l__default__5.Client:OnEvent("RemoteName", function(p5)
 		local v33 = l__Players__13:GetPlayerFromCharacter(p5.attacker);
 		if v33 == nil then
 			return nil;
@@ -228,7 +228,7 @@ function v6.onEnable(p8, p9, p10)
 			p8.uiMaid = l__Flamework__11.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(u17.createElement(l__ActionButton__18, {
 				actionName = "vacuum-release", 
 				onActivated = function()
-					l__default__5.Client:Get("UseVacuum"):SendToServer({
+					l__default__5.Client:Get("RemoteName"):SendToServer({
 						action = "Release"
 					});
 				end, 
@@ -260,20 +260,20 @@ function v6.onEnable(p8, p9, p10)
 						return v43:Stop();
 					end);
 				end;
-				l__default__5.Client:Get("UseVacuum"):SendToServer({
+				l__default__5.Client:Get("RemoteName"):SendToServer({
 					action = "BeginCharging", 
 					entityInstance = v41
 				});
 			end;
 			function v42.PromptButtonHoldEnded()
 				u23:DoCleaning();
-				l__default__5.Client:Get("UseVacuum"):SendToServer({
+				l__default__5.Client:Get("RemoteName"):SendToServer({
 					action = "StopCharging", 
 					entityInstance = v41
 				});
 			end;
 			function v42.Triggered()
-				l__default__5.Client:Get("UseVacuum"):SendToServer({
+				l__default__5.Client:Get("RemoteName"):SendToServer({
 					action = "Suck", 
 					entityInstance = v41
 				});

@@ -1,4 +1,4 @@
--- Script Hash: da37ab2635f8020fbb9732458fd0aeff34a30f38226dd2d9747788d762b57b2d54bbcd8d5b4b0e569e99fb103440278d
+-- Script Hash: 4fe2d07cd27d92bd4e4d9866fcc612bfa244adc50c79d925d41c182e1e330dacbf62cb318a25c55e28b3efdba6c4d2c1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -73,7 +73,7 @@ local l__ItemType__8 = v1.import(script, game:GetService("ReplicatedStorage"), "
 function u1.isRelevantItem(p11, p12)
 	return p12.itemType == l__ItemType__8.ROCKET_LAUNCHER;
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;

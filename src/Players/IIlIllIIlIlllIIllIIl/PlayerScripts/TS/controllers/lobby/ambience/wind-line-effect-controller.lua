@@ -1,4 +1,4 @@
--- Script Hash: 38600b9f48ac8a66a0b014d313c8268961d4f097fbf361ca6edc16ce968811b7c88786095565ef3b9fb5df68035788cf
+-- Script Hash: fcbe394142ce16e9a329365342fe47218820bcdb5e727230711c8b452e1a3a92ea2c2dd3c4ba13d5ec0caeab1b88c14f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -116,7 +116,7 @@ function u1.spawnWindParticle(p6)
 		end);
 	end);
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

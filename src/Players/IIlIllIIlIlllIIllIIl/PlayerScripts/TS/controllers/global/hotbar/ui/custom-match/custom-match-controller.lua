@@ -1,4 +1,4 @@
--- Script Hash: f1cb555def056ce49ad2eb8a65abad2bc144c1f1b2680698ee4912c6405e86d2539010c4dc5f74543e5ac9c926fa8789
+-- Script Hash: 7b33b8bdf2bd190f4f2cb2b0e9c44333c0f6d133fb68fd3a73f4d0afac125a19531336ab23ca0267d99486fb1dd1585c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -161,6 +161,6 @@ end;
 function v3.setPlayerMaxHealth(p38, p39, p40)
 	p38.customMatchRemotes:Get("SetPlayerMaxHealth"):CallServerAsync(p39, p40);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v3.new());
 return nil;

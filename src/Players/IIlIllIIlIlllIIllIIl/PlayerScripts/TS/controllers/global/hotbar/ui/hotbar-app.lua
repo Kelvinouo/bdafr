@@ -1,4 +1,4 @@
--- Script Hash: 9da7298f0a8145f4201bbdcd91ee4bd29a5f71a8f7417e7bba6c713259ddc113594a31ee7b4a3b447c5dec16b0d1902b
+-- Script Hash: 80944b7076ec45084c8dd2c215542bd11c5b97746e4b4c1936a57be132f4b4a4196d453ac7f120c92a18d4b64fee9c2e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -24,7 +24,7 @@ function v6.init(p1, p2)
 end;
 local l__MatchState__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "match", "match-state").MatchState;
 local l__DeviceUtil__2 = v2.DeviceUtil;
-local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__HotbarPartySection__4 = v1.import(script, script.Parent, "party", "hotbar-party-section").HotbarPartySection;
 local l__HotbarSpectatorSection__5 = v1.import(script, script.Parent, "spectate", "hotbar-spectator-section").HotbarSpectatorSection;
 local l__HotbarHealthbar__6 = v1.import(script, script.Parent, "healthbar", "hotbar-healthbar").HotbarHealthbar;

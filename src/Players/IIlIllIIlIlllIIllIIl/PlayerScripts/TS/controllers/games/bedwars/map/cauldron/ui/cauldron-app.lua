@@ -1,4 +1,4 @@
--- Script Hash: 7672bb5057fadd89c471ccd8bb154537e3e7474a2e1dac7a6d1406d72bf0439609e2db8efff80826709f8f5a5db810d4
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -43,7 +43,7 @@ function v4.render(p2)
 			} };
 		v8.Upgrade = v9;
 		function v8.Purchased()
-			l__default__4.Client:WaitFor("BrewPotionInCauldron"):andThen(function(p5)
+			l__default__4.Client:WaitFor("RemoteName"):andThen(function(p5)
 				p5:CallServerAsync({
 					cauldron = p2.props.cauldron, 
 					potion = p3

@@ -1,24 +1,23 @@
--- Script Hash: 2e6f1a83b7d4fab28b1cf127e25c7a6b4fea4c38fc5a21b776af313aa3ce78f66235f0f6b0fb5f8216ced123f63c84d3
+-- Script Hash: 2aafac5a6cdccaf629406bd8e345eb4fdb3f9e2f5187e97858e007b4e6f33e1b42f1d97d6b2925b952fbecc130ff90f3
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
-local l__KnitController__3 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
-local v4 = setmetatable({}, {
+local l__KnitController__2 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
+local v3 = setmetatable({}, {
 	__tostring = function()
 		return "StatusEffectController";
 	end, 
-	__index = l__KnitController__3
+	__index = l__KnitController__2
 });
-v4.__index = v4;
-function v4.new(...)
-	local v5 = setmetatable({}, v4);
-	return v5:constructor(...) and v5;
+v3.__index = v3;
+function v3.new(...)
+	local v4 = setmetatable({}, v3);
+	return v4:constructor(...) and v4;
 end;
-local u1 = l__KnitController__3;
+local u1 = l__KnitController__2;
 local l__StatusEffectType__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "status-effect", "status-effect-type").StatusEffectType;
 local l__FireStatusEffectHandler__3 = v1.import(script, script.Parent, "handlers", "fire-status-effect-handler").FireStatusEffectHandler;
-function v4.constructor(p1)
+function v3.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "StatusEffectController";
 	p1.handlerMap = {};
@@ -30,24 +29,24 @@ end;
 local l__CollectionTagAdded__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "collection", "collection-util").CollectionTagAdded;
 local u5 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
 local l__StatusEffectUtil__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "status-effect", "status-effect-util").StatusEffectUtil;
-local l__Maid__7 = v2.Maid;
+local u7 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__EntityUtil__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
 local l__ClientSyncEvents__9 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
-function v4.KnitStart(p2)
+function v3.KnitStart(p2)
 	u1.KnitStart(p2);
 	l__CollectionTagAdded__4("entity", function(p3)
 		p2.entityHandlers[p3] = {};
-		local v6 = u5.values(l__StatusEffectType__2);
-		local function v7(p4)
-			local v8 = l__StatusEffectUtil__6:getAttributeName(p4);
+		local v5 = u5.values(l__StatusEffectType__2);
+		local function v6(p4)
+			local v7 = l__StatusEffectUtil__6:getAttributeName(p4);
 			local u10 = false;
 			local u11 = nil;
-			local u12 = l__Maid__7.new();
-			p3:GetAttributeChangedSignal(v8):Connect(function()
+			local u12 = u7.new();
+			p3:GetAttributeChangedSignal(v7):Connect(function()
 				if not l__EntityUtil__8:getEntity(p3) then
 					return nil;
 				end;
-				if p3:GetAttribute(v8) ~= nil then
+				if p3:GetAttribute(v7) ~= nil then
 					if u10 then
 						return;
 					end;
@@ -57,9 +56,9 @@ function v4.KnitStart(p2)
 				end;
 				u10 = true;
 				l__ClientSyncEvents__9.StatusEffectAdded:fire(p3, p4);
-				local v9 = p2.handlerMap[p4];
-				if v9 then
-					u11 = v9.new();
+				local v8 = p2.handlerMap[p4];
+				if v8 then
+					u11 = v8.new();
 					u11:apply(p3, p4);
 				end;
 				u12:GiveTask(p3.AncestryChanged:Connect(function(p5, p6)
@@ -76,28 +75,28 @@ function v4.KnitStart(p2)
 					u10 = false;
 				end);
 			end);
-			if p3:GetAttribute(v8) ~= nil then
+			if p3:GetAttribute(v7) ~= nil then
 				l__ClientSyncEvents__9.StatusEffectAdded:fire(p3, p4);
 				u12:GiveTask(function()
 					l__ClientSyncEvents__9.StatusEffectRemoved:fire(p3, p4);
 				end);
 			end;
 		end;
-		for v10, v11 in ipairs(v6) do
-			v7(v11, v10 - 1, v6);
+		for v9, v10 in ipairs(v5) do
+			v6(v10, v9 - 1, v5);
 		end;
 		p3.AncestryChanged:Connect(function(p7, p8)
 			if p8 == nil then
-				for v12, v13 in ipairs((l__StatusEffectUtil__6:getActiveStatusEffects(p3))) do
-					l__ClientSyncEvents__9.StatusEffectRemoved:fire(p3, v13.statusEffect);
+				for v11, v12 in ipairs((l__StatusEffectUtil__6:getActiveStatusEffects(p3))) do
+					l__ClientSyncEvents__9.StatusEffectRemoved:fire(p3, v12.statusEffect);
 				end;
 			end;
 		end);
 	end);
 end;
-function v4.setHandler(p9, p10, p11)
+function v3.setHandler(p9, p10, p11)
 	p9.handlerMap[p10] = p11;
 end;
-u1 = v2.KnitClient.CreateController;
-u1 = u1(v4.new());
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
+u1 = u1(v3.new());
 return nil;

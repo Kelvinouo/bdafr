@@ -1,4 +1,4 @@
--- Script Hash: 19cf734812013a7f9a9eea88a3e591b1ab0595ba0f292c679aa29ebfdc325aecd2a6c80e855d53a9c275398d9c7fdb24
+-- Script Hash: 4145deecfa9890c85b4e4d15974d2ecbdf13f95bfb8da1e0a7b28b5114603010cbd1ed4b6ca3d72545016244c9fd5c09
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -8,7 +8,7 @@ local l__NumberSpinner__2 = v2.NumberSpinner;
 local l__TweenService__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).TweenService;
 local l__SoundManager__4 = v2.SoundManager;
 local l__GameSound__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__KnitClient__6 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__6 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__SlideIn__7 = v2.SlideIn;
 local l__Empty__8 = v2.Empty;
 local l__ColorUtil__9 = v2.ColorUtil;

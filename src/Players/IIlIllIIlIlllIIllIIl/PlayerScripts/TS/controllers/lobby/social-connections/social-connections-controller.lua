@@ -1,4 +1,4 @@
--- Script Hash: f2b75c224fdadb61cfdda83c01b63db82e32709df265984fcaa64307c17c31b2b9c04ad0b7b4287df54babfafb404aa5
+-- Script Hash: bc23283bf2b38eb682f5fcb9a8f1273eecb62754a04c9aea4b6f2a0845a153ff89858f4120f5c1194460e3d701cb2ca1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -138,6 +138,6 @@ function v5.giveCompletedReward(p20)
 	l__SoundManager__8:playSound(l__GameSound__9.BEDWARS_UPGRADE_SUCCESS);
 	p20.completed = true;
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());
 return nil;

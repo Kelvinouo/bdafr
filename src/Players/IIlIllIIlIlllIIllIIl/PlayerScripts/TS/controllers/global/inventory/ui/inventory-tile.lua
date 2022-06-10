@@ -1,14 +1,14 @@
--- Script Hash: a31a40dd562ba0ecaed423e1215183f80379ade4b716459bbcde7083e88dc5111698b7ee9b6f4b58da072f5e90953962
+-- Script Hash: cfed695ebcc513b0f0f135a9981a4a0c2f75b916ed0fe97c810354e719b8909c26a1ff124d852592530ac35d5b1c6592
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local v4 = v3.Component:extend("InventoryTile");
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__ExpireList__2 = v2.ExpireList;
 function v4.init(p1, p2)
-	p1.maid = l__Maid__1.new();
+	p1.maid = u1.new();
 	p1.ref = v3.createRef();
 	p1.hotbarSwapCooldown = l__ExpireList__2.new(0.1);
 	p1:setState({

@@ -1,4 +1,4 @@
--- Script Hash: 89791fea3cd9dc3bc79dbd780ba9073fc019d4f883615e417baa530ffefaf6d969ead6dd9bb663c2f9759dc725e45775
+-- Script Hash: 22c5279383f896a272507bcc06995887b428b6ddb85d73033dea02ac275b2bbe1127e8a502adf1078fbb05dc933c329b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -60,6 +60,6 @@ function v3.openGameUpdateApp(p4)
 	l__SoundManager__6:playSound(l__GameSound__7.UI_OPEN);
 	l__Flamework__8.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__9.GAME_UPDATES, {});
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v3.new());
 return nil;

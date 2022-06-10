@@ -1,4 +1,4 @@
--- Script Hash: 81d96c751f7c0c1a4b6b48bd337e22dc66da3a4d3f4644d844ee22d97cca5deb424ccdead399a1eb7a2332037a9d9ae4
+-- Script Hash: bc0e7468ee33efa47e624ed5bd9dad3eb69276f2093535c86d9e3daa6764e515a129fde190a899ccf2b3c675cf6282bc
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -22,7 +22,7 @@ function v5.constructor(p1)
 	p1.Name = "LobbyCountdownController";
 end;
 local l__WatchCollectionTag__2 = v2.WatchCollectionTag;
-local u3 = 1654293600;
+local u3 = 1654898400;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
 	l__WatchCollectionTag__2("sale-countdown", function(p3)
@@ -72,6 +72,6 @@ function v5.getTime(p5, p6, p7)
 		seperator = " : "
 	});
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());
 return nil;

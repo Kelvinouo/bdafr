@@ -1,4 +1,4 @@
--- Script Hash: 13fb7edc7443383d8aec1867c0785baff1c9daaf803d19d375999b157115d89cf37b47fe3b0255556f5356e89e3d8cc0
+-- Script Hash: 25b6dc0fe5d75913d798d0b07645dffc5910bfd3721dd67aab68bdfee1c06d6b2793b174e633ef568af3baca851c901b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -9,7 +9,7 @@ local l__HostPanelSetting__4 = v1.import(script, script.Parent.Parent, "componen
 local u5 = UDim2.new(0.83, 0, 0, 50);
 local l__HostPanelToggle__6 = v1.import(script, script.Parent.Parent, "components", "host-panel-toggle").HostPanelToggle;
 local l__HostPanelGeneralToggle__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "host-panel", "host-panel-settings.dto").HostPanelGeneralToggle;
-local l__KnitClient__8 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__8 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__HostPanelTextBox__9 = v1.import(script, script.Parent.Parent, "components", "host-panel-textbox").HostPanelTextBox;
 return {
 	HostPanelGeneralTab = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u1)(function(p1, p2)

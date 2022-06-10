@@ -1,9 +1,9 @@
--- Script Hash: afef90e4bc0a3247cfc156827ab66db8277572c935a8470e890da2e05574b4797fc5720cd4624e0b0d3fcd49a8dda8ee
+-- Script Hash: 5c27b58f3772fae174010aa94a7362ecc55ea45b2c336154270055ea3a8cad1b16e2e96e4e72d8041fa277faec48b6aa
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v6 = setmetatable({}, {
@@ -26,7 +26,7 @@ function v6.constructor(p1, ...)
 end;
 local l__CollectionTagAdded__2 = v2.CollectionTagAdded;
 local l__Players__3 = v4.Players;
-local l__Maid__4 = v3.Maid;
+local u4 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__RunService__5 = v4.RunService;
 local u6 = v2.ConstantManager.registerConstants(script, {
 	DodoSquawkFrequencyRange = NumberRange.new(15, 30)
@@ -38,7 +38,7 @@ function v6.KnitStart(p2)
 	l__CollectionTagAdded__2("dodo-bird-mount", function(p3)
 		local l__Parent__8 = p3.Parent;
 		if l__Parent__8 ~= nil and l__Players__3:GetPlayerFromCharacter(l__Parent__8) ~= nil then
-			local v9 = l__Maid__4.new();
+			local v9 = u4.new();
 			p2.dodoBirdMountMaids[p3] = v9;
 			p2:makeTracksForDodoBirdMount(p3):andThen(function(p4)
 				p4.idle:Play();

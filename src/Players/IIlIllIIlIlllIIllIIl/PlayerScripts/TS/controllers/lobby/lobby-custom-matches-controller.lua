@@ -1,4 +1,4 @@
--- Script Hash: cccc7f90d4f512cbde72c497b5a39ec71e4a19b26562985bb6099f016e6f5976c53a86aa53c4feaaaf3ea95cabf62d46
+-- Script Hash: af246935912c05f4422bd232da0437ac738a1759775feb018bd207ab71e241abaf0b12a6f02681f693bbc1e408315ebe
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -65,7 +65,7 @@ u1.KnitStart = v1.async(function(p2)
 		l__CollectionService__11:AddTag(l__PrimaryPart__8, "Billboard");
 	end);
 end);
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;

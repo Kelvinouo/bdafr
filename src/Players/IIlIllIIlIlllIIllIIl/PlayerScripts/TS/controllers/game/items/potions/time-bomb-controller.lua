@@ -1,4 +1,4 @@
--- Script Hash: 212e23d3595db071c3bcec8ae04ec5d4f3f5d4e57d54a2f0fdc36be6df456c936ab96409d02ac33f2e2b0c43b9ac712e
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -22,10 +22,10 @@ end;
 local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__SoundManager__3 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).SoundManager;
 local l__GameSound__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__KnitClient__5 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__5 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:WaitFor("ActivateTimeBomb"):andThen(function(p3)
+	l__default__2.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
 			l__SoundManager__3:playSound(l__GameSound__4.TNT_EXPLODE_1, {
 				position = p4.position, 

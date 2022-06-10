@@ -1,4 +1,4 @@
--- Script Hash: f5f378980e0fbabd8463770700224d0c1f2d8643ebaa91fa2c41af6c4d4b3ab1221e34f7346ac0a8f88eccc9a5d8734c
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -28,7 +28,7 @@ local l__ReplicatedStorage__6 = v2.ReplicatedStorage;
 local l__TweenService__7 = v2.TweenService;
 function v4.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("StaticHit", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		print("static hit:", p3);
 		local v6 = {};
 		for v7, v8 in ipairs(p3.hitEntities) do
@@ -120,6 +120,6 @@ function v4.playHitSpark(p4, p5)
 		v26:Destroy();
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v4.new());
 return nil;

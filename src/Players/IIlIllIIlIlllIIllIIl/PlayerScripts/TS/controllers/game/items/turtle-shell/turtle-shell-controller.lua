@@ -1,8 +1,8 @@
--- Script Hash: 0219035cecf0cbe7f9354e39645b2f38c032356e39b6539040abab98e3c19cca73e0f9a8c7fb01da54317f3ae5236c16
+-- Script Hash: 5f0e715dcd1963e09d30d2b8f141a3f023c1597373c037d847ce52457782a7de265d6dcf9b2f90cefbe09c38ba027799
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local l__HandKnitController__3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
 local v4 = setmetatable({}, {
 	__tostring = function()
@@ -16,11 +16,11 @@ function v4.new(...)
 	return v5:constructor(...) and v5;
 end;
 local u1 = l__HandKnitController__3;
-local l__Maid__2 = v2.Maid;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v4.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "TurtleShellController";
-	p1.maid = l__Maid__2.new();
+	p1.maid = u2.new();
 end;
 function v4.KnitStart(p2)
 	u1.KnitStart(p2);

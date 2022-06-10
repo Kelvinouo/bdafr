@@ -1,4 +1,4 @@
--- Script Hash: a4859a32d450e157431285f04dd4ae5773bdeb76a3ab672135b363b77c4b75f53f701c5cbf0a2e1d36f5006d228b4ec6
+-- Script Hash: df2997871be0b7615cd05bc8680d00fa644b283cd08b7d80bbbbbf4d360c712a6fde2a834eec0f8641f8d7b862f06215
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -39,7 +39,7 @@ return {
 				min = 1, 
 				max = 4
 			}, 
-			availableInCustom = false, 
+			disableInCustom = true, 
 			placeId = l__PlaceId__3.GAME_MEGA, 
 			game = l__GameType__7.BEDWARS
 		}, 
@@ -91,7 +91,7 @@ return {
 				min = 1, 
 				max = 1
 			}, 
-			availableInCustom = false, 
+			disableInCustom = true, 
 			placeId = l__PlaceId__3.GAME_MICRO, 
 			game = l__GameType__7.BEDWARS
 		}, 
@@ -526,7 +526,7 @@ return {
 				max = 4
 			}, 
 			paidPlayersOnly = true, 
-			availableInCustom = false, 
+			disableInCustom = true, 
 			glickoCategory = l__GlickoCategory__4.RANKED_BETA, 
 			rankCategory = l__RankCategory__5.RANKED_BETA, 
 			placeId = l__PlaceId__3.GAME, 
@@ -562,7 +562,7 @@ return {
 				max = 4
 			}, 
 			paidPlayersOnly = true, 
-			availableInCustom = false, 
+			disableInCustom = true, 
 			glickoCategory = l__GlickoCategory__4.RANKED_S4, 
 			rankCategory = l__RankCategory__5.RANKED_S4, 
 			placeId = l__PlaceId__3.GAME, 
@@ -598,7 +598,7 @@ return {
 				max = 4
 			}, 
 			voiceChatOnly = true, 
-			availableInCustom = false, 
+			disableInCustom = true, 
 			game = l__GameType__7.BEDWARS, 
 			placeId = l__PlaceId__3.GAME
 		}, 
@@ -780,7 +780,7 @@ return {
 			ignoreBaseStats = true, 
 			placeId = l__PlaceId__3.GAME, 
 			winConInfoHud = "Win at 10:00", 
-			availableInCustom = false
+			disableInCustom = true
 		}, 
 		[l__QueueType__10.JUGGERNAUT_TDM] = {
 			title = "Juggernaut TDM", 
@@ -806,7 +806,7 @@ return {
 			game = l__GameType__7.JUGGERNAUT, 
 			winConInfoHud = "Ends at 10:00", 
 			scoresHud = true, 
-			availableInCustom = false
+			disableInCustom = true
 		}, 
 		[l__QueueType__10.BEDWARS_DISASTERS_TO4] = {
 			title = "Disasters (Squads)", 

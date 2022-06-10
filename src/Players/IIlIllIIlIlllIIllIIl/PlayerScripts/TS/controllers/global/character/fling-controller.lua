@@ -1,4 +1,4 @@
--- Script Hash: d8f04aa0fb1b0a158f0c42f693c578c9fe6edd72099402ddf7b1362cd4d3266d1e69b0bb1fc37180da4aa3a990ce9ce2
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -23,7 +23,7 @@ local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 local l__Players__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("Fling", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		local l__Character__5 = l__Players__3.LocalPlayer.Character;
 		if l__Character__5 then
 			l__Character__5.Humanoid:ChangeState(Enum.HumanoidStateType.Physics);
@@ -34,6 +34,6 @@ function v3.KnitStart(p2)
 		end;
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v3.new());
 return nil;

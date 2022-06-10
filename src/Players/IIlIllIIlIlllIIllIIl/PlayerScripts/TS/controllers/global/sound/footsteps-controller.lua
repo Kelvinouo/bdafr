@@ -1,4 +1,4 @@
--- Script Hash: 9e7be392b33af413fe3651e2939bc7039a73ef14c002ae8f1961ba298e724fd15d372c980488db238b8acd000ba5ecfa
+-- Script Hash: bf94ee0c86715cc0d59a46300e694a5c3ffaad99e2de47d8eaa730e20b9690106d6760a694c61fd0e7d1f2eceb589efe
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -257,7 +257,7 @@ function u1.muteHumanoidSound(p15, p16, p17)
 		v36.Volume = 0;
 	end;
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

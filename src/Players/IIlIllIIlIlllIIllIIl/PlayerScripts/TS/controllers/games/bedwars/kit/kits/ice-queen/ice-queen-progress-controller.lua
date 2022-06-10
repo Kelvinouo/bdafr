@@ -1,4 +1,4 @@
--- Script Hash: 76f95049adc72359531bf5bd02825445e06a66fae29e77e99cadbc142d70296becd47518f8fdb77b738baca7ef158be8
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -29,7 +29,7 @@ local l__SoundManager__7 = v1.import(script, v1.getModule(script, "@easy-games",
 local l__GameSound__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__4.Client:OnEvent("IceQueenProgress", function(p3)
+	l__default__4.Client:OnEvent("RemoteName", function(p3)
 		l__ClientStore__5:dispatch({
 			type = "KitIceQueenSetProgress", 
 			progress = p3.damage / l__IceQueenKit__6.DAMAGE_REQUIREMENT
@@ -60,6 +60,6 @@ function v3.onKitDisabled(p7)
 		p7.maid:DoCleaning();
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v3.new());
 return nil;

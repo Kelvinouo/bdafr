@@ -1,4 +1,4 @@
--- Script Hash: ffdb89ce9698a65719d2d26368aca2740051ab8b0800e3c560ab9edb98c890644a62589e09c5f9ae38b5b9f6206c5f2c
+-- Script Hash: 38ccaeaa038942015ba10d68dafd23a42dba1285fd85792a2654be9b034253b656885f9cbb2c822db807334d9d10cf80
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -36,7 +36,7 @@ end;
 function u1.onDisable(p7)
 	p7.blockFortifier:disable();
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

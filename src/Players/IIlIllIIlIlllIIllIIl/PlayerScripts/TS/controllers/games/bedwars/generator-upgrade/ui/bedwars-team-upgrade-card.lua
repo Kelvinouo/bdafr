@@ -1,14 +1,14 @@
--- Script Hash: 7e83f4252ac5a8a45355b44973456ea5e82a8fcf36fd6fd542057ab69c0d0d1feddcdeae9ecd926335e82a255ad42e3d
+-- Script Hash: 2cf3b41d878863a2feddf21c5e923670e3a90284ded385b47901745a15463b78193b7039d407813b72c138914291a364
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local v4 = v3.Component:extend("BedwarsTeamUpgradeCard");
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v4.init(p1)
 	p1.ref = v3.createRef();
-	p1.maid = l__Maid__1.new();
+	p1.maid = u1.new();
 end;
 local l__UserInputService__2 = v1.import(script, v1.getModule(script, "@rbxts", "services")).UserInputService;
 local l__UIUtil__3 = v2.UIUtil;

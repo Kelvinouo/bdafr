@@ -1,9 +1,9 @@
--- Script Hash: 930b10d22d5bbe0a7deaf4b90a55ba02a655034d2d452f723170a7258d9b8db149bc295a5a718f7b5544786ae3596d7a
+-- Script Hash: 46cb4445f76683e9c9a8ca41766ddecf5e37f5355ea6429f67f15539cd0667c44088604ea55b109cbec67c446e0fedb3
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__HandKnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
 local v6 = setmetatable({}, {
@@ -18,12 +18,12 @@ function v6.new(...)
 	return v7:constructor(...) and v7;
 end;
 local u1 = l__HandKnitController__5;
-local l__Maid__2 = v3.Maid;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function v6.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "ChargeShieldController";
-	p1.maid = l__Maid__2.new();
+	p1.maid = u2.new();
 	p1.remotes = l__default__3.Client:GetNamespace("ChargeShield");
 	p1.chargeShieldUse = p1.remotes:WaitFor("ChargeShieldUse");
 	p1.chargeShieldHit = p1.remotes:WaitFor("ChargeShieldHit");
@@ -161,7 +161,7 @@ local l__BedwarsImageId__25 = v1.import(script, game:GetService("ReplicatedStora
 local l__BedwarsUI__26 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "bedwars-ui").BedwarsUI;
 function v6.onEnable(p9, p10, p11)
 	p9:setupYield(function()
-		local v20 = l__Maid__2.new();
+		local v20 = u2.new();
 		v20:GiveTask(l__Flamework__7.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):createCooldownBar(l__CHARGE_SHIELD__8));
 		return function()
 			v20:DoCleaning();

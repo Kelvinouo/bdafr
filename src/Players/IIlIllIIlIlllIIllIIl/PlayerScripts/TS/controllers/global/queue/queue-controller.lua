@@ -1,4 +1,4 @@
--- Script Hash: 8d53ca639afe4842c9bb7710373371352494700babce7f99fba55d338dfebbde1bba0c630f2989b473eb9484f5869498
+-- Script Hash: ee8038c7ed69f9545434f403df1840b68c26e28137c8b730d69866420d62f11de0b74f090d979f82013a54b58be3ff00
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -46,7 +46,7 @@ end;
 function u1.leaveQueue(p7)
 	l__Flamework__10.resolveDependency("@easy-games/lobby:client/controllers/lobby-queue-controller@LobbyQueueController"):leaveQueue();
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

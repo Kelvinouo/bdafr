@@ -1,4 +1,4 @@
--- Script Hash: dc7aa882ad6dbcb9827ca38470dc27f590e4356ccf69e461c622989eefa4fedb2637102c7f3c4754ba896971ae254132
+-- Script Hash: 9e7537ac0eed2f3d0f54ad98876de3b5428a3b363c994b01865e5bdb57738632b1a5667a01b71f6e83b31b8db923a116
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,7 +14,7 @@ local u2 = v2.ConstantManager.registerConstants(script, {
 local l__Workspace__3 = v3.Workspace;
 local u4 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
 local l__ProjectileMeta__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "projectile", "projectile-meta").ProjectileMeta;
-local l__Maid__6 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u6 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__RunService__7 = v3.RunService;
 local l__SharedSyncEvents__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "shared-sync-events").SharedSyncEvents;
 local l__Players__9 = v3.Players;
@@ -83,7 +83,7 @@ function v4.fireProjectile(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
 		p2.PrimaryPart:ApplyImpulse(p5 * p2.PrimaryPart.AssemblyMass);
 	end;
 	local v17 = l__ProjectileMeta__5[p2.Name];
-	local u14 = l__Maid__6.new();
+	local u14 = u6.new();
 	u14:GiveTask(p2.PrimaryPart.AncestryChanged:Connect(function()
 		u14:DoCleaning();
 	end));
@@ -392,7 +392,7 @@ function v4.getProjectileSource(p20, p21)
 	return v74;
 end;
 function v4.setupProjectileConstantOrientation(p22, p23)
-	local v75 = l__Maid__6.new();
+	local v75 = u6.new();
 	local v76 = l__ProjectileMeta__5[p22.Name];
 	if v76.useServerModel and p23 ~= l__Players__9.LocalPlayer then
 		return v75;

@@ -1,4 +1,4 @@
--- Script Hash: d0c51d1ca3d80e3ba86d5ab06f3f32da5b0573b560714d812973d31393be380806477bb0776afd7bfd10316eec1a26c8
+-- Script Hash: cd3ab4d0ae8b20111412f1abadba0fa14dc712e1a00adc69f5effd16d429b66bcd5809bb7fe052ee5cdafaffccc5612d
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -431,6 +431,6 @@ function v5.getOwnedAxolotls(p24, p25)
 	end;
 	return v60;
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());
 return nil;

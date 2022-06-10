@@ -1,4 +1,4 @@
--- Script Hash: b6fa8e660ef3ee21e7eecdaeb2418e06c88b39c35ca02626ff527e8724d20bf41353be2da1a7863158740046afd3f5fd
+-- Script Hash: 204e2609a37ceae3ddad484ba6c79b88ffae396efca2dbd19f60f5af155c93ff35b3497f2a6a70afd1d0626c4f56c559
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -9,8 +9,8 @@ local v5 = {};
 if not v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "place-util").PlaceUtil.isProduction() then
 
 end;
-v5.FreeKits = { l__BedwarsKit__4.FISHERMAN, l__BedwarsKit__4.BARBARIAN, l__BedwarsKit__4.MELODY };
-v5.UpdateTimeEpoch = 1653688800;
+v5.FreeKits = { l__BedwarsKit__4.AXOLOTL, l__BedwarsKit__4.BUILDER, l__BedwarsKit__4.SHIELDER };
+v5.UpdateTimeEpoch = 1654898400;
 local v6 = { l__BedwarsKit__4.REGENT };
 local v7 = #v6;
 local l__season4__8 = l__BedwarsBPKits__3.season4;

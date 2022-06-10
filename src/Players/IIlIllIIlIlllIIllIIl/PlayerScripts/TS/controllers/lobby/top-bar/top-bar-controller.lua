@@ -1,4 +1,4 @@
--- Script Hash: a8abb2ff619ab735d1ce85b8897184ade12431d90e3c4bd6d970bae7665bb40f13260b7cdf7e4c7b7602222487e22e16
+-- Script Hash: 3a66e496e7a99c0417419dbc6c1b8272eb67b59bd4268fb55e240cdc1aa94f2a430c458d6f4b916cf2d974d6aa4d5815
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -36,6 +36,6 @@ function v3.mountHUD(p3)
 		l__CreateRoduxApp__4("TopBarApp", l__TopBarAppWrapper__5, {}, {}, {});
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v3.new());
 return nil;

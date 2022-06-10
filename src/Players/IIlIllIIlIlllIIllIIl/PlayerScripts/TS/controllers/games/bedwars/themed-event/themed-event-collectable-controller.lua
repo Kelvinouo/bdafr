@@ -1,8 +1,8 @@
--- Script Hash: 1ecaeca6fcaf8cf0519a1e44392257f73a0aa72ae526fb66d3a6bdabbae5c8d3e76c026345336540f173b69a2848ed8f
+-- Script Hash: 22d694736b8603061050dc4045ba6f2db6c29e9600821f1efaa7b8670a1d587ea939a1645f08d939be365efe9ab88490
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local v4 = v1.import(script, script.Parent.Parent, "collectable-entity", "collectable-entity-controller").CollectableEntityController;
 local v5 = setmetatable({}, {

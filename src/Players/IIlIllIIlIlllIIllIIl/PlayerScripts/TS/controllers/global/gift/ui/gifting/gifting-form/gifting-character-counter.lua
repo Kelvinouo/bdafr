@@ -1,15 +1,15 @@
--- Script Hash: fd03cde710c06bea55eb1a367500a911e9aaf8e8c5443d4a6b8b9b3cb53d3ddedb76c294191a8cd5f9c07916155dc157
+-- Script Hash: b7c62f63890f9e64f037bb26a305b0469300b970ee341caa088d69bb3a8a32c730f5ecea972b2ea76dc3cf1a55602b91
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local u2 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__ColorUtil__3 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).ColorUtil;
 return {
 	GiftingCharacterCounter = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u2)(function(p1, p2)
 		local v2, v3 = p2.useState(0);
 		p2.useEffect(function()
-			local v4 = l__Maid__1.new();
+			local v4 = u1.new();
 			local v5 = p1.TextBox:getValue();
 			if v5 then
 				v3(#v5.Text);

@@ -1,9 +1,9 @@
--- Script Hash: 6fd2792dc4f3dffba1c15f8cd5cc5bfa3f2d62cedb66b1c2af3e18ab5d452b6a94a9fde3d6708c8e08cbb4cbd38dd034
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "easing-functions"));
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@rbxts", "easing-functions"));
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v6 = setmetatable({}, {
@@ -28,17 +28,17 @@ local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 local l__Players__4 = v4.Players;
 local l__SoundManager__5 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).SoundManager;
 local l__GameSound__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__Maid__7 = v3.Maid;
+local u7 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__Flamework__8 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 local l__CooldownId__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "cooldown", "cooldown-id").CooldownId;
 local l__StopwatchConstants__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "items", "stopwatch", "stopwatch-constants").StopwatchConstants;
 local l__CollectionService__11 = v4.CollectionService;
 local l__Workspace__12 = v4.Workspace;
 local l__ReplicatedStorage__13 = v4.ReplicatedStorage;
-local l__KnitClient__14 = v3.KnitClient;
+local l__KnitClient__14 = v2.KnitClient;
 local l__Chain__15 = v1.import(script, v1.getModule(script, "@rbxts", "catrom").src).Chain;
 local l__default__16 = v1.import(script, v1.getModule(script, "@rbxts", "tween")).default;
-local l__InOutCubic__17 = v2.InOutCubic;
+local l__InOutCubic__17 = v3.InOutCubic;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
 	l__RunService__2.Heartbeat:Connect(function()
@@ -55,7 +55,7 @@ function v6.KnitStart(p2)
 			end;
 		end;
 	end);
-	l__default__3.Client:OnEvent("StopwatchActivated", function(p3)
+	l__default__3.Client:OnEvent("RemoteName", function(p3)
 		local l__character__11 = p3.character;
 		local v12 = p2:createOriginMarker(p3.cframe);
 		local v13 = l__Players__4:GetPlayerFromCharacter(l__character__11);
@@ -83,7 +83,7 @@ function v6.KnitStart(p2)
 		local v19 = l__SoundManager__5:playSound(l__GameSound__6.STOPWATCH_TICKING, v17);
 		if v19 and l__SoundManager__5:playSound(l__GameSound__6.STOPWATCH_ACTIVATED, v15) then
 			v19.Looped = true;
-			local v20 = l__Maid__7.new();
+			local v20 = u7.new();
 			v20:GiveTask(v19);
 			v20:GiveTask(p2:attachActiveEffects(l__character__11));
 			if l__Players__4.LocalPlayer == v13 then
@@ -105,7 +105,7 @@ function v6.KnitStart(p2)
 			};
 		end;
 	end);
-	l__default__3.Client:OnEvent("StopwatchExpired", v1.async(function(p4)
+	l__default__3.Client:OnEvent("RemoteName", v1.async(function(p4)
 		local l__character__21 = p4.character;
 		local v22 = p2:getCurrentAnimationOfCharacter(l__character__21);
 		if v22 == nil then
@@ -296,9 +296,9 @@ function v6.createGhostCharacter(p15, p16)
 	end;
 	return v52;
 end;
-local l__InExpo__24 = v2.InExpo;
+local l__InExpo__24 = v3.InExpo;
 local l__scaleModel__25 = v1.import(script, v1.getModule(script, "@rbxts", "scale-model").out).scaleModel;
-local l__Linear__26 = v2.Linear;
+local l__Linear__26 = v3.Linear;
 v6.tweenOutGhost = v1.async(function(p17, p18)
 	task.wait(0.6);
 	for v61, v62 in ipairs(p18:GetDescendants()) do
@@ -341,13 +341,13 @@ function v6.attachActiveEffects(p22, p23)
 	v68.Attachment1 = v67;
 	local v69 = l__ReplicatedStorage__13.Assets.Effects.StopwatchEffects.TrailParticles:Clone();
 	v69.Parent = p23.HumanoidRootPart;
-	local v70 = l__Maid__7.new();
+	local v70 = u7.new();
 	v70:GiveTask(v66);
 	v70:GiveTask(v67);
 	v70:GiveTask(v68);
 	v70:GiveTask(v69);
 	return v70;
 end;
-u1 = v3.KnitClient.CreateController;
+u1 = v2.KnitClient.CreateController;
 u1 = u1(v6.new());
 return nil;

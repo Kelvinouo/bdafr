@@ -1,4 +1,4 @@
--- Script Hash: a0a8c627658aeb1d753464e207dc870e6650b08f75b108fe3a2a034c0b1f6c888acfe0d388b5ef8ab49aad145c6fc4a6
+-- Script Hash: 345cb7b285fa5e1d7caefedb3147dcaeacfcb931c0530b9264b30419a0cac9308c0a449423aa59d7cae4a2d0b351e741
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -59,7 +59,7 @@ local l__AnimationUtil__5 = v2.AnimationUtil;
 local l__Players__6 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 local l__GameAnimationUtil__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
 local l__BEAR_CLAWS_FLURRY__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType.BEAR_CLAWS_FLURRY;
-local l__KnitClient__9 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__9 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 function v4.playFlurryAnimation(p10)
 	l__AnimationUtil__5.playAnimation(l__Players__6.LocalPlayer, l__GameAnimationUtil__7.getAssetId(l__BEAR_CLAWS_FLURRY__8));
 	l__KnitClient__9.Controllers.ViewmodelController:playAnimation(l__BEAR_CLAWS_FLURRY__8);

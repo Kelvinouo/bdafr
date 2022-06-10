@@ -1,4 +1,4 @@
--- Script Hash: 5638b885c902fe1c57da06db3bd2be9bd96e488209ad8a185feacf9a46385b9ec3cbe9080af554b97a643ad2b664242a
+-- Script Hash: 87e501fbb9c4838f5b64f5b24ae588ca327855787f5c6391a3d7522e84d9164c61f1df9c51d63033fa09915ee4786ca5
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = setmetatable({}, {
@@ -14,7 +14,7 @@ end;
 function v1.constructor(p1)
 
 end;
-v1.MIDNIGHT_DURATION = 12;
+v1.MIDNIGHT_DURATION = 14;
 return {
 	MidnightConstants = v1
 };

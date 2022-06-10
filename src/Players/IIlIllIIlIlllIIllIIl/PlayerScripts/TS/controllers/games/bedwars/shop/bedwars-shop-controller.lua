@@ -1,8 +1,8 @@
--- Script Hash: 3b38754ebd99622c256c89fcebd451a02d67eeb54c3bc155a06d2a56f40004769b17384211ce1491172bf410ffc581de
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__KnitController__3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v4 = setmetatable({}, {
 	__tostring = function()
@@ -41,7 +41,7 @@ function u1.KnitStart(p2)
 			l__Flamework__4.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__5.BEDWARS_ITEM_SHOP, {});
 		end
 	});
-	l__default__6.Client:Get("BedwarsSetAllTeamUpgrades"):Connect(function(p3)
+	l__default__6.Client:Get("RemoteName"):Connect(function(p3)
 		local v6 = nil;
 		local l__purchasedTeamUpgrades__7 = p3.purchasedTeamUpgrades;
 		v6 = {};
@@ -57,7 +57,7 @@ function u1.KnitStart(p2)
 			teamUpgrades = local v10
 		});
 	end);
-	l__default__6.Client:Get("BedwarsSetTeamUpgradeTier"):Connect(function(p6)
+	l__default__6.Client:Get("RemoteName"):Connect(function(p6)
 		l__ClientStore__7:dispatch({
 			type = "BedwarsSetTeamUpgradeTier", 
 			upgradeId = p6.upgradeId, 

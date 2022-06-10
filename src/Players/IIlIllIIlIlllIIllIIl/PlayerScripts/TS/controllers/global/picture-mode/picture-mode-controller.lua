@@ -1,4 +1,4 @@
--- Script Hash: b702f6a3237a9b8968e3e6ec1a38b37ee8b552a3591d628819730c76a074ae90e785f2e69d29c6f7e2db53f72deb9d71
+-- Script Hash: f102561d624cfafa96152f1b07f10bb0ec9b283557faed678ae3243e0c6af8d38d3ffc6a30cb723e8a7ab44f296781bc
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -122,6 +122,6 @@ function v4.togglePictureMode(p14)
 	end;
 	p14.pictureModeEnabled = not p14.pictureModeEnabled;
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v4.new());
 return nil;

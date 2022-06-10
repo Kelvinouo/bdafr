@@ -1,14 +1,14 @@
--- Script Hash: a8b79bb5d7df0859eb947b75deef069dea6d0b40b13895d2ad33e82fe580c0777890c866911ab133a04cbafdd3892e24
+-- Script Hash: e97d581cca0b9e73a89e8c4b4d40c6392549e1119c871271ba73b4a09a9041cb45024e1fcf3633a356a594b948470b69
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local v4 = v3.Component:extend("HotbarTile");
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v4.init(p1)
 	p1.frameRef = v3.createRef();
-	p1.positionMaid = l__Maid__1.new();
+	p1.positionMaid = u1.new();
 end;
 function v4.didMount(p2)
 	p2:tweenPosition();

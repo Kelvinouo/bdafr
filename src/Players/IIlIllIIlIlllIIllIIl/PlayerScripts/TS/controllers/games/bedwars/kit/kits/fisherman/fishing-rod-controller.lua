@@ -1,8 +1,8 @@
--- Script Hash: 846787ce74d720e8be1da784fa59692f866ea84ec36b060df635932efd394c27d7cac4d61d853bbf5306c1c673f8361e
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent, "global", "combat", "projectile", "projectile-source-controller").ProjectileSourceController;
 local v4 = setmetatable({}, {
 	__tostring = function()
@@ -35,7 +35,7 @@ function v4.KnitStart(p2)
 		if p3.projectile:GetAttribute("ProjectileShooter") ~= l__Players__4.LocalPlayer.UserId then
 			return nil;
 		end;
-		l__default__5.Client:Get("PullFishingRod"):SendToServer({
+		l__default__5.Client:Get("RemoteName"):SendToServer({
 			success = false
 		});
 	end);
@@ -66,14 +66,14 @@ function v4.onEnable(p4, p5, p6)
 	end));
 	p4.maid:GiveTask(function()
 		p4.activeFishing = false;
-		l__default__5.Client:Get("PullFishingRod"):SendToServer({
+		l__default__5.Client:Get("RemoteName"):SendToServer({
 			success = false
 		});
 	end);
 	p4.animationMaid:DoCleaning();
 	p4.maid:GiveTask(p4.animationMaid);
 	task.spawn(function()
-		p4.maid:GiveTask(l__default__5.Client:WaitFor("FishFound"):expect():Connect(function(p9)
+		p4.maid:GiveTask(l__default__5.Client:WaitFor("RemoteName"):expect():Connect(function(p9)
 			if not p6() then
 				return nil;
 			end;
@@ -98,14 +98,14 @@ function v4.onEnable(p4, p5, p6)
 					local v8 = l__GameAnimationUtil__6.playAnimation(l__Players__4.LocalPlayer, l__AnimationType__7.FISHING_ROD_CATCH_SUCCESS, {
 						looped = false
 					});
-					l__default__5.Client:Get("PullFishingRod"):SendToServer({
+					l__default__5.Client:Get("RemoteName"):SendToServer({
 						success = true
 					});
 				else
 					v8 = l__GameAnimationUtil__6.playAnimation(l__Players__4.LocalPlayer, l__AnimationType__7.FISHING_ROD_CATCH_FAIL, {
 						looped = false
 					});
-					l__default__5.Client:Get("PullFishingRod"):SendToServer({
+					l__default__5.Client:Get("RemoteName"):SendToServer({
 						success = false
 					});
 				end;

@@ -1,75 +1,74 @@
--- Script Hash: ea1343b9cbfda80eea909f8a0849e7938e8540119e7f56d6c9111c0b01ad28a19dbb5d4a176d1a7f0216b227f1cbb9f2
+-- Script Hash: 985ff22eb81a18f01850d77b4c406c59315f610c148ec726c8dadb53076b7227595f0ff36aec3b60737e56fde4a516cc
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
-local v3 = v1.import(script, script.Parent.Parent.Parent.Parent, "global", "combat", "projectile", "projectile-source-controller").ProjectileSourceController;
-local v4 = setmetatable({}, {
+local v2 = v1.import(script, script.Parent.Parent.Parent.Parent, "global", "combat", "projectile", "projectile-source-controller").ProjectileSourceController;
+local v3 = setmetatable({}, {
 	__tostring = function()
 		return "SpearSourceController";
 	end, 
-	__index = v3
+	__index = v2
 });
-v4.__index = v4;
-function v4.new(...)
-	local v5 = setmetatable({}, v4);
-	return v5:constructor(...) and v5;
+v3.__index = v3;
+function v3.new(...)
+	local v4 = setmetatable({}, v3);
+	return v4:constructor(...) and v4;
 end;
-local u1 = v3;
-local l__Maid__2 = v2.Maid;
-function v4.constructor(p1, ...)
+local u1 = v2;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+function v3.constructor(p1, ...)
 	u1.constructor(p1, ...);
 	p1.Name = "SpearSourceController";
-	p1.chargingMaid = l__Maid__2.new();
+	p1.chargingMaid = u2.new();
 end;
-function v4.KnitStart(p2)
+function v3.KnitStart(p2)
 	u1.KnitStart(p2);
 end;
 local l__ItemType__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
-function v4.isRelevantItem(p3, p4)
+function v3.isRelevantItem(p3, p4)
 	return p4.itemType == l__ItemType__3.SPEAR;
 end;
 local l__GameAnimationUtil__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
 local l__Players__5 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 local l__AnimationType__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
-function v4.onStartCharging(p5)
-	local v6 = l__GameAnimationUtil__4.playAnimation(l__Players__5.LocalPlayer, l__AnimationType__6.SPEAR_STARTUP);
-	if v6 then
-		p5.chargingMaid:GiveTask(v6);
-		p5.chargingMaid:GiveTask(v6.Stopped:Connect(function()
-			local v7 = l__GameAnimationUtil__4.playAnimation(l__Players__5.LocalPlayer, l__AnimationType__6.SPEAR_IDLE, {
+function v3.onStartCharging(p5)
+	local v5 = l__GameAnimationUtil__4.playAnimation(l__Players__5.LocalPlayer, l__AnimationType__6.SPEAR_STARTUP);
+	if v5 then
+		p5.chargingMaid:GiveTask(v5);
+		p5.chargingMaid:GiveTask(v5.Stopped:Connect(function()
+			local v6 = l__GameAnimationUtil__4.playAnimation(l__Players__5.LocalPlayer, l__AnimationType__6.SPEAR_IDLE, {
 				looped = true
 			});
-			if v7 then
+			if v6 then
 				p5.chargingMaid:GiveTask(function()
-					v7:Stop();
+					v6:Stop();
 				end);
 			end;
 		end));
 	end;
 end;
-function v4.onStopCharging(p6)
+function v3.onStopCharging(p6)
 	p6.chargingMaid:DoCleaning();
 end;
 local l__SoundManager__7 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).SoundManager;
 local l__GameSound__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-function v4.onLaunch(p7)
-	local v8 = {};
-	local v9 = l__Players__5.LocalPlayer.Character;
-	if v9 ~= nil then
-		v9 = v9:GetPrimaryPartCFrame().Position;
+function v3.onLaunch(p7)
+	local v7 = {};
+	local v8 = l__Players__5.LocalPlayer.Character;
+	if v8 ~= nil then
+		v8 = v8:GetPrimaryPartCFrame().Position;
 	end;
-	v8.position = v9;
-	v8.parent = l__Players__5.LocalPlayer.Character;
-	l__SoundManager__7:playSound(l__GameSound__8.SPEAR_THROW, v8);
+	v7.position = v8;
+	v7.parent = l__Players__5.LocalPlayer.Character;
+	l__SoundManager__7:playSound(l__GameSound__8.SPEAR_THROW, v7);
 	l__GameAnimationUtil__4.playAnimation(l__Players__5.LocalPlayer, l__AnimationType__6.SPEAR_THROW);
 end;
-function v4.onStartReload(p8)
+function v3.onStartReload(p8)
 
 end;
-function v4.onMaxCharge(p9)
+function v3.onMaxCharge(p9)
 
 end;
-u1 = v2.KnitClient.CreateController;
-u1 = u1(v4.new());
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
+u1 = u1(v3.new());
 return nil;

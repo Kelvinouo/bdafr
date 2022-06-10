@@ -1,4 +1,4 @@
--- Script Hash: 2514bd7e82a1f5d80e80046a026779a2fddc27cbd7dccb2221cbd8d2888420a66b92cbe959681b278572980fd85d550b
+-- Script Hash: 81c99ff4a5d8dc7919051c1f514836444c66037fd82f222a01cf610717cf08ff1f85c90f573b123948c0e69c9deaea63
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -7,7 +7,7 @@ local l__ColorUtil__3 = v2.ColorUtil;
 local u1 = l__ColorUtil__3.hexColor(16773227);
 local l__TweenService__2 = v1.import(script, v1.getModule(script, "@rbxts", "services")).TweenService;
 local l__DeviceUtil__3 = v2.DeviceUtil;
-local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local u5 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__Empty__6 = v2.Empty;
 return {

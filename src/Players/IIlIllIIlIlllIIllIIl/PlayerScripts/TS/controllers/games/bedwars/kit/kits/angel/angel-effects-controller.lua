@@ -1,9 +1,9 @@
--- Script Hash: 52c9c7dd522d8f338a85970c901ebe9f7868adf2871f3b1a5bff27d12df4223ee9ce4ca2dd09b8b94fe4dd5c0b5429e3
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v6 = setmetatable({}, {
@@ -40,7 +40,7 @@ local l__WatchPlayer__11 = v2.WatchPlayer;
 local l__KnitClient__12 = v3.KnitClient;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("AngelOrb", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		local v8 = l__Workspace__3:GetServerTimeNow() - p3.timeStarted;
 		local l__Character__9 = p3.target.Character;
 		local l__Character__10 = p3.from.Character;

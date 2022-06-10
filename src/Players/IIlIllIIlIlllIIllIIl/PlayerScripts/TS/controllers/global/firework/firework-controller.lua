@@ -1,4 +1,4 @@
--- Script Hash: db9b20a55bf35ae0c631e11f105eb69d196c65fc1cbf717203c0896ec927b244045bf08ec04d822bed60797005b9e381
+-- Script Hash: 5fd4889fba925f094f8db37c55827a7ce54998921bf0e15e1ea5436741a33377c80368b7235fbf10075fd8e66d5ea9db
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -87,6 +87,6 @@ function v5.playFireworkEffect(p3, p4, p5, p6)
 		v9:Destroy();
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());
 return nil;

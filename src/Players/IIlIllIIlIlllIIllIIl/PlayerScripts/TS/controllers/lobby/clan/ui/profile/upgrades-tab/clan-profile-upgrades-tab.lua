@@ -1,4 +1,4 @@
--- Script Hash: 78563589cd20b9dd0274607a1ed52d10e3cb5e8c8073ab15dcfd93400efa8f93210ed1c8fe4210330190d61c1e9566e3
+-- Script Hash: ee358b2fb519b0bd61df5b8d81905a50ec52aa863db272e47595bbd36efc6dce4ac3b5b9903fa75f49464deeb199431c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -9,7 +9,7 @@ local l__DeviceUtil__2 = v2.DeviceUtil;
 local l__ClanUtil__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "clan", "clan-util").ClanUtil;
 local l__ClanMemberRank__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "clan", "clan-member").ClanMemberRank;
 local l__ClanUpgradeMeta__5 = v3.ClanUpgradeMeta;
-local l__KnitClient__6 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__6 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__SoundManager__7 = v2.SoundManager;
 local l__GameSound__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 local l__Empty__9 = v2.Empty;

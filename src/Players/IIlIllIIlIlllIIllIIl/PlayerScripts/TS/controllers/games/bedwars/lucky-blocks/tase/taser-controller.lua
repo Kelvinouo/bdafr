@@ -1,4 +1,4 @@
--- Script Hash: b635e8b5ee831fb91ca092e9de30c7c430fa84cf4cc409cbcbe98298ff12032e952daea74524935a6f871bff6fda2773
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -22,7 +22,7 @@ end;
 local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("Tase", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		p2:taseSelf(p3.duration);
 	end);
 end;
@@ -37,6 +37,6 @@ function v3.taseSelf(p4, p5)
 		end);
 	end;
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v3.new());
 return nil;

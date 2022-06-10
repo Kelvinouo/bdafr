@@ -1,4 +1,4 @@
--- Script Hash: d6a04485716f3b051fa5c9f25d0c485cca69c38f97665155e9a0f45792fc089ffb701d4a6523569caa4a313e4e0d94d8
+-- Script Hash: c5cd47a8e3302c4c096c62333a810a197000663b8b720421ebd9098d7b874ee3a586e382477de0b82187bf5d73540c83
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -8,7 +8,7 @@ local l__ColorUtil__2 = v2.ColorUtil;
 local l__BPRewardDisplayMeta__3 = v1.import(script, script.Parent.Parent.Parent, "battle-pass-reward-display-meta").BPRewardDisplayMeta;
 local l__BPRewardDisplayType__4 = v1.import(script, script.Parent.Parent.Parent, "battle-pass-reward-display-type").BPRewardDisplayType;
 local l__ButtonComponent__5 = v2.ButtonComponent;
-local l__KnitClient__6 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__6 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__Theme__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local l__Flamework__8 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 local l__BedwarsAppIds__9 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "types", "app-config").BedwarsAppIds;

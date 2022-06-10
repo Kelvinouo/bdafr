@@ -1,4 +1,4 @@
--- Script Hash: 1d30a6cc692963193e7b21cefc6f027e0ec5c5e0c191af1e310ad71a3187761d42d117ee7f8e9f4d2ae643cc6b83040a
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -32,7 +32,7 @@ local l__GameQueryUtil__9 = v2.GameQueryUtil;
 local l__Debris__10 = v3.Debris;
 local l__TweenService__11 = v3.TweenService;
 function u1.KnitStart(p2)
-	l__default__3.Client:WaitFor("FireballExplode"):andThen(function(p3)
+	l__default__3.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
 			l__SoundManager__4:playSound(l__RandomUtil__5.fromList(l__GameSound__6.TNT_EXPLODE_1, l__GameSound__6.FIREBALL_EXPLODE), {
 				position = p4.position, 
@@ -82,7 +82,7 @@ function u1.KnitStart(p2)
 		end);
 	end);
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;

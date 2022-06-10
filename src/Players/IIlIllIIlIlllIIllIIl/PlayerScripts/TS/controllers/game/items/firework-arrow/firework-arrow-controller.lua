@@ -1,4 +1,4 @@
--- Script Hash: cac569a69ef4701c2c68ebadd734fc9c821bce14565ba41f582b4c50bac135ed668b92397684d80f991ae79107009557
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -20,11 +20,11 @@ function v3.constructor(p1)
 	p1.Name = "FireworkArrowController";
 end;
 local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__FireworkType__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "firework", "firework-effect-type").FireworkType;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("FireworkArrowExplode", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		l__KnitClient__3.Controllers.FireworkController:playFireworkEffect(p3.position, l__FireworkType__4.NORMAL);
 	end);
 end;

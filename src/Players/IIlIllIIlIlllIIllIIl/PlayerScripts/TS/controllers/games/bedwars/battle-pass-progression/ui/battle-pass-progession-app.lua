@@ -1,4 +1,4 @@
--- Script Hash: deadcb26bc901fba872a9251cc74faef53687e09a6c3aa7b42830fcda79263f691d6c35028a27564b416daa0314d1ab3
+-- Script Hash: 33146cfb098aec03daa8b222ab9c3e877d003788c5447ab3486b32d20b86021f8b2b0c91a9ec6c9fb742cc64bcf6b787
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -9,7 +9,7 @@ local u2 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__TweenService__3 = v3.TweenService;
 local l__RunService__4 = v3.RunService;
 local l__ClientSyncEvents__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
-local l__KnitClient__6 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__6 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__SlideIn__7 = v2.SlideIn;
 local l__ScaleComponent__8 = v2.ScaleComponent;
 local l__DeviceUtil__9 = v2.DeviceUtil;

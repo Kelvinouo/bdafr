@@ -1,4 +1,4 @@
--- Script Hash: f98a84028704c9a01bb981195254e6cd596bad4325d9282e78725ef222111aae701f8d668391892a6678ab80c26f5b77
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -17,7 +17,7 @@ v6.LAST = 2;
 v5[2] = "LAST";
 local v7 = { l__ItemType__4.TACTICAL_CROSSBOW, l__ItemType__4.TWIRLBLADE, l__ItemType__4.CARROT_CANNON, l__ItemType__4.DIAMOND_SWORD, l__ItemType__4.FIREBALL, l__ItemType__4.BEAR_CLAWS, l__ItemType__4.ROCKET_LAUNCHER, l__ItemType__4.RAGEBLADE, l__ItemType__4.PAINT_SHOTGUN, l__ItemType__4.FRYING_PAN, l__ItemType__4.WOOD_CROSSBOW, l__ItemType__4.IRON_SWORD, l__ItemType__4.GOLDEN_BOW, l__ItemType__4.BOBA_BLASTER, l__ItemType__4.BAGUETTE };
 local v8 = v2.Component:extend("HudProgress");
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local u2 = {
 	start = 1, 
 	progress = 1, 
@@ -31,7 +31,7 @@ local u2 = {
 	highlightLast = false
 };
 function v8.init(p1, p2)
-	p1.connectionMaid = l__Maid__1.new();
+	p1.connectionMaid = u1.new();
 	p1:setState({
 		progress = u2.progress, 
 		lastImageId = u2.lastImageId, 
@@ -146,7 +146,7 @@ function v8.createWeaponLabel(p7, p8, p9, p10)
 end;
 local l__default__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function v8.listenForProgressUpdates(p11)
-	p11.connectionMaid:GiveTask((l__default__5.Client:WaitFor("GunGameUpdate"):expect():Connect(function(p12)
+	p11.connectionMaid:GiveTask((l__default__5.Client:WaitFor("RemoteName"):expect():Connect(function(p12)
 		if p12.progress == p11.props.start then
 			local v14 = u2.lastImageId;
 			local v15 = u2.currentImageId;
@@ -172,7 +172,7 @@ function v8.listenForProgressUpdates(p11)
 	end)));
 end;
 function v8.listenForLeaderboardUpdates(p13)
-	p13.connectionMaid:GiveTask((l__default__5.Client:WaitFor("GunGameLeaderboardUpdate"):expect():Connect(function(p14)
+	p13.connectionMaid:GiveTask((l__default__5.Client:WaitFor("RemoteName"):expect():Connect(function(p14)
 		local v17 = p13:ordinalSuffix(p14.place);
 		if p14.tied then
 			v17 = v17 .. " (tied)";

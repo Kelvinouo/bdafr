@@ -1,4 +1,4 @@
--- Script Hash: 742f1f0e88d0ff845f7be2e59967e92332945f00b2fba81809bb75d2d009028ebc5bc5f65e4e68344b465f200c6cb147
+-- Script Hash: 4ca4c1b68cb8ae9f6867562a518dfcf925c6e46f42eb23fbcbb10cd1ee08f631d6a8c256380fc4133bd72f3f2f3d23df
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,7 +14,7 @@ function v2.new(...)
 end;
 local l__EntityUtil__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
 local l__Players__2 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
-local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__DamageType__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "damage", "damage-type").DamageType;
 function v2.constructor(p1, p2)
 	p2.Touched:Connect(function(p3)

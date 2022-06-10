@@ -1,4 +1,4 @@
--- Script Hash: 689fc7b3970f1afe5346281409fe9ee781fc26b039f1bc6a8bc46801c1c2af22f324da376bdd541e769373e70199230a
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -15,7 +15,7 @@ local l__Empty__4 = v2.Empty;
 local l__Button__5 = v2.Button;
 local l__Theme__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local l__Flamework__7 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
-local l__KnitClient__8 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__8 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__default__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function v4.render(p2)
 	if l__Players__1.LocalPlayer then
@@ -124,7 +124,7 @@ function v4.render(p2)
 		Text = "<b>LOBBY</b>", 
 		Size = UDim2.fromScale(0.28, 1), 
 		OnClick = function()
-			l__default__9.Client:Get("TeleportToLobby"):SendToServer();
+			l__default__9.Client:Get("RemoteName"):SendToServer();
 		end, 
 		LayoutOrder = 5
 	}, { v3.createElement("UIAspectRatioConstraint", {

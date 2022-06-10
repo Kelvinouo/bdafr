@@ -1,9 +1,9 @@
--- Script Hash: 2393833bece4826e7f6b88ccfcd1dff9bbedc20686162edf1575e6cd13b4166ad9f7f41aedb16912a666e19760d222d5
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v6 = setmetatable({}, {
@@ -66,7 +66,7 @@ function v6.KnitStart(p2)
 			end);
 		end);
 	end);
-	l__default__11.Client:OnEvent("EntityDamageEvent", function(p8)
+	l__default__11.Client:OnEvent("RemoteName", function(p8)
 		if p8.entityInstance.PrimaryPart and p8.fromEntity and l__Players__3:GetPlayerFromCharacter(p8.fromEntity) == l__Players__3.LocalPlayer and p8.extra.paintBlast then
 			p2.hitMarkerOverflow = math.min(p2.hitMarkerOverflow + 1, 3);
 		end;

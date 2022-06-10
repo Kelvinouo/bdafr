@@ -1,9 +1,9 @@
--- Script Hash: f3ce37484f45e72e6aa9026580e7ee9590ec1b2d7d7228bda5be006b249edca9b704db341e771750c7304c703a232b67
+-- Script Hash: 1e4f6c1bef8c0c9ec9904d8dbb580ebc65d98808aa8b2e1a3caa2e58d8bb9036715c1f98ffa627a4b463c26a75097636
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local l__RankMeta__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "rank", "rank-meta").RankMeta;
 local l__NumberSpinner__2 = v2.NumberSpinner;
 local l__TweenService__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).TweenService;

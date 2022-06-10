@@ -1,9 +1,9 @@
--- Script Hash: 2287e5feb7a708cd430dc348669add6a866a4edd2a4b555c83b9b0c6f7073be6bf8bb42b7076c4c6fd4a1f6fadaf8391
+-- Script Hash: 132a98bb97792905601f7aec8772b30491ed7e4fff6574057bb4b37b3b08865a7a8ce5978494e5a26fc2d594c0e6a6a1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v6 = setmetatable({}, {
@@ -33,7 +33,7 @@ local u7 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
 local l__Theme__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local l__DeviceUtil__9 = v2.DeviceUtil;
 local l__VendingMachineState__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "items", "vending-machine", "vending-machine-state").VendingMachineState;
-local l__Maid__11 = v3.Maid;
+local u11 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__GameAnimationUtil__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
 local l__Players__13 = v4.Players;
 local l__AnimationType__14 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
@@ -72,7 +72,7 @@ function v6.KnitStart(p2)
 			u29.Enabled = false;
 		end);
 		u29.PromptButtonHoldBegan:Connect(function(p4)
-			local v8 = l__Maid__11.new();
+			local v8 = u11.new();
 			local u30 = l__GameAnimationUtil__12.playAnimation(l__Players__13.LocalPlayer, l__AnimationType__14.OPEN_CRATE);
 			v8:GiveTask(function()
 				if u30 ~= nil then
@@ -113,7 +113,7 @@ function v6.KnitStart(p2)
 					if not v11 then
 						return nil;
 					end;
-					local v12 = l__Maid__11.new();
+					local v12 = u11.new();
 					local v13 = l__EntityUtil__17:getEntity(p6);
 					if v13 ~= nil then
 						v13 = v13:getItemInHandClient();
@@ -239,7 +239,7 @@ function v6.KnitStart(p2)
 	end);
 	l__WatchCollectionTag__4("VendingMachine", function(p11)
 		local l__LuckyBlock__32 = p11:WaitForChild("LuckyBlock");
-		local v33 = l__Maid__11.new();
+		local v33 = u11.new();
 		local u34 = l__Workspace__22:GetServerTimeNow();
 		local l__Position__35 = l__LuckyBlock__32.Position;
 		v33:GiveTask(l__RunService__28.Heartbeat:Connect(function(p12)

@@ -1,13 +1,13 @@
--- Script Hash: 1367a273ffbec8b4b09d804af32fd6b0d25a7ae5921fa855336a639111aa9c653b1b3dc0e34632682cde3356aa0d6679
+-- Script Hash: feddf88bca79c74c22095da5456e9d5fe5fd2d81d349f68966ca03b8c73f49a03b629564a97698d7681498c145aca8cf
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local v4 = v2.Component:extend("EngineerFilmEffect");
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v4.init(p1, p2)
-	p1.maid = l__Maid__1.new();
+	p1.maid = u1.new();
 	p1.sizeX = 400;
 	p1.sizeY = 400;
 	local v5, v6 = v2.createBinding(UDim2.new(0.18, 0, 0.18, 0));

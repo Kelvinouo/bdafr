@@ -1,4 +1,4 @@
--- Script Hash: 7e335807534aff209e0ee69e459d6344efc8b8626fe8f3380882bda0846f6ff112fc451bbc22e7b32d55fad0e4ee1c55
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -40,11 +40,11 @@ local l__default__6 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 function u1.createBindable(p4)
 	local v7 = Instance.new("BindableEvent");
 	v7.Event:Connect(function()
-		l__default__6.Client:Get("ResetCharacter"):SendToServer();
+		l__default__6.Client:Get("RemoteName"):SendToServer();
 	end);
 	return v7;
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2(u1());
 u2 = nil;

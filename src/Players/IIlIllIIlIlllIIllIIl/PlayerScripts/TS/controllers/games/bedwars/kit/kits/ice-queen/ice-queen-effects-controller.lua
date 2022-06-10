@@ -1,4 +1,4 @@
--- Script Hash: 5ff9bd90a1a75d20901e5a8d060f3d24f7dab10ee24ed7c740b510e31ad02f94f322c790e773b1ae688c3818f8db8e07
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -28,7 +28,7 @@ local l__SoundManager__6 = v1.import(script, v1.getModule(script, "@easy-games",
 local l__GameSound__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function v4.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("IceQueenFreeze", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		local v6 = l__EntityUtil__3:getEntity(p3.to);
 		if v6 then
 			local l__HumanoidRootPart__7 = v6:getInstance():FindFirstChild("HumanoidRootPart");
@@ -76,6 +76,6 @@ function v4.KnitStart(p2)
 		end;
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v4.new());
 return nil;

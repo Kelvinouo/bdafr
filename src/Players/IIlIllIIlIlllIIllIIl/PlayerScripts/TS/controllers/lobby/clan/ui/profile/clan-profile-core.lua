@@ -1,4 +1,4 @@
--- Script Hash: e26fcd3c6afa09ed972e99448b27201916ab5afea8d3c8c1d34732ae2a7ebad7d7667c32aadcc128ea467188ccaabb92
+-- Script Hash: 750e2917f130bb9c99a10e61afc99b095e1843ed43637ab0c4da353dd3a50a83ff1b192fc0a70ebd58314856e986a264
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -21,7 +21,7 @@ v4.INVITE = 6;
 v3[6] = "INVITE";
 v4.MANAGEMENT = 7;
 v3[7] = "MANAGEMENT";
-local l__KnitClient__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local u2 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__ScaleComponent__3 = v2.ScaleComponent;
 local l__Flamework__4 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;

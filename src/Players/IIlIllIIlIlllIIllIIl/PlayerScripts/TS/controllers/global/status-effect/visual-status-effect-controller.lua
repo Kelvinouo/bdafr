@@ -1,4 +1,4 @@
--- Script Hash: 90a5e740c7deedd7ae2bae308e4f56710d12a4f2a8a4ea9c0ca6a97f3bc44794d6af2d476f23f28a400f74b8cadad38e
+-- Script Hash: 547bce33228d9d69fc8226d6e29e1a02ce80e58a29a25f713acf8ebbeaba031060ada6d3ae7c9b2e810fe7ba497cacbb
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -97,6 +97,6 @@ function v3.showStatusEffectNameTag(p13, p14)
 	end;
 	l__Head__10:WaitForChild("StatusEffectTagBillboard"):WaitForChild("StatusEffectTagList").Visible = true;
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v3.new());
 return nil;

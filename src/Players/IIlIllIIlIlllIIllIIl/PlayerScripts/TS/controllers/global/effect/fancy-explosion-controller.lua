@@ -1,4 +1,4 @@
--- Script Hash: aa149c5a7d81106940f6bb997d3645d5708bf051c3861b0d46f032a580a37d3bff7ea46182bb792353f71600152044e5
+-- Script Hash: 9aa64f51f2a302b192bec56fd8964147e6a1d824e19037c64bc05e59d19d29a76b14cca645e16672d014274d4e7d2918
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -97,6 +97,6 @@ v5.createExplosion = v1.async(function(p3, p4)
 	v14:Disconnect();
 	v13:Destroy();
 end);
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());
 return nil;

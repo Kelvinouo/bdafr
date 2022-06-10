@@ -1,4 +1,4 @@
--- Script Hash: 449169836f5de306913d2c4ff45c816ab49fa3c49c9a2dcfeb49fc70f6acce6554c62189e13e47a0dd8563de6dff0d0a
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -33,7 +33,7 @@ function v3.getPlayerPermissions(p3, p4)
 	elseif p3.playerPermissions[p4.UserId] ~= nil then
 		return p3.playerPermissions[p4.UserId];
 	end;
-	local v6 = l__default__2.Client:Get("GetPlayerPermissions"):CallServer(p4);
+	local v6 = l__default__2.Client:Get("RemoteName"):CallServer(p4);
 	if v6 then
 		if type(p4) ~= "number" then
 			p3.playerPermissions[p4.UserId] = v6;
@@ -104,6 +104,6 @@ function v3.hasAllKitsUnlocked(p18, p19)
 	end;
 	return false;
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v3.new());
 return nil;

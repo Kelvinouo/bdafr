@@ -1,4 +1,4 @@
--- Script Hash: 9f23b649c9f74dc6eeb162dad7504be09fc5125d06afd167427651ee12854640f80235514641f05c485499958899b590
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -34,7 +34,7 @@ function u1.hookPortal(p3, p4)
 		l__Portal__6.Touched:Connect(function(p5)
 			if l__Players__4.LocalPlayer.Character and p5.Parent == l__Players__4.LocalPlayer.Character and u1.TELEPORT_COOLDOWN <= tick() - p3.teleportTime then
 				p3.teleportTime = tick();
-				l__default__5.Client:Get("TeleportToGame"):SendToServer({
+				l__default__5.Client:Get("RemoteName"):SendToServer({
 					game = "islands"
 				});
 			end;
@@ -42,7 +42,7 @@ function u1.hookPortal(p3, p4)
 	end;
 end;
 u1.TELEPORT_COOLDOWN = 5;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

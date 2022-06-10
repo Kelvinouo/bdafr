@@ -1,4 +1,4 @@
--- Script Hash: b0922950be4079e0a540a171ddfd827318e1d9a95fb38f6258af62cc780ddfbd55976ec3c0bd8da0bee0305af7fb5a28
+-- Script Hash: 2cf5990c898c78527e9c1014cde0f53d5b9032a1fe078d9af1487ff13cf6d96c1625d06feaaa5e4fa1458d2f548f0027
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -7,7 +7,7 @@ local l__ImageId__1 = v2.ImageId;
 local l__DeviceUtil__2 = v2.DeviceUtil;
 local l__OfflinePlayerUtil__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "player", "offline-player-util").OfflinePlayerUtil;
 local u4 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
-local l__KnitClient__5 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__5 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__PlayerRender__6 = v2.PlayerRender;
 local l__Empty__7 = v2.Empty;
 local u8 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u4)(function(p1, p2)

@@ -1,4 +1,4 @@
--- Script Hash: 093171d68061f765bf40bc75b74c7f2afa49c4af562e06b24b914ebe7aa66426427048645e7a74942f5c33d6f76ed59f
+-- Script Hash: d2ff68410c88be6893058b9c18880f01d33885b524ffe6170f0fa3cf72bc4548acb1a432048ecd136f42a43abddcfec1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -6,7 +6,7 @@ local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").ou
 local l__BedwarsKitSkin__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit-skin", "bedwars-kit-skin").BedwarsKitSkin;
 local l__BedwarsKitSkinMeta__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit-skin", "bedwars-kit-skin-meta").BedwarsKitSkinMeta;
 local l__DeviceUtil__3 = v2.DeviceUtil;
-local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__Flamework__5 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 local l__BedwarsAppIds__6 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "types", "app-config").BedwarsAppIds;
 local l__GiftMeta__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "gift", "gift-meta").GiftMeta;

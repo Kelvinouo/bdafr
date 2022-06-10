@@ -1,4 +1,4 @@
--- Script Hash: a9ef277d9c858c570c8e098294564bb3ba5857d04fd068defbc56ab2f7d4bb2c48108c8b6be098c0babf147817b59d57
+-- Script Hash: e8557f1b523578bfab33cbb5c0d52432aea04c3e783c56fbf4420e351e029deff9f5b38630f42d1fbeff80c6743db76c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -6,7 +6,7 @@ local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").ou
 local u1 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
 local l__Flamework__2 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 local l__DeviceUtil__3 = v2.DeviceUtil;
-local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local u5 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local u6 = v1.import(script, script.Parent, "rewards", "social-connections-reward-section").SocialConnectionsRewardSection;
 local u7 = v1.import(script, script.Parent, "social-connections-section-title").SocialConnectionsSectionTitle;

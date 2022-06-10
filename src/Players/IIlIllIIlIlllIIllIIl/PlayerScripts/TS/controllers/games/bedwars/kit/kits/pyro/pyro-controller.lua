@@ -1,4 +1,4 @@
--- Script Hash: bd0c32abf8f41f3041b4c83d83fd0c1d75560f896bb9118fe69e08a786ca4b87986b065f5a3ac160f272a1ad5fe570d8
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -179,7 +179,7 @@ function u1.KnitStart(p2)
 		end;
 		u18((l__Humanoid__11:WaitForChild("Animator")));
 	end);
-	l__default__13.Client:WaitFor("EntityDamageEvent"):andThen(function(p13)
+	l__default__13.Client:WaitFor("RemoteName"):andThen(function(p13)
 		p13:Connect(function(p14)
 			local v24 = p14.extra;
 			if v24 ~= nil then
@@ -207,7 +207,7 @@ local l__BedwarsAppIds__21 = v1.import(script, script.Parent.Parent.Parent.Paren
 function u1.openUpgradeMenu(p15)
 	l__Flamework__20.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__21.FLAMETHROWER_UPGRADES, {});
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;
