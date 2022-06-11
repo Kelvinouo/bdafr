@@ -1,4 +1,4 @@
--- Script Hash: 11eecda4a7f8c91b6df13ff7ae99e30ccf41873d291647273c9e809a5050817710523fb4d70f7e03e50fbb21cb3c32bf
+-- Script Hash: 03d3bc43e97c1a6da8296a7e866227576951a67324ed32eccd7939d8f1c205e698b41bb847a41d0a25b1c628bdc3ad17
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -25,6 +25,8 @@ v2.INVISIBLE_LANDMINE = "INVISIBLE_LANDMINE";
 v1.INVISIBLE_LANDMINE = "INVISIBLE_LANDMINE";
 v2.HELICOPTER = "helicopter";
 v1.helicopter = "HELICOPTER";
+v2.DINO_CHARGE = "dino_charge";
+v1.dino_charge = "DINO_CHARGE";
 return {
 	ExplosionType = v2
 };

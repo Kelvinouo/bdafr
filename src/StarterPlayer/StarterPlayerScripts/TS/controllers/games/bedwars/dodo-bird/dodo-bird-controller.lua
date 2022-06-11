@@ -1,9 +1,9 @@
--- Script Hash: 3c7d523a9c95dcf23bd6ed6fb641226e8e7e568e6758325073b03467451120f690c0c9a43cd232feaa374241d411a407
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v6 = setmetatable({}, {
@@ -32,10 +32,10 @@ local l__Players__7 = v4.Players;
 local l__Flamework__8 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 local u9 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__UnmountDodoApp__10 = v1.import(script, script.Parent, "ui", "unmount-dodo-app").UnmountDodoApp;
-local l__Maid__11 = v3.Maid;
+local u11 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	local u12 = l__default__2.Client:Get("InteractDodoBird");
+	local u12 = l__default__2.Client:Get("RemoteName");
 	l__CollectionTagAdded__3("dodo-bird", function(p3)
 		p3:SetAttribute("NextSquawk", -1);
 		local v8 = {
@@ -55,7 +55,7 @@ function v6.KnitStart(p2)
 		v8.Parent = p3;
 		u4("ProximityPrompt", v8);
 	end);
-	l__default__2.Client:Get("DodoBirdInteraction"):Connect(function(p4)
+	l__default__2.Client:Get("RemoteName"):Connect(function(p4)
 		if p4.action == l__DodoAction__6.Mount then
 			if p4.player == l__Players__7.LocalPlayer then
 				local v9 = l__Flamework__8.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(u9.createElement(l__UnmountDodoApp__10, {
@@ -70,7 +70,7 @@ function v6.KnitStart(p2)
 				if p2.dodoBirdMaid then
 					p2.dodoBirdMaid:DoCleaning();
 				end;
-				p2.dodoBirdMaid = l__Maid__11.new();
+				p2.dodoBirdMaid = u11.new();
 				p2.dodoBirdMaid:GiveTask(function()
 					v9:DoCleaning();
 				end);
@@ -160,7 +160,7 @@ local u21 = v2.ConstantManager.registerConstants(script, {
 	MaxDodoJumps = 2
 });
 function v6.enableDoubleJump(p10, p11)
-	local v18 = l__Maid__11.new();
+	local v18 = u11.new();
 	v18:GiveTask(l__KnitClient__19.Controllers.JumpHeightController:getJumpModifier():addModifier({
 		jumpHeightMultiplier = 1.2
 	}));

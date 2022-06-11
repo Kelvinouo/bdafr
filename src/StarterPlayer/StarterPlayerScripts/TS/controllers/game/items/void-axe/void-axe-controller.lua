@@ -1,9 +1,9 @@
--- Script Hash: 356b2074e6c75aa12438d4a86a7a245b41accb28873b191671e9c5cc650b696efb46046957ccd60ad46bb6d0c93f724b
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__HandKnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
 local v6 = setmetatable({}, {
@@ -18,11 +18,11 @@ function v6.new(...)
 	return v7:constructor(...) and v7;
 end;
 local u1 = l__HandKnitController__5;
-local l__Maid__2 = v3.Maid;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v6.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "VoidAxeController";
-	p1.maid = l__Maid__2.new();
+	p1.maid = u2.new();
 end;
 local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__Players__4 = v4.Players;
@@ -31,7 +31,7 @@ local l__GameSound__6 = v1.import(script, game:GetService("ReplicatedStorage"), 
 local l__DamageType__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "damage", "damage-type").DamageType;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__3.Client:OnEvent("VoidAxeLeap", function(p3)
+	l__default__3.Client:OnEvent("RemoteName", function(p3)
 		if p3.entity.PrimaryPart then
 			if p3.entity ~= l__Players__4.LocalPlayer.Character then
 				l__SoundManager__5:playSound(l__GameSound__6.VOID_AXE_LEAP, {
@@ -45,7 +45,7 @@ function v6.KnitStart(p2)
 		end;
 		return nil;
 	end);
-	l__default__3.Client:OnEvent("EntityDamageEvent", function(p4)
+	l__default__3.Client:OnEvent("RemoteName", function(p4)
 		if p4.damageType == l__DamageType__7.VOID_AXE_SLASH then
 			local v8 = {};
 			if l__Players__4.LocalPlayer.Character == p4.entityInstance then
@@ -122,7 +122,7 @@ function v6.useVoidAxe(p5)
 				v15 = v15:getItemTypeInHand();
 			end;
 			if v15 == l__ItemType__17.VOID_AXE then
-				l__default__3.Client:Get("UseVoidAxeSlash"):SendToServer();
+				l__default__3.Client:Get("RemoteName"):SendToServer();
 			end;
 			v11.Destroy();
 		end);

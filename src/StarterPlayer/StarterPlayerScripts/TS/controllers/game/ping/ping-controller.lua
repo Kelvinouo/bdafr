@@ -1,4 +1,4 @@
--- Script Hash: eb2b0729be1d7a162c764215ef5e7a9cb74140d997d58bfa5c85007bde187070c22aa8c49ba4efcf16af2aad07efeebf
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -34,13 +34,13 @@ function v7.onStart(p2)
 	if l__PlaceUtil__1.isLobbyServer() then
 		return nil;
 	end;
-	l__default__2.Client:Get("LocationPinged"):Connect(function(p3)
+	l__default__2.Client:Get("RemoteName"):Connect(function(p3)
 		if l__ClientStore__3:getState().Game.matchState == l__MatchState__4.PRE then
 			return nil;
 		end;
 		p2:createIndicator(p3.location, p3.creator);
 	end);
-	local u10 = l__default__2.Client:Get("Ping");
+	local u10 = l__default__2.Client:Get("RemoteName");
 	l__ContextActionService__5:BindAction("ping-location", function(p4, p5, p6)
 		if p5 ~= Enum.UserInputState.Begin then
 			return nil;

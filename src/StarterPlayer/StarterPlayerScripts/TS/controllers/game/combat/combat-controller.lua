@@ -1,9 +1,9 @@
--- Script Hash: a9771d9c8a5e735ca61a2464a62027ade8ac4f44cbb8e2a6d4f23ae371d43f623779f8e7c9df3b303b83bd45fb6a27a0
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v6 = setmetatable({}, {
@@ -31,7 +31,7 @@ local l__RandomUtil__7 = v2.RandomUtil;
 local l__GameSound__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 local l__SoundManager__9 = v2.SoundManager;
 function u1.KnitStart(p2)
-	l__default__3.Client:WaitFor("EntityDamageEvent"):andThen(function(p3)
+	l__default__3.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
 			debug.profilebegin("damage-highlight");
 			local v8 = l__EntityUtil__4:getEntity(p4.entityInstance);
@@ -48,29 +48,35 @@ function u1.KnitStart(p2)
 			debug.profileend();
 		end);
 	end);
-	l__default__3.Client:WaitFor("EntityDamageEvent"):andThen(function(p5)
+	l__default__3.Client:WaitFor("RemoteName"):andThen(function(p5)
 		p5:Connect(function(p6)
-			local l__damageSoundId__10 = p6.damageSoundId;
-			if l__damageSoundId__10 ~= "" and l__damageSoundId__10 then
-				local v11 = p6.damageSoundId;
+			local v10 = p6.entityInstance == l__Players__6.LocalPlayer.Character;
+			local l__damageSoundId__11 = p6.damageSoundId;
+			if l__damageSoundId__11 ~= "" and l__damageSoundId__11 then
+				local v12 = p6.damageSoundId;
 			else
-				v11 = l__RandomUtil__7.fromList(l__GameSound__8.DAMAGE_1, l__GameSound__8.DAMAGE_2, l__GameSound__8.DAMAGE_3);
+				v12 = l__RandomUtil__7.fromList(l__GameSound__8.DAMAGE_1, l__GameSound__8.DAMAGE_2, l__GameSound__8.DAMAGE_3);
 			end;
-			local v12 = {};
-			if p6.entityInstance == l__Players__6.LocalPlayer.Character then
-				local v13 = nil;
-			else
-				local v14 = p6.entityInstance.PrimaryPart;
-				if v14 ~= nil then
-					v14 = v14.Position;
+			local v13 = p6.additionalHitSounds or {};
+			local v14 = { v12 };
+			table.move(v13, 1, #v13, #v14 + 1, v14);
+			for v15, v16 in ipairs(v14) do
+				local v17 = {};
+				if v10 then
+					local v18 = nil;
+				else
+					local v19 = p6.entityInstance.PrimaryPart;
+					if v19 ~= nil then
+						v19 = v19.Position;
+					end;
+					v18 = v19;
 				end;
-				v13 = v14;
+				v17.position = v18;
+				l__SoundManager__9:playSound(v16, v17);
 			end;
-			v12.position = v13;
-			l__SoundManager__9:playSound(v11, v12);
 		end);
 	end);
-	l__default__3.Client:WaitFor("EntityDeathEvent"):andThen(function(p7)
+	l__default__3.Client:WaitFor("RemoteName"):andThen(function(p7)
 		p7:Connect(function(p8)
 			if p8.fromEntity and p8.fromEntity == l__Players__6.LocalPlayer.Character then
 				l__SoundManager__9:playSound(l__GameSound__8.KILL);

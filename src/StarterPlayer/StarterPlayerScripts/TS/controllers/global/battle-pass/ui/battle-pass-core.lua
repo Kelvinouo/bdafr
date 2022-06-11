@@ -1,4 +1,4 @@
--- Script Hash: d36f57d822bb54e251de3a0c027749e640e45199078b4bdfed4c9775255780ba12527284279af60cf5ee43ac6bfe6561
+-- Script Hash: 8fe0564539b4c8ae4d80dc0177d05f3c245bda8dcdf4b50c5722a2fe5103397c1e59622e3f6307732a570adea9ffd672
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -13,12 +13,9 @@ local l__DeviceUtil__7 = v2.DeviceUtil;
 local l__Empty__8 = v2.Empty;
 local l__BattlePassInfoCard__9 = v1.import(script, script.Parent, "SeasonInfo", "Card", "battle-pass-season-info-card").BattlePassInfoCard;
 local u10 = v1.import(script, script.Parent, "SeasonInfo", "battle-pass-purchase-buttons").BattlePassPurchaseButtons;
-local l__ColorUtil__11 = v2.ColorUtil;
-local l__Theme__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
-local l__BattlePassRewardShowcase__13 = v1.import(script, script.Parent, "RewardShowcase", "battle-pass-reward-showcase").BattlePassRewardShowcase;
-local l__BattlePassRewardInfoCard__14 = v1.import(script, script.Parent, "RewardShowcase", "battle-pass-reward-info-card").BattlePassRewardInfoCard;
-local l__WidgetComponent__15 = v2.WidgetComponent;
-local l__SlideIn__16 = v2.SlideIn;
+local u11 = v1.import(script, script.Parent, "RewardShowcase", "battle-pass-reward-showcase-container").BattlePassRewardShowcaseContainer;
+local l__WidgetComponent__12 = v2.WidgetComponent;
+local l__SlideIn__13 = v2.SlideIn;
 return {
 	BattlePassCore = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u4)(function(p1, p2)
 		local v3 = l__BattlePassRewards__1[l__BattlePassUtils__2.BATTLE_PASS_SEASON];
@@ -94,33 +91,15 @@ return {
 					LayoutOrder = 2
 				})
 			}) };
-		local v16 = v8 and u4.createElement("Frame", {
-			Size = UDim2.new(0.32, -10, 1, 0), 
-			BackgroundColor3 = l__ColorUtil__11.WHITE, 
-			BorderSizePixel = 0
-		}, { u4.createElement("UICorner", {
-				CornerRadius = UDim.new(0, 10)
-			}), u4.createElement("UIGradient", {
-				Color = ColorSequence.new({ ColorSequenceKeypoint.new(0, l__ColorUtil__11.darken(l__Theme__12.backgroundPrimary, 0.6)), ColorSequenceKeypoint.new(1, l__ColorUtil__11.brighten(l__Theme__12.backgroundPrimary, 0.1)) }), 
-				Rotation = 45
-			}), u4.createElement(l__BattlePassRewardShowcase__13, {
-				Reward = v8, 
-				AnchorPoint = Vector2.new(0.5, 0.5), 
-				Position = UDim2.fromScale(0.5, 0.4), 
-				Size = UDim2.new(0.8, 0, 0.8, 0), 
-				LayoutOrder = 2
-			}), u4.createElement(l__BattlePassRewardInfoCard__14, {
-				Reward = v8, 
-				BattlePass = p1.store.BattlePass, 
-				AnchorPoint = Vector2.new(0, 1), 
-				Position = UDim2.fromScale(0, 1), 
-				Size = UDim2.new(1, 0, 0.3, 0), 
-				LayoutOrder = 3
-			}) });
+		local v16 = v8 and u4.createElement(u11, {
+			BattlePass = p1.store.BattlePass, 
+			Reward = v8, 
+			Size = UDim2.new(0.32, -10, 1, 0)
+		});
 		if v16 then
 			v15[#v15 + 1] = v16;
 		end;
-		v12[#v12 + 1] = u4.createElement(l__WidgetComponent__15, {
+		v12[#v12 + 1] = u4.createElement(l__WidgetComponent__12, {
 			AppId = p1.AppId, 
 			AnchorPoint = Vector2.new(0.5, 0.5), 
 			Position = UDim2.fromScale(0.5, 0.5), 
@@ -136,6 +115,6 @@ return {
 			Size = UDim2.fromOffset(1000, 545), 
 			BackgroundTransparency = 1
 		}, v12);
-		return u4.createElement(l__SlideIn__16, {}, v11);
+		return u4.createElement(l__SlideIn__13, {}, v11);
 	end)
 };

@@ -1,4 +1,4 @@
--- Script Hash: 87e04397da4abfbd9993fe194bbe9d4e3fa2857475b70312ab7d4ff5e356d509171807ec9ee02857827c99582af3bc54
+-- Script Hash: 26fa94a1bb3ad30bf2dae0a148938b72eff04d6a989c8376cacafc0e1c607d7470c1ac2d77566f554aae530853e779b5
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -665,6 +665,123 @@ return {
 				looped = false, 
 				noAutoPlayAnimation = true
 			}
+		}, 
+		[l__EmoteType__6.BEACH_VACATION] = {
+			name = "Beach Vacation", 
+			animation = {
+				type = l__AnimationType__2.BEACH_VACATION, 
+				looped = true
+			}
+		}, 
+		[l__EmoteType__6.WIGGLE] = {
+			name = "Wiggle", 
+			animation = {
+				type = l__AnimationType__2.WIGGLE, 
+				looped = true
+			}
+		}, 
+		[l__EmoteType__6.ROCK_PAPER_SCISSORS] = {
+			name = "Rock Paper Scissors", 
+			animation = {
+				type = l__AnimationType__2.ROCK_PAPER_SCISSORS, 
+				looped = false
+			}
+		}, 
+		[l__EmoteType__6.BAKER_PIECE_OF_CAKE] = {
+			name = "Piece of Cake", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.BAKER_PIECE_OF_CAKE)
+		}, 
+		[l__EmoteType__6.BAKER_PROTECTION] = {
+			name = "Item Protection", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.BAKER_PROTECTION)
+		}, 
+		[l__EmoteType__6.BARB_U_SHALL_NOT_PASS] = {
+			name = "U Shall Not Pass", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.BARB_U_SHALL_NOT_PASS)
+		}, 
+		[l__EmoteType__6.BUILDER_HELP_PLS] = {
+			name = "Builder Needs Help", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.BUILDER_HELP_PLS)
+		}, 
+		[l__EmoteType__6.CLETUS_TROLL] = {
+			name = "Cletus Troll", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.CLETUS_TROLL)
+		}, 
+		[l__EmoteType__6.CYBER_DAB] = {
+			name = "Cyber Dab", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.CYBER_DAB)
+		}, 
+		[l__EmoteType__6.TIGER_WELL_PLAYED] = {
+			name = "Well Played", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.TIGER_WELL_PLAYED)
+		}, 
+		[l__EmoteType__6.CYBER_DEFENSE] = {
+			name = "Cyber Defense", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.CYBER_DEFENSE)
+		}, 
+		[l__EmoteType__6.CYBER_MAD] = {
+			name = "Cyber Mad", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.CYBER_MAD)
+		}, 
+		[l__EmoteType__6.CYBER_OVERHEAT] = {
+			name = "Cyber Overheat", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.CYBER_OVERHEAT)
+		}, 
+		[l__EmoteType__6.DINO_HAI] = {
+			name = "Dino Hai", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.DINO_HAI)
+		}, 
+		[l__EmoteType__6.DINO_RAWR] = {
+			name = "Dino Rawr", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.DINO_RAWR)
+		}, 
+		[l__EmoteType__6.DINO_YIPEEE] = {
+			name = "Dino Yipeee", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.DINO_YIPEEE)
+		}, 
+		[l__EmoteType__6.FREIYA_BEG] = {
+			name = "Freiya Beg", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.FREIYA_BEG)
+		}, 
+		[l__EmoteType__6.LUMEN_PAIN] = {
+			name = "Lumen Pain", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.LUMEN_PAIN)
+		}, 
+		[l__EmoteType__6.MELODY_YOU_ROCK] = {
+			name = "Melody You Rock", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.MELODY_YOU_ROCK)
+		}, 
+		[l__EmoteType__6.METAL_DETECTOR] = {
+			name = "Metal Detector", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.METAL_DETECTOR)
+		}, 
+		[l__EmoteType__6.OH_MY_STARS] = {
+			name = "Oh My Stars!", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.OH_MY_STARS)
+		}, 
+		[l__EmoteType__6.RAINING_GEMS] = {
+			name = "Raining Gems", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.RAINING_GEMS)
+		}, 
+		[l__EmoteType__6.RAVEN_RIP] = {
+			name = "Raven RIP", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.RAVEN_RIP)
+		}, 
+		[l__EmoteType__6.REAPER_GOT_EM] = {
+			name = "Reaper Got Em", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.REAPER_GOT_EM)
+		}, 
+		[l__EmoteType__6.SMOKE_WAVE] = {
+			name = "Smoke Wave", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.SMOKE_WAVE)
+		}, 
+		[l__EmoteType__6.STAR_COLLECTOR_FUN] = {
+			name = "Star Collector Fun", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.STAR_COLLECTOR_FUN)
+		}, 
+		[l__EmoteType__6.TESLA_DANGER] = {
+			name = "Tesla Danger Sign", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.TESLA_DANGER)
 		}
 	}
 };

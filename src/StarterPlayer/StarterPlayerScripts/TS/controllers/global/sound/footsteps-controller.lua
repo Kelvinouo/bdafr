@@ -1,4 +1,4 @@
--- Script Hash: 9e7be392b33af413fe3651e2939bc7039a73ef14c002ae8f1961ba298e724fd15d372c980488db238b8acd000ba5ecfa
+-- Script Hash: c379f9df7f21c36de20ffd3c499bdf5255772f2359dc07dff5346394d177f7686468fd46086259c8fa7eeea27f77a9a4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -118,6 +118,7 @@ function u1.hookCharacter(p8, p9, p10, p11)
 					if not (os.clock() - v17 < v22) then
 						local v23 = p8:findPlatform(l__HumanoidRootPart__13);
 						local v24 = nil;
+						local v25 = 0.13;
 						if p11 then
 							if v20 == "walking" then
 								v24 = l__RandomUtil__10.fromList(unpack(p11.walk));
@@ -125,55 +126,59 @@ function u1.hookCharacter(p8, p9, p10, p11)
 								v24 = l__RandomUtil__10.fromList(unpack(p11.run));
 							end;
 						elseif v23.block then
-							local v25 = nil;
 							local v26 = l__getItemMeta__11(v23.block.Name).footstepSound;
 							if v26 == nil then
 								v26 = l__DefaultFootstepSound__12;
 							end;
-							v25 = l__FootstepSounds__13[v26];
-							if v20 == "walking" then
-								v24 = l__RandomUtil__10.fromList(unpack(v25.walk));
-							elseif v20 == "running" then
-								v24 = l__RandomUtil__10.fromList(unpack(v25.run));
+							local v27 = l__FootstepSounds__13[v26];
+							if v27.volume ~= nil then
+								v25 = v27.volume;
 							end;
-						elseif v23.terrainMaterial then
-							local v27 = nil;
-							local v28 = l__TerrainFootstepSounds__14[v23.terrainMaterial];
-							if v28 == nil then
-								v28 = l__BlockFootstepSound__15.WOOD;
-							end;
-							v27 = l__FootstepSounds__13[v28];
 							if v20 == "walking" then
 								v24 = l__RandomUtil__10.fromList(unpack(v27.walk));
 							elseif v20 == "running" then
 								v24 = l__RandomUtil__10.fromList(unpack(v27.run));
 							end;
+						elseif v23.terrainMaterial then
+							local v28 = l__TerrainFootstepSounds__14[v23.terrainMaterial];
+							if v28 == nil then
+								v28 = l__BlockFootstepSound__15.WOOD;
+							end;
+							local v29 = l__FootstepSounds__13[v28];
+							if v29.volume ~= nil then
+								v25 = v29.volume;
+							end;
+							if v20 == "walking" then
+								v24 = l__RandomUtil__10.fromList(unpack(v29.walk));
+							elseif v20 == "running" then
+								v24 = l__RandomUtil__10.fromList(unpack(v29.run));
+							end;
 						end;
-						local v29 = v24;
-						if v29 ~= "" and v29 then
-							v29 = v23.raycastResult;
+						local v30 = v24;
+						if v30 ~= "" and v30 then
+							v30 = v23.raycastResult;
 						end;
-						if v29 ~= "" and v29 then
+						if v30 ~= "" and v30 then
 							v17 = os.clock();
-							local v30 = 0.85 + math.random() * 0.2;
+							local v31 = 0.85 + math.random() * 0.2;
 							if p8.particles and p10:GetAttribute("Transparency") ~= nil then
 								p8.particleAttachment.CFrame = CFrame.new(v23.raycastResult.Position + Vector3.new(0, 0.1, 0));
 								p8.particles:Emit(1);
 							end;
 							if v14 then
-								local v31 = u3("Sound", {
+								local v32 = u3("Sound", {
 									SoundId = v24, 
 									Looped = false, 
-									PlaybackSpeed = v30, 
-									Volume = 0.13, 
+									PlaybackSpeed = v31, 
+									Volume = v25, 
 									Parent = p8.footstepSoundFolder
 								});
-								v31:Play();
+								v32:Play();
 								v1.Promise.delay(1):andThen(function()
-									v31:Destroy();
+									v32:Destroy();
 								end);
 							else
-								local v32 = u3("Part", {
+								local v33 = u3("Part", {
 									Size = Vector3.new(1, 1, 1), 
 									CFrame = CFrame.new(v23.raycastResult.Position), 
 									Anchored = true, 
@@ -185,13 +190,13 @@ function u1.hookCharacter(p8, p9, p10, p11)
 								u3("Sound", {
 									SoundId = v24, 
 									Looped = false, 
-									PlaybackSpeed = v30, 
-									Volume = 0.0975, 
+									PlaybackSpeed = v31, 
+									Volume = v25 * 0.75, 
 									RollOffMaxDistance = 50, 
-									Parent = v32
+									Parent = v33
 								}):Play();
 								v1.Promise.delay(1):andThen(function()
-									v32:Destroy();
+									v33:Destroy();
 								end);
 							end;
 						end;
@@ -206,58 +211,58 @@ function u1.findPlatform(p12, p13, p14)
 	if p14 == nil then
 		p14 = {};
 	end;
-	local v33 = RaycastParams.new();
-	v33.CollisionGroup = "Players";
-	v33.FilterDescendantsInstances = p14;
-	v33.FilterType = Enum.RaycastFilterType.Blacklist;
-	local v34 = l__Workspace__4:Raycast(p13.Position, Vector3.new(0, -9, 0), v33);
-	if v34 then
-		if v34.Instance:IsA("Terrain") then
+	local v34 = RaycastParams.new();
+	v34.CollisionGroup = "Players";
+	v34.FilterDescendantsInstances = p14;
+	v34.FilterType = Enum.RaycastFilterType.Blacklist;
+	local v35 = l__Workspace__4:Raycast(p13.Position, Vector3.new(0, -9, 0), v34);
+	if v35 then
+		if v35.Instance:IsA("Terrain") then
 			return {
-				raycastResult = v34, 
+				raycastResult = v35, 
 				block = nil, 
-				terrainMaterial = v34.Material
+				terrainMaterial = v35.Material
 			};
 		end;
-		if not v34.Instance:IsA("BasePart") then
+		if not v35.Instance:IsA("BasePart") then
 			return {
-				raycastResult = v34, 
+				raycastResult = v35, 
 				block = nil, 
 				terrainMaterial = nil
 			};
 		end;
 	else
 		return {
-			raycastResult = v34, 
+			raycastResult = v35, 
 			block = nil, 
 			terrainMaterial = nil
 		};
 	end;
-	if not v34.Instance.CanCollide then
-		table.insert(p14, v34.Instance);
+	if not v35.Instance.CanCollide then
+		table.insert(p14, v35.Instance);
 		return p12:findPlatform(p13, p14);
 	end;
-	local v35 = l__BlockEngine__17:getBlockInstanceFromChild(v34.Instance);
-	if v35 then
+	local v36 = l__BlockEngine__17:getBlockInstanceFromChild(v35.Instance);
+	if v36 then
 		return {
-			raycastResult = v34, 
-			block = v35, 
+			raycastResult = v35, 
+			block = v36, 
 			terrainMaterial = nil
 		};
 	end;
 	return {
-		raycastResult = v34, 
+		raycastResult = v35, 
 		block = nil, 
-		terrainMaterial = v34.Instance.Material
+		terrainMaterial = v35.Instance.Material
 	};
 end;
 function u1.muteHumanoidSound(p15, p16, p17)
-	local v36 = p16:FindFirstChild(p17);
-	if v36 then
-		v36.Volume = 0;
+	local v37 = p16:FindFirstChild(p17);
+	if v37 then
+		v37.Volume = 0;
 	end;
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

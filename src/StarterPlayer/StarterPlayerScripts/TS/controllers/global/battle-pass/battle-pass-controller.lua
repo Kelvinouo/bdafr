@@ -1,4 +1,4 @@
--- Script Hash: f3dff8b1ec9f4489d74cf1bbd6d67420b14cbefb7a48fd67f033b5ab677f0be9e3113667f4b9a8525c728e6d43105ef6
+-- Script Hash: fd9a87fda7dc86d04151aca8b3abdd2d3c38d50a3e5760c45bf7bc7ef27fcc72278d23a23d9e401ba9b38e3a4a707d88
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -52,12 +52,12 @@ function v4.promptPurchaseToLevel(p4, p5)
 		l__MarketplaceService__6:PromptProductPurchase(l__Players__4.LocalPlayer, u5[v6 - 1 + 1]);
 	end;
 end;
-local l__Gamepass__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "place", "gamepass").Gamepass;
+local l__BattlePassUtils__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-utils").BattlePassUtils;
 function v4.promptBattlePassPurchase(p6)
 	if not l__ClientStore__3:getState().BattlePass.paid then
-		l__MarketplaceService__6:PromptGamePassPurchase(l__Players__4.LocalPlayer, l__Gamepass__7.BATTLE_PASS_S4);
+		l__MarketplaceService__6:PromptGamePassPurchase(l__Players__4.LocalPlayer, l__BattlePassUtils__7.BATTLE_PASS_GAMEPASS);
 	end;
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v4.new());
 return nil;

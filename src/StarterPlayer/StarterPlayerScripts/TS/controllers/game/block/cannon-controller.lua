@@ -1,37 +1,36 @@
--- Script Hash: 6d9dabf962aeed7656555a07a445693fbc2be052ec5be04ee6fd71828198c1bf193654aa0a4079a85d96d050e42b4212
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
-local l__KnitClient__4 = v3.KnitClient;
-local v5 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
-local l__KnitController__6 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
-local v7 = setmetatable({}, {
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
+local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
+local l__KnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
+local v6 = setmetatable({}, {
 	__tostring = function()
 		return "CannonController";
 	end, 
-	__index = l__KnitController__6
+	__index = l__KnitController__5
 });
-v7.__index = v7;
-local u1 = v7;
+v6.__index = v6;
+local u1 = v6;
 function u1.new(...)
-	local v8 = setmetatable({}, u1);
-	return v8:constructor(...) and v8;
+	local v7 = setmetatable({}, u1);
+	return v7:constructor(...) and v7;
 end;
-local u2 = l__KnitController__6;
-local l__Maid__3 = v3.Maid;
+local u2 = l__KnitController__5;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function u1.constructor(p1)
 	u2.constructor(p1);
 	p1.Name = "CannonController";
-	p1.aimingMaid = l__Maid__3.new();
+	p1.aimingMaid = u3.new();
 	p1.aiming = false;
 end;
 local l__CollectionTagAdded__4 = v2.CollectionTagAdded;
 local u5 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
 local l__Theme__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
-local l__Players__7 = v5.Players;
-local l__TweenService__8 = v5.TweenService;
+local l__Players__7 = v4.Players;
+local l__TweenService__8 = v4.TweenService;
 local l__default__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__SoundManager__10 = v2.SoundManager;
 local l__GameSound__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
@@ -78,7 +77,7 @@ function u1.KnitStart(p2)
 			Parent = p3
 		}).Triggered:Connect(function(p6)
 			if p6 == l__Players__7.LocalPlayer then
-				l__KnitClient__4.Controllers.CannonHandController:fireCannon(p3);
+				l__KnitClient__3.Controllers.CannonHandController:fireCannon(p3);
 			end;
 		end);
 		u5("ProximityPrompt", {
@@ -94,19 +93,19 @@ function u1.KnitStart(p2)
 			Parent = p3
 		}).Triggered:Connect(function(p7)
 			if p7 == l__Players__7.LocalPlayer then
-				l__KnitClient__4.Controllers.CannonHandController:launchSelf(p3);
+				l__KnitClient__3.Controllers.CannonHandController:launchSelf(p3);
 			end;
 		end);
 		local function u13()
-			local v9 = p3:GetAttribute("LookVector") or Vector3.new();
+			local v8 = p3:GetAttribute("LookVector") or Vector3.new();
 			if p3:FindFirstChild("Base") then
 				l__TweenService__8:Create(p3.Base, TweenInfo.new(0.2, Enum.EasingStyle.Linear), {
-					CFrame = CFrame.new(p3.Base.Position, p3.Base.Position + v9 * (Vector3.new(1, 0, 1) * 5)) * CFrame.Angles(0, math.rad(-90), 0)
+					CFrame = CFrame.new(p3.Base.Position, p3.Base.Position + v8 * (Vector3.new(1, 0, 1) * 5)) * CFrame.Angles(0, math.rad(-90), 0)
 				}):Play();
 			end;
 			if p3:FindFirstChild("Barrel") then
 				l__TweenService__8:Create(p3.Barrel, TweenInfo.new(0.2, Enum.EasingStyle.Linear), {
-					CFrame = CFrame.new(p3.Barrel.Position, p3.Barrel.Position + v9 * 5) * CFrame.Angles(0, math.rad(-90), 0)
+					CFrame = CFrame.new(p3.Barrel.Position, p3.Barrel.Position + v8 * 5) * CFrame.Angles(0, math.rad(-90), 0)
 				}):Play();
 			end;
 		end;
@@ -115,31 +114,31 @@ function u1.KnitStart(p2)
 		end);
 		u13();
 	end);
-	l__default__9.Client:WaitFor("CannonFired"):andThen(function(p8)
+	l__default__9.Client:WaitFor("RemoteName"):andThen(function(p8)
 		p8:Connect(function(p9)
-			local v10 = {};
+			local v9 = {};
 			if p9.player == l__Players__7.LocalPlayer then
-				local v11 = nil;
+				local v10 = nil;
 			else
-				v11 = l__BlockEngine__12:getWorldPosition(p9.cannonBlockPos);
+				v10 = l__BlockEngine__12:getWorldPosition(p9.cannonBlockPos);
 			end;
-			v10.position = v11;
-			v10.rollOffMaxDistance = 220;
-			l__SoundManager__10:playSound(l__GameSound__11.CANNON_FIRE, v10);
+			v9.position = v10;
+			v9.rollOffMaxDistance = 220;
+			l__SoundManager__10:playSound(l__GameSound__11.CANNON_FIRE, v9);
 		end);
 	end);
 end;
-local l__Workspace__14 = v5.Workspace;
-local l__ContextActionService__15 = v5.ContextActionService;
+local l__Workspace__14 = v4.Workspace;
+local l__ContextActionService__15 = v4.ContextActionService;
 function u1.startAiming(p10, p11)
 	p10:stopAiming();
 	p10.aiming = true;
 	p10.aimingMaid:GiveTask(function()
 		p10.aiming = false;
 	end);
-	l__KnitClient__4.Controllers.CannonHandController:updateAllCannonPrompts();
+	l__KnitClient__3.Controllers.CannonHandController:updateAllCannonPrompts();
 	p10.aimingMaid:GiveTask(function()
-		l__KnitClient__4.Controllers.CannonHandController:updateAllCannonPrompts();
+		l__KnitClient__3.Controllers.CannonHandController:updateAllCannonPrompts();
 	end);
 	p10.aimingMaid:GiveTask(p11.AncestryChanged:Connect(function(p12, p13)
 		if p13 == nil then
@@ -150,21 +149,21 @@ function u1.startAiming(p10, p11)
 	l__Players__7.LocalPlayer.CameraMinZoomDistance = 6.5;
 	l__Players__7.LocalPlayer.CameraMaxZoomDistance = 6.5;
 	p10.aimingMaid:GiveTask(function()
-		local v12 = l__Players__7.LocalPlayer.Character;
-		if v12 ~= nil then
-			v12 = v12:FindFirstChild("Humanoid");
+		local v11 = l__Players__7.LocalPlayer.Character;
+		if v11 ~= nil then
+			v11 = v11:FindFirstChild("Humanoid");
 		end;
-		l__Workspace__14.CurrentCamera.CameraSubject = v12;
+		l__Workspace__14.CurrentCamera.CameraSubject = v11;
 		l__Players__7.LocalPlayer.CameraMinZoomDistance = 0;
 		l__Players__7.LocalPlayer.CameraMaxZoomDistance = 14;
 	end);
 	v1.Promise.defer(function()
 		while true do
-			local l__CurrentCamera__13 = l__Workspace__14.CurrentCamera;
-			if l__CurrentCamera__13 then
-				l__default__9.Client:Get("AimCannon"):SendToServer({
+			local l__CurrentCamera__12 = l__Workspace__14.CurrentCamera;
+			if l__CurrentCamera__12 then
+				l__default__9.Client:Get("RemoteName"):SendToServer({
 					cannonBlockPos = l__BlockEngine__12:getBlockPosition(p11.Position), 
-					lookVector = l__CurrentCamera__13.CFrame.LookVector
+					lookVector = l__CurrentCamera__12.CFrame.LookVector
 				});
 			end;
 			if not { wait(0.2) } then
@@ -185,15 +184,15 @@ function u1.startAiming(p10, p11)
 		local l__Position__16 = l__Players__7.LocalPlayer.Character:GetPrimaryPartCFrame().Position;
 		v1.Promise.defer(function()
 			while { wait(0.2) } and p10.aiming do
-				local v14 = l__Players__7.LocalPlayer.Character;
-				if v14 ~= nil then
-					v14 = v14:GetPrimaryPartCFrame().Position;
+				local v13 = l__Players__7.LocalPlayer.Character;
+				if v13 ~= nil then
+					v13 = v13:GetPrimaryPartCFrame().Position;
 				end;
-				local v15 = v14;
-				if v15 == nil then
-					v15 = Vector3.new();
+				local v14 = v13;
+				if v14 == nil then
+					v14 = Vector3.new();
 				end;
-				if (v15 - l__Position__16).Magnitude > 6 then
+				if (v14 - l__Position__16).Magnitude > 6 then
 					p10:stopAiming();
 				end;			
 			end;
@@ -206,11 +205,11 @@ end;
 function u1.isAiming(p18)
 	return p18.aiming;
 end;
-local l__CollectionService__17 = v5.CollectionService;
+local l__CollectionService__17 = v4.CollectionService;
 function u1.getCannons(p19)
 	return l__CollectionService__17:GetTagged("cannon");
 end;
-u2 = l__KnitClient__4.CreateController;
+u2 = l__KnitClient__3.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;

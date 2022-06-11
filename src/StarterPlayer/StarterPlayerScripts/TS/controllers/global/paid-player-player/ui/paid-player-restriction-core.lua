@@ -1,4 +1,4 @@
--- Script Hash: ab5b88513cc6179cf2dcfd499697d186404a6303ce337707ccc64e8e1a3ed96a4cc4609c2e0a5f43ee365758bf190daa
+-- Script Hash: a19819918260aa329afa8e0da76235352eecf01232f0eca9fd5f8972fd820678131528c581c366410394e8a082a92bee
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -51,7 +51,7 @@ return {
 						}), 
 						Description = u6.createElement("TextLabel", {
 							Size = UDim2.fromScale(0.7, 1), 
-							Text = "<b><font color=\"#FFFFFF\">Hello, ranked queue is currently restricted for you.</font></b>\n\n" .. "Ranked is restricted to <b><font color=\"" .. l__Theme__3.textPrimaryRichText .. "\">accounts with verified payments</font></b> in order to reduce the amount of hackers in competitive matches. We deem this necessary in order to provide a fair experience for ranked players.", 
+							Text = "<b><font color=\"#FFFFFF\">Hello, ranked queue is currently restricted for you.</font></b>\n\n" .. "Ranked is restricted to <b><font color=\"" .. l__Theme__3.textPrimaryRichText .. "\">accounts with verified payments</font></b> in order to reduce the amount of hackers in competitive matches. We deem this necessary in order to provide a fair experience for ranked players.\n", 
 							TextColor3 = Color3.fromRGB(218, 219, 238), 
 							RichText = true, 
 							TextScaled = true, 

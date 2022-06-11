@@ -1,4 +1,4 @@
--- Script Hash: a8390afd27f72a13d0d8032709d6022f129f9a96efc4fa1fb1da73b11e88c33cea62be72ad963b0b160639426a9e6d3f
+-- Script Hash: a04664d7dc385fb1ec1602016e05b56192ec0e7e54c948e2f4395d363c5c633f877fddc22a621ee55031fdc0c4a52c5f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -10,14 +10,14 @@ local l__TitleMeta__4 = v1.import(script, game:GetService("ReplicatedStorage"), 
 local l__LobbyGadgetMeta__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "locker", "lobby-gadget", "lobby-gadget-meta").LobbyGadgetMeta;
 local l__BedwarsKitSkinMeta__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit-skin", "bedwars-kit-skin-meta").BedwarsKitSkinMeta;
 local u7 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
-local l__BPRewardDisplayType__8 = v1.import(script, script.Parent.Parent.Parent, "battle-pass-reward-display-type").BPRewardDisplayType;
-local l__BPRewardDisplayMeta__9 = v1.import(script, script.Parent.Parent.Parent, "battle-pass-reward-display-meta").BPRewardDisplayMeta;
+local l__BPRewardDisplayType__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-reward", "battle-pass-reward-display-type").BPRewardDisplayType;
+local l__BPRewardDisplayMeta__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-reward", "battle-pass-reward-display-meta").BPRewardDisplayMeta;
 local l__ColorUtil__10 = v2.ColorUtil;
 local u11 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__Theme__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local l__Empty__13 = v2.Empty;
 local l__ButtonComponent__14 = v2.ButtonComponent;
-local l__KnitClient__15 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__15 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__IconButton__16 = v2.IconButton;
 local l__Flamework__17 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 local l__BedwarsAppIds__18 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "types", "app-config").BedwarsAppIds;

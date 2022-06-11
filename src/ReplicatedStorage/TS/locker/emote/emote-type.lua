@@ -1,4 +1,4 @@
--- Script Hash: 7246f2d0a4e0f9de9ed19e11a994555c42e1db46dfef4e54e992edab3263cf1ccea3ccf23317b8c27812bd62cd9184ae
+-- Script Hash: d4b2cb2440be73c584f4f878376defa7bce325b701baaa792947ec8ef240a978894c6686006f010e6b23980d3d482115
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -259,6 +259,60 @@ v4.VICTORIOUS_BETA = "victorious_beta";
 v3.victorious_beta = "VICTORIOUS_BETA";
 v4.EASTER_BUNNY = "easter_bunny";
 v3.easter_bunny = "EASTER_BUNNY";
+v4.WIGGLE = "wiggle";
+v3.wiggle = "WIGGLE";
+v4.ROCK_PAPER_SCISSORS = "rock_paper_scissors";
+v3.rock_paper_scissors = "ROCK_PAPER_SCISSORS";
+v4.BEACH_VACATION = "beach_vacation";
+v3.beach_vacation = "BEACH_VACATION";
+v4.BAKER_PIECE_OF_CAKE = "baker_piece_of_cake";
+v3.baker_piece_of_cake = "BAKER_PIECE_OF_CAKE";
+v4.BAKER_PROTECTION = "baker_item_prot";
+v3.baker_item_prot = "BAKER_PROTECTION";
+v4.BARB_U_SHALL_NOT_PASS = "barb_u_shall_not_pass";
+v3.barb_u_shall_not_pass = "BARB_U_SHALL_NOT_PASS";
+v4.BUILDER_HELP_PLS = "builder_help";
+v3.builder_help = "BUILDER_HELP_PLS";
+v4.CLETUS_TROLL = "cletus_troll";
+v3.cletus_troll = "CLETUS_TROLL";
+v4.CYBER_DAB = "cyber_dab";
+v3.cyber_dab = "CYBER_DAB";
+v4.TIGER_WELL_PLAYED = "tiger_well_played";
+v3.tiger_well_played = "TIGER_WELL_PLAYED";
+v4.CYBER_DEFENSE = "cyber_defense";
+v3.cyber_defense = "CYBER_DEFENSE";
+v4.CYBER_MAD = "cyber_mad";
+v3.cyber_mad = "CYBER_MAD";
+v4.CYBER_OVERHEAT = "cyber_overheat";
+v3.cyber_overheat = "CYBER_OVERHEAT";
+v4.DINO_HAI = "dino_hai";
+v3.dino_hai = "DINO_HAI";
+v4.DINO_RAWR = "dino_rawr";
+v3.dino_rawr = "DINO_RAWR";
+v4.DINO_YIPEEE = "dino_yipeee";
+v3.dino_yipeee = "DINO_YIPEEE";
+v4.FREIYA_BEG = "freiya_beg";
+v3.freiya_beg = "FREIYA_BEG";
+v4.LUMEN_PAIN = "lumen_pain";
+v3.lumen_pain = "LUMEN_PAIN";
+v4.MELODY_YOU_ROCK = "melody_you_rock";
+v3.melody_you_rock = "MELODY_YOU_ROCK";
+v4.METAL_DETECTOR = "metal_detector";
+v3.metal_detector = "METAL_DETECTOR";
+v4.OH_MY_STARS = "oh_my_stars";
+v3.oh_my_stars = "OH_MY_STARS";
+v4.RAINING_GEMS = "raining_gems";
+v3.raining_gems = "RAINING_GEMS";
+v4.RAVEN_RIP = "raven_rip";
+v3.raven_rip = "RAVEN_RIP";
+v4.REAPER_GOT_EM = "reaper_got_em";
+v3.reaper_got_em = "REAPER_GOT_EM";
+v4.SMOKE_WAVE = "smoke_wave";
+v3.smoke_wave = "SMOKE_WAVE";
+v4.STAR_COLLECTOR_FUN = "star_collector_fun";
+v3.star_collector_fun = "STAR_COLLECTOR_FUN";
+v4.TESLA_DANGER = "tesla_danger";
+v3.tesla_danger = "TESLA_DANGER";
 return {
 	EmoteDisplayType = v2, 
 	EmoteType = v4

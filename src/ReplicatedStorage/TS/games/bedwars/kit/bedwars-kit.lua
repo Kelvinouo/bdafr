@@ -1,4 +1,4 @@
--- Script Hash: 863e918353f6ac7d2b7c1adbcba9a7aa372a788ee5e50e96dd4ff5b4bcf41fcc7aaba15a6014fbcb80e55cb521587ee4
+-- Script Hash: d6d9de50890471f96d614891f9d054869e97dbf077b59667a80967905ed6ac3da6a516f1f37c99697319b8bbca171fb5
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__BattlePassSeason__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-seasons").BattlePassSeason;
@@ -106,12 +106,21 @@ v3.LUMEN = "lumen";
 v2.lumen = "LUMEN";
 v3.EMBER = "ember";
 v2.ember = "EMBER";
+v3.MERCHANT = "merchant";
+v2.merchant = "MERCHANT";
+v3.DINO_TAMER = "dino_tamer";
+v2.dino_tamer = "DINO_TAMER";
+v3.WIND_WALKER = "wind_walker";
+v2.wind_walker = "WIND_WALKER";
+v3.STAR_COLLECTOR = "star_collector";
+v2.star_collector = "STAR_COLLECTOR";
 return {
 	BedwarsKit = v3, 
 	BedwarsBPKits = {
 		[l__BattlePassSeason__1.season1] = { v3.PYRO, v3.RAVEN, v3.BEEKEEPER, v3.SPIRIT_CATCHER, v3.BOUNTY_HUNTER, v3.JADE, v3.WARRIOR }, 
 		[l__BattlePassSeason__1.season2] = { v3.SPEARMAN, v3.FISHERMAN, v3.TRAPPER, v3.OIL_MAN, v3.GHOST_CATCHER }, 
 		[l__BattlePassSeason__1.season3] = { v3.FROSTY, v3.SANTA, v3.SMOKE, v3.YETI, v3.AERY, v3.GINGERBREAD_MAN }, 
-		[l__BattlePassSeason__1.season4] = { v3.MIDNIGHT, v3.ALCHEMIST, v3.BEAST, v3.SHEEP_HERDER, v3.METAL_DETECTOR, v3.CONQUEROR }
+		[l__BattlePassSeason__1.season4] = { v3.MIDNIGHT, v3.ALCHEMIST, v3.BEAST, v3.SHEEP_HERDER, v3.METAL_DETECTOR, v3.CONQUEROR }, 
+		[l__BattlePassSeason__1.season5] = { v3.WIND_WALKER, v3.STAR_COLLECTOR, v3.DINO_TAMER, v3.MERCHANT }
 	}
 };

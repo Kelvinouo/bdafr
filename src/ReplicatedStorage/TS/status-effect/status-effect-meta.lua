@@ -1,4 +1,4 @@
--- Script Hash: 27312a6be8a72d0378b127dfbe28c2eb68c424fc06e29903602bee3c9f09f996fea374fb6f206f8a60cec047f4237546
+-- Script Hash: 23130ad442275cbf1d3a7e934f2453cded5a9ddac4019312a8dc06d4f253c2ccfd67b16499122a8a5bfabfa6fc370e6c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -66,6 +66,14 @@ return {
 		[l__StatusEffectType__4.LIFE_STEAL_2] = {
 			displayName = "Life Steal II", 
 			image = l__BedwarsImageId__2.LIFE_STEAL_ELEMENT
+		}, 
+		[l__StatusEffectType__4.SHIELD_ACTIVE] = {
+			displayName = "Shield Active", 
+			image = "rbxassetid://9866786852"
+		}, 
+		[l__StatusEffectType__4.SHIELD_DOWN] = {
+			displayName = "Shield On Cooldown", 
+			image = l__BedwarsImageId__2.PLUNDER_ELEMENT
 		}, 
 		[l__StatusEffectType__4.PLUNDER_2] = {
 			displayName = "Plunder II", 
@@ -143,6 +151,10 @@ return {
 		[l__StatusEffectType__4.BIG_HEAD] = {
 			displayName = "Shrink", 
 			item = l__ItemType__3.BIG_HEAD_POTION
+		}, 
+		[l__StatusEffectType__4.DECAY] = {
+			displayName = "Decay", 
+			noDisplay = true
 		}
 	}
 };

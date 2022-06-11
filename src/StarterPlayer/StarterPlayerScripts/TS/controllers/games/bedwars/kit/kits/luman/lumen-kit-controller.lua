@@ -1,8 +1,8 @@
--- Script Hash: 243beac3aa9ef8048a823f30def4698da80c5ab0be112f073f2563878c3eefc8932f555a1e92bae0347dd9ed300fea95
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v5 = setmetatable({}, {
@@ -18,12 +18,12 @@ function u1.new(...)
 	return v6:constructor(...) and v6;
 end;
 local u2 = l__KnitController__4;
-local l__Maid__3 = v2.Maid;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function u1.constructor(p1, ...)
 	u2.constructor(p1, ...);
 	p1.Name = "LumenKitController";
 	p1.upgradeRequirement = 10;
-	p1.maid = l__Maid__3.new();
+	p1.maid = u3.new();
 end;
 local l__default__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__ClientStore__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
@@ -34,13 +34,13 @@ local l__BuildRoduxApp__9 = v1.import(script, script.Parent.Parent.Parent.Parent
 local l__LumenProgressBar__10 = v1.import(script, script.Parent, "ui", "lumen-progress-bar").LumenProgressBar;
 function u1.KnitStart(p2)
 	u2.KnitStart(p2);
-	l__default__4.Client:OnEvent("LumenProgress", function(p3)
+	l__default__4.Client:OnEvent("RemoteName", function(p3)
 		l__ClientStore__5:dispatch({
 			type = "KitLumenIncrementProgress", 
 			progress = p3.incrementProgress / p2.upgradeRequirement
 		});
 	end);
-	l__default__4.Client:OnEvent("PlayLumenEffect", function(p4)
+	l__default__4.Client:OnEvent("RemoteName", function(p4)
 		p2:createEffect(p4.player);
 	end);
 	l__KnitClient__6.Controllers.KitController:watchLocalKit(function(p5)

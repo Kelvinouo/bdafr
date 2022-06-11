@@ -1,4 +1,4 @@
--- Script Hash: b1a958048f95024cabb09cd1b7644e7237f6e73132051639c56185a82d8bb88318140cc46804408f8f94903c9c0a303e
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -42,7 +42,7 @@ function u1.KnitStart(p2)
 			p2:dropItemInHand();
 		end;
 	end, false, Enum.KeyCode.Q, Enum.KeyCode.Backspace, Enum.KeyCode.ButtonX);
-	l__default__6.Client:Get("PickupItemEvent"):Connect(function(p6)
+	l__default__6.Client:Get("RemoteName"):Connect(function(p6)
 		if p6.player ~= l__Players__7.LocalPlayer then
 			local v7 = Vector3.new(p6.position.X, p6.position.Y, p6.position.Z);
 			local v8 = l__Players__7.LocalPlayer.Character;
@@ -61,7 +61,7 @@ local l__ClientStore__10 = v1.import(script, script.Parent.Parent.Parent.Parent,
 function u1.dropItemInHand(p7)
 	local l__hand__9 = l__ClientStore__10:getState().Inventory.observedInventory.inventory.hand;
 	if l__hand__9 ~= nil then
-		local v10 = l__default__6.Client:Get("DropItem"):CallServer({
+		local v10 = l__default__6.Client:Get("RemoteName"):CallServer({
 			item = l__hand__9.tool
 		});
 		l__SoundManager__8:playSound(l__GameSound__9.DROP_ITEM);
@@ -160,7 +160,7 @@ function u1.checkForPickup(p8)
 				local v41 = v34[v39 + 1];
 				v41:SetAttribute("ClientPickupAttemptTime", tick());
 				local u16 = v38;
-				l__default__6.Client:Get("PickupItemDrop"):CallServerAsync({
+				l__default__6.Client:Get("RemoteName"):CallServerAsync({
 					itemDrop = v41
 				}):andThen(function(p13)
 					if p13 and not u16 then
@@ -172,7 +172,7 @@ function u1.checkForPickup(p8)
 		end;
 	end;
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

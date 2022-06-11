@@ -1,4 +1,4 @@
--- Script Hash: 7d886cb5ace03022077528e816080aca0725bfd14fb217da7c07739d7357c141d48dfab5dfbd45a1bb5b317ea4569d20
+-- Script Hash: 00f918bb202d322ac023cc0e2f8deb3901c6396865e33793afbc0795ea7fc3182e5ac5b0830e37f4b19154f65e8f9ee5
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -75,6 +75,8 @@ v2.WOOL_CYAN = "wool_cyan";
 v1.wool_cyan = "WOOL_CYAN";
 v2.WOOL_PURPLE = "wool_purple";
 v1.wool_purple = "WOOL_PURPLE";
+v2.VOID_BLOCK = "void_block";
+v1.void_block = "VOID_BLOCK";
 v2.BED = "bed";
 v1.bed = "BED";
 v2.WOOD_SWORD = "wood_sword";
@@ -87,6 +89,8 @@ v2.DIAMOND_SWORD = "diamond_sword";
 v1.diamond_sword = "DIAMOND_SWORD";
 v2.EMERALD_SWORD = "emerald_sword";
 v1.emerald_sword = "EMERALD_SWORD";
+v2.VOID_SWORD = "void_sword";
+v1.void_sword = "VOID_SWORD";
 v2.LEATHER_HELMET = "leather_helmet";
 v1.leather_helmet = "LEATHER_HELMET";
 v2.LEATHER_CHESTPLATE = "leather_chestplate";
@@ -111,6 +115,12 @@ v2.EMERALD_CHESTPLATE = "emerald_chestplate";
 v1.emerald_chestplate = "EMERALD_CHESTPLATE";
 v2.EMERALD_BOOTS = "emerald_boots";
 v1.emerald_boots = "EMERALD_BOOTS";
+v2.JUGGERNAUT_HELMET = "juggernaut_helmet";
+v1.juggernaut_helmet = "JUGGERNAUT_HELMET";
+v2.JUGGERNAUT_CHESTPLATE = "juggernaut_chestplate";
+v1.juggernaut_chestplate = "JUGGERNAUT_CHESTPLATE";
+v2.JUGGERNAUT_BOOTS = "juggernaut_boots";
+v1.juggernaut_boots = "JUGGERNAUT_BOOTS";
 v2.VOID_HELMET = "void_helmet";
 v1.void_helmet = "VOID_HELMET";
 v2.VOID_CHESTPLATE = "void_chestplate";
@@ -129,6 +139,14 @@ v2.EMERALD_BLOCK = "emerald_block";
 v1.emerald_block = "EMERALD_BLOCK";
 v2.IRON_BLOCK = "iron_block";
 v1.iron_block = "IRON_BLOCK";
+v2.GALACTITE = "galactite";
+v1.galactite = "GALACTITE";
+v2.GALACTITE_BRICK = "galactite_brick";
+v1.galactite_brick = "GALACTITE_BRICK";
+v2.KOBBLAK = "kobblak";
+v1.kobblak = "KOBBLAK";
+v2.KRESH = "kresh";
+v1.kresh = "KRESH";
 v2.CLAY = "clay";
 v1.clay = "CLAY";
 v2.CLAY_ORANGE = "clay_orange";
@@ -493,6 +511,16 @@ v2.FLAG = "flag";
 v1.flag = "FLAG";
 v2.PLAYER_VACUUM = "player_vacuum";
 v1.player_vacuum = "PLAYER_VACUUM";
+v2.DINO_DEPLOY = "dino_deploy";
+v1.dino_deploy = "DINO_DEPLOY";
+v2.VITALITY_STAR = "vitality_star";
+v1.vitality_star = "VITALITY_STAR";
+v2.CRIT_STAR = "crit_star";
+v1.crit_star = "CRIT_STAR";
+v2.VOID_PORTAL = "void_portal";
+v1.void_portal = "VOID_PORTAL";
+v2.VOID_CRYSTAL = "void_crystal";
+v1.void_crystal = "VOID_CRYSTAL";
 return {
 	ItemType = v2
 };

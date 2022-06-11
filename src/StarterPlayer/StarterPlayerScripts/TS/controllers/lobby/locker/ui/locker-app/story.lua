@@ -1,4 +1,4 @@
--- Script Hash: e9730845f44c5e02d11cf0bda69bcc171b6bab0072eacdd347a2805b3b63d5d03bdf03c41bfc99bf6dba40dd0827455d
+-- Script Hash: b578e5b5b98a73139b9da12ef111bbededa86a84c1148eab74e365c0d6d4f13c4724beb1d0587fa5a331dda9d268dfbf
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -17,7 +17,7 @@ return function(p1)
 			selectedKillEffect = l__KillEffectType__1.NONE, 
 			killEffects = { l__KillEffectType__1.NONE, l__KillEffectType__1.JELLY, l__KillEffectType__1.GIFT, l__KillEffectType__1.SNOWMAN, l__KillEffectType__1.BLIMP, l__KillEffectType__1.EXPLODE, l__KillEffectType__1.COFFIN, l__KillEffectType__1.ABDUCTION, l__KillEffectType__1.SHARK, l__KillEffectType__1.SHARK, l__KillEffectType__1.SHARK, l__KillEffectType__1.SHARK, l__KillEffectType__1.SHARK, l__KillEffectType__1.SHARK, l__KillEffectType__1.SHARK, l__KillEffectType__1.SHARK, l__KillEffectType__1.SHARK, l__KillEffectType__1.SHARK, l__KillEffectType__1.SHARK, l__KillEffectType__1.SHARK, l__KillEffectType__1.SHARK }, 
 			selectedSpray = l__EmoteType__2.CLETUS_CARROT, 
-			sprays = { l__EmoteType__2.ROCK_OUT, l__EmoteType__2.BANANA_BARBARIAN, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT }, 
+			sprays = { l__EmoteType__2.ROCK_OUT, l__EmoteType__2.BANANA_BARBARIAN, l__EmoteType__2.BUILDER_HELP_PLS, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT, l__EmoteType__2.CLETUS_CARROT }, 
 			selectedTitle = l__TitleType__3.MLG, 
 			titles = { l__TitleType__3.NONE, l__TitleType__3.MLG, l__TitleType__3.MINERS_OF_THE_GALAXY, l__TitleType__3.MLG, l__TitleType__3.MLG, l__TitleType__3.MLG, l__TitleType__3.MLG, l__TitleType__3.MLG, l__TitleType__3.MLG, l__TitleType__3.MLG }, 
 			selectedLobbyGadget = l__LobbyGadgetType__4.RAGEBLADE, 

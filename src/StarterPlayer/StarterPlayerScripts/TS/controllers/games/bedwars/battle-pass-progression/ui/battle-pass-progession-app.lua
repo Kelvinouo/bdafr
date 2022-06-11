@@ -1,4 +1,4 @@
--- Script Hash: deadcb26bc901fba872a9251cc74faef53687e09a6c3aa7b42830fcda79263f691d6c35028a27564b416daa0314d1ab3
+-- Script Hash: ce0baddcf68e0a2ef07826e6e6b2f4d33344243c9e2939c7f2d53b7b001b4ea1b4e9187c1a5ee03036bff210a715433f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -9,7 +9,7 @@ local u2 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__TweenService__3 = v3.TweenService;
 local l__RunService__4 = v3.RunService;
 local l__ClientSyncEvents__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
-local l__KnitClient__6 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__6 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__SlideIn__7 = v2.SlideIn;
 local l__ScaleComponent__8 = v2.ScaleComponent;
 local l__DeviceUtil__9 = v2.DeviceUtil;
@@ -145,7 +145,7 @@ u13 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u
 			LayoutOrder = 3
 		})
 	});
-	v14[1] = u2.createElement("Frame", {
+	v14.BattlepassProgressApp = u2.createElement("Frame", {
 		AnchorPoint = v5, 
 		Position = v6, 
 		Size = UDim2.fromOffset(840, 0), 

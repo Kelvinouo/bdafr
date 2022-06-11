@@ -1,4 +1,4 @@
--- Script Hash: dae35184dd1a9b2e44409958aaa34f16d8b9a613f9796f33065ae94b9b83313254db3526a79d2fc269e3cbb967ade0c3
+-- Script Hash: b1161bc0520c887dfa236807d657362edcad37353d92ebb34ee4979b611e94dc55d61dd92e93c6d5042279b0aa5bd3c1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -32,26 +32,35 @@ function v2.weldPartsWithJoint(p5, p6, p7)
 	v4.Parent = p5;
 	return v4;
 end;
-local function u2(p8, p9)
-	local v5, v6, v7 = ipairs(p8:GetChildren());
-	while true do
-		local v8, v9 = v5(v6, v7);
-		if not v8 then
-			break;
-		end;
-		if v9:IsA("Attachment") and v9.Name == p9 then
-			return v9;
-		end;
-		if not v9:IsA("Accoutrement") and not v9:IsA("Tool") then
-			local v10 = u2(v9, p9);
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "string-utils"));
+local function u3(p8, p9)
+	for v5, v6 in ipairs(p8:GetChildren()) do
+		if v6:IsA("Attachment") and v6.Name == p9 then
+			local v7 = u2.endsWith(v6.Name, "KneeRigAttachment");
+			if v7 then
+				local v8 = v6.Parent;
+				if v8 ~= nil then
+					v8 = v8.Name;
+				end;
+				local v9 = v8;
+				if v9 == nil then
+					v9 = "";
+				end;
+				v7 = u2.includes(v9, "Upper");
+			end;
+			if not v7 then
+				return v6;
+			end;
+		elseif not v6:IsA("Accoutrement") and not v6:IsA("Tool") then
+			local v10 = u3(v6, p9);
 			if v10 then
 				return v10;
 			end;
-		end;	
+		end;
 	end;
 	return nil;
 end;
-local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+local u4 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v2.weldCharacterAccessories(p10)
 	local v11, v12, v13 = ipairs(p10:GetChildren());
 	while true do
@@ -64,12 +73,12 @@ function v2.weldCharacterAccessories(p10)
 			if l__Handle__16 then
 				for v17, v18 in ipairs(l__Handle__16:GetChildren()) do
 					if v18:IsA("Attachment") then
-						local v19 = u2(p10, v18.Name);
+						local v19 = u3(p10, v18.Name);
 						if v19 then
-							local v20 = u3.new();
-							local u4 = v3(v19, v18);
+							local v20 = u4.new();
+							local u5 = v3(v19, v18);
 							v20:GiveTask(function()
-								u4:Destroy();
+								u5:Destroy();
 							end);
 							v20:GiveTask(v18.AncestryChanged:Connect(function(p11, p12)
 								if p12 == nil then

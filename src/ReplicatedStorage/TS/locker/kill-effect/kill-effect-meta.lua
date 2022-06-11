@@ -1,4 +1,4 @@
--- Script Hash: 9989a309219943777715cce4b6201086330b329faace49666b00fea2cab13bbdd7c1293e24aa73b0038467c2c0e93932
+-- Script Hash: 3b67a8a680b622387e80ec3f91614b56bb694589a85fbfd8ac61848ebb67919ec6a061c5e72bc057c9b55c5cc40d8490
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__KillEffectType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "locker", "kill-effect", "kill-effect-type").KillEffectType;
@@ -67,6 +67,18 @@ return {
 		[l__KillEffectType__1.BLACKHOLE] = {
 			name = "Blackhole", 
 			image = "rbxassetid://7976208473"
+		}, 
+		[l__KillEffectType__1.GLITCH] = {
+			name = "Glitch", 
+			image = "rbxassetid://9872298649"
+		}, 
+		[l__KillEffectType__1.LIFE_RING] = {
+			name = "Life Ring", 
+			image = "rbxassetid://9872222447"
+		}, 
+		[l__KillEffectType__1.BEACH_BALL] = {
+			name = "Beach Ball", 
+			image = "rbxassetid://9872222228"
 		}
 	}
 };

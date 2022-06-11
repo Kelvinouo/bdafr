@@ -1,4 +1,4 @@
--- Script Hash: 8a05d0d4a8708ce609a6631b42a702daa65282d27c1093c995c7212c866fb698b6881127f48e3d484cd365829a4f6802
+-- Script Hash: 0625b6e39c6ba67131b82a685d9a51041577474f72f4375c098171c154ee9690db01f5964a21f606a38f1a75a0c760e1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -15,6 +15,7 @@ function v3.render(p2)
 	local u4 = 0;
 	local u5 = 0;
 	local u6 = 0;
+	local u7 = 0;
 	local function v5(p3)
 		if p3.itemType == l__ItemType__2.IRON then
 			u4 = u4 + p3.amount;
@@ -26,6 +27,10 @@ function v3.render(p2)
 		end;
 		if p3.itemType == l__ItemType__2.EMERALD then
 			u6 = u6 + p3.amount;
+			return;
+		end;
+		if p3.itemType == l__ItemType__2.VOID_CRYSTAL then
+			u7 = u7 + p3.amount;
 		end;
 	end;
 	for v6, v7 in ipairs(l__items__4) do
@@ -48,7 +53,7 @@ function v3.render(p2)
 			TextXAlignment = "Left", 
 			TextColor3 = Color3.fromRGB(255, 255, 255)
 		}), v2.createElement("TextLabel", {
-			Text = "<b>" .. tostring(u4) .. " Iron    <font color=\"#55FFFF\">" .. tostring(u5) .. " Diamond</font>    <font color=\"#55FF99\">" .. tostring(u6) .. " Emerald</font></b>", 
+			Text = "<b>" .. tostring(u4) .. " Iron    <font color=\"#55FFFF\">" .. tostring(u5) .. " Diamond</font>    <font color=\"#55FF99\">" .. tostring(u6) .. " Emerald</font>    <font color=\"#FF55FF\">" .. tostring(u7) .. " Void Crystal</font></b>", 
 			Size = UDim2.fromScale(0.97, 0.4), 
 			Position = UDim2.fromScale(0.95, 0.5), 
 			AnchorPoint = Vector2.new(1, 0.5), 

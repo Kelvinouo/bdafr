@@ -1,4 +1,4 @@
--- Script Hash: 0f0032315d2a0ea86ce6236cb3fa4dc9d386ca17c57038641302369c323a1ffefe793af2950da0db0f2f87072377282b
+-- Script Hash: 84882626f3576c2a5852d5ab01868a03a037fa64048b5b47c4f1e75c21c1c2a0a9216be9b57c46f0e3d1f73b791fa79f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -11,6 +11,8 @@ v2.ALCHEMIST_INGREDIENTS = "alchemist_ingedients";
 v1.alchemist_ingedients = "ALCHEMIST_INGREDIENTS";
 v2.HIDDEN_METAL = "hidden_metal";
 v1.hidden_metal = "HIDDEN_METAL";
+v2.STARS = "stars";
+v1.stars = "STARS";
 v2.FLAG = "flag";
 v1.flag = "FLAG";
 local v3 = {};

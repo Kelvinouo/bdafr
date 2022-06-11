@@ -1,4 +1,4 @@
--- Script Hash: 9e8d5fed56bd531e1dee3f845ff2595dc3914073740806eeb8272551a1706011c9531d50823f1912fd4db534a3eb6e3f
+-- Script Hash: 0034417ac434905124d7ef99d26c0e8c94e51e09a2800a44c10a1da7b7427083ccd1547a3869a54c3c492d3c4cb71147
 -- Decompiled with the Synapse X Luau decompiler.
 
 return {
@@ -318,6 +318,14 @@ return {
 			icon = "rbxassetid://7884369108", 
 			s = "rbxassetid://7843775572"
 		}, 
+		galactite = {
+			icon = "rbxassetid://9839887907", 
+			s = "rbxassetid://9839888622"
+		}, 
+		galactite_brick = {
+			icon = "rbxassetid://9839888714", 
+			s = "rbxassetid://9839888790"
+		}, 
 		granite = {
 			icon = "rbxassetid://9072553261", 
 			s = "rbxassetid://9072525939"
@@ -350,6 +358,16 @@ return {
 		iron_block = {
 			icon = "rbxassetid://7884369517", 
 			s = "rbxassetid://7852098030"
+		}, 
+		kobblak = {
+			icon = "rbxassetid://9859002988", 
+			s = "rbxassetid://9859003106", 
+			td = "rbxassetid://9859003198"
+		}, 
+		kresh = {
+			icon = "rbxassetid://9839889168", 
+			s = "rbxassetid://9839889255", 
+			t = "rbxassetid://9839889319"
 		}, 
 		log_maple = {
 			icon = "rbxassetid://7884369649", 
@@ -449,6 +467,11 @@ return {
 			icon = "rbxassetid://7884372237", 
 			s = "rbxassetid://7843883483", 
 			td = "rbxassetid://7843883559"
+		}, 
+		void_block = {
+			icon = "rbxassetid://9871961934", 
+			s = "rbxassetid://9871962545", 
+			t = "rbxassetid://9871962653"
 		}, 
 		wood_plank_birch = {
 			icon = "rbxassetid://7884372418", 
@@ -597,6 +620,32 @@ return {
 			vulcan_loading = "rbxassetid://9122604141", 
 			warrior_update_day = "rbxassetid://9122604241", 
 			yuzi_hype = "rbxassetid://9122604360"
+		}, 
+		season5 = {
+			baker_item_prot = "rbxassetid://9869089454", 
+			baker_piece_of_cake = "rbxassetid://9869089602", 
+			barb_u_shall_not_pass = "rbxassetid://9869104689", 
+			builder_help = "rbxassetid://9869090079", 
+			cletus_troll = "rbxassetid://9869090233", 
+			cyber_dab = "rbxassetid://9869090487", 
+			cyber_defense = "rbxassetid://9869090746", 
+			cyber_mad = "rbxassetid://9869090944", 
+			cyber_overheat = "rbxassetid://9869091102", 
+			dino_hai = "rbxassetid://9869091312", 
+			dino_rawr = "rbxassetid://9869091636", 
+			dino_yipeee = "rbxassetid://9869091840", 
+			freiya_beg = "rbxassetid://9869091944", 
+			lumen_pain = "rbxassetid://9869092095", 
+			melody_you_rock = "rbxassetid://9869092278", 
+			metal_detector = "rbxassetid://9869092543", 
+			oh_my_stars = "rbxassetid://9869092705", 
+			raining_gems = "rbxassetid://9869092943", 
+			raven_rip = "rbxassetid://9869093163", 
+			reaper_got_em = "rbxassetid://9869093287", 
+			smoke_wave = "rbxassetid://9869093445", 
+			star_collector_fun = "rbxassetid://9869093655", 
+			tesla_danger = "rbxassetid://9869093778", 
+			tiger_well_played = "rbxassetid://9869094059"
 		}, 
 		victorious_beta = "rbxassetid://9197101063"
 	}

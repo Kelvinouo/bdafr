@@ -1,4 +1,4 @@
--- Script Hash: e6344ba222196da73f6d55b6e893f6588c9a45f5f1ecbe56489b3d67774dbf00718a8a62b71cd5c49186e3a347340536
+-- Script Hash: af69cf775e5c4f63ce8cc8e3410ce9801385269a1c8e0d08cf0bd9f4fd53e94d89ccb6457f93784e66ae3e374c589c06
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -137,7 +137,7 @@ local v4 = {
 	AXOLOTL_SWITCH_TARGETS = "rbxassetid://7344278405", 
 	CHRISTMAS_MUSIC = "", 
 	SUSPENSE_MUSIC = "", 
-	LOBBY_MUSIC = "rbxassetid://9171719053", 
+	LOBBY_MUSIC = "rbxassetid://9424716980", 
 	SNAP_TRAP_SETUP = "rbxassetid://7796078515", 
 	SNAP_TRAP_CLOSE = "rbxassetid://7796078695", 
 	SNAP_TRAP_CONSUME_MARK = "rbxassetid://7796078825", 
@@ -301,7 +301,28 @@ local v4 = {
 	CRITICAL_STRIKE = "rbxassetid://9620298037", 
 	FLAG_CAPTURE = "rbxassetid://9742662673", 
 	VACUUM_CATCH = "rbxassetid://9677230868", 
-	ACTIVE_VACUUM_LOOP = "rbxassetid://9679118787"
+	ACTIVE_VACUUM_LOOP = "rbxassetid://9679118787", 
+	VOID_SHIELD_BREAK = "rbxassetid://9863709825", 
+	VOID_HEALTH_DECAY = "rbxassetid://9863710807", 
+	VOID_THEME_SONG = "rbxassetid://9863710574", 
+	VOID_CRAB_FOOTSTEPS = "rbxassetid://9859243247", 
+	VOID_CRAB_BEAM_ATTACK = "rbxassetid://9859243325", 
+	VOID_CRAB_LUNGE_ATTACK = "rbxassetid://9859243453", 
+	VOID_CRAB_BASIC_ATTACK = "rbxassetid://9859243563", 
+	VOID_CRAB_DAMAGED = "rbxassetid://9859243390", 
+	VOID_CRAB_DEATH = "rbxassetid://9859243513", 
+	DINO_CHARGE_START = "rbxassetid://9864879626", 
+	DINO_CHARGE_LOOP = "rbxassetid://9864879302", 
+	DINO_CHARGE_STOP = "rbxassetid://9864879448", 
+	VOID_PORTAL_TELEPORT = "rbxassetid://9867707500", 
+	VOID_PORTAL_LOOP = "rbxassetid://9867707352", 
+	WIND_ORB_SPAWN = "rbxassetid://9872090829", 
+	WIND_ORB_GET = "rbxassetid://9872090739", 
+	WIND_LOOP = "rbxassetid://9872090612", 
+	STAR_PICKUP = "rbxassetid://9872091020", 
+	STAR_CRUSH = "rbxassetid://9872091084", 
+	STAR_IDLE = "rbxassetid://9872090917", 
+	GLITCH_KILL_EFFECT = "rbxassetid://9872091186"
 };
 l__SoundManager__3:registerSound(v4.VENDING_ROLL_TICK, {
 	preload = false
@@ -454,7 +475,7 @@ l__SoundManager__3:registerSound(v4.SUSPENSE_MUSIC, {
 });
 l__SoundManager__3:registerSound(v4.LOBBY_MUSIC, {
 	preload = false, 
-	volume = 0.3
+	volume = 0.15
 });
 l__SoundManager__3:registerSound(v4.FISHERMAN_GAME_PULLING_LOOP, {
 	volume = 0.3
@@ -504,6 +525,19 @@ l__SoundManager__3:registerSound(v4.MINICOPTER_START, {
 });
 l__SoundManager__3:registerSound(v4.MINICOPTER_STOP, {
 	volume = 0.4
+});
+l__SoundManager__3:registerSound(v4.VOID_THEME_SONG, {
+	preload = false, 
+	volume = 0.2
+});
+l__SoundManager__3:registerSound(v4.VOID_PORTAL_LOOP, {
+	preload = false, 
+	volume = 0.1
+});
+l__SoundManager__3:registerSound(v4.VOID_PORTAL_TELEPORT);
+l__SoundManager__3:registerSound(v4.VOID_SHIELD_BREAK, {
+	preload = false, 
+	volume = 0.35
 });
 if not v2.DeviceUtil.isHoarceKat() then
 	l__SoundManager__3:preload();

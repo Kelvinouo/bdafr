@@ -1,4 +1,4 @@
--- Script Hash: 92753540990c758ea6bf994a9af245508de1bd9e6c870c1ed4565ea653f359edfced7138f0bf55331d357a950ee93969
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,7 +14,7 @@ function v4.new(...)
 	local v5 = setmetatable({}, v4);
 	return v5:constructor(...) and v5;
 end;
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local u2 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__BlockHighlighter__3 = v1.import(script, v1.getModule(script, "@easy-games", "block-engine").out.client.highlight["block-highlighter"]).BlockHighlighter;
 local l__ClientBlockEngine__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "block-engine", "client-block-engine").ClientBlockEngine;
@@ -25,8 +25,8 @@ local l__ItemViewport__8 = v1.import(script, script.Parent.Parent.Parent.Parent.
 local l__Players__9 = v3.Players;
 local l__default__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function v4.constructor(p1)
-	p1.maid = l__Maid__1.new();
-	p1.highlightMaid = l__Maid__1.new();
+	p1.maid = u1.new();
+	p1.highlightMaid = u1.new();
 	p1.costGuiRef = u2.createRef();
 	p1.blockHighlighter = l__BlockHighlighter__3.new(l__ClientBlockEngine__4, l__BlockSelectorMode__5.SELECT);
 	p1.blockHighlighter:setAllowHighlight(function(p2, p3)
@@ -72,7 +72,7 @@ function v4.constructor(p1)
 	p1.blockHighlighter:setOnHighlightEnded(function()
 		p1.highlightMaid:DoCleaning();
 	end);
-	l__default__10.Client:WaitFor("BlockFortified"):andThen(function(p6)
+	l__default__10.Client:WaitFor("RemoteName"):andThen(function(p6)
 		return p6:Connect(function(p7, p8)
 			p1:playFortifyEffect(p7, p8);
 		end);
@@ -132,7 +132,7 @@ function v4.fortifyBlock(p16, p17)
 	});
 	p16:playFortifyEffect(l__Players__9.LocalPlayer, p17);
 	v1.try(function()
-		l__default__10.Client:Get("FortifyBlock"):SendToServer(p17);
+		l__default__10.Client:Get("RemoteName"):SendToServer(p17);
 	end, function(p18)
 		warn("Failed block placement:", p18);
 	end);

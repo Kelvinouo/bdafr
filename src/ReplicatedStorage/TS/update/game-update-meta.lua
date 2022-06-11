@@ -1,4 +1,4 @@
--- Script Hash: 2757451895ae84ac69f19b51b1c7832d1a4bf32cbd633fc89d34a051544c6b631625184e8ea9df145baafce62e0417c6
+-- Script Hash: 003bfc2c80652b7bc3be5fb38eb2c89e3fb19c41664c201e803836429c9492f528d9e83412ce9142fdc3cf8f892308cc
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -11,6 +11,17 @@ return {
 		newestKitBG = "rbxassetid://8795128315"
 	}, 
 	GameUpdateMeta = { {
+			updateLogId = 37, 
+			visible = true, 
+			title = "Season 5 Battle Pass + The Void", 
+			date = "6/10/2022", 
+			body = "<b>Welcome to \226\155\177\239\184\143\240\159\140\180 Battle Pass Season 5!</b> \nSummer time has finally come to Bed Wars with a revamped summer themed lobby. We\226\128\153ve been extremely excited to release this update for you all and are even more excited for what we have in store for you all this Summer.\n\n\240\159\143\134\240\159\166\136 <b>Battle Pass Season 5</b>\nThe Battle Pass gives you access to tons of limited edition content! Owning the Battle Pass also gives a 20% experience bonus.\n\n\226\157\148 LV 5 Kit:  Coming Soon\n\240\159\146\176 LV 10 Kit: Merchant\n\240\159\166\150 LV 20 Kit: Dino tamer\n\226\157\148 LV 30 Kit: Coming Soon\n\226\173\144 LV 40 Kit: Star Collector\n\240\159\146\168 LV 50 Kit: Zephyr\n\240\159\146\165 3 kill effects\n\226\154\148\239\184\143 3 lobby gadgets\n\240\159\146\172 16 lobby titles\n\240\159\150\188\239\184\143 25 image emotes\n\240\159\146\131 3 animated emotes\n\n\240\159\140\145 <b>The Void</b> \nThis season introduces a new \226\128\156Out of This World\226\128\157 area named <b>The Void.</b> Defeat the creatures in this dimension to receive Void Crystals that will enable you to buy new items such as void armor, void sword, & void blocks.\n\n\226\154\148\239\184\143 <b>Ranked Season 5 (RESCHEDULED)</b>\nRanked reset has been rescheduled to next update as we\226\128\153ll be focusing on making major improvements and fixes to the current Ranked system.\nPlayers that reach Season 4 Nightmare by the 6/17 3pm PST will be rewarded with an exclusive <b>Victorious Yuzi</b> skin.\n\n\240\159\146\165 <b>Dynamic Explosions</b>\nExplosions have been reworked to dynamically interact with each block\226\128\153s blast resistance. Explosions are now larger and will quickly break through weak blocks like wool. Stronger blocks like wood and stone bricks will reduce the explosion radius.\n\n\240\159\147\139 <b>Post Game MVP Cards</b>\nNew to this season are post game mvp cards. Stick around after the match to see the top performers in your match based on offensive, support, and other stat types.\n\n\240\159\134\147 <b>Free Kits of the Week</b>\n\240\159\143\185 Archer\n\240\159\143\135 Lassy\n\240\159\146\163 Davey\n\n\240\159\151\186\239\184\143 <b>New Maps</b>\n\240\159\143\150\239\184\143 Beach (Doubles, Squads)\n\240\159\144\160 Reef (Doubles, Squads)\n\n\226\154\153\239\184\143 <b>Other Changes</b>\n\240\159\146\142 Diamond and Emeralds now have a highlight on them\n\240\159\148\141 Added a search bar to the locker\n\240\159\154\129 Vaulted Minicopter\n\240\159\141\179 Vaulted Frying Pan\n\240\159\146\163 Vaulted Landmine\n\226\154\153\239\184\143 Vaulted Zipline\n\240\159\154\128 Vaulted Guided Missile Launcher", 
+			image = {
+				assetId = "rbxassetid://9873207277", 
+				aspectRatio = 1, 
+				height = 150
+			}
+		}, {
 			updateLogId = 36, 
 			visible = true, 
 			title = "Balance Changes + Season 5 Countdown", 

@@ -1,4 +1,4 @@
--- Script Hash: ea79e213b6e3b1fd5bbb047c9da4296ce35f75283220a8b10dd2bfeb71f11566e4fbf5e7b271fc7455a6ab16d3e907d6
+-- Script Hash: de5d10a0f95d0bd3e1284247544bbb9167ca322cecbc7a1b6ce6d6cdf28a5f2d562408086a5cd9aadb027934f8c35ec7
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -8,9 +8,9 @@ local u2 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__ColorUtil__3 = v2.ColorUtil;
 local l__Theme__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local l__DeviceUtil__5 = v2.DeviceUtil;
-local l__StringUtil__6 = v2.StringUtil;
-local l__CornerFiller__7 = v2.CornerFiller;
-local l__Empty__8 = v2.Empty;
+local l__Empty__6 = v2.Empty;
+local l__StringUtil__7 = v2.StringUtil;
+local l__CornerFiller__8 = v2.CornerFiller;
 return {
 	BattlePassInfoCard = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u2)(function(p1, p2)
 		local l__useState__3 = p2.useState;
@@ -27,71 +27,91 @@ return {
 				CornerRadius = UDim.new(0, 5)
 			})) };
 		local v8 = {};
-		local v9 = {
+		local v9 = {};
+		if l__DeviceUtil__5.isSmallScreen() then
+			local v10 = 16;
+		else
+			v10 = 10;
+		end;
+		v9.PaddingTop = UDim.new(0, v10);
+		if l__DeviceUtil__5.isSmallScreen() then
+			local v11 = 16;
+		else
+			v11 = 10;
+		end;
+		v9.PaddingBottom = UDim.new(0, v11);
+		v9.PaddingLeft = UDim.new(0, 16);
+		v9.PaddingRight = UDim.new(0, 16);
+		v8[1] = u2.createElement("UIPadding", v9);
+		v8[2] = u2.createElement("UIListLayout", {
+			FillDirection = Enum.FillDirection.Horizontal, 
+			HorizontalAlignment = Enum.HorizontalAlignment.Left, 
+			VerticalAlignment = Enum.VerticalAlignment.Center, 
+			Padding = UDim.new(0.05, 0), 
+			SortOrder = "LayoutOrder"
+		});
+		v8.BattlePassIcon = u2.createElement("ImageLabel", {
+			Size = UDim2.fromScale(1, 1), 
+			SizeConstraint = "RelativeYY", 
+			Image = l__BattlePassUtils__1.BATTLE_PASS_ICON, 
+			BackgroundTransparency = 1, 
+			ScaleType = "Fit", 
+			LayoutOrder = 1
+		});
+		local v12 = {};
+		local v13 = {
 			FillDirection = Enum.FillDirection.Vertical, 
 			HorizontalAlignment = Enum.HorizontalAlignment.Center, 
 			VerticalAlignment = Enum.VerticalAlignment.Center
 		};
 		if l__DeviceUtil__5.isSmallScreen() then
-			local v10 = 10;
+			local v14 = 10;
 		else
-			v10 = 4;
+			v14 = 4;
 		end;
-		v9.Padding = UDim.new(0, v10);
-		local v11 = {};
-		if l__DeviceUtil__5.isSmallScreen() then
-			local v12 = 16;
-		else
-			v12 = 10;
-		end;
-		v11.PaddingTop = UDim.new(0, v12);
-		if l__DeviceUtil__5.isSmallScreen() then
-			local v13 = 16;
-		else
-			v13 = 10;
-		end;
-		v11.PaddingBottom = UDim.new(0, v13);
-		v11.PaddingLeft = UDim.new(0, 16);
-		v11.PaddingRight = UDim.new(0, 16);
-		local v14 = {
+		v13.Padding = UDim.new(0, v14);
+		local v15 = {
 			Size = UDim2.fromScale(1, 0.4), 
 			BackgroundTransparency = 1
 		};
-		local v15 = {};
-		if v5 then
-			local v16 = true;
-		else
-			v16 = false;
-		end;
-		v15.seconds = v16;
+		local v16 = {};
 		if v5 then
 			local v17 = true;
 		else
 			v17 = false;
 		end;
-		v15.minutes = v17;
-		v15.hideIfZero = true;
-		v15.long = true;
-		v14.Text = l__StringUtil__6.fromNow(l__BATTLE_PASS_END_TIME__4, v15) .. "remaining";
-		v14.TextXAlignment = Enum.TextXAlignment.Left;
-		v14.TextTransparency = 0.3;
-		v14.TextColor3 = l__ColorUtil__3.WHITE;
-		v14.TextScaled = true;
-		v14.RichText = true;
-		v14.Font = Enum.Font.Roboto;
-		v8[1] = u2.createElement("UIListLayout", v9);
-		v8[2] = u2.createElement("UIPadding", v11);
-		v8[3] = u2.createElement("TextLabel", {
+		v16.seconds = v17;
+		if v5 then
+			local v18 = true;
+		else
+			v18 = false;
+		end;
+		v16.minutes = v18;
+		v16.hideIfZero = true;
+		v16.long = true;
+		v15.Text = l__StringUtil__7.fromNow(l__BATTLE_PASS_END_TIME__4, v16) .. "remaining";
+		v15.TextXAlignment = Enum.TextXAlignment.Left;
+		v15.TextTransparency = 0.3;
+		v15.TextColor3 = l__ColorUtil__3.WHITE;
+		v15.TextScaled = true;
+		v15.RichText = true;
+		v15.Font = Enum.Font.Roboto;
+		v12[1] = u2.createElement("UIListLayout", v13);
+		v12[2] = u2.createElement("TextLabel", {
 			Size = UDim2.fromScale(1, 0.5), 
 			BackgroundTransparency = 1, 
-			Text = "<b>Season " .. tostring(l__BattlePassUtils__1.BATTLE_PASS_SEASON_INDEX) .. "</b>", 
+			Text = "<b>Season " .. tostring(l__BattlePassUtils__1.BATTLE_PASS_SEASON_NUMBER) .. "</b>", 
 			TextXAlignment = Enum.TextXAlignment.Left, 
 			TextColor3 = l__ColorUtil__3.WHITE, 
 			TextScaled = true, 
 			RichText = true, 
 			Font = Enum.Font.Roboto
 		});
-		v8[4] = u2.createElement("TextLabel", v14);
+		v12[3] = u2.createElement("TextLabel", v15);
+		v8[3] = u2.createElement(l__Empty__6, {
+			Size = UDim2.fromScale(0.65, 1), 
+			LayoutOrder = 2
+		}, v12);
 		v7.CardHeader = u2.createElement("Frame", {
 			Size = UDim2.new(1, 0, 0.45, -2), 
 			BackgroundTransparency = 1, 
@@ -104,7 +124,7 @@ return {
 			BackgroundTransparency = 0, 
 			LayoutOrder = 2
 		}, {
-			CardContent = u2.createElement(l__Empty__8, {
+			CardContent = u2.createElement(l__Empty__6, {
 				Size = UDim2.fromScale(1, 1)
 			}, { u2.createElement("UIPadding", {
 					PaddingTop = UDim.new(0, 12), 
@@ -117,7 +137,7 @@ return {
 					VerticalAlignment = Enum.VerticalAlignment.Center, 
 					Padding = UDim.new(0.05, 0), 
 					SortOrder = "LayoutOrder"
-				}), u2.createElement(l__Empty__8, {
+				}), u2.createElement(l__Empty__6, {
 					Size = UDim2.new(1, 0, 0.4, 0), 
 					LayoutOrder = 1
 				}, { u2.createElement("UIListLayout", {
@@ -186,7 +206,7 @@ return {
 				}) }),
 			u2.createElement("UICorner", {
 				CornerRadius = UDim.new(0, 5)
-			}), (u2.createElement(l__CornerFiller__7, {
+			}), (u2.createElement(l__CornerFiller__8, {
 				TopRight = true, 
 				TopLeft = true, 
 				ZIndex = 2

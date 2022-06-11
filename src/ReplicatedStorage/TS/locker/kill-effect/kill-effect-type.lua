@@ -1,4 +1,4 @@
--- Script Hash: dff9ece9340ed8d66d30f1ffae586f7b6d6adcbd2b189550f4b94435c1cd6e05d60982895579ee24f5dcab2cfad40aad
+-- Script Hash: 43585d572b77afb3f1aca2b6688872fd0209a73780ee5857063bb22b2d1da5bb195ae31e920c0d91e338d6beb9999147
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -41,6 +41,12 @@ v2.COFFIN = "coffin";
 v1.coffin = "COFFIN";
 v2.LANTERN = "lantern";
 v1.lantern = "LANTERN";
+v2.GLITCH = "glitch";
+v1.glitch = "GLITCH";
+v2.LIFE_RING = "lifering";
+v1.lifering = "LIFE_RING";
+v2.BEACH_BALL = "beachball";
+v1.beachball = "BEACH_BALL";
 return {
 	KillEffectType = v2
 };

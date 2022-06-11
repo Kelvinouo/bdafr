@@ -1,4 +1,4 @@
--- Script Hash: 22c2345c6b339a9850323a6e2f42afd3fdb19a4a0bbdfa31a4c6d30f30ca1814c36806aad6cf6f8b02c401fe7c735d58
+-- Script Hash: 6e0ad1f6ff0936ca589aec819fdd70ebf2a4ba7527139c17bcbba015779c877391dc2e0a59cafc827eb42d7ab7aa13ef
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -35,7 +35,7 @@ local l__default__11 = v1.import(script, game:GetService("ReplicatedStorage"), "
 local l__EntityUtil__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
 local u13 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
 local l__Players__14 = v3.Players;
-local l__WorldUtil__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "world-util").WorldUtil;
+local l__GameWorldUtil__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "game-world-util").GameWorldUtil;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
 	l__CollectionService__2:GetInstanceAddedSignal("Tornado"):Connect(function(p3)
@@ -147,12 +147,12 @@ function v5.KnitStart(p2)
 			if l__HumanoidRootPart__36 == nil then
 				return nil;
 			end;
-			l__HumanoidRootPart__36:ApplyImpulse(l__WorldUtil__15.randomUnitVector(Vector3.new(0, 1, 0), math.rad(360)) * l__HumanoidRootPart__36.AssemblyMass * 10);
+			l__HumanoidRootPart__36:ApplyImpulse(l__GameWorldUtil__15.randomUnitVector(Vector3.new(0, 1, 0), math.rad(360)) * l__HumanoidRootPart__36.AssemblyMass * 10);
 			task.wait(1);
 			v30:getInstance().Humanoid:ChangeState(Enum.HumanoidStateType.Running);
 		end);
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());
 return nil;

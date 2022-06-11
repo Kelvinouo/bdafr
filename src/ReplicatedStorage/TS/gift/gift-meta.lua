@@ -1,4 +1,4 @@
--- Script Hash: 206e2cc5e16152eda3f809ddadc4b9cc05ebf4208bb2cc61ad0da7420035715037744d5a678aa00804ef8f21bacc2136
+-- Script Hash: ea4df895ada3333d0e73557647b51a62a71bb10963dcb233fd29e54c0bff4c0ee3276faabceaf188223fe7870c3ea7c4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = nil;
@@ -87,7 +87,7 @@ for v25 = 1, #v22 do
 end;
 local v26 = {
 	[v4.import(script, game:GetService("ReplicatedStorage"), "TS", "gift", "gift-type").GiftType.BattlePass] = {
-		name = "Battle Pass Season " .. tostring(l__BattlePassUtils__7.BATTLE_PASS_SEASON_INDEX), 
+		name = "Battle Pass Season " .. tostring(l__BattlePassUtils__7.BATTLE_PASS_SEASON_NUMBER), 
 		imageId = l__BattlePassUtils__7.BATTLE_PASS_ICON, 
 		price = 799, 
 		devProductId = v4.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-dev-products").BattlePassGiftDevProduct

@@ -1,4 +1,4 @@
--- Script Hash: bd506aa23eee8e571ef15015073298b7b59daa6eb2d48f63b7c29697344a45716e95cd6b3b5d9ea808ac0568eeeae921
+-- Script Hash: e6c9d24e81bbd5d862025edbf7573e8feefe0f5e69b1ed0af463e88da814e4f4bbdd1c53fc78aca89abd5d58d93550c6
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -31,6 +31,7 @@ function v2.wool(p1)
 			textures = {}
 		}, 
 		health = 10, 
+		blastResistance = 0.65, 
 		wool = true
 	};
 	local v7 = p1;
