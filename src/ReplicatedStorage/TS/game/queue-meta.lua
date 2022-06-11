@@ -1,4 +1,4 @@
--- Script Hash: df2997871be0b7615cd05bc8680d00fa644b283cd08b7d80bbbbbf4d360c712a6fde2a834eec0f8641f8d7b862f06215
+-- Script Hash: 942f6a6f70a477e8730f77fbb281766022628ca9813407f4f27ebbc9274e88f4bbf2c5f05010098ceee5ed3df93d898c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -13,7 +13,7 @@ local l__MapType__9 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 local l__QueueType__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "game", "queue-type").QueueType;
 local l__TeamColorHex__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "game", "team", "team-color-hex").TeamColorHex;
 return {
-	StudioQueueType = l__QueueType__10.FLAG_CAPTURE, 
+	StudioQueueType = l__QueueType__10.BEDWARS_TO4, 
 	QueueMeta = {
 		[l__QueueType__10.BEDWARS_TEST] = {
 			title = "BedWars (Testing)", 
@@ -565,6 +565,43 @@ return {
 			disableInCustom = true, 
 			glickoCategory = l__GlickoCategory__4.RANKED_S4, 
 			rankCategory = l__RankCategory__5.RANKED_S4, 
+			placeId = l__PlaceId__3.GAME, 
+			game = l__GameType__7.BEDWARS
+		}, 
+		[l__QueueType__10.BEDWARS_RANKED_S5] = {
+			title = "Ranked (Squads)", 
+			eventText = "SEASON 5", 
+			teams = { {
+					id = "1", 
+					maxPlayers = 4, 
+					colorHex = l__TeamColorHex__11.lightBlue, 
+					displayName = "Blue"
+				}, {
+					id = "2", 
+					maxPlayers = 4, 
+					colorHex = l__TeamColorHex__11.red, 
+					displayName = "Red"
+				}, {
+					id = "3", 
+					maxPlayers = 4, 
+					colorHex = l__TeamColorHex__11.green, 
+					displayName = "Green"
+				}, {
+					id = "4", 
+					maxPlayers = 4, 
+					colorHex = l__TeamColorHex__11.yellow, 
+					displayName = "Yellow"
+				} }, 
+			maps = l__Maps__8[l__MapType__9.BEDWARS_SQUADS], 
+			queueSize = {
+				min = 1, 
+				max = 4
+			}, 
+			paidPlayersOnly = true, 
+			disableInCustom = true, 
+			minWinReq = 100, 
+			glickoCategory = l__GlickoCategory__4.RANKED_S5, 
+			rankCategory = l__RankCategory__5.RANKED_S5, 
 			placeId = l__PlaceId__3.GAME, 
 			game = l__GameType__7.BEDWARS
 		}, 

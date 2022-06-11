@@ -1,4 +1,4 @@
--- Script Hash: 4d1ecc67a07fa336ab1595a007dcb766d984453eca36ec8f0680f3c21ee42c63c18f3acebb2e093cabf38753ffd2f787
+-- Script Hash: a81233d726bde4e8412e3097e47d7fd69f1bdc42686c2fe6c9d7cac1228de3f858f2746b4c20ce5c6a48a4dd34d28ee4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -6,11 +6,11 @@ local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").ou
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local v5 = v3.Component:extend("HotbarHealthbar");
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v5.init(p1, p2)
 	p1.progressFrame = v3.createRef();
-	p1.maid = l__Maid__1.new();
-	p1.characterMaid = l__Maid__1.new();
+	p1.maid = u1.new();
+	p1.characterMaid = u1.new();
 	p1:setState({
 		health = 100, 
 		shield = 0
@@ -93,81 +93,92 @@ function v5.hookCharacter(p5, p6)
 end;
 local l__Shield__10 = v1.import(script, script.Parent, "shield").Shield;
 local l__ColorUtil__11 = v2.ColorUtil;
-local l__Empty__12 = v2.Empty;
+local l__StatusEffectUtil__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "status-effect", "status-effect-util").StatusEffectUtil;
+local l__StatusEffectType__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "status-effect", "status-effect-type").StatusEffectType;
+local l__Empty__14 = v2.Empty;
 function v5.render(p11)
-	local v20 = u5.values(l__ShieldType__6);
-	local function v21(p12)
+	local v20 = l__EntityUtil__4:getLocalPlayerEntity();
+	local v21 = u5.values(l__ShieldType__6);
+	local function v22(p12)
 		return v3.createElement(l__Shield__10, {
 			ShieldType = p12
 		});
 	end;
-	local v22 = table.create(#v20);
-	for v23, v24 in ipairs(v20) do
-		v22[v23] = v21(v24, v23 - 1, v20);
+	local v23 = table.create(#v21);
+	for v24, v25 in ipairs(v21) do
+		v23[v24] = v22(v25, v24 - 1, v21);
 	end;
-	local v25 = l__EntityUtil__4:getLocalPlayerEntity();
-	if v25 ~= nil then
-		v25 = v25:getMaxHealth();
+	local v26 = v20;
+	if v26 ~= nil then
+		v26 = v26:getMaxHealth();
 	end;
-	local v26 = v25;
-	if v26 == nil then
-		v26 = 100;
+	local v27 = v26;
+	if v27 == nil then
+		v27 = 100;
 	end;
-	local v27 = {};
-	if p11.state.health + p11.state.shield < v26 then
-		local v28 = { v3.createElement("UIListLayout", {
+	local v28 = l__ColorUtil__11.hexColor(13317668);
+	local v29 = v20;
+	if v29 ~= nil then
+		v29 = v29:getInstance();
+	end;
+	if v29 and l__StatusEffectUtil__12:isActive(v29, l__StatusEffectType__13.DECAY) then
+		v28 = l__ColorUtil__11.hexColor(13970113);
+	end;
+	local v30 = {};
+	if p11.state.health + p11.state.shield < v27 then
+		local v31 = { v3.createElement("UIListLayout", {
 				FillDirection = "Horizontal", 
 				HorizontalAlignment = "Left", 
 				VerticalAlignment = "Center"
 			}) };
-		local v29 = #v28;
-		for v30, v31 in ipairs(v22) do
-			v28[v29 + v30] = v31;
+		local v32 = #v31;
+		for v33, v34 in ipairs(v23) do
+			v31[v32 + v33] = v34;
 		end;
-		local v32 = v3.createFragment(v28);
+		local v35 = v3.createFragment(v31);
 	else
-		local v33 = {
+		local v36 = {
 			Size = UDim2.fromScale(1, 1)
 		};
-		local v34 = { v3.createElement("UIListLayout", {
+		local v37 = { v3.createElement("UIListLayout", {
 				FillDirection = "Horizontal", 
 				HorizontalAlignment = "Right"
 			}) };
-		local v35 = #v34;
-		for v36, v37 in ipairs(v22) do
-			v34[v35 + v36] = v37;
+		local v38 = #v37;
+		for v39, v40 in ipairs(v23) do
+			v37[v38 + v39] = v40;
 		end;
-		v32 = v3.createElement(l__Empty__12, v33, v34);
+		v35 = v3.createElement(l__Empty__14, v36, v37);
 	end;
-	local v38 = { v3.createElement("Frame", {
+	local v41 = { v3.createElement("Frame", {
 			[v3.Ref] = p11.progressFrame, 
 			Size = UDim2.fromScale(1, 1), 
-			BackgroundColor3 = l__ColorUtil__11.hexColor(13317668), 
+			BackgroundColor3 = v28, 
 			BorderSizePixel = 0, 
 			LayoutOrder = 0
 		}) };
-	v38[#v38 + 1] = v32;
-	v27.HealthbarProgressWrapper = v3.createElement(l__Empty__12, {
+	v41[#v41 + 1] = v35;
+	v30.HealthbarProgressWrapper = v3.createElement(l__Empty__14, {
 		Size = UDim2.fromScale(1, 1)
-	}, v38);
-	local v39 = {};
+	}, v41);
+	local v42 = {};
 	if p11.state.shield > 0 then
-		local v40 = "(+" .. tostring(math.round(p11.state.shield)) .. ")";
+		local v43 = "(+" .. tostring(math.round(p11.state.shield)) .. ")";
 	else
-		v40 = "";
+		v43 = "";
 	end;
-	v39.Text = tostring(math.round(p11.state.health)) .. " " .. v40;
-	v39.Size = UDim2.fromScale(0.3, 1.4);
-	v39.Position = UDim2.fromScale(0.5, 0);
-	v39.AnchorPoint = Vector2.new(0.5, 0.35);
-	v39.BorderSizePixel = 0;
-	v39.BackgroundTransparency = 1;
-	v39.TextColor3 = Color3.fromRGB(255, 255, 255);
-	v39.RichText = true;
-	v39.TextScaled = true;
-	v39.Font = "LuckiestGuy";
-	v39.ZIndex = 11;
-	v27[#v27 + 1] = v3.createElement("TextLabel", v39);
+	v42.Text = tostring(math.round(p11.state.health)) .. " " .. v43;
+	v42.Size = UDim2.fromScale(0.3, 1.4);
+	v42.Position = UDim2.fromScale(0.5, 0);
+	v42.AnchorPoint = Vector2.new(0.5, 0.35);
+	v42.BorderSizePixel = 0;
+	v42.BackgroundTransparency = 1;
+	v42.TextColor3 = Color3.fromRGB(255, 255, 255);
+	v42.RichText = true;
+	v42.TextScaled = true;
+	v42.Font = "LuckiestGuy";
+	v42.ZIndex = 11;
+	v30[#v30 + 1] = v3.createElement("TextLabel", v42);
 	return v3.createFragment({
 		HotbarHealthbarContainer = v3.createElement("Frame", {
 			Size = UDim2.fromScale(0.85, 0.2), 
@@ -175,7 +186,7 @@ function v5.render(p11)
 			AnchorPoint = Vector2.new(0.5, 1), 
 			BackgroundColor3 = l__ColorUtil__11.hexColor(2700097), 
 			BorderSizePixel = 0
-		}, v27)
+		}, v30)
 	});
 end;
 function v5.willUnmount(p13)

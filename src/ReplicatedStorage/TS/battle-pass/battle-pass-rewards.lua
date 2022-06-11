@@ -1,4 +1,4 @@
--- Script Hash: 3b5b26f34c41d98fe3f98912314f62fbc3faf95ebe0ba0a16396ed76fce528a0c6d3508d56f0819b941eead4a5564461
+-- Script Hash: eafb2fdfc452b598f7ca3a3c9fca1160570bfe8f3b498d627aed78eeff9a651d7dbbd15a55ecbb10eebb1e0d77630620
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -10,6 +10,235 @@ local l__LobbyGadgetType__6 = v1.import(script, game:GetService("ReplicatedStora
 local l__TitleType__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "locker", "title", "title-type").TitleType;
 return {
 	BattlePassRewards = {
+		season5 = { {
+				paid = false, 
+				level = 10, 
+				kit = l__BedwarsKit__3.MERCHANT
+			}, {
+				paid = true, 
+				level = 30, 
+				comingSoon = {
+					kit = true
+				}
+			}, {
+				paid = false, 
+				level = 40, 
+				kit = l__BedwarsKit__3.STAR_COLLECTOR
+			}, {
+				paid = true, 
+				level = 50, 
+				kit = l__BedwarsKit__3.WIND_WALKER
+			}, {
+				paid = false, 
+				level = 20, 
+				kit = l__BedwarsKit__3.DINO_TAMER
+			}, {
+				paid = true, 
+				level = 5, 
+				comingSoon = {
+					kit = true
+				}
+			}, {
+				paid = false, 
+				level = 29, 
+				killEffect = l__KillEffectType__5.BEACH_BALL
+			}, {
+				paid = true, 
+				level = 47, 
+				killEffect = l__KillEffectType__5.GLITCH
+			}, {
+				paid = true, 
+				level = 5, 
+				killEffect = l__KillEffectType__5.LIFE_RING
+			}, {
+				paid = true, 
+				level = 35, 
+				lobbyGadget = l__LobbyGadgetType__6.GRAPPLING_HOOK
+			}, {
+				paid = true, 
+				level = 1, 
+				lobbyGadget = l__LobbyGadgetType__6.VOID_SWORD
+			}, {
+				paid = false, 
+				level = 15, 
+				lobbyGadget = l__LobbyGadgetType__6.SCYTHE
+			}, {
+				paid = true, 
+				level = 1, 
+				emote = l__EmoteType__4.BEACH_VACATION
+			}, {
+				paid = false, 
+				level = 25, 
+				emote = l__EmoteType__4.WIGGLE
+			}, {
+				paid = false, 
+				level = 45, 
+				emote = l__EmoteType__4.ROCK_PAPER_SCISSORS
+			}, {
+				paid = true, 
+				level = 4, 
+				emote = l__EmoteType__4.DINO_HAI
+			}, {
+				paid = false, 
+				level = 2, 
+				emote = l__EmoteType__4.SMOKE_WAVE
+			}, {
+				paid = true, 
+				level = 1, 
+				emote = l__EmoteType__4.CYBER_OVERHEAT
+			}, {
+				paid = false, 
+				level = 6, 
+				emote = l__EmoteType__4.RAVEN_RIP
+			}, {
+				paid = true, 
+				level = 8, 
+				emote = l__EmoteType__4.FREIYA_BEG
+			}, {
+				paid = true, 
+				level = 11, 
+				emote = l__EmoteType__4.TESLA_DANGER
+			}, {
+				paid = false, 
+				level = 13, 
+				emote = l__EmoteType__4.CYBER_DAB
+			}, {
+				paid = true, 
+				level = 16, 
+				emote = l__EmoteType__4.CLETUS_TROLL
+			}, {
+				paid = false, 
+				level = 18, 
+				emote = l__EmoteType__4.BAKER_PROTECTION
+			}, {
+				paid = true, 
+				level = 19, 
+				emote = l__EmoteType__4.BAKER_PIECE_OF_CAKE
+			}, {
+				paid = true, 
+				level = 21, 
+				emote = l__EmoteType__4.DINO_RAWR
+			}, {
+				paid = false, 
+				level = 23, 
+				emote = l__EmoteType__4.MELODY_YOU_ROCK
+			}, {
+				paid = true, 
+				level = 24, 
+				emote = l__EmoteType__4.METAL_DETECTOR
+			}, {
+				paid = false, 
+				level = 26, 
+				emote = l__EmoteType__4.BARB_U_SHALL_NOT_PASS
+			}, {
+				paid = true, 
+				level = 28, 
+				emote = l__EmoteType__4.CYBER_MAD
+			}, {
+				paid = true, 
+				level = 31, 
+				emote = l__EmoteType__4.STAR_COLLECTOR_FUN
+			}, {
+				paid = true, 
+				level = 32, 
+				emote = l__EmoteType__4.REAPER_GOT_EM
+			}, {
+				paid = false, 
+				level = 33, 
+				emote = l__EmoteType__4.TIGER_WELL_PLAYED
+			}, {
+				paid = false, 
+				level = 37, 
+				emote = l__EmoteType__4.RAINING_GEMS
+			}, {
+				paid = true, 
+				level = 39, 
+				emote = l__EmoteType__4.BUILDER_HELP_PLS
+			}, {
+				paid = true, 
+				level = 40, 
+				emote = l__EmoteType__4.OH_MY_STARS
+			}, {
+				paid = false, 
+				level = 43, 
+				emote = l__EmoteType__4.CYBER_DEFENSE
+			}, {
+				paid = true, 
+				level = 46, 
+				emote = l__EmoteType__4.LUMEN_PAIN
+			}, {
+				paid = true, 
+				level = 49, 
+				emote = l__EmoteType__4.DINO_YIPEEE
+			}, {
+				paid = true, 
+				level = 3, 
+				title = l__TitleType__7.SUMMER
+			}, {
+				paid = true, 
+				level = 7, 
+				title = l__TitleType__7.DINOSAUR
+			}, {
+				paid = false, 
+				level = 9, 
+				title = l__TitleType__7.DEAL_OR_NO_DEAL
+			}, {
+				paid = false, 
+				level = 12, 
+				title = l__TitleType__7.SPECIALIST
+			}, {
+				paid = true, 
+				level = 13, 
+				title = l__TitleType__7.BEACH_EMOJI
+			}, {
+				paid = true, 
+				level = 14, 
+				title = l__TitleType__7.HARD_STUCK
+			}, {
+				paid = true, 
+				level = 17, 
+				title = l__TitleType__7.SUMMER_EMOJI
+			}, {
+				paid = false, 
+				level = 22, 
+				title = l__TitleType__7.BEACH_DAY
+			}, {
+				paid = true, 
+				level = 27, 
+				title = l__TitleType__7.BAITED
+			}, {
+				paid = false, 
+				level = 34, 
+				title = l__TitleType__7.VOID
+			}, {
+				paid = true, 
+				level = 36, 
+				title = l__TitleType__7.CHAD
+			}, {
+				paid = true, 
+				level = 38, 
+				title = l__TitleType__7.STAR
+			}, {
+				paid = true, 
+				level = 41, 
+				title = l__TitleType__7.SHARK
+			}, {
+				paid = false, 
+				level = 42, 
+				title = l__TitleType__7.HARD_CARRY
+			}, {
+				paid = true, 
+				level = 44, 
+				title = l__TitleType__7.TRADE_OFFER
+			}, {
+				paid = false, 
+				level = 48, 
+				title = l__TitleType__7.SUNGLASSES
+			}, {
+				paid = true, 
+				level = 50, 
+				title = l__TitleType__7.ZEPHYR
+			} }, 
 		season4 = { {
 				paid = false, 
 				level = 10, 

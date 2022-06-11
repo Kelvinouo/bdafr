@@ -1,4 +1,4 @@
--- Script Hash: 601c71d124060f29e5a3d716b1212f4099ceed4b464fdbf89c6e823370349604b29017ee296861ea0d594a1daf91252c
+-- Script Hash: 208f5eae4fc3d6c94665cd4986bfd68465f13797feb628ebdb6377002fcdc05d11a43662e5933d057ed9842e381ef752
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -49,6 +49,8 @@ v2.PLAYER_VACUUM = "player_vacuum";
 v1.player_vacuum = "PLAYER_VACUUM";
 v2.LASSO_THROW = "lasso_throw";
 v1.lasso_throw = "LASSO_THROW";
+v2.DINO_ATTACK = "dino_attack";
+v1.dino_attack = "DINO_ATTACK";
 return {
 	CooldownId = v2
 };

@@ -1,9 +1,9 @@
--- Script Hash: 70348515eda3bb3be810d1edf1230ddc5861b7afb9d5be2e858d05846d3aed1e5ffb990803213da046be13cf88be4382
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local l__KnitClient__4 = v3.KnitClient;
 local v5 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__HandKnitController__6 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
@@ -20,11 +20,11 @@ function u1.new(...)
 	return v8:constructor(...) and v8;
 end;
 local u2 = l__HandKnitController__6;
-local l__Maid__3 = v3.Maid;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function u1.constructor(p1, ...)
 	u2.constructor(p1, ...);
 	p1.Name = "JadeHammerController";
-	p1.maid = l__Maid__3.new();
+	p1.maid = u3.new();
 end;
 function u1.KnitStart(p2)
 	u2.KnitStart(p2);
@@ -91,7 +91,7 @@ function u1.useJadeHammer(p3)
 				v13 = v13:getItemTypeInHand();
 			end;
 			if v13 == l__ItemType__13.JADE_HAMMER then
-				l__default__14.Client:Get("JadeHammerSlam"):SendToServer();
+				l__default__14.Client:Get("RemoteName"):SendToServer();
 				l__SoundManager__15:playSound(l__GameSound__16.JADE_HAMMER_THUD, {
 					position = l__PrimaryPart__17.Position
 				});

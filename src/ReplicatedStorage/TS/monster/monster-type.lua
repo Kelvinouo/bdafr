@@ -1,4 +1,4 @@
--- Script Hash: 74e4e72d979bdf7fa9d2f7c9a0a109ececc4306f131777ff952bff9682099a4a8168312cd95a93e07c77ebe145c12124
+-- Script Hash: 9abc2062b599694ab63cc1ef426d3fe9eddacfcf74bf80169cdeedeb9cd3b60d33ad34e1f83d2b532b5473440f258e65
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -15,6 +15,8 @@ v2.BABY_PENGUIN = "baby_penguin";
 v1.baby_penguin = "BABY_PENGUIN";
 v2.DUCK = "duck";
 v1.duck = "DUCK";
+v2.VOID_CRAB = "void_crab";
+v1.void_crab = "VOID_CRAB";
 return {
 	MonsterType = v2
 };

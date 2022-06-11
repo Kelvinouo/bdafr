@@ -1,4 +1,4 @@
--- Script Hash: 65c969f400cfe86621a4a29d585d50abdc8e154570c92fe8b2f0392475f147aa0806b1a9290481b77b3d49ef12ff5b2a
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -138,7 +138,7 @@ function v5.findGhosts(p16)
 	if not v13 then
 		return nil;
 	end;
-	l__default__15.Client:Get("CollectCollectableEntity"):SendToServer({
+	l__default__15.Client:Get("RemoteName"):SendToServer({
 		id = v13:GetAttribute("Id")
 	});
 end;
@@ -173,6 +173,6 @@ end;
 function v5.setLoaded(p25)
 	p25.loaded = true;
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());
 return nil;

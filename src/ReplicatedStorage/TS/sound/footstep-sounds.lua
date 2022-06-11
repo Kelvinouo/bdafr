@@ -1,4 +1,4 @@
--- Script Hash: 25d8722e044941bc139a64c74c3ffadc463f837178dddc7dcadde8690bbf207c1eba8555ed9fb23bb5fc764e7f812166
+-- Script Hash: 98099fd7658c8ab866d3a15c6fc8bc3c7f35906c8b88e2a967b63d666fc5e848f38f5f2c99041b048b9243e5b7b7fe0c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -13,6 +13,8 @@ v2.WOOD = 2;
 v1[2] = "WOOD";
 v2.SAND = 3;
 v1[3] = "SAND";
+v2.VOID = 4;
+v1[4] = "VOID";
 return {
 	BlockFootstepSound = v2, 
 	FootstepSounds = {
@@ -31,6 +33,11 @@ return {
 		[v2.SAND] = {
 			walk = { "rbxassetid://6342794392", "rbxassetid://6342794345", "rbxassetid://6345664026", "rbxassetid://6345663913" }, 
 			run = { "rbxassetid://6342794392", "rbxassetid://6342794345", "rbxassetid://6345664026", "rbxassetid://6345663913" }
+		}, 
+		[v2.VOID] = {
+			volume = 0.06, 
+			walk = { "rbxassetid://9867707447", "rbxassetid://9867707580", "rbxassetid://9867707252", "rbxassetid://9867707660" }, 
+			run = { "rbxassetid://9867707447", "rbxassetid://9867707580", "rbxassetid://9867707252", "rbxassetid://9867707660" }
 		}
 	}, 
 	DefaultFootstepSound = v2.WOOD, 

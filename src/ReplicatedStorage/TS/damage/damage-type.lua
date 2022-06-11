@@ -1,4 +1,4 @@
--- Script Hash: 76b1bb2312f759aa59ae9d5f3b3ced701e3a8ab9f31d50f93dd989ca0a9feb71b711adce963494a02b54cdc05035fb99
+-- Script Hash: 251a722726e116c9a6dc9d1ad9c5be4bd308f550b947a9ebfd3983f2cf7251a73bd2be8c51695eae0ffc2f75f096bcc1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -41,6 +41,10 @@ v2.INVISIBLE_LANDMINE = 16;
 v1[16] = "INVISIBLE_LANDMINE";
 v2.MAGMA_BLOCK = 17;
 v1[17] = "MAGMA_BLOCK";
+v2.MAX_HP_REDUCE = 18;
+v1[18] = "MAX_HP_REDUCE";
+v2.WIND = 19;
+v1[19] = "WIND";
 return {
 	DamageType = v2
 };

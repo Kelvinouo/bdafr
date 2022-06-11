@@ -1,4 +1,4 @@
--- Script Hash: 63cb6effa85ad43590ee26eec83f36ccfb5db3e1438f101a242de030a4f86f0476a2acd9ec87b41cecf6a0a4959a855f
+-- Script Hash: 3e095be15b70b2b2da47a3a448f99a6139c3cef9ad2e06fdc23aea227750de9bb9063d32aa0c8c5af476c50517b9f500
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -461,6 +461,34 @@ v7[l__BedwarsKit__6.LUMEN] = {
 	renderImage = "rbxassetid://9630018371", 
 	hiddenInShopTillUnlocked = true, 
 	notGiftable = true
+};
+v7[l__BedwarsKit__6.MERCHANT] = {
+	name = "Merchant Marco", 
+	description = "Get resources back on certain item shop purchases! This refund is randomized each game!", 
+	renderImage = "rbxassetid://9872356790", 
+	unlockedInBattlePass = true, 
+	battlepassSeason = l__BattlePassSeason__2.season5
+};
+v7[l__BedwarsKit__6.DINO_TAMER] = {
+	name = "Dino Tamer Dom", 
+	description = "Can purchase a Dino mount. Charge into defenses to knock them down!", 
+	renderImage = "rbxassetid://9872357009", 
+	unlockedInBattlePass = true, 
+	battlepassSeason = l__BattlePassSeason__2.season5
+};
+v7[l__BedwarsKit__6.WIND_WALKER] = {
+	name = "Zephyr", 
+	description = "Killing enemies gives you a stack of wind, decaying a short while after. Each stack of wind gives you more speed and adds a second wind strike to your attack. At 5 stacks you can double jump!", 
+	renderImage = "rbxassetid://9872355499", 
+	unlockedInBattlePass = true, 
+	battlepassSeason = l__BattlePassSeason__2.season5
+};
+v7[l__BedwarsKit__6.STAR_COLLECTOR] = {
+	name = "Star Collector Stella", 
+	description = "Pick up floating stars around the map. Consume them while near teammates to share permanent Max Health and Critical Strike chance!", 
+	renderImage = "rbxassetid://9872356516", 
+	unlockedInBattlePass = true, 
+	battlepassSeason = l__BattlePassSeason__2.season5
 };
 return {
 	getBedwarsKitMeta = function(p1)

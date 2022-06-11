@@ -1,9 +1,9 @@
--- Script Hash: 358d81077de23414f434a43a9b90ddb74e92f9f90a94c6d049a9762cc2b9dd1427661192d53cec2955cf8992c84a1f05
+-- Script Hash: bac2e4eedf84ccf41c3f3854088dd3dcbacf2fd2de6d9c1ec5e9afb10a02bd8f2e209bfb29c2b345ebafa851a13e6f39
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v6 = setmetatable({}, {
@@ -83,7 +83,7 @@ function u1.update(p10, p11)
 	if v23 ~= false then
 		v25 = v24;
 	end;
-	if p11:IsA("Beam") or p11:IsA("ParticleEmitter") then
+	if not (not p11:IsA("Beam")) or not (not p11:IsA("ParticleEmitter")) or p11:IsA("Trail") then
 		local v26 = nil;
 		local v27 = nil;
 		local v28 = nil;

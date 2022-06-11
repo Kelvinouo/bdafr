@@ -1,4 +1,4 @@
--- Script Hash: b83882774712ec25049718a43cbc301a20df13f63bbe0a1415bd46cb068cfa386bcb7d4fea415df56405d27da2f2b3a3
+-- Script Hash: 14cd56a8ff1137bff121cfcdd0c3724ef7306b8fc40611b216adc2a1eeed6f9307cbd57d9ff4da518862ed0bc6371033
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -58,6 +58,42 @@ return {
 		[l__TitleType__6.RANK_BETA_NIGHTMARE] = {
 			name = "Ranked Beta Nightmare", 
 			text = "<b>NIGHTMARE (BETA Season)</b>", 
+			font = Enum.Font.Roboto, 
+			color = l__ColorUtil__2.hexColor(16533162)
+		}, 
+		[l__TitleType__6.RANK_S4_BRONZE] = {
+			name = "Ranked Season 4 Bronze", 
+			text = "<b>Bronze (Season 4)</b>", 
+			font = Enum.Font.Roboto, 
+			color = l__getRankColor__3(l__RankTier__4.BRONZE)
+		}, 
+		[l__TitleType__6.RANK_S4_SILVER] = {
+			name = "Ranked Season 4 Silver", 
+			text = "<b>Silver (Season 4)</b>", 
+			font = Enum.Font.Roboto, 
+			color = l__getRankColor__3(l__RankTier__4.SILVER)
+		}, 
+		[l__TitleType__6.RANK_S4_GOLD] = {
+			name = "Ranked Season 4 Gold", 
+			text = "<b>Gold (Season 4)</b>", 
+			font = Enum.Font.Roboto, 
+			color = l__getRankColor__3(l__RankTier__4.GOLD)
+		}, 
+		[l__TitleType__6.RANK_S4_PLATINUM] = {
+			name = "Ranked Season 4 Platinum", 
+			text = "<b>Platinum (Season 4)</b>", 
+			font = Enum.Font.Roboto, 
+			color = l__getRankColor__3(l__RankTier__4.PLATINUM)
+		}, 
+		[l__TitleType__6.RANK_S4_DIAMOND] = {
+			name = "Ranked Season 4 Diamond", 
+			text = "<b>Diamond (Season 4)</b>", 
+			font = Enum.Font.Roboto, 
+			color = l__getRankColor__3(l__RankTier__4.DIAMOND)
+		}, 
+		[l__TitleType__6.RANK_S4_NIGHTMARE] = {
+			name = "Ranked Season 4 Nightmare", 
+			text = "<b>NIGHTMARE (Season 4)</b>", 
 			font = Enum.Font.Roboto, 
 			color = l__ColorUtil__2.hexColor(16533162)
 		}, 
@@ -459,6 +495,63 @@ return {
 		}, 
 		[l__TitleType__6.COMBO_MASTER] = {
 			text = "Combo Master"
+		}, 
+		[l__TitleType__6.SUMMER] = {
+			text = "Summer"
+		}, 
+		[l__TitleType__6.BEACH_DAY] = {
+			text = "Beach Day"
+		}, 
+		[l__TitleType__6.SUMMER_EMOJI] = {
+			text = "\240\159\140\158\240\159\140\138\240\159\140\180"
+		}, 
+		[l__TitleType__6.BEACH_EMOJI] = {
+			text = "\240\159\143\150\239\184\143"
+		}, 
+		[l__TitleType__6.VOID] = {
+			text = "<font color=\"" .. l__ColorUtil__2.richTextColor(Color3.fromRGB(121, 36, 199)) .. "\">Void</font>"
+		}, 
+		[l__TitleType__6.COOKING] = {
+			text = "Cooking"
+		}, 
+		[l__TitleType__6.CHAD] = {
+			text = "Chad"
+		}, 
+		[l__TitleType__6.UNLUCKY] = {
+			text = "Unlucky"
+		}, 
+		[l__TitleType__6.STAR] = {
+			text = "<font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__5.mcYellow) .. "\">\226\173\144 Star</font>"
+		}, 
+		[l__TitleType__6.BAITED] = {
+			text = "Baited"
+		}, 
+		[l__TitleType__6.HARD_CARRY] = {
+			text = "Hard Carry"
+		}, 
+		[l__TitleType__6.HARD_STUCK] = {
+			text = "Hard Stuck"
+		}, 
+		[l__TitleType__6.DINOSAUR] = {
+			text = "DINOSAUR"
+		}, 
+		[l__TitleType__6.TRADE_OFFER] = {
+			text = "\226\154\160\239\184\143 Trade Offer \226\154\160\239\184\143"
+		}, 
+		[l__TitleType__6.DEAL_OR_NO_DEAL] = {
+			text = "Deal or no Deal"
+		}, 
+		[l__TitleType__6.SPECIALIST] = {
+			text = "Specialist"
+		}, 
+		[l__TitleType__6.ZEPHYR] = {
+			text = "<stroke color=\"" .. l__ColorUtil__2.richTextColor(Color3.fromRGB(56, 56, 56)) .. "\"><b><font face=\"GothamBold\">Zephyr</font></b></stroke>"
+		}, 
+		[l__TitleType__6.SUNGLASSES] = {
+			text = "B)"
+		}, 
+		[l__TitleType__6.SHARK] = {
+			text = "Shark"
 		}, 
 		[l__TitleType__6.VERIFIED] = {
 			name = "Verified", 

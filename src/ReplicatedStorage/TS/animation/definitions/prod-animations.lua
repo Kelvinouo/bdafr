@@ -1,4 +1,4 @@
--- Script Hash: be7cf497f8f28cc7a39bce0e6367f5013f2d4679ec46e72c20cf7259b3c9798a16b66accfd27596b19d3a02644b1b671
+-- Script Hash: 2d9307bf5186796bcd2aaff67d0bf606e44885e94d59237f2bb7179b0388febe2916743d0cd11f5f5f54933b0e87970e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__AnimationType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
@@ -162,6 +162,32 @@ return {
 		[l__AnimationType__1.FP_INFERNO_SWORD_SPIN] = "rbxassetid://9611585335", 
 		[l__AnimationType__1.FP_INFERNO_SWORD_CHARGE] = "rbxassetid://9611580812", 
 		[l__AnimationType__1.FP_HEAVENLY_SWORD_CHARGE] = "rbxassetid://9611583074", 
-		[l__AnimationType__1.PLAYER_VACUUM_SUCK] = "rbxassetid://7678964011"
+		[l__AnimationType__1.PLAYER_VACUUM_SUCK] = "rbxassetid://7678964011", 
+		[l__AnimationType__1.DINO_IDLE] = "rbxassetid://9864849979", 
+		[l__AnimationType__1.DINO_WALKING] = "rbxassetid://9864852757", 
+		[l__AnimationType__1.DINO_HIT] = "rbxassetid://9864856688", 
+		[l__AnimationType__1.DINO_CHARGING] = "rbxassetid://9864862289", 
+		[l__AnimationType__1.DINO_FALLING] = "rbxassetid://9864865649", 
+		[l__AnimationType__1.DINO_JUMP] = "rbxassetid://9864868578", 
+		[l__AnimationType__1.BEACH_VACATION] = "rbxassetid://9856683160", 
+		[l__AnimationType__1.ROCK_PAPER_SCISSORS] = "rbxassetid://9856685551", 
+		[l__AnimationType__1.WIGGLE] = "rbxassetid://9856698893", 
+		[l__AnimationType__1.STAR_IDLE] = "rbxassetid://9831602429", 
+		[l__AnimationType__1.STAR_RANDOM_SPIN] = "rbxassetid://9831598198", 
+		[l__AnimationType__1.STAR_ITEM_CONSUME] = "rbxassetid://9839531631", 
+		[l__AnimationType__1.VOID_CRAB_ATTACKED] = "rbxassetid://9839891493", 
+		[l__AnimationType__1.VOID_CRAB_BEAM_ATTACK] = "rbxassetid://9839883811", 
+		[l__AnimationType__1.VOID_CRAB_CLEANING] = "rbxassetid://9839903072", 
+		[l__AnimationType__1.VOID_CRAB_DEATH] = "rbxassetid://9839892870", 
+		[l__AnimationType__1.VOID_CRAB_EYE_MOVEMENT] = "rbxassetid://9839895344", 
+		[l__AnimationType__1.VOID_CRAB_FALLING] = "rbxassetid://9839898743", 
+		[l__AnimationType__1.VOID_CRAB_IDLE] = "rbxassetid://9839901354", 
+		[l__AnimationType__1.VOID_CRAB_JUMP] = "rbxassetid://9839886828", 
+		[l__AnimationType__1.VOID_CRAB_LEFT_ATTACK] = "rbxassetid://9839888721", 
+		[l__AnimationType__1.VOID_CRAB_MIDDLE_ATTACK] = "rbxassetid://9839904507", 
+		[l__AnimationType__1.VOID_CRAB_RIGHT_ATTACK] = "rbxassetid://9839890526", 
+		[l__AnimationType__1.VOID_CRAB_WALKING] = "rbxassetid://9839906716", 
+		[l__AnimationType__1.VOID_PORTAL_IDLE] = "rbxassetid://9867544534", 
+		[l__AnimationType__1.VOID_PORTAL_EXCITED] = "rbxassetid://9867542874"
 	}
 };

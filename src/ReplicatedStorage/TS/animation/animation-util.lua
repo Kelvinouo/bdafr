@@ -1,4 +1,4 @@
--- Script Hash: 97d7ca95f22863bfa106083bb3d7a4ca072f59b9bca303e1166705cd91348885903dccdc39f2d52a8addf0b1cb420c2c
+-- Script Hash: 23a88732f7a2807b634281990d50eb3718f846ab46d53664c197471fbadc1d352fcf759f4dab52c0ccda34bdb9f7dd37
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -25,6 +25,9 @@ function v2.getAnimation(p2)
 end;
 local l__AnimationUtil__6 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).AnimationUtil;
 function v2.playAnimation(p3, p4, p5)
+	if p3:IsA("Player") then
+		return l__AnimationUtil__6.playAnimation(p3, u5(p4), p5);
+	end;
 	return l__AnimationUtil__6.playAnimation(p3, u5(p4), p5);
 end;
 u5 = {

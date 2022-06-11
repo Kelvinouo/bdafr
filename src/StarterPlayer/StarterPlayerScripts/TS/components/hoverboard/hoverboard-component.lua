@@ -1,4 +1,4 @@
--- Script Hash: 85c2cb548e4e718c1170bf8d306d6d58fd815f0eba323cecef15434e453007dbca75d268d339e700564f83bdef7c905a
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -209,7 +209,7 @@ function v3.setCharacterMassless(p17, p18)
 end;
 local l__default__17 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function v3.dismountHoverboard(p19)
-	l__default__17.Client:Get("DismountHoverboard"):SendToServer();
+	l__default__17.Client:Get("RemoteName"):SendToServer();
 end;
 function v3.Destroy(p20)
 	if not p20:isOwn() then

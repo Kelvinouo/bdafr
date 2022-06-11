@@ -1,4 +1,4 @@
--- Script Hash: dfef7852da31c16379e12274872c01983bc70ed0e6e9a8285fa8ee2d49d66d9562ff3b3f28daa7ce784572469e96c77e
+-- Script Hash: c3e67dd0fe46c961b62f1cb98b3f51d7e2f81995ee5af5bd37e065c27fd5b9ced416b2db830c785e4634473227f0be38
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -29,6 +29,8 @@ v2.BEDWARS_RANKED_BETA = "bedwars_ranked_beta";
 v1.bedwars_ranked_beta = "BEDWARS_RANKED_BETA";
 v2.BEDWARS_RANKED_S4 = "bedwars_ranked_s4";
 v1.bedwars_ranked_s4 = "BEDWARS_RANKED_S4";
+v2.BEDWARS_RANKED_S5 = "bedwars_ranked_s5";
+v1.bedwars_ranked_s5 = "BEDWARS_RANKED_S5";
 v2.BEDWARS_VOICE_CHAT = "bedwars_voice_chat";
 v1.bedwars_voice_chat = "BEDWARS_VOICE_CHAT";
 v2.INFECTED = "infected";

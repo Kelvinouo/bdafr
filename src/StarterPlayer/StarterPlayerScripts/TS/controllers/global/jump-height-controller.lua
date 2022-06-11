@@ -1,4 +1,4 @@
--- Script Hash: cfd70c5fe30a522f29ae18733e7f47702d2cb6f11d5cc7d6d51f80b1917b8a5ef99a475f148717faabf36f46ed311b08
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -114,7 +114,7 @@ function v5.KnitStart(p3)
 			u11 = true;
 			if u9 and u10 < p3.allowedAirJumps and u12 < time() then
 				u12 = time() + 0.25;
-				l__default__8.Client:Get("NotifyAirJump"):SendToServer();
+				l__default__8.Client:Get("RemoteName"):SendToServer();
 				u10 = u10 + 1;
 				l__Humanoid__17:ChangeState(Enum.HumanoidStateType.Jumping);
 			end;
@@ -134,6 +134,6 @@ end;
 function v5.getJumpModifier(p12)
 	return p12.jumpModifier;
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());
 return nil;

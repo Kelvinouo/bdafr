@@ -1,4 +1,4 @@
--- Script Hash: e60847f009d00255787d499403854d0a3015e3ba511ff5308028450f6155be7d45f32500804a2126cac9aab83c64410a
+-- Script Hash: 89fbcfd7470ec7c51f79e2d4e92bedc8905fd578bb5b9757fc7884bd72aad191f4fe91173a1e4bb81f598820a380ce5c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -13,6 +13,8 @@ v2.season3 = "season3";
 v1.season3 = "season3";
 v2.season4 = "season4";
 v1.season4 = "season4";
+v2.season5 = "season5";
+v1.season5 = "season5";
 return {
 	BattlePassSeason = v2
 };

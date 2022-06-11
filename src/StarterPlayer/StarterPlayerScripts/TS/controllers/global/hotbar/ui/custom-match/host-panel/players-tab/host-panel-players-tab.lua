@@ -1,4 +1,4 @@
--- Script Hash: 523f1bd821142135390d31d72e2109b746a3ac87f27c7ded3677d20d14b386a64a421bb8245034c81b8946b62aade77e
+-- Script Hash: 975a0be20878a8e9bc4b3d50ec48774cf674f90d02ae232e5e138c19a0f8162dc46325a068a83708d5e7311dbe7a59c3
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -16,7 +16,7 @@ local u3 = {
 	[l__OfflinePlayerUtil__3.Dummy.Bryan3838.userId] = "Blue", 
 	[l__OfflinePlayerUtil__3.Dummy.leoduquartier.userId] = "Blue"
 };
-local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local u5 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__Theme__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local l__AutoCompleteSearchbar__7 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "components", "auto-complete-searchbar").AutoCompleteSearchbar;
@@ -95,8 +95,8 @@ return {
 			v4 = v23(v4, v11[v24], v24 - 1, v11);
 		end;
 		v22.Items = local v25;
-		v22.Item = "";
-		function v22.OnSubmit(p6, p7)
+		v22.InputText = "";
+		function v22.OnTextChange(p6, p7)
 			if p6 == "" then
 				return v13(v11);
 			end;

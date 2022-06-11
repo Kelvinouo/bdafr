@@ -1,4 +1,4 @@
--- Script Hash: af4d5c0a33ca2d3ce1bd59c8fc32998aed85c0a4ba482caf7a6c0dc2311945ba376919787b323cb9dd864d16a3fa494d
+-- Script Hash: e97bfacda0e4506b231c7d9ae51a01c5bcea70fe9f05948b13f8919759495b57a75b59e374c0dcf28392448780f59c4b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -26,9 +26,6 @@ function v3.constructor(p1)
 	end;
 end;
 local l__ClientSyncEvents__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
-local l__ContentProvider__5 = v1.import(script, v1.getModule(script, "@rbxts", "services")).ContentProvider;
-local u6 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-local l__GameAnimationUtil__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
 	l__ClientSyncEvents__4.ItemAdded:connect(function(p3)
@@ -37,58 +34,59 @@ function v3.KnitStart(p2)
 			return nil;
 		end;
 		task.spawn(function()
-			local v8, v9, v10 = ipairs(v7);
-			while true do
-				local v11, v12 = v8(v9, v10);
-				if not v11 then
-					break;
-				end;
-				if v12.instances ~= nil then
-					task.spawn(function()
-						l__ContentProvider__5:PreloadAsync(v12.instances);
-					end);
-				end;
-				if v12.callback ~= nil then
-					local l__callback__8 = v12.callback;
-					task.spawn(function()
-						l__callback__8();
-					end);
-				end;
-				if v12.sounds ~= nil then
-					task.spawn(function()
-						local l__sounds__13 = v12.sounds;
-						local function v14(p4)
-							return u6("Sound", {
-								SoundId = p4
-							});
-						end;
-						local v15 = table.create(#l__sounds__13);
-						for v16, v17 in ipairs(l__sounds__13) do
-							v15[v16] = v14(v17, v16 - 1, l__sounds__13);
-						end;
-						l__ContentProvider__5:PreloadAsync(v15);
-					end);
-				end;
-				if v12.animations ~= nil then
-					task.spawn(function()
-						local l__animations__18 = v12.animations;
-						local function v19(p5)
-							return l__GameAnimationUtil__7.getAnimation(p5);
-						end;
-						local v20 = table.create(#l__animations__18);
-						for v21, v22 in ipairs(l__animations__18) do
-							v20[v21] = v19(v22, v21 - 1, l__animations__18);
-						end;
-						l__ContentProvider__5:PreloadAsync(v20);
-					end);
-				end;			
+			for v8, v9 in ipairs(v7) do
+				p2:runPreload(v9);
 			end;
 		end);
 	end);
 end;
-function v3.preloadForItemType(p6, p7, p8)
-	table.insert(p6.itemPreloads[p7], p8);
+function v3.preloadForItemType(p4, p5, p6)
+	table.insert(p4.itemPreloads[p5], p6);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+local l__ContentProvider__5 = v1.import(script, v1.getModule(script, "@rbxts", "services")).ContentProvider;
+local u6 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
+local l__GameAnimationUtil__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
+function v3.runPreload(p7, p8)
+	if p8.instances ~= nil then
+		task.spawn(function()
+			l__ContentProvider__5:PreloadAsync(p8.instances);
+		end);
+	end;
+	if p8.callback ~= nil then
+		local l__callback__8 = p8.callback;
+		task.spawn(function()
+			l__callback__8();
+		end);
+	end;
+	if p8.sounds ~= nil then
+		task.spawn(function()
+			local l__sounds__10 = p8.sounds;
+			local function v11(p9)
+				return u6("Sound", {
+					SoundId = p9
+				});
+			end;
+			local v12 = table.create(#l__sounds__10);
+			for v13, v14 in ipairs(l__sounds__10) do
+				v12[v13] = v11(v14, v13 - 1, l__sounds__10);
+			end;
+			l__ContentProvider__5:PreloadAsync(v12);
+		end);
+	end;
+	if p8.animations ~= nil then
+		task.spawn(function()
+			local l__animations__15 = p8.animations;
+			local function v16(p10)
+				return l__GameAnimationUtil__7.getAnimation(p10);
+			end;
+			local v17 = table.create(#l__animations__15);
+			for v18, v19 in ipairs(l__animations__15) do
+				v17[v18] = v16(v19, v18 - 1, l__animations__15);
+			end;
+			l__ContentProvider__5:PreloadAsync(v17);
+		end);
+	end;
+end;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v3.new());
 return nil;

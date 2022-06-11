@@ -1,4 +1,4 @@
--- Script Hash: 2e286ee6d4f796adc78d7b2dba01d62c456e3ef17422b676ee813323f9acdfbd6ff257557b37c0e0b5ebbfead3fe7759
+-- Script Hash: f3dfee87398d8109eeaedf8d3f31a28aaeb4097d81b5d89a7a8978ee01a79f9394c1bfb6456fdada1a9cbb5cbd61b606
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -51,6 +51,19 @@ return {
 			cooldown = {
 				id = l__CooldownId__3.JADE_HAMMER, 
 				duration = 6
+			}, 
+			blockingStatusEffects = { l__StatusEffectType__4.GROUNDED }
+		}, 
+		[l__AbilityId__5.DINO_CHARGE] = {
+			actionBarName = "Charge Attack", 
+			cooldown = {
+				id = l__CooldownId__3.DINO_ATTACK, 
+				duration = 60, 
+				config = {
+					cooldownBar = {
+						colorGradient = ColorSequence.new({ ColorSequenceKeypoint.new(0, l__ColorUtil__2.hexColor(13558527)), ColorSequenceKeypoint.new(1, l__ColorUtil__2.hexColor(12904703)) })
+					}
+				}
 			}, 
 			blockingStatusEffects = { l__StatusEffectType__4.GROUNDED }
 		}

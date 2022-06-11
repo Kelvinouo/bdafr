@@ -1,4 +1,4 @@
--- Script Hash: 1e1dfa2f6ec04af366d8577facfeff98e58fdedd8388ff81929c5a0d7deb89db3d147c6774bc32437a3379198cb4babb
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -34,7 +34,7 @@ local l__SnapTrapState__10 = v1.import(script, game:GetService("ReplicatedStorag
 local l__default__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__ContentProvider__12 = v3.ContentProvider;
 local l__WatchCharacter__13 = v2.WatchCharacter;
-local l__KnitClient__14 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__14 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__BedwarsImageId__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "image", "image-id").BedwarsImageId;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
@@ -86,7 +86,7 @@ function v5.KnitStart(p2)
 			end);
 			p3.Touched:Connect(function(p5)
 				if p3:GetAttribute("SnapTrapState") == l__SnapTrapState__10.ACTIVE and l__Players__3.LocalPlayer.Character and p5.Parent == l__Players__3.LocalPlayer.Character then
-					l__default__11.Client:Get("StepOnSnapTrap"):SendToServer({
+					l__default__11.Client:Get("RemoteName"):SendToServer({
 						snapTrap = p3
 					});
 				end;
@@ -99,7 +99,7 @@ function v5.KnitStart(p2)
 			end;
 		end);
 	end);
-	l__default__11.Client:OnEvent("SnapTrapSnared", function(p6)
+	l__default__11.Client:OnEvent("RemoteName", function(p6)
 		local v17 = {};
 		if p6.entityInstance == l__Players__3.LocalPlayer.Character then
 			local v18 = nil;
@@ -116,7 +116,7 @@ function v5.KnitStart(p2)
 			v19:AdjustSpeed(0);
 		end);
 	end);
-	l__default__11.Client:OnEvent("SnapTrapMarkConsumed", function(p7)
+	l__default__11.Client:OnEvent("RemoteName", function(p7)
 		local v20 = true;
 		if p7.entity ~= l__Players__3.LocalPlayer.Character then
 			v20 = p7.consumer == l__Players__3.LocalPlayer.Character;

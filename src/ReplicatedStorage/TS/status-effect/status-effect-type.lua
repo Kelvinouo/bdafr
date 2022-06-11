@@ -1,4 +1,4 @@
--- Script Hash: e6e3d5ece44e359f05defebea12900da5bd4240c35ed5a4a02256a2e37722690741344bf39b78dbad5f2f53bef113fc6
+-- Script Hash: 7014b1119e753d4556e54cf301e838aa2c44ddba722bdfbd33e0d14ad0d512892e8c60c61a8d101b1d40165a32389cf1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -73,6 +73,12 @@ v2.BIG_HEAD = "big_head";
 v1.big_head = "BIG_HEAD";
 v2.GROUNDED = "grounded";
 v1.grounded = "GROUNDED";
+v2.DECAY = "decay";
+v1.decay = "DECAY";
+v2.SHIELD_ACTIVE = "shield_active";
+v1.shield_active = "SHIELD_ACTIVE";
+v2.SHIELD_DOWN = "shield_down";
+v1.shield_down = "SHIELD_DOWN";
 return {
 	StatusEffectType = v2
 };

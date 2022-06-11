@@ -1,24 +1,23 @@
--- Script Hash: ea99a56b0c41dbc31ab418aa9e2fcd636f974953893454aab33681de96e253a8b4b592760e5e4d7065010ea82e3e8de3
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
-local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
-local l__KnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
-local v6 = setmetatable({}, {
+local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
+local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
+local v5 = setmetatable({}, {
 	__tostring = function()
 		return "EmoteController";
 	end, 
-	__index = l__KnitController__5
+	__index = l__KnitController__4
 });
-v6.__index = v6;
-local u1 = v6;
+v5.__index = v5;
+local u1 = v5;
 function u1.new(...)
-	local v7 = setmetatable({}, u1);
-	return v7:constructor(...) and v7;
+	local v6 = setmetatable({}, u1);
+	return v6:constructor(...) and v6;
 end;
-local u2 = l__KnitController__5;
+local u2 = l__KnitController__4;
 local l__ExpireList__3 = v2.ExpireList;
 function u1.constructor(p1)
 	u2.constructor(p1);
@@ -26,9 +25,12 @@ function u1.constructor(p1)
 	p1.emoteSoundMaid = {};
 	p1.emoteCooldowns = l__ExpireList__3.new(2);
 end;
-local l__ContextActionService__4 = v4.ContextActionService;
+local l__ContextActionService__4 = v3.ContextActionService;
 local l__ClientStore__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
-local l__default__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__EmoteType__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "locker", "emote", "emote-type").EmoteType;
+local l__preloadImages__7 = v2.preloadImages;
+local l__BedwarsImageId__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "image", "image-id").BedwarsImageId;
+local l__default__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function u1.KnitStart(p2)
 	l__ContextActionService__4:BindAction("spray-keyboard", function(p3, p4, p5)
 		if p4 == Enum.UserInputState.Begin then
@@ -39,49 +41,59 @@ function u1.KnitStart(p2)
 	l__ClientStore__5.changed:connect(function(p6, p7)
 		if p6.Locker.selectedSpray ~= p7.Locker.selectedSpray then
 			p2:preloadEmote();
+			if p6.Locker.selectedSpray == l__EmoteType__6.ROCK_PAPER_SCISSORS then
+				l__preloadImages__7({ l__BedwarsImageId__8.HAND_FIST_ICON, l__BedwarsImageId__8.HAND_SCISSOR_ICON, l__BedwarsImageId__8.HAND_STOP_ICON });
+			end;
 		end;
 	end);
-	l__default__6.Client:OnEvent("EmotePlaying", function(p8)
-		local v8 = p2:playEmoteBeginSounds(p8.emote, p8.sourcePlayer);
+	l__default__9.Client:OnEvent("RemoteName", function(p8)
+		local v7 = p2:playEmoteBeginSounds(p8.emote, p8.sourcePlayer);
 	end);
-	l__default__6.Client:OnEvent("EmoteEnded", function(p9)
-		local v9 = p2.emoteSoundMaid[p9.sourcePlayer.UserId];
-		if v9 ~= nil then
-			v9:DoCleaning();
+	l__default__9.Client:OnEvent("RemoteName", function(p9)
+		local v8 = p2.emoteSoundMaid[p9.sourcePlayer.UserId];
+		if v8 ~= nil then
+			v8:DoCleaning();
 		end;
 		if not p9.cancelled then
-			local v10 = p2:playEmoteEndSounds(p9.emote, p9.sourcePlayer);
+			local v9 = p2:playEmoteEndSounds(p9.emote, p9.sourcePlayer);
 		end;
 	end);
 end;
-local l__Players__7 = v4.Players;
-local l__EmoteMeta__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "locker", "emote", "emote-meta").EmoteMeta;
-local l__EmoteDisplayMeta__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "locker", "emote", "emote-display-meta").EmoteDisplayMeta;
+local l__Players__10 = v3.Players;
+local l__EmoteMeta__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "locker", "emote", "emote-meta").EmoteMeta;
+local l__EmoteDisplayMeta__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "locker", "emote", "emote-display-meta").EmoteDisplayMeta;
 function u1.emote(p10)
-	local l__LocalPlayer__11 = l__Players__7.LocalPlayer;
-	if p10.emoteCooldowns:has(l__LocalPlayer__11.UserId) then
+	local l__LocalPlayer__10 = l__Players__10.LocalPlayer;
+	if p10.emoteCooldowns:has(l__LocalPlayer__10.UserId) then
 		return nil;
 	end;
-	p10.emoteCooldowns:add(l__LocalPlayer__11.UserId);
-	local l__selectedSpray__12 = l__ClientStore__5:getState().Locker.selectedSpray;
-	local v13 = l__EmoteMeta__8[l__selectedSpray__12];
-	local v14 = l__default__6.Client:Get("Emote"):CallServer({
-		emoteType = l__selectedSpray__12
+	p10.emoteCooldowns:add(l__LocalPlayer__10.UserId);
+	local l__selectedSpray__11 = l__ClientStore__5:getState().Locker.selectedSpray;
+	local v12 = l__EmoteMeta__11[l__selectedSpray__11];
+	local v13 = l__default__9.Client:Get("RemoteName"):CallServer({
+		emoteType = l__selectedSpray__11
 	});
-	local v15 = v13.animation;
-	if v13.emoteDisplayType ~= nil and not v15 then
-		v15 = l__EmoteDisplayMeta__9[v13.emoteDisplayType].animation;
+	local v14 = v12.animation;
+	if v12.emoteDisplayType ~= nil and not v14 then
+		v14 = l__EmoteDisplayMeta__12[v12.emoteDisplayType].animation;
 	end;
-	if v15 then
-		p10:playEmoteAnimation(l__LocalPlayer__11, v15);
+	if v14 then
+		p10:playEmoteAnimation(l__LocalPlayer__10, v14);
 	end;
 end;
-local l__GameAnimationUtil__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
-local l__Maid__11 = v3.Maid;
-local l__ClientSyncEvents__12 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
-local l__RunService__13 = v4.RunService;
-function u1.playEmoteAnimation(p11, p12, p13)
-	local v16 = p12.Character;
+function u1.getPlayingEmote(p11, p12)
+	local l__Character__15 = p12.Character;
+	if not l__Character__15 then
+		return;
+	end;
+	return l__Character__15:GetAttribute("PlayingEmote");
+end;
+local l__GameAnimationUtil__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
+local u14 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+local l__ClientSyncEvents__15 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
+local l__RunService__16 = v3.RunService;
+function u1.playEmoteAnimation(p13, p14, p15)
+	local v16 = p14.Character;
 	if v16 ~= nil then
 		v16 = v16.PrimaryPart;
 	end;
@@ -89,195 +101,210 @@ function u1.playEmoteAnimation(p11, p12, p13)
 		return nil;
 	end;
 	local v17 = nil;
-	if not p13.noAutoPlayAnimation then
+	if not p15.noAutoPlayAnimation then
 		local v18 = {};
-		local v19 = p13.looped;
+		local v19 = p15.looped;
 		if v19 == nil then
 			v19 = false;
 		end;
 		v18.looped = v19;
-		v17 = l__GameAnimationUtil__10.playAnimation(l__Players__7.LocalPlayer, p13.type, v18);
+		v17 = l__GameAnimationUtil__13.playAnimation(l__Players__10.LocalPlayer, p15.type, v18);
 	end;
-	local v20 = l__Maid__11.new();
+	local v20 = u14.new();
 	v20:GiveTask(function()
-		l__ClientSyncEvents__12.CancelEmoteEvent:fire();
+		l__ClientSyncEvents__15.CancelEmoteEvent:fire();
 		if v17 ~= nil then
 			v17:Stop();
 		end;
 		if v17 ~= nil then
 			v17:Destroy();
 		end;
-		l__default__6.Client:Get("EmoteCancelled"):CallServer({
+		l__default__9.Client:Get("RemoteName"):CallServer({
 			emoteType = l__ClientStore__5:getState().Locker.selectedSpray
 		});
 	end);
-	local l__Position__14 = v16.Position;
-	v20:GiveTask(l__RunService__13.RenderStepped:Connect(function()
+	local v21 = v17;
+	if v21 ~= nil then
+		v21 = v21.Looped;
+	end;
+	if not v21 then
+		local v22 = v17;
+		if v22 ~= nil then
+			local u17 = nil;
+			v22 = v22.Stopped:Connect(function()
+				v20:DoCleaning();
+				if u17 ~= nil then
+					u17:Disconnect();
+				end;
+			end);
+		end;
+	end;
+	local l__Position__18 = v16.Position;
+	v20:GiveTask(l__RunService__16.RenderStepped:Connect(function()
 		if not v16.Parent then
 			v20:DoCleaning();
 			return nil;
 		end;
-		if not l__Position__14 or (v16.Position - l__Position__14).Magnitude > 0.6 then
+		if not l__Position__18 or (v16.Position - l__Position__18).Magnitude > 0.6 then
 			v20:DoCleaning();
 		end;
 	end));
 end;
-local l__SoundManager__15 = v2.SoundManager;
-function u1.playEmoteBeginSounds(p14, p15, p16)
-	local v21 = l__EmoteMeta__8[p15];
-	local v22 = p16;
-	if v22 ~= nil then
-		v22 = v22.Character;
+local l__SoundManager__19 = v2.SoundManager;
+function u1.playEmoteBeginSounds(p16, p17, p18)
+	local v23 = l__EmoteMeta__11[p17];
+	local v24 = p18;
+	if v24 ~= nil then
+		v24 = v24.Character;
 	end;
-	if p16 then
-		local v23 = p16;
-		if v23 ~= nil then
-			v23 = v23.UserId;
+	if p18 then
+		local v25 = p18;
+		if v25 ~= nil then
+			v25 = v25.UserId;
 		end;
-		local v24 = p14.emoteSoundMaid[v23];
-		if v24 ~= nil then
-			v24:DoCleaning();
-		end;
-	end;
-	local v25 = v21.soundsOnBegin or {};
-	if v21.emoteDisplayType ~= nil then
-		local l__soundsOnBegin__26 = l__EmoteDisplayMeta__9[v21.emoteDisplayType].soundsOnBegin;
-		if l__soundsOnBegin__26 then
-			local v27 = {};
-			local v28 = #v27;
-			local v29 = #v25;
-			table.move(v25, 1, v29, v28 + 1, v27);
-			table.move(l__soundsOnBegin__26, 1, #l__soundsOnBegin__26, v28 + v29 + 1, v27);
-			v25 = v27;
+		local v26 = p16.emoteSoundMaid[v25];
+		if v26 ~= nil then
+			v26:DoCleaning();
 		end;
 	end;
-	local function v30(p17)
-		local v31 = {};
-		if v22 then
-			local v32 = v22:GetPrimaryPartCFrame().Position;
+	local v27 = v23.soundsOnBegin or {};
+	if v23.emoteDisplayType ~= nil then
+		local l__soundsOnBegin__28 = l__EmoteDisplayMeta__12[v23.emoteDisplayType].soundsOnBegin;
+		if l__soundsOnBegin__28 then
+			local v29 = {};
+			local v30 = #v29;
+			local v31 = #v27;
+			table.move(v27, 1, v31, v30 + 1, v29);
+			table.move(l__soundsOnBegin__28, 1, #l__soundsOnBegin__28, v30 + v31 + 1, v29);
+			v27 = v29;
+		end;
+	end;
+	local function v32(p19)
+		local v33 = {};
+		if v24 then
+			local v34 = v24:GetPrimaryPartCFrame().Position;
 		else
-			v32 = nil;
+			v34 = nil;
 		end;
-		v31.position = v32;
-		if v22 then
-			local v33 = v22.PrimaryPart;
+		v33.position = v34;
+		if v24 then
+			local v35 = v24.PrimaryPart;
 		else
-			v33 = nil;
+			v35 = nil;
 		end;
-		v31.parent = v33;
-		v31.rollOffMaxDistance = 30;
-		v31.volumeMultiplier = 0.5;
-		local v34 = l__SoundManager__15:playSound(p17.sound, v31);
-		if v34 and p17.looped then
-			v34.Looped = true;
+		v33.parent = v35;
+		v33.rollOffMaxDistance = 30;
+		v33.volumeMultiplier = 0.5;
+		local v36 = l__SoundManager__19:playSound(p19.sound, v33);
+		if v36 and p19.looped then
+			v36.Looped = true;
 		end;
-		return v34;
+		return v36;
 	end;
-	local v35 = {};
-	local v36 = 0;
-	for v37, v38 in ipairs(v25) do
-		local v39 = v30(v38, v37 - 1, v25);
-		if v39 ~= nil then
-			v36 = v36 + 1;
-			v35[v36] = v39;
+	local v37 = {};
+	local v38 = 0;
+	for v39, v40 in ipairs(v27) do
+		local v41 = v32(v40, v39 - 1, v27);
+		if v41 ~= nil then
+			v38 = v38 + 1;
+			v37[v38] = v41;
 		end;
 	end;
-	if v35 then
-		if p16 then
-			local v40 = p16.UserId;
+	if v37 then
+		if p18 then
+			local v42 = p18.UserId;
 		else
-			v40 = l__Players__7.LocalPlayer.UserId;
+			v42 = l__Players__10.LocalPlayer.UserId;
 		end;
-		local v41 = l__Maid__11.new();
-		v41:GiveTask(function()
-			local function v42(p18)
-				p18:Stop();
-				p18:Destroy();
+		local v43 = u14.new();
+		v43:GiveTask(function()
+			local function v44(p20)
+				p20:Stop();
+				p20:Destroy();
 			end;
-			for v43, v44 in ipairs(v35) do
-				v42(v44, v43 - 1, v35);
+			for v45, v46 in ipairs(v37) do
+				v44(v46, v45 - 1, v37);
 			end;
 		end);
-		p14.emoteSoundMaid[v40] = v41;
+		p16.emoteSoundMaid[v42] = v43;
 	end;
-	return v35;
+	return v37;
 end;
-function u1.playEmoteEndSounds(p19, p20, p21)
-	local v45 = l__EmoteMeta__8[p20];
-	local l__Character__46 = p21.Character;
-	if not l__Character__46 then
+function u1.playEmoteEndSounds(p21, p22, p23)
+	local v47 = l__EmoteMeta__11[p22];
+	local l__Character__48 = p23.Character;
+	if not l__Character__48 then
 		return nil;
 	end;
-	local v47 = v45.soundsOnEnd or {};
-	if v45.emoteDisplayType ~= nil then
-		local l__soundsOnEnd__48 = l__EmoteDisplayMeta__9[v45.emoteDisplayType].soundsOnEnd;
-		if l__soundsOnEnd__48 then
-			local v49 = {};
-			local v50 = #v49;
-			local v51 = #v47;
-			table.move(v47, 1, v51, v50 + 1, v49);
-			table.move(l__soundsOnEnd__48, 1, #l__soundsOnEnd__48, v50 + v51 + 1, v49);
-			v47 = v49;
+	local v49 = v47.soundsOnEnd or {};
+	if v47.emoteDisplayType ~= nil then
+		local l__soundsOnEnd__50 = l__EmoteDisplayMeta__12[v47.emoteDisplayType].soundsOnEnd;
+		if l__soundsOnEnd__50 then
+			local v51 = {};
+			local v52 = #v51;
+			local v53 = #v49;
+			table.move(v49, 1, v53, v52 + 1, v51);
+			table.move(l__soundsOnEnd__50, 1, #l__soundsOnEnd__50, v52 + v53 + 1, v51);
+			v49 = v51;
 		end;
 	end;
-	local function v52(p22)
-		if p22.sound == "" then
+	local function v54(p24)
+		if p24.sound == "" then
 			return nil;
 		end;
-		local v53 = l__SoundManager__15:playSound(p22.sound, {
-			position = l__Character__46:GetPrimaryPartCFrame().Position, 
-			parent = l__Character__46.PrimaryPart, 
+		local v55 = l__SoundManager__19:playSound(p24.sound, {
+			position = l__Character__48:GetPrimaryPartCFrame().Position, 
+			parent = l__Character__48.PrimaryPart, 
 			rollOffMaxDistance = 30, 
 			volumeMultiplier = 0.5
 		});
-		if v53 then
-			v53.PlayOnRemove = true;
-			v53:Destroy();
+		if v55 then
+			v55.PlayOnRemove = true;
+			v55:Destroy();
 		end;
-		return v53;
+		return v55;
 	end;
-	local v54 = {};
-	local v55 = 0;
-	for v56, v57 in ipairs(v47) do
-		local v58 = v52(v57, v56 - 1, v47);
-		if v58 ~= nil then
-			v55 = v55 + 1;
-			v54[v55] = v58;
+	local v56 = {};
+	local v57 = 0;
+	for v58, v59 in ipairs(v49) do
+		local v60 = v54(v59, v58 - 1, v49);
+		if v60 ~= nil then
+			v57 = v57 + 1;
+			v56[v57] = v60;
 		end;
 	end;
-	return v54;
+	return v56;
 end;
-local l__preloadImages__16 = v2.preloadImages;
-local l__ContentProvider__17 = v4.ContentProvider;
-function u1.preloadEmote(p23)
-	local v59 = l__EmoteMeta__8[l__ClientStore__5:getState().Locker.selectedSpray];
-	local l__image__60 = v59.image;
-	if l__image__60 ~= "" and l__image__60 then
-		l__preloadImages__16({ v59.image });
+local l__ContentProvider__20 = v3.ContentProvider;
+function u1.preloadEmote(p25)
+	local v61 = l__EmoteMeta__11[l__ClientStore__5:getState().Locker.selectedSpray];
+	local l__image__62 = v61.image;
+	if l__image__62 ~= "" and l__image__62 then
+		l__preloadImages__7({ v61.image });
 	end;
 	task.spawn(function()
-		if v59.animation then
-			l__ContentProvider__17:PreloadAsync({ l__GameAnimationUtil__10.getAnimation(v59.animation.type) });
+		if v61.animation then
+			l__ContentProvider__20:PreloadAsync({ l__GameAnimationUtil__13.getAnimation(v61.animation.type) });
 		end;
 	end);
 end;
-function u1.playEmoteShowcase(p24, p25)
-	p24.activeEmoteShowcaseSounds = p24:playEmoteBeginSounds(p25);
+function u1.playEmoteShowcase(p26, p27)
+	p26.activeEmoteShowcaseSounds = p26:playEmoteBeginSounds(p27);
 end;
-function u1.stopEmoteShowcase(p26)
-	local v61 = p26.activeEmoteShowcaseSounds;
-	if v61 then
-		local function v62(p27)
-			p27:Stop();
-			p27:Destroy();
+function u1.stopEmoteShowcase(p28)
+	local v63 = p28.activeEmoteShowcaseSounds;
+	if v63 then
+		local function v64(p29)
+			p29:Stop();
+			p29:Destroy();
 		end;
-		for v63, v64 in ipairs(v61) do
-			v62(v64, v63 - 1, v61);
+		for v65, v66 in ipairs(v63) do
+			v64(v66, v65 - 1, v63);
 		end;
-		p26.activeEmoteShowcaseSounds = nil;
+		p28.activeEmoteShowcaseSounds = nil;
 	end;
 end;
-u2 = v3.KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = nil;

@@ -1,8 +1,8 @@
--- Script Hash: b463ed39cb95d10014bf548d6060c0134741a27f45ce83a393fbd57cbade0a75352d57d27e1595a918b3495e57b3d8af
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v5 = setmetatable({}, {
@@ -23,19 +23,19 @@ function v5.constructor(p1, ...)
 	p1.random = Random.new();
 end;
 local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-local l__Maid__3 = v2.Maid;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__SoundManager__4 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).SoundManager;
 local l__GameSound__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 local l__ReplicatedStorage__6 = v3.ReplicatedStorage;
 local u7 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
 local l__Workspace__8 = v3.Workspace;
-local l__WorldUtil__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "world-util").WorldUtil;
+local l__GameWorldUtil__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "game-world-util").GameWorldUtil;
 local u10 = v1.import(script, v1.getModule(script, "@rbxts", "lightning-beams").src);
 local l__KnitClient__11 = v2.KnitClient;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("SpearImpactEffect", function(p3)
-		local v7 = l__Maid__3.new();
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
+		local v7 = u3.new();
 		l__SoundManager__4:playSound(l__GameSound__5.SPEAR_HIT, {
 			position = p3.position, 
 			rollOffMaxDistance = 100
@@ -62,7 +62,7 @@ function v5.KnitStart(p2)
 				if not (v11 < v10) then
 					break;
 				end;
-				local v13 = v9.WorldPosition + l__WorldUtil__9.randomUnitVector(Vector3.new(0, 1, 0), math.rad(90)) * 15;
+				local v13 = v9.WorldPosition + l__GameWorldUtil__9.randomUnitVector(Vector3.new(0, 1, 0), math.rad(90)) * 15;
 				local v14 = u10.new(v9, {
 					WorldPosition = v13, 
 					WorldAxis = (v9.WorldPosition - v13).Unit

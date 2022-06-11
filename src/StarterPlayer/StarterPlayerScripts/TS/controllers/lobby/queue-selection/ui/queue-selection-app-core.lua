@@ -1,4 +1,4 @@
--- Script Hash: 4aa43dd351a0b9c4352f79f655f4762aeac147c5920672db1a43185ff5d979419c37ee6c2d6272b34bf519cd4d00dcab
+-- Script Hash: f5bc69bf1cb757067b96f917f56d393eabf9c13d5aebb1942815cb0021b487c2d982b956a6dc752985131b12c58c7889
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -12,9 +12,9 @@ local l__BedwarsAppIds__6 = v1.import(script, script.Parent.Parent.Parent.Parent
 local u7 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__ScaleComponent__8 = v2.ScaleComponent;
 local u9 = v1.import(script, script.Parent, "queue-selection-queue-button").QueueSelectionQueueButton;
-local l__Theme__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
-local l__AutoCanvasScrollingFrame__11 = v2.AutoCanvasScrollingFrame;
-local l__Empty__12 = v2.Empty;
+local l__AutoCanvasScrollingFrame__10 = v2.AutoCanvasScrollingFrame;
+local l__Empty__11 = v2.Empty;
+local l__Theme__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local l__ColorUtil__13 = v2.ColorUtil;
 local l__DeviceUtil__14 = v2.DeviceUtil;
 local l__WidgetComponent__15 = v2.WidgetComponent;
@@ -72,9 +72,8 @@ return {
 			ScrollingFrameProps = {
 				Size = UDim2.fromScale(0.55, 1), 
 				LayoutOrder = 1, 
-				BackgroundTransparency = 0, 
+				BackgroundTransparency = 1, 
 				BorderSizePixel = 0, 
-				BackgroundColor3 = l__Theme__10.backgroundTertiary, 
 				Selectable = false
 			}
 		};
@@ -89,7 +88,7 @@ return {
 		for v19, v20 in ipairs(v13) do
 			v17[v18 + v19] = v20;
 		end;
-		v9[v10 + 1] = u7.createElement(l__AutoCanvasScrollingFrame__11, v16, v17);
+		v9[v10 + 1] = u7.createElement(l__AutoCanvasScrollingFrame__10, v16, v17);
 		local v21 = {};
 		local v22 = {};
 		local v23 = {};
@@ -154,11 +153,11 @@ return {
 		});
 		v21[2] = u7.createElement("Frame", {
 			Size = UDim2.fromScale(1, 1), 
-			BackgroundColor3 = l__Theme__10.backgroundTertiary, 
+			BackgroundColor3 = l__Theme__12.backgroundTertiary, 
 			BorderSizePixel = 0, 
 			LayoutOrder = 1
 		}, v22);
-		v9[v10 + 2] = u7.createElement(l__Empty__12, {
+		v9[v10 + 2] = u7.createElement(l__Empty__11, {
 			Size = UDim2.fromScale(0.425, 1), 
 			LayoutOrder = 2
 		}, v21);

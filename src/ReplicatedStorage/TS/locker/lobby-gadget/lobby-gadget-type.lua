@@ -1,4 +1,4 @@
--- Script Hash: 524e9a0ce5f3d494e99e086c531edb21cee05f9d2f2c22fa3c1ce3a8666a0cc6e0ba4c04fee3a3c78e7751b8e596176f
+-- Script Hash: 82bf4d95254f0846e24ef0727cd338127345ddb9b4cce95160f3663d5d523bc073821704ccf6b17cebdac4d893ea97d9
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -27,6 +27,12 @@ v2.FREIYA_ICE_SWORD = "freiya_ice_sword";
 v1.freiya_ice_sword = "FREIYA_ICE_SWORD";
 v2.RAVEN = "raven";
 v1.raven = "RAVEN";
+v2.GRAPPLING_HOOK = "grappling_hook";
+v1.grappling_hook = "GRAPPLING_HOOK";
+v2.VOID_SWORD = "void_sword";
+v1.void_sword = "VOID_SWORD";
+v2.SCYTHE = "scythe";
+v1.scythe = "SCYTHE";
 return {
 	LobbyGadgetType = v2
 };

@@ -1,4 +1,4 @@
--- Script Hash: fee3662fe3bd5afc951c29ed91970a0694a805fcbec27b0eaafb00a7b6df6c0a69a65ba4d7712cb6f5fbb26187e0def2
+-- Script Hash: dbd04a7d16cf9d5be7ebae0a664721780d6514c56dc22f4a93253de54f0f3a465c55561be81f532cce4527aea126d39d
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -87,10 +87,8 @@ function v5.render(p3)
 		AnchorPoint = Vector2.new(0.5, 0), 
 		[v3.Ref] = p3.wrapperRef
 	};
-	local v26 = { v3.createElement("UIAspectRatioConstraint", {
-			AspectRatio = 4.012711864406779, 
-			DominantAxis = "Height"
-		}), v3.createElement("TextLabel", {
+	local v26 = {
+		WinningTeamText = v3.createElement("TextLabel", {
 			Text = v6, 
 			Size = UDim2.fromScale(1, 0.4), 
 			BackgroundTransparency = 1, 
@@ -99,17 +97,24 @@ function v5.render(p3)
 			TextScaled = true, 
 			Font = "LuckiestGuy", 
 			TextColor3 = Color3.fromRGB(255, 255, 255)
-		}) };
+		}),
+		(v3.createElement("UIAspectRatioConstraint", {
+			AspectRatio = 4.012711864406779, 
+			DominantAxis = "Height"
+		}))
+	};
 	local function v27(p6, p7)
-		return v3.createElement(l__PlayerRender__10, {
-			Size = UDim2.fromScale(1, 1), 
-			SizeConstraint = "RelativeYY", 
-			BorderSizePixel = 0, 
-			BackgroundTransparency = 1, 
-			Player = l__OfflinePlayerUtil__11.getOfflinePlayer(p6)
-		}, { v3.createElement("UICorner", {
-				CornerRadius = UDim.new(1, 0)
-			}) });
+		return v3.createFragment({
+			PlayerRender = v3.createElement(l__PlayerRender__10, {
+				Size = UDim2.fromScale(1, 1), 
+				SizeConstraint = "RelativeYY", 
+				BorderSizePixel = 0, 
+				BackgroundTransparency = 1, 
+				Player = l__OfflinePlayerUtil__11.getOfflinePlayer(p6)
+			}, { v3.createElement("UICorner", {
+					CornerRadius = UDim.new(1, 0)
+				}) })
+		});
 	end;
 	local v28 = table.create(#v8);
 	for v29, v30 in ipairs(v8) do
@@ -129,8 +134,10 @@ function v5.render(p3)
 	for v34, v35 in ipairs(v28) do
 		v32[v33 + v34] = v35;
 	end;
-	v26[#v26 + 1] = v3.createElement(l__Empty__12, v31, v32);
-	v24[#v24 + 1] = v3.createElement(l__Empty__12, v25, v26);
+	v26.PlayerRenderList = v3.createElement(l__Empty__12, v31, v32);
+	v24.VictorySection = v3.createFragment({
+		VictorySection = v3.createElement(l__Empty__12, v25, v26)
+	});
 	return v3.createFragment(v24);
 end;
 return {

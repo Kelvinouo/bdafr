@@ -1,4 +1,4 @@
--- Script Hash: 022544d9470d688830be3a676ebcf798fe93eaef18e35cbd10a2dda066d00309db1bd317e1c88d2b5185e0a68cdf8fe6
+-- Script Hash: 29bf5ef5574d6507ab1138406e979eae37ec58053a2b82b149e13a58e75a560f76dc7523e33bf7ad46504aa877488741
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__AnimationType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
@@ -82,6 +82,12 @@ return {
 		[l__AnimationType__1.VACUUM_SUCK] = "rbxassetid://9671620809", 
 		[l__AnimationType__1.VACUUM_LAUNCH] = "rbxassetid://9678616044", 
 		[l__AnimationType__1.VACUUM_STARTUP] = "rbxassetid://9678674382", 
-		[l__AnimationType__1.PLAYER_VACUUM_SUCK] = "rbxassetid://9671620809"
+		[l__AnimationType__1.PLAYER_VACUUM_SUCK] = "rbxassetid://9671620809", 
+		[l__AnimationType__1.DINO_IDLE] = "rbxassetid://9781450928", 
+		[l__AnimationType__1.DINO_WALKING] = "rbxassetid://9781462971", 
+		[l__AnimationType__1.DINO_HIT] = "rbxassetid://9781455966", 
+		[l__AnimationType__1.DINO_CHARGING] = "rbxassetid://9781452961", 
+		[l__AnimationType__1.DINO_FALLING] = "rbxassetid://9781460536", 
+		[l__AnimationType__1.DINO_JUMP] = "rbxassetid://9781457911"
 	}
 };

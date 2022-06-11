@@ -1,4 +1,4 @@
--- Script Hash: 2713b0e1a69566285138b48547ac526accf4a3d2a684be2c3f532bffd821e9ceccbb1d9b7d9f749e0f6f5f799f43d568
+-- Script Hash: 828decf36666dd92f2c9cad4bc6b973d86060a8cb86203b368494348a7682034aa25331d13ace81aadb972f184f82faf
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -74,6 +74,7 @@ v5.CROWN_SOLID = "rbxassetid://8930490563";
 v5.SAFETY_HELMET_SOLID = "rbxassetid://8930638419";
 v5.CLAN = "rbxassetid://9001539387";
 v5.EYE_REGULAR = "rbxassetid://9130922235";
+v5.VOID_ICON_SOLID = "rbxassetid://9867800971";
 v5.TWITTER_SOLID = "rbxassetid://7436065687";
 v5.DISCORD_SOLID = "rbxassetid://7436233304";
 v5.TURRET_CROSSHAIR = "rbxassetid://7285486775";
@@ -90,7 +91,8 @@ v5.BattlePassIcons = {
 	[l__BattlePassSeason__2.season1] = "rbxassetid://7343632287", 
 	[l__BattlePassSeason__2.season2] = "rbxassetid://7813712527", 
 	[l__BattlePassSeason__2.season3] = "rbxassetid://8273832966", 
-	[l__BattlePassSeason__2.season4] = "rbxassetid://9135829842"
+	[l__BattlePassSeason__2.season4] = "rbxassetid://9135829842", 
+	[l__BattlePassSeason__2.season5] = "rbxassetid://9866036528"
 };
 v5.SNARED = "rbxassetid://7796706734";
 v5.TRAPPER_MARKED = "rbxassetid://7796835197";
@@ -155,6 +157,9 @@ v5.SURVIVAL_ANNOUNCEMENT_BACKGROUND = "rbxassetid://8602789875";
 v5.VENDING_RING = "rbxassetid://9119512755";
 v5.INDICATOR_ICON = "rbxassetid://9429977101";
 v5.SKULL_ICON = "rbxassetid://9557802359";
+v5.HAND_SCISSOR_ICON = "rbxassetid://9857436085";
+v5.HAND_FIST_ICON = "rbxassetid://9857436202";
+v5.HAND_STOP_ICON = "rbxassetid://9857436302";
 return {
 	BedwarsImageId = v5
 };

@@ -1,4 +1,4 @@
--- Script Hash: 4456915155dc709916df344a2ff5d0c0881b07e5ca26d7ff1dd3fcb1ae49ba9f9fc7db9832af48c2eab9b0da45201ffc
+-- Script Hash: e0625ab5b207453a41dfbe2c08e97b8df65ab962db3b7b5756ed44cf759cec8925950b0994afc3423a0b2da29de022f9
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -7,90 +7,97 @@ local l__LobbyTitleDefaults__1 = v1.import(script, game:GetService("ReplicatedSt
 local l__LockerTab__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "locker", "locker-tab").LockerTab;
 local l__DeviceUtil__3 = v2.DeviceUtil;
 local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
-local l__KnitClient__5 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__5 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__EmoteMeta__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "locker", "emote", "emote-meta").EmoteMeta;
 local u7 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__EmoteShowcase__8 = v1.import(script, script.Parent.Parent.Parent.Parent, "global", "battle-pass", "ui", "RewardShowcase", "emote-showcase").EmoteShowcase;
 local l__GridElement__9 = v2.GridElement;
 local l__ElementGrid__10 = v2.ElementGrid;
 local l__ColorUtil__11 = v2.ColorUtil;
+local l__AutoCompleteSearchbar__12 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "components", "auto-complete-searchbar").AutoCompleteSearchbar;
+local l__Empty__13 = v2.Empty;
 return {
 	LockerItemsGrid = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u7)(function(p1, p2)
-		local l__useState__3 = p2.useState;
-		local l__useEffect__4 = p2.useEffect;
-		local v5 = p2.useMemo(function()
-			local l__Elements__6 = p1.Elements;
-			local function v7(p3)
-				local v8 = {
+		local v3 = nil;
+		local l__useState__4 = p2.useState;
+		local v5, v6 = l__useState__4(p1.Elements);
+		local v7, v8 = l__useState__4("");
+		p2.useEffect(function()
+			v6(p1.Elements);
+			v8("");
+		end, { p1.Elements });
+		local v9 = p2.useMemo(function()
+			local function v10(p3)
+				local v11 = {
 					id = p3.itemEnum, 
 					imageId = p3.image.imageId, 
 					alt = p3.image.name
 				};
-				local v9 = p3.title;
-				if v9 then
-					local v10 = p3.title;
-					if v10 ~= nil then
-						v10 = v10.name;
+				local v12 = p3.title;
+				if v12 then
+					local v13 = p3.title;
+					if v13 ~= nil then
+						v13 = v13.name;
 					end;
-					v9 = v10 ~= "None";
+					v12 = v13 ~= "None";
 				end;
-				if v9 then
-					local v11 = p3.title;
-					if v11 ~= nil then
-						v11 = v11.font;
+				if v12 then
+					local v14 = p3.title;
+					if v14 ~= nil then
+						v14 = v14.font;
 					end;
-					local v12 = v11;
-					if v12 == nil then
-						v12 = l__LobbyTitleDefaults__1.font;
+					local v15 = v14;
+					if v15 == nil then
+						v15 = l__LobbyTitleDefaults__1.font;
 					end;
-					local v13 = v12;
+					local v16 = v15;
 				else
-					v13 = nil;
+					v16 = nil;
 				end;
-				v8.altFont = v13;
-				local v14 = p3.title;
-				if v14 then
-					local v15 = p3.title;
-					if v15 ~= nil then
-						v15 = v15.name;
+				v11.altFont = v16;
+				local v17 = p3.title;
+				if v17 then
+					local v18 = p3.title;
+					if v18 ~= nil then
+						v18 = v18.name;
 					end;
-					v14 = v15 ~= "None";
+					v17 = v18 ~= "None";
 				end;
-				if v14 then
-					local v16 = p3.title;
-					if v16 ~= nil then
-						v16 = v16.color;
+				if v17 then
+					local v19 = p3.title;
+					if v19 ~= nil then
+						v19 = v19.color;
 					end;
-					local v17 = v16;
-					if v17 == nil then
-						v17 = l__LobbyTitleDefaults__1.color;
+					local v20 = v19;
+					if v20 == nil then
+						v20 = l__LobbyTitleDefaults__1.color;
 					end;
-					local v18 = v17;
+					local v21 = v20;
 				else
-					v18 = nil;
+					v21 = nil;
 				end;
-				v8.altColor = v18;
-				return v8;
+				v11.altColor = v21;
+				return v11;
 			end;
-			local v19 = table.create(#l__Elements__6);
-			for v20, v21 in ipairs(l__Elements__6) do
-				v19[v20] = v7(v21, v20 - 1, l__Elements__6);
+			local v22 = table.create(#v5);
+			for v23, v24 in ipairs(v5) do
+				v22[v23] = v10(v24, v23 - 1, v5);
 			end;
-			local v22 = p1.Elements;
-			if v22 ~= nil then
-				local function v23(p4)
+			local v25 = p1.Elements;
+			if v25 ~= nil then
+				local function v26(p4)
 					return p4.itemEnum == p1.EquippedElement.itemEnum;
 				end;
-				local v24 = -1;
-				for v25, v26 in ipairs(v22) do
-					if v23(v26, v25 - 1, v22) == true then
-						v24 = v25 - 1;
+				local v27 = -1;
+				for v28, v29 in ipairs(v25) do
+					if v26(v29, v28 - 1, v25) == true then
+						v27 = v28 - 1;
 						break;
 					end;
 				end;
-				v22 = v24;
+				v25 = v27;
 			end;
-			local function u12(p5)
+			local function u14(p5)
 				if p1.Tab == l__LockerTab__2.EMOTES then
 					if l__DeviceUtil__3.isHoarceKat() then
 						l__ClientStore__4:dispatch({
@@ -136,14 +143,14 @@ return {
 				end;
 				l__KnitClient__5.Controllers.LockerController:setLobbyGadget(p5);
 			end;
-			local function v27(p6, p7)
-				local v28 = false;
+			local function v30(p6, p7)
+				local v31 = false;
 				if p1.Tab == l__LockerTab__2.EMOTES then
-					v28 = l__EmoteMeta__6[p6.id].animation ~= nil;
+					v31 = l__EmoteMeta__6[p6.id].animation ~= nil;
 				end;
-				local v29 = {
+				local v32 = {
 					Index = p7, 
-					CurrentIndex = v22, 
+					CurrentIndex = v25, 
 					Image = p6.imageId, 
 					TextElement = {
 						Text = p6.alt, 
@@ -151,66 +158,120 @@ return {
 						Font = p6.altFont
 					}
 				};
-				function v29.OnClick()
-					u12(p6.id);
+				function v32.OnClick()
+					u14(p6.id);
 				end;
-				local v30 = {};
-				local v31 = v28 and u7.createElement(l__EmoteShowcase__8, {
+				local v33 = {};
+				local v34 = v31 and u7.createElement(l__EmoteShowcase__8, {
 					Emote = p6.id
 				});
-				if v31 then
-					v30[#v30 + 1] = v31;
+				if v34 then
+					v33[#v33 + 1] = v34;
 				end;
-				return u7.createElement(l__GridElement__9, v29, v30);
+				return u7.createElement(l__GridElement__9, v32, v33);
 			end;
-			local v32 = table.create(#v19);
-			for v33, v34 in ipairs(v19) do
-				v32[v33] = v27(v34, v33 - 1, v19);
+			local v35 = table.create(#v22);
+			for v36, v37 in ipairs(v22) do
+				v35[v36] = v30(v37, v36 - 1, v22);
 			end;
-			local v35 = {
-				Size = UDim2.new(1, 0, 1, 0), 
-				Position = UDim2.fromOffset(0, 30), 
-				ScrollingDirection = "Y", 
+			local v38 = {
 				ElementSize = UDim2.new(0.187, 0, 0, 90), 
-				DefaultElement = v22
+				DefaultElement = v25, 
+				ScrollingFrameProps = {
+					Size = UDim2.new(1, 0, 1, 0), 
+					Position = UDim2.fromOffset(0, 45)
+				}
 			};
-			local v36 = {};
-			local v37 = #v36;
-			for v38, v39 in ipairs(v32) do
-				v36[v37 + v38] = v39;
+			local v39 = {};
+			local v40 = #v39;
+			for v41, v42 in ipairs(v35) do
+				v39[v40 + v41] = v42;
 			end;
 			return u7.createFragment({
-				[p1.Tab .. "List"] = u7.createElement(l__ElementGrid__10, v35, v36)
+				[p1.Tab .. "List"] = u7.createElement(l__ElementGrid__10, v38, v39)
 			});
-		end, { p1.Elements });
-		local v40 = {
+		end, { v5 });
+		local v43 = {
 			Size = UDim2.fromScale(1, 0), 
 			AutomaticSize = Enum.AutomaticSize.Y, 
 			BackgroundTransparency = 1
 		};
-		local v41 = { u7.createElement("UISizeConstraint", {
+		local v44 = { u7.createElement("UISizeConstraint", {
 				MinSize = p1.MinSize, 
 				MaxSize = p1.MaxSize
 			}) };
-		local v42 = #v41;
-		local v43 = {
-			Size = UDim2.new(1, 0, 0, 16), 
+		local v45 = #v44;
+		local v46 = {
+			Size = UDim2.new(1, 0, 0, 32)
+		};
+		local v47 = { u7.createElement("UIListLayout", {
+				FillDirection = "Horizontal", 
+				VerticalAlignment = "Center", 
+				Padding = UDim.new(0.05, 0)
+			}) };
+		local v48 = #v47;
+		local v49 = {
+			Size = UDim2.new(0.4, 0, 0, 16), 
 			BackgroundTransparency = 1
 		};
-		local v44 = p1.EquippedElement.image;
-		if v44 ~= nil then
-			v44 = v44.name;
+		local v50 = p1.EquippedElement.image;
+		if v50 ~= nil then
+			v50 = v50.name;
 		end;
-		v43.Text = "<b>Equipped:</b> (" .. v44 .. ")";
-		v43.TextXAlignment = Enum.TextXAlignment.Left;
-		v43.TextColor3 = l__ColorUtil__11.WHITE;
-		v43.RichText = true;
-		v43.Font = Enum.Font.Roboto;
-		v43.TextSize = 16;
-		v41[v42 + 1] = u7.createElement("TextLabel", v43);
-		v41[v42 + 2] = v5;
+		v49.Text = "<b>Equipped:</b> (" .. v50 .. ")";
+		v49.TextXAlignment = Enum.TextXAlignment.Left;
+		v49.TextColor3 = l__ColorUtil__11.WHITE;
+		v49.RichText = true;
+		v49.Font = Enum.Font.Roboto;
+		v49.TextSize = 16;
+		v47[v48 + 1] = u7.createElement("TextLabel", v49);
+		local v51 = {
+			Size = UDim2.new(0.55, 0, 1, 0)
+		};
+		local l__Elements__52 = p1.Elements;
+		v3 = {};
+		local function v53(p8, p9)
+			local l__name__54 = p9.image.name;
+			if l__name__54 ~= "" and l__name__54 then
+				table.insert(p8, l__name__54);
+			end;
+			return p8;
+		end;
+		for v55 = 1, #l__Elements__52 do
+			v3 = v53(v3, l__Elements__52[v55], v55 - 1, l__Elements__52);
+		end;
+		v51.Items = local v56;
+		v51.InputText = v7;
+		local function u15(p10, p11)
+			if p10 == "" then
+				return p1.Elements;
+			end;
+			local l__Elements__57 = p1.Elements;
+			local function v58(p12, p13)
+				return table.find(p11, p12.image.name) ~= nil;
+			end;
+			local v59 = {};
+			local v60 = 0;
+			for v61, v62 in ipairs(l__Elements__57) do
+				if v58(v62, v61 - 1, l__Elements__57) == true then
+					v60 = v60 + 1;
+					v59[v60] = v62;
+				end;
+			end;
+			return v59;
+		end;
+		function v51.OnTextChange(p14, p15)
+			v6(u15(p14, p15));
+			v8(p14);
+		end;
+		v51.PlaceHolderText = "Search " .. p1.Tab;
+		v51.MaxCharLength = 30;
+		v51.LayoutOrder = 2;
+		v47[v48 + 2] = u7.createElement(l__AutoCompleteSearchbar__12, v51);
+		v44[v45 + 1] = u7.createElement(l__Empty__13, v46, v47);
+		v44[v45 + 2] = v9;
 		return u7.createFragment({
-			Items = u7.createElement("Frame", v40, v41)
+			Items = u7.createElement("Frame", v43, v44)
 		});
 	end)
 };

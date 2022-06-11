@@ -1,4 +1,4 @@
--- Script Hash: a1734f67eec16444778c3a5f2b2bbc7e022e503c1d73275662a55af4a60e2ca86360ba470a2a8f50991a09125ff22802
+-- Script Hash: 2cf464f812f1e75b7267a698f6fa5330eb49e0ecf8ac2905883cae2cc9cc6273f71161fd19fd081409a10bbce463cf0c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -89,6 +89,27 @@ return {
 			name = "Light Sword", 
 			items = { {
 					itemType = l__ItemType__3.HEAVENLY_SWORD, 
+					amount = 1
+				} }
+		}, 
+		[l__LobbyGadgetType__4.GRAPPLING_HOOK] = {
+			name = "Grappling Hook", 
+			items = { {
+					itemType = l__ItemType__3.GRAPPLING_HOOK, 
+					amount = 1
+				} }
+		}, 
+		[l__LobbyGadgetType__4.VOID_SWORD] = {
+			name = "Void Sword", 
+			items = { {
+					itemType = l__ItemType__3.VOID_SWORD, 
+					amount = 1
+				} }
+		}, 
+		[l__LobbyGadgetType__4.SCYTHE] = {
+			name = "Scythe", 
+			items = { {
+					itemType = l__ItemType__3.SCYTHE, 
 					amount = 1
 				} }
 		}

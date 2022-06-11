@@ -1,4 +1,4 @@
--- Script Hash: e88eb58694091a912ed42d3d22281eb205db93d05f6de020e0b903d2c74b1e3cbc93df5d4481915baea4884e823b2ae4
+-- Script Hash: 3904c2dbbc194ada37f9848cf9bc95737c189f19fa709de72d9ec2328907866b2489cb338c6dd5ac74dfd8178174f03b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = nil;
@@ -220,6 +220,14 @@ u2 = { {
 		ignoredByKit = { l__BedwarsKit__6.BARBARIAN, l__BedwarsKit__6.ICE_QUEEN, l__BedwarsKit__6.DASHER, l__BedwarsKit__6.EMBER, l__BedwarsKit__6.LUMEN }, 
 		category = l__BedwarsShopItemCategory__9.Armory
 	}, {
+		itemType = l__ItemType__6.VOID_SWORD, 
+		amount = 1, 
+		price = 8, 
+		currency = l__ItemType__6.VOID_CRYSTAL, 
+		lockAfterPurchase = true, 
+		ignoredByKit = { l__BedwarsKit__6.BARBARIAN, l__BedwarsKit__6.DASHER }, 
+		category = l__BedwarsShopItemCategory__9.Void
+	}, {
 		itemType = l__ItemType__6.ICE_SWORD, 
 		amount = 1, 
 		price = 6, 
@@ -321,6 +329,17 @@ u2 = { {
 		tiered = true, 
 		prevTier = l__ItemType__6.DIAMOND_CHESTPLATE, 
 		category = l__BedwarsShopItemCategory__9.Combat
+	}, {
+		itemType = l__ItemType__6.VOID_CHESTPLATE, 
+		customDisplayName = "Void Armor", 
+		amount = 1, 
+		price = 16, 
+		currency = l__ItemType__6.VOID_CRYSTAL, 
+		lockAfterPurchase = true, 
+		spawnWithItems = l__BedwarsArmorSet__5.VOID, 
+		category = l__BedwarsShopItemCategory__9.Void, 
+		nextTier = l__ItemType__6.EMERALD_CHESTPLATE, 
+		ignoredByKit = { l__BedwarsKit__6.BIGMAN }
 	}, {
 		itemType = l__ItemType__6.CARROT_SEEDS, 
 		amount = 1, 
@@ -431,6 +450,13 @@ u2 = { {
 		price = 40, 
 		currency = l__ItemType__6.IRON, 
 		requiresKit = { l__BedwarsKit__6.CONQUEROR }, 
+		category = l__BedwarsShopItemCategory__9.Combat
+	}, {
+		itemType = l__ItemType__6.DINO_DEPLOY, 
+		amount = 1, 
+		price = 40, 
+		currency = l__ItemType__6.IRON, 
+		requiresKit = { l__BedwarsKit__6.DINO_TAMER }, 
 		category = l__BedwarsShopItemCategory__9.Combat
 	}, {
 		itemType = l__ItemType__6.FLAMETHROWER, 
@@ -605,13 +631,6 @@ u2 = { {
 		requiresKit = { l__BedwarsKit__6.ARCHER }, 
 		category = l__BedwarsShopItemCategory__9.Armory
 	}, {
-		itemType = l__ItemType__6.GUIDED_MISSILE, 
-		amount = 1, 
-		price = 1, 
-		currency = l__ItemType__6.EMERALD, 
-		category = l__BedwarsShopItemCategory__9.Armory, 
-		disabledInQueue = { l__QueueType__4.BEDWARS_RANKED_BETA }
-	}, {
 		itemType = l__ItemType__6.ARROW, 
 		amount = 8, 
 		price = 16, 
@@ -736,11 +755,11 @@ u2 = { {
 		currency = l__ItemType__6.IRON, 
 		category = l__BedwarsShopItemCategory__9.Blocks
 	}, {
-		itemType = l__ItemType__6.ZIPLINE, 
-		amount = 1, 
-		price = 60, 
-		currency = l__ItemType__6.IRON, 
-		category = l__BedwarsShopItemCategory__9.Combat
+		itemType = l__ItemType__6.VOID_BLOCK, 
+		amount = 16, 
+		price = 1, 
+		currency = l__ItemType__6.VOID_CRYSTAL, 
+		category = l__BedwarsShopItemCategory__9.Void
 	}, {
 		itemType = l__ItemType__6.BALLOON, 
 		amount = 3, 
@@ -761,32 +780,12 @@ u2 = { {
 		currency = l__ItemType__6.IRON, 
 		category = l__BedwarsShopItemCategory__9.Combat
 	}, {
-		itemType = l__ItemType__6.INVISIBLE_LANDMINE, 
-		amount = 1, 
-		price = 65, 
-		currency = l__ItemType__6.IRON, 
-		category = l__BedwarsShopItemCategory__9.Combat, 
-		limitedTimeItem = true
-	}, {
-		itemType = l__ItemType__6.FRYING_PAN, 
-		amount = 1, 
-		price = 30, 
-		currency = l__ItemType__6.IRON, 
-		category = l__BedwarsShopItemCategory__9.Combat
-	}, {
 		itemType = l__ItemType__6.GRAPPLING_HOOK, 
 		amount = 1, 
 		price = 4, 
 		currency = l__ItemType__6.EMERALD, 
 		category = l__BedwarsShopItemCategory__9.Combat, 
 		limitedTimeItem = true, 
-		disabledInQueue = { l__QueueType__4.FLAG_CAPTURE }
-	}, {
-		itemType = l__ItemType__6.HELICOPTER_DEPLOY, 
-		amount = 1, 
-		price = 6, 
-		currency = l__ItemType__6.EMERALD, 
-		category = l__BedwarsShopItemCategory__9.Combat, 
 		disabledInQueue = { l__QueueType__4.FLAG_CAPTURE }
 	} };
 v11.ShopItems = u2;

@@ -1,4 +1,4 @@
--- Script Hash: e4ec474488badeae1f4b42a6022d8dd1594688a7800815aa3a7404f5d47068dbcb19a1cc91b58d5caa44138b92270ee2
+-- Script Hash: e35c67636dd9da2eed1af17aa3ff708807af4881f004e548def3d53edf5d55b43e0355304abb09a2d19994a8e8642549
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -9,7 +9,7 @@ local l__getBedwarsKitMeta__1 = v4.getBedwarsKitMeta;
 local l__BundleMeta__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "bundle", "bundle-meta").BundleMeta;
 local l__BedwarsKitShop__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit-shop").BedwarsKitShop;
 local l__DeviceUtil__4 = v2.DeviceUtil;
-local l__KnitClient__5 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__5 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__BedwarsKitMeta__6 = v4.BedwarsKitMeta;
 local l__BattlePassUtils__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-utils").BattlePassUtils;
 local u8 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
@@ -337,7 +337,7 @@ return {
 			v5 = v113(v5, v16[v115], v115 - 1, v16);
 		end;
 		v111.Items = local v116;
-		v111.Item = "";
+		v111.InputText = "";
 		local function u21(p27, p28)
 			if p27 == "" then
 				v21({});
@@ -375,7 +375,7 @@ return {
 			v21(u22);
 			return u22;
 		end;
-		function v111.OnSubmit(p31, p32)
+		function v111.OnTextChange(p31, p32)
 			v19(u21(p31, p32));
 		end;
 		v111.PlaceHolderText = "Search Kit";

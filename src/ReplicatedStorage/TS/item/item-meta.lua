@@ -1,5 +1,3 @@
--- bedwars item meta
-
 local v12 = {
     ["wood_pickaxe"] = {
         ["firstPerson"] = {

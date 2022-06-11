@@ -1,8 +1,8 @@
--- Script Hash: 8aae08e5c8ca1714f4e31f866deac1f8a92700b79cb475158c8f534f325af3e4ddaf73efc7387a26ce5ff2385eba8af5
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__HandKnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
 local v5 = setmetatable({}, {
@@ -17,11 +17,11 @@ function v5.new(...)
 	return v6:constructor(...) and v6;
 end;
 local u1 = l__HandKnitController__4;
-local l__Maid__2 = v2.Maid;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v5.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "PaintShotgunController";
-	p1.maid = l__Maid__2.new();
+	p1.maid = u2.new();
 end;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
@@ -113,7 +113,7 @@ function v5.fire(p14)
 		if v10 then
 			l__Character__9:SetPrimaryPartCFrame(CFrame.new(l__Character__9:GetPrimaryPartCFrame().Position, l__Character__9:GetPrimaryPartCFrame().Position + v10 * Vector3.new(1, 0, 1)));
 			local v11 = l__Character__9:GetPrimaryPartCFrame();
-			l__default__18.Client:Get("ShootShotgun"):SendToServer(v11.Position, v10);
+			l__default__18.Client:Get("RemoteName"):SendToServer(v11.Position, v10);
 			local function v12()
 				if v11 then
 					l__KnitClient__19.Controllers.ScreenShakeController:shake(v11.Position, v11 * Vector3.new(-0.25, 0, -1) - v11.Position, {

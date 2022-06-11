@@ -1,11 +1,10 @@
--- Script Hash: ef92b57bc1bae9bc1422b1d54646a6a79d5eacf54e91e48930fecea0ada217df565f41ff8a11b6ff28dff01e0893e0da
+-- Script Hash: e231930f28d20a0c216a9559db6347800c1f02187aea886124f7e62690d6d2803e46528ddbc3650d6552ebf640298567
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local u1 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__Flamework__2 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
-local l__SlideIn__3 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).SlideIn;
-local function u4(p1)
+local function u3(p1)
 	return string.gsub(string.reverse((string.gsub(string.reverse(p1), "%d%d%d", "%1,"))), "^,", "");
 end;
 return v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u1)(function(p2, p3)
@@ -26,10 +25,11 @@ return v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(
 		end;
 		v5 = v6;
 	end;
-	return u1.createElement(l__SlideIn__3, {}, { u1.createElement("Frame", {
+	return u1.createFragment({
+		PostgameWinstreakSection = u1.createElement("Frame", {
 			Size = p2.Size, 
 			Position = p2.Position, 
-			AnchorPoint = Vector2.new(0.5, 0.75), 
+			AnchorPoint = p2.AnchorPoint or Vector2.new(0, 1), 
 			BorderSizePixel = 0, 
 			BackgroundColor3 = Color3.fromRGB(216, 133, 10)
 		}, { u1.createElement("UIAspectRatioConstraint", {
@@ -82,7 +82,7 @@ return v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(
 					BackgroundTransparency = 1, 
 					BorderSizePixel = 0
 				}), u1.createElement("TextLabel", {
-					Text = "<b>" .. u4(tostring((function()
+					Text = "<b>" .. u3(tostring((function()
 						if not l__queueType__4 then
 							return 0;
 						end;
@@ -105,5 +105,6 @@ return v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(
 					Font = Enum.Font.RobotoMono, 
 					TextColor3 = Color3.new(1, 1, 1), 
 					TextScaled = true
-				}) }) }) });
+				}) }) })
+	});
 end);

@@ -1,4 +1,4 @@
--- Script Hash: 1c55941de576423997cda7c71d8068edba2aee0e54b1ac80819add1b61a02ac1bb24271c653e7e4754eae78f044777a7
+-- Script Hash: 1e4d166c20b23e46e9d86687ce095e859573c767be6a8a71ce51c028d100ff6171c8c7fbaca0ca57d02cc6c540610d32
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -11,6 +11,8 @@ v2.RANKED_BETA = "RANKED_BETA";
 v1.RANKED_BETA = "RANKED_BETA";
 v2.RANKED_S4 = "RANKED_S4";
 v1.RANKED_S4 = "RANKED_S4";
+v2.RANKED_S5 = "RANKED_S5";
+v1.RANKED_S5 = "RANKED_S5";
 return {
 	GlickoCategory = v2
 };
