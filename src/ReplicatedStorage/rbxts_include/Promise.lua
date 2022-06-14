@@ -1,4 +1,4 @@
--- Script Hash: 03106faa58d6e1e707e3c7868ca41ad735b556f48f68c5d0030419e099166d6ed056b2f25337fcb5a396ff9d25e938d9
+-- Script Hash: bf01980549a339c7afa348c42f5d4376fda544df076dfa942d64b14b7c512a3b432d7f8f55889e32ce9b8c80f4b42c42
 --[[VARIABLE DEFINITION ANOMALY DETECTED, DECOMPILATION OUTPUT POTENTIALLY INCORRECT]]--
 -- Decompiled with the Synapse X Luau decompiler.
 
@@ -637,7 +637,7 @@ v13.prototype.cancel = function(p100)
 	if p100._parent then
 		p100._parent:_consumerCancelled(p100);
 	end;
-	for v93, v94 in pairs(p100._consumers) do
+	for v93 in pairs(p100._consumers) do
 		v93:cancel();
 	end;
 	p100:_finalize();
@@ -656,65 +656,65 @@ v13.prototype._finally = function(p103, p104, p105, p106)
 		p103._unhandledRejection = false;
 	end;
 	return v13._new(p104, function(p107, p108)
-		local v95 = p107;
+		local v94 = p107;
 		if p105 then
-			v95 = u30(p104, p105, p107, p108);
+			v94 = u30(p104, p105, p107, p108);
 		end;
 		if p106 then
-			v95 = function(...)
+			v94 = function(...)
 				if p103._status == v13.Status.Rejected then
 					return p107(p103);
 				end;
-				return v95(...);
+				return v94(...);
 			end;
 		end;
 		if p103._status == v13.Status.Started then
-			table.insert(p103._queuedFinally, v95);
+			table.insert(p103._queuedFinally, v94);
 			return;
 		end;
-		v95(p103._status);
+		v94(p103._status);
 	end, p103);
 end;
 v13.prototype.finally = function(p109, p110)
-	local v96 = true;
+	local v95 = true;
 	if p110 ~= nil then
-		v96 = u16(p110);
+		v95 = u16(p110);
 	end;
-	assert(v96, string.format("Please pass a handler function to %s!", "Promise:finally"));
+	assert(v95, string.format("Please pass a handler function to %s!", "Promise:finally"));
 	return p109:_finally(debug.traceback(nil, 2), p110);
 end;
 v13.prototype.finallyCall = function(p111, p112, ...)
 	assert(u16(p112), string.format("Please pass a handler function to %s!", "Promise:finallyCall"));
-	local v97, v98 = u9(...);
+	local v96, v97 = u9(...);
 	return p111:_finally(debug.traceback(nil, 2), function()
-		return p112(unpack(v98, 1, v97));
+		return p112(unpack(v97, 1, v96));
 	end);
 end;
 v13.prototype.finallyReturn = function(p113, ...)
-	local v99, v100 = u9(...);
+	local v98, v99 = u9(...);
 	return p113:_finally(debug.traceback(nil, 2), function()
-		return unpack(v100, 1, v99);
+		return unpack(v99, 1, v98);
 	end);
 end;
 v13.prototype.done = function(p114, p115)
-	local v101 = true;
+	local v100 = true;
 	if p115 ~= nil then
-		v101 = u16(p115);
+		v100 = u16(p115);
 	end;
-	assert(v101, string.format("Please pass a handler function to %s!", "Promise:done"));
+	assert(v100, string.format("Please pass a handler function to %s!", "Promise:done"));
 	return p114:_finally(debug.traceback(nil, 2), p115, true);
 end;
 v13.prototype.doneCall = function(p116, p117, ...)
 	assert(u16(p117), string.format("Please pass a handler function to %s!", "Promise:doneCall"));
-	local v102, v103 = u9(...);
+	local v101, v102 = u9(...);
 	return p116:_finally(debug.traceback(nil, 2), function()
-		return p117(unpack(v103, 1, v102));
+		return p117(unpack(v102, 1, v101));
 	end, true);
 end;
 v13.prototype.doneReturn = function(p118, ...)
-	local v104, v105 = u9(...);
+	local v103, v104 = u9(...);
 	return p118:_finally(debug.traceback(nil, 2), function()
-		return unpack(v105, 1, v104);
+		return unpack(v104, 1, v103);
 	end, true);
 end;
 v13.prototype.awaitStatus = function(p119)
@@ -744,11 +744,11 @@ end;
 local function u33(p122, ...)
 	if p122 ~= v13.Status.Resolved then
 		if ... == nil then
-			local v106 = "Expected Promise rejected with no value.";
+			local v105 = "Expected Promise rejected with no value.";
 		else
-			v106 = ...;
+			v105 = ...;
 		end;
-		error(v106, 3);
+		error(v105, 3);
 	end;
 	return ...;
 end;
@@ -771,11 +771,11 @@ v13.prototype._resolve = function(p125, ...)
 	end;
 	if not v13.is((...)) then
 		p125._status = v13.Status.Resolved;
-		local v107, v108 = u9(...);
-		p125._valuesLength = v107;
-		p125._values = v108;
-		for v109, v110 in ipairs(p125._queuedResolve) do
-			coroutine.wrap(v110)(...);
+		local v106, v107 = u9(...);
+		p125._valuesLength = v106;
+		p125._values = v107;
+		for v108, v109 in ipairs(p125._queuedResolve) do
+			coroutine.wrap(v109)(...);
 		end;
 		p125:_finalize();
 		return;
@@ -784,34 +784,34 @@ v13.prototype._resolve = function(p125, ...)
 		warn((string.format("When returning a Promise from andThen, extra arguments are discarded! See:\n\n%s", p125._source)));
 	end;
 	local u34 = ...;
-	local v111 = u34:andThen(function(...)
+	local v110 = u34:andThen(function(...)
 		p125:_resolve(...);
 	end, function(...)
-		local v112 = u34._values[1];
+		local v111 = u34._values[1];
 		if u34._error then
-			v112 = v6.new({
+			v111 = v6.new({
 				error = u34._error, 
 				kind = v6.Kind.ExecutionError, 
 				context = "[No stack trace available as this Promise originated from an older version of the Promise library (< v2)]"
 			});
 		end;
-		if not v6.isKind(v112, v6.Kind.ExecutionError) then
+		if not v6.isKind(v111, v6.Kind.ExecutionError) then
 			p125:_reject(...);
 			return;
 		end;
-		return p125:_reject(v112:extend({
+		return p125:_reject(v111:extend({
 			error = "This Promise was chained to a Promise that errored.", 
 			trace = "", 
 			context = string.format("The Promise at:\n\n%s\n...Rejected because it was chained to the following Promise, which encountered an error:\n", p125._source)
 		}));
 	end);
-	if v111._status == v13.Status.Cancelled then
+	if v110._status == v13.Status.Cancelled then
 		p125:cancel();
 		return;
 	end;
-	if v111._status == v13.Status.Started then
-		p125._parent = v111;
-		v111._consumers[p125] = true;
+	if v110._status == v13.Status.Started then
+		p125._parent = v110;
+		v110._consumers[p125] = true;
 	end;
 end;
 local function u35(p126)
@@ -822,12 +822,12 @@ v13.prototype._reject = function(p127, ...)
 		return;
 	end;
 	p127._status = v13.Status.Rejected;
-	local v113, v114 = u9(...);
-	p127._valuesLength = v113;
-	p127._values = v114;
+	local v112, v113 = u9(...);
+	p127._valuesLength = v112;
+	p127._values = v113;
 	if not u35(p127._queuedReject) then
-		for v115, v116 in ipairs(p127._queuedReject) do
-			coroutine.wrap(v116)(...);
+		for v114, v115 in ipairs(p127._queuedReject) do
+			coroutine.wrap(v115)(...);
 		end;
 	else
 		local u36 = tostring((...));
@@ -836,8 +836,8 @@ v13.prototype._reject = function(p127, ...)
 			if not p127._unhandledRejection then
 				return;
 			end;
-			for v117, v118 in ipairs(v13._unhandledRejectionCallbacks) do
-				task.spawn(v118, p127, unpack(p127._values, 1, p127._valuesLength));
+			for v116, v117 in ipairs(v13._unhandledRejectionCallbacks) do
+				task.spawn(v117, p127, unpack(p127._values, 1, p127._valuesLength));
 			end;
 			if v13.TEST then
 				return;
@@ -848,8 +848,8 @@ v13.prototype._reject = function(p127, ...)
 	p127:_finalize();
 end;
 v13.prototype._finalize = function(p128)
-	for v119, v120 in ipairs(p128._queuedFinally) do
-		coroutine.wrap(v120)(p128._status);
+	for v118, v119 in ipairs(p128._queuedFinally) do
+		coroutine.wrap(v119)(p128._status);
 	end;
 	p128._queuedFinally = nil;
 	p128._queuedReject = nil;
@@ -860,23 +860,23 @@ v13.prototype._finalize = function(p128)
 	end;
 end;
 v13.prototype.now = function(p129, p130)
-	local v121 = nil;
-	v121 = debug.traceback(nil, 2);
+	local v120 = nil;
+	v120 = debug.traceback(nil, 2);
 	if p129._status == v13.Status.Resolved then
-		return p129:_andThen(v121, function(...)
+		return p129:_andThen(v120, function(...)
 			return ...;
 		end);
 	end;
 	if p130 == nil then
-		local v122 = v6.new({
+		local v121 = v6.new({
 			kind = v6.Kind.NotResolvedInTime, 
 			error = "This Promise was not resolved in time for :now()", 
-			context = ":now() was called at:\n\n" .. v121
+			context = ":now() was called at:\n\n" .. v120
 		}) or p130;
 	else
-		v122 = p130;
+		v121 = p130;
 	end;
-	return v13.reject(v122);
+	return v13.reject(v121);
 end;
 function v13.retry(p131, p132, ...)
 	assert(u16(p131), "Parameter #1 to Promise.retry must be a function");
@@ -916,8 +916,8 @@ function v13.fromEvent(p136, p137)
 		end;
 		local u43 = false;
 		u41 = p136:Connect(function(...)
-			local v123 = p137(...);
-			if v123 == true then
+			local v122 = p137(...);
+			if v122 == true then
 				p138(...);
 				if u41 then
 					u42();
@@ -927,7 +927,7 @@ function v13.fromEvent(p136, p137)
 					return;
 				end;
 			end;
-			if type(v123) ~= "boolean" then
+			if type(v122) ~= "boolean" then
 				error("Promise.fromEvent predicate should always return a boolean");
 			end;
 		end);
@@ -940,9 +940,9 @@ end;
 function v13.onUnhandledRejection(p141)
 	table.insert(v13._unhandledRejectionCallbacks, p141);
 	return function()
-		local v124 = table.find(v13._unhandledRejectionCallbacks, p141);
-		if v124 then
-			table.remove(v13._unhandledRejectionCallbacks, v124);
+		local v123 = table.find(v13._unhandledRejectionCallbacks, p141);
+		if v123 then
+			table.remove(v13._unhandledRejectionCallbacks, v123);
 		end;
 	end;
 end;

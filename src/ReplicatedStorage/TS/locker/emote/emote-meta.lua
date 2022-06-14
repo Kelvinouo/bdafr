@@ -1,4 +1,4 @@
--- Script Hash: 26fa94a1bb3ad30bf2dae0a148938b72eff04d6a989c8376cacafc0e1c607d7470c1ac2d77566f554aae530853e779b5
+-- Script Hash: 885a465d2a0dcc5d3a2afc561e96b67514dec516740910ec9010ce798c0b887b5caee2a7adf85add42f679dd12f2f735
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -716,16 +716,16 @@ return {
 			image = l__getEmoteAsset__3(l__EmoteType__6.TIGER_WELL_PLAYED)
 		}, 
 		[l__EmoteType__6.CYBER_DEFENSE] = {
-			name = "Cyber Defense", 
+			name = "Vulcan Defense", 
 			image = l__getEmoteAsset__3(l__EmoteType__6.CYBER_DEFENSE)
 		}, 
 		[l__EmoteType__6.CYBER_MAD] = {
 			name = "Cyber Mad", 
 			image = l__getEmoteAsset__3(l__EmoteType__6.CYBER_MAD)
 		}, 
-		[l__EmoteType__6.CYBER_OVERHEAT] = {
-			name = "Cyber Overheat", 
-			image = l__getEmoteAsset__3(l__EmoteType__6.CYBER_OVERHEAT)
+		[l__EmoteType__6.VULCAN_OVERHEAT] = {
+			name = "Vulcan Overheat", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.VULCAN_OVERHEAT)
 		}, 
 		[l__EmoteType__6.DINO_HAI] = {
 			name = "Dino Hai", 
@@ -739,9 +739,9 @@ return {
 			name = "Dino Yipeee", 
 			image = l__getEmoteAsset__3(l__EmoteType__6.DINO_YIPEEE)
 		}, 
-		[l__EmoteType__6.FREIYA_BEG] = {
-			name = "Freiya Beg", 
-			image = l__getEmoteAsset__3(l__EmoteType__6.FREIYA_BEG)
+		[l__EmoteType__6.FREIYA_HEARTS] = {
+			name = "Freiya Hearts", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.FREIYA_HEARTS)
 		}, 
 		[l__EmoteType__6.LUMEN_PAIN] = {
 			name = "Lumen Pain", 
@@ -782,6 +782,18 @@ return {
 		[l__EmoteType__6.TESLA_DANGER] = {
 			name = "Tesla Danger Sign", 
 			image = l__getEmoteAsset__3(l__EmoteType__6.TESLA_DANGER)
+		}, 
+		[l__EmoteType__6.JADE_IM_THE_BEST] = {
+			name = "Jade Im The Best", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.JADE_IM_THE_BEST)
+		}, 
+		[l__EmoteType__6.LV50_DUO_WOMBO_COMBO] = {
+			name = "Lv50 Wombo Combo", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.LV50_DUO_WOMBO_COMBO)
+		}, 
+		[l__EmoteType__6.SPIRIT_DUO_EZ] = {
+			name = "Spirit Duo EZ", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.SPIRIT_DUO_EZ)
 		}
 	}
 };

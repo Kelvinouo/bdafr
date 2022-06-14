@@ -1,9 +1,9 @@
--- Script Hash: 4fefde8b17a60e1bb1a0a7cb1c2df000818351e895e2df490c68c98a393a603244552664904f3463ee0d131d8be3be44
+-- Script Hash: c2c7dce59ac3ddc5c81b1c3df637a18ce0184e21f984938d64be1cf26a8b7b1f7f76b7425a373ec6083879dd87f6e345
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local l__KnitClient__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__ClanUtil__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "clan", "clan-util").ClanUtil;
 local l__ClanKitShop__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "clan", "shop", "clan-kit-shop").ClanKitShop;
 local u4 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
@@ -132,45 +132,45 @@ return {
 		end;
 		local function v20(p5, p6)
 			local v21 = 0;
-			for v22, v23 in pairs(p1.Clan.members) do
+			for v22 in pairs(p1.Clan.members) do
 				v21 = v21 + 1;
 			end;
-			local v24 = math.ceil(l__ClanKitShop__3.getKitShopKitPrice(v21));
-			local v25 = false;
+			local v23 = math.ceil(l__ClanKitShop__3.getKitShopKitPrice(v21));
+			local v24 = false;
 			if p1.store.Clans.myClanMember and not l__DeviceUtil__10.isHoarceKat() then
-				v25 = l__ClanUtil__2.hasClanRank(p1.store.Clans.myClanMember, l__ClanMemberRank__11.ADMIN);
+				v24 = l__ClanUtil__2.hasClanRank(p1.store.Clans.myClanMember, l__ClanMemberRank__11.ADMIN);
 			end;
 			return u4.createElement(l__ClanProfileKitShopCard__12, {
 				Kit = p5, 
-				Price = v24, 
+				Price = v23, 
 				Purchased = p1.Clan.kitShop.unlocks[p5] ~= nil, 
-				CantBuy = not v11 and p1.Clan.coins < v24, 
-				Disabled = not v11 or not v25, 
+				CantBuy = not v11 and p1.Clan.coins < v23, 
+				Disabled = not v11 or not v24, 
 				OnPurchase = u13, 
 				Locked = p1.Clan.kitShop.stock < p6 + 1, 
 				Loading = v4, 
 				Index = p6 + 1
 			});
 		end;
-		local v26 = table.create(#l__kits__19);
-		for v27, v28 in ipairs(l__kits__19) do
-			v26[v27] = v20(v28, v27 - 1, l__kits__19);
+		local v25 = table.create(#l__kits__19);
+		for v26, v27 in ipairs(l__kits__19) do
+			v25[v26] = v20(v27, v26 - 1, l__kits__19);
 		end;
-		local v29 = {
+		local v28 = {
 			Size = UDim2.fromScale(1, 1), 
 			LayoutOrder = 3
 		};
-		local v30 = { u4.createElement("UIListLayout", {
+		local v29 = { u4.createElement("UIListLayout", {
 				FillDirection = "Horizontal", 
 				Padding = UDim.new(0.05, 0), 
 				VerticalAlignment = "Center", 
 				HorizontalAlignment = "Left"
 			}) };
-		local v31 = #v30;
-		for v32, v33 in ipairs(v26) do
-			v30[v31 + v32] = v33;
+		local v30 = #v29;
+		for v31, v32 in ipairs(v25) do
+			v29[v30 + v31] = v32;
 		end;
-		v17.KitShopCards = u4.createElement(l__Empty__8, v29, v30);
+		v17.KitShopCards = u4.createElement(l__Empty__8, v28, v29);
 		v15[#v15 + 1] = u4.createElement(l__Empty__8, v16, v17);
 		return u4.createFragment({
 			ClanProfileKitShop = u4.createElement(l__Empty__8, v12, v15)

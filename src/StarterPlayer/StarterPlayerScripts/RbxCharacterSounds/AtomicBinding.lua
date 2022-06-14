@@ -1,4 +1,4 @@
--- Script Hash: 75c9e274b6bcc9f8fe3d8d96050198c7e1ead721ed7ddd1f6ffdc26dcba952651018a58b95b3ba9af108ad6fedf7d7ad
+-- Script Hash: 32e6d812a327eb964cf46e0b1e51e1b748626bed03f9d2873d78bb8ae8f7572252ce451fe3ff36617021f78a39fa6ceb
 -- Decompiled with the Synapse X Luau decompiler.
 
 local function u1(p1, p2)
@@ -73,7 +73,7 @@ function v7._stopBoundFn(p9, p10)
 end;
 local function u3(p11, p12)
 	local v19 = 0;
-	for v20, v21 in pairs(p11) do
+	for v20 in pairs(p11) do
 		v19 = v19 + 1;
 	end;
 	assert(v19 <= p12, v19);
@@ -81,117 +81,117 @@ local function u3(p11, p12)
 end;
 function v7.bindRoot(p13, p14)
 	debug.profilebegin("AtomicBinding:BindRoot");
-	local l___parsedManifest__22 = p13._parsedManifest;
-	local l___rootInstToManifest__23 = p13._rootInstToManifest;
-	assert(l___rootInstToManifest__23[p14] == nil);
-	local v24 = {};
-	l___rootInstToManifest__23[p14] = v24;
+	local l___parsedManifest__21 = p13._parsedManifest;
+	local l___rootInstToManifest__22 = p13._rootInstToManifest;
+	assert(l___rootInstToManifest__22[p14] == nil);
+	local v23 = {};
+	l___rootInstToManifest__22[p14] = v23;
 	debug.profilebegin("BuildTree");
-	local v25 = {
+	local v24 = {
 		alias = "root", 
 		instance = p14
 	};
-	if next(l___parsedManifest__22) then
-		v25.children = {};
-		v25.connections = {};
+	if next(l___parsedManifest__21) then
+		v24.children = {};
+		v24.connections = {};
 	end;
-	p13._rootInstToRootNode[p14] = v25;
-	for v26, v27 in pairs(l___parsedManifest__22) do
-		local v28 = v25;
-		local v29, v30, v31 = ipairs(v27);
+	p13._rootInstToRootNode[p14] = v24;
+	for v25, v26 in pairs(l___parsedManifest__21) do
+		local v27 = v24;
+		local v28, v29, v30 = ipairs(v26);
 		while true do
-			local v32, v33 = v29(v30, v31);
-			if not v32 then
+			local v31, v32 = v28(v29, v30);
+			if not v31 then
 				break;
 			end;
-			local v34 = v28.children[v33] or {};
-			if v32 == #v27 then
-				if v34.alias ~= nil then
+			local v33 = v27.children[v32] or {};
+			if v31 == #v26 then
+				if v33.alias ~= nil then
 					error("Multiple aliases assigned to one instance");
 				end;
-				v34.alias = v26;
+				v33.alias = v25;
 			else
-				v34.children = v34.children or {};
-				v34.connections = v34.connections or {};
+				v33.children = v33.children or {};
+				v33.connections = v33.connections or {};
 			end;
-			v28.children[v33] = v34;
-			v28 = v34;		
+			v27.children[v32] = v33;
+			v27 = v33;		
 		end;
 	end;
 	debug.profileend();
 	local l___manifestSizeTarget__4 = p13._manifestSizeTarget;
 	local function u5(p15)
-		local v35 = assert(p15.instance);
-		local l__children__36 = p15.children;
-		local l__alias__37 = p15.alias;
-		local v38 = not l__children__36;
-		if l__alias__37 then
-			v24[l__alias__37] = v35;
+		local v34 = assert(p15.instance);
+		local l__children__35 = p15.children;
+		local l__alias__36 = p15.alias;
+		local v37 = not l__children__35;
+		if l__alias__36 then
+			v23[l__alias__36] = v34;
 		end;
-		if not v38 then
+		if not v37 then
 			local function u6(p16)
-				local v39 = l__children__36[p16.Name];
-				if not v39 or v39.instance ~= nil then
+				local v38 = l__children__35[p16.Name];
+				if not v38 or v38.instance ~= nil then
 					return;
 				end;
-				v39.instance = p16;
-				u5(v39);
+				v38.instance = p16;
+				u5(v38);
 			end;
-			for v40, v41 in ipairs(v35:GetChildren()) do
-				u6(v41);
+			for v39, v40 in ipairs(v34:GetChildren()) do
+				u6(v40);
 			end;
-			table.insert(p15.connections, v35.ChildAdded:Connect(u6));
-			table.insert(p15.connections, v35.ChildRemoved:Connect(function(p17)
-				local l__Name__42 = p17.Name;
-				local v43 = l__children__36[l__Name__42];
-				if not v43 then
+			table.insert(p15.connections, v34.ChildAdded:Connect(u6));
+			table.insert(p15.connections, v34.ChildRemoved:Connect(function(p17)
+				local l__Name__41 = p17.Name;
+				local v42 = l__children__35[l__Name__41];
+				if not v42 then
 					return;
 				end;
-				if v43.instance ~= p17 then
+				if v42.instance ~= p17 then
 					return;
 				end;
 				p13:_stopBoundFn(p14);
-				u1(v43, v24);
-				assert(v43.instance == nil);
-				local v44 = v35:FindFirstChild(l__Name__42);
-				if v44 then
-					u6(v44);
+				u1(v42, v23);
+				assert(v42.instance == nil);
+				local v43 = v34:FindFirstChild(l__Name__41);
+				if v43 then
+					u6(v43);
 				end;
 			end));
 		end;
-		if v38 and u3(v24, l___manifestSizeTarget__4) then
-			p13:_startBoundFn(p14, v24);
+		if v37 and u3(v23, l___manifestSizeTarget__4) then
+			p13:_startBoundFn(p14, v23);
 		end;
 	end;
 	debug.profilebegin("ResolveTree");
-	u5(v25);
+	u5(v24);
 	debug.profileend();
 	debug.profileend();
 end;
 function v7.unbindRoot(p18, p19)
-	local l___rootInstToRootNode__45 = p18._rootInstToRootNode;
-	local l___rootInstToManifest__46 = p18._rootInstToManifest;
+	local l___rootInstToRootNode__44 = p18._rootInstToRootNode;
+	local l___rootInstToManifest__45 = p18._rootInstToManifest;
 	p18:_stopBoundFn(p19);
-	local v47 = l___rootInstToRootNode__45[p19];
-	if v47 then
-		u1(v47, (assert(l___rootInstToManifest__46[p19])));
-		l___rootInstToRootNode__45[p19] = nil;
+	local v46 = l___rootInstToRootNode__44[p19];
+	if v46 then
+		u1(v46, (assert(l___rootInstToManifest__45[p19])));
+		l___rootInstToRootNode__44[p19] = nil;
 	end;
-	l___rootInstToManifest__46[p19] = nil;
+	l___rootInstToManifest__45[p19] = nil;
 end;
 function v7.destroy(p20)
 	debug.profilebegin("AtomicBinding:destroy");
-	for v48, v49 in pairs(p20._dtorMap) do
-		v49:destroy();
+	for v47, v48 in pairs(p20._dtorMap) do
+		v48:destroy();
 	end;
 	table.clear(p20._dtorMap);
-	for v50, v51 in ipairs(p20._connections) do
-		v51:Disconnect();
+	for v49, v50 in ipairs(p20._connections) do
+		v50:Disconnect();
 	end;
 	table.clear(p20._connections);
-	local l___rootInstToManifest__52 = p20._rootInstToManifest;
-	for v53, v54 in pairs(p20._rootInstToRootNode) do
-		u1(v54, (assert(l___rootInstToManifest__52[v53])));
+	local l___rootInstToManifest__51 = p20._rootInstToManifest;
+	for v52, v53 in pairs(p20._rootInstToRootNode) do
+		u1(v53, (assert(l___rootInstToManifest__51[v52])));
 	end;
 	table.clear(p20._rootInstToManifest);
 	table.clear(p20._rootInstToRootNode);

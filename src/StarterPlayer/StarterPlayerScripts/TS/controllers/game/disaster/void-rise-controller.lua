@@ -1,10 +1,10 @@
--- Script Hash: c6e89f49c49cbf3564df09a447531e9478d0413d143e224e0da0b138b2499b4793fd48b8fa3c574985ab7058b34a042e
+-- Script Hash: fa3d79ff4ef3942c6bc1cf26d383c9c7c951aa7b5807a1f2f3ec88296e9480e9401de0f5bfc8aa6eb87bc3bdf8c338a0
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "easing-functions"));
-local v4 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
+local v4 = v1.import(script, v1.getModule(script, "@rbxts", "easing-functions"));
 local v5 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__6 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v7 = setmetatable({}, {
@@ -27,9 +27,9 @@ local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 local l__SoundManager__3 = v2.SoundManager;
 local l__GameSound__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 local l__default__5 = v1.import(script, v1.getModule(script, "@rbxts", "tween")).default;
-local l__Linear__6 = v3.Linear;
-local l__KnitClient__7 = v4.KnitClient;
-local l__InQuad__8 = v3.InQuad;
+local l__Linear__6 = v4.Linear;
+local l__KnitClient__7 = v3.KnitClient;
+local l__InQuad__8 = v4.InQuad;
 local u9 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
 local l__Workspace__10 = v5.Workspace;
 local l__GameQueryUtil__11 = v2.GameQueryUtil;
@@ -108,6 +108,6 @@ function v7.KnitStart(p2)
 		end);
 	end);
 end;
-u1 = v4.KnitClient.CreateController;
+u1 = v3.KnitClient.CreateController;
 u1 = u1(v7.new());
 return nil;

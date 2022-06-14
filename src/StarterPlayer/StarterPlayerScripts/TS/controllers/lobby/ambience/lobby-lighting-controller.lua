@@ -1,4 +1,4 @@
--- Script Hash: addb0ef61df888f2fdda417ff0575c81b8e1bbe656d9a3090193c13bf9b655efa132760eb3b971c3e6da25db7eaec4cb
+-- Script Hash: b4bf64b69a58d3f3ac39ae09ab9875fbcefa3e7e31be13ac1abb753ee4b977d84b8bf4689dc55551858e897bf76a88dd
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -46,7 +46,7 @@ local l__KnitClient__6 = v3.KnitClient;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
 	l__KnitClient__6.Controllers.LightingController.lightingModifier:addModifier(10, {
-		Ambient = Color3.fromRGB(131, 114, 90), 
+		Ambient = Color3.fromRGB(165, 165, 165), 
 		Brightness = 2, 
 		ColorShift_Bottom = Color3.fromRGB(146, 190, 255), 
 		ColorShift_Top = Color3.fromRGB(228, 249, 255), 

@@ -1,4 +1,4 @@
--- Script Hash: 68c87d745fcfa4855a468951c55155775e76bbb5db3a7dd836d480f5c17ae5b983013e2d2ee90bce250dbaaaa401a27a
+-- Script Hash: ff3d2020e103f7185ac23bdca88688856468b6ad31bc126d19f32422b47d2a235cba3c0a37543e5c35556db60495f5c4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -64,70 +64,70 @@ return {
 		end;
 		if p1.Team then
 			local v18 = 0;
-			for v19, v20 in pairs(p1.Team.members) do
+			for v19 in pairs(p1.Team.members) do
 				v18 = v18 + 1;
 			end;
-			local v21 = v18;
+			local v20 = v18;
 		else
-			local v22 = l__Players__2:GetPlayers();
-			local function v23(p4)
-				local v24 = true;
+			local v21 = l__Players__2:GetPlayers();
+			local function v22(p4)
+				local v23 = true;
 				if p4.Team ~= nil then
-					v24 = p4.Team.Name == "Spectators";
+					v23 = p4.Team.Name == "Spectators";
 				end;
-				return v24;
+				return v23;
 			end;
-			local v25 = {};
-			local v26 = 0;
-			for v27, v28 in ipairs(v22) do
-				if v23(v28, v27 - 1, v22) == true then
-					v26 = v26 + 1;
-					v25[v26] = v28;
+			local v24 = {};
+			local v25 = 0;
+			for v26, v27 in ipairs(v21) do
+				if v22(v27, v26 - 1, v21) == true then
+					v25 = v25 + 1;
+					v24[v25] = v27;
 				end;
 			end;
-			v21 = #v25;
+			v20 = #v24;
 		end;
-		local v29 = v17;
+		local v28 = v17;
 		if v4 then
-			v29 = v17 .. " (" .. tostring(v21) .. "/" .. tostring(v11) .. ")";
+			v28 = v17 .. " (" .. tostring(v20) .. "/" .. tostring(v11) .. ")";
 		end;
-		local v30 = {};
-		local v31 = {
-			Text = v29, 
+		local v29 = {};
+		local v30 = {
+			Text = v28, 
 			Size = UDim2.fromScale(1, 1)
 		};
-		function v31.OnClick()
+		function v30.OnClick()
 			l__SoundManager__5:playSound(l__GameSound__6.UI_CLICK);
-			local v32 = p1.Team;
-			if v32 ~= nil then
-				v32 = v32.name;
+			local v31 = p1.Team;
+			if v31 ~= nil then
+				v31 = v31.name;
 			end;
-			local v33 = v32;
-			if v33 == nil then
-				v33 = "spectators";
+			local v32 = v31;
+			if v32 == nil then
+				v32 = "spectators";
 			end;
-			l__default__7.Client:GetNamespace("CustomMatches"):Get("SelectTeam"):CallServerAsync(v33):andThen(function(p5)
+			l__default__7.Client:GetNamespace("CustomMatches"):Get("SelectTeam"):CallServerAsync(v32):andThen(function(p5)
 
 			end);
 		end;
-		v30[1] = u3.createElement("UIAspectRatioConstraint", {
+		v29[1] = u3.createElement("UIAspectRatioConstraint", {
 			AspectRatio = 3, 
 			DominantAxis = "Height"
 		});
-		v30[2] = u3.createElement(l__Button__4, v31);
-		local v34 = v12 and u3.createElement("Frame", {
+		v29[2] = u3.createElement(l__Button__4, v30);
+		local v33 = v12 and u3.createElement("Frame", {
 			Size = UDim2.new(1, 0, 0.05, 0), 
 			BackgroundColor3 = Color3.fromRGB(255, 255, 255), 
 			BorderSizePixel = 0, 
 			Position = UDim2.fromScale(0.5, -0.05), 
 			AnchorPoint = Vector2.new(0.5, 1)
 		});
-		if v34 then
-			v30[#v30 + 1] = v34;
+		if v33 then
+			v29[#v29 + 1] = v33;
 		end;
 		return u3.createElement(l__Empty__8, {
 			Size = UDim2.fromScale(1, 1), 
 			LayoutOrder = p1.LayoutOrder
-		}, v30);
+		}, v29);
 	end)
 };

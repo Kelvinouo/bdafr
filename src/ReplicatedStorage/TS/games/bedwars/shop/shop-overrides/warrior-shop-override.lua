@@ -1,4 +1,4 @@
--- Script Hash: 76d9651df44a45ec43bf7b0952943331330d269efacb48d589164e188cf0e692954b2473ae198cb024528426d54c400b
+-- Script Hash: d2a1009a2680f87fa5611e5fe00dc9bfe5e546996af8bc84a47771526493260140d6bb207e454bbc192b4a1f47514ae7
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -48,6 +48,9 @@ function v4.getOverride(p4)
 			itemType = l__ItemType__3.EMERALD_CHESTPLATE, 
 			price = 36, 
 			category = l__BedwarsShopItemCategory__5.Combat
+		}, {
+			itemType = l__ItemType__3.VOID_CHESTPLATE, 
+			price = 14
 		} };
 end;
 u1 = v4.new;

@@ -1,4 +1,4 @@
--- Script Hash: c4c5ca7e97805c7a69973cf33dad9f549d7b532ff4d5bb501b207a047f56faeb8bd4342d6f515ae724b38fd4b1c4af47
+-- Script Hash: a71e5ced9a1b6968d49dca56d6d49b7d77ab4f4de332fe562a3cb3348d67cbc5bec7973f426fcc3bb3b2cc07ae4a89f4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = { { 0.25, 0.25, -0.25 }, { -0.25, 0.25, -0.25 }, { 0.25, 0.25, 0.25 }, { -0.25, 0.25, 0.25 }, { 0.25, -0.25, -0.25 }, { -0.25, -0.25, -0.25 }, { 0.25, -0.25, 0.25 }, { -0.25, -0.25, 0.25 } };
@@ -18,22 +18,22 @@ local function u2(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
 		local v11 = p5 - l__Position__8[3];
 		if v9 * v9 + v10 * v10 + v11 * v11 <= v4 then
 			if v7.Depth == p8 then
-				for v12, v13 in next, v7.Nodes do
-					local v14 = v12.PositionX - p3;
-					local v15 = v12.PositionY - p4;
-					local v16 = v12.PositionZ - p5;
-					local v17 = v14 * v14 + v15 * v15 + v16 * v16;
-					if v17 <= v5 then
+				for v12 in next, v7.Nodes do
+					local v13 = v12.PositionX - p3;
+					local v14 = v12.PositionY - p4;
+					local v15 = v12.PositionZ - p5;
+					local v16 = v13 * v13 + v14 * v14 + v15 * v15;
+					if v16 <= v5 then
 						p9 = p9 + 1;
 						p10 = p10 + 1;
 						p6[p9] = v12.Object;
-						p7[p10] = v17;
+						p7[p10] = v16;
 					end;
 				end;
 			else
-				local v18, v19 = u2(v7, p2, p3, p4, p5, p6, p7, p8, p9, p10);
-				p9 = v18;
-				p10 = v19;
+				local v17, v18 = u2(v7, p2, p3, p4, p5, p6, p7, p8, p9, p10);
+				p9 = v17;
+				p10 = v18;
 			end;
 		end;
 	end;

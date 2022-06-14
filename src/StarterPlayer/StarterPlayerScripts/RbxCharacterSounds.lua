@@ -1,4 +1,4 @@
--- Script Hash: 2c0ad54eda6721a39a13c18129ccfa889ea1fea7fb2ce7f5ad4333d7afbec5a98c7865f9e04603f1218f937647bcc2be
+-- Script Hash: fbe6fffc0493b2599afb83be9492f32f23cd9e01c2d0ff798b1f81a4f5bf52f36ff7ab9efd29cabba63017747d1b586d
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = nil;
@@ -77,7 +77,7 @@ v1 = function(p8)
 	local u6 = {};
 	local v17 = {};
 	local function u7(p9)
-		for v18, v19 in pairs(u2(u6)) do
+		for v18 in pairs(u2(u6)) do
 			if v18 ~= p9 then
 				v18.Playing = false;
 				u6[v18] = nil;
@@ -96,9 +96,9 @@ v1 = function(p8)
 		u3(v11.Jumping);
 	end;
 	v17[Enum.HumanoidStateType.Swimming] = function()
-		local v20 = math.abs(l__rootPart__10.AssemblyLinearVelocity.Y);
-		if v20 > 0.1 then
-			v11.Splash.Volume = math.clamp(u4(v20, 100, 350, 0.28, 1), 0, 1);
+		local v19 = math.abs(l__rootPart__10.AssemblyLinearVelocity.Y);
+		if v19 > 0.1 then
+			v11.Splash.Volume = math.clamp(u4(v19, 100, 350, 0.28, 1), 0, 1);
 			u3(v11.Splash);
 		end;
 		u7(v11.Swimming);
@@ -112,9 +112,9 @@ v1 = function(p8)
 	end;
 	v17[Enum.HumanoidStateType.Landed] = function()
 		u7();
-		local v21 = math.abs(l__rootPart__10.AssemblyLinearVelocity.Y);
-		if v21 > 75 then
-			v11.Landing.Volume = math.clamp(u4(v21, 50, 100, 0, 1), 0, 1);
+		local v20 = math.abs(l__rootPart__10.AssemblyLinearVelocity.Y);
+		if v20 > 75 then
+			v11.Landing.Volume = math.clamp(u4(v20, 50, 100, 0, 1), 0, 1);
 			u3(v11.Landing);
 		end;
 	end;
@@ -124,14 +124,14 @@ v1 = function(p8)
 		u6[v11.Running] = true;
 	end;
 	v17[Enum.HumanoidStateType.Climbing] = function()
-		local l__Climbing__22 = v11.Climbing;
+		local l__Climbing__21 = v11.Climbing;
 		if math.abs(l__rootPart__10.AssemblyLinearVelocity.Y) > 0.1 then
-			l__Climbing__22.Playing = true;
-			u7(l__Climbing__22);
+			l__Climbing__21.Playing = true;
+			u7(l__Climbing__21);
 		else
 			u7();
 		end;
-		u6[l__Climbing__22] = true;
+		u6[l__Climbing__21] = true;
 	end;
 	v17[Enum.HumanoidStateType.Seated] = function()
 		u7();
@@ -140,7 +140,7 @@ v1 = function(p8)
 		u7();
 		u3(v11.Died);
 	end;
-	local v23 = {
+	local v22 = {
 		[v11.Climbing] = function(p10, p11, p12)
 			p11.Playing = p12.Magnitude > 0.1;
 		end, 
@@ -153,39 +153,39 @@ v1 = function(p8)
 		end
 	};
 	local l__humanoid__8 = p8.humanoid;
-	v23[v11.Running] = function(p16, p17, p18)
-		local v24 = false;
+	v22[v11.Running] = function(p16, p17, p18)
+		local v23 = false;
 		if p18.Magnitude > 0.5 then
-			v24 = l__humanoid__8.MoveDirection.Magnitude > 0.5;
+			v23 = l__humanoid__8.MoveDirection.Magnitude > 0.5;
 		end;
-		p17.Playing = v24;
+		p17.Playing = v23;
 	end;
-	local v25 = {
+	local v24 = {
 		[Enum.HumanoidStateType.RunningNoPhysics] = Enum.HumanoidStateType.Running
 	};
-	local u9 = v25[l__humanoid__8:GetState()] or l__humanoid__8:GetState();
+	local u9 = v24[l__humanoid__8:GetState()] or l__humanoid__8:GetState();
 	local u10 = l__humanoid__8.StateChanged:Connect(function(p19, p20)
-		p20 = v25[p20] and p20;
+		p20 = v24[p20] and p20;
 		if p20 ~= u9 then
-			local v26 = v17[p20];
-			if v26 then
-				v26();
+			local v25 = v17[p20];
+			if v25 then
+				v25();
 			end;
 			u9 = p20;
 		end;
 	end);
 	local u11 = l__RunService__3.Stepped:Connect(function(p21, p22)
-		for v27, v28 in pairs(u6) do
-			local v29 = v23[v27];
-			if v29 then
-				v29(p22, v27, l__rootPart__10.AssemblyLinearVelocity);
+		for v26 in pairs(u6) do
+			local v27 = v22[v26];
+			if v27 then
+				v27(p22, v26, l__rootPart__10.AssemblyLinearVelocity);
 			end;
 		end;
 	end);
 	local u12 = nil;
 	local u13 = nil;
 	local u14 = nil;
-	local function v30()
+	local function v28()
 		u10:Disconnect();
 		u11:Disconnect();
 		if not u5 then
@@ -197,17 +197,17 @@ v1 = function(p8)
 	if not u5 then
 		u12 = l__humanoid__8.AncestryChanged:Connect(function(p23, p24)
 			if not p24 then
-				v30();
+				v28();
 			end;
 		end);
 		u13 = l__rootPart__10.AncestryChanged:Connect(function(p25, p26)
 			if not p26 then
-				v30();
+				v28();
 			end;
 		end);
-		u14 = p8.player.CharacterAdded:Connect(v30);
+		u14 = p8.player.CharacterAdded:Connect(v28);
 	end;
-	return v30;
+	return v28;
 end;
 if u5 then
 	local u15 = v4.new({
@@ -221,27 +221,27 @@ if u5 then
 	local function u18(p28)
 		u15:unbindRoot(p28);
 	end;
-	local function v31(p29)
-		local v32 = u16[p29];
-		if not v32 then
-			v32 = {};
-			u16[p29] = v32;
+	local function v29(p29)
+		local v30 = u16[p29];
+		if not v30 then
+			v30 = {};
+			u16[p29] = v30;
 		end;
 		if p29.Character then
 			u17(p29.Character);
 		end;
-		table.insert(v32, p29.CharacterAdded:Connect(u17));
-		table.insert(v32, p29.CharacterRemoving:Connect(u18));
+		table.insert(v30, p29.CharacterAdded:Connect(u17));
+		table.insert(v30, p29.CharacterRemoving:Connect(u18));
 	end;
-	for v33, v34 in ipairs(l__Players__2:GetPlayers()) do
-		task.spawn(v31, v34);
+	for v31, v32 in ipairs(l__Players__2:GetPlayers()) do
+		task.spawn(v29, v32);
 	end;
-	l__Players__2.PlayerAdded:Connect(v31);
+	l__Players__2.PlayerAdded:Connect(v29);
 	l__Players__2.PlayerRemoving:Connect(function(p30)
-		local v35 = u16[p30];
-		if v35 then
-			for v36, v37 in ipairs(v35) do
-				v37:Disconnect();
+		local v33 = u16[p30];
+		if v33 then
+			for v34, v35 in ipairs(v33) do
+				v35:Disconnect();
 			end;
 			u16[p30] = nil;
 		end;
@@ -253,53 +253,53 @@ else
 	local function u19(...)
 		local u20 = { ... };
 		local u21 = Instance.new("BindableEvent");
-		local function v38(...)
-			for v39 = 1, #u20 do
-				u20[v39]:Disconnect();
+		local function v36(...)
+			for v37 = 1, #u20 do
+				u20[v37]:Disconnect();
 			end;
 			return u21:Fire(...);
 		end;
-		for v40 = 1, #u20 do
-			u20[v40] = u20[v40]:Connect(v38);
+		for v38 = 1, #u20 do
+			u20[v38] = u20[v38]:Connect(v36);
 		end;
 		return u21.Event:Wait();
 	end;
-	local function v41(p31)
-		local function v42(p32)
+	local function v39(p31)
+		local function v40(p32)
 			if not p32.Parent then
 				u19(p32.AncestryChanged, p31.CharacterAdded);
 			end;
 			if p31.Character ~= p32 or not p32.Parent then
 				return;
 			end;
-			local v43 = p32:FindFirstChildOfClass("Humanoid");
-			while p32:IsDescendantOf(game) and not v43 do
+			local v41 = p32:FindFirstChildOfClass("Humanoid");
+			while p32:IsDescendantOf(game) and not v41 do
 				u19(p32.ChildAdded, p32.AncestryChanged, p31.CharacterAdded);
-				v43 = p32:FindFirstChildOfClass("Humanoid");			
+				v41 = p32:FindFirstChildOfClass("Humanoid");			
 			end;
 			if p31.Character ~= p32 or not p32:IsDescendantOf(game) then
 				return;
 			end;
-			local v44 = p32:FindFirstChild("HumanoidRootPart");
-			while p32:IsDescendantOf(game) and not v44 do
-				u19(p32.ChildAdded, p32.AncestryChanged, v43.AncestryChanged, p31.CharacterAdded);
-				v44 = p32:FindFirstChild("HumanoidRootPart");			
+			local v42 = p32:FindFirstChild("HumanoidRootPart");
+			while p32:IsDescendantOf(game) and not v42 do
+				u19(p32.ChildAdded, p32.AncestryChanged, v41.AncestryChanged, p31.CharacterAdded);
+				v42 = p32:FindFirstChild("HumanoidRootPart");			
 			end;
-			if v44 and v43:IsDescendantOf(game) and p32:IsDescendantOf(game) and p31.Character == p32 then
+			if v42 and v41:IsDescendantOf(game) and p32:IsDescendantOf(game) and p31.Character == p32 then
 				v1({
 					player = p31, 
-					humanoid = v43, 
-					rootPart = v44
+					humanoid = v41, 
+					rootPart = v42
 				});
 			end;
 		end;
 		if p31.Character then
-			v42(p31.Character);
+			v40(p31.Character);
 		end;
-		p31.CharacterAdded:Connect(v42);
+		p31.CharacterAdded:Connect(v40);
 	end;
-	l__Players__2.PlayerAdded:Connect(v41);
-	for v45, v46 in ipairs(l__Players__2:GetPlayers()) do
-		v41(v46);
+	l__Players__2.PlayerAdded:Connect(v39);
+	for v43, v44 in ipairs(l__Players__2:GetPlayers()) do
+		v39(v44);
 	end;
 end;

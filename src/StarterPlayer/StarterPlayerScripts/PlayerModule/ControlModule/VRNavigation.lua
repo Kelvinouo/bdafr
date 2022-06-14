@@ -1,4 +1,4 @@
--- Script Hash: f5cbff7f0052dbb40b867b7eb161dc5fdfb76bd223df1e1a97cfe490387903606aa1fef06d8f1a54907e7d9ce8f2ef6e
+-- Script Hash: 2bf727d023351c3418546f4efa2346250c347e5f3907af261a78090545d8ef6b0b04a1505ff18c61b46efb5ddfc35406
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__VRService__1 = game:GetService("VRService");

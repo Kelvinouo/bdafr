@@ -1,4 +1,4 @@
--- Script Hash: 084ffea2c8c69780cf6fa7255923c2c9364fb9211f8319f4085bd0d2716b27e571c7448f969134223ea60654d8f59696
+-- Script Hash: 308b0799a01b965c1922d252fac3374ca33c9625b5e9e8e88e5d46616352b17d195b3573ec529feb00602160a4f5713e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -6,7 +6,7 @@ local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").ou
 local l__Theme__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local u2 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__TopBarButton__3 = v2.TopBarButton;
-local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__ImageId__5 = v2.ImageId;
 local u6 = nil;
 u6 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u2)(function(p1, p2)

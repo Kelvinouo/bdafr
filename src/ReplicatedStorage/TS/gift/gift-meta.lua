@@ -1,4 +1,4 @@
--- Script Hash: ea4df895ada3333d0e73557647b51a62a71bb10963dcb233fd29e54c0bff4c0ee3276faabceaf188223fe7870c3ea7c4
+-- Script Hash: d0386a220640363b40eee43c4aeba8fdafa1c72eb46c984b9cceb3f3b8faa815968d5e84f8a59b0b2ab26377f6af56c1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = nil;

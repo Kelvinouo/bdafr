@@ -1,4 +1,4 @@
--- Script Hash: 6da5ecbf19f6c877ebdbdbae51b2af3b4f2439eebc58a4247ab45e28f1e5fdf0e34fbb0b2d327ca30d58335735f25e89
+-- Script Hash: 2d5474b61317d05310483f18a773e56c598367fd864114f1f35ca7ea350c98f109a3a428a6db24c11acc28fb09b60f0b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local function u1(p1)

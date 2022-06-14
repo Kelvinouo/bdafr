@@ -1,4 +1,4 @@
--- Script Hash: d4b2cb2440be73c584f4f878376defa7bce325b701baaa792947ec8ef240a978894c6686006f010e6b23980d3d482115
+-- Script Hash: bf05cc5e756fb4d8670fdbd526df83bc716c822ae3d36f2b441fc63cd87cce0c7bb9c0709703fd15b4ce8b6a55db75a6
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -283,16 +283,16 @@ v4.CYBER_DEFENSE = "cyber_defense";
 v3.cyber_defense = "CYBER_DEFENSE";
 v4.CYBER_MAD = "cyber_mad";
 v3.cyber_mad = "CYBER_MAD";
-v4.CYBER_OVERHEAT = "cyber_overheat";
-v3.cyber_overheat = "CYBER_OVERHEAT";
+v4.VULCAN_OVERHEAT = "vulcan_overheat";
+v3.vulcan_overheat = "VULCAN_OVERHEAT";
 v4.DINO_HAI = "dino_hai";
 v3.dino_hai = "DINO_HAI";
 v4.DINO_RAWR = "dino_rawr";
 v3.dino_rawr = "DINO_RAWR";
 v4.DINO_YIPEEE = "dino_yipeee";
 v3.dino_yipeee = "DINO_YIPEEE";
-v4.FREIYA_BEG = "freiya_beg";
-v3.freiya_beg = "FREIYA_BEG";
+v4.FREIYA_HEARTS = "freiya_hearts";
+v3.freiya_hearts = "FREIYA_HEARTS";
 v4.LUMEN_PAIN = "lumen_pain";
 v3.lumen_pain = "LUMEN_PAIN";
 v4.MELODY_YOU_ROCK = "melody_you_rock";
@@ -313,6 +313,12 @@ v4.STAR_COLLECTOR_FUN = "star_collector_fun";
 v3.star_collector_fun = "STAR_COLLECTOR_FUN";
 v4.TESLA_DANGER = "tesla_danger";
 v3.tesla_danger = "TESLA_DANGER";
+v4.JADE_IM_THE_BEST = "jade_im_the_best";
+v3.jade_im_the_best = "JADE_IM_THE_BEST";
+v4.LV50_DUO_WOMBO_COMBO = "lv50_duo_wombo_combo";
+v3.lv50_duo_wombo_combo = "LV50_DUO_WOMBO_COMBO";
+v4.SPIRIT_DUO_EZ = "spirit_duo_ez";
+v3.spirit_duo_ez = "SPIRIT_DUO_EZ";
 return {
 	EmoteDisplayType = v2, 
 	EmoteType = v4

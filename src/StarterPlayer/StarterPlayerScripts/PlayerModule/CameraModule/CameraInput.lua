@@ -1,4 +1,4 @@
--- Script Hash: 8dbdc3a1e2a2bb346928cc5adf0e857c03e5f54bf1ff5d285fd6b68eb4f3ec4c23e05c00daa2afc799eb4bdd409f6f86
+-- Script Hash: 8b2d1aa3ad88e1db9f53c8ee03a100a6d016f37d7007da52445867e908e4f34e1ff5e38bc4ba35f3be327743725901a2
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__ContextActionService__1 = game:GetService("ContextActionService");

@@ -1,4 +1,4 @@
--- Script Hash: 1bd818483137edc57e2698c0ef3a1fdb803c6c69f216fb32ce84205caf6e4fbaa919c543717e54590e83e40a4ed5c7ee
+-- Script Hash: c514d7eb8d6d4df46e151c5831c958ee892c7f33389719b72e253df6c1f5e2630c76d6ce580168810c4c91ff05a009f2
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__ContextActionService__1 = game:GetService("ContextActionService");
@@ -238,20 +238,20 @@ local u36 = nil;
 local u37 = nil;
 local u38 = nil;
 function v48.Push()
-	for v49, v50 in pairs(u30) do
+	for v49 in pairs(u30) do
 		u30[v49] = l__StarterGui__4:GetCoreGuiEnabled(Enum.CoreGuiType[v49]);
 		l__StarterGui__4:SetCoreGuiEnabled(Enum.CoreGuiType[v49], false);
 	end;
-	for v51, v52 in pairs(u31) do
-		u31[v51] = l__StarterGui__4:GetCore(v51);
-		l__StarterGui__4:SetCore(v51, false);
+	for v50 in pairs(u31) do
+		u31[v50] = l__StarterGui__4:GetCore(v50);
+		l__StarterGui__4:SetCore(v50, false);
 	end;
-	local v53 = v7:FindFirstChildOfClass("PlayerGui");
-	if v53 then
-		for v54, v55 in pairs(v53:GetChildren()) do
-			if v55:IsA("ScreenGui") and v55.Enabled then
-				u32[#u32 + 1] = v55;
-				v55.Enabled = false;
+	local v51 = v7:FindFirstChildOfClass("PlayerGui");
+	if v51 then
+		for v52, v53 in pairs(v51:GetChildren()) do
+			if v53:IsA("ScreenGui") and v53.Enabled then
+				u32[#u32 + 1] = v53;
+				v53.Enabled = false;
 			end;
 		end;
 	end;
@@ -267,15 +267,15 @@ function v48.Push()
 	l__UserInputService__5.MouseBehavior = Enum.MouseBehavior.Default;
 end;
 function v48.Pop()
-	for v56, v57 in pairs(u30) do
-		l__StarterGui__4:SetCoreGuiEnabled(Enum.CoreGuiType[v56], v57);
+	for v54, v55 in pairs(u30) do
+		l__StarterGui__4:SetCoreGuiEnabled(Enum.CoreGuiType[v54], v55);
 	end;
-	for v58, v59 in pairs(u31) do
-		l__StarterGui__4:SetCore(v58, v59);
+	for v56, v57 in pairs(u31) do
+		l__StarterGui__4:SetCore(v56, v57);
 	end;
-	for v60, v61 in pairs(u32) do
-		if v61.Parent then
-			v61.Enabled = true;
+	for v58, v59 in pairs(u32) do
+		if v59.Parent then
+			v59.Enabled = true;
 		end;
 	end;
 	u1.FieldOfView = u33;
@@ -292,15 +292,15 @@ function v48.Pop()
 	u38 = nil;
 end;
 local function u39(p34)
-	local v62 = v21:Update(p34, v24.Vel(p34));
-	local v63 = l__math_sqrt__26(l__math_tan__24(l__math_rad__25(35)) / l__math_tan__24(l__math_rad__25(u23 / 2)));
-	u23 = l__math_clamp__8(u23 + v23:Update(p34, v24.Fov(p34)) * 300 * (p34 / v63), 1, 120);
-	u27 = u27 + v22:Update(p34, v24.Pan(p34)) * v10 * (p34 / v63);
+	local v60 = v21:Update(p34, v24.Vel(p34));
+	local v61 = l__math_sqrt__26(l__math_tan__24(l__math_rad__25(35)) / l__math_tan__24(l__math_rad__25(u23 / 2)));
+	u23 = l__math_clamp__8(u23 + v23:Update(p34, v24.Fov(p34)) * 300 * (p34 / v61), 1, 120);
+	u27 = u27 + v22:Update(p34, v24.Pan(p34)) * v10 * (p34 / v61);
 	u27 = Vector2.new(l__math_clamp__8(u27.x, -v11, v11), u27.y % (2 * l__math_pi__2));
-	local v64 = CFrame.new(u28) * CFrame.fromOrientation(u27.x, u27.y, 0) * CFrame.new(v62 * v9 * p34);
-	u28 = v64.p;
-	u1.CFrame = v64;
-	u1.Focus = v64 * CFrame.new(0, 0, -u29(v64));
+	local v62 = CFrame.new(u28) * CFrame.fromOrientation(u27.x, u27.y, 0) * CFrame.new(v60 * v9 * p34);
+	u28 = v62.p;
+	u1.CFrame = v62;
+	u1.Focus = v62 * CFrame.new(0, 0, -u29(v62));
 	u1.FieldOfView = u23;
 end;
 local u40 = false;
@@ -312,9 +312,9 @@ local function u41()
 end;
 local function u42()
 	l__Workspace__6:SetAttribute("FreecamEnabled", true);
-	local l__CFrame__65 = u1.CFrame;
-	u27 = Vector2.new(l__CFrame__65:toEulerAnglesYXZ());
-	u28 = l__CFrame__65.p;
+	local l__CFrame__63 = u1.CFrame;
+	u27 = Vector2.new(l__CFrame__63:toEulerAnglesYXZ());
+	u28 = l__CFrame__63.p;
 	u23 = u1.FieldOfView;
 	v21:Reset(Vector3.new());
 	v22:Reset(Vector2.new());
@@ -333,8 +333,8 @@ local function u43()
 end;
 local u44 = { Enum.KeyCode.LeftShift, Enum.KeyCode.P };
 local function u45(p35)
-	for v66 = 1, #p35 - 1 do
-		if not l__UserInputService__5:IsKeyDown(p35[v66]) then
+	for v64 = 1, #p35 - 1 do
+		if not l__UserInputService__5:IsKeyDown(p35[v64]) then
 			return;
 		end;
 	end;

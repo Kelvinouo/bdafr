@@ -1,4 +1,4 @@
--- Script Hash: eafb2fdfc452b598f7ca3a3c9fca1160570bfe8f3b498d627aed78eeff9a651d7dbbd15a55ecbb10eebb1e0d77630620
+-- Script Hash: ad2f4dbe96b2ab313cab5cede908bf34ffbd23110bce259a779f1d99870770c63b47fba265c9c50e1a8536332ab75929
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -76,16 +76,20 @@ return {
 				emote = l__EmoteType__4.ROCK_PAPER_SCISSORS
 			}, {
 				paid = true, 
-				level = 4, 
-				emote = l__EmoteType__4.DINO_HAI
+				level = 1, 
+				emote = l__EmoteType__4.VULCAN_OVERHEAT
 			}, {
 				paid = false, 
 				level = 2, 
 				emote = l__EmoteType__4.SMOKE_WAVE
 			}, {
 				paid = true, 
-				level = 1, 
-				emote = l__EmoteType__4.CYBER_OVERHEAT
+				level = 4, 
+				emote = l__EmoteType__4.DINO_HAI
+			}, {
+				paid = false, 
+				level = 5, 
+				emote = l__EmoteType__4.JADE_IM_THE_BEST
 			}, {
 				paid = false, 
 				level = 6, 
@@ -93,7 +97,7 @@ return {
 			}, {
 				paid = true, 
 				level = 8, 
-				emote = l__EmoteType__4.FREIYA_BEG
+				emote = l__EmoteType__4.FREIYA_HEARTS
 			}, {
 				paid = true, 
 				level = 11, 
@@ -116,8 +120,12 @@ return {
 				emote = l__EmoteType__4.BAKER_PIECE_OF_CAKE
 			}, {
 				paid = true, 
-				level = 21, 
+				level = 20, 
 				emote = l__EmoteType__4.DINO_RAWR
+			}, {
+				paid = true, 
+				level = 21, 
+				emote = l__EmoteType__4.SPIRIT_DUO_EZ
 			}, {
 				paid = false, 
 				level = 23, 
@@ -134,6 +142,10 @@ return {
 				paid = true, 
 				level = 28, 
 				emote = l__EmoteType__4.CYBER_MAD
+			}, {
+				paid = false, 
+				level = 31, 
+				emote = l__EmoteType__4.LV50_DUO_WOMBO_COMBO
 			}, {
 				paid = true, 
 				level = 31, 

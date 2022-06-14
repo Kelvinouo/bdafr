@@ -1,4 +1,4 @@
--- Script Hash: c29993a78060b03e5c20d082741975a456abaaf6520a2c220ee8f4d3cfd2013bd183bf4264e655b6600e0c66dcfc2b69
+-- Script Hash: b4b483c72278fcd39921db6fb80a8fa9ede1b9a4128136f6edc477be025815c1a47a3132edfba10205a115a87e899170
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -35,7 +35,7 @@ return {
 				Padding = UDim.new(0, 6)
 			}), u1.createElement("TextLabel", {
 				Size = UDim2.fromScale(1, 0.4), 
-				Text = "<b><font color=\"" .. l__ColorUtil__2.richTextColor(l__BPRewardDisplayMeta__3[l__BPRewardDisplayType__4.KIT].borderColor) .. "\">6 Kits</font>, <font color=\"" .. l__ColorUtil__2.richTextColor(l__BPRewardDisplayMeta__3[l__BPRewardDisplayType__4.KIT_SKIN].borderColor) .. "\">2 Kit Skins</font>, <font color=\"" .. l__ColorUtil__2.richTextColor(l__BPRewardDisplayMeta__3[l__BPRewardDisplayType__4.LOBBY_GADGET].borderColor) .. "\">3 Lobby Gadgets</font>, <font color=\"" .. l__ColorUtil__2.richTextColor(l__BPRewardDisplayMeta__3[l__BPRewardDisplayType__4.EMOTE].borderColor) .. "\">3 Animated Emotes</font>, 24 Image Emotes, & 16 Titles!</b>", 
+				Text = "<b><font color=\"" .. l__ColorUtil__2.richTextColor(l__BPRewardDisplayMeta__3[l__BPRewardDisplayType__4.KIT].borderColor) .. "\">6 Kits</font>, <font color=\"" .. l__ColorUtil__2.richTextColor(l__BPRewardDisplayMeta__3[l__BPRewardDisplayType__4.KILL_EFFECT].borderColor) .. "\">3 Kill Effects</font>, <font color=\"" .. l__ColorUtil__2.richTextColor(l__BPRewardDisplayMeta__3[l__BPRewardDisplayType__4.LOBBY_GADGET].borderColor) .. "\">3 Lobby Gadgets</font>, <font color=\"" .. l__ColorUtil__2.richTextColor(l__BPRewardDisplayMeta__3[l__BPRewardDisplayType__4.EMOTE].borderColor) .. "\">3 Animated Emotes</font>, 27 Image Emotes, & 16 Titles!</b>", 
 				TextXAlignment = "Center", 
 				TextScaled = true, 
 				RichText = true, 

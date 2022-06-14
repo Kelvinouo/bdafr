@@ -1,4 +1,4 @@
--- Script Hash: 8fe0564539b4c8ae4d80dc0177d05f3c245bda8dcdf4b50c5722a2fe5103397c1e59622e3f6307732a570adea9ffd672
+-- Script Hash: b9a9067c5f4d194d7d5c05e07e9bb19bbbb87d85c1dffde9ee73b8abb6b0ecd6922b63c12025885ef96a2368da13a9fd
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -59,7 +59,7 @@ return {
 				Size = UDim2.new(0.68, -10, 1, 0)
 			}, {
 				TopFrameRow = u4.createElement("Frame", {
-					Size = UDim2.new(1, 0, 0.3, -10), 
+					Size = UDim2.new(1, 0, 0.3, -5), 
 					BackgroundTransparency = 1, 
 					LayoutOrder = 1
 				}, { u4.createElement("UIPadding", {
@@ -83,10 +83,10 @@ return {
 					HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 					VerticalAlignment = Enum.VerticalAlignment.Top, 
 					SortOrder = Enum.SortOrder.LayoutOrder, 
-					Padding = UDim.new(0, 20)
+					Padding = UDim.new(0, 10)
 				}), u4.createElement(l__BattlePassRewardsList__5, {
 					store = p1.store, 
-					Size = UDim2.new(1, 0, 0.7, -10), 
+					Size = UDim2.new(1, 0, 0.7, -5), 
 					SetReward = v9, 
 					LayoutOrder = 2
 				})

@@ -213,7 +213,7 @@ function v6.onEnable(p8, p9, p10)
 	if v35 then
 		p8.maid:GiveTask(v35:GetAttributeChangedSignal("PlayerStoredInVacuum"):Connect(function()
 			if v35:GetAttribute("PlayerStoredInVacuum") ~= true then
-				for v36, v37 in pairs(p8.activeProximityPrompts) do
+				for v36 in pairs(p8.activeProximityPrompts) do
 					v36.Enabled = true;
 				end;
 				if p8.uiMaid then
@@ -222,8 +222,8 @@ function v6.onEnable(p8, p9, p10)
 				end;
 				return;
 			end;
-			for v38, v39 in pairs(p8.activeProximityPrompts) do
-				v38.Enabled = false;
+			for v37 in pairs(p8.activeProximityPrompts) do
+				v37.Enabled = false;
 			end;
 			p8.uiMaid = l__Flamework__11.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(u17.createElement(l__ActionButton__18, {
 				actionName = "vacuum-release", 
@@ -239,120 +239,120 @@ function v6.onEnable(p8, p9, p10)
 			}));
 		end));
 	end;
-	for v40, v41 in ipairs(l__EntityUtil__6:getAliveEntityInstances()) do
-		if v41:GetAttribute("Team") ~= l__Players__13.LocalPlayer:GetAttribute("Team") and v41.PrimaryPart then
-			local v42 = {
+	for v38, v39 in ipairs(l__EntityUtil__6:getAliveEntityInstances()) do
+		if v39:GetAttribute("Team") ~= l__Players__13.LocalPlayer:GetAttribute("Team") and v39.PrimaryPart then
+			local v40 = {
 				Name = "VacuumProximityPrompt", 
 				ActionText = "Vacuum", 
 				Enabled = true, 
-				ObjectText = v41.Name, 
+				ObjectText = v39.Name, 
 				KeyboardKeyCode = l__Theme__20.promptKeyboardKey, 
 				HoldDuration = 1.5, 
 				MaxActivationDistance = 16
 			};
 			local u23 = u2.new();
-			function v42.PromptButtonHoldBegan()
-				local v43 = l__GameAnimationUtil__21.playAnimation(l__Players__13.LocalPlayer, l__AnimationType__22.PLAYER_VACUUM_SUCK, {
+			function v40.PromptButtonHoldBegan()
+				local v41 = l__GameAnimationUtil__21.playAnimation(l__Players__13.LocalPlayer, l__AnimationType__22.PLAYER_VACUUM_SUCK, {
 					looped = true
 				});
-				if v43 then
+				if v41 then
 					u23:GiveTask(function()
-						return v43:Stop();
+						return v41:Stop();
 					end);
 				end;
 				l__default__5.Client:Get("RemoteName"):SendToServer({
 					action = "BeginCharging", 
-					entityInstance = v41
+					entityInstance = v39
 				});
 			end;
-			function v42.PromptButtonHoldEnded()
+			function v40.PromptButtonHoldEnded()
 				u23:DoCleaning();
 				l__default__5.Client:Get("RemoteName"):SendToServer({
 					action = "StopCharging", 
-					entityInstance = v41
+					entityInstance = v39
 				});
 			end;
-			function v42.Triggered()
+			function v40.Triggered()
 				l__default__5.Client:Get("RemoteName"):SendToServer({
 					action = "Suck", 
-					entityInstance = v41
+					entityInstance = v39
 				});
 			end;
-			v42.RequiresLineOfSight = false;
-			v42.Parent = v41.PrimaryPart;
-			p8.activeProximityPrompts[u19("ProximityPrompt", v42)] = true;
+			v40.RequiresLineOfSight = false;
+			v40.Parent = v39.PrimaryPart;
+			p8.activeProximityPrompts[u19("ProximityPrompt", v40)] = true;
 		end;
 	end;
 end;
 function v6.onDisable(p11)
 	p11.maid:DoCleaning();
-	local l__uiMaid__44 = p11.uiMaid;
-	if l__uiMaid__44 ~= nil then
-		l__uiMaid__44:DoCleaning();
+	local l__uiMaid__42 = p11.uiMaid;
+	if l__uiMaid__42 ~= nil then
+		l__uiMaid__42:DoCleaning();
 	end;
-	for v45, v46 in pairs(p11.activeProximityPrompts) do
-		v45:Destroy();
+	for v43 in pairs(p11.activeProximityPrompts) do
+		v43:Destroy();
 	end;
 end;
 function v6.cleanVacuumingEffect(p12, p13)
-	local v47 = p12.activeVacuumingEffects[p13];
-	if v47 then
+	local v44 = p12.activeVacuumingEffects[p13];
+	if v44 then
 		p12.activeVacuumingEffects[p13] = nil;
-		v47.beam:Destroy();
-		v47.sound:Destroy();
-		local l__shakeMaid__48 = v47.shakeMaid;
-		if l__shakeMaid__48 ~= nil then
-			l__shakeMaid__48:DoCleaning();
+		v44.beam:Destroy();
+		v44.sound:Destroy();
+		local l__shakeMaid__45 = v44.shakeMaid;
+		if l__shakeMaid__45 ~= nil then
+			l__shakeMaid__45:DoCleaning();
 		end;
 	end;
 end;
 local l__ReplicatedStorage__24 = v4.ReplicatedStorage;
 function v6.createVacuumingEffect(p14, p15, p16, p17)
-	local l__hand__49 = l__InventoryUtil__14.getInventory(p15).hand;
-	if l__hand__49 == nil then
+	local l__hand__46 = l__InventoryUtil__14.getInventory(p15).hand;
+	if l__hand__46 == nil then
 		return nil;
 	end;
-	local v50 = p15 == l__Players__13.LocalPlayer;
-	local v51 = {};
-	if v50 then
-		local v52 = nil;
+	local v47 = p15 == l__Players__13.LocalPlayer;
+	local v48 = {};
+	if v47 then
+		local v49 = nil;
 	else
-		v52 = p16:GetPrimaryPartCFrame().Position;
+		v49 = p16:GetPrimaryPartCFrame().Position;
 	end;
-	v51.position = v52;
-	if v50 then
-		local v53 = nil;
+	v48.position = v49;
+	if v47 then
+		local v50 = nil;
 	else
-		v53 = p16.PrimaryPart;
+		v50 = p16.PrimaryPart;
 	end;
-	v51.parent = v53;
-	local v54 = l__SoundManager__7:playSound(l__GameSound__8.GHOST_VACUUM_SUCKING_LOOP, v51);
-	if v54 == nil then
+	v48.parent = v50;
+	local v51 = l__SoundManager__7:playSound(l__GameSound__8.GHOST_VACUUM_SUCKING_LOOP, v48);
+	if v51 == nil then
 		return nil;
 	end;
-	local v55 = nil;
-	if v50 == true then
-		local v56 = p17:GetPrimaryPartCFrame();
-		v55 = l__KnitClient__9.Controllers.ScreenShakeController:shake(v56.Position, v56 * Vector3.new(-0.25, 0, -1) - v56.Position, {
+	local v52 = nil;
+	if v47 == true then
+		local v53 = p17:GetPrimaryPartCFrame();
+		v52 = l__KnitClient__9.Controllers.ScreenShakeController:shake(v53.Position, v53 * Vector3.new(-0.25, 0, -1) - v53.Position, {
 			magnitude = 0.2, 
 			duration = 1.5, 
 			cycles = 40
 		});
 	end;
-	local v57 = l__ReplicatedStorage__24.Assets.Effects.VacuumBeam:Clone();
-	v57.Name = "PlayerVacuumBeam";
-	local v58 = l__hand__49.tool:FindFirstChild("Handle");
-	if v58 ~= nil then
-		v58 = v58:FindFirstChild("BeamAttachment");
+	local v54 = l__ReplicatedStorage__24.Assets.Effects.VacuumBeam:Clone();
+	v54.Name = "PlayerVacuumBeam";
+	local v55 = l__hand__46.tool:FindFirstChild("Handle");
+	if v55 ~= nil then
+		v55 = v55:FindFirstChild("BeamAttachment");
 	end;
-	v57.Attachment0 = v58;
-	v57.Attachment1 = p17.HumanoidRootPart.RootRigAttachment;
-	v57.Parent = p16;
+	v54.Attachment0 = v55;
+	v54.Attachment1 = p17.HumanoidRootPart.RootRigAttachment;
+	v54.Parent = p16;
 	p14.activeVacuumingEffects[p15] = {
 		startTime = l__Workspace__4:GetServerTimeNow(), 
-		beam = v57, 
-		sound = v54, 
-		shakeMaid = v55
+		beam = v54, 
+		sound = v51, 
+		shakeMaid = v52
 	};
 end;
 u1 = v3.KnitClient.CreateController;

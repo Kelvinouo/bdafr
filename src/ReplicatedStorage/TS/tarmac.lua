@@ -1,4 +1,4 @@
--- Script Hash: 0034417ac434905124d7ef99d26c0e8c94e51e09a2800a44c10a1da7b7427083ccd1547a3869a54c3c492d3c4cb71147
+-- Script Hash: 17630c60a8959263def82ce00d4efba70963c8f65898f4802c4a617ba574ed76e7ff5a1d8141002f2833d0fb0d7791bf
 -- Decompiled with the Synapse X Luau decompiler.
 
 return {
@@ -630,12 +630,13 @@ return {
 			cyber_dab = "rbxassetid://9869090487", 
 			cyber_defense = "rbxassetid://9869090746", 
 			cyber_mad = "rbxassetid://9869090944", 
-			cyber_overheat = "rbxassetid://9869091102", 
 			dino_hai = "rbxassetid://9869091312", 
 			dino_rawr = "rbxassetid://9869091636", 
 			dino_yipeee = "rbxassetid://9869091840", 
-			freiya_beg = "rbxassetid://9869091944", 
+			freiya_hearts = "rbxassetid://9877587705", 
+			jade_im_the_best = "rbxassetid://9877587939", 
 			lumen_pain = "rbxassetid://9869092095", 
+			lv50_duo_wombo_combo = "rbxassetid://9877588265", 
 			melody_you_rock = "rbxassetid://9869092278", 
 			metal_detector = "rbxassetid://9869092543", 
 			oh_my_stars = "rbxassetid://9869092705", 
@@ -643,9 +644,11 @@ return {
 			raven_rip = "rbxassetid://9869093163", 
 			reaper_got_em = "rbxassetid://9869093287", 
 			smoke_wave = "rbxassetid://9869093445", 
+			spirit_duo_ez = "rbxassetid://9877588501", 
 			star_collector_fun = "rbxassetid://9869093655", 
 			tesla_danger = "rbxassetid://9869093778", 
-			tiger_well_played = "rbxassetid://9869094059"
+			tiger_well_played = "rbxassetid://9869094059", 
+			vulcan_overheat = "rbxassetid://9877588678"
 		}, 
 		victorious_beta = "rbxassetid://9197101063"
 	}

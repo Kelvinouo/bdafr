@@ -1,4 +1,4 @@
--- Script Hash: 9aeeff3192ae35f29fba6a29fcd3ffe47b4ce4e4571441afce84068383eefe7eab4683049ab36dc6072722e9e0713c3b
+-- Script Hash: 9bc4c721cfc2197167b8d0b02e49b446ee822eaf6a9d79796f24421e372bf6384169437fca176e8f681514c5b4e8cb2d
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(script.Settings);

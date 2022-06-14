@@ -1,4 +1,4 @@
--- Script Hash: 0c7a3bf8fe207e0ae417b36d26e3aa6058be515a9aae55b8cccacd05556dc7db1dbb7faffbb1ec3b73bb71371b39ce91
+-- Script Hash: 402c7558c778a511571a2a6d2870a9b4e1ab386d28fc39db2d8159993a1d80d00a595c7d966eb6cdd39b777175e74f91
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__Players__1 = game:GetService("Players");

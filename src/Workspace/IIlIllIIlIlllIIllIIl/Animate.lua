@@ -1,4 +1,4 @@
--- Script Hash: f7822032c9ff2b54ffcf61c9972559619ecb945f625579570d4c4ef3e55a55be4ecbc79eed46dd31261419d91554a300
+-- Script Hash: 5d18200065d48fce45ee366c477428cb33964834a75141bf7bd0a2580006e6e95504d10021e1de97523fc02d4fac0044
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__Parent__1 = script.Parent;

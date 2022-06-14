@@ -1,4 +1,4 @@
--- Script Hash: bd32e65d99346940f8893c867000bd1a149db122c25fb7f0d9da2e13a0d94f032c09c20ccb262b1abf37b769b7751a6c
+-- Script Hash: 3585d9cefc5e4894af7b5a47c26af000c92ccaa861ba19bf277a259615c59dac055cfe08916ec5d202b0ad3db7b04d6b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -65,98 +65,98 @@ return {
 				local v16 = u6(u4);
 				table.insert(u4[v16].children, p7[2].props.Team.id);
 				local v17 = 0;
-				for v18, v19 in pairs(p7[2].props.Team.members) do
+				for v18 in pairs(p7[2].props.Team.members) do
 					v17 = v17 + 1;
 				end;
-				local v20 = v17;
-				if v20 == nil then
-					v20 = 0;
+				local v19 = v17;
+				if v19 == nil then
+					v19 = 0;
 				end;
-				local v21 = u4[v16];
-				v21.totalRows = v21.totalRows + v20;
+				local v20 = u4[v16];
+				v20.totalRows = v20.totalRows + v19;
 				return 0;
 			end;
-			local v22 = table.create(#v14);
-			for v23, v24 in ipairs(v14) do
-				v22[v23] = v15(v24, v23 - 1, v14);
+			local v21 = table.create(#v14);
+			for v22, v23 in ipairs(v14) do
+				v21[v22] = v15(v23, v22 - 1, v14);
 			end;
 			return u4;
 		end;
 		local function u10(p8)
-			local v25 = u2.values(p8);
-			local function v26(p9)
+			local v24 = u2.values(p8);
+			local function v25(p9)
 				return u1.createElement(l__TabListColumn__3, {
 					Columns = p1.Columns, 
 					ColumnData = p9, 
 					AllElements = p1[u1.Children]
 				});
 			end;
-			local v27 = table.create(#v25);
-			for v28, v29 in ipairs(v25) do
-				v27[v28] = v26(v29, v28 - 1, v25);
+			local v26 = table.create(#v24);
+			for v27, v28 in ipairs(v24) do
+				v26[v27] = v25(v28, v27 - 1, v24);
 			end;
-			return v27;
+			return v26;
 		end;
 		local u11 = l__useMemo__2(function()
 			return u9();
 		end, { p1.store.TabList.teams, p1.store.TabList.players });
-		local v30 = { p1.store.TabList.ranks };
-		local v31 = #v30;
-		local v32 = u2.values(p1.store.Bedwars.kills);
-		local function v33(p10)
+		local v29 = { p1.store.TabList.ranks };
+		local v30 = #v29;
+		local v31 = u2.values(p1.store.Bedwars.kills);
+		local function v32(p10)
 			return p10;
 		end;
-		local v34 = table.create(#v32);
-		for v35, v36 in ipairs(v32) do
-			v34[v35] = v33(v36, v35 - 1, v32);
+		local v33 = table.create(#v31);
+		for v34, v35 in ipairs(v31) do
+			v33[v34] = v32(v35, v34 - 1, v31);
 		end;
-		local v37 = #v34;
-		table.move(v34, 1, v37, v31 + 1, v30);
-		local v38 = v31 + v37;
-		local v39 = u2.values(p1.store.Bedwars.finalDeaths);
-		local function v40(p11)
+		local v36 = #v33;
+		table.move(v33, 1, v36, v30 + 1, v29);
+		local v37 = v30 + v36;
+		local v38 = u2.values(p1.store.Bedwars.finalDeaths);
+		local function v39(p11)
 			return p11;
 		end;
-		local v41 = table.create(#v39);
-		for v42, v43 in ipairs(v39) do
-			v41[v42] = v40(v43, v42 - 1, v39);
+		local v40 = table.create(#v38);
+		for v41, v42 in ipairs(v38) do
+			v40[v41] = v39(v42, v41 - 1, v38);
 		end;
-		local v44 = #v41;
-		table.move(v41, 1, v44, v38 + 1, v30);
-		local v45 = v38 + v44;
-		local v46 = u2.values(p1.store.Bedwars.teamBedAlive);
-		local function v47(p12)
+		local v43 = #v40;
+		table.move(v40, 1, v43, v37 + 1, v29);
+		local v44 = v37 + v43;
+		local v45 = u2.values(p1.store.Bedwars.teamBedAlive);
+		local function v46(p12)
 			return p12;
 		end;
-		local v48 = table.create(#v46);
-		for v49, v50 in ipairs(v46) do
-			v48[v49] = v47(v50, v49 - 1, v46);
+		local v47 = table.create(#v45);
+		for v48, v49 in ipairs(v45) do
+			v47[v48] = v46(v49, v48 - 1, v45);
 		end;
-		local v51 = #v48;
-		table.move(v48, 1, v51, v45 + 1, v30);
-		local v52 = v45 + v51;
-		v30[v52 + 1] = p1.store.Game.earlyLeaves;
-		v30[v52 + 2] = p1.store.Game.matchState;
-		v30[v52 + 3] = p1.store.Bedwars.kits;
-		v30[v52 + 4] = u11;
-		local v53 = l__useMemo__2(function()
+		local v50 = #v47;
+		table.move(v47, 1, v50, v44 + 1, v29);
+		local v51 = v44 + v50;
+		v29[v51 + 1] = p1.store.Game.earlyLeaves;
+		v29[v51 + 2] = p1.store.Game.matchState;
+		v29[v51 + 3] = p1.store.Bedwars.kits;
+		v29[v51 + 4] = u11;
+		local v52 = l__useMemo__2(function()
 			return u10(u11);
-		end, v30);
-		local v54 = { u1.createElement("UIListLayout", {
+		end, v29);
+		local v53 = { u1.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
 				VerticalAlignment = Enum.VerticalAlignment.Top, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0, 0)
 			}) };
-		local v55 = #v54;
-		for v56, v57 in ipairs(v53) do
-			v54[v55 + v56] = v57;
+		local v54 = #v53;
+		for v55, v56 in ipairs(v52) do
+			v53[v54 + v55] = v56;
 		end;
 		return u1.createElement("Frame", {
 			Size = p1.Size, 
 			BorderSizePixel = 0, 
 			BackgroundTransparency = 1
-		}, v54);
+		}, v53);
 	end)
 };

@@ -1,4 +1,4 @@
--- Script Hash: 0c178c9a65e1e8bc735f9a5629defe6a1c99be3bcec33d70639d6417f8e8b911ad0b7c2393ad139699769c704b4d5299
+-- Script Hash: nil
 --[[VARIABLE DEFINITION ANOMALY DETECTED, DECOMPILATION OUTPUT POTENTIALLY INCORRECT]]--
 -- Decompiled with the Synapse X Luau decompiler.
 
@@ -6,7 +6,7 @@ local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_incl
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
 local l__OfflinePlayerUtil__1 = v2.OfflinePlayerUtil;
 local l__DeviceUtil__2 = v2.DeviceUtil;
-local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__Players__4 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 local l__SoundManager__5 = v2.SoundManager;
 local l__GameSound__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
@@ -128,7 +128,7 @@ return {
 					l__SoundManager__5:playSound(l__GameSound__6.UI_CLICK);
 					local v25 = l__OfflinePlayerUtil__1.getPlayer(p1.OfflinePlayer);
 					if v25 then
-						l__default__7.Client:Get("BanPlayer"):CallServerAsync(v25);
+						l__default__7.Client:Get("RemoteName"):CallServerAsync(v25);
 					end;
 				end
 			});

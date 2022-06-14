@@ -1,9 +1,9 @@
--- Script Hash: 6357927450a081ca87c5ca331d8d9f23138ccf1961ae7e8e88a374e230c71eb5b51596308ecd8158f2bb08472b36bb4c
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__KnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v6 = setmetatable({}, {
@@ -25,7 +25,7 @@ end;
 local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__EntityUtil__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
 local l__Workspace__4 = v4.Workspace;
-local l__Maid__5 = v3.Maid;
+local u5 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__PlayerEntity__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entities", "player-entity").PlayerEntity;
 local l__Players__7 = v4.Players;
 local l__KnitClient__8 = v3.KnitClient;
@@ -42,13 +42,13 @@ local l__default__18 = v1.import(script, v1.getModule(script, "@rbxts", "tween")
 local l__InQuad__19 = v1.import(script, v1.getModule(script, "@rbxts", "easing-functions")).InQuad;
 function v6.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("ActivateBeast", function(p3)
+	l__default__2.Client:OnEvent("RemoteName", function(p3)
 		local v8 = l__EntityUtil__3:getEntity(p3.entityInstance);
 		if v8 == nil then
 			return nil;
 		end;
 		local v9 = p3.expirationTime - l__Workspace__4:GetServerTimeNow();
-		local u20 = l__Maid__5.new();
+		local u20 = u5.new();
 		task.delay(v9, function()
 			u20:DoCleaning();
 		end);

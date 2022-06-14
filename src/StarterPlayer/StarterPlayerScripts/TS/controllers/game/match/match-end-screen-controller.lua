@@ -1,4 +1,4 @@
--- Script Hash: 27c9850640edb371c15c547601236e07472b4331d33b01b74cfcc982586a9057c9c1ef786273f7a997cda870cfebfb67
+-- Script Hash: 5a6e9e42badc0dbbd6103ce46f4324111de76227132396255ad037f0fc5a50423820f468f2957884e0b8fffd22f90e3c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -149,7 +149,7 @@ end;
 function v4.displayNextDisplayOrder(p20)
 	p20.currDisplayOrder = p20.currDisplayOrder + 1;
 	local v40 = 0;
-	for v41, v42 in pairs(p20.matchEndScreens) do
+	for v41 in pairs(p20.matchEndScreens) do
 		v40 = v40 + 1;
 	end;
 	if not p20.matchEndScreens[p20.currDisplayOrder] and p20.currDisplayOrder <= v40 then
@@ -158,36 +158,36 @@ function v4.displayNextDisplayOrder(p20)
 end;
 local l__ClientStore__5 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function v4.setupIMatchEndScreens(p21)
-	local l__queueType__43 = l__ClientStore__5:getState().Game.queueType;
-	local v44 = {};
-	local v45 = u3.entries(l__MatchEndScreensMeta__2);
-	table.move(v45, 1, #v45, #v44 + 1, v44);
-	local function v46(p22)
-		local v47 = p22[1];
-		local v48 = p22[2];
-		local v49 = p21.matchEndScreens[v48.displayOrder];
-		if v48.enabledQueues and table.find(v48.enabledQueues, l__queueType__43) == nil then
+	local l__queueType__42 = l__ClientStore__5:getState().Game.queueType;
+	local v43 = {};
+	local v44 = u3.entries(l__MatchEndScreensMeta__2);
+	table.move(v44, 1, #v44, #v43 + 1, v43);
+	local function v45(p22)
+		local v46 = p22[1];
+		local v47 = p22[2];
+		local v48 = p21.matchEndScreens[v47.displayOrder];
+		if v47.enabledQueues and table.find(v47.enabledQueues, l__queueType__42) == nil then
 			return nil;
 		end;
-		if not v49 then
-			p21.matchEndScreens[v48.displayOrder] = { {
-					matchEndScreenType = v47, 
+		if not v48 then
+			p21.matchEndScreens[v47.displayOrder] = { {
+					matchEndScreenType = v46, 
 					completed = false
 				} };
 			return;
 		end;
-		local v50 = {};
-		local v51 = #v50;
-		local v52 = #v49;
-		table.move(v49, 1, v52, v51 + 1, v50);
-		v50[v51 + v52 + 1] = {
-			matchEndScreenType = v47, 
+		local v49 = {};
+		local v50 = #v49;
+		local v51 = #v48;
+		table.move(v48, 1, v51, v50 + 1, v49);
+		v49[v50 + v51 + 1] = {
+			matchEndScreenType = v46, 
 			completed = false
 		};
-		p21.matchEndScreens[v48.displayOrder] = v50;
+		p21.matchEndScreens[v47.displayOrder] = v49;
 	end;
-	for v53, v54 in ipairs(v44) do
-		v46(v54, v53 - 1, v44);
+	for v52, v53 in ipairs(v43) do
+		v45(v53, v52 - 1, v43);
 	end;
 end;
 l__Reflect__2.defineMetadata(v4, "identifier", "client/controllers/game/match/match-end-screen-controller@MatchEndScreenController");

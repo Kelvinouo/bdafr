@@ -1,4 +1,4 @@
--- Script Hash: e160f2bfd6aac0cdee89fffd04fe2920085dfc5b11a80d4ca2ca5749021c0fbbd17496302f9752ed9abb9c430c157f32
+-- Script Hash: bb7e105e3357e7771b9a782409b5809848b8186f622aace40b939d82628682ac4e8bdc2e2c3d226a45d55486a6c9c0da
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -69,7 +69,7 @@ return {
 				local v27 = p7[1];
 				local v28 = {};
 				local v29 = 0;
-				for v30, v31 in pairs(p1.Team.members) do
+				for v30 in pairs(p1.Team.members) do
 					v29 = v29 + 1;
 				end;
 				v28.LastRow = p8 == v29 - 1;
@@ -81,11 +81,11 @@ return {
 				v28.store = p1.store;
 				return u5.createElement(l__PlayerRow__6, v28);
 			end;
-			local v32 = table.create(#p4);
-			for v33, v34 in ipairs(p4) do
-				v32[v33] = v26(v34, v33 - 1, p4);
+			local v31 = table.create(#p4);
+			for v32, v33 in ipairs(p4) do
+				v31[v32] = v26(v33, v32 - 1, p4);
 			end;
-			return v32;
+			return v31;
 		end;
 		return u5.createElement("Frame", {
 			Size = UDim2.new(1, 0, l__tabListLayout__4.rows.cards.card.height, 0), 
@@ -104,30 +104,30 @@ return {
 				RowWidth = u9, 
 				store = p1.store
 			}), u5.createElement(function()
-				local v35 = {
+				local v34 = {
 					Size = UDim2.fromScale(1, 0), 
 					AutomaticSize = "Y", 
 					BorderSizePixel = 0, 
 					BackgroundTransparency = 1, 
 					BackgroundColor3 = l__Theme__7.backgroundPrimary
 				};
-				local v36 = { u5.createElement("UIListLayout", {
+				local v35 = { u5.createElement("UIListLayout", {
 						FillDirection = Enum.FillDirection.Vertical, 
 						VerticalAlignment = Enum.VerticalAlignment.Top, 
 						HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 						SortOrder = Enum.SortOrder.LayoutOrder, 
 						Padding = UDim.new(0, 0)
 					}) };
-				local v37 = #v36;
+				local v36 = #v35;
 				if u10 then
-					local v38 = u11(v17);
+					local v37 = u11(v17);
 				else
-					v38 = u11(v13);
+					v37 = u11(v13);
 				end;
-				for v39, v40 in ipairs(v38) do
-					v36[v37 + v39] = v40;
+				for v38, v39 in ipairs(v37) do
+					v35[v36 + v38] = v39;
 				end;
-				return u5.createElement("Frame", v35, v36);
+				return u5.createElement("Frame", v34, v35);
 			end) });
 	end)
 };

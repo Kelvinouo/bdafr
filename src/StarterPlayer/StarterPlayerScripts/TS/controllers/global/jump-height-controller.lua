@@ -98,7 +98,7 @@ function v5.KnitStart(p3)
 					p3.jumpModifier:removeModifier(p9);
 				end;
 			end;
-			for v20, v21 in pairs(v18) do
+			for v20 in pairs(v18) do
 				v19(v20, v20, v18);
 			end;
 		end));
@@ -125,9 +125,9 @@ function v5.KnitStart(p3)
 end;
 function v5.setJumpHeight(p10, p11)
 	if l__Players__5.LocalPlayer.Character then
-		local l__Humanoid__22 = l__Players__5.LocalPlayer.Character:WaitForChild("Humanoid");
-		if l__Humanoid__22 then
-			l__Humanoid__22.JumpHeight = p11 * p10.jumpSpeedMultiplier;
+		local l__Humanoid__21 = l__Players__5.LocalPlayer.Character:WaitForChild("Humanoid");
+		if l__Humanoid__21 then
+			l__Humanoid__21.JumpHeight = p11 * p10.jumpSpeedMultiplier;
 		end;
 	end;
 end;

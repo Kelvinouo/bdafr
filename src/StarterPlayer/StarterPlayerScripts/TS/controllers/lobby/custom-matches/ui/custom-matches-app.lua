@@ -1,4 +1,4 @@
--- Script Hash: 6b9904e831355628278f602d72817bd203b31fe3c2e0223e8ca1de363ca3df7be7623fa29994c55865f65c11775cc524
+-- Script Hash: d5454b51f6db96b8e3da54e737da36afea8aff98fa7a6b855145f753d6c188ea3f1845ba97b1bc6d7afc388f5bee84e8
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -11,7 +11,7 @@ local l__bedwars_to4__2 = l__QueueMeta__4.bedwars_to4;
 function v5.init(p1, p2)
 	local v6 = u1.values(l__QueueMeta__4);
 	local function v7(p3)
-		if p3.availableInCustom == false then
+		if p3.disableInCustom == true then
 			return nil;
 		end;
 		return {

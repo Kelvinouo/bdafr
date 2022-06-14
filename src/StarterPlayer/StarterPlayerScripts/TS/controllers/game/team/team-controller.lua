@@ -1,4 +1,4 @@
--- Script Hash: 4211a661135eaaff0284ff4fbb8ce67efae23822a422c458761fa248a66dbc2666432565597a081c10bc2753e7de15b5
+-- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -27,14 +27,14 @@ end;
 local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function u1.KnitStart(p2)
-	l__default__3.Client:Get("TeamsUpdateEvent"):Connect(function(p3)
+	l__default__3.Client:Get("RemoteName"):Connect(function(p3)
 		l__ClientStore__4:dispatch({
 			type = "GameSetTeams", 
 			teams = p3.teams
 		});
 		p2.teams = p3.teams;
 	end);
-	l__default__3.Client:Get("RequestTeamsUpdateEvent"):SendToServer();
+	l__default__3.Client:Get("RemoteName"):SendToServer();
 end;
 function u1.getPlayerTeamMap(p4)
 	local v5 = nil;
@@ -134,7 +134,7 @@ function u1.getTeamDropdown(p11, p12)
 	end;
 	return p11.teamDropdown;
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {
