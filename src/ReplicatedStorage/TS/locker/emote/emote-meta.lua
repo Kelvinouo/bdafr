@@ -1,4 +1,4 @@
--- Script Hash: 885a465d2a0dcc5d3a2afc561e96b67514dec516740910ec9010ce798c0b887b5caee2a7adf85add42f679dd12f2f735
+-- Script Hash: 9a3313a86bceb162fa8c7491d7a225f4acc1e287c6693329314e106d1c4a3fdfc8599d4fc37bc9d55c26c5f0f9edd5d8
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -723,6 +723,11 @@ return {
 			name = "Cyber Mad", 
 			image = l__getEmoteAsset__3(l__EmoteType__6.CYBER_MAD)
 		}, 
+		[l__EmoteType__6.CYBER_OVERHEAT] = {
+			name = "Vulcan Overheat", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.VULCAN_OVERHEAT), 
+			disabled = true
+		}, 
 		[l__EmoteType__6.VULCAN_OVERHEAT] = {
 			name = "Vulcan Overheat", 
 			image = l__getEmoteAsset__3(l__EmoteType__6.VULCAN_OVERHEAT)
@@ -738,6 +743,11 @@ return {
 		[l__EmoteType__6.DINO_YIPEEE] = {
 			name = "Dino Yipeee", 
 			image = l__getEmoteAsset__3(l__EmoteType__6.DINO_YIPEEE)
+		}, 
+		[l__EmoteType__6.FREIYA_BEG] = {
+			name = "Freiya Hearts", 
+			image = l__getEmoteAsset__3(l__EmoteType__6.FREIYA_HEARTS), 
+			disabled = true
 		}, 
 		[l__EmoteType__6.FREIYA_HEARTS] = {
 			name = "Freiya Hearts", 

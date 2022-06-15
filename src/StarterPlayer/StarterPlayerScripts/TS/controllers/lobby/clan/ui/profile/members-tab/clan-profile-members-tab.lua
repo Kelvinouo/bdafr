@@ -1,4 +1,4 @@
--- Script Hash: 9478d1e927b9e2bec581326bca6d570db72d11d126a26bde62622fd6be6fcd8833b4ac329b9aaedd8608baf6d2c669d7
+-- Script Hash: f37c755bc98de5d752108b0b32421ca5144e21a4f7607e5471656e9d3973147d4a59e62ef4073c98bed98b5b71a65e69
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -33,7 +33,7 @@ return {
 	ClanProfileMembersTab = v3.new(u3)(function(p1, p2)
 		local l__useState__7 = p2.useState;
 		local v8 = p1.store.Clans.myClanId ~= p1.ClanId;
-		local v9 = not v8 and (p1.store.Clans.myClanMember and l__ClanMemberRank__1.ADMIN < p1.store.Clans.myClanMember.rank);
+		local v9 = not v8 and (p1.store.Clans.myClanMember and l__ClanMemberRank__1.ADMIN <= p1.store.Clans.myClanMember.rank);
 		if v9 == nil then
 			v9 = false;
 		end;

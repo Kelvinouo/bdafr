@@ -1,4 +1,4 @@
--- Script Hash: bf05cc5e756fb4d8670fdbd526df83bc716c822ae3d36f2b441fc63cd87cce0c7bb9c0709703fd15b4ce8b6a55db75a6
+-- Script Hash: 26f3900da6db9a5ea006d5ef5df3d4079eb6ca27fd3141da2073a0ae860b6f8630075dc46a29bdb490457e9f6d9944dc
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -283,6 +283,8 @@ v4.CYBER_DEFENSE = "cyber_defense";
 v3.cyber_defense = "CYBER_DEFENSE";
 v4.CYBER_MAD = "cyber_mad";
 v3.cyber_mad = "CYBER_MAD";
+v4.CYBER_OVERHEAT = "cyber_overheat";
+v3.cyber_overheat = "CYBER_OVERHEAT";
 v4.VULCAN_OVERHEAT = "vulcan_overheat";
 v3.vulcan_overheat = "VULCAN_OVERHEAT";
 v4.DINO_HAI = "dino_hai";
@@ -291,6 +293,8 @@ v4.DINO_RAWR = "dino_rawr";
 v3.dino_rawr = "DINO_RAWR";
 v4.DINO_YIPEEE = "dino_yipeee";
 v3.dino_yipeee = "DINO_YIPEEE";
+v4.FREIYA_BEG = "freiya_beg";
+v3.freiya_beg = "FREIYA_BEG";
 v4.FREIYA_HEARTS = "freiya_hearts";
 v3.freiya_hearts = "FREIYA_HEARTS";
 v4.LUMEN_PAIN = "lumen_pain";

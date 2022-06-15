@@ -1,4 +1,4 @@
--- Script Hash: 47c130b6edc3cb290ee3a89d780be53e48f26c3a8dbea798b79ae9ec2d4e5dd39e27daba19b80419217d4243ee4d53bd
+-- Script Hash: eb0de8ab3ac4487fb3684c2e1eba901b7894fa62ba1c3141b4a1bb229af6844ea8af4630303fece6126bc5837bb334ef
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -31,6 +31,9 @@ return {
 				local function v12(p3)
 					local v13 = l__EmoteMeta__2[p3];
 					if not v13 then
+						return nil;
+					end;
+					if v13.disabled then
 						return nil;
 					end;
 					local v14 = {};
