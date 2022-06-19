@@ -1,4 +1,3 @@
--- Script Hash: afbf68022f8afd9114c81f478130c00e46e75f398fb792eea5bbe8d87bdb937bc2e8d6388616e0715838ac004d1eac4c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -66,6 +65,32 @@ function v3.getPlayersInWorld(p4, p5)
 		end;
 	end;
 	return v17;
+end;
+local l__EntityUtil__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
+function v3.getEntitiesInWorld(p7, p8)
+	local v21 = l__EntityUtil__3:getAllEntityInstances();
+	local function v22(p9)
+		if not p9.PrimaryPart then
+			return false;
+		end;
+		local v23 = p7:getWorldFromPosition(p9.PrimaryPart.Position);
+		if v23 ~= nil then
+			v23 = v23.Name;
+		end;
+		if v23 ~= p8 then
+			return false;
+		end;
+		return true;
+	end;
+	local v24 = {};
+	local v25 = 0;
+	for v26, v27 in ipairs(v21) do
+		if v22(v27, v26 - 1, v21) == true then
+			v25 = v25 + 1;
+			v24[v25] = v27;
+		end;
+	end;
+	return v24;
 end;
 v3.WORLD_SEPERATION_STUDS = 8000;
 return {
