@@ -1,4 +1,4 @@
--- Script Hash: 6c46b38faf288a78829e866c4616703ef48db154a8684328ee9957f577cfadc828cc39d315924759882628d3fb216c3b
+-- Script Hash: 11c524f2afd5c33b7a77b1113d3dcfea37254bea9c16a04feaa0a1aa4e0205041bf6f15f03b18494bdf6297f4a377f57
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -162,6 +162,27 @@ return {
 				devProductId = l__DevProduct__3.CYBER_DJ, 
 				priceRobux = 799
 			}
+		}, 
+		[l__BedwarsKitSkin__5.YUZI_VICTORIOUS] = {
+			name = "Victorious Yuzi", 
+			kit = l__BedwarsKit__4.DASHER, 
+			renderImage = "rbxassetid://9942565286", 
+			itemSkins = { {
+					itemType = l__ItemType__2.WOOD_DAO, 
+					name = "victorious"
+				}, {
+					itemType = l__ItemType__2.STONE_DAO, 
+					name = "victorious"
+				}, {
+					itemType = l__ItemType__2.IRON_DAO, 
+					name = "victorious"
+				}, {
+					itemType = l__ItemType__2.DIAMOND_DAO, 
+					name = "victorious"
+				}, {
+					itemType = l__ItemType__2.EMERALD_DAO, 
+					name = "victorious"
+				} }
 		}
 	}
 };

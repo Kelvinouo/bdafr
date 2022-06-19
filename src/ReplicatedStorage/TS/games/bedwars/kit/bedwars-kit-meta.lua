@@ -1,4 +1,4 @@
--- Script Hash: 3e095be15b70b2b2da47a3a448f99a6139c3cef9ad2e06fdc23aea227750de9bb9063d32aa0c8c5af476c50517b9f500
+-- Script Hash: b27d4b4374c338008c12b4dbe3939cbe464c7a2ca3b5ee5ec80493eee3a5883fda2afa2b35e458fe677dcc81e0023d69
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -384,7 +384,7 @@ v7[l__BedwarsKit__6.DASHER] = {
 	priceRobux = 399, 
 	gamepassId = 28594502, 
 	renderImage = "rbxassetid://9155467645", 
-	skins = { l__BedwarsKitSkin__5.DASHER_TIGER }
+	skins = { l__BedwarsKitSkin__5.DASHER_TIGER, l__BedwarsKitSkin__5.YUZI_VICTORIOUS }
 };
 v7[l__BedwarsKit__6.ALCHEMIST] = {
 	name = "Alchemist", 

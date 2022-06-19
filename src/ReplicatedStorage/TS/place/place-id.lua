@@ -1,4 +1,4 @@
--- Script Hash: 05d04d4cddbcfc82e14539481860813c2aa5d3774401bddc826dbd87ac3433c56b9abda25d6e0f4656db0d3ba68dac56
+-- Script Hash: 2263d12149463fd28b9de71322bd065263d3a6d49c1dfd2099d9236c68d6b9a3d3f4ac798923cc6ba4cd1c2585171ea6
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {
@@ -6,7 +6,8 @@ local v1 = {
 	GAME = 6872274481, 
 	GAME_MEGA = 8444591321, 
 	GAME_MICRO = 8560631822, 
-	ISLANDS = 4872321990
+	ISLANDS = 4872321990, 
+	ROYALE = 9903116309
 };
 local v2 = {
 	PRODUCTION = 2619619496, 
@@ -17,6 +18,7 @@ if game.GameId == v2.STAGING then
 	v1.GAME = 6660162924;
 	v1.GAME_MEGA = 8444524429;
 	v1.GAME_MICRO = 8560566265;
+	v1.ROYALE = 9903165834;
 end;
 return {
 	PlaceId = v1, 

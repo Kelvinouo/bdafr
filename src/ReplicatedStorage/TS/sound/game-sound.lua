@@ -1,4 +1,4 @@
--- Script Hash: af69cf775e5c4f63ce8cc8e3410ce9801385269a1c8e0d08cf0bd9f4fd53e94d89ccb6457f93784e66ae3e374c589c06
+-- Script Hash: f12c451f00bf5fe9ba48ca668fefeacd765a4077cec739b8d873a19c1747f2b118338c1805bafc2c4055036b2a5b0765
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -137,7 +137,6 @@ local v4 = {
 	AXOLOTL_SWITCH_TARGETS = "rbxassetid://7344278405", 
 	CHRISTMAS_MUSIC = "", 
 	SUSPENSE_MUSIC = "", 
-	LOBBY_MUSIC = "rbxassetid://9424716980", 
 	SNAP_TRAP_SETUP = "rbxassetid://7796078515", 
 	SNAP_TRAP_CLOSE = "rbxassetid://7796078695", 
 	SNAP_TRAP_CONSUME_MARK = "rbxassetid://7796078825", 
@@ -472,10 +471,6 @@ l__SoundManager__3:registerSound(v4.AXOLOTL_SWITCH_TARGETS, {
 l__SoundManager__3:registerSound(v4.SUSPENSE_MUSIC, {
 	preload = false, 
 	volume = 0.35
-});
-l__SoundManager__3:registerSound(v4.LOBBY_MUSIC, {
-	preload = false, 
-	volume = 0.15
 });
 l__SoundManager__3:registerSound(v4.FISHERMAN_GAME_PULLING_LOOP, {
 	volume = 0.3

@@ -1,4 +1,4 @@
--- Script Hash: 3904c2dbbc194ada37f9848cf9bc95737c189f19fa709de72d9ec2328907866b2489cb338c6dd5ac74dfd8178174f03b
+-- Script Hash: 0e302a79aff3ea5222b831e22e429e7340970b81c2ffbc0a6276246f518722525213c28361d25978ba1ee30fae076529
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = nil;
@@ -222,7 +222,7 @@ u2 = { {
 	}, {
 		itemType = l__ItemType__6.VOID_SWORD, 
 		amount = 1, 
-		price = 8, 
+		price = 10, 
 		currency = l__ItemType__6.VOID_CRYSTAL, 
 		lockAfterPurchase = true, 
 		ignoredByKit = { l__BedwarsKit__6.BARBARIAN, l__BedwarsKit__6.DASHER }, 
@@ -333,13 +333,21 @@ u2 = { {
 		itemType = l__ItemType__6.VOID_CHESTPLATE, 
 		customDisplayName = "Void Armor", 
 		amount = 1, 
-		price = 16, 
+		price = 18, 
 		currency = l__ItemType__6.VOID_CRYSTAL, 
 		lockAfterPurchase = true, 
 		spawnWithItems = l__BedwarsArmorSet__5.VOID, 
 		category = l__BedwarsShopItemCategory__9.Void, 
 		nextTier = l__ItemType__6.EMERALD_CHESTPLATE, 
 		ignoredByKit = { l__BedwarsKit__6.BIGMAN }
+	}, {
+		itemType = l__ItemType__6.VOID_TURRET, 
+		customDisplayName = "Void Turret", 
+		amount = 1, 
+		price = 3, 
+		currency = l__ItemType__6.VOID_CRYSTAL, 
+		category = l__BedwarsShopItemCategory__9.Void, 
+		spawnWithItems = { l__ItemType__6.VOID_TURRET_TABLET }
 	}, {
 		itemType = l__ItemType__6.CARROT_SEEDS, 
 		amount = 1, 

@@ -1,4 +1,4 @@
--- Script Hash: 00f918bb202d322ac023cc0e2f8deb3901c6396865e33793afbc0795ea7fc3182e5ac5b0830e37f4b19154f65e8f9ee5
+-- Script Hash: 9e2909898ebd28f344ff1075c7eccc03caca6324101cc910415d77209eabc5507b0a5abbdcceca00f5edfe738ca6a9c9
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -521,6 +521,10 @@ v2.VOID_PORTAL = "void_portal";
 v1.void_portal = "VOID_PORTAL";
 v2.VOID_CRYSTAL = "void_crystal";
 v1.void_crystal = "VOID_CRYSTAL";
+v2.VOID_TURRET = "void_turret";
+v1.void_turret = "VOID_TURRET";
+v2.VOID_TURRET_TABLET = "void_turret_tablet";
+v1.void_turret_tablet = "VOID_TURRET_TABLET";
 return {
 	ItemType = v2
 };

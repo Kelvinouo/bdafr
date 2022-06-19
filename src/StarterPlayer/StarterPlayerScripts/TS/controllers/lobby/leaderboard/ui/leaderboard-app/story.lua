@@ -1,4 +1,4 @@
--- Script Hash: ac72b43de0e536baa64742d75ac8fbe2258a9e803a1bd6958500efc27109889c61ca83d7434ba261b3926e7904cb1d58
+-- Script Hash: 509bd11e244ecbdfb0d9427b1d25df3f900072d5e05289b722581bdaeaf957747358cbebcaf1d14ec57f60e49a47e925
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -6,9 +6,10 @@ local l__ClientStore__1 = v1.import(script, script.Parent.Parent.Parent.Parent.P
 local l__LeaderboardMeta__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "leaderboard", "leaderboard-meta").LeaderboardMeta;
 local l__RankDistribution__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "rank", "rank-distribution").RankDistribution;
 local l__RankMeta__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "rank", "rank-meta").RankMeta;
-local u5 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
-local l__LeaderboardCore__6 = v1.import(script, script.Parent, "leaderboard-core").LeaderboardCore;
-local l__CreateRoduxApp__7 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "rodux", "create-rodux-app").CreateRoduxApp;
+local l__RankUtil__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "rank", "rank-util").RankUtil;
+local u6 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
+local l__LeaderboardCore__7 = v1.import(script, script.Parent, "leaderboard-core").LeaderboardCore;
+local l__CreateRoduxApp__8 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "rodux", "create-rodux-app").CreateRoduxApp;
 return function(p1)
 	local v2 = table.create(10, "");
 	local function v3(p2, p3)
@@ -44,10 +45,10 @@ return function(p1)
 	local v12 = l__RankMeta__4[v11.division];
 	local v13 = {
 		type = "UpdateLeaderboard", 
-		leaderboard = "RankPoints"
+		leaderboard = l__RankUtil__5.activeRankMeta.leaderboard
 	};
 	local v14 = {};
-	for v15, v16 in pairs(l__LeaderboardMeta__2.RankPoints) do
+	for v15, v16 in pairs(l__LeaderboardMeta__2[l__RankUtil__5.activeRankMeta.leaderboard]) do
 		v14[v15] = v16;
 	end;
 	v14.lastRefresh = os.time() - math.random(100, 1000);
@@ -80,25 +81,25 @@ return function(p1)
 	v14.localStatValue = v11.rankPoints;
 	v13.data = v14;
 	l__ClientStore__1:dispatch(v13);
-	local u8 = l__CreateRoduxApp__7("LeaderboardApp", function(p7)
+	local u9 = l__CreateRoduxApp__8("LeaderboardApp", function(p7)
 		local v26 = {};
 		local v27 = {};
 		for v28, v29 in pairs(p7) do
 			v27[v28] = v29;
 		end;
-		v26[#v26 + 1] = u5.createElement(l__LeaderboardCore__6, v27);
-		return u5.createElement("Frame", {
+		v26[#v26 + 1] = u6.createElement(l__LeaderboardCore__7, v27);
+		return u6.createElement("Frame", {
 			AnchorPoint = Vector2.new(0.5, 0.5), 
 			Position = UDim2.fromScale(0.5, 0.5), 
 			Size = UDim2.fromOffset(437, 700), 
 			BackgroundTransparency = 1
 		}, v26);
 	end, {
-		LeaderboardName = "RankPoints"
+		LeaderboardName = l__RankUtil__5.activeRankMeta.leaderboard
 	}, {}, {
 		Parent = p1
 	});
 	return function()
-		u5.unmount(u8);
+		u6.unmount(u9);
 	end;
 end;

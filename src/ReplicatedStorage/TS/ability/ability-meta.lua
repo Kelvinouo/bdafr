@@ -1,4 +1,4 @@
--- Script Hash: f3dfee87398d8109eeaedf8d3f31a28aaeb4097d81b5d89a7a8978ee01a79f9394c1bfb6456fdada1a9cbb5cbd61b606
+-- Script Hash: 74766bdf9a63be445649c9d796576183622022e1274af10b13e4b531514284f98a9f6b60716306d728509539fd438890
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -66,6 +66,13 @@ return {
 				}
 			}, 
 			blockingStatusEffects = { l__StatusEffectType__4.GROUNDED }
+		}, 
+		[l__AbilityId__5.VOID_TURRET_FIRE] = {
+			actionBarName = "Void Laser", 
+			cooldown = {
+				id = l__CooldownId__3.VOID_LASER, 
+				duration = 2.4
+			}
 		}
 	}
 };

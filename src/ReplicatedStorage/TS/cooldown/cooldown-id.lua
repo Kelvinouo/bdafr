@@ -1,4 +1,4 @@
--- Script Hash: 208f5eae4fc3d6c94665cd4986bfd68465f13797feb628ebdb6377002fcdc05d11a43662e5933d057ed9842e381ef752
+-- Script Hash: 7a44d26745fb082b704fe4f8bed55622775c7bf3004a3d322919dd89fff5dfc697a017c949d32fb9e9b9dbeaa10b52cb
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -51,6 +51,8 @@ v2.LASSO_THROW = "lasso_throw";
 v1.lasso_throw = "LASSO_THROW";
 v2.DINO_ATTACK = "dino_attack";
 v1.dino_attack = "DINO_ATTACK";
+v2.VOID_LASER = "void_laser";
+v1.void_laser = "VOID_LASER";
 return {
 	CooldownId = v2
 };

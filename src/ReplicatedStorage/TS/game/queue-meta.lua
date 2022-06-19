@@ -1,4 +1,4 @@
--- Script Hash: 942f6a6f70a477e8730f77fbb281766022628ca9813407f4f27ebbc9274e88f4bbf2c5f05010098ceee5ed3df93d898c
+-- Script Hash: 09f15d3f9b26c260b6f1a0411c534635a1bb80e71e3c7b84901636abc211ca7286e399b4ccf14b02021099cddcfc7850
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -13,7 +13,7 @@ local l__MapType__9 = v1.import(script, game:GetService("ReplicatedStorage"), "T
 local l__QueueType__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "game", "queue-type").QueueType;
 local l__TeamColorHex__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "game", "team", "team-color-hex").TeamColorHex;
 return {
-	StudioQueueType = l__QueueType__10.BEDWARS_TO4, 
+	StudioQueueType = l__QueueType__10.BEDWARS_TEST, 
 	QueueMeta = {
 		[l__QueueType__10.BEDWARS_TEST] = {
 			title = "BedWars (Testing)", 
@@ -978,6 +978,22 @@ return {
 			game = l__GameType__7.GUN_GAME, 
 			noTopHud = true, 
 			autoQueue = true
+		}, 
+		[l__QueueType__10.ROYALE] = {
+			title = "Battle Royale", 
+			eventText = "\240\159\154\167 <font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__6.mcAqua) .. "\">PUBLIC BETA!</font> \240\159\154\167", 
+			teams = {}, 
+			maps = {}, 
+			queueSize = {
+				min = 1, 
+				max = 4
+			}, 
+			ignorePlayFabTeamMatching = true, 
+			placeId = l__PlaceId__3.ROYALE, 
+			game = l__GameType__7.BEDWARS, 
+			disabled = false, 
+			disableInCustom = true, 
+			disableLeaderboardProgression = true
 		}
 	}
 };

@@ -1,4 +1,4 @@
--- Script Hash: a5b5d96d47b472b3044b1803f1e3433d7d99c71b83b6d8de8ac093b95f7cd634419a3523a6b5efde98bff5a882c132c6
+-- Script Hash: 749b4ca8dbd0e0fe528d94a431d875d1d7d32f0aaa2e9b6a1f86225831fe0cd678b77d27386449ced706848c9939f50a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -35,6 +35,8 @@ v2.FARMER_CLETUS_SPIRIT = "farmer_cletus_spirit";
 v1.farmer_cletus_spirit = "FARMER_CLETUS_SPIRIT";
 v2.CYBER_DJ = "cyber_dj";
 v1.cyber_dj = "CYBER_DJ";
+v2.YUZI_VICTORIOUS = "yuzi_victorious";
+v1.yuzi_victorious = "YUZI_VICTORIOUS";
 return {
 	BedwarsKitSkin = v2
 };

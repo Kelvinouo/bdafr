@@ -30,7 +30,7 @@ local l__ClientStore__5 = v1.import(script, script.Parent.Parent.Parent.Parent, 
 function v4.KnitStart(p2)
 	u1.KnitStart(p2);
 	if l__PlaceUtil__4.isLobbyServer() then
-		p2:startMusic();
+
 	end;
 	l__ClientStore__5.changed:connect(function(p3, p4)
 		if p3.Settings.backgroundMusicVolume ~= p4.Settings.backgroundMusicVolume then
@@ -46,7 +46,7 @@ local u9 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v4.startMusic(p5, p6)
 	local v6 = p6;
 	if v6 == nil then
-		v6 = l__GameSound__6.LOBBY_MUSIC;
+		v6 = l__GameSound__6.SUSPENSE_MUSIC;
 	end;
 	p5:stopMusic();
 	local v7 = l__SoundManager__7:playSound(v6, {

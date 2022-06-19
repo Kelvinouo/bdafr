@@ -1,4 +1,4 @@
--- Script Hash: c3e67dd0fe46c961b62f1cb98b3f51d7e2f81995ee5af5bd37e065c27fd5b9ced416b2db830c785e4634473227f0be38
+-- Script Hash: e490349f69253d16bf9d31bfb40939d2d38b030600ae0aa573444b4ae158b9027efa1c02780f890af2c02d7e43a7c81e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -51,6 +51,8 @@ v2.GUN_GAME = "gun_game";
 v1.gun_game = "GUN_GAME";
 v2.FLAG_CAPTURE = "flag_capture";
 v1.flag_capture = "FLAG_CAPTURE";
+v2.ROYALE = "royale";
+v1.royale = "ROYALE";
 return {
 	QueueType = v2
 };

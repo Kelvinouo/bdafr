@@ -1,4 +1,4 @@
--- Script Hash: 003bfc2c80652b7bc3be5fb38eb2c89e3fb19c41664c201e803836429c9492f528d9e83412ce9142fdc3cf8f892308cc
+-- Script Hash: 9a8fc9e654b40234abb2ca2512bc1c90259e496cf18f3f58564d62f0ae8260a5b850ef4c403d1d8627010fa98151cb83
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -11,6 +11,17 @@ return {
 		newestKitBG = "rbxassetid://8795128315"
 	}, 
 	GameUpdateMeta = { {
+			updateLogId = 38, 
+			visible = true, 
+			title = "Ranked Season 5 + Void Turret + New Game Countdown", 
+			date = "6/17/2022", 
+			body = "\240\159\140\145 <b>Void Turret (NEW ITEM!)</b>\nStep your bed defense up with the all new Void Turret! Place them down to shoot a powerful laser at nearby enemies. You can purchase Void Turrets for 3 Void Crystals in the Item Shop!\n\n\240\159\155\169\239\184\143 <b>Battle Royale.. (NEW GAME COUNTDOWN)</b>\n- Our new Battle Royale game is releasing next week! You can see a live countdown in the BedWars lobby!\n\n\240\159\143\134 <b>Ranked Season 5 Release</b>\nRanked Season 4 has come to a close and ranked rewards are now being distributed.\nAll ranks will receive an exclusive title to show off the rank they left off at and NIGHTMARE players will receive the limited Victorious Yuzi skin.\n- Fixed Nightmare players not receiving the NIGHTMARE exclusive emote\n- Fixed Nightmare rank display in lobby\n- Quitting a game early will now count as a loss\nWe\226\128\153ve changed our ranked restrictions. This will open ranked queue to more players while making it difficult for cheaters to join back once banned: \n- 100 wins minimum requirement or Paid player\n\n<b>\240\159\134\147 Free Kits of The Week</b>\n\240\159\146\128 Bounty Hunter <b>(FIRST TIME FREE)</b>\n\240\159\142\184 Melody\n\240\159\141\158 Baker\n\n<b>\226\154\153\239\184\143 Other Changes</b>\n\240\159\147\156 Fixed clan admins not being able to promote/demote members\n\240\159\140\145 Void Armor Cost: 16 \226\134\146 18 void crystals\n\240\159\140\145 Void Sword Cost: 8 \226\134\146 10 void crystals\n\240\159\140\145 Void monsters no longer count as a kill\n\240\159\143\133 Fixed INF damage display in post match stat cards\n\240\159\142\131 Fixed duping items with Jack kit and Clingy enchant", 
+			image = {
+				assetId = "rbxassetid://9942383051", 
+				aspectRatio = 1, 
+				height = 150
+			}
+		}, {
 			updateLogId = 37, 
 			visible = true, 
 			title = "Season 5 Battle Pass + The Void", 

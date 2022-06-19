@@ -263,7 +263,7 @@ function v4.equipItem(p33, p34)
 	local v53 = l__getItemMeta__12(p34.Name);
 	local u13 = p34:Clone();
 	p34.AttributeChanged:Connect(function(p35)
-		u13:SetAttribute(p35, (p34:GetAttribute(p35)));
+		u13:SetAttribute(p35, p34:GetAttribute(p35));
 	end);
 	if v53.armor then
 		local v54 = u13:GetDescendants();

@@ -5,10 +5,10 @@ local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_incl
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local l__KnitClient__3 = v2.KnitClient;
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
-local l__HandKnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
+local l__HandKnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
 local v6 = setmetatable({}, {
 	__tostring = function()
-		return "EngineerTabletController";
+		return "VoidTabletController";
 	end, 
 	__index = l__HandKnitController__5
 });
@@ -22,11 +22,11 @@ local u2 = l__HandKnitController__5;
 local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function u1.constructor(p1)
 	u2.constructor(p1);
-	p1.Name = "EngineerTabletController";
+	p1.Name = "VoidTabletController";
 	p1.nextAllowActivation = -1;
 	p1.maid = u3.new();
 end;
-local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
+local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function u1.KnitStart(p2)
 	u2.KnitStart(p2);
 	l__ClientStore__4.changed:connect(function(p3, p4)
@@ -47,8 +47,8 @@ local l__Flamework__9 = v1.import(script, v1.getModule(script, "@flamework", "co
 local l__KnitClient__10 = v2.KnitClient;
 local l__GameAnimationUtil__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
 local l__AnimationType__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
-local l__CreateRoduxApp__13 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "rodux", "create-rodux-app").CreateRoduxApp;
-local u14 = v1.import(script, script.Parent, "ui", "engineer-camera-view").EngineerCameraViewWrapper;
+local l__CreateRoduxApp__13 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "rodux", "create-rodux-app").CreateRoduxApp;
+local l__VoidTurretViewWrapper__14 = v1.import(script, script.Parent, "ui", "void-turret-view").VoidTurretViewWrapper;
 local u15 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__default__16 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function u1.attemptToActivate(p5)
@@ -60,7 +60,7 @@ function u1.attemptToActivate(p5)
 		warn("Could not find entity for localplayer");
 		return false;
 	end;
-	local v9 = l__CollectionService__6:GetTagged(l__TurretId__7.VULCAN_TURRET);
+	local v9 = l__CollectionService__6:GetTagged(l__TurretId__7.VOID_TURRET);
 	local function v10(p6)
 		return p6:GetAttribute("PlacedByUserId") == l__Players__8.LocalPlayer.UserId;
 	end;
@@ -74,7 +74,7 @@ function u1.attemptToActivate(p5)
 	end;
 	if #v11 == 0 then
 		l__Flamework__9.resolveDependency("@easy-games/game-core:client/controllers/notification-controller@NotificationController"):sendErrorNotification({
-			message = "You do not have any turrets placed yet."
+			message = "You do not have any void turrets placed yet."
 		});
 		return false;
 	end;
@@ -98,7 +98,7 @@ function u1.attemptToActivate(p5)
 		l__KnitClient__3.Controllers.ViewmodelController:removeDisabler(u19);
 	end);
 	p5:setupYield(function()
-		local u20 = l__CreateRoduxApp__13("EngineerCameraView", u14);
+		local u20 = l__CreateRoduxApp__13("VoidCameraView", l__VoidTurretViewWrapper__14);
 		return function()
 			u15.unmount(u20);
 		end;
@@ -125,7 +125,7 @@ function u1.onEnable(p8)
 end;
 local l__ItemType__22 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
 function u1.isRelevantItem(p9, p10)
-	return p10.itemType == l__ItemType__22.TABLET;
+	return p10.itemType == l__ItemType__22.VOID_TURRET_TABLET;
 end;
 function u1.onDisable(p11)
 	p11.maid:DoCleaning();
@@ -134,6 +134,6 @@ u2 = l__KnitClient__3.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {
-	EngineerTabletController = u2
+	VoidTabletController = u2
 };
 return u1;

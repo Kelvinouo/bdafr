@@ -1,9 +1,8 @@
--- Script Hash: 56f1097e342239deccff83a1786e6c80eb6f01d91c4b52fdc605d8ce05b08116e16674c3f1e8473ec81f79f392cc11ad
+-- Script Hash: 16d4d12311058b084b24eef5d81f276060f295e3d14bb3660604ae1fd2576c994c3e689efe60c447df1f0dc63816fc8b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local u1 = {
 	barbarianRage = 0, 
-	engineerSelectedTurret = nil, 
 	wizardAbility = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "kits", "wizard", "wizard-ability-type").WizardAbilityType.LightningStrike, 
 	iceQueenProgress = 0, 
 	canUseYetiAbilityNext = math.huge, 
@@ -32,74 +31,66 @@ return {
 			v5.wizardAbility = p2.ability;
 			return v5;
 		end;
-		if l__type__1 == "KitEngineerSetTurret" then
+		if l__type__1 == "KitBountyHunterSetTarget" then
 			local v8 = {};
 			for v9, v10 in pairs(p1) do
 				v8[v9] = v10;
 			end;
-			v8.engineerSelectedTurret = p2.selectedTurret;
+			v8.bountyHunterTarget = p2.bountyHunterTarget;
 			return v8;
 		end;
-		if l__type__1 == "KitBountyHunterSetTarget" then
+		if l__type__1 == "KitAngelIncrementProgress" then
 			local v11 = {};
 			for v12, v13 in pairs(p1) do
 				v11[v12] = v13;
 			end;
-			v11.bountyHunterTarget = p2.bountyHunterTarget;
+			local v14 = p1.angelProgress;
+			if v14 == nil then
+				v14 = 0;
+			end;
+			v11.angelProgress = v14 + p2.progress;
 			return v11;
 		end;
-		if l__type__1 == "KitAngelIncrementProgress" then
-			local v14 = {};
-			for v15, v16 in pairs(p1) do
-				v14[v15] = v16;
-			end;
-			local v17 = p1.angelProgress;
-			if v17 == nil then
-				v17 = 0;
-			end;
-			v14.angelProgress = v17 + p2.progress;
-			return v14;
-		end;
 		if l__type__1 == "KitIceQueenSetProgress" then
+			local v15 = {};
+			for v16, v17 in pairs(p1) do
+				v15[v16] = v17;
+			end;
+			v15.iceQueenProgress = p2.progress;
+			return v15;
+		end;
+		if l__type__1 == "KitYetiSetWhenCanUseAbility" then
 			local v18 = {};
 			for v19, v20 in pairs(p1) do
 				v18[v19] = v20;
 			end;
-			v18.iceQueenProgress = p2.progress;
+			v18.canUseYetiAbilityNext = p2.when;
 			return v18;
 		end;
-		if l__type__1 == "KitYetiSetWhenCanUseAbility" then
+		if l__type__1 == "KitLumenIncrementProgress" then
 			local v21 = {};
 			for v22, v23 in pairs(p1) do
 				v21[v22] = v23;
 			end;
-			v21.canUseYetiAbilityNext = p2.when;
+			local v24 = p1.lumenProgress;
+			if v24 == nil then
+				v24 = 0;
+			end;
+			v21.lumenProgress = v24 + p2.progress;
 			return v21;
-		end;
-		if l__type__1 == "KitLumenIncrementProgress" then
-			local v24 = {};
-			for v25, v26 in pairs(p1) do
-				v24[v25] = v26;
-			end;
-			local v27 = p1.lumenProgress;
-			if v27 == nil then
-				v27 = 0;
-			end;
-			v24.lumenProgress = v27 + p2.progress;
-			return v24;
 		end;
 		if l__type__1 ~= "KitEmberIncrementProgress" then
 			return p1;
 		end;
-		local v28 = {};
-		for v29, v30 in pairs(p1) do
-			v28[v29] = v30;
+		local v25 = {};
+		for v26, v27 in pairs(p1) do
+			v25[v26] = v27;
 		end;
-		local v31 = p1.emberProgress;
-		if v31 == nil then
-			v31 = 0;
+		local v28 = p1.emberProgress;
+		if v28 == nil then
+			v28 = 0;
 		end;
-		v28.emberProgress = v31 + p2.progress;
-		return v28;
+		v25.emberProgress = v28 + p2.progress;
+		return v25;
 	end
 };

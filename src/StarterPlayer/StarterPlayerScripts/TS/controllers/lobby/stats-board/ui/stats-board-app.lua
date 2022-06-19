@@ -1,4 +1,4 @@
--- Script Hash: 87dd792f474984a27948e18f2c7a6c1b24a1b63974e7a6604aa79d36a704ab4eeedf2521d64f1234677d625885ea58e7
+-- Script Hash: 47af4293dfd3f33bfab209a3786f308d451bfdba20962fa49c3d7bb5ab3d73b22d9c56e8c56414f92edfb9606841bf33
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -25,7 +25,7 @@ local u10 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src)
 		v5 = 0;
 	end;
 	v3.visible = v5 >= 5;
-	v2[l__QueueType__1.BEDWARS_RANKED_S4] = v3;
+	v2[l__QueueType__1.BEDWARS_RANKED_S5] = v3;
 	v2[l__QueueType__1.BEDWARS_TO1] = {
 		layoutOrder = 1, 
 		visible = true
