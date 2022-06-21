@@ -1,4 +1,3 @@
--- Script Hash: 509bd11e244ecbdfb0d9427b1d25df3f900072d5e05289b722581bdaeaf957747358cbebcaf1d14ec57f60e49a47e925
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -11,7 +10,7 @@ local u6 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__LeaderboardCore__7 = v1.import(script, script.Parent, "leaderboard-core").LeaderboardCore;
 local l__CreateRoduxApp__8 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "rodux", "create-rodux-app").CreateRoduxApp;
 return function(p1)
-	local v2 = table.create(10, "");
+	local v2 = table.create(100, "");
 	local function v3(p2, p3)
 		return {
 			username = "ExamplePlayer" .. tostring(p3), 

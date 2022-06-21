@@ -1,4 +1,3 @@
--- Script Hash: 11c524f2afd5c33b7a77b1113d3dcfea37254bea9c16a04feaa0a1aa4e0205041bf6f15f03b18494bdf6297f4a377f57
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -166,7 +165,7 @@ return {
 		[l__BedwarsKitSkin__5.YUZI_VICTORIOUS] = {
 			name = "Victorious Yuzi", 
 			kit = l__BedwarsKit__4.DASHER, 
-			renderImage = "rbxassetid://9942565286", 
+			renderImage = "rbxassetid://9966080881", 
 			itemSkins = { {
 					itemType = l__ItemType__2.WOOD_DAO, 
 					name = "victorious"
