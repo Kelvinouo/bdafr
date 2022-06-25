@@ -1,4 +1,3 @@
--- Script Hash: d00bd80e5bd9e1dc4497ce8df444f213b41ab549e5e4d3d77a26cb5051034eca9735d2a468286c99b4e70facc865c932
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -369,6 +368,18 @@ v2.VOID_PORTAL_IDLE = 180;
 v1[180] = "VOID_PORTAL_IDLE";
 v2.VOID_PORTAL_EXCITED = 181;
 v1[181] = "VOID_PORTAL_EXCITED";
+v2.PINATA_IDLE_1 = 182;
+v1[182] = "PINATA_IDLE_1";
+v2.PINATA_IDLE_2 = 183;
+v1[183] = "PINATA_IDLE_2";
+v2.PINATA_IDLE_3 = 184;
+v1[184] = "PINATA_IDLE_3";
+v2.PINATA_HIT_1 = 185;
+v1[185] = "PINATA_HIT_1";
+v2.PINATA_HIT_2 = 186;
+v1[186] = "PINATA_HIT_2";
+v2.PINATA_FEED = 187;
+v1[187] = "PINATA_FEED";
 return {
 	AnimationType = v2
 };

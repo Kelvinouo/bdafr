@@ -1,4 +1,3 @@
--- Script Hash: 6dc54555a3fa350dfb1afd98bbc7c2d623ef1a143a5dc8a1c2d19d8ce42bd7b7003bc3c06cf00a786d094bb25d3caeb8
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -101,6 +100,19 @@ function v2.hasEnough(p5, p6, p7)
 		v25(v27, v26 - 1, l__items__24);
 	end;
 	return p7 <= u4;
+end;
+function v2.getAmount(p9, p10)
+	local l__items__28 = v2.getInventory(p9).items;
+	local u5 = 0;
+	local function v29(p11)
+		if p11.itemType == p10 then
+			u5 = u5 + p11.amount;
+		end;
+	end;
+	for v30, v31 in ipairs(l__items__28) do
+		v29(v31, v30 - 1, l__items__28);
+	end;
+	return 0;
 end;
 return {
 	InventoryUtil = v2

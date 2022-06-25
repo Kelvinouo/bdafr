@@ -1,4 +1,3 @@
--- Script Hash: 9e2909898ebd28f344ff1075c7eccc03caca6324101cc910415d77209eabc5507b0a5abbdcceca00f5edfe738ca6a9c9
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -517,10 +516,14 @@ v2.VITALITY_STAR = "vitality_star";
 v1.vitality_star = "VITALITY_STAR";
 v2.CRIT_STAR = "crit_star";
 v1.crit_star = "CRIT_STAR";
+v2.PINATA = "pinata";
+v1.pinata = "PINATA";
 v2.VOID_PORTAL = "void_portal";
 v1.void_portal = "VOID_PORTAL";
 v2.VOID_CRYSTAL = "void_crystal";
 v1.void_crystal = "VOID_CRYSTAL";
+v2.CANDY = "candy";
+v1.candy = "CANDY";
 v2.VOID_TURRET = "void_turret";
 v1.void_turret = "VOID_TURRET";
 v2.VOID_TURRET_TABLET = "void_turret_tablet";

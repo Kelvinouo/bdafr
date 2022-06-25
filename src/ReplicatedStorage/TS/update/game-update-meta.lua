@@ -1,4 +1,3 @@
--- Script Hash: 9a8fc9e654b40234abb2ca2512bc1c90259e496cf18f3f58564d62f0ae8260a5b850ef4c403d1d8627010fa98151cb83
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -11,6 +10,17 @@ return {
 		newestKitBG = "rbxassetid://8795128315"
 	}, 
 	GameUpdateMeta = { {
+			updateLogId = 39, 
+			visible = true, 
+			title = "Luc\195\173a kit + Void Realm collapsed", 
+			date = "6/24/2022", 
+			body = "\240\159\141\172\194\160<b>Luc\195\173a (NEW BP kit!)</b>\nLuc\195\173a is the new Lv. 5 premium Battlepass kit! Use the candy you get from damaging players to fill up your pi\195\177ata. When you're ready, smash it for lots of loot!\n\n\240\159\155\169\194\160<b>Battle Royale (NEW Easy.gg game!)</b>\nBattle Royale releases tomorrow, Saturday at 9 AM PST! Join from the BedWars lobby!\n\n\240\159\140\145 <b>Void Realm Collapsed</b>\nAll portals to the Void are closed for now. We may reopen the Void in the future with new items to build.\n\n\240\159\165\149\194\160<b>Carrot Cannon (ITEM!)</b>\nThe Carrot Cannon is back in the main game, but this time you can get it straight from the shopkeeper! Fire a barrage of carrots at your opponent\226\128\153s base for huge destruction!\n\n\240\159\155\161\239\184\143 <b>Moderation Improvements</b>\nWe\226\128\153ve been improving our moderation tools to find and ban cheaters in your matches faster. Over the next week, you should see fewer cheaters in your games, especially in ranked. We will continue to improve moderation as we invest more resources into our anti-cheat and tools.\n\n<b>\240\159\143\134 Ranked Queue Changes</b>\nUnlocking ranked through paid access has been removed, but players who already bought paid access will still have access.\nNew Ranked Restriction: 100 wins and Bed Wars account age of at least 7 days old\n\n\240\159\134\147 <b>Free Kits of the Week</b>\n\240\159\167\145\226\128\141\240\159\140\190 Farmer Cletus\n\240\159\148\168 Builder\n\240\159\146\165 Davey\n\n\226\154\153\239\184\143\194\160<b>Other Changes</b>\n\240\159\148\171\194\160Grappling Gun has been vaulted\n\240\159\146\172\194\160Added tooltips to items\n\240\159\147\148\194\160The action bar will now display your in-hand item\226\128\153s name\n\240\159\155\161\194\160The kit shop UI now includes kit class icons\n\226\154\161 Tesla trap damage nerf: 6 \226\134\146 4\n\226\154\161 Fixed inf tesla bypass from Void Portal\n\240\159\147\161 Fixed a dupe glitch with chests", 
+			image = {
+				assetId = "rbxassetid://10014214670", 
+				aspectRatio = 1, 
+				height = 150
+			}
+		}, {
 			updateLogId = 38, 
 			visible = true, 
 			title = "Ranked Season 5 + Void Turret + New Game Countdown", 

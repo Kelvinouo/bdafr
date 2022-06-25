@@ -112,6 +112,8 @@ v2.WIND_WALKER = "wind_walker";
 v1.wind_walker = "WIND_WALKER";
 v2.STAR_COLLECTOR = "star_collector";
 v1.star_collector = "STAR_COLLECTOR";
+v2.PINATA = "pinata";
+v1.pinata = "PINATA";
 return {
 	BedwarsKit = v2
 };

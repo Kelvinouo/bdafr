@@ -1,4 +1,3 @@
--- Script Hash: 2d9307bf5186796bcd2aaff67d0bf606e44885e94d59237f2bb7179b0388febe2916743d0cd11f5f5f54933b0e87970e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__AnimationType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
@@ -188,6 +187,12 @@ return {
 		[l__AnimationType__1.VOID_CRAB_RIGHT_ATTACK] = "rbxassetid://9839890526", 
 		[l__AnimationType__1.VOID_CRAB_WALKING] = "rbxassetid://9839906716", 
 		[l__AnimationType__1.VOID_PORTAL_IDLE] = "rbxassetid://9867544534", 
-		[l__AnimationType__1.VOID_PORTAL_EXCITED] = "rbxassetid://9867542874"
+		[l__AnimationType__1.VOID_PORTAL_EXCITED] = "rbxassetid://9867542874", 
+		[l__AnimationType__1.PINATA_IDLE_1] = "rbxassetid://10012798975", 
+		[l__AnimationType__1.PINATA_IDLE_2] = "rbxassetid://10012801384", 
+		[l__AnimationType__1.PINATA_IDLE_3] = "rbxassetid://10012803390", 
+		[l__AnimationType__1.PINATA_HIT_1] = "rbxassetid://10012807780", 
+		[l__AnimationType__1.PINATA_HIT_2] = "rbxassetid://10012809666", 
+		[l__AnimationType__1.PINATA_FEED] = "rbxassetid://10013028800"
 	}
 };

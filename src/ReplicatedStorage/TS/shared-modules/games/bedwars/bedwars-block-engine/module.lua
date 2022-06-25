@@ -1,4 +1,3 @@
--- Script Hash: a184efd54af52e94a1a8b15735dd8e773a4f66ae95c56b02852ea43c12159ed62ac0ea10bcd4587b08a012d770f712bb
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -9,11 +8,12 @@ l__BlockEngine__2:getBlockBreakableHook():connect(function(p1)
 		return nil;
 	end;
 	local v3 = l__GamePlayerUtil__1.getGamePlayer(p1.player):getTeamId();
-	if v3 ~= "" and v3 then
-		local v4 = l__BlockEngine__2:getStore():getBlockAt(p1.blockRef.blockPosition);
-		if v4 and v4:GetAttribute("Team" .. v3 .. "NoBreak") == true then
-			p1:setCancelled(true);
-		end;
+	local v4 = l__BlockEngine__2:getStore():getBlockAt(p1.blockRef.blockPosition);
+	if v3 ~= "" and v3 and v4 and v4:GetAttribute("Team" .. v3 .. "NoBreak") == true then
+		p1:setCancelled(true);
+	end;
+	if v4 and v4:GetAttribute("Player" .. tostring(p1.player.UserId) .. "NoBreak") == true then
+		p1:setCancelled(true);
 	end;
 end);
 return {};

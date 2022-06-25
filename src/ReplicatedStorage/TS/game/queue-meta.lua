@@ -1,4 +1,3 @@
--- Script Hash: 09f15d3f9b26c260b6f1a0411c534635a1bb80e71e3c7b84901636abc211ca7286e399b4ccf14b02021099cddcfc7850
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -525,7 +524,6 @@ return {
 				min = 1, 
 				max = 4
 			}, 
-			paidPlayersOnly = true, 
 			disableInCustom = true, 
 			glickoCategory = l__GlickoCategory__4.RANKED_BETA, 
 			rankCategory = l__RankCategory__5.RANKED_BETA, 
@@ -561,7 +559,6 @@ return {
 				min = 1, 
 				max = 4
 			}, 
-			paidPlayersOnly = true, 
 			disableInCustom = true, 
 			glickoCategory = l__GlickoCategory__4.RANKED_S4, 
 			rankCategory = l__RankCategory__5.RANKED_S4, 
@@ -597,7 +594,6 @@ return {
 				min = 1, 
 				max = 4
 			}, 
-			paidPlayersOnly = true, 
 			disableInCustom = true, 
 			minWinReq = 100, 
 			glickoCategory = l__GlickoCategory__4.RANKED_S5, 

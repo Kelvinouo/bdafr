@@ -1,4 +1,3 @@
--- Script Hash: ad2f4dbe96b2ab313cab5cede908bf34ffbd23110bce259a779f1d99870770c63b47fba265c9c50e1a8536332ab75929
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -35,9 +34,7 @@ return {
 			}, {
 				paid = true, 
 				level = 5, 
-				comingSoon = {
-					kit = true
-				}
+				kit = l__BedwarsKit__3.PINATA
 			}, {
 				paid = false, 
 				level = 29, 

@@ -1,4 +1,3 @@
--- Script Hash: 1b9326e1a5aff8d5a1a9d923200dd4ea9f3a14606e1e3568be339587b1a725bfca4f4d7070a6b6c6c6e8783ee41e0b2d
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -160,6 +159,13 @@ v5.SKULL_ICON = "rbxassetid://9557802359";
 v5.HAND_SCISSOR_ICON = "rbxassetid://9857436085";
 v5.HAND_FIST_ICON = "rbxassetid://9857436202";
 v5.HAND_STOP_ICON = "rbxassetid://9857436302";
+v5.FIGHTER_KIT_ICON = "rbxassetid://10014000531";
+v5.TANK_KIT_ICON = "rbxassetid://9964938168";
+v5.DEFENDER_KIT_ICON = "rbxassetid://9964937994";
+v5.MOVEMENT_KIT_ICON = "rbxassetid://9964937845";
+v5.DESTROYER_KIT_ICON = "rbxassetid://9964937712";
+v5.ECONOMY_KIT_ICON = "rbxassetid://9964937630";
+v5.SUPPORT_KIT_ICON = "rbxassetid://9964937010";
 return {
 	BedwarsImageId = v5
 };

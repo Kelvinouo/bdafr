@@ -1,4 +1,3 @@
--- Script Hash: f12c451f00bf5fe9ba48ca668fefeacd765a4077cec739b8d873a19c1747f2b118338c1805bafc2c4055036b2a5b0765
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -321,7 +320,18 @@ local v4 = {
 	STAR_PICKUP = "rbxassetid://9872091020", 
 	STAR_CRUSH = "rbxassetid://9872091084", 
 	STAR_IDLE = "rbxassetid://9872090917", 
-	GLITCH_KILL_EFFECT = "rbxassetid://9872091186"
+	GLITCH_KILL_EFFECT = "rbxassetid://9872091186", 
+	PINATA_POP_1 = "rbxassetid://10011665352", 
+	PINATA_POP_2 = "rbxassetid://10011664373", 
+	PINATA_POP_3 = "rbxassetid://10011664823", 
+	PINATA_POP_4 = "rbxassetid://10011665794", 
+	PINATA_HIT_1 = "rbxassetid://10011664654", 
+	PINATA_HIT_2 = "rbxassetid://10011665545", 
+	PINATA_HIT_3 = "rbxassetid://10011664970", 
+	PINATA_STAGE_INCREASE = "rbxassetid://10011665149", 
+	PINATA_AMBIENT_LOOP = "rbxassetid://10011665646", 
+	PINATA_COLLECT_CANDY = "rbxassetid://10011666014", 
+	PINATA_DEPOSIT_CANDY = "rbxassetid://10011666242"
 };
 l__SoundManager__3:registerSound(v4.VENDING_ROLL_TICK, {
 	preload = false
@@ -402,7 +412,8 @@ l__SoundManager__3:registerSound(v4.SWORD_SWING_2, {
 	preloadPriority = 100
 });
 l__SoundManager__3:registerSound(v4.PICKUP_ITEM_DROP, {
-	volume = 0.4
+	volume = 0.4, 
+	preloadPriority = 90
 });
 l__SoundManager__3:registerSound(v4.VOICE_1, {
 	volume = 0.15
