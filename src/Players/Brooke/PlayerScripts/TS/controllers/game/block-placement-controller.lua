@@ -1,4 +1,3 @@
--- Script Hash: d0bbd9aebafff31609f265a6f29f1c19130c0adb13a02ccb5ec726e9374e049099216373138ab9d7be52e9507aca4dac
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -46,12 +45,15 @@ function u1.onDisable(p7)
 		p7.blockPlacer = nil;
 	end;
 end;
+function u1.getBlockPlacer(p8)
+	return p8.blockPlacer;
+end;
 local l__getItemMeta__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
-function u1.getPlacedItemType(p8, p9)
-	local v6 = l__getItemMeta__6(p9);
+function u1.getPlacedItemType(p9, p10)
+	local v6 = l__getItemMeta__6(p10);
 	if v6 then
 		if v6.block then
-			return p9;
+			return p10;
 		end;
 		if not v6.placesBlock then
 			return nil;

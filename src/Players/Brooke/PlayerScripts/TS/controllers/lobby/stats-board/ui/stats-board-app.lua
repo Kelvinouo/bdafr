@@ -1,4 +1,3 @@
--- Script Hash: b18832f01b7ce0bf3f98ffed62022af03ad028fa8f3efccc73b7a9ac42fd815fa153f2f99cc199d0fee2be1b02f2ae90
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -25,7 +24,7 @@ local u10 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src)
 		v5 = 0;
 	end;
 	v3.visible = v5 >= 5;
-	v2[l__QueueType__1.BEDWARS_RANKED_S4] = v3;
+	v2[l__QueueType__1.BEDWARS_RANKED_S5] = v3;
 	v2[l__QueueType__1.BEDWARS_TO1] = {
 		layoutOrder = 1, 
 		visible = true
@@ -72,37 +71,30 @@ local u10 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src)
 		BackgroundColor3 = l__Theme__2.backgroundPrimary
 	};
 	local v7 = { u3.createElement(l__StatsBoardHeader__4) };
-	local v8 = u5.entries(v2);
-	local function v9(p3)
-		local v10 = p3[1];
-		return p3[2].visible;
-	end;
-	local v11 = {};
-	local v12 = 0;
-	for v13, v14 in ipairs(v8) do
-		if v9(v14, v13 - 1, v8) == true then
-			v12 = v12 + 1;
-			v11[v12] = v14;
+	local v8 = {};
+	local v9 = 0;
+	for v10, v11 in ipairs((u5.entries(v2))) do
+		local v12 = v11[1];
+		if v11[2].visible == true then
+			v9 = v9 + 1;
+			v8[v9] = v11;
 		end;
 	end;
-	local function v15(p4)
-		return u3.createElement(l__QueueStats__6, {
+	local v13 = table.create(#v8);
+	for v14, v15 in ipairs(v8) do
+		v13[v14] = u3.createElement(l__QueueStats__6, {
 			store = p1.store, 
-			QueueType = p4[1], 
-			LayoutOrder = p4[2].layoutOrder
+			QueueType = v15[1], 
+			LayoutOrder = v15[2].layoutOrder
 		});
 	end;
-	local v16 = table.create(#v11);
-	for v17, v18 in ipairs(v11) do
-		v16[v17] = v15(v18, v17 - 1, v11);
-	end;
-	local v19 = {
+	local v16 = {
 		ScrollingFrameProps = {
 			Size = UDim2.fromScale(1, 0.9), 
 			Position = UDim2.fromScale(0, 0.1)
 		}
 	};
-	local v20 = { u3.createElement("UIListLayout", {
+	local v17 = { u3.createElement("UIListLayout", {
 			FillDirection = Enum.FillDirection.Vertical, 
 			VerticalAlignment = Enum.VerticalAlignment.Top, 
 			HorizontalAlignment = Enum.HorizontalAlignment.Center, 
@@ -118,33 +110,33 @@ local u10 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src)
 		}), u3.createElement(l__GlobalStats__8, {
 			store = p1.store
 		}) };
-	local v21 = #v20;
-	for v22, v23 in ipairs(v16) do
-		v20[v21 + v22] = v23;
+	local v18 = #v17;
+	for v19, v20 in ipairs(v13) do
+		v17[v18 + v19] = v20;
 	end;
-	v7[#v7 + 1] = u3.createElement(l__AutoCanvasScrollingFrame__9, v19, v20);
+	v7[#v7 + 1] = u3.createElement(l__AutoCanvasScrollingFrame__9, v16, v17);
 	return u3.createElement("Frame", v6, v7);
 end);
 return {
-	StatsBoardUIWrapper = function(p5)
-		local v24 = {};
-		local v25 = {};
-		local v26 = {};
-		for v27, v28 in pairs(p5) do
-			v26[v27] = v28;
+	StatsBoardUIWrapper = function(p3)
+		local v21 = {};
+		local v22 = {};
+		local v23 = {};
+		for v24, v25 in pairs(p3) do
+			v23[v24] = v25;
 		end;
-		v25[#v25 + 1] = u3.createElement(u10, v26);
-		v24[#v24 + 1] = u3.createElement("Frame", {
+		v22[#v22 + 1] = u3.createElement(u10, v23);
+		v21[#v21 + 1] = u3.createElement("Frame", {
 			AnchorPoint = Vector2.new(0.5, 0.5), 
 			Position = UDim2.fromScale(0.5, 0.5), 
 			Size = UDim2.new(1, -30, 1, -30), 
 			BackgroundTransparency = 1
-		}, v25);
+		}, v22);
 		return u3.createElement("SurfaceGui", {
 			Face = Enum.NormalId.Back, 
 			LightInfluence = 0.25, 
 			SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
-		}, v24);
+		}, v21);
 	end, 
 	StatsBoard = u10
 };

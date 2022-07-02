@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -98,55 +97,51 @@ function v5.launchOilSplash(p13, p14, p15, p16, p17)
 	l__ProjectileUtil__9.fireProjectile(l__Players__10.LocalPlayer, v19, "oil:" .. l__HttpService__11:GenerateGUID(false), p14, p15, 196.2, function(p18, p19)
 		local v20 = l__BlockEngine__12:getHandlerRegistry():getHandler(p19.Name);
 		if v20 then
-			local v21 = v20:getContainedPositions(p19);
-			local function v22(p20)
-				return (l__BlockEngine__12:getWorldPosition(p20) - p18).Magnitude <= 3.1;
-			end;
-			local v23 = nil;
-			for v24, v25 in ipairs(v21) do
-				if v22(v25, v24 - 1, v21) == true then
-					v23 = v25;
+			local v21 = nil;
+			for v22, v23 in ipairs((v20:getContainedPositions(p19))) do
+				if (l__BlockEngine__12:getWorldPosition(v23) - p18).Magnitude <= 3.1 == true then
+					v21 = v23;
 					break;
 				end;
 			end;
-			if v23 then
-				local v26 = nil;
-				for v27, v28 in ipairs(Enum.NormalId:GetEnumItems()) do
-					if l__BlockEngine__12:getStore():getBlockAt(v23 + Vector3.FromNormalId(v28)) == nil then
-						local v29 = l__BlockEngine__12:getWorldPosition(v23) + Vector3.FromNormalId(v28) * 1.5;
-						local l__Magnitude__30 = (v29 - (p18 + (p14 - p18).Unit)).Magnitude;
-						if v26 == nil or l__Magnitude__30 < v26.distance then
-							v26 = {
-								surface = v28, 
-								distance = l__Magnitude__30, 
-								surfacePosition = v29
+			if v21 then
+				local v24 = nil;
+				for v25, v26 in ipairs(Enum.NormalId:GetEnumItems()) do
+					if l__BlockEngine__12:getStore():getBlockAt(v21 + Vector3.FromNormalId(v26)) == nil then
+						local v27 = l__BlockEngine__12:getWorldPosition(v21) + Vector3.FromNormalId(v26) * 1.5;
+						local l__Magnitude__28 = (v27 - (p18 + (p14 - p18).Unit)).Magnitude;
+						if v24 == nil or l__Magnitude__28 < v24.distance then
+							v24 = {
+								surface = v26, 
+								distance = l__Magnitude__28, 
+								surfacePosition = v27
 							};
 						end;
 					end;
 				end;
 				task.spawn(function()
-					if v26 then
-						local v31 = Vector3.FromNormalId(v26.surface);
-						if math.abs(v31.X) == 1 then
-							local v32 = v26.surfacePosition.X;
+					if v24 then
+						local v29 = Vector3.FromNormalId(v24.surface);
+						if math.abs(v29.X) == 1 then
+							local v30 = v24.surfacePosition.X;
 						else
-							v32 = p18.X;
+							v30 = p18.X;
 						end;
-						if math.abs(v31.Y) == 1 then
-							local v33 = v26.surfacePosition.Y;
+						if math.abs(v29.Y) == 1 then
+							local v31 = v24.surfacePosition.Y;
 						else
-							v33 = p18.Y;
+							v31 = p18.Y;
 						end;
-						if math.abs(v31.Z) == 1 then
-							local v34 = v26.surfacePosition.Z;
+						if math.abs(v29.Z) == 1 then
+							local v32 = v24.surfacePosition.Z;
 						else
-							v34 = p18.Z;
+							v32 = p18.Z;
 						end;
-						local v35 = p13:createOilSplashPart(Vector3.new(v32, v33, v34), v17, v31, p17);
-						p13:makeOilSlippery(v35, p17);
-						p13:oilSpillInTween(v35, v17 * 2):andThen(function()
-							p13:oilSpillOutTween(v35, p16):expect();
-							v35:Destroy();
+						local v33 = p13:createOilSplashPart(Vector3.new(v30, v31, v32), v17, v29, p17);
+						p13:makeOilSlippery(v33, p17);
+						p13:oilSpillInTween(v33, v17 * 2):andThen(function()
+							p13:oilSpillOutTween(v33, p16):expect();
+							v33:Destroy();
 						end);
 					end;
 				end);
@@ -158,23 +153,23 @@ function v5.launchOilSplash(p13, p14, p15, p16, p17)
 end;
 local l__SoundManager__14 = v2.SoundManager;
 local l__GameSound__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-function v5.createOilSplashPart(p21, p22, p23, p24, p25)
-	if p25 == nil then
-		p25 = Random.new();
+function v5.createOilSplashPart(p20, p21, p22, p23, p24)
+	if p24 == nil then
+		p24 = Random.new();
 	end;
-	local v36 = l__ReplicatedStorage__6.Assets.Effects.OilPart:Clone();
-	l__GameQueryUtil__7:setQueryIgnored(v36, true);
-	local v37 = l__SoundManager__14:playSound(l__GameSound__15.GOO_SPLAT, {
-		position = p22, 
+	local v34 = l__ReplicatedStorage__6.Assets.Effects.OilPart:Clone();
+	l__GameQueryUtil__7:setQueryIgnored(v34, true);
+	local v35 = l__SoundManager__14:playSound(l__GameSound__15.GOO_SPLAT, {
+		position = p21, 
 		rollOffMaxDistance = 150
 	});
-	if v37 then
-		v37.PlaybackSpeed = p25:NextNumber(1, 1.5);
+	if v35 then
+		v35.PlaybackSpeed = p24:NextNumber(1, 1.5);
 	end;
-	v36.Size = Vector3.new(p23, p25:NextNumber(0.1, 0.5), p23);
-	v36.CFrame = CFrame.lookAt(p22, p22 + p24) * CFrame.Angles(math.rad(90), 0, 0);
-	v36.Parent = l__Workspace__4;
-	return v36;
+	v34.Size = Vector3.new(p22, p24:NextNumber(0.1, 0.5), p22);
+	v34.CFrame = CFrame.lookAt(p21, p21 + p23) * CFrame.Angles(math.rad(90), 0, 0);
+	v34.Parent = l__Workspace__4;
+	return v34;
 end;
 u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());

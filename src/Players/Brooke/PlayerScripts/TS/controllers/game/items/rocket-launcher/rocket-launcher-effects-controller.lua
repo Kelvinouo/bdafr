@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -93,34 +92,30 @@ function v5.KnitStart(p2)
 					end;
 					if v14 and v14.Name == l__ItemType__10.ROCKET_LAUNCHER then
 						v14.Handle.Missile.Transparency = 1;
-						local v15 = v14:GetDescendants();
-						local function v16(p10)
-							if p10:IsA("ParticleEmitter") then
-								p10:Emit(5);
+						for v15, v16 in ipairs((v14:GetDescendants())) do
+							if v16:IsA("ParticleEmitter") then
+								v16:Emit(5);
 							end;
-						end;
-						for v17, v18 in ipairs(v15) do
-							v16(v18, v17 - 1, v15);
 						end;
 					end;
 				end;
 				if v13 == l__GameAnimationUtil__7.getAssetId(l__AnimationType__8.ROCKET_LAUNCHER_RELOAD) then
-					local v19 = l__InventoryUtil__9.getInventory(p5).hand;
-					if v19 ~= nil then
-						v19 = v19.tool;
+					local v17 = l__InventoryUtil__9.getInventory(p5).hand;
+					if v17 ~= nil then
+						v17 = v17.tool;
 					end;
-					if v19 and v19.Name == l__ItemType__10.ROCKET_LAUNCHER then
+					if v17 and v17.Name == l__ItemType__10.ROCKET_LAUNCHER then
 						p9:GetMarkerReachedSignal("grab_missile"):Connect(function()
 							local u13 = l__ReplicatedStorage__3:WaitForChild("Items"):WaitForChild("rocket_launcher_missile"):Clone();
 							p9:GetMarkerReachedSignal("insert_missile"):Connect(function()
 								u13:Destroy();
-								if v19.Parent and v19:FindFirstChild("Handle") then
-									v19.Handle.Missile.Transparency = 0;
+								if v17.Parent and v17:FindFirstChild("Handle") then
+									v17.Handle.Missile.Transparency = 0;
 								end;
 							end);
-							local v20 = p6:FindFirstChildWhichIsA("Humanoid");
-							if v20 ~= nil then
-								v20:AddAccessory(u13);
+							local v18 = p6:FindFirstChildWhichIsA("Humanoid");
+							if v18 ~= nil then
+								v18:AddAccessory(u13);
 							end;
 							l__WeldUtil__11.weldCharacterAccessories(p6);
 						end);

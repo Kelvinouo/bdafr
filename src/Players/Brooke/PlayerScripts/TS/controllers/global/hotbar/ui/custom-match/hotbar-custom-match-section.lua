@@ -1,4 +1,3 @@
--- Script Hash: 1e0a0421973b8d08f925a346aa378a7d09b350eb1d75a900be0e1730611628d11d68447197d7d102ba9f1d3bb78dc13c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -68,7 +67,7 @@ return {
 			Text = "<b>BACK TO LOBBY</b>", 
 			Size = UDim2.fromScale(0.4, 1), 
 			OnClick = function()
-				l__default__7.Client:Get("TeleportToLobby"):SendToServer();
+				l__default__7.Client:Get("RemoteName"):SendToServer();
 			end
 		}, { u1.createElement("UIAspectRatioConstraint", {
 				AspectRatio = 3.795918367346939, 
@@ -79,22 +78,19 @@ return {
 			Position = UDim2.fromScale(0, -1.2)
 		}, v15);
 		local l__teams__16 = p1.store.Game.teams;
-		local function v17(p3, p4)
-			return u1.createElement(l__CustomMatchTeam__8, {
-				Team = p3, 
+		local v17 = table.create(#l__teams__16);
+		for v18, v19 in ipairs(l__teams__16) do
+			v17[v18] = u1.createElement(l__CustomMatchTeam__8, {
+				Team = v19, 
 				QueueMeta = v4, 
-				LayoutOrder = p4, 
+				LayoutOrder = v18 - 1, 
 				store = p1.store
 			});
 		end;
-		local v18 = table.create(#l__teams__16);
-		for v19, v20 in ipairs(l__teams__16) do
-			v18[v19] = v17(v20, v19 - 1, l__teams__16);
-		end;
-		local v21 = {
+		local v20 = {
 			Size = UDim2.fromScale(1, 1)
 		};
-		local v22 = { u1.createElement("UIListLayout", {
+		local v21 = { u1.createElement("UIListLayout", {
 				FillDirection = "Horizontal", 
 				HorizontalAlignment = "Center", 
 				VerticalAlignment = "Center", 
@@ -106,11 +102,11 @@ return {
 				LayoutOrder = -1, 
 				store = p1.store
 			}) };
-		local v23 = #v22;
-		for v24, v25 in ipairs(v18) do
-			v22[v23 + v24] = v25;
+		local v22 = #v21;
+		for v23, v24 in ipairs(v17) do
+			v21[v22 + v23] = v24;
 		end;
-		v9[v10 + 2] = u1.createElement(l__Empty__2, v21, v22);
+		v9[v10 + 2] = u1.createElement(l__Empty__2, v20, v21);
 		v7[#v7 + 1] = u1.createElement("Frame", v8, v9);
 		return u1.createFragment(v7);
 	end)

@@ -1,4 +1,3 @@
--- Script Hash: 00e7c5ca15e6404cf2d6b0b6ee7073569fb772b33365c2ec56f5fba50eafbd7bbaf23757db360f60d7d44b6974bc3824
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -27,20 +26,17 @@ local u3 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
 local l__ContentProvider__4 = v1.import(script, v1.getModule(script, "@rbxts", "services")).ContentProvider;
 function v3.onKitEnabled(p3)
 	local v5 = { "rbxassetid://7863780357", "rbxassetid://7863780231", "rbxassetid://7863779927", "rbxassetid://7863780097" };
-	local function v6(p4)
-		return u3("ImageLabel", {
-			Image = p4
+	local v6 = table.create(#v5);
+	for v7, v8 in ipairs(v5) do
+		v6[v7] = u3("ImageLabel", {
+			Image = v8
 		});
 	end;
-	local v7 = table.create(#v5);
-	for v8, v9 in ipairs(v5) do
-		v7[v8] = v6(v9, v8 - 1, v5);
-	end;
 	task.spawn(function()
-		l__ContentProvider__4:PreloadAsync(v7);
+		l__ContentProvider__4:PreloadAsync(v6);
 	end);
 end;
-function v3.onKitDisabled(p5)
+function v3.onKitDisabled(p4)
 
 end;
 u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;

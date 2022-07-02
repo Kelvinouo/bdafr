@@ -1,4 +1,3 @@
--- Script Hash: 5acdf9f6950be4afe2820d5e39bfccdb8f94aa26853405cfe455b41c1f66cda1b2a71585df1aebd369995d420e9b0413
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -25,15 +24,12 @@ return {
 					BackgroundTransparency = 0.4
 				});
 			end)():Play();
-			local function u8()
-				return l__TweenService__2:Create(v4, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {
-					TextTransparency = 1, 
-					BackgroundTransparency = 1
-				});
-			end;
 			task.spawn(function()
 				task.delay(2, function()
-					local v5 = u8();
+					local v5 = l__TweenService__2:Create(v4, TweenInfo.new(0.3, Enum.EasingStyle.Exponential), {
+						TextTransparency = 1, 
+						BackgroundTransparency = 1
+					});
 					if v5 ~= nil then
 						v5:Play();
 					end;

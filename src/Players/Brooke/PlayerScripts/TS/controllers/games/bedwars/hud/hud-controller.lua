@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -37,22 +36,19 @@ function u1.KnitStart(p2)
 	l__StarterGui__4:SetCoreGuiEnabled(Enum.CoreGuiType.Health, false);
 	v1.Promise.defer(function()
 		local v7 = { l__BedwarsImageId__5.HUD_BED_DESTROYED };
-		local function v8(p3)
-			return u6("ImageLabel", {
-				Image = p3
+		local v8 = table.create(#v7);
+		for v9, v10 in ipairs(v7) do
+			v8[v9] = u6("ImageLabel", {
+				Image = v10
 			});
 		end;
-		local v9 = table.create(#v7);
-		for v10, v11 in ipairs(v7) do
-			v9[v10] = v8(v11, v10 - 1, v7);
-		end;
-		l__ContentProvider__7:PreloadAsync(v9);
+		l__ContentProvider__7:PreloadAsync(v8);
 	end);
 	v1.Promise.defer(function()
-		l__default__8.Client:WaitFor("RemoteName"):andThen(function(p4)
+		l__default__8.Client:WaitFor("RemoteName"):andThen(function(p3)
 			l__ClientStore__9:dispatch({
 				type = "SetServerRegion", 
-				serverRegion = p4:CallServer()
+				serverRegion = p3:CallServer()
 			});
 		end);
 	end);
@@ -60,7 +56,7 @@ end;
 local l__CreateRoduxApp__10 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "rodux", "create-rodux-app").CreateRoduxApp;
 local l__HudAppWrapper__11 = v1.import(script, script.Parent, "ui", "hud-app").HudAppWrapper;
 local l__Players__12 = v3.Players;
-function u1.mountHUD(p5)
+function u1.mountHUD(p4)
 	v1.Promise.defer(function()
 		l__CreateRoduxApp__10("HudApp", l__HudAppWrapper__11, {
 			localPlayerId = l__Players__12.LocalPlayer.UserId, 

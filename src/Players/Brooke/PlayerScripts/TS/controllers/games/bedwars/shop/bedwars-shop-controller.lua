@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -45,26 +44,24 @@ function u1.KnitStart(p2)
 		local v6 = nil;
 		local l__purchasedTeamUpgrades__7 = p3.purchasedTeamUpgrades;
 		v6 = {};
-		local function v8(p4, p5)
-			p4[p5.upgradeId] = p5.tier;
-			return p4;
-		end;
-		for v9 = 1, #l__purchasedTeamUpgrades__7 do
-			v6 = v8(v6, l__purchasedTeamUpgrades__7[v9], v9 - 1, l__purchasedTeamUpgrades__7);
+		for v8 = 1, #l__purchasedTeamUpgrades__7 do
+			local v9 = l__purchasedTeamUpgrades__7[v8];
+			v6[v9.upgradeId] = v9.tier;
+			v6 = v6;
 		end;
 		l__ClientStore__7:dispatch({
 			type = "BedwarsSetAllTeamUpgrades", 
 			teamUpgrades = local v10
 		});
 	end);
-	l__default__6.Client:Get("RemoteName"):Connect(function(p6)
+	l__default__6.Client:Get("RemoteName"):Connect(function(p4)
 		l__ClientStore__7:dispatch({
 			type = "BedwarsSetTeamUpgradeTier", 
-			upgradeId = p6.upgradeId, 
-			tier = p6.tier
+			upgradeId = p4.upgradeId, 
+			tier = p4.tier
 		});
 	end);
-	l__BlockEngine__8:getBlockDamageHook():connect(function(p7)
+	l__BlockEngine__8:getBlockDamageHook():connect(function(p5)
 		local v11 = l__ClientStore__7:getState().Bedwars.teamUpgrades[l__TeamUpgradeId__9.BREAK];
 		if v11 ~= nil and v11 > -1 then
 			local v12 = l__BedwarsShop__10.getUpgrade(l__BedwarsShop__10.TeamUpgrades, l__TeamUpgradeId__9.BREAK);
@@ -72,7 +69,7 @@ function u1.KnitStart(p2)
 				v12 = v12.tiers[v11 + 1];
 			end;
 			if v12 then
-				p7.damage = p7.damage * (1 + v12.values[1] / 100);
+				p5.damage = p5.damage * (1 + v12.values[1] / 100);
 			end;
 		end;
 	end);

@@ -1,4 +1,3 @@
--- Script Hash: ad0bbef90d5d156f52dda9eee8064a6f7c95821386a983ab4efbed6b5e7ef57c1b6f7402f921b140d7b4e981fc322abd
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -23,19 +22,15 @@ local l__CollectionService__4 = v2.CollectionService;
 local l__Entity__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity").Entity;
 function v3.getEntity(p2, p3)
 	if p3.Parent == l__Workspace__1 and p3:IsA("Model") then
-		local v5 = l__Players__2:GetPlayers();
-		local function v6(p4)
-			return p4.Name == p3.Name;
-		end;
-		local v7 = nil;
-		for v8, v9 in ipairs(v5) do
-			if v6(v9, v8 - 1, v5) == true then
-				v7 = v9;
+		local v5 = nil;
+		for v6, v7 in ipairs((l__Players__2:GetPlayers())) do
+			if v7.Name == p3.Name == true then
+				v5 = v7;
 				break;
 			end;
 		end;
-		if v7 then
-			return l__PlayerEntity__3.new(v7, p3);
+		if v5 then
+			return l__PlayerEntity__3.new(v5, p3);
 		end;
 	end;
 	if p3:IsA("Player") and p3.Character then
@@ -53,64 +48,68 @@ function v3.getEntity(p2, p3)
 	end;
 	return p2:getEntity(p3.Parent);
 end;
-function v3.getLocalPlayerEntity(p5)
-	local v10 = l__Players__2.LocalPlayer;
-	if v10 ~= nil then
-		v10 = v10.Character;
+function v3.getLocalPlayerEntity(p4)
+	local v8 = l__Players__2.LocalPlayer;
+	if v8 ~= nil then
+		v8 = v8.Character;
 	end;
-	if not v10 then
+	if not v8 then
 		return nil;
 	end;
 	return l__PlayerEntity__3.new(l__Players__2.LocalPlayer, l__Players__2.LocalPlayer.Character);
 end;
-function v3.getAllEntityInstances(p6)
+function v3.getAllEntityInstances(p5)
 	return l__CollectionService__4:GetTagged("entity");
 end;
-function v3.getAliveEntityInstances(p7)
-	local v11 = p7:getAllEntityInstances();
-	local function v12(p8)
-		local v13 = v3:getEntity(p8);
-		if v13 ~= nil then
-			v13 = v13:isAlive();
+function v3.getAliveEntityInstances(p6)
+	local v9 = {};
+	local v10 = 0;
+	local v11, v12, v13 = ipairs((p6:getAllEntityInstances()));
+	while true do
+		local v14, v15 = v11(v12, v13);
+		if not v14 then
+			break;
 		end;
-		return v13;
-	end;
-	local v14 = {};
-	local v15 = 0;
-	for v16, v17 in ipairs(v11) do
-		if v12(v17, v16 - 1, v11) == true then
-			v15 = v15 + 1;
-			v14[v15] = v17;
+		local v16 = v3:getEntity(v15);
+		if v16 ~= nil then
+			v16 = v16:isAlive();
 		end;
+		if v16 == true then
+			v10 = v10 + 1;
+			v9[v10] = v15;
+		end;	
 	end;
-	return v14;
+	return v9;
 end;
-function v3.getEntityFromDescendant(p9, p10)
-	if not p10 then
+function v3.getEntityFromDescendant(p7, p8)
+	if not p8 then
 		return nil;
 	end;
-	if table.find(l__CollectionService__4:GetTags(p10), "entity") ~= nil then
-		return p9:getEntity(p10);
+	if table.find(l__CollectionService__4:GetTags(p8), "entity") ~= nil then
+		return p7:getEntity(p8);
 	end;
-	return p9:getEntityFromDescendant(p10.Parent);
+	return p7:getEntityFromDescendant(p8.Parent);
 end;
-function v3.getEntitiesNearPosition(p11, p12, p13)
-	local v18 = p11:getAliveEntityInstances();
-	local function v19(p14)
-		if not p14.PrimaryPart then
-			return false;
+function v3.getEntitiesNearPosition(p9, p10, p11)
+	local v17 = {};
+	local v18 = 0;
+	local v19, v20, v21 = ipairs((p9:getAliveEntityInstances()));
+	while true do
+		local v22, v23 = v19(v20, v21);
+		if not v22 then
+			break;
 		end;
-		return (p14.PrimaryPart.Position - p12).Magnitude <= p13;
-	end;
-	local v20 = {};
-	local v21 = 0;
-	for v22, v23 in ipairs(v18) do
-		if v19(v23, v22 - 1, v18) == true then
-			v21 = v21 + 1;
-			v20[v21] = v23;
+		if not v23.PrimaryPart then
+			local v24 = false;
+		else
+			v24 = (v23.PrimaryPart.Position - p10).Magnitude <= p11;
 		end;
+		if v24 == true then
+			v18 = v18 + 1;
+			v17[v18] = v23;
+		end;	
 	end;
-	return v20;
+	return v17;
 end;
 return {
 	EntityUtil = v3

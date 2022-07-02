@@ -1,11 +1,8 @@
--- Script Hash: 6e1fc379b2451b9552a50d6f66b64eb2f81599b5c915cf1200eca51738bda43b5971b9fdd53ee6aec9d37525851ef64b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__GameSound__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 return {
-	ProjectileMeta = (function(p1)
-		return p1;
-	end)({
+	ProjectileMeta = {
 		arrow = {
 			launchVelocity = 240, 
 			gravitationalAcceleration = 35, 
@@ -206,6 +203,11 @@ return {
 		smoke_grenade = {
 			launchVelocity = 60, 
 			gravitationalAcceleration = 50, 
+			impactSound = { l__GameSound__1.ARROW_IMPACT }
+		}, 
+		stun_grenade = {
+			launchVelocity = 120, 
+			gravitationalAcceleration = 60, 
 			impactSound = { l__GameSound__1.ARROW_IMPACT }
 		}, 
 		sleep_splash_potion = {
@@ -452,6 +454,28 @@ return {
 			impactSound = { l__GameSound__1.ARROW_IMPACT }, 
 			impactParticles = "default", 
 			returnDistance = 75
+		}, 
+		sticky_firework = {
+			launchVelocity = 120, 
+			gravitationalAcceleration = 70, 
+			flightRotation = Vector3.new(0, math.pi / 2, 0), 
+			combat = {
+				damage = 1, 
+				noApplyDamageCooldown = true, 
+				ignoreDamageTakenCooldown = true, 
+				ignoreArmor = true
+			}
+		}, 
+		dizzy_toad = {
+			launchVelocity = 120, 
+			gravitationalAcceleration = 70, 
+			flightRotation = Vector3.new(0, 0, 0), 
+			combat = {
+				damage = 1, 
+				noApplyDamageCooldown = true, 
+				ignoreDamageTakenCooldown = true, 
+				ignoreArmor = true
+			}
 		}
-	})
+	}
 };

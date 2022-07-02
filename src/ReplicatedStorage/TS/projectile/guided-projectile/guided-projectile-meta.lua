@@ -1,13 +1,10 @@
--- Script Hash: bf80398067197bde26836b233029ce3dc80edb11befb960131549a265931211e786156c698337e93d76f8276a4cd86df
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local l__ExplosionType__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "explosion", "explosion-type").ExplosionType;
 local l__GameSound__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 return {
-	GuidedProjectileMeta = (function(p1)
-		return p1;
-	end)({
+	GuidedProjectileMeta = {
 		guided_missile = {
 			lifetime = 8, 
 			guidedProjectileModel = "guided_missile", 
@@ -53,5 +50,5 @@ return {
 			deploySound = l__GameSound__3.DRONE_DEPLOY, 
 			loopSound = l__GameSound__3.DRONE_PROPELLER_LOOP
 		}
-	})
+	}
 };

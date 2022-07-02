@@ -1,4 +1,3 @@
--- Script Hash: 8e739b4c3379cb02596392c431d5b6c8a975216858d4cae23b5920b2b0556c2dca3d93748997d3487fde760e4a7844a5
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -159,16 +158,16 @@ function u1.hide(p9)
 end;
 function u1.isDisabled(p10)
 	local v22 = 0;
-	for v23, v24 in pairs(p10.disableKeys) do
+	for v23 in pairs(p10.disableKeys) do
 		v22 = v22 + 1;
 	end;
 	return v22 > 0;
 end;
 local l__HttpService__15 = v4.HttpService;
 function u1.addDisabler(p11)
-	local v25 = l__HttpService__15:GenerateGUID(false);
-	p11.disableKeys[v25] = true;
-	return v25;
+	local v24 = l__HttpService__15:GenerateGUID(false);
+	p11.disableKeys[v24] = true;
+	return v24;
 end;
 function u1.removeDisabler(p12, p13)
 	p12.disableKeys[p13] = nil;
@@ -189,43 +188,39 @@ function u1.setHeldItem(p14, p15)
 		return nil;
 	end;
 	if p15 then
-		local v26 = l__getItemMeta__16(p15.Name);
-		local v27 = v26.firstPerson;
-		if v27 ~= nil then
-			v27 = v27.scale;
+		local v25 = l__getItemMeta__16(p15.Name);
+		local v26 = v25.firstPerson;
+		if v26 ~= nil then
+			v26 = v26.scale;
 		end;
-		if v27 ~= nil then
-			local v28 = Instance.new("Model");
-			p15.Parent = v28;
-			v28.PrimaryPart = p15:FindFirstChild("Handle");
-			l__scaleModel__17(v28, v26.firstPerson.scale);
+		if v26 ~= nil then
+			local v27 = Instance.new("Model");
+			p15.Parent = v27;
+			v27.PrimaryPart = p15:FindFirstChild("Handle");
+			l__scaleModel__17(v27, v25.firstPerson.scale);
 		end;
-		local v29 = p15:GetDescendants();
-		local function v30(p16)
-			if p16:IsA("BasePart") then
-				p16.CanCollide = false;
-				l__GameQueryUtil__7:setQueryIgnored(p16, true);
+		for v28, v29 in ipairs((p15:GetDescendants())) do
+			if v29:IsA("BasePart") then
+				v29.CanCollide = false;
+				l__GameQueryUtil__7:setQueryIgnored(v29, true);
 			end;
 		end;
-		for v31, v32 in ipairs(v29) do
-			v30(v32, v31 - 1, v29);
-		end;
 		p14.heldItem = p15;
-		p14.itemMeta = v26;
+		p14.itemMeta = v25;
 		p14.viewmodel:FindFirstChild("Humanoid"):AddAccessory(p15);
 		l__WeldUtil__18.weldCharacterAccessories(p14.viewmodel);
-		local v33 = u3.new();
-		p14.heldItemMaid:GiveTask(v33);
-		local v34 = l__ClientSyncEvents__19.ViewModelItemAdded:fire(p15, v33);
-		local v35 = v26.firstPerson;
-		if v35 ~= nil then
-			v35 = v35.holdAnimation;
+		local v30 = u3.new();
+		p14.heldItemMaid:GiveTask(v30);
+		local v31 = l__ClientSyncEvents__19.ViewModelItemAdded:fire(p15, v30);
+		local v32 = v25.firstPerson;
+		if v32 ~= nil then
+			v32 = v32.holdAnimation;
 		end;
-		local v36 = v35;
-		if v36 == 0 or v36 ~= v36 or not v36 then
-			v36 = l__AnimationType__20.FP_HOLD;
+		local v33 = v32;
+		if v33 == 0 or v33 ~= v33 or not v33 then
+			v33 = l__AnimationType__20.FP_HOLD;
 		end;
-		local u21 = p14:playAnimation(v36, {
+		local u21 = p14:playAnimation(v33, {
 			looped = true, 
 			priority = Enum.AnimationPriority.Idle
 		});
@@ -242,11 +237,11 @@ function u1.setHeldItem(p14, p15)
 			looped = true, 
 			priority = Enum.AnimationPriority.Movement
 		};
-		local l__heldItemMaid__37 = p14.heldItemMaid;
+		local l__heldItemMaid__34 = p14.heldItemMaid;
 		local u22 = true;
 		local u23 = p14:playAnimation(u21.FP_WALK, u21);
-		u21 = l__heldItemMaid__37;
-		l__heldItemMaid__37.GiveTask(u21, function()
+		u21 = l__heldItemMaid__34;
+		l__heldItemMaid__34.GiveTask(u21, function()
 			u22 = false;
 			if u23 ~= nil then
 				u23:Stop();
@@ -256,52 +251,52 @@ function u1.setHeldItem(p14, p15)
 			end;
 		end);
 		u21 = function()
-			local v38 = 0;
+			local v35 = 0;
 			while true do
-				local v39 = task.wait(0.1);
-				if v39 ~= 0 and v39 == v39 and v39 then
-					v39 = u22;
+				local v36 = task.wait(0.1);
+				if v36 ~= 0 and v36 == v36 and v36 then
+					v36 = u22;
 				end;
-				if v39 == 0 then
+				if v36 == 0 then
 					break;
 				end;
-				if v39 ~= v39 then
+				if v36 ~= v36 then
 					break;
 				end;
-				if not v39 then
+				if not v36 then
 					break;
 				end;
-				local v40 = l__Players__14.LocalPlayer.Character;
-				if v40 ~= nil then
-					v40 = v40.PrimaryPart;
+				local v37 = l__Players__14.LocalPlayer.Character;
+				if v37 ~= nil then
+					v37 = v37.PrimaryPart;
 				end;
-				if not v40 then
+				if not v37 then
 					return nil;
 				end;
-				local v41 = math.clamp(l__Players__14.LocalPlayer.Character.PrimaryPart.Velocity.Magnitude / 14, 0, 2) * 1.2;
-				local l__Humanoid__42 = l__Players__14.LocalPlayer.Character:FindFirstChild("Humanoid");
-				if l__Humanoid__42 and table.find({ Enum.HumanoidStateType.Jumping, Enum.HumanoidStateType.FallingDown, Enum.HumanoidStateType.Freefall, Enum.HumanoidStateType.Flying }, (l__Humanoid__42:GetState())) ~= nil then
-					v41 = 0;
+				local v38 = math.clamp(l__Players__14.LocalPlayer.Character.PrimaryPart.Velocity.Magnitude / 14, 0, 2) * 1.2;
+				local l__Humanoid__39 = l__Players__14.LocalPlayer.Character:FindFirstChild("Humanoid");
+				if l__Humanoid__39 and table.find({ Enum.HumanoidStateType.Jumping, Enum.HumanoidStateType.FallingDown, Enum.HumanoidStateType.Freefall, Enum.HumanoidStateType.Flying }, (l__Humanoid__39:GetState())) ~= nil then
+					v38 = 0;
 				end;
-				if v41 <= 0.01 then
-					local v43 = u23;
-					if v43 ~= nil then
-						v43 = v43.IsPlaying;
+				if v38 <= 0.01 then
+					local v40 = u23;
+					if v40 ~= nil then
+						v40 = v40.IsPlaying;
 					end;
-					if v43 then
-						v38 = u23.TimePosition;
+					if v40 then
+						v35 = u23.TimePosition;
 						if u23 ~= nil then
 							u23:Stop(0.3);
 						end;
 					end;
 				else
-					local v44 = u23;
-					if v44 ~= nil then
-						v44 = v44.IsPlaying;
+					local v41 = u23;
+					if v41 ~= nil then
+						v41 = v41.IsPlaying;
 					end;
-					if not v44 then
+					if not v41 then
 						if u23 ~= nil then
-							u23:AdjustSpeed(v38);
+							u23:AdjustSpeed(v35);
 						end;
 						if u23 ~= nil then
 							u23:Play(0.3);
@@ -309,19 +304,19 @@ function u1.setHeldItem(p14, p15)
 					end;
 				end;
 				if u23 ~= nil then
-					u23:AdjustSpeed(v41);
+					u23:AdjustSpeed(v38);
 				end;			
 			end;
 		end;
 		task.spawn(u21);
 	end;
 end;
-function u1.startWalkingAnimation(p17)
-	local u24 = p17:playAnimation(l__AnimationType__20.FP_WALK, {
+function u1.startWalkingAnimation(p16)
+	local u24 = p16:playAnimation(l__AnimationType__20.FP_WALK, {
 		looped = true, 
 		priority = Enum.AnimationPriority.Movement
 	});
-	p17.heldItemMaid:GiveTask(function()
+	p16.heldItemMaid:GiveTask(function()
 		if u24 ~= nil then
 			u24:Stop();
 		end;
@@ -331,48 +326,48 @@ function u1.startWalkingAnimation(p17)
 	end);
 end;
 local l__getAnimation__25 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").getAnimation;
-function u1.playAnimation(p18, p19, p20)
-	if not p18.animator then
+function u1.playAnimation(p17, p18, p19)
+	if not p17.animator then
 		return nil;
 	end;
-	local v45 = p18.animator:LoadAnimation(l__getAnimation__25(p19));
-	local v46 = p20;
-	if v46 ~= nil then
-		v46 = v46.looped;
+	local v42 = p17.animator:LoadAnimation(l__getAnimation__25(p18));
+	local v43 = p19;
+	if v43 ~= nil then
+		v43 = v43.looped;
 	end;
-	local v47 = v46;
-	if v47 == nil then
-		v47 = false;
+	local v44 = v43;
+	if v44 == nil then
+		v44 = false;
 	end;
-	v45.Looped = v47;
-	local v48 = p20;
-	if v48 ~= nil then
-		v48 = v48.priority;
+	v42.Looped = v44;
+	local v45 = p19;
+	if v45 ~= nil then
+		v45 = v45.priority;
 	end;
-	local v49 = v48;
-	if v49 == nil then
-		v49 = Enum.AnimationPriority.Action;
+	local v46 = v45;
+	if v46 == nil then
+		v46 = Enum.AnimationPriority.Action;
 	end;
-	v45.Priority = v49;
-	v45:Play();
-	p18.heldItemMaid:GiveTask(function()
-		local v50 = p20;
-		if v50 ~= nil then
-			v50 = v50.fadeTime;
+	v42.Priority = v46;
+	v42:Play();
+	p17.heldItemMaid:GiveTask(function()
+		local v47 = p19;
+		if v47 ~= nil then
+			v47 = v47.fadeTime;
 		end;
-		local v51 = v50;
-		if v51 == nil then
-			v51 = nil;
+		local v48 = v47;
+		if v48 == nil then
+			v48 = nil;
 		end;
-		v45:Stop(v51);
+		v42:Stop(v48);
 	end);
-	return v45;
+	return v42;
 end;
-function u1.isVisible(p21)
-	return p21.visible;
+function u1.isVisible(p20)
+	return p20.visible;
 end;
-function u1.getViewModel(p22)
-	return p22.viewmodel;
+function u1.getViewModel(p21)
+	return p21.viewmodel;
 end;
 u2 = l__KnitClient__3.CreateController;
 u1 = u1.new;

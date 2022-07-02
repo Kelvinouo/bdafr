@@ -557,32 +557,35 @@ v10[l__BedwarsKit__8.PINATA] = {
 local v33 = v3.values(l__BattlePassSeason__4);
 v1 = {};
 local function v34(p1, p2)
-	local v35 = v3.entries(v10);
-	local function v36(p3)
-		local v37 = p3[2];
-		if v37.battlepassSeason and v37.battlepassSeason == p2 then
-			return p3[1];
+	local v35 = {};
+	local v36 = 0;
+	local v37, v38, v39 = ipairs((v3.entries(v10)));
+	while true do
+		local v40, v41 = v37(v38, v39);
+		if not v40 then
+			break;
 		end;
-	end;
-	local v38 = {};
-	local v39 = 0;
-	for v40, v41 in ipairs(v35) do
-		local v42 = v36(v41, v40 - 1, v35);
-		if v42 ~= nil then
-			v39 = v39 + 1;
-			v38[v39] = v42;
+		local v42 = v41[2];
+		if v42.battlepassSeason and v42.battlepassSeason == p2 then
+			local v43 = v41[1];
+		else
+			v43 = nil;
 		end;
+		if v43 ~= nil then
+			v36 = v36 + 1;
+			v35[v36] = v43;
+		end;	
 	end;
-	p1[p2] = v38;
+	p1[p2] = v35;
 	return p1;
 end;
-for v43 = 1, #v33 do
-	v1 = v34(v1, v33[v43], v43 - 1, v33);
+for v44 = 1, #v33 do
+	v1 = v34(v1, v33[v44], v44 - 1, v33);
 end;
 return {
-	getBedwarsKitMeta = function(p4)
-		return v10[p4];
+	getBedwarsKitMeta = function(p3)
+		return v10[p3];
 	end, 
 	BedwarsKitMeta = v10, 
-	BedwarsBPKits = local v44
+	BedwarsBPKits = local v45
 };

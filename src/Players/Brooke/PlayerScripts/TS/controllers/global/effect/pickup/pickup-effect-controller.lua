@@ -1,4 +1,3 @@
--- Script Hash: a2e0f1ba976e22e85485e1d6b32c25776ba8f5ae2590ff19a769f28419122a05dd97883386fd6c7e0ede2e1d4786eabc
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -45,54 +44,49 @@ function v4.playEffect(p3, p4, p5)
 	local u8 = Vector3.new(math.cos(v7), 0, math.sin(v7)) * 3;
 	local l__CFrame__9 = p4.CFrame;
 	v6:GiveTask(l__RunService__4.RenderStepped:Connect(function(p6)
-		local v9 = nil;
-		local v10 = p5;
-		if v10 ~= nil then
-			v10 = v10.PrimaryPart;
-			if v10 ~= nil then
-				v10 = v10.CFrame;
+		local v9 = p5;
+		if v9 ~= nil then
+			v9 = v9.PrimaryPart;
+			if v9 ~= nil then
+				v9 = v9.CFrame;
 			end;
 		end;
-		if not v10 then
+		if not v9 then
 			v6:DoCleaning();
 			return nil;
 		end;
-		local v11 = p6 * 80;
-		local l__Magnitude__12 = (u6.Position - v10.Position).Magnitude;
-		local v13 = v11 / l__Magnitude__12;
-		if l__Magnitude__12 > 20 then
-			v13 = (l__Magnitude__12 - 20 + v11) / l__Magnitude__12;
+		local v10 = p6 * 80;
+		local l__Magnitude__11 = (u6.Position - v9.Position).Magnitude;
+		local v12 = v10 / l__Magnitude__11;
+		if l__Magnitude__11 > 20 then
+			v12 = (l__Magnitude__11 - 20 + v10) / l__Magnitude__11;
 		end;
-		u6 = u6:Lerp(v10, math.clamp(v13, 0, 1));
-		local v14 = l__Workspace__5.CurrentCamera;
-		if v14 ~= nil then
-			v14 = v14.CFrame;
+		u6 = u6:Lerp(v9, math.clamp(v12, 0, 1));
+		local v13 = l__Workspace__5.CurrentCamera;
+		if v13 ~= nil then
+			v13 = v13.CFrame;
 		end;
-		if not v14 then
+		if not v13 then
 			v6:DoCleaning();
 			return nil;
 		end;
 		u7 = u7 + p6;
 		local u10 = 0;
-		v9 = function(p7)
-			return (u7 - (u10 - p7)) / p7;
-		end;
 		u10 = u10 + 0.14;
 		if u7 < u10 then
-			local v15 = v9(0.14);
-			local v16 = v10 + (u8 + Vector3.new(0, 8, 0));
-			p4.CFrame = l__CFrame__9:Lerp(CFrame.new(v16.Position) * (function(p8)
-				local l__LookVector__17 = CFrame.new(p8, v14.Position).LookVector;
-				local v18 = Vector3.new(l__LookVector__17.X, 0, l__LookVector__17.Z);
-				if v18.Magnitude == 0 then
-					v18 = Vector3.new(1, 0, 0);
+			local v14 = v9 + (u8 + Vector3.new(0, 8, 0));
+			p4.CFrame = l__CFrame__9:Lerp(CFrame.new(v14.Position) * (function(p7)
+				local l__LookVector__15 = CFrame.new(p7, v13.Position).LookVector;
+				local v16 = Vector3.new(l__LookVector__15.X, 0, l__LookVector__15.Z);
+				if v16.Magnitude == 0 then
+					v16 = Vector3.new(1, 0, 0);
 				end;
-				return CFrame.new(Vector3.new(0, 0, 0), v18.Unit);
-			end)(v16.Position), math.pow(v15, 0.4));
+				return CFrame.new(Vector3.new(0, 0, 0), v16.Unit);
+			end)(v14.Position), math.pow((u7 - (u10 - 0.14)) / 0.14, 0.4));
 		else
 			u10 = u10 + 0.12;
 			if u7 < u10 then
-				p4.CFrame = CFrame.new((u8 + Vector3.new(0, 8, 0)):Lerp(u8 + Vector3.new(0, 6, 0), math.pow(v9(0.12), 0.25)) + u6.Position);
+				p4.CFrame = CFrame.new((u8 + Vector3.new(0, 8, 0)):Lerp(u8 + Vector3.new(0, 6, 0), math.pow((u7 - (u10 - 0.12)) / 0.12, 0.25)) + u6.Position);
 			else
 				u10 = u10 + 0.08;
 				if u7 < u10 then
@@ -103,9 +97,9 @@ function v4.playEffect(p3, p4, p5)
 						v6:DoCleaning();
 						return nil;
 					end;
-					local v19 = v9(0.06);
-					p4.CFrame = CFrame.new((u8 + Vector3.new(0, 6, 0)):Lerp(u8 + Vector3.new(0, 3, 0), v19) + u6.Position);
-					p4.Size = p4.Size:Lerp(Vector3.new(0, 0, 0), v19);
+					local v17 = (u7 - (u10 - 0.06)) / 0.06;
+					p4.CFrame = CFrame.new((u8 + Vector3.new(0, 6, 0)):Lerp(u8 + Vector3.new(0, 3, 0), v17) + u6.Position);
+					p4.Size = p4.Size:Lerp(Vector3.new(0, 0, 0), v17);
 				end;
 			end;
 		end;

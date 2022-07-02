@@ -11,65 +11,62 @@ local function v3(p1)
 		items = {}
 	};
 	local v5 = u1.values(l__ArmorSlot__2);
-	local function v6()
-		return "empty";
+	local v6 = table.create(#v5);
+	for v7, v8 in ipairs(v5) do
+		v6[v7] = "empty";
 	end;
-	local v7 = table.create(#v5);
-	for v8, v9 in ipairs(v5) do
-		v7[v8] = v6(v9, v8 - 1, v5);
-	end;
-	v4.armor = v7;
-	local v10 = l__EntityUtil__3:getEntity(p1);
-	if not v10 then
+	v4.armor = v6;
+	local v9 = l__EntityUtil__3:getEntity(p1);
+	if not v9 then
 		return v4;
 	end;
-	local v11 = v10:getInventoryFolder();
-	if v11 then
-		for v12, v13 in ipairs(v11:GetChildren()) do
+	local v10 = v9:getInventoryFolder();
+	if v10 then
+		for v11, v12 in ipairs(v10:GetChildren()) do
 			table.insert(v4.items, {
-				tool = v13, 
-				itemType = v13.Name, 
-				amount = v13:GetAttribute("Amount"), 
-				addedToBackpackTime = v13:GetAttribute("AddedToBackpackTime"), 
-				itemSkin = v13:GetAttribute("ItemSkin")
+				tool = v12, 
+				itemType = v12.Name, 
+				amount = v12:GetAttribute("Amount"), 
+				addedToBackpackTime = v12:GetAttribute("AddedToBackpackTime"), 
+				itemSkin = v12:GetAttribute("ItemSkin")
 			});
 		end;
 	end;
-	local v14 = 0;
-	local v15 = false;
+	local v13 = 0;
+	local v14 = false;
 	while true do
-		if v15 then
-			v14 = v14 + 1;
+		if v14 then
+			v13 = v13 + 1;
 		else
-			v15 = true;
+			v14 = true;
 		end;
-		if not (v14 < #u1.keys(l__ArmorSlot__2)) then
+		if not (v13 < #u1.keys(l__ArmorSlot__2)) then
 			break;
 		end;
-		local v16 = v10:getInstance():FindFirstChild("ArmorInvItem_" .. tostring(v14));
-		local v17 = v16;
-		if v17 ~= nil then
-			v17 = v17.Value;
+		local v15 = v9:getInstance():FindFirstChild("ArmorInvItem_" .. tostring(v13));
+		local v16 = v15;
+		if v16 ~= nil then
+			v16 = v16.Value;
 		end;
-		if v17 then
-			local l__Value__18 = v16.Value;
+		if v16 then
+			local l__Value__17 = v15.Value;
 			table.insert(v4.armor, {
-				tool = l__Value__18, 
-				itemType = l__Value__18.Name, 
-				amount = l__Value__18:GetAttribute("Amount"), 
-				addedToBackpackTime = l__Value__18:GetAttribute("AddedToBackpackTime"), 
-				itemSkin = l__Value__18:GetAttribute("ItemSkin")
+				tool = l__Value__17, 
+				itemType = l__Value__17.Name, 
+				amount = l__Value__17:GetAttribute("Amount"), 
+				addedToBackpackTime = l__Value__17:GetAttribute("AddedToBackpackTime"), 
+				itemSkin = l__Value__17:GetAttribute("ItemSkin")
 			});
 		end;	
 	end;
-	local v19 = v10:getItemInHandClient();
-	if v19 then
+	local v18 = v9:getItemInHandClient();
+	if v18 then
 		v4.hand = {
-			tool = v19, 
-			itemType = v19.Name, 
-			amount = v19:GetAttribute("Amount"), 
-			addedToBackpackTime = v19:GetAttribute("AddedToBackpackTime"), 
-			itemSkin = v19:GetAttribute("ItemSkin")
+			tool = v18, 
+			itemType = v18.Name, 
+			amount = v18:GetAttribute("Amount"), 
+			addedToBackpackTime = v18:GetAttribute("AddedToBackpackTime"), 
+			itemSkin = v18:GetAttribute("ItemSkin")
 		};
 		table.insert(v4.items, v4.hand);
 	end;
@@ -77,40 +74,28 @@ local function v3(p1)
 end;
 v2.getInventory = v3;
 function v2.getToolFromInventory(p2, p3)
-	local l__items__20 = v3(p2).items;
-	local function v21(p4)
-		return p4.itemType == p3;
-	end;
-	for v22, v23 in ipairs(l__items__20) do
-		if v21(v23, v22 - 1, l__items__20) == true then
-			return v23;
+	for v19, v20 in ipairs(v3(p2).items) do
+		if v20.itemType == p3 == true then
+			return v20;
 		end;
 	end;
 	return nil;
 end;
-function v2.hasEnough(p5, p6, p7)
-	local l__items__24 = v2.getInventory(p5).items;
+function v2.hasEnough(p4, p5, p6)
 	local u4 = 0;
-	local function v25(p8)
-		if p8.itemType == p6 then
-			u4 = u4 + p8.amount;
+	for v21, v22 in ipairs(v2.getInventory(p4).items) do
+		if v22.itemType == p5 then
+			u4 = u4 + v22.amount;
 		end;
 	end;
-	for v26, v27 in ipairs(l__items__24) do
-		v25(v27, v26 - 1, l__items__24);
-	end;
-	return p7 <= u4;
+	return p6 <= u4;
 end;
-function v2.getAmount(p9, p10)
-	local l__items__28 = v2.getInventory(p9).items;
+function v2.getAmount(p7, p8)
 	local u5 = 0;
-	local function v29(p11)
-		if p11.itemType == p10 then
-			u5 = u5 + p11.amount;
+	for v23, v24 in ipairs(v2.getInventory(p7).items) do
+		if v24.itemType == p8 then
+			u5 = u5 + v24.amount;
 		end;
-	end;
-	for v30, v31 in ipairs(l__items__28) do
-		v29(v31, v30 - 1, l__items__28);
 	end;
 	return 0;
 end;

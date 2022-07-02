@@ -1,4 +1,3 @@
--- Script Hash: 4ab732749b134538c675f9bbf7e4f5dfe3c2b918ad6282238a8cd68448395ec0afcddcbc3e7ecf6b987b6fa40e07e277
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -32,12 +31,8 @@ function u1.KnitStart(p2)
 			p2:updateAll(p4);
 			p4.ChildAdded:Connect(function(p5)
 				p2:update(p5);
-				local v8 = p5:GetDescendants();
-				local function v9(p6)
-					p2:update(p6);
-				end;
-				for v10, v11 in ipairs(v8) do
-					v9(v11, v10 - 1, v8);
+				for v8, v9 in ipairs((p5:GetDescendants())) do
+					p2:update(v9);
 				end;
 			end);
 		end;
@@ -45,71 +40,71 @@ function u1.KnitStart(p2)
 	l__KnitClient__3.Controllers.CameraPerspectiveController.PerspectiveChanged:Connect(function()
 		p2:updateAll(l__Players__4.LocalPlayer.Character);
 	end);
-	l__CollectionTagAdded__5("FirstPersonHidden", function(p7)
-		p2:update(p7);
+	l__CollectionTagAdded__5("FirstPersonHidden", function(p6)
+		p2:update(p6);
 	end);
 end;
 local l__CollectionService__6 = v4.CollectionService;
-function u1.updateAll(p8, p9)
-	if p9 then
-		for v12, v13 in ipairs(p9:GetDescendants()) do
-			p8:update(v13);
+function u1.updateAll(p7, p8)
+	if p8 then
+		for v10, v11 in ipairs(p8:GetDescendants()) do
+			p7:update(v11);
 		end;
 	end;
-	for v14, v15 in ipairs((l__CollectionService__6:GetTagged("FirstPersonHidden"))) do
-		local v16 = {};
+	for v12, v13 in ipairs((l__CollectionService__6:GetTagged("FirstPersonHidden"))) do
+		local v14 = {};
+		local v15 = #v14;
+		local v16 = v13:GetDescendants();
 		local v17 = #v16;
-		local v18 = v15:GetDescendants();
-		local v19 = #v18;
-		table.move(v18, 1, v19, v17 + 1, v16);
-		v16[v17 + v19 + 1] = v15;
-		for v20, v21 in ipairs(v16) do
-			p8:update(v21);
+		table.move(v16, 1, v17, v15 + 1, v14);
+		v14[v15 + v17 + 1] = v13;
+		for v18, v19 in ipairs(v14) do
+			p7:update(v19);
 		end;
 	end;
 end;
 local l__CameraPerspective__7 = v1.import(script, script.Parent, "camera-perspective").CameraPerspective;
-function u1.update(p10, p11)
-	local v22 = l__KnitClient__3.Controllers.CameraPerspectiveController:getCameraPerspective();
-	if p11:IsA("BasePart") and p11:GetAttribute("LocalTransparency") ~= nil then
-		p11.LocalTransparencyModifier = p11:GetAttribute("LocalTransparency");
+function u1.update(p9, p10)
+	local v20 = l__KnitClient__3.Controllers.CameraPerspectiveController:getCameraPerspective();
+	if p10:IsA("BasePart") and p10:GetAttribute("LocalTransparency") ~= nil then
+		p10.LocalTransparencyModifier = p10:GetAttribute("LocalTransparency");
 	end;
-	local v23 = p11:GetAttribute("FirstPersonVisible");
-	local v24 = l__CollectionService__6:HasTag(p11, "FirstPersonHidden");
-	if v23 == nil and not v24 then
+	local v21 = p10:GetAttribute("FirstPersonVisible");
+	local v22 = l__CollectionService__6:HasTag(p10, "FirstPersonHidden");
+	if v21 == nil and not v22 then
 		return nil;
 	end;
-	local v25 = true;
-	if v23 ~= false then
-		v25 = v24;
+	local v23 = true;
+	if v21 ~= false then
+		v23 = v22;
 	end;
-	if p11:IsA("Beam") or p11:IsA("ParticleEmitter") then
+	if not (not p10:IsA("Beam")) or not (not p10:IsA("ParticleEmitter")) or p10:IsA("Trail") then
+		local v24 = nil;
+		local v25 = nil;
 		local v26 = nil;
 		local v27 = nil;
 		local v28 = nil;
-		local v29 = nil;
-		local v30 = nil;
-		if v22 == l__CameraPerspective__7.FIRST_PERSON then
-			if v25 then
-				if p11:IsA("ParticleEmitter") then
-					p11:Clear();
+		if v20 == l__CameraPerspective__7.FIRST_PERSON then
+			if v23 then
+				if p10:IsA("ParticleEmitter") then
+					p10:Clear();
 				end;
-				p11.Enabled = false;
+				p10.Enabled = false;
 				return;
 			end;
-			v27 = true;
-			v26 = "Enabled";
-			v28 = p11;
-			v29 = v26;
-			v30 = v27;
-			v28[v29] = v30;
+			v25 = true;
+			v24 = "Enabled";
+			v26 = p10;
+			v27 = v24;
+			v28 = v25;
+			v26[v27] = v28;
 		else
-			v27 = true;
-			v26 = "Enabled";
-			v28 = p11;
-			v29 = v26;
-			v30 = v27;
-			v28[v29] = v30;
+			v25 = true;
+			v24 = "Enabled";
+			v26 = p10;
+			v27 = v24;
+			v28 = v25;
+			v26[v27] = v28;
 		end;
 	end;
 end;

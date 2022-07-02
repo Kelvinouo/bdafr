@@ -1,4 +1,3 @@
--- Script Hash: 4e18c6776cf09d4961d6f24a7f3fd1acd512c3d46ccf12394c642f082fca77fb059cff1505770c8e59facb4afce3c293
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__ItemType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
@@ -10,84 +9,82 @@ v2.SEASON_START_DATE = v3;
 v2.DAILY_MISSION_XP = 2000;
 v2.WEEKKLY_MISSION_XP = 8000;
 local u1 = v3;
-local function v4()
+function v2.getDay()
 	return math.ceil(math.max(DateTime.now().UnixTimestamp - u1.UnixTimestamp, 0) / 86400);
 end;
-v2.getDay = v4;
-local u2 = v4;
 function v2.getWeek()
-	return math.ceil(u2() / 7);
+	return math.ceil(math.ceil(math.max(DateTime.now().UnixTimestamp - u1.UnixTimestamp, 0) / 86400) / 7);
 end;
-local function u3(p1, p2, p3, p4, p5, p6)
-	local v5 = {};
-	local v6 = Random.new(p4);
+local function u2(p1, p2, p3, p4, p5, p6)
+	local v4 = {};
+	local v5 = Random.new(p4);
 	if #p1 == 0 then
 		return {};
 	end;
-	local v7 = {};
-	local v8 = 0;
-	local v9 = false;
+	local v6 = {};
+	local v7 = 0;
+	local v8 = false;
 	while true do
+		local v9 = nil;
 		local v10 = nil;
-		local v11 = nil;
-		if v9 then
-			v8 = v8 + 1;
+		if v8 then
+			v7 = v7 + 1;
 		else
-			v9 = true;
+			v8 = true;
 		end;
-		if not (v8 < p5) then
+		if not (v7 < p5) then
 			break;
 		end;
 		while true do
-			v10 = p1[v6:NextInteger(0, #p1 - 1) + 1];
-			v11 = v10.stages[1].type;
-			if v7[v11] == nil then
+			v9 = p1[v5:NextInteger(0, #p1 - 1) + 1];
+			v10 = v9.stages[1].type;
+			if v6[v10] == nil then
 				break;
 			end;		
 		end;
-		local v12 = {
-			id = "BATTLE_PASS_" .. tostring(v2.SEASON_ID) .. "_" .. string.upper(p2) .. "_" .. tostring(p3) .. "_MISSION_" .. tostring(v8)
+		local v11 = {
+			id = "BATTLE_PASS_" .. tostring(v2.SEASON_ID) .. "_" .. string.upper(p2) .. "_" .. tostring(p3) .. "_MISSION_" .. tostring(v7)
 		};
-		for v13, v14 in pairs(v10) do
-			v12[v13] = v14;
+		for v12, v13 in pairs(v9) do
+			v11[v12] = v13;
 		end;
-		v12.reward = p6;
-		v7[v11] = true;
-		table.insert(v5, v12);	
+		v11.reward = p6;
+		v6[v10] = true;
+		table.insert(v4, v11);	
 	end;
-	return v5;
+	return v4;
 end;
 u1 = function(p7)
-	local v15 = v2.getDay();
-	return u3(p7, "daily", v15, v15, 2, v2.DAILY_MISSION_XP);
-end;
-u2 = function(p8)
-	local v16 = v2.getWeek();
-	return u3(p8, "weekly", v16, v16 * 100, 3, v2.WEEKKLY_MISSION_XP);
+	local v14 = v2.getDay();
+	return u2(p7, "daily", v14, v14, 2, v2.DAILY_MISSION_XP);
 end;
 return {
 	BattlePassMissions = v2, 
-	BattlePassMissionsContext = (function(p9, p10)
-		local u4 = v2.getDay();
-		local u5 = u1(p9);
-		local u6 = v2.getWeek();
-		local u7 = u2(p10);
+	BattlePassMissionsContext = (function(p8, p9)
+		local v15 = v2.getDay();
+		local v16 = v2.getWeek();
+		local u3 = v2.getDay();
+		local u4 = u2(p8, "daily", v15, v15, 2, v2.DAILY_MISSION_XP);
+		local u5 = v2.getWeek();
+		local u6 = u2(p9, "weekly", v16, v16 * 100, 3, v2.WEEKKLY_MISSION_XP);
 		return {
 			getDailyMissions = function()
 				local v17 = v2.getDay();
-				if v17 ~= u4 then
-					u5 = u1(p9);
-					u4 = v17;
+				if v17 ~= u3 then
+					local v18 = v2.getDay();
+					u4 = u2(p8, "daily", v18, v18, 2, v2.DAILY_MISSION_XP);
+					u3 = v17;
 				end;
-				return u5;
+				return u4;
 			end, 
 			getWeeklyMissions = function()
-				local v18 = v2.getWeek();
-				if v18 ~= u6 then
-					u7 = u2(p10);
-					u6 = v18;
+				local v19 = v2.getWeek();
+				if v19 ~= u5 then
+					local v20 = v2.getWeek();
+					u6 = u2(p9, "weekly", v20, v20 * 100, 3, v2.WEEKKLY_MISSION_XP);
+					u5 = v19;
 				end;
-				return u7;
+				return u6;
 			end
 		};
 	end)({ {

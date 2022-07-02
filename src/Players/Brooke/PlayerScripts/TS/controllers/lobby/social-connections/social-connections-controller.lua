@@ -1,4 +1,3 @@
--- Script Hash: bc23283bf2b38eb682f5fcb9a8f1273eecb62754a04c9aea4b6f2a0845a153ff89858f4120f5c1194460e3d701cb2ca1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -110,33 +109,25 @@ function v5.isSocialConnectionsCompleted(p16, p17)
 		v8 = l__SocialConnections__10.supportTasks;
 		v9 = l__SocialConnections__10.connections;
 	end;
-	local v11 = u10.values(v8);
-	local function v12(p18)
-		return p18 == true;
-	end;
-	local v13 = true;
-	for v14, v15 in ipairs(v11) do
-		if not v12(v15, v14 - 1, v11) then
-			v13 = false;
+	local v11 = true;
+	for v12, v13 in ipairs((u10.values(v8))) do
+		if v13 ~= true then
+			v11 = false;
 			break;
 		end;
 	end;
-	local v16 = u10.values(v9);
-	local function v17(p19)
-		return p19.validated == true;
-	end;
-	local v18 = true;
-	for v19, v20 in ipairs(v16) do
-		if not v17(v20, v19 - 1, v16) then
-			v18 = false;
+	local v14 = true;
+	for v15, v16 in ipairs((u10.values(v9))) do
+		if v16.validated ~= true then
+			v14 = false;
 			break;
 		end;
 	end;
-	return v13 or v18;
+	return v11 or v14;
 end;
-function v5.giveCompletedReward(p20)
+function v5.giveCompletedReward(p18)
 	l__SoundManager__8:playSound(l__GameSound__9.BEDWARS_UPGRADE_SUCCESS);
-	p20.completed = true;
+	p18.completed = true;
 end;
 u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());

@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -12,18 +11,13 @@ local l__ClientStore__7 = v1.import(script, script.Parent.Parent.Parent.Parent.P
 return {
 	shopPurchaseItem = function(p1)
 		print("Purchasing " .. u1(p1));
-		local function v2()
-
-		end;
 		if l__KnitClient__2.Controllers.BedwarsShopController.alreadyPurchasedMap[p1.itemType] ~= nil then
-			v2();
 			return l__resolve__3(false);
 		end;
 		return l__default__4.Client:Get("RemoteName"):CallServerAsync({
 			shopItem = p1
 		}):andThen(function(p2)
 			if not p2 then
-				v2();
 				return false;
 			end;
 			l__SoundManager__5:playSound(l__GameSound__6.BEDWARS_PURCHASE_ITEM);

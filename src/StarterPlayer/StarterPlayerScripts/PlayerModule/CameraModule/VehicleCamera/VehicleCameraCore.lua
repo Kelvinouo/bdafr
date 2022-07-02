@@ -1,4 +1,3 @@
--- Script Hash: 368b483b16a69fd4d6b5aaf99b5dbf53080f9e7139a54a0994c119549c4e7750601edd753a250e80bbbf36f45b082be0
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(script.Parent.Parent.CameraUtils);
@@ -27,72 +26,68 @@ function v2.step(p4, p5)
 end;
 local v9 = {};
 v9.__index = v9;
-local function u2(p6)
-	local v10, v11 = p6:toEulerAnglesYXZ();
-	return l__sanitizeAngle__1(v11);
+local u2 = require(script.Parent.VehicleCameraConfig);
+function v9.new(p6)
+	assert(typeof(p6) == "CFrame");
+	local v10 = {};
+	local v11, v12 = p6:toEulerAnglesYXZ();
+	v10.yawG = l__sanitizeAngle__1(v12);
+	local v13, v14 = p6:toEulerAnglesYXZ();
+	v10.yawP = l__sanitizeAngle__1(v14);
+	v10.yawV = 0;
+	v10.pitchG = l__sanitizeAngle__1((p6:toEulerAnglesYXZ()));
+	v10.pitchP = l__sanitizeAngle__1((p6:toEulerAnglesYXZ()));
+	v10.pitchV = 0;
+	v10.fSpringYaw = v2.new(u2.yawReponseDampingRising, u2.yawResponseDampingFalling, 0);
+	v10.fSpringPitch = v2.new(u2.pitchReponseDampingRising, u2.pitchResponseDampingFalling, 0);
+	return setmetatable(v10, v9);
 end;
-local function u3(p7)
-	return l__sanitizeAngle__1((p7:toEulerAnglesYXZ()));
-end;
-local u4 = require(script.Parent.VehicleCameraConfig);
-function v9.new(p8)
+function v9.setGoal(p7, p8)
 	assert(typeof(p8) == "CFrame");
-	return setmetatable({
-		yawG = u2(p8), 
-		yawP = u2(p8), 
-		yawV = 0, 
-		pitchG = u3(p8), 
-		pitchP = u3(p8), 
-		pitchV = 0, 
-		fSpringYaw = v2.new(u4.yawReponseDampingRising, u4.yawResponseDampingFalling, 0), 
-		fSpringPitch = v2.new(u4.pitchReponseDampingRising, u4.pitchResponseDampingFalling, 0)
-	}, v9);
+	local v15, v16 = p8:toEulerAnglesYXZ();
+	p7.yawG = l__sanitizeAngle__1(v16);
+	p7.pitchG = l__sanitizeAngle__1((p8:toEulerAnglesYXZ()));
 end;
-function v9.setGoal(p9, p10)
-	assert(typeof(p10) == "CFrame");
-	p9.yawG = u2(p10);
-	p9.pitchG = u3(p10);
+function v9.getCFrame(p9)
+	return CFrame.fromEulerAnglesYXZ(p9.pitchP, p9.yawP, 0);
 end;
-function v9.getCFrame(p11)
-	return CFrame.fromEulerAnglesYXZ(p11.pitchP, p11.yawP, 0);
+local l__mapClamp__3 = v1.mapClamp;
+local l__map__4 = v1.map;
+local function u5(p10, p11, p12, p13, p14)
+	local v17 = l__sanitizeAngle__1(p13 - p12);
+	local v18 = math.exp(-p11 * p10);
+	return l__sanitizeAngle__1((v17 * (1 + p11 * p10) + p14 * p10) * v18 + p12), (p14 * (1 - p11 * p10) - v17 * (p11 * p11 * p10)) * v18;
 end;
-local l__mapClamp__5 = v1.mapClamp;
-local l__map__6 = v1.map;
-local function u7(p12, p13, p14, p15, p16)
-	local v12 = l__sanitizeAngle__1(p15 - p14);
-	local v13 = math.exp(-p13 * p12);
-	return l__sanitizeAngle__1((v12 * (1 + p13 * p12) + p16 * p12) * v13 + p14), (p16 * (1 - p13 * p12) - v12 * (p13 * p13 * p12)) * v13;
-end;
-function v9.step(p17, p18, p19, p20, p21)
+function v9.step(p15, p16, p17, p18, p19)
+	assert(typeof(p16) == "number");
 	assert(typeof(p18) == "number");
-	assert(typeof(p20) == "number");
+	assert(typeof(p17) == "number");
 	assert(typeof(p19) == "number");
-	assert(typeof(p21) == "number");
-	local l__fSpringYaw__14 = p17.fSpringYaw;
-	local l__fSpringPitch__15 = p17.fSpringPitch;
-	l__fSpringYaw__14.g = l__mapClamp__5(l__map__6(p21, 0, 1, p20, 0), math.rad(u4.cutoffMinAngularVelYaw), math.rad(u4.cutoffMaxAngularVelYaw), 1, 0);
-	l__fSpringPitch__15.g = l__mapClamp__5(l__map__6(p21, 0, 1, p19, 0), math.rad(u4.cutoffMinAngularVelPitch), math.rad(u4.cutoffMaxAngularVelPitch), 1, 0);
-	local v16 = l__fSpringPitch__15:step(p18);
-	local v17 = l__map__6(p21, 0, 1, 1, u4.firstPersonResponseMul);
-	local v18, v19 = u7(p18, 2 * math.pi * u4.yawStiffness * l__fSpringYaw__14:step(p18) * l__map__6(p21, 0, 1, 1, u4.firstPersonResponseMul), p17.yawG, p17.yawP, p17.yawV);
-	p17.yawP = v18;
-	p17.yawV = v19;
-	local v20, v21 = u7(p18, 2 * math.pi * u4.pitchStiffness * v16 * v17, p17.pitchG, p17.pitchP, p17.pitchV);
-	p17.pitchP = v20;
-	p17.pitchV = v21;
-	return p17:getCFrame();
+	local l__fSpringYaw__19 = p15.fSpringYaw;
+	local l__fSpringPitch__20 = p15.fSpringPitch;
+	l__fSpringYaw__19.g = l__mapClamp__3(l__map__4(p19, 0, 1, p18, 0), math.rad(u2.cutoffMinAngularVelYaw), math.rad(u2.cutoffMaxAngularVelYaw), 1, 0);
+	l__fSpringPitch__20.g = l__mapClamp__3(l__map__4(p19, 0, 1, p17, 0), math.rad(u2.cutoffMinAngularVelPitch), math.rad(u2.cutoffMaxAngularVelPitch), 1, 0);
+	local v21 = l__fSpringPitch__20:step(p16);
+	local v22 = l__map__4(p19, 0, 1, 1, u2.firstPersonResponseMul);
+	local v23, v24 = u5(p16, 2 * math.pi * u2.yawStiffness * l__fSpringYaw__19:step(p16) * l__map__4(p19, 0, 1, 1, u2.firstPersonResponseMul), p15.yawG, p15.yawP, p15.yawV);
+	p15.yawP = v23;
+	p15.yawV = v24;
+	local v25, v26 = u5(p16, 2 * math.pi * u2.pitchStiffness * v21 * v22, p15.pitchG, p15.pitchP, p15.pitchV);
+	p15.pitchP = v25;
+	p15.pitchV = v26;
+	return p15:getCFrame();
 end;
-local v22 = {};
-v22.__index = v22;
-function v22.new(p22)
+local v27 = {};
+v27.__index = v27;
+function v27.new(p20)
 	return setmetatable({
-		vrs = v9.new(p22)
-	}, v22);
+		vrs = v9.new(p20)
+	}, v27);
 end;
-function v22.step(p23, p24, p25, p26, p27)
-	return p23.vrs:step(p24, p25, p26, p27);
+function v27.step(p21, p22, p23, p24, p25)
+	return p21.vrs:step(p22, p23, p24, p25);
 end;
-function v22.setTransform(p28, p29)
-	p28.vrs:setGoal(p29);
+function v27.setTransform(p26, p27)
+	p26.vrs:setGoal(p27);
 end;
-return v22;
+return v27;

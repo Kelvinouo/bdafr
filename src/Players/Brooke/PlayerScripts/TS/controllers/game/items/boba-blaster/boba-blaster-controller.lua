@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -60,83 +59,84 @@ function v6.KnitStart(p2)
 		if p3.hitEntity then
 			local v9 = RaycastParams.new();
 			local v10 = {};
-			local v11 = p3.hitEntity:GetChildren();
-			local function v12(p4)
-				return p4.Name ~= "BobaPearl";
-			end;
-			local v13 = {};
-			local v14 = 0;
-			for v15, v16 in ipairs(v11) do
-				if v12(v16, v15 - 1, v11) == true then
-					v14 = v14 + 1;
-					v13[v14] = v16;
+			local v11 = {};
+			local v12 = 0;
+			local v13, v14, v15 = ipairs((p3.hitEntity:GetChildren()));
+			while true do
+				local v16, v17 = v13(v14, v15);
+				if not v16 then
+					break;
 				end;
+				if v17.Name ~= "BobaPearl" == true then
+					v12 = v12 + 1;
+					v11[v12] = v17;
+				end;			
 			end;
-			table.move(v13, 1, #v13, #v10 + 1, v10);
+			table.move(v11, 1, #v11, #v10 + 1, v10);
 			v9.FilterDescendantsInstances = v10;
 			v9.FilterType = Enum.RaycastFilterType.Whitelist;
-			local v17 = l__GameQueryUtil__5:raycast(v8.Position, p3.hitPart.Position - v8.Position, v9);
-			local v18 = v17;
-			if v18 ~= nil then
-				v18 = v18.Position;
+			local v18 = l__GameQueryUtil__5:raycast(v8.Position, p3.hitPart.Position - v8.Position, v9);
+			local v19 = v18;
+			if v19 ~= nil then
+				v19 = v19.Position;
 			end;
-			if v18 then
-				v8.CFrame = CFrame.new(v17.Position, v17.Position + v17.Normal);
+			if v19 then
+				v8.CFrame = CFrame.new(v18.Position, v18.Position + v18.Normal);
 			end;
 		end;
 		l__WeldUtil__6.weldParts(p3.hitPart, v8);
-		local v19 = false;
+		local v20 = false;
 		while time() - time() < 3 do
-			if v19 then
-				local v20 = u7;
+			if v20 then
+				local v21 = u7;
 			else
-				v20 = u8;
+				v21 = u8;
 			end;
-			v8.Color = v20;
-			if v19 then
-				local v21 = 0;
+			v8.Color = v21;
+			if v20 then
+				local v22 = 0;
 			else
-				v21 = 0.5;
+				v22 = 0.5;
 			end;
-			v8.Transparency = v21;
-			if v19 then
-				local v22 = Enum.Material.Neon;
+			v8.Transparency = v22;
+			if v20 then
+				local v23 = Enum.Material.Neon;
 			else
-				v22 = Enum.Material.Glass;
+				v23 = Enum.Material.Glass;
 			end;
-			v8.Material = v22;
-			if v19 then
+			v8.Material = v23;
+			if v20 then
 				l__SoundManager__9:playSound(l__GameSound__10.BEEPING, {
 					position = v8.Position, 
 					rollOffMaxDistance = 45, 
 					volumeMultiplier = 0.25
 				});
 			end;
-			v19 = not v19;
+			v20 = not v20;
 			task.wait(0.22);		
 		end;
 		p2:playEffect(v8.CFrame);
 		v8:Destroy();
 	end);
-	l__WatchCharacter__11(function(p5, p6, p7)
-		l__AnimatorAdded__12(p6:WaitForChild("Humanoid"), function(p8)
-			p8.AnimationPlayed:Connect(function(p9)
-				local v23 = p9.Animation;
-				if v23 ~= nil then
-					v23 = v23.AnimationId;
+	l__WatchCharacter__11(function(p4, p5, p6)
+		l__AnimatorAdded__12(p5:WaitForChild("Humanoid"), function(p7)
+			p7.AnimationPlayed:Connect(function(p8)
+				local v24 = p8.Animation;
+				if v24 ~= nil then
+					v24 = v24.AnimationId;
 				end;
-				if v23 == l__GameAnimationUtil__13.getAssetId(l__AnimationType__14.BOBA_BLASTER_FIRE) then
-					local v24 = l__InventoryUtil__15.getInventory(p5).hand;
-					if v24 ~= nil then
-						v24 = v24.tool;
+				if v24 == l__GameAnimationUtil__13.getAssetId(l__AnimationType__14.BOBA_BLASTER_FIRE) then
+					local v25 = l__InventoryUtil__15.getInventory(p4).hand;
+					if v25 ~= nil then
+						v25 = v25.tool;
 					end;
-					if v24 then
-						local v25 = l__MapUtil__16.getOrCreate(p2.effectCooldown, p5.UserId, l__ExpireList__17.new(0.35));
-						if #v25:getValues() >= 1 then
+					if v25 then
+						local v26 = l__MapUtil__16.getOrCreate(p2.effectCooldown, p4.UserId, l__ExpireList__17.new(0.35));
+						if #v26:getValues() >= 1 then
 							return nil;
 						end;
-						v25:add(math.random());
-						p2:playBlastEffect(p6);
+						v26:add(math.random());
+						p2:playBlastEffect(p5);
 					end;
 				end;
 			end);
@@ -145,20 +145,20 @@ function v6.KnitStart(p2)
 end;
 local l__ReplicatedStorage__18 = v4.ReplicatedStorage;
 local l__EffectUtil__19 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "effect", "effect-util").EffectUtil;
-function v6.playEffect(p10, p11)
+function v6.playEffect(p9, p10)
 	l__SoundManager__9:playSound(l__GameSound__10.GOO_SPLAT, {
-		position = p11.Position, 
+		position = p10.Position, 
 		rollOffMaxDistance = 45
 	});
 	l__SoundManager__9:playSound(l__GameSound__10.FIREWORK_EXPLODE_1, {
-		position = p11.Position, 
+		position = p10.Position, 
 		rollOffMaxDistance = 45, 
 		volumeMultiplier = 0.1
 	});
-	local v26 = l__ReplicatedStorage__18.Assets.Effects.BobaPearlPop:Clone();
-	v26.CFrame = p11;
-	v26.Parent = l__Workspace__4;
-	l__EffectUtil__19:playEffects({ v26 }, nil, {
+	local v27 = l__ReplicatedStorage__18.Assets.Effects.BobaPearlPop:Clone();
+	v27.CFrame = p10;
+	v27.Parent = l__Workspace__4;
+	l__EffectUtil__19:playEffects({ v27 }, nil, {
 		destroyAfterSec = 1, 
 		sizeMultiplier = 1.4
 	});
@@ -166,26 +166,26 @@ end;
 local l__Players__20 = v4.Players;
 local l__KnitClient__21 = v3.KnitClient;
 local l__ItemType__22 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
-function v6.playBlastEffect(p12, p13)
-	local v27 = l__Workspace__4.CurrentCamera;
-	if v27 ~= nil then
-		v27 = v27.CFrame.Position;
+function v6.playBlastEffect(p11, p12)
+	local v28 = l__Workspace__4.CurrentCamera;
+	if v28 ~= nil then
+		v28 = v28.CFrame.Position;
 	end;
-	if not v27 or (p13:GetPrimaryPartCFrame().Position - v27).Magnitude > 300 then
+	if not v28 or (p12:GetPrimaryPartCFrame().Position - v28).Magnitude > 300 then
 		return nil;
 	end;
-	local v28 = p13;
-	if p13 == l__Players__20.LocalPlayer.Character and l__KnitClient__21.Controllers.ViewmodelController:isVisible() then
-		local v29 = l__KnitClient__21.Controllers.ViewmodelController:getViewModel();
-		if v29 then
-			v28 = v29;
+	local v29 = p12;
+	if p12 == l__Players__20.LocalPlayer.Character and l__KnitClient__21.Controllers.ViewmodelController:isVisible() then
+		local v30 = l__KnitClient__21.Controllers.ViewmodelController:getViewModel();
+		if v30 then
+			v29 = v30;
 		end;
 	end;
-	local v30 = v28:FindFirstChild(l__ItemType__22.BOBA_BLASTER);
-	if not v30 then
+	local v31 = v29:FindFirstChild(l__ItemType__22.BOBA_BLASTER);
+	if not v31 then
 		return nil;
 	end;
-	l__EffectUtil__19:playEffects(v30:GetDescendants(), nil);
+	l__EffectUtil__19:playEffects(v31:GetDescendants(), nil);
 end;
 u1 = v3.KnitClient.CreateController;
 u1 = u1(v6.new());

@@ -1,4 +1,3 @@
--- Script Hash: 8d795c482640e123762d731a662f37e8e97c3354796cae4a13beae9171f2ab3b30f9fe91e5a36394540c8bbe3a9b318c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -39,28 +38,66 @@ function v1.Debug(p14, p15, p16)
 	end;
 	local v5 = Instance.new("Folder");
 	v5.Name = p15;
-	local function v6(p17, p18)
-		local v7 = Instance.new("NumberValue");
-		v7.Name = p18;
-		v7.Value = p14[p17];
-		v7.Parent = v5;
-		v7.Changed:Connect(function()
-			p14[p17] = v7.Value;
-			p14:Reset();
-		end);
-	end;
-	v6("_min", "Min");
-	v6("_max", "Max");
-	v6("_kp", "KP");
-	v6("_ki", "KI");
-	v6("_kd", "KD");
-	local v8 = Instance.new("NumberValue");
-	v8.Name = "Output";
-	v8.Value = 0;
-	v8.Parent = v5;
-	p14._out = v8;
+	local v6 = Instance.new("NumberValue");
+	v6.Name = "Min";
+	v6.Value = p14._min;
+	v6.Parent = v5;
+	local u2 = "_min";
+	local u3 = v6;
+	v6.Changed:Connect(function()
+		p14[u2] = u3.Value;
+		p14:Reset();
+	end);
+	u3 = Instance.new;
+	u3 = u3("NumberValue");
+	u3.Name = "Max";
+	u3.Value = p14._max;
+	u3.Parent = v5;
+	u2 = "_max";
+	u3.Changed:Connect(function()
+		p14[u2] = u3.Value;
+		p14:Reset();
+	end);
+	u3 = Instance.new;
+	u3 = u3("NumberValue");
+	u3.Name = "KP";
+	u3.Value = p14._kp;
+	u3.Parent = v5;
+	u2 = "_kp";
+	u3.Changed:Connect(function()
+		p14[u2] = u3.Value;
+		p14:Reset();
+	end);
+	u3 = Instance.new;
+	u3 = u3("NumberValue");
+	u3.Name = "KI";
+	u3.Value = p14._ki;
+	u3.Parent = v5;
+	u2 = "_ki";
+	u3.Changed:Connect(function()
+		p14[u2] = u3.Value;
+		p14:Reset();
+	end);
+	u3 = Instance.new;
+	u3 = u3("NumberValue");
+	u3.Name = "KD";
+	u3.Value = p14._kd;
+	u3.Parent = v5;
+	u2 = "_kd";
+	u3.Changed:Connect(function()
+		p14[u2] = u3.Value;
+		p14:Reset();
+	end);
+	u3 = Instance.new;
+	u3 = u3("NumberValue");
+	u3.Name = "Output";
+	u3.Value = 0;
+	u3.Parent = v5;
+	p14._out = u3;
 	p14._debug = v5;
-	l__CollectionService__1:AddTag(v5, "__pidebug__");
+	u3 = l__CollectionService__1;
+	u3 = u3.AddTag;
+	u3(u3, v5, "__pidebug__");
 	v5.Parent = p16;
 end;
 return v1;

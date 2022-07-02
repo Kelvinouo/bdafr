@@ -1,4 +1,3 @@
--- Script Hash: 7ef46e9a20fe94bda0c8360d558b49e2d9e17fb53ecae31ed91dfca5fa013ac99ba40e0f1c09bc61584e136d6b3166e4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -33,11 +32,8 @@ return {
 				local v12 = p1.DailyMemberContributions[l__ClanUtil__1.getContributionDayId()];
 				if v12 then
 					local u8 = 0;
-					local function v13(p3)
-						u8 = u8 + p3;
-					end;
-					for v14, v15 in pairs(v12) do
-						v13(v15, v14, v12);
+					for v13, v14 in pairs(v12) do
+						u8 = u8 + v14;
 					end;
 					v8(u8);
 				end;
@@ -45,22 +41,22 @@ return {
 		end, { p1.DailyMemberContributions });
 		l__useEffect__4(function()
 			if p1.DailyClanContribution then
-				local v16 = p1.DailyClanContribution[l__ClanUtil__1.getContributionDayId()];
-				if v16 then
-					v10(v16.gainedCoins);
+				local v15 = p1.DailyClanContribution[l__ClanUtil__1.getContributionDayId()];
+				if v15 then
+					v10(v15.gainedCoins);
 				end;
 			end;
 		end, { p1.DailyClanContribution });
-		local v17 = p1.MemberCount;
-		if v17 == nil then
-			v17 = 1;
+		local v16 = p1.MemberCount;
+		if v16 == nil then
+			v16 = 1;
 		end;
-		local v18 = l__ClanUtil__1.calcClanMaxDailyCoins(v17);
-		local v19 = l__StringUtil__3.formatNumberWithCommas(math.floor(v7));
-		local v20 = l__StringUtil__3.formatNumberWithCommas(v17 * 1000);
-		local v21 = l__StringUtil__3.formatNumberWithCommas(math.floor(v9));
-		local v22 = l__StringUtil__3.formatNumberWithCommas(math.floor(v18));
-		local v23 = { u4.createElement("UIListLayout", {
+		local v17 = l__ClanUtil__1.calcClanMaxDailyCoins(v16);
+		local v18 = l__StringUtil__3.formatNumberWithCommas(math.floor(v7));
+		local v19 = l__StringUtil__3.formatNumberWithCommas(v16 * 1000);
+		local v20 = l__StringUtil__3.formatNumberWithCommas(math.floor(v9));
+		local v21 = l__StringUtil__3.formatNumberWithCommas(math.floor(v17));
+		local v22 = { u4.createElement("UIListLayout", {
 				FillDirection = "Vertical", 
 				VerticalAlignment = "Bottom", 
 				Padding = UDim.new(0.03, 0)
@@ -77,7 +73,7 @@ return {
 			}, { u4.createElement("UITextSizeConstraint", {
 					MaxTextSize = 16
 				}) }) };
-		local v24 = { u4.createElement("UIListLayout", {
+		local v23 = { u4.createElement("UIListLayout", {
 				FillDirection = "Vertical", 
 				VerticalAlignment = "Bottom", 
 				Padding = UDim.new(0.03, 0)
@@ -93,13 +89,31 @@ return {
 			}, { u4.createElement("UITextSizeConstraint", {
 					MaxTextSize = 16
 				}) }) };
+		local v24 = false;
+		if p1.MemberCount ~= nil then
+			v24 = u4.createElement("TextLabel", {
+				Size = UDim2.fromScale(1, 0.3), 
+				TextColor3 = l__ColorUtil__5.WHITE, 
+				Font = "Roboto", 
+				Text = "<b>Clan's Daily Total Contribution:</b> <font color=\"" .. l__ColorUtil__5.richTextColor(l__mcYellow__6) .. "\">" .. v18 .. " / " .. v19 .. " (" .. l__StringUtil__3.formatPercentage(v7, v16 * 1000) .. ")</font>", 
+				TextXAlignment = "Left", 
+				TextScaled = true, 
+				RichText = true, 
+				BackgroundTransparency = 1
+			}, { u4.createElement("UITextSizeConstraint", {
+					MaxTextSize = 16
+				}) });
+		end;
+		if v24 then
+			v23[#v23 + 1] = v24;
+		end;
 		local v25 = false;
 		if p1.MemberCount ~= nil then
 			v25 = u4.createElement("TextLabel", {
 				Size = UDim2.fromScale(1, 0.3), 
 				TextColor3 = l__ColorUtil__5.WHITE, 
 				Font = "Roboto", 
-				Text = "<b>Clan's Daily Total Contribution:</b> <font color=\"" .. l__ColorUtil__5.richTextColor(l__mcYellow__6) .. "\">" .. v19 .. " / " .. v20 .. " (" .. l__StringUtil__3.formatPercentage(v7, v17 * 1000) .. ")</font>", 
+				Text = "<b>Clan's Daily Total Coins:</b> <font color=\"" .. l__ColorUtil__5.richTextColor(l__mcYellow__6) .. "\">" .. v20 .. " / " .. v21 .. " (" .. l__StringUtil__3.formatPercentage(v9, v17) .. ")</font>", 
 				TextXAlignment = "Left", 
 				TextScaled = true, 
 				RichText = true, 
@@ -109,36 +123,18 @@ return {
 				}) });
 		end;
 		if v25 then
-			v24[#v24 + 1] = v25;
+			v23[#v23 + 1] = v25;
 		end;
-		local v26 = false;
-		if p1.MemberCount ~= nil then
-			v26 = u4.createElement("TextLabel", {
-				Size = UDim2.fromScale(1, 0.3), 
-				TextColor3 = l__ColorUtil__5.WHITE, 
-				Font = "Roboto", 
-				Text = "<b>Clan's Daily Total Coins:</b> <font color=\"" .. l__ColorUtil__5.richTextColor(l__mcYellow__6) .. "\">" .. v21 .. " / " .. v22 .. " (" .. l__StringUtil__3.formatPercentage(v9, v18) .. ")</font>", 
-				TextXAlignment = "Left", 
-				TextScaled = true, 
-				RichText = true, 
-				BackgroundTransparency = 1
-			}, { u4.createElement("UITextSizeConstraint", {
-					MaxTextSize = 16
-				}) });
-		end;
-		if v26 then
-			v24[#v24 + 1] = v26;
-		end;
-		v23[#v23 + 1] = u4.createElement(l__Empty__7, {
+		v22[#v22 + 1] = u4.createElement(l__Empty__7, {
 			Size = UDim2.fromScale(1, 0.67)
-		}, v24);
+		}, v23);
 		return u4.createFragment({
 			YourContribution = u4.createElement(l__Empty__7, {
 				AnchorPoint = Vector2.new(0, 1), 
 				Position = UDim2.fromScale(0, 1), 
 				Size = UDim2.fromScale(1, 0.175), 
 				LayoutOrder = 4
-			}, v23)
+			}, v22)
 		});
 	end)
 };

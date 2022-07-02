@@ -1,4 +1,3 @@
--- Script Hash: 1757da3c07590864e4a4492e061cd02e374c4067c788f33964b6363a862687cb05dedc3cb1505fb6751de051d902e6b8
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -36,29 +35,33 @@ function v2.getLevelFromExperience(p1)
 	end;
 	return v4;
 end;
-local function v7(p2)
+function v2.getExperienceForLevel(p2)
 	if p2 == 0 then
 		return 0;
 	end;
 	return 2000 + p2 * 1000;
 end;
-v2.getExperienceForLevel = v7;
 u1 = function(p3)
+	local v7 = 0;
 	local v8 = 0;
-	local v9 = 0;
-	local v10 = false;
+	local v9 = false;
 	while true do
-		if v10 then
-			v9 = v9 + 1;
+		if v9 then
+			v8 = v8 + 1;
 		else
-			v10 = true;
+			v9 = true;
 		end;
-		if not (v9 <= p3) then
+		if not (v8 <= p3) then
 			break;
 		end;
-		v8 = v8 + v7(v9);	
+		if v8 == 0 then
+			local v10 = 0;
+		else
+			v10 = 2000 + v8 * 1000;
+		end;
+		v7 = v7 + v10;	
 	end;
-	return v8;
+	return v7;
 end;
 v2.getTotalExperienceForLevel = u1;
 function v2.getCurrExperienceProgression(p4, p5)

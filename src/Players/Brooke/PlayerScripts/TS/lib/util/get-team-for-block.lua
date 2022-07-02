@@ -1,4 +1,3 @@
--- Script Hash: 2f5bedb613023a5e801467fbe5c6dad61cbbeb155c322fd627e5e5dfee9f0dd74e56e7e7722ae2a055a0211bc029f7b9
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -10,21 +9,22 @@ return {
 		if v2 == nil then
 			return nil;
 		end;
-		local l__teams__3 = l__ClientStore__2:getState().Game.teams;
-		local function v4(p2)
-			local v5 = v2.Team;
-			if v5 ~= nil then
-				v5 = v5.Name;
-			end;
-			return p2.name == v5;
-		end;
-		local v6 = nil;
-		for v7, v8 in ipairs(l__teams__3) do
-			if v4(v8, v7 - 1, l__teams__3) == true then
-				v6 = v8;
+		local v3 = nil;
+		local v4, v5, v6 = ipairs(l__ClientStore__2:getState().Game.teams);
+		while true do
+			local v7, v8 = v4(v5, v6);
+			if not v7 then
 				break;
 			end;
+			local v9 = v2.Team;
+			if v9 ~= nil then
+				v9 = v9.Name;
+			end;
+			if v8.name == v9 == true then
+				v3 = v8;
+				break;
+			end;		
 		end;
-		return v6;
+		return v3;
 	end
 };

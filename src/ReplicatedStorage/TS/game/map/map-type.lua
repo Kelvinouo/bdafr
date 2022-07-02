@@ -1,4 +1,3 @@
--- Script Hash: 9351af87e0f26827b9ed3206e53df3dfe99655c54e9af256f764e5d8b6d3a1fe0817292f709dee2b170a66048de5ec2a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -61,23 +60,19 @@ return {
 	MiscMapType = v9, 
 	MapType = v10, 
 	getMapTypeFromVal = function(p1)
-		local v19 = u1.entries(v10);
-		local function v20(p2)
-			local v21 = p2[1];
-			local v22 = p2[2];
-			return v22 == v22;
-		end;
-		local v23 = nil;
-		for v24, v25 in ipairs(v19) do
-			if v20(v25, v24 - 1, v19) == true then
-				v23 = v25;
+		local v19 = nil;
+		for v20, v21 in ipairs((u1.entries(v10))) do
+			local v22 = v21[1];
+			local v23 = v21[2];
+			if v23 == v23 == true then
+				v19 = v21;
 				break;
 			end;
 		end;
-		local v26 = v23;
-		if v26 ~= nil then
-			v26 = v26[1];
+		local v24 = v19;
+		if v24 ~= nil then
+			v24 = v24[1];
 		end;
-		return v26;
+		return v24;
 	end
 };

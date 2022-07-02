@@ -1,4 +1,3 @@
--- Script Hash: d7338f47e5a8c72648c4d9a45a1c9e6583bac8148b43df3bfb71e83f67613aa9a3298ecd69890d558aa888f8a2b04c6f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -35,46 +34,47 @@ end;
 local l__EntityUtil__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
 local l__Workspace__3 = v2.Workspace;
 function v3.getEntitiesWithinRadius(p6, p7)
-	local v11 = l__EntityUtil__2:getAliveEntityInstances();
-	local function v12(p8)
-		return p8.PrimaryPart;
-	end;
-	local v13 = {};
-	local v14 = 0;
-	for v15, v16 in ipairs(v11) do
-		local v17 = v12(v16, v15 - 1, v11);
-		if v17 ~= nil then
-			v14 = v14 + 1;
-			v13[v14] = v17;
+	local v11 = {};
+	local v12 = 0;
+	for v13, v14 in ipairs((l__EntityUtil__2:getAliveEntityInstances())) do
+		local l__PrimaryPart__15 = v14.PrimaryPart;
+		if l__PrimaryPart__15 ~= nil then
+			v12 = v12 + 1;
+			v11[v12] = l__PrimaryPart__15;
 		end;
 	end;
-	local v18 = OverlapParams.new();
-	v18.FilterType = Enum.RaycastFilterType.Whitelist;
-	v18.FilterDescendantsInstances = v13;
-	local v19 = l__Workspace__3:GetPartBoundsInBox(CFrame.new(p6), Vector3.new(p7 * 2, p7 * 2, p7 * 2), v18);
-	local function v20(p9)
-		local v21 = l__EntityUtil__2:getEntity(p9);
-		if v21 then
-			local l__PrimaryPart__22 = v21:getInstance().PrimaryPart;
-			if l__PrimaryPart__22 and (l__PrimaryPart__22.Position - p6).Magnitude <= p7 then
-				return v21;
+	local v16 = OverlapParams.new();
+	v16.FilterType = Enum.RaycastFilterType.Whitelist;
+	v16.FilterDescendantsInstances = v11;
+	local v17 = {};
+	local v18 = 0;
+	local v19, v20, v21 = ipairs((l__Workspace__3:GetPartBoundsInBox(CFrame.new(p6), Vector3.new(p7 * 2, p7 * 2, p7 * 2), v16)));
+	while true do
+		local v22, v23 = v19(v20, v21);
+		if not v22 then
+			break;
+		end;
+		local v24 = l__EntityUtil__2:getEntity(v23);
+		if v24 then
+			local l__PrimaryPart__25 = v24:getInstance().PrimaryPart;
+			if l__PrimaryPart__25 and (l__PrimaryPart__25.Position - p6).Magnitude <= p7 then
+				local v26 = v24;
+			else
+				v26 = nil;
 			end;
+		else
+			v26 = nil;
 		end;
+		if v26 ~= nil then
+			v18 = v18 + 1;
+			v17[v18] = v26;
+		end;	
 	end;
-	local v23 = {};
-	local v24 = 0;
-	for v25, v26 in ipairs(v19) do
-		local v27 = v20(v26, v25 - 1, v19);
-		if v27 ~= nil then
-			v24 = v24 + 1;
-			v23[v24] = v27;
-		end;
-	end;
-	return v23;
+	return v17;
 end;
 local u4 = Random.new();
-function v3.randomUnitVector(p10, p11)
-	return (CFrame.lookAt(Vector3.new(), p10) * CFrame.Angles(0, 0, u4:NextNumber(0, 2 * math.pi)) * CFrame.Angles(math.acos(u4:NextNumber(math.cos(p11), 1)), 0, 0)).LookVector;
+function v3.randomUnitVector(p8, p9)
+	return (CFrame.lookAt(Vector3.new(), p8) * CFrame.Angles(0, 0, u4:NextNumber(0, 2 * math.pi)) * CFrame.Angles(math.acos(u4:NextNumber(math.cos(p9), 1)), 0, 0)).LookVector;
 end;
 return {
 	GameWorldUtil = v3

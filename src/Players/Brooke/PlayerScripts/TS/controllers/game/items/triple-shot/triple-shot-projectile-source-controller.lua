@@ -1,4 +1,3 @@
--- Script Hash: 45fc37c008a734723eb1c37d97de5d5387f7565973af9a0b4569c3c37c985f4b0c9de4ecbcb9864ad4b12696899906c5
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -171,12 +170,8 @@ function v5.onMaxCharge(p11)
 	end);
 	task.delay(v27, function()
 		if u19 then
-			local v28 = l__CollectionService__16:GetTagged("projectile-preview-beam");
-			local function v29(p12)
-				p12.Color = ColorSequence.new(Color3.fromRGB(112, 219, 255));
-			end;
-			for v30, v31 in ipairs(v28) do
-				v29(v31, v30 - 1, v28);
+			for v28, v29 in ipairs((l__CollectionService__16:GetTagged("projectile-preview-beam"))) do
+				v29.Color = ColorSequence.new(Color3.fromRGB(112, 219, 255));
 			end;
 		end;
 	end);

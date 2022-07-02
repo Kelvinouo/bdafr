@@ -262,70 +262,69 @@ function u1.performHeal(p18)
 	p18.lastHealTime = tick();
 	local v30 = nil;
 	if l__Players__6.LocalPlayer.Character then
-		local v31 = l__EntityUtil__31:getAliveEntityInstances();
+		local l__Position__31 = l__Players__6.LocalPlayer.Character:GetPrimaryPartCFrame().Position;
 		local v32 = l__EntityUtil__31:getAliveEntityInstances();
-		local function v33(p19)
-			return p19 ~= l__Players__6.LocalPlayer.Character;
-		end;
-		local v34 = {};
-		local v35 = 0;
-		for v36, v37 in ipairs(v32) do
-			if v33(v37, v36 - 1, v32) == true then
-				v35 = v35 + 1;
-				v34[v35] = v37;
+		local v33 = {};
+		local v34 = 0;
+		local v35, v36, v37 = ipairs((l__EntityUtil__31:getAliveEntityInstances()));
+		while true do
+			local v38, v39 = v35(v36, v37);
+			if not v38 then
+				break;
 			end;
+			if v39 ~= l__Players__6.LocalPlayer.Character == true then
+				v34 = v34 + 1;
+				v33[v34] = v39;
+			end;		
 		end;
-		local function v38(p20)
-			return l__EntityUtil__31:getEntity(p20);
-		end;
-		local v39 = {};
-		local v40 = 0;
-		for v41, v42 in ipairs(v34) do
-			local v43 = v38(v42, v41 - 1, v34);
-			if v43 ~= nil then
-				v40 = v40 + 1;
-				v39[v40] = v43;
+		local v40 = {};
+		local v41 = 0;
+		for v42, v43 in ipairs(v33) do
+			local v44 = l__EntityUtil__31:getEntity(v43);
+			if v44 ~= nil then
+				v41 = v41 + 1;
+				v40[v41] = v44;
 			end;
-		end;
-		local l__Position__33 = l__Players__6.LocalPlayer.Character:GetPrimaryPartCFrame().Position;
-		local function v44(p21)
-			return p21:getInstance().PrimaryPart and (p21:getInstance():GetPrimaryPartCFrame().Position - l__Position__33).Magnitude <= 30;
 		end;
 		local v45 = {};
 		local v46 = 0;
-		for v47, v48 in ipairs(v39) do
-			if v44(v48, v47 - 1, v39) == true then
+		local v47, v48, v49 = ipairs(v40);
+		while true do
+			local v50, v51 = v47(v48, v49);
+			if not v50 then
+				break;
+			end;
+			if (v51:getInstance().PrimaryPart and (v51:getInstance():GetPrimaryPartCFrame().Position - l__Position__31).Magnitude <= 30) == true then
 				v46 = v46 + 1;
-				v45[v46] = v48;
+				v45[v46] = v51;
+			end;		
+		end;
+		local v52 = {};
+		local v53 = 0;
+		local v54, v55, v56 = ipairs(v45);
+		while true do
+			local v57, v58 = v54(v55, v56);
+			if not v57 then
+				break;
+			end;
+			if (v1.instanceof(v58, l__PlayerEntity__32) and v58:getPlayer().Team == l__Players__6.LocalPlayer.Team) == true then
+				v53 = v53 + 1;
+				v52[v53] = v58;
+			end;		
+		end;
+		local v59 = {};
+		local v60 = 0;
+		for v61, v62 in ipairs(v52) do
+			if v62:isAlive() == true then
+				v60 = v60 + 1;
+				v59[v60] = v62;
 			end;
 		end;
-		local function v49(p22)
-			return v1.instanceof(p22, l__PlayerEntity__32) and p22:getPlayer().Team == l__Players__6.LocalPlayer.Team;
-		end;
-		local v50 = {};
-		local v51 = 0;
-		for v52, v53 in ipairs(v45) do
-			if v49(v53, v52 - 1, v45) == true then
-				v51 = v51 + 1;
-				v50[v51] = v53;
-			end;
-		end;
-		local function v54(p23)
-			return p23:isAlive();
-		end;
-		local v55 = {};
-		local v56 = 0;
-		for v57, v58 in ipairs(v50) do
-			if v54(v58, v57 - 1, v50) == true then
-				v56 = v56 + 1;
-				v55[v56] = v58;
-			end;
-		end;
-		table.sort(v55, function(p24, p25)
-			return p24:getHealth() < p25:getHealth();
+		table.sort(v59, function(p19, p20)
+			return p19:getHealth() < p20:getHealth();
 		end);
-		if #v55 > 0 then
-			v30 = v55[1]:getInstance();
+		if #v59 > 0 then
+			v30 = v59[1]:getInstance();
 		end;
 	end;
 	l__default__4.Client:Get("RemoteName"):SendToServer({

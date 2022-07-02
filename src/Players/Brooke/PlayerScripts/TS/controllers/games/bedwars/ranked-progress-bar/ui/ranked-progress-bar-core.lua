@@ -1,4 +1,3 @@
--- Script Hash: 1e4f6c1bef8c0c9ec9904d8dbb580ebc65d98808aa8b2e1a3caa2e58d8bb9036715c1f98ffa627a4b463c26a75097636
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -153,30 +152,18 @@ return {
 				end;
 				v14:Play();
 				v13:Destroy();
-				local function u40()
+				v20.Completed:Connect(function()
 					u38:Disconnect();
 					u39:Disconnect();
 					v16.TextTransparency = 0;
 					l__PromotionRankMessage__18.TextTransparency = 0;
 					u31.Visible = false;
 					u31.Position = UDim2.fromScale(0.5, 0.5);
-				end;
-				v20.Completed:Connect(function()
-					u40();
 				end);
 			end;
+			local u40 = nil;
 			local u41 = nil;
-			local u42 = nil;
-			local function u43(p7)
-				if not u32 or p7 == 0 then
-					return nil;
-				end;
-				u25 = u25 + p7;
-				u33 = u33 - p7;
-				u26(0.5, u25);
-				wait(0.5);
-			end;
-			local function u44()
+			local function u42()
 				local v23 = l__NumberSpinner__2.fromGuiObject(u34);
 				v23.Duration = 0;
 				v23.Decimals = 0;
@@ -209,7 +196,7 @@ return {
 							v23.Value = 0;
 							u33 = u33 - u25;
 							u35();
-							u41();
+							u40();
 							return nil;
 						end;
 						v23.Value = u25 + u33;
@@ -221,10 +208,10 @@ return {
 						v26 = 4;
 					end;
 					wait(v26);
-					u42();
+					u41();
 				end);
 			end;
-			u41 = function()
+			u40 = function()
 				l__Promise__7.defer(function()
 					wait(1);
 					while true do
@@ -248,7 +235,12 @@ return {
 							v28 = -u25;
 							v29 = math.max(u33, v28);
 						end;
-						u43(v29);
+						if not (not u32) and v29 ~= 0 then
+							u25 = u25 + v29;
+							u33 = u33 - v29;
+							u26(0.5, u25);
+							wait(0.5);
+						end;
 						if u24 and (u25 == 100 or v28 <= u33) then
 							u35();
 						elseif not u24 and u33 < v28 then
@@ -261,7 +253,7 @@ return {
 					end;
 					if v30 ~= 0 and v30 == v30 and v30 then
 						u25 = 0;
-						u44();
+						u42();
 						return nil;
 					end;
 					local v31 = p1.AliveSecsAfterEnd;
@@ -269,7 +261,7 @@ return {
 						v31 = 4;
 					end;
 					wait(v31);
-					u42();
+					u41();
 				end);
 			end;
 			if u22 then
@@ -277,13 +269,13 @@ return {
 					u35("YOU HAVE PLACED INTO");
 				end);
 			elseif u27.noRPLimit then
-				u44();
+				u42();
 			elseif not u27.noRPLimit then
-				u41();
+				u40();
 			end;
-			local u45 = u15:getValue();
-			u42 = function()
-				l__TweenService__3:Create(u45, TweenInfo.new(0.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+			local u43 = u15:getValue();
+			u41 = function()
+				l__TweenService__3:Create(u43, TweenInfo.new(0.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
 					Position = UDim2.fromScale(0.5, 2), 
 					Transparency = 1
 				}):Play();

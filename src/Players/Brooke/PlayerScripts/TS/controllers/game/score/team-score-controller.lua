@@ -1,4 +1,3 @@
--- Script Hash: f55392dddea88650d854f69360458fbfb6e43f7964e3ea7acb6afbea824bef807ec55552d18213149745ebac0da903ba
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -32,33 +31,30 @@ function v3.KnitStart(p2)
 	local v9 = {
 		type = "GameSetTeamScores"
 	};
-	local function v10(p3)
-		return {
-			teamId = p3.Name, 
-			score = p3:GetAttribute("Score")
+	local v10 = table.create(#v6);
+	for v11, v12 in ipairs(v6) do
+		v10[v11] = {
+			teamId = v12.Name, 
+			score = v12:GetAttribute("Score")
 		};
 	end;
-	local v11 = table.create(#v6);
-	for v12, v13 in ipairs(v6) do
-		v11[v12] = v10(v13, v12 - 1, v6);
-	end;
-	v9.teamScores = v11;
+	v9.teamScores = v10;
 	l__ClientStore__3:dispatch(v9);
-	l__TeamScores__5.ChildAdded:Connect(function(p4)
+	l__TeamScores__5.ChildAdded:Connect(function(p3)
 		l__ClientStore__3:dispatch({
 			type = "GameAddTeamScore", 
-			teamId = p4.Name, 
-			score = p4:GetAttribute("Score")
+			teamId = p3.Name, 
+			score = p3:GetAttribute("Score")
 		});
-		p2:hookScoreInstance(p4);
+		p2:hookScoreInstance(p3);
 	end);
 end;
-function v3.hookScoreInstance(p5, p6)
-	p6:GetAttributeChangedSignal("Score"):Connect(function(p7)
+function v3.hookScoreInstance(p4, p5)
+	p5:GetAttributeChangedSignal("Score"):Connect(function(p6)
 		l__ClientStore__3:dispatch({
 			type = "GameUpdateTeamScore", 
-			teamId = p6.Name, 
-			score = p7
+			teamId = p5.Name, 
+			score = p6
 		});
 	end);
 end;

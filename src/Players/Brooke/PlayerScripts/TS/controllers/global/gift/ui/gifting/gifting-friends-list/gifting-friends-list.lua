@@ -1,4 +1,3 @@
--- Script Hash: 7fc4b6105ae2ccfe980f581cd391d9f563c7fc05828a66612a00f9e3fc526c85c364660e098929fe08efa86c8610e101
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -19,63 +18,63 @@ return {
 		local v4 = u1.createRef();
 		if l__DeviceUtil__2.isHoarceKat() then
 			local v5 = u3.values(l__OfflinePlayerUtil__4.Dummy);
-			local function v6(p3)
-				return {
-					username = p3.name, 
-					userId = p3.userId, 
+			local v6 = table.create(#v5);
+			for v7, v8 in ipairs(v5) do
+				v6[v7] = {
+					username = v8.name, 
+					userId = v8.userId, 
 					isOnline = false
 				};
 			end;
-			local v7 = table.create(#v5);
-			for v8, v9 in ipairs(v5) do
-				v7[v8] = v6(v9, v8 - 1, v5);
-			end;
-			local v10 = v7;
+			local v9 = v6;
 		else
-			v10 = p1.Friends;
+			v9 = p1.Friends;
 		end;
-		local v11, v12 = p2.useState(v10);
-		local v13 = v11;
-		if v13 then
-			local function v14(p4, p5)
-				if p5 >= 50 then
-					return nil;
+		local v10, v11 = p2.useState(v9);
+		local v12 = v10;
+		if v12 then
+			local v13 = {};
+			local v14 = 0;
+			local v15, v16, v17 = ipairs(v10);
+			while true do
+				local v18, v19 = v15(v16, v17);
+				if not v18 then
+					break;
 				end;
-				return u1.createElement(u6, {
-					Friend = p4, 
-					SetFriendsListUser = p1.SetFriendsListUser
-				});
-			end;
-			local v15 = {};
-			local v16 = 0;
-			for v17, v18 in ipairs(v11) do
-				local v19 = v14(v18, v17 - 1, v11);
-				if v19 ~= nil then
-					v16 = v16 + 1;
-					v15[v16] = v19;
+				if v18 - 1 >= 50 then
+					local v20 = nil;
+				else
+					v20 = u1.createElement(u6, {
+						Friend = v19, 
+						SetFriendsListUser = p1.SetFriendsListUser
+					});
 				end;
+				if v20 ~= nil then
+					v14 = v14 + 1;
+					v13[v14] = v20;
+				end;			
 			end;
-			local v20 = {
+			local v21 = {
 				ScrollingFrameProps = {
 					Size = UDim2.new(1, 0, 1, -70), 
 					LayoutOrder = 2
 				}
 			};
-			local v21 = { u1.createElement("UIListLayout", {
+			local v22 = { u1.createElement("UIListLayout", {
 					FillDirection = Enum.FillDirection.Vertical, 
 					HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 					VerticalAlignment = Enum.VerticalAlignment.Top, 
 					SortOrder = Enum.SortOrder.LayoutOrder, 
 					Padding = UDim.new(0, 6)
 				}) };
-			local v22 = #v21;
-			for v23, v24 in ipairs(v15) do
-				v21[v22 + v23] = v24;
+			local v23 = #v22;
+			for v24, v25 in ipairs(v13) do
+				v22[v23 + v24] = v25;
 			end;
-			v13 = u1.createElement(l__AutoCanvasScrollingFrame__7, v20, v21);
+			v12 = u1.createElement(l__AutoCanvasScrollingFrame__7, v21, v22);
 		end;
-		local v25 = {};
-		local v26 = {
+		local v26 = {};
+		local v27 = {
 			UserAvatar = u1.createElement("ImageLabel", {
 				Size = UDim2.fromScale(0.7, 0.7), 
 				Image = l__ImageId__10.SEARCH_SOLID, 
@@ -99,7 +98,7 @@ return {
 				Padding = UDim.new(0, 8)
 			}))
 		};
-		local v27 = {
+		local v28 = {
 			Size = UDim2.new(0.85, 0, 0, 28), 
 			BackgroundTransparency = 1, 
 			Text = "", 
@@ -113,51 +112,51 @@ return {
 			LayoutOrder = 2, 
 			AutoLocalize = false
 		};
-		local function u11(p6)
-			if #p6.Text > 20 then
-				p6.Text = string.sub(p6.Text, 0, 20);
+		local function u11(p3)
+			if #p3.Text > 20 then
+				p3.Text = string.sub(p3.Text, 0, 20);
 				return nil;
 			end;
-			if not (#p6.Text > 0) then
-				v12(p1.Friends);
+			if not (#p3.Text > 0) then
+				v11(p1.Friends);
 				return;
 			end;
-			l__KnitClient__5.Controllers.FriendController:fuzzySearchFriends(p6.Text):andThen(function(p7)
-				if p7 then
-					v12(p7);
+			l__KnitClient__5.Controllers.FriendController:fuzzySearchFriends(p3.Text):andThen(function(p4)
+				if p4 then
+					v11(p4);
 				end;
 			end);
 		end;
-		v27[u1.Change.Text] = function(p8)
-			u11(p8);
+		v28[u1.Change.Text] = function(p5)
+			u11(p5);
 		end;
-		local v28 = {};
 		local v29 = {};
+		local v30 = {};
 		if l__DeviceUtil__2.isSmallScreen() then
-			local v30 = 16;
+			local v31 = 16;
 		else
-			v30 = 20;
+			v31 = 20;
 		end;
-		v29.MaxTextSize = v30;
-		v28[1] = u1.createElement("UITextSizeConstraint", v29);
-		v26[4] = u1.createElement("TextBox", v27, v28);
-		v25[1] = u1.createElement("UIListLayout", {
+		v30.MaxTextSize = v31;
+		v29[1] = u1.createElement("UITextSizeConstraint", v30);
+		v27[4] = u1.createElement("TextBox", v28, v29);
+		v26[1] = u1.createElement("UIListLayout", {
 			FillDirection = Enum.FillDirection.Vertical, 
 			HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 			VerticalAlignment = Enum.VerticalAlignment.Top, 
 			SortOrder = Enum.SortOrder.LayoutOrder, 
 			Padding = UDim.new(0, 10)
 		});
-		v25[2] = u1.createElement("UICorner", {
+		v26[2] = u1.createElement("UICorner", {
 			CornerRadius = UDim.new(0, 5)
 		});
-		v25[3] = u1.createElement("UIPadding", {
+		v26[3] = u1.createElement("UIPadding", {
 			PaddingTop = UDim.new(0, 12), 
 			PaddingBottom = UDim.new(0, 12), 
 			PaddingRight = UDim.new(0, 16), 
 			PaddingLeft = UDim.new(0, 16)
 		});
-		v25[4] = u1.createElement("TextLabel", {
+		v26[4] = u1.createElement("TextLabel", {
 			Size = UDim2.new(1, 0, 0, 22), 
 			AutomaticSize = Enum.AutomaticSize.X, 
 			BackgroundTransparency = 1, 
@@ -169,15 +168,15 @@ return {
 			TextSize = 22, 
 			LayoutOrder = 1
 		});
-		v25[5] = u1.createElement("Frame", {
+		v26[5] = u1.createElement("Frame", {
 			Size = UDim2.new(1, 0, 0, 28), 
 			BackgroundTransparency = 0, 
 			BackgroundColor3 = l__Theme__8.backgroundPrimary, 
 			BorderSizePixel = 0, 
 			LayoutOrder = 1
-		}, v26);
-		if v13 then
-			v25[#v25 + 1] = v13;
+		}, v27);
+		if v12 then
+			v26[#v26 + 1] = v12;
 		end;
 		return u1.createElement("Frame", {
 			Size = p1.Size, 
@@ -185,6 +184,6 @@ return {
 			BackgroundTransparency = 0, 
 			BorderSizePixel = 0, 
 			LayoutOrder = 1
-		}, v25);
+		}, v26);
 	end)
 };

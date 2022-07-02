@@ -1,4 +1,3 @@
--- Script Hash: 7e0efdd74795b3aef75c9cfd5fd9ab8f168d98d09dc517501c610e87af0225144f61f1934f6681e6d061ccc615ec02f6
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -15,28 +14,25 @@ return {
 			v3[v4] = v5;
 		end;
 		local v6 = u1.values(l__EnchantResearchType__2);
-		local function v7(p3)
-			return u3.createElement(l__EnchantProbabilityCard__4, {
-				ResearchType = p3
+		local v7 = table.create(#v6);
+		for v8, v9 in ipairs(v6) do
+			v7[v8] = u3.createElement(l__EnchantProbabilityCard__4, {
+				ResearchType = v9
 			});
 		end;
-		local v8 = table.create(#v6);
-		for v9, v10 in ipairs(v6) do
-			v8[v9] = v7(v10, v9 - 1, v6);
-		end;
-		local v11 = { u3.createElement("UIListLayout", {
+		local v10 = { u3.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Center, 
 				VerticalAlignment = Enum.VerticalAlignment.Center, 
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0.05, 0)
 			}) };
-		local v12 = #v11;
-		for v13, v14 in ipairs(v8) do
-			v11[v12 + v13] = v14;
+		local v11 = #v10;
+		for v12, v13 in ipairs(v7) do
+			v10[v11 + v12] = v13;
 		end;
 		return u3.createFragment({
-			ProbabilityCards = u3.createElement(l__Empty__5, v3, v11)
+			ProbabilityCards = u3.createElement(l__Empty__5, v3, v10)
 		});
 	end)
 };

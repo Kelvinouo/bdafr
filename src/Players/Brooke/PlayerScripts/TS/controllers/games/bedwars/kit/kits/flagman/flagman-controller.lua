@@ -1,4 +1,3 @@
--- Script Hash: fbb0299eb853267a172baabbfd2549cd99ddb797d3ad376167433f7602c0b836b9b1a1649b8241cb96ec87ed8fe9f89f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -94,12 +93,9 @@ function u1.KnitStart(p2)
 				if v20 then
 					local v21 = v20[p4];
 					if v21 then
-						local function v22(p6)
-							p6.Parent = nil;
-							p6:Destroy();
-						end;
-						for v23, v24 in ipairs(v21) do
-							v22(v24, v23 - 1, v21);
+						for v22, v23 in ipairs(v21) do
+							v23.Parent = nil;
+							v23:Destroy();
 						end;
 						if p2:isLocalPlayer(p5) and p2.audioIsLooping then
 							p2.audioLoopMaid:DoCleaning();
@@ -108,8 +104,8 @@ function u1.KnitStart(p2)
 					end;
 				end;
 			end;
-			for v25, v26 in ipairs(v18) do
-				v19(v26, v25 - 1, v18);
+			for v24, v25 in ipairs(v18) do
+				v19(v25, v24 - 1, v18);
 			end;
 			p4:Destroy();
 			p2.flagViewMap[p4] = nil;
@@ -127,14 +123,14 @@ local u10 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
 local l__TweenService__11 = v3.TweenService;
 local u12 = TweenInfo.new(0.5, Enum.EasingStyle.Cubic, Enum.EasingDirection.InOut);
 local u13 = TweenInfo.new(0.75, Enum.EasingStyle.Cubic, Enum.EasingDirection.InOut);
-function u1.createRadius(p7, p8)
-	local v27 = u10("Part", {
+function u1.createRadius(p6, p7)
+	local v26 = u10("Part", {
 		Parent = l__Workspace__8, 
 		Size = Vector3.new(0.2, 0, 0), 
-		CFrame = CFrame.new(p8.Position) - Vector3.new(0, l__BLOCK_SIZE__9 / 2, 0), 
+		CFrame = CFrame.new(p7.Position) - Vector3.new(0, l__BLOCK_SIZE__9 / 2, 0), 
 		Orientation = Vector3.new(0, 0, 90), 
 		Shape = Enum.PartType.Cylinder, 
-		Color = u7[p8.Name], 
+		Color = u7[p7.Name], 
 		Transparency = 0, 
 		CastShadow = false, 
 		Material = Enum.Material.ForceField, 
@@ -144,25 +140,25 @@ function u1.createRadius(p7, p8)
 		CanTouch = false, 
 		CanQuery = false
 	});
-	local v28 = l__TweenService__11:Create(v27, u12, {
-		Size = Vector3.new(0.2, p7.effectRadius, p7.effectRadius)
+	local v27 = l__TweenService__11:Create(v26, u12, {
+		Size = Vector3.new(0.2, p6.effectRadius, p6.effectRadius)
 	});
-	v28:Play();
+	v27:Play();
 	local u14 = nil;
-	u14 = v28.Completed:Connect(function()
-		l__TweenService__11:Create(v27, u13, {
-			Size = Vector3.new(0.5, p7.effectRadius, p7.effectRadius), 
-			Position = Vector3.new(v27.Position.X, v27.Position.Y + 0.25 + 0.1, v27.Position.Z)
+	u14 = v27.Completed:Connect(function()
+		l__TweenService__11:Create(v26, u13, {
+			Size = Vector3.new(0.5, p6.effectRadius, p6.effectRadius), 
+			Position = Vector3.new(v26.Position.X, v26.Position.Y + 0.25 + 0.1, v26.Position.Z)
 		}):Play();
 		u14:Disconnect();
 	end);
-	return v27;
+	return v26;
 end;
 local l__BedwarsImageId__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "image", "image-id").BedwarsImageId;
-function u1.createTeamIndicator(p9, p10)
+function u1.createTeamIndicator(p8, p9)
 	return u10("BillboardGui", {
 		Parent = l__Workspace__8, 
-		Adornee = p10, 
+		Adornee = p9, 
 		AlwaysOnTop = true, 
 		MaxDistance = 100, 
 		Size = UDim2.fromScale(1, 1), 
@@ -176,214 +172,199 @@ function u1.createTeamIndicator(p9, p10)
 	});
 end;
 local u16 = TweenInfo.new(1, Enum.EasingStyle.Bounce, Enum.EasingDirection.InOut);
-function u1.animateFlag(p11, p12)
-	local v29 = p12:Clone();
-	l__CollectionService__5:RemoveTag(v29, "flag-kit");
-	local l__Banner__30 = v29:WaitForChild("Banner", 3);
-	l__Banner__30.Transparency = 0;
-	l__Banner__30.Position = p12.Position + Vector3.new(0, 40, 0);
-	l__TweenService__11:Create(l__Banner__30, u16, {
-		CFrame = CFrame.new(p12.CFrame.Position + Vector3.new(0, l__BLOCK_SIZE__9 / 2, 0))
+function u1.animateFlag(p10, p11)
+	local v28 = p11:Clone();
+	l__CollectionService__5:RemoveTag(v28, "flag-kit");
+	local l__Banner__29 = v28:WaitForChild("Banner", 3);
+	l__Banner__29.Transparency = 0;
+	l__Banner__29.Position = p11.Position + Vector3.new(0, 40, 0);
+	l__TweenService__11:Create(l__Banner__29, u16, {
+		CFrame = CFrame.new(p11.CFrame.Position + Vector3.new(0, l__BLOCK_SIZE__9 / 2, 0))
 	}):Play();
-	local v31 = l__Banner__30:GetChildren();
-	local function v32(p13)
-		p13.Transparency = 0;
+	for v30, v31 in ipairs((l__Banner__29:GetChildren())) do
+		v31.Transparency = 0;
 	end;
-	for v33, v34 in ipairs(v31) do
-		v32(v34, v33 - 1, v31);
-	end;
-	l__Banner__30.Parent = l__Workspace__8;
-	return l__Banner__30;
+	l__Banner__29.Parent = l__Workspace__8;
+	return l__Banner__29;
 end;
 local l__BannerPoint__17 = l__ReplicatedStorage__4.Assets.Effects.BannerPoint;
 local l__EffectUtil__18 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "effect", "effect-util").EffectUtil;
-function u1.createPointLight(p14, p15)
-	local v35 = l__BannerPoint__17:Clone();
-	v35.CFrame = CFrame.new(p15.Position);
-	v35.Anchored = true;
-	v35.CanCollide = false;
-	local v36 = u7[p15.Name];
-	v35.Point.Cubes.Color = ColorSequence.new(v36);
-	v35.Point.Gradient.Color = ColorSequence.new(v36);
-	v35.Point.PointLight.Color = v36;
-	v35.Point.Shine.Color = ColorSequence.new(v36);
-	v35.Parent = l__Workspace__8;
-	l__EffectUtil__18:playEffects({ v35 }, nil);
-	return v35;
+function u1.createPointLight(p12, p13)
+	local v32 = l__BannerPoint__17:Clone();
+	v32.CFrame = CFrame.new(p13.Position);
+	v32.Anchored = true;
+	v32.CanCollide = false;
+	local v33 = u7[p13.Name];
+	v32.Point.Cubes.Color = ColorSequence.new(v33);
+	v32.Point.Gradient.Color = ColorSequence.new(v33);
+	v32.Point.PointLight.Color = v33;
+	v32.Point.Shine.Color = ColorSequence.new(v33);
+	v32.Parent = l__Workspace__8;
+	l__EffectUtil__18:playEffects({ v32 }, nil);
+	return v32;
 end;
 local l__SoundManager__19 = v2.SoundManager;
 local l__GameSound__20 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-function u1.playFlagDropSound(p16, p17)
+function u1.playFlagDropSound(p14, p15)
 	l__SoundManager__19:playSound(l__GameSound__20.FLAG_DROP, {
-		position = p17.Position
+		position = p15.Position
 	});
 end;
-function u1.playBuffLoop(p18)
-	p18.audioLoopMaid:GiveTask((l__SoundManager__19:playSound(l__GameSound__20.FLAG_BUFF, {
+function u1.playBuffLoop(p16)
+	p16.audioLoopMaid:GiveTask((l__SoundManager__19:playSound(l__GameSound__20.FLAG_BUFF, {
 		position = nil, 
 		looped = true
 	})));
 end;
-function u1.playFlagShockwave(p19, p20)
-	local v37 = l__ReplicatedStorage__4.Assets.Effects.FlagShockwave:Clone();
-	v37.Parent = l__Workspace__8;
-	v37.CFrame = CFrame.new(p20.Position);
-	l__EffectUtil__18:playEffects({ v37 }, nil, {
+function u1.playFlagShockwave(p17, p18)
+	local v34 = l__ReplicatedStorage__4.Assets.Effects.FlagShockwave:Clone();
+	v34.Parent = l__Workspace__8;
+	v34.CFrame = CFrame.new(p18.Position);
+	l__EffectUtil__18:playEffects({ v34 }, nil, {
 		destroyAfterSec = 3
 	});
 end;
-function u1.hideFlagForAnimation(p21, p22)
-	local l__Banner__38 = p22:WaitForChild("Banner", 3);
-	if l__Banner__38 then
-		l__Banner__38.Transparency = 1;
-		local v39 = l__Banner__38:GetChildren();
-		local function v40(p23)
-			p23.Transparency = 1;
-		end;
-		for v41, v42 in ipairs(v39) do
-			v40(v42, v41 - 1, v39);
+function u1.hideFlagForAnimation(p19, p20)
+	local l__Banner__35 = p20:WaitForChild("Banner", 3);
+	if l__Banner__35 then
+		l__Banner__35.Transparency = 1;
+		for v36, v37 in ipairs((l__Banner__35:GetChildren())) do
+			v37.Transparency = 1;
 		end;
 	end;
 end;
 local l__RunService__21 = v3.RunService;
-function u1.startBeamTicker(p24)
-	l__RunService__21.Heartbeat:Connect(function(p25)
-		p24.tickAccumulator = p24.tickAccumulator + p25;
-		if p24.beamTickRate <= p24.tickAccumulator then
-			local l__flagViewMap__43 = p24.flagViewMap;
-			local function v44(p26, p27)
-				p24:createBeams(p27, (p24:getBeamEligibleEntities(p27)));
+function u1.startBeamTicker(p21)
+	l__RunService__21.Heartbeat:Connect(function(p22)
+		p21.tickAccumulator = p21.tickAccumulator + p22;
+		if p21.beamTickRate <= p21.tickAccumulator then
+			for v38, v39 in pairs(p21.flagViewMap) do
+				p21:createBeams(v38, (p21:getBeamEligibleEntities(v38)));
 			end;
-			for v45, v46 in pairs(l__flagViewMap__43) do
-				v44(v46, v45, l__flagViewMap__43);
-			end;
-			p24.tickAccumulator = 0;
+			p21.tickAccumulator = 0;
 		end;
 	end);
 end;
 local l__BannerConnection__22 = l__ReplicatedStorage__4.Assets.Effects.BannerConnection;
-function u1.createBeams(p28, p29, p30)
-	local u23 = p28.beamMap[p29];
-	local u24 = p28.flagViewMap[p29];
-	local function v47(p31)
-		local v48 = u23;
-		if v48 ~= nil then
-			v48 = table.find(v48, p31) ~= nil;
+function u1.createBeams(p23, p24, p25)
+	local u23 = p23.beamMap[p24];
+	local u24 = p23.flagViewMap[p24];
+	local function v40(p26)
+		local v41 = u23;
+		if v41 ~= nil then
+			v41 = table.find(v41, p26) ~= nil;
 		end;
-		local v49 = u7[p29.Name];
-		if not v48 then
-			local v50 = l__BannerConnection__22.Beam1:Clone();
-			local v51 = l__BannerConnection__22.Beam2:Clone();
-			local v52 = p31.Character;
-			if v52 ~= nil then
-				v52 = v52:WaitForChild("UpperTorso"):WaitForChild("BodyFrontAttachment");
+		local v42 = u7[p24.Name];
+		if not v41 then
+			local v43 = l__BannerConnection__22.Beam1:Clone();
+			local v44 = l__BannerConnection__22.Beam2:Clone();
+			local v45 = p26.Character;
+			if v45 ~= nil then
+				v45 = v45:WaitForChild("UpperTorso"):WaitForChild("BodyFrontAttachment");
 			end;
-			local v53 = u24;
-			if v53 ~= nil then
-				v53 = v53.pointLight;
+			local v46 = u24;
+			if v46 ~= nil then
+				v46 = v46.pointLight;
 			end;
-			if v53 then
-				local l__Point__54 = u24.pointLight:WaitForChild("Point", 3);
-				if l__Point__54 then
-					v50.Color = ColorSequence.new(v49);
-					v50.Attachment0 = l__Point__54;
-					v50.Attachment1 = v52;
-					v50.Parent = v52;
-					v51.Color = ColorSequence.new(v49);
-					v51.Attachment0 = l__Point__54;
-					v51.Attachment1 = v52;
-					v51.Parent = v52;
-					if p28:isLocalPlayer(p31) and not p28.audioIsLooping then
-						p28.audioIsLooping = true;
-						p28:playBuffLoop();
+			if v46 then
+				local l__Point__47 = u24.pointLight:WaitForChild("Point", 3);
+				if l__Point__47 then
+					v43.Color = ColorSequence.new(v42);
+					v43.Attachment0 = l__Point__47;
+					v43.Attachment1 = v45;
+					v43.Parent = v45;
+					v44.Color = ColorSequence.new(v42);
+					v44.Attachment0 = l__Point__47;
+					v44.Attachment1 = v45;
+					v44.Parent = v45;
+					if p23:isLocalPlayer(p26) and not p23.audioIsLooping then
+						p23.audioIsLooping = true;
+						p23:playBuffLoop();
 					end;
-					local v55 = p28.playerBeamMap[p31];
-					if not v55 then
-						p28.playerBeamMap[p31] = {
-							[p29] = { v50, v51 }
+					local v48 = p23.playerBeamMap[p26];
+					if not v48 then
+						p23.playerBeamMap[p26] = {
+							[p24] = { v43, v44 }
 						};
 						return;
 					end;
-					local v56 = v55[p29];
-					if v56 then
-						table.insert(v56, v50);
-						table.insert(v56, v51);
+					local v49 = v48[p24];
+					if v49 then
+						table.insert(v49, v43);
+						table.insert(v49, v44);
 						return;
 					end;
-					v55[p29] = { v50, v51 };
+					v48[p24] = { v43, v44 };
 				end;
 			end;
 		end;
 	end;
-	for v57, v58 in ipairs(p30) do
-		v47(v58, v57 - 1, p30);
+	for v50, v51 in ipairs(p25) do
+		v40(v51, v50 - 1, p25);
 	end;
 	if u23 ~= nil then
-		local function v59(p32)
-			if table.find(p30, p32) == nil then
-				local v60 = p28.playerBeamMap[p32];
-				if v60 then
-					local v61 = v60[p29];
-					if v61 then
-						local function v62(p33)
-							p33.Parent = nil;
-							p33:Destroy();
+		local function v52(p27)
+			if table.find(p25, p27) == nil then
+				local v53 = p23.playerBeamMap[p27];
+				if v53 then
+					local v54 = v53[p24];
+					if v54 then
+						for v55, v56 in ipairs(v54) do
+							v56.Parent = nil;
+							v56:Destroy();
 						end;
-						for v63, v64 in ipairs(v61) do
-							v62(v64, v63 - 1, v61);
-						end;
-						if p28:isLocalPlayer(p32) and p28.audioIsLooping then
-							p28.audioLoopMaid:DoCleaning();
-							p28.audioIsLooping = false;
+						if p23:isLocalPlayer(p27) and p23.audioIsLooping then
+							p23.audioLoopMaid:DoCleaning();
+							p23.audioIsLooping = false;
 						end;
 					end;
 				end;
 			end;
 		end;
-		for v65, v66 in ipairs(u23) do
-			v59(v66, v65 - 1, u23);
+		for v57, v58 in ipairs(u23) do
+			v52(v58, v57 - 1, u23);
 		end;
 	end;
-	p28.beamMap[p29] = p30;
+	p23.beamMap[p24] = p25;
 end;
-local l__WorldUtil__25 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "world-util").WorldUtil;
+local l__GameWorldUtil__25 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "game-world-util").GameWorldUtil;
 local l__PlayerEntity__26 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entities", "player-entity").PlayerEntity;
-function u1.getBeamEligibleEntities(p34, p35)
-	local v67 = p34.flagViewMap[p35];
-	if not v67 then
+function u1.getBeamEligibleEntities(p28, p29)
+	local v59 = p28.flagViewMap[p29];
+	if not v59 then
 		return {};
 	end;
-	local v68 = l__WorldUtil__25.getEntitiesWithinRadius(v67.radius.Position, p34.effectRadius / 2);
+	local v60 = l__GameWorldUtil__25.getEntitiesWithinRadius(v59.radius.Position, p28.effectRadius / 2);
 	local u27 = {};
-	local function v69(p36)
-		if v1.instanceof(p36, l__PlayerEntity__26) and p34:wasPlacedByTeammate(p36:getPlayer(), p35) then
-			table.insert(u27, (p36:getPlayer()));
+	local function v61(p30)
+		if v1.instanceof(p30, l__PlayerEntity__26) and p28:wasPlacedByTeammate(p30:getPlayer(), p29) then
+			table.insert(u27, (p30:getPlayer()));
 		end;
 	end;
-	for v70, v71 in ipairs(v68) do
-		v69(v71, v70 - 1, v68);
+	for v62, v63 in ipairs(v60) do
+		v61(v63, v62 - 1, v60);
 	end;
 	return u27;
 end;
-function u1.wasPlacedByTeammate(p37, p38, p39)
-	local v72 = p38.Team;
-	if v72 ~= nil then
-		v72 = v72.Name;
+function u1.wasPlacedByTeammate(p31, p32, p33)
+	local v64 = p32.Team;
+	if v64 ~= nil then
+		v64 = v64.Name;
 	end;
-	return p39:GetAttribute("FlagTeam") == v72;
+	return p33:GetAttribute("FlagTeam") == v64;
 end;
-function u1.isFriendlyFlag(p40, p41)
-	local v73 = l__Players__6.LocalPlayer.Team;
-	if v73 ~= nil then
-		v73 = v73.Name;
+function u1.isFriendlyFlag(p34, p35)
+	local v65 = l__Players__6.LocalPlayer.Team;
+	if v65 ~= nil then
+		v65 = v65.Name;
 	end;
-	return v73 == p41:GetAttribute("FlagTeam");
+	return v65 == p35:GetAttribute("FlagTeam");
 end;
-function u1.isClientPrediction(p42, p43)
-	return p43:GetAttribute("ClientPlaced");
+function u1.isClientPrediction(p36, p37)
+	return p37:GetAttribute("ClientPlaced");
 end;
-function u1.isLocalPlayer(p44, p45)
-	return p45.Character == l__Players__6.LocalPlayer.Character;
+function u1.isLocalPlayer(p38, p39)
+	return p39.Character == l__Players__6.LocalPlayer.Character;
 end;
 u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;

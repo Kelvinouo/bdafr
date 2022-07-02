@@ -1,4 +1,3 @@
--- Script Hash: cb392f27c8504107ff2b3cd4622027dd191db08b6c0ba91444ebd7a071f5aeeacb5ccaaa9d022caf6412fab772b75173
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -52,35 +51,34 @@ return {
 		if v5 then
 			local v12 = v5.prerequisites;
 			if v12 ~= nil then
-				local function v13(p3)
-					local v14 = l__ClanUpgradeMeta__1[p3];
-					local v15 = p1.Clan.upgrades[v14.type];
-					if not v15 then
-						return false;
+				local v13 = true;
+				for v14, v15 in ipairs(v12) do
+					local v16 = l__ClanUpgradeMeta__1[v15];
+					local v17 = p1.Clan.upgrades[v16.type];
+					if not v17 then
+						local v18 = false;
+					else
+						v18 = v16.level <= l__ClanUpgradeMeta__1[v17].level;
 					end;
-					return v14.level <= l__ClanUpgradeMeta__1[v15].level;
-				end;
-				local v16 = true;
-				for v17, v18 in ipairs(v12) do
-					if not v13(v18, v17 - 1, v12) then
-						v16 = false;
+					if not v18 then
+						v13 = false;
 						break;
 					end;
 				end;
-				v12 = v16;
+				v12 = v13;
 			end;
 			if v5.prerequisites and not v12 then
 				v9 = true;
 			end;
 		end;
 		if v5 and v7 then
-			local v19 = { u3.createElement(function(p4)
+			local v19 = { u3.createElement(function(p3)
 					if not v7 or not v5 then
 						return u3.createFragment();
 					end;
 					return u3.createFragment({
 						Header = u3.createElement("Frame", {
-							Size = p4.Size, 
+							Size = p3.Size, 
 							BackgroundColor3 = l__Theme__4.backgroundPrimary, 
 							BorderSizePixel = 0, 
 							LayoutOrder = 1
@@ -144,7 +142,7 @@ return {
 					Padding = UDim.new(0.05, 0), 
 					VerticalAlignment = "Top", 
 					SortOrder = "LayoutOrder"
-				}), v5.rewards and u3.createElement(function(p5)
+				}), v5.rewards and u3.createElement(function(p4)
 					if not v7 or not v5 then
 						return u3.createFragment();
 					end;
@@ -175,11 +173,11 @@ return {
 						})
 					};
 					local l__rewards__23 = v5.rewards;
-					local function v24(p6)
+					local function v24(p5)
 						return u3.createFragment({
 							Reward = u3.createElement("TextLabel", {
 								Size = UDim2.new(1, 0, 0, 16), 
-								Text = "<b>\226\128\162 " .. p6 .. "</b>", 
+								Text = "<b>\226\128\162 " .. p5 .. "</b>", 
 								TextScaled = true, 
 								RichText = true, 
 								Font = "Roboto", 
@@ -213,14 +211,14 @@ return {
 					v22[#v22 + 1] = u3.createElement(l__Empty__7, v28, v29);
 					return u3.createFragment({
 						Rewards = u3.createElement(l__Empty__7, {
-							Size = p5.Size, 
+							Size = p4.Size, 
 							LayoutOrder = 2
 						}, v22)
 					});
 				end, {
 					Size = UDim2.fromScale(1, 0.45)
 				}) };
-			local v33 = v5.prerequisites and u3.createElement(function(p7)
+			local v33 = v5.prerequisites and u3.createElement(function(p6)
 				if not v7 or not v5 then
 					return u3.createFragment();
 				end;
@@ -252,8 +250,8 @@ return {
 				};
 				local v35 = v5.prerequisites;
 				if v35 ~= nil then
-					local function v36(p8)
-						local v37 = l__ClanUpgradeMeta__1[p8];
+					local function v36(p7)
+						local v37 = l__ClanUpgradeMeta__1[p7];
 						local v38 = false;
 						local v39 = p1.Clan.upgrades[v37.type];
 						if v39 then
@@ -311,7 +309,7 @@ return {
 				v34[#v34 + 1] = u3.createElement(l__Empty__7, v47, v48);
 				return u3.createFragment({
 					PreReqs = u3.createElement(l__Empty__7, {
-						Size = p7.Size, 
+						Size = p6.Size, 
 						LayoutOrder = 3
 					}, v34)
 				});

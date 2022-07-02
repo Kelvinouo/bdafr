@@ -1,4 +1,3 @@
--- Script Hash: b89bb6b69af1bdaf572631172022aa549151013c5faa047240488e0c53ee990190f69554a04a88a139476ad8b2e0ef7f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -31,49 +30,37 @@ function v3.isPlayDefaultKillEffect(p10)
 	return p10.playDefaultKillEffect;
 end;
 function v3.hideCharacter(p11, p12)
-	local v5 = p12:GetDescendants();
-	local function v6(p13)
-		if p13:IsA("BasePart") then
-			p13.Transparency = 1;
-			return;
+	for v5, v6 in ipairs((p12:GetDescendants())) do
+		if v6:IsA("BasePart") then
+			v6.Transparency = 1;
+		elseif v6:IsA("Decal") then
+			v6.Transparency = 1;
+		elseif v6:IsA("BillboardGui") then
+			v6:Destroy();
 		end;
-		if p13:IsA("Decal") then
-			p13.Transparency = 1;
-			return;
-		end;
-		if p13:IsA("BillboardGui") then
-			p13:Destroy();
-		end;
-	end;
-	for v7, v8 in ipairs(v5) do
-		v6(v8, v7 - 1, v5);
 	end;
 end;
-function v3.anchorCharacter(p14, p15)
-	local v9 = p15:GetDescendants();
-	local function v10(p16)
-		if p16:IsA("BasePart") then
-			p16.Anchored = true;
+function v3.anchorCharacter(p13, p14)
+	for v7, v8 in ipairs((p14:GetDescendants())) do
+		if v8:IsA("BasePart") then
+			v8.Anchored = true;
 		end;
-	end;
-	for v11, v12 in ipairs(v9) do
-		v10(v12, v11 - 1, v9);
 	end;
 end;
 local l__TweenService__2 = v2.TweenService;
-function v3.scaleModel(p17, p18, p19, p20)
-	local l__PrimaryPart__13 = p18.PrimaryPart;
-	local v14 = nil;
-	for v15, v16 in ipairs(p18:GetDescendants()) do
-		if v16:IsA("BasePart") then
-			v14 = l__TweenService__2:Create(v16, p20, {
-				CFrame = l__PrimaryPart__13.CFrame:Lerp(v16.CFrame, p19), 
-				Size = v16.Size * p19
+function v3.scaleModel(p15, p16, p17, p18)
+	local l__PrimaryPart__9 = p16.PrimaryPart;
+	local v10 = nil;
+	for v11, v12 in ipairs(p16:GetDescendants()) do
+		if v12:IsA("BasePart") then
+			v10 = l__TweenService__2:Create(v12, p18, {
+				CFrame = l__PrimaryPart__9.CFrame:Lerp(v12.CFrame, p17), 
+				Size = v12.Size * p17
 			});
-			v14:Play();
+			v10:Play();
 		end;
 	end;
-	return v14;
+	return v10;
 end;
 return {
 	KillEffect = v3

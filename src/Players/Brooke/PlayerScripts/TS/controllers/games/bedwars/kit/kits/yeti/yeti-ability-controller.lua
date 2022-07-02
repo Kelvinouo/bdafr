@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -105,49 +104,41 @@ local u14 = v3.ConstantManager.registerConstants(script, {
 local l__default__15 = v1.import(script, v1.getModule(script, "@rbxts", "tween")).default;
 local l__InQuart__16 = v4.InQuart;
 v7.tweenInIce = v1.async(function(p5, p6, p7)
-	local v21 = p6:GetChildren();
-	local function v22(p8)
-		return p8:IsA("Decal");
-	end;
-	local v23 = {};
-	local v24 = 0;
-	for v25, v26 in ipairs(v21) do
-		if v22(v26, v25 - 1, v21) == true then
-			v24 = v24 + 1;
-			v23[v24] = v26;
+	local v21 = {};
+	local v22 = 0;
+	for v23, v24 in ipairs((p6:GetChildren())) do
+		if v24:IsA("Decal") == true then
+			v22 = v22 + 1;
+			v21[v22] = v24;
 		end;
 	end;
-	l__default__15(l__OutQuad__13(p7, u14.TweenInTime, 2.5, 35), l__InQuart__16, function(p9)
-		for v27, v28 in ipairs(v23) do
-			v28.Transparency = p9;
+	l__default__15(l__OutQuad__13(p7, u14.TweenInTime, 2.5, 35), l__InQuart__16, function(p8)
+		for v25, v26 in ipairs(v21) do
+			v26.Transparency = p8;
 		end;
 	end, 1, 0.45 + p5.random:NextNumber(-0.1, 0.2)):Wait();
 end);
-v7.tweenOutIce = v1.async(function(p10, p11)
-	local v29 = p11:GetChildren();
-	local function v30(p12)
-		return p12:IsA("Decal");
-	end;
-	local v31 = {};
-	local v32 = 0;
-	for v33, v34 in ipairs(v29) do
-		if v30(v34, v33 - 1, v29) == true then
-			v32 = v32 + 1;
-			v31[v32] = v34;
+v7.tweenOutIce = v1.async(function(p9, p10)
+	local v27 = {};
+	local v28 = 0;
+	for v29, v30 in ipairs((p10:GetChildren())) do
+		if v30:IsA("Decal") == true then
+			v28 = v28 + 1;
+			v27[v28] = v30;
 		end;
 	end;
-	l__default__15(p10.random:NextNumber(1, 3), l__InQuart__16, function(p13)
-		for v35, v36 in ipairs(v31) do
-			v36.Transparency = p13;
+	l__default__15(p9.random:NextNumber(1, 3), l__InQuart__16, function(p11)
+		for v31, v32 in ipairs(v27) do
+			v32.Transparency = p11;
 		end;
-	end, v31[1].Transparency, 1):Wait();
+	end, v27[1].Transparency, 1):Wait();
 end);
 local l__GameQueryUtil__17 = v3.GameQueryUtil;
-function v7.makeIceBlock(p14, p15)
-	local v37 = p14.partCache:GetPart();
-	v37.Position = p15;
-	l__GameQueryUtil__17:setQueryIgnored(v37, true);
-	return v37;
+function v7.makeIceBlock(p12, p13)
+	local v33 = p12.partCache:GetPart();
+	v33.Position = p13;
+	l__GameQueryUtil__17:setQueryIgnored(v33, true);
+	return v33;
 end;
 u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v7.new());

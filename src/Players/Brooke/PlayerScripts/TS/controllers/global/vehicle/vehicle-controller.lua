@@ -1,4 +1,3 @@
--- Script Hash: f23c5508f9440604c6b1c88b360d5788a77eca4f146e8d84a4d8ed746782578f82398a1c8cced829b4d267e682fc1c7f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -36,42 +35,53 @@ function v3.KnitStart(p2)
 		end);
 		local u11 = l__getVehicleMeta__4(p3.Name);
 		local l__Driver__12 = p3:WaitForChild("Driver");
-		local function u13()
-			local v5 = nil;
-			local l__helicopter__6 = u11.helicopter;
-			if l__helicopter__6 ~= 0 and l__helicopter__6 == l__helicopter__6 and l__helicopter__6 ~= "" and l__helicopter__6 then
-				v5 = l__HelicopterPilotClient__5.new(p3);
+		u10:GiveTask(l__Driver__12:GetPropertyChangedSignal("Occupant"):Connect(function()
+			local v5 = l__Driver__12.Occupant;
+			if v5 then
+				local v6 = l__Players__6.LocalPlayer.Character;
+				if v6 ~= nil then
+					v6 = v6:FindFirstChild("Humanoid");
+				end;
+				v5 = l__Driver__12.Occupant == v6;
+			end;
+			if v5 then
+				local v7 = nil;
+				local l__helicopter__8 = u11.helicopter;
+				if l__helicopter__8 ~= 0 and l__helicopter__8 == l__helicopter__8 and l__helicopter__8 ~= "" and l__helicopter__8 then
+					v7 = l__HelicopterPilotClient__5.new(p3);
+				else
+					error("Failed to find vehicle client: " .. p3.Name);
+				end;
+				v7:enable(l__Driver__12);
+			end;
+		end));
+		local v9 = l__Driver__12.Occupant;
+		if v9 then
+			local v10 = l__Players__6.LocalPlayer.Character;
+			if v10 ~= nil then
+				v10 = v10:FindFirstChild("Humanoid");
+			end;
+			v9 = l__Driver__12.Occupant == v10;
+		end;
+		if v9 then
+			local v11 = nil;
+			local l__helicopter__12 = u11.helicopter;
+			if l__helicopter__12 ~= 0 and l__helicopter__12 == l__helicopter__12 and l__helicopter__12 ~= "" and l__helicopter__12 then
+				v11 = l__HelicopterPilotClient__5.new(p3);
 			else
 				error("Failed to find vehicle client: " .. p3.Name);
 			end;
-			v5:enable(l__Driver__12);
+			v11:enable(l__Driver__12);
 		end;
-		local function u14()
-			local v7 = l__Driver__12.Occupant;
-			if v7 then
-				local v8 = l__Players__6.LocalPlayer.Character;
-				if v8 ~= nil then
-					v8 = v8:FindFirstChild("Humanoid");
-				end;
-				v7 = l__Driver__12.Occupant == v8;
-			end;
-			if v7 then
-				u13();
-			end;
-		end;
-		u10:GiveTask(l__Driver__12:GetPropertyChangedSignal("Occupant"):Connect(function()
-			u14();
-		end));
-		u14();
 		u10:GiveTask(l__ClientSyncEvents__7.ProjectileHit:setPriority(l__SyncEventPriority__8.HIGH):connect(function(p4)
 			if p4:isCancelled() then
 				return nil;
 			end;
-			local v9 = p4.hitData.part;
-			if v9 ~= nil then
-				v9 = v9:IsDescendantOf(p3);
+			local v13 = p4.hitData.part;
+			if v13 ~= nil then
+				v13 = v13:IsDescendantOf(p3);
 			end;
-			if v9 and p4.shooter and l__VehicleUtil__9:isInVehicle(p4.shooter:getInstance(), p3) then
+			if v13 and p4.shooter and l__VehicleUtil__9:isInVehicle(p4.shooter:getInstance(), p3) then
 				p4:setCancelled(true);
 			end;
 		end));

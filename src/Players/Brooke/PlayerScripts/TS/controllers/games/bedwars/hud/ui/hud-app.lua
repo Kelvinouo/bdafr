@@ -1,4 +1,3 @@
--- Script Hash: 6cd15bebd97ce7b9765fb5b12ad54f74152ad22d98301209964f6285ca821277d0efba1df58335c1607b999713bbca3b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -22,10 +21,11 @@ local l__HudScore__16 = v1.import(script, script.Parent, "hud-score").HudScore;
 local l__ImageId__17 = v2.ImageId;
 local l__TopBarButton__18 = v2.TopBarButton;
 local l__BedwarsImageId__19 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "image", "image-id").BedwarsImageId;
-local l__BedwarsAppIds__20 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "types", "app-config").BedwarsAppIds;
-local l__Empty__21 = v2.Empty;
-local u22 = nil;
-u22 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u5)(function(p1, p2)
+local l__SettingsApp__20 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "global", "settings", "ui", "settings-app").SettingsApp;
+local l__BedwarsAppIds__21 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "types", "app-config").BedwarsAppIds;
+local l__Empty__22 = v2.Empty;
+local u23 = nil;
+u23 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u5)(function(p1, p2)
 	local l__useMemo__3 = p2.useMemo;
 	local v4, v5 = p2.useState(false);
 	if l__DeviceUtil__1.isHoarceKat() then
@@ -45,106 +45,94 @@ u22 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u
 	end, { p1.localPlayerId });
 	local v9 = {};
 	local v10 = u8.values(p1.store.Bedwars.kills);
-	local function v11(p3)
-		return p3;
+	local v11 = table.create(#v10);
+	for v12, v13 in ipairs(v10) do
+		v11[v12] = v13;
 	end;
-	local v12 = table.create(#v10);
-	for v13, v14 in ipairs(v10) do
-		v12[v13] = v11(v14, v13 - 1, v10);
-	end;
-	table.move(v12, 1, #v12, #v9 + 1, v9);
-	local v15 = l__useMemo__3(function()
+	table.move(v11, 1, #v11, #v9 + 1, v9);
+	local v14 = l__useMemo__3(function()
 		return u5.createElement(l__HudKills__7, {
 			LayoutOrder = 2, 
 			LocalPlayerId = p1.localPlayerId, 
 			store = p1.store
 		});
 	end, v9);
-	local l__teams__23 = v7.teams;
-	local l__myTeam__24 = p1.store.Game.myTeam;
-	local v16 = {};
-	local v17 = #v16;
-	local v18 = u8.values(p1.store.Bedwars.teamBedAlive);
-	local function v19(p4)
-		return p4;
+	local l__teams__24 = v7.teams;
+	local l__myTeam__25 = p1.store.Game.myTeam;
+	local v15 = {};
+	local v16 = #v15;
+	local v17 = u8.values(p1.store.Bedwars.teamBedAlive);
+	local v18 = table.create(#v17);
+	for v19, v20 in ipairs(v17) do
+		v18[v19] = v20;
 	end;
-	local v20 = table.create(#v18);
-	for v21, v22 in ipairs(v18) do
-		v20[v21] = v19(v22, v21 - 1, v18);
+	local v21 = #v18;
+	table.move(v18, 1, v21, v16 + 1, v15);
+	local v22 = v16 + v21;
+	local v23 = u8.values(p1.store.Bedwars.finalDeaths);
+	local v24 = table.create(#v23);
+	for v25, v26 in ipairs(v23) do
+		v24[v25] = v26;
 	end;
-	local v23 = #v20;
-	table.move(v20, 1, v23, v17 + 1, v16);
-	local v24 = v17 + v23;
-	local v25 = u8.values(p1.store.Bedwars.finalDeaths);
-	local function v26(p5)
-		return p5;
-	end;
-	local v27 = table.create(#v25);
-	for v28, v29 in ipairs(v25) do
-		v27[v28] = v26(v29, v28 - 1, v25);
-	end;
-	local v30 = #v27;
-	table.move(v27, 1, v30, v24 + 1, v16);
-	local v31 = v24 + v30;
-	v16[v31 + 1] = p1.store.Game.myTeam;
-	v16[v31 + 2] = p1.store.TabList.teams;
-	local v32 = l__useMemo__3(function()
+	local v27 = #v24;
+	table.move(v24, 1, v27, v22 + 1, v15);
+	local v28 = v22 + v27;
+	v15[v28 + 1] = p1.store.Game.myTeam;
+	v15[v28 + 2] = p1.store.TabList.teams;
+	local v29 = l__useMemo__3(function()
 		return u5.createElement(l__HudBeds__9, {
 			LayoutOrder = 3, 
-			teams = l__teams__23, 
-			MyTeam = l__myTeam__24, 
+			teams = l__teams__24, 
+			MyTeam = l__myTeam__25, 
 			store = p1.store
 		});
-	end, v16);
-	local v33 = {};
-	local v34 = u8.values(p1.store.Bedwars.finalDeaths);
-	local function v35(p6)
-		return p6;
+	end, v15);
+	local v30 = {};
+	local v31 = u8.values(p1.store.Bedwars.finalDeaths);
+	local v32 = table.create(#v31);
+	for v33, v34 in ipairs(v31) do
+		v32[v33] = v34;
 	end;
-	local v36 = table.create(#v34);
-	for v37, v38 in ipairs(v34) do
-		v36[v37] = v35(v38, v37 - 1, v34);
-	end;
-	table.move(v36, 1, #v36, #v33 + 1, v33);
-	local v39 = l__useMemo__3(function()
+	table.move(v32, 1, #v32, #v30 + 1, v30);
+	local v35 = l__useMemo__3(function()
 		return u5.createElement(l__HudAlivePlayersCount__10, {
 			LayoutOrder = 3, 
 			store = p1.store
 		});
-	end, v33);
-	local v40 = p1.store.Game.customMatch;
-	if v40 ~= nil then
-		v40 = v40.hostUserId;
+	end, v30);
+	local v36 = p1.store.Game.customMatch;
+	if v36 ~= nil then
+		v36 = v36.hostUserId;
 	end;
-	local v41 = l__Players__11.LocalPlayer.UserId == v40 or l__Players__11.LocalPlayer:GetAttribute("Cohost") == true;
-	local v42 = "beds";
+	local v37 = l__Players__11.LocalPlayer.UserId == v36 or l__Players__11.LocalPlayer:GetAttribute("Cohost") == true;
+	local v38 = "beds";
 	if v7.alivePlayersCountHud then
-		v42 = "players-alive";
+		v38 = "players-alive";
 	elseif v7.scoresHud then
-		v42 = "score";
+		v38 = "score";
 	elseif v7.noTopHud then
-		v42 = "no-hud";
+		v38 = "no-hud";
 	end;
 	p2.useEffect(function()
 		if l__DeviceUtil__1.isHoarceKat() then
 			return nil;
 		end;
-		local v43 = nil;
+		local v39 = nil;
 		if l__KnitClient__12.Controllers.PermissionController:playerHasAnyPermissions(l__Players__11.LocalPlayer, { 2, 0, 4, 6 }) then
 			v5(true);
 		else
-			v43 = l__Players__11.LocalPlayer:GetAttributeChangedSignal("Cohost"):Connect(function()
+			v39 = l__Players__11.LocalPlayer:GetAttributeChangedSignal("Cohost"):Connect(function()
 				v5(l__Players__11.LocalPlayer:GetAttribute("Cohost") == true);
 			end);
 		end;
 		return function()
-			v43:Disconnect();
+			v39:Disconnect();
 		end;
 	end, {});
-	local v44 = {
+	local v40 = {
 		Size = UDim2.fromScale(1, 1)
 	};
-	local v45 = {
+	local v41 = {
 		ServerRegionDisplay = u5.createElement("TextLabel", {
 			AnchorPoint = Vector2.new(0, 1), 
 			Position = UDim2.fromScale(0, 1), 
@@ -166,7 +154,7 @@ u22 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u
 			PaddingLeft = UDim.new(0.01, 0)
 		}))
 	};
-	local v46 = {
+	local v42 = {
 		Size = UDim2.fromScale(0.1, 0.035), 
 		AnchorPoint = Vector2.new(1, 0), 
 		AutomaticSize = Enum.AutomaticSize.X, 
@@ -174,16 +162,16 @@ u22 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u
 		BorderSizePixel = 0, 
 		BackgroundTransparency = 1
 	};
-	local v47 = { u5.createElement("UIListLayout", {
+	local v43 = { u5.createElement("UIListLayout", {
 			FillDirection = Enum.FillDirection.Horizontal, 
 			VerticalAlignment = Enum.VerticalAlignment.Top, 
 			HorizontalAlignment = Enum.HorizontalAlignment.Right, 
 			SortOrder = Enum.SortOrder.LayoutOrder, 
 			Padding = UDim.new(0, l__Theme__14.topBarGuiSpacing)
 		}) };
-	local v48 = false;
+	local v44 = false;
 	if v7.winConInfoHud ~= nil then
-		v48 = u5.createElement(l__HudCard__15, {
+		v44 = u5.createElement(l__HudCard__15, {
 			BackgroundColor3 = l__ColorUtil__13.hexColor(16755200), 
 			LayoutOrder = 0
 		}, { u5.createElement("TextLabel", {
@@ -198,81 +186,78 @@ u22 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u
 				TextColor3 = l__ColorUtil__13.WHITE
 			}) });
 	end;
+	if v44 then
+		v43[#v43 + 1] = v44;
+	end;
+	v43[#v43 + 1] = v8;
+	v43[#v43 + 1] = v14;
+	local v45 = false;
+	if v38 == "beds" then
+		v45 = v29;
+	end;
+	if v45 then
+		v43[#v43 + 1] = v45;
+	end;
+	local v46 = false;
+	if v38 == "players-alive" then
+		v46 = v35;
+	end;
+	if v46 then
+		v43[#v43 + 1] = v46;
+	end;
+	local v47 = #v43;
+	local v48 = v38 == "score";
 	if v48 then
-		v47[#v47 + 1] = v48;
-	end;
-	v47[#v47 + 1] = v8;
-	v47[#v47 + 1] = v15;
-	local v49 = false;
-	if v42 == "beds" then
-		v49 = v32;
-	end;
-	if v49 then
-		v47[#v47 + 1] = v49;
-	end;
-	local v50 = false;
-	if v42 == "players-alive" then
-		v50 = v39;
-	end;
-	if v50 then
-		v47[#v47 + 1] = v50;
-	end;
-	local v51 = #v47;
-	local v52 = v42 == "score";
-	if v52 then
-		local l__teamScores__53 = p1.store.Game.teamScores;
-		local function v54(p7, p8)
-			return u5.createElement(l__HudScore__16, {
-				teamId = p7.teamId, 
-				score = p7.score, 
+		local l__teamScores__49 = p1.store.Game.teamScores;
+		local v50 = table.create(#l__teamScores__49);
+		for v51, v52 in ipairs(l__teamScores__49) do
+			v50[v51] = u5.createElement(l__HudScore__16, {
+				teamId = v52.teamId, 
+				score = v52.score, 
 				LayoutOrder = 3, 
 				store = p1.store
 			});
 		end;
-		local v55 = table.create(#l__teamScores__53);
-		for v56, v57 in ipairs(l__teamScores__53) do
-			v55[v56] = v54(v57, v56 - 1, l__teamScores__53);
-		end;
-		v52 = v55;
+		v48 = v50;
 	end;
-	if v52 then
-		for v58, v59 in ipairs(v52) do
-			v47[v51 + v58] = v59;
+	if v48 then
+		for v53, v54 in ipairs(v48) do
+			v43[v47 + v53] = v54;
 		end;
 	end;
-	local v60 = v6 == l__QueueType__2.SURVIVAL;
-	if v60 then
-		local v61 = {};
-		local l__backgroundMusicVolume__62 = p1.store.Settings.backgroundMusicVolume;
-		if l__backgroundMusicVolume__62 ~= 0 and l__backgroundMusicVolume__62 == l__backgroundMusicVolume__62 and l__backgroundMusicVolume__62 then
-			local v63 = l__ImageId__17.VOLUME_UP_SOLID;
+	local v55 = v6 == l__QueueType__2.SURVIVAL;
+	if v55 then
+		local v56 = {};
+		local l__backgroundMusicVolume__57 = p1.store.Settings.backgroundMusicVolume;
+		if l__backgroundMusicVolume__57 ~= 0 and l__backgroundMusicVolume__57 == l__backgroundMusicVolume__57 and l__backgroundMusicVolume__57 then
+			local v58 = l__ImageId__17.VOLUME_UP_SOLID;
 		else
-			v63 = l__ImageId__17.VOLUME_MUTE_SOLID;
+			v58 = l__ImageId__17.VOLUME_MUTE_SOLID;
 		end;
-		v61.Image = v63;
-		function v61.OnClick()
-			local l__backgroundMusicVolume__64 = p1.store.Settings.backgroundMusicVolume;
-			if l__backgroundMusicVolume__64 ~= 0 and l__backgroundMusicVolume__64 == l__backgroundMusicVolume__64 and l__backgroundMusicVolume__64 then
+		v56.Image = v58;
+		function v56.OnClick()
+			local l__backgroundMusicVolume__59 = p1.store.Settings.backgroundMusicVolume;
+			if l__backgroundMusicVolume__59 ~= 0 and l__backgroundMusicVolume__59 == l__backgroundMusicVolume__59 and l__backgroundMusicVolume__59 then
 				l__KnitClient__12.Controllers.BackgroundMusicController:mute();
 				return;
 			end;
 			l__KnitClient__12.Controllers.BackgroundMusicController:unmute();
 		end;
-		v61.LayoutOrder = 7;
-		v60 = u5.createElement(l__TopBarButton__18, v61);
+		v56.LayoutOrder = 7;
+		v55 = u5.createElement(l__TopBarButton__18, v56);
 	end;
-	if v60 then
-		v47[#v47 + 1] = v60;
+	if v55 then
+		v43[#v43 + 1] = v55;
 	end;
-	local v65 = #v47;
-	v47[v65 + 1] = u5.createElement(l__TopBarButton__18, {
+	local v60 = #v43;
+	v43[v60 + 1] = u5.createElement(l__TopBarButton__18, {
 		Image = "rbxassetid://8531706273", 
 		LayoutOrder = 4, 
 		OnClick = function()
 			l__KnitClient__12.Controllers.EmoteController:emote();
 		end
 	});
-	local v66 = l__DeviceUtil__1.isMobileControls() and u5.createElement(l__TopBarButton__18, {
+	local v61 = l__DeviceUtil__1.isMobileControls() and u5.createElement(l__TopBarButton__18, {
 		Image = l__BedwarsImageId__19.HUD_MOBILE_SHIFT_LOCK, 
 		LayoutOrder = 5, 
 		Selected = l__KnitClient__12.Controllers.MobileShiftLockController:isEnabled(), 
@@ -284,10 +269,21 @@ u22 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u
 			l__KnitClient__12.Controllers.MobileShiftLockController:disable();
 		end
 	});
-	if v66 then
-		v47[v65 + 2] = v66;
+	if v61 then
+		v43[v60 + 2] = v61;
 	end;
-	local v67 = v7.rankCategory and u5.createElement(l__TopBarButton__18, {
+	local v62 = #v43;
+	v43[v62 + 1] = u5.createElement(l__TopBarButton__18, {
+		Image = l__BedwarsImageId__19.SETTING_ICON, 
+		OnClick = function()
+			l__Flamework__4.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp({
+				app = l__SettingsApp__20, 
+				appId = "SettingsApp"
+			}, {});
+		end, 
+		LayoutOrder = 5
+	});
+	local v63 = v7.rankCategory and u5.createElement(l__TopBarButton__18, {
 		Text = "Report", 
 		LayoutOrder = 6, 
 		OnClick = function()
@@ -296,43 +292,43 @@ u22 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u
 			});
 		end
 	});
-	if v67 then
-		v47[#v47 + 1] = v67;
+	if v63 then
+		v43[v62 + 2] = v63;
 	end;
-	if not v41 then
-		local v68 = v4 and u5.createElement(l__TopBarButton__18, {
+	if not v37 then
+		local v64 = v4 and u5.createElement(l__TopBarButton__18, {
 			Text = "Host Panel", 
 			LayoutOrder = 6, 
 			OnClick = function()
-				l__Flamework__4.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__20.CUSTOM_MATCH_HOST_PANEL, {});
+				l__Flamework__4.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__21.CUSTOM_MATCH_HOST_PANEL, {});
 			end
 		});
 	else
-		v68 = u5.createElement(l__TopBarButton__18, {
+		v64 = u5.createElement(l__TopBarButton__18, {
 			Text = "Host Panel", 
 			LayoutOrder = 6, 
 			OnClick = function()
-				l__Flamework__4.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__20.CUSTOM_MATCH_HOST_PANEL, {});
+				l__Flamework__4.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__21.CUSTOM_MATCH_HOST_PANEL, {});
 			end
 		});
 	end;
-	if v68 then
-		v47[#v47 + 1] = v68;
+	if v64 then
+		v43[#v43 + 1] = v64;
 	end;
-	v45.TopBarHud = u5.createElement("Frame", v46, v47);
-	return u5.createElement(l__Empty__21, v44, v45);
+	v41.TopBarHud = u5.createElement("Frame", v42, v43);
+	return u5.createElement(l__Empty__22, v40, v41);
 end);
 return {
-	HudAppWrapper = function(p9)
+	HudAppWrapper = function(p3)
 		return u5.createElement("ScreenGui", {
 			DisplayOrder = 20, 
 			IgnoreGuiInset = true, 
 			ResetOnSpawn = false
-		}, { u5.createElement(u22, {
+		}, { u5.createElement(u23, {
 				localPlayerId = l__Players__11.LocalPlayer.UserId, 
-				ToggleTabList = p9.ToggleTabList, 
-				store = p9.store
+				ToggleTabList = p3.ToggleTabList, 
+				store = p3.store
 			}) });
 	end, 
-	HudApp = u22
+	HudApp = u23
 };

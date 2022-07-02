@@ -1,4 +1,3 @@
--- Script Hash: 2f6d5e864e49b56dfab75cc5020c9ead39e138679e1b20fb526e42919fa5e599ac49cfb7db62283fe9ff31e9fe2ca0dd
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -46,21 +45,18 @@ return {
 		end;
 		local function v9(p7)
 			local l__statElements__10 = p7.statElements;
-			local function v11(p8)
-				return p8;
+			local v11 = table.create(#l__statElements__10);
+			for v12, v13 in ipairs(l__statElements__10) do
+				v11[v12] = v13;
 			end;
-			local v12 = table.create(#l__statElements__10);
-			for v13, v14 in ipairs(l__statElements__10) do
-				v12[v13] = v11(v14, v13 - 1, l__statElements__10);
-			end;
-			local v15 = {
+			local v14 = {
 				Size = UDim2.new(p7.xSize, 0, 0, 0), 
 				AutomaticSize = Enum.AutomaticSize.XY, 
 				BackgroundColor3 = l__ColorUtil__4.hexColor(7567033), 
 				BackgroundTransparency = 0, 
 				BorderSizePixel = 0
 			};
-			local v16 = { u2.createElement("UIListLayout", {
+			local v15 = { u2.createElement("UIListLayout", {
 					FillDirection = Enum.FillDirection.Vertical, 
 					VerticalAlignment = Enum.VerticalAlignment.Center, 
 					HorizontalAlignment = Enum.HorizontalAlignment.Left, 
@@ -74,11 +70,11 @@ return {
 					PaddingLeft = UDim.new(0, 16), 
 					PaddingRight = UDim.new(0, 16)
 				}) };
-			local v17 = #v16;
-			for v18, v19 in ipairs(v12) do
-				v16[v17 + v18] = v19;
+			local v16 = #v15;
+			for v17, v18 in ipairs(v11) do
+				v15[v16 + v17] = v18;
 			end;
-			return u2.createElement("Frame", v15, v16);
+			return u2.createElement("Frame", v14, v15);
 		end;
 		return u2.createElement(l__Empty__5, {
 			Size = UDim2.new(1, 0, 0, 0), 

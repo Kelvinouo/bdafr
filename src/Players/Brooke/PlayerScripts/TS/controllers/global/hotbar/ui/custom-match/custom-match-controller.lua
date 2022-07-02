@@ -1,4 +1,3 @@
--- Script Hash: 7b33b8bdf2bd190f4f2cb2b0e9c44333c0f6d133fb68fd3a73f4d0afac125a19531336ab23ca0267d99486fb1dd1585c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -111,55 +110,49 @@ function v3.setAllKitsDisabled(p20, p21)
 	p20.customMatchRemotes:Get("SetAllKitsDisabled"):CallServerAsync(p21);
 	local v6 = u6.values(l__BedwarsKit__7);
 	v5 = {};
-	local function v7(p22, p23)
-		p22[p23] = p21;
-		return p22;
-	end;
-	for v8 = 1, #v6 do
-		v5 = v7(v5, v6[v8], v8 - 1, v6);
+	for v7 = 1, #v6 do
+		v5[v6[v7]] = p21;
+		v5 = v5;
 	end;
 	l__ClientStore__3:dispatch({
 		type = "CustomMatchUpdateAllKits", 
-		disabledKits = local v9
+		disabledKits = local v8
 	});
 end;
-function v3.setItemDisabled(p24, p25, p26)
-	p24.customMatchRemotes:Get("SetItemDisabled"):CallServerAsync(p25, p26);
+function v3.setItemDisabled(p22, p23, p24)
+	p22.customMatchRemotes:Get("SetItemDisabled"):CallServerAsync(p23, p24);
 	l__ClientStore__3:dispatch({
 		type = "CustomMatchUpdateItem", 
-		item = p25, 
-		value = p26
+		item = p23, 
+		value = p24
 	});
 end;
 local l__BedwarsShop__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "shop", "bedwars-shop").BedwarsShop;
-function v3.setAllItemsDisabled(p27, p28)
-	local v10 = nil;
-	p27.customMatchRemotes:Get("SetAllItemsDisabled"):CallServerAsync(p28);
-	local v11 = u6.values(l__BedwarsShop__8.ShopItems);
-	v10 = {};
-	local function v12(p29, p30)
-		p29[p30.itemType] = p28;
-		return p29;
-	end;
-	for v13 = 1, #v11 do
-		v10 = v12(v10, v11[v13], v13 - 1, v11);
+function v3.setAllItemsDisabled(p25, p26)
+	local v9 = nil;
+	p25.customMatchRemotes:Get("SetAllItemsDisabled"):CallServerAsync(p26);
+	local v10 = u6.values(l__BedwarsShop__8.ShopItems);
+	v9 = {};
+	for v11 = 1, #v10 do
+		v9[v10[v11].itemType] = p26;
+		v9 = v9;
 	end;
 	l__ClientStore__3:dispatch({
 		type = "CustomMatchUpdateAllItems", 
-		disabledItems = local v14
+		disabledItems = local v12
 	});
 end;
-function v3.blacklistPlayer(p31, p32)
-	p31.customMatchRemotes:Get("BlacklistPlayer"):CallServerAsync(p32);
+function v3.blacklistPlayer(p27, p28)
+	p27.customMatchRemotes:Get("BlacklistPlayer"):CallServerAsync(p28);
 end;
-function v3.toggleCohost(p33, p34)
-	p33.customMatchRemotes:Get("CohostPlayer"):CallServerAsync(p34);
+function v3.toggleCohost(p29, p30)
+	p29.customMatchRemotes:Get("CohostPlayer"):CallServerAsync(p30);
 end;
-function v3.setPlayerTeam(p35, p36, p37)
-	p35.customMatchRemotes:Get("SetPlayerTeam"):CallServerAsync(p36, p37);
+function v3.setPlayerTeam(p31, p32, p33)
+	p31.customMatchRemotes:Get("SetPlayerTeam"):CallServerAsync(p32, p33);
 end;
-function v3.setPlayerMaxHealth(p38, p39, p40)
-	p38.customMatchRemotes:Get("SetPlayerMaxHealth"):CallServerAsync(p39, p40);
+function v3.setPlayerMaxHealth(p34, p35, p36)
+	p34.customMatchRemotes:Get("SetPlayerMaxHealth"):CallServerAsync(p35, p36);
 end;
 u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v3.new());

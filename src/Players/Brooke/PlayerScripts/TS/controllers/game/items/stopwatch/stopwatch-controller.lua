@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -147,79 +146,76 @@ function v6.KnitStart(p2)
 				v29.PlaybackSpeed = 1 / v28;
 			end;
 		end;
-		local function v30(p5)
-			return p5.cframe;
+		local v30 = table.create(#v24);
+		for v31, v32 in ipairs(v24) do
+			v30[v31] = v32.cframe;
 		end;
-		local v31 = table.create(#v24);
-		for v32, v33 in ipairs(v24) do
-			v31[v32] = v30(v33, v32 - 1, v24);
-		end;
-		local u18 = l__Chain__15.new(v31);
-		local v34, v35 = pcall(function()
+		local u18 = l__Chain__15.new(v30);
+		local v33, v34 = pcall(function()
 			u18:SolvePosition(0.5);
 		end);
-		if (v34 and {
+		if (v33 and {
 			success = true, 
-			value = v35
+			value = v34
 		} or {
 			success = false, 
-			error = v35
+			error = v34
 		}).success == true then
 			local u19 = nil;
 			local u20 = {};
 			local u21 = #v24;
 			local l__Animator__22 = v25.Humanoid.Animator;
-			l__default__16(v28, l__InOutCubic__17, function(p6)
-				local v36 = math.clamp(p6, 0, 1);
-				local v37 = u18:SolvePosition(v36);
-				local v38 = v37 + u18:SolveVelocity(v36) * Vector3.new(1, 0, 1);
-				v25:SetPrimaryPartCFrame(CFrame.lookAt(v37, v38));
+			l__default__16(v28, l__InOutCubic__17, function(p5)
+				local v35 = math.clamp(p5, 0, 1);
+				local v36 = u18:SolvePosition(v35);
+				local v37 = v36 + u18:SolveVelocity(v35) * Vector3.new(1, 0, 1);
+				v25:SetPrimaryPartCFrame(CFrame.lookAt(v36, v37));
 				if u19 then
-					local v39 = u20[u19];
-					if v39 ~= nil then
-						v39:AdjustSpeed(v36 * 2);
+					local v38 = u20[u19];
+					if v38 ~= nil then
+						v38:AdjustSpeed(v35 * 2);
 					end;
 				end;
-				local v40 = v24[u21 - 1 + 1];
-				if v40 == nil then
+				local v39 = v24[u21 - 1 + 1];
+				if v39 == nil then
 					return nil;
 				end;
-				if (v37 - v40.cframe.Position).Magnitude < 3 then
+				if (v36 - v39.cframe.Position).Magnitude < 3 then
 					u21 = u21 - 1;
 					if u21 % 2 == 0 then
-						local v41 = v26:Clone();
-						v41:SetPrimaryPartCFrame(CFrame.lookAt(v37, v38));
-						v41.Parent = l__Workspace__12;
+						local v40 = v26:Clone();
+						v40:SetPrimaryPartCFrame(CFrame.lookAt(v36, v37));
+						v40.Parent = l__Workspace__12;
 						if u19 then
-							local v42 = u20[u19];
-							if v42 then
-								local v43 = v41.AnimationController.Animator:LoadAnimation(u19);
-								v43:Play(0);
-								v43:AdjustSpeed(0);
-								v43.TimePosition = v42.TimePosition;
+							local v41 = u20[u19];
+							if v41 then
+								local v42 = v40.AnimationController.Animator:LoadAnimation(u19);
+								v42:Play(0);
+								v42:AdjustSpeed(0);
+								v42.TimePosition = v41.TimePosition;
 							end;
 						end;
-						p2:tweenOutGhost(v41);
+						p2:tweenOutGhost(v40);
 					end;
-					if u19 == v40.animation then
+					if u19 == v39.animation then
 						return nil;
 					end;
 					if u19 then
-						local v44 = u20[u19];
-						if v44 ~= nil then
-							v44:Stop();
+						local v43 = u20[u19];
+						if v43 ~= nil then
+							v43:Stop();
 						end;
 					end;
-					if u20[v40.animation] ~= nil then
-						local v45 = u20[v40.animation];
+					if u20[v39.animation] ~= nil then
+						local v44 = u20[v39.animation];
 					else
-						v45 = l__Animator__22:LoadAnimation(v40.animation);
-						u20[v40.animation] = v45;
+						v44 = l__Animator__22:LoadAnimation(v39.animation);
+						u20[v39.animation] = v44;
 					end;
-					if v45 ~= nil then
-						v45:Play();
+					if v44 ~= nil then
+						v44:Play();
 					end;
-					u19 = v40.animation;
+					u19 = v39.animation;
 				end;
 			end, 1, 0):Wait();
 		end;
@@ -232,121 +228,121 @@ function v6.KnitStart(p2)
 		p2:clearAbility(l__character__21);
 	end));
 end;
-function v6.clearAbility(p7, p8)
-	local v46 = p7.stopwatchAbilities[p8];
-	if v46 == nil then
+function v6.clearAbility(p6, p7)
+	local v45 = p6.stopwatchAbilities[p7];
+	if v45 == nil then
 		error("cannot clear ability that doesn't exist");
 	end;
-	v46.marker:Destroy();
-	v46.activeMaid:DoCleaning();
-	p7.stopwatchAbilities[p8] = nil;
+	v45.marker:Destroy();
+	v45.activeMaid:DoCleaning();
+	p6.stopwatchAbilities[p7] = nil;
 end;
 local u23 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
-function v6.cleanCheckpoints(p9, p10)
-	local v47 = u23.copy(p10);
-	for v48, v49 in pairs(p10) do
-		local v50 = p10[v48 + 1];
-		if v50 ~= nil and (v49.cframe.Position - v50.cframe.Position).Magnitude < 0.25 then
-			table.remove(v47, v48 + 1);
+function v6.cleanCheckpoints(p8, p9)
+	local v46 = u23.copy(p9);
+	for v47, v48 in pairs(p9) do
+		local v49 = p9[v47 + 1];
+		if v49 ~= nil and (v48.cframe.Position - v49.cframe.Position).Magnitude < 0.25 then
+			table.remove(v46, v47 + 1);
 		end;
 	end;
-	return v47;
+	return v46;
 end;
-function v6.getCurrentAnimationOfCharacter(p11, p12)
-	local v51 = p12.Humanoid.Animator:GetPlayingAnimationTracks();
-	table.sort(v51, function(p13, p14)
-		return p14.WeightCurrent < p13.WeightCurrent;
+function v6.getCurrentAnimationOfCharacter(p10, p11)
+	local v50 = p11.Humanoid.Animator:GetPlayingAnimationTracks();
+	table.sort(v50, function(p12, p13)
+		return p13.WeightCurrent < p12.WeightCurrent;
 	end);
-	return v51[1].Animation;
+	return v50[1].Animation;
 end;
-function v6.createGhostCharacter(p15, p16)
-	local v52 = p16:Clone();
-	v52.HumanoidRootPart.Anchored = true;
-	v52.Humanoid:Destroy();
-	local v53 = v52:FindFirstChildOfClass("Shirt");
+function v6.createGhostCharacter(p14, p15)
+	local v51 = p15:Clone();
+	v51.HumanoidRootPart.Anchored = true;
+	v51.Humanoid:Destroy();
+	local v52 = v51:FindFirstChildOfClass("Shirt");
+	if v52 ~= nil then
+		v52:Destroy();
+	end;
+	local v53 = v51:FindFirstChildOfClass("Pants");
 	if v53 ~= nil then
 		v53:Destroy();
 	end;
-	local v54 = v52:FindFirstChildOfClass("Pants");
-	if v54 ~= nil then
-		v54:Destroy();
-	end;
-	local v55 = Instance.new("AnimationController");
-	v55.Parent = v52;
-	Instance.new("Animator").Parent = v55;
-	local v56, v57, v58 = ipairs(v52:GetDescendants());
+	local v54 = Instance.new("AnimationController");
+	v54.Parent = v51;
+	Instance.new("Animator").Parent = v54;
+	local v55, v56, v57 = ipairs(v51:GetDescendants());
 	while true do
-		local v59, v60 = v56(v57, v58);
-		if not v59 then
+		local v58, v59 = v55(v56, v57);
+		if not v58 then
 			break;
 		end;
-		if v60:IsA("BasePart") and v60 ~= v52.HumanoidRootPart then
-			v60.CanCollide = false;
-			v60.Material = Enum.Material.Neon;
-			v60.Color = Color3.fromRGB(81, 134, 180);
-			v60.Transparency = 0.8;
+		if v59:IsA("BasePart") and v59 ~= v51.HumanoidRootPart then
+			v59.CanCollide = false;
+			v59.Material = Enum.Material.Neon;
+			v59.Color = Color3.fromRGB(81, 134, 180);
+			v59.Transparency = 0.8;
 		end;
-		if v60:IsA("MeshPart") then
-			v60.TextureID = "";
-		elseif v60:IsA("SpecialMesh") then
-			v60.TextureId = "";
-		elseif not (not v60:IsA("BillboardGui")) or not (not v60:IsA("Beam")) or v60:IsA("ParticleEmitter") then
-			v60.Enabled = false;
+		if v59:IsA("MeshPart") then
+			v59.TextureID = "";
+		elseif v59:IsA("SpecialMesh") then
+			v59.TextureId = "";
+		elseif not (not v59:IsA("BillboardGui")) or not (not v59:IsA("Beam")) or v59:IsA("ParticleEmitter") then
+			v59.Enabled = false;
 		end;	
 	end;
-	return v52;
+	return v51;
 end;
 local l__InExpo__24 = v3.InExpo;
 local l__scaleModel__25 = v1.import(script, v1.getModule(script, "@rbxts", "scale-model").out).scaleModel;
 local l__Linear__26 = v3.Linear;
-v6.tweenOutGhost = v1.async(function(p17, p18)
+v6.tweenOutGhost = v1.async(function(p16, p17)
 	task.wait(0.6);
-	for v61, v62 in ipairs(p18:GetDescendants()) do
-		if v62:IsA("BasePart") then
-			v62.Anchored = true;
+	for v60, v61 in ipairs(p17:GetDescendants()) do
+		if v61:IsA("BasePart") then
+			v61.Anchored = true;
 		end;
 	end;
 	local u27 = 0;
-	l__default__16(2, l__InExpo__24, function(p19)
-		l__scaleModel__25(p18, (p19 * 0.5 + 1) / (u27 * 0.5 + 1));
-		u27 = p19;
-		for v63, v64 in ipairs(p18:GetDescendants()) do
-			if v64:IsA("BasePart") then
-				v64.Transparency = l__Linear__26(p19, 0.8, 0.2, 1);
+	l__default__16(2, l__InExpo__24, function(p18)
+		l__scaleModel__25(p17, (p18 * 0.5 + 1) / (u27 * 0.5 + 1));
+		u27 = p18;
+		for v62, v63 in ipairs(p17:GetDescendants()) do
+			if v63:IsA("BasePart") then
+				v63.Transparency = l__Linear__26(p18, 0.8, 0.2, 1);
 			end;
 		end;
 	end, 0, 1):Wait();
-	p18:Destroy();
+	p17:Destroy();
 end);
-function v6.createOriginMarker(p20, p21)
-	local v65 = l__ReplicatedStorage__13.Assets.Effects.StopwatchEffects.StopwatchMarker:Clone();
-	v65.Position = (p21 * CFrame.new(0, -2, 0)).Position;
-	v65.Parent = l__Workspace__12;
-	return v65;
+function v6.createOriginMarker(p19, p20)
+	local v64 = l__ReplicatedStorage__13.Assets.Effects.StopwatchEffects.StopwatchMarker:Clone();
+	v64.Position = (p20 * CFrame.new(0, -2, 0)).Position;
+	v64.Parent = l__Workspace__12;
+	return v64;
 end;
 local u28 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-function v6.attachActiveEffects(p22, p23)
-	local v66 = u28("Attachment", {
+function v6.attachActiveEffects(p21, p22)
+	local v65 = u28("Attachment", {
 		Position = Vector3.new(0, -1.65, 0), 
-		Parent = p23.HumanoidRootPart
+		Parent = p22.HumanoidRootPart
 	});
-	local v67 = u28("Attachment", {
+	local v66 = u28("Attachment", {
 		Position = Vector3.new(0, 1.1, 0), 
-		Parent = p23.HumanoidRootPart
+		Parent = p22.HumanoidRootPart
 	});
-	local v68 = l__ReplicatedStorage__13.Assets.Effects.StopwatchEffects.Trail:Clone();
-	v68.Lifetime = l__StopwatchConstants__10.DURATION;
-	v68.Parent = p23.HumanoidRootPart;
-	v68.Attachment0 = v66;
-	v68.Attachment1 = v67;
-	local v69 = l__ReplicatedStorage__13.Assets.Effects.StopwatchEffects.TrailParticles:Clone();
-	v69.Parent = p23.HumanoidRootPart;
-	local v70 = u7.new();
-	v70:GiveTask(v66);
-	v70:GiveTask(v67);
-	v70:GiveTask(v68);
-	v70:GiveTask(v69);
-	return v70;
+	local v67 = l__ReplicatedStorage__13.Assets.Effects.StopwatchEffects.Trail:Clone();
+	v67.Lifetime = l__StopwatchConstants__10.DURATION;
+	v67.Parent = p22.HumanoidRootPart;
+	v67.Attachment0 = v65;
+	v67.Attachment1 = v66;
+	local v68 = l__ReplicatedStorage__13.Assets.Effects.StopwatchEffects.TrailParticles:Clone();
+	v68.Parent = p22.HumanoidRootPart;
+	local v69 = u7.new();
+	v69:GiveTask(v65);
+	v69:GiveTask(v66);
+	v69:GiveTask(v67);
+	v69:GiveTask(v68);
+	return v69;
 end;
 u1 = v2.KnitClient.CreateController;
 u1 = u1(v6.new());

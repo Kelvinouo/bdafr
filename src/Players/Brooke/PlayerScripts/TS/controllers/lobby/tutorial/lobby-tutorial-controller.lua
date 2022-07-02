@@ -1,4 +1,3 @@
--- Script Hash: 3b08adde7f38c492a22e5e6f622121e4d8cd7ff5b6db6c4b459680a663fc4cceebe76679b2e6949e30b50468536296ea
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -59,12 +58,8 @@ function v5.enableQueueTutorial(p4)
 	l__CollectionService__10:AddTag(v7, "QueueTutorialBeam");
 end;
 function v5.destroyQueueTutorialBeams(p5)
-	local v8 = l__CollectionService__10:GetTagged("QueueTutorialBeam");
-	local function v9(p6)
-		p6:Destroy();
-	end;
-	for v10, v11 in ipairs(v8) do
-		v9(v11, v10 - 1, v8);
+	for v8, v9 in ipairs((l__CollectionService__10:GetTagged("QueueTutorialBeam"))) do
+		v9:Destroy();
 	end;
 end;
 u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;

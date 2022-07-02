@@ -1,150 +1,166 @@
--- Script Hash: e84ed264f4703ae320c22bc32b5c030a8952b366483bf8ec6be925ff6537f82e4f6f4ca3b61cd97e7118927b4772617d
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local u1 = nil;
 local l__BlockEngine__2 = v1.import(script, v1.getModule(script, "@easy-games", "block-engine").out).BlockEngine;
-local u3 = nil;
-u3 = v1.async(function()
-	local v3 = u1();
-	local v4 = v3[math.random(#v3 - 1) + 1];
-	local v5 = l__BlockEngine__2:getHandlerRegistry():getHandler(v4.Name);
-	if not v5 then
-		return v1.await(u3());
-	end;
-	local v6 = v5:getContainedPositions(v4);
-	if #v6 > 1 then
-		local v7 = v6[math.random(#v6 - 1) + 1];
-	else
-		v7 = v6[1];
-	end;
-	local v8 = v7;
-	while true do
-		v8 = v8 + Vector3.new(0, 1, 0);
-		if l__BlockEngine__2:getStore():getBlockAt(v8) == nil then
-			break;
-		end;	
-	end;
-	return l__BlockEngine__2:getWorldPosition(v8);
-end);
-local l__Workspace__4 = v2.Workspace;
+local l__Workspace__3 = v2.Workspace;
 u1 = function(p1)
-	local v9 = nil;
-	local v10 = l__Workspace__4:WaitForChild("Map"):WaitForChild("Worlds"):GetChildren();
-	v9 = {};
-	local function v11(p2, p3)
+	local v3 = nil;
+	local v4 = l__Workspace__3:WaitForChild("Map"):WaitForChild("Worlds"):GetChildren();
+	v3 = {};
+	local function v5(p2, p3)
 		if p1 and table.find(p1, p3.Name) == nil then
 			return p2;
 		end;
-		local v12 = p3.Blocks:GetChildren();
-		local function v13(p4)
-			table.insert(p2, p4);
-		end;
-		for v14, v15 in ipairs(v12) do
-			v13(v15, v14 - 1, v12);
+		for v6, v7 in ipairs((p3.Blocks:GetChildren())) do
+			table.insert(p2, v7);
 		end;
 		return p2;
 	end;
-	for v16 = 1, #v10 do
-		v9 = v11(v9, v10[v16], v16 - 1, v10);
+	for v8 = 1, #v4 do
+		v3 = v5(v3, v4[v8], v8 - 1, v4);
 	end;
-	return local v17;
+	return local v9;
 end;
-local l__RunService__5 = v2.RunService;
-local function u6(p5)
-	local v18 = l__BlockEngine__2:getStore():getBlockAt(p5 - Vector3.new(0, 1, 0));
-	local v19 = false;
-	if l__BlockEngine__2:getStore():getBlockAt(p5) == nil then
-		v19 = v18 ~= nil;
+local l__RunService__4 = v2.RunService;
+local function u5(p4)
+	local v10 = l__BlockEngine__2:getStore():getBlockAt(p4 - Vector3.new(0, 1, 0));
+	local v11 = false;
+	if l__BlockEngine__2:getStore():getBlockAt(p4) == nil then
+		v11 = v10 ~= nil;
 	end;
-	return v19;
+	return v11;
 end;
 return {
-	getAboveRandomBlock = u3, 
+	getAboveRandomBlock = v1.async(function(p5)
+		local v12 = nil;
+		local v13 = u1();
+		while true do
+			local v14 = v13[math.random(#v13 - 1) + 1];
+			local v15 = l__BlockEngine__2:getHandlerRegistry():getHandler(v14.Name);
+			if v15 then
+				local v16 = v15:getContainedPositions(v14);
+				if #v16 > 1 then
+					local v17 = v16[math.random(#v16 - 1) + 1];
+				else
+					v17 = v16[1];
+				end;
+				v12 = v17;
+				while true do
+					v12 = v12 + Vector3.new(0, 1, 0);
+					if l__BlockEngine__2:getStore():getBlockAt(v12) == nil then
+						break;
+					end;				
+				end;
+				if not p5 then
+					break;
+				end;
+				local v18 = l__BlockEngine__2:getHandlerRegistry():getHandler(p5);
+				if v18 ~= nil then
+					v18 = v18:getPlacementPositions(v12, 0);
+				end;
+				local v19 = v18;
+				if v19 == nil then
+					v19 = {};
+				end;
+				local v20 = true;
+				for v21, v22 in ipairs(v19) do
+					if l__BlockEngine__2:getStore():getBlockAt(v22) then
+						v20 = false;
+						break;
+					end;
+				end;
+				if v20 then
+					break;
+				end;
+			end;		
+		end;
+		return l__BlockEngine__2:getWorldPosition(v12);
+	end), 
 	getAllMapBlocks = u1, 
 	getNearbyAboveRandomBlock = v1.async(function(p6, p7, p8)
 		if p8 == nil then
 			p8 = 3;
 		end;
-		local v20 = 0;
-		local v21 = nil;
-		while v21 == nil do
-			if p8 <= v20 then
+		local v23 = 0;
+		local v24 = nil;
+		while v24 == nil do
+			if p8 <= v23 then
 				error("Could not find a block nearby");
 			end;
-			v20 = v20 + 1;
-			local v22 = p6 + Vector3.new(math.random(-p7, p7), math.random(-p7, p7), math.random(-p7, p7));
-			if l__BlockEngine__2:getStore():getBlockAt(v22) then
-				local v23 = v22 + Vector3.new(0, 1, 0);
-				if l__BlockEngine__2:getStore():getBlockAt(v23) == nil then
-					v21 = v23;
+			v23 = v23 + 1;
+			local v25 = p6 + Vector3.new(math.random(-p7, p7), math.random(-p7, p7), math.random(-p7, p7));
+			if l__BlockEngine__2:getStore():getBlockAt(v25) then
+				local v26 = v25 + Vector3.new(0, 1, 0);
+				if l__BlockEngine__2:getStore():getBlockAt(v26) == nil then
+					v24 = v26;
 				end;
 			end;
-			l__RunService__5.Heartbeat:Wait();		
+			l__RunService__4.Heartbeat:Wait();		
 		end;
-		return l__BlockEngine__2:getWorldPosition(v21);
+		return l__BlockEngine__2:getWorldPosition(v24);
 	end), 
-	isSurfaceBlock = u6, 
+	isSurfaceBlock = u5, 
 	findSurfacePosition = function(p9, p10)
 		if p10 == nil then
 			p10 = 10;
 		end;
-		local function v24(p11)
-			local v25 = -1;
-			local v26 = false;
+		local function v27(p11)
+			local v28 = -1;
+			local v29 = false;
 			while true do
-				if v26 then
-					v25 = v25 + 1;
+				if v29 then
+					v28 = v28 + 1;
 				else
-					v26 = true;
+					v29 = true;
 				end;
-				if not (v25 <= 1) then
+				if not (v28 <= 1) then
 					break;
 				end;
-				local v27 = -1;
-				local v28 = false;
+				local v30 = -1;
+				local v31 = false;
 				while true do
-					if v28 then
-						v27 = v27 + 1;
+					if v31 then
+						v30 = v30 + 1;
 					else
-						v28 = true;
+						v31 = true;
 					end;
-					if not (v27 <= 1) then
+					if not (v30 <= 1) then
 						break;
 					end;
-					local v29 = p9 + Vector3.new(v25, p11 * 3, v27);
-					local v30 = l__BlockEngine__2:getBlockPosition(v29);
-					local v31 = l__BlockEngine__2:getWorldPosition(v30).Y - 1.5;
-					if u6(v30) then
-						return Vector3.new(v29.X, v31, v29.Z);
+					local v32 = p9 + Vector3.new(v28, p11 * 3, v30);
+					local v33 = l__BlockEngine__2:getBlockPosition(v32);
+					local v34 = l__BlockEngine__2:getWorldPosition(v33).Y - 1.5;
+					if u5(v33) then
+						return Vector3.new(v32.X, v34, v32.Z);
 					end;				
 				end;			
 			end;
 			return nil;
 		end;
-		local v32 = v24(0);
-		if v32 then
-			return v32;
+		local v35 = v27(0);
+		if v35 then
+			return v35;
 		end;
-		local v33 = 1;
-		local v34 = false;
+		local v36 = 1;
+		local v37 = false;
 		while true do
-			if v34 then
-				v33 = v33 + 1;
+			if v37 then
+				v36 = v36 + 1;
 			else
-				v34 = true;
+				v37 = true;
 			end;
-			if not (v33 <= p10) then
+			if not (v36 <= p10) then
 				break;
 			end;
-			local v35 = v24(-v33);
-			if v35 then
-				return v35;
+			local v38 = v27(-v36);
+			if v38 then
+				return v38;
 			end;
-			local v36 = v24(v33);
-			if v36 then
-				return v36;
+			local v39 = v27(v36);
+			if v39 then
+				return v39;
 			end;		
 		end;
 		return nil;

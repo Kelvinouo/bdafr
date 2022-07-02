@@ -510,6 +510,10 @@ v2.FLAG = "flag";
 v1.flag = "FLAG";
 v2.PLAYER_VACUUM = "player_vacuum";
 v1.player_vacuum = "PLAYER_VACUUM";
+v2.GRENADE_LAUNCHER = "grenade_launcher";
+v1.grenade_launcher = "GRENADE_LAUNCHER";
+v2.STUN_GRENADE = "stun_grenade";
+v1.stun_grenade = "STUN_GRENADE";
 v2.DINO_DEPLOY = "dino_deploy";
 v1.dino_deploy = "DINO_DEPLOY";
 v2.VITALITY_STAR = "vitality_star";
@@ -528,6 +532,14 @@ v2.VOID_TURRET = "void_turret";
 v1.void_turret = "VOID_TURRET";
 v2.VOID_TURRET_TABLET = "void_turret_tablet";
 v1.void_turret_tablet = "VOID_TURRET_TABLET";
+v2.HUGE_LUCKY_BLOCK = "huge_lucky_block";
+v1.huge_lucky_block = "HUGE_LUCKY_BLOCK";
+v2.TOY_HAMMER = "toy_hammer";
+v1.toy_hammer = "TOY_HAMMER";
+v2.STICKY_FIREWORK = "sticky_firework";
+v1.sticky_firework = "STICKY_FIREWORK";
+v2.DIZZY_TOAD = "dizzy_toad";
+v1.dizzy_toad = "DIZZY_TOAD";
 return {
 	ItemType = v2
 };

@@ -91,14 +91,10 @@ function v5.KnitStart(p3)
 			end;
 			u9 = false;
 			u10 = 0;
-			local v18 = p3.jumpModifier:getModifiers();
-			local function v19(p9)
-				if p9.deleteWhenLanded then
-					p3.jumpModifier:removeModifier(p9);
+			for v18 in pairs((p3.jumpModifier:getModifiers())) do
+				if v18.deleteWhenLanded then
+					p3.jumpModifier:removeModifier(v18);
 				end;
-			end;
-			for v20 in pairs(v18) do
-				v19(v20, v20, v18);
 			end;
 		end));
 		local u11 = false;
@@ -122,16 +118,16 @@ function v5.KnitStart(p3)
 		end));
 	end);
 end;
-function v5.setJumpHeight(p10, p11)
+function v5.setJumpHeight(p9, p10)
 	if l__Players__5.LocalPlayer.Character then
-		local l__Humanoid__21 = l__Players__5.LocalPlayer.Character:WaitForChild("Humanoid");
-		if l__Humanoid__21 then
-			l__Humanoid__21.JumpHeight = p11 * p10.jumpSpeedMultiplier;
+		local l__Humanoid__19 = l__Players__5.LocalPlayer.Character:WaitForChild("Humanoid");
+		if l__Humanoid__19 then
+			l__Humanoid__19.JumpHeight = p10 * p9.jumpSpeedMultiplier;
 		end;
 	end;
 end;
-function v5.getJumpModifier(p12)
-	return p12.jumpModifier;
+function v5.getJumpModifier(p11)
+	return p11.jumpModifier;
 end;
 u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());

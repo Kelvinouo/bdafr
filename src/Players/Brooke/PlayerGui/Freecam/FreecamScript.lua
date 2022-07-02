@@ -1,4 +1,3 @@
--- Script Hash: c514d7eb8d6d4df46e151c5831c958ee892c7f33389719b72e253df6c1f5e2630c76d6ce580168810c4c91ff05a009f2
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__ContextActionService__1 = game:GetService("ContextActionService");
@@ -53,35 +52,16 @@ local v21 = v12.new(1.5, Vector3.new());
 local v22 = v12.new(1, Vector2.new());
 local v23 = v12.new(4, 0);
 local v24 = {};
-local u4 = function(p8)
-	return (l__math_exp__3(2 * p8) - 1) / (l__math_exp__3(2) - 1);
-end;
-local l__math_sign__5 = math.sign;
-local u6 = function(p9)
-	return u4((p9 - 0.15) / 0.85);
-end;
-local l__math_abs__7 = math.abs;
-local l__math_clamp__8 = math.clamp;
-u4 = {};
-u6 = 0;
-u4.ButtonX = u6;
-u6 = 0;
-u4.ButtonY = u6;
-u6 = 0;
-u4.DPadDown = u6;
-u6 = 0;
-u4.DPadUp = u6;
-u6 = 0;
-u4.ButtonL2 = u6;
-u6 = 0;
-u4.ButtonR2 = u6;
-u6 = Vector2.new;
-u6 = u6();
-u4.Thumbstick1 = u6;
-u6 = Vector2.new;
-u6 = u6();
-u4.Thumbstick2 = u6;
-u6 = {
+local l__math_sign__4 = math.sign;
+local l__math_abs__5 = math.abs;
+local l__math_clamp__6 = math.clamp;
+local v25 = {
+	Delta = Vector2.new(), 
+	MouseWheel = 0
+};
+local v26 = Vector2.new(1, 1);
+local u7 = 1;
+local u8 = {
 	W = 0, 
 	A = 0, 
 	S = 0, 
@@ -99,70 +79,74 @@ u6 = {
 	LeftShift = 0, 
 	RightShift = 0
 };
-local v25 = {
-	Delta = Vector2.new(), 
-	MouseWheel = 0
-};
-local v26 = Vector2.new(1, 1);
-local u9 = 1;
-local function u10(p10)
-	return l__math_sign__5(p10) * l__math_clamp__8(u6(l__math_abs__7(p10)), 0, 1);
+local function u9(p8)
+	return l__math_sign__4(p8) * l__math_clamp__6((l__math_exp__3(2 * ((l__math_abs__5(p8) - 0.15) / 0.85)) - 1) / (l__math_exp__3(2) - 1), 0, 1);
 end;
+local u10 = {
+	ButtonX = 0, 
+	ButtonY = 0, 
+	DPadDown = 0, 
+	DPadUp = 0, 
+	ButtonL2 = 0, 
+	ButtonR2 = 0, 
+	Thumbstick1 = Vector2.new(), 
+	Thumbstick2 = Vector2.new()
+};
 local u11 = Vector3.new(1, 1, 1);
 local u12 = Vector3.new(1, 1, 1);
-function v24.Vel(p11)
-	u9 = l__math_clamp__8(u9 + p11 * (u6.Up - u6.Down) * 0.75, 0.01, 4);
+function v24.Vel(p9)
+	u7 = l__math_clamp__6(u7 + p9 * (u8.Up - u8.Down) * 0.75, 0.01, 4);
 	if l__UserInputService__5:IsKeyDown(Enum.KeyCode.LeftShift) or l__UserInputService__5:IsKeyDown(Enum.KeyCode.RightShift) then
 		local v27 = 0.25;
 	else
 		v27 = 1;
 	end;
-	return (Vector3.new(u10(u4.Thumbstick1.X), u10(u4.ButtonR2) - u10(u4.ButtonL2), u10(-u4.Thumbstick1.Y)) * u11 + Vector3.new(u6.D - u6.A + u6.K - u6.H, u6.E - u6.Q + u6.I - u6.Y, u6.S - u6.W + u6.J - u6.U) * u12) * (u9 * v27);
+	return (Vector3.new(u9(u10.Thumbstick1.X), u9(u10.ButtonR2) - u9(u10.ButtonL2), u9(-u10.Thumbstick1.Y)) * u11 + Vector3.new(u8.D - u8.A + u8.K - u8.H, u8.E - u8.Q + u8.I - u8.Y, u8.S - u8.W + u8.J - u8.U) * u12) * (u7 * v27);
 end;
 local u13 = Vector2.new(1, 1) * (l__math_pi__2 / 8);
 local u14 = v26 * (l__math_pi__2 / 64);
-function v24.Pan(p12)
+function v24.Pan(p10)
 	v25.Delta = Vector2.new();
-	return Vector2.new(u10(u4.Thumbstick2.Y), u10(-u4.Thumbstick2.X)) * u13 + v25.Delta * u14;
+	return Vector2.new(u9(u10.Thumbstick2.Y), u9(-u10.Thumbstick2.X)) * u13 + v25.Delta * u14;
 end;
-function v24.Fov(p13)
+function v24.Fov(p11)
 	v25.MouseWheel = 0;
-	return (u4.ButtonX - u4.ButtonY) * 0.25 + v25.MouseWheel * 1;
+	return (u10.ButtonX - u10.ButtonY) * 0.25 + v25.MouseWheel * 1;
 end;
-local function u15(p14, p15, p16)
-	if p15 == Enum.UserInputState.Begin then
+local function u15(p12, p13, p14)
+	if p13 == Enum.UserInputState.Begin then
 		local v28 = 1;
 	else
 		v28 = 0;
 	end;
-	u6[p16.KeyCode.Name] = v28;
+	u8[p14.KeyCode.Name] = v28;
 	return Enum.ContextActionResult.Sink;
 end;
 local l__Value__16 = Enum.ContextActionPriority.High.Value;
-local function u17(p17, p18, p19)
-	local l__Delta__29 = p19.Delta;
+local function u17(p15, p16, p17)
+	local l__Delta__29 = p17.Delta;
 	v25.Delta = Vector2.new(-l__Delta__29.y, -l__Delta__29.x);
 	return Enum.ContextActionResult.Sink;
 end;
-local function u18(p20, p21, p22)
-	v25[p22.UserInputType.Name] = -p22.Position.z;
+local function u18(p18, p19, p20)
+	v25[p20.UserInputType.Name] = -p20.Position.z;
 	return Enum.ContextActionResult.Sink;
 end;
-local function u19(p23, p24, p25)
-	if p24 == Enum.UserInputState.Begin then
+local function u19(p21, p22, p23)
+	if p22 == Enum.UserInputState.Begin then
 		local v30 = 1;
 	else
 		v30 = 0;
 	end;
-	u4[p25.KeyCode.Name] = v30;
+	u10[p23.KeyCode.Name] = v30;
 	return Enum.ContextActionResult.Sink;
 end;
-local function u20(p26, p27, p28)
-	u4[p28.KeyCode.Name] = p28.Position.z;
+local function u20(p24, p25, p26)
+	u10[p26.KeyCode.Name] = p26.Position.z;
 	return Enum.ContextActionResult.Sink;
 end;
-local function u21(p29, p30, p31)
-	u4[p31.KeyCode.Name] = p31.Position;
+local function u21(p27, p28, p29)
+	u10[p29.KeyCode.Name] = p29.Position;
 	return Enum.ContextActionResult.Sink;
 end;
 function v24.StartCapture()
@@ -173,16 +157,17 @@ function v24.StartCapture()
 	l__ContextActionService__1:BindActionAtPriority("FreecamGamepadTrigger", u20, false, l__Value__16, Enum.KeyCode.ButtonR2, Enum.KeyCode.ButtonL2);
 	l__ContextActionService__1:BindActionAtPriority("FreecamGamepadThumbstick", u21, false, l__Value__16, Enum.KeyCode.Thumbstick1, Enum.KeyCode.Thumbstick2);
 end;
-local function u22(p32)
-	for v31, v32 in pairs(p32) do
-		p32[v31] = v32 * 0;
-	end;
-end;
 function v24.StopCapture()
-	u9 = 1;
-	u22(u4);
-	u22(u6);
-	u22(v25);
+	u7 = 1;
+	for v31, v32 in pairs(u10) do
+		u10[v31] = v32 * 0;
+	end;
+	for v33, v34 in pairs(u8) do
+		u8[v33] = v34 * 0;
+	end;
+	for v35, v36 in pairs(v25) do
+		v25[v35] = v36 * 0;
+	end;
 	l__ContextActionService__1:UnbindAction("FreecamKeyboard");
 	l__ContextActionService__1:UnbindAction("FreecamMousePan");
 	l__ContextActionService__1:UnbindAction("FreecamMouseWheel");
@@ -190,159 +175,153 @@ function v24.StopCapture()
 	l__ContextActionService__1:UnbindAction("FreecamGamepadTrigger");
 	l__ContextActionService__1:UnbindAction("FreecamGamepadThumbstick");
 end;
-local u23 = 0;
-local l__math_tan__24 = math.tan;
-local l__math_rad__25 = math.rad;
-local l__math_sqrt__26 = math.sqrt;
-local u27 = v20;
-local u28 = v19;
-local function u29(p33)
-	local l__ViewportSize__33 = u1.ViewportSize;
-	local v34 = 2 * l__math_tan__24(u23 / 2);
-	local v35 = l__ViewportSize__33.x / l__ViewportSize__33.y * v34;
-	local l__rightVector__36 = p33.rightVector;
-	local l__upVector__37 = p33.upVector;
-	local l__lookVector__38 = p33.lookVector;
-	local v39 = Vector3.new();
-	local v40 = 512;
-	for v41 = 0, 1, 0.5 do
-		for v42 = 0, 1, 0.5 do
-			local v43 = l__rightVector__36 * ((v41 - 0.5) * v35) - l__upVector__37 * ((v42 - 0.5) * v34) + l__lookVector__38;
-			local v44 = p33.p + v43 * 0.1;
-			local v45, v46 = l__Workspace__6:FindPartOnRay(Ray.new(v44, v43.unit * v40));
-			local l__magnitude__47 = (v46 - v44).magnitude;
-			if l__magnitude__47 < v40 then
-				v40 = l__magnitude__47;
-				v39 = v43.unit;
+local u22 = 0;
+local l__math_tan__23 = math.tan;
+local l__math_rad__24 = math.rad;
+local l__math_sqrt__25 = math.sqrt;
+local u26 = v20;
+local u27 = v19;
+local function u28(p30)
+	local l__ViewportSize__37 = u1.ViewportSize;
+	local v38 = 2 * l__math_tan__23(u22 / 2);
+	local v39 = l__ViewportSize__37.x / l__ViewportSize__37.y * v38;
+	local l__rightVector__40 = p30.rightVector;
+	local l__upVector__41 = p30.upVector;
+	local l__lookVector__42 = p30.lookVector;
+	local v43 = Vector3.new();
+	local v44 = 512;
+	for v45 = 0, 1, 0.5 do
+		for v46 = 0, 1, 0.5 do
+			local v47 = l__rightVector__40 * ((v45 - 0.5) * v39) - l__upVector__41 * ((v46 - 0.5) * v38) + l__lookVector__42;
+			local v48 = p30.p + v47 * 0.1;
+			local v49, v50 = l__Workspace__6:FindPartOnRay(Ray.new(v48, v47.unit * v44));
+			local l__magnitude__51 = (v50 - v48).magnitude;
+			if l__magnitude__51 < v44 then
+				v44 = l__magnitude__51;
+				v43 = v47.unit;
 			end;
 		end;
 	end;
-	return l__lookVector__38:Dot(v39) * v40;
+	return l__lookVector__42:Dot(v43) * v44;
 end;
-local v48 = {};
-local u30 = {
+local v52 = {};
+local u29 = {
 	Backpack = true, 
 	Chat = true, 
 	Health = true, 
 	PlayerList = true
 };
-local u31 = {
+local u30 = {
 	BadgesNotificationsActive = true, 
 	PointsNotificationsActive = true
 };
-local u32 = {};
+local u31 = {};
+local u32 = nil;
 local u33 = nil;
 local u34 = nil;
 local u35 = nil;
 local u36 = nil;
 local u37 = nil;
-local u38 = nil;
-function v48.Push()
-	for v49 in pairs(u30) do
-		u30[v49] = l__StarterGui__4:GetCoreGuiEnabled(Enum.CoreGuiType[v49]);
-		l__StarterGui__4:SetCoreGuiEnabled(Enum.CoreGuiType[v49], false);
+function v52.Push()
+	for v53 in pairs(u29) do
+		u29[v53] = l__StarterGui__4:GetCoreGuiEnabled(Enum.CoreGuiType[v53]);
+		l__StarterGui__4:SetCoreGuiEnabled(Enum.CoreGuiType[v53], false);
 	end;
-	for v50 in pairs(u31) do
-		u31[v50] = l__StarterGui__4:GetCore(v50);
-		l__StarterGui__4:SetCore(v50, false);
+	for v54 in pairs(u30) do
+		u30[v54] = l__StarterGui__4:GetCore(v54);
+		l__StarterGui__4:SetCore(v54, false);
 	end;
-	local v51 = v7:FindFirstChildOfClass("PlayerGui");
-	if v51 then
-		for v52, v53 in pairs(v51:GetChildren()) do
-			if v53:IsA("ScreenGui") and v53.Enabled then
-				u32[#u32 + 1] = v53;
-				v53.Enabled = false;
+	local v55 = v7:FindFirstChildOfClass("PlayerGui");
+	if v55 then
+		for v56, v57 in pairs(v55:GetChildren()) do
+			if v57:IsA("ScreenGui") and v57.Enabled then
+				u31[#u31 + 1] = v57;
+				v57.Enabled = false;
 			end;
 		end;
 	end;
-	u33 = u1.FieldOfView;
+	u32 = u1.FieldOfView;
 	u1.FieldOfView = 70;
-	u34 = u1.CameraType;
+	u33 = u1.CameraType;
 	u1.CameraType = Enum.CameraType.Custom;
-	u35 = u1.CFrame;
-	u36 = u1.Focus;
-	u37 = l__UserInputService__5.MouseIconEnabled;
+	u34 = u1.CFrame;
+	u35 = u1.Focus;
+	u36 = l__UserInputService__5.MouseIconEnabled;
 	l__UserInputService__5.MouseIconEnabled = false;
-	u38 = l__UserInputService__5.MouseBehavior;
+	u37 = l__UserInputService__5.MouseBehavior;
 	l__UserInputService__5.MouseBehavior = Enum.MouseBehavior.Default;
 end;
-function v48.Pop()
-	for v54, v55 in pairs(u30) do
-		l__StarterGui__4:SetCoreGuiEnabled(Enum.CoreGuiType[v54], v55);
+function v52.Pop()
+	for v58, v59 in pairs(u29) do
+		l__StarterGui__4:SetCoreGuiEnabled(Enum.CoreGuiType[v58], v59);
 	end;
-	for v56, v57 in pairs(u31) do
-		l__StarterGui__4:SetCore(v56, v57);
+	for v60, v61 in pairs(u30) do
+		l__StarterGui__4:SetCore(v60, v61);
 	end;
-	for v58, v59 in pairs(u32) do
-		if v59.Parent then
-			v59.Enabled = true;
+	for v62, v63 in pairs(u31) do
+		if v63.Parent then
+			v63.Enabled = true;
 		end;
 	end;
-	u1.FieldOfView = u33;
+	u1.FieldOfView = u32;
+	u32 = nil;
+	u1.CameraType = u33;
 	u33 = nil;
-	u1.CameraType = u34;
+	u1.CFrame = u34;
 	u34 = nil;
-	u1.CFrame = u35;
+	u1.Focus = u35;
 	u35 = nil;
-	u1.Focus = u36;
+	l__UserInputService__5.MouseIconEnabled = u36;
 	u36 = nil;
-	l__UserInputService__5.MouseIconEnabled = u37;
+	l__UserInputService__5.MouseBehavior = u37;
 	u37 = nil;
-	l__UserInputService__5.MouseBehavior = u38;
-	u38 = nil;
 end;
-local function u39(p34)
-	local v60 = v21:Update(p34, v24.Vel(p34));
-	local v61 = l__math_sqrt__26(l__math_tan__24(l__math_rad__25(35)) / l__math_tan__24(l__math_rad__25(u23 / 2)));
-	u23 = l__math_clamp__8(u23 + v23:Update(p34, v24.Fov(p34)) * 300 * (p34 / v61), 1, 120);
-	u27 = u27 + v22:Update(p34, v24.Pan(p34)) * v10 * (p34 / v61);
-	u27 = Vector2.new(l__math_clamp__8(u27.x, -v11, v11), u27.y % (2 * l__math_pi__2));
-	local v62 = CFrame.new(u28) * CFrame.fromOrientation(u27.x, u27.y, 0) * CFrame.new(v60 * v9 * p34);
-	u28 = v62.p;
-	u1.CFrame = v62;
-	u1.Focus = v62 * CFrame.new(0, 0, -u29(v62));
-	u1.FieldOfView = u23;
+local function u38(p31)
+	local v64 = v21:Update(p31, v24.Vel(p31));
+	local v65 = l__math_sqrt__25(l__math_tan__23(l__math_rad__24(35)) / l__math_tan__23(l__math_rad__24(u22 / 2)));
+	u22 = l__math_clamp__6(u22 + v23:Update(p31, v24.Fov(p31)) * 300 * (p31 / v65), 1, 120);
+	u26 = u26 + v22:Update(p31, v24.Pan(p31)) * v10 * (p31 / v65);
+	u26 = Vector2.new(l__math_clamp__6(u26.x, -v11, v11), u26.y % (2 * l__math_pi__2));
+	local v66 = CFrame.new(u27) * CFrame.fromOrientation(u26.x, u26.y, 0) * CFrame.new(v64 * v9 * p31);
+	u27 = v66.p;
+	u1.CFrame = v66;
+	u1.Focus = v66 * CFrame.new(0, 0, -u28(v66));
+	u1.FieldOfView = u22;
 end;
-local u40 = false;
-local function u41()
-	l__Workspace__6:SetAttribute("FreecamEnabled", false);
-	v24.StopCapture();
-	l__RunService__3:UnbindFromRenderStep("Freecam");
-	v48.Pop();
-end;
-local function u42()
+local u39 = false;
+local function u40()
 	l__Workspace__6:SetAttribute("FreecamEnabled", true);
-	local l__CFrame__63 = u1.CFrame;
-	u27 = Vector2.new(l__CFrame__63:toEulerAnglesYXZ());
-	u28 = l__CFrame__63.p;
-	u23 = u1.FieldOfView;
+	local l__CFrame__67 = u1.CFrame;
+	u26 = Vector2.new(l__CFrame__67:toEulerAnglesYXZ());
+	u27 = l__CFrame__67.p;
+	u22 = u1.FieldOfView;
 	v21:Reset(Vector3.new());
 	v22:Reset(Vector2.new());
 	v23:Reset(0);
-	v48.Push();
-	l__RunService__3:BindToRenderStep("Freecam", Enum.RenderPriority.Camera.Value, u39);
+	v52.Push();
+	l__RunService__3:BindToRenderStep("Freecam", Enum.RenderPriority.Camera.Value, u38);
 	v24.StartCapture();
 end;
-local function u43()
-	if u40 then
-		u41();
-	else
-		u42();
-	end;
-	u40 = not u40;
-end;
-local u44 = { Enum.KeyCode.LeftShift, Enum.KeyCode.P };
-local function u45(p35)
-	for v64 = 1, #p35 - 1 do
-		if not l__UserInputService__5:IsKeyDown(p35[v64]) then
+local u41 = { Enum.KeyCode.LeftShift, Enum.KeyCode.P };
+local function u42(p32)
+	for v68 = 1, #p32 - 1 do
+		if not l__UserInputService__5:IsKeyDown(p32[v68]) then
 			return;
 		end;
 	end;
-	u43();
+	if u39 then
+		l__Workspace__6:SetAttribute("FreecamEnabled", false);
+		v24.StopCapture();
+		l__RunService__3:UnbindFromRenderStep("Freecam");
+		v52.Pop();
+	else
+		u40();
+	end;
+	u39 = not u39;
 end;
-l__ContextActionService__1:BindActionAtPriority("FreecamToggle", function(p36, p37, p38)
-	if p37 == Enum.UserInputState.Begin and p38.KeyCode == u44[#u44] then
-		u45(u44);
+l__ContextActionService__1:BindActionAtPriority("FreecamToggle", function(p33, p34, p35)
+	if p34 == Enum.UserInputState.Begin and p35.KeyCode == u41[#u41] then
+		u42(u41);
 	end;
 	return Enum.ContextActionResult.Pass;
-end, false, Enum.ContextActionPriority.Low.Value, u44[#u44]);
+end, false, Enum.ContextActionPriority.Low.Value, u41[#u41]);

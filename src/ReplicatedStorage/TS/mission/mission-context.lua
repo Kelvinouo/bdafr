@@ -1,37 +1,32 @@
--- Script Hash: e06eeee8d56b7a90124d550eaf25cd2b2629bd00576108b2849cc2e714a43fe1d5c64bb563f24bbe08a445e8a194c5c8
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local u1 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
 return {
 	MissionContext = (function(...)
-		local v2 = { ... };
 		local u2 = {};
-		local function v3(p1)
-			local l__id__4 = p1.id;
-			u2[l__id__4] = p1;
-			return u2[l__id__4];
-		end;
-		for v5, v6 in ipairs(v2) do
-			v3(v6, v5 - 1, v2);
+		for v2, v3 in ipairs({ ... }) do
+			local l__id__4 = v3.id;
+			u2[l__id__4] = v3;
+			local v5 = u2[l__id__4];
 		end;
 		return {
-			register = function(p2)
-				if not u2[p2.id] then
-					u2[p2.id] = p2;
-					return p2;
+			register = function(p1)
+				if not u2[p1.id] then
+					u2[p1.id] = p1;
+					return p1;
 				end;
-				return u2[p2.id];
+				return u2[p1.id];
 			end, 
-			unregister = function(p3)
-				if not u2[p3] then
+			unregister = function(p2)
+				if not u2[p2] then
 					return false;
 				end;
-				u2[p3] = nil;
+				u2[p2] = nil;
 				return true;
 			end, 
-			getMission = function(p4)
-				return u2[p4];
+			getMission = function(p3)
+				return u2[p3];
 			end, 
 			values = function()
 				return u1.values(u2);

@@ -1,4 +1,3 @@
--- Script Hash: 2bf727d023351c3418546f4efa2346250c347e5f3907af261a78090545d8ef6b0b04a1505ff18c61b46efb5ddfc35406
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__VRService__1 = game:GetService("VRService");
@@ -10,349 +9,392 @@ local l__StarterGui__6 = game:GetService("StarterGui");
 local l__LocalPlayer__7 = game:GetService("Players").LocalPlayer;
 local v8 = Vector3.new(0, 0, 0);
 local v9 = Vector3.new(1, 0, 1);
-local function u1(p1)
-	local v10 = false;
-	if p1 == p1 then
-		v10 = false;
-		if p1 ~= (1 / 0) then
-			v10 = p1 ~= (-1 / 0);
-		end;
-	end;
-	return v10;
-end;
-local v11 = Instance.new("BindableEvent");
-v11.Name = "MovementUpdate";
-v11.Parent = script;
-local u2 = nil;
+local v10 = Instance.new("BindableEvent");
+v10.Name = "MovementUpdate";
+v10.Parent = script;
+local u1 = nil;
 coroutine.wrap(function()
-	local l__PathDisplay__12 = script.Parent:WaitForChild("PathDisplay");
-	if l__PathDisplay__12 then
-		u2 = require(l__PathDisplay__12);
+	local l__PathDisplay__11 = script.Parent:WaitForChild("PathDisplay");
+	if l__PathDisplay__11 then
+		u1 = require(l__PathDisplay__11);
 	end;
 end)();
-local v13 = require(script.Parent:WaitForChild("BaseCharacterController"));
-local v14 = setmetatable({}, v13);
-v14.__index = v14;
-function v14.new(p2)
-	local v15 = setmetatable(v13.new(), v14);
-	v15.CONTROL_ACTION_PRIORITY = p2;
-	v15.navigationRequestedConn = nil;
-	v15.heartbeatConn = nil;
-	v15.currentDestination = nil;
-	v15.currentPath = nil;
-	v15.currentPoints = nil;
-	v15.currentPointIdx = 0;
-	v15.expectedTimeToNextPoint = 0;
-	v15.timeReachedLastPoint = tick();
-	v15.moving = false;
-	v15.isJumpBound = false;
-	v15.moveLatch = false;
-	v15.userCFrameEnabledConn = nil;
-	return v15;
+local v12 = require(script.Parent:WaitForChild("BaseCharacterController"));
+local v13 = setmetatable({}, v12);
+v13.__index = v13;
+function v13.new(p1)
+	local v14 = setmetatable(v12.new(), v13);
+	v14.CONTROL_ACTION_PRIORITY = p1;
+	v14.navigationRequestedConn = nil;
+	v14.heartbeatConn = nil;
+	v14.currentDestination = nil;
+	v14.currentPath = nil;
+	v14.currentPoints = nil;
+	v14.currentPointIdx = 0;
+	v14.expectedTimeToNextPoint = 0;
+	v14.timeReachedLastPoint = tick();
+	v14.moving = false;
+	v14.isJumpBound = false;
+	v14.moveLatch = false;
+	v14.userCFrameEnabledConn = nil;
+	return v14;
 end;
-function v14.SetLaserPointerMode(p3, p4)
+function v13.SetLaserPointerMode(p2, p3)
 	pcall(function()
-		l__StarterGui__6:SetCore("VRLaserPointerMode", p4);
+		l__StarterGui__6:SetCore("VRLaserPointerMode", p3);
 	end);
 end;
-function v14.GetLocalHumanoid(p5)
-	local l__Character__16 = l__LocalPlayer__7.Character;
-	if not l__Character__16 then
+function v13.GetLocalHumanoid(p4)
+	local l__Character__15 = l__LocalPlayer__7.Character;
+	if not l__Character__15 then
 		return;
 	end;
-	for v17, v18 in pairs(l__Character__16:GetChildren()) do
-		if v18:IsA("Humanoid") then
-			return v18;
+	for v16, v17 in pairs(l__Character__15:GetChildren()) do
+		if v17:IsA("Humanoid") then
+			return v17;
 		end;
 	end;
 	return nil;
 end;
-function v14.HasBothHandControllers(p6)
+function v13.HasBothHandControllers(p5)
 	return l__VRService__1:GetUserCFrameEnabled(Enum.UserCFrame.RightHand) and l__VRService__1:GetUserCFrameEnabled(Enum.UserCFrame.LeftHand);
 end;
-function v14.HasAnyHandControllers(p7)
+function v13.HasAnyHandControllers(p6)
 	return l__VRService__1:GetUserCFrameEnabled(Enum.UserCFrame.RightHand) or l__VRService__1:GetUserCFrameEnabled(Enum.UserCFrame.LeftHand);
 end;
-function v14.IsMobileVR(p8)
+function v13.IsMobileVR(p7)
 	return l__UserInputService__2.TouchEnabled;
 end;
-function v14.HasGamepad(p9)
+function v13.HasGamepad(p8)
 	return l__UserInputService__2.GamepadEnabled;
 end;
-function v14.ShouldUseNavigationLaser(p10)
-	if p10:IsMobileVR() then
+function v13.ShouldUseNavigationLaser(p9)
+	if p9:IsMobileVR() then
 		return true;
 	end;
-	if p10:HasBothHandControllers() then
+	if p9:HasBothHandControllers() then
 		return false;
 	end;
-	if p10:HasAnyHandControllers() then
+	if p9:HasAnyHandControllers() then
 		return true;
 	end;
-	return not p10:HasGamepad();
+	return not p9:HasGamepad();
 end;
-function v14.StartFollowingPath(p11, p12)
-	currentPath = p12;
+function v13.StartFollowingPath(p10, p11)
+	currentPath = p11;
 	currentPoints = currentPath:GetPointCoordinates();
 	currentPointIdx = 1;
 	moving = true;
 	timeReachedLastPoint = tick();
-	local v19 = p11:GetLocalHumanoid();
-	if v19 and v19.Torso and #currentPoints >= 1 then
-		expectedTimeToNextPoint = (currentPoints[1] - v19.Torso.Position).magnitude / v19.WalkSpeed;
+	local v18 = p10:GetLocalHumanoid();
+	if v18 and v18.Torso and #currentPoints >= 1 then
+		expectedTimeToNextPoint = (currentPoints[1] - v18.Torso.Position).magnitude / v18.WalkSpeed;
 	end;
-	v11:Fire("targetPoint", p11.currentDestination);
+	v10:Fire("targetPoint", p10.currentDestination);
 end;
-function v14.GoToPoint(p13, p14)
+function v13.GoToPoint(p12, p13)
 	currentPath = true;
-	currentPoints = { p14 };
+	currentPoints = { p13 };
 	currentPointIdx = 1;
 	moving = true;
-	local v20 = p13:GetLocalHumanoid();
+	local v19 = p12:GetLocalHumanoid();
 	timeReachedLastPoint = tick();
-	expectedTimeToNextPoint = (v20.Torso.Position - p14).magnitude / v20.WalkSpeed;
-	v11:Fire("targetPoint", p14);
+	expectedTimeToNextPoint = (v19.Torso.Position - p13).magnitude / v19.WalkSpeed;
+	v10:Fire("targetPoint", p13);
 end;
-function v14.StopFollowingPath(p15)
+function v13.StopFollowingPath(p14)
 	currentPath = nil;
 	currentPoints = nil;
 	currentPointIdx = 0;
 	moving = false;
-	p15.moveVector = v8;
+	p14.moveVector = v8;
 end;
-function v14.TryComputePath(p16, p17, p18)
-	local v21 = nil;
-	while not v21 and 0 < 5 do
-		local v22 = l__PathfindingService__4:ComputeSmoothPathAsync(p17, p18, 200);
-		if v22.Status == Enum.PathStatus.ClosestNoPath then
+function v13.TryComputePath(p15, p16, p17)
+	local v20 = nil;
+	while not v20 and 0 < 5 do
+		local v21 = l__PathfindingService__4:ComputeSmoothPathAsync(p16, p17, 200);
+		if v21.Status == Enum.PathStatus.ClosestNoPath then
 			return nil;
 		end;
-		if v22.Status == Enum.PathStatus.ClosestOutOfRange then
+		if v21.Status == Enum.PathStatus.ClosestOutOfRange then
 			return nil;
 		end;
-		if v22 and v22.Status == Enum.PathStatus.FailStartNotEmpty then
-			p17 = p17 + (p18 - p17).unit;
-			v22 = nil;
-		end;
-		if v21 and v21.Status == Enum.PathStatus.FailFinishNotEmpty then
-			p18 = p18 + Vector3.new(0, 1, 0);
+		if v21 and v21.Status == Enum.PathStatus.FailStartNotEmpty then
+			p16 = p16 + (p17 - p16).unit;
 			v21 = nil;
+		end;
+		if v20 and v20.Status == Enum.PathStatus.FailFinishNotEmpty then
+			p17 = p17 + Vector3.new(0, 1, 0);
+			v20 = nil;
 		end;	
 	end;
-	return v21;
+	return v20;
 end;
-local function u3(p19)
-	return u1(p19.x) and (u1(p19.y) and u1(p19.z));
-end;
-function v14.OnNavigationRequest(p20, p21, p22)
-	local l__Position__23 = p21.Position;
-	local l__currentDestination__24 = p20.currentDestination;
-	if not u3(l__Position__23) then
+function v13.OnNavigationRequest(p18, p19, p20)
+	local l__Position__22 = p19.Position;
+	local l__currentDestination__23 = p18.currentDestination;
+	local l__x__24 = l__Position__22.x;
+	local v25 = false;
+	if l__x__24 == l__x__24 then
+		v25 = false;
+		if l__x__24 ~= (1 / 0) then
+			v25 = l__x__24 ~= (-1 / 0);
+		end;
+	end;
+	if v25 then
+		local l__y__26 = l__Position__22.y;
+		v25 = false;
+		if l__y__26 == l__y__26 then
+			v25 = false;
+			if l__y__26 ~= (1 / 0) then
+				v25 = l__y__26 ~= (-1 / 0);
+			end;
+		end;
+		if v25 then
+			local l__z__27 = l__Position__22.z;
+			v25 = false;
+			if l__z__27 == l__z__27 then
+				v25 = false;
+				if l__z__27 ~= (1 / 0) then
+					v25 = l__z__27 ~= (-1 / 0);
+				end;
+			end;
+		end;
+	end;
+	if not v25 then
 		return;
 	end;
-	p20.currentDestination = l__Position__23;
-	local v25 = p20:GetLocalHumanoid();
-	if not v25 or not v25.Torso then
+	p18.currentDestination = l__Position__22;
+	local v28 = p18:GetLocalHumanoid();
+	if not v28 or not v28.Torso then
 		return;
 	end;
-	local l__Position__26 = v25.Torso.Position;
-	if (p20.currentDestination - l__Position__26).magnitude < 12 then
-		p20:GoToPoint(p20.currentDestination);
+	local l__Position__29 = v28.Torso.Position;
+	if (p18.currentDestination - l__Position__29).magnitude < 12 then
+		p18:GoToPoint(p18.currentDestination);
 		return;
 	end;
-	if not l__currentDestination__24 or (p20.currentDestination - l__currentDestination__24).magnitude > 4 then
-		local v27 = p20:TryComputePath(l__Position__26, p20.currentDestination);
-		if v27 then
-			p20:StartFollowingPath(v27);
-			if u2 then
-				u2.setCurrentPoints(p20.currentPoints);
-				u2.renderPath();
+	if not l__currentDestination__23 or (p18.currentDestination - l__currentDestination__23).magnitude > 4 then
+		local v30 = p18:TryComputePath(l__Position__29, p18.currentDestination);
+		if v30 then
+			p18:StartFollowingPath(v30);
+			if u1 then
+				u1.setCurrentPoints(p18.currentPoints);
+				u1.renderPath();
 				return;
 			end;
 		else
-			p20:StopFollowingPath();
-			if u2 then
-				u2.clearRenderedPath();
+			p18:StopFollowingPath();
+			if u1 then
+				u1.clearRenderedPath();
 				return;
 			end;
 		end;
 	else
 		if moving then
-			p20.currentPoints[#currentPoints] = p20.currentDestination;
+			p18.currentPoints[#currentPoints] = p18.currentDestination;
 			return;
 		end;
-		p20:GoToPoint(p20.currentDestination);
+		p18:GoToPoint(p18.currentDestination);
 	end;
 end;
-function v14.OnJumpAction(p23, p24, p25, p26)
-	if p25 == Enum.UserInputState.Begin then
-		p23.isJumping = true;
+function v13.OnJumpAction(p21, p22, p23, p24)
+	if p23 == Enum.UserInputState.Begin then
+		p21.isJumping = true;
 	end;
 	return Enum.ContextActionResult.Sink;
 end;
-function v14.BindJumpAction(p27, p28)
-	if p28 then
-		if p27.isJumpBound then
+function v13.BindJumpAction(p25, p26)
+	if p26 then
+		if p25.isJumpBound then
 			return;
 		end;
 	else
-		if p27.isJumpBound then
-			p27.isJumpBound = false;
+		if p25.isJumpBound then
+			p25.isJumpBound = false;
 			l__ContextActionService__5:UnbindAction("VRJumpAction");
 		end;
 		return;
 	end;
-	p27.isJumpBound = true;
+	p25.isJumpBound = true;
 	l__ContextActionService__5:BindActionAtPriority("VRJumpAction", function()
-		return p27:OnJumpAction();
-	end, false, p27.CONTROL_ACTION_PRIORITY, Enum.KeyCode.ButtonA);
+		return p25:OnJumpAction();
+	end, false, p25.CONTROL_ACTION_PRIORITY, Enum.KeyCode.ButtonA);
 end;
-function v14.ControlCharacterGamepad(p29, p30, p31, p32)
-	if p32.KeyCode ~= Enum.KeyCode.Thumbstick1 then
+function v13.ControlCharacterGamepad(p27, p28, p29, p30)
+	if p30.KeyCode ~= Enum.KeyCode.Thumbstick1 then
 		return;
 	end;
-	if p31 == Enum.UserInputState.Cancel then
-		p29.moveVector = v8;
+	if p29 == Enum.UserInputState.Cancel then
+		p27.moveVector = v8;
 		return;
 	end;
-	if p31 ~= Enum.UserInputState.End then
-		p29:StopFollowingPath();
-		if u2 then
-			u2.clearRenderedPath();
+	if p29 ~= Enum.UserInputState.End then
+		p27:StopFollowingPath();
+		if u1 then
+			u1.clearRenderedPath();
 		end;
-		if p29:ShouldUseNavigationLaser() then
-			p29:BindJumpAction(true);
-			p29:SetLaserPointerMode("Hidden");
+		if p27:ShouldUseNavigationLaser() then
+			p27:BindJumpAction(true);
+			p27:SetLaserPointerMode("Hidden");
 		end;
-		if p32.Position.magnitude > 0.22 then
-			p29.moveVector = Vector3.new(p32.Position.X, 0, -p32.Position.Y);
-			if p29.moveVector.magnitude > 0 then
-				p29.moveVector = p29.moveVector.unit * math.min(1, p32.Position.magnitude);
+		if p30.Position.magnitude > 0.22 then
+			p27.moveVector = Vector3.new(p30.Position.X, 0, -p30.Position.Y);
+			if p27.moveVector.magnitude > 0 then
+				p27.moveVector = p27.moveVector.unit * math.min(1, p30.Position.magnitude);
 			end;
-			p29.moveLatch = true;
+			p27.moveLatch = true;
 		end;
 	else
-		p29.moveVector = v8;
-		if p29:ShouldUseNavigationLaser() then
-			p29:BindJumpAction(false);
-			p29:SetLaserPointerMode("Navigation");
+		p27.moveVector = v8;
+		if p27:ShouldUseNavigationLaser() then
+			p27:BindJumpAction(false);
+			p27:SetLaserPointerMode("Navigation");
 		end;
-		if p29.moveLatch then
-			p29.moveLatch = false;
-			v11:Fire("offtrack");
+		if p27.moveLatch then
+			p27.moveLatch = false;
+			v10:Fire("offtrack");
 		end;
 	end;
 	return Enum.ContextActionResult.Sink;
 end;
-function v14.OnHeartbeat(p33, p34)
-	local v28 = p33.moveVector;
-	local v29 = p33:GetLocalHumanoid();
-	if not v29 or not v29.Torso then
+function v13.OnHeartbeat(p31, p32)
+	local v31 = p31.moveVector;
+	local v32 = p31:GetLocalHumanoid();
+	if not v32 or not v32.Torso then
 		return;
 	end;
-	if p33.moving and p33.currentPoints then
-		local l__Position__30 = v29.Torso.Position;
-		local v31 = (currentPoints[1] - l__Position__30) * v9;
-		local l__magnitude__32 = v31.magnitude;
-		local v33 = v31 / l__magnitude__32;
-		if l__magnitude__32 < 1 then
-			local v34 = 0;
-			local v35 = currentPoints[1];
-			for v36, v37 in pairs(currentPoints) do
-				if v36 ~= 1 then
-					v35 = v37;
-					v34 = v34 + (v37 - v35).magnitude / v29.WalkSpeed;
+	if p31.moving and p31.currentPoints then
+		local l__Position__33 = v32.Torso.Position;
+		local v34 = (currentPoints[1] - l__Position__33) * v9;
+		local l__magnitude__35 = v34.magnitude;
+		local v36 = v34 / l__magnitude__35;
+		if l__magnitude__35 < 1 then
+			local v37 = 0;
+			local v38 = currentPoints[1];
+			for v39, v40 in pairs(currentPoints) do
+				if v39 ~= 1 then
+					v38 = v40;
+					v37 = v37 + (v40 - v38).magnitude / v32.WalkSpeed;
 				end;
 			end;
 			table.remove(currentPoints, 1);
 			currentPointIdx = currentPointIdx + 1;
 			if #currentPoints == 0 then
-				p33:StopFollowingPath();
-				if u2 then
-					u2.clearRenderedPath();
+				p31:StopFollowingPath();
+				if u1 then
+					u1.clearRenderedPath();
 				end;
 				return;
 			end;
-			if u2 then
-				u2.setCurrentPoints(currentPoints);
-				u2.renderPath();
+			if u1 then
+				u1.setCurrentPoints(currentPoints);
+				u1.renderPath();
 			end;
-			expectedTimeToNextPoint = (currentPoints[1] - l__Position__30).magnitude / v29.WalkSpeed;
+			expectedTimeToNextPoint = (currentPoints[1] - l__Position__33).magnitude / v32.WalkSpeed;
 			timeReachedLastPoint = tick();
 		else
-			local v38 = { game.Players.LocalPlayer.Character, workspace.CurrentCamera };
-			local v39, v40, v41 = workspace:FindPartOnRayWithIgnoreList(Ray.new(l__Position__30 - Vector3.new(0, 1, 0), v33 * 3), v38);
-			if v39 then
-				local v42 = Vector3.new(0, 100, 0);
-				local v43, v44, v45 = workspace:FindPartOnRayWithIgnoreList(Ray.new(v40 + v33 * 0.5 + v42, -v42), v38);
-				local v46 = v44.Y - l__Position__30.Y;
-				if v46 < 6 and v46 > -2 then
-					v29.Jump = true;
+			local v41 = { game.Players.LocalPlayer.Character, workspace.CurrentCamera };
+			local v42, v43, v44 = workspace:FindPartOnRayWithIgnoreList(Ray.new(l__Position__33 - Vector3.new(0, 1, 0), v36 * 3), v41);
+			if v42 then
+				local v45 = Vector3.new(0, 100, 0);
+				local v46, v47, v48 = workspace:FindPartOnRayWithIgnoreList(Ray.new(v43 + v36 * 0.5 + v45, -v45), v41);
+				local v49 = v47.Y - l__Position__33.Y;
+				if v49 < 6 and v49 > -2 then
+					v32.Jump = true;
 				end;
 			end;
 			if expectedTimeToNextPoint + 2 < tick() - timeReachedLastPoint then
-				p33:StopFollowingPath();
-				if u2 then
-					u2.clearRenderedPath();
+				p31:StopFollowingPath();
+				if u1 then
+					u1.clearRenderedPath();
 				end;
-				v11:Fire("offtrack");
+				v10:Fire("offtrack");
 			end;
-			v28 = p33.moveVector:Lerp(v33, p34 * 10);
+			v31 = p31.moveVector:Lerp(v36, p32 * 10);
 		end;
 	end;
-	if u3(v28) then
-		p33.moveVector = v28;
+	local l__x__50 = v31.x;
+	local v51 = false;
+	if l__x__50 == l__x__50 then
+		v51 = false;
+		if l__x__50 ~= (1 / 0) then
+			v51 = l__x__50 ~= (-1 / 0);
+		end;
+	end;
+	if v51 then
+		local l__y__52 = v31.y;
+		v51 = false;
+		if l__y__52 == l__y__52 then
+			v51 = false;
+			if l__y__52 ~= (1 / 0) then
+				v51 = l__y__52 ~= (-1 / 0);
+			end;
+		end;
+		if v51 then
+			local l__z__53 = v31.z;
+			v51 = false;
+			if l__z__53 == l__z__53 then
+				v51 = false;
+				if l__z__53 ~= (1 / 0) then
+					v51 = l__z__53 ~= (-1 / 0);
+				end;
+			end;
+		end;
+	end;
+	if v51 then
+		p31.moveVector = v31;
 	end;
 end;
-function v14.OnUserCFrameEnabled(p35)
-	if p35:ShouldUseNavigationLaser() then
-		p35:BindJumpAction(false);
-		p35:SetLaserPointerMode("Navigation");
+function v13.OnUserCFrameEnabled(p33)
+	if p33:ShouldUseNavigationLaser() then
+		p33:BindJumpAction(false);
+		p33:SetLaserPointerMode("Navigation");
 		return;
 	end;
-	p35:BindJumpAction(true);
-	p35:SetLaserPointerMode("Hidden");
+	p33:BindJumpAction(true);
+	p33:SetLaserPointerMode("Hidden");
 end;
-function v14.Enable(p36, p37)
-	p36.moveVector = v8;
-	p36.isJumping = false;
-	if p37 then
-		p36.navigationRequestedConn = l__VRService__1.NavigationRequested:Connect(function(p38, p39)
-			p36:OnNavigationRequest(p38, p39);
+function v13.Enable(p34, p35)
+	p34.moveVector = v8;
+	p34.isJumping = false;
+	if p35 then
+		p34.navigationRequestedConn = l__VRService__1.NavigationRequested:Connect(function(p36, p37)
+			p34:OnNavigationRequest(p36, p37);
 		end);
-		p36.heartbeatConn = l__RunService__3.Heartbeat:Connect(function(p40)
-			p36:OnHeartbeat(p40);
+		p34.heartbeatConn = l__RunService__3.Heartbeat:Connect(function(p38)
+			p34:OnHeartbeat(p38);
 		end);
-		l__ContextActionService__5:BindAction("MoveThumbstick", function(p41, p42, p43)
-			return p36:ControlCharacterGamepad(p41, p42, p43);
-		end, false, p36.CONTROL_ACTION_PRIORITY, Enum.KeyCode.Thumbstick1);
+		l__ContextActionService__5:BindAction("MoveThumbstick", function(p39, p40, p41)
+			return p34:ControlCharacterGamepad(p39, p40, p41);
+		end, false, p34.CONTROL_ACTION_PRIORITY, Enum.KeyCode.Thumbstick1);
 		l__ContextActionService__5:BindActivate(Enum.UserInputType.Gamepad1, Enum.KeyCode.ButtonR2);
-		p36.userCFrameEnabledConn = l__VRService__1.UserCFrameEnabled:Connect(function()
-			p36:OnUserCFrameEnabled();
+		p34.userCFrameEnabledConn = l__VRService__1.UserCFrameEnabled:Connect(function()
+			p34:OnUserCFrameEnabled();
 		end);
-		p36:OnUserCFrameEnabled();
+		p34:OnUserCFrameEnabled();
 		l__VRService__1:SetTouchpadMode(Enum.VRTouchpad.Left, Enum.VRTouchpadMode.VirtualThumbstick);
 		l__VRService__1:SetTouchpadMode(Enum.VRTouchpad.Right, Enum.VRTouchpadMode.ABXY);
-		p36.enabled = true;
+		p34.enabled = true;
 		return;
 	end;
-	p36:StopFollowingPath();
+	p34:StopFollowingPath();
 	l__ContextActionService__5:UnbindAction("MoveThumbstick");
 	l__ContextActionService__5:UnbindActivate(Enum.UserInputType.Gamepad1, Enum.KeyCode.ButtonR2);
-	p36:BindJumpAction(false);
-	p36:SetLaserPointerMode("Disabled");
-	if p36.navigationRequestedConn then
-		p36.navigationRequestedConn:Disconnect();
-		p36.navigationRequestedConn = nil;
+	p34:BindJumpAction(false);
+	p34:SetLaserPointerMode("Disabled");
+	if p34.navigationRequestedConn then
+		p34.navigationRequestedConn:Disconnect();
+		p34.navigationRequestedConn = nil;
 	end;
-	if p36.heartbeatConn then
-		p36.heartbeatConn:Disconnect();
-		p36.heartbeatConn = nil;
+	if p34.heartbeatConn then
+		p34.heartbeatConn:Disconnect();
+		p34.heartbeatConn = nil;
 	end;
-	if p36.userCFrameEnabledConn then
-		p36.userCFrameEnabledConn:Disconnect();
-		p36.userCFrameEnabledConn = nil;
+	if p34.userCFrameEnabledConn then
+		p34.userCFrameEnabledConn:Disconnect();
+		p34.userCFrameEnabledConn = nil;
 	end;
-	p36.enabled = false;
+	p34.enabled = false;
 end;
-return v14;
+return v13;

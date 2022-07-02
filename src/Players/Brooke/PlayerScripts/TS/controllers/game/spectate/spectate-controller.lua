@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -104,184 +103,186 @@ function u1.KnitStart(p2)
 end;
 local l__GamePlayerUtil__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "player", "player-util").GamePlayerUtil;
 function u1.getSpectateTargets(p11)
-	local v13 = l__Players__7:GetPlayers();
-	local function v14(p12)
-		return p12 ~= l__Players__7.LocalPlayer;
-	end;
-	local v15 = {};
-	local v16 = 0;
-	for v17, v18 in ipairs(v13) do
-		if v14(v18, v17 - 1, v13) == true then
-			v16 = v16 + 1;
-			v15[v16] = v18;
+	local v13 = {};
+	local v14 = 0;
+	local v15, v16, v17 = ipairs((l__Players__7:GetPlayers()));
+	while true do
+		local v18, v19 = v15(v16, v17);
+		if not v18 then
+			break;
 		end;
-	end;
-	local function v19(p13)
-		return l__GamePlayerUtil__9.getGamePlayer(p13):isInGame();
+		if v19 ~= l__Players__7.LocalPlayer == true then
+			v14 = v14 + 1;
+			v13[v14] = v19;
+		end;	
 	end;
 	local v20 = {};
 	local v21 = 0;
-	for v22, v23 in ipairs(v15) do
-		if v19(v23, v22 - 1, v15) == true then
+	for v22, v23 in ipairs(v13) do
+		if l__GamePlayerUtil__9.getGamePlayer(v23):isInGame() == true then
 			v21 = v21 + 1;
 			v20[v21] = v23;
 		end;
 	end;
-	table.sort(v20, function(p14, p15)
-		if p14.Team ~= p15.Team then
-			if p14.Team == l__Players__7.LocalPlayer.Team then
+	table.sort(v20, function(p12, p13)
+		if p12.Team ~= p13.Team then
+			if p12.Team == l__Players__7.LocalPlayer.Team then
 				return true;
 			end;
-			if p15.Team == l__Players__7.LocalPlayer.Team then
+			if p13.Team == l__Players__7.LocalPlayer.Team then
 				return false;
 			end;
 		end;
-		return p14.DisplayName < p15.DisplayName;
+		return p12.DisplayName < p13.DisplayName;
 	end);
 	local v24 = v20;
-	local function v25(p16)
-		local v26 = p16.Team;
-		if v26 ~= nil then
-			v26 = v26.Name;
-		end;
-		local v27 = l__ClientStore__5:getState().Game.myTeam;
-		if v27 ~= nil then
-			v27 = v27.name;
-		end;
-		return v26 == v27;
-	end;
-	local v28 = nil;
-	for v29, v30 in ipairs(v24) do
-		if v25(v30, v29 - 1, v24) == true then
-			v28 = v30;
+	local v25 = nil;
+	local v26, v27, v28 = ipairs(v24);
+	while true do
+		local v29, v30 = v26(v27, v28);
+		if not v29 then
 			break;
 		end;
+		local v31 = v30.Team;
+		if v31 ~= nil then
+			v31 = v31.Name;
+		end;
+		local v32 = l__ClientStore__5:getState().Game.myTeam;
+		if v32 ~= nil then
+			v32 = v32.name;
+		end;
+		if v31 == v32 == true then
+			v25 = v30;
+			break;
+		end;	
 	end;
-	if v28 then
-		local function v31(p17)
-			local v32 = p17.Team;
-			if v32 ~= nil then
-				v32 = v32.Name;
+	if v25 then
+		local v33 = {};
+		local v34 = 0;
+		local v35, v36, v37 = ipairs(v24);
+		while true do
+			local v38, v39 = v35(v36, v37);
+			if not v38 then
+				break;
 			end;
-			local v33 = l__ClientStore__5:getState().Game.myTeam;
-			if v33 ~= nil then
-				v33 = v33.name;
+			local v40 = v39.Team;
+			if v40 ~= nil then
+				v40 = v40.Name;
 			end;
-			return v32 == v33;
+			local v41 = l__ClientStore__5:getState().Game.myTeam;
+			if v41 ~= nil then
+				v41 = v41.name;
+			end;
+			if v40 == v41 == true then
+				v34 = v34 + 1;
+				v33[v34] = v39;
+			end;		
 		end;
-		local v34 = {};
-		local v35 = 0;
-		for v36, v37 in ipairs(v24) do
-			if v31(v37, v36 - 1, v24) == true then
-				v35 = v35 + 1;
-				v34[v35] = v37;
-			end;
-		end;
-		v24 = v34;
+		v24 = v33;
 	end;
 	return v24;
 end;
-function u1.switchSpectateTargets(p18, p19)
-	local v38 = p18:getSpectateTargets();
-	local l__spectatingPlayer__39 = l__ClientStore__5:getState().Game.spectatingPlayer;
-	if l__spectatingPlayer__39 then
-		local v40 = l__OfflinePlayerUtil__6.getPlayer(l__spectatingPlayer__39);
+function u1.switchSpectateTargets(p14, p15)
+	local v42 = p14:getSpectateTargets();
+	local l__spectatingPlayer__43 = l__ClientStore__5:getState().Game.spectatingPlayer;
+	if l__spectatingPlayer__43 then
+		local v44 = l__OfflinePlayerUtil__6.getPlayer(l__spectatingPlayer__43);
 	else
-		v40 = nil;
+		v44 = nil;
 	end;
-	local v41 = 0;
-	if v40 then
-		local v42 = (table.find(v38, v40) and 0) - 1;
-		if v42 > -1 then
-			if p19 == "next" then
-				v41 = v42 + 1;
+	local v45 = 0;
+	if v44 then
+		local v46 = (table.find(v42, v44) and 0) - 1;
+		if v46 > -1 then
+			if p15 == "next" then
+				v45 = v46 + 1;
 			else
-				v41 = v42 - 1;
+				v45 = v46 - 1;
 			end;
 		end;
 	end;
-	print("spec index:", v41);
-	if v41 < 0 then
-		v41 = #v38 - 1;
-	elseif #v38 <= v41 then
-		v41 = 0;
+	print("spec index:", v45);
+	if v45 < 0 then
+		v45 = #v42 - 1;
+	elseif #v42 <= v45 then
+		v45 = 0;
 	end;
-	local v43 = v38;
-	if v43 ~= nil then
-		v43 = v43[v41 + 1];
+	local v47 = v42;
+	if v47 ~= nil then
+		v47 = v47[v45 + 1];
 	end;
-	if v43 then
-		local v44 = l__OfflinePlayerUtil__6.getOfflinePlayer(v43);
+	if v47 then
+		local v48 = l__OfflinePlayerUtil__6.getOfflinePlayer(v47);
 	else
-		v44 = nil;
+		v48 = nil;
 	end;
 	l__ClientStore__5:dispatch({
 		type = "GameSetSpectator", 
 		spectating = true, 
-		spectatingPlayer = v44
+		spectatingPlayer = v48
 	});
 end;
 local l__UserInputService__10 = v3.UserInputService;
-function u1.hookSpectatedPlayer(p20, p21)
-	p20.spectatingPlayerMaid:DoCleaning();
-	p20.spectating = true;
-	p20.spectatingPlayerMaid:GiveTask(function()
-		p20.spectating = false;
+function u1.hookSpectatedPlayer(p16, p17)
+	p16.spectatingPlayerMaid:DoCleaning();
+	p16.spectating = true;
+	p16.spectatingPlayerMaid:GiveTask(function()
+		p16.spectating = false;
 	end);
-	p20.spectatingPlayerMaid:GiveTask(l__Players__7.PlayerRemoving:Connect(function(p22)
-		if p21 == p22 then
-			p20.spectatingPlayerMaid:DoCleaning();
-			local v45 = p20:getSpectateTargets();
-			if v45 ~= nil then
-				v45 = v45[1];
+	p16.spectatingPlayerMaid:GiveTask(l__Players__7.PlayerRemoving:Connect(function(p18)
+		if p17 == p18 then
+			p16.spectatingPlayerMaid:DoCleaning();
+			local v49 = p16:getSpectateTargets();
+			if v49 ~= nil then
+				v49 = v49[1];
 			end;
-			if v45 then
-				local v46 = l__OfflinePlayerUtil__6.getOfflinePlayer(v45);
+			if v49 then
+				local v50 = l__OfflinePlayerUtil__6.getOfflinePlayer(v49);
 			else
-				v46 = nil;
+				v50 = nil;
 			end;
 			l__ClientStore__5:dispatch({
 				type = "GameSetSpectator", 
 				spectating = true, 
-				spectatingPlayer = v46
+				spectatingPlayer = v50
 			});
 		end;
 	end));
-	if p21.Character then
-		l__Workspace__8.CurrentCamera.CameraSubject = p21.Character:FindFirstChild("Humanoid");
+	if p17.Character then
+		l__Workspace__8.CurrentCamera.CameraSubject = p17.Character:FindFirstChild("Humanoid");
 	end;
-	p20.spectatingPlayerMaid:GiveTask(p21.CharacterAdded:Connect(function(p23)
-		l__Workspace__8.CurrentCamera.CameraSubject = p23:FindFirstChild("Humanoid");
+	p16.spectatingPlayerMaid:GiveTask(p17.CharacterAdded:Connect(function(p19)
+		l__Workspace__8.CurrentCamera.CameraSubject = p19:FindFirstChild("Humanoid");
 	end));
-	p20.spectatingPlayerMaid:GiveTask(l__UserInputService__10.InputBegan:Connect(function(p24, p25)
-		if p25 then
+	p16.spectatingPlayerMaid:GiveTask(l__UserInputService__10.InputBegan:Connect(function(p20, p21)
+		if p21 then
 			return nil;
 		end;
-		if p24.UserInputState == Enum.UserInputState.Begin then
-			if p24.UserInputType ~= Enum.UserInputType.MouseButton1 and p24.KeyCode ~= Enum.KeyCode.ButtonR2 then
-				if p24.KeyCode == Enum.KeyCode.ButtonL2 then
-					p20:switchSpectateTargets("prev");
+		if p20.UserInputState == Enum.UserInputState.Begin then
+			if p20.UserInputType ~= Enum.UserInputType.MouseButton1 and p20.KeyCode ~= Enum.KeyCode.ButtonR2 then
+				if p20.KeyCode == Enum.KeyCode.ButtonL2 then
+					p16:switchSpectateTargets("prev");
 				end;
 				return;
 			end;
 		else
 			return;
 		end;
-		p20:switchSpectateTargets("next");
+		p16:switchSpectateTargets("next");
 	end));
 end;
-function u1.stopSpectatingPlayer(p26)
-	p26.spectatingPlayerMaid:DoCleaning();
-	local v47 = l__Players__7.LocalPlayer.Character;
-	if v47 ~= nil then
-		v47 = v47:FindFirstChild("Humanoid");
+function u1.stopSpectatingPlayer(p22)
+	p22.spectatingPlayerMaid:DoCleaning();
+	local v51 = l__Players__7.LocalPlayer.Character;
+	if v51 ~= nil then
+		v51 = v51:FindFirstChild("Humanoid");
 	end;
-	if v47 then
-		l__Workspace__8.CurrentCamera.CameraSubject = v47;
+	if v51 then
+		l__Workspace__8.CurrentCamera.CameraSubject = v51;
 	end;
 end;
-function u1.isSpectating(p27)
-	return p27.spectating;
+function u1.isSpectating(p23)
+	return p23.spectating;
 end;
 u2 = l__KnitClient__2.CreateController;
 u1 = u1.new;

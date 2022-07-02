@@ -54,51 +54,52 @@ function v4.KnitStart(p2)
 		end;
 	end);
 	l__RunService__10.Heartbeat:Connect(function()
-		local l__rayMap__7 = p2.rayMap;
-		local function v8(p5, p6)
-			local v9 = p5;
-			if v9 then
-				local v10 = p6;
-				if v10 ~= nil then
-					v10 = v10.Character;
+		local v7, v8, v9 = pairs(p2.rayMap);
+		while true do
+			local v10, v11 = v7(v8, v9);
+			if not v10 then
+				break;
+			end;
+			local v12 = v11;
+			if v12 then
+				local v13 = v10;
+				if v13 ~= nil then
+					v13 = v13.Character;
 				end;
-				v9 = v10;
+				v12 = v13;
 			end;
-			if v9 then
-				p5.Position = p6.Character:GetPrimaryPartCFrame().Position;
-			end;
-		end;
-		for v11, v12 in pairs(l__rayMap__7) do
-			v8(v12, v11, l__rayMap__7);
+			if v12 then
+				v11.Position = v10.Character:GetPrimaryPartCFrame().Position;
+			end;		
 		end;
 	end);
 end;
 local l__Workspace__13 = v2.Workspace;
 local u14 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
 local l__GameQueryUtil__15 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).GameQueryUtil;
-function v4.createRay(p7, p8)
-	local v13 = {
+function v4.createRay(p5, p6)
+	local v14 = {
 		Parent = l__Workspace__13
 	};
-	local v14 = p8.Character;
-	if v14 ~= nil then
-		v14 = v14:GetPrimaryPartCFrame();
+	local v15 = p6.Character;
+	if v15 ~= nil then
+		v15 = v15:GetPrimaryPartCFrame();
 	end;
-	v13.CFrame = v14;
-	v13.Shape = Enum.PartType.Cylinder;
-	v13.Color = Color3.fromRGB(230, 255, 0);
-	v13.Material = Enum.Material.ForceField;
-	v13.CastShadow = false;
-	v13.Size = Vector3.new(1200, 6, 6);
-	v13.Orientation = Vector3.new(0, 0, 90);
-	v13.Transparency = 0.25;
-	v13.Anchored = true;
-	v13.CanCollide = false;
-	v13.CanQuery = false;
-	v13.CanTouch = false;
-	local v15 = u14("Part", v13);
-	l__GameQueryUtil__15:setQueryIgnored(v15, true);
-	p7.rayMap[p8] = v15;
+	v14.CFrame = v15;
+	v14.Shape = Enum.PartType.Cylinder;
+	v14.Color = Color3.fromRGB(230, 255, 0);
+	v14.Material = Enum.Material.ForceField;
+	v14.CastShadow = false;
+	v14.Size = Vector3.new(1200, 6, 6);
+	v14.Orientation = Vector3.new(0, 0, 90);
+	v14.Transparency = 0.25;
+	v14.Anchored = true;
+	v14.CanCollide = false;
+	v14.CanQuery = false;
+	v14.CanTouch = false;
+	local v16 = u14("Part", v14);
+	l__GameQueryUtil__15:setQueryIgnored(v16, true);
+	p5.rayMap[p6] = v16;
 end;
 u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v4.new());

@@ -1,4 +1,3 @@
--- Script Hash: 0bfab5a26bdeef658361de6a8c03ea9a20822c37d458cdbfa448318369bf09b3f8988db1a514594dc399478b2d186405
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -28,20 +27,17 @@ return {
 				BackgroundTransparency = 1
 			}) };
 		local l__Skins__5 = p1.Skins;
-		local function v6(p3)
-			return u1.createElement(l__KitSkinCard__3, {
+		local v6 = table.create(#l__Skins__5);
+		for v7, v8 in ipairs(l__Skins__5) do
+			v6[v7] = u1.createElement(l__KitSkinCard__3, {
 				Kit = p1.Kit, 
-				Skin = p3, 
+				Skin = v8, 
 				SelectedSkin = p1.SelectedSkin, 
 				SetSelectedSkin = p1.SetSelectedSkin, 
 				store = p1.store
 			});
 		end;
-		local v7 = table.create(#l__Skins__5);
-		for v8, v9 in ipairs(l__Skins__5) do
-			v7[v8] = v6(v9, v8 - 1, l__Skins__5);
-		end;
-		local v10 = {
+		local v9 = {
 			AdditionalSpace = 10, 
 			ScrollingFrameProps = {
 				Size = UDim2.fromScale(1, 0.7999999999999999), 
@@ -51,35 +47,35 @@ return {
 				BackgroundTransparency = 1
 			}
 		};
-		local v11 = {};
-		local v12 = {
+		local v10 = {};
+		local v11 = {
 			PaddingLeft = UDim.new(0.01, 0)
 		};
 		if l__DeviceUtil__4.isSmallScreen() then
-			local v13 = 0.02;
+			local v12 = 0.02;
 		else
-			v13 = 0.01;
+			v12 = 0.01;
 		end;
-		v12.PaddingTop = UDim.new(v13, 0);
-		v11[1] = u1.createElement("UIPadding", v12);
-		v11[2] = u1.createElement("UIListLayout", {
+		v11.PaddingTop = UDim.new(v12, 0);
+		v10[1] = u1.createElement("UIPadding", v11);
+		v10[2] = u1.createElement("UIListLayout", {
 			FillDirection = "Horizontal", 
 			HorizontalAlignment = "Left", 
 			VerticalAlignment = "Top", 
 			Padding = UDim.new(0.03, 0)
 		});
-		v11[3] = u1.createElement(l__KitSkinCard__3, {
+		v10[3] = u1.createElement(l__KitSkinCard__3, {
 			Kit = p1.Kit, 
 			Skin = l__BedwarsKitSkin__5.DEFAULT, 
 			SelectedSkin = p1.SelectedSkin, 
 			SetSelectedSkin = p1.SetSelectedSkin, 
 			store = p1.store
 		});
-		local v14 = #v11;
-		for v15, v16 in ipairs(v7) do
-			v11[v14 + v15] = v16;
+		local v13 = #v10;
+		for v14, v15 in ipairs(v6) do
+			v10[v13 + v14] = v15;
 		end;
-		v4[#v4 + 1] = u1.createElement(l__AutoCanvasScrollingFrame__6, v10, v11);
+		v4[#v4 + 1] = u1.createElement(l__AutoCanvasScrollingFrame__6, v9, v10);
 		return u1.createElement(l__Empty__7, {
 			Size = p1.Size, 
 			LayoutOrder = 0

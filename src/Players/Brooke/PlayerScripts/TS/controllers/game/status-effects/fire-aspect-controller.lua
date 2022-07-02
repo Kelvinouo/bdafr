@@ -1,4 +1,3 @@
--- Script Hash: 1633171c9b9068c95198ea0891faf42b7c3048d282273f947f27927d20aa97d07436366e96e8845131e98e69bf0f34ec
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -145,11 +144,8 @@ function v4.KnitStart(p2)
 			table.insert(v29, v31);
 		end;
 		task.delay(5, function()
-			local function v32(p12)
-				p12:Destroy();
-			end;
-			for v33, v34 in ipairs(v29) do
-				v32(v34, v33 - 1, v29);
+			for v32, v33 in ipairs(v29) do
+				v33:Destroy();
 			end;
 		end);
 	end);

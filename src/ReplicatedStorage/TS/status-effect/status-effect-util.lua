@@ -1,4 +1,3 @@
--- Script Hash: a419d34fd7bbbb1a1138ebe199f3dad0b0e06c22145e91f60298eda72736ecb445fa80979d107c3e3bb86291f997886a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -21,78 +20,76 @@ end;
 local u1 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
 local l__StatusEffectType__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "status-effect", "status-effect-type").StatusEffectType;
 function v2.getActiveStatusEffects(p4, p5)
-	local v4 = u1.values(l__StatusEffectType__2);
-	local function v5(p6)
-		local v6 = p5:GetAttribute(p4:getAttributeName(p6));
-		if v6 == nil then
-			return nil;
+	local v4 = {};
+	local v5 = 0;
+	local v6, v7, v8 = ipairs((u1.values(l__StatusEffectType__2)));
+	while true do
+		local v9, v10 = v6(v7, v8);
+		if not v9 then
+			break;
 		end;
-		local v7 = {
-			statusEffect = p6
-		};
-		if v6 ~= -1 then
-			local v8 = v6;
+		local v11 = p5:GetAttribute(p4:getAttributeName(v10));
+		if v11 ~= nil then
+			local v12 = {
+				statusEffect = v10
+			};
+			if v11 ~= -1 then
+				local v13 = v11;
+			else
+				v13 = nil;
+			end;
+			v12.expireTime = v13;
+			local v14 = v12;
 		else
-			v8 = nil;
+			v14 = nil;
 		end;
-		v7.expireTime = v8;
-		return v7;
+		if v14 ~= nil then
+			v5 = v5 + 1;
+			v4[v5] = v14;
+		end;	
 	end;
-	local v9 = {};
-	local v10 = 0;
-	for v11, v12 in ipairs(v4) do
-		local v13 = v5(v12, v11 - 1, v4);
-		if v13 ~= nil then
-			v10 = v10 + 1;
-			v9[v10] = v13;
-		end;
-	end;
-	return v9;
+	return v4;
 end;
-function v2.isActive(p7, p8, p9)
-	return p8:GetAttribute(p7:getAttributeName(p9)) ~= nil;
+function v2.isActive(p6, p7, p8)
+	return p7:GetAttribute(p6:getAttributeName(p8)) ~= nil;
 end;
-function v2.hasAnyActive(p10, p11, p12)
-	for v14, v15 in ipairs(p12) do
-		if p10:isActive(p11, v15) then
+function v2.hasAnyActive(p9, p10, p11)
+	for v15, v16 in ipairs(p11) do
+		if p9:isActive(p10, v16) then
 			return true;
 		end;
 	end;
 	return false;
 end;
-function v2.getStrengthLevel(p13, p14, p15)
-	local v16 = 0;
-	local v17 = false;
+function v2.getStrengthLevel(p12, p13, p14)
+	local v17 = 0;
+	local v18 = false;
 	while true do
-		if v17 then
-			v16 = v16 + 1;
+		if v18 then
+			v17 = v17 + 1;
 		else
-			v17 = true;
+			v18 = true;
 		end;
-		if not (v16 < #p15) then
+		if not (v17 < #p14) then
 			break;
 		end;
-		if p13:isActive(p14, p15[v16 + 1]) then
-			return v16 + 1;
+		if p12:isActive(p13, p14[v17 + 1]) then
+			return v17 + 1;
 		end;	
 	end;
 	return 0;
 end;
 local l__EntityUtil__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
-function v2.getEntityInstances(p16, p17)
-	local v18 = l__EntityUtil__3:getAliveEntityInstances();
-	local function v19(p18)
-		return p16:isActive(p18, p17);
-	end;
-	local v20 = {};
-	local v21 = 0;
-	for v22, v23 in ipairs(v18) do
-		if v19(v23, v22 - 1, v18) == true then
-			v21 = v21 + 1;
-			v20[v21] = v23;
+function v2.getEntityInstances(p15, p16)
+	local v19 = {};
+	local v20 = 0;
+	for v21, v22 in ipairs((l__EntityUtil__3:getAliveEntityInstances())) do
+		if p15:isActive(v22, p16) == true then
+			v20 = v20 + 1;
+			v19[v20] = v22;
 		end;
 	end;
-	return v20;
+	return v19;
 end;
 return {
 	StatusEffectUtil = v2

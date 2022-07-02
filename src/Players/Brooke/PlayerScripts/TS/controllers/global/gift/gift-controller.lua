@@ -1,4 +1,3 @@
--- Script Hash: 0a0d2ee46ba29b00e7c611f9093ef73e373b66b657a016d27d5b2e0feeced46de3d03c6f23ff91224385fad4b1321ab0
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -72,25 +71,23 @@ function v3.KnitStart(p2)
 					return;
 				end;
 				if l__GiftUtils__4.isKitSkinGift(p4.giftType) then
-					local v7 = u10.entries(l__BedwarsKitMeta__11);
-					local function v8(p5)
-						local v9 = p5[1];
-						local v10 = p5[2];
-						if not v10.skins then
-							return;
+					local v7 = nil;
+					for v8, v9 in ipairs((u10.entries(l__BedwarsKitMeta__11))) do
+						local v10 = v9[1];
+						local v11 = v9[2];
+						if v11.skins then
+							local v12 = table.find(v11.skins, p4.giftType) ~= nil;
+						else
+							v12 = nil;
 						end;
-						return table.find(v10.skins, p4.giftType) ~= nil;
-					end;
-					local v11 = nil;
-					for v12, v13 in ipairs(v7) do
-						if v8(v13, v12 - 1, v7) == true then
-							v11 = v13;
+						if v12 == true then
+							v7 = v9;
 							break;
 						end;
 					end;
-					if v11 then
+					if v7 then
 						l__Flamework__8.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__9.KIT_SHOP, {
-							SelectedKit = v11[1]
+							SelectedKit = v7[1]
 						});
 						return;
 					end;

@@ -1,4 +1,3 @@
--- Script Hash: 9f0152e13b6a297c1875fbd7ddfed0459ea44d0c1a3510f70bf48dc90ba743ee50c160eee1ddd74e63c528fb366c334e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -26,40 +25,36 @@ function v2.isBundleGift(p3)
 end;
 local u4 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
 function v2.getKitKeyFromValue(p4)
-	local v3 = u4.entries(l__BedwarsKit__1);
-	local function v4(p5)
-		local v5 = p5[1];
-		if p5[2] ~= p4 then
-			return;
+	local v3 = nil;
+	for v4, v5 in ipairs((u4.entries(l__BedwarsKit__1))) do
+		local v6 = v5[1];
+		if v5[2] == p4 then
+			local v7 = true;
+		else
+			v7 = nil;
 		end;
-		return true;
-	end;
-	local v6 = nil;
-	for v7, v8 in ipairs(v3) do
-		if v4(v8, v7 - 1, v3) == true then
-			v6 = v8;
+		if v7 == true then
+			v3 = v5;
 			break;
 		end;
 	end;
-	return v6[1];
+	return v3[1];
 end;
-function v2.getKitSkinKeyFromValue(p6)
-	local v9 = u4.entries(l__BedwarsKitSkin__2);
-	local function v10(p7)
-		local v11 = p7[1];
-		if p7[2] ~= p6 then
-			return;
+function v2.getKitSkinKeyFromValue(p5)
+	local v8 = nil;
+	for v9, v10 in ipairs((u4.entries(l__BedwarsKitSkin__2))) do
+		local v11 = v10[1];
+		if v10[2] == p5 then
+			local v12 = true;
+		else
+			v12 = nil;
 		end;
-		return true;
-	end;
-	local v12 = nil;
-	for v13, v14 in ipairs(v9) do
-		if v10(v14, v13 - 1, v9) == true then
-			v12 = v14;
+		if v12 == true then
+			v8 = v10;
 			break;
 		end;
 	end;
-	return v12[1];
+	return v8[1];
 end;
 return {
 	GiftUtils = v2

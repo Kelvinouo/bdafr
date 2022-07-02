@@ -1,4 +1,3 @@
--- Script Hash: bc0e7468ee33efa47e624ed5bd9dad3eb69276f2093535c86d9e3daa6764e515a129fde190a899ccf2b3c675cf6282bc
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -22,7 +21,7 @@ function v5.constructor(p1)
 	p1.Name = "LobbyCountdownController";
 end;
 local l__WatchCollectionTag__2 = v2.WatchCollectionTag;
-local u3 = 1654898400;
+local u3 = 1657317600;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
 	l__WatchCollectionTag__2("sale-countdown", function(p3)
@@ -59,14 +58,31 @@ function v5.KnitStart(p2)
 			end;
 		end);
 	end);
+	l__WatchCollectionTag__2("br-countdown", function(p5)
+		task.spawn(function()
+			while true do
+				p5.Text = p2:getTime(1656172800, "UPDATE HYPE!!");
+				local v9 = wait(1);
+				if v9 == 0 then
+					break;
+				end;
+				if v9 ~= v9 then
+					break;
+				end;
+				if not v9 then
+					break;
+				end;			
+			end;
+		end);
+	end);
 end;
 local l__StringUtil__4 = v2.StringUtil;
-function v5.getTime(p5, p6, p7)
-	local v9 = math.max(0, p6 - os.time());
-	if v9 == 0 then
-		return p7;
+function v5.getTime(p6, p7, p8)
+	local v10 = math.max(0, p7 - os.time());
+	if v10 == 0 then
+		return p8;
 	end;
-	return l__StringUtil__4.formatCountdownTime(v9, {
+	return l__StringUtil__4.formatCountdownTime(v10, {
 		days = true, 
 		hours = true, 
 		seperator = " : "

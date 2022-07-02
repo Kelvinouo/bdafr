@@ -1,4 +1,3 @@
--- Script Hash: 457e0d88384bcc6fcbda48cdd86bb42ee999f2375364f497a65bc7b2ab105618eb8be251d91841c7f5537d82e062e9b1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -82,14 +81,11 @@ return {
 		end;
 		v13.PlaceholderText = tostring(v15);
 		v13.NumbersOnly = true;
-		local function u10(p3)
+		function v13.OnFocusLost(p3)
 			local v16 = tonumber(p3);
 			if v16 ~= 0 and v16 == v16 and v16 then
 				l__KnitClient__2.Controllers.CustomMatchController:setTeamOreGenerators(v16, v4);
 			end;
-		end;
-		function v13.OnFocusLost(p4)
-			u10(p4);
 		end;
 		v13.LayoutOrder = 2;
 		v12[#v12 + 1] = u3.createElement(l__HostPanelTextBox__6, v13);
@@ -98,27 +94,21 @@ return {
 			Hint = "(multiplier)", 
 			Size = u5
 		}, v12);
-		local v17 = {};
-		local v18 = {
-			Text = tostring(p1.store.CustomMatch.globalGenerators.emerald), 
-			PlaceholderText = tostring(p1.store.CustomMatch.globalGenerators.emerald), 
-			NumbersOnly = true
-		};
-		local function u11(p5, p6)
-			local v19 = tonumber(p5);
-			if v19 ~= 0 and v19 == v19 and v19 then
-				l__KnitClient__2.Controllers.CustomMatchController:setGlobalOreGenerators(v19, p6);
-			end;
-		end;
-		function v18.OnFocusLost(p7)
-			u11(p7, l__ItemType__8.EMERALD);
-		end;
-		v17[1] = u3.createElement(l__HostPanelTextBox__6, v18);
 		v7[v8 + 2] = u3.createElement(l__HostPanelSetting__7, {
 			Name = "Emerald Generator Cooldown", 
 			Hint = "(multiplier)", 
 			Size = u5
-		}, v17);
+		}, { u3.createElement(l__HostPanelTextBox__6, {
+				Text = tostring(p1.store.CustomMatch.globalGenerators.emerald), 
+				PlaceholderText = tostring(p1.store.CustomMatch.globalGenerators.emerald), 
+				NumbersOnly = true, 
+				OnFocusLost = function(p4)
+					local v17 = tonumber(p4);
+					if v17 ~= 0 and v17 == v17 and v17 then
+						l__KnitClient__2.Controllers.CustomMatchController:setGlobalOreGenerators(v17, l__ItemType__8.EMERALD);
+					end;
+				end
+			}) });
 		v7[v8 + 3] = u3.createElement(l__HostPanelSetting__7, {
 			Name = "Diamond Generator Cooldown", 
 			Hint = "(multiplier)", 
@@ -127,8 +117,11 @@ return {
 				Text = tostring(p1.store.CustomMatch.globalGenerators.diamond), 
 				PlaceholderText = tostring(p1.store.CustomMatch.globalGenerators.diamond), 
 				NumbersOnly = true, 
-				OnFocusLost = function(p8)
-					u11(p8, l__ItemType__8.DIAMOND);
+				OnFocusLost = function(p5)
+					local v18 = tonumber(p5);
+					if v18 ~= 0 and v18 == v18 and v18 then
+						l__KnitClient__2.Controllers.CustomMatchController:setGlobalOreGenerators(v18, l__ItemType__8.DIAMOND);
+					end;
 				end
 			}) });
 		return u3.createElement(l__Empty__9, v6, v7);

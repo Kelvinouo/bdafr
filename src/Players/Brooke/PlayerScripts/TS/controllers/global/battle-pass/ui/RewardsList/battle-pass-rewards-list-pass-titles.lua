@@ -1,4 +1,3 @@
--- Script Hash: 92c3d76d7aaf300ea7170eeb803d74ca9b1cf9d2124fc3adfda7df83107411efe3d01e7dd16a2ea432efae9d6f41d038
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -15,24 +14,18 @@ return {
 				local v4 = nil;
 				local v5 = u4:getValue();
 				local v6 = l__GetUIScaleAncestors__2(v5);
-				local function v7(p3)
-					return p3.Scale;
-				end;
-				local v8 = table.create(#v6);
-				for v9, v10 in ipairs(v6) do
-					v8[v9] = v7(v10, v9 - 1, v6);
+				local v7 = table.create(#v6);
+				for v8, v9 in ipairs(v6) do
+					v7[v8] = v9.Scale;
 				end;
 				v4 = 1;
-				local function v11(p4, p5)
-					return p4 * p5;
-				end;
-				for v12 = 1, #v8 do
-					v4 = v11(v4, v8[v12], v12 - 1, v8);
+				for v10 = 1, #v7 do
+					v4 = v4 * v7[v10];
 				end;
 				if v5 then
-					local v13 = v5.Parent.AbsoluteSize.Y * p1.Size.Y.Scale / local v14;
-					v5.Position = UDim2.new(0, (-v5.AbsoluteSize.X + 8) / 2 / v14, 0, (v13 - 11) / 2);
-					v5.Size = UDim2.new(0, v13, 0, 16);
+					local v11 = v5.Parent.AbsoluteSize.Y * p1.Size.Y.Scale / local v12;
+					v5.Position = UDim2.new(0, (-v5.AbsoluteSize.X + 8) / 2 / v12, 0, (v11 - 11) / 2);
+					v5.Size = UDim2.new(0, v11, 0, 16);
 				end;
 			end;
 			local u6 = u4:getValue():GetPropertyChangedSignal("AbsoluteSize"):Connect(function()

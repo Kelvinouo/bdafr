@@ -79,7 +79,7 @@ function u1.onEnable(p5, p6)
 		v9:disable();
 	end);
 	u23 = -1;
-	local function u24()
+	p5.maid:GiveTask(function()
 		u19:DoCleaning();
 		u20 = false;
 		u23 = -1;
@@ -90,9 +90,6 @@ function u1.onEnable(p5, p6)
 		if u22 ~= nil then
 			u22:Stop();
 		end;
-	end;
-	p5.maid:GiveTask(function()
-		u24();
 	end);
 	if v8.consumable.cancelOnDamage then
 		task.spawn(function()
@@ -103,7 +100,7 @@ function u1.onEnable(p5, p6)
 			end));
 		end);
 	end;
-	local function u25()
+	local function u24()
 		local v10 = v8.consumable;
 		if v10 ~= nil then
 			v10 = v10.requiresMissingHealth;
@@ -179,11 +176,20 @@ function u1.onEnable(p5, p6)
 	end;
 	l__ContextActionService__13:BindAction("consume-item", function(p9, p10, p11)
 		if p10 == Enum.UserInputState.Begin then
-			u25();
+			u24();
 			return;
 		end;
 		if p10 == Enum.UserInputState.End then
-			u24();
+			u19:DoCleaning();
+			u20 = false;
+			u23 = -1;
+			v9:endClick();
+			if u21 ~= nil then
+				u21:Stop();
+			end;
+			if u22 ~= nil then
+				u22:Stop();
+			end;
 		end;
 	end, false, Enum.UserInputType.MouseButton1, Enum.KeyCode.ButtonR2);
 	p5.maid:GiveTask(function()
@@ -191,20 +197,29 @@ function u1.onEnable(p5, p6)
 	end);
 	if l__UserInputService__14.TouchEnabled then
 		p5:setupYield(function()
-			local u26 = u15.mount(u15.createElement("ScreenGui", {
+			local u25 = u15.mount(u15.createElement("ScreenGui", {
 				ResetOnSpawn = false
 			}, { u15.createElement(l__MobileButton__16, {
 					Image = l__BedwarsImageId__17.CONSUME_MOBILE, 
 					Position = l__BedwarsUI__18:getActionMobileButtonPosition(), 
 					OnPressDown = function()
-						u25();
+						u24();
 					end, 
 					OnPressUp = function()
-						u24();
+						u19:DoCleaning();
+						u20 = false;
+						u23 = -1;
+						v9:endClick();
+						if u21 ~= nil then
+							u21:Stop();
+						end;
+						if u22 ~= nil then
+							u22:Stop();
+						end;
 					end
 				}) }), l__Players__11.LocalPlayer:WaitForChild("PlayerGui"));
 			return function()
-				u15.unmount(u26);
+				u15.unmount(u25);
 			end;
 		end);
 	end;

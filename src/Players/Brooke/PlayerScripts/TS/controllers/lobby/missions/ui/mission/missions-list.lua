@@ -1,4 +1,3 @@
--- Script Hash: 00d4087593d56e45a730dc48d4f27cc413c5da2e9430514bb0dbdb399dc50021c423b80f4e979f745baf34f447f892a5
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -51,31 +50,28 @@ return {
 			BackgroundTransparency = 1
 		}, v5);
 		local l__Missions__7 = p1.Missions;
-		local function v8(p3)
-			return u1.createElement(l__Mission__4, {
-				Mission = p3
+		local v8 = table.create(#l__Missions__7);
+		for v9, v10 in ipairs(l__Missions__7) do
+			v8[v9] = u1.createElement(l__Mission__4, {
+				Mission = v10
 			});
 		end;
-		local v9 = table.create(#l__Missions__7);
-		for v10, v11 in ipairs(l__Missions__7) do
-			v9[v10] = v8(v11, v10 - 1, l__Missions__7);
-		end;
-		local v12 = {
+		local v11 = {
 			Size = UDim2.fromScale(1, 0), 
 			AutomaticSize = Enum.AutomaticSize.Y, 
 			BackgroundTransparency = 1
 		};
-		local v13 = { u1.createElement("UIListLayout", {
+		local v12 = { u1.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Vertical, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				VerticalAlignment = Enum.VerticalAlignment.Top, 
 				Padding = UDim.new(0, 8)
 			}) };
-		local v14 = #v13;
-		for v15, v16 in ipairs(v9) do
-			v13[v14 + v15] = v16;
+		local v13 = #v12;
+		for v14, v15 in ipairs(v8) do
+			v12[v13 + v14] = v15;
 		end;
-		v3[v4 + 2] = u1.createElement("Frame", v12, v13);
+		v3[v4 + 2] = u1.createElement("Frame", v11, v12);
 		return u1.createFragment({
 			PassMissionLists = u1.createElement("Frame", v2, v3)
 		});

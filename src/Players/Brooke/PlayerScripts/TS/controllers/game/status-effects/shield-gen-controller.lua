@@ -1,4 +1,3 @@
--- Script Hash: 7c83058aa1fe3242928bad563a492045a22333a1c5c6e411c57ed118bfb6d1f32941dc13a91560cc53028371d5e691d7
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -64,14 +63,10 @@ function v5.KnitStart(p2)
 		end);
 		local u14 = p3.entityInstance == l__Players__4.LocalPlayer.Character;
 		local function v9(p6)
-			local v10 = v7:GetChildren();
-			local function v11(p7)
-				if p7:IsA("ParticleEmitter") then
-					p7.Enabled = p6;
+			for v10, v11 in ipairs((v7:GetChildren())) do
+				if v11:IsA("ParticleEmitter") then
+					v11.Enabled = p6;
 				end;
-			end;
-			for v12, v13 in ipairs(v10) do
-				v11(v13, v12 - 1, v10);
 			end;
 			if v8 and u14 then
 				if not p6 then
@@ -87,23 +82,19 @@ function v5.KnitStart(p2)
 		p3.entityInstance:GetAttributeChangedSignal("ShieldGenVisible"):Connect(function()
 			v9(p3.entityInstance:GetAttribute("ShieldGenVisible") == true);
 		end);
-		u13:GiveTask(l__RunService__12.RenderStepped:Connect(function(p8)
+		u13:GiveTask(l__RunService__12.RenderStepped:Connect(function(p7)
 			if p3.entityInstance.PrimaryPart == nil then
 				return nil;
 			end;
 			v7.CFrame = CFrame.new(p3.entityInstance.PrimaryPart.Position) * CFrame.Angles(0, l__Workspace__7:GetServerTimeNow() % 6 / 6 * 2 * math.pi, 0);
 		end));
 	end);
-	l__ClientSyncEvents__3.StatusEffectRemoved:connect(function(p9)
-		if table.find(p2.statusEffectTypes, p9.statusEffect) == nil then
+	l__ClientSyncEvents__3.StatusEffectRemoved:connect(function(p8)
+		if table.find(p2.statusEffectTypes, p8.statusEffect) == nil then
 			return nil;
 		end;
-		local v14 = l__CollectionService__8:GetTagged(p9.entityInstance.Name .. ":shield-gen");
-		local function v15(p10)
-			p10:Destroy();
-		end;
-		for v16, v17 in ipairs(v14) do
-			v15(v17, v16 - 1, v14);
+		for v12, v13 in ipairs((l__CollectionService__8:GetTagged(p8.entityInstance.Name .. ":shield-gen"))) do
+			v13:Destroy();
 		end;
 	end);
 end;

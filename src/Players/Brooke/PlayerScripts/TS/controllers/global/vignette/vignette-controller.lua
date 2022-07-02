@@ -1,4 +1,3 @@
--- Script Hash: 493d173a2ee943ab9f9cd1f226157cacd54eba4d87a1cbca6103ab13a6ef15d25fcb1fa92339422673fb142c1bb84123
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -51,8 +50,8 @@ function v5.createVignette(p3, p4)
 			v10.CFrame = CFrame.new(math.huge, 0, 0);
 			return nil;
 		end;
-		local v12 = Vector3.new(1, u5.ScreenHeightToWorldHeight(u5.ViewSizeY(), -4, l__KnitClient__6.Controllers.SprintController:getBaseFOV()) * 1.2, 1);
-		local v13 = Vector3.new(u5.ScreenWidthToWorldWidth(u5.ViewSizeX(), -4, l__KnitClient__6.Controllers.SprintController:getBaseFOV()) * 1.2, 1, 1);
+		local v12 = Vector3.new(1, u5.ScreenHeightToWorldHeight(u5.ViewSizeY(), -4, l__KnitClient__6.Controllers.FovController:getBaseFOV()) * 1.2, 1);
+		local v13 = Vector3.new(u5.ScreenWidthToWorldWidth(u5.ViewSizeX(), -4, l__KnitClient__6.Controllers.FovController:getBaseFOV()) * 1.2, 1, 1);
 		v7.CFrame = l__Workspace__2.CurrentCamera.CFrame * CFrame.new(u5.ScreenWidthToWorldWidth(u5.ViewSizeX() / 2, -4), 0, -4.5);
 		v8.CFrame = l__Workspace__2.CurrentCamera.CFrame * CFrame.new(u5.ScreenWidthToWorldWidth(-u5.ViewSizeX() / 2, -4), 0, -4.5);
 		v9.CFrame = l__Workspace__2.CurrentCamera.CFrame * CFrame.new(0, u5.ScreenHeightToWorldHeight(u5.ViewSizeY() / 2, -4), -4.5);

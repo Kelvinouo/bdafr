@@ -124,53 +124,50 @@ function v5.findGhosts(p16)
 	end;
 	local v11 = l__CollectionService__14:GetTagged("ghost");
 	local u16 = v10.Position + v10.LookVector.Unit * 15;
-	local function v12(p17)
-		return (p17:GetPrimaryPartCFrame().Position - u16).Magnitude < 15;
-	end;
-	local v13 = nil;
-	for v14, v15 in ipairs(v11) do
-		if v12(v15, v14 - 1, v11) == true then
-			v13 = v15;
+	local v12 = nil;
+	for v13, v14 in ipairs(v11) do
+		if (v14:GetPrimaryPartCFrame().Position - u16).Magnitude < 15 == true then
+			v12 = v14;
 			break;
 		end;
 	end;
-	if not v13 then
+	if not v12 then
 		return nil;
 	end;
 	l__default__15.Client:Get("RemoteName"):SendToServer({
-		id = v13:GetAttribute("Id")
+		id = v12:GetAttribute("Id")
 	});
 end;
-function v5.onStartCharging(p18)
+function v5.onStartCharging(p17)
 
 end;
-function v5.onStopCharging(p19)
+function v5.onStopCharging(p18)
 
 end;
-function v5.onLaunch(p20, p21)
+function v5.onLaunch(p19, p20)
 	task.spawn(function()
-		local v16 = l__GameAnimationUtil__3.playAnimation(l__Players__4.LocalPlayer, l__AnimationType__5.VACUUM_LAUNCH, {
+		local v15 = l__GameAnimationUtil__3.playAnimation(l__Players__4.LocalPlayer, l__AnimationType__5.VACUUM_LAUNCH, {
 			looped = false
 		});
-		if not p21() and v16 ~= nil then
-			v16:Stop();
+		if not p20() and v15 ~= nil then
+			v15:Stop();
 		end;
-		if v16 then
-			p20.maid:GiveTask(function()
-				return v16:Stop();
+		if v15 then
+			p19.maid:GiveTask(function()
+				return v15:Stop();
 			end);
 		end;
 	end);
-	p20.loaded = false;
+	p19.loaded = false;
 end;
-function v5.canLaunch(p22)
-	return p22.loaded;
+function v5.canLaunch(p21)
+	return p21.loaded;
 end;
-function v5.onStartReload(p23, p24)
+function v5.onStartReload(p22, p23)
 
 end;
-function v5.setLoaded(p25)
-	p25.loaded = true;
+function v5.setLoaded(p24)
+	p24.loaded = true;
 end;
 u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());

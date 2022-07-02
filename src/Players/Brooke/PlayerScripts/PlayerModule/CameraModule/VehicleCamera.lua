@@ -1,4 +1,3 @@
--- Script Hash: 5cca2678536abddfd22b2dd9510225397561a536a93c323050bb5cc478ecb612337ee54ede71833e40a30ddf9baa8801
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = math.rad(80);
@@ -91,41 +90,35 @@ function v11._GetFirstPersonLocalOffset(p9, p10)
 	end;
 	return p9:_GetThirdPersonLocalOffset();
 end;
-local function u5(p11, p12)
-	return math.abs(p12.YVector:Dot(p11));
-end;
-local function u6(p13, p14)
-	return math.abs(p14.XVector:Dot(p13));
-end;
-function v11.Update(p15)
+function v11.Update(p11)
 	local l__CurrentCamera__25 = workspace.CurrentCamera;
 	local v26 = l__CurrentCamera__25 and l__CurrentCamera__25.CameraSubject;
-	local l__vehicleCameraCore__27 = p15.vehicleCameraCore;
+	local l__vehicleCameraCore__27 = p11.vehicleCameraCore;
 	assert(l__CurrentCamera__25);
 	assert(v26);
 	assert(v26:IsA("VehicleSeat"));
 	u1 = 0;
-	local v28 = p15:GetSubjectCFrame();
-	local v29 = p15:GetSubjectRotVelocity();
-	local v30 = u5(v29, v28);
-	local v31 = u6(v29, v28);
-	local v32 = p15:StepZoom();
-	local v33 = p15:_StepRotation(u1, (math.abs(p15:GetSubjectVelocity():Dot(v28.ZVector))));
-	local v34 = l__mapClamp__4(v32, 0.5, p15.assemblyRadius, 1, 0);
-	local v35 = p15:_GetThirdPersonLocalOffset():Lerp(p15:_GetFirstPersonLocalOffset(v28), v34);
+	local v28 = p11:GetSubjectCFrame();
+	local v29 = p11:GetSubjectRotVelocity();
+	local v30 = math.abs(v28.YVector:Dot(v29));
+	local v31 = math.abs(v28.XVector:Dot(v29));
+	local v32 = p11:StepZoom();
+	local v33 = p11:_StepRotation(u1, (math.abs(p11:GetSubjectVelocity():Dot(v28.ZVector))));
+	local v34 = l__mapClamp__4(v32, 0.5, p11.assemblyRadius, 1, 0);
+	local v35 = p11:_GetThirdPersonLocalOffset():Lerp(p11:_GetFirstPersonLocalOffset(v28), v34);
 	l__vehicleCameraCore__27:setTransform(v28);
 	local v36 = CFrame.new(v28 * v35) * l__vehicleCameraCore__27:step(u1, v31, v30, v34) * v33;
 	return v36 * CFrame.new(0, 0, v32), v36;
 end;
-function v11.ApplyVRTransform(p16)
+function v11.ApplyVRTransform(p12)
 
 end;
-function v11.EnterFirstPerson(p17)
-	p17.inFirstPerson = true;
-	p17:UpdateMouseBehavior();
+function v11.EnterFirstPerson(p13)
+	p13.inFirstPerson = true;
+	p13:UpdateMouseBehavior();
 end;
-function v11.LeaveFirstPerson(p18)
-	p18.inFirstPerson = false;
-	p18:UpdateMouseBehavior();
+function v11.LeaveFirstPerson(p14)
+	p14.inFirstPerson = false;
+	p14:UpdateMouseBehavior();
 end;
 return v11;

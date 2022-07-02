@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -44,95 +43,82 @@ function u1.getPlayerTeamMap(p4)
 	local l__teams__6 = p4.teams;
 	v5 = {};
 	local function v7(p5, p6)
-		local l__members__8 = p6.members;
-		local function v9(p7)
-			p5[p7.userId] = p6.name;
-			return p5;
-		end;
-		for v10, v11 in pairs(l__members__8) do
-			v9(v11, v10, l__members__8);
+		for v8, v9 in pairs(p6.members) do
+			p5[v9.userId] = p6.name;
 		end;
 		return p5;
 	end;
-	for v12 = 1, #l__teams__6 do
-		v5 = v7(v5, l__teams__6[v12], v12 - 1, l__teams__6);
+	for v10 = 1, #l__teams__6 do
+		v5 = v7(v5, l__teams__6[v10], v10 - 1, l__teams__6);
 	end;
-	return local v13;
+	return local v11;
 end;
-function u1.getTeamNames(p8, p9)
-	if #p8.teamNames ~= 0 then
-		return p8.teamNames;
+function u1.getTeamNames(p7, p8)
+	if #p7.teamNames ~= 0 then
+		return p7.teamNames;
 	end;
-	if not p8.teams then
+	if not p7.teams then
 		return nil;
 	end;
-	local l__teams__14 = p8.teams;
-	local function v15(p10)
-		return p10.name;
+	local l__teams__12 = p7.teams;
+	local v13 = table.create(#l__teams__12);
+	for v14, v15 in ipairs(l__teams__12) do
+		v13[v14] = v15.name;
 	end;
-	local v16 = table.create(#l__teams__14);
-	for v17, v18 in ipairs(l__teams__14) do
-		v16[v17] = v15(v18, v17 - 1, l__teams__14);
+	table.sort(v13);
+	p7.teamNames = v13;
+	if p8 then
+		table.insert(p7.teamNames, 1, "Spectator");
 	end;
-	table.sort(v16);
-	p8.teamNames = v16;
-	if p9 then
-		table.insert(p8.teamNames, 1, "Spectator");
-	end;
-	return p8.teamNames;
+	return p7.teamNames;
 end;
 local l__ColorUtil__5 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).ColorUtil;
 local u6 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
-function u1.getTeamDropdown(p11, p12)
-	local v19 = nil;
-	if p11.teamDropdown.dropDownItems then
-		return p11.teamDropdown;
+function u1.getTeamDropdown(p9, p10)
+	local v16 = nil;
+	if p9.teamDropdown.dropDownItems then
+		return p9.teamDropdown;
 	end;
-	if not p11.teams then
+	if not p9.teams then
 		return nil;
 	end;
-	local l__teams__20 = p11.teams;
-	v19 = {};
-	local function v21(p13, p14)
-		p13[p14.name] = {
-			text = "<font color=\"" .. (l__ColorUtil__5.richTextColor(p14.color) .. "\">") .. p14.name .. "</font>", 
-			value = p14.name
+	local l__teams__17 = p9.teams;
+	v16 = {};
+	for v18 = 1, #l__teams__17 do
+		local v19 = l__teams__17[v18];
+		v16[v19.name] = {
+			text = "<font color=\"" .. (l__ColorUtil__5.richTextColor(v19.color) .. "\">") .. v19.name .. "</font>", 
+			value = v19.name
 		};
-		return p13;
+		v16 = v16;
 	end;
-	for v22 = 1, #l__teams__20 do
-		v19 = v21(v19, l__teams__20[v22], v22 - 1, l__teams__20);
+	p9.teamDropdown.map = local v20;
+	local v21 = {};
+	local v22 = #v21;
+	for v23, v24 in pairs(p9.teamDropdown.map) do
+		v22 = v22 + 1;
+		v21[v22] = { v23, v24 };
 	end;
-	p11.teamDropdown.map = local v23;
-	local v24 = {};
-	local v25 = #v24;
-	for v26, v27 in pairs(p11.teamDropdown.map) do
-		v25 = v25 + 1;
-		v24[v25] = { v26, v27 };
+	local v25 = u6.values(v21);
+	local v26 = table.create(#v25);
+	for v27, v28 in ipairs(v25) do
+		v26[v27] = v28[2];
 	end;
-	local v28 = u6.values(v24);
-	local function v29(p15)
-		return p15[2];
-	end;
-	local v30 = table.create(#v28);
-	for v31, v32 in ipairs(v28) do
-		v30[v31] = v29(v32, v31 - 1, v28);
-	end;
-	table.sort(v30, function(p16, p17)
-		return p16.value < p17.value;
+	table.sort(v26, function(p11, p12)
+		return p11.value < p12.value;
 	end);
-	p11.teamDropdown.dropDownItems = v30;
-	if p12 then
-		p11.teamDropdown.map.Spectator = {
+	p9.teamDropdown.dropDownItems = v26;
+	if p10 then
+		p9.teamDropdown.map.Spectator = {
 			text = "Spectator", 
 			value = "Spectator"
 		};
-		table.insert(p11.teamDropdown.dropDownItems, 1, {
+		table.insert(p9.teamDropdown.dropDownItems, 1, {
 			text = "Spectator", 
 			value = "Spectator"
 		});
 	end;
-	return p11.teamDropdown;
+	return p9.teamDropdown;
 end;
 u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;

@@ -1,4 +1,3 @@
--- Script Hash: 8111969d031db8ab8375c8a5cf257933e3c654a13bb74b09396b94f77c67a45fed09afd5675fd36ba65a183fed40f443
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -49,17 +48,14 @@ return {
 			Size = UDim2.fromScale(1, 0.6), 
 			Text = v5
 		};
-		local function u13(p3)
-			task.spawn(function()
-				l__KnitClient__1.Controllers.EnchantTableController:researchEnchant(p3);
-			end);
-		end;
-		local u14 = l__ResearchData__3[1];
+		local u13 = l__ResearchData__3[1];
 		function v10.OnClick()
 			if not v6 then
 				return nil;
 			end;
-			u13(u14);
+			task.spawn(function()
+				l__KnitClient__1.Controllers.EnchantTableController:researchEnchant(u13);
+			end);
 		end;
 		if v6 then
 			local v11 = v4.buttonColor;

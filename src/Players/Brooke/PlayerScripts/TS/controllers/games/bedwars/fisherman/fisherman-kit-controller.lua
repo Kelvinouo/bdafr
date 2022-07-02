@@ -1,4 +1,3 @@
--- Script Hash: ace42cba8aece57f0b836dcace018259c6a21bca0cd2ed4f86e3d2de67c47cf1a7c7d2468df443c6d75555699064088c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -30,19 +29,16 @@ local l__GameAnimationUtil__6 = v1.import(script, game:GetService("ReplicatedSto
 function v3.onKitEnabled(p3)
 	v1.Promise.defer(function()
 		local v5 = { l__AnimationType__3.FISHING_ROD_CAST, l__AnimationType__3.FISHING_ROD_CATCH_FAIL, l__AnimationType__3.FISHING_ROD_CATCH_SUCCESS, l__AnimationType__3.FISHING_ROD_IDLE, l__AnimationType__3.FISHING_ROD_PULLING };
-		local function v6(p4)
-			return u5("Animation", {
-				AnimationId = l__GameAnimationUtil__6.getAssetId(p4)
+		local v6 = table.create(#v5);
+		for v7, v8 in ipairs(v5) do
+			v6[v7] = u5("Animation", {
+				AnimationId = l__GameAnimationUtil__6.getAssetId(v8)
 			});
 		end;
-		local v7 = table.create(#v5);
-		for v8, v9 in ipairs(v5) do
-			v7[v8] = v6(v9, v8 - 1, v5);
-		end;
-		l__ContentProvider__4:PreloadAsync(v7);
+		l__ContentProvider__4:PreloadAsync(v6);
 	end);
 end;
-function v3.onKitDisabled(p5)
+function v3.onKitDisabled(p4)
 
 end;
 u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;

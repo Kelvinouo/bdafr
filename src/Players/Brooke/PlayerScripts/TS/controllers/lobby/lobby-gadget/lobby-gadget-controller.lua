@@ -1,4 +1,3 @@
--- Script Hash: 2a290b528191ddf4e78e08263103d782c207b955edd07922565df5a9e046c31c5ae41177bba6a7744cbefb7ed9fc9e48
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -42,61 +41,49 @@ function v3.setupGadgetRefill(p3, p4, p5)
 	local v7 = {};
 	local l__items__8 = l__LobbyGadgetMeta__4[p5].items;
 	if l__items__8 ~= nil then
-		local function v9(p6)
-			if not p6.refillable then
-				return;
+		for v9, v10 in ipairs(l__items__8) do
+			if v10.refillable then
+				table.insert(v7, v10);
 			end;
-			table.insert(v7, p6);
-			return nil;
-		end;
-		for v10, v11 in ipairs(l__items__8) do
-			v9(v11, v10 - 1, l__items__8);
 		end;
 	end;
 	if #v7 ~= 0 and p3.refillSet[p5] == nil then
 		p3.refillSet[p5] = true;
-		local function v12(p7)
-			p3:refillItemLoop(p4, p7, p5);
-		end;
-		for v13, v14 in ipairs(v7) do
-			v12(v14, v13 - 1, v7);
+		for v11, v12 in ipairs(v7) do
+			p3:refillItemLoop(p4, v12, p5);
 		end;
 	end;
 end;
 local l__InventoryUtil__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "inventory", "inventory-util").InventoryUtil;
-function v3.refillItemLoop(p8, p9, p10, p11)
-	local v15 = p10.refillCooldown;
-	if v15 == nil then
-		v15 = 4;
+function v3.refillItemLoop(p6, p7, p8, p9)
+	local v13 = p8.refillCooldown;
+	if v13 == nil then
+		v13 = 4;
 	end;
 	task.defer(function()
-		while { wait(v15) } do
-			if p9:GetAttribute("LobbyGadgetType") ~= p11 then
-				p8.refillSet[p11] = nil;
+		while { wait(v13) } do
+			if p7:GetAttribute("LobbyGadgetType") ~= p9 then
+				p6.refillSet[p9] = nil;
 				return nil;
 			end;
-			local l__items__16 = l__InventoryUtil__5.getInventory(p9).items;
-			local function v17(p12)
-				return p12.itemType == p10.itemType;
-			end;
-			local v18 = nil;
-			for v19, v20 in ipairs(l__items__16) do
-				if v17(v20, v19 - 1, l__items__16) == true then
-					v18 = v20;
+			local v14 = nil;
+			for v15, v16 in ipairs(l__InventoryUtil__5.getInventory(p7).items) do
+				if v16.itemType == p8.itemType == true then
+					v14 = v16;
 					break;
 				end;
 			end;
-			local v21 = not v18;
-			if not v21 then
-				local v22 = p10.amount;
-				if v22 == nil then
-					v22 = 1;
+			local v17 = not v14;
+			if not v17 then
+				local v18 = p8.amount;
+				if v18 == nil then
+					v18 = 1;
 				end;
-				v21 = v18.amount < v22;
+				v17 = v14.amount < v18;
 			end;
-			if v21 then
-				local v23 = p8.lockerNamespace:Get("RefillLobbyGadgetItem"):CallServer({
-					lobbyGadgetItem = p10
+			if v17 then
+				local v19 = p6.lockerNamespace:Get("RefillLobbyGadgetItem"):CallServer({
+					lobbyGadgetItem = p8
 				});
 			end;		
 		end;

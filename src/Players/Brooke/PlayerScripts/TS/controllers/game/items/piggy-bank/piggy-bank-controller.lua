@@ -48,26 +48,28 @@ local l__Players__26 = v3.Players;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
 	l__BlockEngineClientEvents__2.DamageBlock:connect(function(p3)
-		if p3.blockType ~= l__ItemType__3.PINATA then
-			return nil;
-		end;
-		local v7 = p3.blockInstance;
-		if v7 ~= nil then
-			v7 = v7:FindFirstChild("Rig");
-			if v7 ~= nil then
-				v7 = v7:FindFirstChild("AnimationController");
+		task.spawn(function()
+			if p3.blockType ~= l__ItemType__3.PINATA then
+				return nil;
 			end;
-		end;
-		if not v7 then
-			return nil;
-		end;
-		local v8 = v7;
-		if v8 ~= nil then
-			v8 = v8:FindFirstChild("Animator");
-		end;
-		l__GameAnimationUtil__5.playAnimation(v8 or u4("Animator", {
-			Parent = v7
-		}), l__RandomUtil__6.fromList(l__AnimationType__7.PINATA_HIT_1, l__AnimationType__7.PINATA_HIT_2));
+			local v7 = p3.blockInstance;
+			if v7 ~= nil then
+				v7 = v7:FindFirstChild("Rig");
+				if v7 ~= nil then
+					v7 = v7:FindFirstChild("AnimationController");
+				end;
+			end;
+			if not v7 then
+				return nil;
+			end;
+			local v8 = v7;
+			if v8 ~= nil then
+				v8 = v8:FindFirstChild("Animator");
+			end;
+			l__GameAnimationUtil__5.playAnimation(v8 or u4("Animator", {
+				Parent = v7
+			}), l__RandomUtil__6.fromList(l__AnimationType__7.PINATA_HIT_1, l__AnimationType__7.PINATA_HIT_2));
+		end);
 	end);
 	l__KnitClient__8.Controllers.PreloadController:preloadForItemType(l__ItemType__3.PINATA, {
 		sounds = { l__GameSound__9.PINATA_POP_1, l__GameSound__9.PINATA_POP_2, l__GameSound__9.PINATA_POP_3, l__GameSound__9.PINATA_POP_4, l__GameSound__9.PINATA_HIT_1, l__GameSound__9.PINATA_HIT_2, l__GameSound__9.PINATA_HIT_3, l__GameSound__9.PINATA_STAGE_INCREASE }

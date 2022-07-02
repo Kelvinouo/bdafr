@@ -180,42 +180,38 @@ function v6.render(p3)
 			store = p3.props.store
 		};
 		function v35.OnClick()
-			local v36 = l__Flamework__13.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController");
-			if v36:isAppOpen(l__AppConfiguration__14.INVENTORY) or v36:isAppOpen(l__AppConfiguration__14.CHEST_INVENTORY) then
-				if p5.item then
-					local v37 = l__getItemMeta__15(p5.item.itemType);
-					if v37.armor and l__ClientStore__16:getState().Inventory.observedInventory.inventory.armor[v37.armor.slot + 1] == "empty" then
-						l__ClientStore__16:dispatch({
-							type = "InventorySetArmorItem", 
-							item = p5.item, 
-							armorSlot = v37.armor.slot
-						});
-						l__SoundManager__17:playSound(l__RandomUtil__18.fromList(l__GameSound__19.ARMOR_EQUIP));
-						return nil;
-					else
-						l__ClientStore__16:dispatch({
-							type = "InventoryRemoveFromHotbar", 
-							slot = p6
-						});
-						if p5.item then
-							return;
-						end;
-					end;
-				else
-					l__ClientStore__16:dispatch({
-						type = "InventoryRemoveFromHotbar", 
-						slot = p6
-					});
-					if p5.item then
-						return;
-					end;
-				end;
-			else
+			local v36 = nil;
+			local v37 = l__Flamework__13.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController");
+			if not v37:isAppOpen(l__AppConfiguration__14.INVENTORY) and not v37:isAppOpen(l__AppConfiguration__14.CHEST_INVENTORY) then
 				l__ClientStore__16:dispatch({
 					type = "InventorySelectHotbarSlot", 
 					slot = p6
 				});
+				return;
 			end;
+			if p5.item then
+				v36 = l__getItemMeta__15(p5.item.itemType);
+				if not v36.armor or l__ClientStore__16:getState().Inventory.observedInventory.inventory.armor[v36.armor.slot + 1] ~= "empty" then
+					l__ClientStore__16:dispatch({
+						type = "InventoryRemoveFromHotbar", 
+						slot = p6
+					});
+					return;
+				end;
+			else
+				l__ClientStore__16:dispatch({
+					type = "InventoryRemoveFromHotbar", 
+					slot = p6
+				});
+				return;
+			end;
+			l__ClientStore__16:dispatch({
+				type = "InventorySetArmorItem", 
+				item = p5.item, 
+				armorSlot = v36.armor.slot
+			});
+			l__SoundManager__17:playSound(l__RandomUtil__18.fromList(l__GameSound__19.ARMOR_EQUIP));
+			return nil;
 		end;
 		return v3.createElement(l__HotbarTile__12, v35);
 	end;

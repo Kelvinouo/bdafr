@@ -331,7 +331,10 @@ local v4 = {
 	PINATA_STAGE_INCREASE = "rbxassetid://10011665149", 
 	PINATA_AMBIENT_LOOP = "rbxassetid://10011665646", 
 	PINATA_COLLECT_CANDY = "rbxassetid://10011666014", 
-	PINATA_DEPOSIT_CANDY = "rbxassetid://10011666242"
+	PINATA_DEPOSIT_CANDY = "rbxassetid://10011666242", 
+	TOAD_CROAK = "rbxassetid://6608707296", 
+	TOY_HAMMER_HIT = "rbxassetid://10084313910", 
+	LUCKY_BLOCK_SLAM = "rbxassetid://9369390266"
 };
 l__SoundManager__3:registerSound(v4.VENDING_ROLL_TICK, {
 	preload = false
@@ -544,6 +547,11 @@ l__SoundManager__3:registerSound(v4.VOID_PORTAL_TELEPORT);
 l__SoundManager__3:registerSound(v4.VOID_SHIELD_BREAK, {
 	preload = false, 
 	volume = 0.35
+});
+l__SoundManager__3:registerSound(v4.TOAD_CROAK, {
+	preload = false, 
+	volume = 0.35, 
+	playbackSpeed = NumberRange.new(1.2, 1.3)
 });
 if not v2.DeviceUtil.isHoarceKat() then
 	l__SoundManager__3:preload();

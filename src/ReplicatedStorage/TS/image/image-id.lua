@@ -74,6 +74,7 @@ v5.SAFETY_HELMET_SOLID = "rbxassetid://8930638419";
 v5.CLAN = "rbxassetid://9001539387";
 v5.EYE_REGULAR = "rbxassetid://9130922235";
 v5.VOID_ICON_SOLID = "rbxassetid://9867800971";
+v5.SETTING_ICON = "rbxassetid://10005510538";
 v5.TWITTER_SOLID = "rbxassetid://7436065687";
 v5.DISCORD_SOLID = "rbxassetid://7436233304";
 v5.TURRET_CROSSHAIR = "rbxassetid://7285486775";

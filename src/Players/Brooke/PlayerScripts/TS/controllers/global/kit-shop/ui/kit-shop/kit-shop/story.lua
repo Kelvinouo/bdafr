@@ -1,4 +1,3 @@
--- Script Hash: 8ac180f609a0293e20dc49496fd4970d3fe53ab89d63a0dd17f0560c40adc59031b7fe74b73f96b7fc8b4d337de8e9c7
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,14 +13,11 @@ return function(p1)
 		type = "SetEquippedKitSkins", 
 		equippedKitSkins = (function()
 			local v2 = u1.values(l__BedwarsKit__2);
-			local function v3(p2)
-				return { p2, l__BedwarsKitSkin__3.DEFAULT };
+			local v3 = table.create(#v2);
+			for v4, v5 in ipairs(v2) do
+				v3[v4] = { v5, l__BedwarsKitSkin__3.DEFAULT };
 			end;
-			local v4 = table.create(#v2);
-			for v5, v6 in ipairs(v2) do
-				v4[v5] = v3(v6, v5 - 1, v2);
-			end;
-			return u1.fromEntries(v4);
+			return u1.fromEntries(v3);
 		end)()
 	});
 	local u8 = l__CreateRoduxApp__5("KitShop", l__KitShopApp__6, {}, {}, {

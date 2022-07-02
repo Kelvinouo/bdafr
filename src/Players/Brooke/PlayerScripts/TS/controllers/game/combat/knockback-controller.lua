@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -65,6 +64,9 @@ function u1.KnitStart(p2)
 			debug.profileend();
 		end);
 	end);
+end;
+function u1.getLastKnockbackTime(p5)
+	return p5.lastKnockbackTime;
 end;
 u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;

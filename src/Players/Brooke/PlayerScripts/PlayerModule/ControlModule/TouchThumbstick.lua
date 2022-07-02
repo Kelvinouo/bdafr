@@ -1,4 +1,3 @@
--- Script Hash: 0b8ad17ba65e4f8525a4d91dd03637baeb6c3995baec053ba0e94321bff3cc524d5df8593e3b952327680147e30043ea
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__Players__1 = game:GetService("Players");
@@ -112,37 +111,34 @@ function v3.Create(p5, p6)
 		local v9 = Vector2.new(p7.Position.x - u4.x, p7.Position.y - u4.y);
 	end);
 	local function u5(p8)
-		local v10 = p8 / (p5.thumbstickSize / 2);
+		local v10 = Vector2.new(p8.x - u4.x, p8.y - u4.y);
 		local l__magnitude__11 = v10.magnitude;
-		if l__magnitude__11 < 0.05 then
-			local v12 = Vector3.new();
+		local v12 = p5.thumbstickFrame.AbsoluteSize.x / 2;
+		if p5.isFollowStick and v12 < l__magnitude__11 then
+			local v13 = v10.unit * v12;
+			p5.thumbstickFrame.Position = UDim2.new(0, p8.x - p5.thumbstickFrame.AbsoluteSize.x / 2 - v13.x, 0, p8.y - p5.thumbstickFrame.AbsoluteSize.y / 2 - v13.y);
 		else
-			local v13 = v10.unit * ((l__magnitude__11 - 0.05) / 0.95);
-			v12 = Vector3.new(v13.x, 0, v13.y);
+			v10 = v10.unit * math.min(l__magnitude__11, v12);
 		end;
-		p5.moveVector = v12;
+		p5.stickImage.Position = UDim2.new(0, v10.x + p5.stickImage.AbsoluteSize.x / 2, 0, v10.y + p5.stickImage.AbsoluteSize.y / 2);
 	end;
-	local function u6(p9)
-		local v14 = Vector2.new(p9.x - u4.x, p9.y - u4.y);
-		local l__magnitude__15 = v14.magnitude;
-		local v16 = p5.thumbstickFrame.AbsoluteSize.x / 2;
-		if p5.isFollowStick and v16 < l__magnitude__15 then
-			local v17 = v14.unit * v16;
-			p5.thumbstickFrame.Position = UDim2.new(0, p9.x - p5.thumbstickFrame.AbsoluteSize.x / 2 - v17.x, 0, p9.y - p5.thumbstickFrame.AbsoluteSize.y / 2 - v17.y);
-		else
-			v14 = v14.unit * math.min(l__magnitude__15, v16);
-		end;
-		p5.stickImage.Position = UDim2.new(0, v14.x + p5.stickImage.AbsoluteSize.x / 2, 0, v14.y + p5.stickImage.AbsoluteSize.y / 2);
-	end;
-	p5.onTouchMovedConn = l__UserInputService__2.TouchMoved:Connect(function(p10, p11)
-		if p10 == p5.moveTouchObject then
+	p5.onTouchMovedConn = l__UserInputService__2.TouchMoved:Connect(function(p9, p10)
+		if p9 == p5.moveTouchObject then
 			u4 = Vector2.new(p5.thumbstickFrame.AbsolutePosition.x + p5.thumbstickFrame.AbsoluteSize.x / 2, p5.thumbstickFrame.AbsolutePosition.y + p5.thumbstickFrame.AbsoluteSize.y / 2);
-			u5((Vector2.new(p10.Position.x - u4.x, p10.Position.y - u4.y)));
-			u6(p10.Position);
+			local v14 = Vector2.new(p9.Position.x - u4.x, p9.Position.y - u4.y) / (p5.thumbstickSize / 2);
+			local l__magnitude__15 = v14.magnitude;
+			if l__magnitude__15 < 0.05 then
+				local v16 = Vector3.new();
+			else
+				local v17 = v14.unit * ((l__magnitude__15 - 0.05) / 0.95);
+				v16 = Vector3.new(v17.x, 0, v17.y);
+			end;
+			p5.moveVector = v16;
+			u5(p9.Position);
 		end;
 	end);
-	p5.onTouchEndedConn = l__UserInputService__2.TouchEnded:Connect(function(p12, p13)
-		if p12 == p5.moveTouchObject then
+	p5.onTouchEndedConn = l__UserInputService__2.TouchEnded:Connect(function(p11, p12)
+		if p11 == p5.moveTouchObject then
 			p5:OnInputEnded();
 		end;
 	end);

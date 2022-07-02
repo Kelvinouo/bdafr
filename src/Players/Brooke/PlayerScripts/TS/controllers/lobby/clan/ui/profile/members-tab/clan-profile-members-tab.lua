@@ -1,4 +1,3 @@
--- Script Hash: 73c6dd6e969dbc6748418dcf41f0b96b2cbeb7c8d19dd8066492f37b5631e940cbb3961b15eddeae61c093699dc554fc
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -33,7 +32,7 @@ return {
 	ClanProfileMembersTab = v3.new(u3)(function(p1, p2)
 		local l__useState__7 = p2.useState;
 		local v8 = p1.store.Clans.myClanId ~= p1.ClanId;
-		local v9 = not v8 and (p1.store.Clans.myClanMember and l__ClanMemberRank__1.ADMIN < p1.store.Clans.myClanMember.rank);
+		local v9 = not v8 and (p1.store.Clans.myClanMember and l__ClanMemberRank__1.ADMIN <= p1.store.Clans.myClanMember.rank);
 		if v9 == nil then
 			v9 = false;
 		end;
@@ -151,22 +150,19 @@ return {
 			v38[#v38 + 1] = v39;
 		end;
 		local v40 = #v38;
-		local function v41(p6, p7)
-			local v42 = p6[1];
-			return u3.createElement(l__ClanProfileMembersRow__5, {
+		local v41 = table.create(#v21);
+		for v42, v43 in ipairs(v21) do
+			local v44 = v43[1];
+			v41[v42] = u3.createElement(l__ClanProfileMembersRow__5, {
 				Columns = v6, 
-				ClanMember = p6[2], 
+				ClanMember = v43[2], 
 				AdminView = v9, 
-				Index = p7, 
+				Index = v42 - 1, 
 				store = p1.store
 			});
 		end;
-		local v43 = table.create(#v21);
-		for v44, v45 in ipairs(v21) do
-			v43[v44] = v41(v45, v44 - 1, v21);
-		end;
-		for v46, v47 in ipairs(v43) do
-			v38[v40 + v46] = v47;
+		for v45, v46 in ipairs(v41) do
+			v38[v40 + v45] = v46;
 		end;
 		v22[#v22 + 1] = u3.createElement(l__AutoCanvasScrollingFrame__7, v37, v38);
 		return u3.createElement(l__ClanProfilePageLayout__4, {

@@ -1,4 +1,3 @@
--- Script Hash: d63764eaa2f0d9ba0a2c5e8f7c0d8f51c8193e29b59fe6dbde389e75b32bdd5d00d62bcffeb2541bca57b4a51a55d924
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -27,29 +26,25 @@ end;
 function u1.onCharacterAdded(p3, p4)
 	p4:WaitForChild("HumanoidRootPart");
 	wait(1);
-	local v5 = p4:GetDescendants();
-	local function v6(p5)
+	for v5, v6 in ipairs((p4:GetDescendants())) do
+		local v7 = p3:onAccessoryAdded(v6);
+	end;
+	p4.DescendantAdded:Connect(function(p5)
 		return p3:onAccessoryAdded(p5);
-	end;
-	for v7, v8 in ipairs(v5) do
-		v6(v8, v7 - 1, v5);
-	end;
-	p4.DescendantAdded:Connect(function(p6)
-		return p3:onAccessoryAdded(p6);
 	end);
 end;
 local l__getItemMeta__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
-function u1.onAccessoryAdded(p7, p8)
-	if not p8:IsA("Accessory") then
+function u1.onAccessoryAdded(p6, p7)
+	if not p7:IsA("Accessory") then
 		return nil;
 	end;
-	local v9 = l__getItemMeta__3(p8.Name);
-	if not v9 or v9.armor then
+	local v8 = l__getItemMeta__3(p7.Name);
+	if not v8 or v8.armor then
 		return nil;
 	end;
-	for v10, v11 in ipairs(p8:GetDescendants()) do
-		if v11:IsA("BasePart") then
-			table.insert(p7.instances, v11);
+	for v9, v10 in ipairs(p7:GetDescendants()) do
+		if v10:IsA("BasePart") then
+			table.insert(p6.instances, v10);
 		end;
 	end;
 end;

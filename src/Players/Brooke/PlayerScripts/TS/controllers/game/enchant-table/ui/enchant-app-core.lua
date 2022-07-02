@@ -1,4 +1,3 @@
--- Script Hash: 054c393583de6dee1a8ee02a577682cb453e6f547202398f97d268e2125dfa033e93750b9f5139b9dff4eb6e76fd96c1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -128,33 +127,30 @@ return {
 				Size = UDim2.fromScale(1, 0.725), 
 				LayoutOrder = 1
 			}) };
-		local function v16(p3, p4)
-			return u4.createElement(l__EnchantActionButton__13, {
-				ResearchData = p3, 
+		local v16 = table.create(#v4);
+		for v17, v18 in ipairs(v4) do
+			v16[v17] = u4.createElement(l__EnchantActionButton__13, {
+				ResearchData = v18, 
 				Size = UDim2.fromScale(1, 0.2), 
 				LayoutOrder = 2
 			});
 		end;
-		local v17 = table.create(#v4);
-		for v18, v19 in ipairs(v4) do
-			v17[v18] = v16(v19, v18 - 1, v4);
-		end;
-		local v20 = {
+		local v19 = {
 			Size = UDim2.fromScale(1, 0.2), 
 			LayoutOrder = 2
 		};
-		local v21 = { u4.createElement("UIListLayout", {
+		local v20 = { u4.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Center, 
 				VerticalAlignment = Enum.VerticalAlignment.Center, 
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0.05, 0)
 			}) };
-		local v22 = #v21;
-		for v23, v24 in ipairs(v17) do
-			v21[v22 + v23] = v24;
+		local v21 = #v20;
+		for v22, v23 in ipairs(v16) do
+			v20[v21 + v22] = v23;
 		end;
-		v15.EnchantActionButtons = u4.createElement(l__Empty__8, v20, v21);
+		v15.EnchantActionButtons = u4.createElement(l__Empty__8, v19, v20);
 		v13.Right = u4.createElement(l__Empty__8, v14, v15);
 		v11[#v11 + 1] = u4.createElement(l__Empty__8, v12, v13);
 		v9[#v9 + 1] = u4.createElement(l__WidgetComponent__14, v10, v11);

@@ -1,4 +1,3 @@
--- Script Hash: 9d699d1e24d023b604c3656b35aba10a4dd276152c4373a34411919fc1713ed09f8844cc9a456b90583e548f72f64dd4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -10,6 +9,7 @@ return {
 	NpcAnimationAttr = l__Attribute__3.new("NpcAnimation", l__t__2.optional(l__t__2.string)), 
 	NpcSecondaryAnimationAttr = l__Attribute__3.new("NpcSecondaryAnimation", l__t__2.optional(l__t__2.string)), 
 	NpcLookAtPlayerAttr = l__Attribute__3.new("NpcLookAtPlayer", l__t__2.optional(l__t__2.boolean)), 
+	NpcDisableCollisionsAttr = l__Attribute__3.new("NpcDisableCollisions", l__t__2.optional(l__t__2.boolean)), 
 	NpcLookMinDistanceAttr = l__Attribute__3.new("NpcLookMinimumDistance", l__t__2.optional(l__t__2.number)), 
 	NpcScale = l__Attribute__3.new("NpcScale", l__t__2.optional(l__t__2.number)), 
 	NpcCollectionServiceTag = l__Attribute__3.new("NpcCollectionServiceTag", l__t__2.optional(l__t__2.string)), 

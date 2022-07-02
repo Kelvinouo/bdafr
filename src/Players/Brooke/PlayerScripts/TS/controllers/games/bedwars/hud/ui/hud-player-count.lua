@@ -1,4 +1,3 @@
--- Script Hash: a2b0d9ef97966a1aaf5473747308fa7077d19ca8a8f019e0d76f15b10ca673aa02d24b97ad39ad76766cf6a390c4c7c4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -13,76 +12,73 @@ return {
 		local v2 = nil;
 		local v3 = u1.entries(p1.store.Bedwars.finalDeaths);
 		v2 = 0;
-		local function v4(p3, p4)
-			local v5 = p4[1];
-			if p4[2] then
-				return p3;
+		for v4 = 1, #v3 do
+			local v5 = nil;
+			v5 = v2;
+			local v6 = v3[v4];
+			local v7 = v6[1];
+			if not v6[2] then
+				local v8 = v5 + 1;
+			else
+				v8 = v5;
 			end;
-			p3 = p3 + 1;
-			return p3;
+			v2 = v8;
 		end;
-		for v6 = 1, #v3 do
-			v2 = v4(v2, v3[v6], v6 - 1, v3);
-		end;
-		local v7 = nil;
+		local v9 = nil;
 		if p1.store.Game.queueType then
-			v7 = l__QueueMeta__2[p1.store.Game.queueType];
+			v9 = l__QueueMeta__2[p1.store.Game.queueType];
 		end;
-		local v8 = { u3.createElement("ImageLabel", {
+		local v10 = { u3.createElement("ImageLabel", {
 				Image = l__BedwarsImageId__4.USERS_SOLID, 
 				Size = UDim2.new(0, 16, 0, 16), 
 				ScaleType = "Fit", 
 				BackgroundTransparency = 1, 
 				BorderSizePixel = 0
 			}) };
-		local v9 = v7;
-		if v9 then
-			local v10 = {};
-			local v11 = local v12;
-			if v11 == nil then
-				v11 = 0;
-			end;
-			v10.Text = "<b>" .. tostring(v11) .. " / " .. tostring((function(p5)
-				local v13 = nil;
-				local l__teams__14 = p5.teams;
+		local v11 = v9;
+		if v11 then
+			local v12 = {};
+			local v13 = local v14;
+			if v13 == nil then
 				v13 = 0;
-				local function v15(p6, p7)
-					p6 = p6 + p7.maxPlayers;
-					return p6;
+			end;
+			v12.Text = "<b>" .. tostring(v13) .. " / " .. tostring(((function(p3)
+				local v15 = nil;
+				local l__teams__16 = p3.teams;
+				v15 = 0;
+				for v17 = 1, #l__teams__16 do
+					v15 = v15 + l__teams__16[v17].maxPlayers;
 				end;
-				for v16 = 1, #l__teams__14 do
-					v13 = v15(v13, l__teams__14[v16], v16 - 1, l__teams__14);
-				end;
-				return local v17;
-			end)(v7)) .. "</b>";
-			v10.BackgroundTransparency = 1;
-			v10.BorderSizePixel = 0;
-			v10.AutomaticSize = Enum.AutomaticSize.X;
-			v10.Font = Enum.Font.Roboto;
-			v10.TextSize = 16;
-			v10.RichText = true;
-			v10.TextXAlignment = Enum.TextXAlignment.Left;
-			v10.TextColor3 = l__ColorUtil__5.WHITE;
-			v9 = u3.createElement("TextLabel", v10);
+				return local v18;
+			end)(v9))) .. "</b>";
+			v12.BackgroundTransparency = 1;
+			v12.BorderSizePixel = 0;
+			v12.AutomaticSize = Enum.AutomaticSize.X;
+			v12.Font = Enum.Font.Roboto;
+			v12.TextSize = 16;
+			v12.RichText = true;
+			v12.TextXAlignment = Enum.TextXAlignment.Left;
+			v12.TextColor3 = l__ColorUtil__5.WHITE;
+			v11 = u3.createElement("TextLabel", v12);
 		end;
-		local v18 = { u3.createElement("UIListLayout", {
+		local v19 = { u3.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
 				VerticalAlignment = Enum.VerticalAlignment.Center, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Center, 
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0, 8)
 			}) };
-		if v9 then
-			v18[#v18 + 1] = v9;
+		if v11 then
+			v19[#v19 + 1] = v11;
 		end;
-		v8[#v8 + 1] = u3.createElement("Frame", {
+		v10[#v10 + 1] = u3.createElement("Frame", {
 			Size = UDim2.new(0, 0, 1, 0), 
 			AutomaticSize = Enum.AutomaticSize.X, 
 			BackgroundTransparency = 1, 
 			BorderSizePixel = 0
-		}, v18);
+		}, v19);
 		return u3.createElement(l__HudCard__6, {
 			LayoutOrder = p1.LayoutOrder
-		}, v8);
+		}, v10);
 	end)
 };

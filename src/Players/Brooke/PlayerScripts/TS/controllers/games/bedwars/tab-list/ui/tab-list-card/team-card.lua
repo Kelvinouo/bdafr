@@ -1,4 +1,3 @@
--- Script Hash: e160f2bfd6aac0cdee89fffd04fe2920085dfc5b11a80d4ca2ca5749021c0fbbd17496302f9752ed9abb9c430c157f32
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -22,70 +21,74 @@ return {
 			v7 = v7 + 1;
 			v6[v7] = { v8, v9 };
 		end;
-		local function v10(p3)
-			local v11 = p3[1];
-			local v12 = p3[2];
-			if not p1.store.Bedwars.finalDeaths[v12.userId] then
-				return true;
+		local v10 = {};
+		local v11 = 0;
+		local v12, v13, v14 = ipairs(v6);
+		while true do
+			local v15, v16 = v12(v13, v14);
+			if not v15 then
+				break;
 			end;
-			return not p1.store.Bedwars.finalDeaths[v12.userId];
-		end;
-		local v13 = {};
-		local v14 = 0;
-		for v15, v16 in ipairs(v6) do
-			if v10(v16, v15 - 1, v6) == true then
-				v14 = v14 + 1;
-				v13[v14] = v16;
+			local v17 = v16[1];
+			local v18 = v16[2];
+			if p1.store.Bedwars.finalDeaths[v18.userId] then
+				local v19 = not p1.store.Bedwars.finalDeaths[v18.userId];
+			else
+				v19 = true;
 			end;
+			if v19 == true then
+				v11 = v11 + 1;
+				v10[v11] = v16;
+			end;		
 		end;
-		local v17 = {};
-		local v18 = #v17;
-		for v19, v20 in pairs(p1.Team.members) do
-			v18 = v18 + 1;
-			v17[v18] = { v19, v20 };
+		local v20 = {};
+		local v21 = #v20;
+		for v22, v23 in pairs(p1.Team.members) do
+			v21 = v21 + 1;
+			v20[v21] = { v22, v23 };
 		end;
 		if l__Players__1.LocalPlayer then
-			local v21 = l__Players__1.LocalPlayer.UserId;
+			local v24 = l__Players__1.LocalPlayer.UserId;
 		else
-			v21 = l__OfflinePlayerUtil__2.Dummy.oiogy.userId;
+			v24 = l__OfflinePlayerUtil__2.Dummy.oiogy.userId;
 		end;
 		local u9 = l__CardDimensions__4[1];
-		local u10 = p1.store.Bedwars.finalDeaths[v21] or p1.store.Game.matchState == l__MatchState__3.POST;
-		local function u11(p4)
-			table.sort(p4, function(p5, p6)
-				local v22 = p5[1];
-				local v23 = p6[1];
-				local v24 = p1.store.Bedwars.kills[p5[2].userId];
-				if v24 == nil then
-					v24 = 0;
+		local u10 = p1.store.Bedwars.finalDeaths[v24] or p1.store.Game.matchState == l__MatchState__3.POST;
+		local function u11(p3)
+			table.sort(p3, function(p4, p5)
+				local v25 = p4[1];
+				local v26 = p5[1];
+				local v27 = p1.store.Bedwars.kills[p4[2].userId];
+				if v27 == nil then
+					v27 = 0;
 				end;
-				local v25 = p1.store.Bedwars.kills[p6[2].userId];
-				if v25 == nil then
-					v25 = 0;
+				local v28 = p1.store.Bedwars.kills[p5[2].userId];
+				if v28 == nil then
+					v28 = 0;
 				end;
-				return v25 < v24;
+				return v28 < v27;
 			end);
-			local function v26(p7, p8)
-				local v27 = p7[1];
-				local v28 = {};
-				local v29 = 0;
-				for v30, v31 in pairs(p1.Team.members) do
-					v29 = v29 + 1;
+			local function v29(p6, p7)
+				local v30 = p6[1];
+				local v31 = {};
+				local v32 = 0;
+				for v33 in pairs(p1.Team.members) do
+					v32 = v32 + 1;
 				end;
-				v28.LastRow = p8 == v29 - 1;
-				v28.LayoutOrder = p8;
-				v28.Player = p7[2];
-				v28.Team = p1.Team;
-				v28.RowWidth = u9;
-				v28.RowHeight = l__tabListLayout__4.maxRowSizeY;
-				v28.store = p1.store;
-				return u5.createElement(l__PlayerRow__6, v28);
+				v31.LastRow = p7 == v32 - 1;
+				v31.LayoutOrder = p7;
+				v31.Player = p6[2];
+				v31.Team = p1.Team;
+				v31.RowWidth = u9;
+				v31.RowHeight = l__tabListLayout__4.maxRowSizeY;
+				v31.store = p1.store;
+				return u5.createElement(l__PlayerRow__6, v31);
 			end;
-			local v32 = table.create(#p4);
-			for v33, v34 in ipairs(p4) do
-				v32[v33] = v26(v34, v33 - 1, p4);
+			local v34 = table.create(#p3);
+			for v35, v36 in ipairs(p3) do
+				v34[v35] = v29(v36, v35 - 1, p3);
 			end;
-			return v32;
+			return v34;
 		end;
 		return u5.createElement("Frame", {
 			Size = UDim2.new(1, 0, l__tabListLayout__4.rows.cards.card.height, 0), 
@@ -104,30 +107,30 @@ return {
 				RowWidth = u9, 
 				store = p1.store
 			}), u5.createElement(function()
-				local v35 = {
+				local v37 = {
 					Size = UDim2.fromScale(1, 0), 
 					AutomaticSize = "Y", 
 					BorderSizePixel = 0, 
 					BackgroundTransparency = 1, 
 					BackgroundColor3 = l__Theme__7.backgroundPrimary
 				};
-				local v36 = { u5.createElement("UIListLayout", {
+				local v38 = { u5.createElement("UIListLayout", {
 						FillDirection = Enum.FillDirection.Vertical, 
 						VerticalAlignment = Enum.VerticalAlignment.Top, 
 						HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 						SortOrder = Enum.SortOrder.LayoutOrder, 
 						Padding = UDim.new(0, 0)
 					}) };
-				local v37 = #v36;
+				local v39 = #v38;
 				if u10 then
-					local v38 = u11(v17);
+					local v40 = u11(v20);
 				else
-					v38 = u11(v13);
+					v40 = u11(v10);
 				end;
-				for v39, v40 in ipairs(v38) do
-					v36[v37 + v39] = v40;
+				for v41, v42 in ipairs(v40) do
+					v38[v39 + v41] = v42;
 				end;
-				return u5.createElement("Frame", v35, v36);
+				return u5.createElement("Frame", v37, v38);
 			end) });
 	end)
 };

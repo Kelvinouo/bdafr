@@ -1,4 +1,3 @@
--- Script Hash: ee22a2e3b93d012314678ec185179581378f753fd873d959407a3a606a95dc5bcbae9d6ffdf6014512d84690c6348b13
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -19,20 +18,16 @@ u2 = function(p1)
 end;
 (function()
 	u2((l__GetTarmacAssetFromPath__1({ "emotes" })));
-	local v6 = v2.values(l__BattlePassSeason__3);
-	local function v7(p2)
-		local v8 = l__GetTarmacAssetFromPath__1({ "emotes", p2 });
+	for v6, v7 in ipairs((v2.values(l__BattlePassSeason__3))) do
+		local v8 = l__GetTarmacAssetFromPath__1({ "emotes", v7 });
 		if v8 then
 			u2(v8);
 		end;
 	end;
-	for v9, v10 in ipairs(v6) do
-		v7(v10, v9 - 1, v6);
-	end;
 end)();
 return {
-	getEmoteAsset = function(p3)
-		return u6[p3];
+	getEmoteAsset = function(p2)
+		return u6[p2];
 	end, 
 	EmoteAssets = u6
 };

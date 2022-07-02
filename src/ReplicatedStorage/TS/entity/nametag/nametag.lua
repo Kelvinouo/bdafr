@@ -1,4 +1,3 @@
--- Script Hash: 390eba0dd5ac514c6963fbbf0b337960c2cf068fe9266292e8d946fbfacf14eac29946b0d5183042d80b4690f023fec4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -58,15 +57,15 @@ return {
 		l__useEffect__4(function()
 			local u11 = nil;
 			task.spawn(function()
-				local function v19()
+				local v19 = p1.EntityInstance:GetAttribute("Clan");
+				if v19 ~= "" and v19 then
+					v8(v19);
+				end;
+				u11 = p1.EntityInstance:GetAttributeChangedSignal("Clan"):Connect(function(p3)
 					local v20 = p1.EntityInstance:GetAttribute("Clan");
 					if v20 ~= "" and v20 then
 						v8(v20);
 					end;
-				end;
-				v19();
-				u11 = p1.EntityInstance:GetAttributeChangedSignal("Clan"):Connect(function(p3)
-					v19();
 				end);
 			end);
 			return function()

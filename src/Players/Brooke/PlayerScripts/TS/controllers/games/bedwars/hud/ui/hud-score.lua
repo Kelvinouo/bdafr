@@ -1,4 +1,3 @@
--- Script Hash: ab327e174ed803c0a099ce4ba364a163ddfc39542384f1dafa586e53495ff820d1d1dface675a704def16255ccd88b5c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -8,24 +7,20 @@ local l__BedwarsImageId__3 = v1.import(script, game:GetService("ReplicatedStorag
 local l__ColorUtil__4 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).ColorUtil;
 return {
 	HudScore = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u1)(function(p1, p2)
-		local l__teams__2 = p1.store.Game.teams;
-		local function v3(p3)
-			return p3.id == p1.teamId;
-		end;
-		local v4 = nil;
-		for v5, v6 in ipairs(l__teams__2) do
-			if v3(v6, v5 - 1, l__teams__2) == true then
-				v4 = v6;
+		local v2 = nil;
+		for v3, v4 in ipairs(p1.store.Game.teams) do
+			if v4.id == p1.teamId == true then
+				v2 = v4;
 				break;
 			end;
 		end;
-		local v7 = v4;
-		if v7 ~= nil then
-			v7 = v7.name;
+		local v5 = v2;
+		if v5 ~= nil then
+			v5 = v5.name;
 		end;
-		local v8 = v7;
-		if v8 == nil then
-			v8 = p1.teamId;
+		local v6 = v5;
+		if v6 == nil then
+			v6 = p1.teamId;
 		end;
 		return u1.createElement(l__HudCard__2, {
 			LayoutOrder = p1.LayoutOrder
@@ -47,7 +42,7 @@ return {
 					SortOrder = Enum.SortOrder.LayoutOrder, 
 					Padding = UDim.new(0, 8)
 				}), u1.createElement("TextLabel", {
-					Text = "<b>" .. v8 .. ": " .. tostring(p1.score) .. "</b>", 
+					Text = "<b>" .. v6 .. ": " .. tostring(p1.score) .. "</b>", 
 					BackgroundTransparency = 1, 
 					BorderSizePixel = 0, 
 					AutomaticSize = Enum.AutomaticSize.X, 

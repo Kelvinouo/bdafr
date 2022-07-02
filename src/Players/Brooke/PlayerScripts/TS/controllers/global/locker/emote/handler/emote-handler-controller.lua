@@ -1,4 +1,3 @@
--- Script Hash: a7d7d6de28bd9b7b0987d5ffea26ff90a5e490a1e3343052c5be4eb88e51094faf3b34a2fb1bc1e49a3a9217df1ae2de
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -28,8 +27,19 @@ function v3.KnitStart(p2)
 		local function v6(p6, p7)
 			local u3 = false;
 			local u4 = p6.new();
-			local function v7(p8)
-				if p8 == p7 then
+			if p4:GetAttribute("PlayingEmote") == p7 then
+				u3 = true;
+				if u4 ~= nil then
+					u4:enable(p3, p4, p7);
+				end;
+			elseif u3 then
+				if u4 ~= nil then
+					u4:disable(p3, p4, p7);
+				end;
+				u3 = false;
+			end;
+			p4:GetAttributeChangedSignal("PlayingEmote"):Connect(function()
+				if p4:GetAttribute("PlayingEmote") == p7 then
 					u3 = true;
 					if u4 ~= nil then
 						u4:enable(p3, p4, p7);
@@ -41,23 +51,29 @@ function v3.KnitStart(p2)
 					end;
 					u3 = false;
 				end;
-			end;
-			v7(p4:GetAttribute("PlayingEmote"));
-			p4:GetAttributeChangedSignal("PlayingEmote"):Connect(function()
-				v7(p4:GetAttribute("PlayingEmote"));
 			end);
 			p5:GiveTask(function()
-				v7(nil);
+				if p7 == nil then
+					u3 = true;
+					if u4 ~= nil then
+						u4:enable(p3, p4, p7);
+					end;
+				elseif u3 then
+					if u4 ~= nil then
+						u4:disable(p3, p4, p7);
+					end;
+					u3 = false;
+				end;
 				u4 = nil;
 			end);
 		end;
-		for v8, v9 in pairs(l__handlers__5) do
-			v6(v9, v8, l__handlers__5);
+		for v7, v8 in pairs(l__handlers__5) do
+			v6(v8, v7, l__handlers__5);
 		end;
 	end);
 end;
-function v3.registerHandler(p9, p10, p11)
-	p9.handlers[p10] = p11;
+function v3.registerHandler(p8, p9, p10)
+	p8.handlers[p9] = p10;
 end;
 u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v3.new());

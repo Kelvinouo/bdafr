@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -148,17 +147,18 @@ function u1.KnitStart(p2)
 							v19.Parent = p8;
 							l__WeldUtil__12.weldCharacterAccessories(p8);
 							p11:GetMarkerReachedSignal("activate_blowtorch"):Wait();
-							local v20 = v19:GetDescendants();
-							local function v21(p12)
-								if p12:IsA("ParticleEmitter") then
-									p12.Enabled = true;
+							local v20, v21, v22 = ipairs((v19:GetDescendants()));
+							while true do
+								local v23, v24 = v20(v21, v22);
+								if not v23 then
+									break;
 								end;
-								if p12:IsA("Light") then
-									p12.Enabled = true;
+								if v24:IsA("ParticleEmitter") then
+									v24.Enabled = true;
 								end;
-							end;
-							for v22, v23 in ipairs(v20) do
-								v21(v23, v22 - 1, v20);
+								if v24:IsA("Light") then
+									v24.Enabled = true;
+								end;							
 							end;
 							p11:GetMarkerReachedSignal("despawn_blowtorch"):Wait();
 							v19:Destroy();
@@ -179,32 +179,32 @@ function u1.KnitStart(p2)
 		end;
 		u18((l__Humanoid__11:WaitForChild("Animator")));
 	end);
-	l__default__13.Client:WaitFor("RemoteName"):andThen(function(p13)
-		p13:Connect(function(p14)
-			local v24 = p14.extra;
-			if v24 ~= nil then
-				v24 = v24.pyroBrittleAttack;
+	l__default__13.Client:WaitFor("RemoteName"):andThen(function(p12)
+		p12:Connect(function(p13)
+			local v25 = p13.extra;
+			if v25 ~= nil then
+				v25 = v25.pyroBrittleAttack;
 			end;
-			if v24 then
-				local v25 = {};
-				if p14.entityInstance == l__Players__4.LocalPlayer.Character then
-					local v26 = nil;
+			if v25 then
+				local v26 = {};
+				if p13.entityInstance == l__Players__4.LocalPlayer.Character then
+					local v27 = nil;
 				else
-					local v27 = p14.entityInstance.PrimaryPart;
-					if v27 ~= nil then
-						v27 = v27.Position;
+					local v28 = p13.entityInstance.PrimaryPart;
+					if v28 ~= nil then
+						v28 = v28.Position;
 					end;
-					v26 = v27;
+					v27 = v28;
 				end;
-				v25.position = v26;
-				l__SoundManager__10:playSound(l__GameSound__11.BRITTLE_HIT, v25);
+				v26.position = v27;
+				l__SoundManager__10:playSound(l__GameSound__11.BRITTLE_HIT, v26);
 			end;
 		end);
 	end);
 end;
 local l__Flamework__20 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 local l__BedwarsAppIds__21 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "types", "app-config").BedwarsAppIds;
-function u1.openUpgradeMenu(p15)
+function u1.openUpgradeMenu(p14)
 	l__Flamework__20.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__21.FLAMETHROWER_UPGRADES, {});
 end;
 u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;

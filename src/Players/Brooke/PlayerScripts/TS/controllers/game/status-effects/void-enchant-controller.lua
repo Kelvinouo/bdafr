@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -38,12 +37,8 @@ function v5.KnitStart(p2)
 			p2:updateStacks(p4, v8);
 		end;
 		p5:GiveTask(function()
-			local v9 = l__CollectionService__3:GetTagged(p3.Name .. ":void_enchant_orb");
-			local function v10(p6)
-				p6:Destroy();
-			end;
-			for v11, v12 in ipairs(v9) do
-				v10(v12, v11 - 1, v9);
+			for v9, v10 in ipairs((l__CollectionService__3:GetTagged(p3.Name .. ":void_enchant_orb"))) do
+				v10:Destroy();
 			end;
 		end);
 	end);
@@ -59,56 +54,56 @@ local l__GameSound__11 = v1.import(script, game:GetService("ReplicatedStorage"),
 local l__Players__12 = v3.Players;
 local l__KnitClient__13 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__EffectUtil__14 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "effect", "effect-util").EffectUtil;
-function v5.updateStacks(p7, p8, p9)
-	local v13 = l__CollectionService__3:GetTagged(p8.Name .. ":void_enchant_orb");
-	local v14 = nil;
-	if #v13 > 0 then
-		v14 = v13[1];
+function v5.updateStacks(p6, p7, p8)
+	local v11 = l__CollectionService__3:GetTagged(p7.Name .. ":void_enchant_orb");
+	local v12 = nil;
+	if #v11 > 0 then
+		v12 = v11[1];
 	end;
-	if p9 == 0 and v14 then
-		v14:Destroy();
+	if p8 == 0 and v12 then
+		v12:Destroy();
 		return nil;
 	end;
-	if v14 == nil then
-		local v15 = u4.new();
-		v14 = l__ReplicatedStorage__5.Assets.Effects.VoidEnchantOrb:Clone();
-		v14.Parent = l__Workspace__6;
-		l__CollectionService__3:AddTag(v14, p8.Name .. ":void_enchant_orb");
-		v14:SetAttribute("CurrentSize", 1);
+	if v12 == nil then
+		local v13 = u4.new();
+		v12 = l__ReplicatedStorage__5.Assets.Effects.VoidEnchantOrb:Clone();
+		v12.Parent = l__Workspace__6;
+		l__CollectionService__3:AddTag(v12, p7.Name .. ":void_enchant_orb");
+		v12:SetAttribute("CurrentSize", 1);
 		local u15 = 0;
-		l__RunService__8:BindToRenderStep(l__HttpService__7:GenerateGUID(false), Enum.RenderPriority.Last.Value, function(p10)
-			u15 = u15 + p10;
-			local l__Head__16 = p8:FindFirstChild("Head");
-			if not l__Head__16 then
+		l__RunService__8:BindToRenderStep(l__HttpService__7:GenerateGUID(false), Enum.RenderPriority.Last.Value, function(p9)
+			u15 = u15 + p9;
+			local l__Head__14 = p7:FindFirstChild("Head");
+			if not l__Head__14 then
 				return nil;
 			end;
-			local v17 = v14;
-			if v17 ~= nil then
-				v17 = v17.PrimaryPart;
+			local v15 = v12;
+			if v15 ~= nil then
+				v15 = v15.PrimaryPart;
 			end;
-			if not v17 then
+			if not v15 then
 				return nil;
 			end;
-			v14:SetPrimaryPartCFrame(CFrame.new(l__Head__16.Position + Vector3.new(0, 5, 0)) * CFrame.Angles(math.pi * 2 * (u15 % 2), math.pi * 2 * (u15 % 3), math.pi * 2 * (u15 % 1.5)));
+			v12:SetPrimaryPartCFrame(CFrame.new(l__Head__14.Position + Vector3.new(0, 5, 0)) * CFrame.Angles(math.pi * 2 * (u15 % 2), math.pi * 2 * (u15 % 3), math.pi * 2 * (u15 % 1.5)));
 		end);
-		v15:GiveTask(l__default__9.Client:Get("RemoteName"):Connect(function(p11)
-			if p11.entityInstance == p8 and v14 then
-				local v18 = v14.PrimaryPart;
-				if v18 ~= nil then
-					v18 = v18.Position;
+		v13:GiveTask(l__default__9.Client:Get("RemoteName"):Connect(function(p10)
+			if p10.entityInstance == p7 and v12 then
+				local v16 = v12.PrimaryPart;
+				if v16 ~= nil then
+					v16 = v16.Position;
 				end;
-				v14:Destroy();
-				if v18 then
-					local v19 = {};
-					if p8 == l__Players__12.LocalPlayer.Character then
-						local v20 = nil;
+				v12:Destroy();
+				if v16 then
+					local v17 = {};
+					if p7 == l__Players__12.LocalPlayer.Character then
+						local v18 = nil;
 					else
-						v20 = v18;
+						v18 = v16;
 					end;
-					v19.position = v20;
-					l__SoundManager__10:playSound(l__GameSound__11.ENCHANT_VOID_EXPLODE, v19);
+					v17.position = v18;
+					l__SoundManager__10:playSound(l__GameSound__11.ENCHANT_VOID_EXPLODE, v17);
 					l__KnitClient__13.Controllers.FancyExplosionController:createExplosion({
-						position = v18, 
+						position = v16, 
 						radius = 3, 
 						randomSizeOffset = 0, 
 						randomPositionOffset = 0, 
@@ -119,22 +114,22 @@ function v5.updateStacks(p7, p8, p9)
 				end;
 			end;
 		end));
-		v14.AncestryChanged:Connect(function(p12, p13)
-			if p13 == nil then
-				v15:DoCleaning();
+		v12.AncestryChanged:Connect(function(p11, p12)
+			if p12 == nil then
+				v13:DoCleaning();
 			end;
 		end);
 	end;
-	l__EffectUtil__14:playEffects({ v14.Ball.StackBurst }, p8);
-	if v14.PrimaryPart then
-		local v21 = {};
-		if p8 == l__Players__12.LocalPlayer.Character then
-			local v22 = nil;
+	l__EffectUtil__14:playEffects({ v12.Ball.StackBurst }, p7);
+	if v12.PrimaryPart then
+		local v19 = {};
+		if p7 == l__Players__12.LocalPlayer.Character then
+			local v20 = nil;
 		else
-			v22 = v14.PrimaryPart.Position;
+			v20 = v12.PrimaryPart.Position;
 		end;
-		v21.position = v22;
-		l__SoundManager__10:playSound(l__GameSound__11.ENCHANT_VOID_HIT, v21);
+		v19.position = v20;
+		l__SoundManager__10:playSound(l__GameSound__11.ENCHANT_VOID_HIT, v19);
 	end;
 end;
 u1 = l__KnitClient__13.CreateController;

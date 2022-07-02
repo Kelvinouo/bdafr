@@ -1,4 +1,3 @@
--- Script Hash: 7014b1119e753d4556e54cf301e838aa2c44ddba722bdfbd33e0d14ad0d512892e8c60c61a8d101b1d40165a32389cf1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -79,6 +78,8 @@ v2.SHIELD_ACTIVE = "shield_active";
 v1.shield_active = "SHIELD_ACTIVE";
 v2.SHIELD_DOWN = "shield_down";
 v1.shield_down = "SHIELD_DOWN";
+v2.DIZZY = "dizzy";
+v1.dizzy = "DIZZY";
 return {
 	StatusEffectType = v2
 };

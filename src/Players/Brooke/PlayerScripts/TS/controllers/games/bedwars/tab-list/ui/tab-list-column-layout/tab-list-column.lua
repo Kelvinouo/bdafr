@@ -1,4 +1,3 @@
--- Script Hash: 817b7a3f90788223f2c7e6e695ddb65bafb7e03c78b3146893023224c378d8970f24335702429cb5a2a1650007f7c00f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -12,53 +11,49 @@ return {
 				v3 = v3 + 1;
 				v2[v3] = { v4, v5 };
 			end;
-			local function v6(p3)
-				local v7 = p3[1];
-				if table.find(p1.ColumnData.children, p3[2].props.Team.id) ~= nil then
-					return true;
+			local v6 = {};
+			local v7 = 0;
+			local v8, v9, v10 = ipairs(v2);
+			while true do
+				local v11, v12 = v8(v9, v10);
+				if not v11 then
+					break;
 				end;
-				return false;
+				local v13 = v12[1];
+				if table.find(p1.ColumnData.children, v12[2].props.Team.id) ~= nil == true then
+					v7 = v7 + 1;
+					v6[v7] = v12;
+				end;			
 			end;
-			local v8 = {};
-			local v9 = 0;
-			for v10, v11 in ipairs(v2) do
-				if v6(v11, v10 - 1, v2) == true then
-					v9 = v9 + 1;
-					v8[v9] = v11;
-				end;
+			local v14 = table.create(#v6);
+			for v15, v16 in ipairs(v6) do
+				local v17 = v16[1];
+				v14[v15] = v16[2];
 			end;
-			local function v12(p4)
-				local v13 = p4[1];
-				return p4[2];
-			end;
-			local v14 = table.create(#v8);
-			for v15, v16 in ipairs(v8) do
-				v14[v15] = v12(v16, v15 - 1, v8);
-			end;
-			local v17 = v14;
+			local v18 = v14;
 		else
-			v17 = nil;
+			v18 = nil;
 		end;
-		local v18 = {
+		local v19 = {
 			Size = UDim2.fromScale(1 / p1.Columns, 1), 
 			AutomaticSize = "Y", 
 			BorderSizePixel = 0, 
 			BackgroundTransparency = 1, 
 			LayoutOrder = p1.ColumnData.columnId
 		};
-		local v19 = { u1.createElement("UIListLayout", {
+		local v20 = { u1.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Vertical, 
 				VerticalAlignment = Enum.VerticalAlignment.Top, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0, 0)
 			}) };
-		local v20 = #v19;
-		if v17 then
-			for v21, v22 in ipairs(v17) do
-				v19[v20 + v21] = v22;
+		local v21 = #v20;
+		if v18 then
+			for v22, v23 in ipairs(v18) do
+				v20[v21 + v22] = v23;
 			end;
 		end;
-		return u1.createElement("Frame", v18, v19);
+		return u1.createElement("Frame", v19, v20);
 	end)
 };

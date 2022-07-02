@@ -217,90 +217,84 @@ function u1.playEmoteBeginSounds(p16, p17, p18)
 		end;
 		local v43 = u14.new();
 		v43:GiveTask(function()
-			local function v44(p20)
-				p20:Stop();
-				p20:Destroy();
-			end;
-			for v45, v46 in ipairs(v37) do
-				v44(v46, v45 - 1, v37);
+			for v44, v45 in ipairs(v37) do
+				v45:Stop();
+				v45:Destroy();
 			end;
 		end);
 		p16.emoteSoundMaid[v42] = v43;
 	end;
 	return v37;
 end;
-function u1.playEmoteEndSounds(p21, p22, p23)
-	local v47 = l__EmoteMeta__11[p22];
-	local l__Character__48 = p23.Character;
-	if not l__Character__48 then
+function u1.playEmoteEndSounds(p20, p21, p22)
+	local v46 = l__EmoteMeta__11[p21];
+	local l__Character__47 = p22.Character;
+	if not l__Character__47 then
 		return nil;
 	end;
-	local v49 = v47.soundsOnEnd or {};
-	if v47.emoteDisplayType ~= nil then
-		local l__soundsOnEnd__50 = l__EmoteDisplayMeta__12[v47.emoteDisplayType].soundsOnEnd;
-		if l__soundsOnEnd__50 then
-			local v51 = {};
-			local v52 = #v51;
-			local v53 = #v49;
-			table.move(v49, 1, v53, v52 + 1, v51);
-			table.move(l__soundsOnEnd__50, 1, #l__soundsOnEnd__50, v52 + v53 + 1, v51);
-			v49 = v51;
+	local v48 = v46.soundsOnEnd or {};
+	if v46.emoteDisplayType ~= nil then
+		local l__soundsOnEnd__49 = l__EmoteDisplayMeta__12[v46.emoteDisplayType].soundsOnEnd;
+		if l__soundsOnEnd__49 then
+			local v50 = {};
+			local v51 = #v50;
+			local v52 = #v48;
+			table.move(v48, 1, v52, v51 + 1, v50);
+			table.move(l__soundsOnEnd__49, 1, #l__soundsOnEnd__49, v51 + v52 + 1, v50);
+			v48 = v50;
 		end;
 	end;
-	local function v54(p24)
-		if p24.sound == "" then
+	local function v53(p23)
+		if p23.sound == "" then
 			return nil;
 		end;
-		local v55 = l__SoundManager__19:playSound(p24.sound, {
-			position = l__Character__48:GetPrimaryPartCFrame().Position, 
-			parent = l__Character__48.PrimaryPart, 
+		local v54 = l__SoundManager__19:playSound(p23.sound, {
+			position = l__Character__47:GetPrimaryPartCFrame().Position, 
+			parent = l__Character__47.PrimaryPart, 
 			rollOffMaxDistance = 30, 
 			volumeMultiplier = 0.5
 		});
-		if v55 then
-			v55.PlayOnRemove = true;
-			v55:Destroy();
+		if v54 then
+			v54.PlayOnRemove = true;
+			v54:Destroy();
 		end;
-		return v55;
+		return v54;
 	end;
-	local v56 = {};
-	local v57 = 0;
-	for v58, v59 in ipairs(v49) do
-		local v60 = v54(v59, v58 - 1, v49);
-		if v60 ~= nil then
-			v57 = v57 + 1;
-			v56[v57] = v60;
+	local v55 = {};
+	local v56 = 0;
+	for v57, v58 in ipairs(v48) do
+		local v59 = v53(v58, v57 - 1, v48);
+		if v59 ~= nil then
+			v56 = v56 + 1;
+			v55[v56] = v59;
 		end;
 	end;
-	return v56;
+	return v55;
 end;
 local l__ContentProvider__20 = v3.ContentProvider;
-function u1.preloadEmote(p25)
-	local v61 = l__EmoteMeta__11[l__ClientStore__5:getState().Locker.selectedSpray];
-	local l__image__62 = v61.image;
-	if l__image__62 ~= "" and l__image__62 then
-		l__preloadImages__7({ v61.image });
+function u1.preloadEmote(p24)
+	local v60 = l__EmoteMeta__11[l__ClientStore__5:getState().Locker.selectedSpray];
+	local l__image__61 = v60.image;
+	if l__image__61 ~= "" and l__image__61 then
+		l__preloadImages__7({ v60.image });
 	end;
 	task.spawn(function()
-		if v61.animation then
-			l__ContentProvider__20:PreloadAsync({ l__GameAnimationUtil__13.getAnimation(v61.animation.type) });
+		if v60.animation then
+			l__ContentProvider__20:PreloadAsync({ l__GameAnimationUtil__13.getAnimation(v60.animation.type) });
 		end;
 	end);
 end;
-function u1.playEmoteShowcase(p26, p27)
-	p26.activeEmoteShowcaseSounds = p26:playEmoteBeginSounds(p27);
+function u1.playEmoteShowcase(p25, p26)
+	p25.activeEmoteShowcaseSounds = p25:playEmoteBeginSounds(p26);
 end;
-function u1.stopEmoteShowcase(p28)
-	local v63 = p28.activeEmoteShowcaseSounds;
-	if v63 then
-		local function v64(p29)
-			p29:Stop();
-			p29:Destroy();
+function u1.stopEmoteShowcase(p27)
+	local v62 = p27.activeEmoteShowcaseSounds;
+	if v62 then
+		for v63, v64 in ipairs(v62) do
+			v64:Stop();
+			v64:Destroy();
 		end;
-		for v65, v66 in ipairs(v63) do
-			v64(v66, v65 - 1, v63);
-		end;
-		p28.activeEmoteShowcaseSounds = nil;
+		p27.activeEmoteShowcaseSounds = nil;
 	end;
 end;
 u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;

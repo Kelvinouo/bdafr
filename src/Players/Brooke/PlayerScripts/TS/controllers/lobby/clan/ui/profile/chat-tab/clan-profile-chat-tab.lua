@@ -1,4 +1,3 @@
--- Script Hash: 07741eeda9626bc80374d4b589ec39c5a7665e4542b61a8a9e105fc9e78b6d49a91b6f5357edee59b9576f58cdcc8b2f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -182,39 +181,36 @@ return {
 			v23[v24 + v25] = v26;
 		end;
 		v16[v17 + 1] = u1.createElement(l__AutoCanvasScrollingFrame__10, v22, v23);
-		local v27 = {};
-		local function u17(p6)
-			local v28 = l__Flamework__4.resolveDependency("client/controllers/lobby/clan/ui/profile/chat-tab/clan-chat-controller@ClanChatController"):sendMessage(p6);
-			if not v28.success then
-				v9(v28.errorMessage);
-				return;
-			end;
-			if v28.success and v8 ~= "" then
-				v9("");
-			end;
-		end;
-		function v27.OnEnter(p7)
-			u17(p7);
-		end;
-		v27.ClearTextOnEnter = true;
-		v27.TextBox = {
-			Size = UDim2.fromScale(1, 0.1), 
-			TextXAlignment = Enum.TextXAlignment.Left, 
-			PlaceholderText = "Send a message", 
-			LayoutOrder = 2, 
-			ClearTextOnFocus = false
-		};
-		v27.MaxCharacters = 60;
-		v16[v17 + 2] = u1.createElement(l__TextInputComponent__11, v27, { u1.createElement("UIPadding", {
+		v16[v17 + 2] = u1.createElement(l__TextInputComponent__11, {
+			OnEnter = function(p6)
+				local v27 = l__Flamework__4.resolveDependency("client/controllers/lobby/clan/ui/profile/chat-tab/clan-chat-controller@ClanChatController"):sendMessage(p6);
+				if not v27.success then
+					v9(v27.errorMessage);
+					return;
+				end;
+				if v27.success and v8 ~= "" then
+					v9("");
+				end;
+			end, 
+			ClearTextOnEnter = true, 
+			TextBox = {
+				Size = UDim2.fromScale(1, 0.1), 
+				TextXAlignment = Enum.TextXAlignment.Left, 
+				PlaceholderText = "Send a message", 
+				LayoutOrder = 2, 
+				ClearTextOnFocus = false
+			}, 
+			MaxCharacters = 60
+		}, { u1.createElement("UIPadding", {
 				PaddingTop = UDim.new(0.05, 0), 
 				PaddingBottom = UDim.new(0.05, 0), 
 				PaddingLeft = UDim.new(0.05, 0), 
 				PaddingRight = UDim.new(0.05, 0)
 			}) });
 		v13[v14 + 1] = u1.createElement(l__Empty__7, v15, v16);
-		local v29 = false;
+		local v28 = false;
 		if v8 ~= "" then
-			v29 = u1.createFragment({
+			v28 = u1.createFragment({
 				ErrorMessage = u1.createElement("TextLabel", {
 					Position = UDim2.fromScale(0, 1.01), 
 					Size = UDim2.new(1, 0, 0, 16), 
@@ -231,8 +227,8 @@ return {
 					}) })
 			});
 		end;
-		if v29 then
-			v13[v14 + 2] = v29;
+		if v28 then
+			v13[v14 + 2] = v28;
 		end;
 		return u1.createElement(l__ClanProfilePageLayout__13, {
 			Title = "CLAN CHAT", 

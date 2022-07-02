@@ -1,4 +1,3 @@
--- Script Hash: a9a4e18b495c6700e9c22c1d664d50c1919d9102eeca659b9a455932f50a06f564f04b203e4158da647956251d6156ed
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -29,28 +28,25 @@ return {
 			ImageTransparency = 1, 
 			AutoButtonColor = false
 		};
-		local function u14()
-			if l__DeviceUtil__2.isHoarceKat() then
-				return nil;
-			end;
-			l__KnitClient__3.Controllers.ClanController:invitePlayerToClan(p1.Player, l__ClientStore__4:getState().Clans.myClanId);
-		end;
 		v6[u5.Event.MouseButton1Click] = function()
 			l__SoundManager__8:playSound(l__LobbyClientConfig__9.sounds.UI_CLICK);
 			v4(true);
-			u14();
+			if l__DeviceUtil__2.isHoarceKat() then
+				return;
+			end;
+			l__KnitClient__3.Controllers.ClanController:invitePlayerToClan(p1.Player, l__ClientStore__4:getState().Clans.myClanId);
 		end;
-		local u15 = u1.new();
+		local u14 = u1.new();
 		v6[u5.Event.MouseEnter] = function(p3)
 			if v3 then
 				return nil;
 			end;
-			u15:DoCleaning();
+			u14:DoCleaning();
 			local v7 = l__TweenService__10:Create(p3, TweenInfo.new(0.12), {
 				BackgroundTransparency = 0.3
 			});
 			v7:Play();
-			u15:GiveTask(function()
+			u14:GiveTask(function()
 				v7:Cancel();
 			end);
 		end;
@@ -58,12 +54,12 @@ return {
 			if v3 then
 				return nil;
 			end;
-			u15:DoCleaning();
+			u14:DoCleaning();
 			local v8 = l__TweenService__10:Create(p4, TweenInfo.new(0.12), {
 				BackgroundTransparency = 0
 			});
 			v8:Play();
-			u15:GiveTask(function()
+			u14:GiveTask(function()
 				v8:Cancel();
 			end);
 		end;

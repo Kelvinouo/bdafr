@@ -1,4 +1,3 @@
--- Script Hash: 83922ecccb0808164999edd0fb1c28892ad7ef9a38b1c2b7d2b6b30e74a0a9af27903de9dc165c8523d9d002d015d62f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -147,7 +146,7 @@ function u1.KnitStart(p3)
 		else
 			v21 = 1;
 		end;
-		l__Workspace__13.CurrentCamera.FieldOfView = p3:getBaseFOV() * v21;
+		l__Workspace__13.CurrentCamera.FieldOfView = l__KnitClient__3.Controllers.FovController:getFOV() * v21;
 	end);
 	task.spawn(function()
 		if l__DeviceUtil__8.isMobileControls() then
@@ -181,12 +180,12 @@ function u1.startSprinting(p16)
 	l__Players__6.LocalPlayer:SetAttribute("Sprinting", true);
 	p16:setSpeed(20);
 	l__TweenService__17:Create(l__Workspace__13.CurrentCamera, TweenInfo.new(0.1, Enum.EasingStyle.Linear), {
-		FieldOfView = p16:getBaseFOV() * 1.1
+		FieldOfView = l__KnitClient__3.Controllers.FovController:getFOV() * 1.1
 	}):Play();
 	p16.sprintMaid:GiveTask(function()
 		p16:setSpeed(14);
 		l__TweenService__17:Create(l__Workspace__13.CurrentCamera, TweenInfo.new(0.1, Enum.EasingStyle.Linear), {
-			FieldOfView = p16:getBaseFOV()
+			FieldOfView = l__KnitClient__3.Controllers.FovController:getFOV()
 		}):Play();
 	end);
 end;
@@ -197,22 +196,6 @@ function u1.stopSprinting(p17)
 	end;
 	p17.sprintMaid:DoCleaning();
 	p17.sprinting = false;
-end;
-local l__CameraPerspective__18 = v1.import(script, script.Parent.Parent, "first-person", "camera-perspective").CameraPerspective;
-function u1.getBaseFOV(p18)
-	local v24 = nil;
-	v24 = l__KnitClient__3.Controllers.CameraPerspectiveController:getCameraPerspective();
-	if l__DeviceUtil__8.isMobileControls() then
-		if v24 == l__CameraPerspective__18.FIRST_PERSON then
-			return 80;
-		else
-			return 70;
-		end;
-	end;
-	if v24 == l__CameraPerspective__18.FIRST_PERSON then
-		return 82;
-	end;
-	return 70;
 end;
 u2 = l__KnitClient__3.CreateController;
 u1 = u1.new;

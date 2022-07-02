@@ -1,4 +1,3 @@
--- Script Hash: b7c62f63890f9e64f037bb26a305b0469300b970ee341caa088d69bb3a8a32c730f5ecea972b2ea76dc3cf1a55602b91
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,16 +13,13 @@ return {
 			if v5 then
 				v3(#v5.Text);
 			end;
-			local function u4()
+			v4:GiveTask(p1.TextBox:getValue():GetPropertyChangedSignal("Text"):Connect(function()
 				if not v5 then
-					return nil;
+					return;
 				end;
 				if #v5.Text <= p1.MaxCharCount then
 					v3(#v5.Text);
 				end;
-			end;
-			v4:GiveTask(p1.TextBox:getValue():GetPropertyChangedSignal("Text"):Connect(function()
-				u4();
 			end));
 			return function()
 				v4:DoCleaning();

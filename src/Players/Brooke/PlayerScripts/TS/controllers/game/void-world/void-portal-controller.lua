@@ -93,31 +93,32 @@ function v5.KnitStart(p2)
 					end;
 					if v14 then
 						local v15 = v11 < 10;
-						local v16 = v14:GetPlayingAnimationTracks();
-						local function v17(p4)
-							local v18 = p4.Animation;
-							if v18 ~= nil then
-								v18 = v18.AnimationId;
-							end;
-							return v18 == l__GameAnimationUtil__6.getAssetId(l__AnimationType__7.VOID_PORTAL_EXCITED);
-						end;
-						local v19 = nil;
-						for v20, v21 in ipairs(v16) do
-							if v17(v21, v20 - 1, v16) == true then
-								v19 = v21;
+						local v16 = nil;
+						local v17, v18, v19 = ipairs((v14:GetPlayingAnimationTracks()));
+						while true do
+							local v20, v21 = v17(v18, v19);
+							if not v20 then
 								break;
 							end;
+							local v22 = v21.Animation;
+							if v22 ~= nil then
+								v22 = v22.AnimationId;
+							end;
+							if v22 == l__GameAnimationUtil__6.getAssetId(l__AnimationType__7.VOID_PORTAL_EXCITED) == true then
+								v16 = v21;
+								break;
+							end;						
 						end;
-						if v15 and not v19 then
+						if v15 and not v16 then
 							l__GameAnimationUtil__6.playAnimation(v14, l__AnimationType__7.VOID_PORTAL_EXCITED, {
 								fadeInTime = 0.1
 							});
 							return;
 						end;
-						if not v15 and v19 then
-							v19:Stop(0.5);
+						if not v15 and v16 then
+							v16:Stop(0.5);
 							task.delay(0.15, function()
-								v19:Destroy();
+								v16:Destroy();
 							end);
 						end;
 					end;
@@ -125,66 +126,66 @@ function v5.KnitStart(p2)
 			end;		
 		end;
 	end);
-	l__WatchCollectionTag__8("VoidPortal", function(p5)
-		local v22 = u9.new();
+	l__WatchCollectionTag__8("VoidPortal", function(p4)
+		local v23 = u9.new();
 		task.spawn(function()
-			p5:WaitForChild("Rig");
-			l__GameAnimationUtil__6.playAnimation(p5.Rig:WaitForChild("AnimationController"):WaitForChild("Animator"), l__AnimationType__7.VOID_PORTAL_IDLE);
+			p4:WaitForChild("Rig");
+			l__GameAnimationUtil__6.playAnimation(p4.Rig:WaitForChild("AnimationController"):WaitForChild("Animator"), l__AnimationType__7.VOID_PORTAL_IDLE);
 		end);
 		task.spawn(function()
-			local v23 = p5:GetAttribute("CloseTime");
-			if v23 == 0 or v23 ~= v23 or not v23 then
-				p5:GetAttributeChangedSignal("CloseTime"):Wait();
+			local v24 = p4:GetAttribute("CloseTime");
+			if v24 == 0 or v24 ~= v24 or not v24 then
+				p4:GetAttributeChangedSignal("CloseTime"):Wait();
 			end;
-			local v24 = p5:GetAttribute("CloseTime");
-			if v24 ~= nil then
+			local v25 = p4:GetAttribute("CloseTime");
+			if v25 ~= nil then
 				u10.mount(u10.createElement(l__VoidPortalTag__11, {
-					getTag = function(p6)
-						return "Closes in " .. tostring(p6) .. "s";
+					getTag = function(p5)
+						return "Closes in " .. tostring(p5) .. "s";
 					end, 
-					closeTime = v24
-				}), p5, "VoidTag");
+					closeTime = v25
+				}), p4, "VoidTag");
 			end;
 		end);
-		local v25 = p5:GetAttribute("VoidExit") == true;
-		local v26 = tostring(l__VoidWorldUtil__12.VOID_ENTRY_COST) .. " " .. l__getItemMeta__13(l__VoidWorldUtil__12.VOID_ENTRY_MATERIAL).displayName;
-		local v27 = {
+		local v26 = p4:GetAttribute("VoidExit") == true;
+		local v27 = tostring(l__VoidWorldUtil__12.VOID_ENTRY_COST) .. " " .. l__getItemMeta__13(l__VoidWorldUtil__12.VOID_ENTRY_MATERIAL).displayName;
+		local v28 = {
 			KeyboardKeyCode = l__Theme__15.promptKeyboardKey, 
 			HoldDuration = 3, 
 			RequiresLineOfSight = false, 
 			MaxActivationDistance = 6
 		};
-		if v25 then
-			local v28 = "Exit";
+		if v26 then
+			local v29 = "Exit";
 		else
-			v28 = "Enter (" .. v26 .. ")";
+			v29 = "Enter (" .. v27 .. ")";
 		end;
-		v27.ActionText = v28;
-		v27.ObjectText = "Void";
-		v27.ClickablePrompt = false;
-		v27.Parent = p5;
-		local v29 = u14("ProximityPrompt", v27);
-		p5.AncestryChanged:Connect(function(p7, p8)
-			if p8 == nil then
-				v22:DoCleaning();
+		v28.ActionText = v29;
+		v28.ObjectText = "Void";
+		v28.ClickablePrompt = false;
+		v28.Parent = p4;
+		local v30 = u14("ProximityPrompt", v28);
+		p4.AncestryChanged:Connect(function(p6, p7)
+			if p7 == nil then
+				v23:DoCleaning();
 			end;
 		end);
-		v22:GiveTask(l__default__16.Client:Get("RemoteName"):Connect(function(p9)
-			if p9.entityInstance == l__Players__2.LocalPlayer.Character then
-				v29:InputHoldEnd();
+		v23:GiveTask(l__default__16.Client:Get("RemoteName"):Connect(function(p8)
+			if p8.entityInstance == l__Players__2.LocalPlayer.Character then
+				v30:InputHoldEnd();
 			end;
 		end));
-		v29.PromptButtonHoldBegan:Connect(function(p10)
-			if not v25 and not l__InventoryUtil__17.hasEnough(p10, l__VoidWorldUtil__12.VOID_ENTRY_MATERIAL, l__VoidWorldUtil__12.VOID_ENTRY_COST) then
-				v29:InputHoldEnd();
+		v30.PromptButtonHoldBegan:Connect(function(p9)
+			if not v26 and not l__InventoryUtil__17.hasEnough(p9, l__VoidWorldUtil__12.VOID_ENTRY_MATERIAL, l__VoidWorldUtil__12.VOID_ENTRY_COST) then
+				v30:InputHoldEnd();
 				l__Flamework__18.resolveDependency("@easy-games/game-core:client/controllers/notification-controller@NotificationController"):sendErrorNotification({
-					message = "You need " .. v26 .. " to enter the Void."
+					message = "You need " .. v27 .. " to enter the Void."
 				});
 				return nil;
 			end;
-			local v30 = u9.new();
+			local v31 = u9.new();
 			local u22 = l__GameAnimationUtil__6.playAnimation(l__Players__2.LocalPlayer, l__AnimationType__7.OPEN_CRATE);
-			v30:GiveTask(function()
+			v31:GiveTask(function()
 				if u22 ~= nil then
 					u22:Stop();
 				end;
@@ -192,29 +193,29 @@ function v5.KnitStart(p2)
 					u22:Destroy();
 				end;
 			end);
-			v29.PromptButtonHoldEnded:Connect(function()
-				v30:DoCleaning();
+			v30.PromptButtonHoldEnded:Connect(function()
+				v31:DoCleaning();
 			end);
-			v29.AncestryChanged:Connect(function(p11, p12)
-				if p12 == nil then
-					v30:DoCleaning();
+			v30.AncestryChanged:Connect(function(p10, p11)
+				if p11 == nil then
+					v31:DoCleaning();
 				end;
 			end);
 		end);
-		v29.Triggered:Connect(function(p13)
+		v30.Triggered:Connect(function(p12)
 			l__SoundManager__19:playSound(l__GameSound__20.VOID_PORTAL_TELEPORT);
 			l__default__16.Client:Get("RemoteName"):SendToServer({
-				blockInstance = p5
+				blockInstance = p4
 			});
 		end);
 	end);
-	l__default__16.Client:WaitFor("RemoteName"):andThen(function(p14)
-		p14:Connect(function(p15)
-			if p15.player == l__Players__2.LocalPlayer then
+	l__default__16.Client:WaitFor("RemoteName"):andThen(function(p13)
+		p13:Connect(function(p14)
+			if p14.player == l__Players__2.LocalPlayer then
 				return nil;
 			end;
 			l__SoundManager__19:playSound(l__GameSound__20.VOID_PORTAL_TELEPORT, {
-				position = p15.portal.Position, 
+				position = p14.portal.Position, 
 				rollOffMaxDistance = 80
 			});
 		end);

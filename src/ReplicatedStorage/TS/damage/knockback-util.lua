@@ -1,4 +1,3 @@
--- Script Hash: 1ffed3556ed4033d6f2739fda1b44d9e367ac2801dba7a34075bc47b397fc12684baa2f4644c2e3308589eb4d7ff3437
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -83,12 +82,19 @@ u2 = function(p15, p16, p17, p18)
 		return Vector3.new(0, 0, 0);
 	end;
 	local v14 = u3(p17, p16, p18);
-	local v15 = u5(p15);
+	local v15 = p15:FindFirstChildWhichIsA("Humanoid");
 	if v15 then
-		v15.PlatformStand = true;
+		local v16 = v15;
+	elseif p15.Parent then
+		v16 = u5(p15.Parent);
+	else
+		v16 = nil;
+	end;
+	if v16 then
+		v16.PlatformStand = true;
 		v1.Promise.delay(0):andThen(function()
-			if v15.Parent then
-				v15.PlatformStand = false;
+			if v16.Parent then
+				v16.PlatformStand = false;
 			end;
 		end);
 	end;

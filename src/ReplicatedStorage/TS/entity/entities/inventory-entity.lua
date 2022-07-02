@@ -99,131 +99,142 @@ function v4.inventoryFolderAddedEvent(p7, p8)
 	return u8;
 end;
 function v4.getItemInHandClient(p11)
-	local v12 = p11.instance:GetChildren();
-	local function v13(p12)
+	for v12, v13 in ipairs((p11.instance:GetChildren())) do
 		local v14 = false;
-		if p12:GetAttribute("InvItem") == true then
-			v14 = p12:GetAttribute("ArmorSlot") == nil;
+		if v13:GetAttribute("InvItem") == true then
+			v14 = v13:GetAttribute("ArmorSlot") == nil;
 		end;
-		return v14;
-	end;
-	for v15, v16 in ipairs(v12) do
-		if v13(v16, v15 - 1, v12) == true then
-			return v16;
+		if v14 == true then
+			return v13;
 		end;
 	end;
 	return nil;
 end;
-function v4.getItemInHand(p13)
+function v4.getItemInHand(p12)
+	if not p12.instance:FindFirstChild("HandInvItem") then
+		return nil;
+	end;
+	return p12.instance.HandInvItem.Value;
+end;
+function v4.getItemTypeInHand(p13)
 	if not p13.instance:FindFirstChild("HandInvItem") then
 		return nil;
 	end;
-	return p13.instance.HandInvItem.Value;
+	local v15 = p13.instance.HandInvItem.Value;
+	if v15 ~= nil then
+		v15 = v15.Name;
+	end;
+	return v15;
 end;
-function v4.getItemTypeInHand(p14)
-	if not p14.instance:FindFirstChild("HandInvItem") then
-		return nil;
-	end;
-	local v17 = p14.instance.HandInvItem.Value;
-	if v17 ~= nil then
-		v17 = v17.Name;
-	end;
-	return v17;
-end;
-function v4.getItemsFromArmorSlot(p15, p16)
-	local v18 = p15.instance:GetChildren();
-	local function v19(p17)
-		return p17:GetAttribute("ArmorSlot") == p16;
-	end;
-	local v20 = {};
-	local v21 = 0;
-	for v22, v23 in ipairs(v18) do
-		if v19(v23, v22 - 1, v18) == true then
-			v21 = v21 + 1;
-			v20[v21] = v23;
+function v4.getItemsFromArmorSlot(p14, p15)
+	local v16 = {};
+	local v17 = 0;
+	local v18, v19, v20 = ipairs((p14.instance:GetChildren()));
+	while true do
+		local v21, v22 = v18(v19, v20);
+		if not v21 then
+			break;
 		end;
+		if v22:GetAttribute("ArmorSlot") == p15 == true then
+			v17 = v17 + 1;
+			v16[v17] = v22;
+		end;	
 	end;
-	return v20;
+	return v16;
 end;
-function v4.getHandItemInstanceFromCharacter(p18)
-	local v24 = p18:getItemInHand();
-	if not v24 then
+function v4.getHandItemInstanceFromCharacter(p16)
+	local v23 = p16:getItemInHand();
+	if not v23 then
 		return nil;
 	end;
-	local v25 = p18.instance:FindFirstChild(v24.Name);
+	local v24 = p16.instance:FindFirstChild(v23.Name);
+	if v24 and v24:IsA("Accessory") then
+		return v24;
+	end;
+	return nil;
+end;
+function v4.getItemInstanceFromCharacter(p17, p18)
+	local v25 = p17.instance:FindFirstChild(p18);
 	if v25 and v25:IsA("Accessory") then
 		return v25;
 	end;
 	return nil;
 end;
-function v4.getItemInstanceFromCharacter(p19, p20)
-	local v26 = p19.instance:FindFirstChild(p20);
-	if v26 and v26:IsA("Accessory") then
-		return v26;
-	end;
-	return nil;
-end;
-function v4.getItemInstanceFromArmorSlot(p21, p22)
-	return p21:getInstance():WaitForChild("ArmorInvItem_" .. tostring(p22)).Value;
+function v4.getItemInstanceFromArmorSlot(p19, p20)
+	return p19:getInstance():WaitForChild("ArmorInvItem_" .. tostring(p20)).Value;
 end;
 local l__AccessoriesCovered__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "inventory", "armor-slot").AccessoriesCovered;
-function v4.setAccessoryVisibility(p23, p24, p25)
-	local v27, v28, v29 = ipairs(p23:getHumanoid():GetAccessories());
+function v4.setAccessoryVisibility(p21, p22, p23)
+	local v26, v27, v28 = ipairs(p21:getHumanoid():GetAccessories());
 	while true do
-		local v30, v31 = v27(v28, v29);
-		if not v30 then
+		local v29, v30 = v26(v27, v28);
+		if not v29 then
 			break;
 		end;
-		local l__Handle__32 = v31:FindFirstChild("Handle");
-		local v33 = l__Handle__32;
-		if v33 ~= nil then
-			v33 = v33:FindFirstChildOfClass("Attachment");
+		local l__Handle__31 = v30:FindFirstChild("Handle");
+		local v32 = l__Handle__31;
+		if v32 ~= nil then
+			v32 = v32:FindFirstChildOfClass("Attachment");
 		end;
-		if l__Handle__32 and v33 and not l__ReplicatedStorage__5.Assets.Armor:FindFirstChild(v31.Name, true) then
-			local v34 = false;
-			for v35, v36 in ipairs(l__AccessoriesCovered__9[p24]) do
-				v34 = string.match(string.lower(v33.Name), (string.lower(v36))) ~= nil;
-				if v34 then
+		if l__Handle__31 and v32 and not l__ReplicatedStorage__5.Assets.Armor:FindFirstChild(v30.Name, true) then
+			local v33 = false;
+			for v34, v35 in ipairs(l__AccessoriesCovered__9[p22]) do
+				v33 = string.match(string.lower(v32.Name), (string.lower(v35))) ~= nil;
+				if v33 then
 					break;
 				end;
 			end;
-			if v34 then
-				if p25 then
-					local v37 = 0;
+			if v33 then
+				if p23 then
+					local v36 = 0;
 				else
-					v37 = 1;
+					v36 = 1;
 				end;
-				l__Handle__32.Transparency = v37;
+				l__Handle__31.Transparency = v36;
 			end;
 		end;	
 	end;
 end;
 local l__WeldUtil__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "weld-util").WeldUtil;
 local l__default__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-function v4.equipArmorItem(p26, p27, p28)
-	local v38 = p26:getItemsFromArmorSlot(p28);
-	local function v39(p29)
-		return p29:Destroy();
+function v4.equipArmorItem(p24, p25, p26)
+	for v37, v38 in ipairs((p24:getItemsFromArmorSlot(p26))) do
+		local v39 = v38:Destroy();
 	end;
-	for v40, v41 in ipairs(v38) do
-		v39(v41, v40 - 1, v38);
-	end;
-	for v42, v43 in ipairs(l__ReplicatedStorage__5:WaitForChild("Assets"):WaitForChild("Armor"):WaitForChild(p27.Name):GetChildren()) do
-		local v44 = v43:Clone();
-		v44:SetAttribute("ArmorSlot", p28);
-		local v45 = p26:getHumanoid();
-		if v45 ~= nil then
-			v45:AddAccessory(v44);
+	for v40, v41 in ipairs(l__ReplicatedStorage__5:WaitForChild("Assets"):WaitForChild("Armor"):WaitForChild(p25.Name):GetChildren()) do
+		local v42 = v41:Clone();
+		v42:SetAttribute("ArmorSlot", p26);
+		local v43 = p24:getHumanoid();
+		if v43 ~= nil then
+			v43:AddAccessory(v42);
 		end;
-		p26:setAccessoryVisibility(p28, false);
+		p24:setAccessoryVisibility(p26, false);
 	end;
-	l__WeldUtil__10.weldCharacterAccessories(p26.instance);
-	if p26:isAlive() and l__Players__3.LocalPlayer.Character == p26.instance then
-		local v46 = p26.instance:FindFirstChild("ArmorInvItem_" .. tostring(p28));
-		if v46 then
-			v46.Value = p27;
+	l__WeldUtil__10.weldCharacterAccessories(p24.instance);
+	if p24:isAlive() and l__Players__3.LocalPlayer.Character == p24.instance then
+		local v44 = p24.instance:FindFirstChild("ArmorInvItem_" .. tostring(p26));
+		if v44 then
+			v44.Value = p25;
 			l__default__11.Client:Get("RemoteName"):CallServerAsync({
-				item = p27, 
+				item = p25, 
+				armorSlot = p26
+			}):andThen(function()
+
+			end);
+		end;
+	end;
+end;
+function v4.unequipArmorSlot(p27, p28)
+	for v45, v46 in ipairs((p27:getItemsFromArmorSlot(p28))) do
+		local v47 = v46:Destroy();
+	end;
+	p27:setAccessoryVisibility(p28, true);
+	if p27:isAlive() and l__Players__3.LocalPlayer.Character == p27.instance then
+		local v48 = p27.instance:FindFirstChild("ArmorInvItem_" .. tostring(p28));
+		if v48 then
+			v48.Value = nil;
+			l__default__11.Client:Get("RemoteName"):CallServerAsync({
+				item = false, 
 				armorSlot = p28
 			}):andThen(function()
 
@@ -231,92 +242,66 @@ function v4.equipArmorItem(p26, p27, p28)
 		end;
 	end;
 end;
-function v4.unequipArmorSlot(p30, p31)
-	local v47 = p30:getItemsFromArmorSlot(p31);
-	local function v48(p32)
-		return p32:Destroy();
-	end;
-	for v49, v50 in ipairs(v47) do
-		v48(v50, v49 - 1, v47);
-	end;
-	p30:setAccessoryVisibility(p31, true);
-	if p30:isAlive() and l__Players__3.LocalPlayer.Character == p30.instance then
-		local v51 = p30.instance:FindFirstChild("ArmorInvItem_" .. tostring(p31));
-		if v51 then
-			v51.Value = nil;
-			l__default__11.Client:Get("RemoteName"):CallServerAsync({
-				item = false, 
-				armorSlot = p31
-			}):andThen(function()
-
-			end);
-		end;
-	end;
-end;
 local l__getItemMeta__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
-function v4.equipItem(p33, p34)
-	local v52 = p33:getItemInHandClient();
-	if v52 then
-		v52:Destroy();
+function v4.equipItem(p29, p30)
+	local v49 = p29:getItemInHandClient();
+	if v49 then
+		v49:Destroy();
 	end;
-	local v53 = l__getItemMeta__12(p34.Name);
-	local u13 = p34:Clone();
-	p34.AttributeChanged:Connect(function(p35)
-		u13:SetAttribute(p35, p34:GetAttribute(p35));
+	local v50 = l__getItemMeta__12(p30.Name);
+	local u13 = p30:Clone();
+	p30.AttributeChanged:Connect(function(p31)
+		u13:SetAttribute(p31, p30:GetAttribute(p31));
 	end);
-	if v53.armor then
-		local v54 = u13:GetDescendants();
-		local function v55(p36)
-			if p36:IsA("Attachment") then
-				p36.Name = "RightGripAttachment";
+	if v50.armor then
+		for v51, v52 in ipairs((u13:GetDescendants())) do
+			if v52:IsA("Attachment") then
+				v52.Name = "RightGripAttachment";
 			end;
 		end;
-		for v56, v57 in ipairs(v54) do
-			v55(v57, v56 - 1, v54);
-		end;
 	end;
-	local v58 = p33:getHumanoid();
-	if v58 ~= nil then
-		v58:AddAccessory(u13);
+	local v53 = p29:getHumanoid();
+	if v53 ~= nil then
+		v53:AddAccessory(u13);
 	end;
-	if v53.additionalAccessories then
-		local v59, v60, v61 = ipairs(v53.additionalAccessories);
+	if v50.additionalAccessories then
+		local v54, v55, v56 = ipairs(v50.additionalAccessories);
 		while true do
-			local v62, v63 = v59(v60, v61);
-			if not v62 then
+			local v57, v58 = v54(v55, v56);
+			if not v57 then
 				break;
 			end;
-			local v64 = l__ReplicatedStorage__5:FindFirstChild("Items");
-			if v64 ~= nil then
-				v64 = v64:FindFirstChild(v63);
-				if v64 ~= nil then
-					v64 = v64:Clone();
+			local v59 = l__ReplicatedStorage__5:FindFirstChild("Items");
+			if v59 ~= nil then
+				v59 = v59:FindFirstChild(v58);
+				if v59 ~= nil then
+					v59 = v59:Clone();
 				end;
 			end;
-			if v64 and v58 ~= nil then
-				v58:AddAccessory(v64);
+			if v59 and v53 ~= nil then
+				v53:AddAccessory(v59);
 			end;		
 		end;
 	end;
-	l__WeldUtil__10.weldCharacterAccessories(p33.instance);
-	if p33:isAlive() and l__Players__3.LocalPlayer.Character == p33.instance and p33.instance:FindFirstChild("HandInvItem") then
-		p33.instance.HandInvItem.Value = p34;
+	l__WeldUtil__10.weldCharacterAccessories(p29.instance);
+	if p29:isAlive() and l__Players__3.LocalPlayer.Character == p29.instance and p29.instance:FindFirstChild("HandInvItem") then
+		p29.instance.HandInvItem.Value = p30;
 		task.spawn(function()
 			l__default__11.Client:Get("RemoteName"):CallServerAsync({
-				hand = p34
+				hand = p30
 			}):andThen(function()
 
 			end);
 		end);
 	end;
 end;
-function v4.unequipItemInHand(p37)
-	local v65 = p37:getItemInHandClient();
-	if v65 then
-		v65:Destroy();
+function v4.unequipItemInHand(p32)
+	local v60 = p32:getItemInHandClient();
+	if v60 then
+		v60:Destroy();
 	end;
-	if p37:isAlive() and l__Players__3.LocalPlayer.Character == p37.instance and p37.instance:FindFirstChild("HandInvItem") then
-		p37.instance.HandInvItem.Value = nil;
+	if p32:isAlive() and l__Players__3.LocalPlayer.Character == p32.instance and p32.instance:FindFirstChild("HandInvItem") then
+		p32.instance.HandInvItem.Value = nil;
 		task.spawn(function()
 			l__default__11.Client:Get("RemoteName"):CallServerAsync({
 				hand = false

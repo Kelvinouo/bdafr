@@ -87,11 +87,11 @@ function v3.KnitStart(p2)
 			return v9;
 		end;
 		p2.maid:GiveTask(l__bountyHunterTarget__8.CharacterAdded:Connect(function(p11)
-			p2.maid:GiveTask(u12(p11));
+			p2.maid:GiveTask((u12(p11)));
 		end));
 		task.spawn(function()
 			if l__bountyHunterTarget__8.Character then
-				p2.maid:GiveTask(u12(l__bountyHunterTarget__8.Character));
+				p2.maid:GiveTask((u12(l__bountyHunterTarget__8.Character)));
 			end;
 		end);
 	end);

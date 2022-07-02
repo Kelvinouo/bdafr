@@ -1,4 +1,3 @@
--- Script Hash: b3ecca80f3fd94f84e43387cb9075296953d01fa85ef24d47e9ea84d8e932553894295822a16879a4537756368fd97fa
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -27,22 +26,25 @@ return {
 		end;
 		if l__type__5 == "TabListSetPlayersTeamBulk" then
 			local v6 = u2.entries(p2.playersTeam);
-			local function v7(p3)
-				local v8 = nil;
-				v8 = p3[2];
-				local v9 = tonumber(p3[1]);
-				if v2.players[v9] then
-					v2.players[v9].team = v8;
+			local v7 = table.create(#v6);
+			local v8, v9, v10 = ipairs(v6);
+			while true do
+				local v11 = nil;
+				local v12, v13 = v8(v9, v10);
+				if not v12 then
+					break;
+				end;
+				v10 = v12;
+				v11 = v13[2];
+				local v14 = tonumber(v13[1]);
+				if v2.players[v14] then
+					v2.players[v14].team = v11;
 				else
-					v2.players[v9] = {
-						team = v8
+					v2.players[v14] = {
+						team = v11
 					};
 				end;
-				return 0;
-			end;
-			local v10 = table.create(#v6);
-			for v11, v12 in ipairs(v6) do
-				v10[v11] = v7(v12, v11 - 1, v6);
+				v7[v12] = 0;			
 			end;
 			return v2;
 		end;
@@ -57,23 +59,26 @@ return {
 				return v2;
 			end;
 		end;
-		local v13 = u2.entries(p2.avatarAssetIds);
-		local function v14(p4)
-			local v15 = nil;
-			v15 = p4[2];
-			local v16 = tonumber(p4[1]);
-			if v2.players[v16] then
-				v2.players[v16].avatarAssetId = v15;
+		local v15 = u2.entries(p2.avatarAssetIds);
+		local v16 = table.create(#v15);
+		local v17, v18, v19 = ipairs(v15);
+		while true do
+			local v20 = nil;
+			local v21, v22 = v17(v18, v19);
+			if not v21 then
+				break;
+			end;
+			v19 = v21;
+			v20 = v22[2];
+			local v23 = tonumber(v22[1]);
+			if v2.players[v23] then
+				v2.players[v23].avatarAssetId = v20;
 			else
-				v2.players[v16] = {
-					avatarAssetId = v15
+				v2.players[v23] = {
+					avatarAssetId = v20
 				};
 			end;
-			return 0;
-		end;
-		local v17 = table.create(#v13);
-		for v18, v19 in ipairs(v13) do
-			v17[v18] = v14(v19, v18 - 1, v13);
+			v16[v21] = 0;		
 		end;
 		return v2;
 	end

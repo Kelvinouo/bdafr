@@ -1,4 +1,3 @@
--- Script Hash: cd8d742eba88a2265677d0868023fe4ab9485be689c64f6af3bf57bf6305e1f7ecc76dfba31921811ddefa6b2e337bd4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -79,51 +78,47 @@ function v5.KnitStart(p2)
 							if u13 ~= nil then
 								u13:Destroy();
 							end;
-							local v18 = l__hand__9.tool:GetDescendants();
-							local function v19(p9)
-								if p9:IsA("ParticleEmitter") then
-									p9.Enabled = false;
+							for v18, v19 in ipairs((l__hand__9.tool:GetDescendants())) do
+								if v19:IsA("ParticleEmitter") then
+									v19.Enabled = false;
 								end;
-							end;
-							for v20, v21 in ipairs(v18) do
-								v19(v21, v20 - 1, v18);
 							end;
 						end);
 					end;
 				end;
 				if v8 == l__GameAnimationUtil__3.getAssetId(l__AnimationType__4.VACUUM_GHOST_CAPTURED) then
-					local v22 = {};
+					local v20 = {};
 					if p3 ~= l__Players__9.LocalPlayer then
-						local v23 = p4:GetPrimaryPartCFrame().Position;
+						local v21 = p4:GetPrimaryPartCFrame().Position;
 					else
-						v23 = nil;
+						v21 = nil;
 					end;
-					v22.position = v23;
-					local v24 = l__SoundManager__7:playSound(l__GameSound__8.GHOST_VACUUM_CATCH, v22);
-					local l__hand__25 = l__InventoryUtil__5.getInventory(p3).hand;
-					local v26 = l__hand__25;
-					if v26 ~= nil then
-						v26 = v26.tool;
+					v20.position = v21;
+					local v22 = l__SoundManager__7:playSound(l__GameSound__8.GHOST_VACUUM_CATCH, v20);
+					local l__hand__23 = l__InventoryUtil__5.getInventory(p3).hand;
+					local v24 = l__hand__23;
+					if v24 ~= nil then
+						v24 = v24.tool;
 					end;
-					local v27 = v26 and l__hand__25.itemType == l__ItemType__6.VACUUM;
-					if v27 then
-						local l__tool__28 = l__hand__25.tool;
-						l__tool__28.Handle.Empty.Transparency = 1;
-						l__tool__28.Handle.Full.Transparency = 0;
+					local v25 = v24 and l__hand__23.itemType == l__ItemType__6.VACUUM;
+					if v25 then
+						local l__tool__26 = l__hand__23.tool;
+						l__tool__26.Handle.Empty.Transparency = 1;
+						l__tool__26.Handle.Full.Transparency = 0;
 						l__fullBagsPlayers__11[p3.UserId] = true;
 					end;
 				end;
 				if v8 == l__GameAnimationUtil__3.getAssetId(l__AnimationType__4.VACUUM_LAUNCH) then
-					local l__hand__29 = l__InventoryUtil__5.getInventory(p3).hand;
-					local v30 = l__hand__29;
-					if v30 ~= nil then
-						v30 = v30.tool;
+					local l__hand__27 = l__InventoryUtil__5.getInventory(p3).hand;
+					local v28 = l__hand__27;
+					if v28 ~= nil then
+						v28 = v28.tool;
 					end;
-					local v31 = v30 and l__hand__29.itemType == l__ItemType__6.VACUUM;
-					if v31 then
-						local l__tool__32 = l__hand__29.tool;
-						l__tool__32.Handle.Empty.Transparency = 0;
-						l__tool__32.Handle.Full.Transparency = 1;
+					local v29 = v28 and l__hand__27.itemType == l__ItemType__6.VACUUM;
+					if v29 then
+						local l__tool__30 = l__hand__27.tool;
+						l__tool__30.Handle.Empty.Transparency = 0;
+						l__tool__30.Handle.Full.Transparency = 1;
 						l__fullBagsPlayers__11[p3.UserId] = nil;
 					end;
 				end;

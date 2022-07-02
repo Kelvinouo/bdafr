@@ -1,4 +1,3 @@
--- Script Hash: 7f01042ec23bdb70fb1af8d246e1d9bd131485aa5871cbe8d0d3e035a5b04ce0512d11d6a81fe7214557044a9df4c597
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -82,43 +81,41 @@ return function(p1)
 	for v7, v8 in ipairs(v2) do
 		v6[v7] = v3(v8, v7 - 1, v2);
 	end;
-	local v9 = u7.entries(l__OfflinePlayerUtil__1.Dummy);
-	local function v10(p3, p4)
-		local v11 = p3[1];
-		local v12 = p3[2];
-		if p4 < 4 then
-			return true;
+	local v9 = {};
+	local v10 = 0;
+	local v11, v12, v13 = ipairs((u7.entries(l__OfflinePlayerUtil__1.Dummy)));
+	while true do
+		local v14, v15 = v11(v12, v13);
+		if not v14 then
+			break;
 		end;
-		return false;
+		local v16 = v15[1];
+		local v17 = v15[2];
+		if v14 - 1 < 4 == true then
+			v10 = v10 + 1;
+			v9[v10] = v15;
+		end;	
 	end;
-	local v13 = {};
-	local v14 = 0;
-	for v15, v16 in ipairs(v9) do
-		if v10(v16, v15 - 1, v9) == true then
-			v14 = v14 + 1;
-			v13[v14] = v16;
-		end;
-	end;
-	local function v17(p5)
-		local v18 = p5[1];
-		local v19 = p5[2];
+	local function v18(p3)
+		local v19 = p3[1];
+		local v20 = p3[2];
 		l__ClientStore__6:dispatch({
 			type = "BedwarsSetKills", 
-			userId = v19.userId, 
+			userId = v20.userId, 
 			kills = 420
 		});
 		l__ClientStore__6:dispatch({
 			type = "BedwarsSetFinalDeaths", 
-			userId = tonumber(v19.userId), 
+			userId = tonumber(v20.userId), 
 			dead = true
 		});
 		return 0;
 	end;
-	local v20 = table.create(#v13);
-	for v21, v22 in ipairs(v13) do
-		v20[v21] = v17(v22, v21 - 1, v13);
+	local v21 = table.create(#v9);
+	for v22, v23 in ipairs(v9) do
+		v21[v22] = v18(v23, v22 - 1, v9);
 	end;
-	local v23 = u7.entries({
+	local v24 = u7.entries({
 		[l__OfflinePlayerUtil__1.Dummy.SnickTrix.userId] = l__BedwarsKit__3.ARCHER, 
 		[l__OfflinePlayerUtil__1.Dummy.oiogy.userId] = l__BedwarsKit__3.BAKER, 
 		[l__OfflinePlayerUtil__1.Dummy.Bryan3838.userId] = l__BedwarsKit__3.BARBARIAN, 
@@ -130,17 +127,14 @@ return function(p1)
 		[l__OfflinePlayerUtil__1.Dummy.Vorlias.userId] = l__BedwarsKit__3.SHIELDER, 
 		[l__OfflinePlayerUtil__1.Dummy.Rascal.userId] = l__BedwarsKit__3.COWGIRL
 	});
-	local function v24(p6)
+	local v25 = table.create(#v24);
+	for v26, v27 in ipairs(v24) do
 		l__ClientStore__6:dispatch({
 			type = "BedwarsSetKits", 
-			userId = p6[1], 
-			kit = p6[2]
+			userId = v27[1], 
+			kit = v27[2]
 		});
-		return 0;
-	end;
-	local v25 = table.create(#v23);
-	for v26, v27 in ipairs(v23) do
-		v25[v26] = v24(v27, v26 - 1, v23);
+		v25[v26] = 0;
 	end;
 	l__ClientStore__6:dispatch({
 		type = "TabListSetRanksBulk", 

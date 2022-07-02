@@ -19,106 +19,100 @@ local u4 = v2.import(script, v2.getModule(script, "@rbxts", "object-utils"));
 function v10.getShopItem(p1, p2)
 	if not u1 then
 		u1 = {};
-		local function v11(p3)
-			u1[p3.itemType] = p3;
-		end;
-		for v12, v13 in ipairs(u2) do
-			v11(v13, v12 - 1, u2);
+		for v11, v12 in ipairs(u2) do
+			u1[v12.itemType] = v12;
 		end;
 	end;
-	local v14 = u1[p1];
+	local v13 = u1[p1];
 	if p2 then
-		for v15, v16 in ipairs(l__BedwarsShopOverrides__3) do
-			if v16:shouldApply(p2) then
-				local v17 = v16:getOverride();
-				local function v18(p4)
-					return p4.itemType == p1;
-				end;
-				local v19 = nil;
-				for v20, v21 in ipairs(v17) do
-					if v18(v21, v20 - 1, v17) == true then
-						v19 = v21;
+		for v14, v15 in ipairs(l__BedwarsShopOverrides__3) do
+			if v15:shouldApply(p2) then
+				local v16 = nil;
+				for v17, v18 in ipairs((v15:getOverride())) do
+					if v18.itemType == p1 == true then
+						v16 = v18;
 						break;
 					end;
 				end;
-				if v19 then
-					if v14 then
-						for v22, v23 in ipairs(u4.keys(v19)) do
-							v14[v23] = v19[v23];
+				if v16 then
+					if v13 then
+						for v19, v20 in ipairs(u4.keys(v16)) do
+							v13[v20] = v16[v20];
 						end;
 					else
-						v14 = v19;
+						v13 = v16;
 					end;
 				end;
 			end;
 		end;
 	end;
-	return v14;
+	return v13;
 end;
 local l__Workspace__5 = v2.import(script, v2.getModule(script, "@rbxts", "services")).Workspace;
-function v10.getShop(p5)
-	local v24 = nil;
-	for v25, v26 in ipairs(l__BedwarsShopOverrides__3) do
-		if v26:shouldApply(p5) then
-			if not v24 then
-				v24 = u4.deepCopy(u2);
+function v10.getShop(p3)
+	local v21 = nil;
+	for v22, v23 in ipairs(l__BedwarsShopOverrides__3) do
+		if v23:shouldApply(p3) then
+			if not v21 then
+				v21 = u4.deepCopy(u2);
 			end;
-			local v27, v28, v29 = ipairs(v26:getOverride());
+			local v24, v25, v26 = ipairs(v23:getOverride());
 			while true do
-				local v30, v31 = v27(v28, v29);
-				if not v30 then
+				local v27, v28 = v24(v25, v26);
+				if not v27 then
 					break;
 				end;
-				local function v32(p6)
-					return p6.itemType == v31.itemType;
-				end;
-				local v33 = nil;
-				for v34, v35 in ipairs(v24) do
-					if v32(v35, v34 - 1, v24) == true then
-						v33 = v35;
+				local v29 = nil;
+				for v30, v31 in ipairs(v21) do
+					if v31.itemType == v28.itemType == true then
+						v29 = v31;
 						break;
 					end;
 				end;
-				if v33 then
-					for v36, v37 in ipairs(u4.keys(v31)) do
-						v33[v37] = v31[v37];
+				if v29 then
+					for v32, v33 in ipairs(u4.keys(v28)) do
+						v29[v33] = v28[v33];
 					end;
 				else
-					table.insert(v24, v31);
+					table.insert(v21, v28);
 				end;			
 			end;
 		end;
 	end;
-	local v38 = v24 or u2;
-	local v39 = l__Workspace__5:GetAttribute("QueueType");
-	if v39 then
-		local function v40(p7)
-			if p7.disabledInQueue and table.find(p7.disabledInQueue, v39) ~= nil then
-				return false;
+	local v34 = v21 or u2;
+	local v35 = l__Workspace__5:GetAttribute("QueueType");
+	if v35 then
+		local v36 = {};
+		local v37 = 0;
+		local v38, v39, v40 = ipairs(v34);
+		while true do
+			local v41, v42 = v38(v39, v40);
+			if not v41 then
+				break;
 			end;
-			return true;
-		end;
-		local v41 = {};
-		local v42 = 0;
-		for v43, v44 in ipairs(v38) do
-			if v40(v44, v43 - 1, v38) == true then
-				v42 = v42 + 1;
-				v41[v42] = v44;
+			if v42.disabledInQueue and table.find(v42.disabledInQueue, v35) ~= nil then
+				local v43 = false;
+			else
+				v43 = true;
 			end;
+			if v43 == true then
+				v37 = v37 + 1;
+				v36[v37] = v42;
+			end;		
 		end;
-		v38 = v41;
+		v34 = v36;
 	end;
-	return v38;
+	return v34;
 end;
 local l__ItemType__6 = v2.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
-function v10.getTeamGeneratorUpgradeCost(p8)
-	if p8 == 1 then
+function v10.getTeamGeneratorUpgradeCost(p4)
+	if p4 == 1 then
 		return { {
 				itemType = l__ItemType__6.DIAMOND, 
 				amount = 2
 			} };
 	end;
-	if p8 ~= 2 then
+	if p4 ~= 2 then
 		return nil;
 	end;
 	return { {
@@ -126,29 +120,29 @@ function v10.getTeamGeneratorUpgradeCost(p8)
 			amount = 4
 		} };
 end;
-function v10.getTeamWool(p9)
-	if p9 == "1" then
+function v10.getTeamWool(p5)
+	if p5 == "1" then
 		return l__ItemType__6.WOOL_BLUE;
 	end;
-	if p9 == "2" then
+	if p5 == "2" then
 		return l__ItemType__6.WOOL_RED;
 	end;
-	if p9 == "3" then
+	if p5 == "3" then
 		return l__ItemType__6.WOOL_GREEN;
 	end;
-	if p9 == "4" then
+	if p5 == "4" then
 		return l__ItemType__6.WOOL_YELLOW;
 	end;
-	if p9 == "5" then
+	if p5 == "5" then
 		return l__ItemType__6.WOOL_ORANGE;
 	end;
-	if p9 == "6" then
+	if p5 == "6" then
 		return l__ItemType__6.WOOL_PINK;
 	end;
-	if p9 == "7" then
+	if p5 == "7" then
 		return l__ItemType__6.WOOL_CYAN;
 	end;
-	if p9 == "8" then
+	if p5 == "8" then
 		return l__ItemType__6.WOOL_PURPLE;
 	end;
 	return l__ItemType__6.WOOL_WHITE;
@@ -806,7 +800,7 @@ u2 = { {
 		category = l__BedwarsShopItemCategory__8.Combat
 	} };
 v10.ShopItems = u2;
-local v45 = {
+local v44 = {
 	id = l__TeamUpgradeId__9.ARMORY, 
 	name = "Armory", 
 	image = l__ImageId__3.HELMET_SOLID, 
@@ -818,25 +812,24 @@ local v45 = {
 			currency = l__ItemType__6.DIAMOND
 		} }
 };
-local function v46(p10)
-	return p10.category == l__BedwarsShopItemCategory__8.Armory;
-end;
-local v47 = {};
-local v48 = 0;
-for v49, v50 in ipairs(u2) do
-	if v46(v50, v49 - 1, u2) == true then
-		v48 = v48 + 1;
-		v47[v48] = v50;
+local v45 = {};
+local v46 = 0;
+local v47, v48, v49 = ipairs(u2);
+while true do
+	local v50, v51 = v47(v48, v49);
+	if not v50 then
+		break;
+	end;
+	if v51.category == l__BedwarsShopItemCategory__8.Armory == true then
+		v46 = v46 + 1;
+		v45[v46] = v51;
 	end;
 end;
-local function v51(p11)
-	return p11.itemType;
+local v52 = table.create(#v45);
+for v53, v54 in ipairs(v45) do
+	v52[v53] = v54.itemType;
 end;
-local v52 = table.create(#v47);
-for v53, v54 in ipairs(v47) do
-	v52[v53] = v51(v54, v53 - 1, v47);
-end;
-v45.items = v52;
+v44.items = v52;
 local v55 = { {
 		id = l__TeamUpgradeId__9.GENERATOR, 
 		name = "Team Generator", 
@@ -948,33 +941,35 @@ local v55 = { {
 				values = { 1 }, 
 				currency = l__ItemType__6.DIAMOND
 			} }
-	}, v45 };
+	}, v44 };
 v10.TeamUpgrades = v55;
-local function v56(p12)
-	return p12.items ~= nil;
-end;
-local v57 = {};
-local v58 = 0;
-for v59, v60 in ipairs(v55) do
-	if v56(v60, v59 - 1, v55) == true then
-		v58 = v58 + 1;
-		v57[v58] = v60;
+local v56 = {};
+local v57 = 0;
+local v58, v59, v60 = ipairs(v55);
+while true do
+	local v61, v62 = v58(v59, v60);
+	if not v61 then
+		break;
+	end;
+	if v62.items ~= nil == true then
+		v57 = v57 + 1;
+		v56[v57] = v62;
 	end;
 end;
 v1 = {};
-local function v61(p13, p14)
-	local v62 = {};
-	local v63 = #v62;
-	local v64 = #p13;
-	table.move(p13, 1, v64, v63 + 1, v62);
-	local l__items__65 = p14.items;
-	table.move(l__items__65, 1, #l__items__65, v63 + v64 + 1, v62);
-	return v62;
+local function v63(p6, p7)
+	local v64 = {};
+	local v65 = #v64;
+	local v66 = #p6;
+	table.move(p6, 1, v66, v65 + 1, v64);
+	local l__items__67 = p7.items;
+	table.move(l__items__67, 1, #l__items__67, v65 + v66 + 1, v64);
+	return v64;
 end;
-for v66 = 1, #v57 do
-	v1 = v61(v1, v57[v66], v66 - 1, v57);
+for v68 = 1, #v56 do
+	v1 = v63(v1, v56[v68], v68 - 1, v56);
 end;
-v10.UnlockableBedwarsShopItems = local v67;
+v10.UnlockableBedwarsShopItems = local v69;
 v10.FlamethrowerUpgrades = { {
 		id = l__FlamethrowerUpgrade__6.HEAT, 
 		name = "Heat", 
@@ -1048,13 +1043,10 @@ v10.FlamethrowerUpgrades = { {
 				currency = l__ItemType__6.EMBER
 			} }
 	} };
-function v10.getUpgrade(p15, p16)
-	local function v68(p17)
-		return p17.id == p16;
-	end;
-	for v69, v70 in ipairs(p15) do
-		if v68(v70, v69 - 1, p15) == true then
-			return v70;
+function v10.getUpgrade(p8, p9)
+	for v70, v71 in ipairs(p8) do
+		if v71.id == p9 == true then
+			return v71;
 		end;
 	end;
 	return nil;

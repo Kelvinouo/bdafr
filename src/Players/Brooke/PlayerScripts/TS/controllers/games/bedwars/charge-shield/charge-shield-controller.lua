@@ -1,4 +1,3 @@
--- Script Hash: 46cb4445f76683e9c9a8ca41766ddecf5e37f5355ea6429f67f15539cd0667c44088604ea55b109cbec67c446e0fedb3
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -136,11 +135,8 @@ function v6.useChargeShield(p5)
 			if v16 then
 				v16:Destroy();
 			end;
-			local function v17(p8)
-				p8:Destroy();
-			end;
-			for v18, v19 in ipairs(u20) do
-				v17(v19, v18 - 1, u20);
+			for v17, v18 in ipairs(u20) do
+				v18:Destroy();
 			end;
 			u20 = {};
 		end;
@@ -159,31 +155,31 @@ local u23 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__MobileButton__24 = v2.MobileButton;
 local l__BedwarsImageId__25 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "image", "image-id").BedwarsImageId;
 local l__BedwarsUI__26 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "bedwars-ui").BedwarsUI;
-function v6.onEnable(p9, p10, p11)
-	p9:setupYield(function()
-		local v20 = u2.new();
-		v20:GiveTask(l__Flamework__7.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):createCooldownBar(l__CHARGE_SHIELD__8));
+function v6.onEnable(p8, p9, p10)
+	p8:setupYield(function()
+		local v19 = u2.new();
+		v19:GiveTask(l__Flamework__7.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):createCooldownBar(l__CHARGE_SHIELD__8));
 		return function()
-			v20:DoCleaning();
+			v19:DoCleaning();
 		end;
 	end);
-	l__ContextActionService__21:BindAction("use-charge-shield", function(p12, p13, p14)
-		if p13 == Enum.UserInputState.Begin then
-			p9:useChargeShield();
+	l__ContextActionService__21:BindAction("use-charge-shield", function(p11, p12, p13)
+		if p12 == Enum.UserInputState.Begin then
+			p8:useChargeShield();
 		end;
 	end, false, Enum.UserInputType.MouseButton1);
-	p9.maid:GiveTask(function()
+	p8.maid:GiveTask(function()
 		l__ContextActionService__21:UnbindAction("use-charge-shield");
 	end);
 	if l__DeviceUtil__22.isMobileControls() then
-		p9:setupYield(function()
+		p8:setupYield(function()
 			local u27 = u23.mount(u23.createElement("ScreenGui", {
 				ResetOnSpawn = false
 			}, { u23.createElement(l__MobileButton__24, {
 					Image = l__BedwarsImageId__25.SHIELD_OFF_MOBILE, 
 					Position = l__BedwarsUI__26:getActionMobileButtonPosition(), 
 					OnClick = function()
-						p9:useChargeShield();
+						p8:useChargeShield();
 					end
 				}) }), l__Players__4.LocalPlayer:WaitForChild("PlayerGui"));
 			return function()
@@ -192,32 +188,28 @@ function v6.onEnable(p9, p10, p11)
 		end);
 	end;
 end;
-function v6.onDisable(p15)
-	p15.maid:DoCleaning();
+function v6.onDisable(p14)
+	p14.maid:DoCleaning();
 end;
 local l__ItemType__28 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
-function v6.isRelevantItem(p16, p17)
-	return p17.itemType == l__ItemType__28.CHARGE_SHIELD;
+function v6.isRelevantItem(p15, p16)
+	return p16.itemType == l__ItemType__28.CHARGE_SHIELD;
 end;
 local l__ReplicatedStorage__29 = v4.ReplicatedStorage;
-function v6.attachParticlesToCharacter(p18, p19)
-	local v21 = {};
-	local v22 = l__ReplicatedStorage__29:WaitForChild("Assets"):WaitForChild("Effects"):WaitForChild("ChargeShieldFireParticle"):FindFirstChildWhichIsA("Attachment"):Clone();
-	table.insert(v21, v22);
-	v22.Parent = p19.PrimaryPart;
-	local v23 = l__ReplicatedStorage__29:WaitForChild("Assets"):WaitForChild("Effects"):WaitForChild("ChargeShieldShoeTrail"):GetChildren();
-	local l__LeftFoot__30 = p19:FindFirstChild("LeftFoot");
-	local l__RightFoot__31 = p19:FindFirstChild("RightFoot");
-	local function v24(p20)
-		local v25 = p20:Clone();
-		local v26 = p20:Clone();
-		table.insert(v21, v25);
-		table.insert(v21, v26);
-		v25.Parent = l__LeftFoot__30;
-		v26.Parent = l__RightFoot__31;
-	end;
-	for v27, v28 in ipairs(v23) do
-		v24(v28, v27 - 1, v23);
+function v6.attachParticlesToCharacter(p17, p18)
+	local v20 = {};
+	local v21 = l__ReplicatedStorage__29:WaitForChild("Assets"):WaitForChild("Effects"):WaitForChild("ChargeShieldFireParticle"):FindFirstChildWhichIsA("Attachment"):Clone();
+	table.insert(v20, v21);
+	v21.Parent = p18.PrimaryPart;
+	local l__LeftFoot__30 = p18:FindFirstChild("LeftFoot");
+	local l__RightFoot__31 = p18:FindFirstChild("RightFoot");
+	for v22, v23 in ipairs((l__ReplicatedStorage__29:WaitForChild("Assets"):WaitForChild("Effects"):WaitForChild("ChargeShieldShoeTrail"):GetChildren())) do
+		local v24 = v23:Clone();
+		local v25 = v23:Clone();
+		table.insert(v20, v24);
+		table.insert(v20, v25);
+		v24.Parent = l__LeftFoot__30;
+		v25.Parent = l__RightFoot__31;
 	end;
 	l__LeftFoot__30:FindFirstChild("TrailTop").Attachment0 = l__LeftFoot__30:FindFirstChild("TrailAttachmentTop");
 	l__LeftFoot__30:FindFirstChild("TrailTop").Attachment1 = l__LeftFoot__30:FindFirstChild("TrailAttachmentMid");
@@ -227,14 +219,11 @@ function v6.attachParticlesToCharacter(p18, p19)
 	l__RightFoot__31:FindFirstChild("TrailTop").Attachment1 = l__RightFoot__31:FindFirstChild("TrailAttachmentMid");
 	l__RightFoot__31:FindFirstChild("TrailBottom").Attachment0 = l__RightFoot__31:FindFirstChild("TrailAttachmentMid");
 	l__RightFoot__31:FindFirstChild("TrailBottom").Attachment1 = l__RightFoot__31:FindFirstChild("TrailAttachmentBottom");
-	return v21;
+	return v20;
 end;
-function v6.cleanupParticles(p21, p22)
-	local function v29(p23)
-		p23:Destroy();
-	end;
-	for v30, v31 in ipairs(p22) do
-		v29(v31, v30 - 1, p22);
+function v6.cleanupParticles(p19, p20)
+	for v26, v27 in ipairs(p20) do
+		v27:Destroy();
 	end;
 end;
 u1 = v3.KnitClient.CreateController;

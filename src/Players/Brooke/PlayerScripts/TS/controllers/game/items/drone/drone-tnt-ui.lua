@@ -9,18 +9,14 @@ return {
 	DroneTntUi = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u2)(function(p1, p2)
 		local u5 = p2.useValue(-1);
 		return p2.useMemo(function()
-			local l__items__2 = p1.store.Inventory.observedInventory.inventory.items;
-			local function v3(p3)
-				return p3.itemType == l__ItemType__1.TNT;
-			end;
-			local v4 = nil;
-			for v5, v6 in ipairs(l__items__2) do
-				if v3(v6, v5 - 1, l__items__2) == true then
-					v4 = v6;
+			local v2 = nil;
+			for v3, v4 in ipairs(p1.store.Inventory.observedInventory.inventory.items) do
+				if v4.itemType == l__ItemType__1.TNT == true then
+					v2 = v4;
 					break;
 				end;
 			end;
-			if v4 == nil then
+			if v2 == nil then
 				return u2.createFragment();
 			end;
 			return u2.createElement(l__ActionButton__3, {

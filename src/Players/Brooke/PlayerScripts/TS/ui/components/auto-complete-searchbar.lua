@@ -1,4 +1,3 @@
--- Script Hash: 1ad329d656f4f6486ad35f2266563e651f9bc55110c16db2a717300b9e73b37a71394e38317065bb2a0c48b152d8dd2b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -29,20 +28,16 @@ return {
 			v16 = false;
 		end;
 		local function u7(p3)
-			local l__Items__17 = p1.Items;
-			local function v18(p4)
-				return string.sub(string.lower(p4), 1, #p3) == string.lower(p3);
-			end;
-			for v19, v20 in ipairs(l__Items__17) do
-				if v18(v20, v19 - 1, l__Items__17) == true then
-					return v20;
+			for v17, v18 in ipairs(p1.Items) do
+				if string.sub(string.lower(v18), 1, #p3) == string.lower(p3) == true then
+					return v18;
 				end;
 			end;
 			return nil;
 		end;
 		local u8 = nil;
-		u8 = function(p5, p6)
-			if string.lower(p6.Text) == string.lower(p5) then
+		u8 = function(p4, p5)
+			if string.lower(p5.Text) == string.lower(p4) then
 				v11(true);
 				return;
 			end;
@@ -50,34 +45,33 @@ return {
 		end;
 		local u9 = u1.createRef();
 		p2.useEffect(function()
-			local l__Item__21 = p1.Item;
-			if l__Item__21 ~= "" and l__Item__21 then
-				u9:getValue().Text = p1.Item;
-				v5(p1.Item);
+			if p1.InputText ~= nil and u9:getValue().Text ~= p1.InputText then
+				u9:getValue().Text = p1.InputText;
+				v5(p1.InputText);
 				v11(true);
 			end;
-		end, { p1.Item });
-		local v22 = {};
-		for v23, v24 in pairs(p1) do
-			v22[v23] = v24;
+		end, { p1.InputText });
+		local v19 = {};
+		for v20, v21 in pairs(p1) do
+			v19[v20] = v21;
 		end;
-		v22.MaxCharLength = nil;
-		v22.Items = nil;
-		v22.Item = nil;
-		v22.OnSubmit = nil;
-		v22.ShowImage = nil;
-		v22.PlaceHolderText = nil;
-		local v25 = {
+		v19.MaxCharLength = nil;
+		v19.Items = nil;
+		v19.InputText = nil;
+		v19.OnTextChange = nil;
+		v19.ShowImage = nil;
+		v19.PlaceHolderText = nil;
+		local v22 = {
 			Size = UDim2.new(1, 0, 1, -26), 
 			BackgroundTransparency = 0, 
 			BorderSizePixel = 0, 
 			BackgroundColor3 = l__Theme__3.backgroundTertiary, 
 			LayoutOrder = 1
 		};
-		for v26, v27 in pairs(v22) do
-			v25[v26] = v27;
+		for v23, v24 in pairs(v19) do
+			v22[v23] = v24;
 		end;
-		local v28 = { u1.createElement("UICorner", {
+		local v25 = { u1.createElement("UICorner", {
 				CornerRadius = UDim.new(0, 5)
 			}), u1.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
@@ -86,8 +80,8 @@ return {
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0, 0)
 			}) };
-		local v29 = #v28;
-		local v30 = { u1.createElement("UIListLayout", {
+		local v26 = #v25;
+		local v27 = { u1.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				VerticalAlignment = Enum.VerticalAlignment.Center, 
@@ -99,55 +93,55 @@ return {
 				PaddingLeft = UDim.new(0, 10), 
 				PaddingRight = UDim.new(0, 10)
 			}) };
-		local v31 = v16;
-		if v31 then
-			local v32 = {};
-			local v33 = {
+		local v28 = v16;
+		if v28 then
+			local v29 = {};
+			local v30 = {
 				Size = UDim2.fromScale(1, 1), 
 				Image = v8, 
 				ScaleType = "Fit", 
 				SizeConstraint = "RelativeYY"
 			};
 			if v10 then
-				local v34 = 0;
+				local v31 = 0;
 			else
-				v34 = 0.6;
+				v31 = 0.6;
 			end;
-			v33.ImageTransparency = v34;
-			v33.BackgroundTransparency = 0;
-			v33.BackgroundColor3 = l__Theme__3.interactionPrimary;
-			v33.BorderColor3 = l__Theme__3.textPrimary;
-			v33.BorderSizePixel = 1;
-			v33.LayoutOrder = 1;
-			v32.UserAvatar = u1.createElement("ImageLabel", v33, { u1.createElement("UICorner", {
+			v30.ImageTransparency = v31;
+			v30.BackgroundTransparency = 0;
+			v30.BackgroundColor3 = l__Theme__3.interactionPrimary;
+			v30.BorderColor3 = l__Theme__3.textPrimary;
+			v30.BorderSizePixel = 1;
+			v30.LayoutOrder = 1;
+			v29.UserAvatar = u1.createElement("ImageLabel", v30, { u1.createElement("UICorner", {
 					CornerRadius = UDim.new(0, 5)
 				}) });
-			v31 = u1.createFragment(v32);
+			v28 = u1.createFragment(v29);
 		end;
-		if v31 then
-			v30[#v30 + 1] = v31;
+		if v28 then
+			v27[#v27 + 1] = v28;
 		end;
-		local v35 = {};
+		local v32 = {};
 		if l__DeviceUtil__4.isSmallScreen() then
-			local v36 = 0.8;
+			local v33 = 0.8;
 		else
-			v36 = 0.6;
+			v33 = 0.6;
 		end;
-		v35.Size = UDim2.fromScale(1, v36);
-		v35.Image = l__BedwarsImageId__5.SEARCH_SOLID;
-		v35.ScaleType = "Fit";
-		v35.SizeConstraint = "RelativeYY";
-		v35.ImageTransparency = 0.3;
-		v35.BackgroundTransparency = 1;
-		v35.LayoutOrder = 2;
-		v30[#v30 + 1] = u1.createElement("ImageLabel", v35);
-		v28[v29 + 1] = u1.createElement("Frame", {
+		v32.Size = UDim2.fromScale(1, v33);
+		v32.Image = l__BedwarsImageId__5.SEARCH_SOLID;
+		v32.ScaleType = "Fit";
+		v32.SizeConstraint = "RelativeYY";
+		v32.ImageTransparency = 0.3;
+		v32.BackgroundTransparency = 1;
+		v32.LayoutOrder = 2;
+		v27[#v27 + 1] = u1.createElement("ImageLabel", v32);
+		v25[v26 + 1] = u1.createElement("Frame", {
 			Size = UDim2.fromScale(0, 1), 
 			AutomaticSize = "X", 
 			BackgroundTransparency = 1, 
 			LayoutOrder = 1
-		}, v30);
-		v28[v29 + 2] = u1.createElement("Frame", {
+		}, v27);
+		v25[v26 + 2] = u1.createElement("Frame", {
 			Size = UDim2.fromScale(0.85, 1), 
 			BackgroundTransparency = 1, 
 			LayoutOrder = 3
@@ -168,25 +162,25 @@ return {
 				ClearTextOnFocus = false, 
 				[u1.Ref] = u9, 
 				AutoLocalize = false, 
-				[u1.Change.Text] = function(p7)
-					if v15 < #p7.Text then
-						p7.Text = string.sub(p7.Text, 0, 20);
+				[u1.Change.Text] = function(p6)
+					if v15 < #p6.Text then
+						p6.Text = string.sub(p6.Text, 0, 20);
 						return nil;
 					end;
-					if not (#p7.Text > 0) then
+					if not (#p6.Text > 0) then
 						v5("");
 						v7("");
 						v9("");
-						p1.OnSubmit(p7.Text, p1.Items);
+						p1.OnTextChange(p6.Text, p1.Items);
 						return;
 					end;
-					local v37 = u7(p7.Text);
-					if v37 ~= "" and v37 then
-						local v38 = p7.Text .. string.sub(v37, #p7.Text + 1);
-						u8(v37, p7);
-						v5(v37);
-						v7(v38);
-						if v4 ~= v37 then
+					local v34 = u7(p6.Text);
+					if v34 ~= "" and v34 then
+						local v35 = p6.Text .. string.sub(v34, #p6.Text + 1);
+						u8(v34, p6);
+						v5(v34);
+						v7(v35);
+						if v4 ~= v34 then
 
 						end;
 					else
@@ -194,14 +188,14 @@ return {
 						v9("");
 						v7("");
 					end;
-					l__StringUtil__2.fuzzySearch(p7.Text, p1.Items):andThen(function(p8)
-						if p8 then
-							p1.OnSubmit(p7.Text, p8);
+					l__StringUtil__2.fuzzySearch(p6.Text, p1.Items):andThen(function(p7)
+						if p7 then
+							p1.OnTextChange(p6.Text, p7);
 						end;
 					end);
 				end, 
-				[u1.Event.FocusLost] = function(p9, p10, p11)
-					if not p10 or v4 == "" then
+				[u1.Event.FocusLost] = function(p8, p9, p10)
+					if not p9 or v4 == "" then
 						v11(true);
 						return;
 					end;
@@ -228,6 +222,6 @@ return {
 			}, { u1.createElement("UITextSizeConstraint", {
 					MaxTextSize = 20
 				}) }) });
-		return u1.createElement("Frame", v25, v28);
+		return u1.createElement("Frame", v22, v25);
 	end)
 };

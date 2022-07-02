@@ -1,4 +1,3 @@
--- Script Hash: 77701c9d85eb2bcbd575c4f18b376d925f58cbad39614d0a94637c9063f3d99aa4f54706ac1ccabfea38c5d72a614623
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -54,21 +53,18 @@ function v5.animateSnowman(p6, p7, p8)
 			if not v21 then
 				break;
 			end;
-			local function v23(p9)
-				return p9.Name == v22;
-			end;
-			local v24 = nil;
-			for v25, v26 in ipairs(v12) do
-				if v23(v26, v25 - 1, v12) == true then
-					v24 = v26;
+			local v23 = nil;
+			for v24, v25 in ipairs(v12) do
+				if v25.Name == v22 == true then
+					v23 = v25;
 					break;
 				end;
 			end;
-			if v24 then
-				local v27 = v11[v24];
-				if v27 then
-					l__TweenService__3:Create(v24, u4, {
-						CFrame = v27, 
+			if v23 then
+				local v26 = v11[v23];
+				if v26 then
+					l__TweenService__3:Create(v23, u4, {
+						CFrame = v26, 
 						Transparency = 0
 					}):Play();
 				end;
@@ -76,26 +72,26 @@ function v5.animateSnowman(p6, p7, p8)
 		end;
 		task.wait(0.2);
 	end;
-	for v28, v29 in ipairs(p7:GetChildren()) do
-		if v29:IsA("BasePart") and v29 ~= l__SnowmanBottom__8 then
+	for v27, v28 in ipairs(p7:GetChildren()) do
+		if v28:IsA("BasePart") and v28 ~= l__SnowmanBottom__8 then
 			u5("WeldConstraint", {
 				Part0 = l__SnowmanBottom__8, 
-				Part1 = v29, 
+				Part1 = v28, 
 				Parent = l__SnowmanBottom__8
 			});
-			v29.Anchored = false;
+			v28.Anchored = false;
 		end;
 	end;
-	local v30 = l__TweenService__3:Create(l__SnowmanBottom__8, TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
+	local v29 = l__TweenService__3:Create(l__SnowmanBottom__8, TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
 		CFrame = l__SnowmanBottom__8.CFrame * CFrame.Angles(0, math.pi, 0)
+	});
+	v29:Play();
+	v29.Completed:Wait();
+	local v30 = l__TweenService__3:Create(l__SnowmanBottom__8, TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+		CFrame = l__SnowmanBottom__8.CFrame * CFrame.new(0, 2, 0) * CFrame.Angles(0, math.pi, 0)
 	});
 	v30:Play();
 	v30.Completed:Wait();
-	local v31 = l__TweenService__3:Create(l__SnowmanBottom__8, TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
-		CFrame = l__SnowmanBottom__8.CFrame * CFrame.new(0, 2, 0) * CFrame.Angles(0, math.pi, 0)
-	});
-	v31:Play();
-	v31.Completed:Wait();
 	l__TweenService__3:Create(l__SnowmanBottom__8, TweenInfo.new(0.4, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out), {
 		CFrame = l__SnowmanBottom__8.CFrame * CFrame.new(0, -2, 0)
 	}):Play();
@@ -103,32 +99,32 @@ function v5.animateSnowman(p6, p7, p8)
 		p7.SnowmanBottom.Attachment.ParticleEmitter:Emit(300);
 	end);
 	task.wait(1);
-	local v32 = nil;
-	local v33 = TweenInfo.new(1.5, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut);
-	for v34, v35 in ipairs(p7:GetChildren()) do
-		if v35:IsA("BasePart") then
-			v32 = l__TweenService__3:Create(v35, v33, {
+	local v31 = nil;
+	local v32 = TweenInfo.new(1.5, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut);
+	for v33, v34 in ipairs(p7:GetChildren()) do
+		if v34:IsA("BasePart") then
+			v31 = l__TweenService__3:Create(v34, v32, {
 				Transparency = 1
 			});
-			v32:Play();
+			v31:Play();
 		end;
 	end;
-	v32.Completed:Wait();
+	v31.Completed:Wait();
 	p7:Destroy();
 end;
 local l__ReplicatedStorage__6 = v2.ReplicatedStorage;
 local l__CurrentCamera__7 = l__Workspace__3.CurrentCamera;
-function v5.buildSnowman(p10, p11)
-	local v36 = l__ReplicatedStorage__6.Assets.Misc.Snowman:Clone();
-	local v37 = RaycastParams.new();
-	v37.FilterDescendantsInstances = { l__Workspace__3.Map };
-	v37.FilterType = Enum.RaycastFilterType.Whitelist;
-	local v38 = l__Workspace__3:Raycast(p11.Position, Vector3.new(0, -10, 0), v37);
-	if v38 ~= nil then
-		v38 = v38.Position;
+function v5.buildSnowman(p9, p10)
+	local v35 = l__ReplicatedStorage__6.Assets.Misc.Snowman:Clone();
+	local v36 = RaycastParams.new();
+	v36.FilterDescendantsInstances = { l__Workspace__3.Map };
+	v36.FilterType = Enum.RaycastFilterType.Whitelist;
+	local v37 = l__Workspace__3:Raycast(p10.Position, Vector3.new(0, -10, 0), v36);
+	if v37 ~= nil then
+		v37 = v37.Position;
 	end;
-	local v39 = v38 or p11.Position;
-	v36:PivotTo(CFrame.new(v39, v39 + (v39 - l__CurrentCamera__7.CFrame.Position).Unit * Vector3.new(1, 0, 1)) * CFrame.Angles(0, math.pi, 0));
-	return v36;
+	local v38 = v37 or p10.Position;
+	v35:PivotTo(CFrame.new(v38, v38 + (v38 - l__CurrentCamera__7.CFrame.Position).Unit * Vector3.new(1, 0, 1)) * CFrame.Angles(0, math.pi, 0));
+	return v35;
 end;
 return v5;

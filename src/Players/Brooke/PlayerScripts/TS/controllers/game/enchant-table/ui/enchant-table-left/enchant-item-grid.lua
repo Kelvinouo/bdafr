@@ -1,4 +1,3 @@
--- Script Hash: be5f620afe46ee026fa8e12d244ccf61cad91642061ec60e62834989007f6fb102729ff89b29ac5b368569c729452051
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -18,23 +17,19 @@ return {
 		for v5, v6 in pairs(p1) do
 			v4[v5] = v6;
 		end;
-		local v7 = u1.values(l__EnchantElement__2);
-		local function v8(p3)
-			return not l__EnchantElementMeta__3[p3].disabled;
-		end;
-		local v9 = {};
-		local v10 = 0;
-		for v11, v12 in ipairs(v7) do
-			if v8(v12, v11 - 1, v7) == true then
-				v10 = v10 + 1;
-				v9[v10] = v12;
+		local v7 = {};
+		local v8 = 0;
+		for v9, v10 in ipairs((u1.values(l__EnchantElement__2))) do
+			if not l__EnchantElementMeta__3[v10].disabled == true then
+				v8 = v8 + 1;
+				v7[v8] = v10;
 			end;
 		end;
-		local v13 = {};
-		for v14, v15 in pairs(v4) do
-			v13[v14] = v15;
+		local v11 = {};
+		for v12, v13 in pairs(v4) do
+			v11[v12] = v13;
 		end;
-		local v16 = {
+		local v14 = {
 			Header = u4.createElement("Frame", {
 				Size = UDim2.fromScale(1, 0.2), 
 				BackgroundColor3 = l__ColorUtil__5.BLACK, 
@@ -63,16 +58,16 @@ return {
 				Padding = UDim.new(0.05, 0)
 			}))
 		};
-		local v17 = {};
-		local v18 = {};
+		local v15 = {};
+		local v16 = {};
 		if l__DeviceUtil__6.isSmallScreen() then
-			local v19 = 9;
+			local v17 = 9;
 		else
-			v19 = 12;
+			v17 = 12;
 		end;
-		v18.MaxTextSize = v19;
-		v17[1] = u4.createElement("UITextSizeConstraint", v18);
-		v16[2] = u4.createElement("TextLabel", {
+		v16.MaxTextSize = v17;
+		v15[1] = u4.createElement("UITextSizeConstraint", v16);
+		v14[2] = u4.createElement("TextLabel", {
 			Size = UDim2.fromScale(1, 0.15), 
 			Position = UDim2.fromScale(0.5, 0.5), 
 			AnchorPoint = Vector2.new(0.5, 0.5), 
@@ -85,43 +80,45 @@ return {
 			TextYAlignment = "Center", 
 			BackgroundTransparency = 1, 
 			LayoutOrder = 2
-		}, v17);
-		local v20 = u1.values(l__EnchantElement__2);
-		local function v21(p4)
-			if l__EnchantElementMeta__3[p4].disabled then
-				return;
+		}, v15);
+		local v18 = {};
+		local v19 = 0;
+		local v20, v21, v22 = ipairs((u1.values(l__EnchantElement__2)));
+		while true do
+			local v23, v24 = v20(v21, v22);
+			if not v23 then
+				break;
 			end;
-			return u4.createElement(l__EnchantItemFrame__7, {
-				Enchant = p4
-			});
-		end;
-		local v22 = {};
-		local v23 = 0;
-		for v24, v25 in ipairs(v20) do
-			local v26 = v21(v25, v24 - 1, v20);
-			if v26 ~= nil then
-				v23 = v23 + 1;
-				v22[v23] = v26;
+			if not l__EnchantElementMeta__3[v24].disabled then
+				local v25 = u4.createElement(l__EnchantItemFrame__7, {
+					Enchant = v24
+				});
+			else
+				v25 = nil;
 			end;
+			if v25 ~= nil then
+				v19 = v19 + 1;
+				v18[v19] = v25;
+			end;		
 		end;
-		local v27 = {
+		local v26 = {
 			Size = UDim2.fromScale(1, 0.55), 
 			LayoutOrder = 3
 		};
-		local v28 = { u4.createElement("UIGridLayout", {
-				CellSize = UDim2.fromScale(0.2125, 1 / math.ceil(#v9 / 4)), 
+		local v27 = { u4.createElement("UIGridLayout", {
+				CellSize = UDim2.fromScale(0.2125, 1 / math.ceil(#v7 / 4)), 
 				CellPadding = UDim2.new(0.05, 0, 0.1, 0), 
 				FillDirectionMaxCells = 4, 
 				VerticalAlignment = "Center", 
 				HorizontalAlignment = "Center"
 			}) };
-		local v29 = #v28;
-		for v30, v31 in ipairs(v22) do
-			v28[v29 + v30] = v31;
+		local v28 = #v27;
+		for v29, v30 in ipairs(v18) do
+			v27[v28 + v29] = v30;
 		end;
-		v16.EnchantsImageGrid = u4.createElement(l__Empty__8, v27, v28);
+		v14.EnchantsImageGrid = u4.createElement(l__Empty__8, v26, v27);
 		return u4.createFragment({
-			EnchantsContainer = u4.createElement(l__Empty__8, v13, v16)
+			EnchantsContainer = u4.createElement(l__Empty__8, v11, v14)
 		});
 	end)
 };

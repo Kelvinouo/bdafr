@@ -1,4 +1,3 @@
--- Script Hash: df29439fadccf8cc412a299d6df04b66903e3e9940850006f150689c95cce835a4b97c6862e455175696ed7211dab01d
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -30,38 +29,35 @@ return {
 		local l__useState__5 = p2.useState;
 		if not l__DeviceUtil__1.isHoarceKat() then
 			local v6 = l__Players__2:GetPlayers();
-			local function v7(p3)
-				return l__OfflinePlayerUtil__3.getOfflinePlayer(p3);
+			local v7 = table.create(#v6);
+			for v8, v9 in ipairs(v6) do
+				v7[v8] = l__OfflinePlayerUtil__3.getOfflinePlayer(v9);
 			end;
-			local v8 = table.create(#v6);
-			for v9, v10 in ipairs(v6) do
-				v8[v9] = v7(v10, v9 - 1, v6);
-			end;
-			local v11 = v8;
+			local v10 = v7;
 		else
-			v11 = { l__OfflinePlayerUtil__3.Dummy.oiogy, l__OfflinePlayerUtil__3.Dummy.spleenhook, l__OfflinePlayerUtil__3.Dummy.LongNameMan, l__OfflinePlayerUtil__3.Dummy.DVwastaken, l__OfflinePlayerUtil__3.Dummy.spleenhook, l__OfflinePlayerUtil__3.Dummy.leoduquartier, l__OfflinePlayerUtil__3.Dummy.SnickTrix, l__OfflinePlayerUtil__3.Dummy.Bryan3838 };
+			v10 = { l__OfflinePlayerUtil__3.Dummy.oiogy, l__OfflinePlayerUtil__3.Dummy.spleenhook, l__OfflinePlayerUtil__3.Dummy.LongNameMan, l__OfflinePlayerUtil__3.Dummy.DVwastaken, l__OfflinePlayerUtil__3.Dummy.spleenhook, l__OfflinePlayerUtil__3.Dummy.leoduquartier, l__OfflinePlayerUtil__3.Dummy.SnickTrix, l__OfflinePlayerUtil__3.Dummy.Bryan3838 };
 		end;
-		local v12, v13 = l__useState__5(v11);
+		local v11, v12 = l__useState__5(v10);
 		if not l__DeviceUtil__1.isHoarceKat() then
-			local v14 = {};
+			local v13 = {};
 		else
-			v14 = u3;
+			v13 = u3;
 		end;
-		local v15, v16 = l__useState__5(v14);
-		local v17, v18 = l__useState__5(false);
+		local v14, v15 = l__useState__5(v13);
+		local v16, v17 = l__useState__5(false);
 		p2.useEffect(function()
 			if l__DeviceUtil__1.isHoarceKat() then
 				return nil;
 			end;
-			local v19 = l__KnitClient__4.Controllers.TeamController:getPlayerTeamMap();
-			if v19 then
-				v16(v19);
+			local v18 = l__KnitClient__4.Controllers.TeamController:getPlayerTeamMap();
+			if v18 then
+				v15(v18);
 			end;
 			if not l__DeviceUtil__1.isHoarceKat() and l__KnitClient__4.Controllers.PermissionController:playerHasAnyPermissions(l__Players__2.LocalPlayer, { 2, 0, 4, 6 }) then
-				v18(true);
+				v17(true);
 			end;
 		end, {});
-		local v20 = { u5.createElement("UIListLayout", {
+		local v19 = { u5.createElement("UIListLayout", {
 				FillDirection = "Vertical", 
 				Padding = UDim.new(0, 10), 
 				SortOrder = "LayoutOrder"
@@ -81,42 +77,42 @@ return {
 			}, { u5.createElement("UITextSizeConstraint", {
 					MaxTextSize = 20
 				}) }) };
-		local v21 = #v20;
-		local v22 = {
+		local v20 = #v19;
+		local v21 = {
 			Size = UDim2.new(1, 0, 0, 30)
 		};
 		v4 = {};
-		local function v23(p4, p5)
-			table.insert(p4, p5.name);
-			table.insert(p4, p5.displayName);
-			return p4;
+		for v22 = 1, #v10 do
+			local v23 = v10[v22];
+			table.insert(v4, v23.name);
+			table.insert(v4, v23.displayName);
+			v4 = v4;
 		end;
-		for v24 = 1, #v11 do
-			v4 = v23(v4, v11[v24], v24 - 1, v11);
-		end;
-		v22.Items = local v25;
-		v22.Item = "";
-		function v22.OnSubmit(p6, p7)
-			if p6 == "" then
-				return v13(v11);
+		v21.Items = local v24;
+		v21.InputText = "";
+		function v21.OnTextChange(p3, p4)
+			if p3 == "" then
+				return v12(v10);
 			end;
-			local function v26(p8)
-				return table.find(p7, p8.displayName) ~= nil or table.find(p7, p8.name) ~= nil;
-			end;
-			local v27 = {};
-			local v28 = 0;
-			for v29, v30 in ipairs(v11) do
-				if v26(v30, v29 - 1, v11) == true then
-					v28 = v28 + 1;
-					v27[v28] = v30;
+			local v25 = {};
+			local v26 = 0;
+			local v27, v28, v29 = ipairs(v10);
+			while true do
+				local v30, v31 = v27(v28, v29);
+				if not v30 then
+					break;
 				end;
+				if (table.find(p4, v31.displayName) ~= nil or table.find(p4, v31.name) ~= nil) == true then
+					v26 = v26 + 1;
+					v25[v26] = v31;
+				end;			
 			end;
-			v13(v27);
+			v12(v25);
 		end;
-		v22.PlaceHolderText = "Search User";
-		v22.LayoutOrder = 2;
-		v20[v21 + 1] = u5.createElement(l__AutoCompleteSearchbar__7, v22);
-		v20.ColumnHeaders = u5.createFragment({
+		v21.PlaceHolderText = "Search User";
+		v21.LayoutOrder = 2;
+		v19[v20 + 1] = u5.createElement(l__AutoCompleteSearchbar__7, v21);
+		v19.ColumnHeaders = u5.createFragment({
 			ColumnHeaders = u5.createElement(l__Empty__8, {
 				Size = UDim2.new(1, 0, 0, 20), 
 				LayoutOrder = 3
@@ -191,25 +187,22 @@ return {
 							MaxTextSize = 18
 						}) }) }) })
 		});
-		local v31 = next(v15) ~= nil;
-		if v31 then
-			table.sort(v12, function(p9, p10)
-				return string.lower(p9.displayName) < string.lower(p10.displayName);
+		local v32 = next(v14) ~= nil;
+		if v32 then
+			table.sort(v11, function(p5, p6)
+				return string.lower(p5.displayName) < string.lower(p6.displayName);
 			end);
-			local function v32(p11, p12)
-				return u5.createElement(l__HostPanelPlayerRow__10, {
-					OfflinePlayer = p11, 
-					Index = p12, 
-					Team = v15[p11.userId], 
-					HasGameBanPermission = v17, 
+			local v33 = table.create(#v11);
+			for v34, v35 in ipairs(v11) do
+				v33[v34] = u5.createElement(l__HostPanelPlayerRow__10, {
+					OfflinePlayer = v35, 
+					Index = v34 - 1, 
+					Team = v14[v35.userId], 
+					HasGameBanPermission = v16, 
 					store = p1.store
 				});
 			end;
-			local v33 = table.create(#v12);
-			for v34, v35 in ipairs(v12) do
-				v33[v34] = v32(v35, v34 - 1, v12);
-			end;
-			v31 = v33;
+			v32 = v33;
 		end;
 		local v36 = {
 			AdditionalSpace = 40, 
@@ -223,12 +216,12 @@ return {
 				Padding = UDim.new(0, 4)
 			}) };
 		local v38 = #v37;
-		if v31 then
-			for v39, v40 in ipairs(v31) do
+		if v32 then
+			for v39, v40 in ipairs(v32) do
 				v37[v38 + v39] = v40;
 			end;
 		end;
-		v20[v21 + 2] = u5.createElement(l__AutoCanvasScrollingFrame__11, v36, v37);
-		return u5.createFragment(v20);
+		v19[v20 + 2] = u5.createElement(l__AutoCanvasScrollingFrame__11, v36, v37);
+		return u5.createFragment(v19);
 	end)
 };

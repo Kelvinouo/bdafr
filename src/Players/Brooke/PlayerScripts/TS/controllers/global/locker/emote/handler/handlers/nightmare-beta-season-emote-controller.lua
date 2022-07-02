@@ -1,4 +1,3 @@
--- Script Hash: ec9b5d079a2d68f403b81baeeea6b1fbbb84d3a40e2b10ea6440136fb99ce8135398440491e4ad2fd14735b37a9d2c4c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -51,35 +50,31 @@ function v4.KnitStart(p2)
 		local v9 = l__ReplicatedStorage__6.Assets.Effects.NightmareEmote:Clone();
 		v9.Parent = l__Workspace__7;
 		v9:SetPrimaryPartCFrame(p6.LowerTorso.CFrame + Vector3.new(0, -2, 0));
-		local v10 = v9:GetDescendants();
-		local function v11(p8)
-			if p8:IsA("BasePart") then
-				l__GameQueryUtil__8:setQueryIgnored(p8, true);
-				p8.CanCollide = false;
-				p8.Anchored = true;
+		for v10, v11 in ipairs((v9:GetDescendants())) do
+			if v11:IsA("BasePart") then
+				l__GameQueryUtil__8:setQueryIgnored(v11, true);
+				v11.CanCollide = false;
+				v11.Anchored = true;
 			end;
 		end;
-		for v12, v13 in ipairs(v10) do
-			v11(v13, v12 - 1, v10);
-		end;
-		local l__Outer__14 = v9:FindFirstChild("Outer");
-		if l__Outer__14 then
-			l__TweenService__9:Create(l__Outer__14, TweenInfo.new(1.5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, -1), {
-				Orientation = l__Outer__14.Orientation + Vector3.new(0, 360, 0)
+		local l__Outer__12 = v9:FindFirstChild("Outer");
+		if l__Outer__12 then
+			l__TweenService__9:Create(l__Outer__12, TweenInfo.new(1.5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, -1), {
+				Orientation = l__Outer__12.Orientation + Vector3.new(0, 360, 0)
 			}):Play();
 		end;
-		local l__Middle__15 = v9:FindFirstChild("Middle");
-		if l__Middle__15 then
-			l__TweenService__9:Create(l__Middle__15, TweenInfo.new(12.5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, -1), {
-				Orientation = l__Middle__15.Orientation + Vector3.new(0, -360, 0)
+		local l__Middle__13 = v9:FindFirstChild("Middle");
+		if l__Middle__13 then
+			l__TweenService__9:Create(l__Middle__13, TweenInfo.new(12.5, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, -1), {
+				Orientation = l__Middle__13.Orientation + Vector3.new(0, -360, 0)
 			}):Play();
 		end;
 		p4.maid:GiveTask(function()
 			v9:Destroy();
 		end);
 	end;
-	function v7.onDisable(p9, p10, p11, p12)
-		p9.maid:DoCleaning();
+	function v7.onDisable(p8, p9, p10, p11)
+		p8.maid:DoCleaning();
 	end;
 	u10 = l__EmoteHandlerController__6.registerHandler;
 	u10(l__EmoteHandlerController__6, l__EmoteType__3.NIGHTMARE_1, v7);

@@ -1,4 +1,3 @@
--- Script Hash: 1b18b46987ffe09ff10be1a306bb7781e5909272f7b5e51541e7011ee8aff181a1594d7d56b91aeccabfdc510a81ac47
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -94,36 +93,33 @@ local function v9()
 	return v10, v12, v16;
 end;
 local v21, v22, v23 = v9();
-local function u8()
-	local l__CurrentCamera__24 = l__Workspace__7.CurrentCamera;
-	local v25 = l__CurrentCamera__24:FindFirstChild("ClickToMoveDisplay");
-	if not v25 then
-		v25 = Instance.new("Model");
-		v25.Name = "ClickToMoveDisplay";
-		v25.Parent = l__CurrentCamera__24;
-	end;
-	return v25;
-end;
-local v26 = {};
-v26.__index = v26;
-function v26.Destroy(p1)
+local v24 = {};
+v24.__index = v24;
+function v24.Destroy(p1)
 	p1.DisplayModel:Destroy();
 end;
-local u9 = v21;
-local function u10(p2, p3)
-	local v27, v28, v29 = l__Workspace__7:FindPartOnRayWithIgnoreList(Ray.new(p3 + Vector3.new(0, 2.5, 0), Vector3.new(0, -10, 0)), { l__Workspace__7.CurrentCamera, l__LocalPlayer__8.Character });
-	if v27 then
-		p2.CFrame = CFrame.new(v28, v28 + v29);
-		p2.Parent = u8();
+local u8 = v21;
+local function u9(p2, p3)
+	local v25, v26, v27 = l__Workspace__7:FindPartOnRayWithIgnoreList(Ray.new(p3 + Vector3.new(0, 2.5, 0), Vector3.new(0, -10, 0)), { l__Workspace__7.CurrentCamera, l__LocalPlayer__8.Character });
+	if v25 then
+		p2.CFrame = CFrame.new(v26, v26 + v27);
+		local l__CurrentCamera__28 = l__Workspace__7.CurrentCamera;
+		local v29 = l__CurrentCamera__28:FindFirstChild("ClickToMoveDisplay");
+		if not v29 then
+			v29 = Instance.new("Model");
+			v29.Name = "ClickToMoveDisplay";
+			v29.Parent = l__CurrentCamera__28;
+		end;
+		p2.Parent = v29;
 	end;
 end;
-function v26.NewDisplayModel(p4, p5)
-	local v30 = u9:Clone();
-	u10(v30, p5);
+function v24.NewDisplayModel(p4, p5)
+	local v30 = u8:Clone();
+	u9(v30, p5);
 	return v30;
 end;
-function v26.new(p6, p7)
-	local v31 = setmetatable({}, v26);
+function v24.new(p6, p7)
+	local v31 = setmetatable({}, v24);
 	v31.DisplayModel = v31:NewDisplayModel(p6);
 	v31.ClosestWayPoint = p7;
 	return v31;
@@ -135,10 +131,10 @@ function v32.Destroy(p8)
 	p8.Tween:Cancel();
 	p8.DisplayModel:Destroy();
 end;
-local u11 = v22;
+local u10 = v22;
 function v32.NewDisplayModel(p9, p10)
-	local v33 = u11:Clone();
-	u10(v33, p10);
+	local v33 = u10:Clone();
+	u9(v33, p10);
 	return v33;
 end;
 function v32.CreateTween(p11)
@@ -182,196 +178,197 @@ end;
 function v37.Destroy(p18)
 	p18.DisplayModel:Destroy();
 end;
-local u12 = v23;
+local u11 = v23;
 function v37.NewDisplayModel(p19, p20)
-	local v38 = u12:Clone();
-	u10(v38, p20);
+	local v38 = u11:Clone();
+	u9(v38, p20);
 	local v39, v40, v41 = l__Workspace__7:FindPartOnRayWithIgnoreList(Ray.new(p20 + Vector3.new(0, 2.5, 0), Vector3.new(0, -10, 0)), { l__Workspace__7.CurrentCamera, l__LocalPlayer__8.Character });
 	if v39 then
 		v38.CFrame = CFrame.new(v40, v40 + v41);
-		v38.Parent = u8();
+		local l__CurrentCamera__42 = l__Workspace__7.CurrentCamera;
+		local v43 = l__CurrentCamera__42:FindFirstChild("ClickToMoveDisplay");
+		if not v43 then
+			v43 = Instance.new("Model");
+			v43.Name = "ClickToMoveDisplay";
+			v43.Parent = l__CurrentCamera__42;
+		end;
+		v38.Parent = v43;
 	end;
 	return v38;
 end;
 function v37.RunFailureTween(p21)
 	wait(0.125);
-	local v42 = TweenInfo.new(0.0625, Enum.EasingStyle.Sine, Enum.EasingDirection.Out);
-	local v43 = l__TweenService__5:Create(p21.DisplayModel.FailureWaypointBillboard, v42, {
+	local v44 = TweenInfo.new(0.0625, Enum.EasingStyle.Sine, Enum.EasingDirection.Out);
+	local v45 = l__TweenService__5:Create(p21.DisplayModel.FailureWaypointBillboard, v44, {
 		SizeOffset = v3
 	});
-	v43:Play();
-	l__TweenService__5:Create(p21.DisplayModel.FailureWaypointBillboard.Frame, v42, {
+	v45:Play();
+	l__TweenService__5:Create(p21.DisplayModel.FailureWaypointBillboard.Frame, v44, {
 		Rotation = 10
 	}):Play();
-	v43.Completed:wait();
-	local v44 = l__TweenService__5:Create(p21.DisplayModel.FailureWaypointBillboard, TweenInfo.new(0.125, Enum.EasingStyle.Sine, Enum.EasingDirection.Out, 3, true), {
+	v45.Completed:wait();
+	local v46 = l__TweenService__5:Create(p21.DisplayModel.FailureWaypointBillboard, TweenInfo.new(0.125, Enum.EasingStyle.Sine, Enum.EasingDirection.Out, 3, true), {
 		SizeOffset = v4
 	});
-	v44:Play();
-	local v45 = TweenInfo.new(0.125, Enum.EasingStyle.Sine, Enum.EasingDirection.Out, 3, true);
-	l__TweenService__5:Create(p21.DisplayModel.FailureWaypointBillboard.Frame.ImageLabel, v45, {
+	v46:Play();
+	local v47 = TweenInfo.new(0.125, Enum.EasingStyle.Sine, Enum.EasingDirection.Out, 3, true);
+	l__TweenService__5:Create(p21.DisplayModel.FailureWaypointBillboard.Frame.ImageLabel, v47, {
 		ImageColor3 = Color3.new(0.75, 0.75, 0.75)
 	}):Play();
-	l__TweenService__5:Create(p21.DisplayModel.FailureWaypointBillboard.Frame, v45, {
+	l__TweenService__5:Create(p21.DisplayModel.FailureWaypointBillboard.Frame, v47, {
 		Rotation = -10
 	}):Play();
-	v44.Completed:wait();
-	local v46 = TweenInfo.new(0.0625, Enum.EasingStyle.Sine, Enum.EasingDirection.Out);
-	local v47 = l__TweenService__5:Create(p21.DisplayModel.FailureWaypointBillboard, v46, {
+	v46.Completed:wait();
+	local v48 = TweenInfo.new(0.0625, Enum.EasingStyle.Sine, Enum.EasingDirection.Out);
+	local v49 = l__TweenService__5:Create(p21.DisplayModel.FailureWaypointBillboard, v48, {
 		SizeOffset = u7
 	});
-	v47:Play();
-	l__TweenService__5:Create(p21.DisplayModel.FailureWaypointBillboard.Frame, v46, {
+	v49:Play();
+	l__TweenService__5:Create(p21.DisplayModel.FailureWaypointBillboard.Frame, v48, {
 		Rotation = 0
 	}):Play();
-	v47.Completed:wait();
+	v49.Completed:wait();
 	wait(0.125);
 end;
 function v37.new(p22)
-	local v48 = setmetatable({}, v37);
-	v48.DisplayModel = v48:NewDisplayModel(p22);
-	return v48;
+	local v50 = setmetatable({}, v37);
+	v50.DisplayModel = v50:NewDisplayModel(p22);
+	return v50;
 end;
-local v49 = Instance.new("Animation");
-v49.AnimationId = "rbxassetid://2874840706";
-local u13 = nil;
-local u14 = 0;
-local function u15(p23, p24)
-	local v50 = {};
-	local v51 = 1;
-	for v52 = 1, #p23 - 1 do
-		local v53 = false;
-		if v52 % 2 == 0 then
-			v53 = not ((p23[v52].Position - p23[#p23].Position).magnitude < 3);
+local v51 = Instance.new("Animation");
+v51.AnimationId = "rbxassetid://2874840706";
+local u12 = nil;
+local u13 = 0;
+local function u14(p23, p24)
+	local v52 = {};
+	local v53 = 1;
+	for v54 = 1, #p23 - 1 do
+		local v55 = false;
+		if v54 % 2 == 0 then
+			v55 = not ((p23[v54].Position - p23[#p23].Position).magnitude < 3);
 		end;
-		if v53 then
-			v50[v51] = v26.new(p23[v52].Position, v52);
-			v51 = v51 + 1;
+		if v55 then
+			v52[v53] = v24.new(p23[v54].Position, v54);
+			v53 = v53 + 1;
 		end;
 	end;
-	table.insert(v50, (v32.new(p23[#p23].Position, #p23, p24)));
-	local v54 = {};
-	local v55 = 1;
-	for v56 = #v50, 1, -1 do
-		v54[v55] = v50[v56];
-		v55 = v55 + 1;
+	table.insert(v52, (v32.new(p23[#p23].Position, #p23, p24)));
+	local v56 = {};
+	local v57 = 1;
+	for v58 = #v52, 1, -1 do
+		v56[v57] = v52[v58];
+		v57 = v57 + 1;
 	end;
-	return v54;
+	return v56;
 end;
-local function u16(p25, p26)
-	return p26 * (1 + 1.5 * (math.clamp(p25 - 10, 0, 90) / 90));
-end;
-function v1.CreatePathDisplay(p27, p28)
-	u14 = u14 + 1;
-	local u17 = u15(p27, p28);
-	local u18 = "ClickToMoveResizeTrail" .. u14;
-	l__RunService__6:BindToRenderStep(u18, Enum.RenderPriority.Camera.Value - 1, function()
-		if #u17 == 0 then
-			l__RunService__6:UnbindFromRenderStep(u18);
+function v1.CreatePathDisplay(p25, p26)
+	u13 = u13 + 1;
+	local u15 = u14(p25, p26);
+	local u16 = "ClickToMoveResizeTrail" .. u13;
+	l__RunService__6:BindToRenderStep(u16, Enum.RenderPriority.Camera.Value - 1, function()
+		if #u15 == 0 then
+			l__RunService__6:UnbindFromRenderStep(u16);
 			return;
 		end;
-		local l__p__57 = l__Workspace__7.CurrentCamera.CFrame.p;
-		for v58 = 1, #u17 do
-			local l__TrailDotImage__59 = u17[v58].DisplayModel:FindFirstChild("TrailDotImage");
-			if l__TrailDotImage__59 then
-				l__TrailDotImage__59.Size = u16((u17[v58].DisplayModel.Position - l__p__57).magnitude, u1);
+		local l__p__59 = l__Workspace__7.CurrentCamera.CFrame.p;
+		for v60 = 1, #u15 do
+			local l__TrailDotImage__61 = u15[v60].DisplayModel:FindFirstChild("TrailDotImage");
+			if l__TrailDotImage__61 then
+				l__TrailDotImage__61.Size = u1 * (1 + 1.5 * (math.clamp((u15[v60].DisplayModel.Position - l__p__59).magnitude - 10, 0, 90) / 90));
 			end;
 		end;
 	end);
-	local function u19(p29)
-		for v60 = #u17, 1, -1 do
-			local v61 = u17[v60];
-			if not (v61.ClosestWayPoint <= p29) then
+	local function u17(p27)
+		for v62 = #u15, 1, -1 do
+			local v63 = u15[v62];
+			if not (v63.ClosestWayPoint <= p27) then
 				break;
 			end;
-			v61:Destroy();
-			u17[v60] = nil;
+			v63:Destroy();
+			u15[v62] = nil;
 		end;
 	end;
 	return function()
-		u19(#p27);
-	end, u19;
+		u17(#p25);
+	end, u17;
 end;
-local u20 = nil;
-function v1.DisplayFailureWaypoint(p30)
-	if u20 then
-		u20:Hide();
+local u18 = nil;
+function v1.DisplayFailureWaypoint(p28)
+	if u18 then
+		u18:Hide();
 	end;
-	local v62 = v37.new(p30);
-	u20 = v62;
-	local u21 = v62;
+	local v64 = v37.new(p28);
+	u18 = v64;
+	local u19 = v64;
 	coroutine.wrap(function()
-		u21:RunFailureTween();
-		u21:Destroy();
-		u21 = nil;
+		u19:RunFailureTween();
+		u19:Destroy();
+		u19 = nil;
 	end)();
 end;
-function v1.CreateEndWaypoint(p31)
-	return v32.new(p31);
-end;
-local function u22()
-	local l__Character__63 = l__LocalPlayer__8.Character;
-	if not l__Character__63 then
-		return;
-	end;
-	return l__Character__63:FindFirstChildOfClass("Humanoid");
-end;
-local function u23(p32)
-	if p32 == nil then
-		return u13;
-	end;
-	u13 = p32:LoadAnimation(v49);
-	u13.Priority = Enum.AnimationPriority.Action;
-	u13.Looped = false;
-	return u13;
+function v1.CreateEndWaypoint(p29)
+	return v32.new(p29);
 end;
 function v1.PlayFailureAnimation()
-	local v64 = u22();
-	if v64 then
-		u23(v64):Play();
+	local l__Character__65 = l__LocalPlayer__8.Character;
+	if l__Character__65 then
+		local v66 = l__Character__65:FindFirstChildOfClass("Humanoid");
+	else
+		v66 = nil;
+	end;
+	if v66 then
+		if v66 == nil then
+			local v67 = u12;
+		else
+			u12 = v66:LoadAnimation(v51);
+			u12.Priority = Enum.AnimationPriority.Action;
+			u12.Looped = false;
+			v67 = u12;
+		end;
+		v67:Play();
 	end;
 end;
 function v1.CancelFailureAnimation()
-	if u13 ~= nil and u13.IsPlaying then
-		u13:Stop();
+	if u12 ~= nil and u12.IsPlaying then
+		u12:Stop();
 	end;
 end;
-function v1.SetWaypointTexture(p33)
-	u3 = p33;
-	local v65, v66, v67 = v9();
-	u9 = v65;
-	u11 = v66;
-	u12 = v67;
+function v1.SetWaypointTexture(p30)
+	u3 = p30;
+	local v68, v69, v70 = v9();
+	u8 = v68;
+	u10 = v69;
+	u11 = v70;
 end;
 function v1.GetWaypointTexture()
 	return u3;
 end;
-function v1.SetWaypointRadius(p34)
-	u1 = Vector2.new(p34, p34);
-	local v68, v69, v70 = v9();
-	u9 = v68;
-	u11 = v69;
-	u12 = v70;
+function v1.SetWaypointRadius(p31)
+	u1 = Vector2.new(p31, p31);
+	local v71, v72, v73 = v9();
+	u8 = v71;
+	u10 = v72;
+	u11 = v73;
 end;
 function v1.GetWaypointRadius()
 	return u1.X;
 end;
-function v1.SetEndWaypointTexture(p35)
-	u6 = p35;
-	local v71, v72, v73 = v9();
-	u9 = v71;
-	u11 = v72;
-	u12 = v73;
+function v1.SetEndWaypointTexture(p32)
+	u6 = p32;
+	local v74, v75, v76 = v9();
+	u8 = v74;
+	u10 = v75;
+	u11 = v76;
 end;
 function v1.GetEndWaypointTexture()
 	return u6;
 end;
-function v1.SetWaypointsAlwaysOnTop(p36)
-	u2 = p36;
-	local v74, v75, v76 = v9();
-	u9 = v74;
-	u11 = v75;
-	u12 = v76;
+function v1.SetWaypointsAlwaysOnTop(p33)
+	u2 = p33;
+	local v77, v78, v79 = v9();
+	u8 = v77;
+	u10 = v78;
+	u11 = v79;
 end;
 function v1.GetWaypointsAlwaysOnTop()
 	return u2;

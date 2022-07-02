@@ -1,4 +1,3 @@
--- Script Hash: ad0bfdadafeb2df77cdc0612941aebcc4bd11d12284657d25aea5a00796c78abcd0bc9148483cfb99b8d11e0b595d385
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,46 +13,42 @@ return {
 	BattlePassRewardsList = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u3)(function(p1, p2)
 		local l__useEffect__3 = p2.useEffect;
 		local l__useMemo__4 = p2.useMemo;
-		local v5 = l__BattlePassRewards__1[l__BattlePassUtils__2.BATTLE_PASS_SEASON];
-		local function v6(p3)
-			return p3.level == 1;
-		end;
-		local v7 = nil;
-		for v8, v9 in ipairs(v5) do
-			if v6(v9, v8 - 1, v5) == true then
-				v7 = v9;
+		local v5 = nil;
+		for v6, v7 in ipairs(l__BattlePassRewards__1[l__BattlePassUtils__2.BATTLE_PASS_SEASON]) do
+			if v7.level == 1 == true then
+				v5 = v7;
 				break;
 			end;
 		end;
-		local v10, v11 = p2.useState(v7);
-		local v12 = l__useMemo__4(function()
-			local v13 = l__BattlePassRewards__1[l__BattlePassUtils__2.BATTLE_PASS_SEASON];
+		local v8, v9 = p2.useState(v5);
+		local v10 = l__useMemo__4(function()
+			local v11 = l__BattlePassRewards__1[l__BattlePassUtils__2.BATTLE_PASS_SEASON];
 			local u8 = {};
-			local function v14(p4)
-				if u8[p4.level] == nil then
-					u8[p4.level] = { p4 };
+			local function v12(p3)
+				if u8[p3.level] == nil then
+					u8[p3.level] = { p3 };
 					return;
 				end;
-				local v15 = {};
+				local v13 = {};
+				local v14 = #v13;
+				local v15 = u8[p3.level];
 				local v16 = #v15;
-				local v17 = u8[p4.level];
-				local v18 = #v17;
-				table.move(v17, 1, v18, v16 + 1, v15);
-				v15[v16 + v18 + 1] = p4;
-				u8[p4.level] = v15;
+				table.move(v15, 1, v16, v14 + 1, v13);
+				v13[v14 + v16 + 1] = p3;
+				u8[p3.level] = v13;
 			end;
-			local v19 = {};
-			local v20 = 0;
-			for v21, v22 in ipairs(v13) do
-				local v23 = v14(v22, v21 - 1, v13);
-				if v23 ~= nil then
-					v20 = v20 + 1;
-					v19[v20] = v23;
+			local v17 = {};
+			local v18 = 0;
+			for v19, v20 in ipairs(v11) do
+				local v21 = v12(v20, v19 - 1, v11);
+				if v21 ~= nil then
+					v18 = v18 + 1;
+					v17[v18] = v21;
 				end;
 			end;
 			return u8;
 		end, {});
-		local v24 = { u3.createElement(l__Empty__5, {
+		local v22 = { u3.createElement(l__Empty__5, {
 				Size = UDim2.new(1, 0, 0.95, 0)
 			}, { (l__useMemo__4(function()
 					return u3.createElement(u4, {
@@ -61,28 +56,28 @@ return {
 						LayoutOrder = 1
 					});
 				end, {})) }) };
-		local v25 = {};
-		local v26 = #v25;
-		for v27, v28 in pairs(v12) do
-			v26 = v26 + 1;
-			v25[v26] = { v27, v28 };
+		local v23 = {};
+		local v24 = #v23;
+		for v25, v26 in pairs(v10) do
+			v24 = v24 + 1;
+			v23[v24] = { v25, v26 };
 		end;
-		local function v29(p5)
+		local function v27(p4)
 			return u3.createElement(u6, {
 				BattlePass = p1.store.BattlePass, 
 				Size = UDim2.new(0, 90, 0.95, 0), 
 				SetReward = p1.SetReward, 
-				LevelRewards = p5[2], 
-				LayoutOrder = p5[1], 
-				SetActive = v11, 
-				Active = v10
+				LevelRewards = p4[2], 
+				LayoutOrder = p4[1], 
+				SetActive = v9, 
+				Active = v8
 			});
 		end;
-		local v30 = table.create(#v25);
-		for v31, v32 in ipairs(v25) do
-			v30[v31] = v29(v32, v31 - 1, v25);
+		local v28 = table.create(#v23);
+		for v29, v30 in ipairs(v23) do
+			v28[v29] = v27(v30, v29 - 1, v23);
 		end;
-		local v33 = {
+		local v31 = {
 			AdditionalSpace = 50, 
 			ScrollingFrameProps = {
 				Position = UDim2.new(0, 24, 0, 0), 
@@ -93,7 +88,7 @@ return {
 				LayoutOrder = 1
 			}
 		};
-		local v34 = { u3.createElement("UIListLayout", {
+		local v32 = { u3.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				VerticalAlignment = Enum.VerticalAlignment.Center, 
@@ -105,17 +100,17 @@ return {
 				PaddingLeft = UDim.new(0, 2), 
 				PaddingRight = UDim.new(0, 2)
 			}) };
-		local v35 = #v34;
-		for v36, v37 in ipairs(v30) do
-			v34[v35 + v36] = v37;
+		local v33 = #v32;
+		for v34, v35 in ipairs(v28) do
+			v32[v33 + v34] = v35;
 		end;
-		v24.BattlePassRewardsList = u3.createElement(l__AutoCanvasScrollingFrame__7, v33, v34);
+		v22.BattlePassRewardsList = u3.createElement(l__AutoCanvasScrollingFrame__7, v31, v32);
 		return u3.createFragment({
 			BattlePassRewardsListContainer = u3.createElement("Frame", {
 				Size = p1.Size, 
 				BackgroundTransparency = 1, 
 				LayoutOrder = p1.LayoutOrder
-			}, v24)
+			}, v22)
 		});
 	end)
 };

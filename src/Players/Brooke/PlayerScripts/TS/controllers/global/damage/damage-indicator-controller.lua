@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -293,36 +292,39 @@ function u1.spawnDamageIndicator(p5, p6, p7, p8)
 	task.spawn(function()
 		local l__TextSize__48 = v38.TextSize;
 		local u20 = l__TextSize__48;
-		local function u21(p9, p10)
-			return UDim2.new(p9.X.Scale * p10, p9.X.Offset * p10, p9.Y.Scale * p10, p9.Y.Offset * p10);
-		end;
-		local u22 = v33.Size;
-		local u23 = u10.blowUpSize / l__TextSize__48;
-		local v49 = l__default__15(u10.blowUpDuration, l__Linear__16, function(p11)
-			v38.TextSize = u20 * (1 - p11) + p11 * u10.blowUpSize;
-			v33.Size = u21(u22, 1 - p11) + u21(u22, p11 * u23);
+		local u21 = v33.Size;
+		local u22 = u10.blowUpSize / l__TextSize__48;
+		local v49 = l__default__15(u10.blowUpDuration, l__Linear__16, function(p9)
+			v38.TextSize = u20 * (1 - p9) + p9 * u10.blowUpSize;
+			local v50 = 1 - p9;
+			local v51 = UDim2.new(u21.X.Scale * v50, u21.X.Offset * v50, u21.Y.Scale * v50, u21.Y.Offset * v50);
+			local v52 = p9 * u22;
+			v33.Size = v51 + UDim2.new(u21.X.Scale * v52, u21.X.Offset * v52, u21.Y.Scale * v52, u21.Y.Offset * v52);
 		end, 0, 1);
 		v49:Play();
 		v49:Wait();
 		u20 = v38.TextSize;
-		u22 = v33.Size;
-		local u24 = u10.textSize / u20;
-		l__default__15(u10.blowUpCompleteDuration, l__Linear__16, function(p12)
-			v38.TextSize = u20 * (1 - p12) + p12 * u10.textSize;
-			v33.Size = u21(u22, 1 - p12) + u21(u22, p12 * u24);
+		u21 = v33.Size;
+		local u23 = u10.textSize / u20;
+		l__default__15(u10.blowUpCompleteDuration, l__Linear__16, function(p10)
+			v38.TextSize = u20 * (1 - p10) + p10 * u10.textSize;
+			local v53 = 1 - p10;
+			local v54 = UDim2.new(u21.X.Scale * v53, u21.X.Offset * v53, u21.Y.Scale * v53, u21.Y.Offset * v53);
+			local v55 = p10 * u23;
+			v33.Size = v54 + UDim2.new(u21.X.Scale * v55, u21.X.Offset * v55, u21.Y.Scale * v55, u21.Y.Offset * v55);
 		end, 0, 1):Play();
 	end);
-	local u25 = l__TweenService__17:Create(v43, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+	local u24 = l__TweenService__17:Create(v43, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
 		Transparency = 1
 	});
 	v1.Promise.delay(u10.anchoredDuration + 0.3):andThen(function()
-		l__default__15(0.2, l__OutQuad__18, function(p13)
-			v38.TextTransparency = p13;
+		l__default__15(0.2, l__OutQuad__18, function(p11)
+			v38.TextTransparency = p11;
 			if v34 then
-				v34.ImageTransparency = p13;
+				v34.ImageTransparency = p11;
 			end;
 		end, 0, 1);
-		u25:Play();
+		u24:Play();
 	end);
 	l__Debris__19:AddItem(v26, 1.5);
 end;

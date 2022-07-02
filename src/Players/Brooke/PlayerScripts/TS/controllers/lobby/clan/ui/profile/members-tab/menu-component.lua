@@ -1,4 +1,3 @@
--- Script Hash: 00bf4bcd82cebae3892e92e44777bbc97d94da20e9d4e0ba18693cab13e9feec6616f38243a30080db1231eeaa42e45f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -41,35 +40,32 @@ return {
 				v17.ZIndex = 100;
 				return u1.createElement(l__ButtonComponent__2, v17);
 			end;
-			local function v18(p4)
-				return u1.createElement(u5, {
-					Text = p4.text, 
-					OnClick = p4.callback
+			local v18 = table.create(#l__Items__16);
+			for v19, v20 in ipairs(l__Items__16) do
+				v18[v19] = u1.createElement(u5, {
+					Text = v20.text, 
+					OnClick = v20.callback
 				});
 			end;
-			local v19 = table.create(#l__Items__16);
-			for v20, v21 in ipairs(l__Items__16) do
-				v19[v20] = v18(v21, v20 - 1, l__Items__16);
-			end;
-			local v22 = {
+			local v21 = {
 				Size = UDim2.new(1, 0, 0, 0), 
 				AutomaticSize = Enum.AutomaticSize.Y, 
 				Position = UDim2.fromScale(0, 1.1), 
 				AnchorPoint = Vector2.new(0, 0), 
 				BackgroundTransparency = 1
 			};
-			local v23 = { u1.createElement("UIListLayout", {
+			local v22 = { u1.createElement("UIListLayout", {
 					FillDirection = "Vertical"
 				}) };
-			local v24 = #v23;
-			for v25, v26 in ipairs(v19) do
-				v23[v24 + v25] = v26;
+			local v23 = #v22;
+			for v24, v25 in ipairs(v18) do
+				v22[v23 + v24] = v25;
 			end;
 			v15 = u1.createFragment({
-				Menu = u1.createElement("Frame", v22, v23)
+				Menu = u1.createElement("Frame", v21, v22)
 			});
 		end;
-		local v27 = { u1.createElement(l__ButtonComponent__2, {
+		local v26 = { u1.createElement(l__ButtonComponent__2, {
 				Text = p1.ButtonText, 
 				Size = UDim2.new(1, 0, 1, 0), 
 				OnClick = function()
@@ -77,8 +73,8 @@ return {
 				end
 			}) };
 		if v15 then
-			v27[#v27 + 1] = v15;
+			v26[#v26 + 1] = v15;
 		end;
-		return u1.createElement(l__Empty__4, v12, v27);
+		return u1.createElement(l__Empty__4, v12, v26);
 	end)
 };

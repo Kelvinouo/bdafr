@@ -50,776 +50,805 @@ end;
 local l__Players__5 = v5.Players;
 local l__GameQueryUtil__6 = v2.GameQueryUtil;
 function u1.canSee(p5, p6)
-	local v11 = nil;
-	local l__Character__12 = l__Players__5.LocalPlayer.Character;
-	if not l__Character__12 then
+	local l__Character__11 = l__Players__5.LocalPlayer.Character;
+	if not l__Character__11 then
 		return false;
 	end;
 	if not p6 then
 		return false;
 	end;
-	local function v13(p7)
-		local v14 = p7:FindFirstChildWhichIsA("Humanoid");
+	local function v12(p7)
+		local v13 = p7:FindFirstChildWhichIsA("Humanoid");
 		if not p7.PrimaryPart then
 			return nil;
 		end;
-		if not v14 then
+		if not v13 then
 			return nil;
 		end;
-		return p7.PrimaryPart.Position + Vector3.new(0, -1 * (v14.HipHeight + p7.PrimaryPart.Size.Y / 2), 0);
+		return p7.PrimaryPart.Position + Vector3.new(0, -1 * (v13.HipHeight + p7.PrimaryPart.Size.Y / 2), 0);
 	end;
-	local v15 = v13(l__Character__12);
-	v11 = v13(p6:getInstance());
-	if not v15 or not v11 then
+	local v14 = v12(l__Character__11);
+	local v15 = v12(p6:getInstance());
+	if not v14 or not v15 then
 		return false;
 	end;
-	local v16 = v15 + Vector3.new(0, 5, 0);
-	local v17 = v11 + Vector3.new(0, 5, 0);
-	local function u7(p8, p9, p10)
-		local v18 = RaycastParams.new();
-		v18.FilterDescendantsInstances = p10;
-		v18.FilterType = Enum.RaycastFilterType.Blacklist;
-		return l__GameQueryUtil__6:raycast(p8, p9 - p8, v18) ~= nil;
+	local v16 = v14 + Vector3.new(0, 5, 0);
+	local v17 = v15 + Vector3.new(0, 5, 0);
+	local v18 = { l__Character__11, p6:getInstance() };
+	local v19 = RaycastParams.new();
+	v19.FilterDescendantsInstances = v18;
+	v19.FilterType = Enum.RaycastFilterType.Blacklist;
+	local v20 = l__GameQueryUtil__6:raycast(v14, v15 - v14, v19) ~= nil;
+	if not v20 then
+		local v21 = RaycastParams.new();
+		v21.FilterDescendantsInstances = v18;
+		v21.FilterType = Enum.RaycastFilterType.Blacklist;
+		v20 = l__GameQueryUtil__6:raycast(v15, v14 - v15, v21) ~= nil;
 	end;
-	local function v19(p11, p12, p13)
-		return u7(p11, p12, p13) or u7(p12, p11, p13);
-	end;
-	local v20 = { l__Character__12, p6:getInstance() };
-	return not v19(v15, v11, v20) or (not v19(v16, v17, v20) or not v19((v15 + v16) / 2, (v11 + v17) / 2, v20));
-end;
-local l__Workspace__8 = v5.Workspace;
-local l__ClientSyncEvents__9 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
-local l__Flamework__10 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
-local l__CooldownId__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "cooldown", "cooldown-id").CooldownId;
-local l__default__12 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
-local l__default__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-function u1.attackEntity(p14, p15, p16)
-	local v21 = l__Players__5.LocalPlayer.Character;
-	if v21 ~= nil then
-		v21 = v21.PrimaryPart;
-	end;
-	if not v21 or not l__Workspace__8.CurrentCamera then
-		return nil;
-	end;
-	if l__ClientSyncEvents__9.SwordSwing:fire():isCancelled() then
-		return nil;
-	end;
-	if l__ClientSyncEvents__9.PerformCombat:fire():isCancelled() then
-		return nil;
-	end;
-	local v22 = p14:getHandItem();
-	if v22 ~= nil then
-		v22 = v22.tool;
-	end;
+	local v22 = not v20;
 	if not v22 then
+		local v23 = RaycastParams.new();
+		v23.FilterDescendantsInstances = v18;
+		v23.FilterType = Enum.RaycastFilterType.Blacklist;
+		local v24 = l__GameQueryUtil__6:raycast(v16, v17 - v16, v23) ~= nil;
+		if not v24 then
+			local v25 = RaycastParams.new();
+			v25.FilterDescendantsInstances = v18;
+			v25.FilterType = Enum.RaycastFilterType.Blacklist;
+			v24 = l__GameQueryUtil__6:raycast(v17, v16 - v17, v25) ~= nil;
+		end;
+		v22 = not v24;
+		if not v22 then
+			local v26 = (v14 + v16) / 2;
+			local v27 = (v15 + v17) / 2;
+			local v28 = RaycastParams.new();
+			v28.FilterDescendantsInstances = v18;
+			v28.FilterType = Enum.RaycastFilterType.Blacklist;
+			local v29 = l__GameQueryUtil__6:raycast(v26, v27 - v26, v28) ~= nil;
+			if not v29 then
+				local v30 = RaycastParams.new();
+				v30.FilterDescendantsInstances = v18;
+				v30.FilterType = Enum.RaycastFilterType.Blacklist;
+				v29 = l__GameQueryUtil__6:raycast(v27, v26 - v27, v30) ~= nil;
+			end;
+			v22 = not v29;
+		end;
+	end;
+	return v22;
+end;
+local l__Workspace__7 = v5.Workspace;
+local l__ClientSyncEvents__8 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
+local l__Flamework__9 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
+local l__CooldownId__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "cooldown", "cooldown-id").CooldownId;
+local l__default__11 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
+local l__default__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+function u1.attackEntity(p8, p9, p10)
+	local v31 = l__Players__5.LocalPlayer.Character;
+	if v31 ~= nil then
+		v31 = v31.PrimaryPart;
+	end;
+	if not v31 or not l__Workspace__7.CurrentCamera then
 		return nil;
 	end;
-	local v23 = l__getItemMeta__4(v22.Name);
-	local l__sword__24 = l__getItemMeta__4(v22.Name).sword;
-	local v25 = l__sword__24.chargedAttack;
-	if v25 ~= nil then
-		v25 = v25.minCharge;
+	if l__ClientSyncEvents__8.SwordSwing:fire():isCancelled() then
+		return nil;
 	end;
-	if v25 ~= 0 and v25 == v25 and v25 then
-		local v26 = l__sword__24.chargedSwingAnimation;
-		if v26 then
-			local v27 = l__sword__24.chargedAttack;
-			if v27 ~= nil then
-				v27 = v27.minCharge;
+	if l__ClientSyncEvents__8.PerformCombat:fire():isCancelled() then
+		return nil;
+	end;
+	local v32 = p8:getHandItem();
+	if v32 ~= nil then
+		v32 = v32.tool;
+	end;
+	if not v32 then
+		return nil;
+	end;
+	local v33 = l__getItemMeta__4(v32.Name);
+	local l__sword__34 = l__getItemMeta__4(v32.Name).sword;
+	local v35 = l__sword__34.chargedAttack;
+	if v35 ~= nil then
+		v35 = v35.minCharge;
+	end;
+	if v35 ~= 0 and v35 == v35 and v35 then
+		local v36 = l__sword__34.chargedSwingAnimation;
+		if v36 then
+			local v37 = l__sword__34.chargedAttack;
+			if v37 ~= nil then
+				v37 = v37.minCharge;
 			end;
-			v26 = v27 <= p14.chargeTime;
+			v36 = v37 <= p8.chargeTime;
 		end;
-		if v26 then
-			l__sword__24.swingAnimations = l__sword__24.chargedSwingAnimation;
+		if v36 then
+			l__sword__34.swingAnimations = l__sword__34.chargedSwingAnimation;
 		else
-			l__sword__24.swingAnimations = nil;
+			l__sword__34.swingAnimations = nil;
 		end;
-		local v28 = l__sword__24.firstPersonChargedSwingAnimation;
-		if v28 then
-			local v29 = l__sword__24.chargedAttack;
-			if v29 ~= nil then
-				v29 = v29.minCharge;
+		local v38 = l__sword__34.firstPersonChargedSwingAnimation;
+		if v38 then
+			local v39 = l__sword__34.chargedAttack;
+			if v39 ~= nil then
+				v39 = v39.minCharge;
 			end;
-			v28 = v29 <= p14.chargeTime;
+			v38 = v39 <= p8.chargeTime;
 		end;
-		if v28 then
-			l__sword__24.firstPersonSwingAnimations = l__sword__24.firstPersonChargedSwingAnimation;
+		if v38 then
+			l__sword__34.firstPersonSwingAnimations = l__sword__34.firstPersonChargedSwingAnimation;
 		else
-			l__sword__24.firstPersonSwingAnimations = nil;
+			l__sword__34.firstPersonSwingAnimations = nil;
 		end;
 	end;
-	if tick() - p14.lastAttack < l__sword__24.attackSpeed then
-		if not l__sword__24.respectAttackSpeedForEffects then
-			p14:playSwordEffect(v23);
+	if tick() - p8.lastAttack < l__sword__34.attackSpeed then
+		if not l__sword__34.respectAttackSpeedForEffects then
+			p8:playSwordEffect(v33);
 		end;
 		return nil;
 	end;
-	if l__sword__24.cooldown ~= nil then
-		if p14.cooldownMaid ~= nil then
-			p14.cooldownMaid:DoCleaning();
+	if l__sword__34.cooldown ~= nil then
+		if p8.cooldownMaid ~= nil then
+			p8.cooldownMaid:DoCleaning();
 		end;
-		p14.cooldownMaid = u3.new();
-		p14.cooldownMaid:GiveTask(l__Flamework__10.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):createCooldownBar(l__CooldownId__11.SWORD));
-		l__Flamework__10.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):setOnCooldown(l__CooldownId__11.SWORD, l__getItemMeta__4(v22.Name).sword.attackSpeed, l__sword__24.cooldown);
-		p14.cooldownMaid:GiveTask(function()
-			l__Flamework__10.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):removeCooldown(l__CooldownId__11.SWORD);
+		p8.cooldownMaid = u3.new();
+		p8.cooldownMaid:GiveTask(l__Flamework__9.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):createCooldownBar(l__CooldownId__10.SWORD));
+		l__Flamework__9.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):setOnCooldown(l__CooldownId__10.SWORD, l__getItemMeta__4(v32.Name).sword.attackSpeed, l__sword__34.cooldown);
+		p8.cooldownMaid:GiveTask(function()
+			l__Flamework__9.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):removeCooldown(l__CooldownId__10.SWORD);
 		end);
 	end;
-	p14:playSwordEffect(v23);
-	if p15 then
-		local v30 = tick();
-		p14.lastAttack = v30;
-		local l__Position__31 = p15:getInstance():GetPrimaryPartCFrame().Position;
-		local l__Position__32 = l__Players__5.LocalPlayer.Character:GetPrimaryPartCFrame().Position;
-		if p16 then
-			local v33 = {
+	p8:playSwordEffect(v33);
+	if p9 then
+		local v40 = tick();
+		p8.lastAttack = v40;
+		local l__Position__41 = p9:getInstance():GetPrimaryPartCFrame().Position;
+		local l__Position__42 = l__Players__5.LocalPlayer.Character:GetPrimaryPartCFrame().Position;
+		if p10 then
+			local v43 = {
 				cameraPosition = {
-					value = l__Workspace__8.CurrentCamera.CFrame.Position
+					value = l__Workspace__7.CurrentCamera.CFrame.Position
 				}, 
 				cursorDirection = {
-					value = p16
+					value = p10
 				}
 			};
 		else
-			v33 = nil;
+			v43 = nil;
 		end;
-		l__default__12.Debug("Fire sword hit remote");
-		if l__sword__24.chargedAttack then
-			local v34 = l__sword__24.chargedAttack;
-			if v34 ~= nil then
-				v34 = v34.maxChargeTimeSec;
+		l__default__11.Debug("Fire sword hit remote");
+		if l__sword__34.chargedAttack then
+			local v44 = l__sword__34.chargedAttack;
+			if v44 ~= nil then
+				v44 = v44.maxChargeTimeSec;
 			end;
-			local v35 = v34;
+			local v45 = v44;
 		else
-			v35 = 0;
+			v45 = 0;
 		end;
-		local v36 = math.min(v35, p14.chargeTime);
-		local v37 = {
-			weapon = v22, 
-			entityInstance = p15:getInstance(), 
+		local v46 = math.min(v45, p8.chargeTime);
+		local v47 = {
+			weapon = v32, 
+			entityInstance = p9:getInstance(), 
 			validate = {
-				raycast = v33, 
+				raycast = v43, 
 				targetPosition = {
-					value = l__Position__31
+					value = l__Position__41
 				}, 
 				selfPosition = {
-					value = l__Position__32
+					value = l__Position__42
 				}
 			}
 		};
-		local v38 = {};
-		if l__sword__24.chargedAttack then
-			local v39 = l__sword__24.chargedAttack;
-			if v39 ~= nil then
-				v39 = v39.maxChargeTimeSec;
+		local v48 = {};
+		if l__sword__34.chargedAttack then
+			local v49 = l__sword__34.chargedAttack;
+			if v49 ~= nil then
+				v49 = v49.maxChargeTimeSec;
 			end;
-			local v40 = v36 / v39;
+			local v50 = v46 / v49;
 		else
-			v40 = 0;
+			v50 = 0;
 		end;
-		v38.chargeRatio = v40;
-		v37.chargedAttack = v38;
-		p14.chargeTime = 0;
-		if not l__default__13.Client:Get("RemoteName"):CallServer(v37) and p14.lastAttack == v30 then
-			p14.lastAttack = p14.lastAttack;
+		v48.chargeRatio = v50;
+		v47.chargedAttack = v48;
+		p8.chargeTime = 0;
+		if not l__default__12.Client:Get("RemoteName"):CallServer(v47) and p8.lastAttack == v40 then
+			p8.lastAttack = p8.lastAttack;
 			return;
 		end;
-	elseif l__sword__24.setLastAttackOnEveryHit == true then
-		p14.lastAttack = tick();
+	elseif l__sword__34.setLastAttackOnEveryHit == true then
+		p8.lastAttack = tick();
 	end;
 end;
-local l__GameAnimationUtil__14 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
-local l__RandomUtil__15 = v2.RandomUtil;
-local l__AnimationType__16 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
-local l__GameSound__17 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__SoundManager__18 = v2.SoundManager;
-function u1.playSwordEffect(p17, p18)
-	local function v41(p19)
-		local v42 = p18.sword;
-		if v42 ~= nil then
-			v42 = v42.swingAnimations;
+local l__GameAnimationUtil__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
+local l__RandomUtil__14 = v2.RandomUtil;
+local l__AnimationType__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
+local l__GameSound__16 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local l__SoundManager__17 = v2.SoundManager;
+function u1.playSwordEffect(p11, p12)
+	local function v51(p13)
+		local v52 = p12.sword;
+		if v52 ~= nil then
+			v52 = v52.swingAnimations;
 		end;
-		if v42 then
-			local v43 = l__RandomUtil__15.fromList(unpack(p18.sword.swingAnimations));
+		if v52 then
+			local v53 = l__RandomUtil__14.fromList(unpack(p12.sword.swingAnimations));
 		else
-			v43 = l__AnimationType__16.SWORD_SWING;
+			v53 = l__AnimationType__15.SWORD_SWING;
 		end;
-		l__GameAnimationUtil__14.playAnimation(l__Players__5.LocalPlayer, v43);
-		local v44 = p18.sword;
-		if v44 ~= nil then
-			v44 = v44.firstPersonSwingAnimations;
+		l__GameAnimationUtil__13.playAnimation(l__Players__5.LocalPlayer, v53);
+		local v54 = p12.sword;
+		if v54 ~= nil then
+			v54 = v54.firstPersonSwingAnimations;
 		end;
-		if v44 then
-			local v45 = l__RandomUtil__15.fromList(unpack(p18.sword.firstPersonSwingAnimations));
+		if v54 then
+			local v55 = l__RandomUtil__14.fromList(unpack(p12.sword.firstPersonSwingAnimations));
 		else
-			v45 = l__AnimationType__16.FP_SWING_SWORD;
+			v55 = l__AnimationType__15.FP_SWING_SWORD;
 		end;
-		l__KnitClient__4.Controllers.ViewmodelController:playAnimation(v45);
-		local v46 = { l__GameSound__17.SWORD_SWING_1, l__GameSound__17.SWORD_SWING_2 };
-		local v47 = p18.sword;
-		if v47 ~= nil then
-			v47 = v47.swingSounds;
+		l__KnitClient__4.Controllers.ViewmodelController:playAnimation(v55);
+		local v56 = { l__GameSound__16.SWORD_SWING_1, l__GameSound__16.SWORD_SWING_2 };
+		local v57 = p12.sword;
+		if v57 ~= nil then
+			v57 = v57.swingSounds;
 		end;
-		if v47 then
-			v46 = p18.sword.swingSounds;
+		if v57 then
+			v56 = p12.sword.swingSounds;
 		end;
-		l__SoundManager__18:playSound(l__RandomUtil__15.fromList(unpack(v46)));
+		l__SoundManager__17:playSound(l__RandomUtil__14.fromList(unpack(v56)));
 	end;
-	local v48 = p17:getHandItem();
-	if v48 ~= nil then
-		v48 = v48.tool;
+	local v58 = p11:getHandItem();
+	if v58 ~= nil then
+		v58 = v58.tool;
 	end;
-	if not v48 then
+	if not v58 then
 		return nil;
 	end;
-	local l__sword__49 = l__getItemMeta__4(v48.Name).sword;
-	local v50 = l__sword__49;
-	if v50 ~= nil then
-		v50 = v50.chargedAttack;
+	local l__sword__59 = l__getItemMeta__4(v58.Name).sword;
+	local v60 = l__sword__59;
+	if v60 ~= nil then
+		v60 = v60.chargedAttack;
 	end;
-	if not v50 or l__sword__49.chargedAttack.ignoreEffectsOnFullyCharged ~= true then
-		v41(v48);
+	if not v60 or l__sword__59.chargedAttack.ignoreEffectsOnFullyCharged ~= true then
+		v51(v58);
 		return;
 	end;
-	local v51 = l__sword__49;
-	if v51 ~= nil then
-		v51 = v51.chargedAttack;
-		if v51 ~= nil then
-			v51 = v51.maxChargeTimeSec;
+	local v61 = l__sword__59;
+	if v61 ~= nil then
+		v61 = v61.chargedAttack;
+		if v61 ~= nil then
+			v61 = v61.maxChargeTimeSec;
 		end;
 	end;
-	if v51 <= p17.chargeTime then
+	if v61 <= p11.chargeTime then
 		return nil;
 	end;
-	v41(v48);
+	v51(v58);
 end;
-function u1.bufferMobileAttack(p20)
-	p20.bufferedMobileAttack = true;
+function u1.bufferMobileAttack(p14)
+	p14.bufferedMobileAttack = true;
 end;
-local l__EntityUtil__19 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
-local l__CombatConstant__20 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "combat", "combat-constant").CombatConstant;
-function u1.swingSwordAtMouse(p21)
-	if p21:isClickingTooFast() then
+local l__EntityUtil__18 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
+local l__CombatConstant__19 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "combat", "combat-constant").CombatConstant;
+function u1.swingSwordAtMouse(p15)
+	if p15:isClickingTooFast() then
 		return nil;
 	end;
-	local v52 = l__Players__5.LocalPlayer:GetAttribute("chargingSword");
-	if v52 ~= 0 and v52 == v52 and v52 ~= "" and v52 then
+	local v62 = l__Players__5.LocalPlayer:GetAttribute("chargingSword");
+	if v62 ~= 0 and v62 == v62 and v62 ~= "" and v62 then
 		return nil;
 	end;
-	local v53 = p21:getHandItem();
-	local v54 = v53;
-	if v54 then
-		local v55 = l__Players__5.LocalPlayer.Character;
-		if v55 ~= nil then
-			v55 = v55.PrimaryPart;
+	local v63 = p15:getHandItem();
+	local v64 = v63;
+	if v64 then
+		local v65 = l__Players__5.LocalPlayer.Character;
+		if v65 ~= nil then
+			v65 = v65.PrimaryPart;
 		end;
-		v54 = v55;
+		v64 = v65;
 	end;
-	if v54 then
-		local v56 = l__EntityUtil__19:getEntity(l__Players__5.LocalPlayer);
-		if not v56 then
+	if v64 then
+		local v66 = l__EntityUtil__18:getEntity(l__Players__5.LocalPlayer);
+		if not v66 then
 			return nil;
 		end;
-		local l__sword__57 = l__getItemMeta__4(v53.itemType).sword;
-		local v58 = RaycastParams.new();
-		v58.FilterDescendantsInstances = { l__Players__5.LocalPlayer.Character };
-		v58.FilterType = Enum.RaycastFilterType.Blacklist;
-		local l__mouse__59 = l__Players__5.LocalPlayer:GetMouse();
-		local l__Direction__60 = l__mouse__59.UnitRay.Direction;
-		local v61 = l__Workspace__8:Raycast(l__mouse__59.UnitRay.Origin, l__Direction__60 * 200, v58);
-		local v62 = v61;
-		if v62 ~= nil then
-			v62 = v62.Instance;
+		local l__sword__67 = l__getItemMeta__4(v63.itemType).sword;
+		local v68 = RaycastParams.new();
+		v68.FilterDescendantsInstances = { l__Players__5.LocalPlayer.Character };
+		v68.FilterType = Enum.RaycastFilterType.Blacklist;
+		local l__mouse__69 = l__Players__5.LocalPlayer:GetMouse();
+		local l__Direction__70 = l__mouse__69.UnitRay.Direction;
+		local v71 = l__Workspace__7:Raycast(l__mouse__69.UnitRay.Origin, l__Direction__70 * 200, v68);
+		local v72 = v71;
+		if v72 ~= nil then
+			v72 = v72.Instance;
 		end;
-		if v62 then
-			local v63 = l__sword__57 and l__sword__57.attackRange;
-			if v63 ~= 0 and v63 == v63 and v63 then
-				local v64 = l__sword__57.attackRange;
+		if v72 then
+			local v73 = l__sword__67 and l__sword__67.attackRange;
+			if v73 ~= 0 and v73 == v73 and v73 then
+				local v74 = l__sword__67.attackRange;
 			else
-				v64 = l__CombatConstant__20.RAYCAST_SWORD_CHARACTER_DISTANCE;
+				v74 = l__CombatConstant__19.RAYCAST_SWORD_CHARACTER_DISTANCE;
 			end;
-			if (l__Players__5.LocalPlayer.Character.PrimaryPart.Position - v61.Instance.Position).Magnitude <= v64 then
-				local v65 = l__EntityUtil__19:getEntity(v61.Instance);
-				if v65 and v56:canAttack(v65) and p21:canSee(v65) then
-					p21:attackEntity(v65, l__Direction__60);
+			if (l__Players__5.LocalPlayer.Character.PrimaryPart.Position - v71.Instance.Position).Magnitude <= v74 then
+				local v75 = l__EntityUtil__18:getEntity(v71.Instance);
+				if v75 and v66:canAttack(v75) and p15:canSee(v75) then
+					p15:attackEntity(v75, l__Direction__70);
 					return nil;
 				end;
 			end;
 		end;
-		p21:swingSwordInRegion();
+		p15:swingSwordInRegion();
 	end;
 end;
-function u1.mobileSwingPressed(p22)
-	l__ClientSyncEvents__9.SwordSwingDown:fire();
-	if p22:isClickingTooFast() then
+function u1.mobileSwingPressed(p16)
+	l__ClientSyncEvents__8.SwordSwingDown:fire();
+	if p16:isClickingTooFast() then
 		return nil;
 	end;
-	p22:swingSwordInRegion();
+	p16:swingSwordInRegion();
 end;
-local l__BLOCK_SIZE__21 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "block", "block-constants").BLOCK_SIZE;
-local l__DeviceUtil__22 = v2.DeviceUtil;
-function u1.swingSwordInRegion(p23)
-	local v66 = l__Players__5.LocalPlayer:GetAttribute("chargingSword");
-	if v66 ~= 0 and v66 == v66 and v66 ~= "" and v66 then
+local l__BLOCK_SIZE__20 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "block", "block-constants").BLOCK_SIZE;
+local l__DeviceUtil__21 = v2.DeviceUtil;
+function u1.swingSwordInRegion(p17)
+	local v76 = l__Players__5.LocalPlayer:GetAttribute("chargingSword");
+	if v76 ~= 0 and v76 == v76 and v76 ~= "" and v76 then
 		return nil;
 	end;
-	local v67 = l__EntityUtil__19:getLocalPlayerEntity();
-	local v68 = v67;
-	if v68 then
-		local v69 = l__Players__5.LocalPlayer.Character;
-		if v69 ~= nil then
-			v69 = v69.PrimaryPart;
+	local v77 = l__EntityUtil__18:getLocalPlayerEntity();
+	local v78 = v77;
+	if v78 then
+		local v79 = l__Players__5.LocalPlayer.Character;
+		if v79 ~= nil then
+			v79 = v79.PrimaryPart;
 		end;
-		v68 = v69;
+		v78 = v79;
 	end;
-	if v68 then
-		local v70 = p23:getHandItem();
-		if v70 ~= nil then
-			v70 = v70.tool;
+	if v78 then
+		local v80 = p17:getHandItem();
+		if v80 ~= nil then
+			v80 = v80.tool;
 		end;
-		if not v70 then
+		if not v80 then
 			return nil;
 		end;
-		local l__sword__71 = l__getItemMeta__4(v70.Name).sword;
-		local v72 = 3.8 * l__BLOCK_SIZE__21;
-		local l__attackRange__73 = l__sword__71.attackRange;
-		if l__attackRange__73 ~= 0 and l__attackRange__73 == l__attackRange__73 and l__attackRange__73 then
-			v72 = l__sword__71.attackRange;
-		elseif l__DeviceUtil__22.isMobileControls() then
-			v72 = l__CombatConstant__20.REGION_SWORD_CHARACTER_DISTANCE;
+		local l__sword__81 = l__getItemMeta__4(v80.Name).sword;
+		local v82 = 3.8 * l__BLOCK_SIZE__20;
+		local l__attackRange__83 = l__sword__81.attackRange;
+		if l__attackRange__83 ~= 0 and l__attackRange__83 == l__attackRange__83 and l__attackRange__83 then
+			v82 = l__sword__81.attackRange;
+		elseif l__DeviceUtil__21.isMobileControls() then
+			v82 = l__CombatConstant__19.REGION_SWORD_CHARACTER_DISTANCE;
 		end;
-		local v74 = 1.5;
-		local l__Humanoid__75 = l__Players__5.LocalPlayer.Character:FindFirstChild("Humanoid");
-		if l__Humanoid__75 then
-			v74 = l__Humanoid__75.HipHeight;
+		local v84 = 1.5;
+		local l__Humanoid__85 = l__Players__5.LocalPlayer.Character:FindFirstChild("Humanoid");
+		if l__Humanoid__85 then
+			v84 = l__Humanoid__85.HipHeight;
 		end;
-		local v76 = l__Players__5.LocalPlayer.Character.PrimaryPart.Position + l__Players__5.LocalPlayer.Character.PrimaryPart.CFrame.LookVector.Unit * (v72 / 2);
-		local v77 = Region3.new(v76 - Vector3.new(v72 / 2, v74, v72 / 2), v76 + Vector3.new(v72 / 2, v74, v72 / 2));
-		local v78 = CFrame.new(v76, v76 + l__Players__5.LocalPlayer.Character.PrimaryPart.CFrame.LookVector);
-		local v79 = l__EntityUtil__19:getAliveEntityInstances();
-		local function v80(p24)
-			return p24 ~= l__Players__5.LocalPlayer.Character;
-		end;
-		local v81 = {};
-		local v82 = 0;
-		for v83, v84 in ipairs(v79) do
-			if v80(v84, v83 - 1, v79) == true then
-				v82 = v82 + 1;
-				v81[v82] = v84;
+		local v86 = l__Players__5.LocalPlayer.Character.PrimaryPart.Position + l__Players__5.LocalPlayer.Character.PrimaryPart.CFrame.LookVector.Unit * (v82 / 2);
+		local v87 = Region3.new(v86 - Vector3.new(v82 / 2, v84, v82 / 2), v86 + Vector3.new(v82 / 2, v84, v82 / 2));
+		local v88 = CFrame.new(v86, v86 + l__Players__5.LocalPlayer.Character.PrimaryPart.CFrame.LookVector);
+		local v89 = {};
+		local v90 = 0;
+		local v91, v92, v93 = ipairs((l__EntityUtil__18:getAliveEntityInstances()));
+		while true do
+			local v94, v95 = v91(v92, v93);
+			if not v94 then
+				break;
 			end;
+			if v95 ~= l__Players__5.LocalPlayer.Character == true then
+				v90 = v90 + 1;
+				v89[v90] = v95;
+			end;		
 		end;
-		local function v85(p25)
-			return p25.PrimaryPart ~= nil;
-		end;
-		local v86 = {};
-		local v87 = 0;
-		for v88, v89 in ipairs(v81) do
-			if v85(v89, v88 - 1, v81) == true then
-				v87 = v87 + 1;
-				v86[v87] = v89;
+		local v96 = {};
+		local v97 = 0;
+		local v98, v99, v100 = ipairs(v89);
+		while true do
+			local v101, v102 = v98(v99, v100);
+			if not v101 then
+				break;
 			end;
+			if v102.PrimaryPart ~= nil == true then
+				v97 = v97 + 1;
+				v96[v97] = v102;
+			end;		
 		end;
-		local v90 = OverlapParams.new();
-		v90.FilterType = Enum.RaycastFilterType.Whitelist;
-		v90.FilterDescendantsInstances = v86;
-		for v91, v92 in ipairs((l__Workspace__8:GetPartBoundsInBox(v77.CFrame, v77.Size, v90))) do
-			local v93 = l__EntityUtil__19:getEntity(v92);
-			if v93 and v67:canAttack(v93) then
-				local l__PrimaryPart__94 = v93:getInstance().PrimaryPart;
-				if l__PrimaryPart__94 and (l__PrimaryPart__94.Position - l__Players__5.LocalPlayer.Character.PrimaryPart.Position).Magnitude < v72 and p23:canSee(v93) then
-					p23:attackEntity(v93);
+		local v103 = OverlapParams.new();
+		v103.FilterType = Enum.RaycastFilterType.Whitelist;
+		v103.FilterDescendantsInstances = v96;
+		for v104, v105 in ipairs((l__Workspace__7:GetPartBoundsInBox(v87.CFrame, v87.Size, v103))) do
+			local v106 = l__EntityUtil__18:getEntity(v105);
+			if v106 and v77:canAttack(v106) then
+				local l__PrimaryPart__107 = v106:getInstance().PrimaryPart;
+				if l__PrimaryPart__107 and (l__PrimaryPart__107.Position - l__Players__5.LocalPlayer.Character.PrimaryPart.Position).Magnitude < v82 and p17:canSee(v106) then
+					p17:attackEntity(v106);
 					return nil;
 				end;
 			end;
 		end;
-		p23:attackEntity(nil);
+		p17:attackEntity(nil);
 	end;
 end;
-local l__HttpService__23 = v5.HttpService;
-local l__ClickHold__24 = v2.ClickHold;
-local l__UserInputService__25 = v5.UserInputService;
-local l__SharedSyncEvents__26 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "shared-sync-events").SharedSyncEvents;
-local l__ContextActionService__27 = v5.ContextActionService;
-function u1.onEnable(p26, p27)
-	local v95 = l__getItemMeta__4(p27.itemType);
-	local v96 = v95.sword;
-	if v96 ~= nil then
-		v96 = v96.idleAnimation;
+local l__HttpService__22 = v5.HttpService;
+local l__ClickHold__23 = v2.ClickHold;
+local l__UserInputService__24 = v5.UserInputService;
+local l__SharedSyncEvents__25 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "shared-sync-events").SharedSyncEvents;
+local l__ContextActionService__26 = v5.ContextActionService;
+function u1.onEnable(p18, p19)
+	local v108 = l__getItemMeta__4(p19.itemType);
+	local v109 = v108.sword;
+	if v109 ~= nil then
+		v109 = v109.idleAnimation;
 	end;
-	if v96 ~= 0 and v96 == v96 and v96 then
+	if v109 ~= 0 and v109 == v109 and v109 then
 		task.spawn(function()
-			local u28 = l__GameAnimationUtil__14.playAnimation(l__Players__5.LocalPlayer, v95.sword.idleAnimation, {
+			local u27 = l__GameAnimationUtil__13.playAnimation(l__Players__5.LocalPlayer, v108.sword.idleAnimation, {
 				looped = true
 			});
-			p26.maid:GiveTask(function()
-				if u28 ~= nil then
-					u28:Stop();
+			p18.maid:GiveTask(function()
+				if u27 ~= nil then
+					u27:Stop();
 				end;
-				if u28 ~= nil then
-					u28:Destroy();
+				if u27 ~= nil then
+					u27:Destroy();
 				end;
 			end);
 		end);
 	end;
-	local v97 = v95.sword;
-	if v97 ~= nil then
-		v97 = v97.chargedAttack;
-		if v97 ~= nil then
-			v97 = v97.fireAtFullCharge;
+	local v110 = v108.sword;
+	if v110 ~= nil then
+		v110 = v110.chargedAttack;
+		if v110 ~= nil then
+			v110 = v110.fireAtFullCharge;
 		end;
 	end;
-	if v97 then
-		local v98 = true;
+	if v110 then
+		local v111 = true;
 	else
-		v98 = false;
+		v111 = false;
 	end;
-	local v99 = u3.new();
-	local l__Idle__100 = v7.Idle;
-	local v101 = nil;
-	local v102 = l__HttpService__23:GenerateGUID();
-	local v103 = v95.sword;
-	if v103 ~= nil then
-		v103 = v103.chargedAttack;
+	local v112 = u3.new();
+	local l__Idle__113 = v7.Idle;
+	local v114 = nil;
+	local v115 = l__HttpService__22:GenerateGUID();
+	local v116 = v108.sword;
+	if v116 ~= nil then
+		v116 = v116.chargedAttack;
 	end;
-	if v103 ~= nil then
-		l__ClientSyncEvents__9.SwordCharge:fire(v7.Idle, p27);
-		local v104 = v95.sword;
-		if v104 ~= nil then
-			v104 = v104.chargedAttack;
-			if v104 ~= nil then
-				v104 = v104.maxChargeTimeSec;
+	if v116 ~= nil then
+		l__ClientSyncEvents__8.SwordCharge:fire(v7.Idle, p19);
+		local v117 = v108.sword;
+		if v117 ~= nil then
+			v117 = v117.chargedAttack;
+			if v117 ~= nil then
+				v117 = v117.maxChargeTimeSec;
 			end;
 		end;
-		v101 = l__ClickHold__24.new(v104, false);
+		v114 = l__ClickHold__23.new(v117, false);
 	end;
-	if l__UserInputService__25.TouchEnabled then
-		p26.maid:GiveTask(l__UserInputService__25.TouchTapInWorld:Connect(function(p28, p29)
-			if not p29 then
-				p26:swingSwordAtMouse();
+	if l__UserInputService__24.TouchEnabled then
+		p18.maid:GiveTask(l__UserInputService__24.TouchTapInWorld:Connect(function(p20, p21)
+			if not p21 then
+				p18:swingSwordAtMouse();
 			end;
 		end));
-		local u29 = l__Idle__100;
-		local u30 = 0;
-		p26.maid:GiveTask(l__ClientSyncEvents__9.MobileSwordButtonPressed:connect(function(p30)
-			if p30.state == "down" then
-				local v105 = l__Players__5.LocalPlayer:GetAttribute("IsCasting");
-				if v105 ~= 0 and v105 == v105 and v105 ~= "" and v105 then
+		local u28 = l__Idle__113;
+		local u29 = 0;
+		p18.maid:GiveTask(l__ClientSyncEvents__8.MobileSwordButtonPressed:connect(function(p22)
+			if p22.state == "down" then
+				local v118 = l__Players__5.LocalPlayer:GetAttribute("IsCasting");
+				if v118 ~= 0 and v118 == v118 and v118 ~= "" and v118 then
 					return nil;
 				end;
-				local v106 = v95.sword;
-				if v106 ~= nil then
-					v106 = v106.chargedAttack;
+				local v119 = v108.sword;
+				if v119 ~= nil then
+					v119 = v119.chargedAttack;
 				end;
-				if v106 ~= nil and not v95.projectileSource then
-					p30:setCancelled(true);
-					if u29 ~= v7.Idle then
+				if v119 ~= nil and not v108.projectileSource then
+					p22:setCancelled(true);
+					if u28 ~= v7.Idle then
 						return nil;
 					else
-						p26:chargeWeapon(v95, v99, v101, u29);
-						u29 = v7.Charging;
-						l__ClientSyncEvents__9.SwordCharge:fire(v7.Charging, p27);
-						u30 = tick();
+						p18:chargeWeapon(v108, v112, v114, u28);
+						u28 = v7.Charging;
+						l__ClientSyncEvents__8.SwordCharge:fire(v7.Charging, p19);
+						u29 = tick();
 						task.spawn(function()
-							local v107 = v95.sword;
-							if v107 ~= nil then
-								v107 = v107.chargedAttack;
-								if v107 ~= nil then
-									v107 = v107.maxChargeTimeSec;
+							local v120 = v108.sword;
+							if v120 ~= nil then
+								v120 = v120.chargedAttack;
+								if v120 ~= nil then
+									v120 = v120.maxChargeTimeSec;
 								end;
 							end;
-							task.wait(v107);
-							if not p26.chargedWeapons[v102] then
-								if v101 ~= nil then
-									v101:endClick();
+							task.wait(v120);
+							if not p18.chargedWeapons[v115] then
+								if v114 ~= nil then
+									v114:endClick();
 								end;
-								v99:DoCleaning();
+								v112:DoCleaning();
 								return nil;
 							end;
-							if u30 == u30 and u29 == v7.Charging then
-								u29 = v7.Charged;
-								l__ClientSyncEvents__9.SwordCharge:fire(v7.Charged, p27);
-								if v98 then
-									p26.chargeTime = v95.sword.chargedAttack.maxChargeTimeSec;
-									p26:chargeWeapon(v95, v99, v101, u29);
-									p26:swingSwordAtMouse();
-									u29 = v7.Idle;
-									l__ClientSyncEvents__9.SwordCharge:fire(v7.Idle, p27);
+							if u29 == u29 and u28 == v7.Charging then
+								u28 = v7.Charged;
+								l__ClientSyncEvents__8.SwordCharge:fire(v7.Charged, p19);
+								if v111 then
+									p18.chargeTime = v108.sword.chargedAttack.maxChargeTimeSec;
+									p18:chargeWeapon(v108, v112, v114, u28);
+									p18:swingSwordAtMouse();
+									u28 = v7.Idle;
+									l__ClientSyncEvents__8.SwordCharge:fire(v7.Idle, p19);
 								end;
 							end;
 						end);
 						return;
 					end;
 				end;
-			elseif p30.state == "up" then
-				local v108 = tick() - u30;
-				local v109 = v95.sword;
-				if v109 ~= nil then
-					v109 = v109.chargedAttack;
+			elseif p22.state == "up" then
+				local v121 = tick() - u29;
+				local v122 = v108.sword;
+				if v122 ~= nil then
+					v122 = v122.chargedAttack;
 				end;
-				local v110 = v109 == nil or v95.projectileSource;
-				if v110 then
+				local v123 = v122 == nil or v108.projectileSource;
+				if v123 then
 					return nil;
 				end;
-				local v111 = v95.sword;
-				if v111 ~= nil then
-					v111 = v111.chargedAttack;
+				local v124 = v108.sword;
+				if v124 ~= nil then
+					v124 = v124.chargedAttack;
 				end;
-				if v111 then
-					p26.chargeTime = v108;
-					if u29 ~= v7.Idle then
-						p26:chargeWeapon(v95, v99, v101, u29);
-						p26:swingSwordAtMouse();
+				if v124 then
+					p18.chargeTime = v121;
+					if u28 ~= v7.Idle then
+						p18:chargeWeapon(v108, v112, v114, u28);
+						p18:swingSwordAtMouse();
 					end;
 				end;
-				if u29 ~= v7.Idle then
-					l__ClientSyncEvents__9.SwordCharge:fire(v7.Idle, p27);
+				if u28 ~= v7.Idle then
+					l__ClientSyncEvents__8.SwordCharge:fire(v7.Idle, p19);
 				end;
-				local v112 = v95.sword;
-				if v112 ~= nil then
-					v112 = v112.chargedAttack;
+				local v125 = v108.sword;
+				if v125 ~= nil then
+					v125 = v125.chargedAttack;
 				end;
-				local v113 = v112 and u29 == v7.Idle;
-				if v113 then
+				local v126 = v125 and u28 == v7.Idle;
+				if v126 then
 					return nil;
 				end;
-				local v114 = p26:getHandItem();
-				if v114 ~= nil then
-					v114 = v114.tool;
+				local v127 = p18:getHandItem();
+				if v127 ~= nil then
+					v127 = v127.tool;
 				end;
-				local v115 = v114;
-				if v115 then
-					local v116 = v95.sword;
-					if v116 ~= nil then
-						v116 = v116.chargedAttack;
+				local v128 = v127;
+				if v128 then
+					local v129 = v108.sword;
+					if v129 ~= nil then
+						v129 = v129.chargedAttack;
 					end;
-					v115 = v116 and v95.projectileSource == nil;
+					v128 = v129 and v108.projectileSource == nil;
 				end;
-				if v115 then
-					l__SharedSyncEvents__26.SwordChargedSwing:fire(l__Players__5.LocalPlayer, v114, {
-						chargeTime = tick() - u30
+				if v128 then
+					l__SharedSyncEvents__25.SwordChargedSwing:fire(l__Players__5.LocalPlayer, v127, {
+						chargeTime = tick() - u29
 					});
 				end;
-				u29 = v7.Idle;
+				u28 = v7.Idle;
 			end;
 		end));
 	end;
-	local v117 = "swing-sword:" .. l__HttpService__23:GenerateGUID(false);
-	local u31 = 0;
-	local u32 = l__Idle__100;
-	l__ContextActionService__27:BindAction(v117, function(p31, p32, p33)
-		if p32 == Enum.UserInputState.Begin then
-			u31 = tick();
-			local v118 = l__Players__5.LocalPlayer:GetAttribute("IsCasting");
-			if v118 ~= 0 and v118 == v118 and v118 ~= "" and v118 then
+	local v130 = "swing-sword:" .. l__HttpService__22:GenerateGUID(false);
+	local u30 = 0;
+	local u31 = l__Idle__113;
+	l__ContextActionService__26:BindAction(v130, function(p23, p24, p25)
+		if p24 == Enum.UserInputState.Begin then
+			u30 = tick();
+			local v131 = l__Players__5.LocalPlayer:GetAttribute("IsCasting");
+			if v131 ~= 0 and v131 == v131 and v131 ~= "" and v131 then
 				return nil;
 			else
-				local v119 = nil;
-				local v120 = nil;
-				local v121 = nil;
-				local v122 = nil;
-				local v123 = nil;
-				local v124 = nil;
-				local v125 = nil;
-				local v126 = nil;
-				local v127 = nil;
-				local v128 = nil;
-				local v129 = v95.sword;
-				if v129 ~= nil then
-					v129 = v129.chargedAttack;
+				local v132 = nil;
+				local v133 = nil;
+				local v134 = nil;
+				local v135 = nil;
+				local v136 = nil;
+				local v137 = nil;
+				local v138 = nil;
+				local v139 = nil;
+				local v140 = nil;
+				local v141 = nil;
+				local v142 = v108.sword;
+				if v142 ~= nil then
+					v142 = v142.chargedAttack;
 				end;
-				if v129 == nil then
-					p26:swingSwordAtMouse();
-					v119 = l__ClientSyncEvents__9;
-					v120 = "SwordSwingDown";
-					v121 = v119;
-					v122 = v120;
-					v123 = v121[v122];
-					local v130 = "fire";
-					v124 = v123;
-					local v131 = v124;
-					v125 = v123;
-					v126 = v130;
-					local v132 = v125[v126];
-					v127 = v132;
-					v128 = v131;
-					v127(v128);
+				if v142 == nil then
+					p18:swingSwordAtMouse();
+					v132 = l__ClientSyncEvents__8;
+					v133 = "SwordSwingDown";
+					v134 = v132;
+					v135 = v133;
+					v136 = v134[v135];
+					local v143 = "fire";
+					v137 = v136;
+					local v144 = v137;
+					v138 = v136;
+					v139 = v143;
+					local v145 = v138[v139];
+					v140 = v145;
+					v141 = v144;
+					v140(v141);
 					return;
-				elseif u32 ~= v7.Idle then
+				elseif u31 ~= v7.Idle then
 					return nil;
 				else
-					p26:chargeWeapon(v95, v99, v101, u32);
-					u32 = v7.Charging;
-					l__ClientSyncEvents__9.SwordCharge:fire(v7.Charging, p27);
+					p18:chargeWeapon(v108, v112, v114, u31);
+					u31 = v7.Charging;
+					l__ClientSyncEvents__8.SwordCharge:fire(v7.Charging, p19);
 					task.spawn(function()
-						p26.chargedWeapons[v102] = true;
-						local v133 = v95.sword;
-						if v133 ~= nil then
-							v133 = v133.chargedAttack;
-							if v133 ~= nil then
-								v133 = v133.maxChargeTimeSec;
+						p18.chargedWeapons[v115] = true;
+						local v146 = v108.sword;
+						if v146 ~= nil then
+							v146 = v146.chargedAttack;
+							if v146 ~= nil then
+								v146 = v146.maxChargeTimeSec;
 							end;
 						end;
-						task.wait(v133);
-						if not p26.chargedWeapons[v102] then
-							if v101 ~= nil then
-								v101:endClick();
+						task.wait(v146);
+						if not p18.chargedWeapons[v115] then
+							if v114 ~= nil then
+								v114:endClick();
 							end;
-							v99:DoCleaning();
+							v112:DoCleaning();
 							return nil;
 						end;
-						if u31 == u31 and u32 == v7.Charging then
-							u32 = v7.Charged;
-							l__ClientSyncEvents__9.SwordCharge:fire(v7.Charged, p27);
-							if v98 then
-								p26.chargeTime = v95.sword.chargedAttack.maxChargeTimeSec;
-								p26:chargeWeapon(v95, v99, v101, u32);
-								p26:swingSwordAtMouse();
-								u32 = v7.Idle;
-								l__ClientSyncEvents__9.SwordCharge:fire(v7.Idle, p27);
+						if u30 == u30 and u31 == v7.Charging then
+							u31 = v7.Charged;
+							l__ClientSyncEvents__8.SwordCharge:fire(v7.Charged, p19);
+							if v111 then
+								p18.chargeTime = v108.sword.chargedAttack.maxChargeTimeSec;
+								p18:chargeWeapon(v108, v112, v114, u31);
+								p18:swingSwordAtMouse();
+								u31 = v7.Idle;
+								l__ClientSyncEvents__8.SwordCharge:fire(v7.Idle, p19);
 							end;
 						end;
 					end);
-					v119 = l__ClientSyncEvents__9;
-					v120 = "SwordSwingDown";
-					v121 = v119;
-					v122 = v120;
-					v123 = v121[v122];
-					v130 = "fire";
-					v124 = v123;
-					v131 = v124;
-					v125 = v123;
-					v126 = v130;
-					v132 = v125[v126];
-					v127 = v132;
-					v128 = v131;
-					v127(v128);
+					v132 = l__ClientSyncEvents__8;
+					v133 = "SwordSwingDown";
+					v134 = v132;
+					v135 = v133;
+					v136 = v134[v135];
+					v143 = "fire";
+					v137 = v136;
+					v144 = v137;
+					v138 = v136;
+					v139 = v143;
+					v145 = v138[v139];
+					v140 = v145;
+					v141 = v144;
+					v140(v141);
 					return;
 				end;
 			end;
 		end;
-		if p32 == Enum.UserInputState.End then
-			local v134 = tick() - u31;
-			local v135 = v95.sword;
-			if v135 ~= nil then
-				v135 = v135.chargedAttack;
+		if p24 == Enum.UserInputState.End then
+			local v147 = tick() - u30;
+			local v148 = v108.sword;
+			if v148 ~= nil then
+				v148 = v148.chargedAttack;
 			end;
-			if v135 then
-				p26.chargeTime = v134;
-				if u32 ~= v7.Idle then
-					p26:chargeWeapon(v95, v99, v101, u32);
-					p26:swingSwordAtMouse();
+			if v148 then
+				p18.chargeTime = v147;
+				if u31 ~= v7.Idle then
+					p18:chargeWeapon(v108, v112, v114, u31);
+					p18:swingSwordAtMouse();
 				else
-					if v101 ~= nil then
-						v101:endClick();
+					if v114 ~= nil then
+						v114:endClick();
 					end;
-					v99:DoCleaning();
+					v112:DoCleaning();
 				end;
 			end;
-			if u32 ~= v7.Idle then
-				l__ClientSyncEvents__9.SwordCharge:fire(v7.Idle, p27);
+			if u31 ~= v7.Idle then
+				l__ClientSyncEvents__8.SwordCharge:fire(v7.Idle, p19);
 			end;
-			local v136 = v95.sword;
-			if v136 ~= nil then
-				v136 = v136.chargedAttack;
+			local v149 = v108.sword;
+			if v149 ~= nil then
+				v149 = v149.chargedAttack;
 			end;
-			if v136 and u32 == v7.Idle then
+			if v149 and u31 == v7.Idle then
 				return nil;
 			end;
-			u32 = v7.Idle;
-			l__ClientSyncEvents__9.SwordSwingUp:fire();
-			local v137 = p26:getHandItem();
-			if v137 ~= nil then
-				v137 = v137.tool;
+			u31 = v7.Idle;
+			l__ClientSyncEvents__8.SwordSwingUp:fire();
+			local v150 = p18:getHandItem();
+			if v150 ~= nil then
+				v150 = v150.tool;
 			end;
-			l__SharedSyncEvents__26.SwordChargedSwing:fire(l__Players__5.LocalPlayer, v137, {
-				chargeTime = v134
+			l__SharedSyncEvents__25.SwordChargedSwing:fire(l__Players__5.LocalPlayer, v150, {
+				chargeTime = v147
 			});
 		end;
 	end, false, Enum.UserInputType.MouseButton1);
-	p26.maid:GiveTask(function()
-		l__ContextActionService__27:UnbindAction(v117);
-		if v101 ~= nil then
-			v101:disable();
+	p18.maid:GiveTask(function()
+		l__ContextActionService__26:UnbindAction(v130);
+		if v114 ~= nil then
+			v114:disable();
 		end;
-		local v138 = l__getItemMeta__4(p27.itemType).sword;
-		if v138 ~= nil then
-			v138 = v138.chargedAttack;
+		local v151 = l__getItemMeta__4(p19.itemType).sword;
+		if v151 ~= nil then
+			v151 = v151.chargedAttack;
 		end;
-		if v138 ~= nil then
-			p26.chargedWeapons[v102] = false;
-			l__ClientSyncEvents__9.SwordCharge:fire(v7.Idle, p27);
+		if v151 ~= nil then
+			p18.chargedWeapons[v115] = false;
+			l__ClientSyncEvents__8.SwordCharge:fire(v7.Idle, p19);
 		end;
 	end);
-	if p26.bufferedMobileAttack then
-		p26.bufferedMobileAttack = false;
-		p26:setupYield(function()
-			p26:mobileSwingPressed();
+	if p18.bufferedMobileAttack then
+		p18.bufferedMobileAttack = false;
+		p18:setupYield(function()
+			p18:mobileSwingPressed();
 			return function()
 
 			end;
 		end);
 	end;
 end;
-local l__KnitClient__33 = v3.KnitClient;
-function u1.chargeWeapon(p34, p35, p36, p37, p38)
-	local l__chargedAttack__139 = p35.sword.chargedAttack;
-	local v140 = l__chargedAttack__139.chargeSlowDelay;
-	if v140 == nil then
-		v140 = 0;
+local l__KnitClient__32 = v3.KnitClient;
+function u1.chargeWeapon(p26, p27, p28, p29, p30)
+	local l__chargedAttack__152 = p27.sword.chargedAttack;
+	local v153 = l__chargedAttack__152.chargeSlowDelay;
+	if v153 == nil then
+		v153 = 0;
 	end;
-	local function u34()
-		p37:endClick();
-		p36:DoCleaning();
-	end;
-	p34.maid:GiveTask(function()
-		u34();
+	p26.maid:GiveTask(function()
+		p29:endClick();
+		p28:DoCleaning();
 	end);
-	if p38 == v7.Idle then
-		(function()
-			task.delay(v140, function()
-				local v141 = l__Players__5.LocalPlayer:GetAttribute("IsCharging");
-				if v141 ~= 0 and v141 == v141 and v141 ~= "" and v141 then
-					p36:GiveTask(l__KnitClient__33.Controllers.SprintController:getMovementStatusModifier():addModifier({
-						moveSpeedMultiplier = l__chargedAttack__139.walkSpeedMultiplier
-					}));
-					return;
-				end;
-				return nil;
-			end);
-			p37:startClick();
-		end)();
-	elseif p38 == v7.Charging then
-		u34();
-	elseif p38 == v7.Charged then
-		u34();
+	if p30 == v7.Idle then
+		task.delay(v153, function()
+			local v154 = l__Players__5.LocalPlayer:GetAttribute("IsCharging");
+			if v154 ~= 0 and v154 == v154 and v154 ~= "" and v154 then
+				p28:GiveTask(l__KnitClient__32.Controllers.SprintController:getMovementStatusModifier():addModifier({
+					moveSpeedMultiplier = l__chargedAttack__152.walkSpeedMultiplier
+				}));
+				return;
+			end;
+			return nil;
+		end);
+		p29:startClick();
+	elseif p30 == v7.Charging then
+		p29:endClick();
+		p28:DoCleaning();
+	elseif p30 == v7.Charged then
+		p29:endClick();
+		p28:DoCleaning();
 	end;
 end;
-function u1.onDisable(p39)
-	p39.maid:DoCleaning();
+function u1.onDisable(p31)
+	p31.maid:DoCleaning();
 end;
-function u1.isClickingTooFast(p40)
-	if tick() - p40.lastSwing < 0.1111111111111111 then
+function u1.isClickingTooFast(p32)
+	if tick() - p32.lastSwing < 0.1111111111111111 then
 		return true;
 	end;
-	p40.lastSwing = tick();
+	p32.lastSwing = tick();
 	return false;
 end;
-local l__ItemType__35 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
-function u1.heavenlySwordMobileHandler(p41)
-	if not l__UserInputService__25.TouchEnabled then
+local l__ItemType__33 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
+function u1.heavenlySwordMobileHandler(p33)
+	if not l__UserInputService__24.TouchEnabled then
 		return nil;
 	end;
-	local v142 = l__EntityUtil__19:getEntity(l__Players__5.LocalPlayer);
-	if v142 ~= nil then
-		v142 = v142:getItemInHand();
-		if v142 ~= nil then
-			v142 = v142.Name;
+	local v155 = l__EntityUtil__18:getEntity(l__Players__5.LocalPlayer);
+	if v155 ~= nil then
+		v155 = v155:getItemInHand();
+		if v155 ~= nil then
+			v155 = v155.Name;
 		end;
 	end;
-	if v142 ~= l__ItemType__35.HEAVENLY_SWORD then
+	if v155 ~= l__ItemType__33.HEAVENLY_SWORD then
 		return nil;
 	end;
-	p41:swingSwordInRegion();
+	p33:swingSwordInRegion();
 end;
 u2 = l__KnitClient__4.CreateController;
 u1 = u1.new;

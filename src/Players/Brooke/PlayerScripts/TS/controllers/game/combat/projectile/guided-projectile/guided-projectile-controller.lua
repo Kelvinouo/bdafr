@@ -62,73 +62,68 @@ function v5.KnitStart(p2)
 			local v12 = v9.flightRotation or Vector3.new();
 			local v13 = CFrame.Angles(v12.X, v12.Y, v12.Z);
 			l__model__7:SetPrimaryPartCFrame(CFrame.new(v8.Position) * v13 * CFrame.Angles(0, v11.modelX, 0) * CFrame.Angles(v11.modelY, 0, 0));
-			local v14 = v9.fov;
-			if v14 == nil then
-				v14 = 85;
-			end;
-			l__CurrentCamera__9.FieldOfView = v14;
 			l__CurrentCamera__9.CFrame = CFrame.new(v8.Position) * v13 * CFrame.Angles(0, v11.cameraX, 0) * CFrame.Angles(v11.cameraY, 0, 0) * CFrame.new(v9.cameraOffset or Vector3.new(0, 2, 5));
 			if p2.thumbstickPosition then
-				local v15 = Vector2.new(p2.thumbstickPosition.X, -p2.thumbstickPosition.Y) * 8;
+				local v14 = Vector2.new(p2.thumbstickPosition.X, -p2.thumbstickPosition.Y) * 8;
 			else
-				v15 = l__UserInputService__7:GetMouseDelta();
+				v14 = l__UserInputService__7:GetMouseDelta();
 			end;
-			p2.angleX = p2.angleX - v15.X * 0.004;
-			local v16 = v9.yAngleLimit;
-			if v16 ~= nil then
-				v16 = v16.lower;
+			p2.angleX = p2.angleX - v14.X * 0.004;
+			local v15 = v9.yAngleLimit;
+			if v15 ~= nil then
+				v15 = v15.lower;
 			end;
-			local v17 = v16;
-			if v17 == nil then
-				v17 = -0.8;
+			local v16 = v15;
+			if v16 == nil then
+				v16 = -0.8;
 			end;
-			local v18 = v9.yAngleLimit;
-			if v18 ~= nil then
-				v18 = v18.upper;
+			local v17 = v9.yAngleLimit;
+			if v17 ~= nil then
+				v17 = v17.upper;
 			end;
-			local v19 = v18;
-			if v19 == nil then
-				v19 = 0.8;
+			local v18 = v17;
+			if v18 == nil then
+				v18 = 0.8;
 			end;
-			p2.angleY = math.clamp(p2.angleY - v15.Y * 0.004, v17, v19);
-			local v20 = {
+			p2.angleY = math.clamp(p2.angleY - v14.Y * 0.004, v16, v18);
+			local v19 = {
 				frequency = 4, 
 				dampingRatio = 0.85
 			};
-			local v21 = u3.Spring.new(v11.cameraX, v20);
-			local v22 = u3.Spring.new(v11.cameraY, v20);
+			local v20 = u3.Spring.new(v11.cameraX, v19);
+			local v21 = u3.Spring.new(v11.cameraY, v19);
 			if v9.modelSpringSettings then
 				if v9.modelSpringSettings == "Instant" then
-					v21 = u3.Instant.new(v11.cameraX);
-					v22 = u3.Instant.new(v11.cameraY);
+					v20 = u3.Instant.new(v11.cameraX);
+					v21 = u3.Instant.new(v11.cameraY);
 				else
-					v21 = u3.Spring.new(v11.cameraX, v9.modelSpringSettings);
-					v22 = u3.Spring.new(v11.cameraY, v9.modelSpringSettings);
+					v20 = u3.Spring.new(v11.cameraX, v9.modelSpringSettings);
+					v21 = u3.Spring.new(v11.cameraY, v9.modelSpringSettings);
 				end;
 			end;
 			p2.directionMotor:setGoal({
-				cameraX = u3.Spring.new(p2.angleX, v20), 
-				cameraY = u3.Spring.new(p2.angleY, v20), 
-				modelX = v21, 
-				modelY = v22
+				cameraX = u3.Spring.new(p2.angleX, v19), 
+				cameraY = u3.Spring.new(p2.angleY, v19), 
+				modelX = v20, 
+				modelY = v21
 			});
 		end;
 	end);
 	l__default__2.Client:OnEvent("RemoteName", function(p3)
-		local v23 = p3.position;
+		local v22 = p3.position;
 		if p2.currentlyGuidingProjectile ~= nil and p2.currentlyGuidingProjectile.model == p3.model then
-			v23 = p2.currentlyGuidingProjectile.model:GetPrimaryPartCFrame().Position;
+			v22 = p2.currentlyGuidingProjectile.model:GetPrimaryPartCFrame().Position;
 			p2:destroyGuidedProjectile();
 			l__CurrentCamera__9.CameraType = Enum.CameraType.Scriptable;
-			local v24 = l__GuidedProjectileMeta__6[p2.currentlyGuidingProjectile.type].observeExplosionTime;
-			if v24 == nil then
-				v24 = 2;
+			local v23 = l__GuidedProjectileMeta__6[p2.currentlyGuidingProjectile.type].observeExplosionTime;
+			if v23 == nil then
+				v23 = 2;
 			end;
-			task.delay(v24, function()
+			task.delay(v23, function()
 				l__CurrentCamera__9.CameraType = Enum.CameraType.Custom;
 			end);
 		end;
-		l__ClientSyncEvents__8.GuidedProjectileDetonated:fire(p3.type, v23);
+		l__ClientSyncEvents__8.GuidedProjectileDetonated:fire(p3.type, v22);
 	end);
 	l__UserInputService__7.InputChanged:Connect(function(p4)
 		if p4.UserInputType == Enum.UserInputType.Gamepad1 and p4.KeyCode == Enum.KeyCode.Thumbstick2 then
@@ -147,63 +142,65 @@ local l__CooldownId__12 = v1.import(script, game:GetService("ReplicatedStorage")
 local l__KnitClient__13 = v2.KnitClient;
 local l__KnitClient__14 = v2.KnitClient;
 function v5.setupGuidedProjectileMaid(p6, p7, p8, p9)
-	local v25 = l__GuidedProjectileMeta__6[p7];
-	local v26 = u10.new();
-	if not v25.dontShowCooldown then
-		v26:GiveTask(l__Flamework__11.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):createCooldownBar(l__CooldownId__12.GUIDED_PROJECTILE));
+	local v24 = l__GuidedProjectileMeta__6[p7];
+	local v25 = u10.new();
+	if not v24.dontShowCooldown then
+		v25:GiveTask(l__Flamework__11.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):createCooldownBar(l__CooldownId__12.GUIDED_PROJECTILE));
 	end;
 	l__Flamework__11.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):setOnCooldown(l__CooldownId__12.GUIDED_PROJECTILE, p9 - l__Workspace__4:GetServerTimeNow(), {
 		cooldownBar = {
-			color = v25.barColor or Color3.fromRGB(255, 176, 31)
+			color = v24.barColor or Color3.fromRGB(255, 176, 31)
 		}
 	});
-	v26:GiveTask(function()
+	v25:GiveTask(function()
 		l__Flamework__11.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):removeCooldown(l__CooldownId__12.GUIDED_PROJECTILE);
 	end);
-	v26:GiveTask(l__KnitClient__13.Controllers.SprintController:getMovementStatusModifier():addModifier({
+	v25:GiveTask(l__KnitClient__13.Controllers.SprintController:getMovementStatusModifier():addModifier({
 		constantSpeedMultiplier = 0, 
 		blockSprint = true
 	}));
 	l__UserInputService__7.MouseBehavior = Enum.MouseBehavior.LockCenter;
 	l__UserInputService__7.MouseIconEnabled = false;
-	v26:GiveTask(function()
+	v25:GiveTask(function()
 		l__UserInputService__7.MouseBehavior = Enum.MouseBehavior.Default;
 		l__UserInputService__7.MouseIconEnabled = true;
 		task.delay(0.1, function()
 			l__UserInputService__7.MouseBehavior = Enum.MouseBehavior.Default;
 		end);
 	end);
-	local l__CurrentCamera__27 = l__Workspace__4.CurrentCamera;
-	local l__FieldOfView__15 = l__CurrentCamera__27.FieldOfView;
-	v26:GiveTask(function()
-		l__CurrentCamera__27.FieldOfView = l__FieldOfView__15;
-	end);
+	local v26 = {};
+	local v27 = v24.fov;
+	if v27 == nil then
+		v27 = 85;
+	end;
+	v26.fovMultiplier = v27 / l__KnitClient__14.Controllers.FovController:getBaseFOV();
+	v25:GiveTask(l__KnitClient__14.Controllers.FovController:addModifier(v26));
 	l__Workspace__4.CurrentCamera.CameraType = Enum.CameraType.Scriptable;
-	v26:GiveTask(function()
+	v25:GiveTask(function()
 		l__Workspace__4.CurrentCamera.CameraType = Enum.CameraType.Custom;
 	end);
-	v26:GiveTask(function()
+	v25:GiveTask(function()
 		if p6.currentlyGuidingProjectile then
 			l__ClientSyncEvents__8.GuidedProjectileRemoved:fire(p6.currentlyGuidingProjectile.type, p6.currentlyGuidingProjectile.model);
 		end;
 	end);
-	local u16 = l__KnitClient__14.Controllers.ViewmodelController:addDisabler();
-	v26:GiveTask(function()
-		l__KnitClient__14.Controllers.ViewmodelController:removeDisabler(u16);
+	local u15 = l__KnitClient__14.Controllers.ViewmodelController:addDisabler();
+	v25:GiveTask(function()
+		l__KnitClient__14.Controllers.ViewmodelController:removeDisabler(u15);
 	end);
 	l__ClientSyncEvents__8.GuidedProjectileEnabling:fire(p7, p8);
-	return v26;
+	return v25;
 end;
-local l__getItemMeta__17 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
-local u18 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-local l__default__19 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
+local l__getItemMeta__16 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
+local u17 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
+local l__default__18 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
 v5.launch = v1.async(function(p10, p11)
 	local v28 = v1.await(p10.fireGuidedProjectile:CallServerAsync(p11));
 	if not v28 then
-		l__default__19.Warn("Server rejected request to launch guided projectile");
+		l__default__18.Warn("Server rejected request to launch guided projectile");
 		return;
 	end;
-	local l__guidedProjectile__29 = l__getItemMeta__17(p11).guidedProjectileSource.guidedProjectile;
+	local l__guidedProjectile__29 = l__getItemMeta__16(p11).guidedProjectileSource.guidedProjectile;
 	local l__model__30 = v28.model;
 	local l__explodeTime__31 = v28.explodeTime;
 	l__model__30.AncestryChanged:Connect(function(p12, p13)
@@ -237,80 +234,76 @@ v5.launch = v1.async(function(p10, p11)
 		model = l__model__30, 
 		explodeTime = l__explodeTime__31, 
 		forces = {
-			antiGravity = u18("BodyForce", {
+			antiGravity = u17("BodyForce", {
 				Force = Vector3.new(0, l__PrimaryPart__33.AssemblyMass * l__Workspace__4.Gravity, 0), 
 				Parent = l__PrimaryPart__33, 
 				Name = "AntiGravity"
 			})
 		}
 	};
-	local v37 = l__model__30:GetDescendants();
-	local function v38(p14)
-		return p14:IsA("Sound");
-	end;
-	local v39 = {};
-	local v40 = 0;
-	for v41, v42 in ipairs(v37) do
-		if v38(v42, v41 - 1, v37) == true then
-			v40 = v40 + 1;
-			v39[v40] = v42;
+	local v37 = {};
+	local v38 = 0;
+	for v39, v40 in ipairs((l__model__30:GetDescendants())) do
+		if v40:IsA("Sound") == true then
+			v38 = v38 + 1;
+			v37[v38] = v40;
 		end;
 	end;
-	v36.sounds = v39;
+	v36.sounds = v37;
 	p10.currentlyGuidingProjectile = v36;
 end);
-function v5.handleConsoleInput(p15, p16)
-	if not (p16.Position.Magnitude > 0.1) then
-		p15.thumbstickPosition = nil;
+function v5.handleConsoleInput(p14, p15)
+	if not (p15.Position.Magnitude > 0.1) then
+		p14.thumbstickPosition = nil;
 		return;
 	end;
-	p15.thumbstickPosition = p16.Position;
+	p14.thumbstickPosition = p15.Position;
 end;
-function v5.getCurrentGuidedProjectile(p17)
-	if not p17.currentlyGuidingProjectile then
+function v5.getCurrentGuidedProjectile(p16)
+	if not p16.currentlyGuidingProjectile then
 		return nil;
 	end;
 	return {
-		model = p17.currentlyGuidingProjectile.model, 
-		type = p17.currentlyGuidingProjectile.type, 
-		forces = p17.currentlyGuidingProjectile.forces, 
-		sounds = p17.currentlyGuidingProjectile.sounds, 
-		enabled = p17.currentlyGuidingProjectile.enabled, 
-		disabling = p17.currentlyGuidingProjectile.disabling
+		model = p16.currentlyGuidingProjectile.model, 
+		type = p16.currentlyGuidingProjectile.type, 
+		forces = p16.currentlyGuidingProjectile.forces, 
+		sounds = p16.currentlyGuidingProjectile.sounds, 
+		enabled = p16.currentlyGuidingProjectile.enabled, 
+		disabling = p16.currentlyGuidingProjectile.disabling
 	};
 end;
-function v5.enableGuidedProjectile(p18)
-	if p18.currentlyGuidingProjectile and not p18.currentlyGuidingProjectile.disabling then
-		p18.currentlyGuidingProjectile.maid = p18:setupGuidedProjectileMaid(p18.currentlyGuidingProjectile.type, p18.currentlyGuidingProjectile.model, p18.currentlyGuidingProjectile.explodeTime);
-		p18.currentlyGuidingProjectile.enabled = true;
-		p18.currentlyGuidingProjectile.forces.antiGravity.Force = Vector3.new(0, l__Workspace__4.Gravity * p18.currentlyGuidingProjectile.model.PrimaryPart.AssemblyMass, 0);
+function v5.enableGuidedProjectile(p17)
+	if p17.currentlyGuidingProjectile and not p17.currentlyGuidingProjectile.disabling then
+		p17.currentlyGuidingProjectile.maid = p17:setupGuidedProjectileMaid(p17.currentlyGuidingProjectile.type, p17.currentlyGuidingProjectile.model, p17.currentlyGuidingProjectile.explodeTime);
+		p17.currentlyGuidingProjectile.enabled = true;
+		p17.currentlyGuidingProjectile.forces.antiGravity.Force = Vector3.new(0, l__Workspace__4.Gravity * p17.currentlyGuidingProjectile.model.PrimaryPart.AssemblyMass, 0);
 	end;
 end;
-function v5.disableGuidedProjectile(p19, p20)
-	if p19.currentlyGuidingProjectile and not p19.currentlyGuidingProjectile.disabling then
-		p19.currentlyGuidingProjectile.disabling = true;
-		l__ClientSyncEvents__8.GuidedProjectileDisabling:fire(p19.currentlyGuidingProjectile.type, p19.currentlyGuidingProjectile.model);
-		local v43 = p20;
-		if v43 == nil then
-			v43 = 0.1;
+function v5.disableGuidedProjectile(p18, p19)
+	if p18.currentlyGuidingProjectile and not p18.currentlyGuidingProjectile.disabling then
+		p18.currentlyGuidingProjectile.disabling = true;
+		l__ClientSyncEvents__8.GuidedProjectileDisabling:fire(p18.currentlyGuidingProjectile.type, p18.currentlyGuidingProjectile.model);
+		local v41 = p19;
+		if v41 == nil then
+			v41 = 0.1;
 		end;
-		task.delay(v43, function()
-			if p19.currentlyGuidingProjectile then
-				p19.currentlyGuidingProjectile.disabling = false;
-				p19.currentlyGuidingProjectile.maid:DoCleaning();
-				p19.currentlyGuidingProjectile.enabled = false;
-				p19.currentlyGuidingProjectile.forces.antiGravity.Force = Vector3.new(0, 0, 0);
+		task.delay(v41, function()
+			if p18.currentlyGuidingProjectile then
+				p18.currentlyGuidingProjectile.disabling = false;
+				p18.currentlyGuidingProjectile.maid:DoCleaning();
+				p18.currentlyGuidingProjectile.enabled = false;
+				p18.currentlyGuidingProjectile.forces.antiGravity.Force = Vector3.new(0, 0, 0);
 			end;
 		end);
 	end;
 end;
-function v5.destroyGuidedProjectile(p21)
-	if p21.currentlyGuidingProjectile then
-		p21.currentlyGuidingProjectile.maid:DoCleaning();
-		if p21.currentlyGuidingProjectile.model then
-			p21.currentlyGuidingProjectile.model:Destroy();
+function v5.destroyGuidedProjectile(p20)
+	if p20.currentlyGuidingProjectile then
+		p20.currentlyGuidingProjectile.maid:DoCleaning();
+		if p20.currentlyGuidingProjectile.model then
+			p20.currentlyGuidingProjectile.model:Destroy();
 		end;
-		p21.currentlyGuidingProjectile = nil;
+		p20.currentlyGuidingProjectile = nil;
 	end;
 end;
 u1 = l__KnitClient__14.CreateController;

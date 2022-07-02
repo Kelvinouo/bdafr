@@ -1,4 +1,3 @@
--- Script Hash: dfd6f06f314890ce45b65dc8e554d0aae5aaf04749b5547b89626cfba67f6a29e3ae637aba22b0576abf3a2402e01976
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -45,26 +44,22 @@ function v3.constructor(p1, p2)
 		local v10 = false;
 		while { wait(0.25) } and p2.Parent ~= nil do
 			v10 = not v10;
-			local v11 = p2:GetChildren();
-			local function v12(p4)
-				if p4:IsA("Texture") then
+			for v11, v12 in ipairs((p2:GetChildren())) do
+				if v12:IsA("Texture") then
 					if v10 then
-						p4.Texture = l__ImageId__4.PIXEL;
-						return;
-					end;
-					local v13 = u5[p4.Face];
-					if v13 ~= "" and v13 then
-						p4.Texture = v13;
+						v12.Texture = l__ImageId__4.PIXEL;
+					else
+						local v13 = u5[v12.Face];
+						if v13 ~= "" and v13 then
+							v12.Texture = v13;
+						end;
 					end;
 				end;
-			end;
-			for v14, v15 in ipairs(v11) do
-				v12(v15, v14 - 1, v11);
 			end;		
 		end;
 	end);
 end;
-function v3.Destroy(p5)
+function v3.Destroy(p4)
 
 end;
 v3.Tag = "tnt";

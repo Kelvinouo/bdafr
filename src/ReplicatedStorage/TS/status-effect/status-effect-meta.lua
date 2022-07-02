@@ -1,4 +1,3 @@
--- Script Hash: 23130ad442275cbf1d3a7e934f2453cded5a9ddac4019312a8dc06d4f253c2ccfd67b16499122a8a5bfabfa6fc370e6c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -155,6 +154,10 @@ return {
 		[l__StatusEffectType__4.DECAY] = {
 			displayName = "Decay", 
 			noDisplay = true
+		}, 
+		[l__StatusEffectType__4.DIZZY] = {
+			displayName = "Dizzy", 
+			image = "rbxassetid://10086864455"
 		}
 	}
 };

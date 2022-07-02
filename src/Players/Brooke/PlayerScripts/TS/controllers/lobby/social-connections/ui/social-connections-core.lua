@@ -1,4 +1,3 @@
--- Script Hash: e8557f1b523578bfab33cbb5c0d52432aea04c3e783c56fbf4420e351e029deff9f5b38630f42d1fbeff80c6743db76c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -25,173 +24,175 @@ return {
 		local l__useState__3 = p2.useState;
 		local l__useMemo__4 = p2.useMemo;
 		local l__useEffect__5 = p2.useEffect;
-		local v6 = u1.values(p1.store.SocialConnections.supportTasks);
-		local function v7(p3)
-			return p3 == true;
-		end;
-		local v8 = true;
-		for v9, v10 in ipairs(v6) do
-			if not v7(v10, v9 - 1, v6) then
-				v8 = false;
+		local v6 = true;
+		for v7, v8 in ipairs((u1.values(p1.store.SocialConnections.supportTasks))) do
+			if v8 ~= true then
+				v6 = false;
 				break;
 			end;
 		end;
-		local v11, v12 = l__useState__3(v8);
-		local v13 = u1.values(p1.store.SocialConnections.connections);
-		local function v14(p4)
-			return p4.validated == true;
-		end;
-		local v15 = true;
-		for v16, v17 in ipairs(v13) do
-			if not v14(v17, v16 - 1, v13) then
-				v15 = false;
+		local v9, v10 = l__useState__3(v6);
+		local v11 = true;
+		for v12, v13 in ipairs((u1.values(p1.store.SocialConnections.connections))) do
+			if v13.validated ~= true then
+				v11 = false;
 				break;
 			end;
 		end;
-		local v18, v19 = l__useState__3(v15);
-		local function u18()
-			if not l__DeviceUtil__3.isHoarceKat() and not l__KnitClient__4.Controllers.SocialConnectionsController.policyDiscordAllowed then
-				if v11 then
-					return 1;
+		local v14, v15 = l__useState__3(v11);
+		local v16 = {};
+		local v17 = {};
+		local v18 = {};
+		local v19 = {
+			AppId = p1.AppId, 
+			AnchorPoint = Vector2.new(0.5, 0.5), 
+			Position = UDim2.fromScale(0.5, 0.5), 
+			Size = UDim2.fromScale(1, 1), 
+			ClipsDescendents = false, 
+			TitleIcon = l__ImageId__13.SATELITE, 
+			Title = "Connections"
+		};
+		if not l__DeviceUtil__3.isHoarceKat() then
+			if l__KnitClient__4.Controllers.SocialConnectionsController.policyDiscordAllowed then
+				local v20 = "Complete support & verify discord for a reward";
+			else
+				v20 = "Complete support section for a reward";
+			end;
+		else
+			v20 = "Complete support & verify discord for a reward";
+		end;
+		v19.SubTitle = v20;
+		function v19.OnClose()
+			l__Flamework__2.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):closeApp(p1.AppId);
+		end;
+		v18[1] = u5.createElement(l__ScaleComponent__11, {
+			MaximumSize = Vector2.new(550, 630), 
+			ScreenPadding = Vector2.new(24, 24)
+		});
+		v18[2] = u5.createElement(l__WidgetComponent__12, v19, {
+			SupportConnections = u5.createElement("Frame", {
+				Size = UDim2.new(1, 0, 0, 0), 
+				AutomaticSize = "Y", 
+				BackgroundTransparency = 1, 
+				LayoutOrder = 1
+			}, { u5.createElement("UIListLayout", {
+					FillDirection = Enum.FillDirection.Vertical, 
+					HorizontalAlignment = Enum.HorizontalAlignment.Left, 
+					VerticalAlignment = Enum.VerticalAlignment.Center, 
+					SortOrder = Enum.SortOrder.LayoutOrder, 
+					Padding = UDim.new(0, 8)
+				}), u5.createElement(u7, {
+					Title = "<b>1. Support The Game</b>", 
+					Completed = v9, 
+					LayoutOrder = 1
+				}), u5.createElement(u14, {
+					Size = UDim2.new(1, 0, 0, 46), 
+					ImageId = l__ImageId__13.THUMBS_UP_SOLID, 
+					Text = "<b>Like</b>, \226\173\144 <b>favorite</b>, and ", 
+					store = p1.store, 
+					MiddleElementEmbed = {
+						element = u5.createElement("Frame", {
+							Size = UDim2.fromOffset(18, 12.65625), 
+							BackgroundTransparency = 1
+						}, { u5.createElement("ImageLabel", {
+								Size = UDim2.fromOffset(18, 12.65625), 
+								Rotation = 47, 
+								ScaleType = "Fit", 
+								SizeConstraint = "RelativeYY", 
+								Image = l__ImageId__13.WIFI_SOLID, 
+								ImageColor3 = l__ColorUtil__15.hexColor(16752398), 
+								BackgroundTransparency = 1
+							}) }), 
+						rightText = "<b>follow</b> the game"
+					}, 
+					LayoutOrder = 2
+				}), u5.createElement(l__SocialConnectionsGroup__16, {
+					store = p1.store
+				}), u5.createElement(u14, {
+					Size = UDim2.new(1, 0, 0, 46), 
+					ImageId = l__ImageId__13.TWITTER_SOLID, 
+					Text = "<b>Follow</b> us on Twitter <font color=\"#1EA1F2\">@RobloxBedWars</font>", 
+					LayoutOrder = 4
+				}) }),
+			u5.createElement("UIListLayout", {
+				FillDirection = Enum.FillDirection.Vertical, 
+				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
+				VerticalAlignment = Enum.VerticalAlignment.Top, 
+				SortOrder = Enum.SortOrder.LayoutOrder, 
+				Padding = UDim.new(0, 10)
+			}), l__useMemo__4(function()
+				local v21 = {};
+				if not l__DeviceUtil__3.isHoarceKat() then
+					local v22 = l__KnitClient__4.Controllers.SocialConnectionsController.policyDiscordAllowed;
 				else
-					return 0;
+					v22 = true;
 				end;
-			end;
-			if v11 then
-				local v20 = 1;
-			else
-				v20 = 0;
-			end;
-			if v18 then
-				local v21 = 1;
-			else
-				v21 = 0;
-			end;
-			return v20 + v21;
-		end;
-		local function u19()
-			if l__DeviceUtil__3.isHoarceKat() then
-				return true;
-			end;
-			return l__KnitClient__4.Controllers.SocialConnectionsController.policyDiscordAllowed;
-		end;
-		return u5.createFragment({ u5.createElement(l__DarkBackground__9, {
-				AppId = p1.AppId
-			}), u5.createElement(l__SlideIn__10, {}, { u5.createElement("Frame", {
-					AnchorPoint = Vector2.new(0.5, 0.5), 
-					Position = UDim2.fromScale(0.5, 0.5), 
-					Size = UDim2.fromOffset(440, 510), 
-					BackgroundTransparency = 1
-				}, { u5.createElement(l__ScaleComponent__11, {
-						MaximumSize = Vector2.new(550, 630), 
-						ScreenPadding = Vector2.new(24, 24)
-					}), u5.createElement(l__WidgetComponent__12, {
-						AppId = p1.AppId, 
-						AnchorPoint = Vector2.new(0.5, 0.5), 
-						Position = UDim2.fromScale(0.5, 0.5), 
-						Size = UDim2.fromScale(1, 1), 
-						ClipsDescendents = false, 
-						TitleIcon = l__ImageId__13.SATELITE, 
-						Title = "Connections", 
-						SubTitle = (function()
-							if l__DeviceUtil__3.isHoarceKat() then
-								return "Complete support & verify discord for a reward";
-							end;
-							if l__KnitClient__4.Controllers.SocialConnectionsController.policyDiscordAllowed then
-								return "Complete support & verify discord for a reward";
-							end;
-							return "Complete support section for a reward";
-						end)(), 
-						OnClose = function()
-							l__Flamework__2.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):closeApp(p1.AppId);
-						end
-					}, {
-						SupportConnections = u5.createElement("Frame", {
+				if v22 then
+					v22 = u5.createFragment({
+						ExternalConnections = u5.createElement("Frame", {
 							Size = UDim2.new(1, 0, 0, 0), 
 							AutomaticSize = "Y", 
 							BackgroundTransparency = 1, 
-							LayoutOrder = 1
+							LayoutOrder = 2
 						}, { u5.createElement("UIListLayout", {
 								FillDirection = Enum.FillDirection.Vertical, 
 								HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 								VerticalAlignment = Enum.VerticalAlignment.Center, 
 								SortOrder = Enum.SortOrder.LayoutOrder, 
-								Padding = UDim.new(0, 8)
+								Padding = UDim.new(0, 10)
 							}), u5.createElement(u7, {
-								Title = "<b>1. Support The Game</b>", 
-								Completed = v11, 
+								Title = "<b>2. Verify Discord</b>", 
+								Completed = v14, 
 								LayoutOrder = 1
-							}), u5.createElement(u14, {
-								Size = UDim2.new(1, 0, 0, 46), 
-								ImageId = l__ImageId__13.THUMBS_UP_SOLID, 
-								Text = "<b>Like</b>, \226\173\144 <b>favorite</b>, and ", 
-								store = p1.store, 
-								MiddleElementEmbed = {
-									element = u5.createElement("Frame", {
-										Size = UDim2.fromOffset(18, 12.65625), 
-										BackgroundTransparency = 1
-									}, { u5.createElement("ImageLabel", {
-											Size = UDim2.fromOffset(18, 12.65625), 
-											Rotation = 47, 
-											ScaleType = "Fit", 
-											SizeConstraint = "RelativeYY", 
-											Image = l__ImageId__13.WIFI_SOLID, 
-											ImageColor3 = l__ColorUtil__15.hexColor(16752398), 
-											BackgroundTransparency = 1
-										}) }), 
-									rightText = "<b>follow</b> the game"
-								}, 
-								LayoutOrder = 2
-							}), u5.createElement(l__SocialConnectionsGroup__16, {
+							}), u5.createElement(l__SocialConnectionsDiscord__8, {
+								LayoutOrder = 2, 
 								store = p1.store
-							}), u5.createElement(u14, {
-								Size = UDim2.new(1, 0, 0, 46), 
-								ImageId = l__ImageId__13.TWITTER_SOLID, 
-								Text = "<b>Follow</b> us on Twitter <font color=\"#1EA1F2\">@RobloxBedWars</font>", 
-								LayoutOrder = 4
-							}) }),
-						u5.createElement("UIListLayout", {
-							FillDirection = Enum.FillDirection.Vertical, 
-							HorizontalAlignment = Enum.HorizontalAlignment.Left, 
-							VerticalAlignment = Enum.VerticalAlignment.Top, 
-							SortOrder = Enum.SortOrder.LayoutOrder, 
-							Padding = UDim.new(0, 10)
-						}), l__useMemo__4(function()
-							local v22 = {};
-							local v23 = u19() and u5.createFragment({
-								ExternalConnections = u5.createElement("Frame", {
-									Size = UDim2.new(1, 0, 0, 0), 
-									AutomaticSize = "Y", 
-									BackgroundTransparency = 1, 
-									LayoutOrder = 2
-								}, { u5.createElement("UIListLayout", {
-										FillDirection = Enum.FillDirection.Vertical, 
-										HorizontalAlignment = Enum.HorizontalAlignment.Left, 
-										VerticalAlignment = Enum.VerticalAlignment.Center, 
-										SortOrder = Enum.SortOrder.LayoutOrder, 
-										Padding = UDim.new(0, 10)
-									}), u5.createElement(u7, {
-										Title = "<b>2. Verify Discord</b>", 
-										Completed = v18, 
-										LayoutOrder = 1
-									}), u5.createElement(l__SocialConnectionsDiscord__8, {
-										LayoutOrder = 2, 
-										store = p1.store
-									}) })
-							});
-							if v23 then
-								v22[#v22 + 1] = v23;
-							end;
-							return u5.createFragment(v22);
-						end, { p1.store.SocialConnections.connections.discord.verificationCode, p1.store.SocialConnections.connections.discord.validated }), u5.createElement(l__DividerComponent__17, {
-							Margin = 2, 
-							LayoutOrder = 3
-						}), (l__useMemo__4(function()
-							return u5.createElement(u6, {
-								CompletedCount = u18(), 
-								LayoutOrder = 4
-							});
-						end, { v11, v18 }))
-					}) }) }) });
+							}) })
+					});
+				end;
+				if v22 then
+					v21[#v21 + 1] = v22;
+				end;
+				return u5.createFragment(v21);
+			end, { p1.store.SocialConnections.connections.discord.verificationCode, p1.store.SocialConnections.connections.discord.validated }), u5.createElement(l__DividerComponent__17, {
+				Margin = 2, 
+				LayoutOrder = 3
+			}), (l__useMemo__4(function()
+				local v23 = {};
+				if not l__DeviceUtil__3.isHoarceKat() and not l__KnitClient__4.Controllers.SocialConnectionsController.policyDiscordAllowed then
+					if v9 then
+						local v24 = 1;
+					else
+						v24 = 0;
+					end;
+				else
+					if v9 then
+						local v25 = 1;
+					else
+						v25 = 0;
+					end;
+					if v14 then
+						local v26 = 1;
+					else
+						v26 = 0;
+					end;
+					v24 = v25 + v26;
+				end;
+				v23.CompletedCount = v24;
+				v23.LayoutOrder = 4;
+				return u5.createElement(u6, v23);
+			end, { v9, v14 }))
+		});
+		v17[1] = u5.createElement("Frame", {
+			AnchorPoint = Vector2.new(0.5, 0.5), 
+			Position = UDim2.fromScale(0.5, 0.5), 
+			Size = UDim2.fromOffset(440, 510), 
+			BackgroundTransparency = 1
+		}, v18);
+		v16[1] = u5.createElement(l__DarkBackground__9, {
+			AppId = p1.AppId
+		});
+		v16[2] = u5.createElement(l__SlideIn__10, {}, v17);
+		return u5.createFragment(v16);
 	end)
 };

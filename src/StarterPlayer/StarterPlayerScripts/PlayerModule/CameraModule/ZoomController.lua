@@ -1,4 +1,3 @@
--- Script Hash: 41834d352d5222622a921777827cfb95786593af452694cbce676c873f1f552df2cb9b9a0808abfe36a138766adc5f5b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(script:WaitForChild("Popper"));
@@ -9,7 +8,8 @@ local function v2()
 	u1 = u2.CameraMinZoomDistance;
 	u3 = u2.CameraMaxZoomDistance;
 end;
-v2();
+u1 = u2.CameraMinZoomDistance;
+u3 = u2.CameraMaxZoomDistance;
 u2:GetPropertyChangedSignal("CameraMinZoomDistance"):Connect(v2);
 u2:GetPropertyChangedSignal("CameraMaxZoomDistance"):Connect(v2);
 u2 = {};
@@ -52,31 +52,29 @@ function u2.Step(p5, p6)
 end;
 local v13 = {};
 local u7 = u2.new(4.5, 12.5, 0.5, u3);
-local function u8(p7, p8, p9, p10)
-	p7 = l__math_clamp__4(p7 + p8 * (1 + p7 * 0.0375), p9, p10);
-	if p7 < 1 then
-		p7 = p8 <= 0 and p9 or 1;
-	end;
-	return p7;
-end;
-local u9 = 0;
-local l__math_max__10 = math.max;
-local l__math_min__11 = math.min;
-function v13.Update(p11, p12, p13)
+local u8 = 0;
+local l__math_max__9 = math.max;
+local l__math_min__10 = math.min;
+function v13.Update(p7, p8, p9)
 	local v14 = math.huge;
 	if u7.goal > 1 then
-		v14 = v1(p12 * CFrame.new(0, 0, 0.5), l__math_max__10(u7.x, u8(u7.goal, u9, u1, u3)) - 0.5, p13) + 0.5;
+		local l__goal__15 = u7.goal;
+		local v16 = l__math_clamp__4(l__goal__15 + u8 * (1 + l__goal__15 * 0.0375), u1, u3);
+		if v16 < 1 then
+			v16 = u8 <= 0 and u1 or 1;
+		end;
+		v14 = v1(p8 * CFrame.new(0, 0, 0.5), l__math_max__9(u7.x, v16) - 0.5, p9) + 0.5;
 	end;
 	u7.minValue = 0.5;
-	u7.maxValue = l__math_min__11(u3, v14);
-	return u7:Step(p11);
+	u7.maxValue = l__math_min__10(u3, v14);
+	return u7:Step(p7);
 end;
 function v13.GetZoomRadius()
 	return u7.x;
 end;
-function v13.SetZoomParameters(p14, p15)
-	u7.goal = p14;
-	u9 = p15;
+function v13.SetZoomParameters(p10, p11)
+	u7.goal = p10;
+	u8 = p11;
 end;
 function v13.ReleaseSpring()
 	u7.x = u7.goal;

@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -59,47 +58,41 @@ function v3.playerHasPermissions(p8, p9, p10)
 	if not v8 then
 		return false;
 	end;
-	local function v9(p11)
-		return table.find(v8, p11) ~= nil;
-	end;
-	local v10 = true;
-	for v11, v12 in ipairs(p10) do
-		if not v9(v12, v11 - 1, p10) then
-			v10 = false;
+	local v9 = true;
+	for v10, v11 in ipairs(p10) do
+		if table.find(v8, v11) == nil then
+			v9 = false;
 			break;
 		end;
 	end;
-	return v10;
+	return v9;
 end;
-function v3.playerHasAnyPermissions(p12, p13, p14)
-	local v13 = p12:getPlayerPermissions(p13);
-	if not v13 then
+function v3.playerHasAnyPermissions(p11, p12, p13)
+	local v12 = p11:getPlayerPermissions(p12);
+	if not v12 then
 		return false;
 	end;
-	local function v14(p15)
-		return table.find(v13, p15) ~= nil;
-	end;
-	local v15 = false;
-	for v16, v17 in ipairs(p14) do
-		if v14(v17, v16 - 1, p14) then
-			v15 = true;
+	local v13 = false;
+	for v14, v15 in ipairs(p13) do
+		if table.find(v12, v15) ~= nil then
+			v13 = true;
 			break;
 		end;
 	end;
-	return v15;
+	return v13;
 end;
-function v3.playerIsStaffMember(p16, p17)
-	return p16:playerHasAnyPermissions(p17, { 0, 2, 4, 6, 5, 1 });
+function v3.playerIsStaffMember(p14, p15)
+	return p14:playerHasAnyPermissions(p15, { 0, 2, 4, 6, 5, 1 });
 end;
-function v3.hasAllKitsUnlocked(p18, p19)
-	local v18 = p18:getPlayerPermissions(p19.UserId);
-	if v18 and table.find(v18, 9) ~= nil then
+function v3.hasAllKitsUnlocked(p16, p17)
+	local v16 = p16:getPlayerPermissions(p17.UserId);
+	if v16 and table.find(v16, 9) ~= nil then
 		return true;
 	end;
-	if p18:playerIsStaffMember(p19) then
+	if p16:playerIsStaffMember(p17) then
 		return true;
 	end;
-	if p19:GetRankInGroup(5774246) >= 100 then
+	if p17:GetRankInGroup(5774246) >= 100 then
 		return true;
 	end;
 	return false;

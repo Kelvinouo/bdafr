@@ -1,4 +1,3 @@
--- Script Hash: 54854b2ea9fc21cc1817d8624c94c0de76427644d537b7e2c540ee8a9b225d38fd774eb5211e3072f6833fcb5bd17ccc
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -48,69 +47,66 @@ function mergeProps(p1, p2)
 end;
 local l__PlayerGui__2 = l__Players__2.LocalPlayer:WaitForChild("PlayerGui");
 function v6.CreateGuiObjects(p3, p4)
+	local v12 = nil;
 	local u3 = nil;
 	pcall(function()
 		u3 = l__Chat__4:InvokeChatCallback(Enum.ChatCallbackType.OnCreatingChatWindow, nil);
 	end);
 	mergeProps(u3, u1);
-	local v12 = Instance.new("Frame");
-	v12.BackgroundTransparency = 1;
-	v12.Active = u1.WindowDraggable;
-	v12.Parent = p4;
-	v12.AutoLocalize = false;
 	local v13 = Instance.new("Frame");
-	v13.Selectable = false;
-	v13.Name = "ChatBarParentFrame";
 	v13.BackgroundTransparency = 1;
-	v13.Parent = v12;
+	v13.Active = u1.WindowDraggable;
+	v13.Parent = p4;
+	v13.AutoLocalize = false;
 	local v14 = Instance.new("Frame");
 	v14.Selectable = false;
-	v14.Name = "ChannelsBarParentFrame";
+	v14.Name = "ChatBarParentFrame";
 	v14.BackgroundTransparency = 1;
-	v14.Position = UDim2.new(0, 0, 0, 0);
-	v14.Parent = v12;
+	v14.Parent = v13;
 	local v15 = Instance.new("Frame");
 	v15.Selectable = false;
-	v15.Name = "ChatChannelParentFrame";
+	v15.Name = "ChannelsBarParentFrame";
 	v15.BackgroundTransparency = 1;
-	v15.BackgroundColor3 = u1.BackGroundColor;
-	v15.BackgroundTransparency = 0.6;
-	v15.BorderSizePixel = 0;
-	v15.Parent = v12;
-	local v16 = Instance.new("ImageButton");
+	v15.Position = UDim2.new(0, 0, 0, 0);
+	v15.Parent = v13;
+	local v16 = Instance.new("Frame");
 	v16.Selectable = false;
-	v16.Image = "";
+	v16.Name = "ChatChannelParentFrame";
+	v16.BackgroundTransparency = 1;
+	v16.BackgroundColor3 = u1.BackGroundColor;
 	v16.BackgroundTransparency = 0.6;
 	v16.BorderSizePixel = 0;
-	v16.Visible = false;
-	v16.BackgroundColor3 = u1.BackGroundColor;
-	v16.Active = true;
-	if bubbleChatOnly() then
-		v16.Position = UDim2.new(1, -v16.AbsoluteSize.X, 0, 0);
-	else
-		v16.Position = UDim2.new(1, -v16.AbsoluteSize.X, 1, -v16.AbsoluteSize.Y);
-	end;
-	v16.Parent = v12;
-	local v17 = Instance.new("ImageLabel");
+	v16.Parent = v13;
+	local v17 = Instance.new("ImageButton");
 	v17.Selectable = false;
-	v17.Size = UDim2.new(0.8, 0, 0.8, 0);
-	v17.Position = UDim2.new(0.2, 0, 0.2, 0);
-	v17.BackgroundTransparency = 1;
-	v17.Image = "rbxassetid://261880743";
-	v17.Parent = v16;
-	local function v18()
-		local v19 = v12;
-		while v19 and not v19:IsA("ScreenGui") do
-			v19 = v19.Parent;		
-		end;
-		return v19;
+	v17.Image = "";
+	v17.BackgroundTransparency = 0.6;
+	v17.BorderSizePixel = 0;
+	v17.Visible = false;
+	v17.BackgroundColor3 = u1.BackGroundColor;
+	v17.Active = true;
+	if bubbleChatOnly() then
+		v17.Position = UDim2.new(1, -v17.AbsoluteSize.X, 0, 0);
+	else
+		v17.Position = UDim2.new(1, -v17.AbsoluteSize.X, 1, -v17.AbsoluteSize.Y);
 	end;
-	local v20 = 3;
-	local v21 = v18();
-	if v21.AbsoluteSize.X <= 640 then
-		v20 = 1;
-	elseif v21.AbsoluteSize.X <= 1024 then
-		v20 = 2;
+	v17.Parent = v13;
+	local v18 = Instance.new("ImageLabel");
+	v18.Selectable = false;
+	v18.Size = UDim2.new(0.8, 0, 0.8, 0);
+	v18.Position = UDim2.new(0.2, 0, 0.2, 0);
+	v18.BackgroundTransparency = 1;
+	v18.Image = "rbxassetid://261880743";
+	v18.Parent = v17;
+	local v19 = 3;
+	local v20 = v13;
+	while v20 and not v20:IsA("ScreenGui") do
+		v20 = v20.Parent;	
+	end;
+	if v20.AbsoluteSize.X <= 640 then
+		v19 = 1;
+	elseif v20.AbsoluteSize.X <= 1024 then
+		v19 = 2;
 	end;
 	local u4 = false;
 	local function u5()
@@ -118,384 +114,413 @@ function v6.CreateGuiObjects(p3, p4)
 			return;
 		end;
 		u4 = true;
-		if not v12:IsDescendantOf(l__PlayerGui__2) then
+		if not v13:IsDescendantOf(l__PlayerGui__2) then
 			return;
 		end;
-		local v22 = v18();
-		local l__MinimumWindowSize__23 = u1.MinimumWindowSize;
-		local l__MaximumWindowSize__24 = u1.MaximumWindowSize;
-		local v25 = l__MinimumWindowSize__23.X.Scale * v22.AbsoluteSize.X + l__MinimumWindowSize__23.X.Offset;
-		local v26 = math.max(l__MinimumWindowSize__23.Y.Scale * v22.AbsoluteSize.Y + l__MinimumWindowSize__23.Y.Offset, v14.AbsoluteSize.Y + v13.AbsoluteSize.Y);
-		local v27 = l__MaximumWindowSize__24.X.Scale * v22.AbsoluteSize.X + l__MaximumWindowSize__24.X.Offset;
-		local v28 = l__MaximumWindowSize__24.Y.Scale * v22.AbsoluteSize.Y + l__MaximumWindowSize__24.Y.Offset;
-		local l__X__29 = v12.AbsoluteSize.X;
-		local l__Y__30 = v12.AbsoluteSize.Y;
-		if l__X__29 < v25 then
-			v12.Size = v12.Size + UDim2.new(0, v25 - l__X__29, 0, 0);
-		elseif v27 < l__X__29 then
-			v12.Size = v12.Size + UDim2.new(0, v27 - l__X__29, 0, 0);
+		local v21 = v13;
+		while v21 and not v21:IsA("ScreenGui") do
+			v21 = v21.Parent;		
 		end;
-		if l__Y__30 < v26 then
-			v12.Size = v12.Size + UDim2.new(0, 0, 0, v26 - l__Y__30);
-		elseif v28 < l__Y__30 then
-			v12.Size = v12.Size + UDim2.new(0, 0, 0, v28 - l__Y__30);
+		local l__MinimumWindowSize__22 = u1.MinimumWindowSize;
+		local l__MaximumWindowSize__23 = u1.MaximumWindowSize;
+		local v24 = l__MinimumWindowSize__22.X.Scale * v21.AbsoluteSize.X + l__MinimumWindowSize__22.X.Offset;
+		local v25 = math.max(l__MinimumWindowSize__22.Y.Scale * v21.AbsoluteSize.Y + l__MinimumWindowSize__22.Y.Offset, v15.AbsoluteSize.Y + v14.AbsoluteSize.Y);
+		local v26 = l__MaximumWindowSize__23.X.Scale * v21.AbsoluteSize.X + l__MaximumWindowSize__23.X.Offset;
+		local v27 = l__MaximumWindowSize__23.Y.Scale * v21.AbsoluteSize.Y + l__MaximumWindowSize__23.Y.Offset;
+		local l__X__28 = v13.AbsoluteSize.X;
+		local l__Y__29 = v13.AbsoluteSize.Y;
+		if l__X__28 < v24 then
+			v13.Size = v13.Size + UDim2.new(0, v24 - l__X__28, 0, 0);
+		elseif v26 < l__X__28 then
+			v13.Size = v13.Size + UDim2.new(0, v26 - l__X__28, 0, 0);
 		end;
-		v12.Size = UDim2.new(v12.AbsoluteSize.X / v22.AbsoluteSize.X, 0, v12.AbsoluteSize.Y / v22.AbsoluteSize.Y, 0);
+		if l__Y__29 < v25 then
+			v13.Size = v13.Size + UDim2.new(0, 0, 0, v25 - l__Y__29);
+		elseif v27 < l__Y__29 then
+			v13.Size = v13.Size + UDim2.new(0, 0, 0, v27 - l__Y__29);
+		end;
+		v13.Size = UDim2.new(v13.AbsoluteSize.X / v21.AbsoluteSize.X, 0, v13.AbsoluteSize.Y / v21.AbsoluteSize.Y, 0);
 		u4 = false;
 	end;
-	v12.Changed:connect(function(p5)
+	v13.Changed:connect(function(p5)
 		if p5 == "AbsoluteSize" then
 			u5();
 		end;
 	end);
-	v16.DragBegin:connect(function(p6)
-		v12.Draggable = false;
+	v17.DragBegin:connect(function(p6)
+		v13.Draggable = false;
 	end);
-	v16.DragStopped:connect(function(p7, p8)
-		v12.Draggable = u1.WindowDraggable;
+	v17.DragStopped:connect(function(p7, p8)
+		v13.Draggable = u1.WindowDraggable;
 	end);
 	local u6 = false;
 	local function u7(p9)
 		if u1.WindowDraggable == false and u1.WindowResizable == false then
 			return;
 		end;
-		local v31 = p9 - v12.AbsolutePosition + v16.AbsoluteSize;
-		v12.Size = UDim2.new(0, v31.X, 0, v31.Y);
+		local v30 = p9 - v13.AbsolutePosition + v17.AbsoluteSize;
+		v13.Size = UDim2.new(0, v30.X, 0, v30.Y);
 		if bubbleChatOnly() then
-			v16.Position = UDim2.new(1, -v16.AbsoluteSize.X, 0, 0);
+			v17.Position = UDim2.new(1, -v17.AbsoluteSize.X, 0, 0);
 			return;
 		end;
-		v16.Position = UDim2.new(1, -v16.AbsoluteSize.X, 1, -v16.AbsoluteSize.Y);
+		v17.Position = UDim2.new(1, -v17.AbsoluteSize.X, 1, -v17.AbsoluteSize.Y);
 	end;
-	v16.Changed:connect(function(p10)
-		if p10 == "AbsolutePosition" and not v12.Draggable then
+	v17.Changed:connect(function(p10)
+		if p10 == "AbsolutePosition" and not v13.Draggable then
 			if u6 then
 				return;
 			end;
 			u6 = true;
-			u7(v16.AbsolutePosition);
+			u7(v17.AbsolutePosition);
 			u6 = false;
 		end;
 	end);
-	local function v32(p11)
-		if v20 == 1 then
-			p11 = p11 or u1.ChatBarTextSizePhone;
-		else
-			p11 = p11 or u1.ChatBarTextSize;
-		end;
-		return p11 + 14 + 10;
-	end;
 	if bubbleChatOnly() then
-		v13.Position = UDim2.new(0, 0, 0, 0);
-		v14.Visible = false;
-		v14.Active = false;
+		local v31 = nil;
+		v14.Position = UDim2.new(0, 0, 0, 0);
 		v15.Visible = false;
 		v15.Active = false;
-		local v33 = v18();
-		if v20 == 1 then
-			local v34 = u1.DefaultWindowSizePhone.X.Scale;
-			local v35 = u1.DefaultWindowSizePhone.X.Offset;
-		elseif v20 == 2 then
-			v34 = u1.DefaultWindowSizeTablet.X.Scale;
-			v35 = u1.DefaultWindowSizeTablet.X.Offset;
-		else
-			v34 = u1.DefaultWindowSizeDesktop.X.Scale;
-			v35 = u1.DefaultWindowSizeDesktop.X.Offset;
+		v16.Visible = false;
+		v16.Active = false;
+		local v32 = v13;
+		while v32 and not v32:IsA("ScreenGui") do
+			v32 = v32.Parent;		
 		end;
-		v12.Size = UDim2.new(v34, v35, 0, (v32()));
-		v12.Position = u1.DefaultWindowPosition;
+		if v19 == 1 then
+			local v33 = u1.DefaultWindowSizePhone.X.Scale;
+			local v34 = u1.DefaultWindowSizePhone.X.Offset;
+		elseif v19 == 2 then
+			v33 = u1.DefaultWindowSizeTablet.X.Scale;
+			v34 = u1.DefaultWindowSizeTablet.X.Offset;
+		else
+			v33 = u1.DefaultWindowSizeDesktop.X.Scale;
+			v34 = u1.DefaultWindowSizeDesktop.X.Offset;
+		end;
+		v31 = nil;
+		if v19 == 1 then
+			local v35 = v31 or u1.ChatBarTextSizePhone;
+		else
+			v35 = v31 or u1.ChatBarTextSize;
+		end;
+		v13.Size = UDim2.new(v33, v34, 0, v35 + 14 + 10);
+		v13.Position = u1.DefaultWindowPosition;
 	else
-		local v36 = v18();
-		if v20 == 1 then
-			v12.Size = u1.DefaultWindowSizePhone;
-		elseif v20 == 2 then
-			v12.Size = u1.DefaultWindowSizeTablet;
-		else
-			v12.Size = u1.DefaultWindowSizeDesktop;
+		local v36 = v13;
+		while v36 and not v36:IsA("ScreenGui") do
+			v36 = v36.Parent;		
 		end;
-		v12.Position = u1.DefaultWindowPosition;
+		if v19 == 1 then
+			v13.Size = u1.DefaultWindowSizePhone;
+		elseif v19 == 2 then
+			v13.Size = u1.DefaultWindowSizeTablet;
+		else
+			v13.Size = u1.DefaultWindowSizeDesktop;
+		end;
+		v13.Position = u1.DefaultWindowPosition;
 	end;
-	if v20 == 1 then
+	if v19 == 1 then
 		u1.ChatWindowTextSize = u1.ChatWindowTextSizePhone;
 		u1.ChatChannelsTabTextSize = u1.ChatChannelsTabTextSizePhone;
 		u1.ChatBarTextSize = u1.ChatBarTextSizePhone;
 	end;
-	local function v37(p12)
-		v12.Active = p12;
-		v12.Draggable = p12;
-	end;
-	local function u8(p13)
-		if v20 == 1 then
-			p13 = p13 or u1.ChatChannelsTabTextSizePhone;
-		else
-			p13 = p13 or u1.ChatChannelsTabTextSize;
-		end;
-		return math.max(32, p13 + 8) + 2;
-	end;
-	local function u9()
+	local function u8()
+		local v37 = nil;
 		local v38 = nil;
-		local v39 = u8();
-		v38 = v32();
+		v37 = nil;
+		if v19 == 1 then
+			local v39 = v37 or u1.ChatChannelsTabTextSizePhone;
+		else
+			v39 = v37 or u1.ChatChannelsTabTextSize;
+		end;
+		local v40 = math.max(32, v39 + 8) + 2;
+		v38 = nil;
+		if v19 == 1 then
+			local v41 = v38 or u1.ChatBarTextSizePhone;
+		else
+			v41 = v38 or u1.ChatBarTextSize;
+		end;
+		local v42 = v41 + 14 + 10;
 		if not u1.ShowChannelsBar then
-			v15.Size = UDim2.new(1, 0, 1, -(v38 + 2 + 2));
-			v15.Position = UDim2.new(0, 0, 0, 2);
+			v16.Size = UDim2.new(1, 0, 1, -(v42 + 2 + 2));
+			v16.Position = UDim2.new(0, 0, 0, 2);
 			return;
 		end;
-		v15.Size = UDim2.new(1, 0, 1, -(v39 + v38 + 2 + 2));
-		v15.Position = UDim2.new(0, 0, 0, v39 + 2);
+		v16.Size = UDim2.new(1, 0, 1, -(v40 + v42 + 2 + 2));
+		v16.Position = UDim2.new(0, 0, 0, v40 + 2);
 	end;
-	local function v40(p14)
-		v14.Size = UDim2.new(1, 0, 0, (u8(p14)));
-		u9();
-	end;
-	local function u10(p15)
-		local v41 = nil;
-		v16.Visible = p15;
-		v16.Draggable = p15;
-		v41 = v13.Size.Y.Offset;
-		if p15 then
-			v13.Size = UDim2.new(1, -v41 - 2, 0, v41);
+	local function u9(p11)
+		local v43 = nil;
+		v17.Visible = p11;
+		v17.Draggable = p11;
+		v43 = v14.Size.Y.Offset;
+		if p11 then
+			v14.Size = UDim2.new(1, -v43 - 2, 0, v43);
 			if bubbleChatOnly() then
 				return;
 			end;
 		else
-			v13.Size = UDim2.new(1, 0, 0, v41);
+			v14.Size = UDim2.new(1, 0, 0, v43);
 			if not bubbleChatOnly() then
-				v13.Position = UDim2.new(0, 0, 1, -v41);
+				v14.Position = UDim2.new(0, 0, 1, -v43);
 			end;
 			return;
 		end;
-		v13.Position = UDim2.new(0, 0, 1, -v41);
+		v14.Position = UDim2.new(0, 0, 1, -v43);
 	end;
-	local function v42(p16)
-		local v43 = v32(p16);
-		v13.Size = UDim2.new(1, 0, 0, v43);
+	local function v44(p12)
+		local v45 = nil;
+		v45 = p12;
+		if v19 == 1 then
+			local v46 = v45 or u1.ChatBarTextSizePhone;
+		else
+			v46 = v45 or u1.ChatBarTextSize;
+		end;
+		local v47 = v46 + 14 + 10;
+		v14.Size = UDim2.new(1, 0, 0, v47);
 		if not bubbleChatOnly() then
-			v13.Position = UDim2.new(0, 0, 1, -v43);
+			v14.Position = UDim2.new(0, 0, 1, -v47);
 		end;
-		v16.Size = UDim2.new(0, v43, 0, v43);
-		v16.Position = UDim2.new(1, -v43, 1, -v43);
-		u9();
-		u10(u1.WindowResizable);
+		v17.Size = UDim2.new(0, v47, 0, v47);
+		v17.Position = UDim2.new(1, -v47, 1, -v47);
+		u8();
+		u9(u1.WindowResizable);
 	end;
-	local function v44(p17)
-		v14.Visible = p17;
-		u9();
+	v12 = u1.ChatChannelsTabTextSize;
+	if v19 == 1 then
+		local v48 = v12 or u1.ChatChannelsTabTextSizePhone;
+	else
+		v48 = v12 or u1.ChatChannelsTabTextSize;
 	end;
-	v40(u1.ChatChannelsTabTextSize);
-	v42(u1.ChatBarTextSize);
-	v37(u1.WindowDraggable);
-	u10(u1.WindowResizable);
-	v44(u1.ShowChannelsBar);
-	u1.SettingsChanged:connect(function(p18, p19)
-		if p18 == "WindowDraggable" then
-			v37(p19);
+	v15.Size = UDim2.new(1, 0, 0, math.max(32, v48 + 8) + 2);
+	u8();
+	v44(u1.ChatBarTextSize);
+	local l__WindowDraggable__49 = u1.WindowDraggable;
+	v13.Active = l__WindowDraggable__49;
+	v13.Draggable = l__WindowDraggable__49;
+	u9(u1.WindowResizable);
+	v15.Visible = u1.ShowChannelsBar;
+	u8();
+	u1.SettingsChanged:connect(function(p13, p14)
+		local v50 = nil;
+		if p13 == "WindowDraggable" then
+			v13.Active = p14;
+			v13.Draggable = p14;
 			return;
 		end;
-		if p18 == "WindowResizable" then
-			u10(p19);
+		if p13 == "WindowResizable" then
+			u9(p14);
 			return;
 		end;
-		if p18 == "ChatChannelsTabTextSize" then
-			v40(p19);
-			return;
+		if p13 ~= "ChatChannelsTabTextSize" then
+			if p13 == "ChatBarTextSize" then
+				v44(p14);
+				return;
+			else
+				if p13 == "ShowChannelsBar" then
+					v15.Visible = p14;
+					u8();
+				end;
+				return;
+			end;
 		end;
-		if p18 == "ChatBarTextSize" then
-			v42(p19);
-			return;
+		v50 = p14;
+		if v19 == 1 then
+			local v51 = v50 or u1.ChatChannelsTabTextSizePhone;
+		else
+			v51 = v50 or u1.ChatChannelsTabTextSize;
 		end;
-		if p18 == "ShowChannelsBar" then
-			v44(p19);
-		end;
+		v15.Size = UDim2.new(1, 0, 0, math.max(32, v51 + 8) + 2);
+		u8();
 	end);
-	p3.GuiObject = v12;
-	p3.GuiObjects.BaseFrame = v12;
-	p3.GuiObjects.ChatBarParentFrame = v13;
-	p3.GuiObjects.ChannelsBarParentFrame = v14;
-	p3.GuiObjects.ChatChannelParentFrame = v15;
-	p3.GuiObjects.ChatResizerFrame = v16;
-	p3.GuiObjects.ResizeIcon = v17;
+	p3.GuiObject = v13;
+	p3.GuiObjects.BaseFrame = v13;
+	p3.GuiObjects.ChatBarParentFrame = v14;
+	p3.GuiObjects.ChannelsBarParentFrame = v15;
+	p3.GuiObjects.ChatChannelParentFrame = v16;
+	p3.GuiObjects.ChatResizerFrame = v17;
+	p3.GuiObjects.ResizeIcon = v18;
 	p3:AnimGuiObjects();
 end;
-function v6.GetChatBar(p20)
-	return p20.ChatBar;
+function v6.GetChatBar(p15)
+	return p15.ChatBar;
 end;
-function v6.RegisterChatBar(p21, p22)
-	p21.ChatBar = p22;
-	p21.ChatBar:CreateGuiObjects(p21.GuiObjects.ChatBarParentFrame);
+function v6.RegisterChatBar(p16, p17)
+	p16.ChatBar = p17;
+	p16.ChatBar:CreateGuiObjects(p16.GuiObjects.ChatBarParentFrame);
 end;
-function v6.RegisterChannelsBar(p23, p24)
-	p23.ChannelsBar = p24;
-	p23.ChannelsBar:CreateGuiObjects(p23.GuiObjects.ChannelsBarParentFrame);
+function v6.RegisterChannelsBar(p18, p19)
+	p18.ChannelsBar = p19;
+	p18.ChannelsBar:CreateGuiObjects(p18.GuiObjects.ChannelsBarParentFrame);
 end;
-function v6.RegisterMessageLogDisplay(p25, p26)
-	p25.MessageLogDisplay = p26;
-	p25.MessageLogDisplay.GuiObject.Parent = p25.GuiObjects.ChatChannelParentFrame;
+function v6.RegisterMessageLogDisplay(p20, p21)
+	p20.MessageLogDisplay = p21;
+	p20.MessageLogDisplay.GuiObject.Parent = p20.GuiObjects.ChatChannelParentFrame;
 end;
-local u11 = require(l__Parent__5:WaitForChild("ChatChannel"));
-function v6.AddChannel(p27, p28)
-	if p27:GetChannel(p28) then
-		error("Channel '" .. p28 .. "' already exists!");
+local u10 = require(l__Parent__5:WaitForChild("ChatChannel"));
+function v6.AddChannel(p22, p23)
+	if p22:GetChannel(p23) then
+		error("Channel '" .. p23 .. "' already exists!");
 		return;
 	end;
-	local v45 = u11.new(p28, p27.MessageLogDisplay);
-	p27.Channels[p28:lower()] = v45;
-	v45:SetActive(false);
-	local v46 = p27.ChannelsBar:AddChannelTab(p28);
-	v46.NameTag.MouseButton1Click:connect(function()
-		p27:SwitchCurrentChannel(p28);
+	local v52 = u10.new(p23, p22.MessageLogDisplay);
+	p22.Channels[p23:lower()] = v52;
+	v52:SetActive(false);
+	local v53 = p22.ChannelsBar:AddChannelTab(p23);
+	v53.NameTag.MouseButton1Click:connect(function()
+		p22:SwitchCurrentChannel(p23);
 	end);
-	v45:RegisterChannelTab(v46);
-	return v45;
+	v52:RegisterChannelTab(v53);
+	return v52;
 end;
-function v6.GetFirstChannel(p29)
-	local v47, v48, v49 = pairs(p29.Channels);
-	local v50, v51 = v47(v48, v49);
-	if not v50 then
+function v6.GetFirstChannel(p24)
+	local v54, v55, v56 = pairs(p24.Channels);
+	local v57, v58 = v54(v55, v56);
+	if not v57 then
 		return nil;
 	end;
-	return v51;
+	return v58;
 end;
-function v6.RemoveChannel(p30, p31)
-	if not p30:GetChannel(p31) then
-		error("Channel '" .. p31 .. "' does not exist!");
+function v6.RemoveChannel(p25, p26)
+	if not p25:GetChannel(p26) then
+		error("Channel '" .. p26 .. "' does not exist!");
 	end;
-	local v52 = p31:lower();
-	local v53 = false;
-	if p30.Channels[v52] == p30:GetCurrentChannel() then
-		v53 = true;
-		p30:SwitchCurrentChannel(nil);
+	local v59 = p26:lower();
+	local v60 = false;
+	if p25.Channels[v59] == p25:GetCurrentChannel() then
+		v60 = true;
+		p25:SwitchCurrentChannel(nil);
 	end;
-	p30.Channels[v52]:Destroy();
-	p30.Channels[v52] = nil;
-	p30.ChannelsBar:RemoveChannelTab(p31);
-	if v53 then
-		if p30:GetChannel(u1.GeneralChannelName) ~= nil and v52 ~= u1.GeneralChannelName:lower() then
-			local v54 = u1.GeneralChannelName;
+	p25.Channels[v59]:Destroy();
+	p25.Channels[v59] = nil;
+	p25.ChannelsBar:RemoveChannelTab(p26);
+	if v60 then
+		if p25:GetChannel(u1.GeneralChannelName) ~= nil and v59 ~= u1.GeneralChannelName:lower() then
+			local v61 = u1.GeneralChannelName;
 		else
-			local v55 = p30:GetFirstChannel();
-			v54 = v55 and v55.Name or nil;
+			local v62 = p25:GetFirstChannel();
+			v61 = v62 and v62.Name or nil;
 		end;
-		p30:SwitchCurrentChannel(v54);
+		p25:SwitchCurrentChannel(v61);
 	end;
-	if not u1.ShowChannelsBar and p30.ChatBar.TargetChannel == p31 then
-		p30.ChatBar:SetChannelTarget(u1.GeneralChannelName);
+	if not u1.ShowChannelsBar and p25.ChatBar.TargetChannel == p26 then
+		p25.ChatBar:SetChannelTarget(u1.GeneralChannelName);
 	end;
 end;
-function v6.GetChannel(p32, p33)
-	return p33 and p32.Channels[p33:lower()] or nil;
+function v6.GetChannel(p27, p28)
+	return p28 and p27.Channels[p28:lower()] or nil;
 end;
-function v6.GetTargetMessageChannel(p34)
+function v6.GetTargetMessageChannel(p29)
 	if not u1.ShowChannelsBar then
-		return p34.ChatBar.TargetChannel;
+		return p29.ChatBar.TargetChannel;
 	end;
-	local v56 = p34:GetCurrentChannel();
-	return v56 and v56.Name;
+	local v63 = p29:GetCurrentChannel();
+	return v63 and v63.Name;
 end;
-function v6.GetCurrentChannel(p35)
-	return p35.CurrentChannel;
+function v6.GetCurrentChannel(p30)
+	return p30.CurrentChannel;
 end;
-function v6.SwitchCurrentChannel(p36, p37)
+function v6.SwitchCurrentChannel(p31, p32)
 	if not u1.ShowChannelsBar then
-		local v57 = p36:GetChannel(p37);
-		if v57 then
-			p36.ChatBar:SetChannelTarget(v57.Name);
+		local v64 = p31:GetChannel(p32);
+		if v64 then
+			p31.ChatBar:SetChannelTarget(v64.Name);
 		end;
-		p37 = u1.GeneralChannelName;
+		p32 = u1.GeneralChannelName;
 	end;
-	local v58 = p36:GetCurrentChannel();
-	local v59 = p36:GetChannel(p37);
-	if v59 == nil then
-		error(string.format("Channel '%s' does not exist.", p37));
+	local v65 = p31:GetCurrentChannel();
+	local v66 = p31:GetChannel(p32);
+	if v66 == nil then
+		error(string.format("Channel '%s' does not exist.", p32));
 	end;
-	if v59 ~= v58 then
-		if v58 then
-			v58:SetActive(false);
-			p36.ChannelsBar:GetChannelTab(v58.Name):SetActive(false);
+	if v66 ~= v65 then
+		if v65 then
+			v65:SetActive(false);
+			p31.ChannelsBar:GetChannelTab(v65.Name):SetActive(false);
 		end;
-		if v59 then
-			v59:SetActive(true);
-			p36.ChannelsBar:GetChannelTab(v59.Name):SetActive(true);
+		if v66 then
+			v66:SetActive(true);
+			p31.ChannelsBar:GetChannelTab(v66.Name):SetActive(true);
 		end;
-		p36.CurrentChannel = v59;
+		p31.CurrentChannel = v66;
 	end;
 end;
-function v6.UpdateFrameVisibility(p38)
-	p38.GuiObject.Visible = p38.Visible and p38.CoreGuiEnabled;
+function v6.UpdateFrameVisibility(p33)
+	p33.GuiObject.Visible = p33.Visible and p33.CoreGuiEnabled;
 end;
-function v6.GetVisible(p39)
-	return p39.Visible;
+function v6.GetVisible(p34)
+	return p34.Visible;
 end;
-function v6.SetVisible(p40, p41)
-	p40.Visible = p41;
-	p40:UpdateFrameVisibility();
+function v6.SetVisible(p35, p36)
+	p35.Visible = p36;
+	p35:UpdateFrameVisibility();
 end;
-function v6.GetCoreGuiEnabled(p42)
-	return p42.CoreGuiEnabled;
+function v6.GetCoreGuiEnabled(p37)
+	return p37.CoreGuiEnabled;
 end;
-function v6.SetCoreGuiEnabled(p43, p44)
-	p43.CoreGuiEnabled = p44;
-	p43:UpdateFrameVisibility();
+function v6.SetCoreGuiEnabled(p38, p39)
+	p38.CoreGuiEnabled = p39;
+	p38:UpdateFrameVisibility();
 end;
-function v6.EnableResizable(p45)
-	p45.GuiObjects.ChatResizerFrame.Active = true;
+function v6.EnableResizable(p40)
+	p40.GuiObjects.ChatResizerFrame.Active = true;
 end;
-function v6.DisableResizable(p46)
-	p46.GuiObjects.ChatResizerFrame.Active = false;
+function v6.DisableResizable(p41)
+	p41.GuiObjects.ChatResizerFrame.Active = false;
 end;
-local u12 = require(l__Parent__5:WaitForChild("CurveUtil"));
-function v6.FadeOutBackground(p47, p48)
-	p47.ChannelsBar:FadeOutBackground(p48);
-	p47.MessageLogDisplay:FadeOutBackground(p48);
-	p47.ChatBar:FadeOutBackground(p48);
-	p47.AnimParams.Background_TargetTransparency = 1;
-	p47.AnimParams.Background_NormalizedExptValue = u12:NormalizedDefaultExptValueInSeconds(p48);
+local u11 = require(l__Parent__5:WaitForChild("CurveUtil"));
+function v6.FadeOutBackground(p42, p43)
+	p42.ChannelsBar:FadeOutBackground(p43);
+	p42.MessageLogDisplay:FadeOutBackground(p43);
+	p42.ChatBar:FadeOutBackground(p43);
+	p42.AnimParams.Background_TargetTransparency = 1;
+	p42.AnimParams.Background_NormalizedExptValue = u11:NormalizedDefaultExptValueInSeconds(p43);
 end;
-function v6.FadeInBackground(p49, p50)
-	p49.ChannelsBar:FadeInBackground(p50);
-	p49.MessageLogDisplay:FadeInBackground(p50);
-	p49.ChatBar:FadeInBackground(p50);
-	p49.AnimParams.Background_TargetTransparency = 0.6;
-	p49.AnimParams.Background_NormalizedExptValue = u12:NormalizedDefaultExptValueInSeconds(p50);
+function v6.FadeInBackground(p44, p45)
+	p44.ChannelsBar:FadeInBackground(p45);
+	p44.MessageLogDisplay:FadeInBackground(p45);
+	p44.ChatBar:FadeInBackground(p45);
+	p44.AnimParams.Background_TargetTransparency = 0.6;
+	p44.AnimParams.Background_NormalizedExptValue = u11:NormalizedDefaultExptValueInSeconds(p45);
 end;
-function v6.FadeOutText(p51, p52)
-	p51.MessageLogDisplay:FadeOutText(p52);
-	p51.ChannelsBar:FadeOutText(p52);
+function v6.FadeOutText(p46, p47)
+	p46.MessageLogDisplay:FadeOutText(p47);
+	p46.ChannelsBar:FadeOutText(p47);
 end;
-function v6.FadeInText(p53, p54)
-	p53.MessageLogDisplay:FadeInText(p54);
-	p53.ChannelsBar:FadeInText(p54);
+function v6.FadeInText(p48, p49)
+	p48.MessageLogDisplay:FadeInText(p49);
+	p48.ChannelsBar:FadeInText(p49);
 end;
-function v6.AnimGuiObjects(p55)
-	p55.GuiObjects.ChatChannelParentFrame.BackgroundTransparency = p55.AnimParams.Background_CurrentTransparency;
-	p55.GuiObjects.ChatResizerFrame.BackgroundTransparency = p55.AnimParams.Background_CurrentTransparency;
-	p55.GuiObjects.ResizeIcon.ImageTransparency = p55.AnimParams.Background_CurrentTransparency;
+function v6.AnimGuiObjects(p50)
+	p50.GuiObjects.ChatChannelParentFrame.BackgroundTransparency = p50.AnimParams.Background_CurrentTransparency;
+	p50.GuiObjects.ChatResizerFrame.BackgroundTransparency = p50.AnimParams.Background_CurrentTransparency;
+	p50.GuiObjects.ResizeIcon.ImageTransparency = p50.AnimParams.Background_CurrentTransparency;
 end;
-function v6.InitializeAnimParams(p56)
-	p56.AnimParams.Background_TargetTransparency = 0.6;
-	p56.AnimParams.Background_CurrentTransparency = 0.6;
-	p56.AnimParams.Background_NormalizedExptValue = u12:NormalizedDefaultExptValueInSeconds(0);
+function v6.InitializeAnimParams(p51)
+	p51.AnimParams.Background_TargetTransparency = 0.6;
+	p51.AnimParams.Background_CurrentTransparency = 0.6;
+	p51.AnimParams.Background_NormalizedExptValue = u11:NormalizedDefaultExptValueInSeconds(0);
 end;
-function v6.Update(p57, p58)
-	p57.ChatBar:Update(p58);
-	p57.ChannelsBar:Update(p58);
-	p57.MessageLogDisplay:Update(p58);
-	p57.AnimParams.Background_CurrentTransparency = u12:Expt(p57.AnimParams.Background_CurrentTransparency, p57.AnimParams.Background_TargetTransparency, p57.AnimParams.Background_NormalizedExptValue, p58);
-	p57:AnimGuiObjects();
+function v6.Update(p52, p53)
+	p52.ChatBar:Update(p53);
+	p52.ChannelsBar:Update(p53);
+	p52.MessageLogDisplay:Update(p53);
+	p52.AnimParams.Background_CurrentTransparency = u11:Expt(p52.AnimParams.Background_CurrentTransparency, p52.AnimParams.Background_TargetTransparency, p52.AnimParams.Background_NormalizedExptValue, p53);
+	p52:AnimGuiObjects();
 end;
 function v1.new()
-	local v60 = setmetatable({}, v6);
-	v60.GuiObject = nil;
-	v60.GuiObjects = {};
-	v60.ChatBar = nil;
-	v60.ChannelsBar = nil;
-	v60.MessageLogDisplay = nil;
-	v60.Channels = {};
-	v60.CurrentChannel = nil;
-	v60.Visible = true;
-	v60.CoreGuiEnabled = true;
-	v60.AnimParams = {};
-	v60:InitializeAnimParams();
-	return v60;
+	local v67 = setmetatable({}, v6);
+	v67.GuiObject = nil;
+	v67.GuiObjects = {};
+	v67.ChatBar = nil;
+	v67.ChannelsBar = nil;
+	v67.MessageLogDisplay = nil;
+	v67.Channels = {};
+	v67.CurrentChannel = nil;
+	v67.Visible = true;
+	v67.CoreGuiEnabled = true;
+	v67.AnimParams = {};
+	v67:InitializeAnimParams();
+	return v67;
 end;
 return v1;

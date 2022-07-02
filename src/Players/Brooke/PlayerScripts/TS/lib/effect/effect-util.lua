@@ -1,4 +1,3 @@
--- Script Hash: 3c2c9953c7f3f78f80eea0b6352c614285ba17c25f115f3a4b7303a06244bd37cb38db512b3bafbee11bd68f913e1fb6
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -82,38 +81,27 @@ function v2.playEffect(p6, p7, p8, p9)
 			p7.Enabled = false;
 		end);
 	end;
-	local v17 = p7:GetChildren();
-	local function v18(p10)
-		p6:playEffect(p10, p8, p9);
-	end;
-	for v19, v20 in ipairs(v17) do
-		v18(v20, v19 - 1, v17);
+	for v17, v18 in ipairs((p7:GetChildren())) do
+		p6:playEffect(v18, p8, p9);
 	end;
 end;
-function v2.scaleEffect(p11, p12, p13)
-	for v21, v22 in ipairs(p12) do
-		p11:scaleInstance(v22, p13);
-		local v23 = v22:GetDescendants();
-		local function v24(p14)
-			return p11:scaleInstance(p14, p13);
-		end;
-		for v25, v26 in ipairs(v23) do
-			v24(v26, v25 - 1, v23);
+function v2.scaleEffect(p10, p11, p12)
+	for v19, v20 in ipairs(p11) do
+		p10:scaleInstance(v20, p12);
+		for v21, v22 in ipairs((v20:GetDescendants())) do
+			local v23 = p10:scaleInstance(v22, p12);
 		end;
 	end;
 end;
-function v2.scaleInstance(p15, p16, p17)
-	if p16:IsA("ParticleEmitter") then
-		local l__Keypoints__27 = p16.Size.Keypoints;
-		local function v28(p18)
-			return NumberSequenceKeypoint.new(p18.Time, p18.Value * p17, p18.Envelope * p17);
+function v2.scaleInstance(p13, p14, p15)
+	if p14:IsA("ParticleEmitter") then
+		local l__Keypoints__24 = p14.Size.Keypoints;
+		local v25 = table.create(#l__Keypoints__24);
+		for v26, v27 in ipairs(l__Keypoints__24) do
+			v25[v26] = NumberSequenceKeypoint.new(v27.Time, v27.Value * p15, v27.Envelope * p15);
 		end;
-		local v29 = table.create(#l__Keypoints__27);
-		for v30, v31 in ipairs(l__Keypoints__27) do
-			v29[v30] = v28(v31, v30 - 1, l__Keypoints__27);
-		end;
-		p16.Size = NumberSequence.new(v29);
-		p16.Speed = NumberRange.new(p16.Speed.Min * p17, p16.Speed.Max * p17);
+		p14.Size = NumberSequence.new(v25);
+		p14.Speed = NumberRange.new(p14.Speed.Min * p15, p14.Speed.Max * p15);
 	end;
 end;
 return {

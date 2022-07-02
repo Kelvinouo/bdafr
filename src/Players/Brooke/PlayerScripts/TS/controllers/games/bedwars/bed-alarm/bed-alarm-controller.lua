@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -57,12 +56,8 @@ function v5.KnitStart(p2)
 		local v13 = l__ReplicatedStorage__8:WaitForChild("Assets"):WaitForChild("Effects"):WaitForChild("BedAlarm"):Clone();
 		v13:SetAttribute("RotationSpeed", 270);
 		v13:SetPrimaryPartCFrame(CFrame.new(p3.bedPosition + Vector3.new(0, 15, 0)));
-		local v14 = v13:GetDescendants();
-		local function v15(p4)
-			l__GameQueryUtil__9:setQueryIgnored(p4, true);
-		end;
-		for v16, v17 in ipairs(v14) do
-			v15(v17, v16 - 1, v14);
+		for v14, v15 in ipairs((v13:GetDescendants())) do
+			l__GameQueryUtil__9:setQueryIgnored(v15, true);
 		end;
 		v13.Parent = l__Workspace__10;
 		l__CollectionService__11:AddTag(v13, "RotatingObject");

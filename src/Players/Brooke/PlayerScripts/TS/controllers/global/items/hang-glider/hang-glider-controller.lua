@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -157,10 +156,7 @@ function u1.openHangGlider(p10)
 		l__Humanoid__15:Move(Vector3.new(0, 0, -1), true);
 	end);
 	local u25 = 0;
-	local function u26(p11, p12, p13)
-		return (p11 - p12[1]) * (p13[2] - p13[1]) / (p12[2] - p12[1]) + p13[1];
-	end;
-	local u27 = l__RunService__14.Stepped:Connect(function(p14)
+	local u26 = l__RunService__14.Stepped:Connect(function(p11)
 		local l__PrimaryPart__23 = l__Character__14.PrimaryPart;
 		local l__CurrentCamera__24 = l__Workspace__15.CurrentCamera;
 		local l__Humanoid__25 = l__Character__14:WaitForChild("Humanoid");
@@ -190,96 +186,100 @@ function u1.openHangGlider(p10)
 			end;
 			u25 = u25 - 0.5;
 		end;
-		u25 = u25 + p14;
-		v18.Force = Vector3.new(0, (l__Workspace__15.Gravity * math.max(0.7, u26((1 - v30) * math.sign(l__CurrentCamera__24.CFrame.LookVector.Y), { -1, 1 }, { 0.7, 1.25 }) + u26((l__AssemblyLinearVelocity__26 * Vector3.new(1, 0, 1)).Magnitude, { 0, 35 }, { -0.3, 0 })) - u16.DragConstant * (math.pow(math.clamp(l__AssemblyLinearVelocity__26.Y, -100, 100), 2) / 2) * math.sign(l__Character__14.PrimaryPart.AssemblyLinearVelocity.Y) / 13) * v28, 0);
+		u25 = u25 + p11;
+		local v32 = { -1, 1 };
+		local v33 = { 0.7, 1.25 };
+		local v34 = { 0, 35 };
+		local v35 = { -0.3, 0 };
+		v18.Force = Vector3.new(0, (l__Workspace__15.Gravity * math.max(0.7, ((1 - v30) * math.sign(l__CurrentCamera__24.CFrame.LookVector.Y) - v32[1]) * (v33[2] - v33[1]) / (v32[2] - v32[1]) + v33[1] + (((l__AssemblyLinearVelocity__26 * Vector3.new(1, 0, 1)).Magnitude - v34[1]) * (v35[2] - v35[1]) / (v34[2] - v34[1]) + v35[1])) - u16.DragConstant * (math.pow(math.clamp(l__AssemblyLinearVelocity__26.Y, -100, 100), 2) / 2) * math.sign(l__Character__14.PrimaryPart.AssemblyLinearVelocity.Y) / 13) * v28, 0);
 	end);
 	p10.activeGliderMaid:GiveTask(function()
-		u27:Disconnect();
+		u26:Disconnect();
 	end);
 	if l__DeviceUtil__17.isMobileControls() then
-		local v32 = {};
-		local v33 = {
+		local v36 = {};
+		local v37 = {
 			Image = l__BedwarsImageId__19.DOWN_MOBILE, 
 			Position = l__BedwarsUI__20:getActionMobileButtonPosition() - UDim2.fromScale(0.08, 0)
 		};
-		function v33.OnClick()
+		function v37.OnClick()
 			p10:sendCloseHangGliderEvent();
 		end;
-		v32[#v32 + 1] = u18.createElement(l__MobileButton__21, v33);
-		local u28 = u18.mount(u18.createElement("ScreenGui", {
+		v36[#v36 + 1] = u18.createElement(l__MobileButton__21, v37);
+		local u27 = u18.mount(u18.createElement("ScreenGui", {
 			ResetOnSpawn = false
-		}, v32), l__Players__9.LocalPlayer:WaitForChild("PlayerGui"));
+		}, v36), l__Players__9.LocalPlayer:WaitForChild("PlayerGui"));
 		p10.activeGliderMaid:GiveTask(function()
-			u18.unmount(u28);
+			u18.unmount(u27);
 		end);
 	else
-		local v34 = {
+		local v38 = {
 			actionName = "HangGliderDismount", 
 			interactionKey = Enum.KeyCode.X, 
 			gamepadInteractionKey = Enum.KeyCode.ButtonB
 		};
-		function v34.onActivated()
+		function v38.onActivated()
 			if p10.hangGliderActive then
 				p10:sendCloseHangGliderEvent();
 			end;
 		end;
-		v34.text = "Dismount Glider";
-		p10.activeGliderMaid:GiveTask((l__Flamework__22.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(u18.createElement(l__ActionButton__23, v34))));
+		v38.text = "Dismount Glider";
+		p10.activeGliderMaid:GiveTask((l__Flamework__22.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(u18.createElement(l__ActionButton__23, v38))));
 	end;
 end;
-local l__ClientStore__29 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
-function u1.closeHangGlider(p15)
-	p15.hangGliderActive = false;
-	for v35, v36 in ipairs(p15.activeForces) do
-		v36:Destroy();
+local l__ClientStore__28 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
+function u1.closeHangGlider(p12)
+	p12.hangGliderActive = false;
+	for v39, v40 in ipairs(p12.activeForces) do
+		v40:Destroy();
 	end;
-	table.clear(p15.activeForces);
+	table.clear(p12.activeForces);
 	l__RunService__14:UnbindFromRenderStep("HangGliderThrust");
-	local l__Humanoid__37 = l__Players__9.LocalPlayer.Character:WaitForChild("Humanoid");
-	if l__Humanoid__37 then
-		l__Humanoid__37.WalkSpeed = 14;
+	local l__Humanoid__41 = l__Players__9.LocalPlayer.Character:WaitForChild("Humanoid");
+	if l__Humanoid__41 then
+		l__Humanoid__41.WalkSpeed = 14;
 	end;
 	if not l__DeviceUtil__17.isMobileControls() then
 		l__KnitClient__10.Controllers.MobileShiftLockController:disable();
-	elseif not l__ClientStore__29:getState().Settings.mobileShiftLock then
+	elseif not l__ClientStore__28:getState().Settings.mobileShiftLock then
 		l__KnitClient__10.Controllers.MobileShiftLockController:disable();
 	end;
-	p15.activeGliderMaid:DoCleaning();
+	p12.activeGliderMaid:DoCleaning();
 end;
-function u1.sendCloseHangGliderEvent(p16)
+function u1.sendCloseHangGliderEvent(p13)
 	l__default__4.Client:Get("RemoteName"):SendToServer({});
 end;
-function u1.canOpenHangGlider(p17)
-	if p17.acceptedGlidingStates[l__Players__9.LocalPlayer.Character:FindFirstChild("Humanoid"):GetState()] ~= nil then
+function u1.canOpenHangGlider(p14)
+	if p14.acceptedGlidingStates[l__Players__9.LocalPlayer.Character:FindFirstChild("Humanoid"):GetState()] ~= nil then
 		return true;
 	end;
 	return false;
 end;
-local l__ItemType__30 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
-function u1.isRelevantItem(p18, p19)
-	return p19.itemType == l__ItemType__30.HANG_GLIDER;
+local l__ItemType__29 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
+function u1.isRelevantItem(p15, p16)
+	return p16.itemType == l__ItemType__29.HANG_GLIDER;
 end;
-local l__ColorUtil__31 = v2.ColorUtil;
-local l__ContextActionService__32 = v4.ContextActionService;
-function u1.onEnable(p20, p21)
-	local l__tool__38 = p21.tool;
-	local v39 = l__ClientStore__29:getState().Game.myTeam;
-	if v39 ~= nil then
-		v39 = v39.color;
+local l__ColorUtil__30 = v2.ColorUtil;
+local l__ContextActionService__31 = v4.ContextActionService;
+function u1.onEnable(p17, p18)
+	local l__tool__42 = p18.tool;
+	local v43 = l__ClientStore__28:getState().Game.myTeam;
+	if v43 ~= nil then
+		v43 = v43.color;
 	end;
-	local v40 = v39;
-	if v40 == nil then
-		v40 = Color3.fromRGB(255, 255, 255);
+	local v44 = v43;
+	if v44 == nil then
+		v44 = Color3.fromRGB(255, 255, 255);
 	end;
-	l__tool__38.Handle.LightStripe.Color = v40;
-	l__tool__38.Handle.DarkStripe.Color = l__ColorUtil__31.darken(v40, 0.5);
-	l__ContextActionService__32:BindAction("open-glider", function(p22, p23, p24)
-		if p23 == Enum.UserInputState.Begin then
-			if p20.hangGliderActive then
+	l__tool__42.Handle.LightStripe.Color = v44;
+	l__tool__42.Handle.DarkStripe.Color = l__ColorUtil__30.darken(v44, 0.5);
+	l__ContextActionService__31:BindAction("open-glider", function(p19, p20, p21)
+		if p20 == Enum.UserInputState.Begin then
+			if p17.hangGliderActive then
 				return nil;
 			end;
-			if p20:canOpenHangGlider() then
-				p20:openHangGlider();
+			if p17:canOpenHangGlider() then
+				p17:openHangGlider();
 				return;
 			end;
 		else
@@ -287,35 +287,35 @@ function u1.onEnable(p20, p21)
 		end;
 		return nil;
 	end, false, Enum.UserInputType.MouseButton1);
-	p20.maid:GiveTask(function()
-		l__ContextActionService__32:UnbindAction("open-glider");
+	p17.maid:GiveTask(function()
+		l__ContextActionService__31:UnbindAction("open-glider");
 	end);
 	if l__DeviceUtil__17.isMobileControls() then
-		p20:setupYield(function()
-			local u33 = u18.mount(u18.createElement("ScreenGui", {
+		p17:setupYield(function()
+			local u32 = u18.mount(u18.createElement("ScreenGui", {
 				ResetOnSpawn = false
 			}, { u18.createElement(l__MobileButton__21, {
 					Image = l__BedwarsImageId__19.UP_MOBILE, 
 					Position = l__BedwarsUI__20:getActionMobileButtonPosition(), 
 					OnClick = function()
-						if p20.hangGliderActive then
-							p20:sendCloseHangGliderEvent();
+						if p17.hangGliderActive then
+							p17:sendCloseHangGliderEvent();
 							return nil;
 						end;
-						if not p20:canOpenHangGlider() then
+						if not p17:canOpenHangGlider() then
 							return nil;
 						end;
-						p20:openHangGlider();
+						p17:openHangGlider();
 					end
 				}) }), l__Players__9.LocalPlayer:WaitForChild("PlayerGui"));
 			return function()
-				u18.unmount(u33);
+				u18.unmount(u32);
 			end;
 		end);
 	end;
 end;
-function u1.onDisable(p25)
-	p25.maid:DoCleaning();
+function u1.onDisable(p22)
+	p22.maid:DoCleaning();
 end;
 u2 = v3.KnitClient.CreateController;
 u1 = u1.new;

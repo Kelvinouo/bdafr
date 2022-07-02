@@ -1,4 +1,3 @@
--- Script Hash: d481f870ebaff64d03e93ed901aa7b5c5ca9f6d84622485a44102827481bbacdd169585f6505f74329c9fcb6a26a7cbc
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -42,21 +41,18 @@ function v4.KnitStart(p2)
 		end;
 		p2.maid:DoCleaning();
 		local function v9(p5)
-			local function v10(p6)
-				local v11 = false;
-				if p6 ~= "empty" then
-					v11 = p6.itemType == p5;
+			local v10 = nil;
+			for v11, v12 in ipairs(l__armor__6) do
+				local v13 = false;
+				if v12 ~= "empty" then
+					v13 = v12.itemType == p5;
 				end;
-				return v11;
-			end;
-			local v12 = nil;
-			for v13, v14 in ipairs(l__armor__6) do
-				if v10(v14, v13 - 1, l__armor__6) == true then
-					v12 = v14;
+				if v13 == true then
+					v10 = v12;
 					break;
 				end;
 			end;
-			return v12 ~= nil;
+			return v10 ~= nil;
 		end;
 		if v9(l__ItemType__4.SPEED_BOOTS) then
 			p2.speedModifier = l__KnitClient__5.Controllers.SprintController:getMovementStatusModifier():addModifier({

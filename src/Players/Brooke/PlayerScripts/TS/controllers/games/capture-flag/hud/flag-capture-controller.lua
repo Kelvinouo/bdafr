@@ -116,71 +116,72 @@ function v6.KnitStart(p2)
 		end;
 	end);
 	l__RunService__16.Heartbeat:Connect(function()
-		local l__rayMap__10 = p2.rayMap;
-		local function v11(p10, p11)
-			local v12 = p11.Character;
-			if v12 ~= nil then
-				v12 = v12.PrimaryPart;
+		local v10, v11, v12 = pairs(p2.rayMap);
+		while true do
+			local v13, v14 = v10(v11, v12);
+			if not v13 then
+				break;
 			end;
-			if not v12 then
+			local v15 = v13.Character;
+			if v15 ~= nil then
+				v15 = v15.PrimaryPart;
+			end;
+			if not v15 then
+				v14:Destroy();
+			end;
+			local v16 = v14;
+			if v16 then
+				local v17 = v13;
+				if v17 ~= nil then
+					v17 = v17.Character;
+				end;
+				v16 = v17;
+			end;
+			if v16 then
+				v14.Position = v13.Character:GetPrimaryPartCFrame().Position;
+			end;		
+		end;
+		local l__flagMap__18 = p2.flagMap;
+		local function v19(p10, p11)
+			local v20 = p11.Character;
+			if v20 ~= nil then
+				v20 = v20.PrimaryPart;
+			end;
+			if not v20 then
 				p10:Destroy();
 			end;
-			local v13 = p10;
-			if v13 then
-				local v14 = p11;
-				if v14 ~= nil then
-					v14 = v14.Character;
-				end;
-				v13 = v14;
-			end;
-			if v13 then
-				p10.Position = p11.Character:GetPrimaryPartCFrame().Position;
-			end;
-		end;
-		for v15, v16 in pairs(l__rayMap__10) do
-			v11(v16, v15, l__rayMap__10);
-		end;
-		local l__flagMap__17 = p2.flagMap;
-		local function v18(p12, p13)
-			local v19 = p13.Character;
-			if v19 ~= nil then
-				v19 = v19.PrimaryPart;
-			end;
-			if not v19 then
-				p12:Destroy();
-			end;
-			local v20 = p12;
-			if v20 then
-				local v21 = p13;
-				if v21 ~= nil then
-					v21 = v21.Character;
-				end;
-				v20 = v21;
-			end;
-			if v20 then
-				local v22 = p13.Character;
+			local v21 = p10;
+			if v21 then
+				local v22 = p11;
 				if v22 ~= nil then
-					v22 = (v22:GetPrimaryPartCFrame() + Vector3.new(0, 8, 0)) * CFrame.Angles(0, math.pi / 2, 0);
+					v22 = v22.Character;
 				end;
-				p12:SetPrimaryPartCFrame(v22);
+				v21 = v22;
+			end;
+			if v21 then
+				local v23 = p11.Character;
+				if v23 ~= nil then
+					v23 = (v23:GetPrimaryPartCFrame() + Vector3.new(0, 8, 0)) * CFrame.Angles(0, math.pi / 2, 0);
+				end;
+				p10:SetPrimaryPartCFrame(v23);
 			end;
 		end;
-		for v23, v24 in pairs(l__flagMap__17) do
-			v18(v24, v23, l__flagMap__17);
+		for v24, v25 in pairs(l__flagMap__18) do
+			v19(v25, v24, l__flagMap__18);
 		end;
 	end);
-	l__CollectionTagAdded__17("flag", function(p14)
-		p14.Touched:Connect(function()
+	l__CollectionTagAdded__17("flag", function(p12)
+		p12.Touched:Connect(function()
 			if tick() < p2.cooldown then
 				return nil;
 			end;
 			p2.cooldown = tick() + 0.2;
 			l__default__3.Client:Get("RemoteName"):SendToServer({
-				block = p14
+				block = p12
 			});
 		end);
-		if p2.flagLocation[p14] == nil then
-			p2.flagLocation[p14] = p14.Position;
+		if p2.flagLocation[p12] == nil then
+			p2.flagLocation[p12] = p12.Position;
 		end;
 	end);
 end;
@@ -188,74 +189,74 @@ local l__Workspace__20 = v4.Workspace;
 local u21 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
 local l__ReplicatedStorage__22 = v4.ReplicatedStorage;
 local l__GameQueryUtil__23 = v2.GameQueryUtil;
-function v6.createRay(p15, p16)
-	local v25 = Color3.fromRGB(230, 255, 0);
-	if p16.Team == l__Players__9.LocalPlayer.Team then
-		local v26 = Color3.fromRGB(0, 255, 13);
+function v6.createRay(p13, p14)
+	local v26 = Color3.fromRGB(230, 255, 0);
+	if p14.Team == l__Players__9.LocalPlayer.Team then
+		local v27 = Color3.fromRGB(0, 255, 13);
 	else
-		v26 = Color3.fromRGB(255, 0, 0);
+		v27 = Color3.fromRGB(255, 0, 0);
 	end;
-	local v27 = {
+	local v28 = {
 		Parent = l__Workspace__20
 	};
-	local v28 = p16.Character;
-	if v28 ~= nil then
-		v28 = v28:GetPrimaryPartCFrame();
+	local v29 = p14.Character;
+	if v29 ~= nil then
+		v29 = v29:GetPrimaryPartCFrame();
 	end;
-	v27.CFrame = v28;
-	v27.Shape = Enum.PartType.Cylinder;
-	v27.Color = v26;
-	v27.Material = Enum.Material.ForceField;
-	v27.CastShadow = false;
-	v27.Size = Vector3.new(1200, 4, 4);
-	v27.Orientation = Vector3.new(0, 0, 90);
-	v27.Transparency = 0.25;
-	v27.Anchored = true;
-	v27.CanCollide = false;
-	v27.CanQuery = false;
-	v27.CanTouch = false;
-	local v29 = u21("Part", v27);
-	local v30 = p16.Character;
-	if v30 ~= nil then
-		v30 = v30:GetPrimaryPartCFrame();
+	v28.CFrame = v29;
+	v28.Shape = Enum.PartType.Cylinder;
+	v28.Color = v27;
+	v28.Material = Enum.Material.ForceField;
+	v28.CastShadow = false;
+	v28.Size = Vector3.new(1200, 4, 4);
+	v28.Orientation = Vector3.new(0, 0, 90);
+	v28.Transparency = 0.25;
+	v28.Anchored = true;
+	v28.CanCollide = false;
+	v28.CanQuery = false;
+	v28.CanTouch = false;
+	local v30 = u21("Part", v28);
+	local v31 = p14.Character;
+	if v31 ~= nil then
+		v31 = v31:GetPrimaryPartCFrame();
 	end;
-	if v30 then
-		local v31 = l__ReplicatedStorage__22.Assets.Effects.Flag:Clone();
-		v31.Parent = l__Workspace__20;
-		local v32 = p16.Team;
-		if v32 ~= nil then
-			v32 = v32.Name;
+	if v31 then
+		local v32 = l__ReplicatedStorage__22.Assets.Effects.Flag:Clone();
+		v32.Parent = l__Workspace__20;
+		local v33 = p14.Team;
+		if v33 ~= nil then
+			v33 = v33.Name;
 		end;
-		if v32 == "Blue" then
-			local v33 = Color3.fromRGB(230, 255, 0);
+		if v33 == "Blue" then
+			local v34 = Color3.fromRGB(230, 255, 0);
 		else
-			v33 = Color3.fromRGB(0, 120, 255);
+			v34 = Color3.fromRGB(0, 120, 255);
 		end;
-		v31:WaitForChild("TeamIndicator1", 3).Color = v33;
-		v31:WaitForChild("TeamIndicator2", 3).Color = v33;
-		local v34 = p16.Character;
-		if v34 ~= nil then
-			v34 = v34:GetPrimaryPartCFrame() + Vector3.new(0, 5, 0);
+		v32:WaitForChild("TeamIndicator1", 3).Color = v34;
+		v32:WaitForChild("TeamIndicator2", 3).Color = v34;
+		local v35 = p14.Character;
+		if v35 ~= nil then
+			v35 = v35:GetPrimaryPartCFrame() + Vector3.new(0, 5, 0);
 		end;
-		v31:SetPrimaryPartCFrame(v34);
-		p15.flagMap[p16] = v31;
-		l__GameQueryUtil__23:setQueryIgnored(v31, true);
+		v32:SetPrimaryPartCFrame(v35);
+		p13.flagMap[p14] = v32;
+		l__GameQueryUtil__23:setQueryIgnored(v32, true);
 	end;
-	l__GameQueryUtil__23:setQueryIgnored(v29, true);
-	p15.rayMap[p16] = v29;
-	return v29;
+	l__GameQueryUtil__23:setQueryIgnored(v30, true);
+	p13.rayMap[p14] = v30;
+	return v30;
 end;
 local l__KnitClient__24 = v3.KnitClient;
-function v6.addSlow(p17, p18)
-	if p18 == l__Players__9.LocalPlayer then
-		p17.slowMaid:GiveTask(l__KnitClient__24.Controllers.SprintController:getMovementStatusModifier():addModifier({
+function v6.addSlow(p15, p16)
+	if p16 == l__Players__9.LocalPlayer then
+		p15.slowMaid:GiveTask(l__KnitClient__24.Controllers.SprintController:getMovementStatusModifier():addModifier({
 			moveSpeedMultiplier = 0.8
 		}));
 	end;
 end;
-function v6.removeSlow(p19, p20)
-	if p20 == l__Players__9.LocalPlayer then
-		p19.slowMaid:DoCleaning();
+function v6.removeSlow(p17, p18)
+	if p18 == l__Players__9.LocalPlayer then
+		p17.slowMaid:DoCleaning();
 	end;
 end;
 u1 = v3.KnitClient.CreateController;

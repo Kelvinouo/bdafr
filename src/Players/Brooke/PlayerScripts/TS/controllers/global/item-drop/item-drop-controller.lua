@@ -69,6 +69,21 @@ function u1.dropItemInHand(p7)
 		end;
 	end;
 end;
+function u1.dropHotbarItem(p8, p9)
+	local l__item__11 = l__ClientStore__10:getState().Inventory.observedInventory.hotbar[p9 + 1].item;
+	if not l__item__11 then
+		return false;
+	end;
+	local v12 = l__default__6.Client:Get("RemoteName"):CallServer({
+		item = l__item__11.tool, 
+		amount = l__item__11.amount
+	});
+	l__SoundManager__8:playSound(l__GameSound__9.DROP_ITEM);
+	if v12 then
+		v12:SetAttribute("ClientDropTime", tick());
+	end;
+	return v12 ~= nil;
+end;
 local l__CollectionService__11 = v3.CollectionService;
 local l__Workspace__12 = v3.Workspace;
 local u13 = v2.ConstantManager.registerConstants(script, {
@@ -76,93 +91,100 @@ local u13 = v2.ConstantManager.registerConstants(script, {
 });
 local l__getItemMeta__14 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
 local l__InventoryUtil__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "inventory", "inventory-util").InventoryUtil;
-function u1.checkForPickup(p8)
+function u1.checkForPickup(p10)
 	if l__Players__7.LocalPlayer.Character then
-		local l__PrimaryPart__11 = l__Players__7.LocalPlayer.Character.PrimaryPart;
-		if l__PrimaryPart__11 then
-			local v12 = l__CollectionService__11:GetTagged("ItemDrop");
-			local function v13(p9)
-				return (l__PrimaryPart__11.Position - p9.Position).Magnitude <= 6;
-			end;
+		local l__PrimaryPart__13 = l__Players__7.LocalPlayer.Character.PrimaryPart;
+		if l__PrimaryPart__13 then
 			local v14 = {};
 			local v15 = 0;
-			for v16, v17 in ipairs(v12) do
-				if v13(v17, v16 - 1, v12) == true then
+			local v16, v17, v18 = ipairs((l__CollectionService__11:GetTagged("ItemDrop")));
+			while true do
+				local v19, v20 = v16(v17, v18);
+				if not v19 then
+					break;
+				end;
+				if (l__PrimaryPart__13.Position - v20.Position).Magnitude <= 6 == true then
 					v15 = v15 + 1;
-					v14[v15] = v17;
-				end;
+					v14[v15] = v20;
+				end;			
 			end;
-			local function v18(p10)
-				return p10:GetAttribute("PickupReadyTime") < l__Workspace__12:GetServerTimeNow();
-			end;
-			local v19 = {};
-			local v20 = 0;
-			for v21, v22 in ipairs(v14) do
-				if v18(v22, v21 - 1, v14) == true then
-					v20 = v20 + 1;
-					v19[v20] = v22;
+			local v21 = {};
+			local v22 = 0;
+			local v23, v24, v25 = ipairs(v14);
+			while true do
+				local v26, v27 = v23(v24, v25);
+				if not v26 then
+					break;
 				end;
+				if v27:GetAttribute("PickupReadyTime") < l__Workspace__12:GetServerTimeNow() == true then
+					v22 = v22 + 1;
+					v21[v22] = v27;
+				end;			
 			end;
-			local function v23(p11)
-				local v24 = p11:GetAttribute("ClientPickupAttemptTime");
-				if v24 == nil then
-					return true;
+			local v28 = {};
+			local v29 = 0;
+			local v30, v31, v32 = ipairs(v21);
+			while true do
+				local v33, v34 = v30(v31, v32);
+				if not v33 then
+					break;
 				end;
-				return u13.PickupPerItemCooldown < tick() - v24;
+				local v35 = v34:GetAttribute("ClientPickupAttemptTime");
+				if v35 ~= nil then
+					local v36 = u13.PickupPerItemCooldown < tick() - v35;
+				else
+					v36 = true;
+				end;
+				if v36 == true then
+					v29 = v29 + 1;
+					v28[v29] = v34;
+				end;			
 			end;
-			local v25 = {};
-			local v26 = 0;
-			for v27, v28 in ipairs(v19) do
-				if v23(v28, v27 - 1, v19) == true then
-					v26 = v26 + 1;
-					v25[v26] = v28;
+			local function v37(p11)
+				local v38 = l__getItemMeta__14(p11.Name);
+				local v39 = v38;
+				if v39 ~= nil then
+					v39 = v39.maxStackSize;
 				end;
-			end;
-			local function v29(p12)
-				local v30 = l__getItemMeta__14(p12.Name);
-				local v31 = v30;
-				if v31 ~= nil then
-					v31 = v31.maxStackSize;
-				end;
-				if v31 ~= nil then
-					local v32 = l__InventoryUtil__15.getToolFromInventory(l__Players__7.LocalPlayer, p12.Name);
-					local v33 = v32;
-					if v33 ~= nil then
-						v33 = v33.amount;
+				if v39 ~= nil then
+					local v40 = l__InventoryUtil__15.getToolFromInventory(l__Players__7.LocalPlayer, p11.Name);
+					local v41 = v40;
+					if v41 ~= nil then
+						v41 = v41.amount;
 					end;
-					if v33 ~= nil and v30.maxStackSize <= v32.amount then
+					if v41 ~= nil and v38.maxStackSize <= v40.amount then
 						return false;
 					end;
 				end;
 				return true;
 			end;
-			local v34 = {};
-			local v35 = 0;
-			for v36, v37 in ipairs(v25) do
-				if v29(v37, v36 - 1, v25) == true then
-					v35 = v35 + 1;
-					v34[v35] = v37;
+			local v42 = {};
+			local v43 = 0;
+			for v44, v45 in ipairs(v28) do
+				if v37(v45, v44 - 1, v28) == true then
+					v43 = v43 + 1;
+					v42[v43] = v45;
 				end;
 			end;
-			local v38 = false;
-			local v39 = 0;
-			local v40 = false;
+			local v46 = false;
+			local v47 = 0;
+			local v48 = false;
 			while true do
-				if v40 then
-					v39 = v39 + 1;
+				if v48 then
+					v47 = v47 + 1;
 				else
-					v40 = true;
+					v48 = true;
 				end;
-				if not (v39 < math.min(5, #v34)) then
+				if not (v47 < math.min(5, #v42)) then
 					break;
 				end;
-				local v41 = v34[v39 + 1];
-				v41:SetAttribute("ClientPickupAttemptTime", tick());
-				local u16 = v38;
+				local v49 = v42[v47 + 1];
+				v49:SetAttribute("ClientPickupAttemptTime", tick());
+				local u16 = v46;
 				l__default__6.Client:Get("RemoteName"):CallServerAsync({
-					itemDrop = v41
-				}):andThen(function(p13)
-					if p13 and not u16 then
+					itemDrop = v49
+				}):andThen(function(p12)
+					if p12 and not u16 then
 						l__SoundManager__8:playSound(l__GameSound__9.PICKUP_ITEM_DROP);
 						u16 = true;
 					end;

@@ -1,4 +1,3 @@
--- Script Hash: 5b07665f0e6da1092083a74e74d11d12a0b3490c30b3665072297b8dbb68c40833bf62440a4d926a8e0f3f5ebb02e45b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -67,92 +66,82 @@ v3.fuzzySearchFriends = v1.async(function(p8, p9)
 		if not p10 then
 			return nil;
 		end;
-		local function v12(p11)
-			return table.find(u6, p11) == nil;
+		local v12 = {};
+		local v13 = 0;
+		local v14, v15, v16 = ipairs(p10);
+		while true do
+			local v17, v18 = v14(v15, v16);
+			if not v17 then
+				break;
+			end;
+			if table.find(u6, v18) == nil == true then
+				v13 = v13 + 1;
+				v12[v13] = v18;
+			end;		
 		end;
-		local v13 = {};
-		local v14 = 0;
-		for v15, v16 in ipairs(p10) do
-			if v12(v16, v15 - 1, p10) == true then
-				v14 = v14 + 1;
-				v13[v14] = v16;
+		local v19 = {};
+		local v20 = 0;
+		local v21, v22, v23 = ipairs(v12);
+		while true do
+			local v24, v25 = v21(v22, v23);
+			if not v24 then
+				break;
+			end;
+			if string.lower(v25.username) == u7 == true then
+				v20 = v20 + 1;
+				v19[v20] = v25;
+			end;		
+		end;
+		for v26, v27 in ipairs(v19) do
+			table.insert(u6, v27);
+		end;
+		local v28 = {};
+		local v29 = 0;
+		local v30, v31, v32 = ipairs(p10);
+		while true do
+			local v33, v34 = v30(v31, v32);
+			if not v33 then
+				break;
+			end;
+			if table.find(u6, v34) == nil == true then
+				v29 = v29 + 1;
+				v28[v29] = v34;
+			end;		
+		end;
+		local v35 = {};
+		local v36 = 0;
+		for v37, v38 in ipairs(v28) do
+			if u5.startsWith(string.lower(v38.username), u7) == true then
+				v36 = v36 + 1;
+				v35[v36] = v38;
 			end;
 		end;
-		local function v17(p12)
-			return string.lower(p12.username) == u7;
+		for v39, v40 in ipairs(v35) do
+			table.insert(u6, v40);
 		end;
-		local v18 = {};
-		local v19 = 0;
-		for v20, v21 in ipairs(v13) do
-			if v17(v21, v20 - 1, v13) == true then
-				v19 = v19 + 1;
-				v18[v19] = v21;
+		local v41 = {};
+		local v42 = 0;
+		local v43, v44, v45 = ipairs(p10);
+		while true do
+			local v46, v47 = v43(v44, v45);
+			if not v46 then
+				break;
+			end;
+			if table.find(u6, v47) == nil == true then
+				v42 = v42 + 1;
+				v41[v42] = v47;
+			end;		
+		end;
+		local v48 = {};
+		local v49 = 0;
+		for v50, v51 in ipairs(v41) do
+			if u5.includes(string.lower(v51.username), u7) == true then
+				v49 = v49 + 1;
+				v48[v49] = v51;
 			end;
 		end;
-		local function v22(p13)
-			table.insert(u6, p13);
-			return #u6;
-		end;
-		for v23, v24 in ipairs(v18) do
-			v22(v24, v23 - 1, v18);
-		end;
-		local function v25(p14)
-			return table.find(u6, p14) == nil;
-		end;
-		local v26 = {};
-		local v27 = 0;
-		for v28, v29 in ipairs(p10) do
-			if v25(v29, v28 - 1, p10) == true then
-				v27 = v27 + 1;
-				v26[v27] = v29;
-			end;
-		end;
-		local function v30(p15)
-			return u5.startsWith(string.lower(p15.username), u7);
-		end;
-		local v31 = {};
-		local v32 = 0;
-		for v33, v34 in ipairs(v26) do
-			if v30(v34, v33 - 1, v26) == true then
-				v32 = v32 + 1;
-				v31[v32] = v34;
-			end;
-		end;
-		local function v35(p16)
-			table.insert(u6, p16);
-			return #u6;
-		end;
-		for v36, v37 in ipairs(v31) do
-			v35(v37, v36 - 1, v31);
-		end;
-		local function v38(p17)
-			return table.find(u6, p17) == nil;
-		end;
-		local v39 = {};
-		local v40 = 0;
-		for v41, v42 in ipairs(p10) do
-			if v38(v42, v41 - 1, p10) == true then
-				v40 = v40 + 1;
-				v39[v40] = v42;
-			end;
-		end;
-		local function v43(p18)
-			return u5.includes(string.lower(p18.username), u7);
-		end;
-		local v44 = {};
-		local v45 = 0;
-		for v46, v47 in ipairs(v39) do
-			if v43(v47, v46 - 1, v39) == true then
-				v45 = v45 + 1;
-				v44[v45] = v47;
-			end;
-		end;
-		local function v48(p19)
-			table.insert(u6, p19);
-			return #u6;
-		end;
-		for v49, v50 in ipairs(v44) do
-			v48(v50, v49 - 1, v44);
+		for v52, v53 in ipairs(v48) do
+			table.insert(u6, v53);
 		end;
 		return u6;
 	end));

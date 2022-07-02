@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -54,19 +53,15 @@ function u1.KnitStart(p2)
 		p2:createLocalBee(v8);
 	end);
 	l__default__5.Client:OnEvent("RemoteName", function(p4)
-		local v10 = l__CollectionService__6:GetTagged("bee");
-		local function v11(p5)
-			return p5:GetAttribute("BeeId") == p4.beeId;
-		end;
-		local v12 = nil;
-		for v13, v14 in ipairs(v10) do
-			if v11(v14, v13 - 1, v10) == true then
-				v12 = v14;
+		local v10 = nil;
+		for v11, v12 in ipairs((l__CollectionService__6:GetTagged("bee"))) do
+			if v12:GetAttribute("BeeId") == p4.beeId == true then
+				v10 = v12;
 				break;
 			end;
 		end;
-		if v12 ~= nil then
-			v12:Destroy();
+		if v10 ~= nil then
+			v10:Destroy();
 		end;
 	end);
 end;
@@ -76,24 +71,24 @@ local l__KnitClient__9 = v2.KnitClient;
 local l__GameQueryUtil__10 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).GameQueryUtil;
 local l__GameAnimationUtil__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
 local l__AnimationType__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
-function u1.createLocalBee(p6, p7)
-	local v15 = p7.beeModel:Clone();
-	v15:SetPrimaryPartCFrame(CFrame.new(p7.origin));
-	local l__Root__16 = v15.Root;
+function u1.createLocalBee(p5, p6)
+	local v13 = p6.beeModel:Clone();
+	v13:SetPrimaryPartCFrame(CFrame.new(p6.origin));
+	local l__Root__14 = v13.Root;
 	u3("BodyVelocity", {
-		Parent = l__Root__16
+		Parent = l__Root__14
 	});
 	u3("BodyForce", {
-		Parent = l__Root__16, 
-		Force = Vector3.new(0, l__Root__16:GetMass() * l__Workspace__7.Gravity, 0)
+		Parent = l__Root__14, 
+		Force = Vector3.new(0, l__Root__14:GetMass() * l__Workspace__7.Gravity, 0)
 	});
 	u3("BodyGyro", {
 		MaxTorque = Vector3.new(400000, 400000, 400000), 
 		D = 600, 
-		Parent = l__Root__16
+		Parent = l__Root__14
 	});
-	if p7.includeProximityPrompt then
-		local v17 = {
+	if p6.includeProximityPrompt then
+		local v15 = {
 			ActionText = "Pick Up", 
 			ObjectText = "Bee", 
 			HoldDuration = 0.3, 
@@ -101,30 +96,30 @@ function u1.createLocalBee(p6, p7)
 			RequiresLineOfSight = false, 
 			Enabled = false
 		};
-		function v17.Triggered(p8)
-			l__KnitClient__9.Controllers.BeeNetController:trigger(p8, v15);
+		function v15.Triggered(p7)
+			l__KnitClient__9.Controllers.BeeNetController:trigger(p7, v13);
 		end;
-		v17.Parent = l__Root__16;
-		u3("ProximityPrompt", v17);
+		v15.Parent = l__Root__14;
+		u3("ProximityPrompt", v15);
 	end;
-	v15.Parent = l__Workspace__7;
-	v15:SetAttribute("BeeId", p7.id);
-	v15:SetAttribute("BeeOrigin", p7.origin);
-	v15:SetAttribute("MaxDistanceFromOrigin", p7.maxDistanceFromOrigin);
-	v15:SetAttribute("NextUpdateDirection", -1);
-	for v18, v19 in ipairs(v15:GetDescendants()) do
-		if v19:IsA("BasePart") then
-			l__GameQueryUtil__10:setQueryIgnored(v19, true);
+	v13.Parent = l__Workspace__7;
+	v13:SetAttribute("BeeId", p6.id);
+	v13:SetAttribute("BeeOrigin", p6.origin);
+	v13:SetAttribute("MaxDistanceFromOrigin", p6.maxDistanceFromOrigin);
+	v13:SetAttribute("NextUpdateDirection", -1);
+	for v16, v17 in ipairs(v13:GetDescendants()) do
+		if v17:IsA("BasePart") then
+			l__GameQueryUtil__10:setQueryIgnored(v17, true);
 		end;
 	end;
-	local v20 = v15:FindFirstChildOfClass("AnimationController");
-	if v20 ~= nil then
-		local v21 = v20:LoadAnimation(l__GameAnimationUtil__11.getAnimation(l__AnimationType__12.BEE_FLAP));
-		v21.Looped = true;
-		v21:Play();
+	local v18 = v13:FindFirstChildOfClass("AnimationController");
+	if v18 ~= nil then
+		local v19 = v18:LoadAnimation(l__GameAnimationUtil__11.getAnimation(l__AnimationType__12.BEE_FLAP));
+		v19.Looped = true;
+		v19:Play();
 	end;
-	l__CollectionService__6:AddTag(v15, "bee");
-	return v15;
+	l__CollectionService__6:AddTag(v13, "bee");
+	return v13;
 end;
 u2 = v2.KnitClient.CreateController;
 u1 = u1.new;

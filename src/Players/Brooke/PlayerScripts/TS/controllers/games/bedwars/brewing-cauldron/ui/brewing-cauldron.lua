@@ -1,4 +1,3 @@
--- Script Hash: 6a8b0da0b2f57bc338f3591beebf34dc5608ed69969fdf19106dd21b94bbfe37c04a1fb902eac1651afb0675407a1709
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -101,36 +100,33 @@ return {
 			}))
 		};
 		local v15 = u6.entries(p1.Inventory);
-		local function v16(p3)
-			local v17 = p3[1];
-			return u1.createElement(l__IngredientBox__2, {
-				Image = l__getItemMeta__7(p3[2]).image, 
+		local v16 = table.create(#v15);
+		for v17, v18 in ipairs(v15) do
+			local v19 = v18[1];
+			v16[v17] = u1.createElement(l__IngredientBox__2, {
+				Image = l__getItemMeta__7(v18[2]).image, 
 				Amount = 1
 			});
 		end;
-		local v18 = table.create(#v15);
-		for v19, v20 in ipairs(v15) do
-			v18[v19] = v16(v20, v19 - 1, v15);
-		end;
-		local v21 = {
+		local v20 = {
 			Size = UDim2.fromScale(1, 0.75), 
 			LayoutOrder = 2
 		};
-		local v22 = { u1.createElement("UIListLayout", {
+		local v21 = { u1.createElement("UIListLayout", {
 				FillDirection = "Horizontal", 
 				Padding = UDim.new(0.05, 0), 
 				VerticalAlignment = "Center", 
 				HorizontalAlignment = "Center"
 			}) };
-		local v23 = #v22;
-		for v24, v25 in ipairs(v18) do
-			v22[v23 + v24] = v25;
+		local v22 = #v21;
+		for v23, v24 in ipairs(v16) do
+			v21[v22 + v23] = v24;
 		end;
-		local v26 = #v22;
-		for v27, v28 in ipairs(v7) do
-			v22[v26 + v27] = v28;
+		local v25 = #v21;
+		for v26, v27 in ipairs(v7) do
+			v21[v25 + v26] = v27;
 		end;
-		v14.IngredientList = u1.createElement(l__Empty__8, v21, v22);
+		v14.IngredientList = u1.createElement(l__Empty__8, v20, v21);
 		v11.Container = u1.createElement("Frame", v13, v14);
 		return u1.createFragment({
 			BrewingCauldronBillboard = u1.createElement("BillboardGui", v10, v11)

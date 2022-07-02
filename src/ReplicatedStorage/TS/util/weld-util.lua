@@ -1,10 +1,9 @@
--- Script Hash: b1161bc0520c887dfa236807d657362edcad37353d92ebb34ee4979b611e94dc55d61dd92e93c6d5042279b0aa5bd3c1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = {};
 local u1 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-local function v3(p1, p2)
+function v2.weldAttachments(p1, p2)
 	return u1("Weld", {
 		Name = "AccessoryAttachment", 
 		Part0 = p1.Parent, 
@@ -14,7 +13,6 @@ local function v3(p1, p2)
 		Parent = p1.Parent
 	});
 end;
-v2.weldAttachments = v3;
 function v2.weldParts(p3, p4)
 	return u1("WeldConstraint", {
 		Name = p4.Name, 
@@ -24,37 +22,37 @@ function v2.weldParts(p3, p4)
 	});
 end;
 function v2.weldPartsWithJoint(p5, p6, p7)
-	local v4 = Instance.new(p7);
-	v4.Part0 = p5;
-	v4.Part1 = p6;
-	v4.C0 = CFrame.new();
-	v4.C1 = p6.CFrame:ToObjectSpace(p5.CFrame);
-	v4.Parent = p5;
-	return v4;
+	local v3 = Instance.new(p7);
+	v3.Part0 = p5;
+	v3.Part1 = p6;
+	v3.C0 = CFrame.new();
+	v3.C1 = p6.CFrame:ToObjectSpace(p5.CFrame);
+	v3.Parent = p5;
+	return v3;
 end;
 local u2 = v1.import(script, v1.getModule(script, "@rbxts", "string-utils"));
 local function u3(p8, p9)
-	for v5, v6 in ipairs(p8:GetChildren()) do
-		if v6:IsA("Attachment") and v6.Name == p9 then
-			local v7 = u2.endsWith(v6.Name, "KneeRigAttachment");
-			if v7 then
-				local v8 = v6.Parent;
-				if v8 ~= nil then
-					v8 = v8.Name;
+	for v4, v5 in ipairs(p8:GetChildren()) do
+		if v5:IsA("Attachment") and v5.Name == p9 then
+			local v6 = u2.endsWith(v5.Name, "KneeRigAttachment");
+			if v6 then
+				local v7 = v5.Parent;
+				if v7 ~= nil then
+					v7 = v7.Name;
 				end;
-				local v9 = v8;
-				if v9 == nil then
-					v9 = "";
+				local v8 = v7;
+				if v8 == nil then
+					v8 = "";
 				end;
-				v7 = u2.includes(v9, "Upper");
+				v6 = u2.includes(v8, "Upper");
 			end;
-			if not v7 then
-				return v6;
+			if not v6 then
+				return v5;
 			end;
-		elseif not v6:IsA("Accoutrement") and not v6:IsA("Tool") then
-			local v10 = u3(v6, p9);
-			if v10 then
-				return v10;
+		elseif not v5:IsA("Accoutrement") and not v5:IsA("Tool") then
+			local v9 = u3(v5, p9);
+			if v9 then
+				return v9;
 			end;
 		end;
 	end;
@@ -62,27 +60,34 @@ local function u3(p8, p9)
 end;
 local u4 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v2.weldCharacterAccessories(p10)
-	local v11, v12, v13 = ipairs(p10:GetChildren());
+	local v10, v11, v12 = ipairs(p10:GetChildren());
 	while true do
-		local v14, v15 = v11(v12, v13);
-		if not v14 then
+		local v13, v14 = v10(v11, v12);
+		if not v13 then
 			break;
 		end;
-		if v15:IsA("Accessory") then
-			local l__Handle__16 = v15:FindFirstChild("Handle");
-			if l__Handle__16 then
-				for v17, v18 in ipairs(l__Handle__16:GetChildren()) do
-					if v18:IsA("Attachment") then
-						local v19 = u3(p10, v18.Name);
-						if v19 then
-							local v20 = u4.new();
-							local u5 = v3(v19, v18);
-							v20:GiveTask(function()
+		if v14:IsA("Accessory") then
+			local l__Handle__15 = v14:FindFirstChild("Handle");
+			if l__Handle__15 then
+				for v16, v17 in ipairs(l__Handle__15:GetChildren()) do
+					if v17:IsA("Attachment") then
+						local v18 = u3(p10, v17.Name);
+						if v18 then
+							local v19 = u4.new();
+							local u5 = u1("Weld", {
+								Name = "AccessoryAttachment", 
+								Part0 = v18.Parent, 
+								Part1 = v17.Parent, 
+								C0 = v18.CFrame, 
+								C1 = v17.CFrame, 
+								Parent = v18.Parent
+							});
+							v19:GiveTask(function()
 								u5:Destroy();
 							end);
-							v20:GiveTask(v18.AncestryChanged:Connect(function(p11, p12)
+							v19:GiveTask(v17.AncestryChanged:Connect(function(p11, p12)
 								if p12 == nil then
-									v20:DoCleaning();
+									v19:DoCleaning();
 								end;
 							end));
 							break;
@@ -91,9 +96,9 @@ function v2.weldCharacterAccessories(p10)
 				end;
 			end;
 		end;
-		for v21, v22 in ipairs(v15:GetDescendants()) do
-			if v22:IsA("BasePart") then
-				v22.CanCollide = false;
+		for v20, v21 in ipairs(v14:GetDescendants()) do
+			if v21:IsA("BasePart") then
+				v21.CanCollide = false;
 			end;
 		end;	
 	end;

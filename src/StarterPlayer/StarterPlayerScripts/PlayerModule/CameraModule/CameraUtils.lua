@@ -1,4 +1,3 @@
--- Script Hash: 9f533aa5db9b1d8b9b265adbbabbd9d45299532cbe6bd76520f1908c7248d1dd873f759181e9fe6a4c3643303782f054
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1, v2 = pcall(function()
@@ -97,54 +96,54 @@ end;
 function v8.GetAngleBetweenXZVectors(p21, p22)
 	return math.atan2(p22.X * p21.Z - p22.Z * p21.X, p22.X * p21.X + p22.Z * p21.Z);
 end;
-local function u1(p23)
-	return math.floor(p23 + 0.5);
-end;
-function v8.RotateVectorByAngleAndRound(p24, p25, p26)
-	if not (p24.Magnitude > 0) then
+function v8.RotateVectorByAngleAndRound(p23, p24, p25)
+	if not (p23.Magnitude > 0) then
 		return 0;
 	end;
-	p24 = p24.Unit;
-	return u1((math.atan2(p24.Z, p24.X) + p25) / p26) * p26 - math.atan2(p24.Z, p24.X);
+	p23 = p23.Unit;
+	return math.floor((math.atan2(p23.Z, p23.X) + p24) / p25 + 0.5) * p25 - math.atan2(p23.Z, p23.X);
 end;
-local function u2(p27)
-	return p27 / 2 + 0.5;
-end;
-local function u3(p28)
-	p28 = math.clamp(p28, -1, 1);
-	if p28 >= 0 then
-		return 0.35 * p28 / (0.35 - p28 + 1);
+function v8.GamepadLinearToCurve(p26)
+	local l__X__37 = p26.X;
+	local v38 = 1;
+	if l__X__37 < 0 then
+		v38 = -1;
 	end;
-	return -(0.8 * -p28 / (0.8 + p28 + 1));
-end;
-local function u4(p29)
-	return 1.1 * (2 * math.abs(p29) - 1) - 0.1;
-end;
-function v8.GamepadLinearToCurve(p30)
-	local function v37(p31)
-		local v38 = 1;
-		if p31 < 0 then
-			v38 = -1;
+	local v39 = math.clamp(1.1 * (2 * math.abs((math.abs(l__X__37))) - 1) - 0.1, -1, 1);
+	if v39 >= 0 then
+		local v40 = 0.35 * v39 / (0.35 - v39 + 1);
+	else
+		v40 = -(0.8 * -v39 / (0.8 + v39 + 1));
+	end;
+	return Vector2.new(math.clamp((v40 / 2 + 0.5) * v38, -1, 1), (function(p27)
+		local v41 = 1;
+		if p27 < 0 then
+			v41 = -1;
 		end;
-		return math.clamp(u2(u3(u4(math.abs(p31)))) * v38, -1, 1);
-	end;
-	return Vector2.new(v37(p30.X), v37(p30.Y));
+		local v42 = math.clamp(1.1 * (2 * math.abs((math.abs(p27))) - 1) - 0.1, -1, 1);
+		if v42 >= 0 then
+			local v43 = 0.35 * v42 / (0.35 - v42 + 1);
+		else
+			v43 = -(0.8 * -v42 / (0.8 + v42 + 1));
+		end;
+		return math.clamp((v43 / 2 + 0.5) * v41, -1, 1);
+	end)(p26.Y));
 end;
-function v8.ConvertCameraModeEnumToStandard(p32)
-	if p32 == Enum.TouchCameraMovementMode.Default then
+function v8.ConvertCameraModeEnumToStandard(p28)
+	if p28 == Enum.TouchCameraMovementMode.Default then
 		return Enum.ComputerCameraMovementMode.Follow;
 	end;
-	if p32 == Enum.ComputerCameraMovementMode.Default then
+	if p28 == Enum.ComputerCameraMovementMode.Default then
 		return Enum.ComputerCameraMovementMode.Classic;
 	end;
-	if p32 ~= Enum.TouchCameraMovementMode.Classic and p32 ~= Enum.DevTouchCameraMovementMode.Classic and p32 ~= Enum.DevComputerCameraMovementMode.Classic and p32 ~= Enum.ComputerCameraMovementMode.Classic then
-		if p32 == Enum.TouchCameraMovementMode.Follow or p32 == Enum.DevTouchCameraMovementMode.Follow or p32 == Enum.DevComputerCameraMovementMode.Follow or p32 == Enum.ComputerCameraMovementMode.Follow then
+	if p28 ~= Enum.TouchCameraMovementMode.Classic and p28 ~= Enum.DevTouchCameraMovementMode.Classic and p28 ~= Enum.DevComputerCameraMovementMode.Classic and p28 ~= Enum.ComputerCameraMovementMode.Classic then
+		if p28 == Enum.TouchCameraMovementMode.Follow or p28 == Enum.DevTouchCameraMovementMode.Follow or p28 == Enum.DevComputerCameraMovementMode.Follow or p28 == Enum.ComputerCameraMovementMode.Follow then
 			return Enum.ComputerCameraMovementMode.Follow;
-		elseif p32 == Enum.TouchCameraMovementMode.Orbital or p32 == Enum.DevTouchCameraMovementMode.Orbital or p32 == Enum.DevComputerCameraMovementMode.Orbital or p32 == Enum.ComputerCameraMovementMode.Orbital then
+		elseif p28 == Enum.TouchCameraMovementMode.Orbital or p28 == Enum.DevTouchCameraMovementMode.Orbital or p28 == Enum.DevComputerCameraMovementMode.Orbital or p28 == Enum.ComputerCameraMovementMode.Orbital then
 			return Enum.ComputerCameraMovementMode.Orbital;
-		elseif p32 == Enum.ComputerCameraMovementMode.CameraToggle or p32 == Enum.DevComputerCameraMovementMode.CameraToggle then
+		elseif p28 == Enum.ComputerCameraMovementMode.CameraToggle or p28 == Enum.DevComputerCameraMovementMode.CameraToggle then
 			return Enum.ComputerCameraMovementMode.CameraToggle;
-		elseif p32 == Enum.DevTouchCameraMovementMode.UserChoice or p32 == Enum.DevComputerCameraMovementMode.UserChoice then
+		elseif p28 == Enum.DevTouchCameraMovementMode.UserChoice or p28 == Enum.DevComputerCameraMovementMode.UserChoice then
 			return Enum.DevComputerCameraMovementMode.UserChoice;
 		else
 			return Enum.ComputerCameraMovementMode.Classic;
@@ -153,62 +152,64 @@ function v8.ConvertCameraModeEnumToStandard(p32)
 	return Enum.ComputerCameraMovementMode.Classic;
 end;
 if v1 or v2 then
-	local function u5()
-		local v39 = l__Players__5.LocalPlayer;
-		if not v39 then
+	local u1 = nil;
+	local u2 = "";
+	function v8.setMouseIconOverride(p29)
+		local v44 = l__Players__5.LocalPlayer;
+		if not v44 then
 			l__Players__5:GetPropertyChangedSignal("LocalPlayer"):Wait();
-			v39 = l__Players__5.LocalPlayer;
+			v44 = l__Players__5.LocalPlayer;
 		end;
-		return v39:GetMouse();
-	end;
-	local u6 = nil;
-	local u7 = "";
-	function v8.setMouseIconOverride(p33)
-		local v40 = u5();
-		if v40.Icon ~= u6 then
-			u7 = v40.Icon;
+		local l__mouse__45 = v44:GetMouse();
+		if l__mouse__45.Icon ~= u1 then
+			u2 = l__mouse__45.Icon;
 		end;
-		v40.Icon = p33;
-		u6 = p33;
+		l__mouse__45.Icon = p29;
+		u1 = p29;
 	end;
 	function v8.restoreMouseIcon()
-		local v41 = u5();
-		if v41.Icon == u6 then
-			v41.Icon = u7;
+		local v46 = l__Players__5.LocalPlayer;
+		if not v46 then
+			l__Players__5:GetPropertyChangedSignal("LocalPlayer"):Wait();
+			v46 = l__Players__5.LocalPlayer;
 		end;
-		u6 = nil;
+		local l__mouse__47 = v46:GetMouse();
+		if l__mouse__47.Icon == u1 then
+			l__mouse__47.Icon = u2;
+		end;
+		u1 = nil;
 	end;
 end;
 if v3 or v4 then
-	local u8 = nil;
-	local u9 = Enum.MouseBehavior.Default;
-	function v8.setMouseBehaviorOverride(p34)
-		if l__UserInputService__6.MouseBehavior ~= u8 then
-			u9 = l__UserInputService__6.MouseBehavior;
+	local u3 = nil;
+	local u4 = Enum.MouseBehavior.Default;
+	function v8.setMouseBehaviorOverride(p30)
+		if l__UserInputService__6.MouseBehavior ~= u3 then
+			u4 = l__UserInputService__6.MouseBehavior;
 		end;
-		l__UserInputService__6.MouseBehavior = p34;
-		u8 = p34;
+		l__UserInputService__6.MouseBehavior = p30;
+		u3 = p30;
 	end;
 	function v8.restoreMouseBehavior()
-		if l__UserInputService__6.MouseBehavior == u8 then
-			l__UserInputService__6.MouseBehavior = u9;
+		if l__UserInputService__6.MouseBehavior == u3 then
+			l__UserInputService__6.MouseBehavior = u4;
 		end;
-		u8 = nil;
+		u3 = nil;
 	end;
-	local u10 = nil;
-	local u11 = Enum.RotationType.MovementRelative;
-	function v8.setRotationTypeOverride(p35)
-		if l__UserGameSettings__7.RotationType ~= u10 then
-			u11 = l__UserGameSettings__7.RotationType;
+	local u5 = nil;
+	local u6 = Enum.RotationType.MovementRelative;
+	function v8.setRotationTypeOverride(p31)
+		if l__UserGameSettings__7.RotationType ~= u5 then
+			u6 = l__UserGameSettings__7.RotationType;
 		end;
-		l__UserGameSettings__7.RotationType = p35;
-		u10 = p35;
+		l__UserGameSettings__7.RotationType = p31;
+		u5 = p31;
 	end;
 	function v8.restoreRotationType()
-		if l__UserGameSettings__7.RotationType == u10 then
-			l__UserGameSettings__7.RotationType = u11;
+		if l__UserGameSettings__7.RotationType == u5 then
+			l__UserGameSettings__7.RotationType = u6;
 		end;
-		u10 = nil;
+		u5 = nil;
 	end;
 end;
 return v8;

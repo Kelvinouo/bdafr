@@ -1,4 +1,3 @@
--- Script Hash: fee3662fe3bd5afc951c29ed91970a0694a805fcbec27b0eaafb00a7b6df6c0a69a65ba4d7712cb6f5fbb26187e0def2
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -34,63 +33,58 @@ function v5.render(p3)
 		v6 = "Penguins Win!";
 	end;
 	local v8 = {};
-	local l__teams__9 = l__ClientStore__6:getState().Game.teams;
-	local function v10(p4)
-		return p4.id == p3.props.WinningTeamId;
-	end;
-	local v11 = nil;
-	for v12, v13 in ipairs(l__teams__9) do
-		if v10(v13, v12 - 1, l__teams__9) == true then
-			v11 = v13;
+	local v9 = nil;
+	for v10, v11 in ipairs(l__ClientStore__6:getState().Game.teams) do
+		if v11.id == p3.props.WinningTeamId == true then
+			v9 = v11;
 			break;
 		end;
 	end;
-	if v11 then
-		v6 = "Team " .. v11.name .. " Wins!";
-		local v14 = l__Players__7:GetPlayers();
-		local function v15(p5)
-			return v11.members[p5.UserId] ~= nil;
-		end;
-		local v16 = {};
-		local v17 = 0;
-		for v18, v19 in ipairs(v14) do
-			if v15(v19, v18 - 1, v14) == true then
-				v17 = v17 + 1;
-				v16[v17] = v19;
+	if v9 then
+		v6 = "Team " .. v9.name .. " Wins!";
+		local v12 = {};
+		local v13 = 0;
+		local v14, v15, v16 = ipairs((l__Players__7:GetPlayers()));
+		while true do
+			local v17, v18 = v14(v15, v16);
+			if not v17 then
+				break;
 			end;
+			if v9.members[v18.UserId] ~= nil == true then
+				v13 = v13 + 1;
+				v12[v13] = v18;
+			end;		
 		end;
-		v8 = v16;
+		v8 = v12;
 	end;
 	if l__queueType__7 and l__Flamework__4.resolveDependency("@easy-games/lobby:client/controllers/lobby-client-controller@LobbyClientController"):getQueueMeta(l__queueType__7).game == l__GameType__5.GUN_GAME then
-		local v20 = v11;
-		if v20 ~= nil then
-			v20 = v20.members;
+		local v19 = v9;
+		if v19 ~= nil then
+			v19 = v19.members;
 		end;
-		if v20 then
-			local v21 = l__values__8(v20)[1];
-			if v21 then
-				v6 = v21.name .. " Wins!";
+		if v19 then
+			local v20 = l__values__8(v19)[1];
+			if v20 then
+				v6 = v20.name .. " Wins!";
 			end;
 		end;
 	end;
-	local v22 = true;
-	local l__myTeam__23 = l__ClientStore__6:getState().Game.myTeam;
-	if l__myTeam__23 and l__myTeam__23.id == p3.props.WinningTeamId then
-		v22 = true;
+	local v21 = true;
+	local l__myTeam__22 = l__ClientStore__6:getState().Game.myTeam;
+	if l__myTeam__22 and l__myTeam__22.id == p3.props.WinningTeamId then
+		v21 = true;
 	end;
-	local v24 = { v22 and v3.createElement(l__ConfettiGroup__9, {
+	local v23 = { v21 and v3.createElement(l__ConfettiGroup__9, {
 			Lifetime = 10
 		}) };
-	local v25 = {
+	local v24 = {
 		Size = UDim2.fromScale(0.65, 0.23), 
 		Position = UDim2.fromScale(0.5, 0.1), 
 		AnchorPoint = Vector2.new(0.5, 0), 
 		[v3.Ref] = p3.wrapperRef
 	};
-	local v26 = { v3.createElement("UIAspectRatioConstraint", {
-			AspectRatio = 4.012711864406779, 
-			DominantAxis = "Height"
-		}), v3.createElement("TextLabel", {
+	local v25 = {
+		WinningTeamText = v3.createElement("TextLabel", {
 			Text = v6, 
 			Size = UDim2.fromScale(1, 0.4), 
 			BackgroundTransparency = 1, 
@@ -99,39 +93,48 @@ function v5.render(p3)
 			TextScaled = true, 
 			Font = "LuckiestGuy", 
 			TextColor3 = Color3.fromRGB(255, 255, 255)
-		}) };
-	local function v27(p6, p7)
-		return v3.createElement(l__PlayerRender__10, {
-			Size = UDim2.fromScale(1, 1), 
-			SizeConstraint = "RelativeYY", 
-			BorderSizePixel = 0, 
-			BackgroundTransparency = 1, 
-			Player = l__OfflinePlayerUtil__11.getOfflinePlayer(p6)
-		}, { v3.createElement("UICorner", {
-				CornerRadius = UDim.new(1, 0)
-			}) });
+		}),
+		(v3.createElement("UIAspectRatioConstraint", {
+			AspectRatio = 4.012711864406779, 
+			DominantAxis = "Height"
+		}))
+	};
+	local function v26(p4, p5)
+		return v3.createFragment({
+			PlayerRender = v3.createElement(l__PlayerRender__10, {
+				Size = UDim2.fromScale(1, 1), 
+				SizeConstraint = "RelativeYY", 
+				BorderSizePixel = 0, 
+				BackgroundTransparency = 1, 
+				Player = l__OfflinePlayerUtil__11.getOfflinePlayer(p4)
+			}, { v3.createElement("UICorner", {
+					CornerRadius = UDim.new(1, 0)
+				}) })
+		});
 	end;
-	local v28 = table.create(#v8);
-	for v29, v30 in ipairs(v8) do
-		v28[v29] = v27(v30, v29 - 1, v8);
+	local v27 = table.create(#v8);
+	for v28, v29 in ipairs(v8) do
+		v27[v28] = v26(v29, v28 - 1, v8);
 	end;
-	local v31 = {
+	local v30 = {
 		Size = UDim2.fromScale(1, 0.5), 
 		Position = UDim2.fromScale(0.5, 0.5), 
 		AnchorPoint = Vector2.new(0.5, 0)
 	};
-	local v32 = { v3.createElement("UIListLayout", {
+	local v31 = { v3.createElement("UIListLayout", {
 			FillDirection = "Horizontal", 
 			HorizontalAlignment = "Center", 
 			Padding = UDim.new(0.03, 0)
 		}) };
-	local v33 = #v32;
-	for v34, v35 in ipairs(v28) do
-		v32[v33 + v34] = v35;
+	local v32 = #v31;
+	for v33, v34 in ipairs(v27) do
+		v31[v32 + v33] = v34;
 	end;
-	v26[#v26 + 1] = v3.createElement(l__Empty__12, v31, v32);
-	v24[#v24 + 1] = v3.createElement(l__Empty__12, v25, v26);
-	return v3.createFragment(v24);
+	v25.PlayerRenderList = v3.createElement(l__Empty__12, v30, v31);
+	v23.VictorySection = v3.createFragment({
+		VictorySection = v3.createElement(l__Empty__12, v24, v25)
+	});
+	return v3.createFragment(v23);
 end;
 return {
 	VictorySection = v5

@@ -1,4 +1,3 @@
--- Script Hash: b235cf4f8bcf6b907657572b43a46cd26413888dee41c727d48acbf30f624555f57a091e0078127a298bae5e0a2f6f4b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -372,44 +371,42 @@ function v5.getAmmoType(p22, p23)
 			if not v55 then
 				break;
 			end;
-			local function v57(p24)
-				local v58 = p24.item;
-				if v58 ~= nil then
-					v58 = v58.itemType;
-				end;
-				return v58 == v56;
-			end;
-			local v59 = nil;
-			for v60, v61 in ipairs(l__hotbar__51) do
-				if v57(v61, v60 - 1, l__hotbar__51) == true then
-					v59 = v61;
+			local v57 = nil;
+			local v58, v59, v60 = ipairs(l__hotbar__51);
+			while true do
+				local v61, v62 = v58(v59, v60);
+				if not v61 then
 					break;
 				end;
+				local v63 = v62.item;
+				if v63 ~= nil then
+					v63 = v63.itemType;
+				end;
+				if v63 == v56 == true then
+					v57 = v62;
+					break;
+				end;			
 			end;
-			if v59 then
+			if v57 then
 				return v56;
 			end;		
 		end;
-		local l__inventory__62 = l__ClientStore__27:getState().Inventory.observedInventory.inventory;
-		local v63, v64, v65 = ipairs(v50);
+		local l__inventory__64 = l__ClientStore__27:getState().Inventory.observedInventory.inventory;
+		local v65, v66, v67 = ipairs(v50);
 		while true do
-			local v66, v67 = v63(v64, v65);
-			if not v66 then
+			local v68, v69 = v65(v66, v67);
+			if not v68 then
 				break;
 			end;
-			local l__items__68 = l__inventory__62.items;
-			local function v69(p25)
-				return p25.itemType == v67;
-			end;
 			local v70 = nil;
-			for v71, v72 in ipairs(l__items__68) do
-				if v69(v72, v71 - 1, l__items__68) == true then
+			for v71, v72 in ipairs(l__inventory__64.items) do
+				if v72.itemType == v69 == true then
 					v70 = v72;
 					break;
 				end;
 			end;
 			if v70 then
-				return v67;
+				return v69;
 			end;		
 		end;
 	end;

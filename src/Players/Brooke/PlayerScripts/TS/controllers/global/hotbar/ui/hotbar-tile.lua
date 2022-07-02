@@ -38,9 +38,10 @@ local l__ColorUtil__3 = v2.ColorUtil;
 local l__BedwarsAppIds__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "types", "app-config").BedwarsAppIds;
 local l__SoundManager__5 = v2.SoundManager;
 local l__GameSound__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__ItemToolTip__7 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "components", "item-tool-tip").ItemToolTip;
-local l__ItemViewport__8 = v1.import(script, script.Parent.Parent.Parent, "inventory", "ui", "item-viewport").ItemViewport;
-local l__Empty__9 = v2.Empty;
+local l__Flamework__7 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
+local l__ItemToolTip__8 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "components", "item-tool-tip").ItemToolTip;
+local l__ItemViewport__9 = v1.import(script, script.Parent.Parent.Parent, "inventory", "ui", "item-viewport").ItemViewport;
+local l__Empty__10 = v2.Empty;
 function v4.render(p6)
 	local v6 = {};
 	local v7 = {
@@ -77,6 +78,12 @@ function v4.render(p6)
 	v7[v3.Event.MouseEnter] = function(p7)
 		l__SoundManager__5:playSound(l__GameSound__6.UI_HOVER);
 	end;
+	v7[v3.Event.MouseButton1Down] = function()
+		l__Flamework__7.resolveDependency("client/controllers/global/inventory/inventory-dragging-controller@InventoryDraggingController"):dragItem(p6.props.SlotNumber, true);
+	end;
+	v7[v3.Event.MouseButton1Up] = function()
+		l__Flamework__7.resolveDependency("client/controllers/global/inventory/inventory-dragging-controller@InventoryDraggingController"):dragItemOntoSlot(p6.props.SlotNumber, true);
+	end;
 	local v11 = {};
 	local v12 = {
 		Text = "<b>" .. tostring(p6.props.SlotNumber + 1) .. "</b>", 
@@ -105,12 +112,12 @@ function v4.render(p6)
 			PaddingTop = UDim.new(0.15, 0), 
 			PaddingBottom = UDim.new(0.15, 0)
 		}) });
-	v11[2] = v3.createElement(l__ItemToolTip__7, {
+	v11[2] = v3.createElement(l__ItemToolTip__8, {
 		item = p6.props.HotbarSlot.item
 	});
 	local v15 = false;
 	if p6.props.HotbarSlot.item ~= nil then
-		v15 = v3.createElement(l__ItemViewport__8, {
+		v15 = v3.createElement(l__ItemViewport__9, {
 			ItemType = p6.props.HotbarSlot.item.itemType, 
 			Amount = p6.props.HotbarSlot.item.amount, 
 			Size = UDim2.fromScale(0.8, 0.8), 
@@ -122,7 +129,7 @@ function v4.render(p6)
 		v11[#v11 + 1] = v15;
 	end;
 	v6[#v6 + 1] = v3.createElement("ImageButton", v7, v11);
-	return v3.createElement(l__Empty__9, {
+	return v3.createElement(l__Empty__10, {
 		Size = UDim2.fromScale(1, 1), 
 		SizeConstraint = "RelativeYY"
 	}, v6);

@@ -1,4 +1,3 @@
--- Script Hash: 19fcf94b8e2950236380dba20c622dae306a6c1921b2be463f4a6c47a2de811827abf3c80d9e9e6cdbb72cae45402399
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -132,32 +131,26 @@ function v4.HeartbeatUpdate(p7)
 		error("Attempted to call `ReadonlyArray.reduce()` on an empty array without an initialValue.");
 	end;
 	v17 = v24[1];
-	local function v25(p8, p9)
-		return p8 + p9;
+	for v25 = 2, #v24 do
+		v17 = v17 + v24[v25];
 	end;
-	for v26 = 2, #v24 do
-		v17 = v25(v17, v24[v26], v26 - 1, v24);
-	end;
-	local v27 = { v21:ToEulerAnglesXYZ() };
-	if #v27 == 0 then
+	local v26 = { v21:ToEulerAnglesXYZ() };
+	if #v26 == 0 then
 		error("Attempted to call `ReadonlyArray.reduce()` on an empty array without an initialValue.");
 	end;
-	v18 = v27[1];
-	local function v28(p10, p11)
-		return p10 + p11;
+	v18 = v26[1];
+	for v27 = 2, #v26 do
+		v18 = v18 + v26[v27];
 	end;
-	for v29 = 2, #v27 do
-		v18 = v28(v18, v27[v29], v29 - 1, v27);
-	end;
-	if math.abs(local v30 - local v31) < 1E-06 then
+	if math.abs(local v28 - local v29) < 1E-06 then
 		return nil;
 	end;
 	l__TweenService__17:Create(p7.npcNeck, u18, {
 		C0 = p7.originalNeckC0 * v21
 	}):Play();
 end;
-function v4.Destroy(p12)
-	p12.maid:DoCleaning();
+function v4.Destroy(p8)
+	p8.maid:DoCleaning();
 end;
 v4.Tag = "NpcModel";
 return v4;

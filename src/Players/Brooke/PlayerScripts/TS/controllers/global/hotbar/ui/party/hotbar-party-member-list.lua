@@ -1,4 +1,3 @@
--- Script Hash: 2e3de2802b2a9ca89f86e1e61ee3037b6e001094c81bf17b0dbd2fbc10de30f9e420f7d32955d051e9155793c895a953
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -18,17 +17,14 @@ function v3.render(p2)
 			Size = UDim2.fromScale(0.1, 0)
 		});
 	end;
-	local function v6(p3, p4)
-		return v2.createElement(l__HotbarPartyMember__2, {
-			Member = p3, 
-			LayoutOrder = p4
+	local v6 = table.create(#v4);
+	for v7, v8 in ipairs(v4) do
+		v6[v7] = v2.createElement(l__HotbarPartyMember__2, {
+			Member = v8, 
+			LayoutOrder = v7 - 1
 		});
 	end;
-	local v7 = table.create(#v4);
-	for v8, v9 in ipairs(v4) do
-		v7[v8] = v6(v9, v8 - 1, v4);
-	end;
-	local v10 = {
+	local v9 = {
 		AnchorPoint = p2.props.AnchorPoint, 
 		Position = p2.props.Position, 
 		Size = UDim2.fromScale(0.1, 0.1), 
@@ -37,7 +33,7 @@ function v3.render(p2)
 		BorderSizePixel = 1, 
 		LayoutOrder = p2.props.LayoutOrder
 	};
-	local v11 = { v2.createElement("UIGridLayout", {
+	local v10 = { v2.createElement("UIGridLayout", {
 			CellSize = UDim2.fromScale(0.45, 0.45), 
 			CellPadding = UDim2.fromScale(0.05, 0.05), 
 			FillDirection = "Horizontal", 
@@ -45,11 +41,11 @@ function v3.render(p2)
 			StartCorner = "BottomRight", 
 			VerticalAlignment = "Bottom"
 		}) };
-	local v12 = #v11;
-	for v13, v14 in ipairs(v7) do
-		v11[v12 + v13] = v14;
+	local v11 = #v10;
+	for v12, v13 in ipairs(v6) do
+		v10[v11 + v12] = v13;
 	end;
-	return v2.createElement("Frame", v10, v11);
+	return v2.createElement("Frame", v9, v10);
 end;
 return {
 	HotbarPartyMemberList = v3

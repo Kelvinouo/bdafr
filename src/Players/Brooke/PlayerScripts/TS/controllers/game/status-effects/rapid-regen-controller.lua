@@ -1,4 +1,3 @@
--- Script Hash: de4958fe46677a961e71ffc5be8f0bec47007b9ab047c3b07f6a19c2490919e3e504f7ef244d47a350296dba49610f2f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -49,37 +48,29 @@ function v4.KnitStart(p2)
 			end;
 		end);
 		local function v7(p6)
-			local v8 = v6:GetChildren();
-			local function v9(p7)
-				if p7:IsA("ParticleEmitter") then
-					p7.Enabled = p6;
+			for v8, v9 in ipairs((v6:GetChildren())) do
+				if v9:IsA("ParticleEmitter") then
+					v9.Enabled = p6;
 				end;
-			end;
-			for v10, v11 in ipairs(v8) do
-				v9(v11, v10 - 1, v8);
 			end;
 		end;
 		v7(p3.entityInstance:GetAttribute("RapidRegenVisible") == true);
 		p3.entityInstance:GetAttributeChangedSignal("RapidRegenVisible"):Connect(function()
 			v7(p3.entityInstance:GetAttribute("RapidRegenVisible") == true);
 		end);
-		u10:GiveTask(l__RunService__9.RenderStepped:Connect(function(p8)
+		u10:GiveTask(l__RunService__9.RenderStepped:Connect(function(p7)
 			if p3.entityInstance.PrimaryPart == nil then
 				return nil;
 			end;
 			v6.CFrame = p3.entityInstance.PrimaryPart.CFrame;
 		end));
 	end);
-	l__ClientSyncEvents__3.StatusEffectRemoved:connect(function(p9)
-		if table.find(p2.statusEffectTypes, p9.statusEffect) == nil then
+	l__ClientSyncEvents__3.StatusEffectRemoved:connect(function(p8)
+		if table.find(p2.statusEffectTypes, p8.statusEffect) == nil then
 			return nil;
 		end;
-		local v12 = l__CollectionService__7:GetTagged(p9.entityInstance.Name .. ":rapid-regen");
-		local function v13(p10)
-			p10:Destroy();
-		end;
-		for v14, v15 in ipairs(v12) do
-			v13(v15, v14 - 1, v12);
+		for v10, v11 in ipairs((l__CollectionService__7:GetTagged(p8.entityInstance.Name .. ":rapid-regen"))) do
+			v11:Destroy();
 		end;
 	end);
 end;
