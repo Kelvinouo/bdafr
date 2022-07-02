@@ -186,10 +186,7 @@ function v4.render(p2)
 	end;
 	local v29 = { v3.createElement(l__DarkBackground__8, {
 			Transparent = false, 
-			AppId = p2.props.AppId, 
-			OnMouseButton1Up = function()
-
-			end
+			AppId = p2.props.AppId
 		}) };
 	local v30 = {};
 	local v31 = {};
