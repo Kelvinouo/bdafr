@@ -15,13 +15,11 @@ local l__SoundManager__5 = v2.SoundManager;
 local l__RandomUtil__6 = v2.RandomUtil;
 local l__GameSound__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 local l__DarkBackground__8 = v2.DarkBackground;
-local l__Flamework__9 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
-local l__KnitClient__10 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
-local l__DeviceUtil__11 = v2.DeviceUtil;
-local l__InventoryHeader__12 = v1.import(script, script.Parent.Parent.Parent, "ui", "inventory-header").InventoryHeader;
-local l__ColorUtil__13 = v2.ColorUtil;
-local l__EmptyButton__14 = v2.EmptyButton;
-local l__SlideIn__15 = v2.SlideIn;
+local l__DeviceUtil__9 = v2.DeviceUtil;
+local l__InventoryHeader__10 = v1.import(script, script.Parent.Parent.Parent, "ui", "inventory-header").InventoryHeader;
+local l__ColorUtil__11 = v2.ColorUtil;
+local l__EmptyButton__12 = v2.EmptyButton;
+local l__SlideIn__13 = v2.SlideIn;
 function v4.render(p2)
 	local v5 = {};
 	local v6 = {};
@@ -37,16 +35,16 @@ function v4.render(p2)
 			break;
 		end;
 		if v7 < #p2.props.Inventory.observedInventory.inventory.items then
-			local u16 = p2.props.Inventory.observedInventory.inventory.items[v7 + 1];
+			local u14 = p2.props.Inventory.observedInventory.inventory.items[v7 + 1];
 			local v9 = nil;
 			for v10, v11 in ipairs(p2.props.Inventory.observedInventory.hotbar) do
-				if v11.item == u16 == true then
+				if v11.item == u14 == true then
 					v9 = v11;
 					break;
 				end;
 			end;
 			if v9 then
-				u16 = nil;
+				u14 = nil;
 			end;
 		end;
 		if nil then
@@ -190,61 +188,57 @@ function v4.render(p2)
 			Transparent = false, 
 			AppId = p2.props.AppId, 
 			OnMouseButton1Up = function()
-				local v30 = l__Flamework__9.resolveDependency("client/controllers/global/inventory/inventory-dragging-controller@InventoryDraggingController"):getActiveDragItem();
-				if not v30 then
-					return nil;
-				end;
-				l__KnitClient__10.Controllers.ItemDropController:dropHotbarItem(v30.slotId);
+
 			end
 		}) };
+	local v30 = {};
 	local v31 = {};
-	local v32 = {};
-	if l__DeviceUtil__11.isSmallScreen() then
-		local v33 = 0.45;
+	if l__DeviceUtil__9.isSmallScreen() then
+		local v32 = 0.45;
 	else
-		v33 = 0.5;
+		v32 = 0.5;
 	end;
-	if l__DeviceUtil__11.isSmallScreen() then
-		local v34 = 0.5;
+	if l__DeviceUtil__9.isSmallScreen() then
+		local v33 = 0.5;
 	else
-		v34 = 0.38;
+		v33 = 0.38;
 	end;
-	v32.Size = UDim2.fromScale(v33, v34);
-	if l__DeviceUtil__11.isSmallScreen() then
-		local v35 = 0.68;
+	v31.Size = UDim2.fromScale(v32, v33);
+	if l__DeviceUtil__9.isSmallScreen() then
+		local v34 = 0.68;
 	else
-		v35 = 0.72;
+		v34 = 0.72;
 	end;
-	v32.Position = UDim2.fromScale(0.5, v35);
-	v32.AnchorPoint = Vector2.new(0.5, 1);
-	v32.BorderSizePixel = 0;
-	v32.BackgroundTransparency = 1;
-	local v36 = { v3.createElement("UIAspectRatioConstraint", {
+	v31.Position = UDim2.fromScale(0.5, v34);
+	v31.AnchorPoint = Vector2.new(0.5, 1);
+	v31.BorderSizePixel = 0;
+	v31.BackgroundTransparency = 1;
+	local v35 = { v3.createElement("UIAspectRatioConstraint", {
 			AspectRatio = 1.5
 		}), v3.createElement("UIListLayout", {
 			FillDirection = "Horizontal", 
 			HorizontalAlignment = "Center", 
 			VerticalAlignment = "Center"
 		}) };
-	local v37 = #v36;
-	local v38 = {
+	local v36 = #v35;
+	local v37 = {
 		Size = UDim2.fromScale(0.5, 0.75)
 	};
-	local v39 = { v3.createElement("UIListLayout", {
+	local v38 = { v3.createElement("UIListLayout", {
 			FillDirection = "Vertical"
-		}), v3.createElement(l__InventoryHeader__12, {
+		}), v3.createElement(l__InventoryHeader__10, {
 			Title = "Armor"
 		}), v3.createElement(l__Empty__1, {
 			Size = UDim2.fromScale(0, 0.01)
 		}) };
-	local v40 = {
+	local v39 = {
 		Size = UDim2.fromScale(1, 1), 
 		AnchorPoint = Vector2.new(1, 0), 
 		BorderSizePixel = 0, 
-		BackgroundColor3 = l__ColorUtil__13.hexColor(1713718), 
+		BackgroundColor3 = l__ColorUtil__11.hexColor(1713718), 
 		BackgroundTransparency = 0.25
 	};
-	local v41 = { v3.createElement("UIListLayout", {
+	local v40 = { v3.createElement("UIListLayout", {
 			FillDirection = "Horizontal", 
 			VerticalAlignment = "Center"
 		}), v3.createElement("UICorner", {
@@ -254,12 +248,12 @@ function v4.render(p2)
 			BorderSizePixel = 0, 
 			BackgroundTransparency = 1
 		}) };
-	local v42 = {
+	local v41 = {
 		Size = UDim2.fromScale(0.3333333333333333, 1), 
 		BorderSizePixel = 0, 
 		BackgroundTransparency = 1
 	};
-	local v43 = { v3.createElement("UIGridLayout", {
+	local v42 = { v3.createElement("UIGridLayout", {
 			FillDirection = "Vertical", 
 			CellSize = UDim2.fromScale(0.96, 0.32), 
 			CellPadding = UDim2.fromScale(0, 0), 
@@ -267,65 +261,65 @@ function v4.render(p2)
 			VerticalAlignment = "Center", 
 			HorizontalAlignment = "Center"
 		}) };
-	local v44 = #v43;
-	for v45, v46 in ipairs(v21) do
-		v43[v44 + v45] = v46;
+	local v43 = #v42;
+	for v44, v45 in ipairs(v21) do
+		v42[v43 + v44] = v45;
 	end;
-	v41[#v41 + 1] = v3.createElement("Frame", v42, v43);
-	v39[#v39 + 1] = v3.createElement(l__EmptyButton__14, v40, v41);
-	v36[v37 + 1] = v3.createElement(l__Empty__1, v38, v39);
-	v36[v37 + 2] = v3.createElement(l__Empty__1, {
+	v40[#v40 + 1] = v3.createElement("Frame", v41, v42);
+	v38[#v38 + 1] = v3.createElement(l__EmptyButton__12, v39, v40);
+	v35[v36 + 1] = v3.createElement(l__Empty__1, v37, v38);
+	v35[v36 + 2] = v3.createElement(l__Empty__1, {
 		Size = UDim2.fromScale(0.08, 0)
 	});
-	local v47 = {
+	local v46 = {
 		Size = UDim2.fromScale(1, 1)
 	};
-	local v48 = { v3.createElement("UIListLayout", {
+	local v47 = { v3.createElement("UIListLayout", {
 			FillDirection = "Vertical"
-		}), v3.createElement(l__InventoryHeader__12, {
+		}), v3.createElement(l__InventoryHeader__10, {
 			Title = "Inventory"
 		}), v3.createElement(l__Empty__1, {
 			Size = UDim2.fromScale(0, 0.01)
 		}) };
-	local v49 = {
+	local v48 = {
 		Size = UDim2.fromScale(1, 1)
 	};
-	local v50 = { v3.createElement("UIListLayout", {
+	local v49 = { v3.createElement("UIListLayout", {
 			FillDirection = "Horizontal"
 		}) };
-	local v51 = {
+	local v50 = {
 		Size = UDim2.fromScale(1, 1), 
 		BackgroundTransparency = 0, 
-		BackgroundColor3 = l__ColorUtil__13.hexColor(1713718), 
+		BackgroundColor3 = l__ColorUtil__11.hexColor(1713718), 
 		BorderSizePixel = 0
 	};
-	local v52 = { v3.createElement("UIGridLayout", {
+	local v51 = { v3.createElement("UIGridLayout", {
 			FillDirection = "Horizontal", 
 			CellSize = UDim2.fromScale(0.16666666666666666, 0.25), 
 			CellPadding = UDim2.fromScale(0, 0), 
 			SortOrder = "LayoutOrder"
 		}) };
-	local v53 = #v52;
-	for v54, v55 in ipairs(v5) do
-		v52[v53 + v54] = v55;
+	local v52 = #v51;
+	for v53, v54 in ipairs(v5) do
+		v51[v52 + v53] = v54;
 	end;
-	v50[#v50 + 1] = v3.createElement("Frame", v51, v52);
-	v48[#v48 + 1] = v3.createElement(l__EmptyButton__14, v49, v50);
-	v36[v37 + 3] = v3.createElement(l__Empty__1, v47, v48);
-	v31[#v31 + 1] = v3.createElement("Frame", v32, v36);
-	v29[#v29 + 1] = v3.createElement(l__SlideIn__15, {}, v31);
+	v49[#v49 + 1] = v3.createElement("Frame", v50, v51);
+	v47[#v47 + 1] = v3.createElement(l__EmptyButton__12, v48, v49);
+	v35[v36 + 3] = v3.createElement(l__Empty__1, v46, v47);
+	v30[#v30 + 1] = v3.createElement("Frame", v31, v35);
+	v29[#v29 + 1] = v3.createElement(l__SlideIn__13, {}, v30);
 	return v3.createElement("ScreenGui", {
 		DisplayOrder = 1
 	}, v29);
 end;
 return {
 	InventoryApp = v1.import(script, v1.getModule(script, "@rbxts", "roact-rodux").src).connect(function(p6, p7)
-		local v56 = {
+		local v55 = {
 			Inventory = p6.Inventory
 		};
-		for v57, v58 in pairs(p7) do
-			v56[v57] = v58;
+		for v56, v57 in pairs(p7) do
+			v55[v56] = v57;
 		end;
-		return v56;
+		return v55;
 	end)(v4)
 };

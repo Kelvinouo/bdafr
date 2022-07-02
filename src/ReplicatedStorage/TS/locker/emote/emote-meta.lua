@@ -1,4 +1,3 @@
--- Script Hash: 9a3313a86bceb162fa8c7491d7a225f4acc1e287c6693329314e106d1c4a3fdfc8599d4fc37bc9d55c26c5f0f9edd5d8
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -35,12 +34,12 @@ return {
 			emoteDisplayType = l__EmoteDisplayType__5.IMAGE_DEFAULT
 		}, 
 		[l__EmoteType__6.PENGUIN_FALL] = {
-			name = "Pengiun Fall", 
+			name = "Penguin Fall", 
 			image = "rbxassetid://8598813534", 
 			emoteDisplayType = l__EmoteDisplayType__5.IMAGE_DEFAULT
 		}, 
 		[l__EmoteType__6.PENGUIN_DISCO] = {
-			name = "Pengiun Disco", 
+			name = "Penguin Disco", 
 			image = "rbxassetid://8605003980", 
 			emoteDisplayType = l__EmoteDisplayType__5.IMAGE_DEFAULT
 		}, 
