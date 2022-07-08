@@ -554,6 +554,14 @@ v10[l__BedwarsKit__8.PINATA] = {
 	battlepassSeason = l__BattlePassSeason__4.season5, 
 	kitClass = l__BedwarsClass__9.ECONOMY
 };
+v10[l__BedwarsKit__8.BATTERY] = {
+	name = "Cobalt", 
+	description = "Every time you take damage you have a chance of dropping a battery on the ground. Once the battery activates you can pick it up for a small shield. After collecting 3 batteries you will overload, gaining movement speed and damage!", 
+	renderImage = "rbxassetid://10159166528", 
+	unlockedInBattlePass = true, 
+	battlepassSeason = l__BattlePassSeason__4.season5, 
+	kitClass = l__BedwarsClass__9.TANK
+};
 local v33 = v3.values(l__BattlePassSeason__4);
 v1 = {};
 local function v34(p1, p2)

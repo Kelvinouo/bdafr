@@ -16,9 +16,7 @@ return {
 			}, {
 				paid = true, 
 				level = 30, 
-				comingSoon = {
-					kit = true
-				}
+				kit = l__BedwarsKit__3.BATTERY
 			}, {
 				paid = false, 
 				level = 40, 

@@ -409,7 +409,7 @@ return {
 			gravitationalAcceleration = 0, 
 			flightRotation = Vector3.new(0, 0, 0), 
 			combat = {
-				damage = 25, 
+				damage = 34, 
 				armorMultiplier = 0.2, 
 				noApplyDamageCooldown = true, 
 				ignoreDamageCooldown = true

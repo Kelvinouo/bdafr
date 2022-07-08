@@ -1,4 +1,3 @@
--- Script Hash: 88392ba29be9fd227d8736de5f492e0d80c4f277c27805caff6c16344cb80826865d6d4a9a373651e463a9ab66a19e4e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -20,37 +19,38 @@ function v3.constructor(p1)
 	p1.Name = "KitController";
 end;
 local l__WatchPlayer__2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchPlayer;
-local l__Players__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
-local l__ClientSyncEvents__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
+local l__ClientSyncEvents__3 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
+local l__Players__4 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 local l__ClientStore__5 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
 	l__WatchPlayer__2(function(p3)
-		if p3 ~= l__Players__3.LocalPlayer then
-			return nil;
-		end;
 		local v5 = p2:getKit(p3);
 		if v5 then
-			l__ClientSyncEvents__4.KitEquip:fire(p3, v5);
-			l__ClientStore__5:dispatch({
-				type = "SetBedwarsKit", 
-				kit = v5
-			});
+			l__ClientSyncEvents__3.KitEquip:fire(p3, v5);
+			if p3 == l__Players__4.LocalPlayer then
+				l__ClientStore__5:dispatch({
+					type = "SetBedwarsKit", 
+					kit = v5
+				});
+			end;
 		end;
 		local u6 = v5;
 		p3:GetAttributeChangedSignal("PlayingAsKit"):Connect(function()
 			local v6 = p2:getKit(p3);
 			if u6 then
-				l__ClientSyncEvents__4.KitUnequip:fire(p3, u6);
+				l__ClientSyncEvents__3.KitUnequip:fire(p3, u6);
 			end;
 			if v6 then
-				l__ClientSyncEvents__4.KitEquip:fire(p3, v6);
+				l__ClientSyncEvents__3.KitEquip:fire(p3, v6);
 			end;
 			u6 = v6;
-			l__ClientStore__5:dispatch({
-				type = "SetBedwarsKit", 
-				kit = u6
-			});
+			if p3 == l__Players__4.LocalPlayer then
+				l__ClientStore__5:dispatch({
+					type = "SetBedwarsKit", 
+					kit = u6
+				});
+			end;
 		end);
 	end);
 end;
@@ -67,13 +67,33 @@ end;
 local u8 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v3.watchLocalKit(p11, p12)
 	local v7 = u8.new();
-	v7:GiveTask(l__ClientSyncEvents__4.KitEquip:connect(function(p13)
+	v7:GiveTask(l__ClientSyncEvents__3.KitEquip:connect(function(p13)
+		if p13.player ~= l__Players__4.LocalPlayer then
+			return nil;
+		end;
 		task.spawn(function()
 			p12(p13.kit);
 		end);
 	end));
-	p12(p11:getKit(l__Players__3.LocalPlayer));
+	p12(p11:getKit(l__Players__4.LocalPlayer));
 	return v7;
+end;
+function v3.watchKit(p14, p15)
+	local v8 = u8.new();
+	v8:GiveTask(l__ClientSyncEvents__3.KitEquip:connect(function(p16)
+		task.spawn(function()
+			p15(p16.player, p16.kit);
+		end);
+	end));
+	for v9, v10 in ipairs(l__Players__4:GetPlayers()) do
+		local v11 = p14:getKit(v10);
+		if v11 then
+			task.spawn(function()
+				p15(v10, v11);
+			end);
+		end;
+	end;
+	return v8;
 end;
 u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v3.new());

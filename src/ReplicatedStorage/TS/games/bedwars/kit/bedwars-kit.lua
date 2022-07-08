@@ -114,6 +114,8 @@ v2.STAR_COLLECTOR = "star_collector";
 v1.star_collector = "STAR_COLLECTOR";
 v2.PINATA = "pinata";
 v1.pinata = "PINATA";
+v2.BATTERY = "battery";
+v1.battery = "BATTERY";
 return {
 	BedwarsKit = v2
 };

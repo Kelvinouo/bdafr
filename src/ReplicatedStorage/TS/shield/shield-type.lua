@@ -1,4 +1,3 @@
--- Script Hash: af4a2582c745aecabc261622807509da0e7dd96857e1ef7e92b5ceef44901a92c8b0fa73efb6756b4f63729660a268f9
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -19,6 +18,8 @@ v2.TURTLE_SHELL = "TURTLE_SHELL";
 v1.TURTLE_SHELL = "TURTLE_SHELL";
 v2.LIFE_STEAL_SHIELD = "LIFE_STEAL_SHIELD";
 v1.LIFE_STEAL_SHIELD = "LIFE_STEAL_SHIELD";
+v2.BATTERY_KIT = "BATTERY_KIT";
+v1.BATTERY_KIT = "BATTERY_KIT";
 return {
 	ShieldType = v2
 };

@@ -1,35 +1,33 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
-local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
-local v5 = setmetatable({}, {
+local v2 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
+local l__KnitController__3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
+local v4 = setmetatable({}, {
 	__tostring = function()
 		return "MidnightAbilityController";
 	end, 
-	__index = l__KnitController__4
+	__index = l__KnitController__3
 });
-v5.__index = v5;
-function v5.new(...)
-	local v6 = setmetatable({}, v5);
-	return v6:constructor(...) and v6;
+v4.__index = v4;
+function v4.new(...)
+	local v5 = setmetatable({}, v4);
+	return v5:constructor(...) and v5;
 end;
-local u1 = l__KnitController__4;
+local u1 = l__KnitController__3;
 local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
-function v5.constructor(p1)
+function v4.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "MidnightAbilityController";
 	p1.activeMidnightMaid = u2.new();
 end;
 local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-local l__Players__4 = v3.Players;
+local l__Players__4 = v2.Players;
 local l__ClientSyncEvents__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
 local l__AbilityId__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "ability", "ability-id").AbilityId;
 local l__EntityUtil__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
 local l__PlayerEntity__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entities", "player-entity").PlayerEntity;
-local l__Workspace__9 = v3.Workspace;
+local l__Workspace__9 = v2.Workspace;
 local u10 = {
 	correctionTintColor = Color3.fromRGB(118, 132, 209), 
 	correctionBrightness = 0, 
@@ -45,16 +43,15 @@ local u10 = {
 };
 local l__SoundManager__11 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).SoundManager;
 local l__GameSound__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__TweenService__13 = v3.TweenService;
+local l__TweenService__13 = v2.TweenService;
 local u14 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-local l__Lighting__15 = v3.Lighting;
-local l__CollectionService__16 = v3.CollectionService;
+local l__Lighting__15 = v2.Lighting;
+local l__CollectionService__16 = v2.CollectionService;
 local l__default__17 = v1.import(script, v1.getModule(script, "@rbxts", "tween")).default;
 local l__InQuad__18 = v1.import(script, v1.getModule(script, "@rbxts", "easing-functions")).InQuad;
-local l__KnitClient__19 = v2.KnitClient;
+local l__KnitClient__19 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__BedwarsKit__20 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
-local l__default__21 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
-function v5.KnitStart(p2)
+function v4.KnitStart(p2)
 	u1.KnitStart(p2);
 	l__default__3.Client:OnEvent("RemoteName", function(p3)
 		if p3.entityInstance == l__Players__4.LocalPlayer.Character then
@@ -63,60 +60,60 @@ function v5.KnitStart(p2)
 	end);
 	l__ClientSyncEvents__5.AbilityUsed:connect(function(p4)
 		if p4.ability == l__AbilityId__6.MIDNIGHT then
-			local v7 = l__EntityUtil__7:getEntity(p4.userCharacter);
-			if not v1.instanceof(v7, l__PlayerEntity__8) then
+			local v6 = l__EntityUtil__7:getEntity(p4.userCharacter);
+			if not v1.instanceof(v6, l__PlayerEntity__8) then
 				return nil;
 			end;
-			local l__extra__8 = p4.extra;
-			if v7:getPlayer() ~= l__Players__4.LocalPlayer then
+			local l__extra__7 = p4.extra;
+			if v6:getPlayer() ~= l__Players__4.LocalPlayer then
 				return nil;
 			end;
 			p2.activeMidnightMaid:DoCleaning();
-			task.delay(l__extra__8.expirationTime - l__Workspace__9:GetServerTimeNow(), function()
+			task.delay(l__extra__7.expirationTime - l__Workspace__9:GetServerTimeNow(), function()
 				p2.activeMidnightMaid:DoCleaning();
 			end);
-			local v9 = l__extra__8.team == l__Players__4.LocalPlayer:GetAttribute("Team");
-			local v10 = {};
-			if v9 then
-				local v11 = nil;
+			local v8 = l__extra__7.team == l__Players__4.LocalPlayer:GetAttribute("Team");
+			local v9 = {};
+			if v8 then
+				local v10 = nil;
 			else
-				local v12 = v7:getInstance().PrimaryPart;
-				if v12 ~= nil then
-					v12 = v12.Position;
+				local v11 = v6:getInstance().PrimaryPart;
+				if v11 ~= nil then
+					v11 = v11.Position;
 				end;
-				v11 = v12;
+				v10 = v11;
 			end;
-			v10.position = v11;
-			l__SoundManager__11:playSound(l__GameSound__12.MIDNIGHT_ACTIVATE, v10);
-			if v9 then
-				local v13 = l__SoundManager__11:playSound(l__GameSound__12.RAVEN_SPACE_AMBIENT);
-				v13.Looped = true;
-				v13.Volume = 0;
+			v9.position = v10;
+			l__SoundManager__11:playSound(l__GameSound__12.MIDNIGHT_ACTIVATE, v9);
+			if v8 then
+				local v12 = l__SoundManager__11:playSound(l__GameSound__12.RAVEN_SPACE_AMBIENT);
+				v12.Looped = true;
+				v12.Volume = 0;
 				p2.activeMidnightMaid:GiveTask(function()
-					l__TweenService__13:Create(v13, TweenInfo.new(0.5, Enum.EasingStyle.Linear), {
+					l__TweenService__13:Create(v12, TweenInfo.new(0.5, Enum.EasingStyle.Linear), {
 						Volume = 0
 					}):Play();
 					task.delay(1, function()
-						v13:Destroy();
+						v12:Destroy();
 					end);
 				end);
-				local v14 = u14("Folder", {
+				local v13 = u14("Folder", {
 					Name = "Disabled", 
 					Parent = l__Lighting__15
 				});
-				local v15 = l__Lighting__15:FindFirstChildWhichIsA("Atmosphere");
-				local v16 = l__Lighting__15:FindFirstChildWhichIsA("SunRaysEffect");
-				if v16 then
-					v16.Parent = v14;
+				local v14 = l__Lighting__15:FindFirstChildWhichIsA("Atmosphere");
+				local v15 = l__Lighting__15:FindFirstChildWhichIsA("SunRaysEffect");
+				if v15 then
+					v15.Parent = v13;
 					p2.activeMidnightMaid:GiveTask(function()
-						v16.Parent = l__Lighting__15;
+						v15.Parent = l__Lighting__15;
 					end);
 				end;
-				local v17 = v15:Clone();
-				local v18 = u14("ColorCorrectionEffect", {
+				local v16 = v14:Clone();
+				local v17 = u14("ColorCorrectionEffect", {
 					Parent = l__Lighting__15
 				});
-				local v19 = u14("DepthOfFieldEffect", {
+				local v18 = u14("DepthOfFieldEffect", {
 					Parent = l__Lighting__15, 
 					FocusDistance = 19.76, 
 					InFocusRadius = 28.2, 
@@ -126,66 +123,63 @@ function v5.KnitStart(p2)
 				l__Lighting__15.OutdoorAmbient = u10.outdoorAmbient;
 				l__Lighting__15.Ambient = u10.ambient;
 				l__Lighting__15.Brightness = u10.brightness;
+				p2.activeMidnightMaid:GiveTask(v17);
 				p2.activeMidnightMaid:GiveTask(v18);
-				p2.activeMidnightMaid:GiveTask(v19);
-				local l__OutdoorAmbient__22 = l__Lighting__15.OutdoorAmbient;
-				local l__Ambient__23 = l__Lighting__15.Ambient;
-				local l__Brightness__24 = l__Lighting__15.Brightness;
+				local l__OutdoorAmbient__21 = l__Lighting__15.OutdoorAmbient;
+				local l__Ambient__22 = l__Lighting__15.Ambient;
+				local l__Brightness__23 = l__Lighting__15.Brightness;
 				p2.activeMidnightMaid:GiveTask(function()
-					l__Lighting__15.OutdoorAmbient = l__OutdoorAmbient__22;
-					l__Lighting__15.Ambient = l__Ambient__23;
-					l__Lighting__15.Brightness = l__Brightness__24;
-					v17.Parent = l__Lighting__15;
-					v15:Destroy();
+					l__Lighting__15.OutdoorAmbient = l__OutdoorAmbient__21;
+					l__Lighting__15.Ambient = l__Ambient__22;
+					l__Lighting__15.Brightness = l__Brightness__23;
+					v16.Parent = l__Lighting__15;
+					v14:Destroy();
 				end);
-				local v20 = {};
-				for v21, v22 in ipairs(l__CollectionService__16:GetTagged("DisableDuringMidnight")) do
-					if v22:IsA("PointLight") and v22.Enabled == true then
-						v22.Enabled = false;
-						table.insert(v20, v22);
+				local v19 = {};
+				for v20, v21 in ipairs(l__CollectionService__16:GetTagged("DisableDuringMidnight")) do
+					if v21:IsA("PointLight") and v21.Enabled == true then
+						v21.Enabled = false;
+						table.insert(v19, v21);
 					end;
 				end;
 				p2.activeMidnightMaid:GiveTask(function()
-					for v23, v24 in ipairs(v20) do
-						v24.Enabled = true;
+					for v22, v23 in ipairs(v19) do
+						v23.Enabled = true;
 					end;
 				end);
-				local l__Volume__25 = v13.Volume;
+				local l__Volume__24 = v12.Volume;
 				l__default__17(1, l__InQuad__18, function(p5)
-					v18.Brightness = -0.05 * p5;
-					v18.Contrast = 0.05 * p5;
-					v18.TintColor = Color3.fromRGB(255, 255, 255):Lerp(u10.correctionTintColor, p5);
-					v19.FarIntensity = u10.farIntensity * p5;
-					v15.Density = u10.atmosphereDensity * p5 + v17.Density * (1 - p5);
-					v15.Color = v17.Color:Lerp(u10.atmosphereColor, p5);
-					v15.Decay = v17.Decay:Lerp(u10.atmosphereDecay, p5);
-					v15.Haze = u10.atmosphereHaze * p5 + v17.Haze * (1 - p5);
-					v13.Volume = p5 * l__Volume__25;
+					v17.Brightness = -0.05 * p5;
+					v17.Contrast = 0.05 * p5;
+					v17.TintColor = Color3.fromRGB(255, 255, 255):Lerp(u10.correctionTintColor, p5);
+					v18.FarIntensity = u10.farIntensity * p5;
+					v14.Density = u10.atmosphereDensity * p5 + v16.Density * (1 - p5);
+					v14.Color = v16.Color:Lerp(u10.atmosphereColor, p5);
+					v14.Decay = v16.Decay:Lerp(u10.atmosphereDecay, p5);
+					v14.Haze = u10.atmosphereHaze * p5 + v16.Haze * (1 - p5);
+					v12.Volume = p5 * l__Volume__24;
 				end, 0, 1);
 			end;
 		end;
 	end);
-	if l__KnitClient__19.Controllers.KitController:isUsingKit(l__Players__4.LocalPlayer, l__BedwarsKit__20.MIDNIGHT) then
-		p2:onEnabled();
-	end;
-	l__ClientSyncEvents__5.KitEquip:connect(function(p6)
-		l__default__21.Warn("Kit equipped");
-		if p6.player == l__Players__4.LocalPlayer and p6.kit == l__BedwarsKit__20.MIDNIGHT then
+	l__KnitClient__19.Controllers.KitController:watchLocalKit(function(p6)
+		if p6 == l__BedwarsKit__20.MIDNIGHT then
 			p2:onEnabled();
 		end;
 	end);
 end;
+local l__default__25 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
 local l__Flamework__26 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
-function v5.onEnabled(p7)
-	local v25 = u2.new();
-	p7.kitMaid = v25;
-	l__default__21.Warn("Is using midnight kit");
-	v25:GiveTask(l__Flamework__26.resolveDependency("@easy-games/game-core:client/controllers/ability/ability-controller@AbilityController"):enableAbility(l__AbilityId__6.MIDNIGHT, {
+function v4.onEnabled(p7)
+	local v24 = u2.new();
+	p7.kitMaid = v24;
+	l__default__25.Warn("Is using midnight kit");
+	v24:GiveTask(l__Flamework__26.resolveDependency("@easy-games/game-core:client/controllers/ability/ability-controller@AbilityController"):enableAbility(l__AbilityId__6.MIDNIGHT, {
 		interactionKey = Enum.KeyCode.V, 
 		gamepadInteractionKey = Enum.KeyCode.Y, 
 		text = "Activate Midnight"
 	}));
 end;
-u1 = v2.KnitClient.CreateController;
-u1 = u1(v5.new());
+u1 = l__KnitClient__19.CreateController;
+u1 = u1(v4.new());
 return nil;

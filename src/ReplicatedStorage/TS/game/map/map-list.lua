@@ -1,4 +1,3 @@
--- Script Hash: fbb635d107dba036c8ebeba99b78c71f674de8c503d30f0da414e1d6c9e0de3f40da2cb1662e8f4a63d8741ec7de9ba3
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__MapType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "game", "map", "map-type").MapType;
@@ -28,7 +27,7 @@ end;
 v5[l__MapType__1.ROYALE] = { "royale_Mega-Plains", "royale_Mega-Tundra", "royale_Gorge" };
 v5[l__MapType__1.INFECTED] = { "infected_Industry", "infected_Frost-Site" };
 v5[l__MapType__1.PVE] = { "pve_Iceberg" };
-v5[l__MapType__1.GUN_GAME] = { "gg_siege", "gg_ruins", "gg_treetop" };
+v5[l__MapType__1.GUN_GAME] = { "gg_siege", "gg_ruins", "gg_treetop", "gg_Hydroplant", "gg_Hydroplant", "gg_Harbour", "gg_Harbour" };
 return {
 	SkywarsMaps = v2, 
 	BedwarsMaps = v3, 

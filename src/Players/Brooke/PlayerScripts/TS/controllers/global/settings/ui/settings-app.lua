@@ -9,11 +9,13 @@ local l__ScaleComponent__4 = v2.ScaleComponent;
 local l__Flamework__5 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 local l__SettingRow__6 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "components", "settings", "setting-row").SettingRow;
 local l__Theme__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
-local l__SettingSwitch__8 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "components", "settings", "setting-switch").SettingSwitch;
+local l__ToggleButtonGroup__8 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "components", "settings", "toggle-button-group").ToggleButtonGroup;
 local l__KnitClient__9 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
-local l__SettingSlider__10 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "components", "settings", "setting-slider").SettingSlider;
-local l__WidgetComponent__11 = v2.WidgetComponent;
-local l__SlideIn__12 = v2.SlideIn;
+local l__ToggleButton__10 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "components", "settings", "toggle-button").ToggleButton;
+local l__HostPanelToggleValue__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "host-panel", "host-panel-settings.dto").HostPanelToggleValue;
+local l__SettingSlider__12 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "components", "settings", "setting-slider").SettingSlider;
+local l__WidgetComponent__13 = v2.WidgetComponent;
+local l__SlideIn__14 = v2.SlideIn;
 return {
 	SettingsApp = v1.import(script, v1.getModule(script, "@rbxts", "roact-rodux").src).connect(function(p1, p2)
 		local v3 = {};
@@ -59,31 +61,47 @@ return {
 				SortOrder = "LayoutOrder", 
 				Padding = UDim.new(0.05, 0)
 			}) };
-		local v14 = l__DeviceUtil__1.isMobileControls() and u2.createElement(l__SettingRow__6, {
-			Name = "Mobile Shift Lock", 
-			ThemeColor = l__Theme__7.backgroundPrimary, 
-			FrameProps = {
-				Size = UDim2.fromScale(0.98, 0.2)
-			}
-		}, { u2.createElement(l__SettingSwitch__8, {
-				Value = p3.Settings.mobileShiftLock, 
-				SetValue = function(p5)
-					if not l__DeviceUtil__1.isHoarceKat() then
-						l__KnitClient__9.Controllers.SettingsController:setSetting("mobileShiftLock", p5);
-					end;
-				end
-			}) });
+		local v14 = l__DeviceUtil__1.isMobileControls();
+		if v14 then
+			local v15 = {};
+			local v16 = {};
+			if p3.Settings.mobileShiftLock then
+				local v17 = "on";
+			else
+				v17 = "false";
+			end;
+			v16.Value = v17;
+			function v16.OnChange(p5)
+				if not l__DeviceUtil__1.isHoarceKat() then
+					l__KnitClient__9.Controllers.SettingsController:setSetting("mobileShiftLock", p5 == "on");
+				end;
+			end;
+			v15[1] = u2.createElement(l__ToggleButtonGroup__8, v16, { u2.createElement(l__ToggleButton__10, {
+					Value = l__HostPanelToggleValue__11.ON, 
+					Text = "On"
+				}), u2.createElement(l__ToggleButton__10, {
+					Value = l__HostPanelToggleValue__11.OFF, 
+					Text = "Off"
+				}) });
+			v14 = u2.createElement(l__SettingRow__6, {
+				Name = "Mobile Shift Lock", 
+				ThemeColor = l__Theme__7.backgroundPrimary, 
+				FrameProps = {
+					Size = UDim2.fromScale(0.98, 0.2)
+				}
+			}, v15);
+		end;
 		if v14 then
 			v13[#v13 + 1] = v14;
 		end;
-		local v15 = #v13;
-		v13[v15 + 1] = u2.createElement(l__SettingRow__6, {
+		local v18 = #v13;
+		v13[v18 + 1] = u2.createElement(l__SettingRow__6, {
 			Name = "Background Music Volume", 
 			ThemeColor = l__Theme__7.backgroundPrimary, 
 			FrameProps = {
 				Size = UDim2.fromScale(0.98, 0.2)
 			}
-		}, { u2.createElement(l__SettingSlider__10, {
+		}, { u2.createElement(l__SettingSlider__12, {
 				Value = p3.Settings.backgroundMusicVolume, 
 				SetValue = function(p6)
 					if not l__DeviceUtil__1.isHoarceKat() then
@@ -94,14 +112,14 @@ return {
 				Max = 1, 
 				StepSize = 0.01
 			}) });
-		v13[v15 + 2] = u2.createElement(l__SettingRow__6, {
+		v13[v18 + 2] = u2.createElement(l__SettingRow__6, {
 			Name = "FOV", 
 			Hint = "(Field of view. Default: 80)", 
 			ThemeColor = l__Theme__7.backgroundPrimary, 
 			FrameProps = {
 				Size = UDim2.fromScale(0.98, 0.2)
 			}
-		}, { u2.createElement(l__SettingSlider__10, {
+		}, { u2.createElement(l__SettingSlider__12, {
 				Value = p3.Settings.fov, 
 				SetValue = function(p7)
 					if not l__DeviceUtil__1.isHoarceKat() then
@@ -112,9 +130,9 @@ return {
 				Max = 100, 
 				StepSize = 1
 			}) });
-		v11[#v11 + 1] = u2.createElement(l__WidgetComponent__11, v12, v13);
+		v11[#v11 + 1] = u2.createElement(l__WidgetComponent__13, v12, v13);
 		v9[#v9 + 1] = u2.createElement("Frame", v10, v11);
-		v8[#v8 + 1] = u2.createElement(l__SlideIn__12, {}, v9);
+		v8[#v8 + 1] = u2.createElement(l__SlideIn__14, {}, v9);
 		return u2.createFragment({
 			SettingsAppGui = u2.createElement("ScreenGui", v7, v8)
 		});

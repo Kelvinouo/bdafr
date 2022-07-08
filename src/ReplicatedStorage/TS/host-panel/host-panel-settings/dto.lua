@@ -1,4 +1,3 @@
--- Script Hash: 5893f41ad577324de44322bd3c073197c40010c954b13889b0c83a14225b660b4bf8bec9e2dbd4cfb9df0078768fa32f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__ItemType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
@@ -22,8 +21,19 @@ v3.BedBreaking = 6;
 v2[6] = "BedBreaking";
 v3.BlockBreaking = 7;
 v2[7] = "BlockBreaking";
+local v4 = {};
+local v5 = setmetatable({}, {
+	__index = v4
+});
+v5.ON = "on";
+v4.on = "ON";
+v5.OFF = "off";
+v4.off = "OFF";
+v5.HOST_ONLY = "host_only";
+v4.host_only = "HOST_ONLY";
 return {
 	HostPanelGeneralToggle = v3, 
+	HostPanelToggleValue = v5, 
 	starterHostPanelSettings = {
 		teamGenerators = {}, 
 		globalGenerators = {
@@ -33,14 +43,14 @@ return {
 		deathmatchTime = 1200, 
 		serverMaxPlayers = 1000, 
 		generalToggles = {
-			[v3.TeamOverflow] = false, 
-			[v3.TeamSwitching] = true, 
-			[v3.HideAllNametags] = false, 
-			[v3.BypassPlacementLimits] = false, 
-			[v3.LockServer] = false, 
-			[v3.PvP] = true, 
-			[v3.BedBreaking] = true, 
-			[v3.BlockBreaking] = true
+			[v3.TeamOverflow] = v5.OFF, 
+			[v3.TeamSwitching] = v5.ON, 
+			[v3.HideAllNametags] = v5.OFF, 
+			[v3.BypassPlacementLimits] = v5.OFF, 
+			[v3.LockServer] = v5.OFF, 
+			[v3.PvP] = v5.ON, 
+			[v3.BedBreaking] = v5.ON, 
+			[v3.BlockBreaking] = v5.ON
 		}, 
 		disabledKits = {}, 
 		disabledItems = {}

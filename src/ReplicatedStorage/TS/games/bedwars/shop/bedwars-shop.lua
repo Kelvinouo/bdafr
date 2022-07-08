@@ -639,17 +639,6 @@ u2 = { {
 		requiresKit = { l__BedwarsKit__5.ARCHER }, 
 		category = l__BedwarsShopItemCategory__8.Armory
 	}, {
-		itemType = l__ItemType__6.CARROT_CANNON, 
-		amount = 1, 
-		price = 10, 
-		currency = l__ItemType__6.EMERALD, 
-		lockAfterPurchase = true, 
-		category = l__BedwarsShopItemCategory__8.Armory, 
-		additionalItems = { {
-				itemType = l__ItemType__6.CARROT_ROCKET, 
-				amount = 8
-			} }
-	}, {
 		itemType = l__ItemType__6.ARROW, 
 		amount = 8, 
 		price = 16, 
@@ -792,6 +781,12 @@ u2 = { {
 		price = 50, 
 		currency = l__ItemType__6.IRON, 
 		category = l__BedwarsShopItemCategory__8.Blocks
+	}, {
+		itemType = l__ItemType__6.STOPWATCH, 
+		amount = 1, 
+		price = 2, 
+		currency = l__ItemType__6.EMERALD, 
+		category = l__BedwarsShopItemCategory__8.Combat
 	}, {
 		itemType = l__ItemType__6.SNOWBALL, 
 		amount = 8, 

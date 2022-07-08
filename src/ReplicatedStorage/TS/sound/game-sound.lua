@@ -334,7 +334,9 @@ local v4 = {
 	PINATA_DEPOSIT_CANDY = "rbxassetid://10011666242", 
 	TOAD_CROAK = "rbxassetid://6608707296", 
 	TOY_HAMMER_HIT = "rbxassetid://10084313910", 
-	LUCKY_BLOCK_SLAM = "rbxassetid://9369390266"
+	LUCKY_BLOCK_SLAM = "rbxassetid://9369390266", 
+	OVERLOAD_LOOP = "rbxassetid://10157622093", 
+	OVERLOAD_BEEP = "rbxassetid://10157695750"
 };
 l__SoundManager__3:registerSound(v4.VENDING_ROLL_TICK, {
 	preload = false
