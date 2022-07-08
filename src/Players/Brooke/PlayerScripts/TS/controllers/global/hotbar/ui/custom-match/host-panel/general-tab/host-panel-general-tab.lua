@@ -6,7 +6,7 @@ local u1 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__AutoCanvasScrollingFrame__2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).AutoCanvasScrollingFrame;
 local l__Theme__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local l__HostPanelSetting__4 = v1.import(script, script.Parent.Parent, "components", "host-panel-setting").HostPanelSetting;
-local u5 = UDim2.new(0.83, 0, 0, 50);
+local u5 = UDim2.new(0.95, 0, 0, 50);
 local l__ToggleButtonGroup__6 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "components", "settings", "toggle-button-group").ToggleButtonGroup;
 local l__HostPanelGeneralToggle__7 = v2.HostPanelGeneralToggle;
 local l__KnitClient__8 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
@@ -130,6 +130,9 @@ return {
 				Value = l__HostPanelToggleValue__10.OFF, 
 				Text = "Off", 
 				ActiveColor = l__Theme__3.backgroundError
+			}), u1.createElement(l__ToggleButton__9, {
+				Value = l__HostPanelToggleValue__10.HOST_ONLY, 
+				Text = "Host Only"
 			}) });
 		local v24 = {};
 		local v25 = {};
@@ -171,6 +174,9 @@ return {
 				Value = l__HostPanelToggleValue__10.OFF, 
 				Text = "Off", 
 				ActiveColor = l__Theme__3.backgroundError
+			}), u1.createElement(l__ToggleButton__9, {
+				Value = l__HostPanelToggleValue__10.HOST_ONLY, 
+				Text = "Host Only"
 			}) });
 		v5[1] = u1.createElement("UIListLayout", {
 			FillDirection = "Vertical", 
