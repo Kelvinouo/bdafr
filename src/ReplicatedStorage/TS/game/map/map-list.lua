@@ -27,7 +27,7 @@ end;
 v5[l__MapType__1.ROYALE] = { "royale_Mega-Plains", "royale_Mega-Tundra", "royale_Gorge" };
 v5[l__MapType__1.INFECTED] = { "infected_Industry", "infected_Frost-Site" };
 v5[l__MapType__1.PVE] = { "pve_Iceberg" };
-v5[l__MapType__1.GUN_GAME] = { "gg_siege", "gg_ruins", "gg_treetop", "gg_Hydroplant", "gg_Hydroplant", "gg_Harbour", "gg_Harbour" };
+v5[l__MapType__1.GUN_GAME] = { "gg_siege", "gg_ruins", "gg_treetop", "gg_Hydroplant", "gg_Hydroplant", "gg_Hydroplant", "gg_Harbour", "gg_Harbour", "gg_Harbour" };
 return {
 	SkywarsMaps = v2, 
 	BedwarsMaps = v3, 

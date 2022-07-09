@@ -1,4 +1,3 @@
--- Script Hash: ebb36c0353052d3d8b468aa423e04337b01aebc35afdd24f329724b58ab6f80000532f5c2077c0bcc0644e715d530b44
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -26,40 +25,38 @@ local l__KnitClient__5 = v1.import(script, v1.getModule(script, "@easy-games", "
 local l__ClientSyncEvents__6 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__WatchCharacter__2(function(p3, p4)
+	l__WatchCharacter__2(function(p3, p4, p5)
 		if p3 == l__Players__3.LocalPlayer then
+			local v5 = u4.new();
+			p5:GiveTask(v5);
 			p4:GetAttributeChangedSignal("SnaredUntilTime"):Connect(function()
+				v5:DoCleaning();
 				if p4:GetAttribute("SnaredUntilTime") ~= -1 then
-					local v5 = u4.new();
 					v5:GiveTask(l__KnitClient__5.Controllers.SprintController:getMovementStatusModifier():addModifier({
 						moveSpeedMultiplier = 0
 					}));
-					p4:GetAttributeChangedSignal("SnaredUntilTime"):Connect(function()
-						v5:DoCleaning();
-					end);
 				end;
 			end);
+			local v6 = u4.new();
+			p5:GiveTask(v6);
 			p4:GetAttributeChangedSignal("StunnedUntilTime"):Connect(function()
+				v6:DoCleaning();
 				if p4:GetAttribute("StunnedUntilTime") ~= -1 then
-					local v6 = u4.new();
-					v6:GiveTask(l__ClientSyncEvents__6.SwordSwing:connect(function(p5)
-						p5:setCancelled(true);
+					v6:GiveTask(l__ClientSyncEvents__6.SwordSwing:connect(function(p6)
+						p6:setCancelled(true);
 					end));
 					v6:GiveTask(l__KnitClient__5.Controllers.SprintController:getMovementStatusModifier():addModifier({
 						moveSpeedMultiplier = 0
 					}));
-					p4:GetAttributeChangedSignal("StunnedUntilTime"):Connect(function()
-						v6:DoCleaning();
-					end);
 				end;
 			end);
 		end;
 	end);
 end;
 local u7 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-function v3.showStatusBubble(p6, p7, p8)
+function v3.showStatusBubble(p7, p8, p9)
 	local v7 = u4.new();
-	local l__Head__8 = p7:FindFirstChild("Head");
+	local l__Head__8 = p8:FindFirstChild("Head");
 	if l__Head__8 then
 		local u8 = u7("BillboardGui", {
 			Parent = l__Head__8, 
@@ -68,7 +65,7 @@ function v3.showStatusBubble(p6, p7, p8)
 			StudsOffsetWorldSpace = Vector3.new(0, 2.5, 0), 
 			LightInfluence = 0, 
 			Children = { u7("ImageLabel", {
-					Image = p8, 
+					Image = p9, 
 					Size = UDim2.fromScale(1, 1), 
 					BackgroundTransparency = 1, 
 					BorderSizePixel = 0

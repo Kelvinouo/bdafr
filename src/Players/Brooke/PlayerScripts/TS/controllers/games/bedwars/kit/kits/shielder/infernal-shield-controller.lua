@@ -25,6 +25,7 @@ function v5.constructor(p1)
 	p1.infernalShieldState = l__default__2.Client:Get("RemoteName");
 	p1.maid = u3.new();
 	p1.raisedMaid = u3.new();
+	p1.lastShieldRaised = 0;
 end;
 local l__SoundManager__4 = v2.SoundManager;
 local l__GameSound__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
@@ -95,6 +96,10 @@ local u13 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
 local l__KnitClient__14 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__AnimationType__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
 function v5.raiseShield(p14)
+	if os.clock() - p14.lastShieldRaised < 0.2 then
+		return nil;
+	end;
+	p14.lastShieldRaised = os.clock();
 	p14.infernalShieldState:SendToServer({
 		raised = true
 	});
