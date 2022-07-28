@@ -1,4 +1,3 @@
--- Script Hash: 6e0ad1f6ff0936ca589aec819fdd70ebf2a4ba7527139c17bcbba015779c877391dc2e0a59cafc827eb42d7ab7aa13ef
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -147,7 +146,7 @@ function v5.KnitStart(p2)
 			if l__HumanoidRootPart__36 == nil then
 				return nil;
 			end;
-			l__HumanoidRootPart__36:ApplyImpulse(l__GameWorldUtil__15.randomUnitVector(Vector3.new(0, 1, 0), math.rad(360)) * l__HumanoidRootPart__36.AssemblyMass * 10);
+			l__HumanoidRootPart__36:ApplyImpulse(l__GameWorldUtil__15.randomUnitVector(Vector3.new(0, 1, 0), 6.283185307179586) * l__HumanoidRootPart__36.AssemblyMass * 10);
 			task.wait(1);
 			v30:getInstance().Humanoid:ChangeState(Enum.HumanoidStateType.Running);
 		end);

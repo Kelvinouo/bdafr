@@ -7,27 +7,26 @@ local l__UserGameSettings__4 = UserSettings():GetService("UserGameSettings");
 local l__VRService__5 = game:GetService("VRService");
 local l__StarterGui__6 = game:GetService("StarterGui");
 local l__LocalPlayer__7 = game:GetService("Players").LocalPlayer;
-local v8 = math.rad(120);
-local v9 = Vector2.new(1, 0.77) * math.rad(0.5);
-local v10 = Vector2.new(1, 0.77) * math.rad(7);
-local v11 = Vector2.new(1, 0.66) * math.rad(1);
-local v12 = Vector2.new(1, 0.77) * math.rad(4);
-local v13, v14 = pcall(function()
+local v8 = Vector2.new(1, 0.77) * 0.008726646259971648;
+local v9 = Vector2.new(1, 0.77) * 0.12217304763960307;
+local v10 = Vector2.new(1, 0.66) * 0.017453292519943295;
+local v11 = Vector2.new(1, 0.77) * 0.06981317007977318;
+local v12, v13 = pcall(function()
 	return UserSettings():IsUserFeatureEnabled("UserFlagEnableNewVRSystem");
 end);
-local v15 = v13 or v14;
-local v16, v17 = pcall(function()
+local v14 = v12 or v13;
+local v15, v16 = pcall(function()
 	return UserSettings():IsUserFeatureEnabled("UserFlagEnableVRUpdate2");
 end);
+local v17 = Instance.new("BindableEvent");
 local v18 = Instance.new("BindableEvent");
-local v19 = Instance.new("BindableEvent");
-local u1 = v18;
+local u1 = v17;
 l__UserInputService__2.InputBegan:Connect(function(p1, p2)
 	if not p2 and p1.UserInputType == Enum.UserInputType.MouseButton2 then
 		u1:Fire();
 	end;
 end);
-local u2 = v19;
+local u2 = v18;
 l__UserInputService__2.InputEnded:Connect(function(p3, p4)
 	if p3.UserInputType == Enum.UserInputType.MouseButton2 then
 		u2:Fire();
@@ -35,44 +34,44 @@ l__UserInputService__2.InputEnded:Connect(function(p3, p4)
 end);
 u1 = nil;
 u1 = function(p5)
-	return math.sign(p5) * math.clamp((math.exp(2 * ((math.abs(p5) - 0.1) / 0.9)) - 1) / (math.exp(2) - 1), 0, 1);
+	return math.sign(p5) * math.clamp((math.exp(2 * ((math.abs(p5) - 0.1) / 0.9)) - 1) / 6.38905609893065, 0, 1);
 end;
 u2 = function(p6)
-	local l__CurrentCamera__20 = workspace.CurrentCamera;
-	if not l__CurrentCamera__20 then
+	local l__CurrentCamera__19 = workspace.CurrentCamera;
+	if not l__CurrentCamera__19 then
 		return p6;
 	end;
-	local v21 = l__CurrentCamera__20.CFrame:ToEulerAnglesYXZ();
-	if p6.Y * v21 >= 0 then
+	local v20 = l__CurrentCamera__19.CFrame:ToEulerAnglesYXZ();
+	if p6.Y * v20 >= 0 then
 		return p6;
 	end;
-	return Vector2.new(1, (1 - (2 * math.abs(v21) / math.pi) ^ 0.75) * 0.75 + 0.25) * p6;
+	return Vector2.new(1, (1 - (2 * math.abs(v20) / math.pi) ^ 0.75) * 0.75 + 0.25) * p6;
 end;
 local u3 = 0.016666666666666666;
 l__RunService__3.Stepped:Connect(function(p7, p8)
 	u3 = p8;
 end);
-local v22 = {};
+local v21 = {};
 local u4 = 0;
-local v23 = Instance.new("BindableEvent");
-v22.gamepadZoomPress = v23.Event;
+local v22 = Instance.new("BindableEvent");
+v21.gamepadZoomPress = v22.Event;
 if l__VRService__5.VREnabled then
-	local v24 = v15 and Instance.new("BindableEvent") or nil;
+	local v23 = v14 and Instance.new("BindableEvent") or nil;
 else
-	v24 = nil;
+	v23 = nil;
 end;
-if l__VRService__5.VREnabled and v15 then
-	v22.gamepadReset = v24.Event;
+if l__VRService__5.VREnabled and v14 then
+	v21.gamepadReset = v23.Event;
 end;
 local u5 = {
 	Thumbstick2 = Vector2.new()
 };
-function v22.getRotationActivated()
-	local v25 = true;
+function v21.getRotationActivated()
+	local v24 = true;
 	if not (u4 > 0) then
-		v25 = u5.Thumbstick2.Magnitude > 0;
+		v24 = u5.Thumbstick2.Magnitude > 0;
 	end;
-	return v25;
+	return v24;
 end;
 local u6 = {
 	Left = 0, 
@@ -90,43 +89,43 @@ local u8 = {
 	Move = Vector2.new(), 
 	Pinch = 0
 };
-function v22.getRotation(p9)
-	local v26 = Vector2.new(1, l__UserGameSettings__4:GetCameraYInvertValue());
-	local v27 = Vector2.new(u6.Right - u6.Left, 0) * u3;
+function v21.getRotation(p9)
+	local v25 = Vector2.new(1, l__UserGameSettings__4:GetCameraYInvertValue());
+	local v26 = Vector2.new(u6.Right - u6.Left, 0) * u3;
 	if p9 then
-		v27 = Vector2.new();
+		v26 = Vector2.new();
 	end;
-	return (v27 * v8 + u5.Thumbstick2 * v12 + u7.Movement * v9 + u7.Pan * v10 + u2(u8.Move) * v11) * v26;
+	return (v26 * 2.0943951023931953 + u5.Thumbstick2 * v11 + u7.Movement * v8 + u7.Pan * v9 + u2(u8.Move) * v10) * v25;
 end;
-function v22.getZoomDelta()
+function v21.getZoomDelta()
 	return (u6.O - u6.I) * 0.1 + (-u7.Wheel + u7.Pinch) * 1 + -u8.Pinch * 0.04;
 end;
-local u9 = v16 or v17;
+local u9 = v15 or v16;
 local u10 = nil;
 local function u11(p10)
-	local v28 = l__LocalPlayer__7:FindFirstChildOfClass("PlayerGui");
-	local v29 = v28 and v28:FindFirstChild("TouchGui");
-	local v30 = v29 and v29:FindFirstChild("TouchControlFrame");
-	local v31 = v30 and v30:FindFirstChild("DynamicThumbstickFrame");
-	if not v31 then
+	local v27 = l__LocalPlayer__7:FindFirstChildOfClass("PlayerGui");
+	local v28 = v27 and v27:FindFirstChild("TouchGui");
+	local v29 = v28 and v28:FindFirstChild("TouchControlFrame");
+	local v30 = v29 and v29:FindFirstChild("DynamicThumbstickFrame");
+	if not v30 then
 		return false;
 	end;
-	if not v29.Enabled then
+	if not v28.Enabled then
 		return false;
 	end;
-	local l__AbsolutePosition__32 = v31.AbsolutePosition;
-	local v33 = l__AbsolutePosition__32 + v31.AbsoluteSize;
-	local v34 = false;
-	if l__AbsolutePosition__32.X <= p10.X then
-		v34 = false;
-		if l__AbsolutePosition__32.Y <= p10.Y then
-			v34 = false;
-			if p10.X <= v33.X then
-				v34 = p10.Y <= v33.Y;
+	local l__AbsolutePosition__31 = v30.AbsolutePosition;
+	local v32 = l__AbsolutePosition__31 + v30.AbsoluteSize;
+	local v33 = false;
+	if l__AbsolutePosition__31.X <= p10.X then
+		v33 = false;
+		if l__AbsolutePosition__31.Y <= p10.Y then
+			v33 = false;
+			if p10.X <= v32.X then
+				v33 = p10.Y <= v32.Y;
 			end;
 		end;
 	end;
-	return v34;
+	return v33;
 end;
 local u12 = {};
 local u13 = nil;
@@ -151,25 +150,25 @@ local function u15(p13, p14)
 	if u12[p13] == nil then
 		u12[p13] = p14;
 	end;
-	local v35 = {};
-	for v36, v37 in pairs(u12) do
-		if not v37 then
-			table.insert(v35, v36);
+	local v34 = {};
+	for v35, v36 in pairs(u12) do
+		if not v36 then
+			table.insert(v34, v35);
 		end;
 	end;
-	if #v35 == 1 and u12[p13] == false then
-		local l__Delta__38 = p13.Delta;
-		u8.Move = u8.Move + Vector2.new(l__Delta__38.X, l__Delta__38.Y);
+	if #v34 == 1 and u12[p13] == false then
+		local l__Delta__37 = p13.Delta;
+		u8.Move = u8.Move + Vector2.new(l__Delta__37.X, l__Delta__37.Y);
 	end;
-	if #v35 ~= 2 then
+	if #v34 ~= 2 then
 		u13 = nil;
 		return;
 	end;
-	local l__Magnitude__39 = (v35[1].Position - v35[2].Position).Magnitude;
+	local l__Magnitude__38 = (v34[1].Position - v34[2].Position).Magnitude;
 	if u13 then
-		u8.Pinch = u8.Pinch + (l__Magnitude__39 - u13);
+		u8.Pinch = u8.Pinch + (l__Magnitude__38 - u13);
 	end;
-	u13 = l__Magnitude__39;
+	u13 = l__Magnitude__38;
 end;
 local function u16(p15, p16)
 	assert(p15.UserInputType == Enum.UserInputType.Touch);
@@ -185,12 +184,12 @@ local function u16(p15, p16)
 end;
 local u17 = false;
 local function u18()
-	for v40, v41 in pairs({ u5, u6, u7, u8 }) do
-		for v42, v43 in pairs(v41) do
-			if type(v43) == "boolean" then
-				v41[v42] = false;
+	for v39, v40 in pairs({ u5, u6, u7, u8 }) do
+		for v41, v42 in pairs(v40) do
+			if type(v42) == "boolean" then
+				v40[v41] = false;
 			else
-				v41[v42] = v41[v42] * 0;
+				v40[v41] = v40[v41] * 0;
 			end;
 		end;
 	end;
@@ -201,8 +200,8 @@ local function u19()
 	u13 = nil;
 end;
 local function u20(p17, p18, p19)
-	local l__Position__44 = p19.Position;
-	u5[p19.KeyCode.Name] = Vector2.new(u1(l__Position__44.X), -u1(l__Position__44.Y));
+	local l__Position__43 = p19.Position;
+	u5[p19.KeyCode.Name] = Vector2.new(u1(l__Position__43.X), -u1(l__Position__43.Y));
 	if not u9 then
 		return;
 	end;
@@ -211,20 +210,20 @@ end;
 local l__Value__21 = Enum.ContextActionPriority.Default.Value;
 local function u22(p20, p21, p22)
 	if p21 == Enum.UserInputState.Begin then
-		local v45 = 1;
+		local v44 = 1;
 	else
-		v45 = 0;
+		v44 = 0;
 	end;
-	u6[p22.KeyCode.Name] = v45;
+	u6[p22.KeyCode.Name] = v44;
 end;
 local function u23(p23, p24, p25)
 	if p24 == Enum.UserInputState.Begin then
-		v24:Fire();
+		v23:Fire();
 	end;
 end;
 local function u24(p26, p27, p28)
 	if p27 == Enum.UserInputState.Begin then
-		v23:Fire();
+		v22:Fire();
 	end;
 end;
 local u25 = {};
@@ -243,8 +242,8 @@ local function u27(p31, p32)
 		return;
 	end;
 	if p31.UserInputType == Enum.UserInputType.MouseMovement then
-		local l__Delta__46 = p31.Delta;
-		u7.Movement = Vector2.new(l__Delta__46.X, l__Delta__46.Y);
+		local l__Delta__45 = p31.Delta;
+		u7.Movement = Vector2.new(l__Delta__45.X, l__Delta__45.Y);
 	end;
 end;
 local function u28(p33, p34)
@@ -263,7 +262,7 @@ local function u29(p35, p36, p37, p38)
 		u7.Pinch = -p37;
 	end;
 end;
-function v22.setInputEnabled(p39)
+function v21.setInputEnabled(p39)
 	if u17 == p39 then
 		return;
 	end;
@@ -275,21 +274,21 @@ function v22.setInputEnabled(p39)
 		l__ContextActionService__1:UnbindAction("RbxCameraMouseMove");
 		l__ContextActionService__1:UnbindAction("RbxCameraMouseWheel");
 		l__ContextActionService__1:UnbindAction("RbxCameraKeypress");
-		if v15 then
+		if v14 then
 			l__ContextActionService__1:UnbindAction("RbxCameraGamepadZoom");
 			if l__VRService__5.VREnabled then
 				l__ContextActionService__1:UnbindAction("RbxCameraGamepadReset");
 			end;
 		end;
-		for v47, v48 in pairs(u25) do
-			v48:Disconnect();
+		for v46, v47 in pairs(u25) do
+			v47:Disconnect();
 		end;
 		u25 = {};
 		return;
 	end;
 	l__ContextActionService__1:BindActionAtPriority("RbxCameraThumbstick", u20, false, l__Value__21, Enum.KeyCode.Thumbstick2);
 	l__ContextActionService__1:BindActionAtPriority("RbxCameraKeypress", u22, false, l__Value__21, Enum.KeyCode.Left, Enum.KeyCode.Right, Enum.KeyCode.I, Enum.KeyCode.O);
-	if l__VRService__5.VREnabled and v15 then
+	if l__VRService__5.VREnabled and v14 then
 		l__ContextActionService__1:BindAction("RbxCameraGamepadReset", u23, false, Enum.KeyCode.ButtonL3);
 	end;
 	l__ContextActionService__1:BindAction("RbxCameraGamepadZoom", u24, false, Enum.KeyCode.ButtonR3);
@@ -298,10 +297,10 @@ function v22.setInputEnabled(p39)
 	table.insert(u25, l__UserInputService__2.InputEnded:Connect(u28));
 	table.insert(u25, l__UserInputService__2.PointerAction:Connect(u29));
 end;
-function v22.getInputEnabled()
+function v21.getInputEnabled()
 	return u17;
 end;
-function v22.resetInputForFrameEnd()
+function v21.resetInputForFrameEnd()
 	u7.Movement = Vector2.new();
 	u8.Move = Vector2.new();
 	u8.Pinch = 0;
@@ -312,26 +311,26 @@ end;
 l__UserInputService__2.WindowFocused:Connect(u18);
 l__UserInputService__2.WindowFocusReleased:Connect(u18);
 local u30 = false;
-function v22.getHoldPan()
+function v21.getHoldPan()
 	return u30;
 end;
 local u31 = false;
-function v22.getTogglePan()
+function v21.getTogglePan()
 	return u31;
 end;
-function v22.getPanning()
+function v21.getPanning()
 	return u31 or u30;
 end;
-function v22.setTogglePan(p40)
+function v21.setTogglePan(p40)
 	u31 = p40;
 end;
 local u32 = false;
 local u33 = nil;
 local u34 = nil;
-local l__Event__35 = v18.Event;
+local l__Event__35 = v17.Event;
 local u36 = 0;
-local l__Event__37 = v19.Event;
-function v22.enableCameraToggleInput()
+local l__Event__37 = v18.Event;
+function v21.enableCameraToggleInput()
 	if u32 then
 		return;
 	end;
@@ -355,7 +354,7 @@ function v22.enableCameraToggleInput()
 		end;
 	end);
 end;
-function v22.disableCameraToggleInput()
+function v21.disableCameraToggleInput()
 	if not u32 then
 		return;
 	end;
@@ -369,4 +368,4 @@ function v22.disableCameraToggleInput()
 		u34 = nil;
 	end;
 end;
-return v22;
+return v21;

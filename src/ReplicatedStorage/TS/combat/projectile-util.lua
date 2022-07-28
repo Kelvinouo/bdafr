@@ -8,7 +8,9 @@ local l__PhysicsService__1 = v3.PhysicsService;
 local u2 = v2.ConstantManager.registerConstants(script, {
 	RelX = 0.8, 
 	RelY = -0.6, 
-	RelZ = 0
+	RelZ = 0, 
+	DebugLagCompensation = false, 
+	LagCompensation = true
 });
 local l__Workspace__3 = v3.Workspace;
 local u4 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
@@ -21,6 +23,9 @@ local l__GrapplingHookFunctions__10 = v1.import(script, game:GetService("Replica
 local l__GameQueryUtil__11 = v2.GameQueryUtil;
 local l__CollectionService__12 = v3.CollectionService;
 local l__EntityUtil__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
+local l__KnitServer__14 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitServer;
+local u15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "draw");
+local l__Debris__16 = v3.Debris;
 function v4.fireProjectile(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
 	if p10 == nil then
 		p10 = true;
@@ -78,12 +83,12 @@ function v4.fireProjectile(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
 		p2.PrimaryPart:ApplyImpulse(p5 * p2.PrimaryPart.AssemblyMass);
 	end;
 	local v15 = l__ProjectileMeta__5[p2.Name];
-	local u14 = u6.new();
-	u14:GiveTask(p2.PrimaryPart.AncestryChanged:Connect(function()
-		u14:DoCleaning();
+	local u17 = u6.new();
+	u17:GiveTask(p2.PrimaryPart.AncestryChanged:Connect(function()
+		u17:DoCleaning();
 	end));
-	u14:GiveTask(p2.Destroying:Connect(function()
-		u14:DoCleaning();
+	u17:GiveTask(p2.Destroying:Connect(function()
+		u17:DoCleaning();
 	end));
 	local v16 = p9;
 	if v16 ~= nil then
@@ -115,14 +120,16 @@ function v4.fireProjectile(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
 	if v20 then
 		return nil;
 	end;
-	local u15 = true;
-	u14:GiveTask(function()
-		u15 = false;
+	local u18 = true;
+	u17:GiveTask(function()
+		u18 = false;
 	end);
-	local u16 = false;
-	local u17 = -1;
-	local u18 = p4;
-	u14:GiveTask(l__RunService__7.Heartbeat:Connect(function()
+	local u19 = 0;
+	local u20 = false;
+	local u21 = -1;
+	local u22 = p4;
+	u17:GiveTask(l__RunService__7.Heartbeat:Connect(function(p11)
+		u19 = u19 + p11;
 		local v22 = p2;
 		if v22 ~= nil then
 			v22 = v22.PrimaryPart;
@@ -150,31 +157,31 @@ function v4.fireProjectile(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
 				return nil;
 			end;
 			local l__Magnitude__26 = (v24 - l__CFrame__25.Position).Position.Magnitude;
-			if v15.returnDistance < l__Magnitude__26 and not u16 then
-				u16 = true;
-				u17 = tick();
+			if v15.returnDistance < l__Magnitude__26 and not u20 then
+				u20 = true;
+				u21 = tick();
 				if p8 == true then
 					l__SharedSyncEvents__8.HookFunctionSwapEvent:fire(l__Players__9.LocalPlayer, l__GrapplingHookFunctions__10.HOOK_BACKWARD_TRANSIT);
 				end;
-			elseif l__Magnitude__26 < 10 and u16 then
-				u16 = false;
+			elseif l__Magnitude__26 < 10 and u20 then
+				u20 = false;
 				if p8 == true then
 					l__SharedSyncEvents__8.HookFunctionSwapEvent:fire(l__Players__9.LocalPlayer, l__GrapplingHookFunctions__10.HOOK_CHAMBERED);
 				end;
 				p2:Destroy();
-				u14:DoCleaning();
+				u17:DoCleaning();
 				return nil;
 			end;
-			if u16 then
+			if u20 then
 				if v15.flightRotation then
 					local l__flightRotation__27 = v15.flightRotation;
 					local v28 = v24 * CFrame.Angles(l__flightRotation__27.X, l__flightRotation__27.Y, l__flightRotation__27.Z);
 				end;
-				p2:SetPrimaryPartCFrame((l__CFrame__25:Lerp(v24, (math.clamp((tick() - u17) / 0.2, 0, 1)))));
+				p2:SetPrimaryPartCFrame((l__CFrame__25:Lerp(v24, (math.clamp((tick() - u21) / 0.2, 0, 1)))));
 			end;
 		end;
-		local function v29(p11, p12, p13)
-			if not u15 then
+		local function v29(p12, p13, p14)
+			if not u18 then
 				return false;
 			end;
 			local v30 = p2;
@@ -190,68 +197,70 @@ function v4.fireProjectile(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
 			if p1 and (not p1:IsDescendantOf(l__Players__9) or not p1.Character) then
 				return false;
 			end;
-			if p12:IsDescendantOf(p2) then
+			if p13:IsDescendantOf(p2) then
 				return false;
 			end;
-			if l__GameQueryUtil__11:isQueryIgnored(p12) then
+			if l__GameQueryUtil__11:isQueryIgnored(p13) and not l__CollectionService__12:HasTag(p13, "Hitbox") then
 				return false;
 			end;
-			if l__CollectionService__12:HasTag(p12, "ProjectilesIgnore") then
+			if l__CollectionService__12:HasTag(p13, "ProjectilesIgnore") then
 				return false;
 			end;
-			if p12:GetAttribute("IgnoreProjectileCollision") == true then
+			if p13:GetAttribute("IgnoreProjectileCollision") == true then
 				return false;
 			end;
-			local v31 = p12.Parent;
+			local v31 = p13.Parent;
 			if v31 ~= nil then
 				v31 = v31.Name;
 			end;
 			if v31 == "ArcParticles" then
 				return false;
 			end;
-			local v32 = l__EntityUtil__13:getEntityFromDescendant(p12);
+			local v32 = l__EntityUtil__13:getEntityFromDescendant(p13);
+			if l__CollectionService__12:HasTag(p13, "Hitbox") then
+				local l__EntityValue__33 = p13:FindFirstChild("EntityValue");
+				if l__EntityValue__33 and l__EntityValue__33.Value then
+					v32 = l__EntityUtil__13:getEntity(l__EntityValue__33.Value);
+				end;
+			end;
 			if v32 then
-				if p12:FindFirstAncestorWhichIsA("Accessory") or p12:IsA("Accessory") then
+				if p13:FindFirstAncestorWhichIsA("Accessory") or p13:IsA("Accessory") then
 					return false;
 				end;
-				p12 = v32:getInstance().PrimaryPart and p12;
+				p13 = v32:getInstance().PrimaryPart and p13;
 				if p1 then
-					local v33 = l__EntityUtil__13:getEntity(p1);
+					local v34 = l__EntityUtil__13:getEntity(p1);
 				else
-					v33 = nil;
+					v34 = nil;
 				end;
-				if v33 and not v33:canAttack(v32) then
+				if v34 and not v34:canAttack(v32) then
 					return false;
 				end;
 			end;
-			if p13 and not v32 and table.find(l__CollectionService__12:GetTags(p12), "falling-block") == nil then
+			if p14 and not v32 and table.find(l__CollectionService__12:GetTags(p13), "falling-block") == nil then
 				return false;
 			end;
-			local v34 = p12:FindFirstAncestorOfClass("Model");
-			if v34 and l__ProjectileMeta__5[v34.Name] ~= nil then
+			local v35 = p13:FindFirstAncestorOfClass("Model");
+			if v35 and l__ProjectileMeta__5[v35.Name] ~= nil then
 				return false;
 			end;
 			if p1 then
-				local v35 = l__EntityUtil__13:getEntity(p1);
+				local v36 = l__EntityUtil__13:getEntity(p1);
 			else
-				v35 = nil;
+				v36 = nil;
 			end;
-			if v35 then
-				local v36 = p9;
-				if v36 ~= nil then
-					v36 = v36.projectileSource;
-				end;
-				local v37 = p9;
-				if v37 ~= nil then
-					v37 = v37.drawPercent;
-				end;
-				local v38 = v37;
-				if v38 == nil then
-					v38 = 1;
+			local v37 = p9;
+			if v37 ~= nil then
+				v37 = v37.npcShooterEntity;
+			end;
+			if v36 or v37 then
+				local v38 = p9;
+				if v38 ~= nil then
+					v38 = v38.projectileSource;
 				end;
 				local v39 = p9;
 				if v39 ~= nil then
-					v39 = v39.projectileDamageMult;
+					v39 = v39.drawPercent;
 				end;
 				local v40 = v39;
 				if v40 == nil then
@@ -259,203 +268,263 @@ function v4.fireProjectile(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
 				end;
 				local v41 = p9;
 				if v41 ~= nil then
-					v41 = v41.metadata;
+					v41 = v41.projectileDamageMult;
 				end;
-				if l__SharedSyncEvents__8.ProjectileHit:fire(v35, p2.Name, p2, p3, v36, {
-					hitCFrame = CFrame.new(p11) * (p2:GetPrimaryPartCFrame() - p2:GetPrimaryPartCFrame().Position), 
+				local v42 = v41;
+				if v42 == nil then
+					v42 = 1;
+				end;
+				local v43 = p9;
+				if v43 ~= nil then
+					v43 = v43.metadata;
+				end;
+				if l__SharedSyncEvents__8.ProjectileHit:fire(v36 and v37, p2.Name, p2, p3, v38, {
+					hitCFrame = CFrame.new(p12) * (p2:GetPrimaryPartCFrame() - p2:GetPrimaryPartCFrame().Position), 
 					velocity = p2.PrimaryPart.Velocity, 
-					part = p12
-				}, v32, v38, v40, v41):isCancelled() then
+					part = p13
+				}, v32, v40, v42, v43):isCancelled() then
 					return false;
 				end;
 			end;
-			p7(p11, p12);
-			local v42 = v15;
-			if v42 ~= nil then
-				v42 = v42.keepProjectileOnHit;
+			p7(p12, p13);
+			local v44 = v15;
+			if v44 ~= nil then
+				v44 = v44.keepProjectileOnHit;
 			end;
-			if not v42 then
-				u14:DoCleaning();
+			if not v44 then
+				u17:DoCleaning();
 			end;
 			return true;
 		end;
-		local l__Position__43 = p2.PrimaryPart.CFrame.Position;
-		local v44 = {};
-		if u18 then
-			table.insert(v44, (u18 + l__Position__43) / 2);
+		local v45 = l__RunService__7:IsServer();
+		if v45 then
+			local v46 = p9;
+			if v46 ~= nil then
+				v46 = v46.serverTime;
+			end;
+			v45 = v46;
+			if v45 ~= 0 and v45 == v45 and v45 then
+				v45 = u2.LagCompensation;
+			end;
 		end;
-		table.insert(v44, l__Position__43);
-		local v45 = v15;
-		if v45 ~= nil then
-			v45 = v45.hitscanRegionMultiplier;
+		if v45 ~= 0 and v45 == v45 and v45 then
+			l__KnitServer__14.Services.LagCompensationService:pushToPointInTime(p9.serverTime + u19);
 		end;
-		local v46 = v45;
-		if v46 == nil then
-			v46 = 1;
+		if u2.DebugLagCompensation then
+			for v47, v48 in ipairs(l__Players__9:GetPlayers()) do
+				if l__RunService__7:IsServer() and v48.Character then
+					local v49 = l__KnitServer__14.Services.LagCompensationService:getHitbox(v48.Character);
+					if v49 then
+						local v50 = u15.box(CFrame.new(v49.Position) * CFrame.new(0, 1, 0), Vector3.new(2, 4, 2), Color3.fromRGB(255, 0, 0));
+						v50.Transparency = 0.9;
+						l__GameQueryUtil__11:setQueryIgnored(v50, true);
+						l__Debris__16:AddItem(v50, 5);
+					end;
+				elseif l__RunService__7:IsClient() and v48.Character then
+					local v51 = u15.box(CFrame.new(v48.Character:GetPrimaryPartCFrame().Position), Vector3.new(2, 4, 2) * 0.9, Color3.fromRGB(0, 255, 0));
+					v51.Transparency = 0.9;
+					l__GameQueryUtil__11:setQueryIgnored(v51, true);
+					l__Debris__16:AddItem(v51, 5);
+				end;
+			end;
 		end;
-		local v47, v48, v49 = ipairs(v44);
+		local function v52()
+			local v53 = l__RunService__7:IsServer();
+			if v53 then
+				local v54 = p9;
+				if v54 ~= nil then
+					v54 = v54.serverTime;
+				end;
+				v53 = v54;
+				if v53 ~= 0 and v53 == v53 and v53 then
+					v53 = u2.LagCompensation;
+				end;
+			end;
+			if v53 ~= 0 and v53 == v53 and v53 then
+				l__KnitServer__14.Services.LagCompensationService:pop();
+			end;
+		end;
+		local l__Position__55 = p2.PrimaryPart.CFrame.Position;
+		local v56 = {};
+		if u22 then
+			table.insert(v56, (u22 + l__Position__55) / 2);
+		end;
+		table.insert(v56, l__Position__55);
+		local v57 = v15;
+		if v57 ~= nil then
+			v57 = v57.hitscanRegionMultiplier;
+		end;
+		local v58 = v57;
+		if v58 == nil then
+			v58 = 1;
+		end;
+		local v59, v60, v61 = ipairs(v56);
 		while true do
-			local v50, v51 = v47(v48, v49);
-			if not v50 then
+			local v62, v63 = v59(v60, v61);
+			if not v62 then
 				break;
 			end;
-			local v52 = p9;
-			if v52 ~= nil then
-				v52 = v52.getSuggestedTarget;
+			local v64 = p9;
+			if v64 ~= nil then
+				v64 = v64.getSuggestedTarget;
 			end;
-			if v52 then
-				local v53 = p9.getSuggestedTarget();
-				if v53 then
-					local v54 = Region3.new(v51 - Vector3.new(6, 3, 6) * v46, v51 + Vector3.new(6, 3, 6) * v46);
-					local v55 = OverlapParams.new();
-					v55.FilterType = Enum.RaycastFilterType.Whitelist;
-					v55.FilterDescendantsInstances = { v53 };
-					for v56, v57 in ipairs((l__Workspace__3:GetPartBoundsInBox(v54.CFrame, v54.Size, v55))) do
-						if v29(v51, v57, false) then
+			if v64 then
+				local v65 = p9.getSuggestedTarget();
+				if v65 then
+					local v66 = Region3.new(v63 - Vector3.new(6, 3, 6) * v58, v63 + Vector3.new(6, 3, 6) * v58);
+					local v67 = OverlapParams.new();
+					v67.FilterType = Enum.RaycastFilterType.Whitelist;
+					v67.FilterDescendantsInstances = { v65 };
+					for v68, v69 in ipairs((l__Workspace__3:GetPartBoundsInBox(v66.CFrame, v66.Size, v67))) do
+						if v29(v63, v69, false) then
+							v52();
 							return nil;
 						end;
 					end;
 				end;
 			end;
-			local v58 = Region3.new(v51 - Vector3.new(1.5, 0.5, 1.5) * v46, v51 + Vector3.new(1.5, 0.5, 1.5) * v46);
-			for v59, v60 in ipairs((l__Workspace__3:GetPartBoundsInBox(v58.CFrame, v58.Size))) do
-				if v60:IsA("BasePart") and v29(v51, v60, true) then
+			local v70 = Region3.new(v63 - Vector3.new(1.5, 0.5, 1.5) * v58, v63 + Vector3.new(1.5, 0.5, 1.5) * v58);
+			for v71, v72 in ipairs((l__Workspace__3:GetPartBoundsInBox(v70.CFrame, v70.Size))) do
+				if v72:IsA("BasePart") and v29(v63, v72, true) then
+					v52();
 					return nil;
 				end;
 			end;
-			local v61 = v15;
-			if v61 ~= nil then
-				v61 = v61.wallHitscanRegionMultiplier;
+			local v73 = v15;
+			if v73 ~= nil then
+				v73 = v73.wallHitscanRegionMultiplier;
 			end;
-			local v62 = v61;
-			if v62 == nil then
-				v62 = v46;
+			local v74 = v73;
+			if v74 == nil then
+				v74 = v58;
 			end;
-			local v63 = Region3.new(v51 - Vector3.new(0.5, 0.25, 0.5) * v62, v51 + Vector3.new(0.5, 0.25, 0.5) * v62);
-			for v64, v65 in ipairs((l__Workspace__3:GetPartBoundsInBox(v63.CFrame, v63.Size))) do
-				if v65:IsA("BasePart") and v29(v51, v65, false) then
+			local v75 = Region3.new(v63 - Vector3.new(0.5, 0.25, 0.5) * v74, v63 + Vector3.new(0.5, 0.25, 0.5) * v74);
+			for v76, v77 in ipairs((l__Workspace__3:GetPartBoundsInBox(v75.CFrame, v75.Size))) do
+				if v77:IsA("BasePart") and v29(v63, v77, false) then
+					v52();
 					return nil;
 				end;
 			end;		
 		end;
-		u18 = l__Position__43;
+		v52();
+		u22 = l__Position__55;
 	end));
 end;
-local l__Projectiles__19 = v3.ReplicatedStorage:WaitForChild("Assets"):WaitForChild("Projectiles");
-local u20 = nil;
-function v4.createProjectile(p14, p15, p16, p17)
-	local v66 = l__ProjectileMeta__5[p15].projectileModel;
-	if v66 == nil then
-		v66 = p15;
+local l__Projectiles__23 = v3.ReplicatedStorage:WaitForChild("Assets"):WaitForChild("Projectiles");
+local u24 = nil;
+function v4.createProjectile(p15, p16, p17, p18)
+	local v78 = l__ProjectileMeta__5[p16].projectileModel;
+	if v78 == nil then
+		v78 = p16;
 	end;
-	local v67 = l__Projectiles__19:WaitForChild(v66);
-	assert(v67, "Projectile model for projectile " .. p15 .. " can't be found.");
-	local v68 = v67:Clone();
-	assert(v68.PrimaryPart, "Primary part missing on projectile " .. v68.Name);
-	v68.Name = p15;
-	if p17 == nil then
+	local v79 = l__Projectiles__23:WaitForChild(v78);
+	assert(v79, "Projectile model for projectile " .. p16 .. " can't be found.");
+	local v80 = v79:Clone();
+	assert(v80.PrimaryPart, "Primary part missing on projectile " .. v80.Name);
+	v80.Name = p16;
+	if p18 == nil then
 		return nil;
 	end;
-	v68:SetPrimaryPartCFrame(p17);
-	v68.Parent = l__Workspace__3;
-	v68:SetAttribute("ProjectileShooter", p14.UserId);
-	l__CollectionService__12:AddTag(v68, u20(p14.UserId));
-	return v68;
+	v80:SetPrimaryPartCFrame(p18);
+	v80.Parent = l__Workspace__3;
+	v80:SetAttribute("ProjectileShooter", p15.UserId);
+	l__CollectionService__12:AddTag(v80, u24(p15.UserId));
+	return v80;
 end;
-u20 = function(p18)
-	return "projectile:" .. tostring(p18);
+u24 = function(p19)
+	return "projectile:" .. tostring(p19);
 end;
-v4.getProjectileCST = u20;
-local l__getItemMeta__21 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
-function v4.getProjectileSource(p19, p20)
-	local v69 = l__getItemMeta__21(p20.Name);
-	if v69 == nil then
+v4.getProjectileCST = u24;
+local l__getItemMeta__25 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
+function v4.getProjectileSource(p20, p21)
+	local v81 = l__getItemMeta__25(p21.Name);
+	if v81 == nil then
 		return nil;
 	end;
-	local v70 = v69.projectileSource;
-	if v70 == nil then
-		local v71 = v69.block;
-		if v71 ~= nil then
-			v71 = v71.projectileSource;
+	local v82 = v81.projectileSource;
+	if v82 == nil then
+		local v83 = v81.block;
+		if v83 ~= nil then
+			v83 = v83.projectileSource;
 		end;
-		v70 = v71;
+		v82 = v83;
 	end;
-	local v72 = v70;
-	if not v72 and p19 and v69.multiProjectileSource then
-		v72 = v69.multiProjectileSource[p19];
+	local v84 = v82;
+	if not v84 and p20 and v81.multiProjectileSource then
+		v84 = v81.multiProjectileSource[p20];
 	end;
-	return v72;
+	return v84;
 end;
-function v4.setupProjectileConstantOrientation(p21, p22)
-	local v73 = u6.new();
-	local v74 = l__ProjectileMeta__5[p21.Name];
-	if v74.useServerModel and p22 ~= l__Players__9.LocalPlayer then
-		return v73;
+function v4.setupProjectileConstantOrientation(p22, p23)
+	local v85 = u6.new();
+	local v86 = l__ProjectileMeta__5[p22.Name];
+	if v86.useServerModel and p23 ~= l__Players__9.LocalPlayer then
+		return v85;
 	end;
-	local u22 = math.random() * 2 * math.pi;
+	local u26 = math.random() * 2 * math.pi;
 	task.delay(0, function()
-		local u23 = nil;
-		local u24 = 0;
-		v73:GiveTask(l__RunService__7.Heartbeat:Connect(function(p23)
-			if not p21.Parent then
-				v73:DoCleaning();
+		local u27 = nil;
+		local u28 = 0;
+		v85:GiveTask(l__RunService__7.Heartbeat:Connect(function(p24)
+			if not p22.Parent then
+				v85:DoCleaning();
 				return nil;
 			end;
-			if not u23 then
-				u23 = p21:GetPrimaryPartCFrame();
+			if not u27 then
+				u27 = p22:GetPrimaryPartCFrame();
 			end;
-			u24 = u24 + p23;
-			local v75 = v74.lifetimeSec;
-			if v75 == nil then
-				v75 = 10;
+			u28 = u28 + p24;
+			local v87 = v86.lifetimeSec;
+			if v87 == nil then
+				v87 = 10;
 			end;
-			if v75 < u24 then
-				local v76 = v74;
-				if v76 ~= nil then
-					v76 = v76.returnDistance;
+			if v87 < u28 then
+				local v88 = v86;
+				if v88 ~= nil then
+					v88 = v88.returnDistance;
 				end;
-				if v76 ~= 0 and v76 == v76 and v76 then
+				if v88 ~= 0 and v88 == v88 and v88 then
 					l__SharedSyncEvents__8.HookFunctionSwapEvent:fire(l__Players__9.LocalPlayer, l__GrapplingHookFunctions__10.HOOK_CHAMBERED);
 				end;
-				p21:Destroy();
-				v73:DoCleaning();
-				p21:Destroy();
+				p22:Destroy();
+				v85:DoCleaning();
+				p22:Destroy();
 				return nil;
 			end;
-			local l__Position__77 = p21:GetPrimaryPartCFrame().Position;
-			local v78 = v74.flightRotation or Vector3.new();
-			local v79 = CFrame.Angles(v78.X, v78.Y, v78.Z);
-			local v80 = CFrame.new(l__Position__77, l__Position__77 + p21.PrimaryPart.Velocity);
-			if v74.orbit then
-				local v81 = u22 + u24 * math.pi * 6;
-				local v82 = v74.orbit.radius;
-				if v82 == nil then
-					v82 = 0.5;
+			local l__Position__89 = p22:GetPrimaryPartCFrame().Position;
+			local v90 = v86.flightRotation or Vector3.new();
+			local v91 = CFrame.Angles(v90.X, v90.Y, v90.Z);
+			local v92 = CFrame.new(l__Position__89, l__Position__89 + p22.PrimaryPart.Velocity);
+			if v86.orbit then
+				local v93 = u26 + u28 * math.pi * 6;
+				local v94 = v86.orbit.radius;
+				if v94 == nil then
+					v94 = 0.5;
 				end;
-				local v83 = v74.orbit.timeTillMaxOrbit;
-				if v83 == nil then
-					v83 = 1;
+				local v95 = v86.orbit.timeTillMaxOrbit;
+				if v95 == nil then
+					v95 = 1;
 				end;
-				local v84 = v82 * math.min(u24 / v83, 1);
-				v80 = CFrame.new(v80 * Vector3.new(v84 * math.sin(v81), v84 * math.cos(v81), 0)) * (v80 - v80.Position);
+				local v96 = v94 * math.min(u28 / v95, 1);
+				v92 = CFrame.new(v92 * Vector3.new(v96 * math.sin(v93), v96 * math.cos(v93), 0)) * (v92 - v92.Position);
 			end;
-			if not v74.noArc then
-				v80 = v80 * v79;
+			if not v86.noArc then
+				v92 = v92 * v91;
 			end;
-			p21:SetPrimaryPartCFrame(l__SharedSyncEvents__8.ProjectileRender:fire(p21, v74, v80, u24, p23).cframe);
+			p22:SetPrimaryPartCFrame(l__SharedSyncEvents__8.ProjectileRender:fire(p22, v86, v92, u28, p24).cframe);
 		end));
-		v73:GiveTask(l__RunService__7.Stepped:Connect(function(p24)
-			if not p21.Parent then
-				v73:DoCleaning();
+		v85:GiveTask(l__RunService__7.Stepped:Connect(function(p25)
+			if not p22.Parent then
+				v85:DoCleaning();
 				return nil;
 			end;
-			if u23 then
-				p21:SetPrimaryPartCFrame(u23);
-				u23 = nil;
+			if u27 then
+				p22:SetPrimaryPartCFrame(u27);
+				u27 = nil;
 			end;
 		end));
 	end);
-	return v73;
+	return v85;
 end;
 return {
 	ProjectileUtil = v4

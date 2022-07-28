@@ -21,6 +21,8 @@ v3.BedBreaking = 6;
 v2[6] = "BedBreaking";
 v3.BlockBreaking = 7;
 v2[7] = "BlockBreaking";
+v3.IgnoreBuildRestrictedRegions = 8;
+v2[8] = "IgnoreBuildRestrictedRegions";
 local v4 = {};
 local v5 = setmetatable({}, {
 	__index = v4
@@ -50,7 +52,8 @@ return {
 			[v3.LockServer] = v5.OFF, 
 			[v3.PvP] = v5.ON, 
 			[v3.BedBreaking] = v5.ON, 
-			[v3.BlockBreaking] = v5.ON
+			[v3.BlockBreaking] = v5.ON, 
+			[v3.IgnoreBuildRestrictedRegions] = v5.OFF
 		}, 
 		disabledKits = {}, 
 		disabledItems = {}

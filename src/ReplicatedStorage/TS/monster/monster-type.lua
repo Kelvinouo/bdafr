@@ -1,4 +1,3 @@
--- Script Hash: 9abc2062b599694ab63cc1ef426d3fe9eddacfcf74bf80169cdeedeb9cd3b60d33ad34e1f83d2b532b5473440f258e65
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -17,6 +16,18 @@ v2.DUCK = "duck";
 v1.duck = "DUCK";
 v2.VOID_CRAB = "void_crab";
 v1.void_crab = "VOID_CRAB";
+v2.BOMBER_PENGUIN = "bomber_penguin";
+v1.bomber_penguin = "BOMBER_PENGUIN";
+v2.KING_PENGUIN = "king_penguin";
+v1.king_penguin = "KING_PENGUIN";
+v2.SNIPER_PENGUIN = "sniper_penguin";
+v1.sniper_penguin = "SNIPER_PENGUIN";
+v2.BOXER_PENGUIN = "boxer_penguin";
+v1.boxer_penguin = "BOXER_PENGUIN";
+v2.WIZARD_PENGUIN = "wizard_penguin";
+v1.wizard_penguin = "WIZARD_PENGUIN";
+v2.PARACHUTE_PENGUIN = "parachute_penguin";
+v1.parachute_penguin = "PARACHUTE_PENGUIN";
 return {
 	MonsterType = v2
 };

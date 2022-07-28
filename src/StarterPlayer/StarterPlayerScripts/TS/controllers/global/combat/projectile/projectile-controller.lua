@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -38,6 +37,7 @@ function u1.constructor(p1, ...)
 	p1.isTargeting = false;
 	p1.targetingId = 0;
 	p1.targetingMaid = u3.new();
+	p1.itemSwapMaid = u3.new();
 end;
 local l__ReplicatedStorage__4 = v4.ReplicatedStorage;
 local u5 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
@@ -216,129 +216,129 @@ u1.launchProjectileWithValues = v1.async(function(p21, p22, p23, p24, p25, p26, 
 		v33 = v33.fireAnimation;
 	end;
 	if v33 ~= 0 and v33 == v33 and v33 then
-		l__GameAnimationUtil__9.playAnimation(l__Players__10.LocalPlayer, p24.thirdPerson.fireAnimation);
+		local v34 = l__GameAnimationUtil__9.playAnimation(l__Players__10.LocalPlayer, p24.thirdPerson.fireAnimation);
 	end;
-	local v34 = l__HttpService__17:GenerateGUID();
-	local v35 = l__ProjectileMeta__18[v24];
-	local v36 = p21:createLocalProjectile(p24, p25, v24, l__positionFrom__26, v34, l__initialVelocity__25, {
+	local v35 = l__HttpService__17:GenerateGUID();
+	local v36 = l__ProjectileMeta__18[v24];
+	local v37 = p21:createLocalProjectile(p24, p25, v24, l__positionFrom__26, v35, l__initialVelocity__25, {
 		drawDurationSeconds = p26.drawDurationSeconds
 	});
-	if v36 then
-		local v37 = l__EntityUtil__19:getLocalPlayerEntity();
-		if v37 ~= nil then
-			v37 = v37:getInstance();
-		end;
-		l__ClientSyncEvents__14.ProjectileLaunched:fire(v24, v36, l__initialVelocity__25, l__positionFrom__26, v37);
-	end;
-	local v38 = l__Players__10.LocalPlayer.Character;
-	if v38 ~= nil then
-		v38 = v38.PrimaryPart;
+	if v37 then
+		local v38 = l__EntityUtil__19:getLocalPlayerEntity();
 		if v38 ~= nil then
-			v38 = v38.Position;
+			v38 = v38:getInstance();
+		end;
+		l__ClientSyncEvents__14.ProjectileLaunched:fire(v24, v37, l__initialVelocity__25, l__positionFrom__26, v38);
+	end;
+	local v39 = l__Players__10.LocalPlayer.Character;
+	if v39 ~= nil then
+		v39 = v39.PrimaryPart;
+		if v39 ~= nil then
+			v39 = v39.Position;
 		end;
 	end;
-	if v38 == nil then
+	if v39 == nil then
 		return nil;
 	end;
-	local v39 = v1.await(l__default__7.Client:WaitFor("RemoteName"):andThen(function(p28)
-		return p28:CallServerAsync(p23, p25, v24, l__positionFrom__26, v38, l__initialVelocity__25, v34, p26);
+	local v40 = v1.await(l__default__7.Client:WaitFor("RemoteName"):andThen(function(p28)
+		return p28:CallServerAsync(p23, p25, v24, l__positionFrom__26, v39, l__initialVelocity__25, v35, p26, l__Workspace__6:GetServerTimeNow() - 0.045);
 	end));
-	if v39 and v39.PrimaryPart then
-		return v39;
+	if v40 and v40.PrimaryPart then
+		return v40;
 	end;
 	return nil;
 end);
 local l__ProjectileUtil__20 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "combat", "projectile-util").ProjectileUtil;
 function u1.createLocalProjectile(p29, p30, p31, p32, p33, p34, p35, p36)
-	local v40 = l__ProjectileMeta__18[p32];
-	local v41 = l__ProjectileUtil__20.createProjectile(l__Players__10.LocalPlayer, p32, p31, (l__Players__10.LocalPlayer.Character:GetPrimaryPartCFrame()));
-	if not v41 or not (not v40.useServerModel) then
+	local v41 = l__ProjectileMeta__18[p32];
+	local v42 = l__ProjectileUtil__20.createProjectile(l__Players__10.LocalPlayer, p32, p31, (l__Players__10.LocalPlayer.Character:GetPrimaryPartCFrame()));
+	if not v42 or not (not v41.useServerModel) then
 		return;
 	end;
-	l__ProjectileUtil__20.setupProjectileConstantOrientation(v41, l__Players__10.LocalPlayer);
-	local v42 = 1;
-	local v43 = p36;
-	if v43 ~= nil then
-		v43 = v43.drawDurationSeconds;
+	l__ProjectileUtil__20.setupProjectileConstantOrientation(v42, l__Players__10.LocalPlayer);
+	local v43 = 1;
+	local v44 = p36;
+	if v44 ~= nil then
+		v44 = v44.drawDurationSeconds;
 	end;
-	local v44 = v43 ~= nil;
-	if v44 then
-		local v45 = p30;
-		if v45 ~= nil then
-			v45 = v45.maxStrengthChargeSec;
+	local v45 = v44 ~= nil;
+	if v45 then
+		local v46 = p30;
+		if v46 ~= nil then
+			v46 = v46.maxStrengthChargeSec;
 		end;
-		v44 = v45;
+		v45 = v46;
 	end;
-	if v44 ~= 0 and v44 == v44 and v44 then
-		v42 = math.clamp(p36.drawDurationSeconds / p30.maxStrengthChargeSec, 0, 1);
+	if v45 ~= 0 and v45 == v45 and v45 then
+		v43 = math.clamp(p36.drawDurationSeconds / p30.maxStrengthChargeSec, 0, 1);
 	end;
-	local v46 = v40.gravitationalAcceleration;
-	if v46 == nil then
-		v46 = 196.2;
+	local v47 = v41.gravitationalAcceleration;
+	if v47 == nil then
+		v47 = 196.2;
 	end;
-	local v47 = {};
-	local v48 = p30;
-	if v48 ~= nil then
-		v48 = v48.relativeOverride;
+	local v48 = {};
+	local v49 = p30;
+	if v49 ~= nil then
+		v49 = v49.relativeOverride;
 	end;
-	v47.relative = v48;
-	v47.projectileSource = p30;
-	v47.drawPercent = v42;
-	l__ProjectileUtil__20.fireProjectile(l__Players__10.LocalPlayer, v41, p34, p33, p35, v46, function(p37, p38)
-		local v49 = l__EntityUtil__19:getEntityFromDescendant(p38);
-		local v50 = v49;
-		if v50 ~= nil then
-			v50 = v50:getInstance();
+	v48.relative = v49;
+	v48.projectileSource = p30;
+	v48.drawPercent = v43;
+	l__ProjectileUtil__20.fireProjectile(l__Players__10.LocalPlayer, v42, p34, p33, p35, v47, function(p37, p38)
+		local v50 = l__EntityUtil__19:getEntityFromDescendant(p38);
+		local v51 = v50;
+		if v51 ~= nil then
+			v51 = v51:getInstance();
 		end;
-		l__default__7.Client:Get("RemoteName"):SendToServer(p34, v50);
-		l__ClientSyncEvents__14.LocalProjectileImpact:fire(v41, p37, v49, p38);
-		if not v40.keepProjectileOnHit or not v49 then
-			v41:Destroy();
+		l__default__7.Client:Get("RemoteName"):SendToServer(p34, v51);
+		l__ClientSyncEvents__14.LocalProjectileImpact:fire(v42, p37, v50, p38);
+		if not v41.keepProjectileOnHit or not v50 then
+			v42:Destroy();
 		end;
-	end, nil, v47);
-	return v41;
+	end, nil, v48);
+	return v42;
 end;
 local u21 = v2.ConstantManager.registerConstants(script, v5);
 function u1.calculateImportantLaunchValues(p39, p40, p41, p42)
-	local v51 = p39:getLaunchPosition(p42);
-	if not v51 then
+	local v52 = p39:getLaunchPosition(p42);
+	if not v52 then
 		return nil;
 	end;
-	local v52 = p40:getProjectileMeta();
+	local v53 = p40:getProjectileMeta();
 	if p41 then
-		local v53 = v52.predictionLifetimeSec;
+		local v54 = v53.predictionLifetimeSec;
 	else
-		v53 = v52.lifetimeSec;
+		v54 = v53.lifetimeSec;
 	end;
-	if v53 == nil then
-		v53 = 3;
-	end;
-	local v54 = v52.launchVelocity;
 	if v54 == nil then
-		v54 = 100;
+		v54 = 3;
 	end;
-	local v55 = v52.gravitationalAcceleration;
+	local v55 = v53.launchVelocity;
 	if v55 == nil then
-		v55 = 196.2;
+		v55 = 100;
 	end;
-	local l__CFrame__56 = l__Workspace__6.CurrentCamera.CFrame;
-	local v57 = v51 + p40.fromPositionOffset;
+	local v56 = v53.gravitationalAcceleration;
+	if v56 == nil then
+		v56 = 196.2;
+	end;
+	local l__CFrame__57 = l__Workspace__6.CurrentCamera.CFrame;
+	local v58 = v52 + p40.fromPositionOffset;
 	if p40.targetPoint == nil then
-		local l__mouse__58 = l__Players__10.LocalPlayer:GetMouse();
-		local v59 = Vector2.new(l__mouse__58.X, l__mouse__58.Y);
-		local l__inputInfo__60 = p40.inputInfo;
-		if l__inputInfo__60 then
-			v59 = l__inputInfo__60.initialPosition;
+		local l__mouse__59 = l__Players__10.LocalPlayer:GetMouse();
+		local v60 = Vector2.new(l__mouse__59.X, l__mouse__59.Y);
+		local l__inputInfo__61 = p40.inputInfo;
+		if l__inputInfo__61 then
+			v60 = l__inputInfo__61.initialPosition;
 		end;
-		local v61 = (l__CFrame__56.Position + (l__Workspace__6.CurrentCamera:ScreenPointToRay(v59.X, v59.Y).Unit.Direction + Vector3.new(0, u21.YTargetOffset, 0)).Unit * ((l__CFrame__56.Position - v57).Magnitude * u21.CameraMultiplier) - v57).Unit;
+		local v62 = (l__CFrame__57.Position + (l__Workspace__6.CurrentCamera:ScreenPointToRay(v60.X, v60.Y).Unit.Direction + Vector3.new(0, u21.YTargetOffset, 0)).Unit * ((l__CFrame__57.Position - v58).Magnitude * u21.CameraMultiplier) - v58).Unit;
 	else
-		v61 = (p40.targetPoint - v57).Unit;
+		v62 = (p40.targetPoint - v58).Unit;
 	end;
 	return {
-		initialVelocity = v61 * (v54 * p40.velocityMultiplier), 
-		positionFrom = v57, 
-		deltaT = v53, 
-		gravitationalAcceleration = v55 * p40.gravityMultiplier, 
+		initialVelocity = v62 * (v55 * p40.velocityMultiplier), 
+		positionFrom = v58, 
+		deltaT = v54, 
+		gravitationalAcceleration = v56 * p40.gravityMultiplier, 
 		drawDurationSeconds = p40.drawDurationSeconds
 	};
 end;
@@ -346,62 +346,54 @@ local l__GameQueryUtil__22 = v2.GameQueryUtil;
 local l__CollectionService__23 = v4.CollectionService;
 local l__RunService__24 = v4.RunService;
 function u1.enableBeam(p43, p44, p45, p46)
-	local v62 = {
+	local v63 = {
 		Transparency = 1, 
 		CanCollide = false, 
 		Anchored = true, 
 		Parent = p43.projectileTargetingFolder
 	};
-	local v63 = u5("Part", v62);
-	local v64 = u5("Part", v62);
-	l__GameQueryUtil__22:setQueryIgnored(v63, true);
+	local v64 = u5("Part", v63);
+	local v65 = u5("Part", v63);
 	l__GameQueryUtil__22:setQueryIgnored(v64, true);
-	p43.targetingMaid:GiveTask(v63);
+	l__GameQueryUtil__22:setQueryIgnored(v65, true);
 	p43.targetingMaid:GiveTask(v64);
-	local v65 = u5("Beam", {
+	p43.targetingMaid:GiveTask(v65);
+	local v66 = u5("Beam", {
 		FaceCamera = true, 
 		Attachment0 = u5("Attachment", {
-			Parent = v63
+			Parent = v64
 		}), 
 		Attachment1 = u5("Attachment", {
-			Parent = v64
+			Parent = v65
 		}), 
 		Segments = 300, 
 		Color = ColorSequence.new(Color3.fromRGB(255, 255, 255)), 
 		Transparency = NumberSequence.new(0.2), 
 		Width0 = 0.08, 
-		Width1 = 0.08 + 2.22 * ((v63.Position - v64.Position).Magnitude / 100), 
+		Width1 = 0.08 + 2.22 * ((v64.Position - v65.Position).Magnitude / 100), 
 		Parent = p43.projectileTargetingFolder
 	});
-	l__CollectionService__23:AddTag(v65, "projectile-preview-beam");
-	p43.targetingMaid:GiveTask(v65);
+	l__CollectionService__23:AddTag(v66, "projectile-preview-beam");
+	p43.targetingMaid:GiveTask(v66);
 	p43.targetingMaid:GiveTask(l__RunService__24.RenderStepped:Connect(function()
 		if p44 ~= p43.targetingId then
 			return nil;
 		end;
-		local v66 = p43:calculateImportantLaunchValues(p45, true, p46);
-		if not v66 then
+		local v67 = p43:calculateImportantLaunchValues(p45, true, p46);
+		if not v67 then
 			p43:disableTargeting();
 			return nil;
 		end;
-		local l__deltaT__67 = v66.deltaT;
-		local l__initialVelocity__25 = v66.initialVelocity;
-		local l__positionFrom__26 = v66.positionFrom;
-		local function v68(p47)
-			return l__initialVelocity__25.X * p47 + l__positionFrom__26.X;
-		end;
-		local u27 = v66.gravitationalAcceleration;
-		local function v69(p48)
-			return -0.5 * u27 * p48 ^ 2 + l__initialVelocity__25.Y * p48 + l__positionFrom__26.Y;
-		end;
-		local function v70(p49)
-			return l__initialVelocity__25.Z * p49 + l__positionFrom__26.Z;
-		end;
-		local v71 = Vector3.new(v68(l__deltaT__67), v69(l__deltaT__67), v70(l__deltaT__67));
-		local v72 = (Vector3.new(v68(l__deltaT__67 / 2), v69(l__deltaT__67 / 2), v70(l__deltaT__67 / 2)) - l__positionFrom__26 * 0.25 - v71 * 0.25) * 2;
-		v63.CFrame = CFrame.new(l__positionFrom__26, v72) * CFrame.new(Vector3.new(u21.RelX, u21.RelY, u21.RelZ)) * CFrame.Angles(0, math.pi / 2, 0);
-		v64.CFrame = CFrame.new(v71) * (v63.CFrame - v63.Position);
-		v65.CurveSize0 = (v72 - v63.Position).Magnitude;
+		local l__deltaT__68 = v67.deltaT;
+		local l__initialVelocity__25 = v67.initialVelocity;
+		local l__positionFrom__26 = v67.positionFrom;
+		local u27 = v67.gravitationalAcceleration;
+		local v69 = l__deltaT__68 / 2;
+		local v70 = Vector3.new(l__initialVelocity__25.X * l__deltaT__68 + l__positionFrom__26.X, -0.5 * u27 * l__deltaT__68 ^ 2 + l__initialVelocity__25.Y * l__deltaT__68 + l__positionFrom__26.Y, l__initialVelocity__25.Z * l__deltaT__68 + l__positionFrom__26.Z);
+		local v71 = (Vector3.new(l__initialVelocity__25.X * (l__deltaT__68 / 2) + l__positionFrom__26.X, -0.5 * u27 * v69 ^ 2 + l__initialVelocity__25.Y * v69 + l__positionFrom__26.Y, l__initialVelocity__25.Z * (l__deltaT__68 / 2) + l__positionFrom__26.Z) - l__positionFrom__26 * 0.25 - v70 * 0.25) * 2;
+		v64.CFrame = CFrame.new(l__positionFrom__26, v71) * CFrame.new(Vector3.new(u21.RelX, u21.RelY, u21.RelZ)) * CFrame.Angles(0, math.pi / 2, 0);
+		v65.CFrame = CFrame.new(v70) * (v64.CFrame - v64.Position);
+		v66.CurveSize0 = (v71 - v64.Position).Magnitude;
 	end));
 end;
 u2 = l__KnitClient__3.CreateController;

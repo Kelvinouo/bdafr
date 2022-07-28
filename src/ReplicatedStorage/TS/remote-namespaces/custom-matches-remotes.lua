@@ -1,4 +1,3 @@
--- Script Hash: cd72c4a63fb5774eaf8e57060eab3b73c85bed779b83880200ee50f9407110334f4a636e9e3e0fdd159990779820ba01
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -33,5 +32,12 @@ return v2.Definitions.Namespace({
 	CohostPlayer = v2.Definitions.ServerAsyncFunction(), 
 	SetPlayerTeam = v2.Definitions.ServerAsyncFunction(), 
 	SetPlayerMaxHealth = v2.Definitions.ServerAsyncFunction(), 
-	HostPanelUpdate = v2.Definitions.ServerToClientEvent()
+	SaveMap = v2.Definitions.ServerAsyncFunction(), 
+	GetMySavedMaps = v2.Definitions.ServerFunction(), 
+	DeleteSavedMap = v2.Definitions.ServerAsyncFunction(), 
+	GetMapInfo = v2.Definitions.ServerAsyncFunction(), 
+	UpdateSavedMap = v2.Definitions.ServerAsyncFunction(), 
+	SetIgnoreBuildRestrictedRegions = v2.Definitions.ServerAsyncFunction(), 
+	HostPanelUpdate = v2.Definitions.ServerToClientEvent(), 
+	SavedMapsUpdate = v2.Definitions.ServerToClientEvent()
 });

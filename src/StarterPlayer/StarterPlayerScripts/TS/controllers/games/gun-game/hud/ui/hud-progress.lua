@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -15,7 +14,7 @@ v6.MIDDLE = 1;
 v5[1] = "MIDDLE";
 v6.LAST = 2;
 v5[2] = "LAST";
-local v7 = { l__ItemType__4.TACTICAL_CROSSBOW, l__ItemType__4.TWIRLBLADE, l__ItemType__4.CARROT_CANNON, l__ItemType__4.DIAMOND_SWORD, l__ItemType__4.FIREBALL, l__ItemType__4.BEAR_CLAWS, l__ItemType__4.ROCKET_LAUNCHER, l__ItemType__4.RAGEBLADE, l__ItemType__4.PAINT_SHOTGUN, l__ItemType__4.FRYING_PAN, l__ItemType__4.WOOD_CROSSBOW, l__ItemType__4.IRON_SWORD, l__ItemType__4.GOLDEN_BOW, l__ItemType__4.BOBA_BLASTER, l__ItemType__4.BAGUETTE };
+local v7 = { l__ItemType__4.TACTICAL_CROSSBOW, l__ItemType__4.TWIRLBLADE, l__ItemType__4.CARROT_CANNON, l__ItemType__4.VOID_SWORD, l__ItemType__4.PAINT_SHOTGUN, l__ItemType__4.SPEAR, l__ItemType__4.BEAR_CLAWS, l__ItemType__4.GRENADE_LAUNCHER, l__ItemType__4.RAGEBLADE, l__ItemType__4.TOY_HAMMER, l__ItemType__4.WOOD_CROSSBOW, l__ItemType__4.IRON_SWORD, l__ItemType__4.GOLDEN_BOW, l__ItemType__4.BOBA_BLASTER, l__ItemType__4.BAGUETTE };
 local v8 = v2.Component:extend("HudProgress");
 local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local u2 = {

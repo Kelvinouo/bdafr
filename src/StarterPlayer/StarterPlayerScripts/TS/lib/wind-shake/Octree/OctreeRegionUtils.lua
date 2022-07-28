@@ -1,14 +1,12 @@
--- Script Hash: a71e5ced9a1b6968d49dca56d6d49b7d77ab4f4de332fe562a3cb3348d67cbc5bec7973f426fcc3bb3b2cc07ae4a89f4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = { { 0.25, 0.25, -0.25 }, { -0.25, 0.25, -0.25 }, { 0.25, 0.25, 0.25 }, { -0.25, 0.25, 0.25 }, { 0.25, -0.25, -0.25 }, { -0.25, -0.25, -0.25 }, { 0.25, -0.25, 0.25 }, { -0.25, -0.25, 0.25 } };
 local v2 = {};
-local u1 = math.sqrt(3) / 2;
-local function u2(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
+local function u1(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
 	if not p8 then
 		error("Missing MaxDepth.");
 	end;
-	local v3 = p2 + u1 * (p1.Size[1] / 2);
+	local v3 = p2 + 0.8660254037844386 * (p1.Size[1] / 2);
 	local v4 = v3 * v3 + 1E-06;
 	local v5 = p2 * p2;
 	for v6, v7 in next, p1.SubRegions do
@@ -31,7 +29,7 @@ local function u2(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
 					end;
 				end;
 			else
-				local v17, v18 = u2(v7, p2, p3, p4, p5, p6, p7, p8, p9, p10);
+				local v17, v18 = u1(v7, p2, p3, p4, p5, p6, p7, p8, p9, p10);
 				p9 = v17;
 				p10 = v18;
 			end;
@@ -39,5 +37,5 @@ local function u2(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10)
 	end;
 	return p9, p10;
 end;
-v2.GetNeighborsWithinRadius = u2;
+v2.GetNeighborsWithinRadius = u1;
 return v2;

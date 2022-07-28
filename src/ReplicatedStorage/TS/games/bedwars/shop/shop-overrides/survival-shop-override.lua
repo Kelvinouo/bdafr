@@ -1,4 +1,3 @@
--- Script Hash: 6c7149c2451e484f68f4c324dc3f328c05d0744d80103a4839390aff841ccbeff461d2d9da166b2f3de58be631c7912d
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -27,8 +26,18 @@ function v3.shouldApply(p2, p3)
 	end;
 	return false;
 end;
+local l__ItemType__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
 function v3.getOverride(p4)
-	return {};
+	return { {
+			itemType = l__ItemType__4.WOOL_WHITE, 
+			price = 3
+		}, {
+			itemType = l__ItemType__4.STONE_BRICK, 
+			price = 15
+		}, {
+			itemType = l__ItemType__4.WOOD_PLANK_OAK, 
+			price = 10
+		} };
 end;
 u1 = v3.new;
 u1 = u1();

@@ -1,4 +1,3 @@
--- Script Hash: af7b76ee6bcbbe5823a4efaf837a5103efb63cce809bb36a9d052227e15bfc6095c57206d21e96e9ebd21fcf99f12fe6
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -114,6 +113,18 @@ local u1 = {
 		explodeRays = 150, 
 		damageRadius = 10 * l__BLOCK_SIZE__2
 	}, 
+	[l__ExplosionType__3.HELICOPTER_MISSILE] = {
+		displayName = "Minicopter Missile", 
+		damageMultipler = 0.7, 
+		knockbackMultiplier = {
+			horizontal = 2.25, 
+			vertical = 2.5
+		}, 
+		explodePower = 4.6, 
+		explodeRadius = 1, 
+		explodeRays = 75, 
+		damageRadius = 25
+	}, 
 	[l__ExplosionType__3.DINO_CHARGE] = {
 		displayName = "Dino Charge", 
 		damageMultipler = 1, 
@@ -124,6 +135,40 @@ local u1 = {
 		damageRadius = 10 * l__BLOCK_SIZE__2, 
 		explodePower = 20, 
 		explodeRays = 150
+	}, 
+	[l__ExplosionType__3.PENGUIN] = {
+		displayName = "Penguin Self-Destruct", 
+		damageMultipler = 0.5, 
+		knockbackMultiplier = {
+			horizontal = 0, 
+			vertical = 0
+		}, 
+		explodePower = 3.2, 
+		explodeRadius = 1, 
+		explodeRays = 35, 
+		damageRadius = 5.5 * l__BLOCK_SIZE__2
+	}, 
+	[l__ExplosionType__3.BOMBER_PENGUIN_EXPLOSION] = {
+		displayName = "Penguin Self-Destruct", 
+		damageMultipler = 1, 
+		knockbackMultiplier = {
+			horizontal = 2.25, 
+			vertical = 2.5
+		}, 
+		explodePower = 2, 
+		explodeRadius = 3, 
+		damageRadius = 8 * l__BLOCK_SIZE__2
+	}, 
+	[l__ExplosionType__3.KING_PENGUIN_EXPLOSION] = {
+		displayName = "King Penguin", 
+		damageMultipler = 1, 
+		knockbackMultiplier = {
+			horizontal = 2.25, 
+			vertical = 2.5
+		}, 
+		explodePower = 20, 
+		explodeRadius = 10, 
+		damageRadius = 10 * l__BLOCK_SIZE__2
 	}
 };
 return {

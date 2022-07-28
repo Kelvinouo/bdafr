@@ -12,6 +12,28 @@ return {
 		newestKitBG = "rbxassetid://8795128315"
 	}, 
 	GameUpdateMeta = { {
+			updateLogId = 42, 
+			visible = true, 
+			title = "Penguin Survival (Return of the Penguins)", 
+			date = "7/22/2022", 
+			body = "\240\159\144\167 <b>Penguin Survival <font color=\"" .. (l__ColorUtil__2.richTextColor(l__Theme__6.mcYellow) .. "\">(Return of the Penguins)</font></b>\n") .. "The Penguins are back! Fight waves of penguins in the new-and-improved Penguin Survival Limited Time Mode!\n" .. "Play this mode at least once to receive the exclusive \226\128\156Penguin Deal With It\226\128\157 emote!\n\n" .. ("\240\159\144\167 <b>Penguin Survival Badges <font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__6.mcYellow) .. "\">(LIMITED TIME)</font></b>\n") .. ("\240\159\143\134\194\160<b><font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__6.mcGold) .. "\">Victory Badge:</font></b> Survive past wave 10.\n") .. "- Comes with \226\128\156Penguin King Trophy\226\128\157 emote\n" .. ("\240\159\146\165\194\160<b><font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__6.mcRed) .. "\">Hard Mode Badge:</font></b> Survive past wave 10 while taking less than 100 dmg and dealing more than 3000 dmg. \n") .. "- Comes with \226\128\156Penguin Punch\226\128\157 emote\n\n\240\159\134\147\194\160<b>Free Kits of the Week</b>\n\226\154\148\239\184\143 Barbarian\n\240\159\143\185 Archer\n\240\159\164\160 Lassy\n\n\240\159\151\186\194\160<b>Map Changes</b>\n\240\159\142\162\194\160Added Themepark (squads + duos)\n\240\159\146\165\194\160Added Trench (squads)\n\240\159\167\177\194\160Added Ruins (duos)\n\240\159\143\176\194\160Added Mill (squads)\n\226\152\162\239\184\143\194\160Added Fusion (duos)\n\240\159\140\184\194\160Removed Spring (30v30)\n\n<b>Other Changes</b>\n\240\159\148\173\194\160Mobile: added first person crosshair\n\240\159\151\186\239\184\143 Map Saves: Fixed certain block types not saving\n\240\159\151\186\239\184\143 Map Saves: Improved map save speeds\n\226\154\153\239\184\143 Settings: Separated the background music sliders for lobby & game music.\n\240\159\155\160\239\184\143 Host Panel: Added a toggle under the map tab \226\128\156Ignore Build Restricted Regions\226\128\157\n\240\159\155\160\239\184\143 Host Panel: Fixed the bed break host panel toggle\n\240\159\155\160\239\184\143 Custom Matches: New command to generate a flat square of blocks from your character\226\128\153s location /edit flat &lt;block&gt; &lt;size&gt;", 
+			image = {
+				assetId = "rbxassetid://10321639060", 
+				aspectRatio = 1, 
+				height = 150
+			}
+		}, {
+			updateLogId = 42, 
+			visible = true, 
+			title = "Attack Minicopter + Map Saves", 
+			date = "7/15/2022", 
+			body = "\240\159\154\129 <b>Attack Minicopter [NEW!]</b>\nSoar the skies in this flying death machine.. if you can afford it. Avaliable in the Item Shop for 20 emeralds.\n\n\240\159\151\186\239\184\143\194\160<b>Map Saves [NEW!]</b>\nYou can now save and share the maps you build in Custom Matches! Custom match host/cohosts can use the Host Panel to save a version of the current map.\n- Map saves come with a shareable 12 character code that can be inputted into the Custom Match NPC\n- Map saves can be loaded by all players if set to \226\128\156Public\226\128\157\n\n\240\159\143\185 <b>Projectile Lag Compensation</b>\nProjectiles now compensate for your network latency. This will make projectile hits feel much more consistent and address projectiles frequently \226\128\156absorbing\226\128\157 with high ping. We will be monitoring these new changes and adjusting accordingly.\n\n\240\159\134\147\194\160<b>Free Kits of the Week</b>\n\240\159\145\188 Trinity\n\240\159\146\165 Davey\n\240\159\148\168 Builder\n\n<b>Balance Changes</b>\n\240\159\144\157\194\160Beekeeper: hive drops are no longer split between players\n\240\159\140\170\194\160Zephyr: Nerfed orb damage (100% armor pen \226\134\146 50% armor pen)\n\n<b>Other Changes</b>\n\226\154\148\239\184\143\194\160Added item equip animations + sounds\n\240\159\140\191\194\160Added bushes and flowers to some maps\n\240\159\155\143\239\184\143\194\160Added a new bed break notification\n\240\159\151\186\239\184\143\194\160Added a new \226\128\156Void\226\128\157 map for Custom Match builders.\n\240\159\155\161 Fixed armory upgrade showing items you can\226\128\153t purchase\n\240\159\148\138\194\160Positional sounds now properly \226\128\156roll off\226\128\157 with distance\n\240\159\145\190 Glitch kill effect no longer has collisions", 
+			image = {
+				assetId = "rbxassetid://10238519394", 
+				aspectRatio = 1, 
+				height = 150
+			}
+		}, {
 			updateLogId = 41, 
 			visible = true, 
 			title = "NEW Kit: Cobalt + Gun Game", 

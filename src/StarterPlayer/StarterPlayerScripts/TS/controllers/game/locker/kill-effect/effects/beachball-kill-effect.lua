@@ -1,4 +1,3 @@
--- Script Hash: fb514313bf64073f839718dfa89e1acffd0c79ae414099b03ff4efc6ee89ee0f7bfccf75eaa14996fd13f87b82da5808
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -45,33 +44,32 @@ function v4.onKill(p3, p4, p5, p6)
 	local v9 = l__ReplicatedStorage__4.Assets.Misc.Beachball:Clone();
 	v9.Parent = l__Workspace__2;
 	v6:GiveTask(v9);
-	local v10 = CFrame.Angles(math.rad(math.random(-360, 360)), math.rad(math.random(-360, 360)), math.rad(math.random(-360, 360)));
 	local u8 = 0.632;
-	local u9 = 2 * math.sqrt(0.4);
-	local u10 = nil;
+	local u9 = nil;
+	local u10 = CFrame.Angles(math.rad(math.random(-360, 360)), math.rad(math.random(-360, 360)), math.rad(math.random(-360, 360)));
 	v6:GiveTask(l__RunService__5.Heartbeat:Connect(function(p8)
 		u8 = u8 + p8;
-		local v11 = 0.3 ^ math.floor(u8 / u9) * (40 - 100 * (u8 % u9 - u9 / 2) ^ 2);
-		local v12 = 40 * 0.3 ^ ((u8 - 1) / u9);
-		local v13 = u10;
-		if v13 ~= 0 and v13 == v13 and v13 then
-			v13 = v12 < 0.5;
+		local v10 = 0.3 ^ math.floor(u8 / 1.2649110640673518) * (40 - 100 * (u8 % 1.2649110640673518 - 0.6324555320336759) ^ 2);
+		local v11 = 40 * 0.3 ^ ((u8 - 1) / 1.2649110640673518);
+		local v12 = u9;
+		if v12 ~= 0 and v12 == v12 and v12 then
+			v12 = v11 < 0.5;
 		end;
-		if v13 == 0 or v13 ~= v13 or not v13 then
-			v8:setGoal(u3.Spring.new((1 - 0.5 ^ math.floor(u8 / u9)) * 6, {
+		if v12 == 0 or v12 ~= v12 or not v12 then
+			v8:setGoal(u3.Spring.new((1 - 0.5 ^ math.floor(u8 / 1.2649110640673518)) * 6, {
 				dampingRatio = 0.35, 
 				frequency = 4
 			}));
 		end;
-		if v12 < 3 and ((u10 == 0 or u10 ~= u10 or not u10) and v11 < 0.5) then
-			u10 = v11;
+		if v11 < 3 and ((u9 == 0 or u9 ~= u9 or not u9) and v10 < 0.5) then
+			u9 = v10;
 		end;
-		if u10 ~= nil then
-			local v14 = u10;
+		if u9 ~= nil then
+			local v13 = u9;
 		else
-			v14 = v11;
+			v13 = v10;
 		end;
-		v9:SetPrimaryPartCFrame(p6 * CFrame.new(0, v14, 0) * v10);
+		v9:SetPrimaryPartCFrame(p6 * CFrame.new(0, v13, 0) * u10);
 	end));
 	task.delay(4, function()
 		l__ModelUtil__6.tweenModelSize(v9, 2, l__InExpo__7, 0):andThen(function()

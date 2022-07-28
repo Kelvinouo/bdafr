@@ -803,6 +803,18 @@ return {
 		[l__EmoteType__6.SPIRIT_DUO_EZ] = {
 			name = "Spirit Duo EZ", 
 			image = l__getEmoteAsset__3(l__EmoteType__6.SPIRIT_DUO_EZ)
+		}, 
+		[l__EmoteType__6.PENGUIN_PUNCH] = {
+			name = "Penguin Punch", 
+			image = "rbxassetid://10321183674"
+		}, 
+		[l__EmoteType__6.PENGUIN_DEAL_WITH_IT] = {
+			name = "Penguin Deal With It", 
+			image = "rbxassetid://10321184569"
+		}, 
+		[l__EmoteType__6.PENGUIN_KING_TROPHY] = {
+			name = "Penguin King Trophy", 
+			image = "rbxassetid://10321184147"
 		}
 	}
 };

@@ -1,10 +1,18 @@
--- Script Hash: 80bc06165079c26394bac3509cf50c19ace0f2ea9806e5eb306c1fb5248073e6485e62a5f4e264c9b946f2f6fb364234
 -- Decompiled with the Synapse X Luau decompiler.
 
+local l__VehicleType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "vehicle", "vehicle-type").VehicleType;
 local u1 = {
-	[require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "vehicle", "vehicle-type").VehicleType.MINICOPTER] = {
+	[l__VehicleType__1.MINICOPTER] = {
 		name = "Minicopter", 
-		helicopter = {}
+		helicopter = {
+			attack = false
+		}
+	}, 
+	[l__VehicleType__1.ATTACK_HELI] = {
+		name = "Attack Helicopter", 
+		helicopter = {
+			attack = true
+		}
 	}
 };
 return {

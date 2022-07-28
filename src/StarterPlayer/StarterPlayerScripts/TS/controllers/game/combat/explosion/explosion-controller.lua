@@ -1,4 +1,3 @@
--- Script Hash: 2c860171849566941b5d0d966bba899f722c1cacbf0dfeb31d085127bd1e5e52903ba89324914ce594b9ee14d5b128e2
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -36,9 +35,9 @@ local l__GameQueryUtil__9 = v2.GameQueryUtil;
 local l__Debris__10 = v3.Debris;
 local l__GetTarmacAsset__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "tarmac", "tarmac-helpers").GetTarmacAsset;
 function u1.KnitStart(p2)
-	l__default__5.Client:WaitFor("ExplosionEffect"):andThen(function(p3)
+	l__default__5.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
-			l__ClientSyncEvents__6.ExplosionEffectEvent:fire(p4.position, p4.explosionType);
+			l__ClientSyncEvents__6.ExplosionEffect:fire(p4.position, p4.explosionType);
 			if p4.disableDefaultEffect then
 				return nil;
 			end;
@@ -141,7 +140,7 @@ function u1.playExplodeEffect(p5, p6, p7)
 		v16:Emit(1);	
 	end;
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

@@ -1,4 +1,3 @@
--- Script Hash: 26f3900da6db9a5ea006d5ef5df3d4079eb6ca27fd3141da2073a0ae860b6f8630075dc46a29bdb490457e9f6d9944dc
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -17,6 +16,12 @@ v4.PENGUIN_FALL = "penguin_fall";
 v3.penguin_fall = "PENGUIN_FALL";
 v4.PENGUIN_DISCO = "pengion_disco";
 v3.pengion_disco = "PENGUIN_DISCO";
+v4.PENGUIN_PUNCH = "penguin_punch";
+v3.penguin_punch = "PENGUIN_PUNCH";
+v4.PENGUIN_KING_TROPHY = "penguin_king_trophy";
+v3.penguin_king_trophy = "PENGUIN_KING_TROPHY";
+v4.PENGUIN_DEAL_WITH_IT = "penguin_deal_with_it";
+v3.penguin_deal_with_it = "PENGUIN_DEAL_WITH_IT";
 v4.LUNAR_TIGER_BUILDER = "lunar_tiger_builder";
 v3.lunar_tiger_builder = "LUNAR_TIGER_BUILDER";
 v4.VULCAN_LANTERN = "vulcan_lantern";

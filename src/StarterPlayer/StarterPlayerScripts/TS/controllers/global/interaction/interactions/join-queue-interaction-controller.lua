@@ -1,8 +1,7 @@
--- Script Hash: 9e4949fe9d256a069f258686f9fdb86d32b8098ced7f7424346314a253ff8575e94f5aa129b0def5dafa4d6ff2a74351
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local l__KnitClient__3 = v2.KnitClient;
 local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v5 = setmetatable({}, {
@@ -43,8 +42,7 @@ function u1.KnitStart(p2)
 		interactionTag = "InteractionJoinQueue"
 	};
 	function v8.onInteracted(p4)
-		local v10 = p4:GetAttribute("QueueSelectionMenu");
-		if v10 ~= 0 and v10 == v10 and v10 ~= "" and v10 then
+		if p4:GetAttribute("QueueSelectionMenu") == true then
 			p2:openQueueSelectionMenu(p4.Name);
 			return;
 		end;
@@ -52,25 +50,25 @@ function u1.KnitStart(p2)
 		p2:joinQueue(p4.Name);
 	end;
 	function v8.shouldMakeInteraction(p5)
-		local v11 = p5:GetAttribute("QueueSelectionMenu");
-		if v11 ~= 0 and v11 == v11 and v11 ~= "" and v11 then
+		local v10 = p5:GetAttribute("QueueSelectionMenu");
+		if v10 ~= 0 and v10 == v10 and v10 ~= "" and v10 then
 			return true;
 		end;
-		local v12 = l__Flamework__5.resolveDependency("@easy-games/lobby:client/controllers/lobby-client-controller@LobbyClientController"):getQueueMeta(p5.Name);
-		if v12.disabled == nil then
+		local v11 = l__Flamework__5.resolveDependency("@easy-games/lobby:client/controllers/lobby-client-controller@LobbyClientController"):getQueueMeta(p5.Name);
+		if v11.disabled == nil then
 			return true;
 		end;
-		return not v12.disabled;
+		return not v11.disabled;
 	end;
 	v8.onVisibilityStateChanged = v7;
 	l__KnitClient__3.Controllers.InteractionRegistryController:RegisterInteraction(v8);
 	l__ClientStore__6.changed:connect(function(p6, p7)
-		local l__queueState__13 = p6.Party.queueState;
-		if l__queueState__13 == p7.Party.queueState then
+		local l__queueState__12 = p6.Party.queueState;
+		if l__queueState__12 == p7.Party.queueState then
 			return nil;
 		end;
 		print("Queue state updated, updating interactions");
-		v7:Fire(l__queueState__13 == l__QueueState__7.NONE);
+		v7:Fire(l__queueState__12 == l__QueueState__7.NONE);
 	end);
 end;
 function u1.joinQueue(p8, p9)

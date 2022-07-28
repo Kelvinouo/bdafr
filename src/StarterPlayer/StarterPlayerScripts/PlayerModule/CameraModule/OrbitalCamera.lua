@@ -1,4 +1,3 @@
--- Script Hash: aa7dfa1300a0846375ecf0b4cf301ddcbcd2d63429e8380e9bda1476429473b02e17eadf78765483eae949c85cc4fb70
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = Vector3.new(0, 0, 1);
@@ -146,7 +145,7 @@ local u3 = Vector3.new(0, 0, 0);
 function v4.CalculateNewLookVector(p16, p17, p18)
 	local v10 = p17 or p16:GetCameraLookVector();
 	local v11 = math.asin(v10.y);
-	local v12 = Vector2.new(p18.x, (math.clamp(p18.y, v11 - math.rad(80), v11 - math.rad(-80))));
+	local v12 = Vector2.new(p18.x, (math.clamp(p18.y, v11 - 1.3962634015954636, v11 - -1.3962634015954636)));
 	return (CFrame.Angles(0, -v12.x, 0) * CFrame.new(u3, v10) * CFrame.Angles(-v12.y, 0, 0)).lookVector;
 end;
 local u4 = require(script.Parent:WaitForChild("CameraInput"));

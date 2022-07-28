@@ -1,4 +1,3 @@
--- Script Hash: 17630c60a8959263def82ce00d4efba70963c8f65898f4802c4a617ba574ed76e7ff5a1d8141002f2833d0fb0d7791bf
 -- Decompiled with the Synapse X Luau decompiler.
 
 return {
@@ -51,6 +50,9 @@ return {
 	Explode5 = "rbxassetid://7843624755", 
 	Explode6 = "rbxassetid://7843624866", 
 	Explode7 = "rbxassetid://7843632261", 
+	FunnyShape1 = "rbxassetid://10013935436", 
+	FunnyShape2 = "rbxassetid://10013935610", 
+	FunnyShape3 = "rbxassetid://10085259365", 
 	Indicator = {
 		Image = "rbxassetid://9369198273", 
 		ImageRectOffset = Vector2.new(258, 129), 
@@ -551,6 +553,7 @@ return {
 		}
 	}, 
 	emotes = {
+		penguin_punch = "rbxassetid://10320124240", 
 		season3 = {
 			angry_builder = "rbxassetid://9122597567", 
 			archer = "rbxassetid://9122597665", 
@@ -651,5 +654,7 @@ return {
 			vulcan_overheat = "rbxassetid://9877588678"
 		}, 
 		victorious_beta = "rbxassetid://9197101063"
-	}
+	}, 
+	healthbarfill = "rbxassetid://10013722579", 
+	healthbarstroke = "rbxassetid://10013722726"
 };

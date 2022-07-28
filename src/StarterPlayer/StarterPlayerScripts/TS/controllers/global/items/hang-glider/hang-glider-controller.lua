@@ -1,9 +1,8 @@
--- Script Hash: 7b50189f3ed793569011ae9e474b1eabe6784101f55b894504ac735324eaa6cea5d90de12e784b9a90fa742a0ac733f5
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local l__HandKnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
 local v6 = setmetatable({}, {
@@ -19,12 +18,12 @@ function u1.new(...)
 	return v7:constructor(...) and v7;
 end;
 local u2 = l__HandKnitController__5;
-local l__Maid__3 = v3.Maid;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function u1.constructor(p1, ...)
 	u2.constructor(p1, ...);
 	p1.Name = "HangGliderController";
-	p1.maid = l__Maid__3.new();
-	p1.activeGliderMaid = l__Maid__3.new();
+	p1.maid = u3.new();
+	p1.activeGliderMaid = u3.new();
 	p1.acceptedGlidingStates = {
 		[Enum.HumanoidStateType.FallingDown] = true, 
 		[Enum.HumanoidStateType.Flying] = true, 
@@ -42,7 +41,7 @@ local l__TweenService__8 = v4.TweenService;
 local l__Players__9 = v4.Players;
 function u1.KnitStart(p2)
 	u2.KnitStart(p2);
-	l__default__4.Client:OnEvent("HangGliderStateChanged", function(p3)
+	l__default__4.Client:OnEvent("RemoteName", function(p3)
 		local l__player__8 = p3.player;
 		local l__Character__9 = l__player__8.Character;
 		if p3.active and l__Character__9 then
@@ -74,7 +73,7 @@ function u1.KnitStart(p2)
 	l__Players__9.LocalPlayer.CharacterAdded:Connect(function(p4)
 		p2:registerCharacter(p4);
 	end);
-	l__default__4.Client:OnEvent("HangGliderStateChanged", function(p5)
+	l__default__4.Client:OnEvent("RemoteName", function(p5)
 		if p5.active == false and p5.player.UserId == l__Players__9.LocalPlayer.UserId then
 			p2:closeHangGlider();
 		end;
@@ -108,7 +107,7 @@ function u1.openHangGlider(p10)
 	if not l__Character__14 then
 		return nil;
 	end;
-	l__default__4.Client:Get("HangGliderUse"):SendToServer({});
+	l__default__4.Client:Get("RemoteName"):SendToServer({});
 	p10.hangGliderActive = true;
 	p10.activeGliderMaid:GiveTask((l__KnitClient__10.Controllers.SprintController:getMovementStatusModifier():addModifier({
 		blockSprint = true, 
@@ -151,135 +150,135 @@ function u1.openHangGlider(p10)
 	local v21 = u13("AlignOrientation", v19);
 	table.insert(p10.activeForces, v18);
 	table.insert(p10.activeForces, v21);
-	local v22 = math.rad(15);
 	l__Character__14.PrimaryPart.AssemblyLinearVelocity = l__Character__14.PrimaryPart.AssemblyLinearVelocity * Vector3.new(1, 0.5, 1);
 	l__RunService__14:BindToRenderStep("HangGliderThrust", Enum.RenderPriority.Last.Value, function()
 		l__Humanoid__15:Move(Vector3.new(0, 0, -1), true);
 	end);
 	local u25 = 0;
-	local function u26(p11, p12, p13)
-		return (p11 - p12[1]) * (p13[2] - p13[1]) / (p12[2] - p12[1]) + p13[1];
-	end;
-	local u27 = l__RunService__14.Stepped:Connect(function(p14)
-		local l__PrimaryPart__23 = l__Character__14.PrimaryPart;
-		local l__CurrentCamera__24 = l__Workspace__15.CurrentCamera;
-		local l__Humanoid__25 = l__Character__14:WaitForChild("Humanoid");
-		local l__AssemblyLinearVelocity__26 = l__PrimaryPart__23.AssemblyLinearVelocity;
-		local v27 = l__Humanoid__25.RootPart;
-		if v27 ~= nil then
-			v27 = v27.AssemblyMass;
+	local u26 = l__RunService__14.Stepped:Connect(function(p11)
+		local l__PrimaryPart__22 = l__Character__14.PrimaryPart;
+		local l__CurrentCamera__23 = l__Workspace__15.CurrentCamera;
+		local l__Humanoid__24 = l__Character__14:WaitForChild("Humanoid");
+		local l__AssemblyLinearVelocity__25 = l__PrimaryPart__22.AssemblyLinearVelocity;
+		local v26 = l__Humanoid__24.RootPart;
+		if v26 ~= nil then
+			v26 = v26.AssemblyMass;
 		end;
-		local v28 = v27;
-		if v28 == 0 or v28 ~= v28 or not v28 then
-			v28 = 0;
+		local v27 = v26;
+		if v27 == 0 or v27 ~= v27 or not v27 then
+			v27 = 0;
 		end;
-		local v29 = math.clamp(math.sign(l__CurrentCamera__24.CFrame.LookVector.Y) * l__CurrentCamera__24.CFrame:ToOrientation(), 0.01, math.rad(90));
-		local v30 = math.clamp(1 - math.min(v29, v22) / math.rad(90), 0.01, 1);
-		if v29 < v22 then
-			l__PrimaryPart__23.CFrame = CFrame.new(l__PrimaryPart__23.Position, l__PrimaryPart__23.Position + l__CurrentCamera__24.CFrame.LookVector);
+		local v28 = math.clamp(math.sign(l__CurrentCamera__23.CFrame.LookVector.Y) * l__CurrentCamera__23.CFrame:ToOrientation(), 0.01, 1.5707963267948966);
+		local v29 = math.clamp(1 - math.min(v28, 0.2617993877991494) / 1.5707963267948966, 0.01, 1);
+		if v28 < 0.2617993877991494 then
+			l__PrimaryPart__22.CFrame = CFrame.new(l__PrimaryPart__22.Position, l__PrimaryPart__22.Position + l__CurrentCamera__23.CFrame.LookVector);
 		else
-			l__PrimaryPart__23.CFrame = l__PrimaryPart__23.CFrame * CFrame.Angles(math.sign(l__CurrentCamera__24.CFrame.LookVector.Y) * v22, 0, 0);
+			l__PrimaryPart__22.CFrame = l__PrimaryPart__22.CFrame * CFrame.Angles(math.sign(l__CurrentCamera__23.CFrame.LookVector.Y) * 0.2617993877991494, 0, 0);
 		end;
-		v21.CFrame = l__CurrentCamera__24.CFrame;
+		v21.CFrame = l__CurrentCamera__23.CFrame;
 		if u25 > 0.5 then
-			local v31 = 0.5 * (v30 / v22);
-			if math.sign(l__CurrentCamera__24.CFrame.LookVector.Y) == 1 and l__Humanoid__25.WalkSpeed > 0 then
-				l__Humanoid__25.WalkSpeed = l__Humanoid__25.WalkSpeed - v31;
-			elseif l__Humanoid__25.WalkSpeed < 37 then
-				l__Humanoid__25.WalkSpeed = l__Humanoid__25.WalkSpeed + v31;
+			local v30 = 0.5 * (v29 / 0.2617993877991494);
+			if math.sign(l__CurrentCamera__23.CFrame.LookVector.Y) == 1 and l__Humanoid__24.WalkSpeed > 0 then
+				l__Humanoid__24.WalkSpeed = l__Humanoid__24.WalkSpeed - v30;
+			elseif l__Humanoid__24.WalkSpeed < 37 then
+				l__Humanoid__24.WalkSpeed = l__Humanoid__24.WalkSpeed + v30;
 			end;
 			u25 = u25 - 0.5;
 		end;
-		u25 = u25 + p14;
-		v18.Force = Vector3.new(0, (l__Workspace__15.Gravity * math.max(0.7, u26((1 - v30) * math.sign(l__CurrentCamera__24.CFrame.LookVector.Y), { -1, 1 }, { 0.7, 1.25 }) + u26((l__AssemblyLinearVelocity__26 * Vector3.new(1, 0, 1)).Magnitude, { 0, 35 }, { -0.3, 0 })) - u16.DragConstant * (math.pow(math.clamp(l__AssemblyLinearVelocity__26.Y, -100, 100), 2) / 2) * math.sign(l__Character__14.PrimaryPart.AssemblyLinearVelocity.Y) / 13) * v28, 0);
+		u25 = u25 + p11;
+		local v31 = { -1, 1 };
+		local v32 = { 0.7, 1.25 };
+		local v33 = { 0, 35 };
+		local v34 = { -0.3, 0 };
+		v18.Force = Vector3.new(0, (l__Workspace__15.Gravity * math.max(0.7, ((1 - v29) * math.sign(l__CurrentCamera__23.CFrame.LookVector.Y) - v31[1]) * (v32[2] - v32[1]) / (v31[2] - v31[1]) + v32[1] + (((l__AssemblyLinearVelocity__25 * Vector3.new(1, 0, 1)).Magnitude - v33[1]) * (v34[2] - v34[1]) / (v33[2] - v33[1]) + v34[1])) - u16.DragConstant * (math.pow(math.clamp(l__AssemblyLinearVelocity__25.Y, -100, 100), 2) / 2) * math.sign(l__Character__14.PrimaryPart.AssemblyLinearVelocity.Y) / 13) * v27, 0);
 	end);
 	p10.activeGliderMaid:GiveTask(function()
-		u27:Disconnect();
+		u26:Disconnect();
 	end);
 	if l__DeviceUtil__17.isMobileControls() then
-		local v32 = {};
-		local v33 = {
+		local v35 = {};
+		local v36 = {
 			Image = l__BedwarsImageId__19.DOWN_MOBILE, 
 			Position = l__BedwarsUI__20:getActionMobileButtonPosition() - UDim2.fromScale(0.08, 0)
 		};
-		function v33.OnClick()
+		function v36.OnClick()
 			p10:sendCloseHangGliderEvent();
 		end;
-		v32[#v32 + 1] = u18.createElement(l__MobileButton__21, v33);
-		local u28 = u18.mount(u18.createElement("ScreenGui", {
+		v35[#v35 + 1] = u18.createElement(l__MobileButton__21, v36);
+		local u27 = u18.mount(u18.createElement("ScreenGui", {
 			ResetOnSpawn = false
-		}, v32), l__Players__9.LocalPlayer:WaitForChild("PlayerGui"));
+		}, v35), l__Players__9.LocalPlayer:WaitForChild("PlayerGui"));
 		p10.activeGliderMaid:GiveTask(function()
-			u18.unmount(u28);
+			u18.unmount(u27);
 		end);
 	else
-		local v34 = {
+		local v37 = {
 			actionName = "HangGliderDismount", 
 			interactionKey = Enum.KeyCode.X, 
 			gamepadInteractionKey = Enum.KeyCode.ButtonB
 		};
-		function v34.onActivated()
+		function v37.onActivated()
 			if p10.hangGliderActive then
 				p10:sendCloseHangGliderEvent();
 			end;
 		end;
-		v34.text = "Dismount Glider";
-		p10.activeGliderMaid:GiveTask((l__Flamework__22.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(u18.createElement(l__ActionButton__23, v34))));
+		v37.text = "Dismount Glider";
+		p10.activeGliderMaid:GiveTask((l__Flamework__22.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(u18.createElement(l__ActionButton__23, v37))));
 	end;
 end;
-local l__ClientStore__29 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
-function u1.closeHangGlider(p15)
-	p15.hangGliderActive = false;
-	for v35, v36 in ipairs(p15.activeForces) do
-		v36:Destroy();
+local l__ClientStore__28 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
+function u1.closeHangGlider(p12)
+	p12.hangGliderActive = false;
+	for v38, v39 in ipairs(p12.activeForces) do
+		v39:Destroy();
 	end;
-	table.clear(p15.activeForces);
+	table.clear(p12.activeForces);
 	l__RunService__14:UnbindFromRenderStep("HangGliderThrust");
-	local l__Humanoid__37 = l__Players__9.LocalPlayer.Character:WaitForChild("Humanoid");
-	if l__Humanoid__37 then
-		l__Humanoid__37.WalkSpeed = 14;
+	local l__Humanoid__40 = l__Players__9.LocalPlayer.Character:WaitForChild("Humanoid");
+	if l__Humanoid__40 then
+		l__Humanoid__40.WalkSpeed = 14;
 	end;
 	if not l__DeviceUtil__17.isMobileControls() then
 		l__KnitClient__10.Controllers.MobileShiftLockController:disable();
-	elseif not l__ClientStore__29:getState().Settings.mobileShiftLock then
+	elseif not l__ClientStore__28:getState().Settings.mobileShiftLock then
 		l__KnitClient__10.Controllers.MobileShiftLockController:disable();
 	end;
-	p15.activeGliderMaid:DoCleaning();
+	p12.activeGliderMaid:DoCleaning();
 end;
-function u1.sendCloseHangGliderEvent(p16)
-	l__default__4.Client:Get("HangGliderClose"):SendToServer({});
+function u1.sendCloseHangGliderEvent(p13)
+	l__default__4.Client:Get("RemoteName"):SendToServer({});
 end;
-function u1.canOpenHangGlider(p17)
-	if p17.acceptedGlidingStates[l__Players__9.LocalPlayer.Character:FindFirstChild("Humanoid"):GetState()] ~= nil then
+function u1.canOpenHangGlider(p14)
+	if p14.acceptedGlidingStates[l__Players__9.LocalPlayer.Character:FindFirstChild("Humanoid"):GetState()] ~= nil then
 		return true;
 	end;
 	return false;
 end;
-local l__ItemType__30 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
-function u1.isRelevantItem(p18, p19)
-	return p19.itemType == l__ItemType__30.HANG_GLIDER;
+local l__ItemType__29 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
+function u1.isRelevantItem(p15, p16)
+	return p16.itemType == l__ItemType__29.HANG_GLIDER;
 end;
-local l__ColorUtil__31 = v2.ColorUtil;
-local l__ContextActionService__32 = v4.ContextActionService;
-function u1.onEnable(p20, p21)
-	local l__tool__38 = p21.tool;
-	local v39 = l__ClientStore__29:getState().Game.myTeam;
-	if v39 ~= nil then
-		v39 = v39.color;
+local l__ColorUtil__30 = v2.ColorUtil;
+local l__ContextActionService__31 = v4.ContextActionService;
+function u1.onEnable(p17, p18)
+	local l__tool__41 = p18.tool;
+	local v42 = l__ClientStore__28:getState().Game.myTeam;
+	if v42 ~= nil then
+		v42 = v42.color;
 	end;
-	local v40 = v39;
-	if v40 == nil then
-		v40 = Color3.fromRGB(255, 255, 255);
+	local v43 = v42;
+	if v43 == nil then
+		v43 = Color3.fromRGB(255, 255, 255);
 	end;
-	l__tool__38.Handle.LightStripe.Color = v40;
-	l__tool__38.Handle.DarkStripe.Color = l__ColorUtil__31.darken(v40, 0.5);
-	l__ContextActionService__32:BindAction("open-glider", function(p22, p23, p24)
-		if p23 == Enum.UserInputState.Begin then
-			if p20.hangGliderActive then
+	l__tool__41.Handle.LightStripe.Color = v43;
+	l__tool__41.Handle.DarkStripe.Color = l__ColorUtil__30.darken(v43, 0.5);
+	l__ContextActionService__31:BindAction("open-glider", function(p19, p20, p21)
+		if p20 == Enum.UserInputState.Begin then
+			if p17.hangGliderActive then
 				return nil;
 			end;
-			if p20:canOpenHangGlider() then
-				p20:openHangGlider();
+			if p17:canOpenHangGlider() then
+				p17:openHangGlider();
 				return;
 			end;
 		else
@@ -287,35 +286,35 @@ function u1.onEnable(p20, p21)
 		end;
 		return nil;
 	end, false, Enum.UserInputType.MouseButton1);
-	p20.maid:GiveTask(function()
-		l__ContextActionService__32:UnbindAction("open-glider");
+	p17.maid:GiveTask(function()
+		l__ContextActionService__31:UnbindAction("open-glider");
 	end);
 	if l__DeviceUtil__17.isMobileControls() then
-		p20:setupYield(function()
-			local u33 = u18.mount(u18.createElement("ScreenGui", {
+		p17:setupYield(function()
+			local u32 = u18.mount(u18.createElement("ScreenGui", {
 				ResetOnSpawn = false
 			}, { u18.createElement(l__MobileButton__21, {
 					Image = l__BedwarsImageId__19.UP_MOBILE, 
 					Position = l__BedwarsUI__20:getActionMobileButtonPosition(), 
 					OnClick = function()
-						if p20.hangGliderActive then
-							p20:sendCloseHangGliderEvent();
+						if p17.hangGliderActive then
+							p17:sendCloseHangGliderEvent();
 							return nil;
 						end;
-						if not p20:canOpenHangGlider() then
+						if not p17:canOpenHangGlider() then
 							return nil;
 						end;
-						p20:openHangGlider();
+						p17:openHangGlider();
 					end
 				}) }), l__Players__9.LocalPlayer:WaitForChild("PlayerGui"));
 			return function()
-				u18.unmount(u33);
+				u18.unmount(u32);
 			end;
 		end);
 	end;
 end;
-function u1.onDisable(p25)
-	p25.maid:DoCleaning();
+function u1.onDisable(p22)
+	p22.maid:DoCleaning();
 end;
 u2 = v3.KnitClient.CreateController;
 u1 = u1.new;

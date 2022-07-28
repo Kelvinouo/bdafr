@@ -1,4 +1,3 @@
--- Script Hash: 2af1174a7155acff5408fc959b04adbb6bb1e1139e2d104be6aa1e32bc23f7677c6cee86d129996cee40d405fb82bcba
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -19,11 +18,11 @@ function v3.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "ProphuntController";
 end;
+local l__Flamework__2 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 function v3.KnitStart(p2)
 	u1.KnitStart(p2);
-	local v5 = CFrame.new(19.732, 301.766, 196.907);
-	local v6 = CFrame.new(20.287, 301.369, 181.164) * CFrame.Angles(0, math.pi, 0);
+	local v5 = l__Flamework__2.resolveDependency("@easy-games/game-core:client/controllers/game-release/prophunt-game-release-controller@ProphuntGameReleaseController"):enableProphuntGameRelease(CFrame.new(48.613, 292.586, 263.494) * CFrame.Angles(0, 0.7853981633974483, 0), CFrame.new(49.397, 298.515, 260.721) * CFrame.Angles(0, -0.7853981633974483, 0), "rbxassetid://6445706475");
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v3.new());
 return nil;

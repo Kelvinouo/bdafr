@@ -82,6 +82,15 @@ function v2.getToolFromInventory(p2, p3)
 	return nil;
 end;
 function v2.hasEnough(p4, p5, p6)
+	if p6 < 0 then
+		return false;
+	end;
+	if p6 ~= p6 then
+		return false;
+	end;
+	if type(p6) ~= "number" then
+		return false;
+	end;
 	local u4 = 0;
 	for v21, v22 in ipairs(v2.getInventory(p4).items) do
 		if v22.itemType == p5 then

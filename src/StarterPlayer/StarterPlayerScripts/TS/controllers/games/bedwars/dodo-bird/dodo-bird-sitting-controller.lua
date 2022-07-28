@@ -1,4 +1,3 @@
--- Script Hash: 058babd8707678ecb145f07cf4dc43ab7d8da1292ff162f665be7a998fafa8feece91f899525619eb159173a883b4611
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -28,11 +27,11 @@ function v4.KnitStart(p2)
 		for v6, v7 in ipairs(l__CollectionService__3:GetTagged("dodo-bird-mount")) do
 			local l__Parent__8 = v7.Parent;
 			if l__Parent__8 and l__Parent__8.PrimaryPart then
-				l__Parent__8.LowerTorso.Root.Transform = (l__Parent__8.HumanoidRootPart.CFrame * CFrame.new(0, -1.3, 0)):ToObjectSpace(v7.RootPart.master.torso["torso.001"].TransformedWorldCFrame) * CFrame.Angles(math.rad(70), 0, 0);
+				l__Parent__8.LowerTorso.Root.Transform = (l__Parent__8.HumanoidRootPart.CFrame * CFrame.new(0, -1.3, 0)):ToObjectSpace(v7.RootPart.master.torso["torso.001"].TransformedWorldCFrame) * CFrame.Angles(1.2217304763960306, 0, 0);
 			end;
 		end;
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v4.new());
 return nil;

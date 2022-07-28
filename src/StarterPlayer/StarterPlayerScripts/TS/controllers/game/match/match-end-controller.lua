@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -62,7 +61,8 @@ function u1.renderPostGameApp(p6, p7)
 	p6.postGameScreenTree = l__CreateRoduxApp__8("PostGame", l__PostGameAppWrapper__9, {
 		WinningTeamId = p7.winningTeamId, 
 		NewLeaderboardPos = p7.newLeaderboardPosition, 
-		PreviousLeaderboardPos = p7.previousLeaderboardPosition
+		PreviousLeaderboardPos = p7.previousLeaderboardPosition, 
+		CustomTitleMessage = p7.customTitleMessage
 	});
 end;
 local u10 = v1.import(script, script.Parent.Parent.Parent, "games", "bedwars", "battle-pass-progression", "ui", "battle-pass-progession-app").BattlePassProgressionAppWrapper;
@@ -134,22 +134,19 @@ local l__preloadImages__15 = v1.import(script, v1.getModule(script, "@easy-games
 function u1.preRenderRankDivisionIcons(p19, p20)
 	local v14 = nil;
 	v14 = {};
-	local function v15(p21, p22)
+	for v15 = 1, #p20 do
 		local v16 = {};
 		local v17 = #v16;
-		local v18 = #p21;
-		table.move(p21, 1, v18, v17 + 1, v16);
-		v16[v17 + v18 + 1] = l__RankMeta__13[p22].image;
-		return v16;
-	end;
-	for v19 = 1, #p20 do
-		v14 = v15(v14, p20[v19], v19 - 1, p20);
+		local v18 = #v14;
+		table.move(v14, 1, v18, v17 + 1, v16);
+		v16[v17 + v18 + 1] = l__RankMeta__13[p20[v15]].image;
+		v14 = v16;
 	end;
 	if p20[1] ~= p20[2] then
-		table.insert(local v20, l__BedwarsImageId__14.SHINING_SPINNER);
+		table.insert(local v19, l__BedwarsImageId__14.SHINING_SPINNER);
 	end;
-	print("Preloading images", v20);
-	l__preloadImages__15(v20);
+	print("Preloading images", v19);
+	l__preloadImages__15(v19);
 end;
 u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;

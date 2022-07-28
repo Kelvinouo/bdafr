@@ -1,4 +1,3 @@
--- Script Hash: b7761ea0e53c2e55513fee4bfa78c53b1232b162e1eadd6d403090aeab8d092b882e77f18773e7b4133f793151715731
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -49,7 +48,7 @@ function v5.KnitStart(p2)
 			return nil;
 		end;
 		for v10, v11 in ipairs(u7) do
-			if math.abs(math.acos(v11:Dot(l__Humanoid__9.MoveDirection))) < math.rad(33) then
+			if math.abs(math.acos(v11:Dot(l__Humanoid__9.MoveDirection))) < 0.5759586531581288 then
 				local v12 = RaycastParams.new();
 				v12.FilterType = Enum.RaycastFilterType.Blacklist;
 				v12.FilterDescendantsInstances = { l__Character__7 };
@@ -101,25 +100,27 @@ function v5.getFloorBlock(p3)
 	local v25 = OverlapParams.new();
 	v25.FilterDescendantsInstances = { l__Character__22 };
 	v25.FilterType = Enum.RaycastFilterType.Blacklist;
-	local v26 = l__Workspace__9:GetPartsInPart(v24, v25);
-	local function v27(p4)
-		if l__GameQueryUtil__6:isQueryIgnored(p4) then
-			return nil;
+	local v26 = {};
+	local v27 = 0;
+	local v28, v29, v30 = ipairs((l__Workspace__9:GetPartsInPart(v24, v25)));
+	while true do
+		local v31, v32 = v28(v29, v30);
+		if not v31 then
+			break;
 		end;
-		return l__BlockEngine__10:getBlockInstanceFromChild(p4);
-	end;
-	local v28 = {};
-	local v29 = 0;
-	for v30, v31 in ipairs(v26) do
-		local v32 = v27(v31, v30 - 1, v26);
-		if v32 ~= nil then
-			v29 = v29 + 1;
-			v28[v29] = v32;
+		if l__GameQueryUtil__6:isQueryIgnored(v32) then
+			local v33 = nil;
+		else
+			v33 = l__BlockEngine__10:getBlockInstanceFromChild(v32);
 		end;
+		if v33 ~= nil then
+			v27 = v27 + 1;
+			v26[v27] = v33;
+		end;	
 	end;
 	v24:Destroy();
-	return v28;
+	return v26;
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v5.new());
 return nil;

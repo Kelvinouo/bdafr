@@ -254,714 +254,880 @@ end;
 function v13.all(p42)
 	return v13._all(debug.traceback(nil, 2), p42);
 end;
-local function u14(p43)
-	if type(p43) == "function" then
+function v13.fold(p43, p44, p45)
+	assert(type(p43) == "table", "Bad argument #1 to Promise.fold: must be a table");
+	if type(p44) == "function" then
+		local v42 = true;
+	elseif type(p44) == "table" then
+		local v43 = getmetatable(p44);
+		if v43 and type(rawget(v43, "__call")) == "function" then
+			v42 = true;
+		else
+			v42 = false;
+		end;
+	else
+		v42 = false;
+	end;
+	assert(v42, "Bad argument #2 to Promise.fold: must be a function");
+	local u14 = v13.resolve(p45);
+	return v13.each(p43, function(p46, p47)
+		u14 = u14:andThen(function(p48)
+			return p44(p48, p46, p47);
+		end);
+	end):andThen(function()
+		return u14;
+	end);
+end;
+function v13.some(p49, p50)
+	assert(type(p50) == "number", "Bad argument #2 to Promise.some: must be a number");
+	return v13._all(debug.traceback(nil, 2), p49, p50);
+end;
+function v13.any(p51)
+	return v13._all(debug.traceback(nil, 2), p51, 1):andThen(function(p52)
+		return p52[1];
+	end);
+end;
+function v13.allSettled(p53)
+	if type(p53) ~= "table" then
+		error(string.format("Please pass a list of promises to %s", "Promise.allSettled"), 2);
+	end;
+	for v44, v45 in pairs(p53) do
+		if not v13.is(v45) then
+			error(string.format("Non-promise value passed into %s at index %s", "Promise.allSettled", tostring(v44)), 2);
+		end;
+	end;
+	if #p53 == 0 then
+		return v13.resolve({});
+	end;
+	return v13._new(debug.traceback(nil, 2), function(p54, p55, p56)
+		local u15 = 0;
+		local u16 = {};
+		local function v46(p57, ...)
+			u15 = u15 + 1;
+			u16[p57] = ...;
+			if #p53 <= u15 then
+				p54(u16);
+			end;
+		end;
+		local u17 = {};
+		p56(function()
+			for v47, v48 in ipairs(u17) do
+				v48:cancel();
+			end;
+		end);
+		for v49, v50 in ipairs(p53) do
+			u17[v49] = v50:finally(function(...)
+				v46(v49, ...);
+			end);
+		end;
+	end);
+end;
+function v13.race(p58)
+	assert(type(p58) == "table", string.format("Please pass a list of promises to %s", "Promise.race"));
+	for v51, v52 in pairs(p58) do
+		assert(v13.is(v52), string.format("Non-promise value passed into %s at index %s", "Promise.race", tostring(v51)));
+	end;
+	return v13._new(debug.traceback(nil, 2), function(p59, p60, p61)
+		local u18 = {};
+		local u19 = false;
+		if p61(function(...)
+			for v53, v54 in ipairs(u18) do
+				v54:cancel();
+			end;
+			u19 = true;
+			return p60(...);
+		end) then
+			return;
+		end;
+		for v55, v56 in ipairs(p58) do
+			u18[v55] = v56:andThen(function(...)
+				for v57, v58 in ipairs(u18) do
+					v58:cancel();
+				end;
+				u19 = true;
+				return p59(...);
+			end, function(...)
+				for v59, v60 in ipairs(u18) do
+					v60:cancel();
+				end;
+				u19 = true;
+				return p60(...);
+			end);
+		end;
+		if u19 then
+			for v61, v62 in ipairs(u18) do
+				v62:cancel();
+			end;
+		end;
+	end);
+end;
+function v13.each(p62, p63)
+	assert(type(p62) == "table", string.format("Please pass a list of promises to %s", "Promise.each"));
+	if type(p63) == "function" then
+		local v63 = true;
+	elseif type(p63) == "table" then
+		local v64 = getmetatable(p63);
+		if v64 and type(rawget(v64, "__call")) == "function" then
+			v63 = true;
+		else
+			v63 = false;
+		end;
+	else
+		v63 = false;
+	end;
+	assert(v63, string.format("Please pass a handler function to %s!", "Promise.each"));
+	return v13._new(debug.traceback(nil, 2), function(p64, p65, p66)
+		local v65 = {};
+		local u20 = {};
+		local u21 = false;
+		p66(function()
+			u21 = true;
+			for v66, v67 in ipairs(u20) do
+				v67:cancel();
+			end;
+		end);
+		local v68 = {};
+		for v69, v70 in ipairs(p62) do
+			if v13.is(v70) then
+				if v70:getStatus() == v13.Status.Cancelled then
+					for v71, v72 in ipairs(u20) do
+						v72:cancel();
+					end;
+					return p65(v6.new({
+						error = "Promise is cancelled", 
+						kind = v6.Kind.AlreadyCancelled, 
+						context = string.format("The Promise that was part of the array at index %d passed into Promise.each was already cancelled when Promise.each began.\n\nThat Promise was created at:\n\n%s", v69, v70._source)
+					}));
+				end;
+				if v70:getStatus() == v13.Status.Rejected then
+					for v73, v74 in ipairs(u20) do
+						v74:cancel();
+					end;
+					return p65(select(2, v70:await()));
+				end;
+				local v75 = v70:andThen(function(...)
+					return ...;
+				end);
+				table.insert(u20, v75);
+				v68[v69] = v75;
+			else
+				v68[v69] = v70;
+			end;
+		end;
+		for v76, v77 in ipairs(v68) do
+			if v13.is(local v78) then
+				local v79, v77 = v78:await();
+				if not v79 then
+					for v80, v81 in ipairs(u20) do
+						v81:cancel();
+					end;
+					return p65(v77);
+				end;
+			end;
+			if u21 then
+				return;
+			end;
+			local v82 = v13.resolve(p63(v77, v76));
+			table.insert(u20, v82);
+			local v83, v84 = v82:await();
+			if not v83 then
+				for v85, v86 in ipairs(u20) do
+					v86:cancel();
+				end;
+				return p65(v84);
+			end;
+			v65[v76] = v84;
+		end;
+		p64(v65);
+	end);
+end;
+function v13.is(p67)
+	if type(p67) ~= "table" then
+		return false;
+	end;
+	local v87 = getmetatable(p67);
+	if v87 == v13 then
 		return true;
 	end;
-	if type(p43) == "table" then
-		local v42 = getmetatable(p43);
-		if v42 and type(rawget(v42, "__call")) == "function" then
+	if v87 == nil then
+		local l__andThen__88 = p67.andThen;
+		if type(l__andThen__88) == "function" then
+			return true;
+		elseif type(l__andThen__88) == "table" then
+			local v89 = getmetatable(l__andThen__88);
+			if v89 and type(rawget(v89, "__call")) == "function" then
+				return true;
+			else
+				return false;
+			end;
+		else
+			return false;
+		end;
+	end;
+	if type(v87) == "table" and type(rawget(v87, "__index")) == "table" then
+		local v90 = rawget(rawget(v87, "__index"), "andThen");
+		if type(v90) == "function" then
+			local v91 = true;
+		elseif type(v90) == "table" then
+			local v92 = getmetatable(v90);
+			if v92 and type(rawget(v92, "__call")) == "function" then
+				v91 = true;
+			else
+				v91 = false;
+			end;
+		else
+			v91 = false;
+		end;
+		if v91 then
 			return true;
 		end;
 	end;
 	return false;
 end;
-function v13.fold(p44, p45, p46)
-	assert(type(p44) == "table", "Bad argument #1 to Promise.fold: must be a table");
-	assert(u14(p45), "Bad argument #2 to Promise.fold: must be a function");
-	local u15 = v13.resolve(p46);
-	return v13.each(p44, function(p47, p48)
-		u15 = u15:andThen(function(p49)
-			return p45(p49, p47, p48);
-		end);
-	end):andThen(function()
-		return u15;
-	end);
-end;
-function v13.some(p50, p51)
-	assert(type(p51) == "number", "Bad argument #2 to Promise.some: must be a number");
-	return v13._all(debug.traceback(nil, 2), p50, p51);
-end;
-function v13.any(p52)
-	return v13._all(debug.traceback(nil, 2), p52, 1):andThen(function(p53)
-		return p53[1];
-	end);
-end;
-function v13.allSettled(p54)
-	if type(p54) ~= "table" then
-		error(string.format("Please pass a list of promises to %s", "Promise.allSettled"), 2);
-	end;
-	for v43, v44 in pairs(p54) do
-		if not v13.is(v44) then
-			error(string.format("Non-promise value passed into %s at index %s", "Promise.allSettled", tostring(v43)), 2);
-		end;
-	end;
-	if #p54 == 0 then
-		return v13.resolve({});
-	end;
-	return v13._new(debug.traceback(nil, 2), function(p55, p56, p57)
-		local u16 = 0;
-		local u17 = {};
-		local function v45(p58, ...)
-			u16 = u16 + 1;
-			u17[p58] = ...;
-			if #p54 <= u16 then
-				p55(u17);
-			end;
-		end;
-		local u18 = {};
-		p57(function()
-			for v46, v47 in ipairs(u18) do
-				v47:cancel();
-			end;
-		end);
-		for v48, v49 in ipairs(p54) do
-			u18[v48] = v49:finally(function(...)
-				v45(v48, ...);
-			end);
-		end;
-	end);
-end;
-function v13.race(p59)
-	assert(type(p59) == "table", string.format("Please pass a list of promises to %s", "Promise.race"));
-	for v50, v51 in pairs(p59) do
-		assert(v13.is(v51), string.format("Non-promise value passed into %s at index %s", "Promise.race", tostring(v50)));
-	end;
-	return v13._new(debug.traceback(nil, 2), function(p60, p61, p62)
-		local u19 = {};
-		local u20 = false;
-		if p62(function(...)
-			for v52, v53 in ipairs(u19) do
-				v53:cancel();
-			end;
-			u20 = true;
-			return p61(...);
-		end) then
-			return;
-		end;
-		for v54, v55 in ipairs(p59) do
-			u19[v54] = v55:andThen(function(...)
-				for v56, v57 in ipairs(u19) do
-					v57:cancel();
-				end;
-				u20 = true;
-				return p60(...);
-			end, function(...)
-				for v58, v59 in ipairs(u19) do
-					v59:cancel();
-				end;
-				u20 = true;
-				return p61(...);
-			end);
-		end;
-		if u20 then
-			for v60, v61 in ipairs(u19) do
-				v61:cancel();
-			end;
-		end;
-	end);
-end;
-function v13.each(p63, p64)
-	assert(type(p63) == "table", string.format("Please pass a list of promises to %s", "Promise.each"));
-	assert(u14(p64), string.format("Please pass a handler function to %s!", "Promise.each"));
-	return v13._new(debug.traceback(nil, 2), function(p65, p66, p67)
-		local v62 = {};
-		local u21 = {};
-		local u22 = false;
-		p67(function()
-			u22 = true;
-			for v63, v64 in ipairs(u21) do
-				v64:cancel();
-			end;
-		end);
-		local v65 = {};
-		for v66, v67 in ipairs(p63) do
-			if v13.is(v67) then
-				if v67:getStatus() == v13.Status.Cancelled then
-					for v68, v69 in ipairs(u21) do
-						v69:cancel();
-					end;
-					return p66(v6.new({
-						error = "Promise is cancelled", 
-						kind = v6.Kind.AlreadyCancelled, 
-						context = string.format("The Promise that was part of the array at index %d passed into Promise.each was already cancelled when Promise.each began.\n\nThat Promise was created at:\n\n%s", v66, v67._source)
-					}));
-				end;
-				if v67:getStatus() == v13.Status.Rejected then
-					for v70, v71 in ipairs(u21) do
-						v71:cancel();
-					end;
-					return p66(select(2, v67:await()));
-				end;
-				local v72 = v67:andThen(function(...)
-					return ...;
-				end);
-				table.insert(u21, v72);
-				v65[v66] = v72;
-			else
-				v65[v66] = v67;
-			end;
-		end;
-		for v73, v74 in ipairs(v65) do
-			if v13.is(local v75) then
-				local v76, v74 = v75:await();
-				if not v76 then
-					for v77, v78 in ipairs(u21) do
-						v78:cancel();
-					end;
-					return p66(v74);
-				end;
-			end;
-			if u22 then
-				return;
-			end;
-			local v79 = v13.resolve(p64(v74, v73));
-			table.insert(u21, v79);
-			local v80, v81 = v79:await();
-			if not v80 then
-				for v82, v83 in ipairs(u21) do
-					v83:cancel();
-				end;
-				return p66(v81);
-			end;
-			v62[v73] = v81;
-		end;
-		p65(v62);
-	end);
-end;
-function v13.is(p68)
-	if type(p68) ~= "table" then
-		return false;
-	end;
-	local v84 = getmetatable(p68);
-	if v84 == v13 then
-		return true;
-	end;
-	if v84 == nil then
-		return u14(p68.andThen);
-	end;
-	if type(v84) == "table" and type(rawget(v84, "__index")) == "table" and u14(rawget(rawget(v84, "__index"), "andThen")) then
-		return true;
-	end;
-	return false;
-end;
-function v13.promisify(p69)
+function v13.promisify(p68)
 	return function(...)
-		return v13._try(debug.traceback(nil, 2), p69, ...);
+		return v13._try(debug.traceback(nil, 2), p68, ...);
 	end;
 end;
+local u22 = nil;
 local u23 = nil;
-local u24 = nil;
-function v13.delay(p70)
-	assert(type(p70) == "number", "Bad argument #1 to Promise.delay, must be a number.");
-	if not (p70 >= 0.016666666666666666) or p70 == math.huge then
-		p70 = 0.016666666666666666;
+function v13.delay(p69)
+	assert(type(p69) == "number", "Bad argument #1 to Promise.delay, must be a number.");
+	if not (p69 >= 0.016666666666666666) or p69 == math.huge then
+		p69 = 0.016666666666666666;
 	end;
-	return v13._new(debug.traceback(nil, 2), function(p71, p72, p73)
-		local v85 = v13._getTime();
-		local v86 = v85 + p70;
-		local v87 = {
-			resolve = p71, 
-			startTime = v85, 
-			endTime = v86
+	return v13._new(debug.traceback(nil, 2), function(p70, p71, p72)
+		local v93 = v13._getTime();
+		local v94 = v93 + p69;
+		local v95 = {
+			resolve = p70, 
+			startTime = v93, 
+			endTime = v94
 		};
-		if u23 == nil then
-			u24 = v87;
-			u23 = v13._timeEvent:Connect(function()
-				while u24 ~= nil and u24.endTime < v13._getTime() do
-					u24 = u24.next;
-					if u24 == nil then
-						u23:Disconnect();
-						u23 = nil;
+		if u22 == nil then
+			u23 = v95;
+			u22 = v13._timeEvent:Connect(function()
+				while u23 ~= nil and u23.endTime < v13._getTime() do
+					u23 = u23.next;
+					if u23 == nil then
+						u22:Disconnect();
+						u22 = nil;
 					else
-						u24.previous = nil;
+						u23.previous = nil;
 					end;
-					u24.resolve(v13._getTime() - u24.startTime);				
+					u23.resolve(v13._getTime() - u23.startTime);				
 				end;
 			end);
-		elseif u24.endTime < v86 then
-			local v88 = u24;
-			local v89 = v88.next;
-			while v89 ~= nil and v89.endTime < v86 do
-				v88 = v89;
-				v89 = v88.next;			
+		elseif u23.endTime < v94 then
+			local v96 = u23;
+			local v97 = v96.next;
+			while v97 ~= nil and v97.endTime < v94 do
+				v96 = v97;
+				v97 = v96.next;			
 			end;
-			v88.next = v87;
-			v87.previous = v88;
-			if v89 ~= nil then
-				v87.next = v89;
-				v89.previous = v87;
+			v96.next = v95;
+			v95.previous = v96;
+			if v97 ~= nil then
+				v95.next = v97;
+				v97.previous = v95;
 			end;
 		else
-			v87.next = u24;
-			u24.previous = v87;
-			u24 = v87;
+			v95.next = u23;
+			u23.previous = v95;
+			u23 = v95;
 		end;
-		p73(function()
-			local l__next__90 = v87.next;
-			if u24 ~= v87 then
-				local l__previous__91 = v87.previous;
-				l__previous__91.next = l__next__90;
-				if l__next__90 ~= nil then
-					l__next__90.previous = l__previous__91;
+		p72(function()
+			local l__next__98 = v95.next;
+			if u23 ~= v95 then
+				local l__previous__99 = v95.previous;
+				l__previous__99.next = l__next__98;
+				if l__next__98 ~= nil then
+					l__next__98.previous = l__previous__99;
 				end;
 				return;
 			end;
-			if l__next__90 == nil then
-				u23:Disconnect();
-				u23 = nil;
+			if l__next__98 == nil then
+				u22:Disconnect();
+				u22 = nil;
 			else
-				l__next__90.previous = nil;
+				l__next__98.previous = nil;
 			end;
-			u24 = l__next__90;
+			u23 = l__next__98;
 		end);
 	end);
 end;
-v13.prototype.timeout = function(p74, p75, p76)
-	local v92 = {};
-	local u25 = debug.traceback(nil, 2);
-	v92[1] = v13.delay(p75):andThen(function()
-		if p76 == nil then
-			local v93 = v6.new({
+v13.prototype.timeout = function(p73, p74, p75)
+	local v100 = {};
+	local u24 = debug.traceback(nil, 2);
+	v100[1] = v13.delay(p74):andThen(function()
+		if p75 == nil then
+			local v101 = v6.new({
 				kind = v6.Kind.TimedOut, 
 				error = "Timed out", 
-				context = string.format("Timeout of %d seconds exceeded.\n:timeout() called at:\n\n%s", p75, u25)
-			}) or p76;
+				context = string.format("Timeout of %d seconds exceeded.\n:timeout() called at:\n\n%s", p74, u24)
+			}) or p75;
 		else
-			v93 = p76;
+			v101 = p75;
 		end;
-		return v13.reject(v93);
+		return v13.reject(v101);
 	end);
-	v92[2] = p74;
-	return v13.race(v92);
+	v100[2] = p73;
+	return v13.race(v100);
 end;
-v13.prototype.getStatus = function(p77)
-	return p77._status;
+v13.prototype.getStatus = function(p76)
+	return p76._status;
 end;
-v13.prototype._andThen = function(p78, p79, p80, p81)
-	p78._unhandledRejection = false;
-	return v13._new(p79, function(p82, p83)
-		local v94 = p82;
+v13.prototype._andThen = function(p77, p78, p79, p80)
+	p77._unhandledRejection = false;
+	return v13._new(p78, function(p81, p82)
+		local v102 = p81;
+		if p79 then
+			v102 = function(...)
+				local v103 = nil;
+				local v104 = nil;
+				local v105 = nil;
+				v104, v105, v103 = u2(p78, p79, ...);
+				if not v104 then
+					p82(v103[1]);
+					return;
+				end;
+				p81(unpack(v103, 1, v105));
+			end;
+		end;
+		local v106 = p82;
 		if p80 then
-			v94 = function(...)
-				local v95 = nil;
-				local v96 = nil;
-				local v97 = nil;
-				v96, v97, v95 = u2(p79, p80, ...);
-				if not v96 then
-					p83(v95[1]);
+			v106 = function(...)
+				local v107 = nil;
+				local v108 = nil;
+				local v109 = nil;
+				v108, v109, v107 = u2(p78, p80, ...);
+				if not v108 then
+					p82(v107[1]);
 					return;
 				end;
-				p82(unpack(v95, 1, v97));
+				p81(unpack(v107, 1, v109));
 			end;
 		end;
-		local v98 = p83;
-		if p81 then
-			v98 = function(...)
-				local v99 = nil;
-				local v100 = nil;
-				local v101 = nil;
-				v100, v101, v99 = u2(p79, p81, ...);
-				if not v100 then
-					p83(v99[1]);
-					return;
-				end;
-				p82(unpack(v99, 1, v101));
-			end;
-		end;
-		if p78._status == v13.Status.Started then
-			table.insert(p78._queuedResolve, v94);
-			table.insert(p78._queuedReject, v98);
+		if p77._status == v13.Status.Started then
+			table.insert(p77._queuedResolve, v102);
+			table.insert(p77._queuedReject, v106);
 			return;
 		end;
-		if p78._status == v13.Status.Resolved then
-			v94(unpack(p78._values, 1, p78._valuesLength));
+		if p77._status == v13.Status.Resolved then
+			v102(unpack(p77._values, 1, p77._valuesLength));
 			return;
 		end;
-		if p78._status == v13.Status.Rejected then
-			v98(unpack(p78._values, 1, p78._valuesLength));
+		if p77._status == v13.Status.Rejected then
+			v106(unpack(p77._values, 1, p77._valuesLength));
 			return;
 		end;
-		if p78._status == v13.Status.Cancelled then
-			p83(v6.new({
+		if p77._status == v13.Status.Cancelled then
+			p82(v6.new({
 				error = "Promise is cancelled", 
 				kind = v6.Kind.AlreadyCancelled, 
-				context = "Promise created at\n\n" .. p79
+				context = "Promise created at\n\n" .. p78
 			}));
 		end;
-	end, p78);
+	end, p77);
 end;
-v13.prototype.andThen = function(p84, p85, p86)
-	local v102 = true;
+v13.prototype.andThen = function(p83, p84, p85)
+	local v110 = true;
+	if p84 ~= nil then
+		if type(p84) == "function" then
+			v110 = true;
+		elseif type(p84) == "table" then
+			local v111 = getmetatable(p84);
+			if v111 and type(rawget(v111, "__call")) == "function" then
+				v110 = true;
+			else
+				v110 = false;
+			end;
+		else
+			v110 = false;
+		end;
+	end;
+	assert(v110, string.format("Please pass a handler function to %s!", "Promise:andThen"));
+	local v112 = true;
 	if p85 ~= nil then
-		v102 = u14(p85);
+		if type(p85) == "function" then
+			v112 = true;
+		elseif type(p85) == "table" then
+			local v113 = getmetatable(p85);
+			if v113 and type(rawget(v113, "__call")) == "function" then
+				v112 = true;
+			else
+				v112 = false;
+			end;
+		else
+			v112 = false;
+		end;
 	end;
-	assert(v102, string.format("Please pass a handler function to %s!", "Promise:andThen"));
-	local v103 = true;
-	if p86 ~= nil then
-		v103 = u14(p86);
-	end;
-	assert(v103, string.format("Please pass a handler function to %s!", "Promise:andThen"));
-	return p84:_andThen(debug.traceback(nil, 2), p85, p86);
+	assert(v112, string.format("Please pass a handler function to %s!", "Promise:andThen"));
+	return p83:_andThen(debug.traceback(nil, 2), p84, p85);
 end;
-v13.prototype.catch = function(p87, p88)
-	local v104 = true;
-	if p88 ~= nil then
-		v104 = u14(p88);
+v13.prototype.catch = function(p86, p87)
+	local v114 = true;
+	if p87 ~= nil then
+		if type(p87) == "function" then
+			v114 = true;
+		elseif type(p87) == "table" then
+			local v115 = getmetatable(p87);
+			if v115 and type(rawget(v115, "__call")) == "function" then
+				v114 = true;
+			else
+				v114 = false;
+			end;
+		else
+			v114 = false;
+		end;
 	end;
-	assert(v104, string.format("Please pass a handler function to %s!", "Promise:catch"));
-	return p87:_andThen(debug.traceback(nil, 2), nil, p88);
+	assert(v114, string.format("Please pass a handler function to %s!", "Promise:catch"));
+	return p86:_andThen(debug.traceback(nil, 2), nil, p87);
 end;
-v13.prototype.tap = function(p89, p90)
-	assert(u14(p90), string.format("Please pass a handler function to %s!", "Promise:tap"));
-	return p89:_andThen(debug.traceback(nil, 2), function(...)
-		local v105 = p90(...);
-		if not v13.is(v105) then
+v13.prototype.tap = function(p88, p89)
+	if type(p89) == "function" then
+		local v116 = true;
+	elseif type(p89) == "table" then
+		local v117 = getmetatable(p89);
+		if v117 and type(rawget(v117, "__call")) == "function" then
+			v116 = true;
+		else
+			v116 = false;
+		end;
+	else
+		v116 = false;
+	end;
+	assert(v116, string.format("Please pass a handler function to %s!", "Promise:tap"));
+	return p88:_andThen(debug.traceback(nil, 2), function(...)
+		local v118 = p89(...);
+		if not v13.is(v118) then
 			return ...;
 		end;
-		local v106, v107 = u8(...);
-		return v105:andThen(function()
-			return unpack(v107, 1, v106);
+		local v119, v120 = u8(...);
+		return v118:andThen(function()
+			return unpack(v120, 1, v119);
 		end);
 	end);
 end;
-v13.prototype.andThenCall = function(p91, p92, ...)
-	assert(u14(p92), string.format("Please pass a handler function to %s!", "Promise:andThenCall"));
-	local v108, v109 = u8(...);
-	return p91:_andThen(debug.traceback(nil, 2), function()
-		return p92(unpack(v109, 1, v108));
+v13.prototype.andThenCall = function(p90, p91, ...)
+	if type(p91) == "function" then
+		local v121 = true;
+	elseif type(p91) == "table" then
+		local v122 = getmetatable(p91);
+		if v122 and type(rawget(v122, "__call")) == "function" then
+			v121 = true;
+		else
+			v121 = false;
+		end;
+	else
+		v121 = false;
+	end;
+	assert(v121, string.format("Please pass a handler function to %s!", "Promise:andThenCall"));
+	local v123, v124 = u8(...);
+	return p90:_andThen(debug.traceback(nil, 2), function()
+		return p91(unpack(v124, 1, v123));
 	end);
 end;
-v13.prototype.andThenReturn = function(p93, ...)
-	local v110, v111 = u8(...);
-	return p93:_andThen(debug.traceback(nil, 2), function()
-		return unpack(v111, 1, v110);
+v13.prototype.andThenReturn = function(p92, ...)
+	local v125, v126 = u8(...);
+	return p92:_andThen(debug.traceback(nil, 2), function()
+		return unpack(v126, 1, v125);
 	end);
 end;
-v13.prototype.cancel = function(p94)
+v13.prototype.cancel = function(p93)
+	if p93._status ~= v13.Status.Started then
+		return;
+	end;
+	p93._status = v13.Status.Cancelled;
+	if p93._cancellationHook then
+		p93._cancellationHook();
+	end;
+	if p93._parent then
+		p93._parent:_consumerCancelled(p93);
+	end;
+	for v127 in pairs(p93._consumers) do
+		v127:cancel();
+	end;
+	p93:_finalize();
+end;
+v13.prototype._consumerCancelled = function(p94, p95)
 	if p94._status ~= v13.Status.Started then
 		return;
 	end;
-	p94._status = v13.Status.Cancelled;
-	if p94._cancellationHook then
-		p94._cancellationHook();
-	end;
-	if p94._parent then
-		p94._parent:_consumerCancelled(p94);
-	end;
-	for v112 in pairs(p94._consumers) do
-		v112:cancel();
-	end;
-	p94:_finalize();
-end;
-v13.prototype._consumerCancelled = function(p95, p96)
-	if p95._status ~= v13.Status.Started then
-		return;
-	end;
-	p95._consumers[p96] = nil;
-	if next(p95._consumers) == nil then
-		p95:cancel();
+	p94._consumers[p95] = nil;
+	if next(p94._consumers) == nil then
+		p94:cancel();
 	end;
 end;
-v13.prototype._finally = function(p97, p98, p99, p100)
-	if not p100 then
-		p97._unhandledRejection = false;
+v13.prototype._finally = function(p96, p97, p98, p99)
+	if not p99 then
+		p96._unhandledRejection = false;
 	end;
-	return v13._new(p98, function(p101, p102)
-		local v113 = p101;
-		if p99 then
-			v113 = function(...)
-				local v114 = nil;
-				local v115 = nil;
-				local v116 = nil;
-				v115, v116, v114 = u2(p98, p99, ...);
-				if not v115 then
-					p102(v114[1]);
+	return v13._new(p97, function(p100, p101)
+		local v128 = p100;
+		if p98 then
+			v128 = function(...)
+				local v129 = nil;
+				local v130 = nil;
+				local v131 = nil;
+				v130, v131, v129 = u2(p97, p98, ...);
+				if not v130 then
+					p101(v129[1]);
 					return;
 				end;
-				p101(unpack(v114, 1, v116));
+				p100(unpack(v129, 1, v131));
 			end;
 		end;
-		if p100 then
-			v113 = function(...)
-				if p97._status == v13.Status.Rejected then
-					return p101(p97);
+		if p99 then
+			v128 = function(...)
+				if p96._status == v13.Status.Rejected then
+					return p100(p96);
 				end;
-				return v113(...);
+				return v128(...);
 			end;
 		end;
-		if p97._status == v13.Status.Started then
-			table.insert(p97._queuedFinally, v113);
+		if p96._status == v13.Status.Started then
+			table.insert(p96._queuedFinally, v128);
 			return;
 		end;
-		v113(p97._status);
-	end, p97);
+		v128(p96._status);
+	end, p96);
 end;
-v13.prototype.finally = function(p103, p104)
-	local v117 = true;
-	if p104 ~= nil then
-		v117 = u14(p104);
-	end;
-	assert(v117, string.format("Please pass a handler function to %s!", "Promise:finally"));
-	return p103:_finally(debug.traceback(nil, 2), p104);
-end;
-v13.prototype.finallyCall = function(p105, p106, ...)
-	assert(u14(p106), string.format("Please pass a handler function to %s!", "Promise:finallyCall"));
-	local v118, v119 = u8(...);
-	return p105:_finally(debug.traceback(nil, 2), function()
-		return p106(unpack(v119, 1, v118));
-	end);
-end;
-v13.prototype.finallyReturn = function(p107, ...)
-	local v120, v121 = u8(...);
-	return p107:_finally(debug.traceback(nil, 2), function()
-		return unpack(v121, 1, v120);
-	end);
-end;
-v13.prototype.done = function(p108, p109)
-	local v122 = true;
-	if p109 ~= nil then
-		v122 = u14(p109);
-	end;
-	assert(v122, string.format("Please pass a handler function to %s!", "Promise:done"));
-	return p108:_finally(debug.traceback(nil, 2), p109, true);
-end;
-v13.prototype.doneCall = function(p110, p111, ...)
-	assert(u14(p111), string.format("Please pass a handler function to %s!", "Promise:doneCall"));
-	local v123, v124 = u8(...);
-	return p110:_finally(debug.traceback(nil, 2), function()
-		return p111(unpack(v124, 1, v123));
-	end, true);
-end;
-v13.prototype.doneReturn = function(p112, ...)
-	local v125, v126 = u8(...);
-	return p112:_finally(debug.traceback(nil, 2), function()
-		return unpack(v126, 1, v125);
-	end, true);
-end;
-v13.prototype.awaitStatus = function(p113)
-	p113._unhandledRejection = false;
-	if p113._status == v13.Status.Started then
-		local u26 = Instance.new("BindableEvent");
-		p113:finally(function()
-			u26:Fire();
-		end);
-		u26.Event:Wait();
-		u26:Destroy();
-	end;
-	if p113._status == v13.Status.Resolved then
-		return p113._status, unpack(p113._values, 1, p113._valuesLength);
-	end;
-	if p113._status ~= v13.Status.Rejected then
-		return p113._status;
-	end;
-	return p113._status, unpack(p113._values, 1, p113._valuesLength);
-end;
-local function u27(p114, ...)
-	return p114 == v13.Status.Resolved, ...;
-end;
-v13.prototype.await = function(p115)
-	return u27(p115:awaitStatus());
-end;
-local function u28(p116, ...)
-	if p116 ~= v13.Status.Resolved then
-		if ... == nil then
-			local v127 = "Expected Promise rejected with no value.";
+v13.prototype.finally = function(p102, p103)
+	local v132 = true;
+	if p103 ~= nil then
+		if type(p103) == "function" then
+			v132 = true;
+		elseif type(p103) == "table" then
+			local v133 = getmetatable(p103);
+			if v133 and type(rawget(v133, "__call")) == "function" then
+				v132 = true;
+			else
+				v132 = false;
+			end;
 		else
-			v127 = ...;
+			v132 = false;
 		end;
-		error(v127, 3);
+	end;
+	assert(v132, string.format("Please pass a handler function to %s!", "Promise:finally"));
+	return p102:_finally(debug.traceback(nil, 2), p103);
+end;
+v13.prototype.finallyCall = function(p104, p105, ...)
+	if type(p105) == "function" then
+		local v134 = true;
+	elseif type(p105) == "table" then
+		local v135 = getmetatable(p105);
+		if v135 and type(rawget(v135, "__call")) == "function" then
+			v134 = true;
+		else
+			v134 = false;
+		end;
+	else
+		v134 = false;
+	end;
+	assert(v134, string.format("Please pass a handler function to %s!", "Promise:finallyCall"));
+	local v136, v137 = u8(...);
+	return p104:_finally(debug.traceback(nil, 2), function()
+		return p105(unpack(v137, 1, v136));
+	end);
+end;
+v13.prototype.finallyReturn = function(p106, ...)
+	local v138, v139 = u8(...);
+	return p106:_finally(debug.traceback(nil, 2), function()
+		return unpack(v139, 1, v138);
+	end);
+end;
+v13.prototype.done = function(p107, p108)
+	local v140 = true;
+	if p108 ~= nil then
+		if type(p108) == "function" then
+			v140 = true;
+		elseif type(p108) == "table" then
+			local v141 = getmetatable(p108);
+			if v141 and type(rawget(v141, "__call")) == "function" then
+				v140 = true;
+			else
+				v140 = false;
+			end;
+		else
+			v140 = false;
+		end;
+	end;
+	assert(v140, string.format("Please pass a handler function to %s!", "Promise:done"));
+	return p107:_finally(debug.traceback(nil, 2), p108, true);
+end;
+v13.prototype.doneCall = function(p109, p110, ...)
+	if type(p110) == "function" then
+		local v142 = true;
+	elseif type(p110) == "table" then
+		local v143 = getmetatable(p110);
+		if v143 and type(rawget(v143, "__call")) == "function" then
+			v142 = true;
+		else
+			v142 = false;
+		end;
+	else
+		v142 = false;
+	end;
+	assert(v142, string.format("Please pass a handler function to %s!", "Promise:doneCall"));
+	local v144, v145 = u8(...);
+	return p109:_finally(debug.traceback(nil, 2), function()
+		return p110(unpack(v145, 1, v144));
+	end, true);
+end;
+v13.prototype.doneReturn = function(p111, ...)
+	local v146, v147 = u8(...);
+	return p111:_finally(debug.traceback(nil, 2), function()
+		return unpack(v147, 1, v146);
+	end, true);
+end;
+v13.prototype.awaitStatus = function(p112)
+	p112._unhandledRejection = false;
+	if p112._status == v13.Status.Started then
+		local u25 = Instance.new("BindableEvent");
+		p112:finally(function()
+			u25:Fire();
+		end);
+		u25.Event:Wait();
+		u25:Destroy();
+	end;
+	if p112._status == v13.Status.Resolved then
+		return p112._status, unpack(p112._values, 1, p112._valuesLength);
+	end;
+	if p112._status ~= v13.Status.Rejected then
+		return p112._status;
+	end;
+	return p112._status, unpack(p112._values, 1, p112._valuesLength);
+end;
+local function u26(p113, ...)
+	return p113 == v13.Status.Resolved, ...;
+end;
+v13.prototype.await = function(p114)
+	return u26(p114:awaitStatus());
+end;
+local function u27(p115, ...)
+	if p115 ~= v13.Status.Resolved then
+		if ... == nil then
+			local v148 = "Expected Promise rejected with no value.";
+		else
+			v148 = ...;
+		end;
+		error(v148, 3);
 	end;
 	return ...;
 end;
-v13.prototype.expect = function(p117)
-	return u28(p117:awaitStatus());
+v13.prototype.expect = function(p116)
+	return u27(p116:awaitStatus());
 end;
 v13.prototype.awaitValue = v13.prototype.expect;
-v13.prototype._unwrap = function(p118)
-	if p118._status == v13.Status.Started then
+v13.prototype._unwrap = function(p117)
+	if p117._status == v13.Status.Started then
 		error("Promise has not resolved or rejected.", 2);
 	end;
-	return p118._status == v13.Status.Resolved, unpack(p118._values, 1, p118._valuesLength);
+	return p117._status == v13.Status.Resolved, unpack(p117._values, 1, p117._valuesLength);
 end;
-v13.prototype._resolve = function(p119, ...)
-	if p119._status ~= v13.Status.Started then
+v13.prototype._resolve = function(p118, ...)
+	if p118._status ~= v13.Status.Started then
 		if v13.is((...)) then
-			(...):_consumerCancelled(p119);
+			(...):_consumerCancelled(p118);
 		end;
 		return;
 	end;
 	if not v13.is((...)) then
-		p119._status = v13.Status.Resolved;
-		local v128, v129 = u8(...);
-		p119._valuesLength = v128;
-		p119._values = v129;
-		for v130, v131 in ipairs(p119._queuedResolve) do
-			coroutine.wrap(v131)(...);
+		p118._status = v13.Status.Resolved;
+		local v149, v150 = u8(...);
+		p118._valuesLength = v149;
+		p118._values = v150;
+		for v151, v152 in ipairs(p118._queuedResolve) do
+			coroutine.wrap(v152)(...);
 		end;
-		p119:_finalize();
+		p118:_finalize();
 		return;
 	end;
 	if select("#", ...) > 1 then
-		warn((string.format("When returning a Promise from andThen, extra arguments are discarded! See:\n\n%s", p119._source)));
+		warn((string.format("When returning a Promise from andThen, extra arguments are discarded! See:\n\n%s", p118._source)));
 	end;
-	local u29 = ...;
-	local v132 = u29:andThen(function(...)
-		p119:_resolve(...);
+	local u28 = ...;
+	local v153 = u28:andThen(function(...)
+		p118:_resolve(...);
 	end, function(...)
-		local v133 = u29._values[1];
-		if u29._error then
-			v133 = v6.new({
-				error = u29._error, 
+		local v154 = u28._values[1];
+		if u28._error then
+			v154 = v6.new({
+				error = u28._error, 
 				kind = v6.Kind.ExecutionError, 
 				context = "[No stack trace available as this Promise originated from an older version of the Promise library (< v2)]"
 			});
 		end;
-		if not v6.isKind(v133, v6.Kind.ExecutionError) then
-			p119:_reject(...);
+		if not v6.isKind(v154, v6.Kind.ExecutionError) then
+			p118:_reject(...);
 			return;
 		end;
-		return p119:_reject(v133:extend({
+		return p118:_reject(v154:extend({
 			error = "This Promise was chained to a Promise that errored.", 
 			trace = "", 
-			context = string.format("The Promise at:\n\n%s\n...Rejected because it was chained to the following Promise, which encountered an error:\n", p119._source)
+			context = string.format("The Promise at:\n\n%s\n...Rejected because it was chained to the following Promise, which encountered an error:\n", p118._source)
 		}));
 	end);
-	if v132._status == v13.Status.Cancelled then
-		p119:cancel();
+	if v153._status == v13.Status.Cancelled then
+		p118:cancel();
 		return;
 	end;
-	if v132._status == v13.Status.Started then
-		p119._parent = v132;
-		v132._consumers[p119] = true;
+	if v153._status == v13.Status.Started then
+		p118._parent = v153;
+		v153._consumers[p118] = true;
 	end;
 end;
-v13.prototype._reject = function(p120, ...)
-	if p120._status ~= v13.Status.Started then
+v13.prototype._reject = function(p119, ...)
+	if p119._status ~= v13.Status.Started then
 		return;
 	end;
-	p120._status = v13.Status.Rejected;
-	local v134, v135 = u8(...);
-	p120._valuesLength = v134;
-	p120._values = v135;
-	if next(p120._queuedReject) ~= nil then
-		for v136, v137 in ipairs(p120._queuedReject) do
-			coroutine.wrap(v137)(...);
+	p119._status = v13.Status.Rejected;
+	local v155, v156 = u8(...);
+	p119._valuesLength = v155;
+	p119._values = v156;
+	if next(p119._queuedReject) ~= nil then
+		for v157, v158 in ipairs(p119._queuedReject) do
+			coroutine.wrap(v158)(...);
 		end;
 	else
-		local u30 = tostring((...));
+		local u29 = tostring((...));
 		coroutine.wrap(function()
 			v13._timeEvent:Wait();
-			if not p120._unhandledRejection then
+			if not p119._unhandledRejection then
 				return;
 			end;
-			for v138, v139 in ipairs(v13._unhandledRejectionCallbacks) do
-				task.spawn(v139, p120, unpack(p120._values, 1, p120._valuesLength));
+			for v159, v160 in ipairs(v13._unhandledRejectionCallbacks) do
+				task.spawn(v160, p119, unpack(p119._values, 1, p119._valuesLength));
 			end;
 			if v13.TEST then
 				return;
 			end;
-			warn((string.format("Unhandled Promise rejection:\n\n%s\n\n%s", u30, p120._source)));
+			warn((string.format("Unhandled Promise rejection:\n\n%s\n\n%s", u29, p119._source)));
 		end)();
 	end;
-	p120:_finalize();
+	p119:_finalize();
 end;
-v13.prototype._finalize = function(p121)
-	for v140, v141 in ipairs(p121._queuedFinally) do
-		coroutine.wrap(v141)(p121._status);
+v13.prototype._finalize = function(p120)
+	for v161, v162 in ipairs(p120._queuedFinally) do
+		coroutine.wrap(v162)(p120._status);
 	end;
-	p121._queuedFinally = nil;
-	p121._queuedReject = nil;
-	p121._queuedResolve = nil;
+	p120._queuedFinally = nil;
+	p120._queuedReject = nil;
+	p120._queuedResolve = nil;
 	if not v13.TEST then
-		p121._parent = nil;
-		p121._consumers = nil;
+		p120._parent = nil;
+		p120._consumers = nil;
 	end;
 end;
-v13.prototype.now = function(p122, p123)
-	local v142 = nil;
-	v142 = debug.traceback(nil, 2);
-	if p122._status == v13.Status.Resolved then
-		return p122:_andThen(v142, function(...)
+v13.prototype.now = function(p121, p122)
+	local v163 = nil;
+	v163 = debug.traceback(nil, 2);
+	if p121._status == v13.Status.Resolved then
+		return p121:_andThen(v163, function(...)
 			return ...;
 		end);
 	end;
-	if p123 == nil then
-		local v143 = v6.new({
+	if p122 == nil then
+		local v164 = v6.new({
 			kind = v6.Kind.NotResolvedInTime, 
 			error = "This Promise was not resolved in time for :now()", 
-			context = ":now() was called at:\n\n" .. v142
-		}) or p123;
+			context = ":now() was called at:\n\n" .. v163
+		}) or p122;
 	else
-		v143 = p123;
+		v164 = p122;
 	end;
-	return v13.reject(v143);
+	return v13.reject(v164);
 end;
-function v13.retry(p124, p125, ...)
-	assert(u14(p124), "Parameter #1 to Promise.retry must be a function");
-	assert(type(p125) == "number", "Parameter #2 to Promise.retry must be a number");
-	local u31 = { ... };
-	local u32 = select("#", ...);
-	return v13.resolve(p124(...)):catch(function(...)
-		if not (p125 > 0) then
+function v13.retry(p123, p124, ...)
+	if type(p123) == "function" then
+		local v165 = true;
+	elseif type(p123) == "table" then
+		local v166 = getmetatable(p123);
+		if v166 and type(rawget(v166, "__call")) == "function" then
+			v165 = true;
+		else
+			v165 = false;
+		end;
+	else
+		v165 = false;
+	end;
+	assert(v165, "Parameter #1 to Promise.retry must be a function");
+	assert(type(p124) == "number", "Parameter #2 to Promise.retry must be a number");
+	local u30 = { ... };
+	local u31 = select("#", ...);
+	return v13.resolve(p123(...)):catch(function(...)
+		if not (p124 > 0) then
 			return v13.reject(...);
 		end;
-		return v13.retry(p124, p125 - 1, unpack(u31, 1, u32));
+		return v13.retry(p123, p124 - 1, unpack(u30, 1, u31));
 	end);
 end;
-function v13.retryWithDelay(p126, p127, p128, ...)
-	assert(u14(p126), "Parameter #1 to Promise.retry must be a function");
-	assert(type(p127) == "number", "Parameter #2 (times) to Promise.retry must be a number");
-	assert(type(p128) == "number", "Parameter #3 (seconds) to Promise.retry must be a number");
-	local u33 = { ... };
-	local u34 = select("#", ...);
-	return v13.resolve(p126(...)):catch(function(...)
-		if not (p127 > 0) then
+function v13.retryWithDelay(p125, p126, p127, ...)
+	if type(p125) == "function" then
+		local v167 = true;
+	elseif type(p125) == "table" then
+		local v168 = getmetatable(p125);
+		if v168 and type(rawget(v168, "__call")) == "function" then
+			v167 = true;
+		else
+			v167 = false;
+		end;
+	else
+		v167 = false;
+	end;
+	assert(v167, "Parameter #1 to Promise.retry must be a function");
+	assert(type(p126) == "number", "Parameter #2 (times) to Promise.retry must be a number");
+	assert(type(p127) == "number", "Parameter #3 (seconds) to Promise.retry must be a number");
+	local u32 = { ... };
+	local u33 = select("#", ...);
+	return v13.resolve(p125(...)):catch(function(...)
+		if not (p126 > 0) then
 			return v13.reject(...);
 		end;
-		v13.delay(p128):await();
-		return v13.retryWithDelay(p126, p127 - 1, p128, unpack(u33, 1, u34));
+		v13.delay(p127):await();
+		return v13.retryWithDelay(p125, p126 - 1, p127, unpack(u32, 1, u33));
 	end);
 end;
-function v13.fromEvent(p129, p130)
-	p130 = p130 or function()
+function v13.fromEvent(p128, p129)
+	p129 = p129 or function()
 		return true;
 	end;
-	return v13._new(debug.traceback(nil, 2), function(p131, p132, p133)
-		local u35 = nil;
-		local function v144()
-			u35:Disconnect();
-			u35 = nil;
+	return v13._new(debug.traceback(nil, 2), function(p130, p131, p132)
+		local u34 = nil;
+		local function v169()
+			u34:Disconnect();
+			u34 = nil;
 		end;
-		local u36 = false;
-		u35 = p129:Connect(function(...)
-			local v145 = p130(...);
-			if v145 ~= true then
-				if type(v145) ~= "boolean" then
+		local u35 = false;
+		u34 = p128:Connect(function(...)
+			local v170 = p129(...);
+			if v170 ~= true then
+				if type(v170) ~= "boolean" then
 					error("Promise.fromEvent predicate should always return a boolean");
 				end;
 				return;
 			end;
-			p131(...);
-			if not u35 then
-				u36 = true;
+			p130(...);
+			if not u34 then
+				u35 = true;
 				return;
 			end;
-			u35:Disconnect();
-			u35 = nil;
+			u34:Disconnect();
+			u34 = nil;
 		end);
-		if u36 and u35 then
-			return v144();
+		if u35 and u34 then
+			return v169();
 		end;
-		p133(v144);
+		p132(v169);
 	end);
 end;
-function v13.onUnhandledRejection(p134)
-	table.insert(v13._unhandledRejectionCallbacks, p134);
+function v13.onUnhandledRejection(p133)
+	table.insert(v13._unhandledRejectionCallbacks, p133);
 	return function()
-		local v146 = table.find(v13._unhandledRejectionCallbacks, p134);
-		if v146 then
-			table.remove(v13._unhandledRejectionCallbacks, v146);
+		local v171 = table.find(v13._unhandledRejectionCallbacks, p133);
+		if v171 then
+			table.remove(v13._unhandledRejectionCallbacks, v171);
 		end;
 	end;
 end;

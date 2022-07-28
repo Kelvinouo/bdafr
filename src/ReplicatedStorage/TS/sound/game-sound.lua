@@ -15,6 +15,9 @@ local v4 = {
 	PICKUP_ITEM_DROP = "rbxassetid://6768578304", 
 	DROP_ITEM = "", 
 	END_GAME = "rbxassetid://6246476959", 
+	EQUIP_DEFAULT = "rbxassetid://10229764113", 
+	EQUIP_SWORD = "rbxassetid://10236355159", 
+	EQUIP_BOW = "rbxassetid://10236355328", 
 	BEDWARS_UPGRADE_SUCCESS = "rbxassetid://6760677364", 
 	BEDWARS_PURCHASE_ITEM = "rbxassetid://6760677364", 
 	SWORD_SWING_1 = "rbxassetid://6760544639", 
@@ -321,6 +324,8 @@ local v4 = {
 	STAR_CRUSH = "rbxassetid://9872091084", 
 	STAR_IDLE = "rbxassetid://9872090917", 
 	GLITCH_KILL_EFFECT = "rbxassetid://9872091186", 
+	WAVE_UPDATE = "rbxassetid://9810210794", 
+	SNIPER_FIRE = "rbxassetid://10086959960", 
 	PINATA_POP_1 = "rbxassetid://10011665352", 
 	PINATA_POP_2 = "rbxassetid://10011664373", 
 	PINATA_POP_3 = "rbxassetid://10011664823", 
@@ -336,13 +341,32 @@ local v4 = {
 	TOY_HAMMER_HIT = "rbxassetid://10084313910", 
 	LUCKY_BLOCK_SLAM = "rbxassetid://9369390266", 
 	OVERLOAD_LOOP = "rbxassetid://10157622093", 
-	OVERLOAD_BEEP = "rbxassetid://10157695750"
+	OVERLOAD_BEEP = "rbxassetid://10157695750", 
+	PENGUIN_SURVIVAL_WAVE_TRACK = "rbxassetid://10320153543", 
+	PENGUIN_SURVIVAL_INTERMISSION_TRACK = "rbxassetid://10320151818", 
+	PENGUIN_SURVIVAL_BOSS_TRACK = "rbxassetid://10320152910", 
+	PENGUIN_SURVIVAL_VICTORY_TRACK = "rbxassetid://10320152067", 
+	PENGUIN_ATTACK_1 = "rbxassetid://10321409163", 
+	PENGUIN_ATTACK_2 = "rbxassetid://10321409009", 
+	PENGUIN_ATTACK_3 = "rbxassetid://10321409301", 
+	PENGUIN_SQUAWK_1 = "rbxassetid://10321409418", 
+	KING_PENGUIN_SUMMON = "rbxassetid://10309042614", 
+	PENGUIN_DAMAGED_5 = "rbxassetid://10319819044", 
+	PENGUIN_DAMAGED_6 = "rbxassetid://10319818889", 
+	PENGUIN_DAMAGED_7 = "rbxassetid://10319819249", 
+	PENGUIN_DAMAGED_8 = "rbxassetid://10319818643"
 };
 l__SoundManager__3:registerSound(v4.VENDING_ROLL_TICK, {
 	preload = false
 });
 l__SoundManager__3:registerSound(v4.VENDING_ROLL_PRIZE, {
 	preload = false
+});
+l__SoundManager__3:registerSound(v4.EQUIP_DEFAULT, {
+	volume = 0.18
+});
+l__SoundManager__3:registerSound(v4.EQUIP_SWORD, {
+	volume = 0.38
 });
 l__SoundManager__3:registerSound(v4.INVISIBLE_LANDMINE_EXPLOSION, {
 	volume = 1
@@ -554,6 +578,18 @@ l__SoundManager__3:registerSound(v4.TOAD_CROAK, {
 	preload = false, 
 	volume = 0.35, 
 	playbackSpeed = NumberRange.new(1.2, 1.3)
+});
+l__SoundManager__3:registerSound(v4.PENGUIN_SURVIVAL_INTERMISSION_TRACK, {
+	preload = false
+});
+l__SoundManager__3:registerSound(v4.PENGUIN_SURVIVAL_WAVE_TRACK, {
+	preload = false
+});
+l__SoundManager__3:registerSound(v4.PENGUIN_SURVIVAL_BOSS_TRACK, {
+	preload = false
+});
+l__SoundManager__3:registerSound(v4.PENGUIN_SURVIVAL_VICTORY_TRACK, {
+	preload = false
 });
 if not v2.DeviceUtil.isHoarceKat() then
 	l__SoundManager__3:preload();

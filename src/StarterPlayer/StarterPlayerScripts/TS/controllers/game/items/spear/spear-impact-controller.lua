@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -62,7 +61,7 @@ function v5.KnitStart(p2)
 				if not (v11 < v10) then
 					break;
 				end;
-				local v13 = v9.WorldPosition + l__GameWorldUtil__9.randomUnitVector(Vector3.new(0, 1, 0), math.rad(90)) * 15;
+				local v13 = v9.WorldPosition + l__GameWorldUtil__9.randomUnitVector(Vector3.new(0, 1, 0), 1.5707963267948966) * 15;
 				local v14 = u10.new(v9, {
 					WorldPosition = v13, 
 					WorldAxis = (v9.WorldPosition - v13).Unit

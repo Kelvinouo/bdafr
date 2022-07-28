@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -100,12 +99,12 @@ function u1.KnitStart(p2)
 			local v8 = p3:GetAttribute("LookVector") or Vector3.new();
 			if p3:FindFirstChild("Base") then
 				l__TweenService__8:Create(p3.Base, TweenInfo.new(0.2, Enum.EasingStyle.Linear), {
-					CFrame = CFrame.new(p3.Base.Position, p3.Base.Position + v8 * (Vector3.new(1, 0, 1) * 5)) * CFrame.Angles(0, math.rad(-90), 0)
+					CFrame = CFrame.new(p3.Base.Position, p3.Base.Position + v8 * (Vector3.new(1, 0, 1) * 5)) * CFrame.Angles(0, -1.5707963267948966, 0)
 				}):Play();
 			end;
 			if p3:FindFirstChild("Barrel") then
 				l__TweenService__8:Create(p3.Barrel, TweenInfo.new(0.2, Enum.EasingStyle.Linear), {
-					CFrame = CFrame.new(p3.Barrel.Position, p3.Barrel.Position + v8 * 5) * CFrame.Angles(0, math.rad(-90), 0)
+					CFrame = CFrame.new(p3.Barrel.Position, p3.Barrel.Position + v8 * 5) * CFrame.Angles(0, -1.5707963267948966, 0)
 				}):Play();
 			end;
 		end;

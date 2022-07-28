@@ -1,4 +1,3 @@
--- Script Hash: 188c81fecf4f3b3784329572a3c57e42ad397dc5643370ee1822f8d788d934e1fd141edd96c7889e5efa70c1372ab71f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "clan", "upgrade", "clan-upgrade-type");
@@ -287,16 +286,16 @@ return {
 		}, 
 		[l__ClanUpgradeTier__2.BATTLE_PASS_XP30] = {
 			description = "Upgrade the amount of battle pass xp your clan members gain by +1%", 
-			rewards = { "19 \226\134\146 20% xp" }, 
-			level = 20, 
-			value = 1.2, 
+			rewards = { "29 \226\134\146 30% xp" }, 
+			level = 30, 
+			value = 1.3, 
 			cost = 250000, 
-			nextUpgrade = l__ClanUpgradeTier__2.BATTLE_PASS_XP21, 
+			nextUpgrade = l__ClanUpgradeTier__2.BATTLE_PASS_XP31, 
 			type = l__ClanUpgradeType__3.BATTLE_PASS_XP
 		}, 
 		[l__ClanUpgradeTier__2.BATTLE_PASS_XP31] = {
 			description = "Upgrade the amount of battle pass xp your clan members gain by +1%", 
-			rewards = { "20 \226\134\146 31% xp" }, 
+			rewards = { "30 \226\134\146 31% xp" }, 
 			level = 31, 
 			value = 1.31, 
 			cost = 250000, 
@@ -377,16 +376,16 @@ return {
 		}, 
 		[l__ClanUpgradeTier__2.BATTLE_PASS_XP40] = {
 			description = "Upgrade the amount of battle pass xp your clan members gain by +1%", 
-			rewards = { "19 \226\134\146 20% xp" }, 
+			rewards = { "39 \226\134\146 40% xp" }, 
 			level = 40, 
-			value = 1.2, 
+			value = 1.4, 
 			cost = 250000, 
-			nextUpgrade = l__ClanUpgradeTier__2.BATTLE_PASS_XP31, 
+			nextUpgrade = l__ClanUpgradeTier__2.BATTLE_PASS_XP41, 
 			type = l__ClanUpgradeType__3.BATTLE_PASS_XP
 		}, 
 		[l__ClanUpgradeTier__2.BATTLE_PASS_XP41] = {
 			description = "Upgrade the amount of battle pass xp your clan members gain by +1%", 
-			rewards = { "20 \226\134\146 41% xp" }, 
+			rewards = { "40 \226\134\146 41% xp" }, 
 			level = 41, 
 			value = 1.41, 
 			cost = 250000, 
@@ -467,9 +466,9 @@ return {
 		}, 
 		[l__ClanUpgradeTier__2.BATTLE_PASS_XP50] = {
 			description = "Upgrade the amount of battle pass xp your clan members gain by +1%", 
-			rewards = { "19 \226\134\146 20% xp" }, 
+			rewards = { "49 \226\134\146 50% xp" }, 
 			level = 50, 
-			value = 1.2, 
+			value = 1.5, 
 			cost = 250000, 
 			type = l__ClanUpgradeType__3.BATTLE_PASS_XP
 		}, 

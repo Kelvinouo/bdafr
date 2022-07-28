@@ -1,4 +1,3 @@
--- Script Hash: 3d1f9ec26925e4c05bd454a6cd765d93383b6f0969c31c60cd28b93a8405e388f9d6f4aa2f767348f0592bbfd9ee338c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -49,7 +48,7 @@ function v5.onKill(p3, p4, p5, p6)
 	l__Body__9.Parent = l__Workspace__1;
 	local v10 = l__RunService__5.RenderStepped:Connect(function(p7)
 		local v11 = l__Body__9:GetPrimaryPartCFrame();
-		l__Body__9:SetPrimaryPartCFrame(CFrame.new(v8.Main.Position) * CFrame.new(0, math.sin(time() * 2) / 1.5, 0) * (v11 - v11.Position) * CFrame.Angles(0, math.rad(3), 0));
+		l__Body__9:SetPrimaryPartCFrame(CFrame.new(v8.Main.Position) * CFrame.new(0, math.sin(time() * 2) / 1.5, 0) * (v11 - v11.Position) * CFrame.Angles(0, 0.05235987755982989, 0));
 	end);
 	task.wait(0.15);
 	l__default__6(0.3, l__OutExpo__7, function(p8)

@@ -1,22 +1,22 @@
--- Script Hash: f1cb555def056ce49ad2eb8a65abad2bc144c1f1b2680698ee4912c6405e86d2539010c4dc5f74543e5ac9c926fa8789
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local l__KnitController__2 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
-local v3 = setmetatable({}, {
+local v2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "host-panel", "host-panel-settings.dto");
+local l__KnitController__3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
+local v4 = setmetatable({}, {
 	__tostring = function()
 		return "CustomMatchController";
 	end, 
-	__index = l__KnitController__2
+	__index = l__KnitController__3
 });
-v3.__index = v3;
-function v3.new(...)
-	local v4 = setmetatable({}, v3);
-	return v4:constructor(...) and v4;
+v4.__index = v4;
+function v4.new(...)
+	local v5 = setmetatable({}, v4);
+	return v5:constructor(...) and v5;
 end;
-local u1 = l__KnitController__2;
+local u1 = l__KnitController__3;
 local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-function v3.constructor(p1)
+function v4.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "CustomMatchController";
 	p1.playerAvatarImages = {};
@@ -24,7 +24,7 @@ function v3.constructor(p1)
 	p1.customMatchRemotes = l__default__2.Client:GetNamespace("CustomMatches");
 end;
 local l__ClientStore__3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
-function v3.KnitStart(p2)
+function v4.KnitStart(p2)
 	u1.KnitStart(p2);
 	p2.customMatchRemotes:OnEvent("HostPanelUpdate", function(p3)
 		print("Host Panel Update");
@@ -33,134 +33,160 @@ function v3.KnitStart(p2)
 			settings = p3
 		});
 	end);
+	p2.customMatchRemotes:OnEvent("SavedMapsUpdate", function(p4)
+		l__ClientStore__3:dispatch({
+			type = "CustomMatchSetMapSaves", 
+			mapSaves = p4
+		});
+	end);
+	p2:getMySavedMaps();
 end;
-function v3.setTeamOreGenerators(p4, p5, p6)
-	p4.customMatchRemotes:Get("SetTeamOreGeneratorSpeed"):CallServerAsync(p5, p6);
+function v4.setTeamOreGenerators(p5, p6, p7)
+	p5.customMatchRemotes:Get("SetTeamOreGeneratorSpeed"):CallServerAsync(p6, p7);
 	l__ClientStore__3:dispatch({
 		type = "CustomMatchUpdateTeamOreGen", 
-		teamDisplayName = p6, 
-		genSpeedMultiplier = p5
+		teamDisplayName = p7, 
+		genSpeedMultiplier = p6
 	});
 end;
 local l__ItemType__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
-function v3.setGlobalOreGenerators(p7, p8, p9)
-	p7.customMatchRemotes:Get("SetGlobalOreGeneratorSpeed"):CallServerAsync(p8, p9);
-	if p9 == l__ItemType__4.EMERALD then
+function v4.setGlobalOreGenerators(p8, p9, p10)
+	p8.customMatchRemotes:Get("SetGlobalOreGeneratorSpeed"):CallServerAsync(p9, p10);
+	if p10 == l__ItemType__4.EMERALD then
 		l__ClientStore__3:dispatch({
 			type = "CustomMatchUpdateGlobalOreGen", 
-			itemType = p9, 
-			multiplier = p8
+			itemType = p10, 
+			multiplier = p9
 		});
 	end;
 end;
-function v3.setDeathmatchTime(p10, p11)
-	p10.customMatchRemotes:Get("SetDeathmatchTime"):CallServerAsync(p11);
+function v4.setDeathmatchTime(p11, p12)
+	p11.customMatchRemotes:Get("SetDeathmatchTime"):CallServerAsync(p12);
 	l__ClientStore__3:dispatch({
 		type = "CustomMatchUpdateSome", 
 		settings = {
-			deathmatchTime = p11
+			deathmatchTime = p12
 		}
 	});
 end;
-function v3.setSeverMaxPlayers(p12, p13)
-	p12.customMatchRemotes:Get("SetServerMaxPlayers"):CallServerAsync(p13);
+function v4.setSeverMaxPlayers(p13, p14)
+	p13.customMatchRemotes:Get("SetServerMaxPlayers"):CallServerAsync(p14);
 	l__ClientStore__3:dispatch({
 		type = "CustomMatchUpdateSome", 
 		settings = {
-			serverMaxPlayers = p13
+			serverMaxPlayers = p14
 		}
 	});
 end;
-local l__HostPanelGeneralToggle__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "host-panel", "host-panel-settings.dto").HostPanelGeneralToggle;
-function v3.setToggle(p14, p15, p16)
-	if p15 == l__HostPanelGeneralToggle__5.BypassPlacementLimits then
-		p14.customMatchRemotes:Get("SetPlacementLimits"):CallServerAsync(p16);
-	elseif p15 == l__HostPanelGeneralToggle__5.HideAllNametags then
-		p14.customMatchRemotes:Get("SetHideNametags"):CallServerAsync(p16);
-	elseif p15 == l__HostPanelGeneralToggle__5.LockServer then
-		p14.customMatchRemotes:Get("SetLockServer"):CallServerAsync(p16);
-	elseif p15 == l__HostPanelGeneralToggle__5.TeamOverflow then
-		p14.customMatchRemotes:Get("SetTeamOverflow"):CallServerAsync(p16);
-	elseif p15 == l__HostPanelGeneralToggle__5.TeamSwitching then
-		p14.customMatchRemotes:Get("SetTeamSwitching"):CallServerAsync(p16);
-	elseif p15 == l__HostPanelGeneralToggle__5.PvP then
-		p14.customMatchRemotes:Get("SetPvP"):CallServerAsync(p16);
-	elseif p15 == l__HostPanelGeneralToggle__5.BedBreaking then
-		p14.customMatchRemotes:Get("SetBedBreaking"):CallServerAsync(p16);
-	elseif p15 == l__HostPanelGeneralToggle__5.BlockBreaking then
-		p14.customMatchRemotes:Get("SetBlockBreaking"):CallServerAsync(p16);
+local l__HostPanelToggleValue__5 = v2.HostPanelToggleValue;
+local l__HostPanelGeneralToggle__6 = v2.HostPanelGeneralToggle;
+function v4.setToggle(p15, p16, p17)
+	if l__HostPanelToggleValue__5[p17] ~= nil then
+		if p16 == l__HostPanelGeneralToggle__6.BypassPlacementLimits then
+			p15.customMatchRemotes:Get("SetPlacementLimits"):CallServerAsync(p17);
+		elseif p16 == l__HostPanelGeneralToggle__6.HideAllNametags then
+			p15.customMatchRemotes:Get("SetHideNametags"):CallServerAsync(p17);
+		elseif p16 == l__HostPanelGeneralToggle__6.LockServer then
+			p15.customMatchRemotes:Get("SetLockServer"):CallServerAsync(p17);
+		elseif p16 == l__HostPanelGeneralToggle__6.TeamOverflow then
+			p15.customMatchRemotes:Get("SetTeamOverflow"):CallServerAsync(p17);
+		elseif p16 == l__HostPanelGeneralToggle__6.TeamSwitching then
+			p15.customMatchRemotes:Get("SetTeamSwitching"):CallServerAsync(p17);
+		elseif p16 == l__HostPanelGeneralToggle__6.PvP then
+			p15.customMatchRemotes:Get("SetPvP"):CallServerAsync(p17);
+		elseif p16 == l__HostPanelGeneralToggle__6.BedBreaking then
+			p15.customMatchRemotes:Get("SetBedBreaking"):CallServerAsync(p17);
+		elseif p16 == l__HostPanelGeneralToggle__6.BlockBreaking then
+			p15.customMatchRemotes:Get("SetBlockBreaking"):CallServerAsync(p17);
+		elseif p16 == l__HostPanelGeneralToggle__6.IgnoreBuildRestrictedRegions then
+			p15.customMatchRemotes:Get("SetIgnoreBuildRestrictedRegions"):CallServerAsync(p17);
+		end;
+		l__ClientStore__3:dispatch({
+			type = "CustomMatchUpdateGeneralToggle", 
+			toggle = p16, 
+			value = p17
+		});
 	end;
-	l__ClientStore__3:dispatch({
-		type = "CustomMatchUpdateGeneralToggle", 
-		toggle = p15, 
-		value = p16
-	});
 end;
-function v3.setKitDisabled(p17, p18, p19)
-	p17.customMatchRemotes:Get("SetKitDisabled"):CallServerAsync(p18, p19);
+function v4.setKitDisabled(p18, p19, p20)
+	p18.customMatchRemotes:Get("SetKitDisabled"):CallServerAsync(p19, p20);
 	l__ClientStore__3:dispatch({
 		type = "CustomMatchUpdateKit", 
-		kit = p18, 
-		value = p19
+		kit = p19, 
+		value = p20
 	});
 end;
-local u6 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
-local l__BedwarsKit__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
-function v3.setAllKitsDisabled(p20, p21)
-	local v5 = nil;
-	p20.customMatchRemotes:Get("SetAllKitsDisabled"):CallServerAsync(p21);
-	local v6 = u6.values(l__BedwarsKit__7);
-	v5 = {};
-	local function v7(p22, p23)
-		p22[p23] = p21;
-		return p22;
-	end;
-	for v8 = 1, #v6 do
-		v5 = v7(v5, v6[v8], v8 - 1, v6);
+local u7 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
+local l__BedwarsKit__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
+function v4.setAllKitsDisabled(p21, p22)
+	local v6 = nil;
+	p21.customMatchRemotes:Get("SetAllKitsDisabled"):CallServerAsync(p22);
+	local v7 = u7.values(l__BedwarsKit__8);
+	v6 = {};
+	for v8 = 1, #v7 do
+		v6[v7[v8]] = p22;
+		v6 = v6;
 	end;
 	l__ClientStore__3:dispatch({
 		type = "CustomMatchUpdateAllKits", 
 		disabledKits = local v9
 	});
 end;
-function v3.setItemDisabled(p24, p25, p26)
-	p24.customMatchRemotes:Get("SetItemDisabled"):CallServerAsync(p25, p26);
+function v4.setItemDisabled(p23, p24, p25)
+	p23.customMatchRemotes:Get("SetItemDisabled"):CallServerAsync(p24, p25);
 	l__ClientStore__3:dispatch({
 		type = "CustomMatchUpdateItem", 
-		item = p25, 
-		value = p26
+		item = p24, 
+		value = p25
 	});
 end;
-local l__BedwarsShop__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "shop", "bedwars-shop").BedwarsShop;
-function v3.setAllItemsDisabled(p27, p28)
+local l__BedwarsShop__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "shop", "bedwars-shop").BedwarsShop;
+function v4.setAllItemsDisabled(p26, p27)
 	local v10 = nil;
-	p27.customMatchRemotes:Get("SetAllItemsDisabled"):CallServerAsync(p28);
-	local v11 = u6.values(l__BedwarsShop__8.ShopItems);
+	p26.customMatchRemotes:Get("SetAllItemsDisabled"):CallServerAsync(p27);
+	local v11 = u7.values(l__BedwarsShop__9.ShopItems);
 	v10 = {};
-	local function v12(p29, p30)
-		p29[p30.itemType] = p28;
-		return p29;
-	end;
-	for v13 = 1, #v11 do
-		v10 = v12(v10, v11[v13], v13 - 1, v11);
+	for v12 = 1, #v11 do
+		v10[v11[v12].itemType] = p27;
+		v10 = v10;
 	end;
 	l__ClientStore__3:dispatch({
 		type = "CustomMatchUpdateAllItems", 
-		disabledItems = local v14
+		disabledItems = local v13
 	});
 end;
-function v3.blacklistPlayer(p31, p32)
-	p31.customMatchRemotes:Get("BlacklistPlayer"):CallServerAsync(p32);
+function v4.blacklistPlayer(p28, p29)
+	p28.customMatchRemotes:Get("BlacklistPlayer"):CallServerAsync(p29);
 end;
-function v3.toggleCohost(p33, p34)
-	p33.customMatchRemotes:Get("CohostPlayer"):CallServerAsync(p34);
+function v4.toggleCohost(p30, p31)
+	p30.customMatchRemotes:Get("CohostPlayer"):CallServerAsync(p31);
 end;
-function v3.setPlayerTeam(p35, p36, p37)
-	p35.customMatchRemotes:Get("SetPlayerTeam"):CallServerAsync(p36, p37);
+function v4.setPlayerTeam(p32, p33, p34)
+	p32.customMatchRemotes:Get("SetPlayerTeam"):CallServerAsync(p33, p34);
 end;
-function v3.setPlayerMaxHealth(p38, p39, p40)
-	p38.customMatchRemotes:Get("SetPlayerMaxHealth"):CallServerAsync(p39, p40);
+function v4.setPlayerMaxHealth(p35, p36, p37)
+	p35.customMatchRemotes:Get("SetPlayerMaxHealth"):CallServerAsync(p36, p37);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
-u1 = u1(v3.new());
+function v4.saveMap(p38)
+	return p38.customMatchRemotes:Get("SaveMap"):CallServerAsync();
+end;
+function v4.getMySavedMaps(p39)
+	local v14 = p39.customMatchRemotes:Get("GetMySavedMaps"):CallServer();
+	l__ClientStore__3:dispatch({
+		type = "CustomMatchSetMapSaves", 
+		mapSaves = v14
+	});
+	return v14;
+end;
+function v4.getMapDisplayInfo(p40, p41)
+	return p40.customMatchRemotes:Get("GetMapInfo"):CallServerAsync(p41);
+end;
+function v4.deleteMapSave(p42, p43)
+	return p42.customMatchRemotes:Get("DeleteSavedMap"):CallServerAsync(p43);
+end;
+function v4.updateMapSaveSettings(p44, p45, p46)
+	return p44.customMatchRemotes:Get("UpdateSavedMap"):CallServerAsync(p45, p46);
+end;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
+u1 = u1(v4.new());
 return nil;

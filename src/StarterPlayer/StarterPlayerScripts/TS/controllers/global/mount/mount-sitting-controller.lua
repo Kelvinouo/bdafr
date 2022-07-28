@@ -1,4 +1,3 @@
--- Script Hash: 44dbaabd6fe82326be4daaa3ff08230c9ccb562554fb634dd5041e0cf5bad344bd26b91c53602b8f88b06ae2eac5e95b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -33,7 +32,7 @@ function v4.KnitStart(p2)
 				if l__Parent__9 ~= nil and v7.model.PrimaryPart and v8.controlBoneCallback then
 					local v10 = v8.controlBoneCallback(v7.model);
 					if v10 then
-						l__Parent__9.LowerTorso.Root.Transform = (l__Parent__9.HumanoidRootPart.CFrame * CFrame.new(0, -1.3, 0)):ToObjectSpace(v10.TransformedWorldCFrame) * CFrame.Angles(math.rad(70), 0, 0);
+						l__Parent__9.LowerTorso.Root.Transform = (l__Parent__9.HumanoidRootPart.CFrame * CFrame.new(0, -1.3, 0)):ToObjectSpace(v10.TransformedWorldCFrame) * CFrame.Angles(1.2217304763960306, 0, 0);
 					end;
 				end;
 			end;

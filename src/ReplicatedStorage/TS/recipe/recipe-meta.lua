@@ -1,4 +1,3 @@
--- Script Hash: feb9c79757b33ab8dc6c1718ce56264fe07d6c5aee714ba158b92dd595f03cb949cf5fdb6af6fe53b6dc5b7847505868
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__ItemType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
@@ -14,7 +13,7 @@ local u1 = {
 		timeToCraft = 4
 	}, 
 	[l__ItemType__1.MINI_SHIELD] = {
-		ingredients = { l__ItemType__1.THORNS, l__ItemType__1.THORNS, l__ItemType__1.FLOWER }, 
+		ingredients = { l__ItemType__1.THORNS, l__ItemType__1.THORNS, l__ItemType__1.WILD_FLOWER }, 
 		result = l__ItemType__1.MINI_SHIELD, 
 		timeToCraft = 7
 	}, 
@@ -24,7 +23,7 @@ local u1 = {
 		timeToCraft = 5
 	}, 
 	[l__ItemType__1.HEAL_SPLASH_POTION] = {
-		ingredients = { l__ItemType__1.FLOWER, l__ItemType__1.FLOWER, l__ItemType__1.FLOWER }, 
+		ingredients = { l__ItemType__1.WILD_FLOWER, l__ItemType__1.WILD_FLOWER, l__ItemType__1.WILD_FLOWER }, 
 		result = l__ItemType__1.HEAL_SPLASH_POTION, 
 		timeToCraft = 5
 	}

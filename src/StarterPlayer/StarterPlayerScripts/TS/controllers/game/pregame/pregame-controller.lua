@@ -1,4 +1,3 @@
--- Script Hash: 4de07db01b23c997ca8ba5bd3fee7b63ae94c7c040ccefca02f0b132de2d9eedc7a6f34896d5b9da16d5a9f23af8073f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -26,14 +25,12 @@ function u1.KnitStart(p2)
 	l__ClientStore__3.changed:connect(function(p3, p4)
 		if p3.Game ~= p4.Game then
 			if p3.Game.matchState ~= l__MatchState__4.PRE or p3.Game.customMatch ~= nil then
-				print("unmounting countdown");
 				p2:unmount();
 				return;
 			end;
 		else
 			return;
 		end;
-		print("mounting preagme countdown");
 		p2:mount();
 	end);
 	local v5 = l__ClientStore__3:getState();
@@ -54,7 +51,7 @@ function u1.unmount(p6)
 		p6.tree = nil;
 	end;
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

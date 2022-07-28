@@ -1,9 +1,8 @@
--- Script Hash: 4842faffe66713ffc6f27757a6f0017d3f020dc22cfd61fe730f468d8842ccdec01c300e34d0c0b1710d27d678cef1da
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local v5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "typesafe-attributes");
 local l__HandKnitController__6 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
@@ -25,116 +24,122 @@ function v7.constructor(p1)
 	p1.Name = "DaoController";
 	p1.maid = u2.new();
 end;
-local l__ClientSyncEvents__3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
+local l__KnitClient__3 = v3.KnitClient;
 local l__BedwarsKit__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
 local l__ContentProvider__5 = v4.ContentProvider;
 local l__GameAnimationUtil__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
 local l__AnimationType__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
-local l__AbilityId__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "ability", "ability-id").AbilityId;
-local l__SoundManager__9 = v2.SoundManager;
-local l__GameSound__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local l__ClientSyncEvents__8 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
+local l__AbilityId__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "ability", "ability-id").AbilityId;
+local l__SoundManager__10 = v2.SoundManager;
+local l__GameSound__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function v7.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__ClientSyncEvents__3.KitEquip:connect(function(p3)
-		if p3.kit == l__BedwarsKit__4.DASHER then
+	l__KnitClient__3.Controllers.KitController:watchKit(function(p3, p4)
+		if p4 == l__BedwarsKit__4.DASHER then
 			task.spawn(function()
 				l__ContentProvider__5:PreloadAsync({ l__GameAnimationUtil__6.getAnimation(l__AnimationType__7.DAO_CHARGE), l__GameAnimationUtil__6.getAnimation(l__AnimationType__7.DAO_DASH) });
 			end);
 		end;
 	end);
-	l__ClientSyncEvents__3.AbilityUsed:connect(function(p4)
-		if p4.ability ~= l__AbilityId__8.DASH then
+	l__ClientSyncEvents__8.AbilityUsed:connect(function(p5)
+		if p5.ability ~= l__AbilityId__9.DASH then
 			return nil;
 		end;
-		if p4:isCancelled() then
+		if p5:isCancelled() then
 			return nil;
 		end;
-		if not p4.userCharacter.PrimaryPart then
+		if not p5.userCharacter.PrimaryPart then
 			return nil;
 		end;
-		l__SoundManager__9:playSound(l__GameSound__10.DAO_DASH, {
-			position = p4.userCharacter.PrimaryPart.Position, 
-			parent = p4.userCharacter.PrimaryPart
+		l__SoundManager__10:playSound(l__GameSound__11.DAO_DASH, {
+			position = p5.userCharacter.PrimaryPart.Position, 
+			parent = p5.userCharacter.PrimaryPart
 		});
 	end);
 end;
-local l__Flamework__11 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
-local l__WatchCharacter__12 = v2.WatchCharacter;
-local l__Players__13 = v4.Players;
-local u14 = v5.GetAttributeChangedSignal;
-local l__DasherKit__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "kits", "dasher", "dasher-kit").DasherKit;
-local l__Workspace__16 = v4.Workspace;
-local l__CooldownId__17 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "cooldown", "cooldown-id").CooldownId;
-local l__RunService__18 = v4.RunService;
-local l__EntityUtil__19 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
-local l__default__20 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
-local l__GetAttribute__21 = v5.GetAttribute;
-local l__SetAttribute__22 = v5.SetAttribute;
-function v7.onEnable(p5, p6)
-	p5.maid:GiveTask(l__Flamework__11.resolveDependency("@easy-games/game-core:client/controllers/ability/ability-controller@AbilityController"):enableAbility(l__AbilityId__8.DASH, nil));
-	local u23 = false;
-	p5.maid:GiveTask(l__ClientSyncEvents__3.SwordSwingDown:connect(function()
-		u23 = true;
+local l__ClientStore__12 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
+local l__QueueType__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "game", "queue-type").QueueType;
+local l__Flamework__14 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
+local l__WatchCharacter__15 = v2.WatchCharacter;
+local l__Players__16 = v4.Players;
+local u17 = v5.GetAttributeChangedSignal;
+local l__DasherKit__18 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "kits", "dasher", "dasher-kit").DasherKit;
+local l__Workspace__19 = v4.Workspace;
+local l__CooldownId__20 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "cooldown", "cooldown-id").CooldownId;
+local l__RunService__21 = v4.RunService;
+local l__EntityUtil__22 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
+local l__default__23 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
+local l__GetAttribute__24 = v5.GetAttribute;
+local l__SetAttribute__25 = v5.SetAttribute;
+function v7.onEnable(p6, p7)
+	if l__ClientStore__12:getState().Game.queueType == l__QueueType__13.SURVIVAL then
+		return nil;
+	end;
+	p6.maid:GiveTask(l__Flamework__14.resolveDependency("@easy-games/game-core:client/controllers/ability/ability-controller@AbilityController"):enableAbility(l__AbilityId__9.DASH, nil));
+	local u26 = false;
+	p6.maid:GiveTask(l__ClientSyncEvents__8.SwordSwingDown:connect(function()
+		u26 = true;
 	end));
-	p5.maid:GiveTask(l__ClientSyncEvents__3.SwordSwingUp:connect(function()
-		u23 = false;
+	p6.maid:GiveTask(l__ClientSyncEvents__8.SwordSwingUp:connect(function()
+		u26 = false;
 	end));
-	l__WatchCharacter__12(function(p7, p8, p9)
-		if p7 ~= l__Players__13.LocalPlayer then
+	l__WatchCharacter__15(function(p8, p9, p10)
+		if p8 ~= l__Players__16.LocalPlayer then
 			return nil;
 		end;
-		p9:GiveTask(u14(p8, l__DasherKit__15.canDashAttribute, function(p10)
-			if p10 == nil then
+		p10:GiveTask(u17(p9, l__DasherKit__18.canDashAttribute, function(p11)
+			if p11 == nil then
 				return nil;
 			end;
-			local v9 = p10 - l__Workspace__16:GetServerTimeNow();
-			if p5.cooldownMaid then
-				p5.cooldownMaid:DoCleaning();
+			local v9 = p11 - l__Workspace__19:GetServerTimeNow();
+			if p6.cooldownMaid then
+				p6.cooldownMaid:DoCleaning();
 			end;
-			p5.cooldownMaid = u2.new();
-			p5.cooldownMaid:GiveTask(l__Flamework__11.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):createCooldownBar(l__CooldownId__17.DASHER_ABILITY));
-			l__Flamework__11.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):setOnCooldown(l__CooldownId__17.DASHER_ABILITY, v9, {
+			p6.cooldownMaid = u2.new();
+			p6.cooldownMaid:GiveTask(l__Flamework__14.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):createCooldownBar(l__CooldownId__20.DASHER_ABILITY));
+			l__Flamework__14.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):setOnCooldown(l__CooldownId__20.DASHER_ABILITY, v9, {
 				cooldownBar = {
 					color = Color3.fromRGB(166, 38, 38)
 				}
 			});
-			p5.cooldownMaid:GiveTask(function()
-				l__Flamework__11.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):removeCooldown(l__CooldownId__17.DASHER_ABILITY);
+			p6.cooldownMaid:GiveTask(function()
+				l__Flamework__14.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):removeCooldown(l__CooldownId__20.DASHER_ABILITY);
 			end);
 			task.delay(v9, function()
-				if p5.cooldownMaid then
-					p5.cooldownMaid:DoCleaning();
-					p5.cooldownMaid = nil;
+				if p6.cooldownMaid then
+					p6.cooldownMaid:DoCleaning();
+					p6.cooldownMaid = nil;
 				end;
 			end);
 		end));
-		p9:GiveTask(function()
-			local l__cooldownMaid__10 = p5.cooldownMaid;
+		p10:GiveTask(function()
+			local l__cooldownMaid__10 = p6.cooldownMaid;
 			if l__cooldownMaid__10 ~= nil then
 				l__cooldownMaid__10:DoCleaning();
 			end;
 		end);
 	end);
-	p5.maid:GiveTask(l__RunService__18.Heartbeat:Connect(function()
-		local l__Character__11 = l__Players__13.LocalPlayer.Character;
+	p6.maid:GiveTask(l__RunService__21.Heartbeat:Connect(function()
+		local l__Character__11 = l__Players__16.LocalPlayer.Character;
 		if l__Character__11 == nil or not l__Character__11.PrimaryPart then
 			return nil;
 		end;
-		local v12 = l__EntityUtil__19:getEntity(l__Character__11);
+		local v12 = l__EntityUtil__22:getEntity(l__Character__11);
 		if v12 == nil or v12:isAlive() == false then
-			p5.beginChargeTime = nil;
-			local l__chargingMaid__13 = p5.chargingMaid;
+			p6.beginChargeTime = nil;
+			local l__chargingMaid__13 = p6.chargingMaid;
 			if l__chargingMaid__13 ~= nil then
 				l__chargingMaid__13:DoCleaning();
 			end;
-			p5.chargingMaid = nil;
-			l__default__20.Debug("Removed");
+			p6.chargingMaid = nil;
+			l__default__23.Debug("Removed");
 			return nil;
 		end;
-		local v14 = l__GetAttribute__21(l__Character__11, l__DasherKit__15.canDashAttribute);
-		local v15 = u23;
+		local v14 = l__GetAttribute__24(l__Character__11, l__DasherKit__18.canDashAttribute);
+		local v15 = u26;
 		if v15 then
-			local l__beginChargeTime__16 = p5.beginChargeTime;
+			local l__beginChargeTime__16 = p6.beginChargeTime;
 			local v17 = false;
 			if l__beginChargeTime__16 ~= 0 then
 				v17 = false;
@@ -146,94 +151,94 @@ function v7.onEnable(p5, p6)
 			if v15 then
 				v15 = v14;
 				if v15 ~= 0 and v15 == v15 and v15 then
-					v15 = v14 < l__Workspace__16:GetServerTimeNow();
+					v15 = v14 < l__Workspace__19:GetServerTimeNow();
 				end;
 			end;
 		end;
-		if v15 ~= 0 and v15 == v15 and v15 and l__Flamework__11.resolveDependency("@easy-games/game-core:client/controllers/ability/ability-controller@AbilityController"):canUseAbility(l__AbilityId__8.DASH, {
+		if v15 ~= 0 and v15 == v15 and v15 and l__Flamework__14.resolveDependency("@easy-games/game-core:client/controllers/ability/ability-controller@AbilityController"):canUseAbility(l__AbilityId__9.DASH, {
 			disableBlockedAbilityAlert = true
 		}) then
-			p5.beginChargeTime = time();
+			p6.beginChargeTime = time();
 		end;
-		local v18 = p5.beginChargeTime;
+		local v18 = p6.beginChargeTime;
 		if v18 ~= 0 and v18 == v18 and v18 then
 			local v19 = false;
-			if l__DasherKit__15.CHARGE_TIME_BEFORE_CHARGING_STATE < time() - p5.beginChargeTime then
-				v19 = not p5.chargingMaid;
+			if l__DasherKit__18.CHARGE_TIME_BEFORE_CHARGING_STATE < time() - p6.beginChargeTime then
+				v19 = not p6.chargingMaid;
 			end;
 			v18 = v19;
 		end;
 		if v18 ~= 0 and v18 == v18 and v18 then
-			p5.beginChargeTime = nil;
-			p5:enterChargingState();
+			p6.beginChargeTime = nil;
+			p6:enterChargingState();
 			return nil;
 		end;
-		if u23 then
+		if u26 then
 			return;
 		end;
-		local l__chargingMaid__20 = p5.chargingMaid;
+		local l__chargingMaid__20 = p6.chargingMaid;
 		if l__chargingMaid__20 ~= nil then
 			l__chargingMaid__20:DoCleaning();
 		end;
-		p5.chargingMaid = nil;
-		local v21 = p5.beginChargeTime;
+		p6.chargingMaid = nil;
+		local v21 = p6.beginChargeTime;
 		if v21 ~= 0 and v21 == v21 and v21 then
-			v21 = l__DasherKit__15.CHARGE_TIME <= time() - p5.beginChargeTime;
+			v21 = l__DasherKit__18.CHARGE_TIME <= time() - p6.beginChargeTime;
 		end;
 		if v21 ~= 0 and v21 == v21 and v21 then
-			local l__LookVector__22 = l__Workspace__16.CurrentCamera.CFrame.LookVector;
-			if l__Flamework__11.resolveDependency("@easy-games/game-core:client/controllers/ability/ability-controller@AbilityController"):canUseAbility(l__AbilityId__8.DASH) then
-				l__Flamework__11.resolveDependency("@easy-games/game-core:client/controllers/ability/ability-controller@AbilityController"):useAbility(l__AbilityId__8.DASH, {
+			local l__LookVector__22 = l__Workspace__19.CurrentCamera.CFrame.LookVector;
+			if l__Flamework__14.resolveDependency("@easy-games/game-core:client/controllers/ability/ability-controller@AbilityController"):canUseAbility(l__AbilityId__9.DASH) then
+				l__Flamework__14.resolveDependency("@easy-games/game-core:client/controllers/ability/ability-controller@AbilityController"):useAbility(l__AbilityId__9.DASH, {
 					direction = l__LookVector__22, 
 					origin = l__Character__11.PrimaryPart.Position, 
-					weapon = p6.itemType
+					weapon = p7.itemType
 				});
-				p5:dashForward(l__LookVector__22);
-				l__SetAttribute__22(l__Character__11, l__DasherKit__15.canDashAttribute, l__Workspace__16:GetServerTimeNow() + 500);
+				p6:dashForward(l__LookVector__22);
+				l__SetAttribute__25(l__Character__11, l__DasherKit__18.canDashAttribute, l__Workspace__19:GetServerTimeNow() + 500);
 			end;
 		end;
-		p5.beginChargeTime = nil;
+		p6.beginChargeTime = nil;
 		return nil;
 	end));
-	p5.maid:GiveTask(function()
-		local l__chargingMaid__23 = p5.chargingMaid;
+	p6.maid:GiveTask(function()
+		local l__chargingMaid__23 = p6.chargingMaid;
 		if l__chargingMaid__23 ~= nil then
 			l__chargingMaid__23:DoCleaning();
 		end;
-		p5.chargingMaid = nil;
-		local l__cooldownMaid__24 = p5.cooldownMaid;
+		p6.chargingMaid = nil;
+		local l__cooldownMaid__24 = p6.cooldownMaid;
 		if l__cooldownMaid__24 ~= nil then
 			l__cooldownMaid__24:DoCleaning();
 		end;
-		p5.cooldownMaid = nil;
-		p5.beginChargeTime = nil;
+		p6.cooldownMaid = nil;
+		p6.beginChargeTime = nil;
 	end);
 end;
-local u24 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
-local l__DasherProgressBar__25 = v1.import(script, script.Parent, "dasher-progress-bar").DasherProgressBar;
-function v7.enterChargingState(p11)
-	p11.chargingMaid = u2.new();
-	local u26 = l__GameAnimationUtil__6.playAnimation(l__Players__13.LocalPlayer, l__AnimationType__7.DAO_CHARGE, {
+local u27 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
+local l__DasherProgressBar__28 = v1.import(script, script.Parent, "dasher-progress-bar").DasherProgressBar;
+function v7.enterChargingState(p12)
+	p12.chargingMaid = u2.new();
+	local u29 = l__GameAnimationUtil__6.playAnimation(l__Players__16.LocalPlayer, l__AnimationType__7.DAO_CHARGE, {
 		looped = true
 	});
-	p11.chargingMaid:GiveTask(function()
-		if u26 ~= nil then
-			u26:Stop();
+	p12.chargingMaid:GiveTask(function()
+		if u29 ~= nil then
+			u29:Stop();
 		end;
 	end);
-	local u27 = u24.mount(u24.createElement("ScreenGui", {}, { u24.createElement(l__DasherProgressBar__25, {
-			chargeTime = l__DasherKit__15.CHARGE_TIME
-		}) }), l__Players__13.LocalPlayer:WaitForChild("PlayerGui"), "DasherCharge");
-	p11.chargingMaid:GiveTask(function()
-		u24.unmount(u27);
+	local u30 = u27.mount(u27.createElement("ScreenGui", {}, { u27.createElement(l__DasherProgressBar__28, {
+			chargeTime = l__DasherKit__18.CHARGE_TIME
+		}) }), l__Players__16.LocalPlayer:WaitForChild("PlayerGui"), "DasherCharge");
+	p12.chargingMaid:GiveTask(function()
+		u27.unmount(u30);
 	end);
 end;
-local l__KnitClient__28 = v3.KnitClient;
-local l__StarterPlayer__29 = v4.StarterPlayer;
-function v7.dashForward(p12, p13)
-	local l__Character__25 = l__Players__13.LocalPlayer.Character;
+local l__KnitClient__31 = v3.KnitClient;
+local l__StarterPlayer__32 = v4.StarterPlayer;
+function v7.dashForward(p13, p14)
+	local l__Character__25 = l__Players__16.LocalPlayer.Character;
 	if l__Character__25 then
-		l__Character__25.HumanoidRootPart.CFrame = CFrame.lookAt(l__Character__25.HumanoidRootPart.Position, l__Character__25.HumanoidRootPart.Position + p13 * Vector3.new(1, 0, 1));
+		l__Character__25.HumanoidRootPart.CFrame = CFrame.lookAt(l__Character__25.HumanoidRootPart.Position, l__Character__25.HumanoidRootPart.Position + p14 * Vector3.new(1, 0, 1));
 		l__Character__25.Humanoid.JumpHeight = 0.5;
 		l__Character__25.Humanoid:ChangeState(Enum.HumanoidStateType.Jumping);
 		local v26 = l__Character__25.PrimaryPart;
@@ -244,27 +249,27 @@ function v7.dashForward(p12, p13)
 		if v27 == nil then
 			v27 = 1;
 		end;
-		l__Character__25.HumanoidRootPart:ApplyImpulse(p13.Unit * Vector3.new(1, 0, 1) * v27 * 70);
-		l__KnitClient__28.Controllers.JumpHeightController:setJumpHeight(l__StarterPlayer__29.CharacterJumpHeight);
-		l__SoundManager__9:playSound(l__GameSound__10.DAO_DASH);
-		l__SoundManager__9:playSound(l__GameSound__10.DAO_SLASH);
-		local v28 = l__GameAnimationUtil__6.playAnimation(l__Players__13.LocalPlayer, l__AnimationType__7.DAO_DASH);
+		l__Character__25.HumanoidRootPart:ApplyImpulse(p14.Unit * Vector3.new(1, 0, 1) * v27 * 70);
+		l__KnitClient__31.Controllers.JumpHeightController:setJumpHeight(l__StarterPlayer__32.CharacterJumpHeight);
+		l__SoundManager__10:playSound(l__GameSound__11.DAO_DASH);
+		l__SoundManager__10:playSound(l__GameSound__11.DAO_SLASH);
+		local v28 = l__GameAnimationUtil__6.playAnimation(l__Players__16.LocalPlayer, l__AnimationType__7.DAO_DASH);
 		if v28 ~= nil then
 			v28:AdjustSpeed(2.5);
 		end;
 	end;
 end;
-function v7.onDisable(p14)
-	p14.maid:DoCleaning();
+function v7.onDisable(p15)
+	p15.maid:DoCleaning();
 end;
-local l__getItemMeta__30 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
-function v7.isRelevantItem(p15, p16)
-	local v29 = l__getItemMeta__30(p16.itemType).sword;
+local l__getItemMeta__33 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
+function v7.isRelevantItem(p16, p17)
+	local v29 = l__getItemMeta__33(p17.itemType).sword;
 	if v29 ~= nil then
 		v29 = v29.daoDash;
 	end;
 	return v29 == true;
 end;
-u1 = v3.KnitClient.CreateController;
+u1 = l__KnitClient__3.CreateController;
 u1 = u1(v7.new());
 return nil;

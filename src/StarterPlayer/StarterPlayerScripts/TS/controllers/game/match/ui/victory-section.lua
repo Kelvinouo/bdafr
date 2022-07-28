@@ -1,4 +1,3 @@
--- Script Hash: dbd04a7d16cf9d5be7ebae0a664721780d6514c56dc22f4a93253de54f0f3a465c55561be81f532cce4527aea126d39d
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -34,44 +33,45 @@ function v5.render(p3)
 		v6 = "Penguins Win!";
 	end;
 	local v8 = {};
-	local l__teams__9 = l__ClientStore__6:getState().Game.teams;
-	local function v10(p4)
-		return p4.id == p3.props.WinningTeamId;
-	end;
-	local v11 = nil;
-	for v12, v13 in ipairs(l__teams__9) do
-		if v10(v13, v12 - 1, l__teams__9) == true then
-			v11 = v13;
+	local v9 = nil;
+	for v10, v11 in ipairs(l__ClientStore__6:getState().Game.teams) do
+		if v11.id == p3.props.WinningTeamId == true then
+			v9 = v11;
 			break;
 		end;
 	end;
-	if v11 then
-		v6 = "Team " .. v11.name .. " Wins!";
-		local v14 = l__Players__7:GetPlayers();
-		local function v15(p5)
-			return v11.members[p5.UserId] ~= nil;
-		end;
-		local v16 = {};
-		local v17 = 0;
-		for v18, v19 in ipairs(v14) do
-			if v15(v19, v18 - 1, v14) == true then
-				v17 = v17 + 1;
-				v16[v17] = v19;
+	if v9 then
+		v6 = "Team " .. v9.name .. " Wins!";
+		local v12 = {};
+		local v13 = 0;
+		local v14, v15, v16 = ipairs((l__Players__7:GetPlayers()));
+		while true do
+			local v17, v18 = v14(v15, v16);
+			if not v17 then
+				break;
 			end;
+			if v9.members[v18.UserId] ~= nil == true then
+				v13 = v13 + 1;
+				v12[v13] = v18;
+			end;		
 		end;
-		v8 = v16;
+		v8 = v12;
 	end;
 	if l__queueType__7 and l__Flamework__4.resolveDependency("@easy-games/lobby:client/controllers/lobby-client-controller@LobbyClientController"):getQueueMeta(l__queueType__7).game == l__GameType__5.GUN_GAME then
-		local v20 = v11;
-		if v20 ~= nil then
-			v20 = v20.members;
+		local v19 = v9;
+		if v19 ~= nil then
+			v19 = v19.members;
 		end;
-		if v20 then
-			local v21 = l__values__8(v20)[1];
-			if v21 then
-				v6 = v21.name .. " Wins!";
+		if v19 then
+			local v20 = l__values__8(v19)[1];
+			if v20 then
+				v6 = v20.name .. " Wins!";
 			end;
 		end;
+	end;
+	local l__CustomTitleMessage__21 = p3.props.CustomTitleMessage;
+	if l__CustomTitleMessage__21 ~= "" and l__CustomTitleMessage__21 then
+		v6 = p3.props.CustomTitleMessage;
 	end;
 	local v22 = true;
 	local l__myTeam__23 = l__ClientStore__6:getState().Game.myTeam;
@@ -103,14 +103,14 @@ function v5.render(p3)
 			DominantAxis = "Height"
 		}))
 	};
-	local function v27(p6, p7)
+	local function v27(p4, p5)
 		return v3.createFragment({
 			PlayerRender = v3.createElement(l__PlayerRender__10, {
 				Size = UDim2.fromScale(1, 1), 
 				SizeConstraint = "RelativeYY", 
 				BorderSizePixel = 0, 
 				BackgroundTransparency = 1, 
-				Player = l__OfflinePlayerUtil__11.getOfflinePlayer(p6)
+				Player = l__OfflinePlayerUtil__11.getOfflinePlayer(p4)
 			}, { v3.createElement("UICorner", {
 					CornerRadius = UDim.new(1, 0)
 				}) })

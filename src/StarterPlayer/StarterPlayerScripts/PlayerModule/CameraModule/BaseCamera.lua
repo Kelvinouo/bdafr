@@ -1,142 +1,135 @@
--- Script Hash: 8f898a4d5fa2be84be29ca47c52ae83406d632cca12a558404b5661cf433de356db0c16edaa134def02025f399f09bd2
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = Vector3.new(0, 0, 1);
 local v2 = Vector3.new(1, 0, 1);
-local v3 = math.rad(-80);
-local v4 = math.rad(80);
-local v5 = math.rad(15);
-local v6 = Vector2.new(math.rad(15), 0);
-local v7 = Vector2.new(math.rad(45), 0);
-local v8 = Vector2.new(0, 0);
-local v9 = Vector3.new(0, 0, 0);
-local v10 = Vector3.new(0, 5, 0);
-local v11 = Vector3.new(0, 4, 0);
-local v12 = Vector3.new(0, 1.5, 0);
-local v13 = Vector3.new(0, 1.5, 0);
-local v14 = Vector3.new(0, 2, 0);
-local v15 = Vector3.new(2, 2, 1);
-local v16 = require(script.Parent:WaitForChild("CameraUtils"));
-local v17 = require(script.Parent:WaitForChild("ZoomController"));
-local v18 = require(script.Parent:WaitForChild("CameraToggleStateController"));
-local v19 = require(script.Parent:WaitForChild("CameraInput"));
-local v20 = require(script.Parent:WaitForChild("CameraUI"));
-local l__UserInputService__21 = game:GetService("UserInputService");
-local l__StarterGui__22 = game:GetService("StarterGui");
-local l__VRService__23 = game:GetService("VRService");
-local l__UserGameSettings__24 = UserSettings():GetService("UserGameSettings");
-local l__LocalPlayer__25 = game:GetService("Players").LocalPlayer;
-local v26, v27 = pcall(function()
+local v3 = Vector2.new(0.2617993877991494, 0);
+local v4 = Vector2.new(0.7853981633974483, 0);
+local v5 = Vector2.new(0, 0);
+local v6 = Vector3.new(0, 0, 0);
+local v7 = Vector3.new(0, 5, 0);
+local v8 = Vector3.new(0, 4, 0);
+local v9 = Vector3.new(0, 1.5, 0);
+local v10 = Vector3.new(0, 1.5, 0);
+local v11 = Vector3.new(0, 2, 0);
+local v12 = Vector3.new(2, 2, 1);
+local v13 = require(script.Parent:WaitForChild("CameraUtils"));
+local v14 = require(script.Parent:WaitForChild("ZoomController"));
+local v15 = require(script.Parent:WaitForChild("CameraToggleStateController"));
+local v16 = require(script.Parent:WaitForChild("CameraInput"));
+local v17 = require(script.Parent:WaitForChild("CameraUI"));
+local l__UserInputService__18 = game:GetService("UserInputService");
+local l__StarterGui__19 = game:GetService("StarterGui");
+local l__VRService__20 = game:GetService("VRService");
+local l__UserGameSettings__21 = UserSettings():GetService("UserGameSettings");
+local l__LocalPlayer__22 = game:GetService("Players").LocalPlayer;
+local v23, v24 = pcall(function()
 	return UserSettings():IsUserFeatureEnabled("UserFlagEnableNewVRSystem");
 end);
-local v28, v29 = pcall(function()
-	return UserSettings():IsUserFeatureEnabled("UserCameraToggleDontSetMouseBehaviorOrRotationTypeEveryFrame");
-end);
-local v30 = {};
-v30.__index = v30;
-function v30.new()
-	local v31 = setmetatable({}, v30);
-	v31.FIRST_PERSON_DISTANCE_THRESHOLD = 1;
-	v31.cameraType = nil;
-	v31.cameraMovementMode = nil;
-	v31.lastCameraTransform = nil;
-	v31.lastUserPanCamera = tick();
-	v31.humanoidRootPart = nil;
-	v31.humanoidCache = {};
-	v31.lastSubject = nil;
-	v31.lastSubjectPosition = Vector3.new(0, 5, 0);
-	v31.lastSubjectCFrame = CFrame.new(v31.lastSubjectPosition);
-	v31.defaultSubjectDistance = math.clamp(12.5, l__LocalPlayer__25.CameraMinZoomDistance, l__LocalPlayer__25.CameraMaxZoomDistance);
-	v31.currentSubjectDistance = math.clamp(12.5, l__LocalPlayer__25.CameraMinZoomDistance, l__LocalPlayer__25.CameraMaxZoomDistance);
-	v31.inFirstPerson = false;
-	v31.inMouseLockedMode = false;
-	v31.portraitMode = false;
-	v31.isSmallTouchScreen = false;
-	v31.resetCameraAngle = true;
-	v31.enabled = false;
-	v31.PlayerGui = nil;
-	v31.cameraChangedConn = nil;
-	v31.viewportSizeChangedConn = nil;
-	v31.shouldUseVRRotation = false;
-	v31.VRRotationIntensityAvailable = false;
-	v31.lastVRRotationIntensityCheckTime = 0;
-	v31.lastVRRotationTime = 0;
-	v31.vrRotateKeyCooldown = {};
-	v31.cameraTranslationConstraints = Vector3.new(1, 1, 1);
-	v31.humanoidJumpOrigin = nil;
-	v31.trackingHumanoid = nil;
-	v31.cameraFrozen = false;
-	v31.subjectStateChangedConn = nil;
-	v31.gamepadZoomPressConnection = nil;
-	v31.mouseLockOffset = v9;
-	if l__LocalPlayer__25.Character then
-		v31:OnCharacterAdded(l__LocalPlayer__25.Character);
+local v25 = {};
+v25.__index = v25;
+function v25.new()
+	local v26 = setmetatable({}, v25);
+	v26.FIRST_PERSON_DISTANCE_THRESHOLD = 1;
+	v26.cameraType = nil;
+	v26.cameraMovementMode = nil;
+	v26.lastCameraTransform = nil;
+	v26.lastUserPanCamera = tick();
+	v26.humanoidRootPart = nil;
+	v26.humanoidCache = {};
+	v26.lastSubject = nil;
+	v26.lastSubjectPosition = Vector3.new(0, 5, 0);
+	v26.lastSubjectCFrame = CFrame.new(v26.lastSubjectPosition);
+	v26.defaultSubjectDistance = math.clamp(12.5, l__LocalPlayer__22.CameraMinZoomDistance, l__LocalPlayer__22.CameraMaxZoomDistance);
+	v26.currentSubjectDistance = math.clamp(12.5, l__LocalPlayer__22.CameraMinZoomDistance, l__LocalPlayer__22.CameraMaxZoomDistance);
+	v26.inFirstPerson = false;
+	v26.inMouseLockedMode = false;
+	v26.portraitMode = false;
+	v26.isSmallTouchScreen = false;
+	v26.resetCameraAngle = true;
+	v26.enabled = false;
+	v26.PlayerGui = nil;
+	v26.cameraChangedConn = nil;
+	v26.viewportSizeChangedConn = nil;
+	v26.shouldUseVRRotation = false;
+	v26.VRRotationIntensityAvailable = false;
+	v26.lastVRRotationIntensityCheckTime = 0;
+	v26.lastVRRotationTime = 0;
+	v26.vrRotateKeyCooldown = {};
+	v26.cameraTranslationConstraints = Vector3.new(1, 1, 1);
+	v26.humanoidJumpOrigin = nil;
+	v26.trackingHumanoid = nil;
+	v26.cameraFrozen = false;
+	v26.subjectStateChangedConn = nil;
+	v26.gamepadZoomPressConnection = nil;
+	v26.mouseLockOffset = v6;
+	if l__LocalPlayer__22.Character then
+		v26:OnCharacterAdded(l__LocalPlayer__22.Character);
 	end;
-	l__LocalPlayer__25.CharacterAdded:Connect(function(p1)
-		v31:OnCharacterAdded(p1);
+	l__LocalPlayer__22.CharacterAdded:Connect(function(p1)
+		v26:OnCharacterAdded(p1);
 	end);
-	if v31.cameraChangedConn then
-		v31.cameraChangedConn:Disconnect();
+	if v26.cameraChangedConn then
+		v26.cameraChangedConn:Disconnect();
 	end;
-	v31.cameraChangedConn = workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
-		v31:OnCurrentCameraChanged();
+	v26.cameraChangedConn = workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
+		v26:OnCurrentCameraChanged();
 	end);
-	v31:OnCurrentCameraChanged();
-	if v31.playerCameraModeChangeConn then
-		v31.playerCameraModeChangeConn:Disconnect();
+	v26:OnCurrentCameraChanged();
+	if v26.playerCameraModeChangeConn then
+		v26.playerCameraModeChangeConn:Disconnect();
 	end;
-	v31.playerCameraModeChangeConn = l__LocalPlayer__25:GetPropertyChangedSignal("CameraMode"):Connect(function()
-		v31:OnPlayerCameraPropertyChange();
+	v26.playerCameraModeChangeConn = l__LocalPlayer__22:GetPropertyChangedSignal("CameraMode"):Connect(function()
+		v26:OnPlayerCameraPropertyChange();
 	end);
-	if v31.minDistanceChangeConn then
-		v31.minDistanceChangeConn:Disconnect();
+	if v26.minDistanceChangeConn then
+		v26.minDistanceChangeConn:Disconnect();
 	end;
-	v31.minDistanceChangeConn = l__LocalPlayer__25:GetPropertyChangedSignal("CameraMinZoomDistance"):Connect(function()
-		v31:OnPlayerCameraPropertyChange();
+	v26.minDistanceChangeConn = l__LocalPlayer__22:GetPropertyChangedSignal("CameraMinZoomDistance"):Connect(function()
+		v26:OnPlayerCameraPropertyChange();
 	end);
-	if v31.maxDistanceChangeConn then
-		v31.maxDistanceChangeConn:Disconnect();
+	if v26.maxDistanceChangeConn then
+		v26.maxDistanceChangeConn:Disconnect();
 	end;
-	v31.maxDistanceChangeConn = l__LocalPlayer__25:GetPropertyChangedSignal("CameraMaxZoomDistance"):Connect(function()
-		v31:OnPlayerCameraPropertyChange();
+	v26.maxDistanceChangeConn = l__LocalPlayer__22:GetPropertyChangedSignal("CameraMaxZoomDistance"):Connect(function()
+		v26:OnPlayerCameraPropertyChange();
 	end);
-	if v31.playerDevTouchMoveModeChangeConn then
-		v31.playerDevTouchMoveModeChangeConn:Disconnect();
+	if v26.playerDevTouchMoveModeChangeConn then
+		v26.playerDevTouchMoveModeChangeConn:Disconnect();
 	end;
-	v31.playerDevTouchMoveModeChangeConn = l__LocalPlayer__25:GetPropertyChangedSignal("DevTouchMovementMode"):Connect(function()
-		v31:OnDevTouchMovementModeChanged();
+	v26.playerDevTouchMoveModeChangeConn = l__LocalPlayer__22:GetPropertyChangedSignal("DevTouchMovementMode"):Connect(function()
+		v26:OnDevTouchMovementModeChanged();
 	end);
-	v31:OnDevTouchMovementModeChanged();
-	if v31.gameSettingsTouchMoveMoveChangeConn then
-		v31.gameSettingsTouchMoveMoveChangeConn:Disconnect();
+	v26:OnDevTouchMovementModeChanged();
+	if v26.gameSettingsTouchMoveMoveChangeConn then
+		v26.gameSettingsTouchMoveMoveChangeConn:Disconnect();
 	end;
-	v31.gameSettingsTouchMoveMoveChangeConn = l__UserGameSettings__24:GetPropertyChangedSignal("TouchMovementMode"):Connect(function()
-		v31:OnGameSettingsTouchMovementModeChanged();
+	v26.gameSettingsTouchMoveMoveChangeConn = l__UserGameSettings__21:GetPropertyChangedSignal("TouchMovementMode"):Connect(function()
+		v26:OnGameSettingsTouchMovementModeChanged();
 	end);
-	v31:OnGameSettingsTouchMovementModeChanged();
-	l__UserGameSettings__24:SetCameraYInvertVisible();
-	l__UserGameSettings__24:SetGamepadCameraSensitivityVisible();
-	v31.hasGameLoaded = game:IsLoaded();
-	if not v31.hasGameLoaded then
-		v31.gameLoadedConn = game.Loaded:Connect(function()
-			v31.hasGameLoaded = true;
-			v31.gameLoadedConn:Disconnect();
-			v31.gameLoadedConn = nil;
+	v26:OnGameSettingsTouchMovementModeChanged();
+	l__UserGameSettings__21:SetCameraYInvertVisible();
+	l__UserGameSettings__21:SetGamepadCameraSensitivityVisible();
+	v26.hasGameLoaded = game:IsLoaded();
+	if not v26.hasGameLoaded then
+		v26.gameLoadedConn = game.Loaded:Connect(function()
+			v26.hasGameLoaded = true;
+			v26.gameLoadedConn:Disconnect();
+			v26.gameLoadedConn = nil;
 		end);
 	end;
-	v31:OnPlayerCameraPropertyChange();
-	return v31;
+	v26:OnPlayerCameraPropertyChange();
+	return v26;
 end;
-function v30.GetModuleName(p2)
+function v25.GetModuleName(p2)
 	return "BaseCamera";
 end;
-function v30.OnCharacterAdded(p3, p4)
+function v25.OnCharacterAdded(p3, p4)
 	p3.resetCameraAngle = p3.resetCameraAngle or p3:GetEnabled();
 	p3.humanoidRootPart = nil;
-	if l__UserInputService__21.TouchEnabled then
-		p3.PlayerGui = l__LocalPlayer__25:WaitForChild("PlayerGui");
-		for v32, v33 in ipairs(p4:GetChildren()) do
-			if v33:IsA("Tool") then
+	if l__UserInputService__18.TouchEnabled then
+		p3.PlayerGui = l__LocalPlayer__22:WaitForChild("PlayerGui");
+		for v27, v28 in ipairs(p4:GetChildren()) do
+			if v28:IsA("Tool") then
 				p3.isAToolEquipped = true;
 			end;
 		end;
@@ -152,224 +145,224 @@ function v30.OnCharacterAdded(p3, p4)
 		end);
 	end;
 end;
-function v30.GetHumanoidRootPart(p7)
-	if not p7.humanoidRootPart and l__LocalPlayer__25.Character then
-		local v34 = l__LocalPlayer__25.Character:FindFirstChildOfClass("Humanoid");
-		if v34 then
-			p7.humanoidRootPart = v34.RootPart;
+function v25.GetHumanoidRootPart(p7)
+	if not p7.humanoidRootPart and l__LocalPlayer__22.Character then
+		local v29 = l__LocalPlayer__22.Character:FindFirstChildOfClass("Humanoid");
+		if v29 then
+			p7.humanoidRootPart = v29.RootPart;
 		end;
 	end;
 	return p7.humanoidRootPart;
 end;
-function v30.GetBodyPartToFollow(p8, p9, p10)
-	local v35 = nil;
+function v25.GetBodyPartToFollow(p8, p9, p10)
+	local v30 = nil;
 	if p9:GetState() == Enum.HumanoidStateType.Dead then
-		v35 = p9.Parent;
-		if not v35 or not v35:IsA("Model") then
+		v30 = p9.Parent;
+		if not v30 or not v30:IsA("Model") then
 			return p9.RootPart;
 		end;
 	else
 		return p9.RootPart;
 	end;
-	return v35:FindFirstChild("Head") or p9.RootPart;
+	return v30:FindFirstChild("Head") or p9.RootPart;
 end;
-local u1 = v26 or v27;
-function v30.GetSubjectCFrame(p11)
-	local v36 = p11.lastSubjectCFrame;
-	local l__CurrentCamera__37 = workspace.CurrentCamera;
-	local v38 = l__CurrentCamera__37 and l__CurrentCamera__37.CameraSubject;
-	if not v38 then
-		return v36;
+local u1 = v23 or v24;
+function v25.GetSubjectCFrame(p11)
+	local v31 = p11.lastSubjectCFrame;
+	local l__CurrentCamera__32 = workspace.CurrentCamera;
+	local v33 = l__CurrentCamera__32 and l__CurrentCamera__32.CameraSubject;
+	if not v33 then
+		return v31;
 	end;
-	if v38:IsA("Humanoid") then
-		local v39 = v38:GetState() == Enum.HumanoidStateType.Dead;
-		if l__VRService__23.VREnabled and not u1 and v39 and v38 == p11.lastSubject then
-			v36 = p11.lastSubjectCFrame;
+	if v33:IsA("Humanoid") then
+		local v34 = v33:GetState() == Enum.HumanoidStateType.Dead;
+		if l__VRService__20.VREnabled and not u1 and v34 and v33 == p11.lastSubject then
+			v31 = p11.lastSubjectCFrame;
 		else
-			local v40 = v38.RootPart;
-			if v39 and v38.Parent and v38.Parent:IsA("Model") then
-				v40 = v38.Parent:FindFirstChild("Head") and v40;
+			local v35 = v33.RootPart;
+			if v34 and v33.Parent and v33.Parent:IsA("Model") then
+				v35 = v33.Parent:FindFirstChild("Head") and v35;
 			end;
-			if v40 and v40:IsA("BasePart") then
-				if v38.RigType == Enum.HumanoidRigType.R15 then
-					if v38.AutomaticScalingEnabled then
-						local v41 = v13;
-						local l__RootPart__42 = v38.RootPart;
-						if v40 == l__RootPart__42 then
-							v41 = v41 + Vector3.new(0, (l__RootPart__42.Size.Y - v15.Y) / 2, 0);
+			if v35 and v35:IsA("BasePart") then
+				if v33.RigType == Enum.HumanoidRigType.R15 then
+					if v33.AutomaticScalingEnabled then
+						local v36 = v10;
+						local l__RootPart__37 = v33.RootPart;
+						if v35 == l__RootPart__37 then
+							v36 = v36 + Vector3.new(0, (l__RootPart__37.Size.Y - v12.Y) / 2, 0);
 						end;
 					else
-						v41 = v14;
+						v36 = v11;
 					end;
 				else
-					v41 = v12;
+					v36 = v9;
 				end;
-				if v39 then
-					v41 = v9;
+				if v34 then
+					v36 = v6;
 				end;
-				v36 = v40.CFrame * CFrame.new(v41 + v38.CameraOffset);
+				v31 = v35.CFrame * CFrame.new(v36 + v33.CameraOffset);
 			end;
 		end;
-	elseif v38:IsA("BasePart") then
-		v36 = v38.CFrame;
-	elseif v38:IsA("Model") then
-		if v38.PrimaryPart then
-			v36 = v38:GetPrimaryPartCFrame();
+	elseif v33:IsA("BasePart") then
+		v31 = v33.CFrame;
+	elseif v33:IsA("Model") then
+		if v33.PrimaryPart then
+			v31 = v33:GetPrimaryPartCFrame();
 		else
-			v36 = CFrame.new();
+			v31 = CFrame.new();
 		end;
 	end;
-	if v36 then
-		p11.lastSubjectCFrame = v36;
+	if v31 then
+		p11.lastSubjectCFrame = v31;
 	end;
-	return v36;
+	return v31;
 end;
-function v30.GetSubjectVelocity(p12)
-	local l__CurrentCamera__43 = workspace.CurrentCamera;
-	local v44 = l__CurrentCamera__43 and l__CurrentCamera__43.CameraSubject;
-	if not v44 then
-		return v9;
+function v25.GetSubjectVelocity(p12)
+	local l__CurrentCamera__38 = workspace.CurrentCamera;
+	local v39 = l__CurrentCamera__38 and l__CurrentCamera__38.CameraSubject;
+	if not v39 then
+		return v6;
 	end;
-	if v44:IsA("BasePart") then
-		return v44.Velocity;
+	if v39:IsA("BasePart") then
+		return v39.Velocity;
 	end;
-	if v44:IsA("Humanoid") then
-		local l__RootPart__45 = v44.RootPart;
-		if l__RootPart__45 then
-			return l__RootPart__45.Velocity;
+	if v39:IsA("Humanoid") then
+		local l__RootPart__40 = v39.RootPart;
+		if l__RootPart__40 then
+			return l__RootPart__40.Velocity;
 		end;
-	elseif v44:IsA("Model") then
-		local l__PrimaryPart__46 = v44.PrimaryPart;
-		if l__PrimaryPart__46 then
-			return l__PrimaryPart__46.Velocity;
+	elseif v39:IsA("Model") then
+		local l__PrimaryPart__41 = v39.PrimaryPart;
+		if l__PrimaryPart__41 then
+			return l__PrimaryPart__41.Velocity;
 		end;
 	end;
-	return v9;
+	return v6;
 end;
-function v30.GetSubjectRotVelocity(p13)
-	local l__CurrentCamera__47 = workspace.CurrentCamera;
-	local v48 = l__CurrentCamera__47 and l__CurrentCamera__47.CameraSubject;
-	if not v48 then
-		return v9;
+function v25.GetSubjectRotVelocity(p13)
+	local l__CurrentCamera__42 = workspace.CurrentCamera;
+	local v43 = l__CurrentCamera__42 and l__CurrentCamera__42.CameraSubject;
+	if not v43 then
+		return v6;
 	end;
-	if v48:IsA("BasePart") then
-		return v48.RotVelocity;
+	if v43:IsA("BasePart") then
+		return v43.RotVelocity;
 	end;
-	if v48:IsA("Humanoid") then
-		local l__RootPart__49 = v48.RootPart;
-		if l__RootPart__49 then
-			return l__RootPart__49.RotVelocity;
+	if v43:IsA("Humanoid") then
+		local l__RootPart__44 = v43.RootPart;
+		if l__RootPart__44 then
+			return l__RootPart__44.RotVelocity;
 		end;
-	elseif v48:IsA("Model") then
-		local l__PrimaryPart__50 = v48.PrimaryPart;
-		if l__PrimaryPart__50 then
-			return l__PrimaryPart__50.RotVelocity;
+	elseif v43:IsA("Model") then
+		local l__PrimaryPart__45 = v43.PrimaryPart;
+		if l__PrimaryPart__45 then
+			return l__PrimaryPart__45.RotVelocity;
 		end;
 	end;
-	return v9;
+	return v6;
 end;
-function v30.StepZoom(p14)
-	local l__currentSubjectDistance__51 = p14.currentSubjectDistance;
-	local v52 = v19.getZoomDelta();
-	if math.abs(v52) > 0 then
-		if v52 > 0 then
-			local v53 = math.max(l__currentSubjectDistance__51 + v52 * (1 + l__currentSubjectDistance__51 * 0.5), p14.FIRST_PERSON_DISTANCE_THRESHOLD);
+function v25.StepZoom(p14)
+	local l__currentSubjectDistance__46 = p14.currentSubjectDistance;
+	local v47 = v16.getZoomDelta();
+	if math.abs(v47) > 0 then
+		if v47 > 0 then
+			local v48 = math.max(l__currentSubjectDistance__46 + v47 * (1 + l__currentSubjectDistance__46 * 0.5), p14.FIRST_PERSON_DISTANCE_THRESHOLD);
 		else
-			v53 = math.max((l__currentSubjectDistance__51 + v52) / (1 - v52 * 0.5), 0.5);
+			v48 = math.max((l__currentSubjectDistance__46 + v47) / (1 - v47 * 0.5), 0.5);
 		end;
-		if v53 < p14.FIRST_PERSON_DISTANCE_THRESHOLD then
-			v53 = 0.5;
+		if v48 < p14.FIRST_PERSON_DISTANCE_THRESHOLD then
+			v48 = 0.5;
 		end;
-		p14:SetCameraToSubjectDistance(v53);
+		p14:SetCameraToSubjectDistance(v48);
 	end;
-	return v17.GetZoomRadius();
+	return v14.GetZoomRadius();
 end;
-function v30.GetSubjectPosition(p15)
-	local v54 = p15.lastSubjectPosition;
-	local l__CurrentCamera__55 = game.Workspace.CurrentCamera;
-	local v56 = l__CurrentCamera__55 and l__CurrentCamera__55.CameraSubject;
-	if not v56 then
+function v25.GetSubjectPosition(p15)
+	local v49 = p15.lastSubjectPosition;
+	local l__CurrentCamera__50 = game.Workspace.CurrentCamera;
+	local v51 = l__CurrentCamera__50 and l__CurrentCamera__50.CameraSubject;
+	if not v51 then
 		return;
 	end;
-	if v56:IsA("Humanoid") then
-		local v57 = v56:GetState() == Enum.HumanoidStateType.Dead;
-		if l__VRService__23.VREnabled and not u1 and v57 and v56 == p15.lastSubject then
-			v54 = p15.lastSubjectPosition;
+	if v51:IsA("Humanoid") then
+		local v52 = v51:GetState() == Enum.HumanoidStateType.Dead;
+		if l__VRService__20.VREnabled and not u1 and v52 and v51 == p15.lastSubject then
+			v49 = p15.lastSubjectPosition;
 		else
-			local v58 = v56.RootPart;
-			if v57 and v56.Parent and v56.Parent:IsA("Model") then
-				v58 = v56.Parent:FindFirstChild("Head") and v58;
+			local v53 = v51.RootPart;
+			if v52 and v51.Parent and v51.Parent:IsA("Model") then
+				v53 = v51.Parent:FindFirstChild("Head") and v53;
 			end;
-			if v58 and v58:IsA("BasePart") then
-				if v56.RigType == Enum.HumanoidRigType.R15 then
-					if v56.AutomaticScalingEnabled then
-						local v59 = v13;
-						if v58 == v56.RootPart then
-							v59 = v59 + Vector3.new(0, v56.RootPart.Size.Y / 2 - v15.Y / 2, 0);
+			if v53 and v53:IsA("BasePart") then
+				if v51.RigType == Enum.HumanoidRigType.R15 then
+					if v51.AutomaticScalingEnabled then
+						local v54 = v10;
+						if v53 == v51.RootPart then
+							v54 = v54 + Vector3.new(0, v51.RootPart.Size.Y / 2 - v12.Y / 2, 0);
 						end;
 					else
-						v59 = v14;
+						v54 = v11;
 					end;
 				else
-					v59 = v12;
+					v54 = v9;
 				end;
-				if v57 then
-					v59 = v9;
+				if v52 then
+					v54 = v6;
 				end;
-				v54 = v58.CFrame.p + v58.CFrame:vectorToWorldSpace(v59 + v56.CameraOffset);
+				v49 = v53.CFrame.p + v53.CFrame:vectorToWorldSpace(v54 + v51.CameraOffset);
 			end;
 		end;
-	elseif v56:IsA("VehicleSeat") then
-		local v60 = v10;
-		if l__VRService__23.VREnabled and not u1 then
-			v60 = v11;
+	elseif v51:IsA("VehicleSeat") then
+		local v55 = v7;
+		if l__VRService__20.VREnabled and not u1 then
+			v55 = v8;
 		end;
-		v54 = v56.CFrame.p + v56.CFrame:vectorToWorldSpace(v60);
-	elseif v56:IsA("SkateboardPlatform") then
-		v54 = v56.CFrame.p + v10;
-	elseif v56:IsA("BasePart") then
-		v54 = v56.CFrame.p;
-	elseif v56:IsA("Model") then
-		if v56.PrimaryPart then
-			v54 = v56:GetPrimaryPartCFrame().p;
+		v49 = v51.CFrame.p + v51.CFrame:vectorToWorldSpace(v55);
+	elseif v51:IsA("SkateboardPlatform") then
+		v49 = v51.CFrame.p + v7;
+	elseif v51:IsA("BasePart") then
+		v49 = v51.CFrame.p;
+	elseif v51:IsA("Model") then
+		if v51.PrimaryPart then
+			v49 = v51:GetPrimaryPartCFrame().p;
 		else
-			v54 = v56:GetModelCFrame().p;
+			v49 = v51:GetModelCFrame().p;
 		end;
 	end;
-	p15.lastSubject = v56;
-	p15.lastSubjectPosition = v54;
-	return v54;
+	p15.lastSubject = v51;
+	p15.lastSubjectPosition = v49;
+	return v49;
 end;
-function v30.UpdateDefaultSubjectDistance(p16)
+function v25.UpdateDefaultSubjectDistance(p16)
 	if p16.portraitMode then
-		p16.defaultSubjectDistance = math.clamp(25, l__LocalPlayer__25.CameraMinZoomDistance, l__LocalPlayer__25.CameraMaxZoomDistance);
+		p16.defaultSubjectDistance = math.clamp(25, l__LocalPlayer__22.CameraMinZoomDistance, l__LocalPlayer__22.CameraMaxZoomDistance);
 		return;
 	end;
-	p16.defaultSubjectDistance = math.clamp(12.5, l__LocalPlayer__25.CameraMinZoomDistance, l__LocalPlayer__25.CameraMaxZoomDistance);
+	p16.defaultSubjectDistance = math.clamp(12.5, l__LocalPlayer__22.CameraMinZoomDistance, l__LocalPlayer__22.CameraMaxZoomDistance);
 end;
-function v30.OnViewportSizeChanged(p17)
-	local l__ViewportSize__61 = game.Workspace.CurrentCamera.ViewportSize;
-	p17.portraitMode = l__ViewportSize__61.X < l__ViewportSize__61.Y;
-	local v62 = l__UserInputService__21.TouchEnabled;
-	if v62 then
-		v62 = true;
-		if not (l__ViewportSize__61.Y < 500) then
-			v62 = l__ViewportSize__61.X < 700;
+function v25.OnViewportSizeChanged(p17)
+	local l__ViewportSize__56 = game.Workspace.CurrentCamera.ViewportSize;
+	p17.portraitMode = l__ViewportSize__56.X < l__ViewportSize__56.Y;
+	local v57 = l__UserInputService__18.TouchEnabled;
+	if v57 then
+		v57 = true;
+		if not (l__ViewportSize__56.Y < 500) then
+			v57 = l__ViewportSize__56.X < 700;
 		end;
 	end;
-	p17.isSmallTouchScreen = v62;
+	p17.isSmallTouchScreen = v57;
 	p17:UpdateDefaultSubjectDistance();
 end;
-function v30.OnCurrentCameraChanged(p18)
-	if l__UserInputService__21.TouchEnabled then
+function v25.OnCurrentCameraChanged(p18)
+	if l__UserInputService__18.TouchEnabled then
 		if p18.viewportSizeChangedConn then
 			p18.viewportSizeChangedConn:Disconnect();
 			p18.viewportSizeChangedConn = nil;
 		end;
-		local l__CurrentCamera__63 = game.Workspace.CurrentCamera;
-		if l__CurrentCamera__63 then
+		local l__CurrentCamera__58 = game.Workspace.CurrentCamera;
+		if l__CurrentCamera__58 then
 			p18:OnViewportSizeChanged();
-			p18.viewportSizeChangedConn = l__CurrentCamera__63:GetPropertyChangedSignal("ViewportSize"):Connect(function()
+			p18.viewportSizeChangedConn = l__CurrentCamera__58:GetPropertyChangedSignal("ViewportSize"):Connect(function()
 				p18:OnViewportSizeChanged();
 			end);
 		end;
@@ -378,25 +371,25 @@ function v30.OnCurrentCameraChanged(p18)
 		p18.cameraSubjectChangedConn:Disconnect();
 		p18.cameraSubjectChangedConn = nil;
 	end;
-	local l__CurrentCamera__64 = game.Workspace.CurrentCamera;
-	if l__CurrentCamera__64 then
-		p18.cameraSubjectChangedConn = l__CurrentCamera__64:GetPropertyChangedSignal("CameraSubject"):Connect(function()
+	local l__CurrentCamera__59 = game.Workspace.CurrentCamera;
+	if l__CurrentCamera__59 then
+		p18.cameraSubjectChangedConn = l__CurrentCamera__59:GetPropertyChangedSignal("CameraSubject"):Connect(function()
 			p18:OnNewCameraSubject();
 		end);
 		p18:OnNewCameraSubject();
 	end;
 end;
-function v30.OnDynamicThumbstickEnabled(p19)
-	if l__UserInputService__21.TouchEnabled then
+function v25.OnDynamicThumbstickEnabled(p19)
+	if l__UserInputService__18.TouchEnabled then
 		p19.isDynamicThumbstickEnabled = true;
 	end;
 end;
-function v30.OnDynamicThumbstickDisabled(p20)
+function v25.OnDynamicThumbstickDisabled(p20)
 	p20.isDynamicThumbstickEnabled = false;
 end;
-function v30.OnGameSettingsTouchMovementModeChanged(p21)
-	if l__LocalPlayer__25.DevTouchMovementMode == Enum.DevTouchMovementMode.UserChoice then
-		if l__UserGameSettings__24.TouchMovementMode ~= Enum.TouchMovementMode.DynamicThumbstick and l__UserGameSettings__24.TouchMovementMode ~= Enum.TouchMovementMode.Default then
+function v25.OnGameSettingsTouchMovementModeChanged(p21)
+	if l__LocalPlayer__22.DevTouchMovementMode == Enum.DevTouchMovementMode.UserChoice then
+		if l__UserGameSettings__21.TouchMovementMode ~= Enum.TouchMovementMode.DynamicThumbstick and l__UserGameSettings__21.TouchMovementMode ~= Enum.TouchMovementMode.Default then
 			p21:OnDynamicThumbstickDisabled();
 			return;
 		end;
@@ -405,47 +398,47 @@ function v30.OnGameSettingsTouchMovementModeChanged(p21)
 	end;
 	p21:OnDynamicThumbstickEnabled();
 end;
-function v30.OnDevTouchMovementModeChanged(p22)
-	if l__LocalPlayer__25.DevTouchMovementMode == Enum.DevTouchMovementMode.DynamicThumbstick then
+function v25.OnDevTouchMovementModeChanged(p22)
+	if l__LocalPlayer__22.DevTouchMovementMode == Enum.DevTouchMovementMode.DynamicThumbstick then
 		p22:OnDynamicThumbstickEnabled();
 		return;
 	end;
 	p22:OnGameSettingsTouchMovementModeChanged();
 end;
-function v30.OnPlayerCameraPropertyChange(p23)
+function v25.OnPlayerCameraPropertyChange(p23)
 	p23:SetCameraToSubjectDistance(p23.currentSubjectDistance);
 end;
-function v30.InputTranslationToCameraAngleChange(p24, p25, p26)
+function v25.InputTranslationToCameraAngleChange(p24, p25, p26)
 	return p25 * p26;
 end;
-function v30.GamepadZoomPress(p27)
-	local v65 = p27:GetCameraToSubjectDistance();
-	if v65 > 15 then
+function v25.GamepadZoomPress(p27)
+	local v60 = p27:GetCameraToSubjectDistance();
+	if v60 > 15 then
 		p27:SetCameraToSubjectDistance(10);
 		return;
 	end;
-	if v65 > 5 then
+	if v60 > 5 then
 		p27:SetCameraToSubjectDistance(0);
 		return;
 	end;
 	p27:SetCameraToSubjectDistance(20);
 end;
-function v30.Enable(p28, p29)
+function v25.Enable(p28, p29)
 	if p28.enabled ~= p29 then
 		p28.enabled = p29;
 		if p28.enabled then
-			v19.setInputEnabled(true);
-			p28.gamepadZoomPressConnection = v19.gamepadZoomPress:Connect(function()
+			v16.setInputEnabled(true);
+			p28.gamepadZoomPressConnection = v16.gamepadZoomPress:Connect(function()
 				p28:GamepadZoomPress();
 			end);
-			if l__LocalPlayer__25.CameraMode == Enum.CameraMode.LockFirstPerson then
+			if l__LocalPlayer__22.CameraMode == Enum.CameraMode.LockFirstPerson then
 				p28.currentSubjectDistance = 0.5;
 				if not p28.inFirstPerson then
 					p28:EnterFirstPerson();
 				end;
 			end;
 		else
-			v19.setInputEnabled(false);
+			v16.setInputEnabled(false);
 			if p28.gamepadZoomPressConnection then
 				p28.gamepadZoomPressConnection:Disconnect();
 				p28.gamepadZoomPressConnection = nil;
@@ -455,14 +448,13 @@ function v30.Enable(p28, p29)
 		p28:OnEnable(p29);
 	end;
 end;
-function v30.OnEnable(p30, p31)
+function v25.OnEnable(p30, p31)
 
 end;
-function v30.GetEnabled(p32)
+function v25.GetEnabled(p32)
 	return p32.enabled;
 end;
-local u2 = v28 or v29;
-function v30.Cleanup(p33)
+function v25.Cleanup(p33)
 	if p33.subjectStateChangedConn then
 		p33.subjectStateChangedConn:Disconnect();
 		p33.subjectStateChangedConn = nil;
@@ -473,167 +465,150 @@ function v30.Cleanup(p33)
 	end;
 	p33.lastCameraTransform = nil;
 	p33.lastSubjectCFrame = nil;
-	if u2 then
-		v16.restoreMouseBehavior();
-		return;
-	end;
-	if l__UserInputService__21.MouseBehavior ~= Enum.MouseBehavior.LockCenter then
-		l__UserInputService__21.MouseBehavior = Enum.MouseBehavior.Default;
-	end;
+	v13.restoreMouseBehavior();
 end;
-function v30.UpdateMouseBehavior(p34)
-	if p34.isCameraToggle and l__UserGameSettings__24.ComputerMovementMode == Enum.ComputerMovementMode.ClickToMove == false then
-		v20.setCameraModeToastEnabled(true);
-		v19.enableCameraToggleInput();
-		v18(p34.inFirstPerson);
+function v25.UpdateMouseBehavior(p34)
+	if p34.isCameraToggle and l__UserGameSettings__21.ComputerMovementMode == Enum.ComputerMovementMode.ClickToMove == false then
+		v17.setCameraModeToastEnabled(true);
+		v16.enableCameraToggleInput();
+		v15(p34.inFirstPerson);
 		return;
 	end;
-	v20.setCameraModeToastEnabled(false);
-	v19.disableCameraToggleInput();
+	v17.setCameraModeToastEnabled(false);
+	v16.disableCameraToggleInput();
 	if not p34.inFirstPerson and not p34.inMouseLockedMode then
-		if u2 then
-			v16.restoreRotationType();
-			v16.restoreMouseBehavior();
-			return;
-		else
-			l__UserGameSettings__24.RotationType = Enum.RotationType.MovementRelative;
-			l__UserInputService__21.MouseBehavior = Enum.MouseBehavior.Default;
-			return;
-		end;
-	end;
-	if not u2 then
-		l__UserGameSettings__24.RotationType = Enum.RotationType.CameraRelative;
-		l__UserInputService__21.MouseBehavior = Enum.MouseBehavior.LockCenter;
+		v13.restoreRotationType();
+		v13.restoreMouseBehavior();
 		return;
 	end;
-	v16.setRotationTypeOverride(Enum.RotationType.CameraRelative);
-	v16.setMouseBehaviorOverride(Enum.MouseBehavior.LockCenter);
+	v13.setRotationTypeOverride(Enum.RotationType.CameraRelative);
+	v13.setMouseBehaviorOverride(Enum.MouseBehavior.LockCenter);
 end;
-function v30.UpdateForDistancePropertyChange(p35)
+function v25.UpdateForDistancePropertyChange(p35)
 	p35:SetCameraToSubjectDistance(p35.currentSubjectDistance);
 end;
-function v30.SetCameraToSubjectDistance(p36, p37)
-	if l__LocalPlayer__25.CameraMode == Enum.CameraMode.LockFirstPerson then
+function v25.SetCameraToSubjectDistance(p36, p37)
+	if l__LocalPlayer__22.CameraMode == Enum.CameraMode.LockFirstPerson then
 		p36.currentSubjectDistance = 0.5;
 		if not p36.inFirstPerson then
 			p36:EnterFirstPerson();
 		end;
 	else
-		local v66 = math.clamp(p37, l__LocalPlayer__25.CameraMinZoomDistance, l__LocalPlayer__25.CameraMaxZoomDistance);
-		if v66 < 1 then
+		local v61 = math.clamp(p37, l__LocalPlayer__22.CameraMinZoomDistance, l__LocalPlayer__22.CameraMaxZoomDistance);
+		if v61 < 1 then
 			p36.currentSubjectDistance = 0.5;
 			if not p36.inFirstPerson then
 				p36:EnterFirstPerson();
 			end;
 		else
-			p36.currentSubjectDistance = v66;
+			p36.currentSubjectDistance = v61;
 			if p36.inFirstPerson then
 				p36:LeaveFirstPerson();
 			end;
 		end;
 	end;
-	v17.SetZoomParameters(p36.currentSubjectDistance, math.sign(p37 - p36.currentSubjectDistance));
+	v14.SetZoomParameters(p36.currentSubjectDistance, math.sign(p37 - p36.currentSubjectDistance));
 	return p36.currentSubjectDistance;
 end;
-function v30.SetCameraType(p38, p39)
+function v25.SetCameraType(p38, p39)
 	p38.cameraType = p39;
 end;
-function v30.GetCameraType(p40)
+function v25.GetCameraType(p40)
 	return p40.cameraType;
 end;
-function v30.SetCameraMovementMode(p41, p42)
+function v25.SetCameraMovementMode(p41, p42)
 	p41.cameraMovementMode = p42;
 end;
-function v30.GetCameraMovementMode(p43)
+function v25.GetCameraMovementMode(p43)
 	return p43.cameraMovementMode;
 end;
-function v30.SetIsMouseLocked(p44, p45)
+function v25.SetIsMouseLocked(p44, p45)
 	p44.inMouseLockedMode = p45;
 end;
-function v30.GetIsMouseLocked(p46)
+function v25.GetIsMouseLocked(p46)
 	return p46.inMouseLockedMode;
 end;
-function v30.SetMouseLockOffset(p47, p48)
+function v25.SetMouseLockOffset(p47, p48)
 	p47.mouseLockOffset = p48;
 end;
-function v30.GetMouseLockOffset(p49)
+function v25.GetMouseLockOffset(p49)
 	return p49.mouseLockOffset;
 end;
-function v30.InFirstPerson(p50)
+function v25.InFirstPerson(p50)
 	return p50.inFirstPerson;
 end;
-function v30.EnterFirstPerson(p51)
+function v25.EnterFirstPerson(p51)
 
 end;
-function v30.LeaveFirstPerson(p52)
+function v25.LeaveFirstPerson(p52)
 
 end;
-function v30.GetCameraToSubjectDistance(p53)
+function v25.GetCameraToSubjectDistance(p53)
 	return p53.currentSubjectDistance;
 end;
-function v30.GetMeasuredDistanceToFocus(p54)
-	local l__CurrentCamera__67 = game.Workspace.CurrentCamera;
-	if not l__CurrentCamera__67 then
+function v25.GetMeasuredDistanceToFocus(p54)
+	local l__CurrentCamera__62 = game.Workspace.CurrentCamera;
+	if not l__CurrentCamera__62 then
 		return nil;
 	end;
-	return (l__CurrentCamera__67.CoordinateFrame.p - l__CurrentCamera__67.Focus.p).magnitude;
+	return (l__CurrentCamera__62.CoordinateFrame.p - l__CurrentCamera__62.Focus.p).magnitude;
 end;
-function v30.GetCameraLookVector(p55)
+function v25.GetCameraLookVector(p55)
 	return game.Workspace.CurrentCamera and game.Workspace.CurrentCamera.CFrame.lookVector or v1;
 end;
-function v30.CalculateNewLookCFrameFromArg(p56, p57, p58)
-	local v68 = p57 or p56:GetCameraLookVector();
-	local v69 = math.asin(v68.y);
-	local v70 = Vector2.new(p58.x, (math.clamp(p58.y, -v4 + v69, -v3 + v69)));
-	return CFrame.Angles(0, -v70.x, 0) * CFrame.new(v9, v68) * CFrame.Angles(-v70.y, 0, 0);
+function v25.CalculateNewLookCFrameFromArg(p56, p57, p58)
+	local v63 = p57 or p56:GetCameraLookVector();
+	local v64 = math.asin(v63.y);
+	local v65 = Vector2.new(p58.x, (math.clamp(p58.y, -1.3962634015954636 + v64, 1.3962634015954636 + v64)));
+	return CFrame.Angles(0, -v65.x, 0) * CFrame.new(v6, v63) * CFrame.Angles(-v65.y, 0, 0);
 end;
-function v30.CalculateNewLookVectorFromArg(p59, p60, p61)
+function v25.CalculateNewLookVectorFromArg(p59, p60, p61)
 	return p59:CalculateNewLookCFrameFromArg(p60, p61).lookVector;
 end;
-function v30.CalculateNewLookVectorVRFromArg(p62, p63)
-	local v71 = Vector2.new(p63.x, 0);
-	return ((CFrame.Angles(0, -v71.x, 0) * CFrame.new(v9, ((p62:GetSubjectPosition() - game.Workspace.CurrentCamera.CFrame.p) * v2).unit) * CFrame.Angles(-v71.y, 0, 0)).lookVector * v2).unit;
+function v25.CalculateNewLookVectorVRFromArg(p62, p63)
+	local v66 = Vector2.new(p63.x, 0);
+	return ((CFrame.Angles(0, -v66.x, 0) * CFrame.new(v6, ((p62:GetSubjectPosition() - game.Workspace.CurrentCamera.CFrame.p) * v2).unit) * CFrame.Angles(-v66.y, 0, 0)).lookVector * v2).unit;
 end;
-function v30.GetHumanoid(p64)
-	local v72 = l__LocalPlayer__25 and l__LocalPlayer__25.Character;
-	if not v72 then
+function v25.GetHumanoid(p64)
+	local v67 = l__LocalPlayer__22 and l__LocalPlayer__22.Character;
+	if not v67 then
 		return nil;
 	end;
-	local v73 = p64.humanoidCache[l__LocalPlayer__25];
-	if v73 and v73.Parent == v72 then
-		return v73;
+	local v68 = p64.humanoidCache[l__LocalPlayer__22];
+	if v68 and v68.Parent == v67 then
+		return v68;
 	end;
-	p64.humanoidCache[l__LocalPlayer__25] = nil;
-	local v74 = v72:FindFirstChildOfClass("Humanoid");
-	if v74 then
-		p64.humanoidCache[l__LocalPlayer__25] = v74;
+	p64.humanoidCache[l__LocalPlayer__22] = nil;
+	local v69 = v67:FindFirstChildOfClass("Humanoid");
+	if v69 then
+		p64.humanoidCache[l__LocalPlayer__22] = v69;
 	end;
-	return v74;
+	return v69;
 end;
-function v30.GetHumanoidPartToFollow(p65, p66, p67)
+function v25.GetHumanoidPartToFollow(p65, p66, p67)
 	if p67 ~= Enum.HumanoidStateType.Dead then
 		return p66.Torso;
 	end;
-	local l__Parent__75 = p66.Parent;
-	if not l__Parent__75 then
+	local l__Parent__70 = p66.Parent;
+	if not l__Parent__70 then
 		return p66.Torso;
 	end;
-	return l__Parent__75:FindFirstChild("Head") or p66.Torso;
+	return l__Parent__70:FindFirstChild("Head") or p66.Torso;
 end;
-function v30.OnNewCameraSubject(p68)
+function v25.OnNewCameraSubject(p68)
 	if p68.subjectStateChangedConn then
 		p68.subjectStateChangedConn:Disconnect();
 		p68.subjectStateChangedConn = nil;
 	end;
 	if not u1 then
-		local v76 = workspace.CurrentCamera and workspace.CurrentCamera.CameraSubject;
-		if p68.trackingHumanoid ~= v76 then
+		local v71 = workspace.CurrentCamera and workspace.CurrentCamera.CameraSubject;
+		if p68.trackingHumanoid ~= v71 then
 			p68:CancelCameraFreeze();
 		end;
-		if v76 and v76:IsA("Humanoid") then
-			p68.subjectStateChangedConn = v76.StateChanged:Connect(function(p69, p70)
-				if l__VRService__23.VREnabled and p70 == Enum.HumanoidStateType.Jumping and not p68.inFirstPerson then
-					p68:StartCameraFreeze(p68:GetSubjectPosition(), v76);
+		if v71 and v71:IsA("Humanoid") then
+			p68.subjectStateChangedConn = v71.StateChanged:Connect(function(p69, p70)
+				if l__VRService__20.VREnabled and p70 == Enum.HumanoidStateType.Jumping and not p68.inFirstPerson then
+					p68:StartCameraFreeze(p68:GetSubjectPosition(), v71);
 					return;
 				end;
 				if p70 ~= Enum.HumanoidStateType.Jumping and p70 ~= Enum.HumanoidStateType.Freefall then
@@ -643,20 +618,20 @@ function v30.OnNewCameraSubject(p68)
 		end;
 	end;
 end;
-function v30.IsInFirstPerson(p71)
+function v25.IsInFirstPerson(p71)
 	return p71.inFirstPerson;
 end;
-function v30.Update(p72, p73)
+function v25.Update(p72, p73)
 	error("BaseCamera:Update() This is a virtual function that should never be getting called.", 2);
 end;
-function v30.GetCameraHeight(p74)
-	if not l__VRService__23.VREnabled or not (not p74.inFirstPerson) then
+function v25.GetCameraHeight(p74)
+	if not l__VRService__20.VREnabled or not (not p74.inFirstPerson) then
 		return 0;
 	end;
-	return math.sin(v5) * p74.currentSubjectDistance;
+	return 0.25881904510252074 * p74.currentSubjectDistance;
 end;
 if not u1 then
-	function v30.CancelCameraFreeze(p75, p76)
+	function v25.CancelCameraFreeze(p75, p76)
 		if not p76 then
 			p75.cameraTranslationConstraints = Vector3.new(p75.cameraTranslationConstraints.x, 1, p75.cameraTranslationConstraints.z);
 		end;
@@ -665,7 +640,7 @@ if not u1 then
 			p75.cameraFrozen = false;
 		end;
 	end;
-	function v30.StartCameraFreeze(p77, p78, p79)
+	function v25.StartCameraFreeze(p77, p78, p79)
 		if not p77.cameraFrozen then
 			p77.humanoidJumpOrigin = p78;
 			p77.trackingHumanoid = p79;
@@ -673,81 +648,81 @@ if not u1 then
 			p77.cameraFrozen = true;
 		end;
 	end;
-	function v30.ApplyVRTransform(p80)
-		if not l__VRService__23.VREnabled then
+	function v25.ApplyVRTransform(p80)
+		if not l__VRService__20.VREnabled then
 			return;
 		end;
-		local v77 = p80.humanoidRootPart and p80.humanoidRootPart:FindFirstChild("RootJoint");
-		if not v77 then
+		local v72 = p80.humanoidRootPart and p80.humanoidRootPart:FindFirstChild("RootJoint");
+		if not v72 then
 			return;
 		end;
-		local l__CameraSubject__78 = game.Workspace.CurrentCamera.CameraSubject;
-		if not p80.inFirstPerson or not (not l__CameraSubject__78) and not (not l__CameraSubject__78:IsA("VehicleSeat")) then
-			v77.C0 = CFrame.new(0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 1, 0);
+		local l__CameraSubject__73 = game.Workspace.CurrentCamera.CameraSubject;
+		if not p80.inFirstPerson or not (not l__CameraSubject__73) and not (not l__CameraSubject__73:IsA("VehicleSeat")) then
+			v72.C0 = CFrame.new(0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 1, 0);
 			return;
 		end;
-		local v79 = l__VRService__23:GetUserCFrame(Enum.UserCFrame.Head);
-		v77.C0 = CFrame.new((v79 - v79.p):vectorToObjectSpace(v79.p)) * CFrame.new(0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 1, 0);
+		local v74 = l__VRService__20:GetUserCFrame(Enum.UserCFrame.Head);
+		v72.C0 = CFrame.new((v74 - v74.p):vectorToObjectSpace(v74.p)) * CFrame.new(0, 0, 0, -1, 0, 0, 0, 0, 1, 0, 1, 0);
 	end;
-	function v30.ShouldUseVRRotation(p81)
-		if not l__VRService__23.VREnabled then
+	function v25.ShouldUseVRRotation(p81)
+		if not l__VRService__20.VREnabled then
 			return false;
 		end;
 		if not p81.VRRotationIntensityAvailable and tick() - p81.lastVRRotationIntensityCheckTime < 1 then
 			return false;
 		end;
-		local v80, v81 = pcall(function()
-			return l__StarterGui__22:GetCore("VRRotationIntensity");
+		local v75, v76 = pcall(function()
+			return l__StarterGui__19:GetCore("VRRotationIntensity");
 		end);
-		p81.VRRotationIntensityAvailable = v80 and v81 ~= nil;
+		p81.VRRotationIntensityAvailable = v75 and v76 ~= nil;
 		p81.lastVRRotationIntensityCheckTime = tick();
-		local v82 = v80;
-		if v82 then
-			v82 = false;
-			if v81 ~= nil then
-				v82 = v81 ~= "Smooth";
+		local v77 = v75;
+		if v77 then
+			v77 = false;
+			if v76 ~= nil then
+				v77 = v76 ~= "Smooth";
 			end;
 		end;
-		p81.shouldUseVRRotation = v82;
+		p81.shouldUseVRRotation = v77;
 		return p81.shouldUseVRRotation;
 	end;
-	function v30.GetVRRotationInput(p82)
-		local v83 = v8;
-		local v84, v85 = pcall(function()
-			return l__StarterGui__22:GetCore("VRRotationIntensity");
+	function v25.GetVRRotationInput(p82)
+		local v78 = v5;
+		local v79, v80 = pcall(function()
+			return l__StarterGui__19:GetCore("VRRotationIntensity");
 		end);
-		if not v84 then
+		if not v79 then
 			return;
 		end;
-		local v86 = p82:GetRepeatDelayValue(v85) <= tick() - p82.lastVRRotationTime;
-		if p82:GetActivateValue() <= math.abs(v8.x) then
-			if v86 or not p82.vrRotateKeyCooldown[Enum.KeyCode.Thumbstick2] then
-				local v87 = 1;
-				if v8.x < 0 then
-					v87 = -1;
+		local v81 = p82:GetRepeatDelayValue(v80) <= tick() - p82.lastVRRotationTime;
+		if p82:GetActivateValue() <= math.abs(v5.x) then
+			if v81 or not p82.vrRotateKeyCooldown[Enum.KeyCode.Thumbstick2] then
+				local v82 = 1;
+				if v5.x < 0 then
+					v82 = -1;
 				end;
-				v83 = v83 + p82:GetRotateAmountValue(v85) * v87;
+				v78 = v78 + p82:GetRotateAmountValue(v80) * v82;
 				p82.vrRotateKeyCooldown[Enum.KeyCode.Thumbstick2] = true;
 			end;
-		elseif math.abs(v8.x) < p82:GetActivateValue() - 0.1 then
+		elseif math.abs(v5.x) < p82:GetActivateValue() - 0.1 then
 			p82.vrRotateKeyCooldown[Enum.KeyCode.Thumbstick2] = nil;
 		end;
 		p82.vrRotateKeyCooldown[Enum.KeyCode.Left] = nil;
 		p82.vrRotateKeyCooldown[Enum.KeyCode.Right] = nil;
-		if v83 ~= v8 then
+		if v78 ~= v5 then
 			p82.lastVRRotationTime = tick();
 		end;
-		return v83;
+		return v78;
 	end;
-	function v30.GetVRFocus(p83, p84, p85)
-		local v88 = p83.LastCameraFocus and p84;
+	function v25.GetVRFocus(p83, p84, p85)
+		local v83 = p83.LastCameraFocus and p84;
 		if not p83.cameraFrozen then
 			p83.cameraTranslationConstraints = Vector3.new(p83.cameraTranslationConstraints.x, math.min(1, p83.cameraTranslationConstraints.y + 0.42 * p85), p83.cameraTranslationConstraints.z);
 		end;
-		if p83.cameraFrozen and p83.humanoidJumpOrigin and v88.y < p83.humanoidJumpOrigin.y then
-			local v89 = CFrame.new(Vector3.new(p84.x, math.min(p83.humanoidJumpOrigin.y, v88.y + 5 * p85), p84.z));
+		if p83.cameraFrozen and p83.humanoidJumpOrigin and v83.y < p83.humanoidJumpOrigin.y then
+			local v84 = CFrame.new(Vector3.new(p84.x, math.min(p83.humanoidJumpOrigin.y, v83.y + 5 * p85), p84.z));
 		else
-			v89 = CFrame.new(Vector3.new(p84.x, v88.y, p84.z):lerp(p84, p83.cameraTranslationConstraints.y));
+			v84 = CFrame.new(Vector3.new(p84.x, v83.y, p84.z):lerp(p84, p83.cameraTranslationConstraints.y));
 		end;
 		if p83.cameraFrozen then
 			if p83.inFirstPerson then
@@ -757,22 +732,22 @@ if not u1 then
 				p83:CancelCameraFreeze();
 			end;
 		end;
-		return v89;
+		return v84;
 	end;
-	function v30.GetRotateAmountValue(p86, p87)
-		p87 = p87 or l__StarterGui__22:GetCore("VRRotationIntensity");
+	function v25.GetRotateAmountValue(p86, p87)
+		p87 = p87 or l__StarterGui__19:GetCore("VRRotationIntensity");
 		if p87 then
 			if p87 == "Low" then
-				return v6;
+				return v3;
 			end;
 			if p87 == "High" then
-				return v7;
+				return v4;
 			end;
 		end;
-		return v8;
+		return v5;
 	end;
-	function v30.GetRepeatDelayValue(p88, p89)
-		p89 = p89 or l__StarterGui__22:GetCore("VRRotationIntensity");
+	function v25.GetRepeatDelayValue(p88, p89)
+		p89 = p89 or l__StarterGui__19:GetCore("VRRotationIntensity");
 		if p89 then
 			if p89 == "Low" then
 				return 0.1;
@@ -784,4 +759,4 @@ if not u1 then
 		return 0;
 	end;
 end;
-return v30;
+return v25;

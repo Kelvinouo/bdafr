@@ -1,4 +1,3 @@
--- Script Hash: 17d50c425836e4bd96b6973c6d01955b1307b0788c47b69a9af40a8eb4c72a8c5bf11115af0daec673a39eb2cca408e4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -28,6 +27,10 @@ return {
 		v5.AnchorPoint = Vector2.new(0.5, 0.5);
 		v5.BackgroundColor3 = l__Theme__2.backgroundPrimary;
 		v5.BorderSizePixel = 0;
+		v5.Selectable = false;
+		v5.AutoButtonColor = false;
+		v5.Active = true;
+		v5.Modal = true;
 		local v7 = {};
 		local v8 = {
 			PaddingTop = UDim.new(0.08, 0), 
@@ -145,6 +148,6 @@ return {
 			Size = UDim2.new(1, 0, 0, 40), 
 			LayoutOrder = 4
 		}, v13);
-		return u3.createElement("Frame", v5, v7);
+		return u3.createElement("ImageButton", v5, v7);
 	end)
 };

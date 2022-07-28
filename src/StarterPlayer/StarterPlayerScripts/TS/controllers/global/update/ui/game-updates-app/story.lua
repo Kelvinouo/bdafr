@@ -1,25 +1,26 @@
--- Script Hash: 3ec50d71a192caacd66f0eb24cce575fb6e00f9f3c99be6fca578111eeacf05346420374d10df69efc5796db813e3c29
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local l__ClientStore__1 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
-local l__GameUpdateButtons__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "update", "game-update-meta").GameUpdateButtons;
-local l__CreateRoduxApp__3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "rodux", "create-rodux-app").CreateRoduxApp;
-local l__GameUpdatesCore__4 = v1.import(script, script.Parent, "game-updates-core").GameUpdatesCore;
-local u5 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
+local l__ColorUtil__2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).ColorUtil;
+local l__Theme__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
+local l__GameUpdateButtons__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "update", "game-update-meta").GameUpdateButtons;
+local l__CreateRoduxApp__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "rodux", "create-rodux-app").CreateRoduxApp;
+local l__GameUpdatesCore__6 = v1.import(script, script.Parent, "game-updates-core").GameUpdatesCore;
+local u7 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 return function(p1)
 	l__ClientStore__1:dispatch({
 		type = "GameUpdatesSetAll", 
 		updates = { {
 				updateLogId = 24, 
 				visible = true, 
-				title = "New Kit in 1 Day + Gun Game + Grappling Hook", 
-				date = "3/18/2022", 
-				body = "\240\159\148\165\240\159\148\165\194\160<b>DOUBLE XP WEEKEND</b> \240\159\148\165\240\159\148\165\nEnjoy double battle pass experience Saturday-Sunday!\n\n\240\159\142\129 <b>Lumen & Ember Kit Bundle (\226\143\176 2 Weeks)</b>\nThis limited time bundle is now available! This bundle comes with 2 limited edition titles & lobby gadgets.\nThe kits will become available in a different bundle for 699 Robux when this bundle goes away.\n\n\226\152\128\239\184\143\194\160<b>LUMEN (Kit)</b>\n- Charge the Sword of Light to shoot powerful waves at enemies! Hitting light waves OR killing Ember will upgrade your ability to shoot many powerful beams at once.\n\n\240\159\148\165\194\160<b>EMBER (Kit)</b>\n- Charge the Blade of Fire to ignite in a deadly spin! Striking enemies OR killing Lumen will upgrade your ability to a much more powerful spin.\n\n\240\159\143\183\239\184\143 <b>2 Limited Edition Titles</b>\n- <font color=\"rgb(140, 5, 56)\"><b>Ember \240\159\148\165</b></font>\n- <font color=\"rgb(242, 209, 0)\"><b>Lumen \240\159\148\133</b></font>\n\n\240\159\143\183\239\184\143 <b>2 Limited Edition Lobby Gadgets</b>\n- Lumen\226\128\153s Light Sword\n- Ember\226\128\153s Infernal Saber", 
+				title = "Luc\195\173a Kit + Void Realm Collapsed", 
+				date = "6/24/2022", 
+				body = "\240\159\144\167 <b>Penguin Survival <font color=\"" .. (l__ColorUtil__2.richTextColor(l__Theme__3.mcYellow) .. "\">(Return of the Penguins)</font></b>\n") .. "The Penguins are back! Fight waves of penguins in the new-and-improved Penguin Survival Limited Time Mode!\n" .. "Play this mode at least once to receive the exclusive \226\128\156Penguin Deal With It\226\128\157 emote!\n\n" .. ("\240\159\144\167 <b>Penguin Survival Badges <font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__3.mcYellow) .. "\">(LIMITED TIME)</font></b>\n") .. ("\240\159\143\134\194\160<b><font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__3.mcGold) .. "\">Victory Badge:</font></b> Survive past wave 10.\n") .. "- Comes with \226\128\156Penguin King Trophy\226\128\157 emote\n" .. ("\240\159\146\165\194\160<b><font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__3.mcRed) .. "\">Hard Mode Badge:</font></b> Survive past wave 10 while taking less than 100 dmg and dealing more than 3000 dmg. \n") .. "- Comes with \226\128\156Penguin Punch\226\128\157 emote\n\n\240\159\134\147\194\160<b>Free Kits of the Week</b>\n\226\154\148\239\184\143 Barbarian\n\240\159\143\185 Archer\n\240\159\164\160 Lassy\n\n\240\159\151\186\194\160<b>Map Changes</b>\n\240\159\142\162\194\160Added Themepark (squads + duos)\n\240\159\146\165\194\160Added Trench (squads)\n\240\159\167\177\194\160Added Ruins (duos)\n\240\159\143\176\194\160Added Mill (squads)\n\226\152\162\239\184\143\194\160Added Fusion (duos)\n\240\159\140\184\194\160Removed Spring (30v30)\n\n<b>Other Changes</b>\n\240\159\148\173\194\160Mobile: added first person crosshair\n\240\159\151\186\239\184\143 Map Saves: Fixed certain block types not saving\n\240\159\151\186\239\184\143 Map Saves: Improved map save speeds\n\226\154\153\239\184\143 Settings: Separated the background music sliders for lobby & game music.\n\240\159\155\160\239\184\143 Host Panel: Added a toggle under the map tab \226\128\156Ignore Build Restricted Regions\226\128\157\n\240\159\155\160\239\184\143 Host Panel: Fixed the bed break host panel toggle\n\240\159\155\160\239\184\143 Custom Matches: New command to generate a flat square of blocks from your character\226\128\153s location \"/edit flat &lt;block&gt; &lt;size&gt;\"", 
 				image = {
-					assetId = "rbxassetid://9499872124", 
+					assetId = "rbxassetid://10014214670", 
 					aspectRatio = 1, 
-					height = 0
+					height = 150
 				}, 
 				new = true, 
 				pinned = false
@@ -68,13 +69,13 @@ return function(p1)
 				new = false, 
 				pinned = false
 			} }, 
-		newestKit = l__GameUpdateButtons__2.newestKit, 
-		newestKitBG = l__GameUpdateButtons__2.newestKitBG
+		newestKit = l__GameUpdateButtons__4.newestKit, 
+		newestKitBG = l__GameUpdateButtons__4.newestKitBG
 	});
-	local u6 = l__CreateRoduxApp__3("GameUpdates", l__GameUpdatesCore__4, {}, {}, {
+	local u8 = l__CreateRoduxApp__5("GameUpdates", l__GameUpdatesCore__6, {}, {}, {
 		Parent = p1
 	});
 	return function()
-		u5.unmount(u6);
+		u7.unmount(u8);
 	end;
 end;

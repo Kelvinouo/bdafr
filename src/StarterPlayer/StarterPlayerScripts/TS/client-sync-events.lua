@@ -1,4 +1,3 @@
--- Script Hash: 9e500c2aa065f48ef7ae6535855fbf3fb0c902f23dd588c019a05fb5f20fed84a1f6b26f4eb83c7dad17d44ccb578725
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -13,6 +12,9 @@ end;
 for v9, v10 in pairs(v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).GameCoreClientSyncEvents) do
 	v6[v9] = v10;
 end;
+for v11, v12 in pairs(v1.import(script, v1.getModule(script, "@easy-games", "block-engine").out.client["block-engine-client-events"]).BlockEngineClientEvents) do
+	v6[v11] = v12;
+end;
 v6.GroundTouch = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "game", "block", "events", "ground-touch-event").GroundTouchEvent);
 v6.SwordSwing = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "global", "combat", "sword", "sword-swing-event").SwordSwingEvent);
 v6.SwordCharge = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "global", "combat", "sword", "sword-charge-event").SwordChargeEvent);
@@ -26,7 +28,6 @@ v6.ProjectileDestroy = l__SyncEvent__2.new(v1.import(script, script.Parent, "con
 v6.LocalProjectileImpact = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "global", "combat", "projectile", "event", "local-projectile-impact-event").LocalProjectileImpactEvent);
 v6.FishermanMinigameEnd = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "games", "bedwars", "fisherman", "fisherman-minigame-end-event").FishermanMinigameEndEvent);
 v6.MatchEndScreenEnd = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "game", "match", "match-end-screen-end-event").MatchEndScreenEndEvent);
-v6.AnnouncementEnd = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "global", "announcement", "event", "announcement-end-event").AnnouncementEndEvent);
 v6.WindWalkerOrbUpdate = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "games", "bedwars", "kit", "kits", "wind-walker", "event", "wind-walker-orb-update-event").WindWalkerOrbUpdateEvent);
 v6.GuidedProjectileDetonated = l__SyncEvent__2.new(v3.GuidedProjectileDetonateEvent);
 v6.GuidedProjectileRemoved = l__SyncEvent__2.new(v3.GuidedProjectileRemovedEvent);
@@ -43,11 +44,12 @@ v6.DisasterBegan = l__SyncEvent__2.new(v1.import(script, game:GetService("Replic
 v6.ItemAdded = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "global", "inventory", "event", "item-added-event").ItemAddedEvent);
 v6.MobileSwordButtonPressed = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "global", "combat", "sword", "event", "mobile-sword-button-pressed-event").MobileSwordButtonPressedEvent);
 v6.CancelEmoteEvent = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "global", "locker", "emote", "event", "cancel-emote-event").CancelEmoteClientEvent);
-v6.ExplosionEffectEvent = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "game", "combat", "explosion", "explosion-sync-events").ExplosionEffectEvent);
+v6.ExplosionEffect = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "game", "combat", "explosion", "explosion-sync-events").ExplosionEffectEvent);
 v6.GenericMountMounted = l__SyncEvent__2.new(v5.GenericMountMounted);
 v6.GenericMountDismounted = l__SyncEvent__2.new(v5.GenericMountDismounted);
 v6.ZiplineMount = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "game", "items", "zipline", "event", "zipline-mount-event").ZiplineMountEvent);
 v6.ChangeWorld = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "game", "world", "event", "world-change-event").WorldChangeEvent);
+v6.EntityChangeHeldItem = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "global", "inventory", "event", "item-hold-event").ItemHoldEvent);
 return {
 	ClientSyncEvents = v6
 };

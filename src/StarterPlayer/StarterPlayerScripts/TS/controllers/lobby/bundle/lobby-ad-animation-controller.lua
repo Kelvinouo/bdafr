@@ -1,4 +1,3 @@
--- Script Hash: d21e4f3f00feaa3686d7c9980b9d0c4185bd8b70bc076b618d44e499e7001b5812fb26ed3bfcb43326818ca513bad4c0
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -21,16 +20,16 @@ function v4.constructor(p1)
 	p1.Name = "LobbyAdAnimation";
 end;
 local l__WatchCollectionTag__2 = v2.WatchCollectionTag;
-local l__GameAnimationUtil__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
-local l__AnimationType__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
-local l__SoundManager__5 = v2.SoundManager;
-local l__GameSound__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local l__AnimationType__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
+local l__GameSound__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local l__GameAnimationUtil__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
+local l__SoundManager__6 = v2.SoundManager;
 local l__ContentProvider__7 = v1.import(script, v1.getModule(script, "@rbxts", "services")).ContentProvider;
 function v4.KnitStart(p2)
 	u1.KnitStart(p2);
-	l__WatchCollectionTag__2("rockstar-melody-ad", function(p3)
-		local v6 = l__GameAnimationUtil__3.getAnimation(l__AnimationType__4.MELODY_ROCKSTAR_AD);
-		local v7 = l__SoundManager__5:createSound(l__GameSound__6.GUITAR_LOOP_ROCKSTAR);
+	l__WatchCollectionTag__2("music-ad", function(p3)
+		local v6 = l__GameAnimationUtil__5.getAnimation(l__AnimationType__3.SPIRIT_ASSASSIN_AD);
+		local v7 = l__SoundManager__6:createSound(l__GameSound__4.GUITAR_LOOP_ROCKSTAR);
 		if not v7 then
 			return nil;
 		end;
@@ -57,6 +56,6 @@ function v4.KnitStart(p2)
 		v7:Play();
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v4.new());
 return nil;

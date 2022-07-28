@@ -1,4 +1,3 @@
--- Script Hash: 93320665fdec25e0e3a4c19c8741d52c93bb17e168a41027c209836598d19dd6445ec4050e470557e3ea39fc511426b1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -73,7 +72,8 @@ u13 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u
 	local v13 = {};
 	local v14 = not v4 and u6.createElement(l__VictorySection__7, {
 		store = p1.store, 
-		WinningTeamId = p1.WinningTeamId
+		WinningTeamId = p1.WinningTeamId, 
+		CustomTitleMessage = p1.CustomTitleMessage
 	});
 	if v14 then
 		v13[#v13 + 1] = v14;
@@ -150,7 +150,8 @@ return {
 				store = p4.store, 
 				WinningTeamId = p4.WinningTeamId, 
 				NewLeaderboardPos = p4.NewLeaderboardPos, 
-				PreviousLeaderboardPos = p4.PreviousLeaderboardPos
+				PreviousLeaderboardPos = p4.PreviousLeaderboardPos, 
+				CustomTitleMessage = p4.CustomTitleMessage
 			}) });
 	end, 
 	PostGameApp = u13

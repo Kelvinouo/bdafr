@@ -455,6 +455,24 @@ return {
 			impactParticles = "default", 
 			returnDistance = 75
 		}, 
+		penguin_sniper_shot = {
+			launchVelocity = 800, 
+			gravitationalAcceleration = 0, 
+			lifetimeSec = 2, 
+			predictionLifetimeSec = 1.1, 
+			flightRotation = Vector3.new(0, 0, 0), 
+			hitscanRegionMultiplier = 2, 
+			combat = {
+				damage = 75, 
+				armorMultiplier = 0.3
+			}, 
+			knockbackMultiplier = {
+				horizontal = 1.1
+			}, 
+			impactSound = { l__GameSound__1.ARROW_IMPACT }, 
+			projectileModel = "carrot_rocket", 
+			impactParticles = "default"
+		}, 
 		sticky_firework = {
 			launchVelocity = 120, 
 			gravitationalAcceleration = 70, 

@@ -1,4 +1,3 @@
--- Script Hash: 29bf5ef5574d6507ab1138406e979eae37ec58053a2b82b149e13a58e75a560f76dc7523e33bf7ad46504aa877488741
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__AnimationType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
@@ -45,6 +44,12 @@ return {
 		[l__AnimationType__1.BIG_PENGUIN_IDLE] = "rbxassetid://8595698199", 
 		[l__AnimationType__1.BIG_PENGUIN_JUMP] = "rbxassetid://8595699376", 
 		[l__AnimationType__1.BIG_PENGUIN_WALK] = "rbxassetid://8595700937", 
+		[l__AnimationType__1.PENGUIN_ATTACK_2] = "rbxassetid://10083826085", 
+		[l__AnimationType__1.PENGUIN_IDLE_2] = "rbxassetid://10083828001", 
+		[l__AnimationType__1.PENGUIN_JUMP_2] = "rbxassetid://10083831092", 
+		[l__AnimationType__1.PENGUIN_WALK_2] = "rbxassetid://10083834308", 
+		[l__AnimationType__1.SNIPER_PENGUIN_SHOOT_2] = "rbxassetid://10083911741", 
+		[l__AnimationType__1.SNIPER_PENGUIN_WALKING_2] = "rbxassetid://10084553066", 
 		[l__AnimationType__1.SCYTHE_IDLE] = "rbxassetid://8478090478", 
 		[l__AnimationType__1.SCYTHE_SWING] = "rbxassetid://8477606970", 
 		[l__AnimationType__1.DAO_CHARGE] = "rbxassetid://8659054055", 

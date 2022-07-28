@@ -1,4 +1,3 @@
--- Script Hash: 78c5ca209885cca3f981198e19d97fa9d8cb4ad611c50c4ba82fafdd43e6a4ec1736e510c32f82a950481f173e2c45f6
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -27,100 +26,93 @@ function u1.KnitStart(p2)
 end;
 local l__CollectionService__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).CollectionService;
 function u1.RegisterInteraction(p3, p4)
-	local l__registeredInteractions__5 = p3.registeredInteractions;
-	local function v6(p5)
-		return p5.interactionTag == p4.interactionTag;
-	end;
-	local v7 = nil;
-	for v8, v9 in ipairs(l__registeredInteractions__5) do
-		if v6(v9, v8 - 1, l__registeredInteractions__5) == true then
-			v7 = v9;
+	local v5 = nil;
+	for v6, v7 in ipairs(p3.registeredInteractions) do
+		if v7.interactionTag == p4.interactionTag == true then
+			v5 = v7;
 			break;
 		end;
 	end;
-	if v7 then
+	if v5 then
 		error("Tag " .. p4.interactionTag .. " is already registered");
 	end;
 	table.insert(p3.registeredInteractions, p4);
-	for v10, v11 in ipairs((l__CollectionService__3:GetTagged(p4.interactionTag))) do
-		if v11:IsA("BasePart") and (not p4.shouldMakeInteraction or p4.shouldMakeInteraction(v11)) then
-			p3:givePartProximityPrompt(v11, p4);
+	for v8, v9 in ipairs((l__CollectionService__3:GetTagged(p4.interactionTag))) do
+		if v9:IsA("BasePart") and (not p4.shouldMakeInteraction or p4.shouldMakeInteraction(v9)) then
+			p3:givePartProximityPrompt(v9, p4);
 		end;
 	end;
-	l__CollectionService__3:GetInstanceAddedSignal(p4.interactionTag):Connect(function(p6)
-		if not p6:IsA("BasePart") then
-			error("Only BaseParts can have an interaction, got " .. p6:GetFullName());
+	l__CollectionService__3:GetInstanceAddedSignal(p4.interactionTag):Connect(function(p5)
+		if not p5:IsA("BasePart") then
+			error("Only BaseParts can have an interaction, got " .. p5:GetFullName());
 		end;
-		if p4.shouldMakeInteraction and not p4.shouldMakeInteraction(p6) then
+		if p4.shouldMakeInteraction and not p4.shouldMakeInteraction(p5) then
 			return nil;
 		end;
-		p3:givePartProximityPrompt(p6, p4);
+		p3:givePartProximityPrompt(p5, p4);
 	end);
-	l__CollectionService__3:GetInstanceRemovedSignal(p4.interactionTag):Connect(function(p7)
-		local v12 = p7:FindFirstChild(p4.interactionTag);
-		if v12 then
-			v12:Destroy();
-			print("Removed interaction for part \"" .. p7:GetFullName() .. "\" with interaction tag \"" .. p4.interactionTag .. "\"");
+	l__CollectionService__3:GetInstanceRemovedSignal(p4.interactionTag):Connect(function(p6)
+		local v10 = p6:FindFirstChild(p4.interactionTag);
+		if v10 then
+			v10:Destroy();
 		end;
 	end);
 	if p4.onVisibilityStateChanged then
-		p4.onVisibilityStateChanged:Connect(function(p8)
-			local v13 = p3.proximityPrompts[p4.interactionTag];
-			if v13 then
-				for v14, v15 in ipairs(v13) do
-					v15.Enabled = p8;
+		p4.onVisibilityStateChanged:Connect(function(p7)
+			local v11 = p3.proximityPrompts[p4.interactionTag];
+			if v11 then
+				for v12, v13 in ipairs(v11) do
+					v13.Enabled = p7;
 				end;
-				print("Updated visibility of interaction \"" .. p4.interactionTag .. "\" to state \"" .. tostring(p8) .. "\"");
 			end;
 		end);
 	end;
-	print("Added interaction \"" .. tostring(p4.interactionLabel) .. " for tag \"" .. p4.interactionTag .. "\"");
 end;
 local u4 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
 local l__Theme__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
-function u1.givePartProximityPrompt(p9, p10, p11)
-	local l__interactionLabel__16 = p11.interactionLabel;
-	if type(l__interactionLabel__16) == "function" then
-		local v17 = l__interactionLabel__16(p10);
+function u1.givePartProximityPrompt(p8, p9, p10)
+	local l__interactionLabel__14 = p10.interactionLabel;
+	if type(l__interactionLabel__14) == "function" then
+		local v15 = l__interactionLabel__14(p9);
 	else
-		v17 = l__interactionLabel__16;
+		v15 = l__interactionLabel__14;
 	end;
-	local l__interactionObjectText__18 = p11.interactionObjectText;
-	if type(l__interactionObjectText__18) == "function" then
-		local v19 = l__interactionObjectText__18(p10);
+	local l__interactionObjectText__16 = p10.interactionObjectText;
+	if type(l__interactionObjectText__16) == "function" then
+		local v17 = l__interactionObjectText__16(p9);
 	else
-		v19 = l__interactionObjectText__18;
+		v17 = l__interactionObjectText__16;
 	end;
-	local v20 = {
-		Name = p11.interactionTag, 
-		ObjectText = v19, 
-		ActionText = v17, 
+	local v18 = {
+		Name = p10.interactionTag, 
+		ObjectText = v17, 
+		ActionText = v15, 
 		AutoLocalize = true, 
-		ClickablePrompt = p11.clickablePrompt, 
+		ClickablePrompt = p10.clickablePrompt, 
 		KeyboardKeyCode = Enum.KeyCode.F, 
 		RequiresLineOfSight = false
 	};
-	if p11.instantActivation then
-		local v21 = 0;
+	if p10.instantActivation then
+		local v19 = 0;
 	else
-		v21 = l__Theme__5.promptHoldDuration;
+		v19 = l__Theme__5.promptHoldDuration;
 	end;
-	v20.HoldDuration = v21;
-	v20.Parent = p10;
-	v20.MaxActivationDistance = p11.maxActivationDistance;
-	local v22 = u4("ProximityPrompt", v20);
-	v22.Triggered:Connect(function()
-		return p11.onInteracted(p10);
+	v18.HoldDuration = v19;
+	v18.Parent = p9;
+	v18.MaxActivationDistance = p10.maxActivationDistance;
+	local v20 = u4("ProximityPrompt", v18);
+	v20.Triggered:Connect(function()
+		return p10.onInteracted(p9);
 	end);
-	local v23 = p9.proximityPrompts[p11.interactionTag] or {};
-	local v24 = {};
-	local v25 = #v24;
-	local v26 = #v23;
-	table.move(v23, 1, v26, v25 + 1, v24);
-	v24[v25 + v26 + 1] = v22;
-	p9.proximityPrompts[p11.interactionTag] = v24;
+	local v21 = p8.proximityPrompts[p10.interactionTag] or {};
+	local v22 = {};
+	local v23 = #v22;
+	local v24 = #v21;
+	table.move(v21, 1, v24, v23 + 1, v22);
+	v22[v23 + v24 + 1] = v20;
+	p8.proximityPrompts[p10.interactionTag] = v22;
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
+u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;
 u2 = u2(u1());
 u1 = {

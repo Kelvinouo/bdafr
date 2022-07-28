@@ -1,4 +1,3 @@
--- Script Hash: bf6a48d4101b20b062a12ec142fe658154e38d08dbcae016ee3811236eb0c2c0098cd9373f43d31ff28634012da4dabc
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -373,10 +372,14 @@ local u1 = {
 };
 return {
 	getMapMeta = function(p1)
-		local v4 = string.gsub(string.split(p1, "_")[2], "-", "");
-		if not u1[v4] then
+		local v4 = string.split(p1, "_")[2];
+		if v4 == "" or not v4 then
 			return {};
 		end;
-		return u1[v4];
+		local v5 = string.gsub(v4, "-", "");
+		if not u1[v5] then
+			return {};
+		end;
+		return u1[v5];
 	end
 };

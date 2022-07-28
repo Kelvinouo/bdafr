@@ -1,4 +1,3 @@
--- Script Hash: ef70a4b8db6a7ede22adde8b3fc8b1ae0b38ed553bffa4c63b3c8503e4abaae03ef87baed999ab2aa2756e9356b95af4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -11,6 +10,7 @@ local v2 = {
 	Map = "", 
 	DisablePlacementLimits = false, 
 	CustomMatch = false, 
+	CustomMapCode = "", 
 	DisableBattlePassTimeCheck = false, 
 	SimulateLateJoin = false, 
 	SimulateFinalKill = false, 
