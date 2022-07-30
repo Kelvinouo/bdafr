@@ -28,25 +28,23 @@ local l__ContentProvider__7 = v1.import(script, v1.getModule(script, "@rbxts", "
 function v4.KnitStart(p2)
 	u1.KnitStart(p2);
 	l__WatchCollectionTag__2("music-ad", function(p3)
+		print("setting up music ad!");
 		local v6 = l__GameAnimationUtil__5.getAnimation(l__AnimationType__3.SPIRIT_ASSASSIN_AD);
-		local v7 = l__SoundManager__6:createSound(l__GameSound__4.GUITAR_LOOP_ROCKSTAR);
+		local v7 = l__SoundManager__6:createSound(l__GameSound__4.SPIRIT_ASSASSIN_LOOP);
 		if not v7 then
 			return nil;
 		end;
-		v7.RollOffMinDistance = 40;
-		v7.RollOffMaxDistance = 60;
+		v7.RollOffMinDistance = 50;
+		v7.RollOffMaxDistance = 85;
 		v7.RollOffMode = Enum.RollOffMode.Linear;
-		v7.Volume = 0.8;
+		v7.Volume = 0.9;
 		l__ContentProvider__7:PreloadAsync({ v6, v7 });
-		local v8 = p3:FindFirstChild("Humanoid");
-		if v8 ~= nil then
-			v8 = v8:FindFirstChild("Animator");
-		end;
-		if not v8 then
-			return nil;
-		end;
 		if not p3.PrimaryPart then
 			p3:GetPropertyChangedSignal("PrimaryPart"):Wait();
+		end;
+		local v8 = p3:WaitForChild("Humanoid");
+		if v8 ~= nil then
+			v8 = v8:WaitForChild("Animator");
 		end;
 		v7.Parent = p3.PrimaryPart;
 		v7.Looped = true;
@@ -54,6 +52,7 @@ function v4.KnitStart(p2)
 		v9.Looped = true;
 		v9:Play();
 		v7:Play();
+		print("finished setting up music ad.");
 	end);
 end;
 u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;

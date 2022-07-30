@@ -95,10 +95,10 @@ return {
 				attack = l__AnimationType__2.PENGUIN_ATTACK_2
 			}, 
 			health = 1500, 
-			damage = 40, 
+			damage = 30, 
 			spawnsAtTimeInWave = 0, 
 			spawnsAtWave = 11, 
-			blockDamage = 100, 
+			blockDamage = 75, 
 			range = 10 * l__BLOCK_SIZE__3, 
 			hitbox = Vector3.new(7, 7, 7)
 		}, 

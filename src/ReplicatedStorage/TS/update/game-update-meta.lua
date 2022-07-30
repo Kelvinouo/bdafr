@@ -12,6 +12,17 @@ return {
 		newestKitBG = "rbxassetid://8795128315"
 	}, 
 	GameUpdateMeta = { {
+			updateLogId = 43, 
+			visible = true, 
+			title = "Evelynn Kit + Creative Mode", 
+			date = "7/29/2022", 
+			body = "\240\159\151\161\239\184\143 <b>Spirit Assassin <font color=\"" .. (l__ColorUtil__2.richTextColor(l__Theme__6.mcYellow) .. "\">[NEW KIT]</font></b>\n") .. "Damage enemies to attract nearby spirits. Consume spirits to instantly teleport and gain an attack buff for a short duration.\n\n" .. ("<b>\240\159\142\190 Tennis Racket <font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__6.mcYellow) .. "\">[NEW ITEM]</font></b>\n") .. "Smack explosive tennis balls at your enemies. Now available in all queues for 2 emeralds.\n\n" .. "<b>\226\154\153\239\184\143\240\159\151\186\239\184\143 Map Saves</b>\n" .. "\240\159\147\145 Support for updating map save files while keeping the same map join code! An update button now shows up below Map Save cards in the host panel.\n" .. "\240\159\145\165 Support for changing team spawn locations `/setteamspawn &lt;teamName&gt;`\n" .. "\240\159\146\142 Create & manage generators `/gen help`\n" .. "\240\159\155\146 Create & manage shops with `/shop help`\n" .. "\240\159\154\132 Improved speed of saving maps with lots of \226\128\156Default\226\128\157 map blocks\n" .. "\240\159\145\183\226\128\141\226\153\130\239\184\143 Fixed the rotation of shop npcs on saved maps\n\n" .. ("\240\159\150\138\239\184\143 <b>Creative Mode</b> <font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__6.mcGreen) .. "\"><b>[NEW FEATURE]</b></font>\n") .. "This is the mode for map builders! Creative mode is exclusive to custom matches and can be set by hosts with the following commands\n" .. "- `/gm 1 &lt;playerName | @all | @team:teamName&gt;`\n" .. "- `/gm 1` to apply the Creative to yourself.\n" .. "- Game modes: (0 or \226\128\156pvp\226\128\157) & (1 or \226\128\156creative\226\128\157)\n\n" .. "Creative mode also comes with the following perks\n" .. "\240\159\142\146 Creative Inventory. Open your inventory regularly to access Creative Inventory.\n" .. "\240\159\148\168 Instantly break blocks with any tool\n" .. "\240\159\147\136 Placing blocks don\226\128\153t reduce block count\n" .. "\240\159\170\147 Access to EasyEdit wand\n\n" .. ("\240\159\170\147 <b>EasyEdit</b> <font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__6.mcGreen) .. "\"><b>[NEW FEATURE]</b></font> \n") .. "\240\159\150\138\239\184\143 EasyEdit Wand: Speeds up selecting block regions. This is activated with the <b>Wooden Axe</b> while in creative mode\n" .. "- Left Click a block to set Position 1\n" .. "- Right Click a block to set Position 2\n" .. "\240\159\155\176\239\184\143 EasyEdit Commands: Start with prefix `//`\n" .. "- `//help, //pos1, //pos2, //set &lt;blockType&gt;, //cut`\n" .. "- `//undo & //redo`\n\n" .. "\240\159\134\147\194\160<b>Free Kits of the Week</b>\n" .. ("\240\159\141\170 Gingerbread Man <b><font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__6.mcAqua) .. "\">(FIRST TIME FREE!)</font></b>\n") .. "\240\159\165\167 Baker\n\240\159\155\161\239\184\143 Shielder", 
+			image = {
+				assetId = "rbxassetid://10407168596", 
+				aspectRatio = 1, 
+				height = 150
+			}
+		}, {
 			updateLogId = 42, 
 			visible = true, 
 			title = "Penguin Survival (Return of the Penguins)", 

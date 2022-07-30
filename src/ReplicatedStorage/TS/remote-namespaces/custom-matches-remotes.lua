@@ -36,7 +36,7 @@ return v2.Definitions.Namespace({
 	GetMySavedMaps = v2.Definitions.ServerFunction(), 
 	DeleteSavedMap = v2.Definitions.ServerAsyncFunction(), 
 	GetMapInfo = v2.Definitions.ServerAsyncFunction(), 
-	UpdateSavedMap = v2.Definitions.ServerAsyncFunction(), 
+	UpdateSavedMapSettings = v2.Definitions.ServerAsyncFunction(), 
 	SetIgnoreBuildRestrictedRegions = v2.Definitions.ServerAsyncFunction(), 
 	HostPanelUpdate = v2.Definitions.ServerToClientEvent(), 
 	SavedMapsUpdate = v2.Definitions.ServerToClientEvent()

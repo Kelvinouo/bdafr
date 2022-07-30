@@ -93,6 +93,10 @@ return {
 		[l__AnimationType__1.DINO_HIT] = "rbxassetid://9781455966", 
 		[l__AnimationType__1.DINO_CHARGING] = "rbxassetid://9781452961", 
 		[l__AnimationType__1.DINO_FALLING] = "rbxassetid://9781460536", 
-		[l__AnimationType__1.DINO_JUMP] = "rbxassetid://9781457911"
+		[l__AnimationType__1.DINO_JUMP] = "rbxassetid://9781457911", 
+		[l__AnimationType__1.DAGGER_SLASH] = "rbxassetid://10237006643", 
+		[l__AnimationType__1.DAGGER_CHARGE] = "rbxassetid://10237028644", 
+		[l__AnimationType__1.FP_DAGGER_SLASH] = "rbxassetid://10273247497", 
+		[l__AnimationType__1.FP_DAGGER_CHARGE] = "rbxassetid://10273267293"
 	}
 };

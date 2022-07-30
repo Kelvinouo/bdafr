@@ -1,10 +1,9 @@
--- Script Hash: 5b11642a91182b18a48634a32d27db02537fb0c9e75696f771868cfbd2685713363e88eda7e26dff28c7749cb508c0ab
 --[[VARIABLE DEFINITION ANOMALY DETECTED, DECOMPILATION OUTPUT POTENTIALLY INCORRECT]]--
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v5 = setmetatable({}, {
 	__tostring = function()
@@ -32,7 +31,7 @@ local l__SoundManager__8 = v2.SoundManager;
 local l__RandomUtil__9 = v2.RandomUtil;
 local l__getItemMeta__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
 local l__ProjectileUtil__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "combat", "projectile-util").ProjectileUtil;
-local l__Maid__12 = v3.Maid;
+local u12 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function u1.KnitStart(p2)
 	l__ClientSyncEvents__3.StartLaunchProjectile:connect(function(p3)
 		if p3:isCancelled() then
@@ -44,15 +43,11 @@ function u1.KnitStart(p2)
 				v7 = v7:GetPrimaryPartCFrame();
 			end;
 			if v7 then
-				l__KnitClient__5.Controllers.ScreenShakeController:shake(v7.Position, v7 * Vector3.new(-0.25, 0, -1) - v7.Position, {
-					magnitude = 0.07, 
-					duration = 0.15, 
-					cycles = 2
-				});
+				l__KnitClient__5.Controllers.ScreenShakeController:shake(v7.Position, v7 * Vector3.new(-0.25, 0, -1) - v7.Position, p3.projectileSource.launchScreenShake.config);
 			end;
 		end;
 	end);
-	l__default__6.Client:WaitFor("ProjectileImpact"):andThen(function(p4)
+	l__default__6.Client:WaitFor("RemoteName"):andThen(function(p4)
 		return p4:Connect(function(p5)
 			local v8 = l__ProjectileMeta__7[p5.projectile];
 			if v8.impactSound then
@@ -81,7 +76,7 @@ function u1.KnitStart(p2)
 			u1:destroyProjectile(p5.projectileModel);
 		end);
 	end);
-	l__default__6.Client:WaitFor("ProjectileLaunch"):andThen(function(p6)
+	l__default__6.Client:WaitFor("RemoteName"):andThen(function(p6)
 		return p6:Connect(function(p7)
 			local v13 = l__ProjectileMeta__7[p7.projectile.Name];
 			if p7.shootingPlayer == l__Players__4.LocalPlayer and not v13.useServerModel then
@@ -104,24 +99,34 @@ function u1.KnitStart(p2)
 					v17 = v17.launchSound;
 				end;
 				if v17 then
-					local v18 = v15.launchSoundConfig;
-					if v18 ~= nil then
-						v18 = v18.pitch;
-					end;
-					local v19 = v15;
+					local l__launchSoundConfig__18 = v15.launchSoundConfig;
+					local v19 = l__launchSoundConfig__18;
 					if v19 ~= nil then
-						v19 = v19.launchSound;
+						v19 = v19.pitch;
 					end;
-					local v20 = {
+					local v20 = v15;
+					if v20 ~= nil then
+						v20 = v20.launchSound;
+					end;
+					local v21 = {
 						position = p7.position
 					};
-					if v18 then
-						local v21 = math.random() * (v18.Max - v18.Min) + v18.Min;
+					if v19 then
+						local v22 = math.random() * (v19.Max - v19.Min) + v19.Min;
 					else
-						v21 = nil;
+						v22 = nil;
 					end;
-					v20.playbackSpeedMultiplier = v21;
-					l__SoundManager__8:playSound(l__RandomUtil__9.fromList(unpack(v19)), v20);
+					v21.playbackSpeedMultiplier = v22;
+					local v23 = l__launchSoundConfig__18;
+					if v23 ~= nil then
+						v23 = v23.volumeMultiplier;
+					end;
+					local v24 = v23;
+					if v24 == nil then
+						v24 = 1;
+					end;
+					v21.volumeMultiplier = v24;
+					l__SoundManager__8:playSound(l__RandomUtil__9.fromList(unpack(v20)), v21);
 				end;
 			end;
 			if not p7.projectile.PrimaryPart then
@@ -130,51 +135,51 @@ function u1.KnitStart(p2)
 					return nil;
 				end;
 			end;
-			local v22 = p7.projectile;
+			local v25 = p7.projectile;
 			if not v13.useServerModel then
-				v22 = p7.projectile:Clone();
-				v22.Parent = p7.projectile.Parent;
+				v25 = p7.projectile:Clone();
+				v25.Parent = p7.projectile.Parent;
 				p7.projectile:Destroy();
 			end;
 			if not v13.useServerModel or p7.shootingPlayer == l__Players__4.LocalPlayer then
-				local l__PrimaryPart__23 = v22.PrimaryPart;
-				if l__PrimaryPart__23 ~= nil then
-					local v24 = l__PrimaryPart__23:FindFirstChildWhichIsA("BodyForce");
-					if v24 ~= nil then
-						v24:Destroy();
+				local l__PrimaryPart__26 = v25.PrimaryPart;
+				if l__PrimaryPart__26 ~= nil then
+					local v27 = l__PrimaryPart__26:FindFirstChildWhichIsA("BodyForce");
+					if v27 ~= nil then
+						v27:Destroy();
 					end;
 				end;
-				local v25 = v13.gravitationalAcceleration;
-				if v25 == nil then
-					v25 = 196.2;
+				local v28 = v13.gravitationalAcceleration;
+				if v28 == nil then
+					v28 = 196.2;
 				end;
-				local v26 = {};
-				local v27 = v15;
-				if v27 ~= nil then
-					v27 = v27.relativeOverride;
+				local v29 = {};
+				local v30 = v15;
+				if v30 ~= nil then
+					v30 = v30.relativeOverride;
 				end;
-				v26.relative = v27;
-				local v28 = false;
+				v29.relative = v30;
+				local v31 = false;
 				if v13.useServerModel == true then
-					v28 = p7.shootingPlayer == l__Players__4.LocalPlayer;
+					v31 = p7.shootingPlayer == l__Players__4.LocalPlayer;
 				end;
-				l__ProjectileUtil__11.fireProjectile(p7.shootingPlayer, v22, p7.projectileRefId, p7.position, p7.launchVelocity, v25, function()
-					v22:Destroy();
-				end, nil, v26, v28);
+				l__ProjectileUtil__11.fireProjectile(p7.shootingPlayer, v25, p7.projectileRefId, p7.position, p7.launchVelocity, v28, function()
+					v25:Destroy();
+				end, nil, v29, v31);
 			end;
-			local v29 = p7.shootingPlayer;
-			if v29 ~= nil then
-				v29 = v29.Character;
+			local v32 = p7.shootingPlayer;
+			if v32 ~= nil then
+				v32 = v32.Character;
 			end;
-			u1:createProjectile(p7.projectile, v22, p7.launchVelocity, p7.position, v29);
-			local v30 = l__Maid__12.new();
-			v30:GiveTask(function()
+			u1:createProjectile(p7.projectile, v25, p7.launchVelocity, p7.position, v32);
+			local v33 = u12.new();
+			v33:GiveTask(function()
 				u1:destroyProjectile(p7.projectile);
 			end);
-			v30:GiveTask(v22.PrimaryPart.AncestryChanged:Connect(function()
-				v30:DoCleaning();
+			v33:GiveTask(v25.PrimaryPart.AncestryChanged:Connect(function()
+				v33:DoCleaning();
 			end));
-			v30:GiveTask(l__ProjectileUtil__11.setupProjectileConstantOrientation(v22, p7.shootingPlayer));
+			v33:GiveTask(l__ProjectileUtil__11.setupProjectileConstantOrientation(v25, p7.shootingPlayer));
 		end);
 	end);
 end;
@@ -184,12 +189,12 @@ function u1.createProjectile(p8, p9, p10, p11, p12, p13)
 	u13[p9] = p10;
 end;
 function u1.destroyProjectile(p14, p15)
-	local v31 = u13[p15];
-	if not v31 then
+	local v34 = u13[p15];
+	if not v34 then
 		return nil;
 	end;
-	if not l__ClientSyncEvents__3.ProjectileDestroy:fire(v31.Name, v31):isCancelled() then
-		v31:Destroy();
+	if not l__ClientSyncEvents__3.ProjectileDestroy:fire(v34.Name, v34):isCancelled() then
+		v34:Destroy();
 	end;
 	u13[p15] = nil;
 end;

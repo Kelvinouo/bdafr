@@ -1,14 +1,13 @@
--- Script Hash: a31a40dd562ba0ecaed423e1215183f80379ade4b716459bbcde7083e88dc5111698b7ee9b6f4b58da072f5e90953962
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local v4 = v3.Component:extend("InventoryTile");
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__ExpireList__2 = v2.ExpireList;
 function v4.init(p1, p2)
-	p1.maid = l__Maid__1.new();
+	p1.maid = u1.new();
 	p1.ref = v3.createRef();
 	p1.hotbarSwapCooldown = l__ExpireList__2.new(0.1);
 	p1:setState({
@@ -42,8 +41,9 @@ end;
 local l__ColorUtil__6 = v2.ColorUtil;
 local l__SoundManager__7 = v2.SoundManager;
 local l__GameSound__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__CircularProgress__9 = v2.CircularProgress;
-local l__ItemViewport__10 = v1.import(script, script.Parent, "item-viewport").ItemViewport;
+local l__ItemToolTip__9 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "components", "item-tool-tip").ItemToolTip;
+local l__CircularProgress__10 = v2.CircularProgress;
+local l__ItemViewport__11 = v1.import(script, script.Parent, "item-viewport").ItemViewport;
 function v4.render(p7)
 	local v5 = p7.props.TileColor or l__ColorUtil__6.hexColor(4016991);
 	local v6 = {
@@ -87,19 +87,27 @@ function v4.render(p7)
 			Color = p7.props.TileBorderColor or l__ColorUtil__6.brighten(v5, 0.1), 
 			Thickness = 1.5
 		}) };
-	local v8 = p7.state.loading and v3.createElement(l__CircularProgress__9, {
+	local v8 = #v7;
+	local v9 = {};
+	local v10 = p7.props.InvItem;
+	if v10 ~= nil then
+		v10 = v10.itemType;
+	end;
+	v9.item = v10;
+	v7[v8 + 1] = v3.createElement(l__ItemToolTip__9, v9);
+	local v11 = p7.state.loading and v3.createElement(l__CircularProgress__10, {
 		Time = 0.2, 
 		Transparency = 0.3, 
 		Size = UDim2.fromScale(0.45, 0.45), 
 		Position = UDim2.fromScale(0.5, 0.5), 
 		AnchorPoint = Vector2.new(0.5, 0.5)
 	});
-	if v8 then
-		v7[#v7 + 1] = v8;
+	if v11 then
+		v7[v8 + 2] = v11;
 	end;
-	local v9 = false;
+	local v12 = false;
 	if p7.props.InvItem ~= nil then
-		v9 = v3.createElement(l__ItemViewport__10, {
+		v12 = v3.createElement(l__ItemViewport__11, {
 			ItemType = p7.props.InvItem.itemType, 
 			Amount = p7.props.InvItem.amount, 
 			Size = UDim2.fromScale(0.8, 0.8), 
@@ -107,8 +115,8 @@ function v4.render(p7)
 			AnchorPoint = Vector2.new(0.5, 0.5)
 		});
 	end;
-	if v9 then
-		v7[#v7 + 1] = v9;
+	if v12 then
+		v7[#v7 + 1] = v12;
 	end;
 	return v3.createElement("ImageButton", v6, v7);
 end;

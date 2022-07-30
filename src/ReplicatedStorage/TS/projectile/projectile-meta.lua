@@ -494,6 +494,23 @@ return {
 				ignoreDamageTakenCooldown = true, 
 				ignoreArmor = true
 			}
+		}, 
+		tennis_ball = {
+			launchVelocity = 180, 
+			gravitationalAcceleration = 35, 
+			lifetimeSec = 3, 
+			predictionLifetimeSec = 2, 
+			flightRotation = Vector3.new(-math.pi / 2, 0, 0), 
+			combat = {
+				damage = 25
+			}, 
+			knockbackMultiplier = {
+				horizontal = 1.3, 
+				vertical = 1.15
+			}, 
+			impactSound = { l__GameSound__1.SNOWBALL_HIT }, 
+			impactParticles = "default", 
+			armorMultiplier = 0.8
 		}
 	}
 };

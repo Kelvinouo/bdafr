@@ -644,6 +644,18 @@ u2 = { {
 		requiresKit = { l__BedwarsKit__6.ARCHER }, 
 		category = l__BedwarsShopItemCategory__9.Armory
 	}, {
+		itemType = l__ItemType__6.TENNIS_RACKET, 
+		amount = 1, 
+		price = 2, 
+		currency = l__ItemType__6.EMERALD, 
+		category = l__BedwarsShopItemCategory__9.Armory, 
+		limitedTimeItem = true, 
+		lockAfterPurchase = true, 
+		additionalItems = { {
+				itemType = l__ItemType__6.TENNIS_BALL, 
+				amount = 4
+			} }
+	}, {
 		itemType = l__ItemType__6.ARROW, 
 		amount = 8, 
 		price = 16, 
@@ -661,6 +673,13 @@ u2 = { {
 		price = 1, 
 		currency = l__ItemType__6.EMERALD, 
 		category = l__BedwarsShopItemCategory__9.Combat
+	}, {
+		itemType = l__ItemType__6.TENNIS_BALL, 
+		amount = 1, 
+		price = 40, 
+		currency = l__ItemType__6.IRON, 
+		category = l__BedwarsShopItemCategory__9.Armory, 
+		limitedTimeItem = true
 	}, {
 		itemType = l__ItemType__6.SANTA_BOMB, 
 		amount = 1, 

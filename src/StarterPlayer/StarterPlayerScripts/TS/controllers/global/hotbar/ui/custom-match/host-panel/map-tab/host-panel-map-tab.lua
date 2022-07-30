@@ -65,7 +65,7 @@ return {
 			v12[v13] = v11(v14, v13 - 1, l__mapSaves__10);
 		end;
 		local v15 = {
-			Size = UDim2.fromScale(1, 0.5)
+			Size = UDim2.fromScale(1, 0.6)
 		};
 		local v16 = { u5.createElement("UIListLayout", {
 				FillDirection = "Horizontal", 
@@ -78,13 +78,14 @@ return {
 		end;
 		local v20 = false;
 		if #p1.store.CustomMatch.mapSaves < 3 then
-			local v21 = {
+			local v21 = {};
+			local v22 = {
 				Size = UDim2.fromScale(0.3, 1), 
 				BackgroundColor3 = l__Theme__6.backgroundTertiary, 
 				BorderSizePixel = 0, 
 				LayoutOrder = 3
 			};
-			v21[u5.Event.Activated] = function()
+			v22[u5.Event.Activated] = function()
 				if v5 then
 					return nil;
 				end;
@@ -100,14 +101,14 @@ return {
 				end);
 			end;
 			if v5 then
-				local v22 = false;
+				local v23 = false;
 			else
-				v22 = true;
+				v23 = true;
 			end;
-			v21.AutoButtonColor = v22;
-			local v23 = {};
+			v22.AutoButtonColor = v23;
+			local v24 = {};
 			if v5 then
-				local v24 = u5.createElement("TextLabel", {
+				local v25 = u5.createElement("TextLabel", {
 					Size = UDim2.fromScale(0.75, 0.25), 
 					Text = "<b>SAVING...</b>", 
 					RichText = true, 
@@ -118,7 +119,7 @@ return {
 					LayoutOrder = 2
 				});
 			else
-				v24 = u5.createFragment({ u5.createElement("ImageLabel", {
+				v25 = u5.createFragment({ u5.createElement("ImageLabel", {
 						Size = UDim2.fromScale(0.25, 0.25), 
 						Image = l__BedwarsImageId__11.PLUS, 
 						ScaleType = "Fit", 
@@ -135,15 +136,16 @@ return {
 						LayoutOrder = 2
 					}) });
 			end;
-			v23[1] = u5.createElement("UIListLayout", {
+			v24[1] = u5.createElement("UIListLayout", {
 				FillDirection = "Vertical", 
 				VerticalAlignment = "Center", 
 				HorizontalAlignment = "Center", 
 				SortOrder = "LayoutOrder", 
 				Padding = UDim.new(0.075, 0)
 			});
-			v23[2] = v24;
-			v20 = u5.createElement("ImageButton", v21, v23);
+			v24[2] = v25;
+			v21.SaveMap = u5.createElement("ImageButton", v22, v24);
+			v20 = u5.createFragment(v21);
 		end;
 		if v20 then
 			v16[#v16 + 1] = v20;
@@ -157,14 +159,14 @@ return {
 				if l__DeviceUtil__3.isHoarceKat() then
 					return 0;
 				end;
-				local v25 = l__Workspace__4:WaitForChild("Map");
-				if v25 ~= nil then
-					v25 = v25:WaitForChild("Worlds");
-					if v25 ~= nil then
-						v25 = v25:FindFirstChildWhichIsA("Folder");
+				local v26 = l__Workspace__4:WaitForChild("Map");
+				if v26 ~= nil then
+					v26 = v26:WaitForChild("Worlds");
+					if v26 ~= nil then
+						v26 = v26:FindFirstChildWhichIsA("Folder");
 					end;
 				end;
-				return #v25.Blocks:GetChildren() + #v25.BreakableBlocks:GetChildren();
+				return #v26.Blocks:GetChildren() + #v26.BreakableBlocks:GetChildren();
 			end)())) .. " blocks in the map</b>", 
 			TextScaled = true, 
 			RichText = true, 

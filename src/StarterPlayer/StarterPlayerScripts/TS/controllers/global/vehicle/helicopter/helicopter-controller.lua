@@ -36,7 +36,7 @@ function v5.watchHelicopterVehicle(p2, p3)
 			Looped = true, 
 			Volume = 0.2, 
 			RollOffMaxDistance = 300, 
-			RollOffMinDistance = 20, 
+			RollOffMinDistsance = 20, 
 			Parent = p4.PrimaryPart
 		});
 		v7:Play();

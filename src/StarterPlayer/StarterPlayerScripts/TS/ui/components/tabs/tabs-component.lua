@@ -55,7 +55,8 @@ return {
 				local v20 = u1.createElement(l__TabButton__2, {
 					Text = p3, 
 					Active = v17, 
-					OnChange = p1.OnChange
+					OnChange = p1.OnChange, 
+					UIConfig = p1.UIConfig
 				});
 				v19 = true;
 			end;
@@ -63,13 +64,15 @@ return {
 				local v21 = u1.createElement(l__TabButtonUnderline__3, {
 					Text = p3, 
 					Active = v17, 
-					OnChange = p1.OnChange
+					OnChange = p1.OnChange, 
+					UIConfig = p1.UIConfig
 				});
 			end;
 			return u1.createElement(l__TabButton__2, {
 				Text = p3, 
 				Active = v17, 
-				OnChange = p1.OnChange
+				OnChange = p1.OnChange, 
+				UIConfig = p1.UIConfig
 			});
 		end;
 		local v22 = table.create(#l__Tabs__15);

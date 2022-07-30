@@ -208,6 +208,12 @@ return {
 		[l__AnimationType__1.PINATA_IDLE_3] = "rbxassetid://10012803390", 
 		[l__AnimationType__1.PINATA_HIT_1] = "rbxassetid://10012807780", 
 		[l__AnimationType__1.PINATA_HIT_2] = "rbxassetid://10012809666", 
-		[l__AnimationType__1.PINATA_FEED] = "rbxassetid://10013028800"
+		[l__AnimationType__1.PINATA_FEED] = "rbxassetid://10013028800", 
+		[l__AnimationType__1.DAGGER_SLASH] = "rbxassetid://10265860371", 
+		[l__AnimationType__1.DAGGER_CHARGE] = "rbxassetid://10265861814", 
+		[l__AnimationType__1.FP_DAGGER_SLASH] = "rbxassetid://10265857584", 
+		[l__AnimationType__1.FP_DAGGER_CHARGE] = "rbxassetid://10265859074", 
+		[l__AnimationType__1.TENNIS_RACKET_HIT] = "rbxassetid://10218627926", 
+		[l__AnimationType__1.TENNIS_RACKET_IDLE] = "rbxassetid://10214980235"
 	}
 };

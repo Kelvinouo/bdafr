@@ -54,6 +54,8 @@ v2.VOID_LASER = "void_laser";
 v1.void_laser = "VOID_LASER";
 v2.GRENADE_LAUNCHER = "grenade_launcher";
 v1.grenade_launcher = "GRENADE_LAUNCHER";
+v2.TENNIS_RACKET = "tennis_racket";
+v1.tennis_racket = "TENNIS_RACKET";
 return {
 	CooldownId = v2
 };

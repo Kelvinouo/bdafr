@@ -65,6 +65,7 @@ local v4 = {
 	GUITAR_HEAL_1 = "rbxassetid://7084168458", 
 	GUITAR_LOOP_ROCKSTAR = "rbxassetid://9252967029", 
 	GUITAR_HEAL_1_ROCKSTAR = "rbxassetid://9252449369", 
+	SPIRIT_ASSASSIN_LOOP = "rbxassetid://10405161098", 
 	CANNON_MOVE = "rbxassetid://7118668472", 
 	CANNON_FIRE = "rbxassetid://7121064180", 
 	BALLOON_INFLATE = "rbxassetid://7118657911", 
@@ -340,6 +341,8 @@ local v4 = {
 	TOAD_CROAK = "rbxassetid://6608707296", 
 	TOY_HAMMER_HIT = "rbxassetid://10084313910", 
 	LUCKY_BLOCK_SLAM = "rbxassetid://9369390266", 
+	SPIRIT_DAGGER_CHARGE = "rbxassetid://10405686499", 
+	SPIRIT_DAGGER_SLASH = "rbxassetid://10405686796", 
 	OVERLOAD_LOOP = "rbxassetid://10157622093", 
 	OVERLOAD_BEEP = "rbxassetid://10157695750", 
 	PENGUIN_SURVIVAL_WAVE_TRACK = "rbxassetid://10320153543", 
@@ -354,7 +357,11 @@ local v4 = {
 	PENGUIN_DAMAGED_5 = "rbxassetid://10319819044", 
 	PENGUIN_DAMAGED_6 = "rbxassetid://10319818889", 
 	PENGUIN_DAMAGED_7 = "rbxassetid://10319819249", 
-	PENGUIN_DAMAGED_8 = "rbxassetid://10319818643"
+	PENGUIN_DAMAGED_8 = "rbxassetid://10319818643", 
+	TENNIS_BALL_HIT_1 = "rbxassetid://10359187338", 
+	TENNIS_BALL_HIT_2 = "rbxassetid://10361850937", 
+	PIANO_CRASH = "rbxassetid://10392146818", 
+	SLIDE_WHISTLE_FALLING = "rbxassetid://10392143945"
 };
 l__SoundManager__3:registerSound(v4.VENDING_ROLL_TICK, {
 	preload = false
@@ -377,6 +384,9 @@ l__SoundManager__3:registerSound(v4.GUITAR_LOOP_ROCKSTAR, {
 l__SoundManager__3:registerSound(v4.GUITAR_HEAL_1_ROCKSTAR, {
 	preload = false, 
 	volume = 0.2
+});
+l__SoundManager__3:registerSound(v4.SPIRIT_ASSASSIN_LOOP, {
+	preload = false
 });
 l__SoundManager__3:registerSound(v4.SHEEP_TAME_1, {
 	preload = false

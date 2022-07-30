@@ -1,16 +1,14 @@
--- Script Hash: 92255b5a4d8fd299c4a1f351a7ada9fbcd8589ede06b89f7a3b6e79734566485616b56a6d76699791ea07a2e6440682f
 --[[VARIABLE DEFINITION ANOMALY DETECTED, DECOMPILATION OUTPUT POTENTIALLY INCORRECT]]--
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
-local v4 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
-local v5 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
-local v6 = v4.Component:extend("KitShopRight");
-local l__Maid__1 = v3.Maid;
-function v6.init(p1, p2)
-	p1.maid = l__Maid__1.new();
+local v3 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
+local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
+local v5 = v3.Component:extend("KitShopRight");
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+function v5.init(p1, p2)
+	p1.maid = u1.new();
 	p1:setState({
 		purchased = false
 	});
@@ -20,7 +18,7 @@ function v6.init(p1, p2)
 		});
 	end;
 end;
-function v6.didUpdate(p3, p4, p5)
+function v5.didUpdate(p3, p4, p5)
 	if p4.SelectedKit ~= p3.props.SelectedKit then
 		p3:setState({
 			purchased = false
@@ -32,29 +30,29 @@ function v6.didUpdate(p3, p4, p5)
 		end;
 	end;
 end;
-local l__UserInputService__2 = v5.UserInputService;
+local l__UserInputService__2 = v4.UserInputService;
 local l__BedwarsKitShop__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit-shop").BedwarsKitShop;
 local l__DeviceUtil__4 = v2.DeviceUtil;
-local l__KnitClient__5 = v3.KnitClient;
-local l__ContextActionService__6 = v5.ContextActionService;
+local l__KnitClient__5 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
+local l__ContextActionService__6 = v4.ContextActionService;
 local l__default__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__ClientStore__8 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
-function v6.didMount(p6)
+function v5.didMount(p6)
 	if l__UserInputService__2.GamepadEnabled and not l__UserInputService__2.MouseEnabled then
 		p6.maid:GiveTask(l__UserInputService__2.InputBegan:Connect(function(p7, p8)
 			if p7.KeyCode == Enum.KeyCode.ButtonA then
-				local v7 = false;
+				local v6 = false;
 				if p6.props.SelectedKit then
 					if table.find(p6.props.store.Bedwars.ownedKits, p6.props.SelectedKit) ~= nil then
-						v7 = true;
+						v6 = true;
 					elseif table.find(l__BedwarsKitShop__3.FreeKits, p6.props.SelectedKit) ~= nil then
-						v7 = true;
+						v6 = true;
 					end;
 					if not l__DeviceUtil__4.isHoarceKat() and l__KnitClient__5.Controllers.UnlockController.allKitsUnlocked then
-						v7 = true;
+						v6 = true;
 					end;
 				end;
-				if v7 then
+				if v6 then
 					p6:equip();
 					return;
 				end;
@@ -66,9 +64,9 @@ function v6.didMount(p6)
 		if p10 ~= Enum.UserInputState.Begin then
 			return nil;
 		end;
-		local v8 = not p6.props.store.Bedwars.useKitSkin;
-		l__default__7.Client:Get("BedwarsSetUseKitSkin"):CallServerAsync({
-			useKitSkin = v8
+		local v7 = not p6.props.store.Bedwars.useKitSkin;
+		l__default__7.Client:Get("RemoteName"):CallServerAsync({
+			useKitSkin = v7
 		}):andThen(function()
 
 		end):catch(function(p12)
@@ -76,45 +74,45 @@ function v6.didMount(p6)
 		end);
 		l__ClientStore__8:dispatch({
 			type = "SetUseKitSkin", 
-			useKitSkin = v8
+			useKitSkin = v7
 		});
 	end, false, Enum.ContextActionPriority.High.Value + 10, Enum.KeyCode.ButtonX);
 	p6.maid:GiveTask(function()
 		l__ContextActionService__6:UnbindAction("toggle-skin-gamepad");
 	end);
 end;
-function v6.willUnmount(p13)
+function v5.willUnmount(p13)
 	p13.maid:DoCleaning();
 end;
 local l__SoundManager__9 = v2.SoundManager;
 local l__GameSound__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-function v6.equip(p14)
-	local v9 = p14.props.SelectedKit and nil;
-	l__default__7.Client:Get("BedwarsActivateKit"):CallServerAsync({
-		kit = v9
+function v5.equip(p14)
+	local v8 = p14.props.SelectedKit and nil;
+	l__default__7.Client:Get("RemoteName"):CallServerAsync({
+		kit = v8
 	}):andThen(function(p15)
 		if p15 then
 			l__SoundManager__9:playSound(l__GameSound__10.ARMOR_UNEQUIP);
 			l__ClientStore__8:dispatch({
 				type = "SetBedwarsKit", 
-				kit = v9
+				kit = v8
 			});
 		end;
 	end);
 end;
 local l__BedwarsKit__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
 local l__getBedwarsKitMeta__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit-meta").getBedwarsKitMeta;
-local l__MarketplaceService__13 = v5.MarketplaceService;
-local l__Players__14 = v5.Players;
-function v6.purchase(p16)
-	local v10 = nil;
+local l__MarketplaceService__13 = v4.MarketplaceService;
+local l__Players__14 = v4.Players;
+function v5.purchase(p16)
+	local v9 = nil;
 	if p16.props.SelectedKit ~= l__BedwarsKit__11.NONE then
-		v10 = l__getBedwarsKitMeta__12(p16.props.SelectedKit);
-		if v10.gamepassId ~= nil then
-			l__MarketplaceService__13:PromptGamePassPurchase(l__Players__14.LocalPlayer, v10.gamepassId);
+		v9 = l__getBedwarsKitMeta__12(p16.props.SelectedKit);
+		if v9.gamepassId ~= nil then
+			l__MarketplaceService__13:PromptGamePassPurchase(l__Players__14.LocalPlayer, v9.gamepassId);
 			return;
 		end;
-		if v10.devProductId == nil then
+		if v9.devProductId == nil then
 			return;
 		end;
 	else
@@ -123,7 +121,7 @@ function v6.purchase(p16)
 		end;
 		return;
 	end;
-	l__MarketplaceService__13:PromptProductPurchase(l__Players__14.LocalPlayer, v10.devProductId);
+	l__MarketplaceService__13:PromptProductPurchase(l__Players__14.LocalPlayer, v9.devProductId);
 end;
 local l__BedwarsKitSkin__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit-skin", "bedwars-kit-skin").BedwarsKitSkin;
 local l__BedwarsKitSkinMeta__16 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit-skin", "bedwars-kit-skin-meta").BedwarsKitSkinMeta;
@@ -137,152 +135,146 @@ local l__Button__23 = v2.Button;
 local l__KitShopBattlePassButton__24 = v1.import(script, script.Parent, "kit-shop-buttons", "kit-shop-battlepass-button").KitShopBattlePassButton;
 local l__KitShopPurchaseButton__25 = v1.import(script, script.Parent, "kit-shop-buttons", "kit-shop-purchase-button").KitShopPurchaseButton;
 local l__KitShopGiftButton__26 = v1.import(script, script.Parent, "kit-shop-buttons", "kit-shop-gift-button").KitShopGiftButton;
-function v6.render(p17)
-	local v11 = false;
-	local v12 = true;
-	local v13 = p17.props.store.Bedwars.kit == p17.props.SelectedKit;
+function v5.render(p17)
+	local v10 = false;
+	local v11 = true;
+	local v12 = p17.props.store.Bedwars.kit == p17.props.SelectedKit;
+	local v13 = p17.props.SelectedKit ~= l__BedwarsKit__11.NONE;
 	local v14 = p17.props.SelectedKit ~= l__BedwarsKit__11.NONE;
-	local v15 = p17.props.SelectedKit ~= l__BedwarsKit__11.NONE;
-	local v16 = false;
+	local v15 = false;
 	if p17.props.SelectedKit == l__BedwarsKit__11.NONE then
-		v11 = true;
-	else
-		local v17 = p17.props.SelectedKit and table.find(p17.props.store.Bedwars.ownedKits, p17.props.SelectedKit) ~= nil;
-		if v17 then
-			v11 = true;
-		end;
+		v10 = true;
+	elseif p17.props.SelectedKit and table.find(p17.props.store.Bedwars.ownedKits, p17.props.SelectedKit) ~= nil then
+		v10 = true;
 	end;
-	local l__myClan__18 = p17.props.store.Clans.myClan;
-	if p17.props.SelectedKit and l__myClan__18 and l__myClan__18.kitShop.unlocks[p17.props.SelectedKit] ~= nil then
-		v11 = true;
+	local l__myClan__16 = p17.props.store.Clans.myClan;
+	if p17.props.SelectedKit and l__myClan__16 and l__myClan__16.kitShop.unlocks[p17.props.SelectedKit] ~= nil then
+		v10 = true;
 	end;
 	if not l__DeviceUtil__4.isHoarceKat() and l__KnitClient__5.Controllers.UnlockController.allKitsUnlocked then
-		v11 = true;
+		v10 = true;
 	end;
 	if not p17.props.store.Bedwars.kit and not p17.props.SelectedKit then
-		v13 = true;
+		v12 = true;
 	end;
 	if p17.props.SelectedKit then
-		v12 = table.find(l__BedwarsKitShop__3.FreeKits, p17.props.SelectedKit) ~= nil;
+		v11 = table.find(l__BedwarsKitShop__3.FreeKits, p17.props.SelectedKit) ~= nil;
 	end;
-	local v19 = l__Players__14.LocalPlayer;
-	if v19 ~= nil then
-		v19 = v19.DisplayName;
+	local v17 = l__Players__14.LocalPlayer;
+	if v17 ~= nil then
+		v17 = v17.DisplayName;
 	end;
-	local v20 = v19;
-	if v20 == nil then
-		v20 = "SnickTrix";
+	local v18 = v17;
+	if v18 == nil then
+		v18 = "SnickTrix";
 	end;
-	local v21 = v20;
-	local v22 = "Opt out of using a kit and play as yourself!";
-	local v23 = 0;
+	local v19 = v18;
+	local v20 = "Opt out of using a kit and play as yourself!";
+	local v21 = 0;
 	if p17.props.SelectedKit and p17.props.SelectedKit ~= l__BedwarsKit__11.NONE then
-		local v24 = l__getBedwarsKitMeta__12(p17.props.SelectedKit);
-		local l__name__25 = v24.name;
-		local l__description__26 = v24.description;
-		local v27 = v24.priceRobux;
-		if v27 == nil then
-			v27 = 0;
+		local v22 = l__getBedwarsKitMeta__12(p17.props.SelectedKit);
+		local l__name__23 = v22.name;
+		local l__description__24 = v22.description;
+		local v25 = v22.priceRobux;
+		if v25 == nil then
+			v25 = 0;
 		end;
-		local v28 = v24.unlockedInBattlePass;
-		if v28 == nil then
-			v28 = false;
+		local v26 = v22.unlockedInBattlePass;
+		if v26 == nil then
+			v26 = false;
 		end;
-		local v29 = not v28;
-		if v29 then
-			local v30 = not v24.notGiftable;
-			if v30 == nil then
-				v30 = false;
+		local v27 = not v26;
+		if v27 then
+			local v28 = not v22.notGiftable;
+			if v28 == nil then
+				v28 = false;
 			end;
-			v29 = v30;
-			if v29 then
-				local v31 = true;
-				if v24.devProductId == nil then
-					v31 = v24.gamepassId ~= nil;
+			v27 = v28;
+			if v27 then
+				local v29 = true;
+				if v22.devProductId == nil then
+					v29 = v22.gamepassId ~= nil;
 				end;
-				v29 = v31;
+				v27 = v29;
 			end;
 		end;
-		v14 = v29;
-		v16 = true;
+		v13 = v27;
+		v15 = true;
 		if (nil).forceSkin then
-			v16 = false;
-		end;
-		if v23 == 0 or not (not false) or v11 then
 			v15 = false;
+		end;
+		if v21 == 0 or not (not false) or v10 then
+			v14 = false;
 		end;
 	end;
 	if p17.state.selectedSkin and p17.state.selectedSkin ~= l__BedwarsKitSkin__15.DEFAULT then
-		v21 = l__BedwarsKitSkinMeta__16[p17.state.selectedSkin].name;
+		v19 = l__BedwarsKitSkinMeta__16[p17.state.selectedSkin].name;
 	end;
 	if p17.props.SelectedBundle then
-		local v32 = l__BundleMeta__17[p17.props.SelectedBundle];
-		if v32.kitShopBundle then
-			v21 = v32.kitShopBundle.name;
-			v22 = v32.kitShopBundle.description;
-			v23 = v32.price;
+		local v30 = l__BundleMeta__17[p17.props.SelectedBundle];
+		if v30.kitShopBundle then
+			v19 = v30.kitShopBundle.name;
+			v20 = v30.kitShopBundle.description;
+			v21 = v30.price;
+			v13 = true;
 			v14 = true;
-			v15 = true;
+			v10 = false;
 			v11 = false;
 			v12 = false;
-			v13 = false;
+		end;
+		local v31 = v30.kits;
+		if v31 ~= nil then
+			local v32 = true;
+			for v33, v34 in ipairs(v31) do
+				if table.find(p17.props.store.Bedwars.ownedKits, v34) == nil then
+					v32 = false;
+					break;
+				end;
+			end;
+			v31 = v32;
+		end;
+		if v31 then
+			v14 = false;
 		end;
 	end;
-	local v33 = { v4.createElement("UIListLayout", {
+	local v35 = { v3.createElement("UIListLayout", {
 			FillDirection = "Vertical", 
 			SortOrder = "LayoutOrder"
 		}) };
-	local v34 = {
+	local v36 = {
 		Size = UDim2.fromScale(1, 0.34), 
 		SelectedKit = p17.props.SelectedKit and nil, 
 		SelectedSkin = p17.state.selectedSkin
 	};
 	if p17.props.SelectedBundle then
-		local v35 = l__BundleMeta__17[p17.props.SelectedBundle].kitShopBundle;
-		if v35 ~= nil then
-			v35 = v35.image;
+		local v37 = l__BundleMeta__17[p17.props.SelectedBundle].kitShopBundle;
+		if v37 ~= nil then
+			v37 = v37.image;
 		end;
-		local v36 = v35;
+		local v38 = v37;
 	else
-		v36 = nil;
+		v38 = nil;
 	end;
-	v34.ItemImage = v36;
-	v34.store = p17.props.store;
-	v33[#v33 + 1] = v4.createElement(l__KitShopShowcase__19, v34);
-	local v37 = {
+	v36.ItemImage = v38;
+	v36.store = p17.props.store;
+	v35[#v35 + 1] = v3.createElement(l__KitShopShowcase__19, v36);
+	local v39 = {
 		Size = UDim2.fromScale(1, 0.66), 
 		LayoutOrder = 2
 	};
-	local v38 = { v4.createElement("UIPadding", {
+	local v40 = { v3.createElement("UIPadding", {
 			PaddingTop = UDim.new(0.02, 0), 
 			PaddingBottom = UDim.new(0.03, 0), 
 			PaddingLeft = UDim.new(0.05, 0), 
 			PaddingRight = UDim.new(0.05, 0)
-		}), (v4.createElement("UIListLayout", {
+		}), (v3.createElement("UIListLayout", {
 			FillDirection = "Vertical", 
 			HorizontalAlignment = "Left", 
 			VerticalAlignment = "Top", 
 			Padding = UDim.new(0.03, 0), 
 			SortOrder = "LayoutOrder"
 		})) };
-	local v39 = {};
-	local v40 = {
-		Text = "<b>" .. v21 .. "</b>", 
-		Size = UDim2.fromScale(1, 0.15), 
-		SizeConstraint = "RelativeXX", 
-		BackgroundTransparency = 1, 
-		Font = "Roboto", 
-		TextScaled = true, 
-		RichText = true, 
-		TextColor3 = Color3.fromRGB(255, 255, 255), 
-		TextXAlignment = "Left"
-	};
-	if p17.props.SelectedKit then
-		local v41 = true;
-	else
-		v41 = false;
-	end;
-	v40.AutoLocalize = v41;
+	local v41 = {};
 	local v42 = {};
 	local v43 = {};
 	if l__DeviceUtil__4.isSmallScreen() then
@@ -291,7 +283,7 @@ function v6.render(p17)
 		v44 = 28;
 	end;
 	v43.MaxTextSize = v44;
-	v42[1] = v4.createElement("UITextSizeConstraint", v43);
+	v42[1] = v3.createElement("UITextSizeConstraint", v43);
 	local v45 = {};
 	local v46 = {};
 	if l__DeviceUtil__4.isSmallScreen() then
@@ -300,16 +292,27 @@ function v6.render(p17)
 		v47 = 22;
 	end;
 	v46.MaxTextSize = v47;
-	v45[1] = v4.createElement("UITextSizeConstraint", v46);
-	v39[1] = v4.createElement("UIListLayout", {
+	v45[1] = v3.createElement("UITextSizeConstraint", v46);
+	v41[1] = v3.createElement("UIListLayout", {
 		FillDirection = "Vertical", 
 		HorizontalAlignment = "Left", 
 		VerticalAlignment = "Top", 
 		Padding = UDim.new(0.03, 0)
 	});
-	v39[2] = v4.createElement("TextLabel", v40, v42);
-	v39[3] = v4.createElement("TextLabel", {
-		Text = v22, 
+	v41[2] = v3.createElement("TextLabel", {
+		Text = "<b>" .. v19 .. "</b>", 
+		Size = UDim2.fromScale(1, 0.15), 
+		SizeConstraint = "RelativeXX", 
+		BackgroundTransparency = 1, 
+		Font = "Roboto", 
+		TextScaled = true, 
+		RichText = true, 
+		TextColor3 = Color3.fromRGB(255, 255, 255), 
+		TextXAlignment = "Left", 
+		AutoLocalize = p17.props.SelectedKit ~= l__BedwarsKit__11.NONE
+	}, v42);
+	v41[3] = v3.createElement("TextLabel", {
+		Text = v20, 
 		Size = UDim2.fromScale(1, 0.77), 
 		BackgroundTransparency = 1, 
 		Font = "Roboto", 
@@ -320,10 +323,10 @@ function v6.render(p17)
 		TextXAlignment = "Left", 
 		TextYAlignment = "Top"
 	}, v45);
-	v38.KitInfo = v4.createElement(l__Empty__20, {
+	v40.KitInfo = v3.createElement(l__Empty__20, {
 		Size = UDim2.fromScale(1, 0.4), 
 		LayoutOrder = 1
-	}, v39);
+	}, v41);
 	local v48 = nil;
 	if v48 ~= nil then
 		v48 = v48.skins;
@@ -344,7 +347,7 @@ function v6.render(p17)
 				});
 			end;
 			v51.store = p17.props.store;
-			v50 = v4.createElement(l__KitSkinList__21, v51);
+			v50 = v3.createElement(l__KitSkinList__21, v51);
 		end;
 		v49 = v50;
 	end;
@@ -352,7 +355,7 @@ function v6.render(p17)
 		Size = UDim2.fromScale(1, 0.57), 
 		LayoutOrder = 2
 	};
-	local v53 = { v4.createElement("UIListLayout", {
+	local v53 = { v3.createElement("UIListLayout", {
 			FillDirection = "Vertical", 
 			HorizontalAlignment = "Center", 
 			VerticalAlignment = "Bottom", 
@@ -364,7 +367,7 @@ function v6.render(p17)
 	end;
 	local v54 = false;
 	if p17.props.SelectedKit ~= l__BedwarsKit__11.NONE then
-		v54 = v16 and v4.createElement(l__KitShopKitSkinToggle__22, {
+		v54 = v15 and v3.createElement(l__KitShopKitSkinToggle__22, {
 			Size = UDim2.fromScale(1, 0.1), 
 			LayoutOrder = 2, 
 			UseKitSkin = p17.props.store.Bedwars.useKitSkin
@@ -375,9 +378,9 @@ function v6.render(p17)
 	end;
 	local v55 = #v53;
 	local v56 = {};
-	if v11 or v12 then
-		if v13 then
-			local v57 = v4.createElement(l__Button__23, {
+	if v10 or v11 then
+		if v12 then
+			local v57 = v3.createElement(l__Button__23, {
 				Text = "<b>EQUIPPED</b>", 
 				Size = UDim2.fromScale(1, 1), 
 				BackgroundColor3 = l__Theme__18.backgroundSuccess, 
@@ -402,10 +405,10 @@ function v6.render(p17)
 				p17:equip();
 			end;
 			v58.LayoutOrder = 3;
-			v57 = v4.createElement(l__Button__23, v58);
+			v57 = v3.createElement(l__Button__23, v58);
 		end;
 	else
-		v57 = false and v4.createElement(l__KitShopBattlePassButton__24, {
+		v57 = false and v3.createElement(l__KitShopBattlePassButton__24, {
 			Size = UDim2.fromScale(1, 1), 
 			LayoutOrder = 3
 		});
@@ -413,29 +416,29 @@ function v6.render(p17)
 	if v57 then
 		v56[#v56 + 1] = v57;
 	end;
-	v53[v55 + 1] = v4.createElement(l__Empty__20, {
+	v53[v55 + 1] = v3.createElement(l__Empty__20, {
 		Size = UDim2.fromScale(1, 0.17), 
 		LayoutOrder = 3
 	}, v56);
-	local v60 = { v4.createElement("UIListLayout", {
+	local v60 = { v3.createElement("UIListLayout", {
 			FillDirection = "Horizontal", 
 			HorizontalAlignment = "Right", 
 			VerticalAlignment = "Center", 
 			Padding = UDim.new(0.04, 0), 
 			SortOrder = "LayoutOrder"
 		}) };
-	local v61 = v15 and v4.createElement(l__KitShopPurchaseButton__25, {
+	local v61 = v14 and v3.createElement(l__KitShopPurchaseButton__25, {
 		Size = UDim2.fromScale(0.8, 1), 
 		LayoutOrder = 1, 
 		Purchase = function()
 			p17:purchase();
 		end, 
-		PriceRobux = v23
+		PriceRobux = v21
 	});
 	if v61 then
 		v60[#v60 + 1] = v61;
 	end;
-	local v62 = v14;
+	local v62 = v13;
 	if v62 then
 		local v63 = {
 			Size = UDim2.fromScale(0.15, 0.9), 
@@ -447,26 +450,26 @@ function v6.render(p17)
 			v64 = p17.props.SelectedBundle or l__BedwarsKit__11.NONE;
 		end;
 		v63.GiftType = v64;
-		v62 = v4.createElement(l__KitShopGiftButton__26, v63);
+		v62 = v3.createElement(l__KitShopGiftButton__26, v63);
 	end;
 	if v62 then
 		v60[#v60 + 1] = v62;
 	end;
-	v53[v55 + 2] = v4.createElement(l__Empty__20, {
+	v53[v55 + 2] = v3.createElement(l__Empty__20, {
 		Size = UDim2.fromScale(1, 0.17), 
 		LayoutOrder = 4
 	}, v60);
-	v38.KitActions = v4.createElement(l__Empty__20, v52, v53);
-	v33.BottomSection = v4.createElement(l__Empty__20, v37, v38);
-	return v4.createFragment({
-		KitShopRight = v4.createElement("Frame", {
+	v40.KitActions = v3.createElement(l__Empty__20, v52, v53);
+	v35.BottomSection = v3.createElement(l__Empty__20, v39, v40);
+	return v3.createFragment({
+		KitShopRight = v3.createElement("Frame", {
 			Size = p17.props.Size, 
 			Position = p17.props.Position, 
 			BackgroundColor3 = l__Theme__18.backgroundSecondary, 
 			BorderSizePixel = 0
-		}, v33)
+		}, v35)
 	});
 end;
 return {
-	KitShopRight = v6
+	KitShopRight = v5
 };

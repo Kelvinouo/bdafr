@@ -1,4 +1,3 @@
--- Script Hash: 6b3300e32fd2c98e1789ef5b795232f3043e3779e8eff8222943d027d363aa979ebc061ccf1d1b0d776492721db537ee
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -39,6 +38,8 @@ function v4.render(p5)
 		v6 = "Invisible Landmine";
 	elseif p5.props.DamageType == l__DamageType__2.MAGMA_BLOCK then
 		v6 = "Magma Block";
+	elseif p5.props.DamageType == l__DamageType__2.TENNIS_BALL then
+		v6 = "Tennis Ball";
 	else
 		v6 = "Void";
 	end;

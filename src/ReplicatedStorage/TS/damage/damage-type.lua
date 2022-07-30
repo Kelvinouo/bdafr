@@ -1,4 +1,3 @@
--- Script Hash: 251a722726e116c9a6dc9d1ad9c5be4bd308f550b947a9ebfd3983f2cf7251a73bd2be8c51695eae0ffc2f75f096bcc1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -45,6 +44,8 @@ v2.MAX_HP_REDUCE = 18;
 v1[18] = "MAX_HP_REDUCE";
 v2.WIND = 19;
 v1[19] = "WIND";
+v2.TENNIS_BALL = 20;
+v1[20] = "TENNIS_BALL";
 return {
 	DamageType = v2
 };

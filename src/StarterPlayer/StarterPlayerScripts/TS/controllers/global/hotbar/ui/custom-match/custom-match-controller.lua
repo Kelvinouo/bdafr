@@ -167,25 +167,25 @@ end;
 function v4.setPlayerMaxHealth(p35, p36, p37)
 	p35.customMatchRemotes:Get("SetPlayerMaxHealth"):CallServerAsync(p36, p37);
 end;
-function v4.saveMap(p38)
-	return p38.customMatchRemotes:Get("SaveMap"):CallServerAsync();
+function v4.saveMap(p38, p39)
+	return p38.customMatchRemotes:Get("SaveMap"):CallServerAsync(p39);
 end;
-function v4.getMySavedMaps(p39)
-	local v14 = p39.customMatchRemotes:Get("GetMySavedMaps"):CallServer();
+function v4.getMySavedMaps(p40)
+	local v14 = p40.customMatchRemotes:Get("GetMySavedMaps"):CallServer();
 	l__ClientStore__3:dispatch({
 		type = "CustomMatchSetMapSaves", 
 		mapSaves = v14
 	});
 	return v14;
 end;
-function v4.getMapDisplayInfo(p40, p41)
-	return p40.customMatchRemotes:Get("GetMapInfo"):CallServerAsync(p41);
+function v4.getMapDisplayInfo(p41, p42)
+	return p41.customMatchRemotes:Get("GetMapInfo"):CallServerAsync(p42);
 end;
-function v4.deleteMapSave(p42, p43)
-	return p42.customMatchRemotes:Get("DeleteSavedMap"):CallServerAsync(p43);
+function v4.deleteMapSave(p43, p44)
+	return p43.customMatchRemotes:Get("DeleteSavedMap"):CallServerAsync(p44);
 end;
-function v4.updateMapSaveSettings(p44, p45, p46)
-	return p44.customMatchRemotes:Get("UpdateSavedMap"):CallServerAsync(p45, p46);
+function v4.updateMapSaveSettings(p45, p46, p47)
+	return p45.customMatchRemotes:Get("UpdateSavedMapSettings"):CallServerAsync(p46, p47);
 end;
 u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(v4.new());

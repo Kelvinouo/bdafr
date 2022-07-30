@@ -550,12 +550,20 @@ v2.STICKY_FIREWORK = "sticky_firework";
 v1.sticky_firework = "STICKY_FIREWORK";
 v2.DIZZY_TOAD = "dizzy_toad";
 v1.dizzy_toad = "DIZZY_TOAD";
+v2.SPIRIT_DAGGER = "spirit_dagger";
+v1.spirit_dagger = "SPIRIT_DAGGER";
+v2.SPIRIT_DAGGER_LEFT = "spirit_dagger_left";
+v1.spirit_dagger_left = "SPIRIT_DAGGER_LEFT";
 v2.FLOWER_PURPLE = "flower_purple";
 v1.flower_purple = "FLOWER_PURPLE";
 v2.SMALL_BUSH = "small_bush";
 v1.small_bush = "SMALL_BUSH";
 v2.LARGE_BUSH = "large_bush";
 v1.large_bush = "LARGE_BUSH";
+v2.TENNIS_RACKET = "tennis_racket";
+v1.tennis_racket = "TENNIS_RACKET";
+v2.TENNIS_BALL = "tennis_ball";
+v1.tennis_ball = "TENNIS_BALL";
 return {
 	ItemType = v2
 };

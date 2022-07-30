@@ -182,6 +182,11 @@ return {
 					itemType = l__ItemType__2.EMERALD_DAO, 
 					name = "victorious"
 				} }
+		}, 
+		[l__BedwarsKitSkin__5.SPIRIT_ASSASSIN_PRISMATIC] = {
+			name = "Prismatic Spirit Assassin", 
+			kit = l__BedwarsKit__4.SPIRIT_ASSASSIN, 
+			renderImage = "rbxassetid://10406965612"
 		}
 	}
 };

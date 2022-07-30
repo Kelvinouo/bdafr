@@ -1,4 +1,3 @@
--- Script Hash: 0aac7ae4f6828f672c72b8fd1ca4ff68a9f33bea07e9e8d2ec2f1f456283769c428f4bde824882efdc35deed0e854597
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -74,6 +73,20 @@ return {
 				name = "Ember & Lumen Kit Bundle", 
 				image = "rbxassetid://9630018755", 
 				description = "This bundle unlocks the following:\n\226\152\128\239\184\143\194\160<b>LUMEN (Kit)</b>\n\240\159\148\165\194\160<b>EMBER (Kit)</b>"
+			}
+		}, 
+		[l__BundleType__10.EVELYNN_BUNDLE] = {
+			name = "Evelynn Bundle", 
+			price = 999, 
+			image = "rbxassetid://10406984466", 
+			gamepassId = l__Gamepass__9.EVELYNN_BUNDLE, 
+			devProductId = l__DevProduct__8.EVELYNN_BUNDLE, 
+			kits = { l__BedwarsKit__3.SPIRIT_ASSASSIN }, 
+			kitSkins = { l__BedwarsKitSkin__2.SPIRIT_ASSASSIN_PRISMATIC }, 
+			kitShopBundle = {
+				name = "Evelynn Bundle", 
+				image = "rbxassetid://10406984466", 
+				description = "This bundle unlocks the following:\n\240\159\151\161\239\184\143\194\160<b>Evelynn (Kit)</b>\n\240\159\140\136\194\160<b>Prismatic Evelynn (Kit Skin)</b>"
 			}
 		}
 	}

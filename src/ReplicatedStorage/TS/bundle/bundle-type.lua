@@ -1,4 +1,3 @@
--- Script Hash: 3b9329ecff585724db356529712d4d1743f589f5f7e47ad9930709733ad0b7f80d7291ed6031acf6a072b6a3e8a74f70
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -15,6 +14,8 @@ v2.EMBER_LUMEN_KIT_BUNDLE = "ember_lumen_kit_bundle";
 v1.ember_lumen_kit_bundle = "EMBER_LUMEN_KIT_BUNDLE";
 v2.EMBER_LUMEN_KIT_BUNDLE_PERM = "ember_lumen_kit_bundle_perm";
 v1.ember_lumen_kit_bundle_perm = "EMBER_LUMEN_KIT_BUNDLE_PERM";
+v2.EVELYNN_BUNDLE = "evelynn_bundle";
+v1.evelynn_bundle = "EVELYNN_BUNDLE";
 return {
 	BundleType = v2
 };

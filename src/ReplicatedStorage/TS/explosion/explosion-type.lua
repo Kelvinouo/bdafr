@@ -34,6 +34,8 @@ v2.BOMBER_PENGUIN_EXPLOSION = "bomber_penguin_explosion";
 v1.bomber_penguin_explosion = "BOMBER_PENGUIN_EXPLOSION";
 v2.KING_PENGUIN_EXPLOSION = "king_penguin_explosion";
 v1.king_penguin_explosion = "KING_PENGUIN_EXPLOSION";
+v2.TENNIS_BALL_EXPLOSION = "tennis_ball_explosion";
+v1.tennis_ball_explosion = "TENNIS_BALL_EXPLOSION";
 return {
 	ExplosionType = v2
 };

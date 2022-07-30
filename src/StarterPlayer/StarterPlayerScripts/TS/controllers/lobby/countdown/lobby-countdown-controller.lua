@@ -1,4 +1,3 @@
--- Script Hash: cc3882bbf3f3a805471875f9b2305b76de84c09b24adb35195d60bebea768ee4919d2ab9c63e747acff202c43586ae4a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -22,13 +21,13 @@ function v5.constructor(p1)
 	p1.Name = "LobbyCountdownController";
 end;
 local l__WatchCollectionTag__2 = v2.WatchCollectionTag;
-local u3 = 1654898400;
+local u3 = 1657317600;
 function v5.KnitStart(p2)
 	u1.KnitStart(p2);
 	l__WatchCollectionTag__2("sale-countdown", function(p3)
 		task.spawn(function()
 			while true do
-				p3.Text = p2:getTime(1653688800, "UPDATE HYPE!!");
+				p3.Text = p2:getTime(1660341600, "LAST CHANCE!!");
 				local v7 = wait(1);
 				if v7 == 0 then
 					break;
