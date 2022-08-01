@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -102,27 +101,21 @@ function v4.KnitStart(p3)
 		end);
 	end;
 end;
-local function u9(p6)
-	u2(function(p7)
-		v1.Promise.try(function()
-			return p7:WaitForChild("Humanoid");
-		end):andThen(function(p8)
-			p6(p8);
-		end);
-	end);
-end;
-local l__RunService__10 = v2.RunService;
-local l__Workspace__11 = v2.Workspace;
-local u12 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
-local l__UserInputService__13 = v2.UserInputService;
-function v4.enable(p9, p10)
-	if p10 == nil then
-		p10 = true;
+local l__RunService__9 = v2.RunService;
+local l__Workspace__10 = v2.Workspace;
+local u11 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
+local l__UserInputService__12 = v2.UserInputService;
+function v4.enable(p6, p7)
+	if p7 == nil then
+		p7 = true;
 	end;
-	p9:disable(false);
-	if p10 then
-		l__default__5.Client:WaitFor("RemoteName"):andThen(function(p11)
-			p11:SendToServer({
+	if not l__DeviceUtil__6.isMobileControls() then
+		return nil;
+	end;
+	p6:disable(false);
+	if p7 then
+		l__default__5.Client:WaitFor("RemoteName"):andThen(function(p8)
+			p8:SendToServer({
 				enabled = true
 			});
 		end);
@@ -133,84 +126,101 @@ function v4.enable(p9, p10)
 			}
 		});
 	end;
-	p9.enabled = true;
-	p9.maid:GiveTask(function()
-		p9.enabled = false;
+	p6.enabled = true;
+	p6.maid:GiveTask(function()
+		p6.enabled = false;
 	end);
-	p9.maid:GiveTask(function()
-		p9.savedFrame = nil;
+	p6.maid:GiveTask(function()
+		p6.savedFrame = nil;
 	end);
-	local l__RotationType__14 = UserSettings():GetService("UserGameSettings").RotationType;
-	p9.maid:GiveTask(function()
-		UserSettings():GetService("UserGameSettings").RotationType = l__RotationType__14;
+	local l__RotationType__13 = UserSettings():GetService("UserGameSettings").RotationType;
+	p6.maid:GiveTask(function()
+		UserSettings():GetService("UserGameSettings").RotationType = l__RotationType__13;
 	end);
 	UserSettings():GetService("UserGameSettings").RotationType = Enum.RotationType.CameraRelative;
-	u9(function(p12)
-		local l__AutoRotate__15 = p12.AutoRotate;
-		p9.maid:GiveTask(function()
-			p12.AutoRotate = l__AutoRotate__15;
+	local u14 = function(p9)
+		local l__AutoRotate__15 = p9.AutoRotate;
+		p6.maid:GiveTask(function()
+			p9.AutoRotate = l__AutoRotate__15;
 		end);
-		p12.AutoRotate = false;
+		p9.AutoRotate = false;
+	end;
+	u2(function(p10)
+		v1.Promise.try(function()
+			return p10:WaitForChild("Humanoid");
+		end):andThen(function(p11)
+			u14(p11);
+		end);
 	end);
-	l__RunService__10:BindToRenderStep("MSL_PreCamera", Enum.RenderPriority.Camera.Value - 1, function()
-		if p9.savedFrame then
-			l__Workspace__11.CurrentCamera.CFrame = p9.savedFrame;
+	u14 = l__RunService__9;
+	u14 = u14.BindToRenderStep;
+	u14(u14, "MSL_PreCamera", Enum.RenderPriority.Camera.Value - 1, function()
+		if p6.savedFrame then
+			l__Workspace__10.CurrentCamera.CFrame = p6.savedFrame;
 		end;
 	end);
-	local u16 = u12.mount(u12.createFragment({
-		MouseIcon = u12.createElement("ScreenGui", {
+	u14 = u11.mount;
+	u14 = u14(u11.createFragment({
+		MouseIcon = u11.createElement("ScreenGui", {
 			ResetOnSpawn = false
-		}, { u12.createElement("ImageLabel", {
+		}, { u11.createElement("ImageLabel", {
 				Image = "rbxassetid://7368844459", 
 				Size = UDim2.fromOffset(6, 6), 
 				Position = UDim2.new(0.5, 0, 0.5, -15), 
 				BackgroundTransparency = 1
-			}, { u12.createElement("UIAspectRatioConstraint", {
+			}, { u11.createElement("UIAspectRatioConstraint", {
 					AspectRatio = 1
 				}) }) })
 	}), l__Players__1.LocalPlayer:WaitForChild("PlayerGui"));
-	p9.maid:GiveTask(function()
-		u12.unmount(u16);
+	p6.maid:GiveTask(function()
+		u11.unmount(u14);
 	end);
-	local l__MouseBehavior__17 = l__UserInputService__13.MouseBehavior;
-	local l__MouseIconEnabled__18 = l__UserInputService__13.MouseIconEnabled;
-	p9.maid:GiveTask(function()
-		l__UserInputService__13.MouseBehavior = l__MouseBehavior__17;
-		l__UserInputService__13.MouseIconEnabled = l__MouseIconEnabled__18;
+	local l__MouseBehavior__16 = l__UserInputService__12.MouseBehavior;
+	local l__MouseIconEnabled__17 = l__UserInputService__12.MouseIconEnabled;
+	p6.maid:GiveTask(function()
+		l__UserInputService__12.MouseBehavior = l__MouseBehavior__16;
+		l__UserInputService__12.MouseIconEnabled = l__MouseIconEnabled__17;
 	end);
 	l__Players__1.LocalPlayer.CameraMinZoomDistance = 14;
 	l__Players__1.LocalPlayer.CameraMaxZoomDistance = 14;
-	p9.maid:GiveTask(function()
+	p6.maid:GiveTask(function()
 		l__Players__1.LocalPlayer.CameraMinZoomDistance = 0;
 		l__Players__1.LocalPlayer.CameraMaxZoomDistance = 14;
 	end);
-	l__RunService__10:BindToRenderStep("MSL_PostCamera", Enum.RenderPriority.Camera.Value + 1, function()
-		l__UserInputService__13.MouseBehavior = Enum.MouseBehavior.LockCenter;
-		l__UserInputService__13.MouseIconEnabled = false;
-		local l__CurrentCamera__12 = l__Workspace__11.CurrentCamera;
-		p9.savedFrame = l__CurrentCamera__12.CFrame;
-		u9(function(p13)
-			local l__RootPart__13 = p13.RootPart;
+	l__RunService__9:BindToRenderStep("MSL_PostCamera", Enum.RenderPriority.Camera.Value + 1, function()
+		l__UserInputService__12.MouseBehavior = Enum.MouseBehavior.LockCenter;
+		l__UserInputService__12.MouseIconEnabled = false;
+		local l__CurrentCamera__12 = l__Workspace__10.CurrentCamera;
+		p6.savedFrame = l__CurrentCamera__12.CFrame;
+		local function u18(p12)
+			local l__RootPart__13 = p12.RootPart;
 			local l__CFrame__14 = l__RootPart__13.CFrame;
 			local v15, v16, v17 = l__CFrame__14:ToOrientation();
 			local v18, v19 = l__CurrentCamera__12.CFrame:ToOrientation();
 			l__RootPart__13.CFrame = CFrame.new(l__CFrame__14.Position) * CFrame.Angles(0, v19, 0);
 			l__CurrentCamera__12.CFrame = l__CurrentCamera__12.CFrame * CFrame.new(Vector3.new(2, 0, 0));
+		end;
+		u2(function(p13)
+			v1.Promise.try(function()
+				return p13:WaitForChild("Humanoid");
+			end):andThen(function(p14)
+				u18(p14);
+			end);
 		end);
 	end);
-	p9.maid:GiveTask(function()
-		l__RunService__10:UnbindFromRenderStep("MSL_PreCamera");
-		l__RunService__10:UnbindFromRenderStep("MSL_PostCamera");
+	p6.maid:GiveTask(function()
+		l__RunService__9:UnbindFromRenderStep("MSL_PreCamera");
+		l__RunService__9:UnbindFromRenderStep("MSL_PostCamera");
 	end);
 end;
-function v4.disable(p14, p15)
-	if p15 == nil then
-		p15 = true;
+function v4.disable(p15, p16)
+	if p16 == nil then
+		p16 = true;
 	end;
-	p14.maid:DoCleaning();
-	if p15 then
-		l__default__5.Client:WaitFor("RemoteName"):andThen(function(p16)
-			p16:SendToServer({
+	p15.maid:DoCleaning();
+	if p16 then
+		l__default__5.Client:WaitFor("RemoteName"):andThen(function(p17)
+			p17:SendToServer({
 				enabled = false
 			});
 		end);
@@ -222,8 +232,8 @@ function v4.disable(p14, p15)
 		});
 	end;
 end;
-function v4.isEnabled(p17)
-	return p17.enabled;
+function v4.isEnabled(p18)
+	return p18.enabled;
 end;
 u3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u3 = u3(v4.new());

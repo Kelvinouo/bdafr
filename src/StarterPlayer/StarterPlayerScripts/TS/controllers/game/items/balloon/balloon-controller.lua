@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -220,25 +219,24 @@ function u1.enableBalloonPhysics(p18, p19)
 		end;
 	end);
 	local u28 = u3.new();
-	local function u29()
+	p18.balloonPhysicsMaid:GiveTask(l__Humanoid__23.StateChanged:Connect(function(p20, p21)
+		if p21 ~= Enum.HumanoidStateType.Freefall then
+			u28:DoCleaning();
+			return;
+		end;
+		u28:GiveTask((l__KnitClient__3.Controllers.SprintController:getMovementStatusModifier():addModifier({
+			constantSpeedMultiplier = 0.65
+		})));
+	end));
+	if l__Humanoid__23:GetState() == Enum.HumanoidStateType.Freefall then
 		u28:GiveTask((l__KnitClient__3.Controllers.SprintController:getMovementStatusModifier():addModifier({
 			constantSpeedMultiplier = 0.65
 		})));
 	end;
-	p18.balloonPhysicsMaid:GiveTask(l__Humanoid__23.StateChanged:Connect(function(p20, p21)
-		if p21 == Enum.HumanoidStateType.Freefall then
-			u29();
-			return;
-		end;
-		u28:DoCleaning();
-	end));
-	if l__Humanoid__23:GetState() == Enum.HumanoidStateType.Freefall then
-		u29();
-	end;
 	p18.balloonPhysicsMaid:GiveTask(function()
 		u28:DoCleaning();
 	end);
-	local u30 = l__RunService__6.Stepped:Connect(function(p22)
+	local u29 = l__RunService__6.Stepped:Connect(function(p22)
 		local v25 = nil;
 		local v26 = p19;
 		if v26 ~= nil then
@@ -270,7 +268,7 @@ function u1.enableBalloonPhysics(p18, p19)
 		});
 	end);
 	p18.balloonPhysicsMaid:GiveTask(function()
-		u30:Disconnect();
+		u29:Disconnect();
 	end);
 	if not l__DeviceUtil__20.isMobileControls() then
 		p18.balloonPhysicsMaid:GiveTask((l__Flamework__25.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(u21.createElement(l__ActionButton__26, {
@@ -307,24 +305,24 @@ function u1.enableBalloonPhysics(p18, p19)
 		p18:dropTNT();
 	end;
 	v31[v32 + 2] = u21.createElement(l__MobileButton__24, v33);
-	local u31 = u21.mount(u21.createElement("ScreenGui", {
+	local u30 = u21.mount(u21.createElement("ScreenGui", {
 		ResetOnSpawn = false
 	}, v31), l__Players__9.LocalPlayer:WaitForChild("PlayerGui"));
 	p18.balloonPhysicsMaid:GiveTask(function()
-		u21.unmount(u31);
+		u21.unmount(u30);
 	end);
 end;
-local l__CooldownId__32 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "cooldown", "cooldown-id").CooldownId;
-local l__AnimationType__33 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
+local l__CooldownId__31 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "cooldown", "cooldown-id").CooldownId;
+local l__AnimationType__32 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
 function u1.inflateBalloon(p23)
-	if l__Flamework__25.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):isOnCooldown(l__CooldownId__32.BALLOON) then
+	if l__Flamework__25.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):isOnCooldown(l__CooldownId__31.BALLOON) then
 		return nil;
 	end;
-	l__KnitClient__3.Controllers.ViewmodelController:playAnimation(l__AnimationType__33.FP_USE_ITEM);
+	l__KnitClient__3.Controllers.ViewmodelController:playAnimation(l__AnimationType__32.FP_USE_ITEM);
 	l__default__12.Client:Get("RemoteName"):SendToServer();
 end;
 function u1.deflateBalloon(p24)
-	l__KnitClient__3.Controllers.ViewmodelController:playAnimation(l__AnimationType__33.FP_USE_ITEM);
+	l__KnitClient__3.Controllers.ViewmodelController:playAnimation(l__AnimationType__32.FP_USE_ITEM);
 	l__default__12.Client:Get("RemoteName"):SendToServer();
 end;
 function u1.isRelevantItem(p25, p26)
@@ -341,7 +339,7 @@ function u1.onEnable(p27, p28)
 	end);
 	if l__DeviceUtil__20.isMobileControls() then
 		p27:setupYield(function()
-			local u34 = u21.mount(u21.createElement("ScreenGui", {
+			local u33 = u21.mount(u21.createElement("ScreenGui", {
 				ResetOnSpawn = false
 			}, { u21.createElement(l__MobileButton__24, {
 					Image = l__BedwarsImageId__22.UP_MOBILE, 
@@ -351,7 +349,7 @@ function u1.onEnable(p27, p28)
 					end
 				}) }), l__Players__9.LocalPlayer:WaitForChild("PlayerGui"));
 			return function()
-				u21.unmount(u34);
+				u21.unmount(u33);
 			end;
 		end);
 	end;

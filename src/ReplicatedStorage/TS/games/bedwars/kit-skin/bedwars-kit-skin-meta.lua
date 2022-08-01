@@ -184,7 +184,7 @@ return {
 				} }
 		}, 
 		[l__BedwarsKitSkin__5.SPIRIT_ASSASSIN_PRISMATIC] = {
-			name = "Prismatic Spirit Assassin", 
+			name = "Prismatic Evelynn", 
 			kit = l__BedwarsKit__4.SPIRIT_ASSASSIN, 
 			renderImage = "rbxassetid://10406965612"
 		}

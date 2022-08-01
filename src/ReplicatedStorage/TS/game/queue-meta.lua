@@ -999,6 +999,6 @@ return {
 	getQueueMeta = function(p1)
 		return u1[p1];
 	end, 
-	StudioQueueType = l__QueueType__10.BEDWARS_TO4, 
+	StudioQueueType = l__QueueType__10.SKYWARS_TO4, 
 	QueueMeta = u1
 };

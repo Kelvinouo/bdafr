@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -46,28 +45,24 @@ function v5.KnitStart(p2)
 		if table.find(p2:validCollectableEntityTypes(), p5.entityType) == nil then
 			return nil;
 		end;
-		local v10 = l__CollectionService__4:GetTagged(p5.entityType);
-		local function v11(p6)
-			return p6:GetAttribute("Id") == p5.id;
-		end;
-		local v12 = nil;
-		for v13, v14 in ipairs(v10) do
-			if v11(v14, v13 - 1, v10) == true then
-				v12 = v14;
+		local v10 = nil;
+		for v11, v12 in ipairs((l__CollectionService__4:GetTagged(p5.entityType))) do
+			if v12:GetAttribute("Id") == p5.id == true then
+				v10 = v12;
 				break;
 			end;
 		end;
-		if v12 then
-			p2:onWillRemoveEntity(p5.id, p5.entityType, p5.collector, v12);
+		if v10 then
+			p2:onWillRemoveEntity(p5.id, p5.entityType, p5.collector, v10);
 		end;
 		p2.entityMap[p5.id] = nil;
-		local v15 = p2.entityMaidMap[p5.id];
-		if v15 ~= nil then
-			v15:DoCleaning();
+		local v13 = p2.entityMaidMap[p5.id];
+		if v13 ~= nil then
+			v13:DoCleaning();
 		end;
 		p2.entityMaidMap[p5.id] = nil;
-		if v12 ~= nil then
-			v12:Destroy();
+		if v10 ~= nil then
+			v10:Destroy();
 		end;
 	end);
 end;
@@ -80,54 +75,54 @@ local l__AnimationType__10 = v1.import(script, game:GetService("ReplicatedStorag
 local l__KnitClient__11 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__SoundManager__12 = v2.SoundManager;
 local l__GameSound__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-function v5.createLocalModel(p7, p8)
-	local v16 = p8.repStorageModel:Clone();
-	v16.Parent = l__Workspace__5;
-	v16:SetAttribute("Id", p8.id);
-	v16:SetPrimaryPartCFrame(CFrame.new(p8.position));
-	for v17, v18 in ipairs(p8.repStorageModel:GetDescendants()) do
-		if v18:IsA("BasePart") then
-			l__GameQueryUtil__6:setQueryIgnored(v18, true);
+function v5.createLocalModel(p6, p7)
+	local v14 = p7.repStorageModel:Clone();
+	v14.Parent = l__Workspace__5;
+	v14:SetAttribute("Id", p7.id);
+	v14:SetPrimaryPartCFrame(CFrame.new(p7.position));
+	for v15, v16 in ipairs(p7.repStorageModel:GetDescendants()) do
+		if v16:IsA("BasePart") then
+			l__GameQueryUtil__6:setQueryIgnored(v16, true);
 		end;
 	end;
-	v16.PrimaryPart.Anchored = true;
-	v16.PrimaryPart.CanCollide = false;
-	if p8.proximityPrompt then
-		local v19 = {
+	v14.PrimaryPart.Anchored = true;
+	v14.PrimaryPart.CanCollide = false;
+	if p7.proximityPrompt then
+		local v17 = {
 			ActionText = "Pick Up", 
-			ObjectText = p8.proximityPrompt.name, 
+			ObjectText = p7.proximityPrompt.name, 
 			HoldDuration = 0.07, 
 			KeyboardKeyCode = l__Theme__8.promptKeyboardKey, 
 			RequiresLineOfSight = false, 
 			Enabled = true, 
 			MaxActivationDistance = 5
 		};
-		function v19.Triggered(p9)
-			l__GameAnimationUtil__9.playAnimation(p9, l__AnimationType__10.PUNCH);
+		function v17.Triggered(p8)
+			l__GameAnimationUtil__9.playAnimation(p8, l__AnimationType__10.PUNCH);
 			l__KnitClient__11.Controllers.ViewmodelController:playAnimation(l__AnimationType__10.FP_USE_ITEM);
 			l__SoundManager__12:playSound(l__GameSound__13.PICKUP_ITEM_DROP);
-			if p8.proximityPrompt then
-				p7:collectEntity(p9, v16, p8.proximityPrompt.name);
+			if p7.proximityPrompt then
+				p6:collectEntity(p8, v14, p7.proximityPrompt.name);
 			end;
 		end;
-		v19.Parent = v16;
-		u7("ProximityPrompt", v19);
+		v17.Parent = v14;
+		u7("ProximityPrompt", v17);
 	end;
-	p7:onCreatedEntity(p8.id, p8.entityType, v16);
-	l__CollectionService__4:AddTag(v16, p8.tag);
-	return v16;
+	p6:onCreatedEntity(p7.id, p7.entityType, v14);
+	l__CollectionService__4:AddTag(v14, p7.tag);
+	return v14;
 end;
 local l__Players__14 = v3.Players;
-function v5.collectEntity(p10, p11, p12, p13)
-	if p11 == l__Players__14.LocalPlayer then
+function v5.collectEntity(p9, p10, p11, p12)
+	if p10 == l__Players__14.LocalPlayer then
 		l__default__2.Client:Get("RemoteName"):SendToServer({
-			id = p12:GetAttribute("Id"), 
-			collectableName = p13
+			id = p11:GetAttribute("Id"), 
+			collectableName = p12
 		});
 	end;
 end;
-function v5.getEntityMaid(p14, p15)
-	return p14.entityMaidMap[p15];
+function v5.getEntityMaid(p13, p14)
+	return p13.entityMaidMap[p14];
 end;
 u1 = {
 	CollectableEntityController = v5

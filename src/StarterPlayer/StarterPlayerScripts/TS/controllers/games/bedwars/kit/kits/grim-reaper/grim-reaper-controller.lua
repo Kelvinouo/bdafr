@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -87,82 +86,78 @@ local l__ClientSyncEvents__15 = v1.import(script, script.Parent.Parent.Parent.Pa
 function u1.startChannel(p12, p13, p14)
 	local v11 = p13:FindFirstChild("3DClothing");
 	if v11 ~= nil then
-		local v12 = v11:GetDescendants();
-		local function v13(p15)
-			return p15.Name == "GrimReaperChannelAttachment";
-		end;
-		local v14 = nil;
-		for v15, v16 in ipairs(v12) do
-			if v13(v16, v15 - 1, v12) == true then
-				v14 = v16;
+		local v12 = nil;
+		for v13, v14 in ipairs((v11:GetDescendants())) do
+			if v14.Name == "GrimReaperChannelAttachment" == true then
+				v12 = v14;
 				break;
 			end;
 		end;
-		v11 = v14;
+		v11 = v12;
 	end;
-	local v17 = v11;
-	if v17 == nil then
-		local v18 = p13:FindFirstChild("UpperTorso");
-		if v18 ~= nil then
-			v18 = v18:FindFirstChild("BodyFrontAttachment");
+	local v15 = v11;
+	if v15 == nil then
+		local v16 = p13:FindFirstChild("UpperTorso");
+		if v16 ~= nil then
+			v16 = v16:FindFirstChild("BodyFrontAttachment");
 		end;
-		v17 = v18;
+		v15 = v16;
 	end;
-	if v17 then
-		local v19 = u11.new();
-		local v20 = p13 == l__Players__7.LocalPlayer.Character;
+	if v15 then
+		local v17 = u11.new();
+		local v18 = p13 == l__Players__7.LocalPlayer.Character;
+		local v19 = {};
+		if v18 then
+			local v20 = nil;
+		else
+			v20 = p13:GetPrimaryPartCFrame().Position;
+		end;
+		v19.position = v20;
+		l__SoundManager__12:playSound(l__GameSound__13.GRIM_REAPER_CONSUME, v19);
 		local v21 = {};
-		if v20 then
+		if v18 then
 			local v22 = nil;
 		else
 			v22 = p13:GetPrimaryPartCFrame().Position;
 		end;
 		v21.position = v22;
-		l__SoundManager__12:playSound(l__GameSound__13.GRIM_REAPER_CONSUME, v21);
-		local v23 = {};
-		if v20 then
-			local v24 = nil;
+		if v18 then
+			local v23 = nil;
 		else
-			v24 = p13:GetPrimaryPartCFrame().Position;
+			v23 = p13.PrimaryPart;
 		end;
-		v23.position = v24;
-		if v20 then
-			local v25 = nil;
-		else
-			v25 = p13.PrimaryPart;
-		end;
-		v23.parent = v25;
-		local v26 = l__SoundManager__12:playSound(l__GameSound__13.GRIM_REAPER_CHANNEL, v23);
-		if v26 then
-			v26.Looped = true;
-			v19:GiveTask(function()
-				local v27 = l__TweenService__14:Create(v26, TweenInfo.new(0.1), {
+		v21.parent = v23;
+		local v24 = l__SoundManager__12:playSound(l__GameSound__13.GRIM_REAPER_CHANNEL, v21);
+		if v24 then
+			v24.Looped = true;
+			v17:GiveTask(function()
+				local v25 = l__TweenService__14:Create(v24, TweenInfo.new(0.1), {
 					Volume = 0
 				});
-				v27:Play();
-				v27.Completed:Wait();
-				if v26 ~= nil then
-					v26:Stop();
+				v25:Play();
+				v25.Completed:Wait();
+				if v24 ~= nil then
+					v24:Stop();
 				end;
-				if v26 ~= nil then
-					v26:Destroy();
+				if v24 ~= nil then
+					v24:Destroy();
 				end;
 			end);
 		end;
-		local v28 = p12.soulsByPosition[tostring(p14)];
-		if v28 == nil then
-			v28 = l__ReplicatedStorage__4:WaitForChild("Assets"):WaitForChild("Misc"):WaitForChild("GrimReaperSoul"):Clone();
-			v28:SetPrimaryPartCFrame(CFrame.new(p14));
-			v28.Parent = l__Workspace__8;
+		local v26 = p12.soulsByPosition[tostring(p14)];
+		if v26 == nil then
+			v26 = l__ReplicatedStorage__4:WaitForChild("Assets"):WaitForChild("Misc"):WaitForChild("GrimReaperSoul"):Clone();
+			v26:SetPrimaryPartCFrame(CFrame.new(p14));
+			v26.Parent = l__Workspace__8;
 		end;
-		v19:GiveTask(function()
-			if v28 ~= nil then
-				v28:Destroy();
+		v17:GiveTask(function()
+			if v26 ~= nil then
+				v26:Destroy();
 			end;
 		end);
-		local v29 = u5("Beam", {
-			Attachment0 = v28:FindFirstChild("Spirit"):FindFirstChild("Attachment"), 
-			Attachment1 = v17, 
+		local v27 = u5("Beam", {
+			Attachment0 = v26:FindFirstChild("Spirit"):FindFirstChild("Attachment"), 
+			Attachment1 = v15, 
 			LightEmission = 0.6, 
 			LightInfluence = 1, 
 			Transparency = NumberSequence.new(0), 
@@ -171,64 +166,62 @@ function u1.startChannel(p12, p13, p14)
 			CurveSize0 = 3, 
 			CurveSize1 = -3, 
 			FaceCamera = true, 
-			Parent = v28
+			Parent = v26
 		});
-		local v30 = v29:Clone();
-		v30.FaceCamera = false;
-		v30.Parent = v28;
-		(function()
-			v1.Promise.defer(function()
-				local v31 = 1;
-				while v29.Parent do
-					local v32 = 0.4 + 0.2 * math.random();
-					local v33 = l__TweenService__14:Create(v29, TweenInfo.new(v32), {
-						CurveSize0 = -3 * v31, 
-						CurveSize1 = 3 * v31
-					});
-					l__TweenService__14:Create(v30, TweenInfo.new(v32), {
-						CurveSize0 = -3 * v31, 
-						CurveSize1 = 3 * v31
-					}):Play();
-					v33:Play();
-					v33.Completed:Wait();
-					v31 = v31 * -1;				
-				end;
-			end);
-		end)();
-		for v34, v35 in ipairs(p13:GetDescendants()) do
-			if v35:IsA("BasePart") then
-				if v35.Transparency < 0.5 then
-					l__TweenService__14:Create(v35, TweenInfo.new(0.1), {
+		local v28 = v27:Clone();
+		v28.FaceCamera = false;
+		v28.Parent = v26;
+		v1.Promise.defer(function()
+			local v29 = 1;
+			while v27.Parent do
+				local v30 = 0.4 + 0.2 * math.random();
+				local v31 = l__TweenService__14:Create(v27, TweenInfo.new(v30), {
+					CurveSize0 = -3 * v29, 
+					CurveSize1 = 3 * v29
+				});
+				l__TweenService__14:Create(v28, TweenInfo.new(v30), {
+					CurveSize0 = -3 * v29, 
+					CurveSize1 = 3 * v29
+				}):Play();
+				v31:Play();
+				v31.Completed:Wait();
+				v29 = v29 * -1;			
+			end;
+		end);
+		for v32, v33 in ipairs(p13:GetDescendants()) do
+			if v33:IsA("BasePart") then
+				if v33.Transparency < 0.5 then
+					l__TweenService__14:Create(v33, TweenInfo.new(0.1), {
 						Transparency = 0.369
 					}):Play();
-					v35.Material = Enum.Material.ForceField;
-					local l__Transparency__16 = v35.Transparency;
-					local l__Material__17 = v35.Material;
-					v19:GiveTask(function()
-						if v35.Parent then
-							l__TweenService__14:Create(v35, TweenInfo.new(0.1), {
+					v33.Material = Enum.Material.ForceField;
+					local l__Transparency__16 = v33.Transparency;
+					local l__Material__17 = v33.Material;
+					v17:GiveTask(function()
+						if v33.Parent then
+							l__TweenService__14:Create(v33, TweenInfo.new(0.1), {
 								Transparency = l__Transparency__16
 							}):Play();
-							v35.Material = l__Material__17;
+							v33.Material = l__Material__17;
 						end;
 					end);
 				end;
-			elseif v35:IsA("ParticleEmitter") then
-				local l__Transparency__36 = v35.Transparency;
+			elseif v33:IsA("ParticleEmitter") then
+				local l__Transparency__34 = v33.Transparency;
 			end;
 		end;
-		if v20 then
-			v19:GiveTask(l__KnitClient__2.Controllers.SprintController:getMovementStatusModifier():addModifier({
+		if v18 then
+			v17:GiveTask(l__KnitClient__2.Controllers.SprintController:getMovementStatusModifier():addModifier({
 				moveSpeedMultiplier = 1.6
 			}));
 		end;
-		if v20 then
-			v19:GiveTask(l__ClientSyncEvents__15.PerformCombat:connect(function(p16)
-				p16:setCancelled(true);
+		if v18 then
+			v17:GiveTask(l__ClientSyncEvents__15.PerformCombat:connect(function(p15)
+				p15:setCancelled(true);
 			end));
 		end;
 		v1.Promise.delay(2.5):andThen(function()
-			v19:DoCleaning();
+			v17:DoCleaning();
 		end);
 	end;
 end;

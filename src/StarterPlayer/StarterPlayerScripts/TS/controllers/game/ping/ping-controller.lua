@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -107,18 +106,19 @@ function v7.createIndicator(p8, p9, p10)
 	};
 	local u20 = u14:fadeOverTime(l__PingConstants__7.PING_LIFETIME - 1, 1);
 	function v17.transparency(p11, p12, p13)
-		local v18 = p11:GetDescendants();
 		local u21 = u20(p12);
-		local function v19(p14)
-			if p14:IsA("TextLabel") then
-				p14.TextTransparency = u21;
+		local v18, v19, v20 = ipairs((p11:GetDescendants()));
+		while true do
+			local v21, v22 = v18(v19, v20);
+			if not v21 then
+				break;
 			end;
-			if p14:IsA("ImageLabel") then
-				p14.ImageTransparency = u21;
+			if v22:IsA("TextLabel") then
+				v22.TextTransparency = u21;
 			end;
-		end;
-		for v20, v21 in ipairs(v18) do
-			v19(v21, v20 - 1, v18);
+			if v22:IsA("ImageLabel") then
+				v22.ImageTransparency = u21;
+			end;		
 		end;
 		return u21;
 	end;
@@ -126,47 +126,47 @@ function v7.createIndicator(p8, p9, p10)
 	v17.scaleWithAlpha = false;
 	v17.scaleOnFade = false;
 	v17.easeOutOnAppoach = false;
-	function v17.onEnterAnimation(p15)
-		local v22 = p15:FindFirstChild("PingIcon");
-		if v22 ~= nil then
-			v22 = v22:Clone();
+	function v17.onEnterAnimation(p14)
+		local v23 = p14:FindFirstChild("PingIcon");
+		if v23 ~= nil then
+			v23 = v23:Clone();
 		end;
-		if not v22 then
+		if not v23 then
 			return nil;
 		end;
-		v22.Parent = p15;
-		local v23 = l__TweenService__18:Create(v22, TweenInfo.new(0.15), {
+		v23.Parent = p14;
+		local v24 = l__TweenService__18:Create(v23, TweenInfo.new(0.15), {
 			Size = UDim2.fromScale(1.5, 1.5), 
 			ImageTransparency = 1
 		});
-		v23:Play();
-		v23.Completed:Connect(function()
+		v24:Play();
+		v24.Completed:Connect(function()
+			v24:Destroy();
 			v23:Destroy();
-			v22:Destroy();
 		end);
 	end;
 	v16.uiConfig = v17;
 	v16.creator = p10 or l__Players__8.LocalPlayer;
 	v16.attachTo = p9;
 	v16.constraintType = l__ConstraintType__19.Constrained;
-	function v16.onUpdateProperties(p16, p17, p18, p19, p20)
-		local v24 = p19:FindFirstChild("Container");
-		if v24 ~= nil then
-			v24 = v24:FindFirstChild("PingCreatorAvatar");
+	function v16.onUpdateProperties(p15, p16, p17, p18, p19)
+		local v25 = p18:FindFirstChild("Container");
+		if v25 ~= nil then
+			v25 = v25:FindFirstChild("PingCreatorAvatar");
 		end;
-		if v24 and p20 then
-			local v25 = p20;
-			if v25 ~= nil then
-				v25 = v25.UserId;
+		if v25 and p19 then
+			local v26 = p19;
+			if v26 ~= nil then
+				v26 = v26.UserId;
 			end;
-			v24.Image = l__Players__8:GetUserThumbnailAsync(v25, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size352x352);
+			v25.Image = l__Players__8:GetUserThumbnailAsync(v26, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size352x352);
 		end;
-		local v26 = p19:FindFirstChild("Container");
-		if v26 ~= nil then
-			v26 = v26:FindFirstChild("DistanceTracker");
+		local v27 = p18:FindFirstChild("Container");
+		if v27 ~= nil then
+			v27 = v27:FindFirstChild("DistanceTracker");
 		end;
-		if v26 then
-			v26.Text = "<b>" .. l__StringUtil__13.roundNumber(p16 / 3, 0) .. "m</b>";
+		if v27 then
+			v27.Text = "<b>" .. l__StringUtil__13.roundNumber(p15 / 3, 0) .. "m</b>";
 		end;
 	end;
 	local u22 = l__Flamework__15.resolveDependency("@easy-games/game-core:client/controllers/indicators/world-indicator-controller@WorldIndicatorController"):addIndicator(v16);

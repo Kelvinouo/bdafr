@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -32,101 +31,97 @@ local l__Players__6 = v2.Players;
 local l__KnitClient__7 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 function v4.KnitStart(p2)
 	u1.KnitStart(p2);
-	local v6 = l__CollectionService__2:GetTagged("brewing_cauldron");
-	local function v7(p3)
-		return print("todo");
+	for v6, v7 in ipairs((l__CollectionService__2:GetTagged("brewing_cauldron"))) do
+		local v8 = print("todo");
 	end;
-	for v8, v9 in ipairs(v6) do
-		v7(v9, v8 - 1, v6);
-	end;
-	l__CollectionService__2:GetInstanceRemovedSignal("brewing_cauldron"):Connect(function(p4)
-		if p4.Parent == l__Workspace__3 then
+	l__CollectionService__2:GetInstanceRemovedSignal("brewing_cauldron"):Connect(function(p3)
+		if p3.Parent == l__Workspace__3 then
 			return nil;
 		end;
-		local l__Position__10 = p4.Position;
-		p2.activeBillboards[l__Position__10] = nil;
-		p2.activeStatus[l__Position__10] = nil;
+		local l__Position__9 = p3.Position;
+		p2.activeBillboards[l__Position__9] = nil;
+		p2.activeStatus[l__Position__9] = nil;
 	end);
-	l__default__4.Client:WaitFor("RemoteName"):andThen(function(p5)
-		p5:Connect(function(p6)
-			local v11 = nil;
-			local l__craftingEntity__12 = p6.craftingEntity;
-			v11 = p6.inventory;
-			local l__status__13 = p6.status;
-			local v14 = p2.activeInteractivePrompts[l__craftingEntity__12.id];
-			if v14 == nil then
+	l__default__4.Client:WaitFor("RemoteName"):andThen(function(p4)
+		p4:Connect(function(p5)
+			local v10 = nil;
+			local l__craftingEntity__11 = p5.craftingEntity;
+			v10 = p5.inventory;
+			local l__status__12 = p5.status;
+			local v13 = p2.activeInteractivePrompts[l__craftingEntity__11.id];
+			if v13 == nil then
 				return nil;
 			end;
-			if l__status__13 == l__CraftingStatus__5.standby then
-				p2.activeStatus[l__craftingEntity__12.id] = "STANDBY";
-				p2:updateBillboard(l__craftingEntity__12, l__status__13, v11);
-				p2:updatePrompt(l__craftingEntity__12, "Deposit");
+			if l__status__12 == l__CraftingStatus__5.standby then
+				p2.activeStatus[l__craftingEntity__11.id] = "STANDBY";
+				p2:updateBillboard(l__craftingEntity__11, l__status__12, v10);
+				p2:updatePrompt(l__craftingEntity__11, "Deposit");
 				return;
 			end;
-			if l__status__13 == l__CraftingStatus__5.validate then
-				p2:updateBillboard(l__craftingEntity__12, l__status__13, v11);
-				p2:updatePrompt(l__craftingEntity__12, "Deposit");
-				p2.activeStatus[l__craftingEntity__12.id] = "VALIDATE";
+			if l__status__12 == l__CraftingStatus__5.validate then
+				p2:updateBillboard(l__craftingEntity__11, l__status__12, v10);
+				p2:updatePrompt(l__craftingEntity__11, "Deposit");
+				p2.activeStatus[l__craftingEntity__11.id] = "VALIDATE";
 				return;
 			end;
-			if l__status__13 == l__CraftingStatus__5.crafting then
-				p2.activeStatus[l__craftingEntity__12.id] = "CRAFTING";
-				p2:updateBillboard(l__craftingEntity__12, l__CraftingStatus__5.crafting, v11, "Crafting", p6.timeToCraft);
-				v14.Enabled = false;
+			if l__status__12 == l__CraftingStatus__5.crafting then
+				p2.activeStatus[l__craftingEntity__11.id] = "CRAFTING";
+				p2:updateBillboard(l__craftingEntity__11, l__CraftingStatus__5.crafting, v10, "Crafting", p5.timeToCraft);
+				v13.Enabled = false;
 				return;
 			end;
-			if l__status__13 ~= l__CraftingStatus__5.finished then
+			if l__status__12 ~= l__CraftingStatus__5.finished then
 				return;
 			end;
-			v14.Enabled = true;
-			p2.activeStatus[l__craftingEntity__12.id] = "FINISHED";
-			p2:updateBillboard(l__craftingEntity__12, l__CraftingStatus__5.finished, v11, "Item Collection");
-			p2:updatePrompt(l__craftingEntity__12, "Collect");
+			v13.Enabled = true;
+			p2.activeStatus[l__craftingEntity__11.id] = "FINISHED";
+			p2:updateBillboard(l__craftingEntity__11, l__CraftingStatus__5.finished, v10, "Item Collection");
+			p2:updatePrompt(l__craftingEntity__11, "Collect");
 		end);
 	end);
-	l__default__4.Client:WaitFor("RemoteName"):andThen(function(p7)
-		p7:Connect(function(p8)
-			local v15 = {};
-			for v16, v17 in pairs(p8.craftingEntity) do
-				v15[v16] = v17;
+	l__default__4.Client:WaitFor("RemoteName"):andThen(function(p6)
+		p6:Connect(function(p7)
+			local v14 = {};
+			for v15, v16 in pairs(p7.craftingEntity) do
+				v14[v15] = v16;
 			end;
-			local l__LocalPlayer__18 = l__Players__6.LocalPlayer;
-			local v19 = l__KnitClient__7.Controllers.KitController:getKit(l__LocalPlayer__18);
-			local v20 = false;
-			p2.whitelist = p8.whitelist;
-			local l__accessLevel__21 = p8.accessLevel;
-			if l__accessLevel__21 == "OWNER" then
-				if v19 == p8.kit and v15.owner == l__Players__6.LocalPlayer then
-					p2:updateBillboard(p8.craftingEntity, l__CraftingStatus__5.standby);
-					p2:createPrompts(p8.craftingEntity);
+			local l__LocalPlayer__17 = l__Players__6.LocalPlayer;
+			local v18 = l__KnitClient__7.Controllers.KitController:getKit(l__LocalPlayer__17);
+			local v19 = false;
+			p2.whitelist = p7.whitelist;
+			local l__accessLevel__20 = p7.accessLevel;
+			if l__accessLevel__20 == "OWNER" then
+				if v18 == p7.kit and v14.owner == l__Players__6.LocalPlayer then
+					p2:updateBillboard(p7.craftingEntity, l__CraftingStatus__5.standby);
+					p2:createPrompts(p7.craftingEntity);
 					return;
 				end;
-			elseif l__accessLevel__21 == "TEAM" then
-				local v22 = l__LocalPlayer__18.Team;
-				if v22 ~= nil then
-					v22 = v22:GetPlayers();
+			elseif l__accessLevel__20 == "TEAM" then
+				local v21 = l__LocalPlayer__17.Team;
+				if v21 ~= nil then
+					v21 = v21:GetPlayers();
 				end;
-				if v22 ~= nil then
-					for v23, v24 in ipairs(v22) do
-						if l__KnitClient__7.Controllers.KitController:getKit(v24) == p8.kit then
-							v20 = true;
+				if v21 ~= nil then
+					for v22, v23 in ipairs(v21) do
+						if l__KnitClient__7.Controllers.KitController:getKit(v23) == p7.kit then
+							v19 = true;
 						end;
 					end;
-					if v19 == p8.kit or v20 then
-						p2:updateBillboard(p8.craftingEntity, l__CraftingStatus__5.standby);
-						p2:createPrompts(p8.craftingEntity);
+					if v18 == p7.kit or v19 then
+						p2:updateBillboard(p7.craftingEntity, l__CraftingStatus__5.standby);
+						p2:createPrompts(p7.craftingEntity);
 						return;
 					end;
 				end;
-			elseif l__accessLevel__21 == "ANY" then
-				if v19 == p8.kit then
-					p2:updateBillboard(p8.craftingEntity, l__CraftingStatus__5.standby);
-					p2:createPrompts(p8.craftingEntity);
+			elseif l__accessLevel__20 == "ANY" then
+				if v18 == p7.kit then
+					p2:updateBillboard(p7.craftingEntity, l__CraftingStatus__5.standby);
+					p2:createPrompts(p7.craftingEntity);
 					return;
 				end;
-			elseif v19 == p8.kit then
-				p2:updateBillboard(p8.craftingEntity, l__CraftingStatus__5.standby);
-				p2:createPrompts(p8.craftingEntity);
+			elseif v18 == p7.kit then
+				p2:updateBillboard(p7.craftingEntity, l__CraftingStatus__5.standby);
+				p2:createPrompts(p7.craftingEntity);
 				print("Error: Access Level Not Found.");
 			end;
 		end);
@@ -134,124 +129,124 @@ function v4.KnitStart(p2)
 end;
 local u8 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__BrewingCauldron__9 = v1.import(script, script.Parent, "ui", "brewing-cauldron").BrewingCauldron;
-function v4.updateBillboard(p9, p10, p11, p12, p13, p14)
-	local v25 = p9.activeBillboards[p10.id];
-	local v26 = p12 or {};
+function v4.updateBillboard(p8, p9, p10, p11, p12, p13)
+	local v24 = p8.activeBillboards[p9.id];
+	local v25 = p11 or {};
+	if p12 == nil then
+		p12 = "Ingredients";
+	end;
 	if p13 == nil then
-		p13 = "Ingredients";
+		p13 = 8;
 	end;
-	if p14 == nil then
-		p14 = 8;
-	end;
-	if v25 then
-		u8.update(v25, u8.createElement(l__BrewingCauldron__9, {
-			Inventory = v26, 
-			CraftingStatus = p11, 
-			Text = p13, 
-			timeToCraft = p14
+	if v24 then
+		u8.update(v24, u8.createElement(l__BrewingCauldron__9, {
+			Inventory = v25, 
+			CraftingStatus = p10, 
+			Text = p12, 
+			timeToCraft = p13
 		}));
 		return;
 	end;
-	p9.activeBillboards[p10.id] = u8.mount(u8.createElement(l__BrewingCauldron__9, {
-		Inventory = v26, 
+	p8.activeBillboards[p9.id] = u8.mount(u8.createElement(l__BrewingCauldron__9, {
+		Inventory = v25, 
 		Text = "Deposit Ingredients", 
-		CraftingStatus = p11, 
-		timeToCraft = p14
-	}), p10.craftingBlock);
+		CraftingStatus = p10, 
+		timeToCraft = p13
+	}), p9.craftingBlock);
 end;
 local l__EntityUtil__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
-function v4.updatePrompt(p15, p16, p17)
-	local v27 = p15.activeInteractivePrompts[p16.id];
+function v4.updatePrompt(p14, p15, p16)
+	local v26 = p14.activeInteractivePrompts[p15.id];
+	if v26 == nil then
+		return nil;
+	end;
+	v26.ActionText = p16;
+	local v27 = l__EntityUtil__10:getEntity(l__Players__6.LocalPlayer);
 	if v27 == nil then
 		return nil;
 	end;
-	v27.ActionText = p17;
-	local v28 = l__EntityUtil__10:getEntity(l__Players__6.LocalPlayer);
+	local v28 = v27:getItemInHand();
+	if v28 ~= nil then
+		v28 = v28.Name;
+	end;
 	if v28 == nil then
 		return nil;
 	end;
-	local v29 = v28:getItemInHand();
-	if v29 ~= nil then
-		v29 = v29.Name;
-	end;
-	if v29 == nil then
-		return nil;
-	end;
-	if p15.activeStatus[p16.id] == "STANDBY" then
-		p15:TogglePrompt(p16.id, v29, v27);
+	if p14.activeStatus[p15.id] == "STANDBY" then
+		p14:TogglePrompt(p15.id, v28, v26);
 	end;
 end;
 local l__WatchCharacter__11 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchCharacter;
-function v4.onItemSwap(p18, p19)
-	l__WatchCharacter__11(function(p20, p21)
-		if p20 ~= l__Players__6.LocalPlayer then
+function v4.onItemSwap(p17, p18)
+	l__WatchCharacter__11(function(p19, p20)
+		if p19 ~= l__Players__6.LocalPlayer then
 			return nil;
 		end;
-		local v30 = l__EntityUtil__10:getEntity(p20);
-		if not v30 then
+		local v29 = l__EntityUtil__10:getEntity(p19);
+		if not v29 then
 			return nil;
 		end;
 		task.spawn(function()
-			v30:getInstance():WaitForChild("HandInvItem");
-			v30:getInstance().HandInvItem.Changed:Connect(function(p22)
-				local v31 = nil;
-				v31 = p18.activeInteractivePrompts[p19];
-				if p22 == nil or v31 == nil then
+			v29:getInstance():WaitForChild("HandInvItem");
+			v29:getInstance().HandInvItem.Changed:Connect(function(p21)
+				local v30 = nil;
+				v30 = p17.activeInteractivePrompts[p18];
+				if p21 == nil or v30 == nil then
 					return nil;
 				end;
-				p18:TogglePrompt(p19, p22.Name, v31);
+				p17:TogglePrompt(p18, p21.Name, v30);
 			end);
 		end);
 	end);
 end;
-function v4.TogglePrompt(p23, p24, p25, p26)
-	if p23.activeStatus[p24] == "CRAFTING" or p23.activeStatus[p24] == "VALIDATE" then
-		p26.Enabled = false;
+function v4.TogglePrompt(p22, p23, p24, p25)
+	if p22.activeStatus[p23] == "CRAFTING" or p22.activeStatus[p23] == "VALIDATE" then
+		p25.Enabled = false;
 		return;
 	end;
-	if p23.activeStatus[p24] ~= "STANDBY" then
-		p26.Enabled = true;
+	if p22.activeStatus[p23] ~= "STANDBY" then
+		p25.Enabled = true;
 		return;
 	end;
-	if table.find(p23.whitelist, p25) ~= nil then
-		p26.Enabled = true;
+	if table.find(p22.whitelist, p24) ~= nil then
+		p25.Enabled = true;
 		return;
 	end;
-	p26.Enabled = false;
+	p25.Enabled = false;
 end;
 local u12 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
 local l__Theme__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local l__InventoryUtil__14 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "inventory", "inventory-util").InventoryUtil;
 local l__GameAnimationUtil__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
 local l__AnimationType__16 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
-function v4.createPrompts(p27, p28)
-	local v32 = u12("ProximityPrompt", {
+function v4.createPrompts(p26, p27)
+	local v31 = u12("ProximityPrompt", {
 		Name = "InteractPrompt", 
 		KeyboardKeyCode = l__Theme__13.promptKeyboardKey, 
 		RequiresLineOfSight = false, 
 		MaxActivationDistance = 6, 
 		ActionText = "Deposit", 
 		ClickablePrompt = false, 
-		Parent = p28.craftingBlock
+		Parent = p27.craftingBlock
 	});
-	v32.Enabled = false;
-	v32.Triggered:Connect(function(p29)
-		if p29 == l__Players__6.LocalPlayer then
-			local v33 = l__InventoryUtil__14.getInventory(p29).hand;
-			if v33 ~= nil then
-				v33 = v33.itemType;
+	v31.Enabled = false;
+	v31.Triggered:Connect(function(p28)
+		if p28 == l__Players__6.LocalPlayer then
+			local v32 = l__InventoryUtil__14.getInventory(p28).hand;
+			if v32 ~= nil then
+				v32 = v32.itemType;
 			end;
-			l__GameAnimationUtil__15.playAnimation(p29, l__AnimationType__16.PUNCH);
+			l__GameAnimationUtil__15.playAnimation(p28, l__AnimationType__16.PUNCH);
 			l__KnitClient__7.Controllers.ViewmodelController:playAnimation(l__AnimationType__16.FP_USE_ITEM);
 			l__default__4.Client:Get("RemoteName"):SendToServer({
-				craftingEntity = p28, 
-				itemInHand = v33
+				craftingEntity = p27, 
+				itemInHand = v32
 			});
 		end;
 	end);
-	p27.activeInteractivePrompts[p28.id] = v32;
-	p27.activeStatus[p28.id] = "STANDBY";
-	p27:onItemSwap(p28.id);
+	p26.activeInteractivePrompts[p27.id] = v31;
+	p26.activeStatus[p27.id] = "STANDBY";
+	p26:onItemSwap(p27.id);
 end;
 u1 = l__KnitClient__7.CreateController;
 u1 = u1(v4.new());

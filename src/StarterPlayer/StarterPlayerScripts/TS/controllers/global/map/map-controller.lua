@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -51,36 +50,30 @@ function u1.KnitStart(p2)
 			p2.denyRegions = p5.blockPlaceDisabledRegions;
 			return;
 		end;
-		local v10 = p5.blockPlaceDisabledRegions;
-		local function v11(p6)
-			local l__denyRegions__12 = p2.denyRegions;
-			table.insert(l__denyRegions__12, p6);
-			return #l__denyRegions__12;
-		end;
-		for v13, v14 in ipairs(v10) do
-			v11(v14, v13 - 1, v10);
+		for v10, v11 in ipairs(p5.blockPlaceDisabledRegions) do
+			table.insert(p2.denyRegions, v11);
 		end;
 	end);
 	p2.denyRegions = l__default__5.Client:Get("RemoteName"):CallServer().blockPlaceDisabledRegions;
 end;
-u1.waitForCFrame = v1.async(function(p7, p8)
-	return p7:getCFramesFolder():WaitForChild(p8).Value;
+u1.waitForCFrame = v1.async(function(p6, p7)
+	return p6:getCFramesFolder():WaitForChild(p7).Value;
 end);
-function u1.getCFrame(p9, p10)
-	local v15 = p9:getCFramesFolder():FindFirstChild(p10);
-	if v15 ~= nil then
-		v15 = v15.Value;
+function u1.getCFrame(p8, p9)
+	local v12 = p8:getCFramesFolder():FindFirstChild(p9);
+	if v12 ~= nil then
+		v12 = v12.Value;
 	end;
-	return v15;
+	return v12;
 end;
-function u1.getCFramesFolder(p11)
-	local v16 = p11.mapCFrames:GetAttribute("Setup");
-	if v16 == 0 or v16 ~= v16 or v16 == "" or not v16 then
-		while p11.mapCFrames.AttributeChanged:Wait() ~= "Setup" do
+function u1.getCFramesFolder(p10)
+	local v13 = p10.mapCFrames:GetAttribute("Setup");
+	if v13 == 0 or v13 ~= v13 or v13 == "" or not v13 then
+		while p10.mapCFrames.AttributeChanged:Wait() ~= "Setup" do
 		
 		end;
 	end;
-	return p11.mapCFrames;
+	return p10.mapCFrames;
 end;
 u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1.new;

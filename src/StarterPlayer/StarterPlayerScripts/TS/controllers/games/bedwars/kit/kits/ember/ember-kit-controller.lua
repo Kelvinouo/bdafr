@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -70,11 +69,8 @@ function u1.createEffect(p6, p7)
 	local v9 = { v8 };
 	local v10 = v8:GetDescendants();
 	table.move(v10, 1, #v10, #v9 + 1, v9);
-	local function v11(p8)
-		l__GameQueryUtil__14:setQueryIgnored(p8, true);
-	end;
-	for v12, v13 in ipairs(v9) do
-		v11(v13, v12 - 1, v9);
+	for v11, v12 in ipairs(v9) do
+		l__GameQueryUtil__14:setQueryIgnored(v12, true);
 	end;
 	v8:SetPrimaryPartCFrame(v7:getInstance():GetPrimaryPartCFrame());
 	v8.Parent = l__Workspace__15;
@@ -87,18 +83,18 @@ function u1.createEffect(p6, p7)
 		v8:SetPrimaryPartCFrame(v7:getInstance():GetPrimaryPartCFrame());
 	end);
 end;
-function u1.playAscendEffect(p9, p10)
-	local v14 = l__ReplicatedStorage__12.Assets.Effects.EmberAscend:Clone();
-	l__CollectionService__13:AddTag(v14, "FirstPersonHidden");
-	v14:SetPrimaryPartCFrame(p10:getInstance():GetPrimaryPartCFrame());
-	v14.Parent = l__Workspace__15;
+function u1.playAscendEffect(p8, p9)
+	local v13 = l__ReplicatedStorage__12.Assets.Effects.EmberAscend:Clone();
+	l__CollectionService__13:AddTag(v13, "FirstPersonHidden");
+	v13:SetPrimaryPartCFrame(p9:getInstance():GetPrimaryPartCFrame());
+	v13.Parent = l__Workspace__15;
 	local u17 = tick() + 1;
 	l__RunService__16.Heartbeat:Connect(function()
 		if u17 < tick() then
-			v14:Destroy();
+			v13:Destroy();
 		end;
 		if tick() < u17 then
-			v14:SetPrimaryPartCFrame(p10:getInstance():GetPrimaryPartCFrame());
+			v13:SetPrimaryPartCFrame(p9:getInstance():GetPrimaryPartCFrame());
 		end;
 	end);
 end;

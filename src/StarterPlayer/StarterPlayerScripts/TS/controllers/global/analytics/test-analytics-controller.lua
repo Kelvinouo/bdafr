@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -34,7 +33,8 @@ function v3.KnitStart(p2)
 		end;
 		l__ReplicatedStorage__3.ChildRemoved:Connect(function(p3)
 			if p3 == l__GA_Event__5 then
-				u4();
+				task.wait(math.random(20, 60));
+				l__default__2.Client:Get("RemoteName"):SendToServer();
 			end;
 		end);
 	end);

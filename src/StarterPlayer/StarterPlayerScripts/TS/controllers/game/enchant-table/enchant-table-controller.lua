@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -345,60 +344,54 @@ function v5.getClosestBrokenEnchantTable(p14, p15)
 	table.sort(v45, function(p16, p17)
 		return (p16.Position - p15).Magnitude < (p17.Position - p15).Magnitude;
 	end);
-	local function v46(p18)
-		return true;
-	end;
-	local v47 = nil;
-	for v48, v49 in ipairs(v45) do
-		if v46(v49, v48 - 1, v45) == true then
-			v47 = v49;
+	local v46 = nil;
+	for v47, v48 in ipairs(v45) do
+		if true == true then
+			v46 = v48;
 			break;
 		end;
 	end;
-	return v47;
+	return v46;
 end;
-function v5.getClosestEnchantTable(p19, p20)
-	local v50 = l__CollectionService__38:GetTagged("enchant-table");
-	table.sort(v50, function(p21, p22)
-		return (p21.Position - p20).Magnitude < (p22.Position - p20).Magnitude;
+function v5.getClosestEnchantTable(p18, p19)
+	local v49 = l__CollectionService__38:GetTagged("enchant-table");
+	table.sort(v49, function(p20, p21)
+		return (p20.Position - p19).Magnitude < (p21.Position - p19).Magnitude;
 	end);
-	local function v51(p23)
-		return true;
-	end;
-	local v52 = nil;
-	for v53, v54 in ipairs(v50) do
-		if v51(v54, v53 - 1, v50) == true then
-			v52 = v54;
+	local v50 = nil;
+	for v51, v52 in ipairs(v49) do
+		if true == true then
+			v50 = v52;
 			break;
 		end;
 	end;
-	return v52;
+	return v50;
 end;
-function v5.researchEnchant(p24, p25)
-	local v55 = l__Players__16.LocalPlayer.Character;
-	if v55 ~= nil then
-		v55 = v55.PrimaryPart;
-		if v55 ~= nil then
-			v55 = v55.Position;
+function v5.researchEnchant(p22, p23)
+	local v53 = l__Players__16.LocalPlayer.Character;
+	if v53 ~= nil then
+		v53 = v53.PrimaryPart;
+		if v53 ~= nil then
+			v53 = v53.Position;
 		end;
 	end;
-	if not v55 then
+	if not v53 then
 		return nil;
 	end;
-	local v56 = p24:getClosestEnchantTable(v55);
-	if not v56 then
+	local v54 = p22:getClosestEnchantTable(v53);
+	if not v54 then
 		return nil;
 	end;
 	l__Flamework__12.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):closeApp(l__BedwarsAppIds__19.ENCHANT_TABLE);
-	local v57 = l__default__17.Client:Get("RemoteName"):CallServer({
-		researchType = p25, 
-		enchantTable = v56
+	local v55 = l__default__17.Client:Get("RemoteName"):CallServer({
+		researchType = p23, 
+		enchantTable = v54
 	});
 end;
-function v5.unmountEnchantPopup(p26)
-	if p26.enchantPopupTree then
-		u31.unmount(p26.enchantPopupTree);
-		p26.enchantPopupTree = nil;
+function v5.unmountEnchantPopup(p24)
+	if p24.enchantPopupTree then
+		u31.unmount(p24.enchantPopupTree);
+		p24.enchantPopupTree = nil;
 	end;
 end;
 u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
