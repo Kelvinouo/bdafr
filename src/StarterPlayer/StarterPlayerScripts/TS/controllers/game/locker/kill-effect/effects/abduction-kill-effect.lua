@@ -75,87 +75,87 @@ function v5.onKill(p3, p4, p5, p6)
 		local v27 = nil;
 		local v28 = nil;
 		local v29 = nil;
-		local v30, v31 = v12(v13, v14);
-		if not v30 then
+		v12(v13, v14);
+		if not v12 then
 			break;
 		end;
-		v14 = v30;
-		if v31:IsA("Accessory") then
-			local l__Handle__32 = v31:FindFirstChild("Handle");
-			if l__t__10.instanceIsA("BasePart")(l__Handle__32) then
-				local v33 = l__Handle__32;
+		v14 = v12;
+		if v13:IsA("Accessory") then
+			local l__Handle__30 = v13:FindFirstChild("Handle");
+			if l__t__10.instanceIsA("BasePart")(l__Handle__30) then
+				local v31 = l__Handle__30;
 				v16 = true;
 				v15 = "Anchored";
-				v17 = v33;
+				v17 = v31;
 				v18 = v15;
 				v19 = v16;
 				v17[v18] = v19;
-				local v34 = "BreakJoints";
-				v20 = v33;
+				local v32 = "BreakJoints";
+				v20 = v31;
 				v23 = v20;
-				v21 = v33;
-				v22 = v34;
-				local v35 = v21[v22];
-				v24 = v35;
+				v21 = v31;
+				v22 = v32;
+				local v33 = v21[v22];
+				v24 = v33;
 				v25 = v23;
 				v24(v25);
-				local v36 = task.spawn;
-				u13 = v33;
-				local v37 = function()
+				local v34 = task.spawn;
+				u13 = v31;
+				local v35 = function()
 					l__default__6(u11:NextNumber(0.2, 0.3), l__InExpo__8, function(p10)
 						u13.CFrame = p10;
 					end, u13.CFrame, v8:GetPrimaryPartCFrame() * CFrame.new(u11:NextNumber(-3, 3), u11:NextNumber(1, 2), u11:NextNumber(-3, 3))):Wait();
 					u13:Destroy();
 				end;
-				v26 = v36;
-				v27 = v37;
+				v26 = v34;
+				v27 = v35;
 				v26(v27);
-				local v38 = task.wait;
-				local v39 = 0.1;
-				v28 = v38;
-				v29 = v39;
+				local v36 = task.wait;
+				local v37 = 0.1;
+				v28 = v36;
+				v29 = v37;
 				v28(v29);
 			end;
-		elseif v31:IsA("BasePart") and v31 ~= v7.PrimaryPart then
-			v33 = v31;
+		elseif v13:IsA("BasePart") and v13 ~= v7.PrimaryPart then
+			v31 = v13;
 			v16 = true;
 			v15 = "Anchored";
-			v17 = v33;
+			v17 = v31;
 			v18 = v15;
 			v19 = v16;
 			v17[v18] = v19;
-			v34 = "BreakJoints";
-			v20 = v33;
+			v32 = "BreakJoints";
+			v20 = v31;
 			v23 = v20;
-			v21 = v33;
-			v22 = v34;
-			v35 = v21[v22];
-			v24 = v35;
+			v21 = v31;
+			v22 = v32;
+			v33 = v21[v22];
+			v24 = v33;
 			v25 = v23;
 			v24(v25);
-			v36 = task.spawn;
-			u13 = v33;
-			v37 = function()
+			v34 = task.spawn;
+			u13 = v31;
+			v35 = function()
 				l__default__6(u11:NextNumber(0.2, 0.3), l__InExpo__8, function(p11)
 					u13.CFrame = p11;
 				end, u13.CFrame, v8:GetPrimaryPartCFrame() * CFrame.new(u11:NextNumber(-3, 3), u11:NextNumber(1, 2), u11:NextNumber(-3, 3))):Wait();
 				u13:Destroy();
 			end;
-			v26 = v36;
-			v27 = v37;
+			v26 = v34;
+			v27 = v35;
 			v26(v27);
-			v38 = task.wait;
-			v39 = 0.1;
-			v28 = v38;
-			v29 = v39;
+			v36 = task.wait;
+			v37 = 0.1;
+			v28 = v36;
+			v29 = v37;
 			v28(v29);
 		end;	
 	end;
 	task.wait(1);
 	l__default__6(0.5, l__InExpo__8, function(p12)
-		local l__Beam__40 = l__Body__9.Beam;
-		l__Beam__40.Transparency = p12;
-		return l__Beam__40.Transparency;
+		local l__Beam__38 = l__Body__9.Beam;
+		l__Beam__38.Transparency = p12;
+		return l__Beam__38.Transparency;
 	end, l__Body__9.Beam.Transparency, 1):Wait();
 	l__default__6(0.2, l__InQuart__12, function(p13)
 		return v8:SetPrimaryPartCFrame(p13);

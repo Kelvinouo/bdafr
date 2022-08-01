@@ -1,4 +1,3 @@
--- Script Hash: 99f1377f4a31c366dd8c426cc60c74416848d3e4610f8188f83d73aa85ad2478d756c87b09987ee441e54c862b3c8e68
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -27,22 +26,25 @@ return {
 		end;
 		if l__type__5 == "TabListSetPlayersTeamBulk" then
 			local v6 = u2.entries(p2.playersTeam);
-			local function v7(p3)
-				local v8 = nil;
-				v8 = p3[2];
-				local v9 = tonumber(p3[1]);
-				if v2.players[v9] then
-					v2.players[v9].team = v8;
+			local v7 = table.create(#v6);
+			local v8, v9, v10 = ipairs(v6);
+			while true do
+				local v11 = nil;
+				v8(v9, v10);
+				if not v8 then
+					break;
+				end;
+				v10 = v8;
+				v11 = v9[2];
+				local v12 = tonumber(v9[1]);
+				if v2.players[v12] then
+					v2.players[v12].team = v11;
 				else
-					v2.players[v9] = {
-						team = v8
+					v2.players[v12] = {
+						team = v11
 					};
 				end;
-				return 0;
-			end;
-			local v10 = table.create(#v6);
-			for v11, v12 in ipairs(v6) do
-				v10[v11] = v7(v12, v11 - 1, v6);
+				v7[v8] = 0;			
 			end;
 			return v2;
 		end;
@@ -58,22 +60,25 @@ return {
 			end;
 		end;
 		local v13 = u2.entries(p2.avatarAssetIds);
-		local function v14(p4)
-			local v15 = nil;
-			v15 = p4[2];
-			local v16 = tonumber(p4[1]);
-			if v2.players[v16] then
-				v2.players[v16].avatarAssetId = v15;
+		local v14 = table.create(#v13);
+		local v15, v16, v17 = ipairs(v13);
+		while true do
+			local v18 = nil;
+			v15(v16, v17);
+			if not v15 then
+				break;
+			end;
+			v17 = v15;
+			v18 = v16[2];
+			local v19 = tonumber(v16[1]);
+			if v2.players[v19] then
+				v2.players[v19].avatarAssetId = v18;
 			else
-				v2.players[v16] = {
-					avatarAssetId = v15
+				v2.players[v19] = {
+					avatarAssetId = v18
 				};
 			end;
-			return 0;
-		end;
-		local v17 = table.create(#v13);
-		for v18, v19 in ipairs(v13) do
-			v17[v18] = v14(v19, v18 - 1, v13);
+			v14[v15] = 0;		
 		end;
 		return v2;
 	end
