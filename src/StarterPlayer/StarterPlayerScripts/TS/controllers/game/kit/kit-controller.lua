@@ -1,81 +1,101 @@
--- Script Hash: 822dc79b84caa563799093f57875fd1ef1de8b5970a8db262c6e848dea561e68c760379aae3b5b58c550fa27d975c357
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
-local l__KnitController__3 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
-local v4 = setmetatable({}, {
+local l__KnitController__2 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
+local v3 = setmetatable({}, {
 	__tostring = function()
 		return "KitController";
 	end, 
-	__index = l__KnitController__3
+	__index = l__KnitController__2
 });
-v4.__index = v4;
-function v4.new(...)
-	local v5 = setmetatable({}, v4);
-	return v5:constructor(...) and v5;
+v3.__index = v3;
+function v3.new(...)
+	local v4 = setmetatable({}, v3);
+	return v4:constructor(...) and v4;
 end;
-local u1 = l__KnitController__3;
-function v4.constructor(p1)
+local u1 = l__KnitController__2;
+function v3.constructor(p1)
 	u1.constructor(p1);
 	p1.Name = "KitController";
 end;
 local l__WatchPlayer__2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchPlayer;
-local l__Players__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
-local l__ClientSyncEvents__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
+local l__ClientSyncEvents__3 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
+local l__Players__4 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 local l__ClientStore__5 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
-function v4.KnitStart(p2)
+function v3.KnitStart(p2)
 	u1.KnitStart(p2);
 	l__WatchPlayer__2(function(p3)
-		if p3 ~= l__Players__3.LocalPlayer then
-			return nil;
+		local v5 = p2:getKit(p3);
+		if v5 then
+			l__ClientSyncEvents__3.KitEquip:fire(p3, v5);
+			if p3 == l__Players__4.LocalPlayer then
+				l__ClientStore__5:dispatch({
+					type = "SetBedwarsKit", 
+					kit = v5
+				});
+			end;
 		end;
-		local v6 = p2:getKit(p3);
-		if v6 then
-			l__ClientSyncEvents__4.KitEquip:fire(p3, v6);
-			l__ClientStore__5:dispatch({
-				type = "SetBedwarsKit", 
-				kit = v6
-			});
-		end;
-		local u6 = v6;
+		local u6 = v5;
 		p3:GetAttributeChangedSignal("PlayingAsKit"):Connect(function()
-			local v7 = p2:getKit(p3);
+			local v6 = p2:getKit(p3);
 			if u6 then
-				l__ClientSyncEvents__4.KitUnequip:fire(p3, u6);
+				l__ClientSyncEvents__3.KitUnequip:fire(p3, u6);
 			end;
-			if v7 then
-				l__ClientSyncEvents__4.KitEquip:fire(p3, v7);
+			if v6 then
+				l__ClientSyncEvents__3.KitEquip:fire(p3, v6);
 			end;
-			u6 = v7;
-			l__ClientStore__5:dispatch({
-				type = "SetBedwarsKit", 
-				kit = u6
-			});
+			u6 = v6;
+			if p3 == l__Players__4.LocalPlayer then
+				l__ClientStore__5:dispatch({
+					type = "SetBedwarsKit", 
+					kit = u6
+				});
+			end;
 		end);
 	end);
 end;
-function v4.getKit(p4, p5)
-	return p5:GetAttribute("PlayingAsKit");
+local l__BedwarsKit__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
+function v3.getKit(p4, p5)
+	return p5:GetAttribute("PlayingAsKit") or l__BedwarsKit__7.NONE;
 end;
-function v4.isUsingKit(p6, p7, p8)
+function v3.isUsingKit(p6, p7, p8)
 	return p6:getKit(p7) == p8;
 end;
-local l__BedwarsKitSkin__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit-skin", "bedwars-kit-skin").BedwarsKitSkin;
-function v4.getKitSkin(p9, p10)
-	return p10:GetAttribute("KitSkin") or l__BedwarsKitSkin__7.DEFAULT;
+local l__BedwarsKitSkin__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit-skin", "bedwars-kit-skin").BedwarsKitSkin;
+function v3.getKitSkin(p9, p10)
+	return p10:GetAttribute("KitSkin") or l__BedwarsKitSkin__8.DEFAULT;
 end;
-local l__Maid__8 = v2.Maid;
-function v4.watchLocalKit(p11, p12)
-	local v8 = l__Maid__8.new();
-	v8:GiveTask(l__ClientSyncEvents__4.KitEquip:connect(function(p13)
+local u9 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+function v3.watchLocalKit(p11, p12)
+	local v7 = u9.new();
+	v7:GiveTask(l__ClientSyncEvents__3.KitEquip:connect(function(p13)
+		if p13.player ~= l__Players__4.LocalPlayer then
+			return nil;
+		end;
 		task.spawn(function()
 			p12(p13.kit);
 		end);
 	end));
-	p12(p11:getKit(l__Players__3.LocalPlayer));
+	p12(p11:getKit(l__Players__4.LocalPlayer));
+	return v7;
+end;
+function v3.watchKit(p14, p15)
+	local v8 = u9.new();
+	v8:GiveTask(l__ClientSyncEvents__3.KitEquip:connect(function(p16)
+		task.spawn(function()
+			p15(p16.player, p16.kit);
+		end);
+	end));
+	for v9, v10 in ipairs(l__Players__4:GetPlayers()) do
+		local v11 = p14:getKit(v10);
+		if v11 then
+			task.spawn(function()
+				p15(v10, v11);
+			end);
+		end;
+	end;
 	return v8;
 end;
-u1 = v2.KnitClient.CreateController;
-u1 = u1(v4.new());
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
+u1 = u1(v3.new());
 return nil;

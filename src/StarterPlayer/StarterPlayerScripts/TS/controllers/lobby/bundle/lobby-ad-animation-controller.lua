@@ -37,7 +37,7 @@ function v4.KnitStart(p2)
 		v7.RollOffMinDistance = 50;
 		v7.RollOffMaxDistance = 85;
 		v7.RollOffMode = Enum.RollOffMode.Linear;
-		v7.Volume = 0.9;
+		v7.Volume = 0.75;
 		l__ContentProvider__7:PreloadAsync({ v6, v7 });
 		if not p3.PrimaryPart then
 			p3:GetPropertyChangedSignal("PrimaryPart"):Wait();
