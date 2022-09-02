@@ -658,16 +658,16 @@ return function(p1, p2)
 	function getToolAnim(p40)
 		local v75, v76, v77 = ipairs(p40:GetChildren());
 		while true do
-			v75(v76, v77);
-			if v75 then
+			local v78, v79 = v75(v76, v77);
+			if v78 then
 
 			else
 				break;
 			end;
-			v77 = v75;
-			if v76.Name == "toolanim" then
-				if v76.className == "StringValue" then
-					return v76;
+			v77 = v78;
+			if v79.Name == "toolanim" then
+				if v79.className == "StringValue" then
+					return v79;
 				end;
 			end;		
 		end;
@@ -737,9 +737,9 @@ return function(p1, p2)
 				stopAllAnimations();
 			end;
 		end;
-		local v78 = p1:FindFirstChildOfClass("Tool");
-		if v78 then
-			if v78:FindFirstChild("Handle") then
+		local v80 = p1:FindFirstChildOfClass("Tool");
+		if v80 then
+			if v80:FindFirstChild("Handle") then
 
 			else
 				stopToolAnimations();
@@ -755,10 +755,10 @@ return function(p1, p2)
 			u26 = 0;
 			return;
 		end;
-		local v79 = getToolAnim(v78);
-		if v79 then
-			u24 = v79.Value;
-			v79.Parent = nil;
+		local v81 = getToolAnim(v80);
+		if v81 then
+			u24 = v81.Value;
+			v81.Parent = nil;
 			u26 = p41 + 0.3;
 		end;
 		if u26 < p41 then
@@ -767,23 +767,23 @@ return function(p1, p2)
 		end;
 		animateTool();
 	end;
-	local v80 = {};
-	table.insert(v80, l__Humanoid__1.Died:connect(onDied));
-	table.insert(v80, l__Humanoid__1.Running:connect(onRunning));
-	table.insert(v80, l__Humanoid__1.Jumping:connect(onJumping));
+	local v82 = {};
+	table.insert(v82, l__Humanoid__1.Died:connect(onDied));
+	table.insert(v82, l__Humanoid__1.Running:connect(onRunning));
+	table.insert(v82, l__Humanoid__1.Jumping:connect(onJumping));
 	playAnimation("idle", 0.1, l__Humanoid__1);
 	u22 = "Standing";
 	local u27 = true;
 	task.defer(function()
 		while p1.Parent ~= nil and u27 == true do
-			local v81, v82 = wait(0.1);
-			stepAnimate(v82);		
+			local v83, v84 = wait(0.1);
+			stepAnimate(v84);		
 		end;
 	end);
 	return function()
 		u27 = false;
-		for v83, v84 in pairs(v80) do
-			v84:Disconnect();
+		for v85, v86 in pairs(v82) do
+			v86:Disconnect();
 		end;
 	end;
 end;
