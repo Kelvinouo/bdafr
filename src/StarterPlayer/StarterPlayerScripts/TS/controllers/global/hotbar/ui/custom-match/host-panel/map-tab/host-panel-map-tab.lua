@@ -61,31 +61,43 @@ return {
 			});
 		end;
 		local v12 = table.create(#l__mapSaves__10);
-		for v13, v14 in ipairs(l__mapSaves__10) do
-			v12[v13] = v11(v14, v13 - 1, l__mapSaves__10);
+		local v13, v14, v15 = ipairs(l__mapSaves__10);
+		while true do
+			v13(v14, v15);
+			if not v13 then
+				break;
+			end;
+			v15 = v13;
+			v12[v13] = v11(v14, v13 - 1, l__mapSaves__10);		
 		end;
-		local v15 = {
+		local v16 = {
 			Size = UDim2.fromScale(1, 0.6)
 		};
-		local v16 = { u5.createElement("UIListLayout", {
+		local v17 = { u5.createElement("UIListLayout", {
 				FillDirection = "Horizontal", 
 				Padding = UDim.new(0.03, 0), 
 				SortOrder = "LayoutOrder"
 			}) };
-		local v17 = #v16;
-		for v18, v19 in ipairs(v12) do
-			v16[v17 + v18] = v19;
+		local v18 = #v17;
+		local v19, v20, v21 = ipairs(v12);
+		while true do
+			v19(v20, v21);
+			if not v19 then
+				break;
+			end;
+			v21 = v19;
+			v17[v18 + v19] = v20;		
 		end;
-		local v20 = false;
+		local v22 = false;
 		if #p1.store.CustomMatch.mapSaves < 3 then
-			local v21 = {};
-			local v22 = {
+			local v23 = {};
+			local v24 = {
 				Size = UDim2.fromScale(0.3, 1), 
 				BackgroundColor3 = l__Theme__6.backgroundTertiary, 
 				BorderSizePixel = 0, 
 				LayoutOrder = 3
 			};
-			v22[u5.Event.Activated] = function()
+			v24[u5.Event.Activated] = function()
 				if v5 then
 					return nil;
 				end;
@@ -101,14 +113,14 @@ return {
 				end);
 			end;
 			if v5 then
-				local v23 = false;
+				local v25 = false;
 			else
-				v23 = true;
+				v25 = true;
 			end;
-			v22.AutoButtonColor = v23;
-			local v24 = {};
+			v24.AutoButtonColor = v25;
+			local v26 = {};
 			if v5 then
-				local v25 = u5.createElement("TextLabel", {
+				local v27 = u5.createElement("TextLabel", {
 					Size = UDim2.fromScale(0.75, 0.25), 
 					Text = "<b>SAVING...</b>", 
 					RichText = true, 
@@ -119,7 +131,7 @@ return {
 					LayoutOrder = 2
 				});
 			else
-				v25 = u5.createFragment({ u5.createElement("ImageLabel", {
+				v27 = u5.createFragment({ u5.createElement("ImageLabel", {
 						Size = UDim2.fromScale(0.25, 0.25), 
 						Image = l__BedwarsImageId__11.PLUS, 
 						ScaleType = "Fit", 
@@ -136,21 +148,21 @@ return {
 						LayoutOrder = 2
 					}) });
 			end;
-			v24[1] = u5.createElement("UIListLayout", {
+			v26[1] = u5.createElement("UIListLayout", {
 				FillDirection = "Vertical", 
 				VerticalAlignment = "Center", 
 				HorizontalAlignment = "Center", 
 				SortOrder = "LayoutOrder", 
 				Padding = UDim.new(0.075, 0)
 			});
-			v24[2] = v25;
-			v21.SaveMap = u5.createElement("ImageButton", v22, v24);
-			v20 = u5.createFragment(v21);
+			v26[2] = v27;
+			v23.SaveMap = u5.createElement("ImageButton", v24, v26);
+			v22 = u5.createFragment(v23);
 		end;
-		if v20 then
-			v16[#v16 + 1] = v20;
+		if v22 then
+			v17[#v17 + 1] = v22;
 		end;
-		v8[v9 + 1] = u5.createElement(l__Empty__12, v15, v16);
+		v8[v9 + 1] = u5.createElement(l__Empty__12, v16, v17);
 		v8[v9 + 2] = u5.createElement("TextLabel", {
 			Size = UDim2.fromScale(1, 0), 
 			AutomaticSize = "Y", 
@@ -159,14 +171,14 @@ return {
 				if l__DeviceUtil__3.isHoarceKat() then
 					return 0;
 				end;
-				local v26 = l__Workspace__4:WaitForChild("Map");
-				if v26 ~= nil then
-					v26 = v26:WaitForChild("Worlds");
-					if v26 ~= nil then
-						v26 = v26:FindFirstChildWhichIsA("Folder");
+				local v28 = l__Workspace__4:WaitForChild("Map");
+				if v28 ~= nil then
+					v28 = v28:WaitForChild("Worlds");
+					if v28 ~= nil then
+						v28 = v28:FindFirstChildWhichIsA("Folder");
 					end;
 				end;
-				return #v26.Blocks:GetChildren() + #v26.BreakableBlocks:GetChildren();
+				return #v28.Blocks:GetChildren() + #v28.BreakableBlocks:GetChildren();
 			end)())) .. " blocks in the map</b>", 
 			TextScaled = true, 
 			RichText = true, 

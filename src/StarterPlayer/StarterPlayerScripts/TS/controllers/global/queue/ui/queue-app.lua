@@ -1,4 +1,3 @@
--- Script Hash: 99a29dbea3147c875249378492c6e76dbe3f28c65f9e7028022be0361f45e8c40eabe53c7694aae34eb575e7cb16ab03
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -9,7 +8,7 @@ function v3.init(p1)
 end;
 local l__QueueState__1 = v1.import(script, v1.getModule(script, "@easy-games", "lobby").out).QueueState;
 local l__QueueCard__2 = v1.import(script, script.Parent, "queue-card").QueueCard;
-local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 function v3.render(p2)
 	local v4 = {};
 	local v5 = false;
@@ -35,6 +34,7 @@ return {
 		return v2.createFragment({
 			QueueApp = v2.createElement("ScreenGui", {
 				IgnoreGuiInset = true, 
+				DisplayOrder = 1000, 
 				ResetOnSpawn = false
 			}, { v2.createElement(v3, {
 					store = p3.store

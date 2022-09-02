@@ -1,4 +1,3 @@
--- Script Hash: 4d7fd494fd4ac16c190175ffb4f1241d6e65203021d09627c74bb09d5bc184873a0b33c0fce1b49f2507df449e3c3a2e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__Workspace__1 = game:GetService("Workspace");

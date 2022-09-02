@@ -1,4 +1,3 @@
--- Script Hash: b0fd15db9d0ac2b7406c7a82537e6575ed228a15099a678d182472471973dc2e5a43e73b549b56ad42867b87fce2ee92
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -16,25 +15,24 @@ function v5.new(...)
 	local v6 = setmetatable({}, v5);
 	return v6:constructor(...) and v6;
 end;
-local u1 = v4;
 function v5.constructor(p1, ...)
-	u1.constructor(p1, ...);
+	v4.constructor(p1, ...);
 end;
-local l__Players__2 = v3.Players;
-local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
-local l__SoundManager__4 = v2.SoundManager;
-local l__GameSound__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__ReplicatedStorage__6 = v3.ReplicatedStorage;
-local l__Workspace__7 = v3.Workspace;
-local l__GameQueryUtil__8 = v2.GameQueryUtil;
-local l__EffectUtil__9 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "effect", "effect-util").EffectUtil;
+local l__Players__1 = v3.Players;
+local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
+local l__SoundManager__3 = v2.SoundManager;
+local l__GameSound__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local l__ReplicatedStorage__5 = v3.ReplicatedStorage;
+local l__Workspace__6 = v3.Workspace;
+local l__GameQueryUtil__7 = v2.GameQueryUtil;
+local l__EffectUtil__8 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "effect", "effect-util").EffectUtil;
 function v5.onApply(p2, p3, p4)
 	if p3.PrimaryPart == nil then
 		return nil;
 	end;
-	local v7 = p3 == l__Players__2.LocalPlayer.Character;
+	local v7 = p3 == l__Players__1.LocalPlayer.Character;
 	if v7 then
-		p2.maid:GiveTask(l__KnitClient__3.Controllers.JumpHeightController:getJumpModifier():addModifier({
+		p2.maid:GiveTask(l__KnitClient__2.Controllers.JumpHeightController:getJumpModifier():addModifier({
 			jumpHeightMultiplier = 2, 
 			airJumps = 1
 		}));
@@ -49,9 +47,9 @@ function v5.onApply(p2, p3, p4)
 				v10 = p3.PrimaryPart.Position;
 			end;
 			v9.position = v10;
-			l__SoundManager__4:playSound(l__GameSound__5.DUCK_JUMP, v9);
-			local v11 = l__ReplicatedStorage__6.Assets.Effects.Enchant.Updraft:Clone();
-			v11.Parent = l__Workspace__7;
+			l__SoundManager__3:playSound(l__GameSound__4.DUCK_JUMP, v9);
+			local v11 = l__ReplicatedStorage__5.Assets.Effects.Enchant.Updraft:Clone();
+			v11.Parent = l__Workspace__6;
 			local v12 = p3.PrimaryPart;
 			if v12 ~= nil then
 				v12 = v12.CFrame;
@@ -68,15 +66,14 @@ function v5.onApply(p2, p3, p4)
 				v15 = v8 + Vector3.new(0, -2.5, 0);
 			end;
 			v11.CFrame = v15;
-			l__GameQueryUtil__8:setQueryIgnored(v11, true);
-			l__EffectUtil__9:playEffects({ v11 }, nil);
+			l__GameQueryUtil__7:setQueryIgnored(v11, true);
+			l__EffectUtil__8:playEffects({ v11 }, nil);
 		end;
 	end));
 end;
 function v5.onRemove(p7, p8, p9)
 
 end;
-u1 = {
+return {
 	UpdraftStatusEffectHandler = v5
 };
-return v4;

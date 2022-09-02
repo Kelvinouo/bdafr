@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -16,17 +15,16 @@ function u1.new(...)
 	local v5 = setmetatable({}, u1);
 	return v5:constructor(...) and v5;
 end;
-local u2 = l__KnitController__3;
-local l__tabListLayout__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "tab-list", "tab-list-config").tabListLayout;
-local u4 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
-local u5 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-local l__ContentProvider__6 = v2.ContentProvider;
-local l__TabListRank__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "tab-list", "tab-list-ranks.dto").TabListRank;
-local l__getTablistRankMeta__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "tab-list", "tab-list-rank-meta").getTablistRankMeta;
-local l__Players__9 = v2.Players;
-local l__ClientStore__10 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
+local l__tabListLayout__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "tab-list", "tab-list-config").tabListLayout;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
+local u4 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
+local l__ContentProvider__5 = v2.ContentProvider;
+local l__TabListRank__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "tab-list", "tab-list-ranks.dto").TabListRank;
+local l__getTablistRankMeta__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "tab-list", "tab-list-rank-meta").getTablistRankMeta;
+local l__Players__8 = v2.Players;
+local l__ClientStore__9 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function u1.constructor(p1)
-	u2.constructor(p1);
+	l__KnitController__3.constructor(p1);
 	p1.Name = "TabListController";
 	p1.tabListOpen = false;
 	p1.starCreatorGroupId = 4199740;
@@ -36,13 +34,13 @@ function u1.constructor(p1)
 	p1.playerRanks = {};
 	function p1.openTablist()
 		if p1.tabListFrame then
-			p1.tabListFrame.Position = UDim2.fromScale(l__tabListLayout__3.openedPositionX, l__tabListLayout__3.closedPositionY);
+			p1.tabListFrame.Position = UDim2.fromScale(l__tabListLayout__2.openedPositionX, l__tabListLayout__2.closedPositionY);
 			p1.tabListOpen = true;
 		end;
 	end;
 	function p1.closeTablist()
 		if p1.tabListFrame then
-			p1.tabListFrame.Position = UDim2.fromScale(l__tabListLayout__3.closedPositionX, l__tabListLayout__3.closedPositionY);
+			p1.tabListFrame.Position = UDim2.fromScale(l__tabListLayout__2.closedPositionX, l__tabListLayout__2.closedPositionY);
 			p1.tabListOpen = false;
 		end;
 	end;
@@ -62,155 +60,183 @@ function u1.constructor(p1)
 				v8 = v8 + 1;
 				v7[v8] = { v9, v10 };
 			end;
-			local function v11(p4)
-				local v12 = p4[1];
-				local l__players__13 = p1.players;
-				l__players__13[v12] = p3;
-				return l__players__13[v12];
+			local v11 = table.create(#v7);
+			local v12, v13, v14 = ipairs(v7);
+			while true do
+				v12(v13, v14);
+				if not v12 then
+					break;
+				end;
+				v14 = v12;
+				local v15 = v13[1];
+				local l__players__16 = p1.players;
+				l__players__16[v15] = p3;
+				v11[v12] = l__players__16[v15];			
 			end;
-			local v14 = table.create(#v7);
-			for v15, v16 in ipairs(v7) do
-				v14[v15] = v11(v16, v15 - 1, v7);
-			end;
-			return v14;
+			return v11;
 		end;
 		local v17 = table.create(#p2);
-		for v18, v19 in ipairs(p2) do
-			v17[v18] = v6(v19, v18 - 1, p2);
+		local v18, v19, v20 = ipairs(p2);
+		while true do
+			v18(v19, v20);
+			if not v18 then
+				break;
+			end;
+			v20 = v18;
+			v17[v18] = v6(v19, v18 - 1, p2);		
 		end;
 		return p1.players;
 	end;
-	function p1.preLoadKitAvatars(p5)
+	function p1.preLoadKitAvatars(p4)
 		v1.Promise.defer(function()
-			local v20 = u4.values(p1.kitImageIds);
-			local function v21(p6)
-				return u5("ImageLabel", {
-					Image = p6
-				});
-			end;
-			local v22 = table.create(#v20);
-			for v23, v24 in ipairs(v20) do
-				v22[v23] = v21(v24, v23 - 1, v20);
-			end;
-			l__ContentProvider__6:PreloadAsync(v22);
-		end);
-	end;
-	function p1.preLoadRankIcons(p7)
-		v1.Promise.defer(function()
-			local v25 = u4.values(l__TabListRank__7);
-			local function v26(p8)
-				local v27 = l__getTablistRankMeta__8(p8);
-				local l__iconAssetId__28 = v27.iconAssetId;
-				if l__iconAssetId__28 == "" or not l__iconAssetId__28 then
-					return u5("ImageLabel", {});
+			local v21 = u3.values(p1.kitImageIds);
+			local v22 = table.create(#v21);
+			local v23, v24, v25 = ipairs(v21);
+			while true do
+				v23(v24, v25);
+				if not v23 then
+					break;
 				end;
-				return u5("ImageLabel", {
-					Image = v27.iconAssetId
-				});
+				v25 = v23;
+				v22[v23] = u4("ImageLabel", {
+					Image = v24
+				});			
 			end;
-			local v29 = table.create(#v25);
-			for v30, v31 in ipairs(v25) do
-				v29[v30] = v26(v31, v30 - 1, v25);
-			end;
-			l__ContentProvider__6:PreloadAsync(v29);
+			l__ContentProvider__5:PreloadAsync(v22);
 		end);
 	end;
-	function p1.assignTabListRanks(p9)
-		if #u4.keys(p1.players) == 0 then
+	function p1.preLoadRankIcons(p5)
+		v1.Promise.defer(function()
+			local v26 = u3.values(l__TabListRank__6);
+			local function v27(p6)
+				local v28 = l__getTablistRankMeta__7(p6);
+				local l__iconAssetId__29 = v28.iconAssetId;
+				if l__iconAssetId__29 == "" or not l__iconAssetId__29 then
+					return u4("ImageLabel", {});
+				end;
+				return u4("ImageLabel", {
+					Image = v28.iconAssetId
+				});
+			end;
+			local v30 = table.create(#v26);
+			local v31, v32, v33 = ipairs(v26);
+			while true do
+				v31(v32, v33);
+				if not v31 then
+					break;
+				end;
+				v33 = v31;
+				v30[v31] = v27(v32, v31 - 1, v26);			
+			end;
+			l__ContentProvider__5:PreloadAsync(v30);
+		end);
+	end;
+	function p1.assignTabListRanks(p7)
+		if #u3.keys(p1.players) == 0 then
 			return nil;
 		end;
-		v1.Promise.defer(v1.async(function(p10, p11)
-			local function v32(p12)
-				local v33 = {};
-				local v34 = #v33;
-				for v35, v36 in pairs(p12.members) do
-					v34 = v34 + 1;
-					v33[v34] = { v35, v36 };
+		v1.Promise.defer(v1.async(function(p8, p9)
+			local function v34(p10)
+				local v35 = {};
+				local v36 = #v35;
+				for v37, v38 in pairs(p10.members) do
+					v36 = v36 + 1;
+					v35[v36] = { v37, v38 };
 				end;
-				local function v37(p13)
-					local v38 = p13[1];
-					if p1.playerRanks[v38] then
+				local function v39(p11)
+					local v40 = p11[1];
+					if p1.playerRanks[v40] then
 						return v1.Promise.new(function()
 
 						end);
 					end;
-					return p1.isGameDeveloper((l__Players__9:GetPlayerByUserId(v38))):andThen(function(p14)
-						if p14 then
-							p1.playerRanks[v38] = l__TabListRank__7.DEVELOPER;
+					return p1.isGameDeveloper((l__Players__8:GetPlayerByUserId(v40))):andThen(function(p12)
+						if p12 then
+							p1.playerRanks[v40] = l__TabListRank__6.DEVELOPER;
 						end;
 					end);
 				end;
-				local v39 = table.create(#v33);
-				for v40, v41 in ipairs(v33) do
-					v39[v40] = v37(v41, v40 - 1, v33);
+				local v41 = table.create(#v35);
+				local v42, v43, v44 = ipairs(v35);
+				while true do
+					v42(v43, v44);
+					if not v42 then
+						break;
+					end;
+					v44 = v42;
+					v41[v42] = v39(v43, v42 - 1, v35);				
 				end;
-				return v1.Promise.all(v39);
+				return v1.Promise.all(v41);
 			end;
-			local v42 = table.create(#p9);
-			for v43, v44 in ipairs(p9) do
-				v42[v43] = v32(v44, v43 - 1, p9);
+			local v45 = table.create(#p7);
+			local v46, v47, v48 = ipairs(p7);
+			while true do
+				v46(v47, v48);
+				if not v46 then
+					break;
+				end;
+				v48 = v46;
+				v45[v46] = v34(v47, v46 - 1, p7);			
 			end;
-			v1.Promise.all(v42):andThen(function()
-				l__ClientStore__10:dispatch({
+			v1.Promise.all(v45):andThen(function()
+				l__ClientStore__9:dispatch({
 					type = "TabListSetRanksBulk", 
 					ranks = p1.playerRanks
 				});
 			end);
 		end));
 	end;
-	function p1.isStarCreator(p15)
-		return v1.Promise.defer(function(p16)
-			local v45 = p15;
-			if v45 ~= nil then
-				v45 = v45:IsInGroup(p1.starCreatorGroupId);
+	function p1.isStarCreator(p13)
+		return v1.Promise.defer(function(p14)
+			local v49 = p13;
+			if v49 ~= nil then
+				v49 = v49:IsInGroup(p1.starCreatorGroupId);
 			end;
-			if v45 then
-				p16(true);
+			if v49 then
+				p14(true);
+			end;
+			p14(false);
+		end);
+	end;
+	function p1.isGameDeveloper(p15)
+		local u10 = l__getTablistRankMeta__7(l__TabListRank__6.DEVELOPER);
+		return v1.Promise.defer(function(p16)
+			local v50 = p15;
+			if v50 ~= nil then
+				v50 = v50:IsInGroup(p1.easyGamesGroupId);
+			end;
+			if v50 then
+				local v51 = u10.rankInGroup;
+				if v51 ~= nil then
+					v51 = table.find(v51, (p15:GetRankInGroup(p1.easyGamesGroupId))) ~= nil;
+				end;
+				if v51 then
+					p16(true);
+				end;
 			end;
 			p16(false);
 		end);
 	end;
-	function p1.isGameDeveloper(p17)
-		local u11 = l__getTablistRankMeta__8(l__TabListRank__7.DEVELOPER);
-		return v1.Promise.defer(function(p18)
-			local v46 = p17;
-			if v46 ~= nil then
-				v46 = v46:IsInGroup(p1.easyGamesGroupId);
-			end;
-			if v46 then
-				local v47 = u11.rankInGroup;
-				if v47 ~= nil then
-					v47 = table.find(v47, (p17:GetRankInGroup(p1.easyGamesGroupId))) ~= nil;
-				end;
-				if v47 then
-					p18(true);
-				end;
-			end;
-			p18(false);
-		end);
-	end;
 end;
-local l__PlaceUtil__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "place-util").PlaceUtil;
-local l__default__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-function u1.KnitStart(p19)
-	if l__PlaceUtil__12.isLobbyServer() then
+local l__PlaceUtil__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "place-util").PlaceUtil;
+local l__default__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+function u1.KnitStart(p17)
+	if l__PlaceUtil__11.isLobbyServer() then
 		return nil;
 	end;
-	l__default__13.Client:WaitFor("RemoteName"):expect():Connect(function(p20)
-		l__ClientStore__10:dispatch({
+	l__default__12.Client:WaitFor("RemoteName"):expect():Connect(function(p18)
+		l__ClientStore__9:dispatch({
 			type = "TabListSetTeams", 
-			teams = p20.teams
+			teams = p18.teams
 		});
-		l__ClientStore__10:dispatch({
+		l__ClientStore__9:dispatch({
 			type = "TabListSetPlayersTeamBulk", 
-			playersTeam = p19.setupPlayerCache(p20.teams)
+			playersTeam = p17.setupPlayerCache(p18.teams)
 		});
 	end);
 end;
-u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1.new;
-u2 = u2(u1());
-u1 = {
-	TabListController = u2
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
+u1 = u1(u1.new());
+return {
+	TabListController = u1
 };
-return u1;

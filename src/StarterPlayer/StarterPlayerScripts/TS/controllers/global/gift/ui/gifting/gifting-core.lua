@@ -1,4 +1,3 @@
--- Script Hash: 889e26622d704e8d3e5d137deb6f32215c0b4c6a6880e1ca68cb815489e39c4a5f644014c7070bb7aca2a5ce728104ef
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -6,7 +5,7 @@ local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").ou
 local l__GiftMeta__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "gift", "gift-meta").GiftMeta;
 local l__Flamework__2 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 local l__DeviceUtil__3 = v2.DeviceUtil;
-local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local u5 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__GiftingFriendsList__6 = v1.import(script, script.Parent, "gifting-friends-list", "gifting-friends-list").GiftingFriendsList;
 local l__DarkBackground__7 = v2.DarkBackground;

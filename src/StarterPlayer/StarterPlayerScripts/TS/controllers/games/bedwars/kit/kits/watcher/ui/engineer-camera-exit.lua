@@ -1,15 +1,14 @@
--- Script Hash: 42a0262b6f99072dc4e348d7a003c0ab2f7afa6cc0b3e279712208aaa598336b53b377d238241c457c4472c0660f8e96
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local v3 = v2.Component:extend("EngineerCameraExit");
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local u2 = v1.import(script, v1.getModule(script, "@rbxts", "flipper").src);
 local l__SoundManager__3 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).SoundManager;
 local l__GameSound__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function v3.init(p1, p2)
-	p1.maid = l__Maid__1.new();
+	p1.maid = u1.new();
 	p1.sizeMotor = u2.GroupMotor.new({
 		x = 120, 
 		y = 50

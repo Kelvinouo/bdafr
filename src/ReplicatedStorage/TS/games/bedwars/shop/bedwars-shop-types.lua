@@ -47,21 +47,27 @@ local v14 = v2.MapUtil.keys(v10);
 local v15 = #v14;
 table.move(v14, 1, v15, v13 + 1, v12);
 v12[v13 + v15 + 1] = v7.Void;
-for v16, v17 in ipairs(v12) do
+local v16, v17, v18 = ipairs(v12);
+while true do
+	v16(v17, v18);
+	if not v16 then
+		break;
+	end;
+	v18 = v16;
 	v11[v17] = true;
 end;
-local v18 = v2.SetUtil.values(v11);
+local v19 = v2.SetUtil.values(v11);
 if not l__VoidWorldUtil__5.VOID_ENABLED then
-	local v19 = (table.find(v18, v7.Void) and 0) - 1;
-	if v19 >= 0 then
-		table.remove(v18, v19 + 1);
+	local v20 = (table.find(v19, v7.Void) and 0) - 1;
+	if v20 >= 0 then
+		table.remove(v19, v20 + 1);
 	end;
 end;
 return {
 	BedwarsShopItemCategory = v7, 
 	TeamUpgradeId = v9, 
 	BedwarsShopUnlockableCategories = v10, 
-	BedwarsShopCategoryPanels = v18, 
+	BedwarsShopCategoryPanels = v19, 
 	BedwarsShopCategoryIcons = {
 		[v7.Void] = l__BedwarsImageId__4.VOID_ICON_SOLID, 
 		[v7.Armory] = l__ImageId__3.HELMET_SOLID

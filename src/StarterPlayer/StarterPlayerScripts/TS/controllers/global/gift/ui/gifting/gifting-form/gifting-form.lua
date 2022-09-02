@@ -1,4 +1,3 @@
--- Script Hash: d54ef168f111ef6b7685ffb1e670cfebccb4ad892917b9a48b0d72e4068c53f025b7f815b774f79731b8a39ba505786c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -19,18 +18,21 @@ v1.Promise.defer(function()
 			Image = l__ImageId__2.EXCLAMATION_TRIANGLE
 		}) };
 	l__ContentProvider__3:PreloadAsync(v11, function(p1)
-		local function v12(p2)
-			return p2.Image == p1;
-		end;
-		local v13 = nil;
-		for v14, v15 in ipairs(v11) do
-			if v12(v15, v14 - 1, v11) == true then
-				v13 = v15;
+		local v12 = nil;
+		local v13, v14, v15 = ipairs(v11);
+		while true do
+			v13(v14, v15);
+			if not v13 then
 				break;
 			end;
+			v15 = v13;
+			if v14.Image == p1 == true then
+				v12 = v14;
+				break;
+			end;		
 		end;
-		if v13 ~= nil then
-			v13:Destroy();
+		if v12 ~= nil then
+			v12:Destroy();
 		end;
 	end);
 end);
@@ -42,22 +44,22 @@ local l__ColorUtil__8 = v2.ColorUtil;
 local l__DividerComponent__9 = v2.DividerComponent;
 local l__ButtonComponent__10 = v2.ButtonComponent;
 return {
-	GiftingForm = v4.new(v3)(function(p3, p4)
-		local l__useState__16 = p4.useState;
-		local l__useMemo__17 = p4.useMemo;
+	GiftingForm = v4.new(v3)(function(p2, p3)
+		local l__useState__16 = p3.useState;
+		local l__useMemo__17 = p3.useMemo;
 		local v18, v19 = l__useState__16("");
 		local v20, v21 = l__useState__16("");
 		local v22, v23 = l__useState__16("");
 		local v24, v25 = l__useState__16("");
 		local v26 = l__useMemo__17(function()
 			return v3.createElement(l__GiftingRecipientInput__10, {
-				FriendsListUser = p3.FriendsListUser, 
-				Friends = p3.Friends, 
+				FriendsListUser = p2.FriendsListUser, 
+				Friends = p2.Friends, 
 				Size = UDim2.fromScale(1, 0.15), 
 				LayoutOrder = 3, 
 				SetRecipient = v23
 			});
-		end, { p3.Friends, p3.FriendsListUser });
+		end, { p2.Friends, p2.FriendsListUser });
 		local v27 = l__useMemo__17(function()
 			return v3.createElement(l__GiftingMessageInput__9, {
 				Size = UDim2.fromScale(1, 0.35), 
@@ -65,27 +67,26 @@ return {
 				SetMessage = v25
 			});
 		end, {});
-		p4.useEffect(function()
+		p3.useEffect(function()
 			if l__DeviceUtil__6.isHoarceKat() then
 				return;
 			end;
-			local function u11(p5)
-				return v1.Promise.defer(function(p6, p7)
-					p6(l__Players__7:GetNameFromUserIdAsync(p5));
-				end);
-			end;
-			local u12 = u4:WaitFor("GiftSent"):andThen(function(p8)
-				return p8:Connect(function(p9)
-					u11(p9.giftedPlayerUserId):andThen(function(p10)
+			local u11 = u4:WaitFor("GiftSent"):andThen(function(p4)
+				return p4:Connect(function(p5)
+					local u12 = p5.giftedPlayerUserId;
+					u12 = function(p6)
 						l__SoundManager__5:playSound(l__GameSound__7.BEDWARS_UPGRADE_SUCCESS);
 						v21("");
-						v19("Your gift of the <font color=\"#FFFFFF\"><b>" .. p9.gift.name .. "</b></font> has been sent to <font color=\"#FFFFFF\"><b>" .. tostring(p10) .. "</b></font>!");
-					end);
+						v19("Your gift of the <font color=\"#FFFFFF\"><b>" .. p5.gift.name .. "</b></font> has been sent to <font color=\"#FFFFFF\"><b>" .. tostring(p6) .. "</b></font>!");
+					end;
+					v1.Promise.defer(function(p7, p8)
+						p7(l__Players__7:GetNameFromUserIdAsync(u12));
+					end):andThen(u12);
 				end);
 			end);
 			return function()
-				u12:andThen(function(p11)
-					p11:Disconnect();
+				u11:andThen(function(p9)
+					p9:Disconnect();
 				end);
 			end;
 		end, {});
@@ -105,11 +106,11 @@ return {
 				Padding = UDim.new(0, 10)
 			}) };
 		local v31 = false;
-		if p3.Gift.imageId ~= nil then
+		if p2.Gift.imageId ~= nil then
 			v31 = v3.createFragment({
 				GiftImage = v3.createElement("ImageLabel", {
 					Size = UDim2.fromScale(0.2, 1), 
-					Image = p3.Gift.imageId, 
+					Image = p2.Gift.imageId, 
 					SizeConstraint = "RelativeXY", 
 					ScaleType = "Fit", 
 					BackgroundTransparency = 1
@@ -119,11 +120,11 @@ return {
 		if v31 then
 			v30[#v30 + 1] = v31;
 		end;
-		local v32 = p3.Gift.customImage and v3.createFragment({
+		local v32 = p2.Gift.customImage and v3.createFragment({
 			GiftImageCustom = v3.createElement("Frame", {
 				Size = UDim2.fromScale(0.2, 1), 
 				BackgroundTransparency = 1
-			}, { p3.Gift.customImage })
+			}, { p2.Gift.customImage })
 		});
 		if v32 then
 			v30[#v30 + 1] = v32;
@@ -133,7 +134,7 @@ return {
 			BackgroundTransparency = 1, 
 			LayoutOrder = 1
 		}, { v3.createElement("TextLabel", {
-				Text = "<b>" .. p3.Gift.name .. "</b>", 
+				Text = "<b>" .. p2.Gift.name .. "</b>", 
 				AnchorPoint = Vector2.new(0, 0), 
 				Position = UDim2.fromScale(0, 0), 
 				Size = UDim2.new(0, 0, 0, 19), 
@@ -146,7 +147,7 @@ return {
 				BackgroundTransparency = 1, 
 				RichText = true
 			}), v3.createElement("TextLabel", {
-				Text = "<b>" .. tostring(p3.Gift.price) .. " Robux</b>", 
+				Text = "<b>" .. tostring(p2.Gift.price) .. " Robux</b>", 
 				AnchorPoint = Vector2.new(0, 1), 
 				Position = UDim2.fromScale(0, 1), 
 				Size = UDim2.new(0, 0, 0, 16), 
@@ -172,44 +173,40 @@ return {
 		});
 		v28[v29 + 2] = v26;
 		v28[#v28 + 1] = v27;
-		local v33 = {
-			Text = "Gift " .. p3.Gift.name
-		};
-		local function u13()
-			u4:WaitFor("SendGift"):andThen(function(p12)
-				local v34 = {};
-				for v35, v36 in pairs(p3.Gift) do
-					v34[v35] = v36;
-				end;
-				v34.customImage = nil;
-				local v37 = p12:CallServer({
-					username = v22, 
-					message = v24, 
-					gift = v34, 
-					giftType = p3.GiftType
-				});
-				local l__errorMessage__38 = v37.errorMessage;
-				if v37.success then
-					v21("");
-					v19("Confirm the purchase to gift the <font color=\"#FFFFFF\"><b>" .. p3.Gift.name .. "</b></font> to <font color=\"#FFFFFF\"><b>" .. v22 .. "</b></font>");
-				end;
-				if l__errorMessage__38 ~= "" and l__errorMessage__38 then
-					l__SoundManager__5:playSound(l__GameSound__7.ERROR_NOTIFICATION);
-					v19("");
-					v21(l__errorMessage__38);
-				end;
-			end);
-		end;
-		function v33.OnClick()
-			u13();
-		end;
-		v33.Size = UDim2.new(1, 0, 0, 32);
-		v33.TextSize = 18;
-		v33.LayoutOrder = 5;
-		v28.FormSubmit = v3.createElement(l__ButtonComponent__10, v33);
-		local v39 = false;
+		v28.FormSubmit = v3.createElement(l__ButtonComponent__10, {
+			Text = "Gift " .. p2.Gift.name, 
+			OnClick = function()
+				u4:WaitFor("SendGift"):andThen(function(p10)
+					local v33 = {};
+					for v34, v35 in pairs(p2.Gift) do
+						v33[v34] = v35;
+					end;
+					v33.customImage = nil;
+					local v36 = p10:CallServer({
+						username = v22, 
+						message = v24, 
+						gift = v33, 
+						giftType = p2.GiftType
+					});
+					local l__errorMessage__37 = v36.errorMessage;
+					if v36.success then
+						v21("");
+						v19("Confirm the purchase to gift the <font color=\"#FFFFFF\"><b>" .. p2.Gift.name .. "</b></font> to <font color=\"#FFFFFF\"><b>" .. v22 .. "</b></font>");
+					end;
+					if l__errorMessage__37 ~= "" and l__errorMessage__37 then
+						l__SoundManager__5:playSound(l__GameSound__7.ERROR_NOTIFICATION);
+						v19("");
+						v21(l__errorMessage__37);
+					end;
+				end);
+			end, 
+			Size = UDim2.new(1, 0, 0, 32), 
+			TextSize = 18, 
+			LayoutOrder = 5
+		});
+		local v38 = false;
 		if v20 ~= "" then
-			v39 = v3.createFragment({
+			v38 = v3.createFragment({
 				ErrorMsgWrapper = v3.createElement("Frame", {
 					Size = UDim2.fromScale(1, 0.15), 
 					BackgroundTransparency = 1, 
@@ -249,12 +246,12 @@ return {
 				})
 			});
 		end;
-		if v39 then
-			v28[#v28 + 1] = v39;
+		if v38 then
+			v28[#v28 + 1] = v38;
 		end;
-		local v40 = false;
+		local v39 = false;
 		if v18 ~= "" then
-			v40 = v3.createFragment({
+			v39 = v3.createFragment({
 				SuccessMsgWrapper = v3.createElement("Frame", {
 					Size = UDim2.fromScale(1, 0.15), 
 					BackgroundTransparency = 1, 
@@ -293,11 +290,11 @@ return {
 				})
 			});
 		end;
-		if v40 then
-			v28[#v28 + 1] = v40;
+		if v39 then
+			v28[#v28 + 1] = v39;
 		end;
 		return v3.createElement("Frame", {
-			Size = p3.Size, 
+			Size = p2.Size, 
 			BackgroundTransparency = 1, 
 			LayoutOrder = 1
 		}, v28);

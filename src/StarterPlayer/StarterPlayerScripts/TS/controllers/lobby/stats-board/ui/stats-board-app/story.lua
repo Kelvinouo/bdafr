@@ -1,4 +1,3 @@
--- Script Hash: 2d88fc0882d9188e42885725081519cf05bb83a9903d6383979e77669bd8ca6dc77584501c0fcfed3cbfa9afe0016e05
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -25,12 +24,15 @@ return function(p1)
 		bedBreaks = 333, 
 		finalKills = 533
 	};
-	local function v3(p2)
-		return { p2, u7 };
-	end;
-	local v4 = table.create(#v2);
-	for v5, v6 in ipairs(v2) do
-		v4[v5] = v3(v6, v5 - 1, v2);
+	local v3 = table.create(#v2);
+	local v4, v5, v6 = ipairs(v2);
+	while true do
+		v4(v5, v6);
+		if not v4 then
+			break;
+		end;
+		v6 = v4;
+		v3[v4] = { v5, u7 };	
 	end;
 	l__ClientStore__3:dispatch({
 		type = "SetStats", 
@@ -49,17 +51,17 @@ return function(p1)
 			bedBreaks = 3, 
 			finalKills = 5
 		}, 
-		queues = u1.fromEntries(v4), 
+		queues = u1.fromEntries(v3), 
 		rankStats = {
 			rankPoints = 3000, 
 			matchesPlayed = 6, 
 			leaderboardPosition = -1
 		}
 	});
-	local u8 = l__CreateRoduxApp__6("stats-board", function(p3)
+	local u8 = l__CreateRoduxApp__6("stats-board", function(p2)
 		local v7 = {};
 		local v8 = {};
-		for v9, v10 in pairs(p3) do
+		for v9, v10 in pairs(p2) do
 			v8[v9] = v10;
 		end;
 		v7[#v7 + 1] = u4.createElement(l__StatsBoard__5, v8);

@@ -386,13 +386,19 @@ else
 	v68 = nil;
 end;
 if v68 then
-	for v69, v70 in ipairs((v68:GetPlayingAnimationTracks())) do
+	local v69, v70, v71 = ipairs((v68:GetPlayingAnimationTracks()));
+	while true do
+		v69(v70, v71);
+		if not v69 then
+			break;
+		end;
+		v71 = v69;
 		v70:Stop(0);
-		v70:Destroy();
+		v70:Destroy();	
 	end;
 end;
-for v71, v72 in pairs(u5) do
-	configureAnimationSet(v71, v72);
+for v72, v73 in pairs(u5) do
+	configureAnimationSet(v72, v73);
 end;
 local u6 = "";
 local u7 = {
@@ -411,14 +417,14 @@ local u11 = nil;
 local u12 = nil;
 local u13 = nil;
 function stopAllAnimations()
-	local v73 = u6;
-	if u7[v73] ~= nil then
-		if u7[v73] == false then
-			v73 = "idle";
+	local v74 = u6;
+	if u7[v74] ~= nil then
+		if u7[v74] == false then
+			v74 = "idle";
 		end;
 	end;
 	if u8 then
-		v73 = "idle";
+		v74 = "idle";
 		u8 = false;
 	end;
 	u6 = "";
@@ -439,7 +445,7 @@ function stopAllAnimations()
 		u13:Destroy();
 		u13 = nil;
 	end;
-	return v73;
+	return v74;
 end;
 local u14 = l__ScaleDampeningPercent__9;
 function getHeightScale()
@@ -451,36 +457,36 @@ function getHeightScale()
 	if not l__Humanoid__2.AutomaticScalingEnabled then
 		return 1;
 	end;
-	local v74 = l__Humanoid__2.HipHeight / 2;
+	local v75 = l__Humanoid__2.HipHeight / 2;
 	if u14 == nil then
 		u14 = script:FindFirstChild("ScaleDampeningPercent");
 	end;
 	if u14 ~= nil then
-		v74 = 1 + (l__Humanoid__2.HipHeight - 2) * u14.Value / 2;
+		v75 = 1 + (l__Humanoid__2.HipHeight - 2) * u14.Value / 2;
 	end;
-	return v74;
+	return v75;
 end;
 local function u15(p16)
-	local v75 = p16 * 1.25 / getHeightScale();
-	local v76 = 0.0001;
+	local v76 = p16 * 1.25 / getHeightScale();
 	local v77 = 0.0001;
-	local v78 = v75 / 0.5;
-	local v79 = v75 / 1;
-	if v75 <= 0.5 then
-		v76 = 1;
-	elseif v75 < 1 then
-		local v80 = (v75 - 0.5) / 0.5;
-		v76 = 1 - v80;
-		v77 = v80;
-		v78 = 1;
-		v79 = 1;
-	else
+	local v78 = 0.0001;
+	local v79 = v76 / 0.5;
+	local v80 = v76 / 1;
+	if v76 <= 0.5 then
 		v77 = 1;
+	elseif v76 < 1 then
+		local v81 = (v76 - 0.5) / 0.5;
+		v77 = 1 - v81;
+		v78 = v81;
+		v79 = 1;
+		v80 = 1;
+	else
+		v78 = 1;
 	end;
-	u11:AdjustWeight(v76);
-	u13:AdjustWeight(v77);
-	u11:AdjustSpeed(v78);
-	u13:AdjustSpeed(v79);
+	u11:AdjustWeight(v77);
+	u13:AdjustWeight(v78);
+	u11:AdjustSpeed(v79);
+	u13:AdjustSpeed(v80);
 end;
 local u16 = 1;
 function setAnimationSpeed(p17)
@@ -512,37 +518,37 @@ function keyFrameReachedFunc(p18)
 				return;
 			end;
 		else
-			local v81 = u6;
-			if u7[v81] ~= nil then
-				if u7[v81] == false then
-					v81 = "idle";
+			local v82 = u6;
+			if u7[v82] ~= nil then
+				if u7[v82] == false then
+					v82 = "idle";
 				end;
 			end;
 			if u8 then
 				if u11.Looped then
 					return;
 				end;
-				v81 = "idle";
+				v82 = "idle";
 				u8 = false;
 			end;
-			playAnimation(v81, 0.15, l__Humanoid__2);
+			playAnimation(v82, 0.15, l__Humanoid__2);
 			setAnimationSpeed(u16);
 		end;
 	end;
 end;
 function rollAnimation(p19)
-	local v82 = math.random(1, u1[p19].totalWeight);
-	local v83 = 1;
+	local v83 = math.random(1, u1[p19].totalWeight);
+	local v84 = 1;
 	while true do
-		if u1[p19][v83].weight < v82 then
+		if u1[p19][v84].weight < v83 then
 
 		else
 			break;
 		end;
-		v82 = v82 - u1[p19][v83].weight;
-		v83 = v83 + 1;	
+		v83 = v83 - u1[p19][v84].weight;
+		v84 = v84 + 1;	
 	end;
-	return v83;
+	return v84;
 end;
 local function u18(p20, p21, p22, p23)
 	if p20 ~= u9 then
@@ -596,20 +602,20 @@ local u20 = nil;
 local u21 = nil;
 local u22 = nil;
 function playToolAnimation(p31, p32, p33, p34)
-	local l__anim__84 = u1[p31][rollAnimation(p31)].anim;
-	if u20 ~= l__anim__84 then
+	local l__anim__85 = u1[p31][rollAnimation(p31)].anim;
+	if u20 ~= l__anim__85 then
 		if u21 ~= nil then
 			u21:Stop();
 			u21:Destroy();
 			p32 = 0;
 		end;
-		u21 = p33:LoadAnimation(l__anim__84);
+		u21 = p33:LoadAnimation(l__anim__85);
 		if p34 then
 			u21.Priority = p34;
 		end;
 		u21:Play(p32);
 		u19 = p31;
-		u20 = l__anim__84;
+		u20 = l__anim__85;
 		u22 = u21.KeyframeReached:connect(toolKeyFrameReachedFunc);
 	end;
 end;
@@ -629,11 +635,11 @@ end;
 local u23 = v5 or v6;
 local u24 = "Standing";
 function onRunning(p35)
-	local v85 = u23;
-	if v85 then
-		v85 = u8 and l__Humanoid__2.MoveDirection == Vector3.new(0, 0, 0);
+	local v86 = u23;
+	if v86 then
+		v86 = u8 and l__Humanoid__2.MoveDirection == Vector3.new(0, 0, 0);
 	end;
-	if (v85 and l__Humanoid__2.WalkSpeed or 0.75) < p35 then
+	if (v86 and l__Humanoid__2.WalkSpeed or 0.75) < p35 then
 		playAnimation("walk", 0.2, l__Humanoid__2);
 		setAnimationSpeed(p35 / 16);
 		u24 = "Running";
@@ -708,18 +714,18 @@ function animateTool()
 	playToolAnimation("toollunge", 0, l__Humanoid__2, Enum.AnimationPriority.Action);
 end;
 function getToolAnim(p38)
-	local v86, v87, v88 = ipairs(p38:GetChildren());
+	local v87, v88, v89 = ipairs(p38:GetChildren());
 	while true do
-		local v89, v90 = v86(v87, v88);
-		if v89 then
+		v87(v88, v89);
+		if v87 then
 
 		else
 			break;
 		end;
-		v88 = v89;
-		if v90.Name == "toolanim" then
-			if v90.className == "StringValue" then
-				return v90;
+		v89 = v87;
+		if v88.Name == "toolanim" then
+			if v88.className == "StringValue" then
+				return v88;
 			end;
 		end;	
 	end;
@@ -789,9 +795,9 @@ function stepAnimate(p39)
 			stopAllAnimations();
 		end;
 	end;
-	local v91 = l__Parent__1:FindFirstChildOfClass("Tool");
-	if v91 then
-		if v91:FindFirstChild("Handle") then
+	local v90 = l__Parent__1:FindFirstChildOfClass("Tool");
+	if v90 then
+		if v90:FindFirstChild("Handle") then
 
 		else
 			stopToolAnimations();
@@ -807,10 +813,10 @@ function stepAnimate(p39)
 		u28 = 0;
 		return;
 	end;
-	local v92 = getToolAnim(v91);
-	if v92 then
-		u26 = v92.Value;
-		v92.Parent = nil;
+	local v91 = getToolAnim(v90);
+	if v91 then
+		u26 = v91.Value;
+		v91.Parent = nil;
 		u28 = p39 + 0.3;
 	end;
 	if u28 < p39 then
@@ -830,14 +836,14 @@ l__Humanoid__2.Seated:connect(onSeated);
 l__Humanoid__2.PlatformStanding:connect(onPlatformStanding);
 l__Humanoid__2.Swimming:connect(onSwimming);
 game:GetService("Players").LocalPlayer.Chatted:connect(function(p40)
-	local v93 = "";
+	local v92 = "";
 	if string.sub(p40, 1, 3) == "/e " then
-		v93 = string.sub(p40, 4);
+		v92 = string.sub(p40, 4);
 	elseif string.sub(p40, 1, 7) == "/emote " then
-		v93 = string.sub(p40, 8);
+		v92 = string.sub(p40, 8);
 	end;
-	if u24 == "Standing" and u7[v93] ~= nil then
-		playAnimation(v93, 0.1, l__Humanoid__2);
+	if u24 == "Standing" and u7[v92] ~= nil then
+		playAnimation(v92, 0.1, l__Humanoid__2);
 	end;
 end);
 local u29 = v7 or v8;
@@ -867,6 +873,6 @@ if l__Parent__1.Parent ~= nil then
 	u24 = "Standing";
 end;
 while l__Parent__1.Parent ~= nil do
-	local v94, v95 = wait(0.1);
-	stepAnimate(v95);
+	local v93, v94 = wait(0.1);
+	stepAnimate(v94);
 end;

@@ -42,11 +42,17 @@ return {
 		local v9 = {};
 		local v10 = u8.values(p1.store.Bedwars.kills);
 		local v11 = table.create(#v10);
-		for v12, v13 in ipairs(v10) do
-			v11[v12] = v13;
+		local v12, v13, v14 = ipairs(v10);
+		while true do
+			v12(v13, v14);
+			if not v12 then
+				break;
+			end;
+			v14 = v12;
+			v11[v12] = v13;		
 		end;
 		table.move(v11, 1, #v11, #v9 + 1, v9);
-		local v14 = l__useMemo__3(function()
+		local v15 = l__useMemo__3(function()
 			return u5.createElement(l__HudKills__7, {
 				LayoutOrder = 2, 
 				LocalPlayerId = p1.LocalPlayerId, 
@@ -55,80 +61,98 @@ return {
 		end, v9);
 		local l__teams__19 = v7.teams;
 		local l__myTeam__20 = p1.store.Game.myTeam;
-		local v15 = {};
-		local v16 = #v15;
-		local v17 = u8.values(p1.store.Bedwars.teamBedAlive);
-		local v18 = table.create(#v17);
-		for v19, v20 in ipairs(v17) do
-			v18[v19] = v20;
+		local v16 = {};
+		local v17 = #v16;
+		local v18 = u8.values(p1.store.Bedwars.teamBedAlive);
+		local v19 = table.create(#v18);
+		local v20, v21, v22 = ipairs(v18);
+		while true do
+			v20(v21, v22);
+			if not v20 then
+				break;
+			end;
+			v22 = v20;
+			v19[v20] = v21;		
 		end;
-		local v21 = #v18;
-		table.move(v18, 1, v21, v16 + 1, v15);
-		local v22 = v16 + v21;
-		local v23 = u8.values(p1.store.Bedwars.finalDeaths);
-		local v24 = table.create(#v23);
-		for v25, v26 in ipairs(v23) do
-			v24[v25] = v26;
+		local v23 = #v19;
+		table.move(v19, 1, v23, v17 + 1, v16);
+		local v24 = v17 + v23;
+		local v25 = u8.values(p1.store.Bedwars.finalDeaths);
+		local v26 = table.create(#v25);
+		local v27, v28, v29 = ipairs(v25);
+		while true do
+			v27(v28, v29);
+			if not v27 then
+				break;
+			end;
+			v29 = v27;
+			v26[v27] = v28;		
 		end;
-		local v27 = #v24;
-		table.move(v24, 1, v27, v22 + 1, v15);
-		local v28 = v22 + v27;
-		v15[v28 + 1] = p1.store.Game.myTeam;
-		v15[v28 + 2] = p1.store.TabList.teams;
-		local v29 = l__useMemo__3(function()
+		local v30 = #v26;
+		table.move(v26, 1, v30, v24 + 1, v16);
+		local v31 = v24 + v30;
+		v16[v31 + 1] = p1.store.Game.myTeam;
+		v16[v31 + 2] = p1.store.TabList.teams;
+		local v32 = l__useMemo__3(function()
 			return u5.createElement(l__HudBeds__9, {
 				LayoutOrder = 3, 
 				teams = l__teams__19, 
 				MyTeam = l__myTeam__20, 
 				store = p1.store
 			});
-		end, v15);
-		local v30 = {};
-		local v31 = u8.values(p1.store.Bedwars.finalDeaths);
-		local v32 = table.create(#v31);
-		for v33, v34 in ipairs(v31) do
-			v32[v33] = v34;
+		end, v16);
+		local v33 = {};
+		local v34 = u8.values(p1.store.Bedwars.finalDeaths);
+		local v35 = table.create(#v34);
+		local v36, v37, v38 = ipairs(v34);
+		while true do
+			v36(v37, v38);
+			if not v36 then
+				break;
+			end;
+			v38 = v36;
+			v35[v36] = v37;		
 		end;
-		table.move(v32, 1, #v32, #v30 + 1, v30);
-		local v35 = l__useMemo__3(function()
+		table.move(v35, 1, #v35, #v33 + 1, v33);
+		local v39 = l__useMemo__3(function()
 			return u5.createElement(l__HudAlivePlayersCount__10, {
 				LayoutOrder = 3, 
 				store = p1.store
 			});
-		end, v30);
-		local v36 = p1.store.Game.customMatch;
-		if v36 ~= nil then
-			v36 = v36.hostUserId;
+		end, v33);
+		local v40 = p1.store.Game.customMatch;
+		if v40 ~= nil then
+			v40 = v40.hostUserId;
 		end;
-		local v37 = l__Players__11.LocalPlayer.UserId == v36 or l__Players__11.LocalPlayer:GetAttribute("Cohost") == true;
-		local v38 = "beds";
+		local v41 = l__Players__11.LocalPlayer.UserId == v40 or l__Players__11.LocalPlayer:GetAttribute("Cohost") == true;
+		local v42 = "beds";
 		if v7.alivePlayersCountHud then
-			v38 = "players-alive";
+			v42 = "players-alive";
 		elseif v7.scoresHud then
-			v38 = "score";
+			v42 = "score";
 		elseif v7.noTopHud then
-			v38 = "no-hud";
+			v42 = "no-hud";
 		end;
 		p2.useEffect(function()
 			if l__DeviceUtil__1.isHoarceKat() then
 				return nil;
 			end;
-			local v39 = nil;
+			local v43 = nil;
 			if l__KnitClient__12.Controllers.PermissionController:playerHasAnyPermissions(l__Players__11.LocalPlayer, { 2, 0, 4, 6 }) then
 				v5(true);
 			else
-				v39 = l__Players__11.LocalPlayer:GetAttributeChangedSignal("Cohost"):Connect(function()
+				v43 = l__Players__11.LocalPlayer:GetAttributeChangedSignal("Cohost"):Connect(function()
 					v5(l__Players__11.LocalPlayer:GetAttribute("Cohost") == true);
 				end);
 			end;
 			return function()
-				v39:Disconnect();
+				v43:Disconnect();
 			end;
 		end, {});
-		local v40 = {};
-		local v41 = false;
+		local v44 = {};
+		local v45 = false;
 		if v7.winConInfoHud ~= nil then
-			v41 = u5.createElement(l__HudCard__13, {
+			v45 = u5.createElement(l__HudCard__13, {
 				BackgroundColor3 = l__ColorUtil__14.hexColor(16755200), 
 				LayoutOrder = 0
 			}, { u5.createElement("TextLabel", {
@@ -143,46 +167,58 @@ return {
 					TextColor3 = l__ColorUtil__14.WHITE
 				}) });
 		end;
-		if v41 then
-			v40[#v40 + 1] = v41;
-		end;
-		v40[#v40 + 1] = v8;
-		v40[#v40 + 1] = v14;
-		local v42 = false;
-		if v38 == "beds" then
-			v42 = v29;
-		end;
-		if v42 then
-			v40[#v40 + 1] = v42;
-		end;
-		local v43 = false;
-		if v38 == "players-alive" then
-			v43 = v35;
-		end;
-		if v43 then
-			v40[#v40 + 1] = v43;
-		end;
-		local v44 = #v40;
-		local v45 = v38 == "score";
 		if v45 then
-			local l__teamScores__46 = p1.store.Game.teamScores;
-			local v47 = table.create(#l__teamScores__46);
-			for v48, v49 in ipairs(l__teamScores__46) do
-				v47[v48] = u5.createElement(l__HudScore__15, {
-					teamId = v49.teamId, 
-					score = v49.score, 
+			v44[#v44 + 1] = v45;
+		end;
+		v44[#v44 + 1] = v8;
+		v44[#v44 + 1] = v15;
+		local v46 = false;
+		if v42 == "beds" then
+			v46 = v32;
+		end;
+		if v46 then
+			v44[#v44 + 1] = v46;
+		end;
+		local v47 = false;
+		if v42 == "players-alive" then
+			v47 = v39;
+		end;
+		if v47 then
+			v44[#v44 + 1] = v47;
+		end;
+		local v48 = #v44;
+		local v49 = v42 == "score";
+		if v49 then
+			local l__teamScores__50 = p1.store.Game.teamScores;
+			local v51 = table.create(#l__teamScores__50);
+			local v52, v53, v54 = ipairs(l__teamScores__50);
+			while true do
+				v52(v53, v54);
+				if not v52 then
+					break;
+				end;
+				v54 = v52;
+				v51[v52] = u5.createElement(l__HudScore__15, {
+					teamId = v53.teamId, 
+					score = v53.score, 
 					LayoutOrder = 3, 
 					store = p1.store
-				});
+				});			
 			end;
-			v45 = v47;
+			v49 = v51;
 		end;
-		if v45 then
-			for v50, v51 in ipairs(v45) do
-				v40[v44 + v50] = v51;
+		if v49 then
+			local v55, v56, v57 = ipairs(v49);
+			while true do
+				v55(v56, v57);
+				if not v55 then
+					break;
+				end;
+				v57 = v55;
+				v44[v48 + v55] = v56;			
 			end;
 		end;
-		local v52 = v7.rankCategory and u5.createElement(l__TopBarButton__16, {
+		local v58 = v7.rankCategory and u5.createElement(l__TopBarButton__16, {
 			Text = "Report", 
 			LayoutOrder = 6, 
 			OnClick = function()
@@ -191,11 +227,11 @@ return {
 				});
 			end
 		});
-		if v52 then
-			v40[#v40 + 1] = v52;
+		if v58 then
+			v44[#v44 + 1] = v58;
 		end;
-		if not v37 then
-			local v53 = v4 and u5.createElement(l__TopBarButton__16, {
+		if not v41 then
+			local v59 = v4 and u5.createElement(l__TopBarButton__16, {
 				Text = "Host Panel", 
 				LayoutOrder = 6, 
 				OnClick = function()
@@ -203,7 +239,7 @@ return {
 				end
 			});
 		else
-			v53 = u5.createElement(l__TopBarButton__16, {
+			v59 = u5.createElement(l__TopBarButton__16, {
 				Text = "Host Panel", 
 				LayoutOrder = 6, 
 				OnClick = function()
@@ -211,9 +247,9 @@ return {
 				end
 			});
 		end;
-		if v53 then
-			v40[#v40 + 1] = v53;
+		if v59 then
+			v44[#v44 + 1] = v59;
 		end;
-		return u5.createFragment(v40);
+		return u5.createFragment(v44);
 	end)
 };

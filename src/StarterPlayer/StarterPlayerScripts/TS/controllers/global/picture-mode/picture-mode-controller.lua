@@ -14,24 +14,23 @@ function v4.new(...)
 	local v5 = setmetatable({}, v4);
 	return v5:constructor(...) and v5;
 end;
-local u1 = l__KnitController__3;
 function v4.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__3.constructor(p1);
 	p1.Name = "PictureModeController";
 	p1.pictureModeEnabled = false;
 end;
-local l__ContextActionService__2 = v2.ContextActionService;
-local l__ClientStore__3 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
+local l__ContextActionService__1 = v2.ContextActionService;
+local l__ClientStore__2 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function v4.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__ContextActionService__2:BindAction("picture-mode-toggle", function(p3, p4, p5)
+	l__KnitController__3.KnitStart(p2);
+	l__ContextActionService__1:BindAction("picture-mode-toggle", function(p3, p4, p5)
 		if p4 == Enum.UserInputState.Begin then
 			task.spawn(function()
 				p2:togglePictureMode();
 			end);
 		end;
 	end, false, Enum.KeyCode.F1);
-	l__ClientStore__3.changed:connect(function(p6, p7)
+	l__ClientStore__2.changed:connect(function(p6, p7)
 		if p6.Settings.pictureMode ~= p7.Settings.pictureMode then
 			if not p6.Settings.pictureMode then
 				p2:disablePictureMode();
@@ -43,88 +42,118 @@ function v4.KnitStart(p2)
 		p2:enablePictureMode();
 	end);
 end;
-local l__Players__4 = v2.Players;
-local l__StarterGui__5 = v2.StarterGui;
-local l__CollectionService__6 = v2.CollectionService;
-local l__WatchCollectionTag__7 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchCollectionTag;
-local l__Workspace__8 = v2.Workspace;
-local u9 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
+local l__Players__3 = v2.Players;
+local l__StarterGui__4 = v2.StarterGui;
+local l__CollectionService__5 = v2.CollectionService;
+local l__WatchCollectionTag__6 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchCollectionTag;
+local l__Workspace__7 = v2.Workspace;
+local u8 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
 function v4.enablePictureMode(p8)
-	local l__PlayerGui__6 = l__Players__4.LocalPlayer:WaitForChild("PlayerGui");
+	local l__PlayerGui__6 = l__Players__3.LocalPlayer:WaitForChild("PlayerGui");
 	if p8.pictureModeEnabled then
 		return nil;
 	end;
 	print("Enabling Picture Mode");
 	p8.pictureModeEnabled = true;
-	l__ClientStore__3:dispatch({
+	l__ClientStore__2:dispatch({
 		type = "SettingsUpdateSome", 
 		settings = {
 			pictureMode = true
 		}
 	});
-	for v7, v8 in ipairs((l__PlayerGui__6:GetChildren())) do
+	local v7, v8, v9 = ipairs((l__PlayerGui__6:GetChildren()));
+	while true do
+		v7(v8, v9);
+		if not v7 then
+			break;
+		end;
+		v9 = v7;
 		if v8:IsA("ScreenGui") and v8.Name ~= "TopBarAppGui" then
 			v8.Enabled = false;
-		end;
+		end;	
 	end;
-	l__StarterGui__5:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false);
-	l__StarterGui__5:SetCoreGuiEnabled(Enum.CoreGuiType.EmotesMenu, false);
-	for v9, v10 in ipairs((l__CollectionService__6:GetTagged("Billboard"))) do
-		local v11 = v10:FindFirstChildWhichIsA("BillboardGui");
-		if v11 then
-			v11.Enabled = false;
+	l__StarterGui__4:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false);
+	l__StarterGui__4:SetCoreGuiEnabled(Enum.CoreGuiType.EmotesMenu, false);
+	local v10, v11, v12 = ipairs((l__CollectionService__5:GetTagged("Billboard")));
+	while true do
+		v10(v11, v12);
+		if not v10 then
+			break;
 		end;
+		v12 = v10;
+		local v13 = v11:FindFirstChildWhichIsA("BillboardGui");
+		if v13 then
+			v13.Enabled = false;
+		end;	
 	end;
-	p8.tagConnection = l__WatchCollectionTag__7("EntityNameTag", function(p9)
+	p8.tagConnection = l__WatchCollectionTag__6("EntityNameTag", function(p9)
 		p9.Enabled = false;
 	end);
-	local l__CurrentCamera__12 = l__Workspace__8.CurrentCamera;
-	if l__CurrentCamera__12 then
-		u9("DepthOfFieldEffect", {
-			Parent = l__CurrentCamera__12, 
+	local l__CurrentCamera__14 = l__Workspace__7.CurrentCamera;
+	if l__CurrentCamera__14 then
+		u8("DepthOfFieldEffect", {
+			Parent = l__CurrentCamera__14, 
 			Name = "DepthOfFieldEffect", 
 			InFocusRadius = 15
 		});
 	end;
 end;
 function v4.disablePictureMode(p10)
-	local l__PlayerGui__13 = l__Players__4.LocalPlayer:WaitForChild("PlayerGui");
+	local l__PlayerGui__15 = l__Players__3.LocalPlayer:WaitForChild("PlayerGui");
 	if not p10.pictureModeEnabled then
 		return nil;
 	end;
 	p10.pictureModeEnabled = false;
-	l__ClientStore__3:dispatch({
+	l__ClientStore__2:dispatch({
 		type = "SettingsUpdateSome", 
 		settings = {
 			pictureMode = false
 		}
 	});
-	for v14, v15 in ipairs((l__PlayerGui__13:GetChildren())) do
-		if v15:IsA("ScreenGui") then
-			v15.Enabled = true;
+	local v16, v17, v18 = ipairs((l__PlayerGui__15:GetChildren()));
+	while true do
+		v16(v17, v18);
+		if not v16 then
+			break;
 		end;
+		v18 = v16;
+		if v17:IsA("ScreenGui") then
+			v17.Enabled = true;
+		end;	
 	end;
-	l__StarterGui__5:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true);
-	l__StarterGui__5:SetCoreGuiEnabled(Enum.CoreGuiType.EmotesMenu, true);
-	for v16, v17 in ipairs((l__CollectionService__6:GetTagged("Billboard"))) do
-		local v18 = v17:FindFirstChildWhichIsA("BillboardGui");
-		if v18 then
-			v18.Enabled = true;
+	l__StarterGui__4:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, true);
+	l__StarterGui__4:SetCoreGuiEnabled(Enum.CoreGuiType.EmotesMenu, true);
+	local v19, v20, v21 = ipairs((l__CollectionService__5:GetTagged("Billboard")));
+	while true do
+		v19(v20, v21);
+		if not v19 then
+			break;
 		end;
+		v21 = v19;
+		local v22 = v20:FindFirstChildWhichIsA("BillboardGui");
+		if v22 then
+			v22.Enabled = true;
+		end;	
 	end;
-	local l__tagConnection__19 = p10.tagConnection;
-	if l__tagConnection__19 ~= nil then
-		l__tagConnection__19:Disconnect();
+	local l__tagConnection__23 = p10.tagConnection;
+	if l__tagConnection__23 ~= nil then
+		l__tagConnection__23:Disconnect();
 	end;
 	p10.tagConnection = nil;
-	for v20, v21 in ipairs((l__CollectionService__6:GetTagged("EntityNameTag"))) do
-		v21.Enabled = true;
+	local v24, v25, v26 = ipairs((l__CollectionService__5:GetTagged("EntityNameTag")));
+	while true do
+		v24(v25, v26);
+		if not v24 then
+			break;
+		end;
+		v26 = v24;
+		v25.Enabled = true;	
 	end;
-	local l__CurrentCamera__22 = l__Workspace__8.CurrentCamera;
-	if l__CurrentCamera__22 then
-		local l__DepthOfFieldEffect__23 = l__CurrentCamera__22:FindFirstChild("DepthOfFieldEffect");
-		if l__DepthOfFieldEffect__23 ~= nil then
-			l__DepthOfFieldEffect__23:Destroy();
+	local l__CurrentCamera__27 = l__Workspace__7.CurrentCamera;
+	if l__CurrentCamera__27 then
+		local l__DepthOfFieldEffect__28 = l__CurrentCamera__27:FindFirstChild("DepthOfFieldEffect");
+		if l__DepthOfFieldEffect__28 ~= nil then
+			l__DepthOfFieldEffect__28:Destroy();
 		end;
 	end;
 end;
@@ -135,6 +164,5 @@ function v4.togglePictureMode(p11)
 	end;
 	p11:enablePictureMode();
 end;
-u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1(v4.new());
+local v29 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v4.new());
 return nil;

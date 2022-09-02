@@ -1,4 +1,3 @@
--- Script Hash: 3a55246dd319255019a1926a58426cf309a0da1d36cca8617875b8f91b8b940347c4e0780a250964293dc8f94b14d40e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__QueueType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "game", "queue-type").QueueType;

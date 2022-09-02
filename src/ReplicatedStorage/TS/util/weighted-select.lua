@@ -1,4 +1,3 @@
--- Script Hash: 7910bbf39887746cc840e4606dbd6a85eff40778d2d67c33ed211281693ff52519f47bfdb3201139bae6792651564952
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = setmetatable({}, {
@@ -23,9 +22,15 @@ function v1.setObjects(p3, p4)
 	end);
 	p3.objects = p4;
 	local v3 = 0;
-	for v4, v5 in ipairs(p4) do
+	local v4, v5, v6 = ipairs(p4);
+	while true do
+		v4(v5, v6);
+		if not v4 then
+			break;
+		end;
+		v6 = v4;
 		v3 = v3 + v5.weight;
-		p3.maxElementWeight = math.max(p3.maxElementWeight, v5.weight);
+		p3.maxElementWeight = math.max(p3.maxElementWeight, v5.weight);	
 	end;
 	p3.cumulativeWeight = v3;
 end;
@@ -39,37 +44,37 @@ function v1.selectRandom(p9, p10)
 	if p10 == nil then
 		p10 = 1;
 	end;
-	local v6 = math.random() * p9.cumulativeWeight;
-	local v7 = 0;
-	local v8 = false;
+	local v7 = math.random() * p9.cumulativeWeight;
+	local v8 = 0;
+	local v9 = false;
 	while true do
-		if v8 then
-			v7 = v7 + 1;
+		if v9 then
+			v8 = v8 + 1;
 		else
-			v8 = true;
+			v9 = true;
 		end;
-		if not (v7 < p10 - 1) then
+		if not (v8 < p10 - 1) then
 			break;
 		end;
-		v6 = math.max(v6, math.random() * p9.cumulativeWeight);	
+		v7 = math.max(v7, math.random() * p9.cumulativeWeight);	
 	end;
-	local v9 = 0;
 	local v10 = 0;
-	local v11 = false;
+	local v11 = 0;
+	local v12 = false;
 	while true do
-		if v11 then
-			v10 = v10 + 1;
+		if v12 then
+			v11 = v11 + 1;
 		else
-			v11 = true;
+			v12 = true;
 		end;
-		if not (v10 < #p9.objects) then
+		if not (v11 < #p9.objects) then
 			break;
 		end;
-		local v12 = p9.objects[v10 + 1];
-		if v9 < v6 and v6 <= v9 + v12.weight then
-			return v12;
+		local v13 = p9.objects[v11 + 1];
+		if v10 < v7 and v7 <= v10 + v13.weight then
+			return v13;
 		end;
-		v9 = v9 + v12.weight;	
+		v10 = v10 + v13.weight;	
 	end;
 	return p9.objects[1];
 end;

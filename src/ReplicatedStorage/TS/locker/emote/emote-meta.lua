@@ -815,6 +815,60 @@ return {
 		[l__EmoteType__6.PENGUIN_KING_TROPHY] = {
 			name = "Penguin King Trophy", 
 			image = "rbxassetid://10321184147"
+		}, 
+		[l__EmoteType__6.HANNAH_GHOST_MOMENT] = {
+			name = "Hannah Ghost Moment", 
+			image = "rbxassetid://10736278063"
+		}, 
+		[l__EmoteType__6.HANNAH_SORRY_NOT] = {
+			name = "Hannah Sorry Not Sorry", 
+			image = "rbxassetid://10736277001"
+		}, 
+		[l__EmoteType__6.SMOKE_AGAIN] = {
+			name = "Smoke Again!", 
+			image = "rbxassetid://10736276378"
+		}, 
+		[l__EmoteType__6.ZEPHYR_BEGONE] = {
+			name = "Zephyr Begone", 
+			image = "rbxassetid://10753604126"
+		}, 
+		[l__EmoteType__6.ZEPHYR_GOING_FAST] = {
+			name = "Zephyr Going FAST", 
+			image = "rbxassetid://10736275314"
+		}, 
+		[l__EmoteType__6.SEARCHING_FAR_AWAY] = {
+			name = "Searching Far Away", 
+			animation = {
+				type = l__AnimationType__2.SEARCHING_FAR_AWAY, 
+				looped = true
+			}
+		}, 
+		[l__EmoteType__6.PIRATES_GOODBYE] = {
+			name = "Pirates Goodbye", 
+			animation = {
+				type = l__AnimationType__2.PIRATES_GOODBYE, 
+				looped = false
+			}
+		}, 
+		[l__EmoteType__6.HANNAH_GHOSTED] = {
+			name = "Hannah Ghosted", 
+			image = "rbxassetid://10736277594"
+		}, 
+		[l__EmoteType__6.HANNAH_FEAR] = {
+			name = "Hannah Fear", 
+			image = "rbxassetid://10736279082"
+		}, 
+		[l__EmoteType__6.HANNAH_FIRED_UP] = {
+			name = "Hannah Fired Up", 
+			image = "rbxassetid://10759063729"
+		}, 
+		[l__EmoteType__6.SMOKE_DUDE] = {
+			name = "Smoke Dude...", 
+			image = "rbxassetid://10753603855"
+		}, 
+		[l__EmoteType__6.GHOST_DAVEY] = {
+			name = "Ghost Davey", 
+			image = "rbxassetid://10753604326"
 		}
 	}
 };

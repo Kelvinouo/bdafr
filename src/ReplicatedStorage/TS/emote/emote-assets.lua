@@ -10,19 +10,31 @@ local u4 = v2.values(v1.import(script, game:GetService("ReplicatedStorage"), "TS
 local l__GetTarmacAsset__5 = v3.GetTarmacAsset;
 local u6 = {};
 u2 = function(p1)
-	for v4, v5 in ipairs(v2.keys(p1)) do
+	local v4, v5, v6 = ipairs(v2.keys(p1));
+	while true do
+		v4(v5, v6);
+		if not v4 then
+			break;
+		end;
+		v6 = v4;
 		if table.find(u4, v5) ~= nil and type(v5) == "string" then
 			u6[v5] = l__GetTarmacAsset__5(v5, p1).Image;
-		end;
+		end;	
 	end;
 end;
 (function()
 	u2((l__GetTarmacAssetFromPath__1({ "emotes" })));
-	for v6, v7 in ipairs((v2.values(l__BattlePassSeason__3))) do
-		local v8 = l__GetTarmacAssetFromPath__1({ "emotes", v7 });
-		if v8 then
-			u2(v8);
+	local v7, v8, v9 = ipairs((v2.values(l__BattlePassSeason__3)));
+	while true do
+		v7(v8, v9);
+		if not v7 then
+			break;
 		end;
+		v9 = v7;
+		local v10 = l__GetTarmacAssetFromPath__1({ "emotes", v8 });
+		if v10 then
+			u2(v10);
+		end;	
 	end;
 end)();
 return {

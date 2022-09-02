@@ -1,4 +1,3 @@
--- Script Hash: a00f8037c3f7e9991606a4e87045bd062870d2f2bd7b9900706e4f1cb4e2b3d7e4b270d6473f35f5905b3724f59a4b1c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,10 +13,9 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = l__CancellableEvent__2;
-local l__ProjectileMeta__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "projectile", "projectile-meta").ProjectileMeta;
+local l__ProjectileMeta__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "projectile", "projectile-meta").ProjectileMeta;
 function v3.constructor(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11)
-	u1.constructor(p1);
+	l__CancellableEvent__2.constructor(p1);
 	p1.shooter = p2;
 	p1.projectileType = p3;
 	p1.projectileModel = p4;
@@ -28,9 +26,8 @@ function v3.constructor(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11)
 	p1.chargePercent = p9;
 	p1.projectileDamageMult = p10;
 	p1.metadata = p11;
-	p1.projectileMeta = l__ProjectileMeta__2[p3];
+	p1.projectileMeta = l__ProjectileMeta__1[p3];
 end;
-u1 = {
+return {
 	ProjectileHitEvent = v3
 };
-return l__CancellableEvent__2;

@@ -1,4 +1,3 @@
--- Script Hash: cf6342a3132610ed227a7f699e672af9724548c727553c41451491b18fa9caadc4aabfc96c21bdc49d9de4a3018799a9
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,27 +13,31 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = l__KnitController__2;
 function v3.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__2.constructor(p1);
 	p1.Name = "BrReleaseController";
 end;
-local l__WatchCollectionTag__2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchCollectionTag;
+local l__WatchCollectionTag__1 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchCollectionTag;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__RunService__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).RunService;
 function v3.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__WatchCollectionTag__2("br-spin", function(p3)
+	l__KnitController__2.KnitStart(p2);
+	l__WatchCollectionTag__1("br-spin", function(p3)
 		if not p3.PrimaryPart then
 			p3:GetPropertyChangedSignal("PrimaryPart"):Wait();
 		end;
-		local u4 = 0;
-		local u5 = p3:GetPrimaryPartCFrame();
-		l__RunService__3.Heartbeat:Connect(function(p4)
-			u4 = u4 + p4;
-			p3:SetPrimaryPartCFrame(u5 * CFrame.Angles(0, math.pi * 2 * u4 * 0.22, 0) + Vector3.new(0, math.sin(math.pi * 2 * u4 * 0.2) * 0.7 - 0.35, 0));
-		end);
+		local u4 = u2.new();
+		local u5 = 0;
+		local u6 = p3:GetPrimaryPartCFrame();
+		u4:GiveTask(l__RunService__3.Heartbeat:Connect(function(p4)
+			if p3.PrimaryPart == nil then
+				u4:DoCleaning();
+				return nil;
+			end;
+			u5 = u5 + p4;
+			p3:SetPrimaryPartCFrame(u6 * CFrame.Angles(0, math.pi * 2 * u5 * 0.22, 0) + Vector3.new(0, math.sin(math.pi * 2 * u5 * 0.2) * 0.7 - 0.35, 0));
+		end));
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1(v3.new());
+local v5 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v3.new());
 return nil;

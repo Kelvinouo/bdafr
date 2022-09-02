@@ -1,4 +1,3 @@
--- Script Hash: c53d4839b112b3e6b9a96ee8e75a6771ddc82e1ab6287ce0d96597da06e006a5b551c042d7d45f55e97e5b9ec418b36f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -28,7 +27,7 @@ return {
 		local v7 = {
 			Size = p1.Size, 
 			BackgroundTransparency = 1, 
-			Selectable = false
+			Selectable = true
 		};
 		function v7.OnClick()
 			local v8 = {

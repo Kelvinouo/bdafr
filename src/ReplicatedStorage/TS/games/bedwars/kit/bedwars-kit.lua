@@ -118,6 +118,8 @@ v2.SPIRIT_ASSASSIN = "spirit_assassin";
 v1.spirit_assassin = "SPIRIT_ASSASSIN";
 v2.BATTERY = "battery";
 v1.battery = "BATTERY";
+v2.HANNAH = "hannah";
+v1.hannah = "HANNAH";
 return {
 	BedwarsKit = v2
 };

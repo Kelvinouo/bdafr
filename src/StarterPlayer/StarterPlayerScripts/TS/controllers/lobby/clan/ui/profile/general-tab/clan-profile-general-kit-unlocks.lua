@@ -1,4 +1,3 @@
--- Script Hash: 18bd52bed67f222f9121f129eb656793cc1b1e6044c9ed23932ff517461624460c532d1986d53e23e990271a4cea396f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -77,23 +76,35 @@ return {
 					}) }) });
 		end;
 		local v14 = table.create(#v11);
-		for v15, v16 in ipairs(v11) do
-			v14[v15] = v12(v16, v15 - 1, v11);
+		local v15, v16, v17 = ipairs(v11);
+		while true do
+			v15(v16, v17);
+			if not v15 then
+				break;
+			end;
+			v17 = v15;
+			v14[v15] = v12(v16, v15 - 1, v11);		
 		end;
-		local v17 = {
+		local v18 = {
 			Size = UDim2.fromScale(1, 0.8), 
 			LayoutOrder = 2
 		};
-		local v18 = { u1.createElement("UIListLayout", {
+		local v19 = { u1.createElement("UIListLayout", {
 				FillDirection = "Horizontal", 
 				Padding = UDim.new(0.05, 0), 
 				SortOrder = "LayoutOrder"
 			}) };
-		local v19 = #v18;
-		for v20, v21 in ipairs(v14) do
-			v18[v19 + v20] = v21;
+		local v20 = #v19;
+		local v21, v22, v23 = ipairs(v14);
+		while true do
+			v21(v22, v23);
+			if not v21 then
+				break;
+			end;
+			v23 = v21;
+			v19[v20 + v21] = v22;		
 		end;
-		v10[#v10 + 1] = u1.createElement(l__Empty__5, v17, v18);
+		v10[#v10 + 1] = u1.createElement(l__Empty__5, v18, v19);
 		return u1.createElement("Frame", v7, v10);
 	end)
 };

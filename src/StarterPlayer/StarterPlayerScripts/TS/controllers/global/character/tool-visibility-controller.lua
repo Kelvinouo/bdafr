@@ -1,4 +1,3 @@
--- Script Hash: 5b50f70fd6c11248f0ff5fc6b35623cd032c24025f4a52a6525050b00ee308f9ccde3a0ab973b9dbf99c783a71311a69
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -15,9 +14,8 @@ function u1.new(...)
 	local v4 = setmetatable({}, u1);
 	return v4:constructor(...) and v4;
 end;
-local u2 = l__KnitController__2;
 function u1.constructor(p1, ...)
-	u2.constructor(p1, ...);
+	l__KnitController__2.constructor(p1, ...);
 	p1.Name = "ToolVisibilityController";
 	p1.instances = {};
 end;
@@ -27,36 +25,42 @@ end;
 function u1.onCharacterAdded(p3, p4)
 	p4:WaitForChild("HumanoidRootPart");
 	wait(1);
-	local v5 = p4:GetDescendants();
-	local function v6(p5)
+	local v5, v6, v7 = ipairs((p4:GetDescendants()));
+	while true do
+		v5(v6, v7);
+		if not v5 then
+			break;
+		end;
+		v7 = v5;
+		local v8 = p3:onAccessoryAdded(v6);	
+	end;
+	p4.DescendantAdded:Connect(function(p5)
 		return p3:onAccessoryAdded(p5);
-	end;
-	for v7, v8 in ipairs(v5) do
-		v6(v8, v7 - 1, v5);
-	end;
-	p4.DescendantAdded:Connect(function(p6)
-		return p3:onAccessoryAdded(p6);
 	end);
 end;
-local l__getItemMeta__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
-function u1.onAccessoryAdded(p7, p8)
-	if not p8:IsA("Accessory") then
+local l__getItemMeta__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
+function u1.onAccessoryAdded(p6, p7)
+	if not p7:IsA("Accessory") then
 		return nil;
 	end;
-	local v9 = l__getItemMeta__3(p8.Name);
+	local v9 = l__getItemMeta__2(p7.Name);
 	if not v9 or v9.armor then
 		return nil;
 	end;
-	for v10, v11 in ipairs(p8:GetDescendants()) do
-		if v11:IsA("BasePart") then
-			table.insert(p7.instances, v11);
+	local v10, v11, v12 = ipairs(p7:GetDescendants());
+	while true do
+		v10(v11, v12);
+		if not v10 then
+			break;
 		end;
+		v12 = v10;
+		if v11:IsA("BasePart") then
+			table.insert(p6.instances, v11);
+		end;	
 	end;
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
-u1 = u1.new;
-u2 = u2(u1());
-u1 = {
-	ToolVisibilityController = u2
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
+u1 = u1(u1.new());
+return {
+	ToolVisibilityController = u1
 };
-return u1;

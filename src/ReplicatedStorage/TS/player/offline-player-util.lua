@@ -28,28 +28,34 @@ function v3.getOfflinePlayersByUserIds(p3)
 	return v1.Promise.defer(function(p4, p5)
 		local v4 = l__UserService__4:GetUserInfosByUserIdsAsync(p3);
 		local v5 = table.create(#v4);
-		for v6, v7 in ipairs(v4) do
+		local v6, v7, v8 = ipairs(v4);
+		while true do
+			v6(v7, v8);
+			if not v6 then
+				break;
+			end;
+			v8 = v6;
 			v5[v6] = {
 				name = v7.Username, 
 				userId = v7.Id, 
 				displayName = v7.DisplayName
-			};
+			};		
 		end;
 		p4(v5);
 	end);
 end;
-local function v8(p6)
+local function v9(p6)
 	return v1.Promise.defer(function(p7)
-		local v9, v10 = l__Players__3:GetUserThumbnailAsync(p6, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size48x48);
-		p7(v10);
+		local v10, v11 = l__Players__3:GetUserThumbnailAsync(p6, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size48x48);
+		p7(v11);
 	end);
 end;
-v3.loadUserAvatarFromUserId = v8;
+v3.loadUserAvatarFromUserId = v9;
 function v3.loadUserAvatarFromName(p8)
 	return v1.Promise.defer(function(p9, p10)
-		local v11 = l__Players__3:GetUserIdFromNameAsync(p8);
-		if v11 ~= 0 and v11 == v11 and v11 then
-			p9(v8(v11));
+		local v12 = l__Players__3:GetUserIdFromNameAsync(p8);
+		if v12 ~= 0 and v12 == v12 and v12 then
+			p9(v9(v12));
 		end;
 	end);
 end;

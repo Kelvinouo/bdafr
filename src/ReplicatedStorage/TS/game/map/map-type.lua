@@ -39,6 +39,8 @@ v9.PVE = "pve";
 v8.pve = "PVE";
 v9.GUN_GAME = "gg";
 v8.gg = "GUN_GAME";
+v9.TNT_WARS = "tnt";
+v8.tnt = "TNT_WARS";
 local v10 = {};
 for v11, v12 in pairs(v3) do
 	v10[v11] = v12;
@@ -61,18 +63,24 @@ return {
 	MapType = v10, 
 	getMapTypeFromVal = function(p1)
 		local v19 = nil;
-		for v20, v21 in ipairs((u1.entries(v10))) do
-			local v22 = v21[1];
-			local v23 = v21[2];
-			if v23 == v23 == true then
-				v19 = v21;
+		local v20, v21, v22 = ipairs((u1.entries(v10)));
+		while true do
+			v20(v21, v22);
+			if not v20 then
 				break;
 			end;
+			v22 = v20;
+			local v23 = v21[1];
+			local v24 = v21[2];
+			if v24 == v24 == true then
+				v19 = v21;
+				break;
+			end;		
 		end;
-		local v24 = v19;
-		if v24 ~= nil then
-			v24 = v24[1];
+		local v25 = v19;
+		if v25 ~= nil then
+			v25 = v25[1];
 		end;
-		return v24;
+		return v25;
 	end
 };

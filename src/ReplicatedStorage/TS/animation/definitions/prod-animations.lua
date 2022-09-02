@@ -214,6 +214,15 @@ return {
 		[l__AnimationType__1.FP_DAGGER_SLASH] = "rbxassetid://10265857584", 
 		[l__AnimationType__1.FP_DAGGER_CHARGE] = "rbxassetid://10265859074", 
 		[l__AnimationType__1.TENNIS_RACKET_HIT] = "rbxassetid://10218627926", 
-		[l__AnimationType__1.TENNIS_RACKET_IDLE] = "rbxassetid://10214980235"
+		[l__AnimationType__1.TENNIS_RACKET_IDLE] = "rbxassetid://10214980235", 
+		[l__AnimationType__1.REPAIR_SNOW_CONE_MACHINE] = "rbxassetid://10482596209", 
+		[l__AnimationType__1.PIRATE_SHIP_FLY] = "rbxassetid://10562148548", 
+		[l__AnimationType__1.SEARCHING_FAR_AWAY] = "rbxassetid://10715396337", 
+		[l__AnimationType__1.PIRATES_GOODBYE] = "rbxassetid://10715398768", 
+		[l__AnimationType__1.HANNAH_JUMP_DOWN] = "rbxassetid://10725339583", 
+		[l__AnimationType__1.DAVEY_JUMP_DOWN] = "rbxassetid://10725343381", 
+		[l__AnimationType__1.SMOKE_JUMP_DOWN] = "rbxassetid://10725374175", 
+		[l__AnimationType__1.HANNAH_ATTACK] = "rbxassetid://10727303147", 
+		[l__AnimationType__1.FP_HANNAH_ATTACK] = "rbxassetid://10727311989"
 	}
 };

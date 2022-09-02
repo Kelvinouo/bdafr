@@ -19,80 +19,92 @@ return function(p1)
 		};
 	end;
 	local v4 = table.create(#v2);
-	for v5, v6 in ipairs(v2) do
-		v4[v5] = v3(v6, v5 - 1, v2);
+	local v5, v6, v7 = ipairs(v2);
+	while true do
+		v5(v6, v7);
+		if not v5 then
+			break;
+		end;
+		v7 = v5;
+		v4[v5] = v3(v6, v5 - 1, v2);	
 	end;
 	table.sort(v4, function(p4, p5)
 		return p5.statValue < p4.statValue;
 	end);
-	local v7 = {
+	local v8 = {
 		type = "UpdateLeaderboard", 
 		leaderboard = "Wins"
 	};
-	local v8 = {};
-	for v9, v10 in pairs(l__LeaderboardMeta__2.Wins) do
-		v8[v9] = v10;
+	local v9 = {};
+	for v10, v11 in pairs(l__LeaderboardMeta__2.Wins) do
+		v9[v10] = v11;
 	end;
-	v8.nextReset = os.time() + math.random(100000, 1000000);
-	v8.lastRefresh = os.time() - math.random(100, 1000);
-	v8.users = v4;
-	v8.leaderboardPosition = 63735;
-	v8.localStatValue = 4667;
-	v7.data = v8;
-	l__ClientStore__1:dispatch(v7);
-	local v11 = l__RankDistribution__3:getDisplayedRank(0, -1);
-	local v12 = l__RankMeta__4[v11.division];
-	local v13 = {
+	v9.nextReset = os.time() + math.random(100000, 1000000);
+	v9.lastRefresh = os.time() - math.random(100, 1000);
+	v9.users = v4;
+	v9.leaderboardPosition = 63735;
+	v9.localStatValue = 4667;
+	v8.data = v9;
+	l__ClientStore__1:dispatch(v8);
+	local v12 = l__RankDistribution__3:getDisplayedRank(0, -1);
+	local v13 = l__RankMeta__4[v12.division];
+	local v14 = {
 		type = "UpdateLeaderboard", 
 		leaderboard = l__RankUtil__5.activeRankMeta.leaderboard
 	};
-	local v14 = {};
-	for v15, v16 in pairs(l__LeaderboardMeta__2[l__RankUtil__5.activeRankMeta.leaderboard]) do
-		v14[v15] = v16;
+	local v15 = {};
+	for v16, v17 in pairs(l__LeaderboardMeta__2[l__RankUtil__5.activeRankMeta.leaderboard]) do
+		v15[v16] = v17;
 	end;
-	v14.lastRefresh = os.time() - math.random(100, 1000);
-	local function v17(p6)
-		local v18 = l__RankDistribution__3:getDisplayedRank(p6.statValue, -1);
-		local v19 = l__RankMeta__4[v18.division];
-		local v20 = {};
-		for v21, v22 in pairs(p6) do
-			v20[v21] = v22;
+	v15.lastRefresh = os.time() - math.random(100, 1000);
+	local function v18(p6)
+		local v19 = l__RankDistribution__3:getDisplayedRank(p6.statValue, -1);
+		local v20 = l__RankMeta__4[v19.division];
+		local v21 = {};
+		for v22, v23 in pairs(p6) do
+			v21[v22] = v23;
 		end;
-		v20.statRank = {
-			image = v19.image, 
-			rankName = v19.name, 
+		v21.statRank = {
+			image = v20.image, 
+			rankName = v20.name, 
 			rankStatValue = 75
 		};
-		v20.statValue = v18.rankPoints;
-		return v20;
+		v21.statValue = v19.rankPoints;
+		return v21;
 	end;
-	local v23 = table.create(#v4);
-	for v24, v25 in ipairs(v4) do
-		v23[v24] = v17(v25, v24 - 1, v4);
+	local v24 = table.create(#v4);
+	local v25, v26, v27 = ipairs(v4);
+	while true do
+		v25(v26, v27);
+		if not v25 then
+			break;
+		end;
+		v27 = v25;
+		v24[v25] = v18(v26, v25 - 1, v4);	
 	end;
-	v14.users = v23;
-	v14.leaderboardPosition = 63735;
-	v14.localStatRank = {
-		image = v12.image, 
-		rankName = v12.name, 
+	v15.users = v24;
+	v15.leaderboardPosition = 63735;
+	v15.localStatRank = {
+		image = v13.image, 
+		rankName = v13.name, 
 		rankStatValue = 25
 	};
-	v14.localStatValue = v11.rankPoints;
-	v13.data = v14;
-	l__ClientStore__1:dispatch(v13);
+	v15.localStatValue = v12.rankPoints;
+	v14.data = v15;
+	l__ClientStore__1:dispatch(v14);
 	local u9 = l__CreateRoduxApp__8("LeaderboardApp", function(p7)
-		local v26 = {};
-		local v27 = {};
-		for v28, v29 in pairs(p7) do
-			v27[v28] = v29;
+		local v28 = {};
+		local v29 = {};
+		for v30, v31 in pairs(p7) do
+			v29[v30] = v31;
 		end;
-		v26[#v26 + 1] = u6.createElement(l__LeaderboardCore__7, v27);
+		v28[#v28 + 1] = u6.createElement(l__LeaderboardCore__7, v29);
 		return u6.createElement("Frame", {
 			AnchorPoint = Vector2.new(0.5, 0.5), 
 			Position = UDim2.fromScale(0.5, 0.5), 
 			Size = UDim2.fromOffset(437, 700), 
 			BackgroundTransparency = 1
-		}, v26);
+		}, v28);
 	end, {
 		LeaderboardName = l__RankUtil__5.activeRankMeta.leaderboard
 	}, {}, {

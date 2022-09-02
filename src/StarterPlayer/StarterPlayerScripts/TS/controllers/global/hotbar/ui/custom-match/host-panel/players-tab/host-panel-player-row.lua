@@ -1,4 +1,3 @@
--- Script Hash: nil
 --[[VARIABLE DEFINITION ANOMALY DETECTED, DECOMPILATION OUTPUT POTENTIALLY INCORRECT]]--
 -- Decompiled with the Synapse X Luau decompiler.
 
@@ -281,13 +280,10 @@ return {
 		end;
 		v42.Text = v43;
 		v42.NumbersOnly = true;
-		local function u18(p3, p4)
-			l__KnitClient__3.Controllers.CustomMatchController:setPlayerMaxHealth(p3, p4);
-		end;
-		function v42.OnFocusLost(p5)
-			local v46 = tonumber(p5);
+		function v42.OnFocusLost(p3)
+			local v46 = tonumber(p3);
 			if v46 ~= 0 and v46 == v46 and v46 then
-				u18(p1.OfflinePlayer, v46);
+				l__KnitClient__3.Controllers.CustomMatchController:setPlayerMaxHealth(p1.OfflinePlayer, v46);
 			end;
 		end;
 		v42.LayoutOrder = 1;
@@ -308,12 +304,9 @@ return {
 			end;
 			v48.PlaceholderText = v50;
 			v48.Items = v9.dropDownItems;
-			local function u19(p6, p7)
+			function v48.OnItemSelected(p4)
 				l__SoundManager__5:playSound(l__GameSound__6.UI_CLICK);
-				l__KnitClient__3.Controllers.CustomMatchController:setPlayerTeam(p6, p7);
-			end;
-			function v48.OnItemSelected(p8)
-				u19(p1.OfflinePlayer, p8);
+				l__KnitClient__3.Controllers.CustomMatchController:setPlayerTeam(p1.OfflinePlayer, p4);
 			end;
 			v48.LayoutOrder = 2;
 			v47 = u10.createElement(l__DropdownComponent__15, v48);

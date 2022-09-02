@@ -1,4 +1,3 @@
--- Script Hash: 9bc4c721cfc2197167b8d0b02e49b446ee822eaf6a9d79796f24421e372bf6384169437fca176e8f681514c5b4e8cb2d
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(script.Settings);
@@ -93,24 +92,24 @@ function v7.Update(p9)
 	debug.profilebegin("Calc");
 	local v21, v22, v23 = ipairs(v16);
 	while true do
-		local v24, v25 = v21(v22, v23);
-		if not v24 then
+		v21(v22, v23);
+		if not v21 then
 			break;
 		end;
-		local v26 = l__ObjectMetadata__20[v25];
-		local l__Origin__27 = v26.Origin;
-		if v12 - (v26.LastCompute and 0) > 0.03333333333333333 then
-			local l__Settings__28 = v26.Settings;
-			local l__Seed__29 = v26.Seed;
-			local v30 = l__Settings__28.WindPower * 0.1;
-			local v31 = v12 * (l__Settings__28.WindSpeed * 0.08);
-			local l__PivotOffset__32 = v25.PivotOffset;
-			v26.Target = (l__Origin__27 * l__PivotOffset__32 * CFrame.Angles(math.noise(v31, 0, l__Seed__29) * v30, math.noise(v31, 0, -l__Seed__29) * v30, math.noise(v31, 0, l__Seed__29 + l__Seed__29) * v30) + l__Settings__28.WindDirection * ((0.5 + math.noise(v31, l__Seed__29, l__Seed__29)) * v30)) * l__PivotOffset__32:Inverse();
-			v26.LastCompute = v12;
+		local v24 = l__ObjectMetadata__20[v22];
+		local l__Origin__25 = v24.Origin;
+		if v12 - (v24.LastCompute and 0) > 0.03333333333333333 then
+			local l__Settings__26 = v24.Settings;
+			local l__Seed__27 = v24.Seed;
+			local v28 = l__Settings__26.WindPower * 0.1;
+			local v29 = v12 * (l__Settings__26.WindSpeed * 0.08);
+			local l__PivotOffset__30 = v22.PivotOffset;
+			v24.Target = (l__Origin__25 * l__PivotOffset__30 * CFrame.Angles(math.noise(v29, 0, l__Seed__27) * v28, math.noise(v29, 0, -l__Seed__27) * v28, math.noise(v29, 0, l__Seed__27 + l__Seed__27) * v28) + l__Settings__26.WindDirection * ((0.5 + math.noise(v29, l__Seed__27, l__Seed__27)) * v28)) * l__PivotOffset__30:Inverse();
+			v24.LastCompute = v12;
 		end;
-		local v33 = (v26.CFrame and l__Origin__27):Lerp(v26.Target, v18);
-		v26.CFrame = v33;
-		v19[v24] = v33;	
+		local v31 = (v24.CFrame and l__Origin__25):Lerp(v24.Target, v18);
+		v24.CFrame = v31;
+		v19[v21] = v31;	
 	end;
 	debug.profileend();
 	workspace:BulkMoveTo(v16, v19, Enum.BulkMoveMode.FireCFrameChanged);
@@ -152,8 +151,8 @@ function v7.Init(p12)
 	p12:Cleanup();
 	p12.AddedConnection = p12:Connect("AddObjectShake", (l__CollectionService__3:GetInstanceAddedSignal("WindShake")));
 	p12.RemovedConnection = p12:Connect("RemoveObjectShake", (l__CollectionService__3:GetInstanceRemovedSignal("WindShake")));
-	for v34, v35 in pairs(l__CollectionService__3:GetTagged("WindShake")) do
-		p12:AddObjectShake(v35);
+	for v32, v33 in pairs(l__CollectionService__3:GetTagged("WindShake")) do
+		p12:AddObjectShake(v33);
 	end;
 	p12:Resume();
 end;
@@ -186,8 +185,8 @@ function v7.UpdateObjectSettings(p14, p15, p16)
 	if not p14.ObjectMetadata[p15] and p15 ~= script then
 		return;
 	end;
-	for v36, v37 in pairs(p16) do
-		p15:SetAttribute(v36, v37);
+	for v34, v35 in pairs(p16) do
+		p15:SetAttribute(v34, v35);
 	end;
 	v4:Fire(p15);
 end;
@@ -195,11 +194,11 @@ function v7.UpdateAllObjectSettings(p17, p18)
 	if typeof(p18) ~= "table" then
 		return;
 	end;
-	for v38, v39 in pairs(p17.ObjectMetadata) do
-		for v40, v41 in pairs(p18) do
-			v38:SetAttribute(v40, v41);
+	for v36, v37 in pairs(p17.ObjectMetadata) do
+		for v38, v39 in pairs(p18) do
+			v36:SetAttribute(v38, v39);
 		end;
-		v4:Fire(v38);
+		v4:Fire(v36);
 	end;
 end;
 function v7.SetDefaultSettings(p19, p20)

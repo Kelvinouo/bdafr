@@ -1,4 +1,3 @@
--- Script Hash: c2c7dce59ac3ddc5c81b1c3df637a18ce0184e21f984938d64be1cf26a8b7b1f7f76b7425a373ec6083879dd87f6e345
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -153,24 +152,36 @@ return {
 			});
 		end;
 		local v25 = table.create(#l__kits__19);
-		for v26, v27 in ipairs(l__kits__19) do
-			v25[v26] = v20(v27, v26 - 1, l__kits__19);
+		local v26, v27, v28 = ipairs(l__kits__19);
+		while true do
+			v26(v27, v28);
+			if not v26 then
+				break;
+			end;
+			v28 = v26;
+			v25[v26] = v20(v27, v26 - 1, l__kits__19);		
 		end;
-		local v28 = {
+		local v29 = {
 			Size = UDim2.fromScale(1, 1), 
 			LayoutOrder = 3
 		};
-		local v29 = { u4.createElement("UIListLayout", {
+		local v30 = { u4.createElement("UIListLayout", {
 				FillDirection = "Horizontal", 
 				Padding = UDim.new(0.05, 0), 
 				VerticalAlignment = "Center", 
 				HorizontalAlignment = "Left"
 			}) };
-		local v30 = #v29;
-		for v31, v32 in ipairs(v25) do
-			v29[v30 + v31] = v32;
+		local v31 = #v30;
+		local v32, v33, v34 = ipairs(v25);
+		while true do
+			v32(v33, v34);
+			if not v32 then
+				break;
+			end;
+			v34 = v32;
+			v30[v31 + v32] = v33;		
 		end;
-		v17.KitShopCards = u4.createElement(l__Empty__8, v28, v29);
+		v17.KitShopCards = u4.createElement(l__Empty__8, v29, v30);
 		v15[#v15 + 1] = u4.createElement(l__Empty__8, v16, v17);
 		return u4.createFragment({
 			ClanProfileKitShop = u4.createElement(l__Empty__8, v12, v15)

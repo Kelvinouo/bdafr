@@ -1,9 +1,8 @@
--- Script Hash: ae9afa0180f9f02d116305458e1e469196e7fabca59326ce7d73ea7a5ac9fec6cfa4b6f096287c9c8cf00ea064d2b649
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local u1 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
-local l__Toggle__2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).Toggle;
+local l__Checkbox__2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).Checkbox;
 local l__UserInputService__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).UserInputService;
 local l__default__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__ClientStore__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
@@ -19,7 +18,7 @@ return {
 		v3.Text = "<b>USE KIT SKIN" .. v4 .. "</b>";
 		v3.Value = p1.UseKitSkin;
 		function v3.SetValue(p3)
-			l__default__4.Client:Get("BedwarsSetUseKitSkin"):CallServerAsync({
+			l__default__4.Client:Get("RemoteName"):CallServerAsync({
 				useKitSkin = p3
 			}):andThen(function()
 
@@ -35,6 +34,6 @@ return {
 		v3.Size = p1.Size;
 		v3.Selectable = false;
 		v3.LayoutOrder = p1.LayoutOrder;
-		return u1.createElement(l__Toggle__2, v3);
+		return u1.createElement(l__Checkbox__2, v3);
 	end)
 };

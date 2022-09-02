@@ -171,6 +171,14 @@ local u1 = {
 		explodeRadius = 10, 
 		damageRadius = 10 * l__BLOCK_SIZE__2
 	}, 
+	[l__ExplosionType__4.ROCKET_BELT] = {
+		displayName = "Rocket Belt", 
+		knockbackMultiplier = {
+			horizontal = 1, 
+			vertical = 1
+		}, 
+		damageRadius = 3 * l__BLOCK_SIZE__2
+	}, 
 	[l__ExplosionType__4.TENNIS_BALL_EXPLOSION] = {
 		displayName = "Tennis Ball", 
 		damageType = l__DamageType__3.TENNIS_BALL, 
@@ -181,6 +189,50 @@ local u1 = {
 		}, 
 		damageRadius = 4 * l__BLOCK_SIZE__2, 
 		explodePower = 15
+	}, 
+	[l__ExplosionType__4.C4_BOMB] = {
+		displayName = "C4", 
+		damageMultiplier = 1, 
+		knockbackMultiplier = {
+			horizontal = 1, 
+			vertical = 1
+		}, 
+		explodePower = 15, 
+		explodeRadius = 4, 
+		damageRadius = 8 * l__BLOCK_SIZE__2
+	}, 
+	[l__ExplosionType__4.EXPLODING_ARROW] = {
+		displayName = "Exploding Arrow", 
+		damageMultiplier = 1, 
+		knockbackMultiplier = {
+			horizontal = 1, 
+			vertical = 1
+		}, 
+		explodePower = 2, 
+		explodeRadius = 1, 
+		damageRadius = 2 * l__BLOCK_SIZE__2
+	}, 
+	[l__ExplosionType__4.TNT_BALLOON_TNT] = {
+		displayName = "TNT Balloon TNT", 
+		damageMultiplier = 1, 
+		knockbackMultiplier = {
+			horizontal = 1.5, 
+			vertical = 1.5
+		}, 
+		explodePower = 3, 
+		explodeRadius = 4, 
+		damageRadius = 4 * l__BLOCK_SIZE__2
+	}, 
+	[l__ExplosionType__4.TNT_WARS_CANNON_TNT] = {
+		displayName = "TNT", 
+		damageMultiplier = 1, 
+		knockbackMultiplier = {
+			horizontal = 2.25, 
+			vertical = 2.5
+		}, 
+		explodePower = 3, 
+		explodeRadius = 4, 
+		damageRadius = 8 * l__BLOCK_SIZE__2
 	}
 };
 return {

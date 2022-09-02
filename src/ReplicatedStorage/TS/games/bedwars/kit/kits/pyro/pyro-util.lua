@@ -4,135 +4,178 @@ local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_incl
 local v2 = {
 	FLAMETHROWER_COOLDOWN_SEC = 5
 };
-local function u1(p1)
+local u1 = function(p1)
 	local v3 = {};
 	local v4 = 0;
 	local v5, v6, v7 = ipairs((p1:GetDescendants()));
 	while true do
-		local v8, v9 = v5(v6, v7);
-		if not v8 then
+		v5(v6, v7);
+		if not v5 then
 			break;
 		end;
-		if (v9:IsA("ParticleEmitter") or v9:IsA("Light")) == true then
+		if (v6:IsA("ParticleEmitter") or v6:IsA("Light")) == true then
 			v4 = v4 + 1;
-			v3[v4] = v9;
+			v3[v4] = v6;
 		end;	
 	end;
 	return v3;
 end;
 function v2.getFireParticles(p2)
-	local v10 = {};
-	local v11 = 0;
-	local v12, v13, v14 = ipairs((u1(p2)));
+	local v8 = {};
+	local v9 = 0;
+	local v10, v11, v12 = ipairs((u1(p2)));
 	while true do
-		local v15, v16 = v12(v13, v14);
-		if not v15 then
+		v10(v11, v12);
+		if not v10 then
 			break;
 		end;
-		local v17 = v16:IsA("ParticleEmitter") and v16.Name == "FireParticle";
-		if v17 == true then
-			v11 = v11 + 1;
-			v10[v11] = v16;
+		local v13 = v11:IsA("ParticleEmitter") and v11.Name == "FireParticle";
+		if v13 == true then
+			v9 = v9 + 1;
+			v8[v9] = v11;
 		end;	
 	end;
-	return v10;
+	return v8;
 end;
 function v2.getSmokeParticles(p3)
-	local v18 = {};
-	local v19 = 0;
-	local v20, v21, v22 = ipairs((u1(p3)));
+	local v14 = {};
+	local v15 = 0;
+	local v16, v17, v18 = ipairs((u1(p3)));
 	while true do
-		local v23, v24 = v20(v21, v22);
-		if not v23 then
+		v16(v17, v18);
+		if not v16 then
 			break;
 		end;
-		local v25 = v24:IsA("ParticleEmitter") and v24.Name == "SmokeParticle";
-		if v25 == true then
-			v19 = v19 + 1;
-			v18[v19] = v24;
+		local v19 = v17:IsA("ParticleEmitter") and v17.Name == "SmokeParticle";
+		if v19 == true then
+			v15 = v15 + 1;
+			v14[v15] = v17;
 		end;	
 	end;
-	return v18;
+	return v14;
 end;
 function v2.getSparkleParticles(p4)
-	local v26 = {};
-	local v27 = 0;
-	local v28, v29, v30 = ipairs((u1(p4)));
+	local v20 = {};
+	local v21 = 0;
+	local v22, v23, v24 = ipairs((u1(p4)));
 	while true do
-		local v31, v32 = v28(v29, v30);
-		if not v31 then
+		v22(v23, v24);
+		if not v22 then
 			break;
 		end;
-		local v33 = v32:IsA("ParticleEmitter") and v32.Name == "SparkleParticle";
-		if v33 == true then
+		local v25 = v23:IsA("ParticleEmitter") and v23.Name == "SparkleParticle";
+		if v25 == true then
+			v21 = v21 + 1;
+			v20[v21] = v23;
+		end;	
+	end;
+	return v20;
+end;
+function v2.getLights(p5)
+	local v26 = {};
+	local v27 = 0;
+	local v28, v29, v30 = ipairs((u1(p5)));
+	while true do
+		v28(v29, v30);
+		if not v28 then
+			break;
+		end;
+		v30 = v28;
+		if v29:IsA("Light") == true then
 			v27 = v27 + 1;
-			v26[v27] = v32;
+			v26[v27] = v29;
 		end;	
 	end;
 	return v26;
 end;
-function v2.getLights(p5)
-	local v34 = {};
-	local v35 = 0;
-	for v36, v37 in ipairs((u1(p5))) do
-		if v37:IsA("Light") == true then
-			v35 = v35 + 1;
-			v34[v35] = v37;
-		end;
-	end;
-	return v34;
-end;
 local u2 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
 local l__FlamethrowerUpgrade__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "kits", "pyro", "flamethrower-upgrade").FlamethrowerUpgrade;
 function v2.getUpgradesFromFlamethrower(p6)
-	local v38 = {};
-	for v39, v40 in ipairs(u2.values(l__FlamethrowerUpgrade__3)) do
-		local v41 = p6:GetAttribute(v40);
-		if v41 == nil then
-			v41 = -1;
+	local v31 = {};
+	local v32, v33, v34 = ipairs(u2.values(l__FlamethrowerUpgrade__3));
+	while true do
+		v32(v33, v34);
+		if not v32 then
+			break;
 		end;
-		v38[v40] = v41;
+		v34 = v32;
+		local v35 = p6:GetAttribute(v33);
+		if v35 == nil then
+			v35 = -1;
+		end;
+		v31[v33] = v35;	
 	end;
-	return v38;
+	return v31;
 end;
 local l__BedwarsShop__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "shop", "bedwars-shop").BedwarsShop;
 function v2.setEnabled(p7, p8)
 	if not p7.Parent then
 		return nil;
 	end;
-	local v42 = l__BedwarsShop__4.getUpgrade(l__BedwarsShop__4.FlamethrowerUpgrades, l__FlamethrowerUpgrade__3.RANGE);
-	local v43 = 1;
-	local v44 = p7:GetAttribute(l__FlamethrowerUpgrade__3.RANGE);
-	if v44 ~= nil then
-		local v45 = v42.tiers[v44 + 1].values[1];
-		if v45 == nil then
-			v45 = 0;
+	local v36 = l__BedwarsShop__4.getUpgrade(l__BedwarsShop__4.FlamethrowerUpgrades, l__FlamethrowerUpgrade__3.RANGE);
+	local v37 = 1;
+	local v38 = p7:GetAttribute(l__FlamethrowerUpgrade__3.RANGE);
+	if v38 ~= nil then
+		local v39 = v36.tiers[v38 + 1].values[1];
+		if v39 == nil then
+			v39 = 0;
 		end;
-		v43 = 1 + v45 / 100;
+		v37 = 1 + v39 / 100;
 	end;
-	for v46, v47 in ipairs((v2.getSparkleParticles(p7))) do
-		v47.Enabled = p8;
-		local l__Enabled__48 = v47.Enabled;
+	local v40, v41, v42 = ipairs((v2.getSparkleParticles(p7)));
+	while true do
+		v40(v41, v42);
+		if not v40 then
+			break;
+		end;
+		v42 = v40;
+		v41.Enabled = p8;
+		local l__Enabled__43 = v41.Enabled;	
 	end;
-	for v49, v50 in ipairs((v2.getFireParticles(p7))) do
-		v50.Enabled = p8;
-		v50.Speed = NumberRange.new(25 * v43);
+	local v44, v45, v46 = ipairs((v2.getFireParticles(p7)));
+	while true do
+		v44(v45, v46);
+		if not v44 then
+			break;
+		end;
+		v46 = v44;
+		v45.Enabled = p8;
+		v45.Speed = NumberRange.new(25 * v37);	
 	end;
-	for v51, v52 in ipairs((v2.getSmokeParticles(p7))) do
-		v52.Enabled = p8;
-		v52.Speed = NumberRange.new(15 * v43);
+	local v47, v48, v49 = ipairs((v2.getSmokeParticles(p7)));
+	while true do
+		v47(v48, v49);
+		if not v47 then
+			break;
+		end;
+		v49 = v47;
+		v48.Enabled = p8;
+		v48.Speed = NumberRange.new(15 * v37);	
 	end;
-	for v53, v54 in ipairs((v2.getLights(p7))) do
-		v54.Enabled = p8;
-		local l__Enabled__55 = v54.Enabled;
+	local v50, v51, v52 = ipairs((v2.getLights(p7)));
+	while true do
+		v50(v51, v52);
+		if not v50 then
+			break;
+		end;
+		v52 = v50;
+		v51.Enabled = p8;
+		local l__Enabled__53 = v51.Enabled;	
 	end;
 end;
 local l__MapUtil__5 = v1.import(script, v1.getModule(script, "@easy-games", "data-structure").out).MapUtil;
 function v2.setUpgrades(p9, p10)
-	for v56, v57 in ipairs(l__MapUtil__5.keys(p10)) do
-		p9:SetAttribute(v57, p10[v57]);
+	local v54, v55, v56 = ipairs(l__MapUtil__5.keys(p10));
+	while true do
+		v54(v55, v56);
+		if not v54 then
+			break;
+		end;
+		v56 = v54;
+		p9:SetAttribute(v55, p10[v55]);	
 	end;
 end;
-return {
+u1 = {
 	PyroUtil = v2
 };
+return u1;

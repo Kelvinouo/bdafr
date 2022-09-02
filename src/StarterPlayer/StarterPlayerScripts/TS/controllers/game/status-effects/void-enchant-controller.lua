@@ -1,143 +1,141 @@
--- Script Hash: e1420298cdb7021665a549f000ed41501461f26bf8af8d5e6d14cc50f7cdabd9ed692792c6efed554598af8a07d754f8
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
-local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
-local l__KnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
-local v6 = setmetatable({}, {
+local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
+local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
+local v5 = setmetatable({}, {
 	__tostring = function()
 		return "VoidEnchantController";
 	end, 
-	__index = l__KnitController__5
+	__index = l__KnitController__4
 });
-v6.__index = v6;
-function v6.new(...)
-	local v7 = setmetatable({}, v6);
-	return v7:constructor(...) and v7;
+v5.__index = v5;
+function v5.new(...)
+	local v6 = setmetatable({}, v5);
+	return v6:constructor(...) and v6;
 end;
-local u1 = l__KnitController__5;
-function v6.constructor(p1)
-	u1.constructor(p1);
+function v5.constructor(p1)
+	l__KnitController__4.constructor(p1);
 	p1.Name = "VoidEnchantController";
 end;
-local l__WatchCharacter__2 = v2.WatchCharacter;
-local l__CollectionService__3 = v4.CollectionService;
-function v6.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__WatchCharacter__2(function(p3, p4, p5)
+local l__WatchCharacter__1 = v2.WatchCharacter;
+local l__CollectionService__2 = v3.CollectionService;
+function v5.KnitStart(p2)
+	l__KnitController__4.KnitStart(p2);
+	l__WatchCharacter__1(function(p3, p4, p5)
 		p4:GetAttributeChangedSignal("VoidEnchantStacks"):Connect(function()
-			local v8 = p4:GetAttribute("VoidEnchantStacks");
-			if v8 == nil then
-				v8 = 0;
+			local v7 = p4:GetAttribute("VoidEnchantStacks");
+			if v7 == nil then
+				v7 = 0;
 			end;
-			p2:updateStacks(p4, v8);
+			p2:updateStacks(p4, v7);
 		end);
-		local v9 = p4:GetAttribute("VoidEnchantStacks");
-		if v9 ~= nil then
-			p2:updateStacks(p4, v9);
+		local v8 = p4:GetAttribute("VoidEnchantStacks");
+		if v8 ~= nil then
+			p2:updateStacks(p4, v8);
 		end;
 		p5:GiveTask(function()
-			local v10 = l__CollectionService__3:GetTagged(p3.Name .. ":void_enchant_orb");
-			local function v11(p6)
-				p6:Destroy();
-			end;
-			for v12, v13 in ipairs(v10) do
-				v11(v13, v12 - 1, v10);
+			local v9, v10, v11 = ipairs((l__CollectionService__2:GetTagged(p3.Name .. ":void_enchant_orb")));
+			while true do
+				v9(v10, v11);
+				if not v9 then
+					break;
+				end;
+				v11 = v9;
+				v10:Destroy();			
 			end;
 		end);
 	end);
 end;
-local l__Maid__4 = v3.Maid;
-local l__ReplicatedStorage__5 = v4.ReplicatedStorage;
-local l__Workspace__6 = v4.Workspace;
-local l__HttpService__7 = v4.HttpService;
-local l__RunService__8 = v4.RunService;
-local l__default__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-local l__SoundManager__10 = v2.SoundManager;
-local l__GameSound__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__Players__12 = v4.Players;
-local l__KnitClient__13 = v3.KnitClient;
-local l__EffectUtil__14 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "effect", "effect-util").EffectUtil;
-function v6.updateStacks(p7, p8, p9)
-	local v14 = l__CollectionService__3:GetTagged(p8.Name .. ":void_enchant_orb");
-	local v15 = nil;
-	if #v14 > 0 then
-		v15 = v14[1];
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+local l__ReplicatedStorage__4 = v3.ReplicatedStorage;
+local l__Workspace__5 = v3.Workspace;
+local l__HttpService__6 = v3.HttpService;
+local l__RunService__7 = v3.RunService;
+local l__default__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__SoundManager__9 = v2.SoundManager;
+local l__GameSound__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local l__Players__11 = v3.Players;
+local l__KnitClient__12 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
+local l__EffectUtil__13 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "effect", "effect-util").EffectUtil;
+function v5.updateStacks(p6, p7, p8)
+	local v12 = l__CollectionService__2:GetTagged(p7.Name .. ":void_enchant_orb");
+	local v13 = nil;
+	if #v12 > 0 then
+		v13 = v12[1];
 	end;
-	if p9 == 0 and v15 then
-		v15:Destroy();
+	if p8 == 0 and v13 then
+		v13:Destroy();
 		return nil;
 	end;
-	if v15 == nil then
-		local v16 = l__Maid__4.new();
-		v15 = l__ReplicatedStorage__5.Assets.Effects.VoidEnchantOrb:Clone();
-		v15.Parent = l__Workspace__6;
-		l__CollectionService__3:AddTag(v15, p8.Name .. ":void_enchant_orb");
-		v15:SetAttribute("CurrentSize", 1);
-		local u15 = 0;
-		l__RunService__8:BindToRenderStep(l__HttpService__7:GenerateGUID(false), Enum.RenderPriority.Last.Value, function(p10)
-			u15 = u15 + p10;
-			local l__Head__17 = p8:FindFirstChild("Head");
-			if not l__Head__17 then
+	if v13 == nil then
+		local v14 = u3.new();
+		v13 = l__ReplicatedStorage__4.Assets.Effects.VoidEnchantOrb:Clone();
+		v13.Parent = l__Workspace__5;
+		l__CollectionService__2:AddTag(v13, p7.Name .. ":void_enchant_orb");
+		v13:SetAttribute("CurrentSize", 1);
+		local u14 = 0;
+		l__RunService__7:BindToRenderStep(l__HttpService__6:GenerateGUID(false), Enum.RenderPriority.Last.Value, function(p9)
+			u14 = u14 + p9;
+			local l__Head__15 = p7:FindFirstChild("Head");
+			if not l__Head__15 then
 				return nil;
 			end;
-			local v18 = v15;
-			if v18 ~= nil then
-				v18 = v18.PrimaryPart;
+			local v16 = v13;
+			if v16 ~= nil then
+				v16 = v16.PrimaryPart;
 			end;
-			if not v18 then
+			if not v16 then
 				return nil;
 			end;
-			v15:SetPrimaryPartCFrame(CFrame.new(l__Head__17.Position + Vector3.new(0, 5, 0)) * CFrame.Angles(math.pi * 2 * (u15 % 2), math.pi * 2 * (u15 % 3), math.pi * 2 * (u15 % 1.5)));
+			v13:SetPrimaryPartCFrame(CFrame.new(l__Head__15.Position + Vector3.new(0, 5, 0)) * CFrame.Angles(math.pi * 2 * (u14 % 2), math.pi * 2 * (u14 % 3), math.pi * 2 * (u14 % 1.5)));
 		end);
-		v16:GiveTask(l__default__9.Client:Get("EntityDeathEvent"):Connect(function(p11)
-			if p11.entityInstance == p8 and v15 then
-				local v19 = v15.PrimaryPart;
-				if v19 ~= nil then
-					v19 = v19.Position;
+		v14:GiveTask(l__default__8.Client:Get("RemoteName"):Connect(function(p10)
+			if p10.entityInstance == p7 and v13 then
+				local v17 = v13.PrimaryPart;
+				if v17 ~= nil then
+					v17 = v17.Position;
 				end;
-				v15:Destroy();
-				if v19 then
-					local v20 = {};
-					if p8 == l__Players__12.LocalPlayer.Character then
-						local v21 = nil;
+				v13:Destroy();
+				if v17 then
+					local v18 = {};
+					if p7 == l__Players__11.LocalPlayer.Character then
+						local v19 = nil;
 					else
-						v21 = v19;
+						v19 = v17;
 					end;
-					v20.position = v21;
-					l__SoundManager__10:playSound(l__GameSound__11.ENCHANT_VOID_EXPLODE, v20);
-					l__KnitClient__13.Controllers.FancyExplosionController:createExplosion({
-						position = v19, 
+					v18.position = v19;
+					l__SoundManager__9:playSound(l__GameSound__10.ENCHANT_VOID_EXPLODE, v18);
+					l__KnitClient__12.Controllers.FancyExplosionController:createExplosion({
+						position = v17, 
 						radius = 3, 
 						randomSizeOffset = 0, 
 						randomPositionOffset = 0, 
 						inDuration = 0.1, 
 						outDuration = 0.3, 
-						model = l__ReplicatedStorage__5.Assets.Effects.EnchantVoidOrbExplosion
+						model = l__ReplicatedStorage__4.Assets.Effects.EnchantVoidOrbExplosion
 					});
 				end;
 			end;
 		end));
-		v15.AncestryChanged:Connect(function(p12, p13)
-			if p13 == nil then
-				v16:DoCleaning();
+		v13.AncestryChanged:Connect(function(p11, p12)
+			if p12 == nil then
+				v14:DoCleaning();
 			end;
 		end);
 	end;
-	l__EffectUtil__14:playEffects({ v15.Ball.StackBurst }, p8);
-	if v15.PrimaryPart then
-		local v22 = {};
-		if p8 == l__Players__12.LocalPlayer.Character then
-			local v23 = nil;
+	l__EffectUtil__13:playEffects({ v13.Ball.StackBurst }, p7);
+	if v13.PrimaryPart then
+		local v20 = {};
+		if p7 == l__Players__11.LocalPlayer.Character then
+			local v21 = nil;
 		else
-			v23 = v15.PrimaryPart.Position;
+			v21 = v13.PrimaryPart.Position;
 		end;
-		v22.position = v23;
-		l__SoundManager__10:playSound(l__GameSound__11.ENCHANT_VOID_HIT, v22);
+		v20.position = v21;
+		l__SoundManager__9:playSound(l__GameSound__10.ENCHANT_VOID_HIT, v20);
 	end;
 end;
-u1 = l__KnitClient__13.CreateController;
-u1 = u1(v6.new());
+local v22 = l__KnitClient__12.CreateController(v5.new());
 return nil;

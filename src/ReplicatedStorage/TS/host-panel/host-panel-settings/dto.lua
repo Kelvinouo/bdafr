@@ -23,6 +23,8 @@ v3.BlockBreaking = 7;
 v2[7] = "BlockBreaking";
 v3.IgnoreBuildRestrictedRegions = 8;
 v2[8] = "IgnoreBuildRestrictedRegions";
+v3.KeepInventoryOnDeath = 9;
+v2[9] = "KeepInventoryOnDeath";
 local v4 = {};
 local v5 = setmetatable({}, {
 	__index = v4
@@ -53,7 +55,8 @@ return {
 			[v3.PvP] = v5.ON, 
 			[v3.BedBreaking] = v5.ON, 
 			[v3.BlockBreaking] = v5.ON, 
-			[v3.IgnoreBuildRestrictedRegions] = v5.OFF
+			[v3.IgnoreBuildRestrictedRegions] = v5.OFF, 
+			[v3.KeepInventoryOnDeath] = v5.OFF
 		}, 
 		disabledKits = {}, 
 		disabledItems = {}

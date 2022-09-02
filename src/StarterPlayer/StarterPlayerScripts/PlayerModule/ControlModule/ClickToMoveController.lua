@@ -3,65 +3,68 @@
 local v1, v2 = pcall(function()
 	return UserSettings():IsUserFeatureEnabled("UserExcludeNonCollidableForPathfinding");
 end);
-local l__Players__3 = game:GetService("Players");
-local l__Debris__4 = game:GetService("Debris");
-local v5 = {};
+local v3, v4 = pcall(function()
+	return UserSettings():IsUserFeatureEnabled("UserClickToMoveSupportAgentCanClimb2");
+end);
+local l__Players__5 = game:GetService("Players");
+local l__Debris__6 = game:GetService("Debris");
+local v7 = {};
 local u1 = function(p1)
 	if not p1 then
 		return;
 	end;
-	local v6 = p1:FindFirstChildOfClass("Humanoid");
-	if v6 then
-		return p1, v6;
+	local v8 = p1:FindFirstChildOfClass("Humanoid");
+	if v8 then
+		return p1, v8;
 	end;
 	return u1(p1.Parent);
 end;
-v5.FindCharacterAncestor = u1;
+v7.FindCharacterAncestor = u1;
 local l__Workspace__2 = game:GetService("Workspace");
 local u3 = function(p2, p3, p4)
 	p4 = p4 or {};
-	local v7, v8, v9, v10 = l__Workspace__2:FindPartOnRayWithIgnoreList(p2, p4);
-	if not v7 then
+	local v9, v10, v11, v12 = l__Workspace__2:FindPartOnRayWithIgnoreList(p2, p4);
+	if not v9 then
 		return nil, nil;
 	end;
-	if p3 and v7.CanCollide == false then
-		if v7 then
-			local v11 = v7:FindFirstChildOfClass("Humanoid");
-			if v11 then
-				local v12 = v11;
+	if p3 and v9.CanCollide == false then
+		if v9 then
+			local v13 = v9:FindFirstChildOfClass("Humanoid");
+			if v13 then
+				local v14 = v13;
 			else
-				local v13, v14 = u1(v7.Parent);
-				v12 = v14;
+				local v15, v16 = u1(v9.Parent);
+				v14 = v16;
 			end;
 		else
-			v12 = nil;
+			v14 = nil;
 		end;
-		if v12 == nil then
-			table.insert(p4, v7);
+		if v14 == nil then
+			table.insert(p4, v9);
 			return u3(p2, p3, p4);
 		end;
 	end;
-	return v7, v8, v9, v10;
+	return v9, v10, v11, v12;
 end;
-v5.Raycast = u3;
+v7.Raycast = u3;
 u1 = {};
 u3 = function(p5)
-	local v15 = p5 and p5.Character;
-	if not v15 then
+	local v17 = p5 and p5.Character;
+	if not v17 then
 		return;
 	end;
-	local v16 = u1[p5];
-	if v16 and v16.Parent == v15 then
-		return v16;
+	local v18 = u1[p5];
+	if v18 and v18.Parent == v17 then
+		return v18;
 	end;
 	u1[p5] = nil;
-	local v17 = v15:FindFirstChildOfClass("Humanoid");
-	if v17 then
-		u1[p5] = v17;
+	local v19 = v17:FindFirstChildOfClass("Humanoid");
+	if v19 then
+		u1[p5] = v19;
 	end;
-	return v17;
+	return v19;
 end;
-local l__LocalPlayer__4 = l__Players__3.LocalPlayer;
+local l__LocalPlayer__4 = l__Players__5.LocalPlayer;
 local u5 = nil;
 local u6 = nil;
 local u7 = nil;
@@ -75,529 +78,549 @@ local function u14(p6)
 	if p6 == nil or p6.PrimaryPart == nil then
 		return;
 	end;
-	local v18 = p6.PrimaryPart.CFrame:inverse();
-	local v19 = Vector3.new(math.huge, math.huge, math.huge);
-	local v20 = Vector3.new(-math.huge, -math.huge, -math.huge);
-	for v21, v22 in pairs(p6:GetDescendants()) do
-		if v22:IsA("BasePart") and v22.CanCollide then
-			local v23 = v18 * v22.CFrame;
-			local v24 = Vector3.new(v22.Size.X / 2, v22.Size.Y / 2, v22.Size.Z / 2);
-			for v25, v26 in ipairs({ Vector3.new(v24.X, v24.Y, v24.Z), Vector3.new(v24.X, v24.Y, -v24.Z), Vector3.new(v24.X, -v24.Y, v24.Z), Vector3.new(v24.X, -v24.Y, -v24.Z), Vector3.new(-v24.X, v24.Y, v24.Z), Vector3.new(-v24.X, v24.Y, -v24.Z), Vector3.new(-v24.X, -v24.Y, v24.Z), Vector3.new(-v24.X, -v24.Y, -v24.Z) }) do
-				local v27 = v23 * v26;
-				v19 = Vector3.new(math.min(v19.X, v27.X), math.min(v19.Y, v27.Y), math.min(v19.Z, v27.Z));
-				v20 = Vector3.new(math.max(v20.X, v27.X), math.max(v20.Y, v27.Y), math.max(v20.Z, v27.Z));
+	assert(p6, "");
+	assert(p6.PrimaryPart, "");
+	local v20 = p6.PrimaryPart.CFrame:Inverse();
+	local v21 = Vector3.new(math.huge, math.huge, math.huge);
+	local v22 = Vector3.new(-math.huge, -math.huge, -math.huge);
+	for v23, v24 in pairs(p6:GetDescendants()) do
+		if v24:IsA("BasePart") and v24.CanCollide then
+			local v25 = v20 * v24.CFrame;
+			local v26 = Vector3.new(v24.Size.X / 2, v24.Size.Y / 2, v24.Size.Z / 2);
+			local v27, v28, v29 = ipairs({ Vector3.new(v26.X, v26.Y, v26.Z), Vector3.new(v26.X, v26.Y, -v26.Z), Vector3.new(v26.X, -v26.Y, v26.Z), Vector3.new(v26.X, -v26.Y, -v26.Z), Vector3.new(-v26.X, v26.Y, v26.Z), Vector3.new(-v26.X, v26.Y, -v26.Z), Vector3.new(-v26.X, -v26.Y, v26.Z), Vector3.new(-v26.X, -v26.Y, -v26.Z) });
+			while true do
+				v27(v28, v29);
+				if not v27 then
+					break;
+				end;
+				v29 = v27;
+				local v30 = v25 * v28;
+				v21 = Vector3.new(math.min(v21.X, v30.X), math.min(v21.Y, v30.Y), math.min(v21.Z, v30.Z));
+				v22 = Vector3.new(math.max(v22.X, v30.X), math.max(v22.Y, v30.Y), math.max(v22.Z, v30.Z));			
 			end;
 		end;
 	end;
-	local v28 = v20 - v19;
-	if not (v28.X < 0) and not (v28.Y < 0) and not (v28.Z < 0) then
-		return v28;
+	local v31 = v22 - v21;
+	if not (v31.X < 0) and not (v31.Y < 0) and not (v31.Z < 0) then
+		return v31;
 	end;
 	return nil;
 end;
-local l__PathfindingService__15 = game:GetService("PathfindingService");
-local u16 = true;
-local u17 = require(script.Parent:WaitForChild("ClickToMoveDisplay"));
-local u18 = 8;
-local u19 = nil;
+local u15 = v3 or v4;
+local l__PathfindingService__16 = game:GetService("PathfindingService");
+local u17 = true;
+local u18 = require(script.Parent:WaitForChild("ClickToMoveDisplay"));
+local u19 = 8;
 local u20 = nil;
 local u21 = nil;
-local function u22(p7)
+local u22 = nil;
+local function u23(p7)
 	if p7 ~= nil then
-		for v29, v30 in pairs(p7:GetChildren()) do
-			if v30:IsA("Tool") then
-				return v30;
+		for v32, v33 in pairs(p7:GetChildren()) do
+			if v33:IsA("Tool") then
+				return v33;
 			end;
 		end;
 	end;
 end;
-local u23 = true;
-local l__StarterGui__24 = game:GetService("StarterGui");
-local function u25(p8, p9, p10)
-	local v31 = {};
+local u24 = true;
+local l__StarterGui__25 = game:GetService("StarterGui");
+local function u26(p8, p9, p10)
+	local v34 = {};
 	if p10 ~= nil then
-		local v32 = p10;
-		local v33 = p10;
+		local v35 = p10;
+		local v36 = p10;
 	else
-		v32 = u10;
-		v33 = true;
+		v35 = u10;
+		v36 = true;
 	end;
-	v31.Cancelled = false;
-	v31.Started = false;
-	v31.Finished = Instance.new("BindableEvent");
-	v31.PathFailed = Instance.new("BindableEvent");
-	v31.PathComputing = false;
-	v31.PathComputed = false;
-	v31.OriginalTargetPoint = p8;
-	v31.TargetPoint = p8;
-	v31.TargetSurfaceNormal = p9;
-	v31.DiedConn = nil;
-	v31.SeatedConn = nil;
-	v31.BlockedConn = nil;
-	v31.TeleportedConn = nil;
-	v31.CurrentPoint = 0;
-	v31.HumanoidOffsetFromPath = u11;
-	v31.CurrentWaypointPosition = nil;
-	v31.CurrentWaypointPlaneNormal = u11;
-	v31.CurrentWaypointPlaneDistance = 0;
-	v31.CurrentWaypointNeedsJump = false;
-	v31.CurrentHumanoidPosition = u11;
-	v31.CurrentHumanoidVelocity = 0;
-	v31.NextActionMoveDirection = u11;
-	v31.NextActionJump = false;
-	v31.Timeout = 0;
-	local v34 = l__LocalPlayer__4 and l__LocalPlayer__4.Character;
-	if v34 then
-		local v35 = u1[l__LocalPlayer__4];
-		if v35 and v35.Parent == v34 then
-			local v36 = v35;
+	v34.Cancelled = false;
+	v34.Started = false;
+	v34.Finished = Instance.new("BindableEvent");
+	v34.PathFailed = Instance.new("BindableEvent");
+	v34.PathComputing = false;
+	v34.PathComputed = false;
+	v34.OriginalTargetPoint = p8;
+	v34.TargetPoint = p8;
+	v34.TargetSurfaceNormal = p9;
+	v34.DiedConn = nil;
+	v34.SeatedConn = nil;
+	v34.BlockedConn = nil;
+	v34.TeleportedConn = nil;
+	v34.CurrentPoint = 0;
+	v34.HumanoidOffsetFromPath = u11;
+	v34.CurrentWaypointPosition = nil;
+	v34.CurrentWaypointPlaneNormal = u11;
+	v34.CurrentWaypointPlaneDistance = 0;
+	v34.CurrentWaypointNeedsJump = false;
+	v34.CurrentHumanoidPosition = u11;
+	v34.CurrentHumanoidVelocity = 0;
+	v34.NextActionMoveDirection = u11;
+	v34.NextActionJump = false;
+	v34.Timeout = 0;
+	local v37 = l__LocalPlayer__4 and l__LocalPlayer__4.Character;
+	if v37 then
+		local v38 = u1[l__LocalPlayer__4];
+		if v38 and v38.Parent == v37 then
+			local v39 = v38;
 		else
 			u1[l__LocalPlayer__4] = nil;
-			local v37 = v34:FindFirstChildOfClass("Humanoid");
-			if v37 then
-				u1[l__LocalPlayer__4] = v37;
+			local v40 = v37:FindFirstChildOfClass("Humanoid");
+			if v40 then
+				u1[l__LocalPlayer__4] = v40;
 			end;
-			v36 = v37;
+			v39 = v40;
 		end;
 	else
-		v36 = nil;
+		v39 = nil;
 	end;
-	v31.Humanoid = v36;
-	v31.OriginPoint = nil;
-	v31.AgentCanFollowPath = false;
-	v31.DirectPath = false;
-	v31.DirectPathRiseFirst = false;
-	local v38 = v31.Humanoid and v31.Humanoid.RootPart;
-	if v38 then
-		v31.OriginPoint = v38.CFrame.Position;
-		local v39 = 2;
-		local v40 = 5;
-		local v41 = true;
-		local l__SeatPart__42 = v31.Humanoid.SeatPart;
-		if l__SeatPart__42 and l__SeatPart__42:IsA("VehicleSeat") then
-			local v43 = l__SeatPart__42:FindFirstAncestorOfClass("Model");
-			if v43 then
-				v43.PrimaryPart = l__SeatPart__42;
-				if v33 then
-					local v44 = v43:GetExtentsSize();
-					v39 = u12 * 0.5 * math.sqrt(v44.X * v44.X + v44.Z * v44.Z);
-					v40 = u12 * v44.Y;
-					v41 = false;
-					v31.AgentCanFollowPath = true;
-					v31.DirectPath = v33;
+	v34.Humanoid = v39;
+	v34.OriginPoint = nil;
+	v34.AgentCanFollowPath = false;
+	v34.DirectPath = false;
+	v34.DirectPathRiseFirst = false;
+	v34.stopTraverseFunc = nil;
+	v34.setPointFunc = nil;
+	v34.pointList = nil;
+	local v41 = v34.Humanoid and v34.Humanoid.RootPart;
+	if v41 then
+		v34.OriginPoint = v41.CFrame.Position;
+		local v42 = 2;
+		local v43 = 5;
+		local v44 = true;
+		local l__SeatPart__45 = v34.Humanoid.SeatPart;
+		if l__SeatPart__45 and l__SeatPart__45:IsA("VehicleSeat") then
+			local v46 = l__SeatPart__45:FindFirstAncestorOfClass("Model");
+			if v46 then
+				v46.PrimaryPart = l__SeatPart__45;
+				if v36 then
+					local v47 = v46:GetExtentsSize();
+					v42 = u12 * 0.5 * math.sqrt(v47.X * v47.X + v47.Z * v47.Z);
+					v43 = u12 * v47.Y;
+					v44 = false;
+					v34.AgentCanFollowPath = true;
+					v34.DirectPath = v36;
 				end;
-				v43.PrimaryPart = v43.PrimaryPart;
+				v46.PrimaryPart = v46.PrimaryPart;
 			end;
 		else
-			local v45 = nil;
+			local v48 = nil;
 			if u13 then
-				local v46 = l__LocalPlayer__4 and l__LocalPlayer__4.Character;
-				if v46 ~= nil then
-					v45 = u14(v46);
+				local v49 = l__LocalPlayer__4 and l__LocalPlayer__4.Character;
+				if v49 ~= nil then
+					v48 = u14(v49);
 				end;
 			end;
-			if v45 == nil then
-				v45 = (l__LocalPlayer__4 and l__LocalPlayer__4.Character):GetExtentsSize();
+			if v48 == nil then
+				v48 = (l__LocalPlayer__4 and l__LocalPlayer__4.Character):GetExtentsSize();
 			end;
-			v39 = u12 * 0.5 * math.sqrt(v45.X * v45.X + v45.Z * v45.Z);
-			v40 = u12 * v45.Y;
-			v41 = v31.Humanoid.JumpPower > 0;
-			v31.AgentCanFollowPath = true;
-			v31.DirectPath = v32;
-			v31.DirectPathRiseFirst = v31.Humanoid.Sit;
+			assert(v48, "");
+			v42 = u12 * 0.5 * math.sqrt(v48.X * v48.X + v48.Z * v48.Z);
+			v43 = u12 * v48.Y;
+			v44 = v34.Humanoid.JumpPower > 0;
+			v34.AgentCanFollowPath = true;
+			v34.DirectPath = v35;
+			v34.DirectPathRiseFirst = v34.Humanoid.Sit;
 		end;
-		v31.pathResult = l__PathfindingService__15:CreatePath({
-			AgentRadius = v39, 
-			AgentHeight = v40, 
-			AgentCanJump = v41
-		});
+		if u15 then
+			v34.pathResult = l__PathfindingService__16:CreatePath({
+				AgentRadius = v42, 
+				AgentHeight = v43, 
+				AgentCanJump = v44, 
+				AgentCanClimb = true
+			});
+		else
+			v34.pathResult = l__PathfindingService__16:CreatePath({
+				AgentRadius = v42, 
+				AgentHeight = v43, 
+				AgentCanJump = v44
+			});
+		end;
 	end;
-	function v31.Cleanup(p11)
-		if v31.stopTraverseFunc then
-			v31.stopTraverseFunc();
-			v31.stopTraverseFunc = nil;
+	function v34.Cleanup(p11)
+		if v34.stopTraverseFunc then
+			v34.stopTraverseFunc();
+			v34.stopTraverseFunc = nil;
 		end;
-		if v31.MoveToConn then
-			v31.MoveToConn:Disconnect();
-			v31.MoveToConn = nil;
+		if v34.BlockedConn then
+			v34.BlockedConn:Disconnect();
+			v34.BlockedConn = nil;
 		end;
-		if v31.BlockedConn then
-			v31.BlockedConn:Disconnect();
-			v31.BlockedConn = nil;
+		if v34.DiedConn then
+			v34.DiedConn:Disconnect();
+			v34.DiedConn = nil;
 		end;
-		if v31.DiedConn then
-			v31.DiedConn:Disconnect();
-			v31.DiedConn = nil;
+		if v34.SeatedConn then
+			v34.SeatedConn:Disconnect();
+			v34.SeatedConn = nil;
 		end;
-		if v31.SeatedConn then
-			v31.SeatedConn:Disconnect();
-			v31.SeatedConn = nil;
+		if v34.TeleportedConn then
+			v34.TeleportedConn:Disconnect();
+			v34.TeleportedConn = nil;
 		end;
-		if v31.TeleportedConn then
-			v31.TeleportedConn:Disconnect();
-			v31.TeleportedConn = nil;
-		end;
-		v31.Started = false;
+		v34.Started = false;
 	end;
-	function v31.Cancel(p12)
-		v31.Cancelled = true;
-		v31:Cleanup();
+	function v34.Cancel(p12)
+		v34.Cancelled = true;
+		v34:Cleanup();
 	end;
-	function v31.IsActive(p13)
-		return v31.AgentCanFollowPath and (v31.Started and not v31.Cancelled);
+	function v34.IsActive(p13)
+		return v34.AgentCanFollowPath and (v34.Started and not v34.Cancelled);
 	end;
-	function v31.OnPathInterrupted(p14)
-		v31.Cancelled = true;
-		v31:OnPointReached(false);
+	function v34.OnPathInterrupted(p14)
+		v34.Cancelled = true;
+		v34:OnPointReached(false);
 	end;
-	function v31.ComputePath(p15)
-		if v31.OriginPoint then
-			if v31.PathComputed or v31.PathComputing then
+	function v34.ComputePath(p15)
+		if v34.OriginPoint then
+			if v34.PathComputed or v34.PathComputing then
 				return;
 			end;
-			v31.PathComputing = true;
-			if v31.AgentCanFollowPath then
-				if v31.DirectPath then
-					v31.pointList = { PathWaypoint.new(v31.OriginPoint, Enum.PathWaypointAction.Walk), PathWaypoint.new(v31.TargetPoint, v31.DirectPathRiseFirst and Enum.PathWaypointAction.Jump or Enum.PathWaypointAction.Walk) };
-					v31.PathComputed = true;
+			v34.PathComputing = true;
+			if v34.AgentCanFollowPath then
+				if v34.DirectPath then
+					v34.pointList = { PathWaypoint.new(v34.OriginPoint, Enum.PathWaypointAction.Walk), PathWaypoint.new(v34.TargetPoint, v34.DirectPathRiseFirst and Enum.PathWaypointAction.Jump or Enum.PathWaypointAction.Walk) };
+					v34.PathComputed = true;
 				else
-					v31.pathResult:ComputeAsync(v31.OriginPoint, v31.TargetPoint);
-					v31.pointList = v31.pathResult:GetWaypoints();
-					v31.BlockedConn = v31.pathResult.Blocked:Connect(function(p16)
-						v31:OnPathBlocked(p16);
+					v34.pathResult:ComputeAsync(v34.OriginPoint, v34.TargetPoint);
+					v34.pointList = v34.pathResult:GetWaypoints();
+					v34.BlockedConn = v34.pathResult.Blocked:Connect(function(p16)
+						v34:OnPathBlocked(p16);
 					end);
-					v31.PathComputed = v31.pathResult.Status == Enum.PathStatus.Success;
+					v34.PathComputed = v34.pathResult.Status == Enum.PathStatus.Success;
 				end;
 			end;
-			v31.PathComputing = false;
+			v34.PathComputing = false;
 		end;
 	end;
-	function v31.IsValidPath(p17)
-		v31:ComputePath();
-		return v31.PathComputed and v31.AgentCanFollowPath;
+	function v34.IsValidPath(p17)
+		v34:ComputePath();
+		return v34.PathComputed and v34.AgentCanFollowPath;
 	end;
-	v31.Recomputing = false;
-	function v31.OnPathBlocked(p18, p19)
-		if not (v31.CurrentPoint <= p19) or v31.Recomputing then
+	v34.Recomputing = false;
+	function v34.OnPathBlocked(p18, p19)
+		if not (v34.CurrentPoint <= p19) or v34.Recomputing then
 			return;
 		end;
-		v31.Recomputing = true;
-		if v31.stopTraverseFunc then
-			v31.stopTraverseFunc();
-			v31.stopTraverseFunc = nil;
+		v34.Recomputing = true;
+		if v34.stopTraverseFunc then
+			v34.stopTraverseFunc();
+			v34.stopTraverseFunc = nil;
 		end;
-		v31.OriginPoint = v31.Humanoid.RootPart.CFrame.p;
-		v31.pathResult:ComputeAsync(v31.OriginPoint, v31.TargetPoint);
-		v31.pointList = v31.pathResult:GetWaypoints();
-		if #v31.pointList > 0 then
-			v31.HumanoidOffsetFromPath = v31.pointList[1].Position - v31.OriginPoint;
+		v34.OriginPoint = v34.Humanoid.RootPart.CFrame.p;
+		v34.pathResult:ComputeAsync(v34.OriginPoint, v34.TargetPoint);
+		v34.pointList = v34.pathResult:GetWaypoints();
+		if #v34.pointList > 0 then
+			v34.HumanoidOffsetFromPath = v34.pointList[1].Position - v34.OriginPoint;
 		end;
-		v31.PathComputed = v31.pathResult.Status == Enum.PathStatus.Success;
-		if u16 then
-			local v47, v48 = u17.CreatePathDisplay(v31.pointList);
-			v31.stopTraverseFunc = v47;
-			v31.setPointFunc = v48;
+		v34.PathComputed = v34.pathResult.Status == Enum.PathStatus.Success;
+		if u17 then
+			local v50, v51 = u18.CreatePathDisplay(v34.pointList);
+			v34.stopTraverseFunc = v50;
+			v34.setPointFunc = v51;
 		end;
-		if v31.PathComputed then
-			v31.CurrentPoint = 1;
-			v31:OnPointReached(true);
+		if v34.PathComputed then
+			v34.CurrentPoint = 1;
+			v34:OnPointReached(true);
 		else
-			v31.PathFailed:Fire();
-			v31:Cleanup();
+			v34.PathFailed:Fire();
+			v34:Cleanup();
 		end;
-		v31.Recomputing = false;
+		v34.Recomputing = false;
 	end;
-	function v31.OnRenderStepped(p20, p21)
-		if v31.Started and not v31.Cancelled then
-			v31.Timeout = v31.Timeout + p21;
-			if u18 < v31.Timeout then
-				v31:OnPointReached(false);
+	function v34.OnRenderStepped(p20, p21)
+		if v34.Started and not v34.Cancelled then
+			v34.Timeout = v34.Timeout + p21;
+			if u19 < v34.Timeout then
+				v34:OnPointReached(false);
 				return;
 			end;
-			v31.CurrentHumanoidPosition = v31.Humanoid.RootPart.Position + v31.HumanoidOffsetFromPath;
-			v31.CurrentHumanoidVelocity = v31.Humanoid.RootPart.Velocity;
-			while v31.Started and v31:IsCurrentWaypointReached() do
-				v31:OnPointReached(true);			
+			v34.CurrentHumanoidPosition = v34.Humanoid.RootPart.Position + v34.HumanoidOffsetFromPath;
+			v34.CurrentHumanoidVelocity = v34.Humanoid.RootPart.Velocity;
+			while v34.Started and v34:IsCurrentWaypointReached() do
+				v34:OnPointReached(true);			
 			end;
-			if v31.Started then
-				v31.NextActionMoveDirection = v31.CurrentWaypointPosition - v31.CurrentHumanoidPosition;
-				if v31.NextActionMoveDirection.Magnitude > 1E-06 then
-					v31.NextActionMoveDirection = v31.NextActionMoveDirection.Unit;
+			if v34.Started then
+				v34.NextActionMoveDirection = v34.CurrentWaypointPosition - v34.CurrentHumanoidPosition;
+				if v34.NextActionMoveDirection.Magnitude > 1E-06 then
+					v34.NextActionMoveDirection = v34.NextActionMoveDirection.Unit;
 				else
-					v31.NextActionMoveDirection = u11;
+					v34.NextActionMoveDirection = u11;
 				end;
-				if v31.CurrentWaypointNeedsJump then
-					v31.NextActionJump = true;
-					v31.CurrentWaypointNeedsJump = false;
+				if v34.CurrentWaypointNeedsJump then
+					v34.NextActionJump = true;
+					v34.CurrentWaypointNeedsJump = false;
 					return;
 				end;
-				v31.NextActionJump = false;
+				v34.NextActionJump = false;
 			end;
 		end;
 	end;
-	function v31.IsCurrentWaypointReached(p22)
-		if v31.CurrentWaypointPlaneNormal ~= u11 then
-			local v49 = v31.CurrentWaypointPlaneNormal:Dot(v31.CurrentHumanoidPosition) - v31.CurrentWaypointPlaneDistance < math.max(1, 0.0625 * -v31.CurrentWaypointPlaneNormal:Dot(v31.CurrentHumanoidVelocity));
+	function v34.IsCurrentWaypointReached(p22)
+		if v34.CurrentWaypointPlaneNormal ~= u11 then
+			local v52 = v34.CurrentWaypointPlaneNormal:Dot(v34.CurrentHumanoidPosition) - v34.CurrentWaypointPlaneDistance < math.max(1, 0.0625 * -v34.CurrentWaypointPlaneNormal:Dot(v34.CurrentHumanoidVelocity));
 		else
-			v49 = true;
+			v52 = true;
 		end;
-		if v49 then
-			v31.CurrentWaypointPosition = nil;
-			v31.CurrentWaypointPlaneNormal = u11;
-			v31.CurrentWaypointPlaneDistance = 0;
+		if v52 then
+			v34.CurrentWaypointPosition = nil;
+			v34.CurrentWaypointPlaneNormal = u11;
+			v34.CurrentWaypointPlaneDistance = 0;
 		end;
-		return v49;
+		return v52;
 	end;
-	function v31.OnPointReached(p23, p24)
-		if not p24 or not (not v31.Cancelled) then
-			v31.PathFailed:Fire();
-			v31:Cleanup();
+	function v34.OnPointReached(p23, p24)
+		if not p24 or not (not v34.Cancelled) then
+			v34.PathFailed:Fire();
+			v34:Cleanup();
 			return;
 		end;
-		if v31.setPointFunc then
-			v31.setPointFunc(v31.CurrentPoint);
+		if v34.setPointFunc then
+			v34.setPointFunc(v34.CurrentPoint);
 		end;
-		local v50 = v31.CurrentPoint + 1;
-		if #v31.pointList < v50 then
-			if v31.stopTraverseFunc then
-				v31.stopTraverseFunc();
+		local v53 = v34.CurrentPoint + 1;
+		if #v34.pointList < v53 then
+			if v34.stopTraverseFunc then
+				v34.stopTraverseFunc();
 			end;
-			v31.Finished:Fire();
-			v31:Cleanup();
+			v34.Finished:Fire();
+			v34:Cleanup();
 			return;
 		end;
-		local v51 = v31.pointList[v31.CurrentPoint];
-		local v52 = v31.pointList[v50];
-		local v53 = v31.Humanoid:GetState();
-		local v54 = true;
-		if v53 ~= Enum.HumanoidStateType.FallingDown then
-			v54 = true;
-			if v53 ~= Enum.HumanoidStateType.Freefall then
-				v54 = v53 == Enum.HumanoidStateType.Jumping;
+		local v54 = v34.pointList[v34.CurrentPoint];
+		local v55 = v34.pointList[v53];
+		local v56 = v34.Humanoid:GetState();
+		local v57 = true;
+		if v56 ~= Enum.HumanoidStateType.FallingDown then
+			v57 = true;
+			if v56 ~= Enum.HumanoidStateType.Freefall then
+				v57 = v56 == Enum.HumanoidStateType.Jumping;
 			end;
 		end;
-		if v54 then
-			local v55 = v52.Action == Enum.PathWaypointAction.Jump;
-			if not v55 and v31.CurrentPoint > 1 then
-				local v56 = v51.Position - v31.pointList[v31.CurrentPoint - 1].Position;
-				local v57 = v52.Position - v51.Position;
-				v55 = Vector2.new(v56.x, v56.z).Unit:Dot(Vector2.new(v57.x, v57.z).Unit) < 0.996;
+		if v57 then
+			local v58 = v55.Action == Enum.PathWaypointAction.Jump;
+			if not v58 and v34.CurrentPoint > 1 then
+				local v59 = v54.Position - v34.pointList[v34.CurrentPoint - 1].Position;
+				local v60 = v55.Position - v54.Position;
+				v58 = Vector2.new(v59.x, v59.z).Unit:Dot(Vector2.new(v60.x, v60.z).Unit) < 0.996;
 			end;
-			if v55 then
-				v31.Humanoid.FreeFalling:Wait();
+			if v58 then
+				v34.Humanoid.FreeFalling:Wait();
 				wait(0.1);
 			end;
 		end;
-		v31:MoveToNextWayPoint(v51, v52, v50);
+		v34:MoveToNextWayPoint(v54, v55, v53);
 	end;
-	function v31.MoveToNextWayPoint(p25, p26, p27, p28)
-		v31.CurrentWaypointPlaneNormal = p26.Position - p27.Position;
-		v31.CurrentWaypointPlaneNormal = Vector3.new(v31.CurrentWaypointPlaneNormal.X, 0, v31.CurrentWaypointPlaneNormal.Z);
-		if v31.CurrentWaypointPlaneNormal.Magnitude > 1E-06 then
-			v31.CurrentWaypointPlaneNormal = v31.CurrentWaypointPlaneNormal.Unit;
-			v31.CurrentWaypointPlaneDistance = v31.CurrentWaypointPlaneNormal:Dot(p27.Position);
+	function v34.MoveToNextWayPoint(p25, p26, p27, p28)
+		v34.CurrentWaypointPlaneNormal = p26.Position - p27.Position;
+		if not u15 or p27.Label ~= "Climb" then
+			v34.CurrentWaypointPlaneNormal = Vector3.new(v34.CurrentWaypointPlaneNormal.X, 0, v34.CurrentWaypointPlaneNormal.Z);
+		end;
+		if v34.CurrentWaypointPlaneNormal.Magnitude > 1E-06 then
+			v34.CurrentWaypointPlaneNormal = v34.CurrentWaypointPlaneNormal.Unit;
+			v34.CurrentWaypointPlaneDistance = v34.CurrentWaypointPlaneNormal:Dot(p27.Position);
 		else
-			v31.CurrentWaypointPlaneNormal = u11;
-			v31.CurrentWaypointPlaneDistance = 0;
+			v34.CurrentWaypointPlaneNormal = u11;
+			v34.CurrentWaypointPlaneDistance = 0;
 		end;
-		v31.CurrentWaypointNeedsJump = p27.Action == Enum.PathWaypointAction.Jump;
-		v31.CurrentWaypointPosition = p27.Position;
-		v31.CurrentPoint = p28;
-		v31.Timeout = 0;
+		v34.CurrentWaypointNeedsJump = p27.Action == Enum.PathWaypointAction.Jump;
+		v34.CurrentWaypointPosition = p27.Position;
+		v34.CurrentPoint = p28;
+		v34.Timeout = 0;
 	end;
-	function v31.Start(p29, p30)
-		if not v31.AgentCanFollowPath then
-			v31.PathFailed:Fire();
+	function v34.Start(p29, p30)
+		if not v34.AgentCanFollowPath then
+			v34.PathFailed:Fire();
 			return;
 		end;
-		if v31.Started then
+		if v34.Started then
 			return;
 		end;
-		v31.Started = true;
-		u17.CancelFailureAnimation();
-		if u16 and (p30 == nil or p30) then
-			local v58, v59 = u17.CreatePathDisplay(v31.pointList, v31.OriginalTargetPoint);
-			v31.stopTraverseFunc = v58;
-			v31.setPointFunc = v59;
+		v34.Started = true;
+		u18.CancelFailureAnimation();
+		if u17 and (p30 == nil or p30) then
+			local v61, v62 = u18.CreatePathDisplay(v34.pointList, v34.OriginalTargetPoint);
+			v34.stopTraverseFunc = v61;
+			v34.setPointFunc = v62;
 		end;
-		if not (#v31.pointList > 0) then
-			v31.PathFailed:Fire();
-			if v31.stopTraverseFunc then
-				v31.stopTraverseFunc();
+		if not (#v34.pointList > 0) then
+			v34.PathFailed:Fire();
+			if v34.stopTraverseFunc then
+				v34.stopTraverseFunc();
 			end;
 			return;
 		end;
-		v31.HumanoidOffsetFromPath = Vector3.new(0, v31.pointList[1].Position.Y - v31.OriginPoint.Y, 0);
-		v31.CurrentHumanoidPosition = v31.Humanoid.RootPart.Position + v31.HumanoidOffsetFromPath;
-		v31.CurrentHumanoidVelocity = v31.Humanoid.RootPart.Velocity;
-		v31.SeatedConn = v31.Humanoid.Seated:Connect(function(p31, p32)
-			v31:OnPathInterrupted();
+		v34.HumanoidOffsetFromPath = Vector3.new(0, v34.pointList[1].Position.Y - v34.OriginPoint.Y, 0);
+		v34.CurrentHumanoidPosition = v34.Humanoid.RootPart.Position + v34.HumanoidOffsetFromPath;
+		v34.CurrentHumanoidVelocity = v34.Humanoid.RootPart.Velocity;
+		v34.SeatedConn = v34.Humanoid.Seated:Connect(function(p31, p32)
+			v34:OnPathInterrupted();
 		end);
-		v31.DiedConn = v31.Humanoid.Died:Connect(function()
-			v31:OnPathInterrupted();
+		v34.DiedConn = v34.Humanoid.Died:Connect(function()
+			v34:OnPathInterrupted();
 		end);
-		v31.TeleportedConn = v31.Humanoid.RootPart:GetPropertyChangedSignal("CFrame"):Connect(function()
-			v31:OnPathInterrupted();
+		v34.TeleportedConn = v34.Humanoid.RootPart:GetPropertyChangedSignal("CFrame"):Connect(function()
+			v34:OnPathInterrupted();
 		end);
-		v31.CurrentPoint = 1;
-		v31:OnPointReached(true);
+		v34.CurrentPoint = 1;
+		v34:OnPointReached(true);
 	end;
 	if u8 then
-		local v60 = u8;
+		local v63 = u8;
 	else
 		u8 = {};
 		table.insert(u8, l__LocalPlayer__4 and l__LocalPlayer__4.Character);
-		v60 = u8;
+		v63 = u8;
 	end;
-	local v61, v62 = l__Workspace__2:FindPartOnRayWithIgnoreList(Ray.new(v31.TargetPoint + v31.TargetSurfaceNormal * 1.5, Vector3.new(0, -1, 0) * 50), v60);
-	if v61 then
-		v31.TargetPoint = v62;
+	local v64, v65 = l__Workspace__2:FindPartOnRayWithIgnoreList(Ray.new(v34.TargetPoint + v34.TargetSurfaceNormal * 1.5, Vector3.new(0, -1, 0) * 50), v63);
+	if v64 then
+		v34.TargetPoint = v65;
 	end;
-	v31:ComputePath();
-	return v31;
+	v34:ComputePath();
+	return v34;
 end;
-local function u26(p33, p34, p35, p36, p37)
-	if u19 then
-		if u19 then
-			u19:Cancel();
-			u19 = nil;
-		end;
+local function u27(p33, p34, p35, p36, p37)
+	if u20 then
 		if u20 then
-			u20:Disconnect();
+			u20:Cancel();
 			u20 = nil;
 		end;
 		if u21 then
 			u21:Disconnect();
 			u21 = nil;
+		end;
+		if u22 then
+			u22:Disconnect();
+			u22 = nil;
 		end;
 	end;
-	u19 = p33;
+	u20 = p33;
 	p33:Start(p37);
-	u20 = p33.Finished.Event:Connect(function()
-		if u19 then
-			u19:Cancel();
-			u19 = nil;
-		end;
+	u21 = p33.Finished.Event:Connect(function()
 		if u20 then
-			u20:Disconnect();
+			u20:Cancel();
 			u20 = nil;
 		end;
 		if u21 then
 			u21:Disconnect();
 			u21 = nil;
+		end;
+		if u22 then
+			u22:Disconnect();
+			u22 = nil;
 		end;
 		if p35 then
-			local v63 = u22(p36);
-			if v63 then
-				v63:Activate();
+			local v66 = u23(p36);
+			if v66 then
+				v66:Activate();
 			end;
 		end;
 	end);
-	u21 = p33.PathFailed.Event:Connect(function()
-		if u19 then
-			u19:Cancel();
-			u19 = nil;
-		end;
+	u22 = p33.PathFailed.Event:Connect(function()
 		if u20 then
-			u20:Disconnect();
+			u20:Cancel();
 			u20 = nil;
 		end;
 		if u21 then
 			u21:Disconnect();
 			u21 = nil;
 		end;
+		if u22 then
+			u22:Disconnect();
+			u22 = nil;
+		end;
 		if p37 == nil or p37 then
-			if u23 and (not u19 or not u19:IsActive()) then
-				u17.PlayFailureAnimation();
+			if u24 and (not u20 or not u20:IsActive()) then
+				u18.PlayFailureAnimation();
 			end;
-			u17.DisplayFailureWaypoint(p34);
+			u18.DisplayFailureWaypoint(p34);
 		end;
 	end);
 end;
 function OnTap(p38, p39, p40)
-	local l__CurrentCamera__64 = l__Workspace__2.CurrentCamera;
-	local l__Character__65 = l__LocalPlayer__4.Character;
-	local v66 = l__LocalPlayer__4 and l__LocalPlayer__4.Character;
-	if v66 then
-		local v67 = u1[l__LocalPlayer__4];
-		if v67 then
-			if v67.Parent == v66 then
-				local v68 = v67;
+	local l__CurrentCamera__67 = l__Workspace__2.CurrentCamera;
+	local l__Character__68 = l__LocalPlayer__4.Character;
+	local v69 = l__LocalPlayer__4 and l__LocalPlayer__4.Character;
+	if v69 then
+		local v70 = u1[l__LocalPlayer__4];
+		if v70 then
+			if v70.Parent == v69 then
+				local v71 = v70;
 			else
 				u1[l__LocalPlayer__4] = nil;
-				local v69 = v66:FindFirstChildOfClass("Humanoid");
-				if v69 then
-					u1[l__LocalPlayer__4] = v69;
+				local v72 = v69:FindFirstChildOfClass("Humanoid");
+				if v72 then
+					u1[l__LocalPlayer__4] = v72;
 				end;
-				v68 = v69;
+				v71 = v72;
 			end;
 		else
 			u1[l__LocalPlayer__4] = nil;
-			v69 = v66:FindFirstChildOfClass("Humanoid");
-			if v69 then
-				u1[l__LocalPlayer__4] = v69;
+			v72 = v69:FindFirstChildOfClass("Humanoid");
+			if v72 then
+				u1[l__LocalPlayer__4] = v72;
 			end;
-			v68 = v69;
+			v71 = v72;
 		end;
 	else
-		v68 = nil;
+		v71 = nil;
 	end;
-	local v70 = false;
-	if v68 ~= nil then
-		v70 = 0 < v68.Health;
+	local v73 = false;
+	if v71 ~= nil then
+		v73 = 0 < v71.Health;
 	end;
-	if not v70 then
+	if not v73 then
 		return;
 	end;
 	if #p38 ~= 1 then
 		if p39 then
-			if l__CurrentCamera__64 then
-				local v71 = l__CurrentCamera__64:ScreenPointToRay(p38[1].x, p38[1].y);
-				local v72 = l__LocalPlayer__4 and l__LocalPlayer__4.Character;
-				if v72 then
-					local v73 = u1[l__LocalPlayer__4];
-					if v73 then
-						if v73.Parent == v72 then
+			if l__CurrentCamera__67 then
+				local v74 = l__CurrentCamera__67:ScreenPointToRay(p38[1].X, p38[1].Y);
+				local v75 = l__LocalPlayer__4 and l__LocalPlayer__4.Character;
+				if v75 then
+					local v76 = u1[l__LocalPlayer__4];
+					if v76 then
+						if v76.Parent == v75 then
 
 						else
 							u1[l__LocalPlayer__4] = nil;
-							local v74 = v72:FindFirstChildOfClass("Humanoid");
-							if v74 then
-								u1[l__LocalPlayer__4] = v74;
+							local v77 = v75:FindFirstChildOfClass("Humanoid");
+							if v77 then
+								u1[l__LocalPlayer__4] = v77;
 							end;
 						end;
 					else
 						u1[l__LocalPlayer__4] = nil;
-						v74 = v72:FindFirstChildOfClass("Humanoid");
-						if v74 then
-							u1[l__LocalPlayer__4] = v74;
+						v77 = v75:FindFirstChildOfClass("Humanoid");
+						if v77 then
+							u1[l__LocalPlayer__4] = v77;
 						end;
 					end;
 				end;
 				if u8 then
-					local v75 = u8;
+					local v78 = u8;
 				else
 					u8 = {};
 					table.insert(u8, l__LocalPlayer__4 and l__LocalPlayer__4.Character);
-					v75 = u8;
+					v78 = u8;
 				end;
-				local v76, v77, v78 = v5.Raycast(Ray.new(v71.Origin, v71.Direction * 1000), true, v75);
-				local v79, v80 = v5.FindCharacterAncestor(v76);
+				local v79, v80, v81 = v7.Raycast(Ray.new(v74.Origin, v74.Direction * 1000), true, v78);
+				local v82, v83 = v7.FindCharacterAncestor(v79);
 				if p40 then
-					if v80 then
-						if l__StarterGui__24:GetCore("AvatarContextMenuEnabled") then
-							if l__Players__3:GetPlayerFromCharacter(v80.Parent) then
-								if u19 then
-									u19:Cancel();
-									u19 = nil;
-								end;
+					if v83 then
+						if l__StarterGui__25:GetCore("AvatarContextMenuEnabled") then
+							if l__Players__5:GetPlayerFromCharacter(v83.Parent) then
 								if u20 then
-									u20:Disconnect();
+									u20:Cancel();
 									u20 = nil;
 								end;
 								if u21 then
 									u21:Disconnect();
 									u21 = nil;
+								end;
+								if u22 then
+									u22:Disconnect();
+									u22 = nil;
 								end;
 								return;
 							end;
@@ -605,98 +628,98 @@ function OnTap(p38, p39, p40)
 					end;
 				end;
 				if p39 then
-					v77 = p39;
-					v79 = nil;
+					v80 = p39;
+					v82 = nil;
 				end;
-				if v77 then
-					if l__Character__65 then
-						if u19 then
-							u19:Cancel();
-							u19 = nil;
-						end;
+				if v80 then
+					if l__Character__68 then
 						if u20 then
-							u20:Disconnect();
+							u20:Cancel();
 							u20 = nil;
 						end;
 						if u21 then
 							u21:Disconnect();
 							u21 = nil;
 						end;
-						local v81 = u25(v77, v78);
-						if v81:IsValidPath() then
-							u26(v81, v77, v79, l__Character__65);
+						if u22 then
+							u22:Disconnect();
+							u22 = nil;
+						end;
+						local v84 = u26(v80, v81);
+						if v84:IsValidPath() then
+							u27(v84, v80, v82, l__Character__68);
 							return;
 						else
-							v81:Cleanup();
-							if u19 then
-								if u19:IsActive() then
-									u19:Cancel();
+							v84:Cleanup();
+							if u20 then
+								if u20:IsActive() then
+									u20:Cancel();
 								end;
 							end;
-							if u23 then
-								u17.PlayFailureAnimation();
+							if u24 then
+								u18.PlayFailureAnimation();
 							end;
-							u17.DisplayFailureWaypoint(v77);
+							u18.DisplayFailureWaypoint(v80);
 							return;
 						end;
 					end;
 				end;
 			end;
 		elseif 2 <= #p38 then
-			if l__CurrentCamera__64 then
-				local v82 = u22(l__Character__65);
-				if v82 then
-					v82:Activate();
+			if l__CurrentCamera__67 then
+				local v85 = u23(l__Character__68);
+				if v85 then
+					v85:Activate();
 				end;
 			end;
 		end;
-	elseif l__CurrentCamera__64 then
-		v71 = l__CurrentCamera__64:ScreenPointToRay(p38[1].x, p38[1].y);
-		v72 = l__LocalPlayer__4 and l__LocalPlayer__4.Character;
-		if v72 then
-			v73 = u1[l__LocalPlayer__4];
-			if v73 then
-				if v73.Parent == v72 then
+	elseif l__CurrentCamera__67 then
+		v74 = l__CurrentCamera__67:ScreenPointToRay(p38[1].X, p38[1].Y);
+		v75 = l__LocalPlayer__4 and l__LocalPlayer__4.Character;
+		if v75 then
+			v76 = u1[l__LocalPlayer__4];
+			if v76 then
+				if v76.Parent == v75 then
 
 				else
 					u1[l__LocalPlayer__4] = nil;
-					v74 = v72:FindFirstChildOfClass("Humanoid");
-					if v74 then
-						u1[l__LocalPlayer__4] = v74;
+					v77 = v75:FindFirstChildOfClass("Humanoid");
+					if v77 then
+						u1[l__LocalPlayer__4] = v77;
 					end;
 				end;
 			else
 				u1[l__LocalPlayer__4] = nil;
-				v74 = v72:FindFirstChildOfClass("Humanoid");
-				if v74 then
-					u1[l__LocalPlayer__4] = v74;
+				v77 = v75:FindFirstChildOfClass("Humanoid");
+				if v77 then
+					u1[l__LocalPlayer__4] = v77;
 				end;
 			end;
 		end;
 		if u8 then
-			v75 = u8;
+			v78 = u8;
 		else
 			u8 = {};
 			table.insert(u8, l__LocalPlayer__4 and l__LocalPlayer__4.Character);
-			v75 = u8;
+			v78 = u8;
 		end;
-		v76, v77, v78 = v5.Raycast(Ray.new(v71.Origin, v71.Direction * 1000), true, v75);
-		v79, v80 = v5.FindCharacterAncestor(v76);
+		v79, v80, v81 = v7.Raycast(Ray.new(v74.Origin, v74.Direction * 1000), true, v78);
+		v82, v83 = v7.FindCharacterAncestor(v79);
 		if p40 then
-			if v80 then
-				if l__StarterGui__24:GetCore("AvatarContextMenuEnabled") then
-					if l__Players__3:GetPlayerFromCharacter(v80.Parent) then
-						if u19 then
-							u19:Cancel();
-							u19 = nil;
-						end;
+			if v83 then
+				if l__StarterGui__25:GetCore("AvatarContextMenuEnabled") then
+					if l__Players__5:GetPlayerFromCharacter(v83.Parent) then
 						if u20 then
-							u20:Disconnect();
+							u20:Cancel();
 							u20 = nil;
 						end;
 						if u21 then
 							u21:Disconnect();
 							u21 = nil;
+						end;
+						if u22 then
+							u22:Disconnect();
+							u22 = nil;
 						end;
 						return;
 					end;
@@ -704,120 +727,120 @@ function OnTap(p38, p39, p40)
 			end;
 		end;
 		if p39 then
-			v77 = p39;
-			v79 = nil;
+			v80 = p39;
+			v82 = nil;
 		end;
-		if v77 then
-			if l__Character__65 then
-				if u19 then
-					u19:Cancel();
-					u19 = nil;
-				end;
+		if v80 then
+			if l__Character__68 then
 				if u20 then
-					u20:Disconnect();
+					u20:Cancel();
 					u20 = nil;
 				end;
 				if u21 then
 					u21:Disconnect();
 					u21 = nil;
 				end;
-				v81 = u25(v77, v78);
-				if v81:IsValidPath() then
-					u26(v81, v77, v79, l__Character__65);
+				if u22 then
+					u22:Disconnect();
+					u22 = nil;
+				end;
+				v84 = u26(v80, v81);
+				if v84:IsValidPath() then
+					u27(v84, v80, v82, l__Character__68);
 					return;
 				else
-					v81:Cleanup();
-					if u19 then
-						if u19:IsActive() then
-							u19:Cancel();
+					v84:Cleanup();
+					if u20 then
+						if u20:IsActive() then
+							u20:Cancel();
 						end;
 					end;
-					if u23 then
-						u17.PlayFailureAnimation();
+					if u24 then
+						u18.PlayFailureAnimation();
 					end;
-					u17.DisplayFailureWaypoint(v77);
+					u18.DisplayFailureWaypoint(v80);
 					return;
 				end;
 			end;
 		end;
 	end;
 end;
-local v83 = require(script.Parent:WaitForChild("Keyboard"));
-local v84 = setmetatable({}, v83);
-v84.__index = v84;
-function v84.new(p41)
-	local v85 = setmetatable(v83.new(p41), v84);
-	v85.fingerTouches = {};
-	v85.numUnsunkTouches = 0;
-	v85.mouse1Down = tick();
-	v85.mouse1DownPos = Vector2.new();
-	v85.mouse2DownTime = tick();
-	v85.mouse2DownPos = Vector2.new();
-	v85.mouse2UpTime = tick();
-	v85.keyboardMoveVector = u11;
-	v85.tapConn = nil;
-	v85.inputBeganConn = nil;
-	v85.inputChangedConn = nil;
-	v85.inputEndedConn = nil;
-	v85.humanoidDiedConn = nil;
-	v85.characterChildAddedConn = nil;
-	v85.onCharacterAddedConn = nil;
-	v85.characterChildRemovedConn = nil;
-	v85.renderSteppedConn = nil;
-	v85.menuOpenedConnection = nil;
-	v85.running = false;
-	v85.wasdEnabled = false;
-	return v85;
+local v86 = require(script.Parent:WaitForChild("Keyboard"));
+local v87 = setmetatable({}, v86);
+v87.__index = v87;
+function v87.new(p41)
+	local v88 = setmetatable(v86.new(p41), v87);
+	v88.fingerTouches = {};
+	v88.numUnsunkTouches = 0;
+	v88.mouse1Down = tick();
+	v88.mouse1DownPos = Vector2.new();
+	v88.mouse2DownTime = tick();
+	v88.mouse2DownPos = Vector2.new();
+	v88.mouse2UpTime = tick();
+	v88.keyboardMoveVector = u11;
+	v88.tapConn = nil;
+	v88.inputBeganConn = nil;
+	v88.inputChangedConn = nil;
+	v88.inputEndedConn = nil;
+	v88.humanoidDiedConn = nil;
+	v88.characterChildAddedConn = nil;
+	v88.onCharacterAddedConn = nil;
+	v88.characterChildRemovedConn = nil;
+	v88.renderSteppedConn = nil;
+	v88.menuOpenedConnection = nil;
+	v88.running = false;
+	v88.wasdEnabled = false;
+	return v88;
 end;
-function v84.DisconnectEvents(p42)
-	local l__tapConn__86 = p42.tapConn;
-	if l__tapConn__86 then
-		l__tapConn__86:Disconnect();
+function v87.DisconnectEvents(p42)
+	local l__tapConn__89 = p42.tapConn;
+	if l__tapConn__89 then
+		l__tapConn__89:Disconnect();
 	end;
-	local l__inputBeganConn__87 = p42.inputBeganConn;
-	if l__inputBeganConn__87 then
-		l__inputBeganConn__87:Disconnect();
+	local l__inputBeganConn__90 = p42.inputBeganConn;
+	if l__inputBeganConn__90 then
+		l__inputBeganConn__90:Disconnect();
 	end;
-	local l__inputChangedConn__88 = p42.inputChangedConn;
-	if l__inputChangedConn__88 then
-		l__inputChangedConn__88:Disconnect();
+	local l__inputChangedConn__91 = p42.inputChangedConn;
+	if l__inputChangedConn__91 then
+		l__inputChangedConn__91:Disconnect();
 	end;
-	local l__inputEndedConn__89 = p42.inputEndedConn;
-	if l__inputEndedConn__89 then
-		l__inputEndedConn__89:Disconnect();
+	local l__inputEndedConn__92 = p42.inputEndedConn;
+	if l__inputEndedConn__92 then
+		l__inputEndedConn__92:Disconnect();
 	end;
-	local l__humanoidDiedConn__90 = p42.humanoidDiedConn;
-	if l__humanoidDiedConn__90 then
-		l__humanoidDiedConn__90:Disconnect();
+	local l__humanoidDiedConn__93 = p42.humanoidDiedConn;
+	if l__humanoidDiedConn__93 then
+		l__humanoidDiedConn__93:Disconnect();
 	end;
-	local l__characterChildAddedConn__91 = p42.characterChildAddedConn;
-	if l__characterChildAddedConn__91 then
-		l__characterChildAddedConn__91:Disconnect();
+	local l__characterChildAddedConn__94 = p42.characterChildAddedConn;
+	if l__characterChildAddedConn__94 then
+		l__characterChildAddedConn__94:Disconnect();
 	end;
-	local l__onCharacterAddedConn__92 = p42.onCharacterAddedConn;
-	if l__onCharacterAddedConn__92 then
-		l__onCharacterAddedConn__92:Disconnect();
+	local l__onCharacterAddedConn__95 = p42.onCharacterAddedConn;
+	if l__onCharacterAddedConn__95 then
+		l__onCharacterAddedConn__95:Disconnect();
 	end;
-	local l__renderSteppedConn__93 = p42.renderSteppedConn;
-	if l__renderSteppedConn__93 then
-		l__renderSteppedConn__93:Disconnect();
+	local l__renderSteppedConn__96 = p42.renderSteppedConn;
+	if l__renderSteppedConn__96 then
+		l__renderSteppedConn__96:Disconnect();
 	end;
-	local v94 = p42.characterChildRemovedConn;
-	if v94 then
-		v94:Disconnect();
+	local v97 = p42.characterChildRemovedConn;
+	if v97 then
+		v97:Disconnect();
 	end;
-	local l__menuOpenedConnection__95 = p42.menuOpenedConnection;
-	if l__menuOpenedConnection__95 then
-		l__menuOpenedConnection__95:Disconnect();
+	local l__menuOpenedConnection__98 = p42.menuOpenedConnection;
+	if l__menuOpenedConnection__98 then
+		l__menuOpenedConnection__98:Disconnect();
 	end;
 end;
-function v84.OnTouchBegan(p43, p44, p45)
+function v87.OnTouchBegan(p43, p44, p45)
 	if p43.fingerTouches[p44] == nil and not p45 then
 		p43.numUnsunkTouches = p43.numUnsunkTouches + 1;
 	end;
 	p43.fingerTouches[p44] = p45;
 end;
-function v84.OnTouchChanged(p46, p47, p48)
+function v87.OnTouchChanged(p46, p47, p48)
 	if p46.fingerTouches[p47] == nil then
 		p46.fingerTouches[p47] = p48;
 		if not p48 then
@@ -825,14 +848,14 @@ function v84.OnTouchChanged(p46, p47, p48)
 		end;
 	end;
 end;
-function v84.OnTouchEnded(p49, p50, p51)
+function v87.OnTouchEnded(p49, p50, p51)
 	if p49.fingerTouches[p50] ~= nil and p49.fingerTouches[p50] == false then
 		p49.numUnsunkTouches = p49.numUnsunkTouches - 1;
 	end;
 	p49.fingerTouches[p50] = nil;
 end;
-local l__UserInputService__27 = game:GetService("UserInputService");
-local u28 = {
+local l__UserInputService__28 = game:GetService("UserInputService");
+local u29 = {
 	[Enum.KeyCode.W] = true, 
 	[Enum.KeyCode.A] = true, 
 	[Enum.KeyCode.S] = true, 
@@ -840,27 +863,27 @@ local u28 = {
 	[Enum.KeyCode.Up] = true, 
 	[Enum.KeyCode.Down] = true
 };
-local l__GuiService__29 = game:GetService("GuiService");
-function v84.OnCharacterAdded(p52, p53)
+local l__GuiService__30 = game:GetService("GuiService");
+function v87.OnCharacterAdded(p52, p53)
 	p52:DisconnectEvents();
-	p52.inputBeganConn = l__UserInputService__27.InputBegan:Connect(function(p54, p55)
+	p52.inputBeganConn = l__UserInputService__28.InputBegan:Connect(function(p54, p55)
 		if p54.UserInputType == Enum.UserInputType.Touch then
 			p52:OnTouchBegan(p54, p55);
 		end;
-		if p52.wasdEnabled and p55 == false and p54.UserInputType == Enum.UserInputType.Keyboard and u28[p54.KeyCode] then
-			if u19 then
-				u19:Cancel();
-				u19 = nil;
-			end;
+		if p52.wasdEnabled and p55 == false and p54.UserInputType == Enum.UserInputType.Keyboard and u29[p54.KeyCode] then
 			if u20 then
-				u20:Disconnect();
+				u20:Cancel();
 				u20 = nil;
 			end;
 			if u21 then
 				u21:Disconnect();
 				u21 = nil;
 			end;
-			u17.CancelFailureAnimation();
+			if u22 then
+				u22:Disconnect();
+				u22 = nil;
+			end;
+			u18.CancelFailureAnimation();
 		end;
 		if p54.UserInputType == Enum.UserInputType.MouseButton1 then
 			p52.mouse1DownTime = tick();
@@ -871,50 +894,50 @@ function v84.OnCharacterAdded(p52, p53)
 			p52.mouse2DownPos = p54.Position;
 		end;
 	end);
-	p52.inputChangedConn = l__UserInputService__27.InputChanged:Connect(function(p56, p57)
+	p52.inputChangedConn = l__UserInputService__28.InputChanged:Connect(function(p56, p57)
 		if p56.UserInputType == Enum.UserInputType.Touch then
 			p52:OnTouchChanged(p56, p57);
 		end;
 	end);
-	p52.inputEndedConn = l__UserInputService__27.InputEnded:Connect(function(p58, p59)
+	p52.inputEndedConn = l__UserInputService__28.InputEnded:Connect(function(p58, p59)
 		if p58.UserInputType == Enum.UserInputType.Touch then
 			p52:OnTouchEnded(p58, p59);
 		end;
 		if p58.UserInputType == Enum.UserInputType.MouseButton2 then
 			p52.mouse2UpTime = tick();
-			local l__Position__96 = p58.Position;
-			if p52.mouse2UpTime - p52.mouse2DownTime < 0.25 and (l__Position__96 - p52.mouse2DownPos).magnitude < 5 and (u19 or p52.keyboardMoveVector.Magnitude <= 0) then
-				OnTap({ l__Position__96 });
+			local l__Position__99 = p58.Position;
+			if p52.mouse2UpTime - p52.mouse2DownTime < 0.25 and (l__Position__99 - p52.mouse2DownPos).magnitude < 5 and (u20 or p52.keyboardMoveVector.Magnitude <= 0) then
+				OnTap({ l__Position__99 });
 			end;
 		end;
 	end);
-	p52.tapConn = l__UserInputService__27.TouchTap:Connect(function(p60, p61)
+	p52.tapConn = l__UserInputService__28.TouchTap:Connect(function(p60, p61)
 		if not p61 then
 			OnTap(p60, nil, true);
 		end;
 	end);
-	p52.menuOpenedConnection = l__GuiService__29.MenuOpened:Connect(function()
-		if u19 then
-			u19:Cancel();
-			u19 = nil;
-		end;
+	p52.menuOpenedConnection = l__GuiService__30.MenuOpened:Connect(function()
 		if u20 then
-			u20:Disconnect();
+			u20:Cancel();
 			u20 = nil;
 		end;
 		if u21 then
 			u21:Disconnect();
 			u21 = nil;
 		end;
+		if u22 then
+			u22:Disconnect();
+			u22 = nil;
+		end;
 	end);
-	local function u30(p62)
-		if l__UserInputService__27.TouchEnabled and p62:IsA("Tool") then
+	local function u31(p62)
+		if l__UserInputService__28.TouchEnabled and p62:IsA("Tool") then
 			p62.ManualActivationOnly = true;
 		end;
 		if p62:IsA("Humanoid") then
-			local l__humanoidDiedConn__97 = p52.humanoidDiedConn;
-			if l__humanoidDiedConn__97 then
-				l__humanoidDiedConn__97:Disconnect();
+			local l__humanoidDiedConn__100 = p52.humanoidDiedConn;
+			if l__humanoidDiedConn__100 then
+				l__humanoidDiedConn__100:Disconnect();
 			end;
 			p52.humanoidDiedConn = p62.Died:Connect(function()
 
@@ -922,38 +945,38 @@ function v84.OnCharacterAdded(p52, p53)
 		end;
 	end;
 	p52.characterChildAddedConn = p53.ChildAdded:Connect(function(p63)
-		u30(p63);
+		u31(p63);
 	end);
 	p52.characterChildRemovedConn = p53.ChildRemoved:Connect(function(p64)
-		if l__UserInputService__27.TouchEnabled and p64:IsA("Tool") then
+		if l__UserInputService__28.TouchEnabled and p64:IsA("Tool") then
 			p64.ManualActivationOnly = false;
 		end;
 	end);
-	for v98, v99 in pairs(p53:GetChildren()) do
-		u30(v99);
+	for v101, v102 in pairs(p53:GetChildren()) do
+		u31(v102);
 	end;
 end;
-function v84.Start(p65)
+function v87.Start(p65)
 	p65:Enable(true);
 end;
-function v84.Stop(p66)
+function v87.Stop(p66)
 	p66:Enable(false);
 end;
-function v84.CleanupPath(p67)
-	if u19 then
-		u19:Cancel();
-		u19 = nil;
-	end;
+function v87.CleanupPath(p67)
 	if u20 then
-		u20:Disconnect();
+		u20:Cancel();
 		u20 = nil;
 	end;
 	if u21 then
 		u21:Disconnect();
 		u21 = nil;
 	end;
+	if u22 then
+		u22:Disconnect();
+		u22 = nil;
+	end;
 end;
-function v84.Enable(p68, p69, p70, p71)
+function v87.Enable(p68, p69, p70, p71)
 	if p69 then
 		if not p68.running then
 			if l__LocalPlayer__4.Character then
@@ -971,24 +994,24 @@ function v84.Enable(p68, p69, p70, p71)
 	else
 		if p68.running then
 			p68:DisconnectEvents();
-			if u19 then
-				u19:Cancel();
-				u19 = nil;
-			end;
 			if u20 then
-				u20:Disconnect();
+				u20:Cancel();
 				u20 = nil;
 			end;
 			if u21 then
 				u21:Disconnect();
 				u21 = nil;
 			end;
-			if l__UserInputService__27.TouchEnabled then
-				local l__Character__100 = l__LocalPlayer__4.Character;
-				if l__Character__100 then
-					for v101, v102 in pairs(l__Character__100:GetChildren()) do
-						if v102:IsA("Tool") then
-							v102.ManualActivationOnly = false;
+			if u22 then
+				u22:Disconnect();
+				u22 = nil;
+			end;
+			if l__UserInputService__28.TouchEnabled then
+				local l__Character__103 = l__LocalPlayer__4.Character;
+				if l__Character__103 then
+					for v104, v105 in pairs(l__Character__103:GetChildren()) do
+						if v105:IsA("Tool") then
+							v105.ManualActivationOnly = false;
 						end;
 					end;
 				end;
@@ -1000,7 +1023,7 @@ function v84.Enable(p68, p69, p70, p71)
 		end;
 		p68.touchJumpController = nil;
 	end;
-	if l__UserInputService__27.KeyboardEnabled and p69 ~= p68.enabled then
+	if l__UserInputService__28.KeyboardEnabled and p69 ~= p68.enabled then
 		p68.forwardValue = 0;
 		p68.backwardValue = 0;
 		p68.leftValue = 0;
@@ -1017,14 +1040,14 @@ function v84.Enable(p68, p69, p70, p71)
 	p68.wasdEnabled = p69 and p70 or false;
 	p68.enabled = p69;
 end;
-function v84.OnRenderStepped(p73, p74)
+function v87.OnRenderStepped(p73, p74)
 	p73.isJumping = false;
-	if u19 then
-		u19:OnRenderStepped(p74);
-		if u19 then
-			p73.moveVector = u19.NextActionMoveDirection;
+	if u20 then
+		u20:OnRenderStepped(p74);
+		if u20 then
+			p73.moveVector = u20.NextActionMoveDirection;
 			p73.moveVectorIsCameraRelative = false;
-			if u19.NextActionJump then
+			if u20.NextActionJump then
 				p73.isJumping = true;
 			end;
 		else
@@ -1039,7 +1062,7 @@ function v84.OnRenderStepped(p73, p74)
 		p73.isJumping = true;
 	end;
 end;
-function v84.UpdateMovement(p75, p76)
+function v87.UpdateMovement(p75, p76)
 	if p76 == Enum.UserInputState.Cancel then
 		p75.keyboardMoveVector = u11;
 		return;
@@ -1048,46 +1071,46 @@ function v84.UpdateMovement(p75, p76)
 		p75.keyboardMoveVector = Vector3.new(p75.leftValue + p75.rightValue, 0, p75.forwardValue + p75.backwardValue);
 	end;
 end;
-function v84.UpdateJump(p77)
+function v87.UpdateJump(p77)
 
 end;
-function v84.SetShowPath(p78, p79)
-	u16 = p79;
+function v87.SetShowPath(p78, p79)
+	u17 = p79;
 end;
-function v84.GetShowPath(p80)
-	return u16;
+function v87.GetShowPath(p80)
+	return u17;
 end;
-function v84.SetWaypointTexture(p81, p82)
-	u17.SetWaypointTexture(p82);
+function v87.SetWaypointTexture(p81, p82)
+	u18.SetWaypointTexture(p82);
 end;
-function v84.GetWaypointTexture(p83)
-	return u17.GetWaypointTexture();
+function v87.GetWaypointTexture(p83)
+	return u18.GetWaypointTexture();
 end;
-function v84.SetWaypointRadius(p84, p85)
-	u17.SetWaypointRadius(p85);
+function v87.SetWaypointRadius(p84, p85)
+	u18.SetWaypointRadius(p85);
 end;
-function v84.GetWaypointRadius(p86)
-	return u17.GetWaypointRadius();
+function v87.GetWaypointRadius(p86)
+	return u18.GetWaypointRadius();
 end;
-function v84.SetEndWaypointTexture(p87, p88)
-	u17.SetEndWaypointTexture(p88);
+function v87.SetEndWaypointTexture(p87, p88)
+	u18.SetEndWaypointTexture(p88);
 end;
-function v84.GetEndWaypointTexture(p89)
-	return u17.GetEndWaypointTexture();
+function v87.GetEndWaypointTexture(p89)
+	return u18.GetEndWaypointTexture();
 end;
-function v84.SetWaypointsAlwaysOnTop(p90, p91)
-	u17.SetWaypointsAlwaysOnTop(p91);
+function v87.SetWaypointsAlwaysOnTop(p90, p91)
+	u18.SetWaypointsAlwaysOnTop(p91);
 end;
-function v84.GetWaypointsAlwaysOnTop(p92)
-	return u17.GetWaypointsAlwaysOnTop();
+function v87.GetWaypointsAlwaysOnTop(p92)
+	return u18.GetWaypointsAlwaysOnTop();
 end;
-function v84.SetFailureAnimationEnabled(p93, p94)
-	u23 = p94;
+function v87.SetFailureAnimationEnabled(p93, p94)
+	u24 = p94;
 end;
-function v84.GetFailureAnimationEnabled(p95)
-	return u23;
+function v87.GetFailureAnimationEnabled(p95)
+	return u24;
 end;
-local function u31(p96)
+local function u32(p96)
 	if p96 == u5 then
 		return;
 	end;
@@ -1102,16 +1125,22 @@ local function u31(p96)
 	u5 = p96;
 	u8 = { l__LocalPlayer__4 and l__LocalPlayer__4.Character };
 	if u5 ~= nil then
-		for v103, v104 in ipairs((l__CollectionService__9:GetTagged(u5))) do
-			table.insert(u8, v104);
+		local v106, v107, v108 = ipairs((l__CollectionService__9:GetTagged(u5)));
+		while true do
+			v106(v107, v108);
+			if not v106 then
+				break;
+			end;
+			v108 = v106;
+			table.insert(u8, v107);		
 		end;
 		u6 = l__CollectionService__9:GetInstanceAddedSignal(u5):Connect(function(p97)
 			table.insert(u8, p97);
 		end);
 		u7 = l__CollectionService__9:GetInstanceRemovedSignal(u5):Connect(function(p98)
-			for v105 = 1, #u8 do
-				if u8[v105] == p98 then
-					u8[v105] = u8[#u8];
+			for v109 = 1, #u8 do
+				if u8[v109] == p98 then
+					u8[v109] = u8[#u8];
 					table.remove(u8);
 					return;
 				end;
@@ -1119,49 +1148,49 @@ local function u31(p96)
 		end);
 	end;
 end;
-function v84.SetIgnoredPartsTag(p99, p100)
-	u31(p100);
+function v87.SetIgnoredPartsTag(p99, p100)
+	u32(p100);
 end;
-function v84.GetIgnoredPartsTag(p101)
+function v87.GetIgnoredPartsTag(p101)
 	return u5;
 end;
-function v84.SetUseDirectPath(p102, p103)
+function v87.SetUseDirectPath(p102, p103)
 	u10 = p103;
 end;
-function v84.GetUseDirectPath(p104)
+function v87.GetUseDirectPath(p104)
 	return u10;
 end;
-function v84.SetAgentSizeIncreaseFactor(p105, p106)
+function v87.SetAgentSizeIncreaseFactor(p105, p106)
 	u12 = 1 + p106 / 100;
 end;
-function v84.GetAgentSizeIncreaseFactor(p107)
+function v87.GetAgentSizeIncreaseFactor(p107)
 	return (u12 - 1) * 100;
 end;
-function v84.SetUnreachableWaypointTimeout(p108, p109)
-	u18 = p109;
+function v87.SetUnreachableWaypointTimeout(p108, p109)
+	u19 = p109;
 end;
-function v84.GetUnreachableWaypointTimeout(p110)
-	return u18;
+function v87.GetUnreachableWaypointTimeout(p110)
+	return u19;
 end;
-function v84.SetUserJumpEnabled(p111, p112)
+function v87.SetUserJumpEnabled(p111, p112)
 	p111.jumpEnabled = p112;
 	if p111.touchJumpController then
 		p111.touchJumpController:Enable(p112);
 	end;
 end;
-function v84.GetUserJumpEnabled(p113)
+function v87.GetUserJumpEnabled(p113)
 	return p113.jumpEnabled;
 end;
-function v84.MoveTo(p114, p115, p116, p117)
-	local l__Character__106 = l__LocalPlayer__4.Character;
-	if l__Character__106 == nil then
+function v87.MoveTo(p114, p115, p116, p117)
+	local l__Character__110 = l__LocalPlayer__4.Character;
+	if l__Character__110 == nil then
 		return false;
 	end;
-	local v107 = u25(p115, Vector3.new(0, 1, 0), p117);
-	if not v107 or not v107:IsValidPath() then
+	local v111 = u26(p115, Vector3.new(0, 1, 0), p117);
+	if not v111 or not v111:IsValidPath() then
 		return false;
 	end;
-	u26(v107, p115, nil, l__Character__106, p116);
+	u27(v111, p115, nil, l__Character__110, p116);
 	return true;
 end;
-return v84;
+return v87;

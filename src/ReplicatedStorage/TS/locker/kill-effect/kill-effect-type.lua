@@ -1,4 +1,3 @@
--- Script Hash: 43585d572b77afb3f1aca2b6688872fd0209a73780ee5857063bb22b2d1da5bb195ae31e920c0d91e338d6beb9999147
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -47,6 +46,8 @@ v2.LIFE_RING = "lifering";
 v1.lifering = "LIFE_RING";
 v2.BEACH_BALL = "beachball";
 v1.beachball = "BEACH_BALL";
+v2.PIRATE_SHIP_ATTACK = "pirateshipattack";
+v1.pirateshipattack = "PIRATE_SHIP_ATTACK";
 return {
 	KillEffectType = v2
 };

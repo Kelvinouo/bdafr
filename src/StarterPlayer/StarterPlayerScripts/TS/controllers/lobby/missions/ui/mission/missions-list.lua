@@ -1,4 +1,3 @@
--- Script Hash: 00d4087593d56e45a730dc48d4f27cc413c5da2e9430514bb0dbdb399dc50021c423b80f4e979f745baf34f447f892a5
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -51,14 +50,17 @@ return {
 			BackgroundTransparency = 1
 		}, v5);
 		local l__Missions__7 = p1.Missions;
-		local function v8(p3)
-			return u1.createElement(l__Mission__4, {
-				Mission = p3
-			});
-		end;
-		local v9 = table.create(#l__Missions__7);
-		for v10, v11 in ipairs(l__Missions__7) do
-			v9[v10] = v8(v11, v10 - 1, l__Missions__7);
+		local v8 = table.create(#l__Missions__7);
+		local v9, v10, v11 = ipairs(l__Missions__7);
+		while true do
+			v9(v10, v11);
+			if not v9 then
+				break;
+			end;
+			v11 = v9;
+			v8[v9] = u1.createElement(l__Mission__4, {
+				Mission = v10
+			});		
 		end;
 		local v12 = {
 			Size = UDim2.fromScale(1, 0), 
@@ -72,8 +74,14 @@ return {
 				Padding = UDim.new(0, 8)
 			}) };
 		local v14 = #v13;
-		for v15, v16 in ipairs(v9) do
-			v13[v14 + v15] = v16;
+		local v15, v16, v17 = ipairs(v8);
+		while true do
+			v15(v16, v17);
+			if not v15 then
+				break;
+			end;
+			v17 = v15;
+			v13[v14 + v15] = v16;		
 		end;
 		v3[v4 + 2] = u1.createElement("Frame", v12, v13);
 		return u1.createFragment({

@@ -1,4 +1,3 @@
--- Script Hash: e35eafe8bbb0bc4d9ced775703b542fe595b927d06f1856a7da04390202de1b2a8ff815de796f55e456770dbd7bf2d57
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = nil;
@@ -100,27 +99,39 @@ function v5.GetCallback(p12)
 end;
 if u1 then
 	v1.OnServerEvent:Connect(function(...)
-		for v10, v11 in ipairs(u2) do
+		local v10, v11, v12 = ipairs(u2);
+		while true do
+			v10(v11, v12);
+			if not v10 then
+				break;
+			end;
+			v12 = v10;
 			if v11(...) then
 				return;
-			end;
+			end;		
 		end;
 	end);
 	l__Sent__6.OnServerEvent:Connect(function(p13, p14, p15, ...)
-		local v12 = u13[p14];
-		v1:FireClient(p13, p15, v12 and v12(p13, ...));
+		local v13 = u13[p14];
+		v1:FireClient(p13, p15, v13 and v13(p13, ...));
 	end);
 	return v5;
 end;
 v1.OnClientEvent:Connect(function(...)
-	for v13, v14 in ipairs(u2) do
-		if v14(...) then
-			return;
+	local v14, v15, v16 = ipairs(u2);
+	while true do
+		v14(v15, v16);
+		if not v14 then
+			break;
 		end;
+		v16 = v14;
+		if v15(...) then
+			return;
+		end;	
 	end;
 end);
 l__Sent__6.OnClientEvent:Connect(function(p16, p17, ...)
-	local v15 = u13[p16];
-	v1:FireServer(p17, v15 and v15(...));
+	local v17 = u13[p16];
+	v1:FireServer(p17, v17 and v17(...));
 end);
 return v5;

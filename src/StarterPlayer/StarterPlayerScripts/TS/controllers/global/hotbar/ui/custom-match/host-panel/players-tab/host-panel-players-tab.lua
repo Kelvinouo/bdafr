@@ -1,4 +1,3 @@
--- Script Hash: 975a0be20878a8e9bc4b3d50ec48774cf674f90d02ae232e5e138c19a0f8162dc46325a068a83708d5e7311dbe7a59c3
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -30,14 +29,17 @@ return {
 		local l__useState__5 = p2.useState;
 		if not l__DeviceUtil__1.isHoarceKat() then
 			local v6 = l__Players__2:GetPlayers();
-			local function v7(p3)
-				return l__OfflinePlayerUtil__3.getOfflinePlayer(p3);
+			local v7 = table.create(#v6);
+			local v8, v9, v10 = ipairs(v6);
+			while true do
+				v8(v9, v10);
+				if not v8 then
+					break;
+				end;
+				v10 = v8;
+				v7[v8] = l__OfflinePlayerUtil__3.getOfflinePlayer(v9);			
 			end;
-			local v8 = table.create(#v6);
-			for v9, v10 in ipairs(v6) do
-				v8[v9] = v7(v10, v9 - 1, v6);
-			end;
-			local v11 = v8;
+			local v11 = v7;
 		else
 			v11 = { l__OfflinePlayerUtil__3.Dummy.oiogy, l__OfflinePlayerUtil__3.Dummy.spleenhook, l__OfflinePlayerUtil__3.Dummy.LongNameMan, l__OfflinePlayerUtil__3.Dummy.DVwastaken, l__OfflinePlayerUtil__3.Dummy.spleenhook, l__OfflinePlayerUtil__3.Dummy.leoduquartier, l__OfflinePlayerUtil__3.Dummy.SnickTrix, l__OfflinePlayerUtil__3.Dummy.Bryan3838 };
 		end;
@@ -86,32 +88,32 @@ return {
 			Size = UDim2.new(1, 0, 0, 30)
 		};
 		v4 = {};
-		local function v23(p4, p5)
-			table.insert(p4, p5.name);
-			table.insert(p4, p5.displayName);
-			return p4;
-		end;
-		for v24 = 1, #v11 do
-			v4 = v23(v4, v11[v24], v24 - 1, v11);
+		for v23 = 1, #v11 do
+			local v24 = v11[v23];
+			table.insert(v4, v24.name);
+			table.insert(v4, v24.displayName);
+			v4 = v4;
 		end;
 		v22.Items = local v25;
 		v22.InputText = "";
-		function v22.OnTextChange(p6, p7)
-			if p6 == "" then
+		function v22.OnTextChange(p3, p4)
+			if p3 == "" then
 				return v13(v11);
 			end;
-			local function v26(p8)
-				return table.find(p7, p8.displayName) ~= nil or table.find(p7, p8.name) ~= nil;
-			end;
-			local v27 = {};
-			local v28 = 0;
-			for v29, v30 in ipairs(v11) do
-				if v26(v30, v29 - 1, v11) == true then
-					v28 = v28 + 1;
-					v27[v28] = v30;
+			local v26 = {};
+			local v27 = 0;
+			local v28, v29, v30 = ipairs(v11);
+			while true do
+				v28(v29, v30);
+				if not v28 then
+					break;
 				end;
+				if (table.find(p4, v29.displayName) ~= nil or table.find(p4, v29.name) ~= nil) == true then
+					v27 = v27 + 1;
+					v26[v27] = v29;
+				end;			
 			end;
-			v13(v27);
+			v13(v26);
 		end;
 		v22.PlaceHolderText = "Search User";
 		v22.LayoutOrder = 2;
@@ -193,23 +195,26 @@ return {
 		});
 		local v31 = next(v15) ~= nil;
 		if v31 then
-			table.sort(v12, function(p9, p10)
-				return string.lower(p9.displayName) < string.lower(p10.displayName);
+			table.sort(v12, function(p5, p6)
+				return string.lower(p5.displayName) < string.lower(p6.displayName);
 			end);
-			local function v32(p11, p12)
-				return u5.createElement(l__HostPanelPlayerRow__10, {
-					OfflinePlayer = p11, 
-					Index = p12, 
-					Team = v15[p11.userId], 
+			local v32 = table.create(#v12);
+			local v33, v34, v35 = ipairs(v12);
+			while true do
+				v33(v34, v35);
+				if not v33 then
+					break;
+				end;
+				v35 = v33;
+				v32[v33] = u5.createElement(l__HostPanelPlayerRow__10, {
+					OfflinePlayer = v34, 
+					Index = v33 - 1, 
+					Team = v15[v34.userId], 
 					HasGameBanPermission = v17, 
 					store = p1.store
-				});
+				});			
 			end;
-			local v33 = table.create(#v12);
-			for v34, v35 in ipairs(v12) do
-				v33[v34] = v32(v35, v34 - 1, v12);
-			end;
-			v31 = v33;
+			v31 = v32;
 		end;
 		local v36 = {
 			AdditionalSpace = 40, 
@@ -224,8 +229,14 @@ return {
 			}) };
 		local v38 = #v37;
 		if v31 then
-			for v39, v40 in ipairs(v31) do
-				v37[v38 + v39] = v40;
+			local v39, v40, v41 = ipairs(v31);
+			while true do
+				v39(v40, v41);
+				if not v39 then
+					break;
+				end;
+				v41 = v39;
+				v37[v38 + v39] = v40;			
 			end;
 		end;
 		v20[v21 + 2] = u5.createElement(l__AutoCanvasScrollingFrame__11, v36, v37);

@@ -1,4 +1,3 @@
--- Script Hash: 541d578267a6a10056885b87ad127cedf983977b62f8eca3cd2d102e188bf69a77c7fcd5fe483d1951228cc923184f2b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__GuiService__1 = game:GetService("GuiService");

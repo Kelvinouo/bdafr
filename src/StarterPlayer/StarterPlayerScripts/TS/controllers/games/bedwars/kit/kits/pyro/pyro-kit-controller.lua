@@ -1,4 +1,3 @@
--- Script Hash: 37436424bf1a5d5c3828c799f7e665ef93dfc969235271a87f336549547e28f7f8037d698ebd064e985ae5827f4513bb
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -15,37 +14,34 @@ function u1.new(...)
 	local v4 = setmetatable({}, u1);
 	return v4:constructor(...) and v4;
 end;
-local u2 = l__LegacyKitKnitController__2;
-local l__BedwarsKit__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
+local l__BedwarsKit__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
 function u1.constructor(p1)
-	u2.constructor(p1, { l__BedwarsKit__3.PYRO });
+	l__LegacyKitKnitController__2.constructor(p1, { l__BedwarsKit__2.PYRO });
 	p1.Name = "PyroKitController";
 end;
 function u1.KnitStart(p2)
-	u2.KnitStart(p2);
+	l__LegacyKitKnitController__2.KnitStart(p2);
 end;
-local l__ContentProvider__4 = v1.import(script, v1.getModule(script, "@rbxts", "services")).ContentProvider;
-local u5 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-local l__GameAnimationUtil__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
-local l__AnimationType__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
+local l__ContentProvider__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).ContentProvider;
+local u4 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
+local l__GameAnimationUtil__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
+local l__AnimationType__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
 function u1.onKitEnabled(p3)
 	v1.Promise.defer(function()
-		l__ContentProvider__4:PreloadAsync({ u5("Animation", {
-				AnimationId = l__GameAnimationUtil__6.getAssetId(l__AnimationType__7.FLAMETHROWER_USE)
-			}), u5("Animation", {
-				AnimationId = l__GameAnimationUtil__6.getAssetId(l__AnimationType__7.FLAMETHROWER_UPGRADE)
-			}), u5("Animation", {
-				AnimationId = l__GameAnimationUtil__6.getAssetId(l__AnimationType__7.FLAMETHROWER_IDLE)
+		l__ContentProvider__3:PreloadAsync({ u4("Animation", {
+				AnimationId = l__GameAnimationUtil__5.getAssetId(l__AnimationType__6.FLAMETHROWER_USE)
+			}), u4("Animation", {
+				AnimationId = l__GameAnimationUtil__5.getAssetId(l__AnimationType__6.FLAMETHROWER_UPGRADE)
+			}), u4("Animation", {
+				AnimationId = l__GameAnimationUtil__5.getAssetId(l__AnimationType__6.FLAMETHROWER_IDLE)
 			}) });
 	end);
 end;
 function u1.onKitDisabled(p4)
 
 end;
-u2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
-u1 = u1.new;
-u2 = u2(u1());
-u1 = {
-	PyroKitController = u2
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
+u1 = u1(u1.new());
+return {
+	PyroKitController = u1
 };
-return u1;

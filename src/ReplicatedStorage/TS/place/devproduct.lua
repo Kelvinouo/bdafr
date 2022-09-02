@@ -15,7 +15,9 @@ local v1 = {
 	CYBER_DJ = 1267371973, 
 	EMBER_LUMEN_KIT_BUNDLE = 1263740791, 
 	EMBER_LUMEN_KIT_BUNDLE_PERM = 1267394254, 
-	EVELYNN_BUNDLE = 1291670791
+	EVELYNN_BUNDLE = 1291670791, 
+	SPIRIT_ELDER_TREE = 1298562343, 
+	HANNAH_BUNDLE = 1305893097
 };
 if require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "util", "place-util").PlaceUtil.isProduction() then
 	v1.HOLIDAY_BUNDLE_2021_GIFT = 1230368615;
@@ -29,6 +31,8 @@ if require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):Wa
 	v1.EMBER_LUMEN_KIT_BUNDLE = 1263740791;
 	v1.EMBER_LUMEN_KIT_BUNDLE_PERM = 1267394254;
 	v1.EVELYNN_BUNDLE = 1291660453;
+	v1.SPIRIT_ELDER_TREE = 1298562343;
+	v1.HANNAH_BUNDLE = 1305893097;
 end;
 return {
 	DevProduct = v1

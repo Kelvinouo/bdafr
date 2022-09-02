@@ -1,4 +1,3 @@
--- Script Hash: d42dcb02ffbc1d1a1c054e27bcc9fef38990ab4fe8795d0c278df50648242c4c5be72765b10e0e68b079f84bbef7eb1d
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -10,8 +9,8 @@ return {
 		local l__useState__3 = p2.useState;
 		local v4 = string.split(p1.fishType, "_");
 		local v5 = #v4;
-		v4[v5] = nil;
 		v2 = v4[v5];
+		v4[v5] = nil;
 		local v6 = {};
 		local v7 = {
 			Position = UDim2.fromScale(0.5, 0.5), 

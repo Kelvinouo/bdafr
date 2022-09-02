@@ -14,24 +14,28 @@ function v4.new(...)
 	local v5 = setmetatable({}, v4);
 	return v5:constructor(...) and v5;
 end;
-local u1 = l__KnitController__3;
 function v4.constructor(p1, ...)
-	u1.constructor(p1, ...);
+	l__KnitController__3.constructor(p1, ...);
 	p1.Name = "DodoBirdSittingController";
 end;
-local l__RunService__2 = v2.RunService;
-local l__CollectionService__3 = v2.CollectionService;
+local l__RunService__1 = v2.RunService;
+local l__CollectionService__2 = v2.CollectionService;
 function v4.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__RunService__2.Stepped:Connect(function()
-		for v6, v7 in ipairs(l__CollectionService__3:GetTagged("dodo-bird-mount")) do
-			local l__Parent__8 = v7.Parent;
-			if l__Parent__8 and l__Parent__8.PrimaryPart then
-				l__Parent__8.LowerTorso.Root.Transform = (l__Parent__8.HumanoidRootPart.CFrame * CFrame.new(0, -1.3, 0)):ToObjectSpace(v7.RootPart.master.torso["torso.001"].TransformedWorldCFrame) * CFrame.Angles(1.2217304763960306, 0, 0);
+	l__KnitController__3.KnitStart(p2);
+	l__RunService__1.Stepped:Connect(function()
+		local v6, v7, v8 = ipairs(l__CollectionService__2:GetTagged("dodo-bird-mount"));
+		while true do
+			v6(v7, v8);
+			if not v6 then
+				break;
 			end;
+			v8 = v6;
+			local l__Parent__9 = v7.Parent;
+			if l__Parent__9 and l__Parent__9.PrimaryPart then
+				l__Parent__9.LowerTorso.Root.Transform = (l__Parent__9.HumanoidRootPart.CFrame * CFrame.new(0, -1.3, 0)):ToObjectSpace(v7.RootPart.master.torso["torso.001"].TransformedWorldCFrame) * CFrame.Angles(1.2217304763960306, 0, 0);
+			end;		
 		end;
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1(v4.new());
+local v10 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v4.new());
 return nil;

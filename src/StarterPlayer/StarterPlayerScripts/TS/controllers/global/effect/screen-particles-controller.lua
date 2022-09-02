@@ -15,63 +15,73 @@ function v5.new(...)
 	local v6 = setmetatable({}, v5);
 	return v6:constructor(...) and v6;
 end;
-local u1 = l__KnitController__4;
 function v5.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__4.constructor(p1);
 	p1.Name = "ScreenParticlesController";
 end;
 function v5.KnitStart(p2)
-	u1.KnitStart(p2);
+	l__KnitController__4.KnitStart(p2);
 end;
-local u2 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-local l__Workspace__3 = v3.Workspace;
-local l__GameQueryUtil__4 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).GameQueryUtil;
-local l__RunService__5 = v3.RunService;
-local u6 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "screen-space");
-local l__KnitClient__7 = v2.KnitClient;
-local u8 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
+local l__Workspace__2 = v3.Workspace;
+local l__GameQueryUtil__3 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).GameQueryUtil;
+local l__RunService__4 = v3.RunService;
+local u5 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "screen-space");
+local l__KnitClient__6 = v2.KnitClient;
+local u7 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v5.emitParticlesOnScreen(p3, p4)
-	local v7 = u2("Part", {
+	local v7 = u1("Part", {
 		Size = Vector3.new(1, 1, 1), 
 		CanCollide = false, 
 		Transparency = 1, 
 		Anchored = true, 
-		Parent = l__Workspace__3.CurrentCamera
+		Parent = l__Workspace__2.CurrentCamera
 	});
-	l__GameQueryUtil__4:setQueryIgnored(v7, true);
+	l__GameQueryUtil__3:setQueryIgnored(v7, true);
 	local v8 = {};
-	for v9, v10 in ipairs(p4.particleEmitter) do
-		local v11 = v10:Clone();
-		v11.LockedToPart = true;
-		v11.ZOffset = 0;
-		v11.EmissionDirection = Enum.NormalId.Back;
-		v11.Enabled = false;
-		v11.Parent = v7;
-		table.insert(v8, v11);
-	end;
-	local v12 = l__RunService__5.RenderStepped:Connect(function()
-		local v13 = p4.depth;
-		if v13 == nil then
-			v13 = 0.5;
+	local v9, v10, v11 = ipairs(p4.particleEmitter);
+	while true do
+		v9(v10, v11);
+		if not v9 then
+			break;
 		end;
-		v7.CFrame = l__Workspace__3.CurrentCamera.CFrame * CFrame.new(0, 0, -v13 - 0.5);
-		v7.Size = Vector3.new(u6.ScreenWidthToWorldWidth(u6.ViewSizeX(), -v13, l__KnitClient__7.Controllers.FovController:getBaseFOV()) * 1.2, u6.ScreenHeightToWorldHeight(u6.ViewSizeY(), -v13, l__KnitClient__7.Controllers.FovController:getBaseFOV()) * 1.2, 1);
+		v11 = v9;
+		local v12 = v10:Clone();
+		v12.LockedToPart = true;
+		v12.ZOffset = 0;
+		v12.EmissionDirection = Enum.NormalId.Back;
+		v12.Enabled = false;
+		v12.Parent = v7;
+		table.insert(v8, v12);	
+	end;
+	local v13 = l__RunService__4.RenderStepped:Connect(function()
+		local v14 = p4.depth;
+		if v14 == nil then
+			v14 = 0.5;
+		end;
+		v7.CFrame = l__Workspace__2.CurrentCamera.CFrame * CFrame.new(0, 0, -v14 - 0.5);
+		v7.Size = Vector3.new(u5.ScreenWidthToWorldWidth(u5.ViewSizeX(), -v14, l__KnitClient__6.Controllers.FovController:getBaseFOV()) * 1.2, u5.ScreenHeightToWorldHeight(u5.ViewSizeY(), -v14, l__KnitClient__6.Controllers.FovController:getBaseFOV()) * 1.2, 1);
 	end);
-	for v14, v15 in ipairs(v8) do
-		local v16 = v15:GetAttribute("EmitCount");
-		if v16 == nil then
-			v16 = 30;
+	local v15, v16, v17 = ipairs(v8);
+	while true do
+		v15(v16, v17);
+		if not v15 then
+			break;
 		end;
-		v15:Emit(v16);
+		v17 = v15;
+		local v18 = v16:GetAttribute("EmitCount");
+		if v18 == nil then
+			v18 = 30;
+		end;
+		v16:Emit(v18);	
 	end;
-	local v17 = u8.new();
-	v17:GiveTask(v7);
-	v17:GiveTask(v12);
+	local v19 = u7.new();
+	v19:GiveTask(v7);
+	v19:GiveTask(v13);
 	task.delay(p4.cleanupAfter, function()
-		v17:DoCleaning();
+		v19:DoCleaning();
 	end);
-	return v17;
+	return v19;
 end;
-u1 = v2.KnitClient.CreateController;
-u1 = u1(v5.new());
+local v20 = v2.KnitClient.CreateController(v5.new());
 return nil;

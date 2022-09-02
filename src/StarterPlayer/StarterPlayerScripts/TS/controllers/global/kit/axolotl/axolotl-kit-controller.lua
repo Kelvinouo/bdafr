@@ -1,4 +1,3 @@
--- Script Hash: 473870736f6242c80afa336c324cbdce3941719cb2549e0ad74442dccdcbd600dc9cd1eadd2e224873d22fc4e1d45763
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,35 +13,36 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = l__LegacyKitKnitController__2;
-local l__BedwarsKit__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
+local l__BedwarsKit__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
 function v3.constructor(p1)
-	u1.constructor(p1, { l__BedwarsKit__2.AXOLOTL });
+	l__LegacyKitKnitController__2.constructor(p1, { l__BedwarsKit__1.AXOLOTL });
 	p1.Name = "AxolotlKitController";
 end;
 function v3.KnitStart(p2)
-	u1.KnitStart(p2);
+	l__LegacyKitKnitController__2.KnitStart(p2);
 end;
-local u3 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-local l__ContentProvider__4 = v1.import(script, v1.getModule(script, "@rbxts", "services")).ContentProvider;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
+local l__ContentProvider__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).ContentProvider;
 function v3.onKitEnabled(p3)
 	local v5 = { "rbxassetid://7863780357", "rbxassetid://7863780231", "rbxassetid://7863779927", "rbxassetid://7863780097" };
-	local function v6(p4)
-		return u3("ImageLabel", {
-			Image = p4
-		});
-	end;
-	local v7 = table.create(#v5);
-	for v8, v9 in ipairs(v5) do
-		v7[v8] = v6(v9, v8 - 1, v5);
+	local v6 = table.create(#v5);
+	local v7, v8, v9 = ipairs(v5);
+	while true do
+		v7(v8, v9);
+		if not v7 then
+			break;
+		end;
+		v9 = v7;
+		v6[v7] = u2("ImageLabel", {
+			Image = v8
+		});	
 	end;
 	task.spawn(function()
-		l__ContentProvider__4:PreloadAsync(v7);
+		l__ContentProvider__3:PreloadAsync(v6);
 	end);
 end;
-function v3.onKitDisabled(p5)
+function v3.onKitDisabled(p4)
 
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
-u1 = u1(v3.new());
+local v10 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v3.new());
 return nil;

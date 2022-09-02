@@ -1,4 +1,3 @@
--- Script Hash: 9da7298f0a8145f4201bbdcd91ee4bd29a5f71a8f7417e7bba6c713259ddc113594a31ee7b4a3b447c5dec16b0d1902b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -24,7 +23,7 @@ function v6.init(p1, p2)
 end;
 local l__MatchState__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "match", "match-state").MatchState;
 local l__DeviceUtil__2 = v2.DeviceUtil;
-local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__HotbarPartySection__4 = v1.import(script, script.Parent, "party", "hotbar-party-section").HotbarPartySection;
 local l__HotbarSpectatorSection__5 = v1.import(script, script.Parent, "spectate", "hotbar-spectator-section").HotbarSpectatorSection;
 local l__HotbarHealthbar__6 = v1.import(script, script.Parent, "healthbar", "hotbar-healthbar").HotbarHealthbar;
@@ -42,6 +41,7 @@ local l__SoundManager__17 = v2.SoundManager;
 local l__RandomUtil__18 = v2.RandomUtil;
 local l__GameSound__19 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 local l__HotbarOpenInventory__20 = v1.import(script, script.Parent, "hotbar-open-inventory").HotbarOpenInventory;
+local l__HotbarItemNameDisplay__21 = v1.import(script, script.Parent, "hotbar-item-name-display").HotbarItemNameDisplay;
 function v6.render(p3)
 	local v7 = v5.HEALTHBAR;
 	if p3.props.store.App.showHotbarPartyControls then
@@ -147,103 +147,126 @@ function v6.render(p3)
 				}) });
 		end;
 		local v25 = table.create(#v20);
-		for v26, v27 in ipairs(v20) do
-			v25[v26] = v21(v27, v26 - 1, v20);
+		local v26, v27, v28 = ipairs(v20);
+		while true do
+			v26(v27, v28);
+			if not v26 then
+				break;
+			end;
+			v28 = v26;
+			v25[v26] = v21(v27, v26 - 1, v20);		
 		end;
 		v19 = v25;
 	end;
-	local v28 = {
+	local v29 = {
 		Size = UDim2.fromScale(0.07, 1.5), 
 		Position = UDim2.fromScale(-0.08, 1), 
 		AnchorPoint = Vector2.new(1, 1)
 	};
-	local v29 = { v3.createElement("UIListLayout", {
+	local v30 = { v3.createElement("UIListLayout", {
 			FillDirection = "Vertical", 
 			SortOrder = "LayoutOrder", 
 			HorizontalAlignment = "Center", 
 			VerticalAlignment = "Center"
 		}) };
-	local v30 = #v29;
+	local v31 = #v30;
 	if v19 then
-		for v31, v32 in ipairs(v19) do
-			v29[v30 + v31] = v32;
+		local v32, v33, v34 = ipairs(v19);
+		while true do
+			v32(v33, v34);
+			if not v32 then
+				break;
+			end;
+			v34 = v32;
+			v30[v31 + v32] = v33;		
 		end;
 	end;
-	v12[v18 + 1] = v3.createElement(l__Empty__11, v28, v29);
-	local l__hotbar__33 = p3.props.store.Inventory.observedInventory.hotbar;
-	local function v34(p5, p6)
-		local v35 = {
+	v12[v18 + 1] = v3.createElement(l__Empty__11, v29, v30);
+	local l__hotbar__35 = p3.props.store.Inventory.observedInventory.hotbar;
+	local function v36(p5, p6)
+		local v37 = {
 			HotbarSlot = p5, 
 			SlotNumber = p6, 
 			LayoutOrder = p6, 
 			Selected = p6 == p3.props.store.Inventory.observedInventory.hotbarSlot, 
 			store = p3.props.store
 		};
-		function v35.OnClick()
-			local v36 = l__Flamework__13.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController");
-			if v36:isAppOpen(l__AppConfiguration__14.INVENTORY) or v36:isAppOpen(l__AppConfiguration__14.CHEST_INVENTORY) then
-				if p5.item then
-					local v37 = l__getItemMeta__15(p5.item.itemType);
-					if v37.armor and l__ClientStore__16:getState().Inventory.observedInventory.inventory.armor[v37.armor.slot + 1] == "empty" then
-						l__ClientStore__16:dispatch({
-							type = "InventorySetArmorItem", 
-							item = p5.item, 
-							armorSlot = v37.armor.slot
-						});
-						l__SoundManager__17:playSound(l__RandomUtil__18.fromList(l__GameSound__19.ARMOR_EQUIP));
-						return nil;
-					else
-						l__ClientStore__16:dispatch({
-							type = "InventoryRemoveFromHotbar", 
-							slot = p6
-						});
-						if p5.item then
-							return;
-						end;
-					end;
-				else
-					l__ClientStore__16:dispatch({
-						type = "InventoryRemoveFromHotbar", 
-						slot = p6
-					});
-					if p5.item then
-						return;
-					end;
-				end;
-			else
+		function v37.OnClick()
+			local v38 = l__Flamework__13.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController");
+			if not v38:isAppOpen(l__AppConfiguration__14.INVENTORY) and not v38:isAppOpen(l__AppConfiguration__14.CHEST_INVENTORY) then
 				l__ClientStore__16:dispatch({
 					type = "InventorySelectHotbarSlot", 
 					slot = p6
 				});
+				return;
 			end;
+			if p5.item then
+				local v39 = l__getItemMeta__15(p5.item.itemType);
+				if v39.armor and l__ClientStore__16:getState().Inventory.observedInventory.inventory.armor[v39.armor.slot + 1] == "empty" then
+					l__ClientStore__16:dispatch({
+						type = "InventorySetArmorItem", 
+						item = p5.item, 
+						armorSlot = v39.armor.slot
+					});
+					l__SoundManager__17:playSound(l__RandomUtil__18.fromList(l__GameSound__19.ARMOR_EQUIP));
+					return nil;
+				end;
+				if v39.backpack and l__ClientStore__16:getState().Inventory.observedInventory.inventory.backpack == nil then
+					l__ClientStore__16:dispatch({
+						type = "InventorySetBackpack", 
+						item = p5.item
+					});
+					l__SoundManager__17:playSound(l__RandomUtil__18.fromList(l__GameSound__19.ARMOR_EQUIP));
+					return nil;
+				end;
+			end;
+			l__ClientStore__16:dispatch({
+				type = "InventoryRemoveFromHotbar", 
+				slot = p6
+			});
 		end;
-		return v3.createElement(l__HotbarTile__12, v35);
+		return v3.createElement(l__HotbarTile__12, v37);
 	end;
-	local v38 = table.create(#l__hotbar__33);
-	for v39, v40 in ipairs(l__hotbar__33) do
-		v38[v39] = v34(v40, v39 - 1, l__hotbar__33);
+	local v40 = table.create(#l__hotbar__35);
+	local v41, v42, v43 = ipairs(l__hotbar__35);
+	while true do
+		v41(v42, v43);
+		if not v41 then
+			break;
+		end;
+		v43 = v41;
+		v40[v41] = v36(v42, v41 - 1, l__hotbar__35);	
 	end;
-	local v41 = {
+	local v44 = {
 		Size = UDim2.fromScale(1, 1), 
 		Position = UDim2.fromScale(0.5, 1), 
 		AnchorPoint = Vector2.new(0.5, 1), 
 		BorderSizePixel = 0, 
 		BackgroundTransparency = 1
 	};
-	local v42 = { v3.createElement("UIListLayout", {
+	local v45 = { v3.createElement("UIListLayout", {
 			FillDirection = "Horizontal", 
 			SortOrder = "LayoutOrder", 
 			HorizontalAlignment = "Center"
 		}) };
-	local v43 = #v42;
-	for v44, v45 in ipairs(v38) do
-		v42[v43 + v44] = v45;
+	local v46 = #v45;
+	local v47, v48, v49 = ipairs(v40);
+	while true do
+		v47(v48, v49);
+		if not v47 then
+			break;
+		end;
+		v49 = v47;
+		v45[v46 + v47] = v48;	
 	end;
-	v42[#v42 + 1] = v3.createElement(l__HotbarOpenInventory__20, {
+	v45[#v45 + 1] = v3.createElement(l__HotbarOpenInventory__20, {
 		LayoutOrder = 20, 
 		store = p3.props.store
 	});
-	v12[v18 + 2] = v3.createElement("Frame", v41, v42);
+	v12[v18 + 2] = v3.createElement("Frame", v44, v45);
+	v12[v18 + 3] = v3.createElement(l__HotbarItemNameDisplay__21, {
+		store = p3.props.store
+	});
 	return v3.createElement("Frame", v9, v12);
 end;
 return {

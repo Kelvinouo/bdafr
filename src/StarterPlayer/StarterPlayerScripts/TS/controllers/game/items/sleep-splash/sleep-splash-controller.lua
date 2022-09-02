@@ -1,4 +1,3 @@
--- Script Hash: d6720c92dd735484f407eb8fd5e5c1bcb4683cd9d3d314182be27b180b5b88d05cc34ff1d1c987c2199c65597b9870fa
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,14 +13,12 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = l__KnitController__2;
 function v3.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__2.constructor(p1);
 	p1.Name = "SleepSplashController";
 end;
 function v3.KnitStart(p2)
-	u1.KnitStart(p2);
+	l__KnitController__2.KnitStart(p2);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
-u1 = u1(v3.new());
+local v5 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v3.new());
 return nil;

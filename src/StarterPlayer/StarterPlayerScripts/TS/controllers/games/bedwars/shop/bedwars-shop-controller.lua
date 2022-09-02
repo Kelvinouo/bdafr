@@ -1,27 +1,25 @@
--- Script Hash: 3b38754ebd99622c256c89fcebd451a02d67eeb54c3bc155a06d2a56f40004769b17384211ce1491172bf410ffc581de
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
-local l__KnitController__3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
-local v4 = setmetatable({}, {
+local l__KnitController__2 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
+local v3 = setmetatable({}, {
 	__tostring = function()
 		return "BedwarsShopController";
 	end, 
-	__index = l__KnitController__3
+	__index = l__KnitController__2
 });
-v4.__index = v4;
-local u1 = v4;
+v3.__index = v3;
+local u1 = v3;
 function u1.new(...)
-	local v5 = setmetatable({}, u1);
-	return v5:constructor(...) and v5;
+	local v4 = setmetatable({}, u1);
+	return v4:constructor(...) and v4;
 end;
-local u2 = l__KnitController__3;
 function u1.constructor(p1)
-	u2.constructor(p1);
+	l__KnitController__2.constructor(p1);
 	p1.Name = "BedwarsShopController";
 	p1.alreadyPurchasedMap = {};
 end;
+local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__DeviceUtil__3 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).DeviceUtil;
 local l__Flamework__4 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 local l__BedwarsAppIds__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "types", "app-config").BedwarsAppIds;
@@ -41,46 +39,42 @@ function u1.KnitStart(p2)
 			l__Flamework__4.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__5.BEDWARS_ITEM_SHOP, {});
 		end
 	});
-	l__default__6.Client:Get("BedwarsSetAllTeamUpgrades"):Connect(function(p3)
-		local v6 = nil;
-		local l__purchasedTeamUpgrades__7 = p3.purchasedTeamUpgrades;
-		v6 = {};
-		local function v8(p4, p5)
-			p4[p5.upgradeId] = p5.tier;
-			return p4;
-		end;
-		for v9 = 1, #l__purchasedTeamUpgrades__7 do
-			v6 = v8(v6, l__purchasedTeamUpgrades__7[v9], v9 - 1, l__purchasedTeamUpgrades__7);
+	l__default__6.Client:Get("RemoteName"):Connect(function(p3)
+		local v5 = nil;
+		local l__purchasedTeamUpgrades__6 = p3.purchasedTeamUpgrades;
+		v5 = {};
+		for v7 = 1, #l__purchasedTeamUpgrades__6 do
+			local v8 = l__purchasedTeamUpgrades__6[v7];
+			v5[v8.upgradeId] = v8.tier;
+			v5 = v5;
 		end;
 		l__ClientStore__7:dispatch({
 			type = "BedwarsSetAllTeamUpgrades", 
-			teamUpgrades = local v10
+			teamUpgrades = local v9
 		});
 	end);
-	l__default__6.Client:Get("BedwarsSetTeamUpgradeTier"):Connect(function(p6)
+	l__default__6.Client:Get("RemoteName"):Connect(function(p4)
 		l__ClientStore__7:dispatch({
 			type = "BedwarsSetTeamUpgradeTier", 
-			upgradeId = p6.upgradeId, 
-			tier = p6.tier
+			upgradeId = p4.upgradeId, 
+			tier = p4.tier
 		});
 	end);
-	l__BlockEngine__8:getBlockDamageHook():connect(function(p7)
-		local v11 = l__ClientStore__7:getState().Bedwars.teamUpgrades[l__TeamUpgradeId__9.BREAK];
-		if v11 ~= nil and v11 > -1 then
-			local v12 = l__BedwarsShop__10.getUpgrade(l__BedwarsShop__10.TeamUpgrades, l__TeamUpgradeId__9.BREAK);
-			if v12 ~= nil then
-				v12 = v12.tiers[v11 + 1];
+	l__BlockEngine__8:getBlockDamageHook():connect(function(p5)
+		local v10 = l__ClientStore__7:getState().Bedwars.teamUpgrades[l__TeamUpgradeId__9.BREAK];
+		if v10 ~= nil and v10 > -1 then
+			local v11 = l__BedwarsShop__10.getUpgrade(l__BedwarsShop__10.TeamUpgrades, l__TeamUpgradeId__9.BREAK);
+			if v11 ~= nil then
+				v11 = v11.tiers[v10 + 1];
 			end;
-			if v12 then
-				p7.damage = p7.damage * (1 + v12.values[1] / 100);
+			if v11 then
+				p5.damage = p5.damage * (1 + v11.values[1] / 100);
 			end;
 		end;
 	end);
 end;
-u2 = l__KnitClient__2.CreateController;
-u1 = u1.new;
-u2 = u2(u1());
-u1 = {
-	BedwarsShopController = u2
+u1 = l__KnitClient__2.CreateController;
+u1 = u1(u1.new());
+return {
+	BedwarsShopController = u1
 };
-return u1;

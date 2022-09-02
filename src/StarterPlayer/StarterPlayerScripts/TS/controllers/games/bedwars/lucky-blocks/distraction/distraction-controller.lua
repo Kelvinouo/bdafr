@@ -1,4 +1,3 @@
--- Script Hash: d55cb2600b43af05614f4ef5b0772a6b93900a5106e4325da9dc9e8bed6dcd94cfcc74dc96b8c95139b0ba951110492a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -24,7 +23,7 @@ local u4 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__DistractionWrapper__5 = v1.import(script, script.Parent, "distraction").DistractionWrapper;
 local l__Players__6 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 function v4.onStart(p2)
-	l__default__1.Client:Get("Distraction"):Connect(function(p3)
+	l__default__1.Client:Get("RemoteName"):Connect(function(p3)
 		l__SoundManager__2:playSound(l__GameSound__3.TV_STATIC);
 		l__SoundManager__2:playSound(l__GameSound__3.TURRET_ON);
 		local u7 = u4.mount(u4.createElement(l__DistractionWrapper__5), l__Players__6.LocalPlayer:FindFirstChildOfClass("PlayerGui"));

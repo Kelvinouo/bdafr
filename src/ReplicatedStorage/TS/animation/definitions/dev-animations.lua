@@ -97,6 +97,11 @@ return {
 		[l__AnimationType__1.DAGGER_SLASH] = "rbxassetid://10237006643", 
 		[l__AnimationType__1.DAGGER_CHARGE] = "rbxassetid://10237028644", 
 		[l__AnimationType__1.FP_DAGGER_SLASH] = "rbxassetid://10273247497", 
-		[l__AnimationType__1.FP_DAGGER_CHARGE] = "rbxassetid://10273267293"
+		[l__AnimationType__1.FP_DAGGER_CHARGE] = "rbxassetid://10273267293", 
+		[l__AnimationType__1.REPAIR_SNOW_CONE_MACHINE] = "rbxassetid://10482598101", 
+		[l__AnimationType__1.PIRATE_SHIP_FLY] = "rbxassetid://10562309123", 
+		[l__AnimationType__1.HANNAH_JUMP_DOWN] = "rbxassetid://10695417052", 
+		[l__AnimationType__1.DAVEY_JUMP_DOWN] = "rbxassetid://10696584641", 
+		[l__AnimationType__1.SMOKE_JUMP_DOWN] = "rbxassetid://10696586540"
 	}
 };

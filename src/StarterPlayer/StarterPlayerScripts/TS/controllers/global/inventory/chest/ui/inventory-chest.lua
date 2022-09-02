@@ -1,4 +1,3 @@
--- Script Hash: fab606f641f7f35bdd6c04fa8e29766e0fbd51d88b38426aceaabeeb386f807933864cae252c2c98e33891e9f0890dfa
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -106,8 +105,14 @@ return {
 				SortOrder = "LayoutOrder"
 			}) };
 		local v20 = #v19;
-		for v21, v22 in ipairs(v4) do
-			v19[v20 + v21] = v22;
+		local v21, v22, v23 = ipairs(v4);
+		while true do
+			v21(v22, v23);
+			if not v21 then
+				break;
+			end;
+			v23 = v21;
+			v19[v20 + v21] = v22;		
 		end;
 		v17[#v17 + 1] = u1.createElement("Frame", v18, v19);
 		v15[#v15 + 1] = u1.createElement(l__EmptyButton__7, v16, v17);

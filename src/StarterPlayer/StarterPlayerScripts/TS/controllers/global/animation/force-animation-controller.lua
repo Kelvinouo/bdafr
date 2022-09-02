@@ -1,4 +1,3 @@
--- Script Hash: 4af1439081bf109032f2996c93e63cac68dfe069a7e7fceced980c67d62daab8a02a5d4591349ef8d14916b4885e842c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,18 +13,17 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = l__KnitController__2;
 function v3.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__2.constructor(p1);
 	p1.Name = "ForceAnimationController";
 end;
-local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-local l__AnimationUtil__3 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).AnimationUtil;
-local l__Players__4 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
+local l__default__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__AnimationUtil__2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).AnimationUtil;
+local l__Players__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 function v3.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("ForcePlayAnimation", function(p3)
-		local v5 = l__AnimationUtil__3.playAnimation(l__Players__4.LocalPlayer, p3.animation, {
+	l__KnitController__2.KnitStart(p2);
+	l__default__1.Client:OnEvent("RemoteName", function(p3)
+		local v5 = l__AnimationUtil__2.playAnimation(l__Players__3.LocalPlayer, p3.animation, {
 			looped = p3.looped ~= nil
 		});
 		if p3.priority and v5 then
@@ -51,6 +49,5 @@ function v3.KnitStart(p2)
 		end;
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
-u1 = u1(v3.new());
+local v8 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v3.new());
 return nil;

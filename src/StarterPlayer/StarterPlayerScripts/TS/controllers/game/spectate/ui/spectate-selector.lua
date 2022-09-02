@@ -1,4 +1,3 @@
--- Script Hash: b0922950be4079e0a540a171ddfd827318e1d9a95fb38f6258af62cc780ddfbd55976ec3c0bd8da0bee0305af7fb5a28
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -7,7 +6,7 @@ local l__ImageId__1 = v2.ImageId;
 local l__DeviceUtil__2 = v2.DeviceUtil;
 local l__OfflinePlayerUtil__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "player", "offline-player-util").OfflinePlayerUtil;
 local u4 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
-local l__KnitClient__5 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__5 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__PlayerRender__6 = v2.PlayerRender;
 local l__Empty__7 = v2.Empty;
 local u8 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u4)(function(p1, p2)
@@ -20,25 +19,26 @@ local u8 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).
 	if p1.store.Game.spectatingPlayer then
 		v5 = l__OfflinePlayerUtil__3.getPlayer(p1.store.Game.spectatingPlayer);
 	end;
-	local l__teams__6 = p1.store.Game.teams;
-	local function v7(p3)
-		local v8 = v5;
-		if v8 ~= nil then
-			v8 = v8.Team;
-			if v8 ~= nil then
-				v8 = v8.Name;
-			end;
-		end;
-		return p3.id == v8;
-	end;
-	local v9 = nil;
-	for v10, v11 in ipairs(l__teams__6) do
-		if v7(v11, v10 - 1, l__teams__6) == true then
-			v9 = v11;
+	local v6 = nil;
+	local v7, v8, v9 = ipairs(p1.store.Game.teams);
+	while true do
+		v7(v8, v9);
+		if not v7 then
 			break;
 		end;
+		local v10 = v5;
+		if v10 ~= nil then
+			v10 = v10.Team;
+			if v10 ~= nil then
+				v10 = v10.Name;
+			end;
+		end;
+		if v8.id == v10 == true then
+			v6 = v8;
+			break;
+		end;	
 	end;
-	local v12 = {
+	local v11 = {
 		Size = UDim2.fromScale(0.13, 0.13), 
 		Position = UDim2.fromScale(0.02, 0.7), 
 		ImageTransparency = 1, 
@@ -50,70 +50,70 @@ local u8 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).
 			l__KnitClient__5.Controllers.SpectateController:switchSpectateTargets("next");
 		end
 	};
-	local v13 = { u4.createElement("UIAspectRatioConstraint", {
+	local v12 = { u4.createElement("UIAspectRatioConstraint", {
 			AspectRatio = 3.1192660550458715
 		}), u4.createElement("UIListLayout", {
 			FillDirection = "Horizontal", 
 			HorizontalAlignment = "Left"
 		}) };
-	local v14 = #v13;
-	local v15 = {};
-	local v16 = false;
+	local v13 = #v12;
+	local v14 = {};
+	local v15 = false;
 	if p1.store.Game.spectatingPlayer ~= nil then
-		v16 = u4.createElement(l__PlayerRender__6, {
+		v15 = u4.createElement(l__PlayerRender__6, {
 			Size = UDim2.fromScale(1, 1), 
 			Player = p1.store.Game.spectatingPlayer, 
 			BackgroundTransparency = 1, 
 			BorderSizePixel = 0
 		});
 	end;
-	if v16 then
-		v15[#v15 + 1] = v16;
+	if v15 then
+		v14[#v14 + 1] = v15;
 	end;
-	v13[v14 + 1] = u4.createElement(l__Empty__7, {
+	v12[v13 + 1] = u4.createElement(l__Empty__7, {
 		Size = UDim2.fromScale(1, 1), 
 		SizeConstraint = "RelativeYY"
-	}, v15);
-	local v17 = {
+	}, v14);
+	local v16 = {
 		Size = UDim2.fromScale(2.1192660550458715, 1), 
 		SizeConstraint = "RelativeYY"
 	};
-	local v18 = {};
-	local v19 = #v18;
-	local v20 = {};
-	local v21 = v5;
-	if v21 ~= nil then
-		v21 = v21.DisplayName;
+	local v17 = {};
+	local v18 = #v17;
+	local v19 = {};
+	local v20 = v5;
+	if v20 ~= nil then
+		v20 = v20.DisplayName;
 	end;
-	local v22 = v21;
-	if v22 == nil then
-		v22 = "Unknown";
+	local v21 = v20;
+	if v21 == nil then
+		v21 = "Unknown";
 	end;
-	v20.Text = v22;
-	v20.Size = UDim2.fromScale(1, 0.6);
-	v20.Position = UDim2.fromScale(0, 0);
-	v20.BackgroundTransparency = 1;
-	v20.BorderSizePixel = 0;
-	v20.Font = "LuckiestGuy";
-	v20.TextScaled = true;
-	v20.RichText = true;
-	v20.TextXAlignment = "Left";
-	local v23 = v9;
-	if v23 ~= nil then
-		v23 = v23.color;
+	v19.Text = v21;
+	v19.Size = UDim2.fromScale(1, 0.6);
+	v19.Position = UDim2.fromScale(0, 0);
+	v19.BackgroundTransparency = 1;
+	v19.BorderSizePixel = 0;
+	v19.Font = "LuckiestGuy";
+	v19.TextScaled = true;
+	v19.RichText = true;
+	v19.TextXAlignment = "Left";
+	local v22 = v6;
+	if v22 ~= nil then
+		v22 = v22.color;
 	end;
-	local v24 = v23;
-	if v24 == nil then
-		v24 = Color3.fromRGB(255, 255, 255);
+	local v23 = v22;
+	if v23 == nil then
+		v23 = Color3.fromRGB(255, 255, 255);
 	end;
-	v20.TextColor3 = v24;
-	v20.AutoLocalize = false;
-	v18[v19 + 1] = u4.createElement("TextLabel", v20, { u4.createElement("UIPadding", {
+	v19.TextColor3 = v23;
+	v19.AutoLocalize = false;
+	v17[v18 + 1] = u4.createElement("TextLabel", v19, { u4.createElement("UIPadding", {
 			PaddingLeft = UDim.new(0.1, 0), 
 			PaddingTop = UDim.new(0.2), 
 			PaddingBottom = UDim.new(0.1)
 		}) });
-	v18[v19 + 2] = u4.createElement(l__Empty__7, {
+	v17[v18 + 2] = u4.createElement(l__Empty__7, {
 		Size = UDim2.fromScale(1, 0.4), 
 		Position = UDim2.fromScale(0, 1), 
 		AnchorPoint = Vector2.new(0, 1)
@@ -146,16 +146,16 @@ local u8 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).
 				PaddingTop = UDim.new(0.22), 
 				PaddingBottom = UDim.new(0.22)
 			}) }) });
-	v13[v14 + 2] = u4.createElement(l__Empty__7, v17, v18);
-	return u4.createElement("ImageButton", v12, v13);
+	v12[v13 + 2] = u4.createElement(l__Empty__7, v16, v17);
+	return u4.createElement("ImageButton", v11, v12);
 end);
 return {
-	SpectateSelectorWrapper = function(p4)
+	SpectateSelectorWrapper = function(p3)
 		return u4.createElement("ScreenGui", {
 			ResetOnSpawn = false, 
 			IgnoreGuiInset = true
 		}, { u4.createElement(u8, {
-				store = p4.store
+				store = p3.store
 			}) });
 	end, 
 	SpectateSelector = u8

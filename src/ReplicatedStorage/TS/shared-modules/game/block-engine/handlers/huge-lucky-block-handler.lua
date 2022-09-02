@@ -14,9 +14,8 @@ function v4.new(...)
 	local v5 = setmetatable({}, v4);
 	return v5:constructor(...) and v5;
 end;
-local u1 = l__PrefabBlockHandler__3;
 function v4.constructor(p1, ...)
-	u1.constructor(p1, ...);
+	l__PrefabBlockHandler__3.constructor(p1, ...);
 end;
 function v4.getPlacementPositions(p2, p3, p4)
 	local v6 = {};
@@ -59,9 +58,9 @@ function v4.getPlacementPositions(p2, p3, p4)
 	end;
 	return v6;
 end;
-local l__BlockEngine__2 = v2.BlockEngine;
+local l__BlockEngine__1 = v2.BlockEngine;
 function v4.getContainedPositions(p5, p6)
-	local v13 = l__BlockEngine__2:getBlockPosition(p6.Position);
+	local v13 = l__BlockEngine__1:getBlockPosition(p6.Position);
 	local v14 = {};
 	local v15 = 0;
 	local v16 = false;
@@ -102,7 +101,6 @@ function v4.getContainedPositions(p5, p6)
 	end;
 	return v14;
 end;
-u1 = {
+return {
 	HugeLuckyBlockHandler = v4
 };
-return l__PrefabBlockHandler__3;

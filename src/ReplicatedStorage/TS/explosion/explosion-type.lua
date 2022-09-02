@@ -34,8 +34,18 @@ v2.BOMBER_PENGUIN_EXPLOSION = "bomber_penguin_explosion";
 v1.bomber_penguin_explosion = "BOMBER_PENGUIN_EXPLOSION";
 v2.KING_PENGUIN_EXPLOSION = "king_penguin_explosion";
 v1.king_penguin_explosion = "KING_PENGUIN_EXPLOSION";
+v2.ROCKET_BELT = "ROCKET_BELT";
+v1.ROCKET_BELT = "ROCKET_BELT";
 v2.TENNIS_BALL_EXPLOSION = "tennis_ball_explosion";
 v1.tennis_ball_explosion = "TENNIS_BALL_EXPLOSION";
+v2.C4_BOMB = "c4_bomb";
+v1.c4_bomb = "C4_BOMB";
+v2.EXPLODING_ARROW = "exploding_arrow";
+v1.exploding_arrow = "EXPLODING_ARROW";
+v2.TNT_BALLOON_TNT = "tnt_balloon_tnt";
+v1.tnt_balloon_tnt = "TNT_BALLOON_TNT";
+v2.TNT_WARS_CANNON_TNT = "tnt_wars_cannon_tnt";
+v1.tnt_wars_cannon_tnt = "TNT_WARS_CANNON_TNT";
 return {
 	ExplosionType = v2
 };

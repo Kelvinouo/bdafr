@@ -1,4 +1,3 @@
--- Script Hash: cb1672732b22f35584fe2d25a89a20d95ca3adc6b96339ff73d91b89e4fe18e0fe4bdaec99c7c6c4e0caff1e5f055f6e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -20,57 +19,63 @@ u9 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u6
 		if v4 then
 			l__CollectionService__3:AddTag(v4, "EntityNameTag");
 		end;
-		local function v6()
-			v3((l__StatusEffectUtil__4:getActiveStatusEffects(p1.EntityInstance)));
-		end;
-		v6();
+		v3((l__StatusEffectUtil__4:getAllActive(p1.EntityInstance)));
 		v5:GiveTask(l__ClientSyncEvents__5.StatusEffectAdded:connect(function(p3)
 			if p3.entityInstance == p1.EntityInstance then
-				v6();
+				v3((l__StatusEffectUtil__4:getAllActive(p1.EntityInstance)));
 			end;
 		end));
 		v5:GiveTask(l__ClientSyncEvents__5.StatusEffectRemoved:connect(function(p4)
 			if p4.entityInstance == p1.EntityInstance then
-				v6();
+				v3((l__StatusEffectUtil__4:getAllActive(p1.EntityInstance)));
 			end;
 		end));
 		return function()
 			v5:DoCleaning();
 		end;
 	end, {});
-	local function v7(p5)
-		return u6.createElement(l__StatusEffectTag__7, {
-			ActiveStatusEffect = p5
-		});
+	local v6 = table.create(#v2);
+	local v7, v8, v9 = ipairs(v2);
+	while true do
+		v7(v8, v9);
+		if not v7 then
+			break;
+		end;
+		v9 = v7;
+		v6[v7] = u6.createElement(l__StatusEffectTag__7, {
+			ActiveStatusEffect = v8
+		});	
 	end;
-	local v8 = table.create(#v2);
-	for v9, v10 in ipairs(v2) do
-		v8[v9] = v7(v10, v9 - 1, v2);
-	end;
-	local v11 = {
+	local v10 = {
 		Size = UDim2.fromScale(1, 0.5), 
 		AnchorPoint = Vector2.new(0.5, 0.5), 
 		Position = UDim2.fromScale(0.5, 0.5)
 	};
-	local v12 = { u6.createElement("UIListLayout", {
+	local v11 = { u6.createElement("UIListLayout", {
 			FillDirection = "Horizontal", 
 			VerticalAlignment = "Center", 
 			HorizontalAlignment = "Center", 
 			Padding = UDim.new(0.05, 0)
 		}) };
-	local v13 = #v12;
-	for v14, v15 in ipairs(v8) do
-		v12[v13 + v14] = v15;
+	local v12 = #v11;
+	local v13, v14, v15 = ipairs(v6);
+	while true do
+		v13(v14, v15);
+		if not v13 then
+			break;
+		end;
+		v15 = v13;
+		v11[v12 + v13] = v14;	
 	end;
 	return u6.createFragment({
-		StatusEffectTagList = u6.createElement(l__Empty__8, v11, v12)
+		StatusEffectTagList = u6.createElement(l__Empty__8, v10, v11)
 	});
 end);
 return {
-	StatusEffectTagListBillboard = function(p6)
+	StatusEffectTagListBillboard = function(p5)
 		local v16 = {};
 		local v17 = {};
-		for v18, v19 in pairs(p6) do
+		for v18, v19 in pairs(p5) do
 			v17[v18] = v19;
 		end;
 		v16[#v16 + 1] = u6.createElement(u9, v17);

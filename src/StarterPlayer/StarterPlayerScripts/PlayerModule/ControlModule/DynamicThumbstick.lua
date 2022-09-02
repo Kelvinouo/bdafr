@@ -65,6 +65,7 @@ function v8.Enable(p2, p3, p4)
 	end;
 	p2.enabled = p3;
 	p2.thumbstickFrame.Visible = p3;
+	return nil;
 end;
 local u2 = Vector3.new(0, 0, 0);
 function v8.OnInputEnded(p5)
@@ -157,11 +158,11 @@ function v8.DoFadeInBackground(p13)
 	end;
 end;
 function v8.DoMove(p14, p15)
-	if p15.magnitude < p14.radiusOfDeadZone then
+	if p15.Magnitude < p14.radiusOfDeadZone then
 		local v19 = u2;
 	else
-		local v20 = p15.unit * (1 - math.max(0, (p14.radiusOfMaxSpeed - p15.magnitude) / p14.radiusOfMaxSpeed));
-		v19 = Vector3.new(v20.x, 0, v20.y);
+		local v20 = p15.Unit * (1 - math.max(0, (p14.radiusOfMaxSpeed - p15.Magnitude) / p14.radiusOfMaxSpeed));
+		v19 = Vector3.new(v20.X, 0, v20.Y);
 	end;
 	p14.moveVector = v19;
 end;
@@ -169,8 +170,8 @@ local u5 = #v1;
 function v8.LayoutMiddleImages(p16, p17, p18)
 	local v21 = p16.thumbstickSize / 2 + p16.middleSize;
 	local v22 = p18 - p17;
-	local v23 = v22.magnitude - p16.thumbstickRingSize / 2 - p16.middleSize;
-	local l__unit__24 = v22.unit;
+	local v23 = v22.Magnitude - p16.thumbstickRingSize / 2 - p16.middleSize;
+	local l__Unit__24 = v22.Unit;
 	local v25 = p16.middleSpacing;
 	if p16.middleSpacing * u5 < v23 then
 		v25 = v23 / u5;
@@ -180,7 +181,7 @@ function v8.LayoutMiddleImages(p16, p17, p18)
 		v27 = p16.middleImages[v26];
 		local v28 = v21 + v25 * (v26 - 1);
 		if v21 + v25 * (v26 - 2) < v23 then
-			local v29 = p18 - l__unit__24 * v28;
+			local v29 = p18 - l__Unit__24 * v28;
 			local v30 = math.clamp(1 - (v28 - v23) / v25, 0, 1);
 			v27.Visible = true;
 			v27.Position = UDim2.new(0, v29.X, 0, v29.Y);
@@ -238,8 +239,8 @@ function v8.BindContextActions(p21)
 			p21:MoveStick(p23.Position);
 		end;
 		p21.moveTouchLockedIn = true;
-		local v35 = Vector2.new(p23.Position.x - p21.moveTouchStartPosition.x, p23.Position.y - p21.moveTouchStartPosition.y);
-		if math.abs(v35.x) > 0 or math.abs(v35.y) > 0 then
+		local v35 = Vector2.new(p23.Position.X - p21.moveTouchStartPosition.X, p23.Position.Y - p21.moveTouchStartPosition.Y);
+		if math.abs(v35.X) > 0 or math.abs(v35.Y) > 0 then
 			p21:DoMove(v35);
 			p21:MoveStick(p23.Position);
 		end;
@@ -283,7 +284,7 @@ function v8.Create(p27, p28)
 	p27.radiusOfDeadZone = 2;
 	p27.radiusOfMaxSpeed = 20;
 	local l__AbsoluteSize__36 = p28.AbsoluteSize;
-	if math.min(l__AbsoluteSize__36.x, l__AbsoluteSize__36.y) > 500 then
+	if math.min(l__AbsoluteSize__36.X, l__AbsoluteSize__36.Y) > 500 then
 		p27.thumbstickSize = p27.thumbstickSize * 2;
 		p27.thumbstickRingSize = p27.thumbstickRingSize * 2;
 		p27.middleSize = p27.middleSize * 2;

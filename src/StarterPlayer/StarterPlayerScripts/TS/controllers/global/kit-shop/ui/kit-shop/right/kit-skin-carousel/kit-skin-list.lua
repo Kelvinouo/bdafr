@@ -1,4 +1,3 @@
--- Script Hash: 0bfab5a26bdeef658361de6a8c03ea9a20822c37d458cdbfa448318369bf09b3f8988db1a514594dc399478b2d186405
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -28,18 +27,21 @@ return {
 				BackgroundTransparency = 1
 			}) };
 		local l__Skins__5 = p1.Skins;
-		local function v6(p3)
-			return u1.createElement(l__KitSkinCard__3, {
+		local v6 = table.create(#l__Skins__5);
+		local v7, v8, v9 = ipairs(l__Skins__5);
+		while true do
+			v7(v8, v9);
+			if not v7 then
+				break;
+			end;
+			v9 = v7;
+			v6[v7] = u1.createElement(l__KitSkinCard__3, {
 				Kit = p1.Kit, 
-				Skin = p3, 
+				Skin = v8, 
 				SelectedSkin = p1.SelectedSkin, 
 				SetSelectedSkin = p1.SetSelectedSkin, 
 				store = p1.store
-			});
-		end;
-		local v7 = table.create(#l__Skins__5);
-		for v8, v9 in ipairs(l__Skins__5) do
-			v7[v8] = v6(v9, v8 - 1, l__Skins__5);
+			});		
 		end;
 		local v10 = {
 			AdditionalSpace = 10, 
@@ -76,8 +78,14 @@ return {
 			store = p1.store
 		});
 		local v14 = #v11;
-		for v15, v16 in ipairs(v7) do
-			v11[v14 + v15] = v16;
+		local v15, v16, v17 = ipairs(v6);
+		while true do
+			v15(v16, v17);
+			if not v15 then
+				break;
+			end;
+			v17 = v15;
+			v11[v14 + v15] = v16;		
 		end;
 		v4[#v4 + 1] = u1.createElement(l__AutoCanvasScrollingFrame__6, v10, v11);
 		return u1.createElement(l__Empty__7, {

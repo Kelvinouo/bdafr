@@ -1,4 +1,3 @@
--- Script Hash: b5ef96f1233d757f4dadd43ca128123283d9e747284802123ceeb8ae74ddebad38e239c42ee06ef34e3e18cc2c7a81a1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -41,15 +40,18 @@ return {
 				v17.ZIndex = 100;
 				return u1.createElement(l__ButtonComponent__2, v17);
 			end;
-			local function v18(p4)
-				return u1.createElement(u5, {
-					Text = p4.text, 
-					OnClick = p4.callback
-				});
-			end;
-			local v19 = table.create(#l__Items__16);
-			for v20, v21 in ipairs(l__Items__16) do
-				v19[v20] = v18(v21, v20 - 1, l__Items__16);
+			local v18 = table.create(#l__Items__16);
+			local v19, v20, v21 = ipairs(l__Items__16);
+			while true do
+				v19(v20, v21);
+				if not v19 then
+					break;
+				end;
+				v21 = v19;
+				v18[v19] = u1.createElement(u5, {
+					Text = v20.text, 
+					OnClick = v20.callback
+				});			
 			end;
 			local v22 = {
 				Size = UDim2.new(1, 0, 0, 0), 
@@ -62,14 +64,20 @@ return {
 					FillDirection = "Vertical"
 				}) };
 			local v24 = #v23;
-			for v25, v26 in ipairs(v19) do
-				v23[v24 + v25] = v26;
+			local v25, v26, v27 = ipairs(v18);
+			while true do
+				v25(v26, v27);
+				if not v25 then
+					break;
+				end;
+				v27 = v25;
+				v23[v24 + v25] = v26;			
 			end;
 			v15 = u1.createFragment({
 				Menu = u1.createElement("Frame", v22, v23)
 			});
 		end;
-		local v27 = { u1.createElement(l__ButtonComponent__2, {
+		local v28 = { u1.createElement(l__ButtonComponent__2, {
 				Text = p1.ButtonText, 
 				Size = UDim2.new(1, 0, 1, 0), 
 				OnClick = function()
@@ -77,8 +85,8 @@ return {
 				end
 			}) };
 		if v15 then
-			v27[#v27 + 1] = v15;
+			v28[#v28 + 1] = v15;
 		end;
-		return u1.createElement(l__Empty__4, v12, v27);
+		return u1.createElement(l__Empty__4, v12, v28);
 	end)
 };

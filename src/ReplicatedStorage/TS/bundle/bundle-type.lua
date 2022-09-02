@@ -16,6 +16,8 @@ v2.EMBER_LUMEN_KIT_BUNDLE_PERM = "ember_lumen_kit_bundle_perm";
 v1.ember_lumen_kit_bundle_perm = "EMBER_LUMEN_KIT_BUNDLE_PERM";
 v2.EVELYNN_BUNDLE = "evelynn_bundle";
 v1.evelynn_bundle = "EVELYNN_BUNDLE";
+v2.HANNAH_BUNDLE = "hannah_bundle";
+v1.hannah_bundle = "HANNAH_BUNDLE";
 return {
 	BundleType = v2
 };

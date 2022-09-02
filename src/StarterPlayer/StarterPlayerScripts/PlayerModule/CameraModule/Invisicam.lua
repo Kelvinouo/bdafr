@@ -109,7 +109,7 @@ function v3.CharacterOutlineBehavior(p14, p15)
 		local v24 = 2 * math.pi * v23 / 24;
 		local v25 = v20 * (3 * Vector3.new(math.cos(v24), math.sin(v24), 0));
 		local v26 = Vector3.new(v25.X, math.max(v25.Y, -2.25), v25.Z);
-		local v27, v28 = game.Workspace:FindPartOnRayWithWhitelist(Ray.new(v21 + v26, -3 * v26), v22, false, false);
+		local v27, v28 = game.Workspace:FindPartOnRayWithWhitelist(Ray.new(v21 + v26, -3 * v26), v22, false);
 		if v27 then
 			p15[#p15 + 1] = v28 + 0.2 * (v21 - v28).unit;
 		end;
@@ -118,29 +118,29 @@ end;
 local u4 = 2 * math.pi / 24;
 local function u5(p16, p17, p18, p19)
 	local v29 = p17:Cross(p19);
-	local v30 = p18.x - p16.x;
-	local v31 = p18.y - p16.y;
-	local v32 = p18.z - p16.z;
-	local l__y__33 = p17.y;
-	local v34 = -p19.y;
-	local l__y__35 = v29.y;
-	local l__z__36 = p17.z;
-	local v37 = -p19.z;
-	local l__z__38 = v29.z;
-	local v39 = p17.x * (v34 * l__z__38 - l__y__35 * v37) - -p19.x * (l__y__33 * l__z__38 - l__y__35 * l__z__36) + v29.x * (l__y__33 * v37 - v34 * l__z__36);
+	local v30 = p18.X - p16.X;
+	local v31 = p18.Y - p16.Y;
+	local v32 = p18.Z - p16.Z;
+	local l__Y__33 = p17.Y;
+	local v34 = -p19.Y;
+	local l__Y__35 = v29.Y;
+	local l__Z__36 = p17.Z;
+	local v37 = -p19.Z;
+	local l__Z__38 = v29.Z;
+	local v39 = p17.X * (v34 * l__Z__38 - l__Y__35 * v37) - -p19.X * (l__Y__33 * l__Z__38 - l__Y__35 * l__Z__36) + v29.X * (l__Y__33 * v37 - v34 * l__Z__36);
 	if v39 == 0 then
 		return u1;
 	end;
-	local v40 = -p19.y;
-	local l__y__41 = v29.y;
-	local v42 = -p19.z;
-	local l__z__43 = v29.z;
-	local l__y__44 = p17.y;
-	local l__y__45 = v29.y;
-	local l__z__46 = p17.z;
-	local l__z__47 = v29.z;
-	local v48 = p16 + (v30 * (v40 * l__z__43 - l__y__41 * v42) - -p19.x * (v31 * l__z__43 - l__y__41 * v32) + v29.x * (v31 * v42 - v40 * v32)) / v39 * p17;
-	local v49 = p18 + (p17.x * (v31 * l__z__47 - l__y__45 * v32) - v30 * (l__y__44 * l__z__47 - l__y__45 * l__z__46) + v29.x * (l__y__44 * v32 - v31 * l__z__46)) / v39 * p19;
+	local v40 = -p19.Y;
+	local l__Y__41 = v29.Y;
+	local v42 = -p19.Z;
+	local l__Z__43 = v29.Z;
+	local l__Y__44 = p17.Y;
+	local l__Y__45 = v29.Y;
+	local l__Z__46 = p17.Z;
+	local l__Z__47 = v29.Z;
+	local v48 = p16 + (v30 * (v40 * l__Z__43 - l__Y__41 * v42) - -p19.X * (v31 * l__Z__43 - l__Y__41 * v32) + v29.X * (v31 * v42 - v40 * v32)) / v39 * p17;
+	local v49 = p18 + (p17.X * (v31 * l__Z__47 - l__Y__45 * v32) - v30 * (l__Y__44 * l__Z__47 - l__Y__45 * l__Z__46) + v29.X * (l__Y__44 * v32 - v31 * l__Z__46)) / v39 * p19;
 	if (v49 - v48).Magnitude < 0.25 then
 		return v48 + 0.5 * (v49 - v48);
 	end;

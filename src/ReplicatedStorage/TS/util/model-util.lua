@@ -1,4 +1,3 @@
--- Script Hash: 548992d12c935430f747accfed5ad654ba47cba3fbf5381fc26823c6e4c9f269109b4e8711573bec6444c1455ac120f0
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -18,28 +17,46 @@ v2.tweenModelSize = v1.async(function(p1, p2, p3, p4)
 	end;
 	local v5 = {};
 	local v6 = 0;
-	for v7, v8 in ipairs(v3) do
-		local v9 = v4(v8, v7 - 1, v3);
-		if v9 ~= nil then
-			v6 = v6 + 1;
-			v5[v6] = v9;
+	local v7, v8, v9 = ipairs(v3);
+	while true do
+		v7(v8, v9);
+		if not v7 then
+			break;
 		end;
+		v9 = v7;
+		local v10 = v4(v8, v7 - 1, v3);
+		if v10 ~= nil then
+			v6 = v6 + 1;
+			v5[v6] = v10;
+		end;	
 	end;
-	local v10 = {};
-	for v11, v12 in ipairs(v5) do
-		v10[v12[1]] = v12[2];
+	local v11 = {};
+	local v12, v13, v14 = ipairs(v5);
+	while true do
+		v12(v13, v14);
+		if not v12 then
+			break;
+		end;
+		v14 = v12;
+		v11[v13[1]] = v13[2];	
 	end;
 	local l__Position__3 = p1:GetPrimaryPartCFrame().Position;
 	l__default__1(p2, p3, function(p6)
-		for v13, v14 in ipairs(p1:GetDescendants()) do
-			if v14:IsA("BasePart") then
-				local v15 = v10[v14];
-				if v15 ~= nil then
-					local v16 = l__Linear__2(p6, 1, p4 - 1, 1);
-					v14.Position = l__Position__3:Lerp(v15.position, v16);
-					v14.Size = v15.size * v16;
-				end;
+		local v15, v16, v17 = ipairs(p1:GetDescendants());
+		while true do
+			v15(v16, v17);
+			if not v15 then
+				break;
 			end;
+			v17 = v15;
+			if v16:IsA("BasePart") then
+				local v18 = v11[v16];
+				if v18 ~= nil then
+					local v19 = l__Linear__2(p6, 1, p4 - 1, 1);
+					v16.Position = l__Position__3:Lerp(v18.position, v19);
+					v16.Size = v18.size * v19;
+				end;
+			end;		
 		end;
 	end, 0, 1):Wait();
 end);

@@ -1,4 +1,3 @@
--- Script Hash: 918d8fb03ec31a8c3f7286002d9cea940d53fb0e7a9d11fb85bc3a7d8e356a4c8b9cbbe48fae529dbf5a51910c6e03d0
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -33,18 +32,20 @@ function v4.render(p4)
 			upgrades = p5
 		});
 	end;
-	local v8 = l__MapUtil__4.values(p4.state.upgrades);
-	local function v9(p6)
-		return p6 >= 3;
-	end;
-	local v10 = nil;
-	for v11, v12 in ipairs(v8) do
-		if v9(v12, v11 - 1, v8) == true then
-			v10 = v12;
+	local v8 = nil;
+	local v9, v10, v11 = ipairs((l__MapUtil__4.values(p4.state.upgrades)));
+	while true do
+		v9(v10, v11);
+		if not v9 then
 			break;
 		end;
+		v11 = v9;
+		if v10 >= 3 == true then
+			v8 = v10;
+			break;
+		end;	
 	end;
-	local v13 = v10 ~= nil;
+	local v12 = v8 ~= nil;
 	return v3.createElement("Frame", {
 		AnchorPoint = Vector2.new(0.5, 0.5), 
 		Position = UDim2.fromScale(0.5, 0.5), 
@@ -111,7 +112,7 @@ function v4.render(p4)
 					Position = UDim2.fromScale(0.5953405017921147, 0.04748982360922659), 
 					Upgrade = l__FlamethrowerUpgrade__9.HEAT, 
 					SetUpgrades = v7, 
-					Locked = v13, 
+					Locked = v12, 
 					UpgradeMap = p4.state.upgrades
 				}), v3.createElement("ImageLabel", {
 					BackgroundTransparency = 1, 
@@ -124,7 +125,7 @@ function v4.render(p4)
 					Position = UDim2.fromScale(0.1867383512544803, 0.7055630936227951), 
 					Upgrade = l__FlamethrowerUpgrade__9.RANGE, 
 					SetUpgrades = v7, 
-					Locked = v13, 
+					Locked = v12, 
 					UpgradeMap = p4.state.upgrades
 				}), v3.createElement("ImageLabel", {
 					BackgroundTransparency = 1, 
@@ -137,7 +138,7 @@ function v4.render(p4)
 					Position = UDim2.fromScale(0.13010752688172045, 0.04748982360922659), 
 					Upgrade = l__FlamethrowerUpgrade__9.POWER, 
 					SetUpgrades = v7, 
-					Locked = v13, 
+					Locked = v12, 
 					UpgradeMap = p4.state.upgrades
 				}), v3.createElement("ImageLabel", {
 					BackgroundTransparency = 1, 

@@ -89,14 +89,11 @@ local l__LeaderboardMeta__6 = v4.LeaderboardMeta;
 local u7 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
 local l__DropdownComponent__8 = v2.DropdownComponent;
 local l__LeaderboardList__9 = v1.import(script, script.Parent.Parent, "leaderboard-list").LeaderboardList;
-local function u10(p12)
-	return string.gsub(string.reverse((string.gsub(string.reverse(p12), "%d%d%d", "%1,"))), "^,", "");
-end;
-local l__StatRankElement__11 = v1.import(script, script.Parent, "stat-rank-element").StatRankElement;
-local l__Empty__12 = v2.Empty;
-function v5.render(p13)
+local l__StatRankElement__10 = v1.import(script, script.Parent, "stat-rank-element").StatRankElement;
+local l__Empty__11 = v2.Empty;
+function v5.render(p12)
 	local v12 = nil;
-	local l__leaderboardData__13 = p13.state.leaderboardData;
+	local l__leaderboardData__13 = p12.state.leaderboardData;
 	local v14 = {
 		Size = UDim2.fromScale(1, 1), 
 		BorderSizePixel = 0, 
@@ -169,52 +166,57 @@ function v5.render(p13)
 		v22 = v22 + 1;
 		v21[v22] = { v23, v24 };
 	end;
-	v12 = {};
-	local function v25(p14, p15)
-		local l__displayName__26 = p15[2].displayName;
+	local function v25(p13, p14)
+		local l__displayName__26 = p14[2].displayName;
 		local v27 = {};
 		local v28 = #v27;
-		local v29 = #p14;
-		table.move(p14, 1, v29, v28 + 1, v27);
+		local v29 = #p13;
+		table.move(p13, 1, v29, v28 + 1, v27);
 		v27[v28 + v29 + 1] = {
 			text = l__displayName__26, 
 			value = l__displayName__26
 		};
 		return v27;
 	end;
+	v12 = {};
 	for v30 = 1, #v21 do
 		v12 = v25(v12, v21[v30], v30 - 1, v21);
 	end;
 	v19.Items = local v31;
-	function v19.OnItemSelected(p16)
+	function v19.OnItemSelected(p15)
 		local v32 = {};
 		local v33 = u7.entries(l__LeaderboardMeta__6);
 		table.move(v33, 1, #v33, #v32 + 1, v32);
-		local function v34(p17)
-			local v35 = p17[1];
-			return p17[2].displayName == p16;
-		end;
-		local v36 = {};
-		local v37 = 0;
-		for v38, v39 in ipairs(v32) do
-			if v34(v39, v38 - 1, v32) == true then
-				v37 = v37 + 1;
-				v36[v37] = v39;
+		local v34 = {};
+		local v35 = 0;
+		local v36, v37, v38 = ipairs(v32);
+		while true do
+			v36(v37, v38);
+			if not v36 then
+				break;
 			end;
+			local v39 = v37[1];
+			if v37[2].displayName == p15 == true then
+				v35 = v35 + 1;
+				v34[v35] = v37;
+			end;		
 		end;
-		local function v40(p18)
-			local v41 = p18[2];
-			return p18[1];
+		local v40 = table.create(#v34);
+		local v41, v42, v43 = ipairs(v34);
+		while true do
+			v41(v42, v43);
+			if not v41 then
+				break;
+			end;
+			v43 = v41;
+			local v44 = v42[2];
+			v40[v41] = v42[1];		
 		end;
-		local v42 = table.create(#v36);
-		for v43, v44 in ipairs(v36) do
-			v42[v43] = v40(v44, v43 - 1, v36);
-		end;
-		p13:handleSelectLeaderboard(v42[1]);
+		p12:handleSelectLeaderboard(v40[1]);
 	end;
 	v17[v18 + 1] = v3.createElement(l__DropdownComponent__8, v19);
-	v17[v18 + 2] = p13.resetsInText and v3.createElement("TextLabel", {
-		Text = p13.resetsInText, 
+	v17[v18 + 2] = p12.resetsInText and v3.createElement("TextLabel", {
+		Text = p12.resetsInText, 
 		Size = UDim2.new(0, 0.5, 0, 28), 
 		AnchorPoint = Vector2.new(1, 0), 
 		Position = UDim2.fromScale(1, 0), 
@@ -252,7 +254,7 @@ function v5.render(p13)
 	local v49 = {};
 	local l__leaderboardPosition__50 = l__leaderboardData__13.leaderboardPosition;
 	if l__leaderboardPosition__50 ~= 0 and l__leaderboardPosition__50 == l__leaderboardPosition__50 and l__leaderboardPosition__50 then
-		local v51 = u10(tostring(l__leaderboardData__13.leaderboardPosition));
+		local v51 = string.gsub(string.reverse((string.gsub(string.reverse((tostring(l__leaderboardData__13.leaderboardPosition))), "%d%d%d", "%1,"))), "^,", "");
 	else
 		v51 = "Not Placed";
 	end;
@@ -284,7 +286,7 @@ function v5.render(p13)
 			TextColor3 = Color3.fromRGB(255, 255, 255), 
 			LayoutOrder = 1
 		}) };
-	local v53 = l__leaderboardData__13.localStatRank and v3.createElement(l__StatRankElement__11, {
+	local v53 = l__leaderboardData__13.localStatRank and v3.createElement(l__StatRankElement__10, {
 		StatRank = l__leaderboardData__13.localStatRank, 
 		LayoutOrder = 2
 	});
@@ -302,7 +304,7 @@ function v5.render(p13)
 	else
 		v56 = "";
 	end;
-	v54.Text = "<font color=\"rgb(185, 188, 255)\">" .. u10(tostring(v55)) .. " " .. v56 .. "</font>";
+	v54.Text = "<font color=\"rgb(185, 188, 255)\">" .. string.gsub(string.reverse((string.gsub(string.reverse((tostring(v55))), "%d%d%d", "%1,"))), "^,", "") .. " " .. v56 .. "</font>";
 	v54.Size = UDim2.new(0, 0, 1, 0);
 	v54.AutomaticSize = "X";
 	v54.BackgroundTransparency = 1;
@@ -313,7 +315,7 @@ function v5.render(p13)
 	v54.TextColor3 = Color3.fromRGB(255, 255, 255);
 	v54.LayoutOrder = 3;
 	v52[#v52 + 1] = v3.createElement("TextLabel", v54);
-	v47[v48 + 2] = v3.createElement(l__Empty__12, {
+	v47[v48 + 2] = v3.createElement(l__Empty__11, {
 		Size = UDim2.new(1, 0, 0, 18), 
 		LayoutOrder = 2
 	}, v52);
@@ -321,15 +323,15 @@ function v5.render(p13)
 	v15[#v15 + 1] = v3.createElement("Frame", v16, v17);
 	return v3.createElement("Frame", v14, v15);
 end;
-function v5.willUnmount(p19)
-	p19.resetTimerActive = false;
+function v5.willUnmount(p16)
+	p16.resetTimerActive = false;
 end;
 return {
-	LeaderboardUIWrapper = function(p20)
+	LeaderboardUIWrapper = function(p17)
 		local v57 = {};
 		local v58 = {};
 		local v59 = {};
-		for v60, v61 in pairs(p20) do
+		for v60, v61 in pairs(p17) do
 			v59[v60] = v61;
 		end;
 		v58[#v58 + 1] = v3.createElement(v5, v59);

@@ -1,4 +1,3 @@
--- Script Hash: 99f5c3b65c690ecdf7a05571819661d2737eddc195511aaa1275ac8d6a3e0e2fffd8cf3cb1ed6135a7834f42945e31ad
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -10,7 +9,7 @@ local l__BedwarsImageId__4 = v1.import(script, game:GetService("ReplicatedStorag
 local l__ColorUtil__5 = v2.ColorUtil;
 local l__ImageId__6 = v2.ImageId;
 local l__ButtonComponent__7 = v2.ButtonComponent;
-local l__KnitClient__8 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__8 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__Flamework__9 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 local l__BedwarsAppIds__10 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "types", "app-config").BedwarsAppIds;
 return {

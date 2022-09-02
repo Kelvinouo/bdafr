@@ -1,14 +1,13 @@
--- Script Hash: a8459224c4d6a288e16c6f965d70e9a01cbd913afd64d4cfa45fde4f5640eecae83996072b94e70a1e2dc82dc1da31b6
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local v4 = v3.Component:extend("HotbarPartyButton");
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v4.init(p1)
 	p1.bgRef = v3.createRef();
-	p1.hoverMaid = l__Maid__1.new();
+	p1.hoverMaid = u1.new();
 end;
 local l__Theme__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local l__TweenService__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).TweenService;

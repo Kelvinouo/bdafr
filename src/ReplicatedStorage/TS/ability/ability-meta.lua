@@ -1,4 +1,3 @@
--- Script Hash: 74766bdf9a63be445649c9d796576183622022e1274af10b13e4b531514284f98a9f6b60716306d728509539fd438890
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -72,6 +71,27 @@ return {
 			cooldown = {
 				id = l__CooldownId__3.VOID_LASER, 
 				duration = 2.4
+			}
+		}, 
+		[l__AbilityId__5.ROCKET_BELT] = {
+			actionBarName = "Rocket Belt", 
+			cooldown = {
+				id = l__CooldownId__3.ROCKET_BELT, 
+				duration = 15
+			}
+		}, 
+		[l__AbilityId__5.HEALING_BACKPACK] = {
+			actionBarName = "First Aid", 
+			cooldown = {
+				id = l__CooldownId__3.HEALING_BELT, 
+				duration = 20
+			}
+		}, 
+		[l__AbilityId__5.DETONATE_BOMB] = {
+			actionBarName = "Detonate", 
+			cooldown = {
+				id = l__CooldownId__3.DETONATE_BOMB, 
+				duration = 1
 			}
 		}
 	}

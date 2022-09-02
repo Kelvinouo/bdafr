@@ -1,4 +1,3 @@
--- Script Hash: 6cda64eff520e5cfb5a8489b542b57937964591a48f3d028b7f00db542103ce03256c96fb27d7dee811496b0a448ec8b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -34,27 +33,29 @@ local l__discountColor__8 = v4.discountColor;
 local l__Theme__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local l__ItemViewport__10 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "global", "inventory", "ui", "item-viewport").ItemViewport;
 function v5.render(p3)
-	local l__discountedItems__7 = l__KnitClient__5.Controllers.MerchantKitController.discountedItems;
-	local function v8(p4)
-		return p4.item.itemType == p3.props.ShopItem.itemType;
-	end;
-	local v9 = nil;
-	for v10, v11 in ipairs(l__discountedItems__7) do
-		if v8(v11, v10 - 1, l__discountedItems__7) == true then
-			v9 = v11;
+	local v7 = nil;
+	local v8, v9, v10 = ipairs(l__KnitClient__5.Controllers.MerchantKitController.discountedItems);
+	while true do
+		v8(v9, v10);
+		if not v8 then
 			break;
 		end;
+		v10 = v8;
+		if v9.item.itemType == p3.props.ShopItem.itemType == true then
+			v7 = v9;
+			break;
+		end;	
 	end;
-	local v12 = v9;
-	if v12 ~= nil then
-		v12 = v12.tier;
+	local v11 = v7;
+	if v11 ~= nil then
+		v11 = v11.tier;
 	end;
-	if v12 ~= nil then
-		local v13 = l__discountImage__6[v12];
+	if v11 ~= nil then
+		local v12 = l__discountImage__6[v11];
 	else
-		v13 = nil;
+		v12 = nil;
 	end;
-	local v14 = {
+	local v13 = {
 		[v3.Ref] = p3.ref, 
 		Size = UDim2.fromScale(1, 1), 
 		BackgroundColor3 = l__ColorUtil__7.BLACK, 
@@ -81,56 +82,56 @@ function v5.render(p3)
 
 		end
 	};
-	local v15 = {};
-	local v16 = #v15;
-	local v17 = {};
-	local v18 = v9 and v9.tier;
-	if v18 ~= 0 and v18 == v18 and v18 then
-		local v19 = l__discountColor__8[v9.tier];
+	local v14 = {};
+	local v15 = #v14;
+	local v16 = {};
+	local v17 = v7 and v7.tier;
+	if v17 ~= 0 and v17 == v17 and v17 then
+		local v18 = l__discountColor__8[v7.tier];
 	else
-		v19 = l__Theme__9.textPrimary;
+		v18 = l__Theme__9.textPrimary;
 	end;
-	v17.Color = v19;
-	if v9 then
-		local v20 = 3;
+	v16.Color = v18;
+	if v7 then
+		local v19 = 3;
 	else
-		v20 = 1;
+		v19 = 1;
 	end;
-	v17.Thickness = v20;
+	v16.Thickness = v19;
 	if p3.props.Locked then
-		local v21 = 0.6;
+		local v20 = 0.6;
 	else
-		v21 = 0;
+		v20 = 0;
 	end;
-	v17.Transparency = v21;
-	v15[v16 + 1] = v3.createElement("UIStroke", v17);
-	local v22 = false;
+	v16.Transparency = v20;
+	v14[v15 + 1] = v3.createElement("UIStroke", v16);
+	local v21 = false;
 	if p3.props.ShopItem ~= nil then
-		local v23 = {
+		local v22 = {
 			ItemType = p3.props.ShopItem.itemType
 		};
 		if p3.props.Locked then
-			local v24 = 0.6;
+			local v23 = 0.6;
 		else
-			v24 = 0;
+			v23 = 0;
 		end;
-		v23.ImageTransparency = v24;
-		v23.Amount = 1;
-		v23.Size = UDim2.fromScale(0.8, 0.8);
-		v23.Position = UDim2.fromScale(0.5, 0.5);
-		v23.AnchorPoint = Vector2.new(0.5, 0.5);
-		v23.IgnoreInitialPop = true;
-		v23.ShowCooldownBar = false;
-		v22 = v3.createElement(l__ItemViewport__10, v23);
+		v22.ImageTransparency = v23;
+		v22.Amount = 1;
+		v22.Size = UDim2.fromScale(0.8, 0.8);
+		v22.Position = UDim2.fromScale(0.5, 0.5);
+		v22.AnchorPoint = Vector2.new(0.5, 0.5);
+		v22.IgnoreInitialPop = true;
+		v22.ShowCooldownBar = false;
+		v21 = v3.createElement(l__ItemViewport__10, v22);
 	end;
-	if v22 then
-		v15[v16 + 2] = v22;
+	if v21 then
+		v14[v15 + 2] = v21;
 	end;
-	local v25 = false;
+	local v24 = false;
 	if p3.props.ShopItem ~= nil then
-		v25 = false;
+		v24 = false;
 		if p3.props.ShopItem.requiresKit ~= nil then
-			v25 = v3.createElement("ImageLabel", {
+			v24 = v3.createElement("ImageLabel", {
 				Size = UDim2.fromScale(0.35, 0.35), 
 				Position = UDim2.fromScale(-0.08, 1.08), 
 				AnchorPoint = Vector2.new(0, 1), 
@@ -142,12 +143,12 @@ function v5.render(p3)
 				}) });
 		end;
 	end;
-	if v25 then
-		v15[#v15 + 1] = v25;
+	if v24 then
+		v14[#v14 + 1] = v24;
 	end;
-	local v26 = false;
+	local v25 = false;
 	if p3.props.ShopItem ~= nil then
-		v26 = p3.props.ShopItem.limitedTimeItem and v3.createElement("ImageLabel", {
+		v25 = p3.props.ShopItem.limitedTimeItem and v3.createElement("ImageLabel", {
 			Size = UDim2.fromScale(0.35, 0.35), 
 			Position = UDim2.fromScale(-0.08, 1.08), 
 			AnchorPoint = Vector2.new(0, 1), 
@@ -158,27 +159,27 @@ function v5.render(p3)
 				AspectRatio = 0.7517241379310344
 			}) });
 	end;
-	if v26 then
-		v15[#v15 + 1] = v26;
+	if v25 then
+		v14[#v14 + 1] = v25;
 	end;
-	local v27 = v9;
-	if v27 then
-		v27 = false;
-		if v13 ~= nil then
-			v27 = v3.createElement("ImageLabel", {
+	local v26 = v7;
+	if v26 then
+		v26 = false;
+		if v12 ~= nil then
+			v26 = v3.createElement("ImageLabel", {
 				Size = UDim2.fromScale(0.35, 0.35), 
 				Position = UDim2.fromScale(-0.08, 0.25), 
 				AnchorPoint = Vector2.new(0, 1), 
 				BackgroundTransparency = 1, 
-				Image = v13, 
+				Image = v12, 
 				BorderSizePixel = 0
 			});
 		end;
 	end;
-	if v27 then
-		v15[#v15 + 1] = v27;
+	if v26 then
+		v14[#v14 + 1] = v26;
 	end;
-	return v3.createElement("ImageButton", v14, v15);
+	return v3.createElement("ImageButton", v13, v14);
 end;
 return {
 	BedwarsShopItemCard = v5

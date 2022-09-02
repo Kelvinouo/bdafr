@@ -14,61 +14,91 @@ local function u2(p1)
 		return;
 	end;
 	if p1:IsA("Folder") then
-		for v2, v3 in ipairs((p1:GetChildren())) do
-			local v4 = u2(v3);
+		local v2, v3, v4 = ipairs((p1:GetChildren()));
+		while true do
+			v2(v3, v4);
+			if not v2 then
+				break;
+			end;
+			v4 = v2;
+			local v5 = u2(v3);		
 		end;
 	end;
 end;
 return {
 	SharedModules = {
 		loadGlobalModules = function()
-			local v5 = script.Parent;
-			if v5 ~= nil then
-				v5 = v5:WaitForChild("global"):GetChildren();
+			local v6 = script.Parent;
+			if v6 ~= nil then
+				v6 = v6:WaitForChild("global"):GetChildren();
 			end;
-			local v6 = v5;
-			if v6 == nil then
-				v6 = {};
+			local v7 = v6;
+			if v7 == nil then
+				v7 = {};
 			end;
-			for v7, v8 in ipairs(v6) do
-				u2(v8);
+			local v8, v9, v10 = ipairs(v7);
+			while true do
+				v8(v9, v10);
+				if not v8 then
+					break;
+				end;
+				v10 = v8;
+				u2(v9);			
 			end;
 		end, 
 		loadGameModules = function(p3)
-			local v9 = script.Parent;
-			if v9 ~= nil then
-				v9 = v9:WaitForChild("game"):GetChildren();
+			local v11 = script.Parent;
+			if v11 ~= nil then
+				v11 = v11:WaitForChild("game"):GetChildren();
 			end;
-			local v10 = v9;
-			if v10 == nil then
-				v10 = {};
+			local v12 = v11;
+			if v12 == nil then
+				v12 = {};
 			end;
-			for v11, v12 in ipairs(v10) do
-				u2(v12);
+			local v13, v14, v15 = ipairs(v12);
+			while true do
+				v13(v14, v15);
+				if not v13 then
+					break;
+				end;
+				v15 = v13;
+				u2(v14);			
 			end;
-			local v13 = script.Parent;
-			if v13 ~= nil then
-				v13 = v13:WaitForChild("games"):WaitForChild(p3):GetChildren();
+			local v16 = script.Parent;
+			if v16 ~= nil then
+				v16 = v16:WaitForChild("games"):WaitForChild(p3):GetChildren();
 			end;
-			local v14 = v13;
-			if v14 == nil then
-				v14 = {};
+			local v17 = v16;
+			if v17 == nil then
+				v17 = {};
 			end;
-			for v15, v16 in ipairs(v14) do
-				u2(v16);
+			local v18, v19, v20 = ipairs(v17);
+			while true do
+				v18(v19, v20);
+				if not v18 then
+					break;
+				end;
+				v20 = v18;
+				u2(v19);			
 			end;
 		end, 
 		loadLobbyModules = function()
-			local v17 = script.Parent;
-			if v17 ~= nil then
-				v17 = v17:WaitForChild("lobby"):GetChildren();
+			local v21 = script.Parent;
+			if v21 ~= nil then
+				v21 = v21:WaitForChild("lobby"):GetChildren();
 			end;
-			local v18 = v17;
-			if v18 == nil then
-				v18 = {};
+			local v22 = v21;
+			if v22 == nil then
+				v22 = {};
 			end;
-			for v19, v20 in ipairs(v18) do
-				u2(v20);
+			local v23, v24, v25 = ipairs(v22);
+			while true do
+				v23(v24, v25);
+				if not v23 then
+					break;
+				end;
+				v25 = v23;
+				u2(v24);			
 			end;
 		end
 	}

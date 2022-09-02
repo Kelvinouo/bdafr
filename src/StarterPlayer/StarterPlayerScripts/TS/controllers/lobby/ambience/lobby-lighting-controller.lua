@@ -1,4 +1,3 @@
--- Script Hash: b4bf64b69a58d3f3ac39ae09ab9875fbcefa3e7e31be13ac1abb753ee4b977d84b8bf4689dc55551858e897bf76a88dd
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -16,49 +15,48 @@ function v5.new(...)
 	local v6 = setmetatable({}, v5);
 	return v6:constructor(...) and v6;
 end;
-local u1 = l__KnitController__4;
-local l__ModifierGroup__2 = v2.ModifierGroup;
-local l__Lighting__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Lighting;
-local u4 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-local l__GroupModifierBehavior__5 = v2.GroupModifierBehavior;
+local l__ModifierGroup__1 = v2.ModifierGroup;
+local l__Lighting__2 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Lighting;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
+local l__GroupModifierBehavior__4 = v2.GroupModifierBehavior;
 function v5.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__4.constructor(p1);
 	p1.Name = "LobbyLightingController";
-	p1.colorCorrectionModifier = l__ModifierGroup__2.new(l__Lighting__3:FindFirstChildOfClass("ColorCorrectionEffect") or u4("ColorCorrectionEffect", {
-		Parent = l__Lighting__3
+	p1.colorCorrectionModifier = l__ModifierGroup__1.new(l__Lighting__2:FindFirstChildOfClass("ColorCorrectionEffect") or u3("ColorCorrectionEffect", {
+		Parent = l__Lighting__2
 	}), {
 		baseProperties = {
 			TintColor = Color3.fromRGB(255, 255, 255), 
 			Contrast = 0.05, 
 			Saturation = 0
 		}, 
-		behavior = l__GroupModifierBehavior__5.Merge
+		behavior = l__GroupModifierBehavior__4.Merge
 	});
-	u4("BloomEffect", {
+	u3("BloomEffect", {
 		Enabled = true, 
-		Intensity = 1, 
-		Size = 24, 
+		Intensity = 0.8, 
+		Size = 6, 
 		Threshold = 2, 
-		Parent = l__Lighting__3
+		Parent = l__Lighting__2
 	});
 end;
-local l__KnitClient__6 = v3.KnitClient;
+local l__KnitClient__5 = v3.KnitClient;
 function v5.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__KnitClient__6.Controllers.LightingController.lightingModifier:addModifier(10, {
-		Ambient = Color3.fromRGB(165, 165, 165), 
+	l__KnitController__4.KnitStart(p2);
+	l__KnitClient__5.Controllers.LightingController.lightingModifier:addModifier(10, {
+		Ambient = Color3.fromRGB(131, 102, 89), 
 		Brightness = 2, 
 		ColorShift_Bottom = Color3.fromRGB(146, 190, 255), 
 		ColorShift_Top = Color3.fromRGB(228, 249, 255), 
-		EnvironmentDiffuseScale = 0, 
-		EnvironmentSpecularScale = 0, 
+		EnvironmentDiffuseScale = 0.2, 
+		EnvironmentSpecularScale = 0.4, 
 		OutdoorAmbient = Color3.fromRGB(104, 104, 104), 
 		ShadowSoftness = 0, 
-		ClockTime = 11.5, 
-		GeographicLatitude = 46, 
+		ClockTime = 12.93, 
+		GeographicLatitude = 35, 
 		ExposureCompensation = 0
 	});
-	l__KnitClient__6.Controllers.LightingController.atmosphereModifier:addModifier(10, {
+	l__KnitClient__5.Controllers.LightingController.atmosphereModifier:addModifier(10, {
 		Density = 0.171, 
 		Offset = 0.09200000017881393, 
 		Color = Color3.fromRGB(198, 198, 198), 
@@ -66,7 +64,7 @@ function v5.KnitStart(p2)
 		Glare = 0, 
 		Haze = 0
 	});
-	l__KnitClient__6.Controllers.LightingController.skyModifier:addModifier(10, {
+	l__KnitClient__5.Controllers.LightingController.skyModifier:addModifier(10, {
 		CelestialBodiesShown = true, 
 		MoonAngularSize = 30, 
 		MoonTextureId = "rbxasset://sky/moon.jpg", 
@@ -80,13 +78,16 @@ function v5.KnitStart(p2)
 		SunAngularSize = 21, 
 		SunTextureId = "rbxasset://sky/sun.jpg"
 	});
+	l__KnitClient__5.Controllers.LightingController.sunRayModifier:addModifier(10, {
+		Intensity = 0.04, 
+		Spread = 1
+	});
 	p2.colorCorrectionModifier:addModifier(10, {
 		Brightness = 0.1, 
 		Contrast = 0.2, 
-		Saturation = 0.2, 
+		Saturation = 0.1, 
 		TintColor = Color3.fromRGB(255, 255, 255)
 	});
 end;
-u1 = v3.KnitClient.CreateController;
-u1 = u1(v5.new());
+local v7 = v3.KnitClient.CreateController(v5.new());
 return nil;

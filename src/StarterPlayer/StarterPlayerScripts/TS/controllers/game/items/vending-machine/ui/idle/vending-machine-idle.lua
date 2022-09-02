@@ -1,4 +1,3 @@
--- Script Hash: e61add58666d36f7844a612abf16e35bcb582873f4c1dcd3e5fbe959072950a8d880b5d764b8fc10ecbeb67de2863153
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -38,36 +37,43 @@ return {
 			if not (v7 < 10) then
 				break;
 			end;
-			local v9 = u3.values(l__VendingMachineRewardMeta__4);
-			local function v10(p3)
-				local v11 = false;
-				if p3.id ~= l__VendingMachineRewardId__5.NONE then
-					v11 = not p3.disabled;
+			local v9 = {};
+			local v10 = 0;
+			local v11, v12, v13 = ipairs((u3.values(l__VendingMachineRewardMeta__4)));
+			while true do
+				v11(v12, v13);
+				if not v11 then
+					break;
 				end;
-				return v11;
-			end;
-			local v12 = {};
-			local v13 = 0;
-			for v14, v15 in ipairs(v9) do
-				if v10(v15, v14 - 1, v9) == true then
-					v13 = v13 + 1;
-					v12[v13] = v15;
+				local v14 = false;
+				if v12.id ~= l__VendingMachineRewardId__5.NONE then
+					v14 = not v12.disabled;
 				end;
+				if v14 == true then
+					v10 = v10 + 1;
+					v9[v10] = v12;
+				end;			
 			end;
 			table.insert(v6, (u1.createElement(l__CarouselReward__6, {
 				totalRewardCount = 10, 
-				rewardId = v12[v7 % #v12 + 1].id, 
+				rewardId = v9[v7 % #v9 + 1].id, 
 				Position = UDim2.fromScale(v7 - 5, 0.5)
 			})));		
 		end;
-		local v16 = {
+		local v15 = {
 			Size = UDim2.fromScale(1, 1), 
 			Position = UDim2.fromScale(0, 0)
 		};
-		local v17 = {};
-		local v18 = #v17;
-		for v19, v20 in ipairs(v3) do
-			v17[v18 + v19] = v20;
+		local v16 = {};
+		local v17 = #v16;
+		local v18, v19, v20 = ipairs(v3);
+		while true do
+			v18(v19, v20);
+			if not v18 then
+				break;
+			end;
+			v20 = v18;
+			v16[v17 + v18] = v19;		
 		end;
 		local v21 = {
 			Size = UDim2.fromScale(1, 0.45), 
@@ -88,11 +94,17 @@ return {
 		};
 		local v24 = {};
 		local v25 = #v24;
-		for v26, v27 in ipairs(v6) do
-			v24[v25 + v26] = v27;
+		local v26, v27, v28 = ipairs(v6);
+		while true do
+			v26(v27, v28);
+			if not v26 then
+				break;
+			end;
+			v28 = v26;
+			v24[v25 + v26] = v27;		
 		end;
 		v22[#v22 + 1] = u1.createElement(l__Empty__7, v23, v24);
-		v17[#v17 + 1] = u1.createElement("Frame", v21, v22);
-		return u1.createElement(l__Empty__7, v16, v17);
+		v16[#v16 + 1] = u1.createElement("Frame", v21, v22);
+		return u1.createElement(l__Empty__7, v15, v16);
 	end)
 };

@@ -13,28 +13,26 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = l__KnitController__2;
 function v3.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__2.constructor(p1);
 	p1.Name = "StatCardController";
 end;
-local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-local l__Flamework__3 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
-local u4 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
-local l__StatCardContainer__5 = v1.import(script, script.Parent, "ui", "stat-card-container").StatCardContainer;
-local l__Players__6 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
+local l__default__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__Flamework__2 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
+local l__StatCardContainer__4 = v1.import(script, script.Parent, "ui", "stat-card-container").StatCardContainer;
+local l__Players__5 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 function v3.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("RemoteName", function(p3)
-		local l__cards__7 = p3.cards;
+	l__KnitController__2.KnitStart(p2);
+	l__default__1.Client:OnEvent("RemoteName", function(p3)
+		local l__cards__6 = p3.cards;
 		task.spawn(function()
-			l__Flamework__3.resolveDependency("client/controllers/game/match/match-end-screen-controller@MatchEndScreenController"):waitUntilDisplay(3);
-			u4.mount(u4.createElement(l__StatCardContainer__5, {
-				cards = l__cards__7
-			}), l__Players__6.LocalPlayer:WaitForChild("PlayerGui"));
+			l__Flamework__2.resolveDependency("client/controllers/game/match/match-end-screen-controller@MatchEndScreenController"):waitUntilDisplay(3);
+			u3.mount(u3.createElement(l__StatCardContainer__4, {
+				cards = l__cards__6
+			}), l__Players__5.LocalPlayer:WaitForChild("PlayerGui"));
 		end);
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1(v3.new());
+local v5 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v3.new());
 return nil;

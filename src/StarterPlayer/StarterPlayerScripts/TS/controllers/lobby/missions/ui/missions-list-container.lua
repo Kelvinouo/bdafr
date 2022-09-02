@@ -1,4 +1,3 @@
--- Script Hash: afd6aa53bfaf2b4c658b8c01df5d1b14dfdb6d49ee9f5b1ea87e8da3a4be482c95b65bfbe4ccbf1c7d9fe4fbc33789ed
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -6,7 +5,7 @@ local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").ou
 local v3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-missions");
 local u1 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__DeviceUtil__2 = v2.DeviceUtil;
-local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__Theme__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local u5 = v3.BattlePassMissionsContext;
 local l__BattlePassMissions__6 = v3.BattlePassMissions;
@@ -19,7 +18,7 @@ return {
 		local v6 = u1.createRef();
 		p2.useEffect(function()
 			if not l__DeviceUtil__2.isHoarceKat() then
-				l__default__3.Client:Get("LoadMissionData"):CallServerAsync():andThen(function(p3)
+				l__KnitClient__3.Controllers.MissionsController:getMissionData():andThen(function(p3)
 					v5(p3);
 				end);
 			end;
@@ -61,18 +60,30 @@ return {
 			end;
 			v15.currProgress = v16;
 			v15.goalProgress = v12.progress;
-			v15.rewardAmount = p4.reward;
+			v15.rewardAmount = p4.rewardAmount;
 			return v15;
 		end;
 		local v17 = u5.getDailyMissions();
 		local v18 = table.create(#v17);
-		for v19, v20 in ipairs(v17) do
-			v18[v19] = v7(v20, v19 - 1, v17);
+		local v19, v20, v21 = ipairs(v17);
+		while true do
+			v19(v20, v21);
+			if not v19 then
+				break;
+			end;
+			v21 = v19;
+			v18[v19] = v7(v20, v19 - 1, v17);		
 		end;
-		local v21 = u5.getWeeklyMissions();
-		local v22 = table.create(#v21);
-		for v23, v24 in ipairs(v21) do
-			v22[v23] = v7(v24, v23 - 1, v21);
+		local v22 = u5.getWeeklyMissions();
+		local v23 = table.create(#v22);
+		local v24, v25, v26 = ipairs(v22);
+		while true do
+			v24(v25, v26);
+			if not v24 then
+				break;
+			end;
+			v26 = v24;
+			v23[v24] = v7(v25, v24 - 1, v22);		
 		end;
 		return u1.createFragment({
 			MissionsList = u1.createElement(l__AutoCanvasScrollingFrame__7, {
@@ -104,7 +115,7 @@ return {
 					}, 
 					LayoutOrder = 2
 				}), u1.createElement(l__MissionsList__8, {
-					Missions = v22, 
+					Missions = v23, 
 					Title = "Weekly Missions", 
 					EndTime = l__BattlePassMissions__6.SEASON_START_DATE.UnixTimestamp + l__BattlePassMissions__6.getWeek() * 604800, 
 					LayoutOrder = 3

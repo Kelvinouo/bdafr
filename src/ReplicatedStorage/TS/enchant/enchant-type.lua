@@ -1,4 +1,3 @@
--- Script Hash: c4e51f8d421a7de72ad138fd847654168d5caca251b854f390d467960ad4188e6b4b8d47caead6e728eb2c3f54a52004
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -47,6 +46,8 @@ v2.CRITICAL_STRIKE_3 = "critical_strike_3";
 v1.critical_strike_3 = "CRITICAL_STRIKE_3";
 v2.LIFE_STEAL_2 = "life_steal_2";
 v1.life_steal_2 = "LIFE_STEAL_2";
+v2.VOLLEY_3 = "volley_3";
+v1.volley_3 = "VOLLEY_3";
 local v3 = {};
 local v4 = setmetatable({}, {
 	__index = v3
@@ -73,6 +74,8 @@ v4.CRITICAL = 9;
 v3[9] = "CRITICAL";
 v4.LIFE_STEAL = 10;
 v3[10] = "LIFE_STEAL";
+v4.VOLLEY = 11;
+v3[11] = "VOLLEY";
 local v5 = {};
 local v6 = setmetatable({}, {
 	__index = v5

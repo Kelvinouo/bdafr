@@ -1,39 +1,41 @@
--- Script Hash: 6f5417e568a0dddde4237a5661c9336a44c127fbf7e1f3beba7ea119687be49892417d6d9e7f71170e9722bec7877d83
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local v4 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local v5 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src);
-local l__BedwarsKit__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
-local l__GameSound__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__Theme__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
-local l__HostPanelToggle__9 = v1.import(script, script.Parent.Parent, "components", "host-panel-toggle").HostPanelToggle;
-local v10 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils")).values(l__BedwarsKit__6);
-local u1 = { l__BedwarsKit__6.NONE, l__BedwarsKit__6.INFECTED, l__BedwarsKit__6.SUPER_INFECTED };
-local function v11(p1)
-	return table.find(u1, p1) == nil;
-end;
-local v12 = {};
-local v13 = 0;
-for v14, v15 in ipairs(v10) do
-	if v11(v15, v14 - 1, v10) == true then
-		v13 = v13 + 1;
-		v12[v13] = v15;
+local l__ToggleButton__6 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "components", "settings", "toggle-button").ToggleButton;
+local l__ToggleButtonGroup__7 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "components", "settings", "toggle-button-group").ToggleButtonGroup;
+local l__BedwarsKit__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
+local l__getBedwarsKitMeta__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit-meta").getBedwarsKitMeta;
+local l__HostPanelToggleValue__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "host-panel", "host-panel-settings.dto").HostPanelToggleValue;
+local l__GameSound__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local l__Theme__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
+local u1 = { l__BedwarsKit__8.NONE, l__BedwarsKit__8.INFECTED, l__BedwarsKit__8.SUPER_INFECTED };
+local v13 = {};
+local v14 = 0;
+local v15, v16, v17 = ipairs((v1.import(script, v1.getModule(script, "@rbxts", "object-utils")).values(l__BedwarsKit__8)));
+while true do
+	v15(v16, v17);
+	if not v15 then
+		break;
+	end;
+	if table.find(u1, v16) == nil == true then
+		v14 = v14 + 1;
+		v13[v14] = v16;
 	end;
 end;
-local l__getBedwarsKitMeta__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit-meta").getBedwarsKitMeta;
-table.sort(v12, function(p2, p3)
-	return l__getBedwarsKitMeta__2(p2).name < l__getBedwarsKitMeta__2(p3).name;
+table.sort(v13, function(p1, p2)
+	return l__getBedwarsKitMeta__9(p1).name < l__getBedwarsKitMeta__9(p2).name;
 end);
-local l__SoundManager__3 = v2.SoundManager;
-local l__ColorUtil__4 = v2.ColorUtil;
-local l__AutoCanvasScrollingFrame__5 = v2.AutoCanvasScrollingFrame;
+local l__SoundManager__2 = v2.SoundManager;
+local l__ColorUtil__3 = v2.ColorUtil;
+local l__AutoCanvasScrollingFrame__4 = v2.AutoCanvasScrollingFrame;
 return {
-	HostPanelKitsTab = v5.new(v4)(function(p4, p5)
-		local v16, v17 = p5.useState(true);
-		local v18 = { v4.createElement("UIListLayout", {
+	HostPanelKitsTab = v5.new(v4)(function(p3, p4)
+		local v18, v19 = p4.useState(true);
+		local v20 = { v4.createElement("UIListLayout", {
 				FillDirection = "Vertical", 
 				Padding = UDim.new(0, 10)
 			}), v4.createElement("TextLabel", {
@@ -44,108 +46,119 @@ return {
 				TextScaled = true, 
 				RichText = true, 
 				Font = "Roboto", 
-				TextColor3 = l__Theme__8.textPrimary, 
+				TextColor3 = l__Theme__12.textPrimary, 
 				TextXAlignment = "Left", 
 				TextYAlignment = "Center", 
 				BackgroundTransparency = 1
 			}, { v4.createElement("UITextSizeConstraint", {
 					MaxTextSize = 20
 				}) }) };
-		local function u6(p6, p7)
-			l__KnitClient__3.Controllers.CustomMatchController:setKitDisabled(p6, p7);
-			l__SoundManager__3:playSound(l__GameSound__7.UI_CLICK);
-		end;
-		local function v19(p8)
-			local v20 = {
+		local function v21(p5)
+			local v22 = {
 				Size = UDim2.fromScale(1, 1), 
-				BackgroundColor3 = l__Theme__8.backgroundPrimary, 
+				BackgroundColor3 = l__Theme__12.backgroundPrimary, 
 				BorderSizePixel = 0, 
 				Text = ""
 			};
-			v20[v4.Event.Activated] = function()
-				local v21 = p4.store.CustomMatch.disabledKits[p8];
-				if v21 == nil then
-					v21 = false;
+			v22[v4.Event.Activated] = function()
+				local v23 = p3.store.CustomMatch.disabledKits[p5];
+				if v23 == nil then
+					v23 = false;
 				end;
-				u6(p8, not v21);
+				l__KnitClient__3.Controllers.CustomMatchController:setKitDisabled(p5, not v23);
+				l__SoundManager__2:playSound(l__GameSound__11.UI_CLICK);
 			end;
-			local v22 = { v4.createElement("TextLabel", {
-					Size = UDim2.fromScale(1, 0.6), 
-					Text = "<b>" .. l__getBedwarsKitMeta__2(p8).name .. "</b>", 
-					TextScaled = true, 
-					RichText = true, 
-					Font = "Roboto", 
-					TextColor3 = l__ColorUtil__4.WHITE, 
-					TextXAlignment = "Center", 
-					TextYAlignment = "Center", 
-					BackgroundTransparency = 1
-				}, { v4.createElement("UIPadding", {
-						PaddingTop = UDim.new(0.15, 0), 
-						PaddingBottom = UDim.new(0.15, 0), 
-						PaddingLeft = UDim.new(0.1, 0), 
-						PaddingRight = UDim.new(0.1, 0)
-					}), v4.createElement("UITextSizeConstraint", {
-						MaxTextSize = 18
-					}) }) };
-			local v23 = {
+			local v24 = {};
+			local v25 = {};
+			if not p3.store.CustomMatch.disabledKits[p5] then
+				local v26 = "on";
+			else
+				v26 = "off";
+			end;
+			v25.Value = v26;
+			function v25.OnChange(p6)
+				l__KnitClient__3.Controllers.CustomMatchController:setKitDisabled(p5, p6 == "off");
+				l__SoundManager__2:playSound(l__GameSound__11.UI_CLICK);
+			end;
+			v25.FrameProps = {
 				Size = UDim2.fromScale(1, 0.4), 
 				AnchorPoint = Vector2.new(0, 0), 
 				Position = UDim2.fromScale(0, 0.6)
 			};
-			local v24 = not p4.store.CustomMatch.disabledKits[p8];
-			if v24 == nil then
-				v24 = true;
-			end;
-			v23.Value = v24;
-			function v23.SetValue(p9)
-				u6(p8, not p9);
-			end;
-			v22[#v22 + 1] = v4.createElement(l__HostPanelToggle__9, v23);
-			return v4.createElement("TextButton", v20, v22);
+			v24[1] = v4.createElement("TextLabel", {
+				Size = UDim2.fromScale(1, 0.6), 
+				Text = "<b>" .. l__getBedwarsKitMeta__9(p5).name .. "</b>", 
+				TextScaled = true, 
+				RichText = true, 
+				Font = "Roboto", 
+				TextColor3 = l__ColorUtil__3.WHITE, 
+				TextXAlignment = "Center", 
+				TextYAlignment = "Center", 
+				BackgroundTransparency = 1
+			}, { v4.createElement("UIPadding", {
+					PaddingTop = UDim.new(0.15, 0), 
+					PaddingBottom = UDim.new(0.15, 0), 
+					PaddingLeft = UDim.new(0.1, 0), 
+					PaddingRight = UDim.new(0.1, 0)
+				}), v4.createElement("UITextSizeConstraint", {
+					MaxTextSize = 18
+				}) });
+			v24[2] = v4.createElement(l__ToggleButtonGroup__7, v25, { v4.createElement(l__ToggleButton__6, {
+					Value = l__HostPanelToggleValue__10.ON, 
+					Text = "On"
+				}), v4.createElement(l__ToggleButton__6, {
+					Value = l__HostPanelToggleValue__10.OFF, 
+					Text = "Off", 
+					ActiveColor = l__Theme__12.backgroundError
+				}) });
+			return v4.createElement("TextButton", v22, v24);
 		end;
-		local v25 = table.create(#v12);
-		for v26, v27 in ipairs(v12) do
-			v25[v26] = v19(v27, v26 - 1, v12);
+		local v27 = table.create(#v13);
+		local v28, v29, v30 = ipairs(v13);
+		while true do
+			v28(v29, v30);
+			if not v28 then
+				break;
+			end;
+			v30 = v28;
+			v27[v28] = v21(v29, v28 - 1, v13);		
 		end;
-		local v28 = {
+		local v31 = {
 			AdditionalSpace = 40, 
 			ScrollingFrameProps = {
 				Size = UDim2.new(1, 0, 0.9, 0)
 			}
 		};
-		local v29 = {};
-		local v30 = {
+		local v32 = {};
+		local v33 = {
 			Size = UDim2.fromScale(1, 1), 
-			BackgroundColor3 = l__Theme__8.backgroundTertiary, 
+			BackgroundColor3 = l__Theme__12.backgroundTertiary, 
 			BorderSizePixel = 0, 
 			Text = ""
 		};
-		local function u7(p10)
-			l__KnitClient__3.Controllers.CustomMatchController:setAllKitsDisabled(p10);
-			l__SoundManager__3:playSound(l__GameSound__7.UI_CLICK);
+		v33[v4.Event.Activated] = function()
+			l__KnitClient__3.Controllers.CustomMatchController:setAllKitsDisabled(v18);
+			l__SoundManager__2:playSound(l__GameSound__11.UI_CLICK);
+			v19(not v18);
 		end;
-		v30[v4.Event.Activated] = function()
-			u7(v16);
-			v17(not v16);
-		end;
-		local v31 = {};
-		local v32 = {
+		local v34 = {};
+		local v35 = {
 			Size = UDim2.fromScale(1, 1)
 		};
-		if v16 then
-			local v33 = "<b>Disable All</b>";
+		if v18 then
+			local v36 = "<b>Disable All</b>";
 		else
-			v33 = "<b>Enable All</b>";
+			v36 = "<b>Enable All</b>";
 		end;
-		v32.Text = v33;
-		v32.TextScaled = true;
-		v32.RichText = true;
-		v32.Font = "Roboto";
-		v32.TextColor3 = l__ColorUtil__4.WHITE;
-		v32.TextXAlignment = "Center";
-		v32.TextYAlignment = "Center";
-		v32.BackgroundTransparency = 1;
-		v31[1] = v4.createElement("TextLabel", v32, { v4.createElement("UIPadding", {
+		v35.Text = v36;
+		v35.TextScaled = true;
+		v35.RichText = true;
+		v35.Font = "Roboto";
+		v35.TextColor3 = l__ColorUtil__3.WHITE;
+		v35.TextXAlignment = "Center";
+		v35.TextYAlignment = "Center";
+		v35.BackgroundTransparency = 1;
+		v34[1] = v4.createElement("TextLabel", v35, { v4.createElement("UIPadding", {
 				PaddingTop = UDim.new(0.15, 0), 
 				PaddingBottom = UDim.new(0.15, 0), 
 				PaddingLeft = UDim.new(0.1, 0), 
@@ -153,19 +166,25 @@ return {
 			}), v4.createElement("UITextSizeConstraint", {
 				MaxTextSize = 18
 			}) });
-		v29[1] = v4.createElement("UIGridLayout", {
+		v32[1] = v4.createElement("UIGridLayout", {
 			CellSize = UDim2.fromOffset(90, 70), 
 			HorizontalAlignment = "Left", 
 			VerticalAlignment = "Top", 
 			SortOrder = "LayoutOrder", 
 			FillDirectionMaxCells = 6
 		});
-		v29[2] = v4.createElement("TextButton", v30, v31);
-		local v34 = #v29;
-		for v35, v36 in ipairs(v25) do
-			v29[v34 + v35] = v36;
+		v32[2] = v4.createElement("TextButton", v33, v34);
+		local v37 = #v32;
+		local v38, v39, v40 = ipairs(v27);
+		while true do
+			v38(v39, v40);
+			if not v38 then
+				break;
+			end;
+			v40 = v38;
+			v32[v37 + v38] = v39;		
 		end;
-		v18[#v18 + 1] = v4.createElement(l__AutoCanvasScrollingFrame__5, v28, v29);
-		return v4.createFragment(v18);
+		v20[#v20 + 1] = v4.createElement(l__AutoCanvasScrollingFrame__4, v31, v32);
+		return v4.createFragment(v20);
 	end)
 };

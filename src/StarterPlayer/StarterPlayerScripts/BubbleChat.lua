@@ -1,4 +1,3 @@
--- Script Hash: 9631e609ad646f926b4ba137e0202f476375ffe9fc82ca6738eec33023b852174f04ccdae3c267ee941c301500c501f5
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__Players__1 = game:GetService("Players");
@@ -23,249 +22,239 @@ end);
 local v13, v14 = pcall(function()
 	return UserSettings():IsUserFeatureEnabled("UserPreventOldBubbleChatOverlap");
 end);
-local function v15(p1)
-	return utf8.len(utf8.nfcnormalize(p1));
-end;
-local v16 = 128 - v15("...") - 1;
-local v17 = Instance.new("ScreenGui");
-v17.Name = "BubbleChat";
-v17.ResetOnSpawn = false;
-v17.Parent = l__PlayerGui__6;
+local v15 = 128 - utf8.len(utf8.nfcnormalize("...")) - 1;
+local v16 = Instance.new("ScreenGui");
+v16.Name = "BubbleChat";
+v16.ResetOnSpawn = false;
+v16.Parent = l__PlayerGui__6;
 local function u1()
-	local v18 = {
+	local v17 = {
 		data = {}
 	};
-	local v19 = Instance.new("BindableEvent");
-	v18.Emptied = v19.Event;
-	function v18.Size(p2)
-		return #v18.data;
+	local v18 = Instance.new("BindableEvent");
+	v17.Emptied = v18.Event;
+	function v17.Size(p1)
+		return #v17.data;
 	end;
-	function v18.Empty(p3)
-		return v18:Size() <= 0;
+	function v17.Empty(p2)
+		return v17:Size() <= 0;
 	end;
-	function v18.PopFront(p4)
-		table.remove(v18.data, 1);
-		if v18:Empty() then
-			v19:Fire();
+	function v17.PopFront(p3)
+		table.remove(v17.data, 1);
+		if v17:Empty() then
+			v18:Fire();
 		end;
 	end;
-	function v18.Front(p5)
-		return v18.data[1];
+	function v17.Front(p4)
+		return v17.data[1];
 	end;
-	function v18.Get(p6, p7)
-		return v18.data[p7];
+	function v17.Get(p5, p6)
+		return v17.data[p6];
 	end;
-	function v18.PushBack(p8, p9)
-		table.insert(v18.data, p9);
+	function v17.PushBack(p7, p8)
+		table.insert(v17.data, p8);
 	end;
-	function v18.GetData(p10)
-		return v18.data;
+	function v17.GetData(p9)
+		return v17.data;
 	end;
-	return v18;
+	return v17;
 end;
-local function u2()
-	return {
-		Fifo = u1(), 
-		BillboardGui = nil
-	};
-end;
-local function u3(p11, p12, p13)
-	return p12 + (p13 - p12) * math.min(v15(p11) / 75, 1);
-end;
-local function u4(p14, p15, p16)
-	local v20 = {
-		ComputeBubbleLifetime = function(p17, p18, p19)
-			if p19 then
-				return u3(p18, 8, 15);
+local function u2(p10, p11, p12)
+	local v19 = {
+		ComputeBubbleLifetime = function(p13, p14, p15)
+			if p15 then
+				return 8 + 7 * math.min(utf8.len(utf8.nfcnormalize(p14)) / 75, 1);
 			end;
-			return u3(p18, 12, 20);
+			return 12 + 8 * math.min(utf8.len(utf8.nfcnormalize(p14)) / 75, 1);
 		end, 
 		Origin = nil, 
 		RenderBubble = nil, 
-		Message = p14
+		Message = p10
 	};
-	v20.BubbleDieDelay = v20:ComputeBubbleLifetime(p14, p16);
-	v20.BubbleColor = p15;
-	v20.IsLocalPlayer = p16;
-	return v20;
+	v19.BubbleDieDelay = v19:ComputeBubbleLifetime(p10, p12);
+	v19.BubbleColor = p11;
+	v19.IsLocalPlayer = p12;
+	return v19;
 end;
-local u5 = {
+local u3 = {
 	WHITE = "dub", 
 	BLUE = "blu", 
 	GREEN = "gre", 
 	RED = "red"
 };
-function createChatBubbleMain(p20, p21)
+function createChatBubbleMain(p16, p17)
+	local v20 = Instance.new("ImageLabel");
+	v20.Name = "ChatBubble";
+	v20.ScaleType = Enum.ScaleType.Slice;
+	v20.SliceCenter = p17;
+	v20.Image = "rbxasset://textures/" .. tostring(p16) .. ".png";
+	v20.BackgroundTransparency = 1;
+	v20.BorderSizePixel = 0;
+	v20.Size = UDim2.new(1, 0, 1, 0);
+	v20.Position = UDim2.new(0, 0, 0, 0);
+	return v20;
+end;
+function createChatBubbleTail(p18, p19)
 	local v21 = Instance.new("ImageLabel");
-	v21.Name = "ChatBubble";
-	v21.ScaleType = Enum.ScaleType.Slice;
-	v21.SliceCenter = p21;
-	v21.Image = "rbxasset://textures/" .. tostring(p20) .. ".png";
+	v21.Name = "ChatBubbleTail";
+	v21.Image = "rbxasset://textures/ui/dialog_tail.png";
 	v21.BackgroundTransparency = 1;
 	v21.BorderSizePixel = 0;
-	v21.Size = UDim2.new(1, 0, 1, 0);
-	v21.Position = UDim2.new(0, 0, 0, 0);
+	v21.Position = p18;
+	v21.Size = p19;
 	return v21;
 end;
-function createChatBubbleTail(p22, p23)
-	local v22 = Instance.new("ImageLabel");
-	v22.Name = "ChatBubbleTail";
-	v22.Image = "rbxasset://textures/ui/dialog_tail.png";
-	v22.BackgroundTransparency = 1;
-	v22.BorderSizePixel = 0;
-	v22.Position = p22;
-	v22.Size = p23;
+function createChatBubbleWithTail(p20, p21, p22, p23)
+	local v22 = createChatBubbleMain(p20, p23);
+	createChatBubbleTail(p21, p22).Parent = v22;
 	return v22;
 end;
-function createChatBubbleWithTail(p24, p25, p26, p27)
+function createScaledChatBubbleWithTail(p24, p25, p26, p27)
 	local v23 = createChatBubbleMain(p24, p27);
-	createChatBubbleTail(p25, p26).Parent = v23;
+	local v24 = Instance.new("Frame");
+	v24.Name = "ChatBubbleTailFrame";
+	v24.BackgroundTransparency = 1;
+	v24.SizeConstraint = Enum.SizeConstraint.RelativeXX;
+	v24.Position = UDim2.new(0.5, 0, 1, 0);
+	v24.Size = UDim2.new(p25, 0, p25, 0);
+	v24.Parent = v23;
+	createChatBubbleTail(p26, UDim2.new(1, 0, 0.5, 0)).Parent = v24;
 	return v23;
 end;
-function createScaledChatBubbleWithTail(p28, p29, p30, p31)
-	local v24 = createChatBubbleMain(p28, p31);
-	local v25 = Instance.new("Frame");
-	v25.Name = "ChatBubbleTailFrame";
+function createChatImposter(p28, p29, p30)
+	local v25 = Instance.new("ImageLabel");
+	v25.Name = "DialogPlaceholder";
+	v25.Image = "rbxasset://textures/" .. tostring(p28) .. ".png";
 	v25.BackgroundTransparency = 1;
-	v25.SizeConstraint = Enum.SizeConstraint.RelativeXX;
-	v25.Position = UDim2.new(0.5, 0, 1, 0);
-	v25.Size = UDim2.new(p29, 0, p29, 0);
-	v25.Parent = v24;
-	createChatBubbleTail(p30, UDim2.new(1, 0, 0.5, 0)).Parent = v25;
-	return v24;
-end;
-function createChatImposter(p32, p33, p34)
+	v25.BorderSizePixel = 0;
+	v25.Position = UDim2.new(0, 0, -1.25, 0);
+	v25.Size = UDim2.new(1, 0, 1, 0);
 	local v26 = Instance.new("ImageLabel");
-	v26.Name = "DialogPlaceholder";
-	v26.Image = "rbxasset://textures/" .. tostring(p32) .. ".png";
+	v26.Name = "DotDotDot";
+	v26.Image = "rbxasset://textures/" .. tostring(p29) .. ".png";
 	v26.BackgroundTransparency = 1;
 	v26.BorderSizePixel = 0;
-	v26.Position = UDim2.new(0, 0, -1.25, 0);
-	v26.Size = UDim2.new(1, 0, 1, 0);
-	local v27 = Instance.new("ImageLabel");
-	v27.Name = "DotDotDot";
-	v27.Image = "rbxasset://textures/" .. tostring(p33) .. ".png";
-	v27.BackgroundTransparency = 1;
-	v27.BorderSizePixel = 0;
-	v27.Position = UDim2.new(0.001, 0, p34, 0);
-	v27.Size = UDim2.new(1, 0, 0.7, 0);
-	v27.Parent = v26;
-	return v26;
+	v26.Position = UDim2.new(0.001, 0, p30, 0);
+	v26.Size = UDim2.new(1, 0, 0.7, 0);
+	v26.Parent = v25;
+	return v25;
 end;
-local u6 = {
+local u4 = {
 	ChatBubble = {}, 
 	ChatBubbleWithTail = {}, 
 	ScalingChatBubbleWithTail = {}, 
 	CharacterSortedMsg = (function()
-		local v28 = {
+		local v27 = {
 			data = {}
 		};
-		local u7 = 0;
-		function v28.Size(p35)
-			return u7;
+		local u5 = 0;
+		function v27.Size(p31)
+			return u5;
 		end;
-		function v28.Erase(p36, p37)
-			if v28.data[p37] then
-				u7 = u7 - 1;
+		function v27.Erase(p32, p33)
+			if v27.data[p33] then
+				u5 = u5 - 1;
 			end;
-			v28.data[p37] = nil;
+			v27.data[p33] = nil;
 		end;
-		function v28.Set(p38, p39, p40)
-			v28.data[p39] = p40;
-			if p40 then
-				u7 = u7 + 1;
+		function v27.Set(p34, p35, p36)
+			v27.data[p35] = p36;
+			if p36 then
+				u5 = u5 + 1;
 			end;
 		end;
-		function v28.Get(p41, p42)
-			if not p42 then
+		function v27.Get(p37, p38)
+			if not p38 then
 				return;
 			end;
-			if not v28.data[p42] then
-				v28.data[p42] = u2();
-				local u8 = nil;
-				u8 = v28.data[p42].Fifo.Emptied:connect(function()
-					u8:disconnect();
-					v28:Erase(p42);
+			if not v27.data[p38] then
+				v27.data[p38] = {
+					Fifo = u1(), 
+					BillboardGui = nil
+				};
+				local u6 = nil;
+				u6 = v27.data[p38].Fifo.Emptied:connect(function()
+					u6:disconnect();
+					v27:Erase(p38);
 				end);
 			end;
-			return v28.data[p42];
+			return v27.data[p38];
 		end;
-		function v28.GetData(p43)
-			return v28.data;
+		function v27.GetData(p39)
+			return v27.data;
 		end;
-		return v28;
+		return v27;
 	end)()
 };
-local function v29(p44, p45, p46, p47, p48)
-	u6.ChatBubble[p44] = createChatBubbleMain(p45, p48);
-	if p47 then
+local function v28(p40, p41, p42, p43, p44)
+	u4.ChatBubble[p40] = createChatBubbleMain(p41, p44);
+	if p43 then
+		local v29 = -1;
+	else
+		v29 = 0;
+	end;
+	u4.ChatBubbleWithTail[p40] = createChatBubbleWithTail(p41, UDim2.new(0.5, -14, 1, v29), UDim2.new(0, 30, 0, 14), p44);
+	if p43 then
 		local v30 = -1;
 	else
 		v30 = 0;
 	end;
-	u6.ChatBubbleWithTail[p44] = createChatBubbleWithTail(p45, UDim2.new(0.5, -14, 1, v30), UDim2.new(0, 30, 0, 14), p48);
-	if p47 then
-		local v31 = -1;
-	else
-		v31 = 0;
-	end;
-	u6.ScalingChatBubbleWithTail[p44] = createScaledChatBubbleWithTail(p45, 0.5, UDim2.new(-0.5, 0, 0, v31), p48);
+	u4.ScalingChatBubbleWithTail[p40] = createScaledChatBubbleWithTail(p41, 0.5, UDim2.new(-0.5, 0, 0, v30), p44);
 end;
-v29(u5.WHITE, "ui/dialog_white", "ui/chatBubble_white_notify_bkg", false, Rect.new(5, 5, 15, 15));
-v29(u5.BLUE, "ui/dialog_blue", "ui/chatBubble_blue_notify_bkg", true, Rect.new(7, 7, 33, 33));
-v29(u5.RED, "ui/dialog_red", "ui/chatBubble_red_notify_bkg", true, Rect.new(7, 7, 33, 33));
-v29(u5.GREEN, "ui/dialog_green", "ui/chatBubble_green_notify_bkg", true, Rect.new(7, 7, 33, 33));
-function u6.SanitizeChatLine(p49, p50)
-	if not (v16 < v15(p50)) then
-		return p50;
+v28(u3.WHITE, "ui/dialog_white", "ui/chatBubble_white_notify_bkg", false, Rect.new(5, 5, 15, 15));
+v28(u3.BLUE, "ui/dialog_blue", "ui/chatBubble_blue_notify_bkg", true, Rect.new(7, 7, 33, 33));
+v28(u3.RED, "ui/dialog_red", "ui/chatBubble_red_notify_bkg", true, Rect.new(7, 7, 33, 33));
+v28(u3.GREEN, "ui/dialog_green", "ui/chatBubble_green_notify_bkg", true, Rect.new(7, 7, 33, 33));
+function u4.SanitizeChatLine(p45, p46)
+	if not (v15 < utf8.len(utf8.nfcnormalize(p46))) then
+		return p46;
 	end;
-	return string.sub(p50, 1, utf8.offset(p50, v16 + v15("...") + 1) - 1);
+	return string.sub(p46, 1, utf8.offset(p46, v15 + utf8.len(utf8.nfcnormalize("...")) + 1) - 1);
 end;
-local function u9(p51)
-	local v32 = Instance.new("BillboardGui");
-	v32.Adornee = p51;
-	v32.Size = UDim2.new(0, 400, 0, 250);
-	v32.StudsOffset = Vector3.new(0, 1.5, 2);
-	v32.Parent = v17;
-	local v33 = Instance.new("Frame");
-	v33.Name = "BillboardFrame";
-	v33.Size = UDim2.new(1, 0, 1, 0);
-	v33.Position = UDim2.new(0, 0, -0.5, 0);
-	v33.BackgroundTransparency = 1;
-	v33.Parent = v32;
-	local u10 = nil;
-	u10 = v33.ChildRemoved:connect(function()
-		if #v33:GetChildren() <= 1 then
-			u10:disconnect();
-			v32:Destroy();
+local function u7(p47)
+	local v31 = Instance.new("BillboardGui");
+	v31.Adornee = p47;
+	v31.Size = UDim2.new(0, 400, 0, 250);
+	v31.StudsOffset = Vector3.new(0, 1.5, 2);
+	v31.Parent = v16;
+	local v32 = Instance.new("Frame");
+	v32.Name = "BillboardFrame";
+	v32.Size = UDim2.new(1, 0, 1, 0);
+	v32.Position = UDim2.new(0, 0, -0.5, 0);
+	v32.BackgroundTransparency = 1;
+	v32.Parent = v31;
+	local u8 = nil;
+	u8 = v32.ChildRemoved:connect(function()
+		if #v32:GetChildren() <= 1 then
+			u8:disconnect();
+			v31:Destroy();
 		end;
 	end);
-	u6:CreateSmallTalkBubble(u5.WHITE).Parent = v33;
-	return v32;
+	u4:CreateSmallTalkBubble(u3.WHITE).Parent = v32;
+	return v31;
 end;
-function u6.CreateBillboardGuiHelper(p52, p53, p54)
-	if p53 and not u6.CharacterSortedMsg:Get(p53).BillboardGui then
-		if not p54 and p53:IsA("BasePart") then
-			u6.CharacterSortedMsg:Get(p53).BillboardGui = u9(p53);
+function u4.CreateBillboardGuiHelper(p48, p49, p50)
+	if p49 and not u4.CharacterSortedMsg:Get(p49).BillboardGui then
+		if not p50 and p49:IsA("BasePart") then
+			u4.CharacterSortedMsg:Get(p49).BillboardGui = u7(p49);
 			return;
 		end;
-		if p53:IsA("Model") then
-			local l__Head__34 = p53:FindFirstChild("Head");
-			if l__Head__34 and l__Head__34:IsA("BasePart") then
-				u6.CharacterSortedMsg:Get(p53).BillboardGui = u9(l__Head__34);
+		if p49:IsA("Model") then
+			local l__Head__33 = p49:FindFirstChild("Head");
+			if l__Head__33 and l__Head__33:IsA("BasePart") then
+				u4.CharacterSortedMsg:Get(p49).BillboardGui = u7(l__Head__33);
 			end;
 		end;
 	end;
 end;
-local function u11(p55)
-	if not p55 or not l__Players__1.LocalPlayer.Character then
-		return;
+function u4.SetBillboardLODNear(p51, p52)
+	local l__Adornee__34 = p52.Adornee;
+	if l__Adornee__34 and l__Players__1.LocalPlayer.Character then
+		local v35 = l__Adornee__34:IsDescendantOf(l__Players__1.LocalPlayer.Character);
+	else
+		v35 = nil;
 	end;
-	return p55:IsDescendantOf(l__Players__1.LocalPlayer.Character);
-end;
-function u6.SetBillboardLODNear(p56, p57)
-	local v35 = u11(p57.Adornee);
-	p57.Size = UDim2.new(0, 400, 0, 250);
+	p52.Size = UDim2.new(0, 400, 0, 250);
 	if v35 then
 		local v36 = 1.5;
 	else
@@ -276,280 +265,276 @@ function u6.SetBillboardLODNear(p56, p57)
 	else
 		v37 = 0.1;
 	end;
-	p57.StudsOffset = Vector3.new(0, v36, v37);
-	p57.Enabled = true;
-	local v38 = p57.BillboardFrame:GetChildren();
+	p52.StudsOffset = Vector3.new(0, v36, v37);
+	p52.Enabled = true;
+	local v38 = p52.BillboardFrame:GetChildren();
 	for v39 = 1, #v38 do
 		v38[v39].Visible = true;
 	end;
-	p57.BillboardFrame.SmallTalkBubble.Visible = false;
+	p52.BillboardFrame.SmallTalkBubble.Visible = false;
 end;
-function u6.SetBillboardLODDistant(p58, p59)
-	p59.Size = UDim2.new(4, 0, 3, 0);
-	if u11(p59.Adornee) then
-		local v40 = 2;
+function u4.SetBillboardLODDistant(p53, p54)
+	local l__Adornee__40 = p54.Adornee;
+	if l__Adornee__40 and l__Players__1.LocalPlayer.Character then
+		local v41 = l__Adornee__40:IsDescendantOf(l__Players__1.LocalPlayer.Character);
 	else
-		v40 = 0.1;
+		v41 = nil;
 	end;
-	p59.StudsOffset = Vector3.new(0, 3, v40);
-	p59.Enabled = true;
-	local v41 = p59.BillboardFrame:GetChildren();
-	for v42 = 1, #v41 do
-		v41[v42].Visible = false;
+	p54.Size = UDim2.new(4, 0, 3, 0);
+	if v41 then
+		local v42 = 2;
+	else
+		v42 = 0.1;
 	end;
-	p59.BillboardFrame.SmallTalkBubble.Visible = true;
-end;
-function u6.SetBillboardLODVeryFar(p60, p61)
-	p61.Enabled = false;
-end;
-local function u12(p62)
-	if not p62 then
-		return 100000;
+	p54.StudsOffset = Vector3.new(0, 3, v42);
+	p54.Enabled = true;
+	local v43 = p54.BillboardFrame:GetChildren();
+	for v44 = 1, #v43 do
+		v43[v44].Visible = false;
 	end;
-	return (p62.Position - game.Workspace.CurrentCamera.CoordinateFrame.Position).magnitude;
+	p54.BillboardFrame.SmallTalkBubble.Visible = true;
 end;
-function u6.SetBillboardGuiLOD(p63, p64, p65)
-	if not p65 then
+function u4.SetBillboardLODVeryFar(p55, p56)
+	p56.Enabled = false;
+end;
+function u4.SetBillboardGuiLOD(p57, p58, p59)
+	if not p59 then
 		return;
 	end;
-	if p65:IsA("Model") then
-		local l__Head__43 = p65:FindFirstChild("Head");
-		if not l__Head__43 then
-			p65 = p65.PrimaryPart;
+	if p59:IsA("Model") then
+		local l__Head__45 = p59:FindFirstChild("Head");
+		if not l__Head__45 then
+			p59 = p59.PrimaryPart;
 		else
-			p65 = l__Head__43;
+			p59 = l__Head__45;
 		end;
 	end;
-	local v44 = u12(p65);
-	if v44 < 65 then
-		u6:SetBillboardLODNear(p64);
-		return;
-	end;
-	if v44 >= 65 and v44 < 100 then
-		u6:SetBillboardLODDistant(p64);
-		return;
-	end;
-	u6:SetBillboardLODVeryFar(p64);
-end;
-function u6.CameraCFrameChanged(p66)
-	for v45, v46 in pairs(u6.CharacterSortedMsg:GetData()) do
-		local l__BillboardGui__47 = v46.BillboardGui;
-		if l__BillboardGui__47 then
-			u6:SetBillboardGuiLOD(l__BillboardGui__47, v45);
-		end;
-	end;
-end;
-local u13 = v9 or v10;
-local l__Enum_Font_SourceSans__14 = Enum.Font.SourceSans;
-local l__Enum_FontSize_Size24__15 = Enum.FontSize.Size24;
-function u6.CreateBubbleText(p67, p68, p69)
-	local v48 = Instance.new("TextLabel");
-	v48.Name = "BubbleText";
-	v48.BackgroundTransparency = 1;
-	if u13 then
-		v48.Size = UDim2.fromScale(1, 1);
+	if not p59 then
+		local v46 = 100000;
 	else
-		v48.Position = UDim2.new(0, 15, 0, 0);
-		v48.Size = UDim2.new(1, -30, 1, 0);
+		v46 = (p59.Position - game.Workspace.CurrentCamera.CoordinateFrame.Position).magnitude;
 	end;
-	v48.Font = l__Enum_Font_SourceSans__14;
-	v48.ClipsDescendants = true;
-	v48.TextWrapped = true;
-	v48.FontSize = l__Enum_FontSize_Size24__15;
-	v48.Text = p68;
-	v48.Visible = false;
-	v48.AutoLocalize = p69;
-	if u13 then
-		local v49 = Instance.new("UIPadding");
-		v49.PaddingTop = UDim.new(0, 12);
-		v49.PaddingRight = UDim.new(0, 12);
-		v49.PaddingBottom = UDim.new(0, 12);
-		v49.PaddingLeft = UDim.new(0, 12);
-		v49.Parent = v48;
+	if v46 < 65 then
+		u4:SetBillboardLODNear(p58);
+		return;
 	end;
-	return v48;
+	if v46 >= 65 and v46 < 100 then
+		u4:SetBillboardLODDistant(p58);
+		return;
+	end;
+	u4:SetBillboardLODVeryFar(p58);
 end;
-function u6.CreateSmallTalkBubble(p70, p71)
-	local v50 = u6.ScalingChatBubbleWithTail[p71]:Clone();
-	v50.Name = "SmallTalkBubble";
-	v50.AnchorPoint = Vector2.new(0, 0.5);
-	v50.Position = UDim2.new(0, 0, 0.5, 0);
+function u4.CameraCFrameChanged(p60)
+	for v47, v48 in pairs(u4.CharacterSortedMsg:GetData()) do
+		local l__BillboardGui__49 = v48.BillboardGui;
+		if l__BillboardGui__49 then
+			u4:SetBillboardGuiLOD(l__BillboardGui__49, v47);
+		end;
+	end;
+end;
+local u9 = v9 or v10;
+local l__Enum_Font_SourceSans__10 = Enum.Font.SourceSans;
+local l__Enum_FontSize_Size24__11 = Enum.FontSize.Size24;
+function u4.CreateBubbleText(p61, p62, p63)
+	local v50 = Instance.new("TextLabel");
+	v50.Name = "BubbleText";
+	v50.BackgroundTransparency = 1;
+	if u9 then
+		v50.Size = UDim2.fromScale(1, 1);
+	else
+		v50.Position = UDim2.new(0, 15, 0, 0);
+		v50.Size = UDim2.new(1, -30, 1, 0);
+	end;
+	v50.Font = l__Enum_Font_SourceSans__10;
+	v50.ClipsDescendants = true;
+	v50.TextWrapped = true;
+	v50.FontSize = l__Enum_FontSize_Size24__11;
+	v50.Text = p62;
 	v50.Visible = false;
-	local v51 = u6:CreateBubbleText("...");
-	v51.TextScaled = true;
-	v51.TextWrapped = false;
-	v51.Visible = true;
-	v51.Parent = v50;
+	v50.AutoLocalize = p63;
+	if u9 then
+		local v51 = Instance.new("UIPadding");
+		v51.PaddingTop = UDim.new(0, 12);
+		v51.PaddingRight = UDim.new(0, 12);
+		v51.PaddingBottom = UDim.new(0, 12);
+		v51.PaddingLeft = UDim.new(0, 12);
+		v51.Parent = v50;
+	end;
 	return v50;
 end;
-function u6.UpdateChatLinesForOrigin(p72, p73, p74)
-	local l__Fifo__52 = u6.CharacterSortedMsg:Get(p73).Fifo;
-	local v53 = l__Fifo__52:Size();
-	local v54 = l__Fifo__52:GetData();
-	if #v54 <= 1 then
+function u4.CreateSmallTalkBubble(p64, p65)
+	local v52 = u4.ScalingChatBubbleWithTail[p65]:Clone();
+	v52.Name = "SmallTalkBubble";
+	v52.AnchorPoint = Vector2.new(0, 0.5);
+	v52.Position = UDim2.new(0, 0, 0.5, 0);
+	v52.Visible = false;
+	local v53 = u4:CreateBubbleText("...");
+	v53.TextScaled = true;
+	v53.TextWrapped = false;
+	v53.Visible = true;
+	v53.Parent = v52;
+	return v52;
+end;
+function u4.UpdateChatLinesForOrigin(p66, p67, p68)
+	local l__Fifo__54 = u4.CharacterSortedMsg:Get(p67).Fifo;
+	local v55 = l__Fifo__54:Size();
+	local v56 = l__Fifo__54:GetData();
+	if #v56 <= 1 then
 		return;
 	end;
-	for v55 = #v54 - 1, 1, -1 do
-		local l__RenderBubble__56 = v54[v55].RenderBubble;
-		if not l__RenderBubble__56 then
+	for v57 = #v56 - 1, 1, -1 do
+		local l__RenderBubble__58 = v56[v57].RenderBubble;
+		if not l__RenderBubble__58 then
 			return;
 		end;
-		if v53 - v55 + 1 > 1 then
-			local l__ChatBubbleTail__57 = l__RenderBubble__56:FindFirstChild("ChatBubbleTail");
-			if l__ChatBubbleTail__57 then
-				l__ChatBubbleTail__57:Destroy();
+		if v55 - v57 + 1 > 1 then
+			local l__ChatBubbleTail__59 = l__RenderBubble__58:FindFirstChild("ChatBubbleTail");
+			if l__ChatBubbleTail__59 then
+				l__ChatBubbleTail__59:Destroy();
 			end;
-			local l__BubbleText__58 = l__RenderBubble__56:FindFirstChild("BubbleText");
-			if l__BubbleText__58 then
-				l__BubbleText__58.TextTransparency = 0.5;
+			local l__BubbleText__60 = l__RenderBubble__58:FindFirstChild("BubbleText");
+			if l__BubbleText__60 then
+				l__BubbleText__60.TextTransparency = 0.5;
 			end;
 		end;
-		l__RenderBubble__56:TweenPosition(UDim2.new(l__RenderBubble__56.Position.X.Scale, l__RenderBubble__56.Position.X.Offset, 1, p74 - l__RenderBubble__56.Size.Y.Offset - 14), Enum.EasingDirection.Out, Enum.EasingStyle.Bounce, 0.1, true);
-		p74 = p74 - l__RenderBubble__56.Size.Y.Offset - 14;
+		l__RenderBubble__58:TweenPosition(UDim2.new(l__RenderBubble__58.Position.X.Scale, l__RenderBubble__58.Position.X.Offset, 1, p68 - l__RenderBubble__58.Size.Y.Offset - 14), Enum.EasingDirection.Out, Enum.EasingStyle.Bounce, 0.1, true);
+		p68 = p68 - l__RenderBubble__58.Size.Y.Offset - 14;
 	end;
 end;
-function u6.DestroyBubble(p75, p76, p77)
-	if not p76 then
+function u4.DestroyBubble(p69, p70, p71)
+	if not p70 then
 		return;
 	end;
-	if p76:Empty() then
+	if p70:Empty() then
 		return;
 	end;
-	local l__RenderBubble__59 = p76:Front().RenderBubble;
-	if l__RenderBubble__59 then
-		local u16 = l__RenderBubble__59;
+	local l__RenderBubble__61 = p70:Front().RenderBubble;
+	if l__RenderBubble__61 then
+		local u12 = l__RenderBubble__61;
 		spawn(function()
-			while p76:Front().RenderBubble ~= p77 do
+			while p70:Front().RenderBubble ~= p71 do
 				wait();			
 			end;
-			u16 = p76:Front().RenderBubble;
-			local l__BubbleText__60 = u16:FindFirstChild("BubbleText");
-			local l__ChatBubbleTail__61 = u16:FindFirstChild("ChatBubbleTail");
-			while u16 and u16.ImageTransparency < 1 do
-				local v62 = wait();
-				if u16 then
-					local v63 = v62 * 1.5;
-					u16.ImageTransparency = u16.ImageTransparency + v63;
-					if l__BubbleText__60 then
-						l__BubbleText__60.TextTransparency = l__BubbleText__60.TextTransparency + v63;
+			u12 = p70:Front().RenderBubble;
+			local l__BubbleText__62 = u12:FindFirstChild("BubbleText");
+			local l__ChatBubbleTail__63 = u12:FindFirstChild("ChatBubbleTail");
+			while u12 and u12.ImageTransparency < 1 do
+				local v64 = wait();
+				if u12 then
+					local v65 = v64 * 1.5;
+					u12.ImageTransparency = u12.ImageTransparency + v65;
+					if l__BubbleText__62 then
+						l__BubbleText__62.TextTransparency = l__BubbleText__62.TextTransparency + v65;
 					end;
-					if l__ChatBubbleTail__61 then
-						l__ChatBubbleTail__61.ImageTransparency = l__ChatBubbleTail__61.ImageTransparency + v63;
+					if l__ChatBubbleTail__63 then
+						l__ChatBubbleTail__63.ImageTransparency = l__ChatBubbleTail__63.ImageTransparency + v65;
 					end;
 				end;			
 			end;
-			if u16 then
-				u16:Destroy();
-				p76:PopFront();
+			if u12 then
+				u12:Destroy();
+				p70:PopFront();
 			end;
 		end);
 		return;
 	end;
-	p76:PopFront();
+	p70:PopFront();
 end;
-function u6.CreateChatLineRender(p78, p79, p80, p81, p82, p83)
-	if not p79 then
+function u4.CreateChatLineRender(p72, p73, p74, p75, p76, p77)
+	if not p73 then
 		return;
 	end;
-	if not u6.CharacterSortedMsg:Get(p79).BillboardGui then
-		u6:CreateBillboardGuiHelper(p79, p81);
+	if not u4.CharacterSortedMsg:Get(p73).BillboardGui then
+		u4:CreateBillboardGuiHelper(p73, p75);
 	end;
-	local l__BillboardGui__64 = u6.CharacterSortedMsg:Get(p79).BillboardGui;
-	if l__BillboardGui__64 then
-		local v65 = nil;
-		local v66 = u6.ChatBubbleWithTail[p80.BubbleColor]:Clone();
-		v66.Visible = false;
-		local v67 = u6:CreateBubbleText(p80.Message, p83);
-		v67.Parent = v66;
-		v66.Parent = l__BillboardGui__64.BillboardFrame;
-		p80.RenderBubble = v66;
-		local v68 = l__TextService__4:GetTextSize(v67.Text, 24, l__Enum_Font_SourceSans__14, Vector2.new(400, 250));
-		v65 = v68.Y / 24;
-		if u13 then
-			local v69 = math.ceil(v68.X + 24);
-			local v70 = v65 * 34;
-			v66.Size = UDim2.fromOffset(0, 0);
-			v66.Position = UDim2.fromScale(0.5, 1);
-			v66:TweenSizeAndPosition(UDim2.fromOffset(v69, v70), UDim2.new(0.5, -v69 / 2, 1, -v70), Enum.EasingDirection.Out, Enum.EasingStyle.Elastic, 0.1, true, function()
-				v67.Visible = true;
+	local l__BillboardGui__66 = u4.CharacterSortedMsg:Get(p73).BillboardGui;
+	if l__BillboardGui__66 then
+		local v67 = nil;
+		local v68 = u4.ChatBubbleWithTail[p74.BubbleColor]:Clone();
+		v68.Visible = false;
+		local v69 = u4:CreateBubbleText(p74.Message, p77);
+		v69.Parent = v68;
+		v68.Parent = l__BillboardGui__66.BillboardFrame;
+		p74.RenderBubble = v68;
+		local v70 = l__TextService__4:GetTextSize(v69.Text, 24, l__Enum_Font_SourceSans__10, Vector2.new(400, 250));
+		v67 = v70.Y / 24;
+		if u9 then
+			local v71 = math.ceil(v70.X + 24);
+			local v72 = v67 * 34;
+			v68.Size = UDim2.fromOffset(0, 0);
+			v68.Position = UDim2.fromScale(0.5, 1);
+			v68:TweenSizeAndPosition(UDim2.fromOffset(v71, v72), UDim2.new(0.5, -v71 / 2, 1, -v72), Enum.EasingDirection.Out, Enum.EasingStyle.Elastic, 0.1, true, function()
+				v69.Visible = true;
 			end);
-			u6:SetBillboardGuiLOD(l__BillboardGui__64, p80.Origin);
-			u6:UpdateChatLinesForOrigin(p80.Origin, -v70);
+			u4:SetBillboardGuiLOD(l__BillboardGui__66, p74.Origin);
+			u4:UpdateChatLinesForOrigin(p74.Origin, -v72);
 		else
-			local v71 = math.max((v68.X + 30) / 400, 0.1);
-			v66.Size = UDim2.new(0, 0, 0, 0);
-			v66.Position = UDim2.new(0.5, 0, 1, 0);
-			local v72 = v65 * 34;
-			v66:TweenSizeAndPosition(UDim2.new(v71, 0, 0, v72), UDim2.new((1 - v71) / 2, 0, 1, -v72), Enum.EasingDirection.Out, Enum.EasingStyle.Elastic, 0.1, true, function()
-				v67.Visible = true;
+			local v73 = math.max((v70.X + 30) / 400, 0.1);
+			v68.Size = UDim2.new(0, 0, 0, 0);
+			v68.Position = UDim2.new(0.5, 0, 1, 0);
+			local v74 = v67 * 34;
+			v68:TweenSizeAndPosition(UDim2.new(v73, 0, 0, v74), UDim2.new((1 - v73) / 2, 0, 1, -v74), Enum.EasingDirection.Out, Enum.EasingStyle.Elastic, 0.1, true, function()
+				v69.Visible = true;
 			end);
-			u6:SetBillboardGuiLOD(l__BillboardGui__64, p80.Origin);
-			u6:UpdateChatLinesForOrigin(p80.Origin, -v72);
+			u4:SetBillboardGuiLOD(l__BillboardGui__66, p74.Origin);
+			u4:UpdateChatLinesForOrigin(p74.Origin, -v74);
 		end;
-		delay(p80.BubbleDieDelay, function()
-			u6:DestroyBubble(p82, v66);
+		delay(p74.BubbleDieDelay, function()
+			u4:DestroyBubble(p76, v68);
 		end);
 	end;
 end;
-local function u17(p84, p85, p86)
-	local v73 = u4(p85, u5.WHITE, p86);
-	if p84 then
-		v73.User = p84.Name;
-		v73.Origin = p84.Character;
-	end;
-	return v73;
-end;
-function u6.OnPlayerChatMessage(p87, p88, p89, p90)
-	if not u6:BubbleChatEnabled() then
+function u4.OnPlayerChatMessage(p78, p79, p80, p81)
+	if not u4:BubbleChatEnabled() then
 		return;
 	end;
-	local l__LocalPlayer__74 = l__Players__1.LocalPlayer;
-	local v75 = false;
-	if l__LocalPlayer__74 ~= nil then
-		v75 = p88 ~= l__LocalPlayer__74;
+	local l__LocalPlayer__75 = l__Players__1.LocalPlayer;
+	local v76 = false;
+	if l__LocalPlayer__75 ~= nil then
+		v76 = p79 ~= l__LocalPlayer__75;
 	end;
-	local v76 = u17(p88, u6:SanitizeChatLine(p89), not v75);
-	if p88 and v76.Origin then
-		local l__Fifo__77 = u6.CharacterSortedMsg:Get(v76.Origin).Fifo;
-		l__Fifo__77:PushBack(v76);
-		u6:CreateChatLineRender(p88.Character, v76, true, l__Fifo__77, false);
+	local v77 = u2(u4:SanitizeChatLine(p80), u3.WHITE, not v76);
+	if p79 then
+		v77.User = p79.Name;
+		v77.Origin = p79.Character;
+	end;
+	if p79 and v77.Origin then
+		local l__Fifo__78 = u4.CharacterSortedMsg:Get(v77.Origin).Fifo;
+		l__Fifo__78:PushBack(v77);
+		u4:CreateChatLineRender(p79.Character, v77, true, l__Fifo__78, false);
 	end;
 end;
-local u18 = v11 or v12;
-local u19 = v13 or v14;
-local function u20(p91, p92, p93, p94)
-	local v78 = u4(p92, p94, p93);
-	v78.Origin = p91;
-	return v78;
-end;
-local u21 = v7 or v8;
-function u6.OnGameChatMessage(p95, p96, p97, p98)
-	if u18 or u19 and l__Chat__3.BubbleChatEnabled then
+local u13 = v11 or v12;
+local u14 = v13 or v14;
+local u15 = v7 or v8;
+function u4.OnGameChatMessage(p82, p83, p84, p85)
+	if u13 or u14 and l__Chat__3.BubbleChatEnabled then
 		return;
 	end;
 	local l__LocalPlayer__79 = l__Players__1.LocalPlayer;
 	local v80 = false;
 	if l__LocalPlayer__79 ~= nil then
-		v80 = l__LocalPlayer__79.Character ~= p96;
+		v80 = l__LocalPlayer__79.Character ~= p83;
 	end;
-	local v81 = u5.WHITE;
-	if p98 == Enum.ChatColor.Blue then
-		v81 = u5.BLUE;
-	elseif p98 == Enum.ChatColor.Green then
-		v81 = u5.GREEN;
-	elseif p98 == Enum.ChatColor.Red then
-		v81 = u5.RED;
+	local v81 = u3.WHITE;
+	if p85 == Enum.ChatColor.Blue then
+		v81 = u3.BLUE;
+	elseif p85 == Enum.ChatColor.Green then
+		v81 = u3.GREEN;
+	elseif p85 == Enum.ChatColor.Red then
+		v81 = u3.RED;
 	end;
-	local v82 = u20(p96, u6:SanitizeChatLine(p97), not v80, v81);
-	u6.CharacterSortedMsg:Get(v82.Origin).Fifo:PushBack(v82);
-	if u21 then
-		u6:CreateChatLineRender(p96, v82, false, u6.CharacterSortedMsg:Get(v82.Origin).Fifo, true);
+	local v82 = u2(u4:SanitizeChatLine(p84), v81, not v80);
+	v82.Origin = p83;
+	u4.CharacterSortedMsg:Get(v82.Origin).Fifo:PushBack(v82);
+	if u15 then
+		u4:CreateChatLineRender(p83, v82, false, u4.CharacterSortedMsg:Get(v82.Origin).Fifo, true);
 		return;
 	end;
-	u6:CreateChatLineRender(p96, v82, false, u6.CharacterSortedMsg:Get(v82.Origin).Fifo, false);
+	u4:CreateChatLineRender(p83, v82, false, u4.CharacterSortedMsg:Get(v82.Origin).Fifo, false);
 end;
-function u6.BubbleChatEnabled(p99)
-	if u18 or u19 and l__Chat__3.BubbleChatEnabled then
+function u4.BubbleChatEnabled(p86)
+	if u13 or u14 and l__Chat__3.BubbleChatEnabled then
 		return false;
 	end;
 	local l__ClientChatModules__83 = l__Chat__3:FindFirstChild("ClientChatModules");
@@ -564,7 +549,7 @@ function u6.BubbleChatEnabled(p99)
 	end;
 	return l__Players__1.BubbleChat;
 end;
-function u6.ShowOwnFilteredMessage(p100)
+function u4.ShowOwnFilteredMessage(p87)
 	local v86 = nil;
 	local l__ClientChatModules__87 = l__Chat__3:FindFirstChild("ClientChatModules");
 	if l__ClientChatModules__87 then
@@ -577,7 +562,7 @@ function u6.ShowOwnFilteredMessage(p100)
 	end;
 	return require(v86).ShowUserOwnFilteredMessage;
 end;
-function findPlayer(p101)
+function findPlayer(p88)
 	local v88, v89, v90 = pairs(l__Players__1:GetPlayers());
 	while true do
 		local v91, v92 = v88(v89, v90);
@@ -587,37 +572,37 @@ function findPlayer(p101)
 			break;
 		end;
 		v90 = v91;
-		if v92.Name == p101 then
+		if v92.Name == p88 then
 			return v92;
 		end;	
 	end;
 end;
-l__Chat__3.Chatted:connect(function(p102, p103, p104)
-	u6:OnGameChatMessage(p102, p103, p104);
+l__Chat__3.Chatted:connect(function(p89, p90, p91)
+	u4:OnGameChatMessage(p89, p90, p91);
 end);
 local v93 = nil;
 if game.Workspace.CurrentCamera then
-	v93 = game.Workspace.CurrentCamera:GetPropertyChangedSignal("CFrame"):Connect(function(p105)
-		u6:CameraCFrameChanged();
+	v93 = game.Workspace.CurrentCamera:GetPropertyChangedSignal("CFrame"):Connect(function(p92)
+		u4:CameraCFrameChanged();
 	end);
 end;
-local u22 = v93;
-game.Workspace.Changed:Connect(function(p106)
-	if p106 == "CurrentCamera" then
-		if u22 then
-			u22:disconnect();
+local u16 = v93;
+game.Workspace.Changed:Connect(function(p93)
+	if p93 == "CurrentCamera" then
+		if u16 then
+			u16:disconnect();
 		end;
 		if game.Workspace.CurrentCamera then
-			u22 = game.Workspace.CurrentCamera:GetPropertyChangedSignal("CFrame"):Connect(function(p107)
-				u6:CameraCFrameChanged();
+			u16 = game.Workspace.CurrentCamera:GetPropertyChangedSignal("CFrame"):Connect(function(p94)
+				u4:CameraCFrameChanged();
 			end);
 		end;
 	end;
 end);
-local u23 = nil;
+local u17 = nil;
 function getAllowedMessageTypes()
-	if u23 then
-		return u23;
+	if u17 then
+		return u17;
 	end;
 	local l__ClientChatModules__94 = l__Chat__3:FindFirstChild("ClientChatModules");
 	if l__ClientChatModules__94 then
@@ -629,23 +614,23 @@ function getAllowedMessageTypes()
 	if l__ChatSettings__95 then
 		local v96 = require(l__ChatSettings__95);
 		if v96.BubbleChatMessageTypes then
-			u23 = v96.BubbleChatMessageTypes;
-			return u23;
+			u17 = v96.BubbleChatMessageTypes;
+			return u17;
 		end;
 	end;
 	local l__ChatConstants__97 = l__ClientChatModules__94:FindFirstChild("ChatConstants");
 	if l__ChatConstants__97 then
 		local v98 = require(l__ChatConstants__97);
-		u23 = { v98.MessageTypeDefault, v98.MessageTypeWhisper };
+		u17 = { v98.MessageTypeDefault, v98.MessageTypeWhisper };
 	end;
-	return u23;
+	return u17;
 end;
-function checkAllowedMessageType(p108)
+function checkAllowedMessageType(p95)
 	local v99 = getAllowedMessageTypes();
 	local v100 = #v99;
 	local v101 = 1 - 1;
 	while true do
-		if v99[v101] == p108.MessageType then
+		if v99[v101] == p95.MessageType then
 			return true;
 		end;
 		if 0 <= 1 then
@@ -665,29 +650,29 @@ function checkAllowedMessageType(p108)
 end;
 local v102 = l__ReplicatedStorage__2:WaitForChild("DefaultChatSystemChatEvents");
 local l__OnMessageDoneFiltering__103 = v102:WaitForChild("OnMessageDoneFiltering");
-v102:WaitForChild("OnNewMessage").OnClientEvent:connect(function(p109, p110)
-	if not checkAllowedMessageType(p109) then
+v102:WaitForChild("OnNewMessage").OnClientEvent:connect(function(p96, p97)
+	if not checkAllowedMessageType(p96) then
 		return;
 	end;
-	local v104 = findPlayer(p109.FromSpeaker);
+	local v104 = findPlayer(p96.FromSpeaker);
 	if not v104 then
 		return;
 	end;
-	if (not p109.IsFiltered or p109.FromSpeaker == v5.Name) and (p109.FromSpeaker ~= v5.Name or u6:ShowOwnFilteredMessage()) then
+	if (not p96.IsFiltered or p96.FromSpeaker == v5.Name) and (p96.FromSpeaker ~= v5.Name or u4:ShowOwnFilteredMessage()) then
 		return;
 	end;
-	u6:OnPlayerChatMessage(v104, p109.Message, nil);
+	u4:OnPlayerChatMessage(v104, p96.Message, nil);
 end);
-l__OnMessageDoneFiltering__103.OnClientEvent:connect(function(p111, p112)
-	if not checkAllowedMessageType(p111) then
+l__OnMessageDoneFiltering__103.OnClientEvent:connect(function(p98, p99)
+	if not checkAllowedMessageType(p98) then
 		return;
 	end;
-	local v105 = findPlayer(p111.FromSpeaker);
+	local v105 = findPlayer(p98.FromSpeaker);
 	if not v105 then
 		return;
 	end;
-	if p111.FromSpeaker == v5.Name and not u6:ShowOwnFilteredMessage() then
+	if p98.FromSpeaker == v5.Name and not u4:ShowOwnFilteredMessage() then
 		return;
 	end;
-	u6:OnPlayerChatMessage(v105, p111.Message, nil);
+	u4:OnPlayerChatMessage(v105, p98.Message, nil);
 end);

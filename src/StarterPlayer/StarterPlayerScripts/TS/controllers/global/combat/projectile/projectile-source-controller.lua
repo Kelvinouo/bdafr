@@ -1,65 +1,62 @@
--- Script Hash: b877c28d4d3a9385f0989ba02a450a22bfb09e87e0b4d49537703752e285347e1fe13168552005bdb48b37ddca772fcc
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
-local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
-local l__HandKnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
-local v6 = setmetatable({}, {
+local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
+local l__HandKnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
+local v5 = setmetatable({}, {
 	__tostring = function()
 		return "ProjectileSourceController";
 	end, 
-	__index = l__HandKnitController__5
+	__index = l__HandKnitController__4
 });
-v6.__index = v6;
-local u1 = l__HandKnitController__5;
-local l__Maid__2 = v3.Maid;
-function v6.constructor(p1, ...)
-	u1.constructor(p1, ...);
-	p1.maid = l__Maid__2.new();
+v5.__index = v5;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+function v5.constructor(p1, ...)
+	l__HandKnitController__4.constructor(p1, ...);
+	p1.maid = u1.new();
 	p1.reloadingWeaponSet = {};
 end;
-function v6.KnitStart(p2)
-	u1.KnitStart(p2);
+function v5.KnitStart(p2)
+	l__HandKnitController__4.KnitStart(p2);
 end;
-local l__Flamework__3 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
-local l__HttpService__4 = v4.HttpService;
-local l__getItemMeta__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
-local l__SharedSyncEvents__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "shared-sync-events").SharedSyncEvents;
-local l__UserInputService__7 = v4.UserInputService;
-local l__RunService__8 = v4.RunService;
-local l__ItemType__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
-local l__DeviceUtil__10 = v2.DeviceUtil;
-local l__Players__11 = v4.Players;
-local u12 = v1.import(script, script.Parent.Parent.Parent.Parent, "game", "items", "heavenly-sword", "heavenly-sword-mobile-controller").HeavenlySwordMobileController;
-local l__ClientSyncEvents__13 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
-local l__ChargeState__14 = v1.import(script, script.Parent.Parent, "sword", "sword-controller").ChargeState;
-local l__KnitClient__15 = v3.KnitClient;
-local l__SoundManager__16 = v2.SoundManager;
-local l__RandomUtil__17 = v2.RandomUtil;
-local l__ContextActionService__18 = v4.ContextActionService;
-function v6.onEnable(p3, p4, p5)
+local l__Flamework__2 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
+local l__HttpService__3 = v3.HttpService;
+local l__getItemMeta__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
+local l__SharedSyncEvents__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "shared-sync-events").SharedSyncEvents;
+local l__UserInputService__6 = v3.UserInputService;
+local l__RunService__7 = v3.RunService;
+local l__ItemType__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
+local l__DeviceUtil__9 = v2.DeviceUtil;
+local l__Players__10 = v3.Players;
+local u11 = v1.import(script, script.Parent.Parent.Parent.Parent, "game", "items", "heavenly-sword", "heavenly-sword-mobile-controller").HeavenlySwordMobileController;
+local l__ClientSyncEvents__12 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
+local l__ChargeState__13 = v1.import(script, script.Parent.Parent, "sword", "sword-controller").ChargeState;
+local l__KnitClient__14 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
+local l__SoundManager__15 = v2.SoundManager;
+local l__RandomUtil__16 = v2.RandomUtil;
+local l__ContextActionService__17 = v3.ContextActionService;
+function v5.onEnable(p3, p4, p5)
 	p3.maid:DoCleaning();
-	local v7 = p3:getProjectileSource(p4);
-	local v8 = p3:getAmmoType(p4.itemType);
-	local v9 = v7.cooldownId or p4.itemType;
+	local v6 = p3:getProjectileSource(p4);
+	local v7 = p3:getAmmoType(p4.itemType);
+	local v8 = v6.cooldownId or p4.itemType;
 	if p3.reloadingWeaponSet[p4.itemType] ~= nil then
-		l__Flamework__3.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):setOnCooldown(v9, v7.fireDelaySec);
+		l__Flamework__2.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):setOnCooldown(v8, v6.fireDelaySec);
 		task.spawn(function()
 			p3:onStartReload(p5);
 		end);
 	end;
-	local v10 = "projectile-source-" .. l__HttpService__4:GenerateGUID(false);
-	local v11 = l__Maid__2.new();
-	p3.maid:GiveTask(v11);
-	local v12 = l__getItemMeta__5(p4.itemType);
-	l__SharedSyncEvents__6.HookFunctionSwapEvent:connect(function(p6)
+	local v9 = "projectile-source-" .. l__HttpService__3:GenerateGUID(false);
+	local v10 = u1.new();
+	p3.maid:GiveTask(v10);
+	local v11 = l__getItemMeta__4(p4.itemType);
+	l__SharedSyncEvents__5.HookFunctionSwapEvent:connect(function(p6)
 		p3.hookStatus = p6.hookFunction;
 	end);
-	local u19 = nil;
-	p3.maid:GiveTask(l__UserInputService__7.InputBegan:Connect(function(p7, p8)
-		local v13 = nil;
+	local u18 = nil;
+	p3.maid:GiveTask(l__UserInputService__6.InputBegan:Connect(function(p7, p8)
+		local v12 = nil;
 		if p8 then
 			return nil;
 		end;
@@ -73,9 +70,9 @@ function v6.onEnable(p3, p4, p5)
 			return nil;
 		end;
 		if p7.UserInputType == Enum.UserInputType.Touch then
-			u19 = p7;
+			u18 = p7;
 		end;
-		v13 = function()
+		v12 = function()
 			if not p5() then
 				return nil;
 			end;
@@ -86,183 +83,184 @@ function v6.onEnable(p3, p4, p5)
 				return nil;
 			end;
 			if p7.UserInputType ~= Enum.UserInputType.Touch then
-				p3:beginHolding(p4, nil, v11);
+				p3:beginHolding(p4, nil, v10);
 				return;
 			end;
-			local u20 = 0;
-			l__RunService__8:BindToRenderStep("projectile-mobile-confirm", 250, function(p9)
-				u20 = u20 + p9;
-				if u20 >= 0.3 then
-					l__RunService__8:UnbindFromRenderStep("projectile-mobile-confirm");
-					p3:beginHolding(p4, p7, v11);
+			local u19 = 0;
+			l__RunService__7:BindToRenderStep("projectile-mobile-confirm", 250, function(p9)
+				u19 = u19 + p9;
+				if u19 >= 0.3 then
+					l__RunService__7:UnbindFromRenderStep("projectile-mobile-confirm");
+					p3:beginHolding(p4, p7, v10);
 				end;
 			end);
 			return nil;
 		end;
-		if not l__Flamework__3.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):isOnCooldown(v9) then
-			v13();
+		if not l__Flamework__2.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):isOnCooldown(v8) then
+			v12();
 			return;
 		end;
-		l__Flamework__3.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):registerBufferedCallback(v9, "callback", function()
-			v13();
+		l__Flamework__2.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):registerBufferedCallback(v8, "callback", function()
+			v12();
 		end);
 		return nil;
 	end));
-	p3.maid:GiveTask(l__UserInputService__7.InputEnded:Connect(function(p10)
+	p3.maid:GiveTask(l__UserInputService__6.InputEnded:Connect(function(p10)
 		if not p3:isInputMouseButton1Equivalent(p10) then
 			return nil;
 		end;
 		if not p3:canLaunch() then
 			return nil;
 		end;
-		if u19 and p10 ~= u19 then
+		if u18 and p10 ~= u18 then
 			return nil;
 		end;
-		u19 = nil;
+		u18 = nil;
 		if p3.bufferPromise then
 			p3.bufferPromise:cancel();
 			p3.bufferPromise = nil;
 		end;
-		local v14, v15 = pcall(function()
-			return l__RunService__8:UnbindFromRenderStep("projectile-mobile-confirm");
+		local v13, v14 = pcall(function()
+			return l__RunService__7:UnbindFromRenderStep("projectile-mobile-confirm");
 		end);
-		if not v14 or not {
+		if not v13 or not {
 			success = true, 
-			value = v15
+			value = v14
 		} then
-			local v16 = {
+			local v15 = {
 				success = false, 
-				error = v15
+				error = v14
 			};
 		end;
-		v11:DoCleaning();
+		v10:DoCleaning();
 		if p3.projectileHandler then
-			local v17 = p3:getHandItem();
-			local v18 = p3:getProjectileSource(v17);
+			local v16 = p3:getHandItem();
+			local v17 = p3:getProjectileSource(v16);
 			if p3:onLaunch(p5) == false then
 				return nil;
 			end;
 			if not p5() then
 				return nil;
 			end;
-			if v17.itemType == l__ItemType__9.HEAVENLY_SWORD and l__DeviceUtil__10.isMobileControls() then
-				l__Players__11.LocalPlayer:SetAttribute("chargingSword", false);
-				l__SharedSyncEvents__6.SwordChargedSwing:fire(l__Players__11.LocalPlayer, v17.tool, {
+			if v16.itemType == l__ItemType__8.HEAVENLY_SWORD and l__DeviceUtil__9.isMobileControls() then
+				l__Players__10.LocalPlayer:SetAttribute("chargingSword", false);
+				l__SharedSyncEvents__5.SwordChargedSwing:fire(l__Players__10.LocalPlayer, v16.tool, {
 					chargeTime = p3.projectileHandler.drawDurationSeconds + 0.3
 				});
-				u12:mobileHandler(l__Players__11.LocalPlayer, v17.tool, p3.projectileHandler.drawDurationSeconds + 0.1);
-				l__ClientSyncEvents__13.SwordCharge:fire(l__ChargeState__14.Idle, v17);
-				l__KnitClient__15.Controllers.ProjectileController:disableTargeting();
+				u11:mobileHandler(l__Players__10.LocalPlayer, v16.tool, p3.projectileHandler.drawDurationSeconds + 0.1);
+				l__ClientSyncEvents__12.SwordCharge:fire(l__ChargeState__13.Idle, v16);
+				l__KnitClient__14.Controllers.ProjectileController:disableTargeting();
 				p3.projectileHandler = nil;
 				return nil;
 			end;
-			l__KnitClient__15.Controllers.ProjectileController:launchProjectile(v17.itemType, p3:getAmmoType(v17.itemType), p3.projectileHandler, v17.tool, v18);
-			local v19 = v18.cooldownId or v17.itemType;
-			l__Flamework__3.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):setOnCooldown(v19, v18.fireDelaySec);
-			l__Flamework__3.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):registerBufferedCallback(v19, "reloading_clear", function()
-				p3.reloadingWeaponSet[v17.itemType] = nil;
+			l__KnitClient__14.Controllers.ProjectileController:launchProjectile(v16.itemType, p3:getAmmoType(v16.itemType), p3.projectileHandler, v16.tool, v17);
+			local v18 = v17.cooldownId or v16.itemType;
+			l__Flamework__2.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):setOnCooldown(v18, v17.fireDelaySec);
+			l__Flamework__2.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):registerBufferedCallback(v18, "reloading_clear", function()
+				p3.reloadingWeaponSet[v16.itemType] = nil;
 			end);
-			if v18.activeReload == true then
-				p3.reloadingWeaponSet[v17.itemType] = true;
+			if v17.activeReload == true then
+				p3.reloadingWeaponSet[v16.itemType] = true;
 			end;
 			task.spawn(function()
 				p3:onStartReload(p5);
 			end);
-			local v20 = v18.reload;
-			if v20 ~= nil then
-				v20 = v20.reloadSound;
+			local v19 = v17.reload;
+			if v19 ~= nil then
+				v19 = v19.reloadSound;
 			end;
-			if v20 then
-				local v21 = l__SoundManager__16:playSound(l__RandomUtil__17.fromList(unpack(v20)));
-				if v21 then
-					p3.maid:GiveTask(v21);
+			if v19 then
+				local v20 = l__SoundManager__15:playSound(l__RandomUtil__16.fromList(unpack(v19)));
+				if v20 then
+					p3.maid:GiveTask(v20);
 				end;
 			end;
 		end;
-		l__KnitClient__15.Controllers.ProjectileController:disableTargeting();
+		l__KnitClient__14.Controllers.ProjectileController:disableTargeting();
 		p3.projectileHandler = nil;
 	end));
-	p3.maid:GiveTask(l__UserInputService__7.TouchMoved:Connect(function(p11, p12)
-		if p11 ~= u19 then
+	p3.maid:GiveTask(l__UserInputService__6.TouchMoved:Connect(function(p11, p12)
+		if p11 ~= u18 then
 			return nil;
 		end;
-		local v22 = l__Players__11.LocalPlayer.Character;
-		if v22 ~= nil then
-			v22 = v22:FindFirstChildWhichIsA("Humanoid");
-			if v22 ~= nil then
-				v22 = v22.MoveDirection;
+		local v21 = l__Players__10.LocalPlayer.Character;
+		if v21 ~= nil then
+			v21 = v21:FindFirstChildWhichIsA("Humanoid");
+			if v21 ~= nil then
+				v21 = v21.MoveDirection;
 			end;
 		end;
-		if v22 ~= nil and v22 ~= Vector3.new() then
-			local v23, v24 = pcall(function()
-				return l__RunService__8:UnbindFromRenderStep("projectile-mobile-confirm");
+		if v21 ~= nil and v21 ~= Vector3.new() then
+			local v22, v23 = pcall(function()
+				return l__RunService__7:UnbindFromRenderStep("projectile-mobile-confirm");
 			end);
-			if not v23 or not {
+			if not v22 or not {
 				success = true, 
-				value = v24
+				value = v23
 			} then
-				local v25 = {
+				local v24 = {
 					success = false, 
-					error = v24
+					error = v23
 				};
 			end;
 		end;
 	end));
 	p3.maid:GiveTask(function()
-		l__ContextActionService__18:UnbindAction(v10);
-		l__KnitClient__15.Controllers.ProjectileController:disableTargeting();
+		l__ContextActionService__17:UnbindAction(v9);
+		l__KnitClient__14.Controllers.ProjectileController:disableTargeting();
 		p3.projectileHandler = nil;
-		local v26, v27 = pcall(function()
-			return l__RunService__8:UnbindFromRenderStep("projectile-mobile-confirm");
+		local v25, v26 = pcall(function()
+			return l__RunService__7:UnbindFromRenderStep("projectile-mobile-confirm");
 		end);
-		if not v26 or not {
+		if not v25 or not {
 			success = true, 
-			value = v27
+			value = v26
 		} then
-			local v28 = {
+			local v27 = {
 				success = false, 
-				error = v27
+				error = v26
 			};
 		end;
-		u19 = nil;
+		u18 = nil;
 	end);
 end;
-local l__GrapplingHookFunctions__21 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "grappling-hook", "grappling-hook-util").GrapplingHookFunctions;
-local l__InventoryUtil__22 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "inventory", "inventory-util").InventoryUtil;
-local l__EntityUtil__23 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
-local l__ProjectileController__24 = v1.import(script, script.Parent, "projectile-controller").ProjectileController;
-local l__SprintController__25 = v1.import(script, script.Parent.Parent.Parent, "sprint", "sprint-controller").SprintController;
-function v6.beginHolding(p13, p14, p15, p16)
-	if l__ClientSyncEvents__13.BeginProjectileTargeting:fire(p14):isCancelled() then
+local l__GrapplingHookFunctions__20 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "grappling-hook", "grappling-hook-util").GrapplingHookFunctions;
+local l__InventoryUtil__21 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "inventory", "inventory-util").InventoryUtil;
+local l__EntityUtil__22 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
+local l__ProjectileController__23 = v1.import(script, script.Parent, "projectile-controller").ProjectileController;
+local l__SprintController__24 = v1.import(script, script.Parent.Parent.Parent, "sprint", "sprint-controller").SprintController;
+function v5.beginHolding(p13, p14, p15, p16)
+	if l__ClientSyncEvents__12.BeginProjectileTargeting:fire(p14):isCancelled() then
 		return nil;
 	end;
-	local v29 = p13:getProjectileSource(p14);
-	local v30 = l__getItemMeta__5(p14.itemType);
-	local v31 = p13:getAmmoType(p14.itemType);
-	if v29.waitForHit and p13.hookStatus ~= l__GrapplingHookFunctions__21.HOOK_CHAMBERED then
+	local v28 = p13:getProjectileSource(p14);
+	local v29 = l__getItemMeta__4(p14.itemType);
+	local v30 = p13:getAmmoType(p14.itemType);
+	if v28.waitForHit and p13.hookStatus ~= l__GrapplingHookFunctions__20.HOOK_CHAMBERED then
 		return nil;
 	end;
-	local v32 = v30.projectileSource;
-	if v32 ~= nil then
-		v32 = v32.ammoItemTypes;
+	local v31 = v29.projectileSource;
+	if v31 ~= nil then
+		v31 = v31.ammoItemTypes;
 	end;
-	if v32 ~= nil then
-		if v31 == nil then
+	if v31 ~= nil then
+		if v30 == nil then
 			return nil;
 		end;
-		if not l__InventoryUtil__22.hasEnough(l__Players__11.LocalPlayer, v31, 1) then
+		if not l__InventoryUtil__21.hasEnough(l__Players__10.LocalPlayer, v30, 1) then
 			return nil;
 		end;
 	end;
-	if v30.sword then
-		l__Players__11.LocalPlayer:SetAttribute("chargingSword", true);
-		l__ClientSyncEvents__13.SwordCharge:fire(l__ChargeState__14.Charging, p14);
+	if v29.sword then
+		l__Players__10.LocalPlayer:SetAttribute("chargingSword", true);
+		l__ClientSyncEvents__12.SwordCharge:fire(l__ChargeState__13.Charging, p14);
 	end;
-	local v33 = l__Players__11.LocalPlayer.Character;
-	if v33 ~= nil then
-		v33 = v33.PrimaryPart;
+	local v32 = l__Players__10.LocalPlayer.Character;
+	if v32 ~= nil then
+		v32 = v32.PrimaryPart;
 	end;
-	if v33 then
+	if v32 then
+		local v33 = nil;
 		local v34 = nil;
 		local v35 = nil;
 		local v36 = nil;
@@ -270,153 +268,155 @@ function v6.beginHolding(p13, p14, p15, p16)
 		local v38 = nil;
 		local v39 = nil;
 		local v40 = nil;
-		local v41 = nil;
-		if not l__EntityUtil__23:getEntity(l__Players__11.LocalPlayer) then
+		if not l__EntityUtil__22:getEntity(l__Players__10.LocalPlayer) then
 			return nil;
 		end;
 		p13:onStartCharging();
 		p16:GiveTask(function()
 			return p13:onStopCharging();
 		end);
-		local v42 = {};
-		local v43 = v29.minStrengthScalar;
-		if v43 == nil then
-			v43 = 1;
+		local v41 = {};
+		local v42 = v28.minStrengthScalar;
+		if v42 == nil then
+			v42 = 1;
 		end;
-		v42.initialVelocityMultiplier = v43;
-		local v44 = l__ProjectileController__24:enableTargeting(p14.itemType, v29.projectileType(v31), v29, p15, v42);
-		p13.projectileHandler = v44;
-		local l__walkSpeedMultiplier__45 = v29.walkSpeedMultiplier;
-		if l__walkSpeedMultiplier__45 ~= 0 and l__walkSpeedMultiplier__45 == l__walkSpeedMultiplier__45 and l__walkSpeedMultiplier__45 then
-			p16:GiveTask(l__SprintController__25:getMovementStatusModifier():addModifier({
-				moveSpeedMultiplier = v29.walkSpeedMultiplier, 
+		v41.initialVelocityMultiplier = v42;
+		local v43 = l__ProjectileController__23:enableTargeting(p14.itemType, v28.projectileType(v30), v28, p15, v41);
+		p13.projectileHandler = v43;
+		local l__walkSpeedMultiplier__44 = v28.walkSpeedMultiplier;
+		if l__walkSpeedMultiplier__44 ~= 0 and l__walkSpeedMultiplier__44 == l__walkSpeedMultiplier__44 and l__walkSpeedMultiplier__44 then
+			p16:GiveTask(l__SprintController__24:getMovementStatusModifier():addModifier({
+				moveSpeedMultiplier = v28.walkSpeedMultiplier, 
 				blockSprint = true
 			}));
 		end;
-		if v29.chargeBeginSound then
-			local v46 = l__SoundManager__16:playSound(l__RandomUtil__17.fromList(unpack(v29.chargeBeginSound)));
-			if v46 then
-				p16:GiveTask(v46);
+		if v28.chargeBeginSound then
+			local v45 = l__SoundManager__15:playSound(l__RandomUtil__16.fromList(unpack(v28.chargeBeginSound)));
+			if v45 then
+				p16:GiveTask(v45);
 			end;
 		end;
-		local l__maxStrengthChargeSec__47 = v29.maxStrengthChargeSec;
-		if l__maxStrengthChargeSec__47 ~= 0 then
-			if l__maxStrengthChargeSec__47 == l__maxStrengthChargeSec__47 and l__maxStrengthChargeSec__47 then
-				local u26 = true;
+		local l__maxStrengthChargeSec__46 = v28.maxStrengthChargeSec;
+		if l__maxStrengthChargeSec__46 ~= 0 then
+			if l__maxStrengthChargeSec__46 == l__maxStrengthChargeSec__46 and l__maxStrengthChargeSec__46 then
+				local u25 = true;
 				p13.maid:GiveTask(function()
-					u26 = false;
+					u25 = false;
 				end);
 				v1.Promise.defer(function()
-					v44.drawDurationSeconds = 0;
-					local v48 = false;
-					while u26 and v44 == p13.projectileHandler do
-						v44.drawDurationSeconds = v44.drawDurationSeconds + l__RunService__8.RenderStepped:Wait();
-						local v49 = math.min(1, v44.drawDurationSeconds / v29.maxStrengthChargeSec);
-						local v50 = v29.minStrengthScalar;
-						if v50 == nil then
-							v50 = 0.5;
+					v43.drawDurationSeconds = 0;
+					local v47 = false;
+					while u25 and v43 == p13.projectileHandler do
+						v43.drawDurationSeconds = v43.drawDurationSeconds + l__RunService__7.RenderStepped:Wait();
+						local v48 = math.min(1, v43.drawDurationSeconds / v28.maxStrengthChargeSec);
+						local v49 = v28.minStrengthScalar;
+						if v49 == nil then
+							v49 = 0.5;
 						end;
-						v44.velocityMultiplier = v49 + (1 - v49) * v50;
-						if not v48 and v49 >= 1 then
-							v48 = true;
+						v43.velocityMultiplier = v48 + (1 - v48) * v49;
+						if not v47 and v48 >= 1 then
+							v47 = true;
 							p13:onMaxCharge();
 						end;					
 					end;
 				end);
 				return;
 			end;
-			v35 = "onMaxCharge";
-			v34 = p13;
-			v39 = v34;
-			v36 = p13;
-			v37 = v35;
-			v38 = v36[v37];
+			v34 = "onMaxCharge";
+			v33 = p13;
+			v38 = v33;
+			v35 = p13;
+			v36 = v34;
+			v37 = v35[v36];
+			v39 = v37;
 			v40 = v38;
-			v41 = v39;
-			v40(v41);
+			v39(v40);
 		else
-			v35 = "onMaxCharge";
-			v34 = p13;
-			v39 = v34;
-			v36 = p13;
-			v37 = v35;
-			v38 = v36[v37];
+			v34 = "onMaxCharge";
+			v33 = p13;
+			v38 = v33;
+			v35 = p13;
+			v36 = v34;
+			v37 = v35[v36];
+			v39 = v37;
 			v40 = v38;
-			v41 = v39;
-			v40(v41);
+			v39(v40);
 		end;
 	end;
 end;
-function v6.onDisable(p17)
+function v5.onDisable(p17)
 	p17.maid:DoCleaning();
 end;
-function v6.onMaxCharge(p18)
+function v5.onMaxCharge(p18)
 
 end;
-function v6.canLaunch(p19)
+function v5.canLaunch(p19)
 	return true;
 end;
-function v6.getProjectileSource(p20, p21)
-	return l__getItemMeta__5(p21.itemType).projectileSource;
+function v5.getProjectileSource(p20, p21)
+	return l__getItemMeta__4(p21.itemType).projectileSource;
 end;
-local l__ClientStore__27 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
-function v6.getAmmoType(p22, p23)
-	local v51 = l__getItemMeta__5(p23).projectileSource;
-	if v51 ~= nil then
-		v51 = v51.ammoItemTypes;
+local l__ClientStore__26 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
+function v5.getAmmoType(p22, p23)
+	local v50 = l__getItemMeta__4(p23).projectileSource;
+	if v50 ~= nil then
+		v50 = v50.ammoItemTypes;
 	end;
-	if v51 then
-		local l__hotbar__52 = l__ClientStore__27:getState().Inventory.observedInventory.hotbar;
-		local v53, v54, v55 = ipairs(v51);
+	if v50 then
+		local l__hotbar__51 = l__ClientStore__26:getState().Inventory.observedInventory.hotbar;
+		local v52, v53, v54 = ipairs(v50);
 		while true do
-			local v56, v57 = v53(v54, v55);
-			if not v56 then
+			v52(v53, v54);
+			if not v52 then
 				break;
 			end;
-			local function v58(p24)
-				local v59 = p24.item;
+			local v55 = nil;
+			local v56, v57, v58 = ipairs(l__hotbar__51);
+			while true do
+				v56(v57, v58);
+				if not v56 then
+					break;
+				end;
+				local v59 = v57.item;
 				if v59 ~= nil then
 					v59 = v59.itemType;
 				end;
-				return v59 == v57;
-			end;
-			local v60 = nil;
-			for v61, v62 in ipairs(l__hotbar__52) do
-				if v58(v62, v61 - 1, l__hotbar__52) == true then
-					v60 = v62;
+				if v59 == v53 == true then
+					v55 = v57;
 					break;
-				end;
+				end;			
 			end;
-			if v60 then
-				return v57;
+			if v55 then
+				return v53;
 			end;		
 		end;
-		local l__inventory__63 = l__ClientStore__27:getState().Inventory.observedInventory.inventory;
-		local v64, v65, v66 = ipairs(v51);
+		local l__inventory__60 = l__ClientStore__26:getState().Inventory.observedInventory.inventory;
+		local v61, v62, v63 = ipairs(v50);
 		while true do
-			local v67, v68 = v64(v65, v66);
-			if not v67 then
+			v61(v62, v63);
+			if not v61 then
 				break;
 			end;
-			local l__items__69 = l__inventory__63.items;
-			local function v70(p25)
-				return p25.itemType == v68;
-			end;
-			local v71 = nil;
-			for v72, v73 in ipairs(l__items__69) do
-				if v70(v73, v72 - 1, l__items__69) == true then
-					v71 = v73;
+			local v64 = nil;
+			local v65, v66, v67 = ipairs(l__inventory__60.items);
+			while true do
+				v65(v66, v67);
+				if not v65 then
 					break;
 				end;
+				v67 = v65;
+				if v66.itemType == v62 == true then
+					v64 = v66;
+					break;
+				end;			
 			end;
-			if v71 then
-				return v68;
+			if v64 then
+				return v62;
 			end;		
 		end;
 	end;
 	return nil;
 end;
-u1 = {
-	ProjectileSourceController = v6
+return {
+	ProjectileSourceController = v5
 };
-return u1;

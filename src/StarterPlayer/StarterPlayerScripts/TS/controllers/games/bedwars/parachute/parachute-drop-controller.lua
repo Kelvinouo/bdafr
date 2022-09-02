@@ -1,4 +1,3 @@
--- Script Hash: 5699eaa850cf307f1362beaf27520b25e160db408cc0ada1a1a6fe82205bfcb56aa4b25aeb2bb07418bef7e91b3b5127
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,32 +13,36 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = l__KnitController__2;
 function v3.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__2.constructor(p1);
 	p1.Name = "ParachuteDropController";
 end;
-local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-local l__Tween__3 = v1.import(script, v1.getModule(script, "@rbxts", "tween")).Tween;
-local l__Workspace__4 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Workspace;
-local l__Linear__5 = v1.import(script, v1.getModule(script, "@rbxts", "easing-functions")).Linear;
+local l__default__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__Tween__2 = v1.import(script, v1.getModule(script, "@rbxts", "tween")).Tween;
+local l__Workspace__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Workspace;
+local l__Linear__4 = v1.import(script, v1.getModule(script, "@rbxts", "easing-functions")).Linear;
 function v3.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__default__2.Client:OnEvent("ParachuteDrop", function(p3)
-		for v5, v6 in ipairs(p3) do
+	l__KnitController__2.KnitStart(p2);
+	l__default__1.Client:OnEvent("RemoteName", function(p3)
+		local v5, v6, v7 = ipairs(p3);
+		while true do
+			v5(v6, v7);
+			if not v5 then
+				break;
+			end;
+			v7 = v5;
 			task.spawn(function()
 				if v6.model.PrimaryPart == nil then
 					v6.model:GetPropertyChangedSignal("PrimaryPart"):Wait();
 				end;
-				l__Tween__3(v6.arriveTime - 0.1 - l__Workspace__4:GetServerTimeNow(), l__Linear__5, function(p4)
+				l__Tween__2(v6.arriveTime - 0.1 - l__Workspace__3:GetServerTimeNow(), l__Linear__4, function(p4)
 					if v6.model.PrimaryPart then
 						v6.model:SetPrimaryPartCFrame(CFrame.new(p4));
 					end;
 				end, v6.model:GetPrimaryPartCFrame().Position, v6.position);
-			end);
+			end);		
 		end;
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
-u1 = u1(v3.new());
+local v8 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v3.new());
 return nil;

@@ -24,7 +24,7 @@ local u9 = nil;
 local u10 = nil;
 local v4 = {};
 local function u11()
-	assert(not u1);
+	assert(not u1, "initializeUI called when already initialized");
 	local u12 = "ScreenGui";
 	u12 = {
 		Name = "RbxCameraUI", 

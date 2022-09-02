@@ -1,4 +1,3 @@
--- Script Hash: 6b5bb79fe4322886e35e08544dcecfa810daeeeede17002de32e1aec3f580757cb5038216d1d55ddeae558d73a517146
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -17,74 +16,92 @@ local u4 = {
 local u5 = v1.import(script, v1.getModule(script, "@rbxts", "string-utils"));
 return {
 	SetupItemMetaBlockTextures = function(p1)
-		for v3, v4 in ipairs(u1.entries(p1)) do
-			local v5 = v4[2];
-			local v6 = l__GetTarmacAssetFromPath__2({ "blocks", v4[1] });
-			if v6 then
-				local v7 = {};
-				local v8 = 0;
-				local v9 = false;
+		local v3, v4, v5 = ipairs(u1.entries(p1));
+		while true do
+			v3(v4, v5);
+			if not v3 then
+				break;
+			end;
+			v5 = v3;
+			local v6 = v4[2];
+			local v7 = l__GetTarmacAssetFromPath__2({ "blocks", v4[1] });
+			if v7 then
+				local v8 = {};
+				local v9 = 0;
+				local v10 = false;
 				while true do
-					if v9 then
-						v8 = v8 + 1;
+					if v10 then
+						v9 = v9 + 1;
 					else
-						v9 = true;
+						v10 = true;
 					end;
-					if not (v8 < 6) then
+					if not (v9 < 6) then
 						break;
 					end;
-					table.insert(v7, "");				
+					table.insert(v8, "");				
 				end;
-				local v10, v11, v12 = ipairs(u1.keys(v6));
+				local v11, v12, v13 = ipairs(u1.keys(v7));
 				while true do
-					local v13, v14 = v10(v11, v12);
-					if not v13 then
+					v11(v12, v13);
+					if not v11 then
 						break;
 					end;
-					local l__image__15 = v5.image;
-					local v16 = false;
-					if l__image__15 ~= "" then
-						v16 = l__image__15;
+					local l__image__14 = v6.image;
+					local v15 = false;
+					if l__image__14 ~= "" then
+						v15 = l__image__14;
 					end;
-					local v17 = not v16 and v14 == "icon";
-					if v17 then
-						v5.image = l__GetTarmacAsset__3(v14, v6).Image;
-					elseif v14 == "s" then
-						local l__Image__18 = l__GetTarmacAsset__3(v14, v6).Image;
-						local v19 = 0;
-						local v20 = false;
+					local v16 = not v15 and v12 == "icon";
+					if v16 then
+						v6.image = l__GetTarmacAsset__3(v12, v7).Image;
+					elseif v12 == "s" then
+						local l__Image__17 = l__GetTarmacAsset__3(v12, v7).Image;
+						local v18 = 0;
+						local v19 = false;
 						while true do
-							if v20 then
-								v19 = v19 + 1;
+							if v19 then
+								v18 = v18 + 1;
 							else
-								v20 = true;
+								v19 = true;
 							end;
-							if not (v19 < #v7) then
+							if not (v18 < #v8) then
 								break;
 							end;
-							if v7[v19 + 1] == "" then
-								v7[v19 + 1] = l__Image__18;
+							if v8[v18 + 1] == "" then
+								v8[v18 + 1] = l__Image__17;
 							end;						
 						end;
-					elseif type(v14) == "string" then
-						local l__Image__21 = l__GetTarmacAsset__3(v14, v6).Image;
-						for v22, v23 in ipairs(u1.keys(u4)) do
-							if u5.includes(v14, v23) then
-								v7[u4[v23] + 1] = l__Image__21;
+					elseif type(v12) == "string" then
+						local l__Image__20 = l__GetTarmacAsset__3(v12, v7).Image;
+						local v21, v22, v23 = ipairs(u1.keys(u4));
+						while true do
+							v21(v22, v23);
+							if not v21 then
+								break;
 							end;
+							v23 = v21;
+							if u5.includes(v12, v22) then
+								v8[u4[v22] + 1] = l__Image__20;
+							end;						
 						end;
 					end;				
 				end;
-				if v5.block and v5.block.greedyMesh and not (#v5.block.greedyMesh.textures > 0) then
-					v5.block.greedyMesh.textures = v7;
+				if v6.block and v6.block.greedyMesh and not (#v6.block.greedyMesh.textures > 0) then
+					v6.block.greedyMesh.textures = v8;
 				end;
-			end;
+			end;		
 		end;
-		for v24, v25 in ipairs(u1.entries(p1)) do
-			local v26 = v25[2];
-			if v26.block and v26.block.greedyMesh and #v26.block.greedyMesh.textures == 0 then
-				print("Missing block texture for: " .. v25[1]);
+		local v24, v25, v26 = ipairs(u1.entries(p1));
+		while true do
+			v24(v25, v26);
+			if not v24 then
+				break;
 			end;
+			v26 = v24;
+			local v27 = v25[2];
+			if v27.block and v27.block.greedyMesh and #v27.block.greedyMesh.textures == 0 then
+				print("Missing block texture for: " .. v25[1]);
+			end;		
 		end;
 	end
 };

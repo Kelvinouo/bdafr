@@ -1,4 +1,3 @@
--- Script Hash: 47af4293dfd3f33bfab209a3786f308d451bfdba20962fa49c3d7bb5ab3d73b22d9c56e8c56414f92edfb9606841bf33
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -72,37 +71,42 @@ local u10 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src)
 		BackgroundColor3 = l__Theme__2.backgroundPrimary
 	};
 	local v7 = { u3.createElement(l__StatsBoardHeader__4) };
-	local v8 = u5.entries(v2);
-	local function v9(p3)
-		local v10 = p3[1];
-		return p3[2].visible;
-	end;
-	local v11 = {};
-	local v12 = 0;
-	for v13, v14 in ipairs(v8) do
-		if v9(v14, v13 - 1, v8) == true then
-			v12 = v12 + 1;
-			v11[v12] = v14;
+	local v8 = {};
+	local v9 = 0;
+	local v10, v11, v12 = ipairs((u5.entries(v2)));
+	while true do
+		v10(v11, v12);
+		if not v10 then
+			break;
 		end;
+		v12 = v10;
+		local v13 = v11[1];
+		if v11[2].visible == true then
+			v9 = v9 + 1;
+			v8[v9] = v11;
+		end;	
 	end;
-	local function v15(p4)
-		return u3.createElement(l__QueueStats__6, {
+	local v14 = table.create(#v8);
+	local v15, v16, v17 = ipairs(v8);
+	while true do
+		v15(v16, v17);
+		if not v15 then
+			break;
+		end;
+		v17 = v15;
+		v14[v15] = u3.createElement(l__QueueStats__6, {
 			store = p1.store, 
-			QueueType = p4[1], 
-			LayoutOrder = p4[2].layoutOrder
-		});
+			QueueType = v16[1], 
+			LayoutOrder = v16[2].layoutOrder
+		});	
 	end;
-	local v16 = table.create(#v11);
-	for v17, v18 in ipairs(v11) do
-		v16[v17] = v15(v18, v17 - 1, v11);
-	end;
-	local v19 = {
+	local v18 = {
 		ScrollingFrameProps = {
 			Size = UDim2.fromScale(1, 0.9), 
 			Position = UDim2.fromScale(0, 0.1)
 		}
 	};
-	local v20 = { u3.createElement("UIListLayout", {
+	local v19 = { u3.createElement("UIListLayout", {
 			FillDirection = Enum.FillDirection.Vertical, 
 			VerticalAlignment = Enum.VerticalAlignment.Top, 
 			HorizontalAlignment = Enum.HorizontalAlignment.Center, 
@@ -118,19 +122,25 @@ local u10 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src)
 		}), u3.createElement(l__GlobalStats__8, {
 			store = p1.store
 		}) };
-	local v21 = #v20;
-	for v22, v23 in ipairs(v16) do
-		v20[v21 + v22] = v23;
+	local v20 = #v19;
+	local v21, v22, v23 = ipairs(v14);
+	while true do
+		v21(v22, v23);
+		if not v21 then
+			break;
+		end;
+		v23 = v21;
+		v19[v20 + v21] = v22;	
 	end;
-	v7[#v7 + 1] = u3.createElement(l__AutoCanvasScrollingFrame__9, v19, v20);
+	v7[#v7 + 1] = u3.createElement(l__AutoCanvasScrollingFrame__9, v18, v19);
 	return u3.createElement("Frame", v6, v7);
 end);
 return {
-	StatsBoardUIWrapper = function(p5)
+	StatsBoardUIWrapper = function(p3)
 		local v24 = {};
 		local v25 = {};
 		local v26 = {};
-		for v27, v28 in pairs(p5) do
+		for v27, v28 in pairs(p3) do
 			v26[v27] = v28;
 		end;
 		v25[#v25 + 1] = u3.createElement(u10, v26);

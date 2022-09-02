@@ -7,8 +7,8 @@ local v4 = {};
 if not v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "place-util").PlaceUtil.isProduction() then
 
 end;
-v4.FreeKits = { l__BedwarsKit__2.GINGERBREAD_MAN, l__BedwarsKit__2.BAKER, l__BedwarsKit__2.SHIELDER };
-v4.UpdateTimeEpoch = 1659693600;
+v4.FreeKits = { l__BedwarsKit__2.FARMER_CLETUS, l__BedwarsKit__2.COWGIRL, l__BedwarsKit__2.MELODY };
+v4.UpdateTimeEpoch = 1662156000;
 local v5 = { l__BedwarsKit__2.REGENT };
 local v6 = #v5;
 local l__season5__7 = l__BedwarsBPKits__3.season5;
@@ -54,6 +54,7 @@ v5[v21 + 20] = l__BedwarsKit__2.SHIELDER;
 v5[v21 + 21] = l__BedwarsKit__2.BAKER;
 v5[v21 + 22] = l__BedwarsKit__2.BUILDER;
 v5[v21 + 23] = l__BedwarsKit__2.SPIRIT_ASSASSIN;
+v5[v21 + 24] = l__BedwarsKit__2.HANNAH;
 v4.ShopKits = v5;
 v4.FeaturedKits = { l__BedwarsKit__2.CYBER, l__BedwarsKit__2.COWGIRL, l__BedwarsKit__2.DASHER, l__BedwarsKit__2.AXOLOTL };
 v4.BattlePassPodiumKits = { l__BedwarsKit__2.WIND_WALKER, l__BedwarsKit__2.STAR_COLLECTOR, l__BedwarsKit__2.BATTERY, l__BedwarsKit__2.PINATA };

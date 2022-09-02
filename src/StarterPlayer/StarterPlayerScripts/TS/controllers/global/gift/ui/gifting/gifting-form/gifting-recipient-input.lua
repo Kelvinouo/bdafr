@@ -1,4 +1,3 @@
--- Script Hash: d0021276a002fbf27f40e09b209d38345659798c914ac67b91c3b510d0ce91f995196d8210959c07a42c32fe93fc044f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -16,48 +15,50 @@ return {
 		local v5, v6 = l__useState__2("");
 		local v7, v8 = l__useState__2(false);
 		local function u5(p3)
-			local l__Friends__9 = p1.Friends;
-			local function v10(p4)
-				return string.sub(string.lower(p4.username), 1, #p3) == string.lower(p3);
-			end;
-			for v11, v12 in ipairs(l__Friends__9) do
-				if v10(v12, v11 - 1, l__Friends__9) == true then
-					return v12;
+			local v9, v10, v11 = ipairs(p1.Friends);
+			while true do
+				v9(v10, v11);
+				if not v9 then
+					break;
 				end;
+				v11 = v9;
+				if string.sub(string.lower(v10.username), 1, #p3) == string.lower(p3) == true then
+					return v10;
+				end;			
 			end;
 			return nil;
 		end;
 		local u6 = nil;
 		local u7 = nil;
-		u7 = function(p5)
+		u7 = function(p4)
 			v1.Promise.defer(function()
-				local v13, v14 = l__Players__2:GetUserThumbnailAsync(p5, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size48x48);
-				if not v14 then
+				local v12, v13 = l__Players__2:GetUserThumbnailAsync(p4, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size48x48);
+				if not v13 then
 					return;
 				end;
-				return v6(v13);
+				return v6(v12);
 			end);
 		end;
-		u6 = function(p6, p7)
-			if string.lower(p7.Text) == string.lower(p6) then
+		u6 = function(p5, p6)
+			if string.lower(p6.Text) == string.lower(p5) then
 				v8(true);
 				return;
 			end;
 			v8(false);
 		end;
 		local u8 = u1.createRef();
-		local function u9(p8, p9)
-			v1.Promise.defer(function(p10, p11)
-				local v15 = l__Players__2:GetUserIdFromNameAsync(p9);
-				if v15 ~= 0 and v15 == v15 and v15 then
-					p10(v15);
+		local function u9(p7, p8)
+			v1.Promise.defer(function(p9, p10)
+				local v14 = l__Players__2:GetUserIdFromNameAsync(p8);
+				if v14 ~= 0 and v14 == v14 and v14 then
+					p9(v14);
 					return;
 				end;
-				p11();
-			end):andThen(function(p12)
-				u7(p12);
-			end):catch(function(p13)
-				print("loadUserAvatarFromName Err", p13);
+				p10();
+			end):andThen(function(p11)
+				u7(p11);
+			end):catch(function(p12)
+				print("loadUserAvatarFromName Err", p12);
 			end);
 		end;
 		p2.useEffect(function()
@@ -71,9 +72,9 @@ return {
 				v8(true);
 			end;
 		end, { p1.FriendsListUser });
+		local v15 = {};
 		local v16 = {};
-		local v17 = {};
-		local v18 = { u1.createElement("UIListLayout", {
+		local v17 = { u1.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				VerticalAlignment = Enum.VerticalAlignment.Center, 
@@ -85,27 +86,27 @@ return {
 				PaddingLeft = UDim.new(0, 10), 
 				PaddingRight = UDim.new(0, 10)
 			})) };
-		local v19 = {
+		local v18 = {
 			Size = UDim2.fromScale(1, 1), 
 			Image = v5, 
 			ScaleType = "Fit", 
 			SizeConstraint = "RelativeYY"
 		};
 		if v7 then
-			local v20 = 0;
+			local v19 = 0;
 		else
-			v20 = 0.6;
+			v19 = 0.6;
 		end;
-		v19.ImageTransparency = v20;
-		v19.BackgroundTransparency = 0;
-		v19.BackgroundColor3 = l__Theme__4.interactionPrimary;
-		v19.BorderColor3 = l__Theme__4.textPrimary;
-		v19.BorderSizePixel = 1;
-		v19.LayoutOrder = 1;
-		v18.UserAvatar = u1.createElement("ImageLabel", v19, { u1.createElement("UICorner", {
+		v18.ImageTransparency = v19;
+		v18.BackgroundTransparency = 0;
+		v18.BackgroundColor3 = l__Theme__4.interactionPrimary;
+		v18.BorderColor3 = l__Theme__4.textPrimary;
+		v18.BorderSizePixel = 1;
+		v18.LayoutOrder = 1;
+		v17.UserAvatar = u1.createElement("ImageLabel", v18, { u1.createElement("UICorner", {
 				CornerRadius = UDim.new(0, 5)
 			}) });
-		v18[3] = u1.createElement("TextLabel", {
+		v17[3] = u1.createElement("TextLabel", {
 			Text = "<b>@</b>", 
 			Size = UDim2.new(0, 0, 0, 14), 
 			AutomaticSize = Enum.AutomaticSize.X, 
@@ -117,22 +118,22 @@ return {
 			BackgroundTransparency = 1, 
 			LayoutOrder = 2
 		});
-		v17[1] = u1.createElement("UICorner", {
+		v16[1] = u1.createElement("UICorner", {
 			CornerRadius = UDim.new(0, 5)
 		});
-		v17[2] = u1.createElement("UIListLayout", {
+		v16[2] = u1.createElement("UIListLayout", {
 			FillDirection = Enum.FillDirection.Horizontal, 
 			HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 			VerticalAlignment = Enum.VerticalAlignment.Center, 
 			SortOrder = Enum.SortOrder.LayoutOrder, 
 			Padding = UDim.new(0, 0)
 		});
-		v17[3] = u1.createElement("Frame", {
+		v16[3] = u1.createElement("Frame", {
 			Size = UDim2.fromScale(0.2, 1), 
 			BackgroundTransparency = 1, 
 			LayoutOrder = 1
-		}, v18);
-		v17[4] = u1.createElement("Frame", {
+		}, v17);
+		v16[4] = u1.createElement("Frame", {
 			Size = UDim2.fromScale(0.8, 1), 
 			BackgroundTransparency = 1, 
 			LayoutOrder = 3
@@ -151,12 +152,12 @@ return {
 				ClearTextOnFocus = false, 
 				[u1.Ref] = u8, 
 				AutoLocalize = false, 
-				[u1.Change.Text] = function(p14)
-					if #p14.Text > 20 then
-						p14.Text = string.sub(p14.Text, 0, 20);
+				[u1.Change.Text] = function(p13)
+					if #p13.Text > 20 then
+						p13.Text = string.sub(p13.Text, 0, 20);
 						return nil;
 					end;
-					if #p14.Text == 0 then
+					if #p13.Text == 0 then
 						v4({
 							user = nil, 
 							usernameFormatted = ""
@@ -164,25 +165,25 @@ return {
 						v6("");
 						return nil;
 					end;
-					local v21 = u5(p14.Text);
-					if v21 then
-						u6(v21.username, p14);
-						local v22 = {};
-						for v23, v24 in pairs(v3) do
-							v22[v23] = v24;
+					local v20 = u5(p13.Text);
+					if v20 then
+						u6(v20.username, p13);
+						local v21 = {};
+						for v22, v23 in pairs(v3) do
+							v21[v22] = v23;
 						end;
-						v22.user = {
-							username = v21.username, 
-							userId = v21.userId
+						v21.user = {
+							username = v20.username, 
+							userId = v20.userId
 						};
-						v22.usernameFormatted = p14.Text .. string.sub(v21.username, #p14.Text + 1);
-						v4(v22);
-						local v25 = v3.user;
-						if v25 ~= nil then
-							v25 = v25.userId;
+						v21.usernameFormatted = p13.Text .. string.sub(v20.username, #p13.Text + 1);
+						v4(v21);
+						local v24 = v3.user;
+						if v24 ~= nil then
+							v24 = v24.userId;
 						end;
-						if v25 ~= v21.userId then
-							u7(v21.userId);
+						if v24 ~= v20.userId then
+							u7(v20.userId);
 						end;
 					else
 						v4({
@@ -191,21 +192,21 @@ return {
 						});
 						v6("");
 					end;
-					p1.SetRecipient(p14.Text);
+					p1.SetRecipient(p13.Text);
 				end, 
-				[u1.Event.FocusLost] = function(p15, p16, p17)
-					if not p16 or v3.usernameFormatted == "" then
-						u9(p15, p15.Text);
+				[u1.Event.FocusLost] = function(p14, p15, p16)
+					if not p15 or v3.usernameFormatted == "" then
+						u9(p14, p14.Text);
 						v8(true);
 						return;
 					end;
 					u8:getValue().Text = v3.user.username;
-					local v26 = {};
-					for v27, v28 in pairs(v3) do
-						v26[v27] = v28;
+					local v25 = {};
+					for v26, v27 in pairs(v3) do
+						v25[v26] = v27;
 					end;
-					v26.usernameFormatted = v3.user.username;
-					v4(v26);
+					v25.usernameFormatted = v3.user.username;
+					v4(v25);
 					v8(true);
 				end
 			}), u1.createElement("TextLabel", {
@@ -221,14 +222,14 @@ return {
 				TextColor3 = Color3.fromRGB(255, 255, 255), 
 				AutoLocalize = false
 			}) });
-		v16[1] = u1.createElement("UIListLayout", {
+		v15[1] = u1.createElement("UIListLayout", {
 			FillDirection = Enum.FillDirection.Vertical, 
 			HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 			VerticalAlignment = Enum.VerticalAlignment.Top, 
 			SortOrder = Enum.SortOrder.LayoutOrder, 
 			Padding = UDim.new(0, 12)
 		});
-		v16[2] = u1.createElement("TextLabel", {
+		v15[2] = u1.createElement("TextLabel", {
 			Text = "Recipient Username", 
 			Size = UDim2.new(1, 0, 0, 14), 
 			TextXAlignment = Enum.TextXAlignment.Left, 
@@ -240,17 +241,17 @@ return {
 			Font = Enum.Font.Roboto, 
 			BackgroundTransparency = 1
 		});
-		v16[3] = u1.createElement("Frame", {
+		v15[3] = u1.createElement("Frame", {
 			Size = UDim2.new(1, 0, 1, -26), 
 			BackgroundTransparency = 0, 
 			BorderSizePixel = 0, 
 			BackgroundColor3 = l__Theme__4.backgroundTertiary, 
 			LayoutOrder = 1
-		}, v17);
+		}, v16);
 		return u1.createElement("Frame", {
 			Size = p1.Size, 
 			BackgroundTransparency = 1, 
 			LayoutOrder = p1.LayoutOrder
-		}, v16);
+		}, v15);
 	end)
 };

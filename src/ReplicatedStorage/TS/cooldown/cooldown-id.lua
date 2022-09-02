@@ -54,8 +54,18 @@ v2.VOID_LASER = "void_laser";
 v1.void_laser = "VOID_LASER";
 v2.GRENADE_LAUNCHER = "grenade_launcher";
 v1.grenade_launcher = "GRENADE_LAUNCHER";
+v2.ROCKET_BELT = "rocket_belt";
+v1.rocket_belt = "ROCKET_BELT";
+v2.HEALING_BELT = "healing_belt";
+v1.healing_belt = "HEALING_BELT";
 v2.TENNIS_RACKET = "tennis_racket";
 v1.tennis_racket = "TENNIS_RACKET";
+v2.DETONATE_BOMB = "detonate_bomb";
+v1.detonate_bomb = "DETONATE_BOMB";
+v2.VOLLEY = "volley";
+v1.volley = "VOLLEY";
+v2.TNT_WARS_DRONE = "tnt_wars_drone";
+v1.tnt_wars_drone = "TNT_WARS_DRONE";
 return {
 	CooldownId = v2
 };

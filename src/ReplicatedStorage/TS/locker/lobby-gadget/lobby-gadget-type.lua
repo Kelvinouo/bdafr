@@ -1,4 +1,3 @@
--- Script Hash: 82bf4d95254f0846e24ef0727cd338127345ddb9b4cce95160f3663d5d523bc073821704ccf6b17cebdac4d893ea97d9
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -33,6 +32,10 @@ v2.VOID_SWORD = "void_sword";
 v1.void_sword = "VOID_SWORD";
 v2.SCYTHE = "scythe";
 v1.scythe = "SCYTHE";
+v2.BLUNDERBUSS = "blunderbuss";
+v1.blunderbuss = "BLUNDERBUSS";
+v2.CUTLASS_GHOST = "cutlass_ghost";
+v1.cutlass_ghost = "CUTLASS_GHOST";
 return {
 	LobbyGadgetType = v2
 };

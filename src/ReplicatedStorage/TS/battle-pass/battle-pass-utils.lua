@@ -13,7 +13,7 @@ v2.BATTLE_PASS_SEASON = l__season5__3;
 v2.BATTLE_PASS_ICON = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "image", "image-id").BedwarsImageId.BattlePassIcons[l__season5__3];
 v2.BATTLE_PASS_SEASON_NUMBER = tonumber(string.split(l__season5__3, "season")[2]);
 v2.BATTLE_PASS_GAMEPASS = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "place", "gamepass").Gamepass.BATTLE_PASS_S5;
-v2.BATTLE_PASS_END_TIME = 1662760800;
+v2.BATTLE_PASS_END_TIME = 1663970400;
 local u1 = nil;
 function v2.getLevelFromExperience(p1)
 	local v4 = 0;
@@ -95,68 +95,74 @@ local u5 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
 local l__BattlePassRewards__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-rewards").BattlePassRewards;
 function v2.getRequiredLevelForKit(p7, p8)
 	local v14 = u5.values(l__BattlePassRewards__6);
-	for v15, v16 in ipairs(v14[#v14 - p8 + 1]) do
+	local v15, v16, v17 = ipairs(v14[#v14 - p8 + 1]);
+	while true do
+		v15(v16, v17);
+		if not v15 then
+			break;
+		end;
+		v17 = v15;
 		if v16.kit == p7 then
 			return v16.level;
-		end;
+		end;	
 	end;
 end;
 local l__BPRewardDisplayMeta__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-reward", "battle-pass-reward-display-meta").BPRewardDisplayMeta;
 local l__Theme__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 function v2.getRewardThemeColor(p9)
-	local v17 = p9.kit ~= nil;
-	if not v17 then
-		local v18 = p9.comingSoon;
-		if v18 ~= nil then
-			v18 = v18.kit;
+	local v18 = p9.kit ~= nil;
+	if not v18 then
+		local v19 = p9.comingSoon;
+		if v19 ~= nil then
+			v19 = v19.kit;
 		end;
-		v17 = v18 ~= nil;
+		v18 = v19 ~= nil;
 	end;
-	if v17 then
+	if v18 then
 		return l__BPRewardDisplayMeta__7.kit.backgroundColor;
 	end;
-	local v19 = p9.kitSkin ~= nil;
-	if not v19 then
-		local v20 = p9.comingSoon;
-		if v20 ~= nil then
-			v20 = v20.kitSkin;
+	local v20 = p9.kitSkin ~= nil;
+	if not v20 then
+		local v21 = p9.comingSoon;
+		if v21 ~= nil then
+			v21 = v21.kitSkin;
 		end;
-		v19 = v20 ~= nil;
+		v20 = v21 ~= nil;
 	end;
-	if v19 then
+	if v20 then
 		return l__BPRewardDisplayMeta__7.kitSkin.backgroundColor;
 	end;
-	local v21 = p9.killEffect ~= nil;
-	if not v21 then
-		local v22 = p9.comingSoon;
-		if v22 ~= nil then
-			v22 = v22.killEffect;
+	local v22 = p9.killEffect ~= nil;
+	if not v22 then
+		local v23 = p9.comingSoon;
+		if v23 ~= nil then
+			v23 = v23.killEffect;
 		end;
-		v21 = v22 ~= nil;
+		v22 = v23 ~= nil;
 	end;
-	if v21 then
+	if v22 then
 		return l__BPRewardDisplayMeta__7.killEffect.backgroundColor;
 	end;
-	local v23 = p9.lobbyGadget ~= nil;
-	if not v23 then
-		local v24 = p9.comingSoon;
-		if v24 ~= nil then
-			v24 = v24.lobbyGadget;
+	local v24 = p9.lobbyGadget ~= nil;
+	if not v24 then
+		local v25 = p9.comingSoon;
+		if v25 ~= nil then
+			v25 = v25.lobbyGadget;
 		end;
-		v23 = v24 ~= nil;
+		v24 = v25 ~= nil;
 	end;
-	if v23 then
+	if v24 then
 		return l__BPRewardDisplayMeta__7.lobbyGadget.backgroundColor;
 	end;
-	local v25 = p9.emote ~= nil;
-	if not v25 then
-		local v26 = p9.comingSoon;
-		if v26 ~= nil then
-			v26 = v26.emote;
+	local v26 = p9.emote ~= nil;
+	if not v26 then
+		local v27 = p9.comingSoon;
+		if v27 ~= nil then
+			v27 = v27.emote;
 		end;
-		v25 = v26 ~= nil;
+		v26 = v27 ~= nil;
 	end;
-	if not v25 then
+	if not v26 then
 		return l__Theme__8.backgroundTertiary;
 	end;
 	if not p9.emote then

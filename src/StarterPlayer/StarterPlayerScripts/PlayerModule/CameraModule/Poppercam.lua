@@ -12,18 +12,18 @@ function v1.Step(p1, p2, p3)
 	local v2 = p1.lastCFrame and p3;
 	p1.lastCFrame = p3;
 	local l__Position__3 = p3.Position;
-	local v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15 = p3:components();
+	local v4, v5, v6, v7, v8, v9, v10, v11, v12, v13, v14, v15 = p3:GetComponents();
 	local v16 = CFrame.new(0, 0, 0, v7, v8, v9, v10, v11, v12, v13, v14, v15);
-	local v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28 = v2:components();
-	local v29, v30 = (v16 * CFrame.new(0, 0, 0, v20, v21, v22, v23, v24, v25, v26, v27, v28):inverse()):toAxisAngle();
+	local v17, v18, v19, v20, v21, v22, v23, v24, v25, v26, v27, v28 = v2:GetComponents();
+	local v29, v30 = (v16 * CFrame.new(0, 0, 0, v20, v21, v22, v23, v24, v25, v26, v27, v28):inverse()):ToAxisAngle();
 	local u2 = (l__Position__3 - v2.p) / p2;
 	local u3 = v29 * v30 / p2;
 	return {
 		extrapolate = function(p4)
 			local v31 = u3 * p4;
-			local l__magnitude__32 = v31.magnitude;
-			if l__magnitude__32 > 1E-05 then
-				local v33 = CFrame.fromAxisAngle(v31, l__magnitude__32);
+			local l__Magnitude__32 = v31.Magnitude;
+			if l__Magnitude__32 > 1E-05 then
+				local v33 = CFrame.fromAxisAngle(v31, l__Magnitude__32);
 			else
 				v33 = u1;
 			end;

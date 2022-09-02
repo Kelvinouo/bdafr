@@ -993,12 +993,36 @@ local u1 = {
 		disabled = false, 
 		disableInCustom = true, 
 		disableLeaderboardProgression = true
+	}, 
+	[l__QueueType__10.TNT_WARS] = {
+		title = "TNT Wars", 
+		eventText = "\240\159\148\165 <font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__6.mcGreen) .. "\"><b>LIMITED TIME MODE!</b></font> \240\159\148\165", 
+		placeId = l__PlaceId__3.GAME, 
+		game = l__GameType__7.TNT_WARS, 
+		teams = { {
+				id = "1", 
+				maxPlayers = 8, 
+				colorHex = l__TeamColorHex__11.lightBlue, 
+				displayName = "Blue"
+			}, {
+				id = "2", 
+				maxPlayers = 8, 
+				colorHex = l__TeamColorHex__11.yellow, 
+				displayName = "Yellow"
+			} }, 
+		maps = l__Maps__8[l__MapType__9.TNT_WARS], 
+		queueSize = {
+			min = 1, 
+			max = 8
+		}, 
+		noKits = true, 
+		noTopHud = true
 	}
 };
 return {
 	getQueueMeta = function(p1)
 		return u1[p1];
 	end, 
-	StudioQueueType = l__QueueType__10.SKYWARS_TO2, 
+	StudioQueueType = l__QueueType__10.BEDWARS_TO4, 
 	QueueMeta = u1
 };

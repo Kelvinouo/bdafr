@@ -2,72 +2,76 @@
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
-local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
-local l__HandKnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
-local v6 = setmetatable({}, {
+local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
+local l__HandKnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
+local v5 = setmetatable({}, {
 	__tostring = function()
 		return "BalloonController";
 	end, 
-	__index = l__HandKnitController__5
+	__index = l__HandKnitController__4
 });
-v6.__index = v6;
-local u1 = v6;
+v5.__index = v5;
+local u1 = v5;
 function u1.new(...)
-	local v7 = setmetatable({}, u1);
-	return v7:constructor(...) and v7;
+	local v6 = setmetatable({}, u1);
+	return v6:constructor(...) and v6;
 end;
-local u2 = l__HandKnitController__5;
-local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
-local u4 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-local l__Workspace__5 = v4.Workspace;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
+local l__Workspace__4 = v3.Workspace;
 function u1.constructor(p1, ...)
-	u2.constructor(p1, ...);
+	l__HandKnitController__4.constructor(p1, ...);
 	p1.Name = "BalloonController";
-	p1.maid = u3.new();
-	p1.clientBalloonHookFolder = u4("Folder", {
+	p1.maid = u2.new();
+	p1.clientBalloonHookFolder = u3("Folder", {
 		Name = "ClientBalloonHooks", 
-		Parent = l__Workspace__5
+		Parent = l__Workspace__4
 	});
 	p1.balloonPhysicsEnabled = false;
-	p1.balloonPhysicsMaid = u3.new();
+	p1.balloonPhysicsMaid = u2.new();
 	p1.lastTntDrop = 0;
 	p1.clientBalloonAttachment = {};
 end;
-local l__RunService__6 = v4.RunService;
-local l__MapUtil__7 = v1.import(script, v1.getModule(script, "@easy-games", "data-structure").out).MapUtil;
-local l__ContextActionService__8 = v4.ContextActionService;
-local l__Players__9 = v4.Players;
-local l__InventoryUtil__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "inventory", "inventory-util").InventoryUtil;
-local l__ItemType__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
-local l__default__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-local l__SoundManager__13 = v2.SoundManager;
-local l__GameSound__14 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__TweenService__15 = v4.TweenService;
-local l__WatchCharacter__16 = v2.WatchCharacter;
-local l__GameQueryUtil__17 = v2.GameQueryUtil;
-local l__CollectionService__18 = v4.CollectionService;
+local l__RunService__5 = v3.RunService;
+local l__MapUtil__6 = v1.import(script, v1.getModule(script, "@easy-games", "data-structure").out).MapUtil;
+local l__ContextActionService__7 = v3.ContextActionService;
+local l__Players__8 = v3.Players;
+local l__InventoryUtil__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "inventory", "inventory-util").InventoryUtil;
+local l__ItemType__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
+local l__default__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__SoundManager__12 = v2.SoundManager;
+local l__GameSound__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local l__TweenService__14 = v3.TweenService;
+local l__WatchCharacter__15 = v2.WatchCharacter;
+local l__GameQueryUtil__16 = v2.GameQueryUtil;
+local l__CollectionService__17 = v3.CollectionService;
 function u1.KnitStart(p2)
-	u2.KnitStart(p2);
-	p2.balloonRootsFolder = l__Workspace__5:WaitForChild("BalloonRoots");
-	l__RunService__6:BindToRenderStep("update-balloon-hooks", Enum.RenderPriority.Camera.Value + 10, function()
-		for v8, v9 in ipairs(l__MapUtil__7.keys(p2.clientBalloonAttachment)) do
-			local v10 = p2.clientBalloonAttachment[v9];
-			if v10 then
-				if not v9.Parent then
-					v10:Destroy();
-					p2.clientBalloonAttachment[v9] = nil;
-				else
-					v10.CFrame = v9.Balloon.CFrame;
-				end;
+	l__HandKnitController__4.KnitStart(p2);
+	p2.balloonRootsFolder = l__Workspace__4:WaitForChild("BalloonRoots");
+	l__RunService__5:BindToRenderStep("update-balloon-hooks", Enum.RenderPriority.Camera.Value + 10, function()
+		local v7, v8, v9 = ipairs(l__MapUtil__6.keys(p2.clientBalloonAttachment));
+		while true do
+			v7(v8, v9);
+			if not v7 then
+				break;
 			end;
+			v9 = v7;
+			local v10 = p2.clientBalloonAttachment[v8];
+			if v10 then
+				if not v8.Parent then
+					v10:Destroy();
+					p2.clientBalloonAttachment[v8] = nil;
+				else
+					v10.CFrame = v8.Balloon.CFrame;
+				end;
+			end;		
 		end;
 	end);
-	l__ContextActionService__8:BindActionAtPriority("drop-tnt", function(p3, p4, p5)
+	l__ContextActionService__7:BindActionAtPriority("drop-tnt", function(p3, p4, p5)
 		if p4 ~= Enum.UserInputState.Begin then
 			return Enum.ContextActionResult.Pass;
 		end;
-		local v11 = l__Players__9.LocalPlayer.Character;
+		local v11 = l__Players__8.LocalPlayer.Character;
 		if v11 ~= nil then
 			v11 = v11:GetAttribute("InflatedBalloons");
 		end;
@@ -78,47 +82,47 @@ function u1.KnitStart(p2)
 		if v12 == 0 then
 			return Enum.ContextActionResult.Pass;
 		end;
-		local v13 = l__InventoryUtil__10.getInventory(l__Players__9.LocalPlayer).hand;
+		local v13 = l__InventoryUtil__9.getInventory(l__Players__8.LocalPlayer).hand;
 		if v13 ~= nil then
 			v13 = v13.itemType;
 		end;
-		if v13 ~= l__ItemType__11.TNT then
+		if v13 ~= l__ItemType__10.TNT then
 			return Enum.ContextActionResult.Pass;
 		end;
 		p2:dropTNT();
 		return Enum.ContextActionResult.Sink;
 	end, false, 4000, Enum.UserInputType.MouseButton1, Enum.KeyCode.ButtonR2);
-	l__default__12.Client:WaitFor("RemoteName"):andThen(function(p6)
+	l__default__11.Client:WaitFor("RemoteName"):andThen(function(p6)
 		p6:Connect(function(p7)
 			p7.inflatedBalloon.Balloon.PopEffect:Emit(20);
 			local v14 = nil;
-			if p7.inflatedBalloon:GetAttribute("BalloonOwner") ~= l__Players__9.LocalPlayer.UserId then
+			if p7.inflatedBalloon:GetAttribute("BalloonOwner") ~= l__Players__8.LocalPlayer.UserId then
 				v14 = p7.inflatedBalloon.Balloon.Position;
 			end;
-			l__SoundManager__13:playSound(l__GameSound__14.BALLOON_POP, {
+			l__SoundManager__12:playSound(l__GameSound__13.BALLOON_POP, {
 				position = v14
 			});
-			l__TweenService__15:Create(p7.inflatedBalloon.Balloon, TweenInfo.new(0.3), {
+			l__TweenService__14:Create(p7.inflatedBalloon.Balloon, TweenInfo.new(0.3), {
 				Size = Vector3.new(0, 0, 0)
 			}):Play();
 			v1.Promise.delay(0.1):andThen(function()
-				l__TweenService__15:Create(p7.inflatedBalloon.Balloon, TweenInfo.new(0.2), {
+				l__TweenService__14:Create(p7.inflatedBalloon.Balloon, TweenInfo.new(0.2), {
 					Transparency = 1
 				}):Play();
 			end);
-			l__TweenService__15:Create(p7.inflatedBalloon.RopeConstraint, TweenInfo.new(0.3), {
+			l__TweenService__14:Create(p7.inflatedBalloon.RopeConstraint, TweenInfo.new(0.3), {
 				Thickness = 0
 			}):Play();
 		end);
 	end);
-	l__WatchCharacter__16(function(p8, p9, p10)
+	l__WatchCharacter__15(function(p8, p9, p10)
 		local v15 = p2.balloonRootsFolder:WaitForChild("BalloonRoot:" .. p8.Name);
 		local l__Attachment__16 = v15:WaitForChild("Attachment");
-		l__GameQueryUtil__17:setQueryIgnored(v15, true);
+		l__GameQueryUtil__16:setQueryIgnored(v15, true);
 		p10:GiveTask(function()
 			v15:Destroy();
 		end);
-		l__RunService__6:BindToRenderStep("inflated-balloon:" .. p8.Name, Enum.RenderPriority.Character.Value, function(p11)
+		l__RunService__5:BindToRenderStep("inflated-balloon:" .. p8.Name, Enum.RenderPriority.Character.Value, function(p11)
 			local v17 = p9;
 			if v17 ~= nil then
 				v17 = v17:FindFirstChild("UpperTorso");
@@ -131,19 +135,19 @@ function u1.KnitStart(p2)
 			end;
 		end);
 		p10:GiveTask(function()
-			l__RunService__6:UnbindFromRenderStep("inflated-balloon:" .. p8.Name);
+			l__RunService__5:UnbindFromRenderStep("inflated-balloon:" .. p8.Name);
 		end);
-		p10:GiveTask(l__CollectionService__18:GetInstanceAddedSignal("InflatedBalloon:" .. p8.Name):Connect(function(p12)
+		p10:GiveTask(l__CollectionService__17:GetInstanceAddedSignal("InflatedBalloon:" .. p8.Name):Connect(function(p12)
 			p2:hookBalloon(p8, l__Attachment__16, p12);
 			local v18 = nil;
-			if p12:GetAttribute("BalloonOwner") ~= l__Players__9.LocalPlayer.UserId then
+			if p12:GetAttribute("BalloonOwner") ~= l__Players__8.LocalPlayer.UserId then
 				v18 = p12.Balloon.Position;
 			end;
-			l__SoundManager__13:playSound(l__GameSound__14.BALLOON_INFLATE, {
+			l__SoundManager__12:playSound(l__GameSound__13.BALLOON_INFLATE, {
 				position = v18
 			});
 		end));
-		if p8 == l__Players__9.LocalPlayer then
+		if p8 == l__Players__8.LocalPlayer then
 			p9:GetAttributeChangedSignal("InflatedBalloons"):Connect(function()
 				local v19 = p9:GetAttribute("InflatedBalloons");
 				if v19 > 0 and not p2.balloonPhysicsEnabled then
@@ -164,20 +168,20 @@ end;
 function u1.hookBalloon(p13, p14, p15, p16)
 	local l__RopeConstraint__20 = p16:WaitForChild("RopeConstraint");
 	l__RopeConstraint__20.Attachment0 = p15;
-	if p14 == l__Players__9.LocalPlayer then
+	if p14 == l__Players__8.LocalPlayer then
 		l__RopeConstraint__20.Attachment1 = p16.Balloon.Attachment;
 		return;
 	end;
-	local v21 = u4("Part", {
+	local v21 = u3("Part", {
 		CanCollide = false, 
 		Anchored = true, 
 		Transparency = 1, 
 		Parent = p13.clientBalloonHookFolder
 	});
-	local v22 = u4("Attachment", {
+	local v22 = u3("Attachment", {
 		Parent = v21
 	});
-	l__GameQueryUtil__17:setQueryIgnored(v21, true);
+	l__GameQueryUtil__16:setQueryIgnored(v21, true);
 	p13.clientBalloonAttachment[p16] = v21;
 	l__RopeConstraint__20.Attachment1 = v22;
 end;
@@ -186,9 +190,10 @@ function u1.dropTNT(p17)
 		return false;
 	end;
 	p17.lastTntDrop = tick();
-	l__default__12.Client:Get("RemoteName"):SendToServer();
+	l__default__11.Client:Get("RemoteName"):SendToServer();
 	return true;
 end;
+local l__KnitClient__18 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local u19 = v2.ConstantManager.registerConstants(script, {
 	DragConstant = 4.5
 });
@@ -218,25 +223,25 @@ function u1.enableBalloonPhysics(p18, p19)
 			end;
 		end;
 	end);
-	local u28 = u3.new();
+	local u28 = u2.new();
 	p18.balloonPhysicsMaid:GiveTask(l__Humanoid__23.StateChanged:Connect(function(p20, p21)
 		if p21 ~= Enum.HumanoidStateType.Freefall then
 			u28:DoCleaning();
 			return;
 		end;
-		u28:GiveTask((l__KnitClient__3.Controllers.SprintController:getMovementStatusModifier():addModifier({
+		u28:GiveTask((l__KnitClient__18.Controllers.SprintController:getMovementStatusModifier():addModifier({
 			constantSpeedMultiplier = 0.65
 		})));
 	end));
 	if l__Humanoid__23:GetState() == Enum.HumanoidStateType.Freefall then
-		u28:GiveTask((l__KnitClient__3.Controllers.SprintController:getMovementStatusModifier():addModifier({
+		u28:GiveTask((l__KnitClient__18.Controllers.SprintController:getMovementStatusModifier():addModifier({
 			constantSpeedMultiplier = 0.65
 		})));
 	end;
 	p18.balloonPhysicsMaid:GiveTask(function()
 		u28:DoCleaning();
 	end);
-	local u29 = l__RunService__6.Stepped:Connect(function(p22)
+	local u29 = l__RunService__5.Stepped:Connect(function(p22)
 		local v25 = nil;
 		local v26 = p19;
 		if v26 ~= nil then
@@ -255,13 +260,13 @@ function u1.enableBalloonPhysics(p18, p19)
 		else
 			v28 = 0.85;
 		end;
-		v25 = Vector3.new(0, math.max(0, (l__Workspace__5.Gravity * v28 - math.pow((p19.PrimaryPart.AssemblyLinearVelocity * Vector3.new(0, 1, 0)).Magnitude, 2) / 2 * u19.DragConstant * math.sign(p19.PrimaryPart.AssemblyLinearVelocity.Y) / 13) * p19.PrimaryPart.AssemblyMass), 0);
+		v25 = Vector3.new(0, math.max(0, (l__Workspace__4.Gravity * v28 - math.pow((p19.PrimaryPart.AssemblyLinearVelocity * Vector3.new(0, 1, 0)).Magnitude, 2) / 2 * u19.DragConstant * math.sign(p19.PrimaryPart.AssemblyLinearVelocity.Y) / 13) * p19.PrimaryPart.AssemblyMass), 0);
 		local l__BalloonForce__29 = p19.PrimaryPart:FindFirstChild("BalloonForce");
 		if l__BalloonForce__29 then
 			l__BalloonForce__29.Force = v25;
 			return;
 		end;
-		local v30 = u4("BodyForce", {
+		local v30 = u3("BodyForce", {
 			Name = "BalloonForce", 
 			Force = v25, 
 			Parent = p19.PrimaryPart
@@ -307,7 +312,7 @@ function u1.enableBalloonPhysics(p18, p19)
 	v31[v32 + 2] = u21.createElement(l__MobileButton__24, v33);
 	local u30 = u21.mount(u21.createElement("ScreenGui", {
 		ResetOnSpawn = false
-	}, v31), l__Players__9.LocalPlayer:WaitForChild("PlayerGui"));
+	}, v31), l__Players__8.LocalPlayer:WaitForChild("PlayerGui"));
 	p18.balloonPhysicsMaid:GiveTask(function()
 		u21.unmount(u30);
 	end);
@@ -318,24 +323,24 @@ function u1.inflateBalloon(p23)
 	if l__Flamework__25.resolveDependency("@easy-games/game-core:client/controllers/cooldown/cooldown-controller@CooldownController"):isOnCooldown(l__CooldownId__31.BALLOON) then
 		return nil;
 	end;
-	l__KnitClient__3.Controllers.ViewmodelController:playAnimation(l__AnimationType__32.FP_USE_ITEM);
-	l__default__12.Client:Get("RemoteName"):SendToServer();
+	l__KnitClient__18.Controllers.ViewmodelController:playAnimation(l__AnimationType__32.FP_USE_ITEM);
+	l__default__11.Client:Get("RemoteName"):SendToServer();
 end;
 function u1.deflateBalloon(p24)
-	l__KnitClient__3.Controllers.ViewmodelController:playAnimation(l__AnimationType__32.FP_USE_ITEM);
-	l__default__12.Client:Get("RemoteName"):SendToServer();
+	l__KnitClient__18.Controllers.ViewmodelController:playAnimation(l__AnimationType__32.FP_USE_ITEM);
+	l__default__11.Client:Get("RemoteName"):SendToServer();
 end;
 function u1.isRelevantItem(p25, p26)
-	return p26.itemType == l__ItemType__11.BALLOON;
+	return p26.itemType == l__ItemType__10.BALLOON;
 end;
 function u1.onEnable(p27, p28)
-	l__ContextActionService__8:BindAction("inflate-balloon", function(p29, p30, p31)
+	l__ContextActionService__7:BindAction("inflate-balloon", function(p29, p30, p31)
 		if p30 == Enum.UserInputState.Begin then
 			p27:inflateBalloon();
 		end;
 	end, false, Enum.UserInputType.MouseButton1);
 	p27.maid:GiveTask(function()
-		l__ContextActionService__8:UnbindAction("inflate-balloon");
+		l__ContextActionService__7:UnbindAction("inflate-balloon");
 	end);
 	if l__DeviceUtil__20.isMobileControls() then
 		p27:setupYield(function()
@@ -347,7 +352,7 @@ function u1.onEnable(p27, p28)
 					OnClick = function()
 						p27:inflateBalloon();
 					end
-				}) }), l__Players__9.LocalPlayer:WaitForChild("PlayerGui"));
+				}) }), l__Players__8.LocalPlayer:WaitForChild("PlayerGui"));
 			return function()
 				u21.unmount(u33);
 			end;
@@ -357,10 +362,8 @@ end;
 function u1.onDisable(p32)
 	p32.maid:DoCleaning();
 end;
-u2 = l__KnitClient__3.CreateController;
-u1 = u1.new;
-u2 = u2(u1());
-u1 = {
+u1 = l__KnitClient__18.CreateController;
+u1 = u1(u1.new());
+return {
 	Constants = u19
 };
-return u1;

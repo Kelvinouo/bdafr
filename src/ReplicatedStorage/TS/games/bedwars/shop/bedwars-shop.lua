@@ -20,92 +20,134 @@ local u4 = v2.import(script, v2.getModule(script, "@rbxts", "object-utils"));
 function v11.getShopItem(p1, p2)
 	if not u1 then
 		u1 = {};
-		for v12, v13 in ipairs(u2) do
-			u1[v13.itemType] = v13;
+		local v12, v13, v14 = ipairs(u2);
+		while true do
+			v12(v13, v14);
+			if not v12 then
+				break;
+			end;
+			v14 = v12;
+			u1[v13.itemType] = v13;		
 		end;
 	end;
-	local v14 = u1[p1];
+	local v15 = u1[p1];
 	if p2 then
-		for v15, v16 in ipairs(l__BedwarsShopOverrides__3) do
-			if v16:shouldApply(p2) then
-				local v17 = nil;
-				for v18, v19 in ipairs((v16:getOverride())) do
-					if v19.itemType == p1 == true then
-						v17 = v19;
+		local v16, v17, v18 = ipairs(l__BedwarsShopOverrides__3);
+		while true do
+			v16(v17, v18);
+			if not v16 then
+				break;
+			end;
+			v18 = v16;
+			if v17:shouldApply(p2) then
+				local v19 = nil;
+				local v20, v21, v22 = ipairs((v17:getOverride()));
+				while true do
+					v20(v21, v22);
+					if not v20 then
 						break;
 					end;
+					v22 = v20;
+					if v21.itemType == p1 == true then
+						v19 = v21;
+						break;
+					end;				
 				end;
-				if v17 then
-					if v14 then
-						for v20, v21 in ipairs(u4.keys(v17)) do
-							v14[v21] = v17[v21];
+				if v19 then
+					if v15 then
+						local v23, v24, v25 = ipairs(u4.keys(v19));
+						while true do
+							v23(v24, v25);
+							if not v23 then
+								break;
+							end;
+							v25 = v23;
+							v15[v24] = v19[v24];						
 						end;
 					else
-						v14 = v17;
+						v15 = v19;
 					end;
 				end;
-			end;
+			end;		
 		end;
 	end;
-	return v14;
+	return v15;
 end;
 local l__Workspace__5 = v2.import(script, v2.getModule(script, "@rbxts", "services")).Workspace;
 function v11.getShop(p3)
-	local v22 = nil;
-	for v23, v24 in ipairs(l__BedwarsShopOverrides__3) do
-		if v24:shouldApply(p3) then
-			if not v22 then
-				v22 = u4.deepCopy(u2);
+	local v26 = nil;
+	local v27, v28, v29 = ipairs(l__BedwarsShopOverrides__3);
+	while true do
+		v27(v28, v29);
+		if not v27 then
+			break;
+		end;
+		v29 = v27;
+		if v28:shouldApply(p3) then
+			if not v26 then
+				v26 = u4.deepCopy(u2);
 			end;
-			local v25, v26, v27 = ipairs(v24:getOverride());
+			local v30, v31, v32 = ipairs(v28:getOverride());
 			while true do
-				local v28, v29 = v25(v26, v27);
-				if not v28 then
+				v30(v31, v32);
+				if not v30 then
 					break;
 				end;
-				local v30 = nil;
-				for v31, v32 in ipairs(v22) do
-					if v32.itemType == v29.itemType == true then
-						v30 = v32;
+				local v33 = nil;
+				local v34, v35, v36 = ipairs(v26);
+				while true do
+					v34(v35, v36);
+					if not v34 then
 						break;
 					end;
+					v36 = v34;
+					if v35.itemType == v31.itemType == true then
+						v33 = v35;
+						break;
+					end;				
 				end;
-				if v30 then
-					for v33, v34 in ipairs(u4.keys(v29)) do
-						v30[v34] = v29[v34];
+				if v33 then
+					local v37, v38, v39 = ipairs(u4.keys(v31));
+					while true do
+						v37(v38, v39);
+						if not v37 then
+							break;
+						end;
+						v39 = v37;
+						v33[v38] = v31[v38];					
 					end;
 				else
-					table.insert(v22, v29);
+					table.insert(v26, v31);
 				end;			
 			end;
-		end;
+		end;	
 	end;
-	local v35 = v22 or u2;
-	local v36 = l__Workspace__5:GetAttribute("QueueType");
-	if v36 then
-		local v37 = {};
-		local v38 = 0;
-		local v39, v40, v41 = ipairs(v35);
+	local v40 = v26 or u2;
+	local v41 = l__Workspace__5:GetAttribute("QueueType");
+	if v41 then
+		local v42 = {};
+		local v43 = 0;
+		local v44, v45, v46 = ipairs(v40);
 		while true do
-			local v42, v43 = v39(v40, v41);
-			if not v42 then
+			v44(v45, v46);
+			if not v44 then
 				break;
 			end;
-			if v43.disabledInQueue and table.find(v43.disabledInQueue, v36) ~= nil then
-				local v44 = false;
-			elseif v43.enabledOnlyInQueue and table.find(v43.enabledOnlyInQueue, v36) == nil then
-				v44 = false;
+			if v45.disabledInQueue and table.find(v45.disabledInQueue, v41) ~= nil then
+				local v47 = false;
+			elseif v45.enabledOnlyInQueue and table.find(v45.enabledOnlyInQueue, v41) == nil then
+				v47 = false;
 			else
-				v44 = true;
+				v47 = true;
 			end;
-			if v44 == true then
-				v38 = v38 + 1;
-				v37[v38] = v43;
+			if v47 == true then
+				v43 = v43 + 1;
+				v42[v43] = v45;
 			end;		
 		end;
-		v35 = v37;
+		v40 = v42;
 	end;
-	return v35;
+	return v40;
 end;
 local l__ItemType__6 = v2.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
 function v11.getTeamGeneratorUpgradeCost(p4)
@@ -175,13 +217,15 @@ u2 = { {
 		amount = 4, 
 		price = 18, 
 		currency = l__ItemType__6.IRON, 
-		category = l__BedwarsShopItemCategory__9.Blocks
+		category = l__BedwarsShopItemCategory__9.Blocks, 
+		disabledInQueue = { l__QueueType__4.TNT_WARS }
 	}, {
 		itemType = l__ItemType__6.OBSIDIAN, 
 		amount = 4, 
 		price = 4, 
 		currency = l__ItemType__6.EMERALD, 
-		category = l__BedwarsShopItemCategory__9.Blocks
+		category = l__BedwarsShopItemCategory__9.Blocks, 
+		disabledInQueue = { l__QueueType__4.TNT_WARS }
 	}, {
 		itemType = l__ItemType__6.STONE_SWORD, 
 		amount = 1, 
@@ -189,7 +233,8 @@ u2 = { {
 		currency = l__ItemType__6.IRON, 
 		lockAfterPurchase = true, 
 		ignoredByKit = { l__BedwarsKit__6.BARBARIAN, l__BedwarsKit__6.DASHER }, 
-		category = l__BedwarsShopItemCategory__9.Combat
+		category = l__BedwarsShopItemCategory__9.Combat, 
+		disabledInQueue = { l__QueueType__4.TNT_WARS }
 	}, {
 		itemType = l__ItemType__6.IRON_SWORD, 
 		amount = 1, 
@@ -197,7 +242,8 @@ u2 = { {
 		currency = l__ItemType__6.IRON, 
 		lockAfterPurchase = true, 
 		ignoredByKit = { l__BedwarsKit__6.BARBARIAN, l__BedwarsKit__6.DASHER }, 
-		category = l__BedwarsShopItemCategory__9.Combat
+		category = l__BedwarsShopItemCategory__9.Combat, 
+		disabledInQueue = { l__QueueType__4.TNT_WARS }
 	}, {
 		itemType = l__ItemType__6.DIAMOND_SWORD, 
 		amount = 1, 
@@ -205,7 +251,8 @@ u2 = { {
 		currency = l__ItemType__6.EMERALD, 
 		lockAfterPurchase = true, 
 		ignoredByKit = { l__BedwarsKit__6.BARBARIAN, l__BedwarsKit__6.DASHER, l__BedwarsKit__6.EMBER, l__BedwarsKit__6.LUMEN }, 
-		category = l__BedwarsShopItemCategory__9.Armory
+		category = l__BedwarsShopItemCategory__9.Armory, 
+		disabledInQueue = { l__QueueType__4.TNT_WARS }
 	}, {
 		itemType = l__ItemType__6.EMERALD_SWORD, 
 		amount = 1, 
@@ -213,6 +260,25 @@ u2 = { {
 		currency = l__ItemType__6.EMERALD, 
 		lockAfterPurchase = true, 
 		ignoredByKit = { l__BedwarsKit__6.BARBARIAN, l__BedwarsKit__6.ICE_QUEEN, l__BedwarsKit__6.DASHER, l__BedwarsKit__6.EMBER, l__BedwarsKit__6.LUMEN }, 
+		category = l__BedwarsShopItemCategory__9.Armory, 
+		disabledInQueue = { l__QueueType__4.TNT_WARS }
+	}, {
+		itemType = l__ItemType__6.ROCKET_BELT, 
+		amount = 1, 
+		price = 4, 
+		currency = l__ItemType__6.EMERALD, 
+		category = l__BedwarsShopItemCategory__9.Armory
+	}, {
+		itemType = l__ItemType__6.TURTLE_BACKPACK, 
+		amount = 1, 
+		price = 4, 
+		currency = l__ItemType__6.EMERALD, 
+		category = l__BedwarsShopItemCategory__9.Armory
+	}, {
+		itemType = l__ItemType__6.HEALING_BACKPACK, 
+		amount = 1, 
+		price = 4, 
+		currency = l__ItemType__6.EMERALD, 
 		category = l__BedwarsShopItemCategory__9.Armory
 	}, {
 		itemType = l__ItemType__6.VOID_SWORD, 
@@ -413,7 +479,7 @@ u2 = { {
 	}, {
 		itemType = l__ItemType__6.LASSO, 
 		amount = 1, 
-		price = 40, 
+		price = 30, 
 		currency = l__ItemType__6.IRON, 
 		lockAfterPurchase = true, 
 		requiresKit = { l__BedwarsKit__6.COWGIRL }, 
@@ -633,7 +699,8 @@ u2 = { {
 		lockAfterPurchase = true, 
 		spawnWithItems = { l__ItemType__6.WOOD_CROSSBOW }, 
 		category = l__BedwarsShopItemCategory__9.Armory, 
-		ignoredByKit = { l__BedwarsKit__6.ARCHER }
+		ignoredByKit = { l__BedwarsKit__6.ARCHER }, 
+		disabledInQueue = { l__QueueType__4.TNT_WARS }
 	}, {
 		itemType = l__ItemType__6.TACTICAL_CROSSBOW, 
 		amount = 1, 
@@ -642,6 +709,13 @@ u2 = { {
 		lockAfterPurchase = true, 
 		spawnWithItems = { l__ItemType__6.TACTICAL_CROSSBOW }, 
 		requiresKit = { l__BedwarsKit__6.ARCHER }, 
+		category = l__BedwarsShopItemCategory__9.Armory, 
+		disabledInQueue = { l__QueueType__4.TNT_WARS }
+	}, {
+		itemType = l__ItemType__6.DETONATED_BOMB, 
+		amount = 1, 
+		price = 1, 
+		currency = l__ItemType__6.EMERALD, 
 		category = l__BedwarsShopItemCategory__9.Armory
 	}, {
 		itemType = l__ItemType__6.TENNIS_RACKET, 
@@ -654,7 +728,8 @@ u2 = { {
 		additionalItems = { {
 				itemType = l__ItemType__6.TENNIS_BALL, 
 				amount = 4
-			} }
+			} }, 
+		disabledInQueue = { l__QueueType__4.TNT_WARS }
 	}, {
 		itemType = l__ItemType__6.ARROW, 
 		amount = 8, 
@@ -672,14 +747,16 @@ u2 = { {
 		amount = 1, 
 		price = 1, 
 		currency = l__ItemType__6.EMERALD, 
-		category = l__BedwarsShopItemCategory__9.Combat
+		category = l__BedwarsShopItemCategory__9.Combat, 
+		disabledInQueue = { l__QueueType__4.TNT_WARS }
 	}, {
 		itemType = l__ItemType__6.TENNIS_BALL, 
 		amount = 1, 
 		price = 40, 
 		currency = l__ItemType__6.IRON, 
 		category = l__BedwarsShopItemCategory__9.Armory, 
-		limitedTimeItem = true
+		limitedTimeItem = true, 
+		disabledInQueue = { l__QueueType__4.TNT_WARS }
 	}, {
 		itemType = l__ItemType__6.SANTA_BOMB, 
 		amount = 1, 
@@ -695,7 +772,8 @@ u2 = { {
 		currency = l__ItemType__6.IRON, 
 		lockAfterPurchase = true, 
 		spawnWithItems = { l__ItemType__6.SHEARS }, 
-		category = l__BedwarsShopItemCategory__9.Tools
+		category = l__BedwarsShopItemCategory__9.Tools, 
+		disabledInQueue = { l__QueueType__4.TNT_WARS }
 	}, {
 		itemType = l__ItemType__6.STONE_PICKAXE, 
 		amount = 1, 
@@ -736,7 +814,8 @@ u2 = { {
 		nextTier = l__ItemType__6.STONE_AXE, 
 		spawnWithItems = { l__ItemType__6.WOOD_AXE }, 
 		category = l__BedwarsShopItemCategory__9.Tools, 
-		ignoredByKit = { l__BedwarsKit__6.MINER }
+		ignoredByKit = { l__BedwarsKit__6.MINER }, 
+		disabledInQueue = { l__QueueType__4.TNT_WARS }
 	}, {
 		itemType = l__ItemType__6.STONE_AXE, 
 		amount = 1, 
@@ -748,7 +827,8 @@ u2 = { {
 		nextTier = l__ItemType__6.IRON_AXE, 
 		spawnWithItems = { l__ItemType__6.STONE_AXE }, 
 		category = l__BedwarsShopItemCategory__9.Tools, 
-		ignoredByKit = { l__BedwarsKit__6.MINER }
+		ignoredByKit = { l__BedwarsKit__6.MINER }, 
+		disabledInQueue = { l__QueueType__4.TNT_WARS }
 	}, {
 		itemType = l__ItemType__6.IRON_AXE, 
 		amount = 1, 
@@ -760,7 +840,8 @@ u2 = { {
 		nextTier = l__ItemType__6.DIAMOND_AXE, 
 		spawnWithItems = { l__ItemType__6.IRON_AXE }, 
 		category = l__BedwarsShopItemCategory__9.Tools, 
-		ignoredByKit = { l__BedwarsKit__6.MINER }
+		ignoredByKit = { l__BedwarsKit__6.MINER }, 
+		disabledInQueue = { l__QueueType__4.TNT_WARS }
 	}, {
 		itemType = l__ItemType__6.DIAMOND_AXE, 
 		amount = 1, 
@@ -771,7 +852,8 @@ u2 = { {
 		prevTier = l__ItemType__6.IRON_AXE, 
 		spawnWithItems = { l__ItemType__6.DIAMOND_AXE }, 
 		category = l__BedwarsShopItemCategory__9.Tools, 
-		ignoredByKit = { l__BedwarsKit__6.MINER }
+		ignoredByKit = { l__BedwarsKit__6.MINER }, 
+		disabledInQueue = { l__QueueType__4.TNT_WARS }
 	}, {
 		itemType = l__ItemType__6.HAMMER, 
 		amount = 1, 
@@ -804,37 +886,24 @@ u2 = { {
 	}, {
 		itemType = l__ItemType__6.TESLA_TRAP, 
 		amount = 1, 
-		price = 50, 
+		price = 60, 
 		currency = l__ItemType__6.IRON, 
 		category = l__BedwarsShopItemCategory__9.Blocks, 
-		disabledInQueue = { l__QueueType__4.SURVIVAL }
+		disabledInQueue = { l__QueueType__4.SURVIVAL, l__QueueType__4.TNT_WARS }
 	}, {
 		itemType = l__ItemType__6.STOPWATCH, 
 		amount = 1, 
 		price = 2, 
 		currency = l__ItemType__6.EMERALD, 
-		category = l__BedwarsShopItemCategory__9.Combat
+		category = l__BedwarsShopItemCategory__9.Combat, 
+		disabledInQueue = { l__QueueType__4.TNT_WARS }
 	}, {
 		itemType = l__ItemType__6.SNOWBALL, 
 		amount = 8, 
 		price = 16, 
 		currency = l__ItemType__6.IRON, 
-		category = l__BedwarsShopItemCategory__9.Combat
-	}, {
-		itemType = l__ItemType__6.ATTACK_HELICOPTER_DEPLOY, 
-		amount = 1, 
-		price = 20, 
-		currency = l__ItemType__6.EMERALD, 
 		category = l__BedwarsShopItemCategory__9.Combat, 
-		disabledInQueue = { l__QueueType__4.SURVIVAL }
-	}, {
-		itemType = l__ItemType__6.GRAPPLING_HOOK, 
-		amount = 1, 
-		price = 4, 
-		currency = l__ItemType__6.EMERALD, 
-		category = l__BedwarsShopItemCategory__9.Combat, 
-		limitedTimeItem = true, 
-		disabledInQueue = { l__QueueType__4.FLAG_CAPTURE, l__QueueType__4.SURVIVAL }
+		disabledInQueue = { l__QueueType__4.TNT_WARS }
 	}, {
 		itemType = l__ItemType__6.TEAM_DOOR, 
 		amount = 1, 
@@ -865,7 +934,7 @@ u2 = { {
 		enabledOnlyInQueue = { l__QueueType__4.SURVIVAL }
 	} };
 v11.ShopItems = u2;
-local v45 = {
+local v48 = {
 	id = l__TeamUpgradeId__10.ARMORY, 
 	name = "Armory", 
 	image = l__ImageId__3.HELMET_SOLID, 
@@ -877,25 +946,31 @@ local v45 = {
 			currency = l__ItemType__6.DIAMOND
 		} }
 };
-local v46 = {};
-local v47 = 0;
-local v48, v49, v50 = ipairs(u2);
+local v49 = {};
+local v50 = 0;
+local v51, v52, v53 = ipairs(u2);
 while true do
-	local v51, v52 = v48(v49, v50);
+	v51(v52, v53);
 	if not v51 then
 		break;
 	end;
 	if v52.category == l__BedwarsShopItemCategory__9.Armory == true then
-		v47 = v47 + 1;
-		v46[v47] = v52;
+		v50 = v50 + 1;
+		v49[v50] = v52;
 	end;
 end;
-local v53 = table.create(#v46);
-for v54, v55 in ipairs(v46) do
-	v53[v54] = v55.itemType;
+local v54 = table.create(#v49);
+local v55, v56, v57 = ipairs(v49);
+while true do
+	v55(v56, v57);
+	if not v55 then
+		break;
+	end;
+	v57 = v55;
+	v54[v55] = v56.itemType;
 end;
-v45.items = v53;
-local v56 = { {
+v48.items = v54;
+local v58 = { {
 		id = l__TeamUpgradeId__10.GENERATOR, 
 		name = "Team Generator", 
 		image = "rbxassetid://6821007175", 
@@ -965,14 +1040,19 @@ local v56 = { {
 		image = "rbxassetid://6822443323", 
 		menuPosition = "main", 
 		tiers = { {
-				name = "Tier I: +15% Break Damage", 
+				name = "Tier I: +30% Break Damage", 
 				price = 3, 
 				values = { 15 }, 
 				currency = l__ItemType__6.DIAMOND
 			}, {
-				name = "Tier II: +40% Break Damage", 
+				name = "Tier II: +60% Break Damage", 
 				price = 6, 
-				values = { 40 }, 
+				values = { 60 }, 
+				currency = l__ItemType__6.DIAMOND
+			}, {
+				name = "Tier II: +100% Break Damage", 
+				price = 10, 
+				values = { 100 }, 
 				currency = l__ItemType__6.DIAMOND
 			} }
 	}, {
@@ -1007,22 +1087,21 @@ local v56 = { {
 				values = { 1 }, 
 				currency = l__ItemType__6.DIAMOND
 			} }
-	}, v45 };
-v11.TeamUpgrades = v56;
-local v57 = {};
-local v58 = 0;
-local v59, v60, v61 = ipairs(v56);
+	}, v48 };
+v11.TeamUpgrades = v58;
+local v59 = {};
+local v60 = 0;
+local v61, v62, v63 = ipairs(v58);
 while true do
-	local v62, v63 = v59(v60, v61);
-	if not v62 then
+	v61(v62, v63);
+	if not v61 then
 		break;
 	end;
-	if v63.items ~= nil == true then
-		v58 = v58 + 1;
-		v57[v58] = v63;
+	if v62.items ~= nil == true then
+		v60 = v60 + 1;
+		v59[v60] = v62;
 	end;
 end;
-v1 = {};
 local function v64(p6, p7)
 	local v65 = {};
 	local v66 = #v65;
@@ -1032,8 +1111,9 @@ local function v64(p6, p7)
 	table.move(l__items__68, 1, #l__items__68, v66 + v67 + 1, v65);
 	return v65;
 end;
-for v69 = 1, #v57 do
-	v1 = v64(v1, v57[v69], v69 - 1, v57);
+v1 = {};
+for v69 = 1, #v59 do
+	v1 = v64(v1, v59[v69], v69 - 1, v59);
 end;
 v11.UnlockableBedwarsShopItems = local v70;
 v11.FlamethrowerUpgrades = { {
@@ -1110,10 +1190,16 @@ v11.FlamethrowerUpgrades = { {
 			} }
 	} };
 function v11.getUpgrade(p8, p9)
-	for v71, v72 in ipairs(p8) do
+	local v71, v72, v73 = ipairs(p8);
+	while true do
+		v71(v72, v73);
+		if not v71 then
+			break;
+		end;
+		v73 = v71;
 		if v72.id == p9 == true then
 			return v72;
-		end;
+		end;	
 	end;
 	return nil;
 end;

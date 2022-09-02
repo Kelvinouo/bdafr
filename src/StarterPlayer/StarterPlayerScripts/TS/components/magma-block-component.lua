@@ -1,4 +1,3 @@
--- Script Hash: 742f1f0e88d0ff845f7be2e59967e92332945f00b2fba81809bb75d2d009028ebc5bc5f65e4e68344b465f200c6cb147
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,7 +13,7 @@ function v2.new(...)
 end;
 local l__EntityUtil__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
 local l__Players__2 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
-local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__DamageType__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "damage", "damage-type").DamageType;
 function v2.constructor(p1, p2)
 	p2.Touched:Connect(function(p3)
@@ -32,7 +31,7 @@ function v2.constructor(p1, p2)
 				v6 = v6:isAlive();
 			end;
 			if v6 then
-				l__KnitClient__3.Controllers.DamageController:requestSelfDamage(math.huge, l__DamageType__4.MAGMA_BLOCK, "69");
+				l__KnitClient__3.Controllers.DamageController:requestSelfDeath(l__DamageType__4.MAGMA_BLOCK);
 			end;
 		end;
 	end);

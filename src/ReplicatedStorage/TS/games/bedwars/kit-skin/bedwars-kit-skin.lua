@@ -38,6 +38,12 @@ v2.YUZI_VICTORIOUS = "yuzi_victorious";
 v1.yuzi_victorious = "YUZI_VICTORIOUS";
 v2.SPIRIT_ASSASSIN_PRISMATIC = "spirit_assassin_prismatic";
 v1.spirit_assassin_prismatic = "SPIRIT_ASSASSIN_PRISMATIC";
+v2.BIGMAN_SPIRIT = "bigman_spirit";
+v1.bigman_spirit = "BIGMAN_SPIRIT";
+v2.DAVEY_GHOST = "davey_ghost";
+v1.davey_ghost = "DAVEY_GHOST";
+v2.HANNAH_GHOST = "hannah_ghost";
+v1.hannah_ghost = "HANNAH_GHOST";
 return {
 	BedwarsKitSkin = v2
 };

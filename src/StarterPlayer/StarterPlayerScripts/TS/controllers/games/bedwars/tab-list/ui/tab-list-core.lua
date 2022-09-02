@@ -1,4 +1,3 @@
--- Script Hash: 78bd9b5c339ef2be5a1cf78087347a72a353ed6185a36c67ebdef23576aca7bae595d63a826caeba714d7f6ec467fbf9
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -16,37 +15,46 @@ return {
 		local v3 = { p1.store.TabList.teams, p1.store.TabList.players, p1.store.TabList.ranks };
 		local v4 = #v3;
 		local v5 = u4.values(p1.store.Bedwars.kills);
-		local function v6(p3)
-			return p3;
+		local v6 = table.create(#v5);
+		local v7, v8, v9 = ipairs(v5);
+		while true do
+			v7(v8, v9);
+			if not v7 then
+				break;
+			end;
+			v9 = v7;
+			v6[v7] = v8;		
 		end;
-		local v7 = table.create(#v5);
-		for v8, v9 in ipairs(v5) do
-			v7[v8] = v6(v9, v8 - 1, v5);
-		end;
-		local v10 = #v7;
-		table.move(v7, 1, v10, v4 + 1, v3);
+		local v10 = #v6;
+		table.move(v6, 1, v10, v4 + 1, v3);
 		local v11 = v4 + v10;
 		local v12 = u4.values(p1.store.Bedwars.finalDeaths);
-		local function v13(p4)
-			return p4;
+		local v13 = table.create(#v12);
+		local v14, v15, v16 = ipairs(v12);
+		while true do
+			v14(v15, v16);
+			if not v14 then
+				break;
+			end;
+			v16 = v14;
+			v13[v14] = v15;		
 		end;
-		local v14 = table.create(#v12);
-		for v15, v16 in ipairs(v12) do
-			v14[v15] = v13(v16, v15 - 1, v12);
-		end;
-		local v17 = #v14;
-		table.move(v14, 1, v17, v11 + 1, v3);
+		local v17 = #v13;
+		table.move(v13, 1, v17, v11 + 1, v3);
 		local v18 = v11 + v17;
 		local v19 = u4.values(p1.store.Bedwars.teamBedAlive);
-		local function v20(p5)
-			return p5;
+		local v20 = table.create(#v19);
+		local v21, v22, v23 = ipairs(v19);
+		while true do
+			v21(v22, v23);
+			if not v21 then
+				break;
+			end;
+			v23 = v21;
+			v20[v21] = v22;		
 		end;
-		local v21 = table.create(#v19);
-		for v22, v23 in ipairs(v19) do
-			v21[v22] = v20(v23, v22 - 1, v19);
-		end;
-		local v24 = #v21;
-		table.move(v21, 1, v24, v18 + 1, v3);
+		local v24 = #v20;
+		table.move(v20, 1, v24, v18 + 1, v3);
 		local v25 = v18 + v24;
 		v3[v25 + 1] = p1.store.Game.earlyLeaves;
 		v3[v25 + 2] = p1.store.Game.matchState;

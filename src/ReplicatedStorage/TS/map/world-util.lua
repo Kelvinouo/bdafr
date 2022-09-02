@@ -19,78 +19,78 @@ local l__Workspace__1 = v2.Workspace;
 function v3.getWorldFromPosition(p2, p3)
 	local v5, v6, v7 = ipairs(l__Workspace__1:WaitForChild("Map"):WaitForChild("Worlds"):GetChildren());
 	while true do
-		local v8, v9 = v5(v6, v7);
-		if not v8 then
+		v5(v6, v7);
+		if not v5 then
 			break;
 		end;
-		local l__Origin__10 = v9:FindFirstChild("Origin");
-		local v11 = l__Origin__10;
-		if v11 ~= nil then
-			v11 = v11:IsA("Vector3Value");
+		local l__Origin__8 = v6:FindFirstChild("Origin");
+		local v9 = l__Origin__8;
+		if v9 ~= nil then
+			v9 = v9:IsA("Vector3Value");
 		end;
-		if v11 then
-			local v12 = l__Origin__10.Value - p3;
-			if math.abs(v12.X) < v3.WORLD_SEPERATION_STUDS / 2 and math.abs(v12.Z) < v3.WORLD_SEPERATION_STUDS / 2 then
-				return v9;
+		if v9 then
+			local v10 = l__Origin__8.Value - p3;
+			if math.abs(v10.X) < v3.WORLD_SEPERATION_STUDS / 2 and math.abs(v10.Z) < v3.WORLD_SEPERATION_STUDS / 2 then
+				return v6;
 			end;
 		end;	
 	end;
 end;
 local l__Players__2 = v2.Players;
 function v3.getPlayersInWorld(p4, p5)
-	local v13 = {};
-	local v14 = 0;
-	local v15, v16, v17 = ipairs((l__Players__2:GetPlayers()));
+	local v11 = {};
+	local v12 = 0;
+	local v13, v14, v15 = ipairs((l__Players__2:GetPlayers()));
 	while true do
-		local v18, v19 = v15(v16, v17);
-		if not v18 then
+		v13(v14, v15);
+		if not v13 then
 			break;
 		end;
-		local v20 = v19.Character;
-		if v20 ~= nil then
-			v20 = v20.PrimaryPart;
+		local v16 = v14.Character;
+		if v16 ~= nil then
+			v16 = v16.PrimaryPart;
 		end;
-		if not v20 then
-			local v21 = false;
+		if not v16 then
+			local v17 = false;
 		else
-			local v22 = p4:getWorldFromPosition(v19.Character.PrimaryPart.Position);
-			if v22 ~= nil then
-				v22 = v22.Name;
+			local v18 = p4:getWorldFromPosition(v14.Character.PrimaryPart.Position);
+			if v18 ~= nil then
+				v18 = v18.Name;
 			end;
-			v21 = v22 == p5;
+			v17 = v18 == p5;
 		end;
-		if v21 == true then
-			v14 = v14 + 1;
-			v13[v14] = v19;
+		if v17 == true then
+			v12 = v12 + 1;
+			v11[v12] = v14;
 		end;	
 	end;
-	return v13;
+	return v11;
 end;
 local l__EntityUtil__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
 function v3.getEntitiesInWorld(p6, p7)
-	local v23 = {};
-	local v24 = 0;
-	local v25, v26, v27 = ipairs((l__EntityUtil__3:getAllEntityInstances()));
+	local v19 = {};
+	local v20 = 0;
+	local v21, v22, v23 = ipairs((l__EntityUtil__3:getAllEntityInstances()));
 	while true do
-		local v28, v29 = v25(v26, v27);
-		if not v28 then
+		v21(v22, v23);
+		if not v21 then
 			break;
 		end;
-		if not v29.PrimaryPart then
-			local v30 = false;
+		if not v22.PrimaryPart then
+			local v24 = false;
 		else
-			local v31 = p6:getWorldFromPosition(v29.PrimaryPart.Position);
-			if v31 ~= nil then
-				v31 = v31.Name;
+			local v25 = p6:getWorldFromPosition(v22.PrimaryPart.Position);
+			if v25 ~= nil then
+				v25 = v25.Name;
 			end;
-			v30 = v31 == p7;
+			v24 = v25 == p7;
 		end;
-		if v30 == true then
-			v24 = v24 + 1;
-			v23[v24] = v29;
+		if v24 == true then
+			v20 = v20 + 1;
+			v19[v20] = v22;
 		end;	
 	end;
-	return v23;
+	return v19;
 end;
 v3.WORLD_SEPERATION_STUDS = 8000;
 return {

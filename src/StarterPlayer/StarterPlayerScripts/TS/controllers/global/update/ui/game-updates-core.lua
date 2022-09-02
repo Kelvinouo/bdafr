@@ -1,4 +1,3 @@
--- Script Hash: 141a1d07868ea4f9ce7e26a44f7ce6f237005cd02bb733f12300e57aecd0b812291c668f3439f570794c571109f0de93
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -24,17 +23,15 @@ return {
 			newUpdates = {}, 
 			oldUpdates = {}
 		};
-		local function v6(p3, p4)
-			if not p4.new then
-				table.insert(p3.oldUpdates, p4);
-				return p3;
+		for v6 = 1, #l__updates__5 do
+			local v7 = l__updates__5[v6];
+			if v7.new then
+				table.insert(v3.newUpdates, v7);
+				u11 = u11 + 1;
+			else
+				table.insert(v3.oldUpdates, v7);
 			end;
-			table.insert(p3.newUpdates, p4);
-			u11 = u11 + 1;
-			return p3;
-		end;
-		for v7 = 1, #l__updates__5 do
-			v3 = v6(v3, l__updates__5[v7], v7 - 1, l__updates__5);
+			v3 = v3;
 		end;
 		local v8 = {
 			AnchorPoint = Vector2.new(0.5, 0.5), 
@@ -64,43 +61,105 @@ return {
 			AnchorPoint = Vector2.new(0.5, 0.5), 
 			Position = UDim2.fromScale(0.5, 0.5), 
 			Size = UDim2.fromScale(1, 1), 
-			ClipsDescendents = false, 
-			Title = "Patch Notes   " .. (function()
-				if u11 == 0 or u11 ~= u11 or not u11 then
-					return "";
-				end;
-				if u11 > 1 then
-					local v14 = "s";
-				else
-					v14 = "";
-				end;
-				return "<font size=\"16\" color=\"" .. l__ColorUtil__1.richTextColor(l__Theme__2.backgroundSuccess) .. "\">" .. tostring(u11) .. " new update" .. v14 .. "</font>";
-			end)()
+			ClipsDescendents = false
 		};
-		local v15 = { u4.createElement("UIListLayout", {
+		if u11 ~= 0 and u11 == u11 and u11 then
+			if u11 > 1 then
+				local v14 = "s";
+			else
+				v14 = "";
+			end;
+			local v15 = "<font size=\"16\" color=\"" .. l__ColorUtil__1.richTextColor(l__Theme__2.backgroundSuccess) .. "\">" .. tostring(u11) .. " new update" .. v14 .. "</font>";
+		else
+			v15 = "";
+		end;
+		v13.Title = "Patch Notes   " .. v15;
+		local v16 = { u4.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
 				VerticalAlignment = Enum.VerticalAlignment.Top, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0, 14)
 			}) };
-		local v16 = {
+		local v17 = {
 			Size = UDim2.new(0.7, -14, 1, 0), 
 			LayoutOrder = 1
 		};
-		local v17 = { u4.createElement("UIListLayout", {
+		local v18 = { u4.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Vertical, 
 				VerticalAlignment = Enum.VerticalAlignment.Top, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0, 12)
 			}) };
-		local l__newUpdates__18 = local v19.newUpdates;
-		local function v20(p5, p6)
+		local l__newUpdates__19 = local v20.newUpdates;
+		local function v21(p3, p4)
 			return u4.createElement(l__Empty__5, {
 				Size = UDim2.fromScale(1, 0), 
 				AutomaticSize = "Y", 
-				LayoutOrder = p6
+				LayoutOrder = p4
+			}, { u4.createElement("UIListLayout", {
+					FillDirection = Enum.FillDirection.Vertical, 
+					VerticalAlignment = Enum.VerticalAlignment.Top, 
+					HorizontalAlignment = Enum.HorizontalAlignment.Left, 
+					SortOrder = Enum.SortOrder.LayoutOrder, 
+					Padding = UDim.new(0, 6)
+				}), u4.createElement(l__GameUpdateCard__6, {
+					store = p1.store, 
+					GameUpdate = p3, 
+					Size = UDim2.fromScale(0.97, 0), 
+					LayoutOrder = 2
+				}) });
+		end;
+		local v22 = table.create(#l__newUpdates__19);
+		local v23, v24, v25 = ipairs(l__newUpdates__19);
+		while true do
+			v23(v24, v25);
+			if not v23 then
+				break;
+			end;
+			v25 = v23;
+			v22[v23] = v21(v24, v23 - 1, l__newUpdates__19);		
+		end;
+		local v26 = {
+			GameUpdateCardsListLayout = u4.createElement("UIListLayout", {
+				FillDirection = Enum.FillDirection.Vertical, 
+				VerticalAlignment = Enum.VerticalAlignment.Top, 
+				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
+				SortOrder = Enum.SortOrder.LayoutOrder, 
+				Padding = UDim.new(0, 12)
+			})
+		};
+		local v27 = #v26;
+		local v28, v29, v30 = ipairs(v22);
+		while true do
+			v28(v29, v30);
+			if not v28 then
+				break;
+			end;
+			v30 = v28;
+			v26[v27 + v28] = v29;		
+		end;
+		local v31 = #v26;
+		v26[v31 + 1] = u4.createElement(l__DividerComponent__7, {
+			LengthScale = 0.97, 
+			BarColor = {
+				Color = Color3.fromRGB(255, 59, 59), 
+				Transparency = 0
+			}, 
+			Text = "YOU'RE ALL CAUGHT UP!", 
+			TextLabel = {
+				Color = Color3.fromRGB(255, 255, 255), 
+				Transparency = 0
+			}, 
+			LayoutOrder = u11 + 1
+		});
+		local l__oldUpdates__32 = v20.oldUpdates;
+		local function v33(p5, p6)
+			return u4.createElement(l__Empty__5, {
+				Size = UDim2.fromScale(1, 0), 
+				AutomaticSize = "Y", 
+				LayoutOrder = u11 + 1 + p6
 			}, { u4.createElement("UIListLayout", {
 					FillDirection = Enum.FillDirection.Vertical, 
 					VerticalAlignment = Enum.VerticalAlignment.Top, 
@@ -114,75 +173,37 @@ return {
 					LayoutOrder = 2
 				}) });
 		end;
-		local v21 = table.create(#l__newUpdates__18);
-		for v22, v23 in ipairs(l__newUpdates__18) do
-			v21[v22] = v20(v23, v22 - 1, l__newUpdates__18);
+		local v34 = table.create(#l__oldUpdates__32);
+		local v35, v36, v37 = ipairs(l__oldUpdates__32);
+		while true do
+			v35(v36, v37);
+			if not v35 then
+				break;
+			end;
+			v37 = v35;
+			v34[v35] = v33(v36, v35 - 1, l__oldUpdates__32);		
 		end;
-		local v24 = {
-			GameUpdateCardsListLayout = u4.createElement("UIListLayout", {
-				FillDirection = Enum.FillDirection.Vertical, 
-				VerticalAlignment = Enum.VerticalAlignment.Top, 
-				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
-				SortOrder = Enum.SortOrder.LayoutOrder, 
-				Padding = UDim.new(0, 12)
-			})
-		};
-		local v25 = #v24;
-		for v26, v27 in ipairs(v21) do
-			v24[v25 + v26] = v27;
+		local v38, v39, v40 = ipairs(v34);
+		while true do
+			v38(v39, v40);
+			if not v38 then
+				break;
+			end;
+			v40 = v38;
+			v26[v31 + 1 + v38] = v39;		
 		end;
-		local v28 = #v24;
-		v24[v28 + 1] = u4.createElement(l__DividerComponent__7, {
-			LengthScale = 0.97, 
-			BarColor = {
-				Color = Color3.fromRGB(255, 59, 59), 
-				Transparency = 0
-			}, 
-			Text = "YOU'RE ALL CAUGHT UP!", 
-			TextLabel = {
-				Color = Color3.fromRGB(255, 255, 255), 
-				Transparency = 0
-			}, 
-			LayoutOrder = u11 + 1
-		});
-		local l__oldUpdates__29 = v19.oldUpdates;
-		local function v30(p7, p8)
-			return u4.createElement(l__Empty__5, {
-				Size = UDim2.fromScale(1, 0), 
-				AutomaticSize = "Y", 
-				LayoutOrder = u11 + 1 + p8
-			}, { u4.createElement("UIListLayout", {
-					FillDirection = Enum.FillDirection.Vertical, 
-					VerticalAlignment = Enum.VerticalAlignment.Top, 
-					HorizontalAlignment = Enum.HorizontalAlignment.Left, 
-					SortOrder = Enum.SortOrder.LayoutOrder, 
-					Padding = UDim.new(0, 6)
-				}), u4.createElement(l__GameUpdateCard__6, {
-					store = p1.store, 
-					GameUpdate = p7, 
-					Size = UDim2.fromScale(0.97, 0), 
-					LayoutOrder = 2
-				}) });
-		end;
-		local v31 = table.create(#l__oldUpdates__29);
-		for v32, v33 in ipairs(l__oldUpdates__29) do
-			v31[v32] = v30(v33, v32 - 1, l__oldUpdates__29);
-		end;
-		for v34, v35 in ipairs(v31) do
-			v24[v28 + 1 + v34] = v35;
-		end;
-		v17[#v17 + 1] = u4.createElement(l__AutoCanvasScrollingFrame__8, {
+		v18[#v18 + 1] = u4.createElement(l__AutoCanvasScrollingFrame__8, {
 			ScrollingFrameProps = {
 				LayoutOrder = 2
 			}
-		}, v24);
-		v15.UpdateContents = u4.createElement(l__Empty__5, v16, v17);
-		v15[#v15 + 1] = u4.createElement(l__GameUpdatePromoCardsList__9, {
+		}, v26);
+		v16.UpdateContents = u4.createElement(l__Empty__5, v17, v18);
+		v16[#v16 + 1] = u4.createElement(l__GameUpdatePromoCardsList__9, {
 			store = p1.store, 
 			Size = UDim2.new(0.3, 0, 1, 0), 
 			LayoutOrder = 2
 		});
-		v10[#v10 + 1] = u4.createElement(l__WidgetComponent__10, v13, v15);
+		v10[#v10 + 1] = u4.createElement(l__WidgetComponent__10, v13, v16);
 		return u4.createElement(l__Empty__5, v8, v10);
 	end)
 };

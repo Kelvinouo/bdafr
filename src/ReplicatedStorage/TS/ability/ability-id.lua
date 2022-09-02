@@ -1,4 +1,3 @@
--- Script Hash: 4548dc07347b9866c92ae0cbd7f3eb033f57899aabe61c42d6d77261306c6c8bacf01ba67df841378c53e31f8a5c2b26
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -21,6 +20,12 @@ v2.DINO_CHARGE = "dino_charge";
 v1.dino_charge = "DINO_CHARGE";
 v2.VOID_TURRET_FIRE = "void_turret_fire";
 v1.void_turret_fire = "VOID_TURRET_FIRE";
+v2.ROCKET_BELT = "ROCKET_BELT";
+v1.ROCKET_BELT = "ROCKET_BELT";
+v2.HEALING_BACKPACK = "HEALING_BACKPACK";
+v1.HEALING_BACKPACK = "HEALING_BACKPACK";
+v2.DETONATE_BOMB = "DETONATE_BOMB";
+v1.DETONATE_BOMB = "DETONATE_BOMB";
 return {
 	AbilityId = v2
 };

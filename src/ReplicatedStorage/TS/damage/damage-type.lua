@@ -46,6 +46,10 @@ v2.WIND = 19;
 v1[19] = "WIND";
 v2.TENNIS_BALL = 20;
 v1[20] = "TENNIS_BALL";
+v2.FROZEN = 21;
+v1[21] = "FROZEN";
+v2.SPIRIT_ASSASSIN_SLASH = 22;
+v1[22] = "SPIRIT_ASSASSIN_SLASH";
 return {
 	DamageType = v2
 };

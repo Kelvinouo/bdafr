@@ -1,4 +1,3 @@
--- Script Hash: e6fc6e976bf329f872bb8033eaaf1613a7598c09ca84da1fe3b31e7a5fddeb2207aa840c832a4339de004983ae26761e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -174,294 +173,290 @@ function v14.SetUpTextBoxEvents(p7, p8, p9, p10)
 			p7:SetChannelTarget(v10.GeneralChannelName);
 		end;
 	end);
-	local function u2(p14)
-		if not p14 and p8.Text == "" then
-			p9.Visible = true;
-			return;
-		end;
-		p9.Visible = false;
-	end;
 	p7.TextBoxConnections.TextBoxFocused = p8.Focused:connect(function()
 		if not p7.UserHasChatOff then
 			p7:CalculateSize();
-			u2(true);
+			p9.Visible = false;
 		end;
 	end);
-	p7.TextBoxConnections.TextBoxFocusLost = p8.FocusLost:connect(function(p15, p16)
+	p7.TextBoxConnections.TextBoxFocusLost = p8.FocusLost:connect(function(p14, p15)
 		p7:CalculateSize();
-		if p16 and p16.KeyCode == Enum.KeyCode.Escape then
+		if p15 and p15.KeyCode == Enum.KeyCode.Escape then
 			p8.Text = "";
 		end;
-		u2(false);
+		if p8.Text ~= "" then
+			p9.Visible = false;
+			return;
+		end;
+		p9.Visible = true;
 	end);
 end;
-function v14.GetTextBox(p17)
-	return p17.TextBox;
+function v14.GetTextBox(p16)
+	return p16.TextBox;
 end;
-function v14.GetMessageModeTextButton(p18)
-	return p18.GuiObjects.MessageModeTextButton;
+function v14.GetMessageModeTextButton(p17)
+	return p17.GuiObjects.MessageModeTextButton;
 end;
-function v14.GetMessageModeTextLabel(p19)
-	return p19:GetMessageModeTextButton();
+function v14.GetMessageModeTextLabel(p18)
+	return p18:GetMessageModeTextButton();
 end;
-function v14.IsFocused(p20)
-	if p20.UserHasChatOff then
+function v14.IsFocused(p19)
+	if p19.UserHasChatOff then
 		return false;
 	end;
-	return p20:GetTextBox():IsFocused();
+	return p19:GetTextBox():IsFocused();
 end;
-function v14.GetVisible(p21)
-	return p21.GuiObject.Visible;
+function v14.GetVisible(p20)
+	return p20.GuiObject.Visible;
 end;
-function v14.CaptureFocus(p22)
-	if not p22.UserHasChatOff then
-		p22:GetTextBox():CaptureFocus();
+function v14.CaptureFocus(p21)
+	if not p21.UserHasChatOff then
+		p21:GetTextBox():CaptureFocus();
 	end;
 end;
-function v14.ReleaseFocus(p23, p24)
-	p23:GetTextBox():ReleaseFocus(p24);
+function v14.ReleaseFocus(p22, p23)
+	p22:GetTextBox():ReleaseFocus(p23);
 end;
-function v14.ResetText(p25)
-	p25:GetTextBox().Text = "";
+function v14.ResetText(p24)
+	p24:GetTextBox().Text = "";
 end;
-function v14.SetText(p26, p27)
-	p26:GetTextBox().Text = p27;
+function v14.SetText(p25, p26)
+	p25:GetTextBox().Text = p26;
 end;
-function v14.GetEnabled(p28)
-	return p28.GuiObject.Visible;
+function v14.GetEnabled(p27)
+	return p27.GuiObject.Visible;
 end;
-function v14.SetEnabled(p29, p30)
-	if p29.UserHasChatOff then
-		p29.GuiObject.Visible = true;
+function v14.SetEnabled(p28, p29)
+	if p28.UserHasChatOff then
+		p28.GuiObject.Visible = true;
 		return;
 	end;
-	p29.GuiObject.Visible = p30;
+	p28.GuiObject.Visible = p29;
 end;
-function v14.SetTextLabelText(p31, p32)
-	if not p31.UserHasChatOff then
-		p31.TextLabel.Text = p32;
+function v14.SetTextLabelText(p30, p31)
+	if not p30.UserHasChatOff then
+		p30.TextLabel.Text = p31;
 	end;
 end;
-function v14.SetTextBoxText(p33, p34)
-	p33.TextBox.Text = p34;
+function v14.SetTextBoxText(p32, p33)
+	p32.TextBox.Text = p33;
 end;
-function v14.GetTextBoxText(p35)
-	return p35.TextBox.Text;
+function v14.GetTextBoxText(p34)
+	return p34.TextBox.Text;
 end;
-function v14.ResetSize(p36)
-	p36.TargetYSize = 0;
-	p36:TweenToTargetYSize();
+function v14.ResetSize(p35)
+	p35.TargetYSize = 0;
+	p35:TweenToTargetYSize();
 end;
-local function u3(p37)
-	return l__TextService__5:GetTextSize(p37.Text, p37.TextSize, p37.Font, Vector2.new(p37.AbsoluteSize.X, 10000));
-end;
-function v14.CalculateSize(p38)
-	if p38.CalculatingSizeLock then
+function v14.CalculateSize(p36)
+	if p36.CalculatingSizeLock then
 		return;
 	end;
-	p38.CalculatingSizeLock = true;
-	if p38:IsFocused() or p38.TextBox.Text ~= "" then
-		local v24 = p38.TextBox.TextSize;
-		local v25 = u3(p38.TextBox).Y;
+	p36.CalculatingSizeLock = true;
+	if p36:IsFocused() or p36.TextBox.Text ~= "" then
+		local v24 = p36.TextBox.TextSize;
+		local l__TextBox__25 = p36.TextBox;
+		local v26 = l__TextService__5:GetTextSize(l__TextBox__25.Text, l__TextBox__25.TextSize, l__TextBox__25.Font, Vector2.new(l__TextBox__25.AbsoluteSize.X, 10000)).Y;
 	else
-		v24 = p38.TextLabel.TextSize;
-		v25 = u3(p38.TextLabel).Y;
+		v24 = p36.TextLabel.TextSize;
+		local l__TextLabel__27 = p36.TextLabel;
+		v26 = l__TextService__5:GetTextSize(l__TextLabel__27.Text, l__TextLabel__27.TextSize, l__TextLabel__27.Font, Vector2.new(l__TextLabel__27.AbsoluteSize.X, 10000)).Y;
 	end;
-	local v26 = v25 - v24;
-	if p38.TargetYSize ~= v26 then
-		p38.TargetYSize = v26;
-		p38:TweenToTargetYSize();
+	local v28 = v26 - v24;
+	if p36.TargetYSize ~= v28 then
+		p36.TargetYSize = v28;
+		p36:TweenToTargetYSize();
 	end;
-	p38.CalculatingSizeLock = false;
+	p36.CalculatingSizeLock = false;
 end;
-function v14.TweenToTargetYSize(p39)
-	local v27 = UDim2.new(1, 0, 1, p39.TargetYSize);
-	p39.GuiObject.Size = v27;
-	p39.GuiObject.Size = p39.GuiObject.Size;
-	local u4 = math.min(1, math.abs(p39.GuiObject.AbsoluteSize.Y - p39.GuiObject.AbsoluteSize.Y) * (1 / p39.TweenPixelsPerSecond));
+function v14.TweenToTargetYSize(p37)
+	local v29 = UDim2.new(1, 0, 1, p37.TargetYSize);
+	p37.GuiObject.Size = v29;
+	p37.GuiObject.Size = p37.GuiObject.Size;
+	local u2 = math.min(1, math.abs(p37.GuiObject.AbsoluteSize.Y - p37.GuiObject.AbsoluteSize.Y) * (1 / p37.TweenPixelsPerSecond));
 	if not pcall(function()
-		p39.GuiObject:TweenSize(v27, Enum.EasingDirection.Out, Enum.EasingStyle.Quad, u4, true);
+		p37.GuiObject:TweenSize(v29, Enum.EasingDirection.Out, Enum.EasingStyle.Quad, u2, true);
 	end) then
-		p39.GuiObject.Size = v27;
+		p37.GuiObject.Size = v29;
 	end;
 end;
-function v14.SetTextSize(p40, p41)
-	if not p40:IsInCustomState() then
-		if p40.TextBox then
-			p40.TextBox.TextSize = p41;
+function v14.SetTextSize(p38, p39)
+	if not p38:IsInCustomState() then
+		if p38.TextBox then
+			p38.TextBox.TextSize = p39;
 		end;
-		if p40.TextLabel then
-			p40.TextLabel.TextSize = p41;
+		if p38.TextLabel then
+			p38.TextLabel.TextSize = p39;
 		end;
 	end;
 end;
-function v14.GetDefaultChannelNameColor(p42)
+function v14.GetDefaultChannelNameColor(p40)
 	if not v10.DefaultChannelNameColor then
 		return Color3.fromRGB(35, 76, 142);
 	end;
 	return v10.DefaultChannelNameColor;
 end;
-function v14.SetChannelTarget(p43, p44)
-	local l__MessageModeTextButton__28 = p43.GuiObjects.MessageModeTextButton;
-	local l__TextBox__29 = p43.TextBox;
-	local l__TextLabel__30 = p43.TextLabel;
-	p43.TargetChannel = p44;
-	if not p43:IsInCustomState() then
-		if p44 == v10.GeneralChannelName then
-			l__MessageModeTextButton__28.Text = "";
-			l__MessageModeTextButton__28.Size = UDim2.new(0, 0, 0, 0);
-			l__TextBox__29.Size = UDim2.new(1, 0, 1, 0);
-			l__TextBox__29.Position = UDim2.new(0, 0, 0, 0);
-			l__TextLabel__30.Size = UDim2.new(1, 0, 1, 0);
-			l__TextLabel__30.Position = UDim2.new(0, 0, 0, 0);
+function v14.SetChannelTarget(p41, p42)
+	local l__MessageModeTextButton__30 = p41.GuiObjects.MessageModeTextButton;
+	local l__TextBox__31 = p41.TextBox;
+	local l__TextLabel__32 = p41.TextLabel;
+	p41.TargetChannel = p42;
+	if not p41:IsInCustomState() then
+		if p42 == v10.GeneralChannelName then
+			l__MessageModeTextButton__30.Text = "";
+			l__MessageModeTextButton__30.Size = UDim2.new(0, 0, 0, 0);
+			l__TextBox__31.Size = UDim2.new(1, 0, 1, 0);
+			l__TextBox__31.Position = UDim2.new(0, 0, 0, 0);
+			l__TextLabel__32.Size = UDim2.new(1, 0, 1, 0);
+			l__TextLabel__32.Position = UDim2.new(0, 0, 0, 0);
 			return;
 		end;
 	else
 		return;
 	end;
-	l__MessageModeTextButton__28.Size = UDim2.new(0, 1000, 1, 0);
-	local v31 = p44;
+	l__MessageModeTextButton__30.Size = UDim2.new(0, 1000, 1, 0);
+	local v33 = p42;
 	if u1.tryLocalize then
-		v31 = u1:tryLocalize(p44);
+		v33 = u1:tryLocalize(p42);
 	end;
-	l__MessageModeTextButton__28.Text = string.format("[%s] ", v31);
-	local v32 = p43:GetChannelNameColor(p44);
-	if v32 then
-		l__MessageModeTextButton__28.TextColor3 = v32;
+	l__MessageModeTextButton__30.Text = string.format("[%s] ", v33);
+	local v34 = p41:GetChannelNameColor(p42);
+	if v34 then
+		l__MessageModeTextButton__30.TextColor3 = v34;
 	else
-		l__MessageModeTextButton__28.TextColor3 = p43:GetDefaultChannelNameColor();
+		l__MessageModeTextButton__30.TextColor3 = p41:GetDefaultChannelNameColor();
 	end;
-	local l__X__33 = l__MessageModeTextButton__28.TextBounds.X;
-	l__MessageModeTextButton__28.Size = UDim2.new(0, l__X__33, 1, 0);
-	l__TextBox__29.Size = UDim2.new(1, -l__X__33, 1, 0);
-	l__TextBox__29.Position = UDim2.new(0, l__X__33, 0, 0);
-	l__TextLabel__30.Size = UDim2.new(1, -l__X__33, 1, 0);
-	l__TextLabel__30.Position = UDim2.new(0, l__X__33, 0, 0);
+	local l__X__35 = l__MessageModeTextButton__30.TextBounds.X;
+	l__MessageModeTextButton__30.Size = UDim2.new(0, l__X__35, 1, 0);
+	l__TextBox__31.Size = UDim2.new(1, -l__X__35, 1, 0);
+	l__TextBox__31.Position = UDim2.new(0, l__X__35, 0, 0);
+	l__TextLabel__32.Size = UDim2.new(1, -l__X__35, 1, 0);
+	l__TextLabel__32.Position = UDim2.new(0, l__X__35, 0, 0);
 end;
-function v14.IsInCustomState(p45)
-	return p45.InCustomState;
+function v14.IsInCustomState(p43)
+	return p43.InCustomState;
 end;
-function v14.ResetCustomState(p46)
-	if p46.InCustomState then
-		p46.CustomState:Destroy();
-		p46.CustomState = nil;
-		p46.InCustomState = false;
-		p46.ChatBarParentFrame:ClearAllChildren();
-		p46:CreateGuiObjects(p46.ChatBarParentFrame);
-		p46:SetTextLabelText(u1:Get("GameChat_ChatMain_ChatBarText", "To chat click here or press \"/\" key"));
+function v14.ResetCustomState(p44)
+	if p44.InCustomState then
+		p44.CustomState:Destroy();
+		p44.CustomState = nil;
+		p44.InCustomState = false;
+		p44.ChatBarParentFrame:ClearAllChildren();
+		p44:CreateGuiObjects(p44.ChatBarParentFrame);
+		p44:SetTextLabelText(u1:Get("GameChat_ChatMain_ChatBarText", "To chat click here or press \"/\" key"));
 	end;
 end;
-function v14.EnterWhisperState(p47, p48)
-	p47:ResetCustomState();
+function v14.EnterWhisperState(p45, p46)
+	p45:ResetCustomState();
 	if v12.CustomStateCreator then
-		p47.CustomState = v12.CustomStateCreator(p48, p47.ChatWindow, p47, v10);
-		p47.InCustomState = true;
+		p45.CustomState = v12.CustomStateCreator(p46, p45.ChatWindow, p45, v10);
+		p45.InCustomState = true;
 	else
 		if v10.PlayerDisplayNamesEnabled then
-			local v34 = p48.DisplayName;
+			local v36 = p46.DisplayName;
 		else
-			v34 = p48.Name;
+			v36 = p46.Name;
 		end;
-		p47:SetText("/w " .. v34);
+		p45:SetText("/w " .. v36);
 	end;
-	p47:CaptureFocus();
+	p45:CaptureFocus();
 end;
-function v14.GetCustomMessage(p49)
-	if not p49.InCustomState then
+function v14.GetCustomMessage(p47)
+	if not p47.InCustomState then
 		return nil;
 	end;
-	return p49.CustomState:GetMessage();
+	return p47.CustomState:GetMessage();
 end;
-function v14.CustomStateProcessCompletedMessage(p50, p51)
-	if not p50.InCustomState then
+function v14.CustomStateProcessCompletedMessage(p48, p49)
+	if not p48.InCustomState then
 		return false;
 	end;
-	return p50.CustomState:ProcessCompletedMessage();
+	return p48.CustomState:ProcessCompletedMessage();
 end;
-function v14.FadeOutBackground(p52, p53)
-	p52.AnimParams.Background_TargetTransparency = 1;
+function v14.FadeOutBackground(p50, p51)
+	p50.AnimParams.Background_TargetTransparency = 1;
+	p50.AnimParams.Background_NormalizedExptValue = v11:NormalizedDefaultExptValueInSeconds(p51);
+	p50:FadeOutText(p51);
+end;
+function v14.FadeInBackground(p52, p53)
+	p52.AnimParams.Background_TargetTransparency = 0.6;
 	p52.AnimParams.Background_NormalizedExptValue = v11:NormalizedDefaultExptValueInSeconds(p53);
-	p52:FadeOutText(p53);
+	p52:FadeInText(p53);
 end;
-function v14.FadeInBackground(p54, p55)
-	p54.AnimParams.Background_TargetTransparency = 0.6;
-	p54.AnimParams.Background_NormalizedExptValue = v11:NormalizedDefaultExptValueInSeconds(p55);
-	p54:FadeInText(p55);
+function v14.FadeOutText(p54, p55)
+	p54.AnimParams.Text_TargetTransparency = 1;
+	p54.AnimParams.Text_NormalizedExptValue = v11:NormalizedDefaultExptValueInSeconds(p55);
 end;
-function v14.FadeOutText(p56, p57)
-	p56.AnimParams.Text_TargetTransparency = 1;
+function v14.FadeInText(p56, p57)
+	p56.AnimParams.Text_TargetTransparency = 0.4;
 	p56.AnimParams.Text_NormalizedExptValue = v11:NormalizedDefaultExptValueInSeconds(p57);
 end;
-function v14.FadeInText(p58, p59)
-	p58.AnimParams.Text_TargetTransparency = 0.4;
-	p58.AnimParams.Text_NormalizedExptValue = v11:NormalizedDefaultExptValueInSeconds(p59);
+function v14.AnimGuiObjects(p58)
+	p58.GuiObject.BackgroundTransparency = p58.AnimParams.Background_CurrentTransparency;
+	p58.GuiObjects.TextBoxFrame.BackgroundTransparency = p58.AnimParams.Background_CurrentTransparency;
+	p58.GuiObjects.TextLabel.TextTransparency = p58.AnimParams.Text_CurrentTransparency;
+	p58.GuiObjects.TextBox.TextTransparency = p58.AnimParams.Text_CurrentTransparency;
+	p58.GuiObjects.MessageModeTextButton.TextTransparency = p58.AnimParams.Text_CurrentTransparency;
 end;
-function v14.AnimGuiObjects(p60)
-	p60.GuiObject.BackgroundTransparency = p60.AnimParams.Background_CurrentTransparency;
-	p60.GuiObjects.TextBoxFrame.BackgroundTransparency = p60.AnimParams.Background_CurrentTransparency;
-	p60.GuiObjects.TextLabel.TextTransparency = p60.AnimParams.Text_CurrentTransparency;
-	p60.GuiObjects.TextBox.TextTransparency = p60.AnimParams.Text_CurrentTransparency;
-	p60.GuiObjects.MessageModeTextButton.TextTransparency = p60.AnimParams.Text_CurrentTransparency;
+function v14.InitializeAnimParams(p59)
+	p59.AnimParams.Text_TargetTransparency = 0.4;
+	p59.AnimParams.Text_CurrentTransparency = 0.4;
+	p59.AnimParams.Text_NormalizedExptValue = 1;
+	p59.AnimParams.Background_TargetTransparency = 0.6;
+	p59.AnimParams.Background_CurrentTransparency = 0.6;
+	p59.AnimParams.Background_NormalizedExptValue = 1;
 end;
-function v14.InitializeAnimParams(p61)
-	p61.AnimParams.Text_TargetTransparency = 0.4;
-	p61.AnimParams.Text_CurrentTransparency = 0.4;
-	p61.AnimParams.Text_NormalizedExptValue = 1;
-	p61.AnimParams.Background_TargetTransparency = 0.6;
-	p61.AnimParams.Background_CurrentTransparency = 0.6;
-	p61.AnimParams.Background_NormalizedExptValue = 1;
+function v14.Update(p60, p61)
+	p60.AnimParams.Text_CurrentTransparency = v11:Expt(p60.AnimParams.Text_CurrentTransparency, p60.AnimParams.Text_TargetTransparency, p60.AnimParams.Text_NormalizedExptValue, p61);
+	p60.AnimParams.Background_CurrentTransparency = v11:Expt(p60.AnimParams.Background_CurrentTransparency, p60.AnimParams.Background_TargetTransparency, p60.AnimParams.Background_NormalizedExptValue, p61);
+	p60:AnimGuiObjects();
 end;
-function v14.Update(p62, p63)
-	p62.AnimParams.Text_CurrentTransparency = v11:Expt(p62.AnimParams.Text_CurrentTransparency, p62.AnimParams.Text_TargetTransparency, p62.AnimParams.Text_NormalizedExptValue, p63);
-	p62.AnimParams.Background_CurrentTransparency = v11:Expt(p62.AnimParams.Background_CurrentTransparency, p62.AnimParams.Background_TargetTransparency, p62.AnimParams.Background_NormalizedExptValue, p63);
-	p62:AnimGuiObjects();
-end;
-function v14.SetChannelNameColor(p64, p65, p66)
-	p64.ChannelNameColors[p65] = p66;
-	if p64.GuiObjects.MessageModeTextButton.Text == p65 then
-		p64.GuiObjects.MessageModeTextButton.TextColor3 = p66;
+function v14.SetChannelNameColor(p62, p63, p64)
+	p62.ChannelNameColors[p63] = p64;
+	if p62.GuiObjects.MessageModeTextButton.Text == p63 then
+		p62.GuiObjects.MessageModeTextButton.TextColor3 = p64;
 	end;
 end;
-function v14.GetChannelNameColor(p67, p68)
-	return p67.ChannelNameColors[p68];
+function v14.GetChannelNameColor(p65, p66)
+	return p65.ChannelNameColors[p66];
 end;
-function v1.new(p69, p70)
-	local v35 = setmetatable({}, v14);
-	v35.GuiObject = nil;
-	v35.ChatBarParentFrame = nil;
-	v35.TextBox = nil;
-	v35.TextLabel = nil;
-	v35.GuiObjects = {};
-	v35.eGuiObjectsChanged = Instance.new("BindableEvent");
-	v35.GuiObjectsChanged = v35.eGuiObjectsChanged.Event;
-	v35.TextBoxConnections = {};
-	v35.PreviousText = "";
-	v35.InCustomState = false;
-	v35.CustomState = nil;
-	v35.TargetChannel = nil;
-	v35.CommandProcessor = p69;
-	v35.ChatWindow = p70;
-	v35.TweenPixelsPerSecond = 500;
-	v35.TargetYSize = 0;
-	v35.AnimParams = {};
-	v35.CalculatingSizeLock = false;
-	v35.ChannelNameColors = {};
-	v35.UserHasChatOff = false;
-	v35:InitializeAnimParams();
-	v10.SettingsChanged:connect(function(p71, p72)
-		if p71 == "ChatBarTextSize" then
-			v35:SetTextSize(p72);
+function v1.new(p67, p68)
+	local v37 = setmetatable({}, v14);
+	v37.GuiObject = nil;
+	v37.ChatBarParentFrame = nil;
+	v37.TextBox = nil;
+	v37.TextLabel = nil;
+	v37.GuiObjects = {};
+	v37.eGuiObjectsChanged = Instance.new("BindableEvent");
+	v37.GuiObjectsChanged = v37.eGuiObjectsChanged.Event;
+	v37.TextBoxConnections = {};
+	v37.PreviousText = "";
+	v37.InCustomState = false;
+	v37.CustomState = nil;
+	v37.TargetChannel = nil;
+	v37.CommandProcessor = p67;
+	v37.ChatWindow = p68;
+	v37.TweenPixelsPerSecond = 500;
+	v37.TargetYSize = 0;
+	v37.AnimParams = {};
+	v37.CalculatingSizeLock = false;
+	v37.ChannelNameColors = {};
+	v37.UserHasChatOff = false;
+	v37:InitializeAnimParams();
+	v10.SettingsChanged:connect(function(p69, p70)
+		if p69 == "ChatBarTextSize" then
+			v37:SetTextSize(p70);
 		end;
 	end);
 	coroutine.wrap(function()
-		local v36, v37 = pcall(function()
+		local v38, v39 = pcall(function()
 			return l__Chat__7:CanUserChatAsync(v6.UserId);
 		end);
-		if (v36 and (l__RunService__3:IsStudio() and v37)) == false then
-			v35.UserHasChatOff = true;
-			v35:DoLockChatBar();
+		if (v38 and (l__RunService__3:IsStudio() and v39)) == false then
+			v37.UserHasChatOff = true;
+			v37:DoLockChatBar();
 		end;
 	end)();
-	return v35;
+	return v37;
 end;
 return v1;

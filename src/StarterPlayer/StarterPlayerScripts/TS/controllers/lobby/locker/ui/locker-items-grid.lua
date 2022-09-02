@@ -1,4 +1,3 @@
--- Script Hash: e0625ab5b207453a41dfbe2c08e97b8df65ab962db3b7b5756ed44cf759cec8925950b0994afc3423a0b2da29de022f9
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -80,33 +79,42 @@ return {
 				return v11;
 			end;
 			local v22 = table.create(#v5);
-			for v23, v24 in ipairs(v5) do
-				v22[v23] = v10(v24, v23 - 1, v5);
-			end;
-			local v25 = p1.Elements;
-			if v25 ~= nil then
-				local function v26(p4)
-					return p4.itemEnum == p1.EquippedElement.itemEnum;
+			local v23, v24, v25 = ipairs(v5);
+			while true do
+				v23(v24, v25);
+				if not v23 then
+					break;
 				end;
+				v25 = v23;
+				v22[v23] = v10(v24, v23 - 1, v5);			
+			end;
+			local v26 = p1.Elements;
+			if v26 ~= nil then
 				local v27 = -1;
-				for v28, v29 in ipairs(v25) do
-					if v26(v29, v28 - 1, v25) == true then
-						v27 = v28 - 1;
+				local v28, v29, v30 = ipairs(v26);
+				while true do
+					v28(v29, v30);
+					if not v28 then
 						break;
 					end;
+					v30 = v28;
+					if v29.itemEnum == p1.EquippedElement.itemEnum == true then
+						v27 = v28 - 1;
+						break;
+					end;				
 				end;
-				v25 = v27;
+				v26 = v27;
 			end;
-			local function u14(p5)
+			local function u14(p4)
 				if p1.Tab == l__LockerTab__2.EMOTES then
 					if l__DeviceUtil__3.isHoarceKat() then
 						l__ClientStore__4:dispatch({
 							type = "LockerSetSpray", 
-							spray = p5
+							spray = p4
 						});
 						return;
 					else
-						l__KnitClient__5.Controllers.LockerController:setSpray(p5);
+						l__KnitClient__5.Controllers.LockerController:setSpray(p4);
 						return;
 					end;
 				end;
@@ -114,11 +122,11 @@ return {
 					if l__DeviceUtil__3.isHoarceKat() then
 						l__ClientStore__4:dispatch({
 							type = "LockerSetKillEffect", 
-							killEffect = p5
+							killEffect = p4
 						});
 						return;
 					else
-						l__KnitClient__5.Controllers.LockerController:setKillEffect(p5);
+						l__KnitClient__5.Controllers.LockerController:setKillEffect(p4);
 						return;
 					end;
 				end;
@@ -126,152 +134,162 @@ return {
 					if l__DeviceUtil__3.isHoarceKat() then
 						l__ClientStore__4:dispatch({
 							type = "LockerSetTitle", 
-							title = p5
+							title = p4
 						});
 						return;
 					else
-						l__KnitClient__5.Controllers.LockerController:setTitle(p5);
+						l__KnitClient__5.Controllers.LockerController:setTitle(p4);
 						return;
 					end;
 				end;
 				if l__DeviceUtil__3.isHoarceKat() then
 					l__ClientStore__4:dispatch({
 						type = "LockerSetLobbyGadget", 
-						lobbyGadget = p5
+						lobbyGadget = p4
 					});
 					return;
 				end;
-				l__KnitClient__5.Controllers.LockerController:setLobbyGadget(p5);
+				l__KnitClient__5.Controllers.LockerController:setLobbyGadget(p4);
 			end;
-			local function v30(p6, p7)
-				local v31 = false;
+			local function v31(p5, p6)
+				local v32 = false;
 				if p1.Tab == l__LockerTab__2.EMOTES then
-					v31 = l__EmoteMeta__6[p6.id].animation ~= nil;
+					v32 = l__EmoteMeta__6[p5.id].animation ~= nil;
 				end;
-				local v32 = {
-					Index = p7, 
-					CurrentIndex = v25, 
-					Image = p6.imageId, 
+				local v33 = {
+					Index = p6, 
+					CurrentIndex = v26, 
+					Image = p5.imageId, 
 					TextElement = {
-						Text = p6.alt, 
-						TextColor3 = p6.altColor, 
-						Font = p6.altFont
+						Text = p5.alt, 
+						TextColor3 = p5.altColor, 
+						Font = p5.altFont
 					}
 				};
-				function v32.OnClick()
-					u14(p6.id);
+				function v33.OnClick()
+					u14(p5.id);
 				end;
-				local v33 = {};
-				local v34 = v31 and u7.createElement(l__EmoteShowcase__8, {
-					Emote = p6.id
+				local v34 = {};
+				local v35 = v32 and u7.createElement(l__EmoteShowcase__8, {
+					Emote = p5.id
 				});
-				if v34 then
-					v33[#v33 + 1] = v34;
+				if v35 then
+					v34[#v34 + 1] = v35;
 				end;
-				return u7.createElement(l__GridElement__9, v32, v33);
+				return u7.createElement(l__GridElement__9, v33, v34);
 			end;
-			local v35 = table.create(#v22);
-			for v36, v37 in ipairs(v22) do
-				v35[v36] = v30(v37, v36 - 1, v22);
+			local v36 = table.create(#v22);
+			local v37, v38, v39 = ipairs(v22);
+			while true do
+				v37(v38, v39);
+				if not v37 then
+					break;
+				end;
+				v39 = v37;
+				v36[v37] = v31(v38, v37 - 1, v22);			
 			end;
-			local v38 = {
+			local v40 = {
 				ElementSize = UDim2.new(0.187, 0, 0, 90), 
-				DefaultElement = v25, 
+				DefaultElement = v26, 
 				ScrollingFrameProps = {
 					Size = UDim2.new(1, 0, 1, 0), 
 					Position = UDim2.fromOffset(0, 45)
 				}
 			};
-			local v39 = {};
-			local v40 = #v39;
-			for v41, v42 in ipairs(v35) do
-				v39[v40 + v41] = v42;
+			local v41 = {};
+			local v42 = #v41;
+			local v43, v44, v45 = ipairs(v36);
+			while true do
+				v43(v44, v45);
+				if not v43 then
+					break;
+				end;
+				v45 = v43;
+				v41[v42 + v43] = v44;			
 			end;
 			return u7.createFragment({
-				[p1.Tab .. "List"] = u7.createElement(l__ElementGrid__10, v38, v39)
+				[p1.Tab .. "List"] = u7.createElement(l__ElementGrid__10, v40, v41)
 			});
 		end, { v5 });
-		local v43 = {
+		local v46 = {
 			Size = UDim2.fromScale(1, 0), 
 			AutomaticSize = Enum.AutomaticSize.Y, 
 			BackgroundTransparency = 1
 		};
-		local v44 = { u7.createElement("UISizeConstraint", {
+		local v47 = { u7.createElement("UISizeConstraint", {
 				MinSize = p1.MinSize, 
 				MaxSize = p1.MaxSize
 			}) };
-		local v45 = #v44;
-		local v46 = {
+		local v48 = #v47;
+		local v49 = {
 			Size = UDim2.new(1, 0, 0, 32)
 		};
-		local v47 = { u7.createElement("UIListLayout", {
+		local v50 = { u7.createElement("UIListLayout", {
 				FillDirection = "Horizontal", 
 				VerticalAlignment = "Center", 
 				Padding = UDim.new(0.05, 0)
 			}) };
-		local v48 = #v47;
-		local v49 = {
+		local v51 = #v50;
+		local v52 = {
 			Size = UDim2.new(0.4, 0, 0, 16), 
 			BackgroundTransparency = 1
 		};
-		local v50 = p1.EquippedElement.image;
-		if v50 ~= nil then
-			v50 = v50.name;
+		local v53 = p1.EquippedElement.image;
+		if v53 ~= nil then
+			v53 = v53.name;
 		end;
-		v49.Text = "<b>Equipped:</b> (" .. v50 .. ")";
-		v49.TextXAlignment = Enum.TextXAlignment.Left;
-		v49.TextColor3 = l__ColorUtil__11.WHITE;
-		v49.RichText = true;
-		v49.Font = Enum.Font.Roboto;
-		v49.TextSize = 16;
-		v47[v48 + 1] = u7.createElement("TextLabel", v49);
-		local v51 = {
+		v52.Text = "<b>Equipped:</b> (" .. v53 .. ")";
+		v52.TextXAlignment = Enum.TextXAlignment.Left;
+		v52.TextColor3 = l__ColorUtil__11.WHITE;
+		v52.RichText = true;
+		v52.Font = Enum.Font.Roboto;
+		v52.TextSize = 16;
+		v50[v51 + 1] = u7.createElement("TextLabel", v52);
+		local v54 = {
 			Size = UDim2.new(0.55, 0, 1, 0)
 		};
-		local l__Elements__52 = p1.Elements;
+		local l__Elements__55 = p1.Elements;
 		v3 = {};
-		local function v53(p8, p9)
-			local l__name__54 = p9.image.name;
-			if l__name__54 ~= "" and l__name__54 then
-				table.insert(p8, l__name__54);
+		for v56 = 1, #l__Elements__55 do
+			local l__name__57 = l__Elements__55[v56].image.name;
+			if l__name__57 ~= "" and l__name__57 then
+				table.insert(v3, l__name__57);
 			end;
-			return p8;
+			v3 = v3;
 		end;
-		for v55 = 1, #l__Elements__52 do
-			v3 = v53(v3, l__Elements__52[v55], v55 - 1, l__Elements__52);
-		end;
-		v51.Items = local v56;
-		v51.InputText = v7;
-		local function u15(p10, p11)
-			if p10 == "" then
+		v54.Items = local v58;
+		v54.InputText = v7;
+		local function u15(p7, p8)
+			if p7 == "" then
 				return p1.Elements;
-			end;
-			local l__Elements__57 = p1.Elements;
-			local function v58(p12, p13)
-				return table.find(p11, p12.image.name) ~= nil;
 			end;
 			local v59 = {};
 			local v60 = 0;
-			for v61, v62 in ipairs(l__Elements__57) do
-				if v58(v62, v61 - 1, l__Elements__57) == true then
+			local v61, v62, v63 = ipairs(p1.Elements);
+			while true do
+				v61(v62, v63);
+				if not v61 then
+					break;
+				end;
+				if table.find(p8, v62.image.name) ~= nil == true then
 					v60 = v60 + 1;
 					v59[v60] = v62;
-				end;
+				end;			
 			end;
 			return v59;
 		end;
-		function v51.OnTextChange(p14, p15)
-			v6(u15(p14, p15));
-			v8(p14);
+		function v54.OnTextChange(p9, p10)
+			v6((u15(p9, p10)));
+			v8(p9);
 		end;
-		v51.PlaceHolderText = "Search " .. p1.Tab;
-		v51.MaxCharLength = 30;
-		v51.LayoutOrder = 2;
-		v47[v48 + 2] = u7.createElement(l__AutoCompleteSearchbar__12, v51);
-		v44[v45 + 1] = u7.createElement(l__Empty__13, v46, v47);
-		v44[v45 + 2] = v9;
+		v54.PlaceHolderText = "Search " .. p1.Tab;
+		v54.MaxCharLength = 30;
+		v54.LayoutOrder = 2;
+		v50[v51 + 2] = u7.createElement(l__AutoCompleteSearchbar__12, v54);
+		v47[v48 + 1] = u7.createElement(l__Empty__13, v49, v50);
+		v47[v48 + 2] = v9;
 		return u7.createFragment({
-			Items = u7.createElement("Frame", v43, v44)
+			Items = u7.createElement("Frame", v46, v47)
 		});
 	end)
 };

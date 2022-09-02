@@ -1,4 +1,3 @@
--- Script Hash: 2cf464f812f1e75b7267a698f6fa5330eb49e0ecf8ac2905883cae2cc9cc6273f71161fd19fd081409a10bbce463cf0c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -110,6 +109,26 @@ return {
 			name = "Scythe", 
 			items = { {
 					itemType = l__ItemType__3.SCYTHE, 
+					amount = 1
+				} }
+		}, 
+		[l__LobbyGadgetType__4.BLUNDERBUSS] = {
+			name = "Blunderbuss", 
+			image = "rbxassetid://10722841562", 
+			items = { {
+					itemType = l__ItemType__3.BLUNDERBUSS, 
+					amount = 1
+				}, {
+					itemType = l__ItemType__3.BLUNDERBUSS_BULLET, 
+					amount = 10, 
+					refillable = true
+				} }
+		}, 
+		[l__LobbyGadgetType__4.CUTLASS_GHOST] = {
+			name = "Ghost Cutlass", 
+			image = "rbxassetid://10729541018", 
+			items = { {
+					itemType = l__ItemType__3.CUTLASS_GHOST, 
 					amount = 1
 				} }
 		}

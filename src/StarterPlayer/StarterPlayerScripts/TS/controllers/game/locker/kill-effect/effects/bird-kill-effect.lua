@@ -3,8 +3,8 @@
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
-local l__Linear__1 = v1.import(script, v1.getModule(script, "@rbxts", "easing-functions")).Linear;
 local l__KillEffect__4 = v1.import(script, script.Parent.Parent, "kill-effect").KillEffect;
+local l__Linear__1 = v1.import(script, v1.getModule(script, "@rbxts", "easing-functions")).Linear;
 local v5 = setmetatable({}, {
 	__tostring = function()
 		return "BirdKillEffect";

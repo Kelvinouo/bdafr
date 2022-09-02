@@ -62,25 +62,37 @@ function v4.render(p2)
 		return v3.createElement(l__BedwarsTeamUpgradeCard__7, v8);
 	end;
 	local v11 = table.create(#l__BrewablePotions__8);
-	for v12, v13 in ipairs(l__BrewablePotions__8) do
-		v11[v12] = v7(v13, v12 - 1, l__BrewablePotions__8);
+	local v12, v13, v14 = ipairs(l__BrewablePotions__8);
+	while true do
+		v12(v13, v14);
+		if not v12 then
+			break;
+		end;
+		v14 = v12;
+		v11[v12] = v7(v13, v12 - 1, l__BrewablePotions__8);	
 	end;
-	local v14 = {
+	local v15 = {
 		Size = UDim2.fromScale(0.98, 0.45), 
 		Position = UDim2.fromScale(0.5, 0.1), 
 		AnchorPoint = Vector2.new(0.5, 0)
 	};
-	local v15 = { v3.createElement("UIListLayout", {
+	local v16 = { v3.createElement("UIListLayout", {
 			FillDirection = "Horizontal", 
 			HorizontalAlignment = "Center", 
 			VerticalAlignment = "Top", 
 			Padding = UDim.new(0.008, 0)
 		}) };
-	local v16 = #v15;
-	for v17, v18 in ipairs(v11) do
-		v15[v16 + v17] = v18;
+	local v17 = #v16;
+	local v18, v19, v20 = ipairs(v11);
+	while true do
+		v18(v19, v20);
+		if not v18 then
+			break;
+		end;
+		v20 = v18;
+		v16[v17 + v18] = v19;	
 	end;
-	v6[#v6 + 1] = v3.createElement(l__Empty__9, v14, v15);
+	v6[#v6 + 1] = v3.createElement(l__Empty__9, v15, v16);
 	v5[#v5 + 1] = v3.createElement(l__SlideIn__10, {}, v6);
 	return v3.createFragment(v5);
 end;

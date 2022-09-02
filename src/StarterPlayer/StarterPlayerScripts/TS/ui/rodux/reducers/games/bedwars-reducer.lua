@@ -1,4 +1,3 @@
--- Script Hash: afb1edc9737e0cc734e8fdc64cb192d0e81999b8bf09adf52666587fedbc3d8eab9f6f0d64607a7de160b0c1b8ab9c10
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -139,14 +138,16 @@ return {
 		end;
 		if p2.type == "BedwarsSetBedAliveSuddenDeath" then
 			print("Reducer: Before", p1.teamBedAlive);
-			local v54 = u2.keys(p1.teamBedAlive);
 			local u3 = {};
-			local function v55(p3)
-				u3[p3] = false;
-				return u3[p3];
-			end;
-			for v56, v57 in ipairs(v54) do
-				v55(v57, v56 - 1, v54);
+			local v54, v55, v56 = ipairs((u2.keys(p1.teamBedAlive)));
+			while true do
+				v54(v55, v56);
+				if not v54 then
+					break;
+				end;
+				v56 = v54;
+				u3[v55] = false;
+				local v57 = u3[v55];			
 			end;
 			print("Reducer: After", p1.teamBedAlive);
 			local v58 = {};
@@ -243,19 +244,39 @@ return {
 			v95.equippedKitSkins = p2.equippedKitSkins;
 			return v95;
 		end;
-		if p2.type ~= "EquipKitSkin" then
+		if p2.type == "EquipKitSkin" then
+			local v98 = {};
+			for v99, v100 in pairs(p1) do
+				v98[v99] = v100;
+			end;
+			local v101 = {};
+			for v102, v103 in pairs(p1.equippedKitSkins) do
+				v101[v102] = v103;
+			end;
+			v101[p2.kit] = p2.kitSkin;
+			v98.equippedKitSkins = v101;
+			return v98;
+		end;
+		if p2.type ~= "BedwarsUpdateBossBar" then
 			return p1;
 		end;
-		local v98 = {};
-		for v99, v100 in pairs(p1) do
-			v98[v99] = v100;
+		local v104 = {};
+		for v105, v106 in pairs(p1) do
+			v104[v105] = v106;
 		end;
-		local v101 = {};
-		for v102, v103 in pairs(p1.equippedKitSkins) do
-			v101[v102] = v103;
+		local v107 = {
+			health = p2.health
+		};
+		local v108 = p2.maxHealth;
+		if v108 == nil then
+			local v109 = p1.bossBar;
+			if v109 ~= nil then
+				v109 = v109.maxHealth;
+			end;
+			v108 = v109;
 		end;
-		v101[p2.kit] = p2.kitSkin;
-		v98.equippedKitSkins = v101;
-		return v98;
+		v107.maxHealth = v108;
+		v104.bossBar = v107;
+		return v104;
 	end
 };

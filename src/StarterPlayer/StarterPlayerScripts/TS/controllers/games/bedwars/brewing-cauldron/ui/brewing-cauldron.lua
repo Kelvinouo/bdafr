@@ -1,4 +1,3 @@
--- Script Hash: 6a8b0da0b2f57bc338f3591beebf34dc5608ed69969fdf19106dd21b94bbfe37c04a1fb902eac1651afb0675407a1709
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -101,16 +100,19 @@ return {
 			}))
 		};
 		local v15 = u6.entries(p1.Inventory);
-		local function v16(p3)
-			local v17 = p3[1];
-			return u1.createElement(l__IngredientBox__2, {
-				Image = l__getItemMeta__7(p3[2]).image, 
+		local v16 = table.create(#v15);
+		local v17, v18, v19 = ipairs(v15);
+		while true do
+			v17(v18, v19);
+			if not v17 then
+				break;
+			end;
+			v19 = v17;
+			local v20 = v18[1];
+			v16[v17] = u1.createElement(l__IngredientBox__2, {
+				Image = l__getItemMeta__7(v18[2]).image, 
 				Amount = 1
-			});
-		end;
-		local v18 = table.create(#v15);
-		for v19, v20 in ipairs(v15) do
-			v18[v19] = v16(v20, v19 - 1, v15);
+			});		
 		end;
 		local v21 = {
 			Size = UDim2.fromScale(1, 0.75), 
@@ -123,12 +125,24 @@ return {
 				HorizontalAlignment = "Center"
 			}) };
 		local v23 = #v22;
-		for v24, v25 in ipairs(v18) do
-			v22[v23 + v24] = v25;
+		local v24, v25, v26 = ipairs(v16);
+		while true do
+			v24(v25, v26);
+			if not v24 then
+				break;
+			end;
+			v26 = v24;
+			v22[v23 + v24] = v25;		
 		end;
-		local v26 = #v22;
-		for v27, v28 in ipairs(v7) do
-			v22[v26 + v27] = v28;
+		local v27 = #v22;
+		local v28, v29, v30 = ipairs(v7);
+		while true do
+			v28(v29, v30);
+			if not v28 then
+				break;
+			end;
+			v30 = v28;
+			v22[v27 + v28] = v29;		
 		end;
 		v14.IngredientList = u1.createElement(l__Empty__8, v21, v22);
 		v11.Container = u1.createElement("Frame", v13, v14);

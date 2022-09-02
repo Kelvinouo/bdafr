@@ -1,4 +1,3 @@
--- Script Hash: b9a9067c5f4d194d7d5c05e07e9bb19bbbb87d85c1dffde9ee73b8abb6b0ecd6922b63c12025885ef96a2368da13a9fd
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -18,38 +17,40 @@ local l__WidgetComponent__12 = v2.WidgetComponent;
 local l__SlideIn__13 = v2.SlideIn;
 return {
 	BattlePassCore = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u4)(function(p1, p2)
-		local v3 = l__BattlePassRewards__1[l__BattlePassUtils__2.BATTLE_PASS_SEASON];
-		local function v4(p3)
-			return p3.level == 1;
-		end;
-		local v5 = nil;
-		for v6, v7 in ipairs(v3) do
-			if v4(v7, v6 - 1, v3) == true then
-				v5 = v7;
+		local v3 = nil;
+		local v4, v5, v6 = ipairs(l__BattlePassRewards__1[l__BattlePassUtils__2.BATTLE_PASS_SEASON]);
+		while true do
+			v4(v5, v6);
+			if not v4 then
 				break;
 			end;
+			v6 = v4;
+			if v5.level == 1 == true then
+				v3 = v5;
+				break;
+			end;		
 		end;
-		local v8, v9 = p2.useState(v5);
-		local v10 = p2.useMemo(function()
+		local v7, v8 = p2.useState(v3);
+		local v9 = p2.useMemo(function()
 			return u4.createElement(l__BattlePassRewardsList__5, {
 				store = p1.store, 
 				Size = UDim2.new(1, 0, 0.5, -10), 
-				SetReward = v9, 
+				SetReward = v8, 
 				LayoutOrder = 2
 			});
 		end, { p1.store.BattlePass });
+		local v10 = {};
 		local v11 = {};
 		local v12 = {};
-		local v13 = {};
 		if l__DeviceUtil__7.isSmallScreen() then
-			local v14 = 528;
+			local v13 = 528;
 		else
-			v14 = 1250;
+			v13 = 1250;
 		end;
-		v13.MaximumSize = Vector2.new(v14, 720);
-		v13.ScreenPadding = Vector2.new(24, 24);
-		v12[1] = u4.createElement(l__ScaleComponent__6, v13);
-		local v15 = { u4.createElement("UIListLayout", {
+		v12.MaximumSize = Vector2.new(v13, 720);
+		v12.ScreenPadding = Vector2.new(24, 24);
+		v11[1] = u4.createElement(l__ScaleComponent__6, v12);
+		local v14 = { u4.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				VerticalAlignment = Enum.VerticalAlignment.Top, 
@@ -87,19 +88,19 @@ return {
 				}), u4.createElement(l__BattlePassRewardsList__5, {
 					store = p1.store, 
 					Size = UDim2.new(1, 0, 0.7, -5), 
-					SetReward = v9, 
+					SetReward = v8, 
 					LayoutOrder = 2
 				})
 			}) };
-		local v16 = v8 and u4.createElement(u11, {
+		local v15 = v7 and u4.createElement(u11, {
 			BattlePass = p1.store.BattlePass, 
-			Reward = v8, 
+			Reward = v7, 
 			Size = UDim2.new(0.32, -10, 1, 0)
 		});
-		if v16 then
-			v15[#v15 + 1] = v16;
+		if v15 then
+			v14[#v14 + 1] = v15;
 		end;
-		v12[#v12 + 1] = u4.createElement(l__WidgetComponent__12, {
+		v11[#v11 + 1] = u4.createElement(l__WidgetComponent__12, {
 			AppId = p1.AppId, 
 			AnchorPoint = Vector2.new(0.5, 0.5), 
 			Position = UDim2.fromScale(0.5, 0.5), 
@@ -108,13 +109,13 @@ return {
 			OnClose = function()
 				l__Flamework__3.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):closeApp(p1.AppId);
 			end
-		}, v15);
-		v11.BattlePassApp = u4.createElement("Frame", {
+		}, v14);
+		v10.BattlePassApp = u4.createElement("Frame", {
 			AnchorPoint = Vector2.new(0.5, 0.5), 
 			Position = UDim2.fromScale(0.5, 0.5), 
 			Size = UDim2.fromOffset(1000, 545), 
 			BackgroundTransparency = 1
-		}, v12);
-		return u4.createElement(l__SlideIn__13, {}, v11);
+		}, v11);
+		return u4.createElement(l__SlideIn__13, {}, v10);
 	end)
 };

@@ -14,7 +14,9 @@ local v1 = {
 	MINER = 33821514, 
 	EMBER_LUMEN_KIT_BUNDLE = 44594629, 
 	EMBER_LUMEN_KIT_BUNDLE_PERM = 47400080, 
-	EVELYNN_BUNDLE = 67052293
+	EVELYNN_BUNDLE = 67052293, 
+	EVELYNN = 72590411, 
+	HANNAH_BUNDLE = 78679462
 };
 if not require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "util", "place-util").PlaceUtil.isProduction() then
 	v1.VIP = 18302069;
@@ -29,6 +31,8 @@ if not require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"
 	v1.EMBER_LUMEN_KIT_BUNDLE = 35362319;
 	v1.EMBER_LUMEN_KIT_BUNDLE_PERM = 47400080;
 	v1.EVELYNN_BUNDLE = 67082876;
+	v1.EVELYNN = 72590411;
+	v1.HANNAH_BUNDLE = 78679462;
 end;
 return {
 	Gamepass = v1

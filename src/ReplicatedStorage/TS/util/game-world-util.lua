@@ -26,35 +26,47 @@ function v3.getNearbyPlayers(p1, p2, p3, p4)
 			table.insert(v4, p5);
 		end;
 	end;
-	for v9, v10 in ipairs(v5) do
-		v6(v10, v9 - 1, v5);
+	local v9, v10, v11 = ipairs(v5);
+	while true do
+		v9(v10, v11);
+		if not v9 then
+			break;
+		end;
+		v11 = v9;
+		v6(v10, v9 - 1, v5);	
 	end;
 	return v4;
 end;
 local l__EntityUtil__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
 local l__Workspace__3 = v2.Workspace;
 function v3.getEntitiesWithinRadius(p6, p7)
-	local v11 = {};
-	local v12 = 0;
-	for v13, v14 in ipairs((l__EntityUtil__2:getAliveEntityInstances())) do
-		local l__PrimaryPart__15 = v14.PrimaryPart;
-		if l__PrimaryPart__15 ~= nil then
-			v12 = v12 + 1;
-			v11[v12] = l__PrimaryPart__15;
-		end;
-	end;
-	local v16 = OverlapParams.new();
-	v16.FilterType = Enum.RaycastFilterType.Whitelist;
-	v16.FilterDescendantsInstances = v11;
-	local v17 = {};
-	local v18 = 0;
-	local v19, v20, v21 = ipairs((l__Workspace__3:GetPartBoundsInBox(CFrame.new(p6), Vector3.new(p7 * 2, p7 * 2, p7 * 2), v16)));
+	local v12 = {};
+	local v13 = 0;
+	local v14, v15, v16 = ipairs((l__EntityUtil__2:getAliveEntityInstances()));
 	while true do
-		local v22, v23 = v19(v20, v21);
-		if not v22 then
+		v14(v15, v16);
+		if not v14 then
 			break;
 		end;
-		local v24 = l__EntityUtil__2:getEntity(v23);
+		v16 = v14;
+		local l__PrimaryPart__17 = v15.PrimaryPart;
+		if l__PrimaryPart__17 ~= nil then
+			v13 = v13 + 1;
+			v12[v13] = l__PrimaryPart__17;
+		end;	
+	end;
+	local v18 = OverlapParams.new();
+	v18.FilterType = Enum.RaycastFilterType.Whitelist;
+	v18.FilterDescendantsInstances = v12;
+	local v19 = {};
+	local v20 = 0;
+	local v21, v22, v23 = ipairs((l__Workspace__3:GetPartBoundsInBox(CFrame.new(p6), Vector3.new(p7 * 2, p7 * 2, p7 * 2), v18)));
+	while true do
+		v21(v22, v23);
+		if not v21 then
+			break;
+		end;
+		local v24 = l__EntityUtil__2:getEntity(v22);
 		if v24 then
 			local l__PrimaryPart__25 = v24:getInstance().PrimaryPart;
 			if l__PrimaryPart__25 and (l__PrimaryPart__25.Position - p6).Magnitude <= p7 then
@@ -66,11 +78,11 @@ function v3.getEntitiesWithinRadius(p6, p7)
 			v26 = nil;
 		end;
 		if v26 ~= nil then
-			v18 = v18 + 1;
-			v17[v18] = v26;
+			v20 = v20 + 1;
+			v19[v20] = v26;
 		end;	
 	end;
-	return v17;
+	return v19;
 end;
 local u4 = Random.new();
 function v3.randomUnitVector(p8, p9)

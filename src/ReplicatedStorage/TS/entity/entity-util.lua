@@ -23,11 +23,17 @@ local l__Entity__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS
 function v3.getEntity(p2, p3)
 	if p3.Parent == l__Workspace__1 and p3:IsA("Model") then
 		local v5 = nil;
-		for v6, v7 in ipairs((l__Players__2:GetPlayers())) do
+		local v6, v7, v8 = ipairs((l__Players__2:GetPlayers()));
+		while true do
+			v6(v7, v8);
+			if not v6 then
+				break;
+			end;
+			v8 = v6;
 			if v7.Name == p3.Name == true then
 				v5 = v7;
 				break;
-			end;
+			end;		
 		end;
 		if v5 then
 			return l__PlayerEntity__3.new(v5, p3);
@@ -49,11 +55,11 @@ function v3.getEntity(p2, p3)
 	return p2:getEntity(p3.Parent);
 end;
 function v3.getLocalPlayerEntity(p4)
-	local v8 = l__Players__2.LocalPlayer;
-	if v8 ~= nil then
-		v8 = v8.Character;
+	local v9 = l__Players__2.LocalPlayer;
+	if v9 ~= nil then
+		v9 = v9.Character;
 	end;
-	if not v8 then
+	if not v9 then
 		return nil;
 	end;
 	return l__PlayerEntity__3.new(l__Players__2.LocalPlayer, l__Players__2.LocalPlayer.Character);
@@ -62,24 +68,24 @@ function v3.getAllEntityInstances(p5)
 	return l__CollectionService__4:GetTagged("entity");
 end;
 function v3.getAliveEntityInstances(p6)
-	local v9 = {};
-	local v10 = 0;
-	local v11, v12, v13 = ipairs((p6:getAllEntityInstances()));
+	local v10 = {};
+	local v11 = 0;
+	local v12, v13, v14 = ipairs((p6:getAllEntityInstances()));
 	while true do
-		local v14, v15 = v11(v12, v13);
-		if not v14 then
+		v12(v13, v14);
+		if not v12 then
 			break;
 		end;
-		local v16 = v3:getEntity(v15);
-		if v16 ~= nil then
-			v16 = v16:isAlive();
+		local v15 = v3:getEntity(v13);
+		if v15 ~= nil then
+			v15 = v15:isAlive();
 		end;
-		if v16 == true then
-			v10 = v10 + 1;
-			v9[v10] = v15;
+		if v15 == true then
+			v11 = v11 + 1;
+			v10[v11] = v13;
 		end;	
 	end;
-	return v9;
+	return v10;
 end;
 function v3.getEntityFromDescendant(p7, p8)
 	if not p8 then
@@ -91,25 +97,25 @@ function v3.getEntityFromDescendant(p7, p8)
 	return p7:getEntityFromDescendant(p8.Parent);
 end;
 function v3.getEntitiesNearPosition(p9, p10, p11)
-	local v17 = {};
-	local v18 = 0;
-	local v19, v20, v21 = ipairs((p9:getAliveEntityInstances()));
+	local v16 = {};
+	local v17 = 0;
+	local v18, v19, v20 = ipairs((p9:getAliveEntityInstances()));
 	while true do
-		local v22, v23 = v19(v20, v21);
-		if not v22 then
+		v18(v19, v20);
+		if not v18 then
 			break;
 		end;
-		if not v23.PrimaryPart then
-			local v24 = false;
+		if not v19.PrimaryPart then
+			local v21 = false;
 		else
-			v24 = (v23.PrimaryPart.Position - p10).Magnitude <= p11;
+			v21 = (v19.PrimaryPart.Position - p10).Magnitude <= p11;
 		end;
-		if v24 == true then
-			v18 = v18 + 1;
-			v17[v18] = v23;
+		if v21 == true then
+			v17 = v17 + 1;
+			v16[v17] = v19;
 		end;	
 	end;
-	return v17;
+	return v16;
 end;
 return {
 	EntityUtil = v3

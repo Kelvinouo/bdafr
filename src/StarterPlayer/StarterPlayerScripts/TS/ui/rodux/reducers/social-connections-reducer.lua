@@ -1,4 +1,3 @@
--- Script Hash: 2786290cd73b30ee7b2ed681cf2b10e1dfdc3fcf770c954c9d3901e2c83b4915737ab15de9b940b74f2f6dcf9b9b2e3a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -39,8 +38,14 @@ return {
 			return v2;
 		end;
 		if l__type__5 == "SetSomeSupportTasks" then
-			for v6, v7 in ipairs(u2.keys(p2.supportTasks)) do
-				v2.supportTasks[v7] = p2.supportTasks[v7];
+			local v6, v7, v8 = ipairs(u2.keys(p2.supportTasks));
+			while true do
+				v6(v7, v8);
+				if not v6 then
+					break;
+				end;
+				v8 = v6;
+				v2.supportTasks[v7] = p2.supportTasks[v7];			
 			end;
 			return v2;
 		end;
@@ -52,8 +57,14 @@ return {
 				return v2;
 			end;
 		end;
-		for v8, v9 in ipairs(u2.keys(p2.connections)) do
-			v2.connections[v9] = p2.connections[v9];
+		local v9, v10, v11 = ipairs(u2.keys(p2.connections));
+		while true do
+			v9(v10, v11);
+			if not v9 then
+				break;
+			end;
+			v11 = v9;
+			v2.connections[v10] = p2.connections[v10];		
 		end;
 		return v2;
 	end

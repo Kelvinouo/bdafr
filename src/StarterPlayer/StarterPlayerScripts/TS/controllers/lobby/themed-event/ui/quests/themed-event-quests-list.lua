@@ -1,4 +1,3 @@
--- Script Hash: 01320180558ec2a20e74966638363c86dd17d69dd0f6423904d93b26f4f9c2e452c8b48435903a692321f9359e0a1e8b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -41,16 +40,19 @@ return {
 		if v7 then
 			v6[#v6 + 1] = v7;
 		end;
-		local function v8(p3)
-			return u2.createElement(l__ThemedEventQuestCard__4, {
+		local v8 = table.create(#l__quests__4);
+		local v9, v10, v11 = ipairs(l__quests__4);
+		while true do
+			v9(v10, v11);
+			if not v9 then
+				break;
+			end;
+			v11 = v9;
+			v8[v9] = u2.createElement(l__ThemedEventQuestCard__4, {
 				ThemedEventType = p1.ThemedEventType, 
-				Quest = p3, 
+				Quest = v10, 
 				PersonalCollectables = p1.PersonalCollectables
-			});
-		end;
-		local v9 = table.create(#l__quests__4);
-		for v10, v11 in ipairs(l__quests__4) do
-			v9[v10] = v8(v11, v10 - 1, l__quests__4);
+			});		
 		end;
 		local v12 = {
 			ScrollingFrameProps = {
@@ -64,8 +66,14 @@ return {
 				Padding = UDim.new(0.03, 0)
 			}) };
 		local v14 = #v13;
-		for v15, v16 in ipairs(v9) do
-			v13[v14 + v15] = v16;
+		local v15, v16, v17 = ipairs(v8);
+		while true do
+			v15(v16, v17);
+			if not v15 then
+				break;
+			end;
+			v17 = v15;
+			v13[v14 + v15] = v16;		
 		end;
 		v6[#v6 + 1] = u2.createElement(l__AutoCanvasScrollingFrame__5, v12, v13);
 		return u2.createFragment({

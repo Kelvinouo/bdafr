@@ -12,6 +12,50 @@ return {
 		newestKitBG = "rbxassetid://8795128315"
 	}, 
 	GameUpdateMeta = { {
+			updateLogId = 47, 
+			visible = true, 
+			title = "Pirate Invasion!", 
+			date = "8/27/2022", 
+			body = "<b>\240\159\143\180\226\128\141\226\152\160\239\184\143 Pirate Event</b>\n" .. "This event lasts from (August 27th - September 16th)\n" .. "- <b>Event Missions:</b> Complete Missions to earn Doubloons.\n" .. "- <b>Event Shop:</b> Use Doubloons during this event to unlock exclusive Pirate loot!\n" .. "- <b>Treasure Chests:</b> Dig up rare treasure chests in games for bonus Doubloons!\n\n" .. ("<b>\240\159\146\165 TNT Wars <font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__6.mcYellow) .. "\">(NEW)</font></b>\n") .. "Introducing our first LTM where the map is fully breakable! In this fast-paced 8v8 LTM, players work together to destroy the enemy cores with high powered cannons and explosives!\n" .. "The release of this chaotic LTM features:\n" .. "\240\159\146\163 3 High-powered TNT cannons\n" .. "\240\159\142\136 Flying TNT balloons\n" .. "\240\159\143\185 Explosive arrows\n" .. "\240\159\151\186\239\184\143 3 fun maps to explode!\n\n" .. "\226\154\148\239\184\143 <b>Hannah Kit</b>\n" .. "Captain Hannah has led her pirate crew in a full-scale invasion of BedWars! With her powerful Execute ability, she can dash to and defeat any enemy.\n\n" .. ("\226\152\160\239\184\143 <b>Hannah Bundle <font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__6.mcYellow) .. "\">(LIMITED TIME ONLY)</font></b>\n") .. "This limited time bundle is now available for purchase for the next 2 weeks. All items except for the kit will be exclusive only to this bundle.\nThe kit will be purchasable by itself once the bundle ends.\n\n<b>\240\159\142\129 Bundle Contents:</b>\n- Hannah Kit\n- Ghost Hannah Kit Skin (Exclusive)\n- Ghost Cutlass Lobby Gadget (Exclusive)\n- \"Corsair\" Title (Exclusive)\n- Hannah Ghosted Emote (Exclusive)\n\n<b>\240\159\167\168 Davey Buff</b>\nDavey now starts every match with 1 TNT.\n\n<b>\240\159\134\147 Free Kits of the Week</b>\n\240\159\167\145\226\128\141\240\159\140\190 Farmer Cletus\n\240\159\164\160 Lassy\n\240\159\142\184 Melody\n\n<b>\240\159\151\186\239\184\143 New Pirate Themed Maps</b>\nSandy Cove (SkyWars)\nGalleon (Squads + Duos)\nShip\226\128\153s Dock (Squads + Duos)\nSkull Island (30v30)\nRuins (TNT Wars)\nPlaza (TNT Wars)\nShore (TNT Wars)\n\n<b>Other Changes</b>\n- Battle Pass extended 2 Weeks\n- Console support fixes for Lobby UI", 
+			image = {
+				assetId = "rbxassetid://10733921235", 
+				aspectRatio = 1, 
+				height = 150
+			}
+		}, {
+			updateLogId = 46, 
+			visible = true, 
+			title = "Remotes Explosives + Volley Enchant", 
+			date = "8/19/2022", 
+			body = "<b>\240\159\146\163 Remote Explosives <font color=\"" .. (l__ColorUtil__2.richTextColor(l__Theme__6.mcYellow) .. "\">[NEW]</font></b>\n") .. "Remote Explosives are now available in the Item Shop for 1 emerald each!\n\n" .. ("<b>\240\159\143\185 Volley Enchant <font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__6.mcYellow) .. "\">[NEW]</font></b>\n") .. "A powerful new archery enchant can now be researched in the Enchant Table.\n\n\240\159\134\147 <b>Free Kits</b>\n\226\154\148\239\184\143 Barbarian\n\240\159\167\145\226\128\141\240\159\141\179 Baker\n\240\159\155\161\239\184\143 Shielder\n\n<b>Balance Changes</b>\n\240\159\154\129\194\160Removed Attack Minicopter\n\240\159\140\178\194\160Eldertree Buff: increased health scaling\n\240\159\146\181\194\160Merchant Marco now gets more discounts (5 \226\134\146 7)\n\n<b>Other Changes</b>\n\240\159\155\160\239\184\143 Custom Match: Added KeepInventoryOnDeath host panel toggle\n\240\159\155\160\239\184\143 Custom Match: Fixed \226\128\156/give @team:&lt;team&gt; &lt;item&gt; &lt;amount&gt;\226\128\157 command\n\240\159\143\176 Clans: Reduced clan kit shop prices by 30%\n\240\159\148\137 New generator sounds\n\226\156\168 New diamond & emerald pick-up sounds\n\240\159\142\146 Changed use backpack hotkey from [H] \226\134\146 [R]\n\240\159\141\131\194\160 New ambient noise sounds", 
+			image = {
+				assetId = "rbxassetid://10649811640", 
+				aspectRatio = 1, 
+				height = 150
+			}
+		}, {
+			updateLogId = 45, 
+			visible = true, 
+			title = "Backpacks + Spirit Elder Tree Skin", 
+			date = "8/12/2022", 
+			body = "\240\159\142\146 <b>Backpacks</b>\n" .. "This week\226\128\153s update includes a new backpack system! Choose from one of three backpacks in the Item Shop.\n" .. "\240\159\154\128 Rocket Belt\n" .. "\226\155\145 First Aid Kit\n" .. "\240\159\144\162 Turtle Shell\n\n" .. ("\240\159\146\153 <b>Spirit Elder Tree Kit Skin <font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__6.mcYellow) .. "\">[NEW]</font></b>\n") .. "The first permanent kit skin for Elder Tree has been released! It is available for purchase by selecting Elder Tree inside the Kit Shop.\n\n" .. "\240\159\141\167 <b>Snow Cone Infinite Stacking</b>\n" .. "Snow cones buffs now infinitely stack. This means you can keep eating snow cones to enhance your buffs!\n\n" .. "\240\159\134\147 <b>Free Kits of The Week</b>\n" .. ("\240\159\144\145 Sheep Herder <b><font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__6.mcYellow) .. "\">[FIRST TIME FREE!]</font></b>\n") .. "\240\159\143\185 Archer\n\240\159\164\160 Lassy\n\n\240\159\151\186\194\160<b>Map Changes</b>\nAdded Stellar (squads)\nAdded Candyland (squads)\nAdded Suburbs (doubles)\nAdded Palace (skywars)\nUpdated Mill (squads)\n\n<b>Other Changes</b>\n\240\159\140\191 Removed foliage from public matches\n\240\159\154\167 Added Barrier Block that is only breakable by hosts. `/spawn barrier inf`\n\240\159\170\147 Added Easy Edit `//replace &lt;blockToReplace&gt; &lt;newBlockType&gt;` command\n\n\n<i>There have been rumors of pirate ships throughout BedWars\226\128\166 Nobody is exactly sure why. Though rumors are spreading.</i>", 
+			image = {
+				assetId = "rbxassetid://10571325854", 
+				aspectRatio = 1, 
+				height = 150
+			}
+		}, {
+			updateLogId = 44, 
+			visible = true, 
+			title = "Snow Cone Machine + Tier 3 Break Speed", 
+			date = "8/05/2022", 
+			body = "<b>\226\157\132\239\184\143 Snow Cone Machine [NEW!]</b>\nBroken snow cone machines have appeared on all maps. Repair your snow cone machine for \240\159\146\142\194\160<b>5</b> to unlock Snow Cones (1 emerald each)\n1 Snow Cone \226\134\146 \240\159\143\185\194\160Frost arrows\n3 Snow Cones \226\134\146 \240\159\146\165\194\160Frost block breaking\n5 Snow Cones \226\134\146 \226\154\148\239\184\143\194\160Frost sword damage\n\n<b>\226\155\143\239\184\143 Tier 3 Break Speed [TEAM UPGRADE]</b>\nUnlock Tier 3 Break Speed for <b>\240\159\146\142 10</b> to increase the speed of breaking blocks by 100%!\nTier 1 & Tier 2 break speeds have also been buffed.\n\n<b>\240\159\148\167 Balance Changes</b>\nWe are continuing to nerf top tier kits to give all kits a chance of being meta. This opens up new strategies and team compositions.\n\240\159\148\180 Cobalt Nerf: Shield 15 \226\134\146 10\n\240\159\148\180 Tesla Nerf: Armor Pen 100% \226\134\146 40%\n\240\159\148\180 Tesla Nerf: Cost 50 \226\134\146 60 Iron\n\240\159\148\180 Bee Keeper Nerf: Emerald generation reduced by 40%\n\240\159\148\180 Bee Keeper Nerf: Diamond generation reduced by 25%\n\240\159\148\180 Star Collector Nerf: Stars spawn 25% slower\n\240\159\148\180 Metal Detector Nerf: Reduce resources from digs by 20%\n\240\159\159\162 Lucia Buff: Gain candy 20% faster\n\240\159\159\162 Melody Buff: Guitar heal 20 \226\134\146 25\n\240\159\159\162 Lassy Buff: Lasso cost 40 iron \226\134\146 30 iron\n\240\159\159\162 Jade Buff: Hammer slam damage increased 5 \226\134\146 8\n\240\159\159\162 Void Regent Buff: Axe heal ratio increased 60% \226\134\146 75%\n\240\159\159\162 Break Speed Tier 1: 15% \226\134\146 30%\n\240\159\159\162 Break Speed Tier 2: 30% \226\134\146 60%\n\n\240\159\151\186\194\160<b>Map Changes</b>\n\240\159\149\176\194\160Added Clock Tower (doubles)\n\240\159\144\171\194\160Added Egypt (squads)\n\240\159\140\179\194\160Added Greenhouse (squads)\n\240\159\154\130\194\160Updated Grand Central (squads)\n\n<b>\226\154\153\239\184\143 Custom Matches</b>\n\240\159\155\143\239\184\143 Support for managing & saving Bed locations. Type `/bed help` for a list of bed commands\n\240\159\147\139 Id nametags now appear above beds, shops, & gens when in creative mode (Type `/gm 1` to go into creative!)\n\226\152\160\239\184\143 Fixed magma block not killing players\n\240\159\155\160\239\184\143 Fixed gens & shops not saving when removed\n\240\159\155\160\239\184\143 Fixed a bug where maps failed to save with colored clay blocks\n\n<b>\240\159\134\147 Free Kits of The Week</b>\n\240\159\148\168 Builder\n\240\159\146\165 Davey\n\240\159\142\184 Melody\n\n<b>Other Changes</b>\n- Fixed status effect HUD timer not refreshing on consume\n- Removed grappling hook from the item shop\n- Fixed generators and shops being placed off-center\n- Increased mission xp by 50%", 
+			image = {
+				assetId = "rbxassetid://10490558245", 
+				aspectRatio = 1, 
+				height = 150
+			}
+		}, {
 			updateLogId = 43, 
 			visible = true, 
 			title = "Evelynn Kit + Creative Mode", 

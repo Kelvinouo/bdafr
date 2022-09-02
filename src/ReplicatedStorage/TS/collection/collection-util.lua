@@ -1,4 +1,3 @@
--- Script Hash: d59b22a230a7294223f002b154dc12a47b5008095f51ba6cb1e26d09bb61c5af6914363e387a9105b15fd35395dfd4bc
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -8,8 +7,14 @@ return {
 		l__CollectionService__1:GetInstanceAddedSignal(p1):Connect(function(p3)
 			p2(p3);
 		end);
-		for v2, v3 in ipairs(l__CollectionService__1:GetTagged(p1)) do
-			p2(v3);
+		local v2, v3, v4 = ipairs(l__CollectionService__1:GetTagged(p1));
+		while true do
+			v2(v3, v4);
+			if not v2 then
+				break;
+			end;
+			v4 = v2;
+			p2(v3);		
 		end;
 	end
 };

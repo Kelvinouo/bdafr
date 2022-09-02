@@ -197,14 +197,20 @@ return {
 			return u2.createElement(l__MapSaveCard__10, v29, v32);
 		end;
 		local v37 = table.create(#l__MapSaves__27);
-		for v38, v39 in ipairs(l__MapSaves__27) do
-			v37[v38] = v28(v39, v38 - 1, l__MapSaves__27);
+		local v38, v39, v40 = ipairs(l__MapSaves__27);
+		while true do
+			v38(v39, v40);
+			if not v38 then
+				break;
+			end;
+			v40 = v38;
+			v37[v38] = v28(v39, v38 - 1, l__MapSaves__27);		
 		end;
-		local v40 = {
+		local v41 = {
 			Size = UDim2.fromScale(1, 0), 
 			AutomaticSize = Enum.AutomaticSize.Y
 		};
-		local v41 = { u2.createElement("UIGridLayout", {
+		local v42 = { u2.createElement("UIGridLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Center, 
 				VerticalAlignment = Enum.VerticalAlignment.Top, 
@@ -213,26 +219,32 @@ return {
 				CellSize = UDim2.new(0.33333, -6, 0, 150), 
 				FillDirectionMaxCells = 3
 			}) };
-		local v42 = #v41;
-		for v43, v44 in ipairs(v37) do
-			v41[v42 + v43] = v44;
+		local v43 = #v42;
+		local v44, v45, v46 = ipairs(v37);
+		while true do
+			v44(v45, v46);
+			if not v44 then
+				break;
+			end;
+			v46 = v44;
+			v42[v43 + v44] = v45;		
 		end;
-		local v45 = #v41;
-		for v46, v47 in ipairs(((function()
-			local v48 = l__MapSaveUtil__1.MAX_MAP_SAVES - #p1.MapSaves;
-			local v49 = {};
-			local v50 = 0;
-			local v51 = false;
+		local v47 = #v42;
+		local v48, v49, v50 = ipairs(((function()
+			local v51 = l__MapSaveUtil__1.MAX_MAP_SAVES - #p1.MapSaves;
+			local v52 = {};
+			local v53 = 0;
+			local v54 = false;
 			while true do
-				if v51 then
-					v50 = v50 + 1;
+				if v54 then
+					v53 = v53 + 1;
 				else
-					v51 = true;
+					v54 = true;
 				end;
-				if not (v50 < v48) then
+				if not (v53 < v51) then
 					break;
 				end;
-				table.insert(v49, (u2.createElement("Frame", {
+				table.insert(v52, (u2.createElement("Frame", {
 					BackgroundColor3 = l__Theme__3.backgroundTertiary, 
 					BorderSizePixel = 0
 				}, { u2.createElement("TextLabel", {
@@ -248,66 +260,72 @@ return {
 						LayoutOrder = 2
 					}) })));			
 			end;
-			return v49;
-		end)())) do
-			v41[v45 + v46] = v47;
+			return v52;
+		end)()));
+		while true do
+			v48(v49, v50);
+			if not v48 then
+				break;
+			end;
+			v50 = v48;
+			v42[v47 + v48] = v49;		
 		end;
-		v25[v26 + 1] = u2.createElement(l__Empty__6, v40, v41);
-		local v52 = {
+		v25[v26 + 1] = u2.createElement(l__Empty__6, v41, v42);
+		local v55 = {
 			Size = UDim2.fromScale(1, 0), 
 			AutomaticSize = Enum.AutomaticSize.Y
 		};
-		local v53 = { u2.createElement("UIListLayout", {
+		local v56 = { u2.createElement("UIListLayout", {
 				FillDirection = "Horizontal", 
 				HorizontalAlignment = "Right", 
 				VerticalAlignment = "Center", 
 				Padding = UDim.new(0, 4)
 			}) };
-		local v54 = #v53;
-		local v55 = {};
-		local v56 = v6;
-		if v56 ~= nil then
-			v56 = v56.name;
-		end;
-		local v57 = v56;
-		if v57 == nil then
-			v57 = "";
-		end;
-		v55.Text = v57;
-		v55.TextSize = 14;
-		v55.Font = Enum.Font.GothamBold;
-		v53[v54 + 1] = u2.createElement(l__AutoSizedText__11, v55);
+		local v57 = #v56;
 		local v58 = {};
-		if v6 == nil then
-			local v59 = "Select a Map";
-		elseif v8 then
-			v59 = "Creating Match...";
-		else
-			v59 = "Create Match";
+		local v59 = v6;
+		if v59 ~= nil then
+			v59 = v59.name;
 		end;
-		v58.Text = v59;
-		function v58.OnClick()
+		local v60 = v59;
+		if v60 == nil then
+			v60 = "";
+		end;
+		v58.Text = v60;
+		v58.TextSize = 14;
+		v58.Font = Enum.Font.GothamBold;
+		v56[v57 + 1] = u2.createElement(l__AutoSizedText__11, v58);
+		local v61 = {};
+		if v6 == nil then
+			local v62 = "Select a Map";
+		elseif v8 then
+			v62 = "Creating Match...";
+		else
+			v62 = "Create Match";
+		end;
+		v61.Text = v62;
+		function v61.OnClick()
 			if v8 then
 				return nil;
 			end;
 			if v6 then
 				v9(true);
-				local v60 = v6;
-				if v60 ~= nil then
-					v60 = v60.queueType;
+				local v63 = v6;
+				if v63 ~= nil then
+					v63 = v63.queueType;
 				end;
-				local v61 = v6;
-				if v61 ~= nil then
-					v61 = v61.code;
+				local v64 = v6;
+				if v64 ~= nil then
+					v64 = v64.code;
 				end;
-				p1.OnCreateMatch(v60, v61):andThen(function(p10)
+				p1.OnCreateMatch(v63, v64):andThen(function(p10)
 					v9(false);
 				end);
 			end;
 		end;
-		v58.Disabled = v6 == nil;
-		v53[v54 + 2] = u2.createElement(l__ButtonComponent__7, v58);
-		v25[v26 + 2] = u2.createElement(l__Empty__6, v52, v53);
+		v61.Disabled = v6 == nil;
+		v56[v57 + 2] = u2.createElement(l__ButtonComponent__7, v61);
+		v25[v26 + 2] = u2.createElement(l__Empty__6, v55, v56);
 		v15[#v15 + 1] = u2.createElement(l__Empty__6, v24, v25);
 		return u2.createFragment({
 			CustomMatchesMapSaves = u2.createElement(l__Empty__6, v14, v15)

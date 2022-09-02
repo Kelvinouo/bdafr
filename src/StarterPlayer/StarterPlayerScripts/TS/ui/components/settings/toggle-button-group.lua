@@ -60,8 +60,14 @@ return {
 				HorizontalAlignment = "Center"
 			}) };
 		local v24 = #v23;
-		for v25, v26 in ipairs(v6) do
-			v23[v24 + v25] = v26;
+		local v25, v26, v27 = ipairs(v6);
+		while true do
+			v25(v26, v27);
+			if not v25 then
+				break;
+			end;
+			v27 = v25;
+			v23[v24 + v25] = v26;		
 		end;
 		return u1.createElement(l__Empty__2, v19, v23);
 	end)

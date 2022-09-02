@@ -1,14 +1,13 @@
--- Script Hash: 8edebff7373bb2ce92c5afc455fc0e050c444135b5603619c5e6b8f22e3a9035f0ac40cf25018fdef0d375b0aac20b3f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local v4 = v3.Component:extend("HotbarKitButton");
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v4.init(p1)
 	p1.bgRef = v3.createRef();
-	p1.hoverMaid = l__Maid__1.new();
+	p1.hoverMaid = u1.new();
 end;
 local l__Flamework__2 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 local l__BedwarsAppIds__3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "types", "app-config").BedwarsAppIds;

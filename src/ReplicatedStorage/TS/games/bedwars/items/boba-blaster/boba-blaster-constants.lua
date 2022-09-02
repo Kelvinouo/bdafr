@@ -1,4 +1,3 @@
--- Script Hash: 0c6df97675ef4139cd47b0b6727a9b21859c149e1f4fa91dab2d26c8fbd2dd0adfc9a25c14da420868d8c0c022cda8af
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = setmetatable({}, {

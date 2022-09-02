@@ -1,4 +1,3 @@
--- Script Hash: 76394545af316837d573c1a54c9de622c9d80aa761f8727680272520dc5bc9e6d4ce0b4fd1f59377591bebfac8855873
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(script.Parent:WaitForChild("BaseCharacterController"));
@@ -139,19 +138,18 @@ function v2.Create(p18)
 		p18.jumpButton.ImageRectOffset = Vector2.new(146, 146);
 		p18.isJumping = true;
 	end);
-	local function u4()
-		u3 = nil;
-		p18.isJumping = false;
-		p18.jumpButton.ImageRectOffset = Vector2.new(1, 146);
-	end;
 	p18.jumpButton.InputEnded:connect(function(p20)
 		if p20 == u3 then
-			u4();
+			u3 = nil;
+			p18.isJumping = false;
+			p18.jumpButton.ImageRectOffset = Vector2.new(1, 146);
 		end;
 	end);
 	l__GuiService__2.MenuOpened:connect(function()
 		if u3 then
-			u4();
+			u3 = nil;
+			p18.isJumping = false;
+			p18.jumpButton.ImageRectOffset = Vector2.new(1, 146);
 		end;
 	end);
 	if not p18.characterAddedConn then

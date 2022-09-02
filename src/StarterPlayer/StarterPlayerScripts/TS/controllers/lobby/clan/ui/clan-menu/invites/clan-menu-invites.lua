@@ -1,4 +1,3 @@
--- Script Hash: 71b3717bfe4c46e76aaf6ab82f5dbc13f778f4bcffbb5ce883b45ba753d452c1ba5e940b5d283d7b272295a1fd2f0c9a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -16,17 +15,20 @@ return {
 		if #v4 ~= 0 then
 			local v5 = v4;
 			if v5 then
-				local function v6(p3)
-					return u2.createElement(l__ClanMenuInviteCard__3, {
-						ClanId = p3[1], 
-						ClanProfile = p3[2]
-					});
+				local v6 = table.create(#v4);
+				local v7, v8, v9 = ipairs(v4);
+				while true do
+					v7(v8, v9);
+					if not v7 then
+						break;
+					end;
+					v9 = v7;
+					v6[v7] = u2.createElement(l__ClanMenuInviteCard__3, {
+						ClanId = v8[1], 
+						ClanProfile = v8[2]
+					});				
 				end;
-				local v7 = table.create(#v4);
-				for v8, v9 in ipairs(v4) do
-					v7[v8] = v6(v9, v8 - 1, v4);
-				end;
-				v5 = v7;
+				v5 = v6;
 			end;
 			local v10 = {
 				AdditionalSpace = 80, 
@@ -43,12 +45,18 @@ return {
 					SortOrder = "LayoutOrder"
 				}) };
 			local v12 = #v11;
-			for v13, v14 in ipairs(v5) do
-				v11[v12 + v13] = v14;
+			local v13, v14, v15 = ipairs(v5);
+			while true do
+				v13(v14, v15);
+				if not v13 then
+					break;
+				end;
+				v15 = v13;
+				v11[v12 + v13] = v14;			
 			end;
-			local v15 = u2.createElement(l__AutoCanvasScrollingFrame__4, v10, v11);
+			local v16 = u2.createElement(l__AutoCanvasScrollingFrame__4, v10, v11);
 		else
-			v15 = u2.createElement("TextLabel", {
+			v16 = u2.createElement("TextLabel", {
 				Size = UDim2.fromScale(1, 1), 
 				Text = "<b>No incoming clan invites.\n Would you like to create one instead?</b>", 
 				TextColor3 = l__Theme__5.textPrimary, 
@@ -66,12 +74,12 @@ return {
 					MaxTextSize = 24
 				}) });
 		end;
-		local v16 = {};
-		v16[#v16 + 1] = v15;
+		local v17 = {};
+		v17[#v17 + 1] = v16;
 		return u2.createFragment({
 			ClanMenuInvitesTab = u2.createElement(l__Empty__6, {
 				Size = UDim2.fromScale(1, 1)
-			}, v16)
+			}, v17)
 		});
 	end)
 };

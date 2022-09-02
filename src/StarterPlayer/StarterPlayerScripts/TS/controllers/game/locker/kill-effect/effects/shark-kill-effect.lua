@@ -1,4 +1,3 @@
--- Script Hash: 205d86b1b96ed687785493521ea83a35bfccab6764a2f6e45b5a20444fc56ef6ac74bebaebcee3bea69347a499666f63
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__KillEffect__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, script.Parent.Parent, "kill-effect").KillEffect;

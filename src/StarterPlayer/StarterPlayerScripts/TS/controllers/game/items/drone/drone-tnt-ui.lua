@@ -10,11 +10,17 @@ return {
 		local u5 = p2.useValue(-1);
 		return p2.useMemo(function()
 			local v2 = nil;
-			for v3, v4 in ipairs(p1.store.Inventory.observedInventory.inventory.items) do
+			local v3, v4, v5 = ipairs(p1.store.Inventory.observedInventory.inventory.items);
+			while true do
+				v3(v4, v5);
+				if not v3 then
+					break;
+				end;
+				v5 = v3;
 				if v4.itemType == l__ItemType__1.TNT == true then
 					v2 = v4;
 					break;
-				end;
+				end;			
 			end;
 			if v2 == nil then
 				return u2.createFragment();

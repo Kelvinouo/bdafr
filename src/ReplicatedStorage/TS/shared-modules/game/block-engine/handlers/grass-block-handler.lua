@@ -1,4 +1,3 @@
--- Script Hash: aea46373e951cc57897c4d64f93557fb94df8d37a24081057f46eda7a2a46bb18fcb76bdadb56ba6bf6b9fc2dee4631d
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,14 +13,12 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = l__GreedyBlockHandler__2;
 function v3.constructor(p1, ...)
-	u1.constructor(p1, ...);
+	l__GreedyBlockHandler__2.constructor(p1, ...);
 end;
 function v3.createFace(p2, p3, p4, p5)
-	return u1.createFace(p2, p3, p4, p5);
+	return l__GreedyBlockHandler__2.createFace(p2, p3, p4, p5);
 end;
-u1 = {
+return {
 	GrassBlockHandler = v3
 };
-return l__GreedyBlockHandler__2;

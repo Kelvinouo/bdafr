@@ -187,6 +187,25 @@ return {
 			name = "Prismatic Evelynn", 
 			kit = l__BedwarsKit__4.SPIRIT_ASSASSIN, 
 			renderImage = "rbxassetid://10406965612"
+		}, 
+		[l__BedwarsKitSkin__5.HANNAH_GHOST] = {
+			name = "Ghost Hannah", 
+			kit = l__BedwarsKit__4.HANNAH, 
+			renderImage = "rbxassetid://10726577552"
+		}, 
+		[l__BedwarsKitSkin__5.BIGMAN_SPIRIT] = {
+			name = "Spirit Elder Tree", 
+			kit = l__BedwarsKit__4.BIGMAN, 
+			renderImage = "rbxassetid://10726576554", 
+			product = {
+				devProductId = l__DevProduct__3.SPIRIT_ELDER_TREE, 
+				priceRobux = 799
+			}
+		}, 
+		[l__BedwarsKitSkin__5.DAVEY_GHOST] = {
+			name = "Ghost Davey", 
+			kit = l__BedwarsKit__4.DAVEY, 
+			renderImage = "rbxassetid://10736244575"
 		}
 	}
 };

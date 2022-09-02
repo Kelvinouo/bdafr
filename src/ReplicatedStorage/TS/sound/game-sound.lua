@@ -9,6 +9,7 @@ local v4 = {
 	UI_HOVER = "", 
 	UI_CLICK = "rbxassetid://6732690176", 
 	UI_OPEN = "rbxassetid://6732607930", 
+	UI_REWARD = "rbxassetid://10715051012", 
 	PARTY_INCOMING_INVITE = "rbxassetid://6732495464", 
 	ERROR_NOTIFICATION = "rbxassetid://6732495464", 
 	INFO_NOTIFICATION = "rbxassetid://6732495464", 
@@ -343,6 +344,8 @@ local v4 = {
 	LUCKY_BLOCK_SLAM = "rbxassetid://9369390266", 
 	SPIRIT_DAGGER_CHARGE = "rbxassetid://10405686499", 
 	SPIRIT_DAGGER_SLASH = "rbxassetid://10405686796", 
+	HANNAH_UNSHEATH_SWORD = "rbxassetid://10730384635", 
+	HANNAH_EXECUTE = "rbxassetid://10730384080", 
 	OVERLOAD_LOOP = "rbxassetid://10157622093", 
 	OVERLOAD_BEEP = "rbxassetid://10157695750", 
 	PENGUIN_SURVIVAL_WAVE_TRACK = "rbxassetid://10320153543", 
@@ -361,7 +364,62 @@ local v4 = {
 	TENNIS_BALL_HIT_1 = "rbxassetid://10359187338", 
 	TENNIS_BALL_HIT_2 = "rbxassetid://10361850937", 
 	PIANO_CRASH = "rbxassetid://10392146818", 
-	SLIDE_WHISTLE_FALLING = "rbxassetid://10392143945"
+	SLIDE_WHISTLE_FALLING = "rbxassetid://10392143945", 
+	SNOW_CONE_MACHINE_MAKING = "rbxassetid://10471552433", 
+	SNOW_CONE_MACHINE_MAKING_FINISH = "rbxassetid://10482588299", 
+	SNOW_CONE_MACHINE_REPAIRED = "rbxassetid://8273534704", 
+	SNOW_CONE_MACHINE_REPAIR_HAMMER_1 = "rbxassetid://8273481631", 
+	SNOW_CONE_MACHINE_REPAIR_HAMMER_2 = "rbxassetid://8273480906", 
+	SNOW_CONE_MACHINE_REPAIR_HAMMER_3 = "rbxassetid://8273480780", 
+	SNOW_CONE_MACHINE_REPAIR_HAMMER_4 = "rbxassetid://8273481335", 
+	HEALING_BACKPACK_USED = "rbxassetid://10570667074", 
+	EQUIP_JET_PACK = "rbxassetid://10570333075", 
+	EQUIP_TURTLE_SHELL = "rbxassetid://10570333228", 
+	JETPACK_LAUNCH = "rbxassetid://10570333387", 
+	JETPACK_COOLDOWN_READY = "rbxassetid://10570333565", 
+	NEW_DIAMOND_PICKUP = "rbxassetid://10649778845", 
+	NEW_EMERALD_PICKUP = "rbxassetid://10649778581", 
+	DIAMOND_GENERATOR_AURA = "rbxassetid://10649778971", 
+	EMERALD_GENERATOR_AURA = "rbxassetid://10649779262", 
+	RAVEN_WING_FLAP_1 = "rbxassetid://10649778461", 
+	RAVEN_WING_FLAP_2 = "rbxassetid://10649778374", 
+	RAVEN_WING_FLAP_3 = "rbxassetid://10649779088", 
+	WIND_AMBIENCE = "rbxassetid://10649780258", 
+	FOREST_AMBIENCE = "rbxassetid://10675095993", 
+	DEATH = "rbxassetid://10649778738", 
+	DEATH_FINAL = "rbxassetid://10649779789", 
+	NEW_BOW_FIRE = "rbxassetid://10649780360", 
+	NEW_ARROW_IMPACT = "rbxassetid://10649779662", 
+	VOLLEY_BOW_FIRE = "rbxassetid://10649779507", 
+	VOLLEY_ARROW_HIT = "rbxassetid://10649779385", 
+	BUBBLE_POP1 = "rbxassetid://10715051755", 
+	BUBBLE_POP2 = "rbxassetid://10715052284", 
+	BUBBLE_POP3 = "rbxassetid://10715052963", 
+	BUBBLE_POP4 = "rbxassetid://10715053528", 
+	BUBBLE_POP5 = "rbxassetid://10715054258", 
+	BUBBLE_POP6 = "rbxassetid://10715054794", 
+	PIRATE_SHIP_HIT = "rbxassetid://10705586316", 
+	BLUNDERBUSS_SHOOT = "rbxassetid://10714200509", 
+	PIRATE_EVENT_MUSIC = "rbxassetid://10722672117", 
+	PIRATE_EVENT_LOBBY_MUSIC = "rbxassetid://10734314611", 
+	PIRATE_EVENT_FIRST_ENTRY = "rbxassetid://10722682185", 
+	PIRATE_EVENT_MOTHERSHIP = "rbxassetid://10722682605", 
+	PIRATE_EVENT_THUNDER = "rbxassetid://10722682361", 
+	PIRATE_EVENT_SHIP_CREAK = "rbxassetid://10723610489", 
+	PIRATE_EVENT_SHIP_CRASH = "rbxassetid://10723610329", 
+	PIRATE_EVENT_MOTHERSHIP_FIRE = "rbxassetid://10725596677", 
+	PIRATE_EVENT_MOTHERSHIP_IMPACT = "rbxassetid://10725596208", 
+	PIRATE_EVENT_DAZED = "rbxassetid://10726008737", 
+	PIRATE_EVENT_RAIN_LOOP = "rbxassetid://10726009196", 
+	PIRATE_MOTHERSHIP_CANNON = "rbxassetid://10726009461", 
+	PIRATE_MOTHERSHIP_CANNON_EXPLODE = "rbxassetid://10726010240", 
+	PIRATE_CANNON_1 = "rbxassetid://10726009948", 
+	PIRATE_CANNON_2 = "rbxassetid://10726010058", 
+	PIRATE_CANNON_3 = "rbxassetid://10726009839", 
+	PIRATE_CANNON_EXPLODE_1 = "rbxassetid://10726009638", 
+	PIRATE_CANNON_EXPLODE_2 = "rbxassetid://10726009571", 
+	PIRATE_CANNON_EXPLODE_3 = "rbxassetid://10726009318", 
+	PIRATE_EVENT_BIRD_LOOP = "rbxassetid://10726009761"
 };
 l__SoundManager__3:registerSound(v4.VENDING_ROLL_TICK, {
 	preload = false
@@ -455,17 +513,25 @@ l__SoundManager__3:registerSound(v4.PICKUP_ITEM_DROP, {
 	preloadPriority = 90
 });
 l__SoundManager__3:registerSound(v4.VOICE_1, {
-	volume = 0.15
+	volume = 0.09
 });
 l__SoundManager__3:registerSound(v4.VOICE_2, {
-	volume = 0.15
+	volume = 0.09
 });
 l__SoundManager__3:registerSound(v4.VOICE_HONK, {
 	volume = 0.3
 });
 l__SoundManager__3:registerSound(v4.KILL, {
 	volume = 0.5, 
-	preloadPriority = 100
+	preload = true
+});
+l__SoundManager__3:registerSound(v4.DEATH, {
+	volume = 0.5, 
+	preload = false
+});
+l__SoundManager__3:registerSound(v4.DEATH_FINAL, {
+	volume = 0.5, 
+	preload = false
 });
 l__SoundManager__3:registerSound(v4.GUITAR_LOOP, {
 	volume = 0.15
@@ -495,7 +561,8 @@ l__SoundManager__3:registerSound(v4.WIZARD_LIGHTNING_LAND, {
 	volume = 0.8
 });
 l__SoundManager__3:registerSound(v4.RAVEN_SPACE_AMBIENT, {
-	volume = 0.25
+	volume = 0.25, 
+	preload = false
 });
 l__SoundManager__3:registerSound(v4.ANGEL_LIGHT_ORB_CREATE, {
 	volume = 0.6
@@ -600,6 +667,34 @@ l__SoundManager__3:registerSound(v4.PENGUIN_SURVIVAL_BOSS_TRACK, {
 });
 l__SoundManager__3:registerSound(v4.PENGUIN_SURVIVAL_VICTORY_TRACK, {
 	preload = false
+});
+l__SoundManager__3:registerSound(v4.NEW_DIAMOND_PICKUP, {
+	volume = 1, 
+	preloadPriority = 90
+});
+l__SoundManager__3:registerSound(v4.NEW_EMERALD_PICKUP, {
+	volume = 1, 
+	preloadPriority = 90
+});
+l__SoundManager__3:registerSound(v4.DIAMOND_GENERATOR_AURA, {
+	volume = 0.8, 
+	preloadPriority = 90
+});
+l__SoundManager__3:registerSound(v4.EMERALD_GENERATOR_AURA, {
+	volume = 0.8, 
+	preloadPriority = 90
+});
+l__SoundManager__3:registerSound(v4.WIND_AMBIENCE, {
+	volume = 1, 
+	preload = false
+});
+l__SoundManager__3:registerSound(v4.FOREST_AMBIENCE, {
+	volume = 0.3, 
+	preload = false
+});
+l__SoundManager__3:registerSound(v4.PIRATE_EVENT_LOBBY_MUSIC, {
+	preload = false, 
+	volume = 0.3
 });
 if not v2.DeviceUtil.isHoarceKat() then
 	l__SoundManager__3:preload();

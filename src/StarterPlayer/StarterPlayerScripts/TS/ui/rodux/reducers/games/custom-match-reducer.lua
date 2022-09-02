@@ -36,8 +36,14 @@ return {
 		end;
 		if p2.type == "CustomMatchUpdateSome" then
 			local v10 = u1.deepCopy(p1);
-			for v11, v12 in ipairs(u1.keys(p2.settings)) do
-				v10[v12] = p2.settings[v12];
+			local v11, v12, v13 = ipairs(u1.keys(p2.settings));
+			while true do
+				v11(v12, v13);
+				if not v11 then
+					break;
+				end;
+				v13 = v11;
+				v10[v12] = p2.settings[v12];			
 			end;
 			return v10;
 		end;

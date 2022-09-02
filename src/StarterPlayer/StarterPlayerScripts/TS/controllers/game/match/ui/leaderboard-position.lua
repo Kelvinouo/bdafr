@@ -1,4 +1,3 @@
--- Script Hash: 87c092b117028c1f571036cb8d670362fd354bd88c24bcc22be41127f20c56816f8d5b4a587b3a421b9a672d6b7c50a2
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -46,16 +45,13 @@ function v3.didMount(p3)
 	v9.Visible = false;
 end;
 local l__Theme__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
-local function u4(p4)
-	return string.gsub(string.reverse((string.gsub(string.reverse(p4), "%d%d%d", "%1,"))), "^,", "");
-end;
-function v3.render(p5)
+function v3.render(p4)
 	local v11 = {
 		BorderSizePixel = 0, 
 		BackgroundColor3 = l__Theme__3.backgroundSuccess, 
 		BackgroundTransparency = 0
 	};
-	local l__Native__12 = p5.props.Native;
+	local l__Native__12 = p4.props.Native;
 	if l__Native__12 then
 		for v13, v14 in pairs(l__Native__12) do
 			v11[v13] = v14;
@@ -87,7 +83,7 @@ function v3.render(p5)
 					TextColor3 = Color3.new(1, 1, 1), 
 					TextScaled = true
 				}), v2.createElement("TextLabel", {
-					Text = "<b>" .. tostring(p5.props.NewLeaderboardPos) .. "</b>", 
+					Text = "<b>" .. tostring(p4.props.NewLeaderboardPos) .. "</b>", 
 					RichText = true, 
 					Size = UDim2.fromScale(0, 1), 
 					AutomaticSize = Enum.AutomaticSize.X, 
@@ -96,7 +92,7 @@ function v3.render(p5)
 					TextColor3 = Color3.new(1, 1, 1), 
 					TextScaled = true, 
 					TextSize = 12, 
-					[v2.Ref] = p5.rankRef
+					[v2.Ref] = p4.rankRef
 				}) }), v2.createElement("TextLabel", {
 				AnchorPoint = Vector2.new(0, 1), 
 				Position = UDim2.fromScale(0.05, 0.85), 
@@ -111,7 +107,7 @@ function v3.render(p5)
 			}), v2.createElement("TextLabel", {
 				AnchorPoint = Vector2.new(1, 0.5), 
 				Position = UDim2.fromScale(0.95, 0.5), 
-				Text = "<b>+ " .. u4(tostring(p5.changeDiff)) .. "</b>", 
+				Text = "<b>+ " .. string.gsub(string.reverse((string.gsub(string.reverse((tostring(p4.changeDiff))), "%d%d%d", "%1,"))), "^,", "") .. "</b>", 
 				RichText = true, 
 				TextXAlignment = Enum.TextXAlignment.Right, 
 				Size = UDim2.fromScale(0.5, 0.4), 

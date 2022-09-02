@@ -1,4 +1,3 @@
--- Script Hash: b3250d980e520139e26e52df6a72a275fff0d3002bc03affa68a37c9cb35c51eae6e6ed0fde1991b54ade0ecf3f7b3a3
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -307,6 +306,16 @@ v2.SHARK = "shark";
 v1.shark = "SHARK";
 v2.VERIFIED = "verified";
 v1.verified = "VERIFIED";
+v2.PIRATE_EVENT_2022 = "pirate_event_2022";
+v1.pirate_event_2022 = "PIRATE_EVENT_2022";
+v2.ARRGH = "arrgh";
+v1.arrgh = "ARRGH";
+v2.CAPTAIN = "captain";
+v1.captain = "CAPTAIN";
+v2.PIRATE = "pirate";
+v1.pirate = "PIRATE";
+v2.CORSAIR = "corsair";
+v1.corsair = "CORSAIR";
 return {
 	TitleType = v2
 };

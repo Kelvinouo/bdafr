@@ -1,4 +1,3 @@
--- Script Hash: c2ce5eb043e8a98515a7371e4b73a5cb081f897eb53141faabfe293f5c19b519fc4e79dc779d28392e9eba6774304d42
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -15,20 +14,19 @@ function v4.new(...)
 	local v5 = setmetatable({}, v4);
 	return v5:constructor(...) and v5;
 end;
-local u1 = l__KnitController__3;
 function v4.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__3.constructor(p1);
 	p1.Name = "TurretController";
 end;
-local l__CollectionService__2 = v2.CollectionService;
-local l__ClientStore__3 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
+local l__CollectionService__1 = v2.CollectionService;
+local l__ClientStore__2 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function v4.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__CollectionService__2:GetInstanceRemovedSignal("Turret"):Connect(function(p3)
-		if l__ClientStore__3:getState().Game.selectedTurret ~= p3 then
+	l__KnitController__3.KnitStart(p2);
+	l__CollectionService__1:GetInstanceRemovedSignal("Turret"):Connect(function(p3)
+		if l__ClientStore__2:getState().Game.selectedTurret ~= p3 then
 			return nil;
 		end;
-		l__ClientStore__3:dispatch({
+		l__ClientStore__2:dispatch({
 			type = "SetSpectatedTurret", 
 			selectedTurret = nil
 		});
@@ -36,7 +34,7 @@ function v4.KnitStart(p2)
 end;
 function v4.getNextTurret(p4, p5)
 	local v6 = p4:getTurrets(p5);
-	local l__selectedTurret__7 = l__ClientStore__3:getState().Game.selectedTurret;
+	local l__selectedTurret__7 = l__ClientStore__2:getState().Game.selectedTurret;
 	if l__selectedTurret__7 == nil then
 		return v6[1];
 	end;
@@ -52,7 +50,7 @@ function v4.getNextTurret(p4, p5)
 end;
 function v4.getBackTurret(p6, p7)
 	local v10 = p6:getTurrets(p7);
-	local l__selectedTurret__11 = l__ClientStore__3:getState().Game.selectedTurret;
+	local l__selectedTurret__11 = l__ClientStore__2:getState().Game.selectedTurret;
 	if l__selectedTurret__11 == nil then
 		return v10[1];
 	end;
@@ -62,22 +60,22 @@ function v4.getBackTurret(p6, p7)
 	end;
 	return v10[#v10 - 1 + 1];
 end;
-local l__Players__4 = v2.Players;
+local l__Players__3 = v2.Players;
 function v4.getTurrets(p8, p9)
-	local v13 = l__CollectionService__2:GetTagged(p9);
-	local function v14(p10)
-		return p10:GetAttribute("PlacedByUserId") == l__Players__4.LocalPlayer.UserId;
-	end;
-	local v15 = {};
-	local v16 = 0;
-	for v17, v18 in ipairs(v13) do
-		if v14(v18, v17 - 1, v13) == true then
-			v16 = v16 + 1;
-			v15[v16] = v18;
+	local v13 = {};
+	local v14 = 0;
+	local v15, v16, v17 = ipairs((l__CollectionService__1:GetTagged(p9)));
+	while true do
+		v15(v16, v17);
+		if not v15 then
+			break;
 		end;
+		if v16:GetAttribute("PlacedByUserId") == l__Players__3.LocalPlayer.UserId == true then
+			v14 = v14 + 1;
+			v13[v14] = v16;
+		end;	
 	end;
-	return v15;
+	return v13;
 end;
-u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1(v4.new());
+local v18 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v4.new());
 return nil;

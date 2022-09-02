@@ -14,50 +14,49 @@ function v4.new(...)
 	local v5 = setmetatable({}, v4);
 	return v5:constructor(...) and v5;
 end;
-local u1 = v3;
-local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v4.constructor(p1)
-	u1.constructor(p1);
+	v3.constructor(p1);
 	p1.Name = "FishingRodController";
-	p1.animationMaid = u2.new();
+	p1.animationMaid = u1.new();
 	p1.activeFishing = false;
 end;
-local l__ClientSyncEvents__3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
-local l__Players__4 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
-local l__default__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__ClientSyncEvents__2 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
+local l__Players__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
+local l__default__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function v4.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__ClientSyncEvents__3.ProjectileDestroy:connect(function(p3)
+	v3.KnitStart(p2);
+	l__ClientSyncEvents__2.ProjectileDestroy:connect(function(p3)
 		if p3.projectileType ~= "fisherman_bobber" then
 			return nil;
 		end;
-		if p3.projectile:GetAttribute("ProjectileShooter") ~= l__Players__4.LocalPlayer.UserId then
+		if p3.projectile:GetAttribute("ProjectileShooter") ~= l__Players__3.LocalPlayer.UserId then
 			return nil;
 		end;
-		l__default__5.Client:Get("RemoteName"):SendToServer({
+		l__default__4.Client:Get("RemoteName"):SendToServer({
 			success = false
 		});
 	end);
 end;
-local l__GameAnimationUtil__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
-local l__AnimationType__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
-local l__KnitClient__8 = v2.KnitClient;
+local l__GameAnimationUtil__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
+local l__AnimationType__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
+local l__KnitClient__7 = v2.KnitClient;
 function v4.onEnable(p4, p5, p6)
-	u1.onEnable(p4, p5, p6);
-	p4.maid:GiveTask(l__ClientSyncEvents__3.ProjectileLaunched:connect(function(p7)
+	v3.onEnable(p4, p5, p6);
+	p4.maid:GiveTask(l__ClientSyncEvents__2.ProjectileLaunched:connect(function(p7)
 		if p7.projectileType ~= "fisherman_bobber" then
 			return nil;
 		end;
-		if p7.projectile:GetAttribute("ProjectileShooter") ~= l__Players__4.LocalPlayer.UserId then
+		if p7.projectile:GetAttribute("ProjectileShooter") ~= l__Players__3.LocalPlayer.UserId then
 			return nil;
 		end;
 		p4.activeFishing = true;
 	end));
-	p4.maid:GiveTask(l__ClientSyncEvents__3.ProjectileDestroy:connect(function(p8)
+	p4.maid:GiveTask(l__ClientSyncEvents__2.ProjectileDestroy:connect(function(p8)
 		if p8.projectileType ~= "fisherman_bobber" then
 			return nil;
 		end;
-		if p8.projectile:GetAttribute("ProjectileShooter") ~= l__Players__4.LocalPlayer.UserId then
+		if p8.projectile:GetAttribute("ProjectileShooter") ~= l__Players__3.LocalPlayer.UserId then
 			return nil;
 		end;
 		p4.animationMaid:DoCleaning();
@@ -65,14 +64,14 @@ function v4.onEnable(p4, p5, p6)
 	end));
 	p4.maid:GiveTask(function()
 		p4.activeFishing = false;
-		l__default__5.Client:Get("RemoteName"):SendToServer({
+		l__default__4.Client:Get("RemoteName"):SendToServer({
 			success = false
 		});
 	end);
 	p4.animationMaid:DoCleaning();
 	p4.maid:GiveTask(p4.animationMaid);
 	task.spawn(function()
-		p4.maid:GiveTask(l__default__5.Client:WaitFor("RemoteName"):expect():Connect(function(p9)
+		p4.maid:GiveTask(l__default__4.Client:WaitFor("RemoteName"):expect():Connect(function(p9)
 			if not p6() then
 				return nil;
 			end;
@@ -80,7 +79,7 @@ function v4.onEnable(p4, p5, p6)
 			if l__idleAnimation__6 ~= nil then
 				l__idleAnimation__6:Stop();
 			end;
-			p4.idleAnimation = l__GameAnimationUtil__6.playAnimation(l__Players__4.LocalPlayer, l__AnimationType__7.FISHING_ROD_PULLING, {
+			p4.idleAnimation = l__GameAnimationUtil__5.playAnimation(l__Players__3.LocalPlayer, l__AnimationType__6.FISHING_ROD_PULLING, {
 				looped = true
 			});
 			if p4.idleAnimation then
@@ -92,19 +91,19 @@ function v4.onEnable(p4, p5, p6)
 					return v7;
 				end);
 			end;
-			l__KnitClient__8.Controllers.FishermanController:startMinigame(p9.dropData, function(p10)
+			l__KnitClient__7.Controllers.FishermanController:startMinigame(p9.dropData, function(p10)
 				if p10.win then
-					local v8 = l__GameAnimationUtil__6.playAnimation(l__Players__4.LocalPlayer, l__AnimationType__7.FISHING_ROD_CATCH_SUCCESS, {
+					local v8 = l__GameAnimationUtil__5.playAnimation(l__Players__3.LocalPlayer, l__AnimationType__6.FISHING_ROD_CATCH_SUCCESS, {
 						looped = false
 					});
-					l__default__5.Client:Get("RemoteName"):SendToServer({
+					l__default__4.Client:Get("RemoteName"):SendToServer({
 						success = true
 					});
 				else
-					v8 = l__GameAnimationUtil__6.playAnimation(l__Players__4.LocalPlayer, l__AnimationType__7.FISHING_ROD_CATCH_FAIL, {
+					v8 = l__GameAnimationUtil__5.playAnimation(l__Players__3.LocalPlayer, l__AnimationType__6.FISHING_ROD_CATCH_FAIL, {
 						looped = false
 					});
-					l__default__5.Client:Get("RemoteName"):SendToServer({
+					l__default__4.Client:Get("RemoteName"):SendToServer({
 						success = false
 					});
 				end;
@@ -130,7 +129,7 @@ function v4.onStopCharging(p13)
 end;
 function v4.onLaunch(p14, p15)
 	p14.animationMaid:DoCleaning();
-	p14.idleAnimation = l__GameAnimationUtil__6.playAnimation(l__Players__4.LocalPlayer, l__AnimationType__7.FISHING_ROD_IDLE, {
+	p14.idleAnimation = l__GameAnimationUtil__5.playAnimation(l__Players__3.LocalPlayer, l__AnimationType__6.FISHING_ROD_IDLE, {
 		looped = true
 	});
 	if p14.idleAnimation then
@@ -142,7 +141,7 @@ function v4.onLaunch(p14, p15)
 			return v10;
 		end);
 	end;
-	local v11 = l__GameAnimationUtil__6.playAnimation(l__Players__4.LocalPlayer, l__AnimationType__7.FISHING_ROD_CAST, {
+	local v11 = l__GameAnimationUtil__5.playAnimation(l__Players__3.LocalPlayer, l__AnimationType__6.FISHING_ROD_CAST, {
 		looped = false
 	});
 	if v11 then
@@ -161,10 +160,9 @@ end;
 function v4.onStartReload(p16, p17)
 
 end;
-local l__ItemType__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
+local l__ItemType__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
 function v4.isRelevantItem(p18, p19)
-	return p19.itemType == l__ItemType__9.FISHING_ROD;
+	return p19.itemType == l__ItemType__8.FISHING_ROD;
 end;
-u1 = v2.KnitClient.CreateController;
-u1 = u1(v4.new());
+local v13 = v2.KnitClient.CreateController(v4.new());
 return nil;

@@ -120,11 +120,12 @@ function v4.SetInitialOrientation(p11, p12)
 		warn("OrbitalCamera could not set initial orientation due to missing humanoid");
 		return;
 	end;
-	local l__unit__9 = (p12.RootPart.CFrame.lookVector - Vector3.new(0, 0.23, 0)).unit;
-	if not u1.IsFinite((u1.GetAngleBetweenXZVectors(l__unit__9, p11:GetCameraLookVector()))) then
+	assert(p12.RootPart, "");
+	local l__Unit__9 = (p12.RootPart.CFrame.LookVector - Vector3.new(0, 0.23, 0)).Unit;
+	if not u1.IsFinite((u1.GetAngleBetweenXZVectors(l__Unit__9, p11:GetCameraLookVector()))) then
 
 	end;
-	if not u1.IsFinite(math.asin(p11:GetCameraLookVector().y) - math.asin(l__unit__9.y)) then
+	if not u1.IsFinite(math.asin(p11:GetCameraLookVector().Y) - math.asin(l__Unit__9.Y)) then
 
 	end;
 end;
@@ -144,9 +145,9 @@ end;
 local u3 = Vector3.new(0, 0, 0);
 function v4.CalculateNewLookVector(p16, p17, p18)
 	local v10 = p17 or p16:GetCameraLookVector();
-	local v11 = math.asin(v10.y);
-	local v12 = Vector2.new(p18.x, (math.clamp(p18.y, v11 - 1.3962634015954636, v11 - -1.3962634015954636)));
-	return (CFrame.Angles(0, -v12.x, 0) * CFrame.new(u3, v10) * CFrame.Angles(-v12.y, 0, 0)).lookVector;
+	local v11 = math.asin(v10.Y);
+	local v12 = Vector2.new(p18.X, (math.clamp(p18.Y, v11 - 1.3962634015954636, v11 - -1.3962634015954636)));
+	return (CFrame.Angles(0, -v12.X, 0) * CFrame.new(u3, v10) * CFrame.Angles(-v12.Y, 0, 0)).LookVector;
 end;
 local u4 = require(script.Parent:WaitForChild("CameraInput"));
 local l__VRService__5 = game:GetService("VRService");
@@ -179,24 +180,24 @@ function v4.Update(p19, p20)
 		if l__VREnabled__23 and not p19:IsInFirstPerson() then
 			local v26 = p19:GetCameraHeight();
 			local v27 = v22 - l__CurrentCamera__16.CFrame.p;
-			local l__magnitude__28 = v27.magnitude;
-			if p19.currentSubjectDistance < l__magnitude__28 or v25.x ~= 0 then
-				local v29 = p19:CalculateNewLookVector(v27.unit * u6, Vector2.new(v25.x, 0)) * math.min(l__magnitude__28, p19.currentSubjectDistance);
+			local l__Magnitude__28 = v27.Magnitude;
+			if p19.currentSubjectDistance < l__Magnitude__28 or v25.X ~= 0 then
+				local v29 = p19:CalculateNewLookVector(v27.Unit * u6, Vector2.new(v25.X, 0)) * math.min(l__Magnitude__28, p19.currentSubjectDistance);
 				local v30 = v24.p - v29;
-				local v31 = l__CurrentCamera__16.CFrame.lookVector;
-				if v25.x ~= 0 then
+				local v31 = l__CurrentCamera__16.CFrame.LookVector;
+				if v25.X ~= 0 then
 					v31 = v29;
 				end;
-				v17 = CFrame.new(v30, (Vector3.new(v30.x + v31.x, v30.y, v30.z + v31.z))) + Vector3.new(0, v26, 0);
+				v17 = CFrame.new(v30, (Vector3.new(v30.X + v31.X, v30.Y, v30.Z + v31.Z))) + Vector3.new(0, v26, 0);
 			end;
 		else
-			p19.curAzimuthRad = p19.curAzimuthRad - v25.x;
+			p19.curAzimuthRad = p19.curAzimuthRad - v25.X;
 			if p19.useAzimuthLimits then
 				p19.curAzimuthRad = math.clamp(p19.curAzimuthRad, p19.minAzimuthAbsoluteRad, p19.maxAzimuthAbsoluteRad);
 			else
 				p19.curAzimuthRad = p19.curAzimuthRad ~= 0 and math.sign(p19.curAzimuthRad) * (math.abs(p19.curAzimuthRad) % u7) or 0;
 			end;
-			p19.curElevationRad = math.clamp(p19.curElevationRad + v25.y, p19.minElevationRad, p19.maxElevationRad);
+			p19.curElevationRad = math.clamp(p19.curElevationRad + v25.Y, p19.minElevationRad, p19.maxElevationRad);
 			v17 = CFrame.new(v22 + p19.currentSubjectDistance * (CFrame.fromEulerAnglesYXZ(-p19.curElevationRad, p19.curAzimuthRad, 0) * v1), v22);
 		end;
 		p19.lastCameraTransform = v17;

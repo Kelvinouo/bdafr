@@ -2,32 +2,47 @@
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local l__UpdateTimeEpoch__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit-shop").BedwarsKitShop.UpdateTimeEpoch;
-local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
-local v5 = setmetatable({}, {
+local l__KnitController__3 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
+local v4 = setmetatable({}, {
 	__tostring = function()
 		return "LobbyCountdownController";
 	end, 
-	__index = l__KnitController__4
+	__index = l__KnitController__3
 });
-v5.__index = v5;
-function v5.new(...)
-	local v6 = setmetatable({}, v5);
-	return v6:constructor(...) and v6;
+v4.__index = v4;
+function v4.new(...)
+	local v5 = setmetatable({}, v4);
+	return v5:constructor(...) and v5;
 end;
-local u1 = l__KnitController__4;
-function v5.constructor(p1)
-	u1.constructor(p1);
+function v4.constructor(p1)
+	l__KnitController__3.constructor(p1);
 	p1.Name = "LobbyCountdownController";
 end;
-local l__WatchCollectionTag__2 = v2.WatchCollectionTag;
-local u3 = 1657317600;
-function v5.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__WatchCollectionTag__2("sale-countdown", function(p3)
+local l__WatchCollectionTag__1 = v2.WatchCollectionTag;
+local l__UpdateTimeEpoch__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit-shop").BedwarsKitShop.UpdateTimeEpoch;
+function v4.KnitStart(p2)
+	l__KnitController__3.KnitStart(p2);
+	l__WatchCollectionTag__1("sale-countdown", function(p3)
 		task.spawn(function()
 			while true do
 				p3.Text = p2:getTime(1660341600, "LAST CHANCE!!");
+				local v6 = wait(1);
+				if v6 == 0 then
+					break;
+				end;
+				if v6 ~= v6 then
+					break;
+				end;
+				if not v6 then
+					break;
+				end;			
+			end;
+		end);
+	end);
+	l__WatchCollectionTag__1("update-countdown", function(p4)
+		task.spawn(function()
+			while true do
+				p4.Text = p2:getTime(l__UpdateTimeEpoch__2, "UPDATE HYPE!!");
 				local v7 = wait(1);
 				if v7 == 0 then
 					break;
@@ -41,10 +56,10 @@ function v5.KnitStart(p2)
 			end;
 		end);
 	end);
-	l__WatchCollectionTag__2("update-countdown", function(p4)
+	l__WatchCollectionTag__1("br-countdown", function(p5)
 		task.spawn(function()
 			while true do
-				p4.Text = p2:getTime(u3, "UPDATE HYPE!!");
+				p5.Text = p2:getTime(1656172800, "UPDATE HYPE!!");
 				local v8 = wait(1);
 				if v8 == 0 then
 					break;
@@ -58,36 +73,18 @@ function v5.KnitStart(p2)
 			end;
 		end);
 	end);
-	l__WatchCollectionTag__2("br-countdown", function(p5)
-		task.spawn(function()
-			while true do
-				p5.Text = p2:getTime(1656172800, "UPDATE HYPE!!");
-				local v9 = wait(1);
-				if v9 == 0 then
-					break;
-				end;
-				if v9 ~= v9 then
-					break;
-				end;
-				if not v9 then
-					break;
-				end;			
-			end;
-		end);
-	end);
 end;
-local l__StringUtil__4 = v2.StringUtil;
-function v5.getTime(p6, p7, p8)
-	local v10 = math.max(0, p7 - os.time());
-	if v10 == 0 then
+local l__StringUtil__3 = v2.StringUtil;
+function v4.getTime(p6, p7, p8)
+	local v9 = math.max(0, p7 - os.time());
+	if v9 == 0 then
 		return p8;
 	end;
-	return l__StringUtil__4.formatCountdownTime(v10, {
+	return l__StringUtil__3.formatCountdownTime(v9, {
 		days = true, 
 		hours = true, 
 		seperator = " : "
 	});
 end;
-u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1(v5.new());
+local v10 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v4.new());
 return nil;

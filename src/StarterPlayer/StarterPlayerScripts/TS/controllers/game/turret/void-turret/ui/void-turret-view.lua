@@ -1,4 +1,3 @@
--- Script Hash: 69df5e44a5315bac4ffed9f0b791959d6c93d12bb1eacc6430f8726773894ba943df1b0eed5549fb41b157fa980811dd
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -70,8 +69,14 @@ end;
 local l__UserInputService__11 = v1.import(script, v1.getModule(script, "@rbxts", "services")).UserInputService;
 function v4.didMount(p4)
 	l__UserInputService__11.MouseIconEnabled = false;
-	for v5, v6 in ipairs((p4:applyVoidCameraLighting())) do
-		p4.filmMaid:GiveTask(v6);
+	local v5, v6, v7 = ipairs((p4:applyVoidCameraLighting()));
+	while true do
+		v5(v6, v7);
+		if not v5 then
+			break;
+		end;
+		v7 = v5;
+		p4.filmMaid:GiveTask(v6);	
 	end;
 	p4.filmMaid:GiveTask(function()
 		l__ClientStore__3:dispatch({
@@ -104,24 +109,24 @@ function v4.willUpdate(p6, p7)
 	end;
 end;
 function v4.applyVoidCameraLighting(p8)
-	local v7 = {};
-	table.insert(v7, (l__KnitClient__4.Controllers.LightingController.lightingModifier:addModifier(20, {
+	local v8 = {};
+	table.insert(v8, (l__KnitClient__4.Controllers.LightingController.lightingModifier:addModifier(20, {
 		Ambient = Color3.fromRGB(0, 0, 0), 
 		OutdoorAmbient = Color3.fromRGB(100, 100, 100), 
 		Brightness = 0, 
 		ClockTime = 6.3
 	})));
-	table.insert(v7, (l__KnitClient__4.Controllers.LightingController.atmosphereModifier:addModifier(20, {
+	table.insert(v8, (l__KnitClient__4.Controllers.LightingController.atmosphereModifier:addModifier(20, {
 		Density = 0.45, 
 		Offset = 0, 
 		Color = Color3.fromRGB(193, 193, 193), 
 		Glare = 0, 
 		Haze = 0
 	})));
-	table.insert(v7, (l__KnitClient__4.Controllers.LightingController.sunRayModifier:addModifier(20, {
+	table.insert(v8, (l__KnitClient__4.Controllers.LightingController.sunRayModifier:addModifier(20, {
 		Intensity = 0.005
 	})));
-	table.insert(v7, (l__KnitClient__4.Controllers.LightingController.skyModifier:addModifier(20, {
+	table.insert(v8, (l__KnitClient__4.Controllers.LightingController.skyModifier:addModifier(20, {
 		SkyboxBk = "rbxassetid://9851144466", 
 		SkyboxDn = "rbxassetid://9851144249", 
 		SkyboxFt = "rbxassetid://9851144099", 
@@ -131,7 +136,7 @@ function v4.applyVoidCameraLighting(p8)
 		CelestialBodiesShown = false, 
 		StarCount = 3000
 	})));
-	return v7;
+	return v8;
 end;
 local l__ScaleComponent__14 = v2.ScaleComponent;
 return {

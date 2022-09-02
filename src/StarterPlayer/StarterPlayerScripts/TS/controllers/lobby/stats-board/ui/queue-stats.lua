@@ -1,4 +1,3 @@
--- Script Hash: 2f6d5e864e49b56dfab75cc5020c9ead39e138679e1b20fb526e42919fa5e599ac49cfb7db62283fe9ff31e9fe2ca0dd
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -46,12 +45,15 @@ return {
 		end;
 		local function v9(p7)
 			local l__statElements__10 = p7.statElements;
-			local function v11(p8)
-				return p8;
-			end;
-			local v12 = table.create(#l__statElements__10);
-			for v13, v14 in ipairs(l__statElements__10) do
-				v12[v13] = v11(v14, v13 - 1, l__statElements__10);
+			local v11 = table.create(#l__statElements__10);
+			local v12, v13, v14 = ipairs(l__statElements__10);
+			while true do
+				v12(v13, v14);
+				if not v12 then
+					break;
+				end;
+				v14 = v12;
+				v11[v12] = v13;			
 			end;
 			local v15 = {
 				Size = UDim2.new(p7.xSize, 0, 0, 0), 
@@ -75,8 +77,14 @@ return {
 					PaddingRight = UDim.new(0, 16)
 				}) };
 			local v17 = #v16;
-			for v18, v19 in ipairs(v12) do
-				v16[v17 + v18] = v19;
+			local v18, v19, v20 = ipairs(v11);
+			while true do
+				v18(v19, v20);
+				if not v18 then
+					break;
+				end;
+				v20 = v18;
+				v16[v17 + v18] = v19;			
 			end;
 			return u2.createElement("Frame", v15, v16);
 		end;

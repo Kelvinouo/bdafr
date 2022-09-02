@@ -81,16 +81,22 @@ return {
 			});
 		end;
 		local v15 = table.create(#v12);
-		for v16, v17 in ipairs(v12) do
-			v15[v16] = v13(v17, v16 - 1, v12);
+		local v16, v17, v18 = ipairs(v12);
+		while true do
+			v16(v17, v18);
+			if not v16 then
+				break;
+			end;
+			v18 = v16;
+			v15[v16] = v13(v17, v16 - 1, v12);		
 		end;
-		local v18 = {
+		local v19 = {
 			Size = UDim2.fromScale(0.2, 1), 
 			LayoutOrder = 1, 
 			BorderSizePixel = 0, 
 			BackgroundColor3 = l__Theme__7.backgroundTertiary
 		};
-		local v19 = { u1.createElement("UIListLayout", {
+		local v20 = { u1.createElement("UIListLayout", {
 				FillDirection = "Vertical", 
 				SortOrder = "LayoutOrder", 
 				Padding = UDim.new(0, 10), 
@@ -98,75 +104,81 @@ return {
 			}), u1.createElement("UIPadding", {
 				PaddingTop = UDim.new(0, 15)
 			}) };
-		local v20 = #v19;
-		for v21, v22 in ipairs(v15) do
-			v19[v20 + v21] = v22;
+		local v21 = #v20;
+		local v22, v23, v24 = ipairs(v15);
+		while true do
+			v22(v23, v24);
+			if not v22 then
+				break;
+			end;
+			v24 = v22;
+			v20[v21 + v22] = v23;		
 		end;
-		v10[v11 + 1] = u1.createElement("Frame", v18, v19);
-		local v23 = { u1.createElement("UIPadding", {
+		v10[v11 + 1] = u1.createElement("Frame", v19, v20);
+		local v25 = { u1.createElement("UIPadding", {
 				PaddingTop = UDim.new(0, 15), 
 				PaddingLeft = UDim.new(0.075, 0), 
 				PaddingRight = UDim.new(0.075, 0)
 			}) };
-		local v24 = false;
-		if v5 == v4.GENERAL then
-			v24 = u1.createElement(l__HostPanelGeneralTab__8, {
-				store = p1.store
-			});
-		end;
-		if v24 then
-			v23[#v23 + 1] = v24;
-		end;
-		local v25 = false;
-		if v5 == v4.KITS then
-			v25 = u1.createElement(l__HostPanelKitsTab__9, {
-				store = p1.store
-			});
-		end;
-		if v25 then
-			v23[#v23 + 1] = v25;
-		end;
 		local v26 = false;
-		if v5 == v4.ITEMS then
-			v26 = u1.createElement(l__HostPanelItemsTab__10, {
+		if v5 == v4.GENERAL then
+			v26 = u1.createElement(l__HostPanelGeneralTab__8, {
 				store = p1.store
 			});
 		end;
 		if v26 then
-			v23[#v23 + 1] = v26;
+			v25[#v25 + 1] = v26;
 		end;
 		local v27 = false;
-		if v5 == v4.PLAYERS then
-			v27 = u1.createElement(l__HostPanelPlayersTab__11, {
+		if v5 == v4.KITS then
+			v27 = u1.createElement(l__HostPanelKitsTab__9, {
 				store = p1.store
 			});
 		end;
 		if v27 then
-			v23[#v23 + 1] = v27;
+			v25[#v25 + 1] = v27;
 		end;
 		local v28 = false;
-		if v5 == v4.GENERATORS then
-			v28 = u1.createElement(u12, {
+		if v5 == v4.ITEMS then
+			v28 = u1.createElement(l__HostPanelItemsTab__10, {
 				store = p1.store
 			});
 		end;
 		if v28 then
-			v23[#v23 + 1] = v28;
+			v25[#v25 + 1] = v28;
 		end;
 		local v29 = false;
-		if v5 == v4.MAP then
-			v29 = u1.createElement(l__HostPanelMapTab__13, {
+		if v5 == v4.PLAYERS then
+			v29 = u1.createElement(l__HostPanelPlayersTab__11, {
 				store = p1.store
 			});
 		end;
 		if v29 then
-			v23[#v23 + 1] = v29;
+			v25[#v25 + 1] = v29;
+		end;
+		local v30 = false;
+		if v5 == v4.GENERATORS then
+			v30 = u1.createElement(u12, {
+				store = p1.store
+			});
+		end;
+		if v30 then
+			v25[#v25 + 1] = v30;
+		end;
+		local v31 = false;
+		if v5 == v4.MAP then
+			v31 = u1.createElement(l__HostPanelMapTab__13, {
+				store = p1.store
+			});
+		end;
+		if v31 then
+			v25[#v25 + 1] = v31;
 		end;
 		v10[v11 + 2] = u1.createElement(l__Empty__14, {
 			Size = UDim2.fromScale(0.8, 1), 
 			LayoutOrder = 2, 
 			BackgroundTransparency = 1
-		}, v23);
+		}, v25);
 		v8[#v8 + 1] = u1.createElement(l__WidgetComponent__15, v9, v10);
 		return u1.createElement("Frame", v7, v8);
 	end)

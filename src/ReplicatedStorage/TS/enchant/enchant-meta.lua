@@ -1,4 +1,3 @@
--- Script Hash: 00502e96e2d5429267a97f030630cdd7fcccdb62dc939b70a2601cadf9b08e9bb2b4b30020afe3eef0c9ed0a05d61f6f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -117,6 +116,11 @@ return {
 			name = "Life Steal II", 
 			statusEffect = l__StatusEffectType__5.LIFE_STEAL_2, 
 			element = l__EnchantElement__8.LIFE_STEAL
+		}, 
+		[l__EnchantType__10.VOLLEY_3] = {
+			name = "Volley III", 
+			statusEffect = l__StatusEffectType__5.VOLLEY, 
+			element = l__EnchantElement__8.VOLLEY
 		}
 	}, 
 	EnchantElementMeta = {
@@ -167,6 +171,10 @@ return {
 		[l__EnchantElement__8.LIFE_STEAL] = {
 			name = "Life Steal", 
 			image = l__BedwarsImageId__3.LIFE_STEAL_ELEMENT
+		}, 
+		[l__EnchantElement__8.VOLLEY] = {
+			name = "Volley", 
+			image = l__BedwarsImageId__3.VOLLEY_ELEMENT
 		}
 	}, 
 	EnchantResearchMeta = {

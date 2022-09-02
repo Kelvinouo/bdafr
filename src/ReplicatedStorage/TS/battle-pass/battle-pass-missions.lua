@@ -1,87 +1,86 @@
 -- Decompiled with the Synapse X Luau decompiler.
 
-local l__ItemType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
-local v2 = {
+local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
+local l__ItemType__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
+local v3 = {
 	SEASON_ID = 1
 };
-local v3 = DateTime.fromUniversalTime(2021, 8, 27, 19);
-v2.SEASON_START_DATE = v3;
-v2.DAILY_MISSION_XP = 2000;
-v2.WEEKKLY_MISSION_XP = 8000;
-local u1 = v3;
-function v2.getDay()
+local v4 = DateTime.fromUniversalTime(2021, 8, 27, 19);
+v3.SEASON_START_DATE = v4;
+v3.DAILY_MISSION_XP = 3000;
+v3.WEEKLY_MISSION_XP = 12000;
+local u1 = v4;
+function v3.getDay()
 	return math.ceil(math.max(DateTime.now().UnixTimestamp - u1.UnixTimestamp, 0) / 86400);
 end;
-function v2.getWeek()
+function v3.getWeek()
 	return math.ceil(math.ceil(math.max(DateTime.now().UnixTimestamp - u1.UnixTimestamp, 0) / 86400) / 7);
 end;
-local function u2(p1, p2, p3, p4, p5, p6)
-	local v4 = {};
-	local v5 = Random.new(p4);
+local l__MissionGiver__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "mission", "mission-giver-type").MissionGiver;
+u1 = function(p1, p2, p3, p4, p5, p6)
+	local v5 = {};
+	local v6 = Random.new(p4);
 	if #p1 == 0 then
 		return {};
 	end;
-	local v6 = {};
-	local v7 = 0;
-	local v8 = false;
+	local v7 = {};
+	local v8 = 0;
+	local v9 = false;
 	while true do
-		local v9 = nil;
 		local v10 = nil;
-		if v8 then
-			v7 = v7 + 1;
+		local v11 = nil;
+		if v9 then
+			v8 = v8 + 1;
 		else
-			v8 = true;
+			v9 = true;
 		end;
-		if not (v7 < p5) then
+		if not (v8 < p5) then
 			break;
 		end;
 		while true do
-			v9 = p1[v5:NextInteger(0, #p1 - 1) + 1];
-			v10 = v9.stages[1].type;
-			if v6[v10] == nil then
+			v10 = p1[v6:NextInteger(0, #p1 - 1) + 1];
+			v11 = v10.stages[1].type;
+			if v7[v11] == nil then
 				break;
 			end;		
 		end;
-		local v11 = {
-			id = "BATTLE_PASS_" .. tostring(v2.SEASON_ID) .. "_" .. string.upper(p2) .. "_" .. tostring(p3) .. "_MISSION_" .. tostring(v7)
+		local v12 = {
+			id = "BATTLE_PASS_" .. tostring(v3.SEASON_ID) .. "_" .. string.upper(p2) .. "_" .. tostring(p3) .. "_MISSION_" .. tostring(v8), 
+			giver = l__MissionGiver__2.BATTLEPASS
 		};
-		for v12, v13 in pairs(v9) do
-			v11[v12] = v13;
+		for v13, v14 in pairs(v10) do
+			v12[v13] = v14;
 		end;
-		v11.reward = p6;
-		v6[v10] = true;
-		table.insert(v4, v11);	
+		v12.rewardAmount = p6;
+		v7[v11] = true;
+		table.insert(v5, v12);	
 	end;
-	return v4;
-end;
-u1 = function(p7)
-	local v14 = v2.getDay();
-	return u2(p7, "daily", v14, v14, 2, v2.DAILY_MISSION_XP);
+	return v5;
 end;
 return {
-	BattlePassMissions = v2, 
-	BattlePassMissionsContext = (function(p8, p9)
-		local v15 = v2.getDay();
-		local v16 = v2.getWeek();
-		local u3 = v2.getDay();
-		local u4 = u2(p8, "daily", v15, v15, 2, v2.DAILY_MISSION_XP);
-		local u5 = v2.getWeek();
-		local u6 = u2(p9, "weekly", v16, v16 * 100, 3, v2.WEEKKLY_MISSION_XP);
+	BattlePassMissions = v3, 
+	BattlePassMissionsContext = (function(p7, p8)
+		local v15 = v3.getDay();
+		local v16 = v3.getWeek();
+		local u3 = v3.getDay();
+		local u4 = u1(p7, "daily", v15, v15, 2, v3.DAILY_MISSION_XP);
+		local u5 = v3.getWeek();
+		local u6 = u1(p8, "weekly", v16, v16 * 100, 3, v3.WEEKLY_MISSION_XP);
 		return {
 			getDailyMissions = function()
-				local v17 = v2.getDay();
+				local v17 = v3.getDay();
 				if v17 ~= u3 then
-					local v18 = v2.getDay();
-					u4 = u2(p8, "daily", v18, v18, 2, v2.DAILY_MISSION_XP);
+					local v18 = v3.getDay();
+					u4 = u1(p7, "daily", v18, v18, 2, v3.DAILY_MISSION_XP);
 					u3 = v17;
 				end;
 				return u4;
 			end, 
 			getWeeklyMissions = function()
-				local v19 = v2.getWeek();
+				local v19 = v3.getWeek();
 				if v19 ~= u5 then
-					local v20 = v2.getWeek();
-					u6 = u2(p9, "weekly", v20, v20 * 100, 3, v2.WEEKKLY_MISSION_XP);
+					local v20 = v3.getWeek();
+					u6 = u1(p8, "weekly", v20, v20 * 100, 3, v3.WEEKLY_MISSION_XP);
 					u5 = v19;
 				end;
 				return u6;
@@ -116,14 +115,14 @@ return {
 			stages = { {
 					type = "SpendResource", 
 					progress = 16, 
-					resource = l__ItemType__1.EMERALD
+					resource = l__ItemType__2.EMERALD
 				} }
 		}, {
 			name = "Spend %s diamonds", 
 			stages = { {
 					type = "SpendResource", 
 					progress = 30, 
-					resource = l__ItemType__1.DIAMOND
+					resource = l__ItemType__2.DIAMOND
 				} }
 		}, {
 			name = "Break %s blocks", 
@@ -154,6 +153,12 @@ return {
 			name = "Repair %s Enchant Tables", 
 			stages = { {
 					type = "RepairEnchantTable", 
+					progress = 2
+				} }
+		}, {
+			name = "Repair %s Snow Cone Machines", 
+			stages = { {
+					type = "RepairSnowConeMachine", 
 					progress = 2
 				} }
 		} }, { {
@@ -191,14 +196,14 @@ return {
 			stages = { {
 					type = "SpendResource", 
 					progress = 90, 
-					resource = l__ItemType__1.EMERALD
+					resource = l__ItemType__2.EMERALD
 				} }
 		}, {
 			name = "Spend %s diamonds", 
 			stages = { {
 					type = "SpendResource", 
 					progress = 110, 
-					resource = l__ItemType__1.DIAMOND
+					resource = l__ItemType__2.DIAMOND
 				} }
 		}, {
 			name = "Break %s blocks", 

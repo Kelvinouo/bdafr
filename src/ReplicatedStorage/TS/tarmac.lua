@@ -203,6 +203,10 @@ return {
 			icon = "rbxassetid://9072552793", 
 			s = "rbxassetid://9072552916"
 		}, 
+		barrier = {
+			icon = "rbxassetid://10569969807", 
+			s = "rbxassetid://10569969967"
+		}, 
 		bedrock = {
 			icon = "rbxassetid://9207283973", 
 			s = "rbxassetid://9207284200"
@@ -553,7 +557,11 @@ return {
 		}
 	}, 
 	emotes = {
-		penguin_punch = "rbxassetid://10320124240", 
+		hannah_fear = "rbxassetid://10733652820", 
+		hannah_fired_up = "rbxassetid://10733621576", 
+		hannah_ghost_moment = "rbxassetid://10707558462", 
+		hannah_ghosted = "rbxassetid://10729114155", 
+		hannah_sorry_not = "rbxassetid://10707558734", 
 		season3 = {
 			angry_builder = "rbxassetid://9122597567", 
 			archer = "rbxassetid://9122597665", 
@@ -653,7 +661,10 @@ return {
 			tiger_well_played = "rbxassetid://9869094059", 
 			vulcan_overheat = "rbxassetid://9877588678"
 		}, 
-		victorious_beta = "rbxassetid://9197101063"
+		smoke_again = "rbxassetid://10707560478", 
+		victorious_beta = "rbxassetid://9197101063", 
+		zephyr_begone = "rbxassetid://10707560648", 
+		zephyr_going_fast = "rbxassetid://10707560892"
 	}, 
 	healthbarfill = "rbxassetid://10013722579", 
 	healthbarstroke = "rbxassetid://10013722726"

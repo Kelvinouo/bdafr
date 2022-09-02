@@ -1,4 +1,3 @@
--- Script Hash: d181738fc87963673913971b788f35d3efb3a073e754312e68d2c874e7f864ad76fe7f75ee566990deee6227b0411c6f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,25 +13,23 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = l__KnitController__2;
 function v3.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__2.constructor(p1);
 	p1.Name = "DroneLobbyController";
 end;
-local l__WatchCollectionTag__2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchCollectionTag;
-local l__RunService__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).RunService;
+local l__WatchCollectionTag__1 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchCollectionTag;
+local l__RunService__2 = v1.import(script, v1.getModule(script, "@rbxts", "services")).RunService;
 function v3.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__WatchCollectionTag__2("LobbyDrone", function(p3)
+	l__KnitController__2.KnitStart(p2);
+	l__WatchCollectionTag__1("LobbyDrone", function(p3)
 		local v5 = math.random();
 		local v6 = p3:GetPrimaryPartCFrame();
-		local u4 = v5 * 5;
-		l__RunService__3.RenderStepped:Connect(function(p4)
-			u4 = u4 + p4;
-			p3:SetPrimaryPartCFrame(v6 + Vector3.new(0, math.sin(2 * math.pi * u4 * 0.2) * (v5 * 0.8 + 0.2), 0));
+		local u3 = v5 * 5;
+		l__RunService__2.RenderStepped:Connect(function(p4)
+			u3 = u3 + p4;
+			p3:SetPrimaryPartCFrame(v6 + Vector3.new(0, math.sin(2 * math.pi * u3 * 0.2) * (v5 * 0.8 + 0.2), 0));
 		end);
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
-u1 = u1(v3.new());
+local v7 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v3.new());
 return nil;

@@ -32,74 +32,92 @@ function v2.weldPartsWithJoint(p5, p6, p7)
 end;
 local u2 = v1.import(script, v1.getModule(script, "@rbxts", "string-utils"));
 local function u3(p8, p9)
-	for v4, v5 in ipairs(p8:GetChildren()) do
+	local v4, v5, v6 = ipairs(p8:GetChildren());
+	while true do
+		v4(v5, v6);
+		if not v4 then
+			break;
+		end;
+		v6 = v4;
 		if v5:IsA("Attachment") and v5.Name == p9 then
-			local v6 = u2.endsWith(v5.Name, "KneeRigAttachment");
-			if v6 then
-				local v7 = v5.Parent;
-				if v7 ~= nil then
-					v7 = v7.Name;
+			local v7 = u2.endsWith(v5.Name, "KneeRigAttachment");
+			if v7 then
+				local v8 = v5.Parent;
+				if v8 ~= nil then
+					v8 = v8.Name;
 				end;
-				local v8 = v7;
-				if v8 == nil then
-					v8 = "";
+				local v9 = v8;
+				if v9 == nil then
+					v9 = "";
 				end;
-				v6 = u2.includes(v8, "Upper");
+				v7 = u2.includes(v9, "Upper");
 			end;
-			if not v6 then
+			if not v7 then
 				return v5;
 			end;
 		elseif not v5:IsA("Accoutrement") and not v5:IsA("Tool") then
-			local v9 = u3(v5, p9);
-			if v9 then
-				return v9;
+			local v10 = u3(v5, p9);
+			if v10 then
+				return v10;
 			end;
-		end;
+		end;	
 	end;
 	return nil;
 end;
 local u4 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v2.weldCharacterAccessories(p10)
-	local v10, v11, v12 = ipairs(p10:GetChildren());
+	local v11, v12, v13 = ipairs(p10:GetChildren());
 	while true do
-		local v13, v14 = v10(v11, v12);
-		if not v13 then
+		v11(v12, v13);
+		if not v11 then
 			break;
 		end;
-		if v14:IsA("Accessory") then
-			local l__Handle__15 = v14:FindFirstChild("Handle");
-			if l__Handle__15 then
-				for v16, v17 in ipairs(l__Handle__15:GetChildren()) do
-					if v17:IsA("Attachment") then
-						local v18 = u3(p10, v17.Name);
+		if v12:IsA("Accessory") then
+			local l__Handle__14 = v12:FindFirstChild("Handle");
+			if l__Handle__14 then
+				local v15, v16, v17 = ipairs(l__Handle__14:GetChildren());
+				while true do
+					v15(v16, v17);
+					if not v15 then
+						break;
+					end;
+					v17 = v15;
+					if v16:IsA("Attachment") then
+						local v18 = u3(p10, v16.Name);
 						if v18 then
 							local v19 = u4.new();
 							local u5 = u1("Weld", {
 								Name = "AccessoryAttachment", 
 								Part0 = v18.Parent, 
-								Part1 = v17.Parent, 
+								Part1 = v16.Parent, 
 								C0 = v18.CFrame, 
-								C1 = v17.CFrame, 
+								C1 = v16.CFrame, 
 								Parent = v18.Parent
 							});
 							v19:GiveTask(function()
 								u5:Destroy();
 							end);
-							v19:GiveTask(v17.AncestryChanged:Connect(function(p11, p12)
+							v19:GiveTask(v16.AncestryChanged:Connect(function(p11, p12)
 								if p12 == nil then
 									v19:DoCleaning();
 								end;
 							end));
 							break;
 						end;
-					end;
+					end;				
 				end;
 			end;
 		end;
-		for v20, v21 in ipairs(v14:GetDescendants()) do
+		local v20, v21, v22 = ipairs(v12:GetDescendants());
+		while true do
+			v20(v21, v22);
+			if not v20 then
+				break;
+			end;
+			v22 = v20;
 			if v21:IsA("BasePart") then
 				v21.CanCollide = false;
-			end;
+			end;		
 		end;	
 	end;
 end;

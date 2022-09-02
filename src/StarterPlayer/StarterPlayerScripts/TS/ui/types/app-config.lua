@@ -1,4 +1,3 @@
--- Script Hash: b1f3165cf1f53926bb46e4b8b2a9dcdce88f01779c3b048d7c801bfe049991ccffc117bd2b815f6f9b45d99ffcc85005
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -29,6 +28,8 @@ return {
 		CLAN_MENU = "ClanCreateForm", 
 		CLAN_PROFILE = "ClanProfile", 
 		CONFIRMATION_MODAL = "ConfirmationModal", 
+		EVENT_APP = "EventApp", 
+		BOSS_BAR = "BossBar", 
 		PARTY = v2.PARTY.appId, 
 		PARTY_INVITES = v2.PARTY_INVITES.appId, 
 		NOTIFICATIONS = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).GameCoreDefaultAppConfiguration.NOTIFICATIONS.appId

@@ -24,6 +24,7 @@ return v2.Definitions.Namespace({
 	SetPvP = v2.Definitions.ServerAsyncFunction(), 
 	SetBedBreaking = v2.Definitions.ServerAsyncFunction(), 
 	SetBlockBreaking = v2.Definitions.ServerAsyncFunction(), 
+	SetKeepInventoryOnDeath = v2.Definitions.ServerAsyncFunction(), 
 	SetKitDisabled = v2.Definitions.ServerAsyncFunction(), 
 	SetAllKitsDisabled = v2.Definitions.ServerAsyncFunction(), 
 	SetItemDisabled = v2.Definitions.ServerAsyncFunction(), 

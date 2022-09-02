@@ -1,8 +1,7 @@
--- Script Hash: 548d7811f6961d3e3baf273b53692ab7719270939fe001ff48e7bcb9f7e29423d1e9405ec148e5d2346a01262ae530f8
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
 local l__KnitController__3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v4 = setmetatable({}, {
 	__tostring = function()
@@ -15,19 +14,18 @@ function v4.new(...)
 	local v5 = setmetatable({}, v4);
 	return v5:constructor(...) and v5;
 end;
-local u1 = l__KnitController__3;
-local l__Maid__2 = v2.Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v4.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__3.constructor(p1);
 	p1.Name = "EffectBootsController";
-	p1.maid = l__Maid__2.new();
+	p1.maid = u1.new();
 end;
-local l__ClientStore__3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
-local l__ItemType__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
-local l__KnitClient__5 = v2.KnitClient;
+local l__ClientStore__2 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
+local l__ItemType__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
+local l__KnitClient__4 = v2.KnitClient;
 function v4.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__ClientStore__3.changed:connect(function(p3, p4)
+	l__KnitController__3.KnitStart(p2);
+	l__ClientStore__2.changed:connect(function(p3, p4)
 		local l__armor__6 = p3.Inventory.observedInventory.inventory.armor;
 		if p4.Inventory.observedInventory.inventory.armor == l__armor__6 then
 			return nil;
@@ -42,36 +40,38 @@ function v4.KnitStart(p2)
 		end;
 		p2.maid:DoCleaning();
 		local function v9(p5)
-			local function v10(p6)
-				local v11 = false;
-				if p6 ~= "empty" then
-					v11 = p6.itemType == p5;
-				end;
-				return v11;
-			end;
-			local v12 = nil;
-			for v13, v14 in ipairs(l__armor__6) do
-				if v10(v14, v13 - 1, l__armor__6) == true then
-					v12 = v14;
+			local v10 = nil;
+			local v11, v12, v13 = ipairs(l__armor__6);
+			while true do
+				v11(v12, v13);
+				if not v11 then
 					break;
 				end;
+				v13 = v11;
+				local v14 = false;
+				if v12 ~= "empty" then
+					v14 = v12.itemType == p5;
+				end;
+				if v14 == true then
+					v10 = v12;
+					break;
+				end;			
 			end;
-			return v12 ~= nil;
+			return v10 ~= nil;
 		end;
-		if v9(l__ItemType__4.SPEED_BOOTS) then
-			p2.speedModifier = l__KnitClient__5.Controllers.SprintController:getMovementStatusModifier():addModifier({
+		if v9(l__ItemType__3.SPEED_BOOTS) then
+			p2.speedModifier = l__KnitClient__4.Controllers.SprintController:getMovementStatusModifier():addModifier({
 				blockSprint = true, 
 				moveSpeedMultiplier = 2
 			});
 		end;
-		if v9(l__ItemType__4.JUMP_BOOTS) then
-			p2.jumpModifier = l__KnitClient__5.Controllers.JumpHeightController:getJumpModifier():addModifier({
+		if v9(l__ItemType__3.JUMP_BOOTS) then
+			p2.jumpModifier = l__KnitClient__4.Controllers.JumpHeightController:getJumpModifier():addModifier({
 				jumpHeightMultiplier = 2, 
 				airJumps = 1
 			});
 		end;
 	end);
 end;
-u1 = v2.KnitClient.CreateController;
-u1 = u1(v4.new());
+local v15 = v2.KnitClient.CreateController(v4.new());
 return nil;

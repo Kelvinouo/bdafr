@@ -49,6 +49,26 @@ return {
 			observeExplosionTime = 0.6, 
 			deploySound = l__GameSound__3.DRONE_DEPLOY, 
 			loopSound = l__GameSound__3.DRONE_PROPELLER_LOOP
+		}, 
+		tnt_wars_drone = {
+			lifetime = 500, 
+			guidedProjectileModel = "tnt_wars_drone", 
+			explosionType = l__ExplosionType__2.GUIDED_MISSILE, 
+			yAngleLimit = {
+				lower = -0.8, 
+				upper = 0.8
+			}, 
+			speed = 0, 
+			cameraOffset = Vector3.new(0, 0, 0), 
+			doNotSetVelocity = true, 
+			persistent = true, 
+			tags = { "TNTWarsDrone" }, 
+			modelSpringSettings = "Instant", 
+			dontShowCooldown = true, 
+			dontDetonateOnEntityNearby = true, 
+			observeExplosionTime = 0.6, 
+			deploySound = l__GameSound__3.DRONE_DEPLOY, 
+			loopSound = l__GameSound__3.DRONE_PROPELLER_LOOP
 		}
 	}
 };

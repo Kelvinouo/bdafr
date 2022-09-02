@@ -62,6 +62,8 @@ v2.SPEED = "speed";
 v1.speed = "SPEED";
 v2.BURN = "burn";
 v1.burn = "BURN";
+v2.HEAL_OVER_TIME = "heal_over_time";
+v1.heal_over_time = "HEAL_OVER_TIME";
 v2.SMOKE_INVISIBILITY = "smoke_invisibility";
 v1.smoke_invisibility = "SMOKE_INVISIBILITY";
 v2.FORCEFIELD = "forcefield";
@@ -80,6 +82,10 @@ v2.SHIELD_DOWN = "shield_down";
 v1.shield_down = "SHIELD_DOWN";
 v2.DIZZY = "dizzy";
 v1.dizzy = "DIZZY";
+v2.SNOW_CONE = "snow_cone";
+v1.snow_cone = "SNOW_CONE";
+v2.VOLLEY = "volley";
+v1.volley = "VOLLEY";
 return {
 	StatusEffectType = v2
 };

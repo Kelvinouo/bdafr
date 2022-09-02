@@ -14,25 +14,24 @@ function u1.new(...)
 	local v4 = setmetatable({}, u1);
 	return v4:constructor(...) and v4;
 end;
-local u2 = l__KnitController__2;
 function u1.constructor(p1)
-	u2.constructor(p1);
+	l__KnitController__2.constructor(p1);
 	p1.Name = "NametagController";
 end;
-local l__WatchCharacter__3 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchCharacter;
-local l__PlaceUtil__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "place-util").PlaceUtil;
-local l__ClientStore__5 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
-local l__Players__6 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
-local l__EntityUtil__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
+local l__WatchCharacter__2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchCharacter;
+local l__PlaceUtil__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "place-util").PlaceUtil;
+local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
+local l__Players__5 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
+local l__EntityUtil__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
 function u1.KnitStart(p2)
-	l__WatchCharacter__3(function(p3, p4, p5)
+	l__WatchCharacter__2(function(p3, p4, p5)
 		p5:GiveTask(p4:GetAttributeChangedSignal("Team"):Connect(function()
 			p2:updateTeam(p3, p4);
 		end));
 		p2:updateTeam(p3, p4);
 	end);
-	if l__PlaceUtil__4.isLobbyServer() then
-		l__ClientStore__5.changed:connect(function(p6, p7)
+	if l__PlaceUtil__3.isLobbyServer() then
+		l__ClientStore__4.changed:connect(function(p6, p7)
 			if p6.Party.members ~= p7.Party.members or p6.Party.leader ~= p7.Party.leader then
 				local v5 = { p7.Party.leader };
 				local l__members__6 = p7.Party.members;
@@ -41,126 +40,166 @@ function u1.KnitStart(p2)
 				local v8 = 0;
 				local v9, v10, v11 = ipairs(v5);
 				while true do
-					local v12, v13 = v9(v10, v11);
-					if not v12 then
+					v9(v10, v11);
+					if not v9 then
 						break;
 					end;
-					if table.find(p6.Party.members, v13) == nil == true then
+					if table.find(p6.Party.members, v10) == nil == true then
 						v8 = v8 + 1;
-						v7[v8] = v13;
+						v7[v8] = v10;
 					end;				
 				end;
-				local v14 = table.create(#v7);
-				for v15, v16 in ipairs(v7) do
-					v14[v15] = v16.userId;
+				local v12 = table.create(#v7);
+				local v13, v14, v15 = ipairs(v7);
+				while true do
+					v13(v14, v15);
+					if not v13 then
+						break;
+					end;
+					v15 = v13;
+					v12[v13] = v14.userId;				
 				end;
-				local v17 = { p6.Party.leader };
-				local l__members__18 = p6.Party.members;
-				table.move(l__members__18, 1, #l__members__18, #v17 + 1, v17);
-				local v19 = table.create(#v17);
-				for v20, v21 in ipairs(v17) do
-					v19[v20] = v21.userId;
+				local v16 = { p6.Party.leader };
+				local l__members__17 = p6.Party.members;
+				table.move(l__members__17, 1, #l__members__17, #v16 + 1, v16);
+				local v18 = table.create(#v16);
+				local v19, v20, v21 = ipairs(v16);
+				while true do
+					v19(v20, v21);
+					if not v19 then
+						break;
+					end;
+					v21 = v19;
+					v18[v19] = v20.userId;				
 				end;
 				v1.Promise.defer(function()
-					for v22, v23 in ipairs(v14) do
-						local v24 = l__Players__6:GetPlayerByUserId(v23);
-						if v24 then
-							local v25 = l__EntityUtil__7:getEntity(v24);
-							if v25 ~= nil then
-								v25:setNametag(v24.DisplayName);
-							end;
+					local v22, v23, v24 = ipairs(v12);
+					while true do
+						v22(v23, v24);
+						if not v22 then
+							break;
 						end;
+						v24 = v22;
+						local v25 = l__Players__5:GetPlayerByUserId(v23);
+						if v25 then
+							local v26 = l__EntityUtil__6:getEntity(v25);
+							if v26 ~= nil then
+								v26:setNametag(v25.DisplayName);
+							end;
+						end;					
 					end;
-					for v26, v27 in ipairs(v19) do
-						local v28 = l__Players__6:GetPlayerByUserId(v27);
-						if v28 then
-							local v29 = l__EntityUtil__7:getEntity(v28);
-							if v29 ~= nil then
-								v29:setNametag("<font color=\"#55FF55\">" .. v28.DisplayName .. "</font>");
-							end;
+					local v27, v28, v29 = ipairs(v18);
+					while true do
+						v27(v28, v29);
+						if not v27 then
+							break;
 						end;
+						v29 = v27;
+						local v30 = l__Players__5:GetPlayerByUserId(v28);
+						if v30 then
+							local v31 = l__EntityUtil__6:getEntity(v30);
+							if v31 ~= nil then
+								v31:setNametag("<font color=\"#55FF55\">" .. v30.DisplayName .. "</font>");
+							end;
+						end;					
 					end;
 				end);
 			end;
 		end);
-		l__WatchCharacter__3(function(p8, p9)
-			local v30 = { l__ClientStore__5:getState().Party.leader };
-			local l__members__31 = l__ClientStore__5:getState().Party.members;
-			table.move(l__members__31, 1, #l__members__31, #v30 + 1, v30);
-			local v32 = table.create(#v30);
-			for v33, v34 in ipairs(v30) do
-				v32[v33] = v34.userId;
+		l__WatchCharacter__2(function(p8, p9)
+			local v32 = { l__ClientStore__4:getState().Party.leader };
+			local l__members__33 = l__ClientStore__4:getState().Party.members;
+			table.move(l__members__33, 1, #l__members__33, #v32 + 1, v32);
+			local v34 = table.create(#v32);
+			local v35, v36, v37 = ipairs(v32);
+			while true do
+				v35(v36, v37);
+				if not v35 then
+					break;
+				end;
+				v37 = v35;
+				v34[v35] = v36.userId;			
 			end;
-			if table.find(v32, p8.UserId) ~= nil then
-				local v35 = l__EntityUtil__7:getEntity(p8);
-				if v35 then
-					v35:setNametag("<font color=\"#55FF55\">" .. p8.DisplayName .. "</font>");
+			if table.find(v34, p8.UserId) ~= nil then
+				local v38 = l__EntityUtil__6:getEntity(p8);
+				if v38 then
+					v38:setNametag("<font color=\"#55FF55\">" .. p8.DisplayName .. "</font>");
 				end;
 			end;
 		end);
 	end;
 end;
-local l__Theme__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
+local l__Theme__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 function u1.updateTeam(p10, p11, p12)
-	if p11 == l__Players__6.LocalPlayer then
-		for v36, v37 in ipairs(l__Players__6:GetPlayers()) do
-			if v37.Character and v37 ~= l__Players__6.LocalPlayer then
-				p10:updateTeam(v37, v37.Character);
-			end;
-		end;
-	end;
-	local v38 = p12:GetAttribute("Team");
-	local v39 = l__Players__6.LocalPlayer.Character;
-	if v39 ~= nil then
-		v39 = v39:GetAttribute("Team");
-	end;
-	if v38 ~= "" and v38 then
-		local v40 = nil;
-		for v41, v42 in ipairs(l__ClientStore__5:getState().Game.teams) do
-			if v42.id == v38 == true then
-				v40 = v42;
+	if p11 == l__Players__5.LocalPlayer then
+		local v39, v40, v41 = ipairs(l__Players__5:GetPlayers());
+		while true do
+			v39(v40, v41);
+			if not v39 then
 				break;
 			end;
+			v41 = v39;
+			if v40.Character and v40 ~= l__Players__5.LocalPlayer then
+				p10:updateTeam(v40, v40.Character);
+			end;		
 		end;
-		local v43 = v40;
-	else
-		v43 = nil;
 	end;
-	if p11 == l__Players__6.LocalPlayer then
-		if l__PlaceUtil__4.isLobbyServer() then
-			local v44 = l__EntityUtil__7:getEntity(p11);
-			if v44 ~= nil then
-				v44:hideDisplayName();
+	local v42 = p12:GetAttribute("Team");
+	local v43 = l__Players__5.LocalPlayer.Character;
+	if v43 ~= nil then
+		v43 = v43:GetAttribute("Team");
+	end;
+	if v42 ~= "" and v42 then
+		local v44 = nil;
+		local v45, v46, v47 = ipairs(l__ClientStore__4:getState().Game.teams);
+		while true do
+			v45(v46, v47);
+			if not v45 then
+				break;
 			end;
-			if v44 ~= nil then
-				v44:centerNameTag();
+			v47 = v45;
+			if v46.id == v42 == true then
+				v44 = v46;
+				break;
+			end;		
+		end;
+		local v48 = v44;
+	else
+		v48 = nil;
+	end;
+	if p11 == l__Players__5.LocalPlayer then
+		if l__PlaceUtil__3.isLobbyServer() then
+			local v49 = l__EntityUtil__6:getEntity(p11);
+			if v49 ~= nil then
+				v49:hideDisplayName();
+			end;
+			if v49 ~= nil then
+				v49:centerNameTag();
 			end;
 		else
-			p12:WaitForChild("Head"):WaitForChild("Nametag").PlayerToHideFrom = l__Players__6.LocalPlayer;
+			p12:WaitForChild("Head"):WaitForChild("Nametag").PlayerToHideFrom = l__Players__5.LocalPlayer;
 		end;
 	end;
-	if l__PlaceUtil__4.isGameServer() and v43 then
-		local l__TeamIndicator__45 = p12:WaitForChild("Head"):WaitForChild("Nametag"):WaitForChild("TeamIndicator");
-		l__TeamIndicator__45.Visible = true;
-		l__TeamIndicator__45.BackgroundColor3 = v43.color;
+	if l__PlaceUtil__3.isGameServer() and v48 then
+		local l__TeamIndicator__50 = p12:WaitForChild("Head"):WaitForChild("Nametag"):WaitForChild("TeamIndicator");
+		l__TeamIndicator__50.Visible = true;
+		l__TeamIndicator__50.BackgroundColor3 = v48.color;
 	end;
-	if l__PlaceUtil__4.isGameServer() then
-		local v46 = l__EntityUtil__7:getEntity(p11);
-		if v46 then
-			if v38 == v39 then
-				local v47 = l__Theme__8.mcGreen;
+	if l__PlaceUtil__3.isGameServer() then
+		local v51 = l__EntityUtil__6:getEntity(p11);
+		if v51 then
+			if v42 == v43 then
+				local v52 = l__Theme__7.mcGreen;
 			else
-				v47 = Color3.fromRGB(240, 26, 26);
+				v52 = Color3.fromRGB(240, 26, 26);
 			end;
-			v46:setNametag("<font color=\"#" .. v47:ToHex() .. "\">" .. p11.DisplayName .. "</font>");
-			v46:setNametagBorderColor(v47);
+			v51:setNametag("<font color=\"#" .. v52:ToHex() .. "\">" .. p11.DisplayName .. "</font>");
+			v51:setNametagBorderColor(v52);
 		end;
 	end;
 end;
-u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1.new;
-u2 = u2(u1());
-u1 = {
-	NametagController = u2
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
+u1 = u1(u1.new());
+return {
+	NametagController = u1
 };
-return u1;

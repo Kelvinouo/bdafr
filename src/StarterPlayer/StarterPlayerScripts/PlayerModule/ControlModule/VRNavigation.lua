@@ -120,7 +120,7 @@ function v13.TryComputePath(p15, p16, p17)
 			return nil;
 		end;
 		if v21 and v21.Status == Enum.PathStatus.FailStartNotEmpty then
-			p16 = p16 + (p17 - p16).unit;
+			p16 = p16 + (p17 - p16).Unit;
 			v21 = nil;
 		end;
 		if v20 and v20.Status == Enum.PathStatus.FailFinishNotEmpty then

@@ -1,14 +1,13 @@
--- Script Hash: 8e18f785e0ecbf17d43999340324e39854ee7cadaf65e61efb802cf28b2d8cef1d62b0bc8b86c63d954bf7cf38b4eeaf
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local v4 = v2.Component:extend("SprintUI");
-local l__Maid__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__Players__2 = v3.Players;
 function v4.init(p1, p2)
-	p1.maid = l__Maid__1.new();
+	p1.maid = u1.new();
 	local v5 = false;
 	if l__Players__2.LocalPlayer then
 		v5 = l__Players__2.LocalPlayer:GetAttribute("Sprinting") == true;

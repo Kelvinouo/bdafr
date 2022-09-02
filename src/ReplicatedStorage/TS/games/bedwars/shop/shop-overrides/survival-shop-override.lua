@@ -13,34 +13,31 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = l__BedwarsShopOverride__2;
 function v3.constructor(p1, ...)
-	u1.constructor(p1, ...);
+	l__BedwarsShopOverride__2.constructor(p1, ...);
 end;
-local l__Workspace__2 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Workspace;
-local l__GameType__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "game", "game-type").GameType;
+local l__Workspace__1 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Workspace;
+local l__GameType__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "game", "game-type").GameType;
 function v3.shouldApply(p2, p3)
-	local v5 = l__Workspace__2:GetAttribute("GameType");
-	if v5 and v5 == l__GameType__3.SURVIVAL then
+	local v5 = l__Workspace__1:GetAttribute("GameType");
+	if v5 and v5 == l__GameType__2.SURVIVAL then
 		return true;
 	end;
 	return false;
 end;
-local l__ItemType__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
+local l__ItemType__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
 function v3.getOverride(p4)
 	return { {
-			itemType = l__ItemType__4.WOOL_WHITE, 
+			itemType = l__ItemType__3.WOOL_WHITE, 
 			price = 3
 		}, {
-			itemType = l__ItemType__4.STONE_BRICK, 
+			itemType = l__ItemType__3.STONE_BRICK, 
 			price = 15
 		}, {
-			itemType = l__ItemType__4.WOOD_PLANK_OAK, 
+			itemType = l__ItemType__3.WOOD_PLANK_OAK, 
 			price = 10
 		} };
 end;
-u1 = v3.new;
-u1 = u1();
 return {
-	default = u1
+	default = v3.new()
 };

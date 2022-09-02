@@ -1,4 +1,3 @@
--- Script Hash: c1b1eaef5694b5f52a79105b114854148aaad65647ca239da1e13850c19adcaeadeb20932633d5a8d146b043bbcea498
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -15,25 +14,29 @@ function v4.new(...)
 	local v5 = setmetatable({}, v4);
 	return v5:constructor(...) and v5;
 end;
-local u1 = l__PrefabBlockHandler__3;
 function v4.constructor(p1, ...)
-	u1.constructor(p1, ...);
+	l__PrefabBlockHandler__3.constructor(p1, ...);
 end;
 function v4.place(p2, p3, p4)
-	local v6 = u1.place(p2, p3, p4);
+	local v6 = l__PrefabBlockHandler__3.place(p2, p3, p4);
 	v6.CanCollide = false;
-	for v7, v8 in ipairs(v6:GetDescendants()) do
+	local v7, v8, v9 = ipairs(v6:GetDescendants());
+	while true do
+		v7(v8, v9);
+		if not v7 then
+			break;
+		end;
+		v9 = v7;
 		if v8:IsA("BasePart") then
 			v8.CanCollide = false;
-		end;
+		end;	
 	end;
 	return v6;
 end;
-local l__BlockEngine__2 = v2.BlockEngine;
+local l__BlockEngine__1 = v2.BlockEngine;
 function v4.getContainedPositions(p5, p6)
-	return { (l__BlockEngine__2:getBlockPosition(p6.Position)) };
+	return { (l__BlockEngine__1:getBlockPosition(p6.Position)) };
 end;
-u1 = {
+return {
 	CannonBlockHandler = v4
 };
-return l__PrefabBlockHandler__3;

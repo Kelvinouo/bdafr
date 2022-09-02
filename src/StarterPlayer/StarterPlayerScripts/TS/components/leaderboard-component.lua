@@ -1,4 +1,3 @@
--- Script Hash: 970614294f5f69b000206bbd6c6d98110bbd1c443920a4885f8d1b6e24abd715f2809579c4e83c16e87c4db93b9cbc74
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -20,9 +19,7 @@ local l__CreateRoduxApp__4 = v1.import(script, script.Parent.Parent, "ui", "rodu
 local l__LeaderboardUIWrapper__5 = v1.import(script, script.Parent.Parent, "controllers", "lobby", "leaderboard", "ui", "leaderboard-core").LeaderboardUIWrapper;
 function v3.constructor(p1, p2)
 	local u6 = l__GetAttribute__1(p2, u2);
-	while not (function()
-		return l__ClientStore__3:getState().Leaderboard.leaderboards[u6] ~= nil;
-	end)() do
+	while l__ClientStore__3:getState().Leaderboard.leaderboards[u6] == nil do
 		wait(0.1);	
 	end;
 	p1.roactTree = l__CreateRoduxApp__4("LeaderboardApp", l__LeaderboardUIWrapper__5, {

@@ -13,11 +13,9 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = l__CancellableEvent__2;
 function v3.constructor(p1)
-	u1.constructor(p1);
+	l__CancellableEvent__2.constructor(p1);
 end;
-u1 = {
+return {
 	AutoTurretAimingEvent = v3
 };
-return l__CancellableEvent__2;

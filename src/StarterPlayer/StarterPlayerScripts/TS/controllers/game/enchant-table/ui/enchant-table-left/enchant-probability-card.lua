@@ -1,4 +1,3 @@
--- Script Hash: dbf76b69c64f8445265b95265ecf4d9ded89bd73140331923db4491235849adfba51f8855694f19d789cf6d044173fb4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -68,28 +67,40 @@ return {
 		end;
 		local v11 = {};
 		local v12 = 0;
-		for v13, v14 in ipairs(v7) do
-			local v15 = v8(v14, v13 - 1, v7);
-			if v15 ~= nil then
-				v12 = v12 + 1;
-				v11[v12] = v15;
+		local v13, v14, v15 = ipairs(v7);
+		while true do
+			v13(v14, v15);
+			if not v13 then
+				break;
 			end;
+			v15 = v13;
+			local v16 = v8(v14, v13 - 1, v7);
+			if v16 ~= nil then
+				v12 = v12 + 1;
+				v11[v12] = v16;
+			end;		
 		end;
-		local v16 = {
+		local v17 = {
 			Size = UDim2.fromScale(1, 0.65)
 		};
-		local v17 = { u3.createElement("UIListLayout", {
+		local v18 = { u3.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Vertical, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Center, 
 				VerticalAlignment = Enum.VerticalAlignment.Center, 
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0, 0)
 			}) };
-		local v18 = #v17;
-		for v19, v20 in ipairs(v11) do
-			v17[v18 + v19] = v20;
+		local v19 = #v18;
+		local v20, v21, v22 = ipairs(v11);
+		while true do
+			v20(v21, v22);
+			if not v20 then
+				break;
+			end;
+			v22 = v20;
+			v18[v19 + v20] = v21;		
 		end;
-		v6[#v6 + 1] = u3.createElement(l__Empty__5, v16, v17);
+		v6[#v6 + 1] = u3.createElement(l__Empty__5, v17, v18);
 		return u3.createElement("Frame", v5, v6);
 	end)
 };

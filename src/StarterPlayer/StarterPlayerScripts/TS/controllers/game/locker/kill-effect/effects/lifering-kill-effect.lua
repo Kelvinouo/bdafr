@@ -1,4 +1,3 @@
--- Script Hash: cf6822c0edef55d1494812b368996874ef393150df33d29b85e653953f8052f73fa798c0161a437e050987f1e4da3582
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -87,10 +86,16 @@ function v5.onKill(p3, p4, p5, p6)
 				v10:SetPrimaryPartCFrame(p7);
 			end;
 		end, l__PrimaryPart__11.CFrame, p6):Wait();
-		for v17, v18 in ipairs(v8:GetDescendants()) do
+		local v17, v18, v19 = ipairs(v8:GetDescendants());
+		while true do
+			v17(v18, v19);
+			if not v17 then
+				break;
+			end;
+			v19 = v17;
 			if v18:IsA("BasePart") then
 				v18.Anchored = false;
-			end;
+			end;		
 		end;
 		l__WeldUtil__8.weldParts(v8.PrimaryPart, l__PrimaryPart__11);
 		task.wait(2);
@@ -100,10 +105,16 @@ function v5.onKill(p3, p4, p5, p6)
 			v9.WorldPosition = p8;
 		end, v9.WorldPosition, v9.WorldPosition + Vector3.new(0, 300, 0));
 		l__default__6(0.7, l__InExpo__10, function(p9)
-			for v19, v20 in ipairs(v8:GetDescendants()) do
-				if v20:IsA("BasePart") or v20:IsA("Decal") then
-					v20.Transparency = p9;
+			local v20, v21, v22 = ipairs(v8:GetDescendants());
+			while true do
+				v20(v21, v22);
+				if not v20 then
+					break;
 				end;
+				v22 = v20;
+				if v21:IsA("BasePart") or v21:IsA("Decal") then
+					v21.Transparency = p9;
+				end;			
 			end;
 			l__PrimaryPart__11.Transparency = p9;
 			if p9 > 0.5 then

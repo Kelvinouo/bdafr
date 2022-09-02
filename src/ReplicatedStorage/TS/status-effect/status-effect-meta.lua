@@ -127,6 +127,10 @@ return {
 			displayName = "Burn", 
 			noDisplay = true
 		}, 
+		[l__StatusEffectType__4.HEAL_OVER_TIME] = {
+			displayName = "Healing", 
+			noDisplay = true
+		}, 
 		[l__StatusEffectType__4.GROUNDED] = {
 			displayName = "Grounded", 
 			noDisplay = true
@@ -158,6 +162,16 @@ return {
 		[l__StatusEffectType__4.DIZZY] = {
 			displayName = "Dizzy", 
 			image = "rbxassetid://10086864455"
+		}, 
+		[l__StatusEffectType__4.SNOW_CONE] = {
+			displayName = "Snow Cone", 
+			description = "They're tasty!", 
+			image = "rbxassetid://10489888403"
+		}, 
+		[l__StatusEffectType__4.VOLLEY] = {
+			displayName = "Volley", 
+			description = "Fire a volley of arrows", 
+			image = l__BedwarsImageId__2.VOLLEY_ELEMENT
 		}
 	}
 };

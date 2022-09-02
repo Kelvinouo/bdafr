@@ -1,9 +1,8 @@
--- Script Hash: c2c05b1b6486e4e6496b8e8223f6809ed893c49bb5390e5627f396dbcc8ad1c6d90cbecb387f868a095974476fa8c418
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local l__KnitClient__1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local u2 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__DeviceUtil__3 = v2.DeviceUtil;
 local l__UIUtil__4 = v2.UIUtil;
@@ -49,17 +48,14 @@ return {
 			Size = UDim2.fromScale(1, 0.6), 
 			Text = v5
 		};
-		local function u13(p3)
-			task.spawn(function()
-				l__KnitClient__1.Controllers.EnchantTableController:researchEnchant(p3);
-			end);
-		end;
-		local u14 = l__ResearchData__3[1];
+		local u13 = l__ResearchData__3[1];
 		function v10.OnClick()
 			if not v6 then
 				return nil;
 			end;
-			u13(u14);
+			task.spawn(function()
+				l__KnitClient__1.Controllers.EnchantTableController:researchEnchant(u13);
+			end);
 		end;
 		if v6 then
 			local v11 = v4.buttonColor;

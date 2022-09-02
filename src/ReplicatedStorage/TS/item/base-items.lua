@@ -1,4 +1,3 @@
--- Script Hash: e6c9d24e81bbd5d862025edbf7573e8feefe0f5e69b1ed0af463e88da814e4f4bbdd1c53fc78aca89abd5d58d93550c6
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -40,6 +39,20 @@ function v2.wool(p1)
 	end;
 	v6.minecraftConversions = v7;
 	v3.block = v6;
+	local v8 = p1;
+	if v8 ~= nil then
+		v8 = v8.image;
+	end;
+	if v8 ~= "" and v8 then
+		v3.image = p1.image;
+	end;
+	local v9 = p1;
+	if v9 ~= nil then
+		v9 = v9.description;
+	end;
+	if v9 ~= "" and v9 then
+		v3.description = p1.description;
+	end;
 	return v3;
 end;
 return {

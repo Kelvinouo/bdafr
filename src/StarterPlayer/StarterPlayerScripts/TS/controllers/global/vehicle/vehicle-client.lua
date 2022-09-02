@@ -1,4 +1,3 @@
--- Script Hash: 7f1562b7a98c1ad08034ebc22d1bdfaef7a102652ba34308c12c863be61d9f5959cfe5d8a477ef3f428ddfe7c2eda26a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -12,7 +11,7 @@ local v2 = {
 	end
 };
 local l__Players__1 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
-local l__Maid__2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).Maid;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function v2.enable(p4, p5)
 	local v3 = l__Players__1.LocalPlayer.Character;
@@ -22,7 +21,7 @@ function v2.enable(p4, p5)
 	if not v3 then
 		return nil;
 	end;
-	local v4 = l__Maid__2.new();
+	local v4 = u2.new();
 	v4:GiveTask(function()
 		p4:onDisable();
 	end);

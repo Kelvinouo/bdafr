@@ -76,7 +76,7 @@ function v3.Update(p5)
 		if p5:GetIsMouseLocked() and not p5:IsInFirstPerson() then
 			local v23 = p5:CalculateNewLookCFrameFromArg(v11, v18);
 			local v24 = p5:GetMouseLockOffset();
-			local v25 = v24.X * v23.rightVector + v24.Y * v23.upVector + v24.Z * v23.lookVector;
+			local v25 = v24.X * v23.RightVector + v24.Y * v23.UpVector + v24.Z * v23.LookVector;
 			if u1.IsFiniteVector3(v25) then
 				v21 = v21 + v25;
 			end;

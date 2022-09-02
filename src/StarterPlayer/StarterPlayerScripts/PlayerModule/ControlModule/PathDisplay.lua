@@ -34,62 +34,68 @@ function v1.setCurrentPoints(p1)
 end;
 local u3 = {};
 function v1.clearRenderedPath()
-	for v7, v8 in ipairs(u3) do
+	local v7, v8, v9 = ipairs(u3);
+	while true do
+		v7(v8, v9);
+		if not v7 then
+			break;
+		end;
+		v9 = v7;
 		v8.Parent = nil;
 		u1 = u1 + 1;
-		v4[u1] = v8;
+		v4[u1] = v8;	
 	end;
 	u3 = {};
 	v2.Parent = nil;
 end;
 local function u4(p2, p3)
 	if u1 == 0 then
-		return;
+		return nil;
 	end;
-	local v9, v10, v11 = workspace:FindPartOnRayWithIgnoreList(Ray.new(p2 + Vector3.new(0, 2, 0), Vector3.new(0, -8, 0)), { game.Players.LocalPlayer.Character, workspace.CurrentCamera });
-	if not v9 then
-		return;
+	local v10, v11, v12 = workspace:FindPartOnRayWithIgnoreList(Ray.new(p2 + Vector3.new(0, 2, 0), Vector3.new(0, -8, 0)), { game.Players.LocalPlayer.Character, workspace.CurrentCamera });
+	if not v10 then
+		return nil;
 	end;
-	local v12 = v4[1];
-	if not v12 then
-		local v13 = nil;
+	local v13 = v4[1];
+	if not v13 then
+		local v14 = nil;
 	else
 		v4[1] = v4[u1];
 		v4[u1] = nil;
 		u1 = u1 - 1;
-		v13 = v12;
+		v14 = v13;
 	end;
-	v13.CFrame = CFrame.new(v10, v10 + v11);
-	v13.Parent = v2;
-	return v13;
+	v14.CFrame = CFrame.new(v11, v11 + v12);
+	v14.Parent = v2;
+	return v14;
 end;
 function v1.renderPath()
 	v1.clearRenderedPath();
 	if not u2 or #u2 == 0 then
 		return;
 	end;
-	local v14 = #u2;
-	local v15 = 0;
-	u3[1] = u4(u2[v14], true);
+	local v15 = #u2;
+	local v16 = 0;
+	u3[1] = u4(u2[v15], true);
 	if not u3[1] then
 		return;
 	end;
 	while true do
-		local v16 = u2[v14];
-		if v14 < 2 then
+		local v17 = u2[v15];
+		if v15 < 2 then
 			break;
 		end;
-		local v17 = u2[v14 - 1] - v16;
-		local l__magnitude__18 = v17.magnitude;
-		if l__magnitude__18 < v15 then
-			v15 = v15 - l__magnitude__18;
-			v14 = v14 - 1;
+		local v18 = u2[v15 - 1] - v17;
+		local l__magnitude__19 = v18.magnitude;
+		if l__magnitude__19 < v16 then
+			v16 = v16 - l__magnitude__19;
+			v15 = v15 - 1;
 		else
-			local v19 = u4(v16 + v17.unit * v15, false);
-			if v19 then
-				u3[#u3 + 1] = v19;
+			local v20 = u4(v17 + v18.unit * v16, false);
+			if v20 then
+				u3[#u3 + 1] = v20;
 			end;
-			v15 = v15 + v1.spacing;
+			v16 = v16 + v1.spacing;
 		end;	
 	end;
 	v2.Parent = workspace.CurrentCamera;

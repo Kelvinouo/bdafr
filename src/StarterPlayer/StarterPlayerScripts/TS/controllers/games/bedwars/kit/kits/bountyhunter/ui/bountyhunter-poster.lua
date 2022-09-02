@@ -1,4 +1,3 @@
--- Script Hash: 1f1bab29c032dab4bccbb67e19ce1a3a64345e370cbd27c0f598a04979a44e671ad2ca1f107bd2bfd8d09b6eb6e1bb83
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -20,43 +19,44 @@ function v4.render(p2)
 	if l__bountyHunterTarget__5 == nil then
 		return nil;
 	end;
-	local l__teams__6 = p2.props.store.Game.teams;
-	local function v7(p3)
-		local v8 = l__bountyHunterTarget__5.Team;
-		if v8 ~= nil then
-			v8 = v8.Name;
-		end;
-		return p3.name == v8;
-	end;
-	local v9 = nil;
-	for v10, v11 in ipairs(l__teams__6) do
-		if v7(v11, v10 - 1, l__teams__6) == true then
-			v9 = v11;
+	local v6 = nil;
+	local v7, v8, v9 = ipairs(p2.props.store.Game.teams);
+	while true do
+		v7(v8, v9);
+		if not v7 then
 			break;
 		end;
+		local v10 = l__bountyHunterTarget__5.Team;
+		if v10 ~= nil then
+			v10 = v10.Name;
+		end;
+		if v8.name == v10 == true then
+			v6 = v8;
+			break;
+		end;	
 	end;
-	local v12 = v9;
-	if v12 ~= nil then
-		v12 = v12.color;
+	local v11 = v6;
+	if v11 ~= nil then
+		v11 = v11.color;
 	end;
-	local v13 = v12;
-	if v13 == nil then
-		v13 = Color3.fromRGB(255, 255, 255);
+	local v12 = v11;
+	if v12 == nil then
+		v12 = Color3.fromRGB(255, 255, 255);
 	end;
-	local v14 = {};
-	local v15 = {
+	local v13 = {};
+	local v14 = {
 		AnchorPoint = Vector2.new(0, 0.5)
 	};
 	if l__DeviceUtil__3.isSmallScreen() then
-		local v16 = 0.4;
+		local v15 = 0.4;
 	else
-		v16 = 0.5;
+		v15 = 0.5;
 	end;
-	v15.Position = UDim2.new(0, 16, v16, 0);
-	v15.Size = UDim2.fromScale(0.35, 0.35);
-	v15.BorderSizePixel = 0;
-	v15.BackgroundColor3 = l__Theme__4.backgroundSecondary;
-	v14.BountyHunterPoster = v3.createElement("Frame", v15, {
+	v14.Position = UDim2.new(0, 16, v15, 0);
+	v14.Size = UDim2.fromScale(0.35, 0.35);
+	v14.BorderSizePixel = 0;
+	v14.BackgroundColor3 = l__Theme__4.backgroundSecondary;
+	v13.BountyHunterPoster = v3.createElement("Frame", v14, {
 		Header = v3.createElement("Frame", {
 			ZIndex = 2, 
 			Size = UDim2.new(1, 0, 0.15, 0), 
@@ -74,7 +74,7 @@ function v4.render(p2)
 				Size = UDim2.fromScale(1, 0.6), 
 				BackgroundTransparency = 1, 
 				Font = "Roboto", 
-				Text = "<b>Target:</b> <b><font face=\"RobotoMono\" color=\"" .. l__ColorUtil__1.richTextColor(v13) .. "\">" .. l__bountyHunterTarget__5.DisplayName .. "</font></b>", 
+				Text = "<b>Target:</b> <b><font face=\"RobotoMono\" color=\"" .. l__ColorUtil__1.richTextColor(v12) .. "\">" .. l__bountyHunterTarget__5.DisplayName .. "</font></b>", 
 				TextColor3 = Color3.fromRGB(255, 255, 255), 
 				TextScaled = true, 
 				RichText = true, 
@@ -131,17 +131,17 @@ function v4.render(p2)
 			CornerRadius = UDim.new(0, 4)
 		}))
 	});
-	return v3.createElement(l__SlideIn__2, {}, v14);
+	return v3.createElement(l__SlideIn__2, {}, v13);
 end;
-function v4.shouldUpdate(p4, p5)
-	return p4.props.store.Kit.bountyHunterTarget ~= p5.store.Kit.bountyHunterTarget;
+function v4.shouldUpdate(p3, p4)
+	return p3.props.store.Kit.bountyHunterTarget ~= p4.store.Kit.bountyHunterTarget;
 end;
 return {
-	BountyHunterPosterWrapper = function(p6)
+	BountyHunterPosterWrapper = function(p5)
 		return v3.createElement("ScreenGui", {
 			ResetOnSpawn = false
 		}, { v3.createElement(v4, {
-				store = p6.store
+				store = p5.store
 			}) });
 	end, 
 	BountyHunterPoster = v4

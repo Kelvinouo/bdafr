@@ -29,23 +29,22 @@ function v8.new(...)
 	local v9 = setmetatable({}, v8);
 	return v9:constructor(...) and v9;
 end;
-local u2 = l__GreedyBlockHandler__2;
 function v8.constructor(p1, ...)
-	u2.constructor(p1, ...);
+	l__GreedyBlockHandler__2.constructor(p1, ...);
 end;
 function v8.checkCulling(p2)
 
 end;
-local u3 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-local l__BLOCK_SIZE__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "block", "block-constants").BLOCK_SIZE;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
+local l__BLOCK_SIZE__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "block", "block-constants").BLOCK_SIZE;
 function v8.createNewInstance(p3, p4)
 	local v10 = Color3.fromRGB(161, 161, 163);
 	if v4[p4] ~= nil then
 		v10 = v4[p4];
 	end;
-	return u3("Part", {
+	return u2("Part", {
 		Name = p3:getBlockType(), 
-		Size = Vector3.new(l__BLOCK_SIZE__4, l__BLOCK_SIZE__4, l__BLOCK_SIZE__4), 
+		Size = Vector3.new(l__BLOCK_SIZE__3, l__BLOCK_SIZE__3, l__BLOCK_SIZE__3), 
 		Anchored = true, 
 		Material = Enum.Material.Glass, 
 		CanCollide = true, 
@@ -54,7 +53,6 @@ function v8.createNewInstance(p3, p4)
 		Color = v10
 	});
 end;
-u2 = {
+return {
 	GlassBlockHandler = v8
 };
-return l__GreedyBlockHandler__2;

@@ -1,10 +1,9 @@
--- Script Hash: 5830c8964907b45cc00790c696bbaaa6305e55f031f0c7f1714f7a27ed1f999fcccd5398698b5aed1a8f2a9655a597b4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
 local u1 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
-local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient;
+local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__SoundManager__3 = v2.SoundManager;
 local l__GameSound__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 local l__DeviceUtil__5 = v2.DeviceUtil;

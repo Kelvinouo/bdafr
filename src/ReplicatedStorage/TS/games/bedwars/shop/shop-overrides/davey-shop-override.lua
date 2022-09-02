@@ -13,24 +13,21 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = l__BedwarsShopOverride__2;
 function v3.constructor(p1, ...)
-	u1.constructor(p1, ...);
+	l__BedwarsShopOverride__2.constructor(p1, ...);
 end;
-local l__getKit__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "kit-util").getKit;
-local l__BedwarsKit__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
+local l__getKit__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "kit-util").getKit;
+local l__BedwarsKit__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
 function v3.shouldApply(p2, p3)
-	return l__getKit__2(p3) == l__BedwarsKit__3.DAVEY;
+	return l__getKit__1(p3) == l__BedwarsKit__2.DAVEY;
 end;
-local l__ItemType__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
+local l__ItemType__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
 function v3.getOverride(p4)
 	return { {
-			itemType = l__ItemType__4.TNT, 
+			itemType = l__ItemType__3.TNT, 
 			price = 30
 		} };
 end;
-u1 = v3.new;
-u1 = u1();
 return {
-	default = u1
+	default = v3.new()
 };

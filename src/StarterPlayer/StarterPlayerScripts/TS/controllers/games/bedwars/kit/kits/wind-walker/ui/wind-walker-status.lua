@@ -1,4 +1,3 @@
--- Script Hash: 036403c3ccaebea88eea06b5cf4744243b8f03bc402e01f6b1697a1c00a3f84a841da784937e064d25e2ac4dfd2e6a6d
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -71,7 +70,7 @@ function v3.didMount(p4)
 			stack = p5.orbCount
 		};
 		if p5.orbCount > 0 then
-			local v5 = 75;
+			local v5 = 65;
 		else
 			v5 = 0;
 		end;

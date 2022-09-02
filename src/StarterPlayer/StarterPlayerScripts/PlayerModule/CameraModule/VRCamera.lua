@@ -1,4 +1,3 @@
--- Script Hash: aad69b31564753d0b079d3259ee567a6261121faa011f6b16e5f6f483ef1232cbb9b0e138a65f7de70bb19c437c99990
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(script.Parent:WaitForChild("CameraUtils"));

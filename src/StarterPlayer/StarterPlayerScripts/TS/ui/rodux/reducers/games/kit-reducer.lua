@@ -1,4 +1,3 @@
--- Script Hash: 16d4d12311058b084b24eef5d81f276060f295e3d14bb3660604ae1fd2576c994c3e689efe60c447df1f0dc63816fc8b
 -- Decompiled with the Synapse X Luau decompiler.
 
 local u1 = {
@@ -7,7 +6,10 @@ local u1 = {
 	iceQueenProgress = 0, 
 	canUseYetiAbilityNext = math.huge, 
 	lumenProgress = 0, 
-	emberProgress = 0
+	emberProgress = 0, 
+	pigsyResources = {
+		coin = 0
+	}
 };
 return {
 	KitReducer = function(p1, p2)
@@ -80,17 +82,26 @@ return {
 			return v21;
 		end;
 		if l__type__1 ~= "KitEmberIncrementProgress" then
-			return p1;
+			if l__type__1 == "KitPigsyIncrementResource" then
+				local v25 = {};
+				for v26, v27 in pairs(p1) do
+					v25[v26] = v27;
+				end;
+				v25.pigsyResources = p2.progress;
+				return v25;
+			else
+				return p1;
+			end;
 		end;
-		local v25 = {};
-		for v26, v27 in pairs(p1) do
-			v25[v26] = v27;
+		local v28 = {};
+		for v29, v30 in pairs(p1) do
+			v28[v29] = v30;
 		end;
-		local v28 = p1.emberProgress;
-		if v28 == nil then
-			v28 = 0;
+		local v31 = p1.emberProgress;
+		if v31 == nil then
+			v31 = 0;
 		end;
-		v25.emberProgress = v28 + p2.progress;
-		return v25;
+		v28.emberProgress = v31 + p2.progress;
+		return v28;
 	end
 };

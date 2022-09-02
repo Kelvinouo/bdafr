@@ -1,4 +1,3 @@
--- Script Hash: d405f2a40d6f554d4bf42dfacb626bcbb821586207cafc4a37e5cf8b09f2559f3c2334c59b1c1aa11c845c573e9c6589
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,26 +13,25 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = l__KnitController__2;
 function v3.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__2.constructor(p1);
 	p1.Name = "MountAnimationController";
 	p1.mountAnimations = {};
 end;
-local l__ClientSyncEvents__2 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
-local u3 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
-local l__GameAnimationUtil__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
-local l__AnimationType__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
+local l__ClientSyncEvents__1 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
+local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+local l__GameAnimationUtil__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
+local l__AnimationType__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
 function v3.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__ClientSyncEvents__2.GenericMountMounted:connect(function(p3)
+	l__KnitController__2.KnitStart(p2);
+	l__ClientSyncEvents__1.GenericMountMounted:connect(function(p3)
 		local v5 = p3.model:FindFirstChildOfClass("AnimationController");
 		if v5 == nil then
 			return nil;
 		end;
-		local v6 = u3.new();
+		local v6 = u2.new();
 		p2.mountAnimations[p3.player] = v6;
-		local v7 = p3.character.Humanoid.Animator:LoadAnimation(l__GameAnimationUtil__4.getAnimation(l__AnimationType__5.SIT_ON_DODO_BIRD));
+		local v7 = p3.character.Humanoid.Animator:LoadAnimation(l__GameAnimationUtil__3.getAnimation(l__AnimationType__4.SIT_ON_DODO_BIRD));
 		v7.Priority = Enum.AnimationPriority.Action;
 		v7:Play();
 		v6:GiveTask(function()
@@ -46,15 +44,15 @@ function v3.KnitStart(p2)
 					v9:Destroy();
 				end;
 			end);
-			local u6 = "idle";
+			local u5 = "idle";
 			v6:GiveTask(p3.character.Humanoid.Running:Connect(function(p5)
-				p4[u6]:Stop();
+				p4[u5]:Stop();
 				if p5 >= 1 then
-					u6 = "walk";
+					u5 = "walk";
 					p4.walk:Play();
 					return;
 				end;
-				u6 = "idle";
+				u5 = "idle";
 				p4.idle:Play();
 			end));
 			v6:GiveTask(p3.character.Humanoid.Jumping:Connect(function(p6)
@@ -74,7 +72,7 @@ function v3.KnitStart(p2)
 			end));
 		end);
 	end);
-	l__ClientSyncEvents__2.GenericMountDismounted:connect(function(p9)
+	l__ClientSyncEvents__1.GenericMountDismounted:connect(function(p9)
 		local v10 = p2.mountAnimations[p9.player];
 		if v10 ~= nil then
 			v10:DoCleaning();
@@ -82,21 +80,21 @@ function v3.KnitStart(p2)
 		p2.mountAnimations[p9.player] = nil;
 	end);
 end;
-local l__MountMeta__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "mount", "mount-meta").MountMeta;
+local l__MountMeta__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "mount", "mount-meta").MountMeta;
 v3.makeTracksForMount = v1.async(function(p10, p11, p12)
 	local l__Animator__11 = p11:WaitForChild("Animator", 2);
 	if l__Animator__11 == nil then
 		error("Animator was not added to AnimationController in time");
 	end;
-	local v12 = l__MountMeta__7[p12];
-	local v13 = l__Animator__11:LoadAnimation(l__GameAnimationUtil__4.getAnimation(v12.animations.jump));
+	local v12 = l__MountMeta__6[p12];
+	local v13 = l__Animator__11:LoadAnimation(l__GameAnimationUtil__3.getAnimation(v12.animations.jump));
 	v13.Priority = Enum.AnimationPriority.Action;
-	local v14 = l__Animator__11:LoadAnimation(l__GameAnimationUtil__4.getAnimation(v12.animations.fall));
+	local v14 = l__Animator__11:LoadAnimation(l__GameAnimationUtil__3.getAnimation(v12.animations.fall));
 	v14.Priority = Enum.AnimationPriority.Movement;
-	local v15 = l__Animator__11:LoadAnimation(l__GameAnimationUtil__4.getAnimation(v12.animations.walk));
+	local v15 = l__Animator__11:LoadAnimation(l__GameAnimationUtil__3.getAnimation(v12.animations.walk));
 	v15.Priority = Enum.AnimationPriority.Movement;
 	v15:AdjustSpeed(2);
-	local v16 = l__Animator__11:LoadAnimation(l__GameAnimationUtil__4.getAnimation(v12.animations.idle));
+	local v16 = l__Animator__11:LoadAnimation(l__GameAnimationUtil__3.getAnimation(v12.animations.idle));
 	v16.Priority = Enum.AnimationPriority.Idle;
 	return {
 		jump = v13, 
@@ -114,10 +112,9 @@ function v3.playAnimationInMount(p13, p14, p15)
 	if v18 == nil then
 		return nil;
 	end;
-	local v19 = v18:LoadAnimation(l__GameAnimationUtil__4.getAnimation(p15));
+	local v19 = v18:LoadAnimation(l__GameAnimationUtil__3.getAnimation(p15));
 	v19:Play();
 	return v19;
 end;
-u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1(v3.new());
+local v20 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v3.new());
 return nil;

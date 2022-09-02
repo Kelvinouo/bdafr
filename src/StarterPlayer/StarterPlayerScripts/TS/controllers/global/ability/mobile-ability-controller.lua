@@ -1,4 +1,3 @@
--- Script Hash: b3ec348a640b1077f37fb51fdf008f554a63400345f0d14722ec4480f7d4ab6edd4ca36a30b9f52327b7e3ba099762c3
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -7,12 +6,16 @@ local v2 = l__KnitClient__1.CreateController({
 	Name = "MobileAbilityController"
 });
 local function u2()
-	while true do
-		for v3 = 621, 621 do
-			IsMobile = true;
-		end;	
+	local v3 = true;
+	local v4 = l__KnitClient__1.Controllers.AbilityStatusEffectController.InitializeMobileAbilities;
+	while v3 do
+		v3 = false;
+		v4 = function()
+			return 1;
+		end;
+		IsMobile = true;	
 	end;
-	l__KnitClient__1.Controllers.AbilityStatusEffectController.InitializeMobileAbilities();
+	v4();
 end;
 function v2.KnitStart(p1)
 	u2();

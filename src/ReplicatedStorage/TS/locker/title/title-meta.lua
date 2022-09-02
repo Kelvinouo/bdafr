@@ -1,4 +1,3 @@
--- Script Hash: 14cd56a8ff1137bff121cfcdd0c3724ef7306b8fc40611b216adc2a1eeed6f9307cbd57d9ff4da518862ed0bc6371033
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -561,6 +560,26 @@ return {
 		[l__TitleType__6.EASTER_EVENT_2022] = {
 			name = "Easter Event", 
 			text = "\240\159\165\154\240\159\144\176 <font color=\"#9DF8DF\">Happy</font> <font color=\"#FCC370\">Easter</font> <font color=\"#FDCEDD\">2022</font>"
+		}, 
+		[l__TitleType__6.PIRATE_EVENT_2022] = {
+			name = "Pirate Event 2022 \240\159\143\180\226\128\141\226\152\160\239\184\143", 
+			text = "<font color=\"#191919\">Pirate Event</font> <font color=\"#FFFFFF\">2022 \240\159\143\180\226\128\141\226\152\160\239\184\143</font>"
+		}, 
+		[l__TitleType__6.ARRGH] = {
+			name = "ARRGH!", 
+			text = "AARGH!"
+		}, 
+		[l__TitleType__6.CAPTAIN] = {
+			name = "Captain", 
+			text = "<font color=\"#E82A2A\">Captain</font>"
+		}, 
+		[l__TitleType__6.PIRATE] = {
+			name = "Pirate \240\159\166\156", 
+			text = "Pirate \240\159\166\156"
+		}, 
+		[l__TitleType__6.CORSAIR] = {
+			name = "Corsair", 
+			text = "Corsair"
 		}
 	}
 };

@@ -1,4 +1,3 @@
--- Script Hash: b89bb6b69af1bdaf572631172022aa549151013c5faa047240488e0c53ee990190f69554a04a88a139476ad8b2e0ef7f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -31,49 +30,55 @@ function v3.isPlayDefaultKillEffect(p10)
 	return p10.playDefaultKillEffect;
 end;
 function v3.hideCharacter(p11, p12)
-	local v5 = p12:GetDescendants();
-	local function v6(p13)
-		if p13:IsA("BasePart") then
-			p13.Transparency = 1;
-			return;
+	local v5, v6, v7 = ipairs((p12:GetDescendants()));
+	while true do
+		v5(v6, v7);
+		if not v5 then
+			break;
 		end;
-		if p13:IsA("Decal") then
-			p13.Transparency = 1;
-			return;
-		end;
-		if p13:IsA("BillboardGui") then
-			p13:Destroy();
-		end;
-	end;
-	for v7, v8 in ipairs(v5) do
-		v6(v8, v7 - 1, v5);
+		v7 = v5;
+		if v6:IsA("BasePart") then
+			v6.Transparency = 1;
+		elseif v6:IsA("Decal") then
+			v6.Transparency = 1;
+		elseif v6:IsA("BillboardGui") then
+			v6:Destroy();
+		end;	
 	end;
 end;
-function v3.anchorCharacter(p14, p15)
-	local v9 = p15:GetDescendants();
-	local function v10(p16)
-		if p16:IsA("BasePart") then
-			p16.Anchored = true;
+function v3.anchorCharacter(p13, p14)
+	local v8, v9, v10 = ipairs((p14:GetDescendants()));
+	while true do
+		v8(v9, v10);
+		if not v8 then
+			break;
 		end;
-	end;
-	for v11, v12 in ipairs(v9) do
-		v10(v12, v11 - 1, v9);
+		v10 = v8;
+		if v9:IsA("BasePart") then
+			v9.Anchored = true;
+		end;	
 	end;
 end;
 local l__TweenService__2 = v2.TweenService;
-function v3.scaleModel(p17, p18, p19, p20)
-	local l__PrimaryPart__13 = p18.PrimaryPart;
-	local v14 = nil;
-	for v15, v16 in ipairs(p18:GetDescendants()) do
-		if v16:IsA("BasePart") then
-			v14 = l__TweenService__2:Create(v16, p20, {
-				CFrame = l__PrimaryPart__13.CFrame:Lerp(v16.CFrame, p19), 
-				Size = v16.Size * p19
-			});
-			v14:Play();
+function v3.scaleModel(p15, p16, p17, p18)
+	local l__PrimaryPart__11 = p16.PrimaryPart;
+	local v12 = nil;
+	local v13, v14, v15 = ipairs(p16:GetDescendants());
+	while true do
+		v13(v14, v15);
+		if not v13 then
+			break;
 		end;
+		v15 = v13;
+		if v14:IsA("BasePart") then
+			v12 = l__TweenService__2:Create(v14, p18, {
+				CFrame = l__PrimaryPart__11.CFrame:Lerp(v14.CFrame, p17), 
+				Size = v14.Size * p17
+			});
+			v12:Play();
+		end;	
 	end;
-	return v14;
+	return v12;
 end;
 return {
 	KillEffect = v3

@@ -1,269 +1,281 @@
--- Script Hash: c89b91daee46c3799485cbc0343eebd05eb0e7f7b87e6a1bd92841af531fe975db45423d9f2b310641e3759d038c291e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
-local v3 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src);
-local v4 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
-local l__KnitController__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
-local v6 = setmetatable({}, {
+local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
+local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
+local v5 = setmetatable({}, {
 	__tostring = function()
 		return "SheepController";
 	end, 
-	__index = l__KnitController__5
+	__index = l__KnitController__4
 });
-v6.__index = v6;
-function v6.new(...)
-	local v7 = setmetatable({}, v6);
-	return v7:constructor(...) and v7;
+v5.__index = v5;
+function v5.new(...)
+	local v6 = setmetatable({}, v5);
+	return v6:constructor(...) and v6;
 end;
-local u1 = l__KnitController__5;
-local u2 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-local l__Workspace__3 = v4.Workspace;
-function v6.constructor(p1)
-	u1.constructor(p1);
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
+local l__Workspace__2 = v3.Workspace;
+function v5.constructor(p1)
+	l__KnitController__4.constructor(p1);
 	p1.Name = "SheepController";
-	p1.sheepModelFolder = u2("Folder", {
+	p1.sheepModelFolder = u1("Folder", {
 		Name = "SheepModel", 
-		Parent = l__Workspace__3
+		Parent = l__Workspace__2
 	});
 end;
-local l__WatchCollectionTag__4 = v2.WatchCollectionTag;
-function v6.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__WatchCollectionTag__4("SheepData", function(p3)
+local l__WatchCollectionTag__3 = v2.WatchCollectionTag;
+function v5.KnitStart(p2)
+	l__KnitController__4.KnitStart(p2);
+	l__WatchCollectionTag__3("SheepData", function(p3)
 		p2:createSheepModel(p3);
 	end);
 end;
-local l__ReplicatedStorage__5 = v4.ReplicatedStorage;
-local l__GameQueryUtil__6 = v2.GameQueryUtil;
-local l__TweenService__7 = v4.TweenService;
-local l__CollectionService__8 = v4.CollectionService;
-local l__Maid__9 = v3.Maid;
-local l__SheepState__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "kits", "sheep-herder", "sheep-state").SheepState;
-function v6.createSheepModel(p4, p5)
+local l__ReplicatedStorage__4 = v3.ReplicatedStorage;
+local l__GameQueryUtil__5 = v2.GameQueryUtil;
+local l__TweenService__6 = v3.TweenService;
+local l__CollectionService__7 = v3.CollectionService;
+local u8 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+local l__SheepState__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "kits", "sheep-herder", "sheep-state").SheepState;
+function v5.createSheepModel(p4, p5)
 	p5:WaitForChild("SheepModel");
 	p5:WaitForChild("Owner");
 	if p5.Parent == nil then
 		return nil;
 	end;
-	local v8 = l__ReplicatedStorage__5.Assets.Misc.Sheep.Sheep1:Clone();
-	v8.PrimaryPart.Anchored = true;
-	for v9, v10 in ipairs(v8:GetDescendants()) do
-		if v10:IsA("BasePart") then
-			v10.CanCollide = false;
-			l__GameQueryUtil__6:setQueryIgnored(v10, true);
-			if v10.Transparency == 0 then
-				l__TweenService__7:Create(v10, TweenInfo.new(0.3), {
+	local v7 = l__ReplicatedStorage__4.Assets.Misc.Sheep.Sheep1:Clone();
+	v7.PrimaryPart.Anchored = true;
+	local v8, v9, v10 = ipairs(v7:GetDescendants());
+	while true do
+		v8(v9, v10);
+		if not v8 then
+			break;
+		end;
+		v10 = v8;
+		if v9:IsA("BasePart") then
+			v9.CanCollide = false;
+			l__GameQueryUtil__5:setQueryIgnored(v9, true);
+			if v9.Transparency == 0 then
+				l__TweenService__6:Create(v9, TweenInfo.new(0.3), {
 					Transparency = 0
 				});
 			end;
-		end;
+		end;	
 	end;
-	u2("ObjectValue", {
+	u1("ObjectValue", {
 		Name = "SheepData", 
 		Value = p5, 
-		Parent = v8
+		Parent = v7
 	});
-	v8.Parent = p4.sheepModelFolder;
-	l__CollectionService__8:AddTag(v8, "SheepModel");
-	local u11 = l__Maid__9.new();
+	v7.Parent = p4.sheepModelFolder;
+	l__CollectionService__7:AddTag(v7, "SheepModel");
+	local u10 = u8.new();
 	p5.AncestryChanged:Connect(function(p6, p7)
 		if p7 == nil then
-			u11:DoCleaning();
+			u10:DoCleaning();
 		end;
 	end);
-	u11:GiveTask(function()
-		v8:Destroy();
+	u10:GiveTask(function()
+		v7:Destroy();
 	end);
-	local u12 = l__Maid__9.new();
-	local u13 = p5:GetAttribute("SheepState");
-	local function u14(p8)
-		u12:DoCleaning();
-		if p8 == l__SheepState__10.IDLE then
-			u12 = p4:idleSheep(p5, v8);
+	local u11 = u8.new();
+	local u12 = p5:GetAttribute("SheepState");
+	p5:GetAttributeChangedSignal("SheepState"):Connect(function(p8)
+		local v11 = p5:GetAttribute("SheepState");
+		u11:DoCleaning();
+		if v11 == l__SheepState__9.IDLE then
+			u11 = p4:idleSheep(p5, v7);
 			return;
 		end;
-		if p8 == l__SheepState__10.TAMED then
-			u12 = p4:tameSheep(p5, v8, u13 ~= l__SheepState__10.TAMED);
+		if v11 == l__SheepState__9.TAMED then
+			u11 = p4:tameSheep(p5, v7, u12 ~= l__SheepState__9.TAMED);
 		end;
+	end);
+	local v12 = p5:GetAttribute("SheepState");
+	u11:DoCleaning();
+	if v12 == l__SheepState__9.IDLE then
+		u11 = p4:idleSheep(p5, v7);
+	elseif v12 == l__SheepState__9.TAMED then
+		u11 = p4:tameSheep(p5, v7, u12 ~= l__SheepState__9.TAMED);
 	end;
-	p5:GetAttributeChangedSignal("SheepState"):Connect(function(p9)
-		u14(p5:GetAttribute("SheepState"));
-	end);
-	u14(p5:GetAttribute("SheepState"));
-	return v8;
+	return v7;
 end;
-local l__Players__15 = v4.Players;
-local l__KnitClient__16 = v3.KnitClient;
-local l__GameAnimationUtil__17 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
-local l__AnimationType__18 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
-function v6.idleSheep(p10, p11, p12)
-	local v11 = l__Maid__9.new();
-	local u19 = true;
-	v11:GiveTask(function()
-		u19 = false;
+local l__Players__13 = v3.Players;
+local l__KnitClient__14 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
+local l__GameAnimationUtil__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
+local l__AnimationType__16 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
+function v5.idleSheep(p9, p10, p11)
+	local v13 = u8.new();
+	local u17 = true;
+	v13:GiveTask(function()
+		u17 = false;
 	end);
-	p11.AncestryChanged:Connect(function(p13, p14)
-		if p14 == nil then
-			v11:DoCleaning();
+	p10.AncestryChanged:Connect(function(p12, p13)
+		if p13 == nil then
+			v13:DoCleaning();
 		end;
 	end);
-	p12:SetPrimaryPartCFrame(CFrame.new(p11:GetAttribute("SheepIdlePosition")) * CFrame.Angles(0, p11:GetAttribute("RandomFloat") * math.pi * 2, 0));
-	if l__Players__15.LocalPlayer.UserId ~= p11:GetAttribute("SheepOwnerUserId") then
-		for v12, v13 in ipairs(p12:GetDescendants()) do
-			if v13:IsA("BasePart") then
-				v13.Transparency = 1;
+	p11:SetPrimaryPartCFrame(CFrame.new(p10:GetAttribute("SheepIdlePosition")) * CFrame.Angles(0, p10:GetAttribute("RandomFloat") * math.pi * 2, 0));
+	if l__Players__13.LocalPlayer.UserId ~= p10:GetAttribute("SheepOwnerUserId") then
+		local v14, v15, v16 = ipairs(p11:GetDescendants());
+		while true do
+			v14(v15, v16);
+			if not v14 then
+				break;
 			end;
+			v16 = v14;
+			if v15:IsA("BasePart") then
+				v15.Transparency = 1;
+			end;		
 		end;
 	end;
 	task.spawn(function()
-		local v14 = 0;
+		local v17 = 0;
 		while true do
-			local v15 = task.wait(0.2);
-			if v15 ~= 0 and v15 == v15 and v15 then
-				v15 = u19;
+			local v18 = task.wait(0.2);
+			if v18 ~= 0 and v18 == v18 and v18 then
+				v18 = u17;
 			end;
-			if v15 == 0 then
+			if v18 == 0 then
 				break;
 			end;
-			if v15 ~= v15 then
+			if v18 ~= v18 then
 				break;
 			end;
-			if not v15 then
+			if not v18 then
 				break;
 			end;
-			local v16 = l__Players__15.LocalPlayer.Character;
-			if v16 ~= nil then
-				v16 = v16.PrimaryPart;
+			local v19 = l__Players__13.LocalPlayer.Character;
+			if v19 ~= nil then
+				v19 = v19.PrimaryPart;
 			end;
-			if v16 and p12.PrimaryPart and (v16.Position - p12.PrimaryPart.Position).Magnitude <= 10 and not (tick() < v14 + 2) then
-				v14 = tick();
+			if v19 and p11.PrimaryPart and (v19.Position - p11.PrimaryPart.Position).Magnitude <= 10 and not (tick() < v17 + 2) then
+				v17 = tick();
 				task.spawn(function()
 					print("taming sheep!");
-					l__KnitClient__16.Controllers.SheepHerderKitController:tameSheep(p12);
+					l__KnitClient__14.Controllers.SheepHerderKitController:tameSheep(p11);
 				end);
 			end;		
 		end;
 	end);
-	local v17 = p12.AnimationController.Animator:LoadAnimation((l__GameAnimationUtil__17.getAnimation(l__AnimationType__18.SHEEP_IDLE)));
-	v17:Play();
-	v11:GiveTask(function()
-		v17:Stop();
-		v17:Destroy();
+	local v20 = p11.AnimationController.Animator:LoadAnimation((l__GameAnimationUtil__15.getAnimation(l__AnimationType__16.SHEEP_IDLE)));
+	v20:Play();
+	v13:GiveTask(function()
+		v20:Stop();
+		v20:Destroy();
 	end);
-	return v11;
+	return v13;
 end;
-local l__SoundManager__20 = v2.SoundManager;
-local l__RandomUtil__21 = v2.RandomUtil;
-local l__GameSound__22 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__WatchCharacter__23 = v2.WatchCharacter;
-local l__RunService__24 = v4.RunService;
-function v6.tameSheep(p15, p16, p17, p18)
-	local v18 = tick();
-	local l__Position__19 = p17.PrimaryPart.Position;
-	local v20 = p16:GetAttribute("SheepOwnerUserId") == l__Players__15.LocalPlayer.UserId;
-	if p18 then
-		local v21 = {};
-		if v20 then
-			local v22 = nil;
+local l__SoundManager__18 = v2.SoundManager;
+local l__RandomUtil__19 = v2.RandomUtil;
+local l__GameSound__20 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local l__WatchCharacter__21 = v2.WatchCharacter;
+local l__RunService__22 = v3.RunService;
+function v5.tameSheep(p14, p15, p16, p17)
+	local v21 = tick();
+	local l__Position__22 = p16.PrimaryPart.Position;
+	local v23 = p15:GetAttribute("SheepOwnerUserId") == l__Players__13.LocalPlayer.UserId;
+	if p17 then
+		local v24 = {};
+		if v23 then
+			local v25 = nil;
 		else
-			v22 = l__Position__19;
+			v25 = l__Position__22;
 		end;
-		v21.position = v22;
-		if v20 then
-			local v23 = nil;
+		v24.position = v25;
+		if v23 then
+			local v26 = nil;
 		else
-			v23 = p17.PrimaryPart;
+			v26 = p16.PrimaryPart;
 		end;
-		v21.parent = v23;
-		l__SoundManager__20:playSound(l__RandomUtil__21.fromList(l__GameSound__22.SHEEP_TAME_1, l__GameSound__22.SHEEP_TAME_2, l__GameSound__22.SHEEP_TAME_3), v21);
-		if v20 then
-			l__GameAnimationUtil__17.playAnimation(l__Players__15.LocalPlayer, l__AnimationType__18.TAME_SHEEP);
+		v24.parent = v26;
+		l__SoundManager__18:playSound(l__RandomUtil__19.fromList(l__GameSound__20.SHEEP_TAME_1, l__GameSound__20.SHEEP_TAME_2, l__GameSound__20.SHEEP_TAME_3), v24);
+		if v23 then
+			l__GameAnimationUtil__15.playAnimation(l__Players__13.LocalPlayer, l__AnimationType__16.TAME_SHEEP);
 		end;
 	end;
-	local v24 = l__Maid__9.new();
-	local u25 = true;
-	v24:GiveTask(function()
-		u25 = false;
+	local v27 = u8.new();
+	local u23 = true;
+	v27:GiveTask(function()
+		u23 = false;
 	end);
-	p16.AncestryChanged:Connect(function(p19, p20)
-		if p20 == nil then
-			v24:DoCleaning();
+	p15.AncestryChanged:Connect(function(p18, p19)
+		if p19 == nil then
+			v27:DoCleaning();
 		end;
 	end);
-	local v25 = l__Players__15.LocalPlayer.Character;
-	if v25 ~= nil then
-		v25 = v25.PrimaryPart;
+	local v28 = l__Players__13.LocalPlayer.Character;
+	if v28 ~= nil then
+		v28 = v28.PrimaryPart;
 	end;
-	local u26 = v25;
-	v24:GiveTask(l__WatchCharacter__23(function(p21, p22, p23)
-		if p21 ~= l__Players__15.LocalPlayer then
+	local u24 = v28;
+	v27:GiveTask(l__WatchCharacter__21(function(p20, p21, p22)
+		if p20 ~= l__Players__13.LocalPlayer then
 			return nil;
 		end;
-		if not p22.PrimaryPart then
-			p22:GetPropertyChangedSignal("PrimaryPart"):Wait();
+		if not p21.PrimaryPart then
+			p21:GetPropertyChangedSignal("PrimaryPart"):Wait();
 		end;
-		u26 = p22.PrimaryPart;
+		u24 = p21.PrimaryPart;
 	end));
-	local u27 = p16:GetAttribute("SheepIndex");
-	v24:GiveTask(p16:GetAttributeChangedSignal("SheepIndex"):Connect(function()
-		u27 = p16:GetAttribute("SheepIndex");
+	local u25 = p15:GetAttribute("SheepIndex");
+	v27:GiveTask(p15:GetAttributeChangedSignal("SheepIndex"):Connect(function()
+		u25 = p15:GetAttribute("SheepIndex");
 	end));
-	local u28 = 0;
-	local u29 = l__Position__19.Y;
-	local u30 = p16:GetAttribute("RandomFloat");
-	v24:GiveTask(l__RunService__24.RenderStepped:Connect(function(p24)
-		u28 = u28 + p24;
-		if u26 == nil then
+	local u26 = 0;
+	local u27 = l__Position__22.Y;
+	local u28 = p15:GetAttribute("RandomFloat");
+	v27:GiveTask(l__RunService__22.RenderStepped:Connect(function(p23)
+		u26 = u26 + p23;
+		if u24 == nil then
 			return nil;
 		end;
-		local v26 = u27 % 2 == 0;
-		if u27 == 0 then
-			v26 = false;
+		local v29 = u25 % 2 == 0;
+		if u25 == 0 then
+			v29 = false;
 		end;
-		local v27 = Vector3.new(0, -0.5, 3);
-		if u27 > 0 then
-			if v26 then
-				local v28 = 1;
+		local v30 = Vector3.new(0, -0.5, 3);
+		if u25 > 0 then
+			if v29 then
+				local v31 = 1;
 			else
-				v28 = -1;
+				v31 = -1;
 			end;
-			v27 = v27 + Vector3.new(math.floor((u27 + 1) / 2) * 2.1 * v28, 0, 0) + Vector3.new(0, 0, math.floor((u27 + 1) / 2) * 2.7);
+			v30 = v30 + Vector3.new(math.floor((u25 + 1) / 2) * 2.1 * v31, 0, 0) + Vector3.new(0, 0, math.floor((u25 + 1) / 2) * 2.7);
 		end;
-		local v29 = u26.CFrame * v27;
-		local v30 = RaycastParams.new();
-		v30.CollisionGroup = "Players";
-		local v31 = l__GameQueryUtil__6:raycast(v29 + Vector3.new(0, 9, 0), Vector3.new(0, -60, 0), v30);
-		local v32 = v29.Y;
-		local v33 = v31;
-		if v33 ~= nil then
-			v33 = v33.Position;
+		local v32 = u24.CFrame * v30;
+		local v33 = RaycastParams.new();
+		v33.CollisionGroup = "Players";
+		local v34 = l__GameQueryUtil__5:raycast(v32 + Vector3.new(0, 9, 0), Vector3.new(0, -60, 0), v33);
+		local v35 = v32.Y;
+		local v36 = v34;
+		if v36 ~= nil then
+			v36 = v36.Position;
 		end;
-		if v33 then
-			v32 = v31.Position.Y + 2;
+		if v36 then
+			v35 = v34.Position.Y + 2;
 		end;
-		local v34 = v32 - u29;
-		local v35 = math.max(math.abs(v34) / 3, 1);
-		local v36 = Vector3.new(v29.X, u29 + math.clamp(v34, p24 * -40 * v35, p24 * 40 * v35), v29.Z);
-		u29 = v36.Y;
-		local v37 = v36 + Vector3.new(0, 0.8 * math.sin(u28 * 2 + math.pi * 2 * u30), 0);
-		local v38 = CFrame.new(v37, v37 + u26.CFrame.LookVector);
-		if tick() - v18 < 1 then
-			v38 = CFrame.new(CFrame.new(l__Position__19, l__Position__19 + u26.CFrame.LookVector):Lerp(v38, (tick() - v18) / 1).Position, v38.Position);
+		local v37 = v35 - u27;
+		local v38 = math.max(math.abs(v37) / 3, 1);
+		local v39 = Vector3.new(v32.X, u27 + math.clamp(v37, p23 * -40 * v38, p23 * 40 * v38), v32.Z);
+		u27 = v39.Y;
+		local v40 = v39 + Vector3.new(0, 0.8 * math.sin(u26 * 2 + math.pi * 2 * u28), 0);
+		local v41 = CFrame.new(v40, v40 + u24.CFrame.LookVector);
+		if tick() - v21 < 1 then
+			v41 = CFrame.new(CFrame.new(l__Position__22, l__Position__22 + u24.CFrame.LookVector):Lerp(v41, (tick() - v21) / 1).Position, v41.Position);
 		end;
-		p17:SetPrimaryPartCFrame(v38);
+		p16:SetPrimaryPartCFrame(v41);
 	end));
-	local v39 = p17.AnimationController.Animator:LoadAnimation((l__GameAnimationUtil__17.getAnimation(l__AnimationType__18.SHEEP_WALK)));
-	v39:Play();
-	v39:AdjustSpeed(0.5);
-	v39.TimePosition = u30 * v39.Length;
-	v24:GiveTask(function()
-		v39:Stop();
-		v39:Destroy();
+	local v42 = p16.AnimationController.Animator:LoadAnimation((l__GameAnimationUtil__15.getAnimation(l__AnimationType__16.SHEEP_WALK)));
+	v42:Play();
+	v42:AdjustSpeed(0.5);
+	v42.TimePosition = u28 * v42.Length;
+	v27:GiveTask(function()
+		v42:Stop();
+		v42:Destroy();
 	end);
-	return v24;
+	return v27;
 end;
-u1 = l__KnitClient__16.CreateController;
-u1 = u1(v6.new());
+local v43 = l__KnitClient__14.CreateController(v5.new());
 return nil;

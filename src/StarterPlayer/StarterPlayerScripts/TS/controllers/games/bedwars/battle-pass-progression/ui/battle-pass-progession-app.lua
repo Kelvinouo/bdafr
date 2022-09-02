@@ -1,4 +1,3 @@
--- Script Hash: d3be60787726fd1278ffef1030d9dc563ff0e7f0d98e56ad6a12d42451668009864ef62f6dc9b76c408c84afe68349ec
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -44,19 +43,11 @@ u13 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u
 		local u21 = nil;
 		local u22 = 0;
 		local u23 = true;
-		local function u24()
-			v8(l__reasons__16[u17 + 1]);
-			u18 = u18 + l__reasons__16[u17 + 1].experience;
-			v10(u18);
-			u19 = u19 + l__reasons__16[u17 + 1].experience;
-			v12(u19);
-			u20:Play();
-		end;
-		local u25 = l__TweenService__3:Create(u14:getValue(), TweenInfo.new(0.001), {
+		local u24 = l__TweenService__3:Create(u14:getValue(), TweenInfo.new(0.001), {
 			Position = UDim2.fromScale(0.1, 0), 
 			TextTransparency = 1
 		});
-		local u26 = l__TweenService__3:Create(u15:getValue(), TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
+		local u25 = l__TweenService__3:Create(u15:getValue(), TweenInfo.new(0.2, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
 			Position = UDim2.fromScale(3, 0)
 		});
 		u21 = l__RunService__4.Heartbeat:Connect(function(p3)
@@ -66,11 +57,16 @@ u13 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u
 			u22 = u22 + p3;
 			if u22 >= 1.5 and u23 then
 				u22 = u22 - 1.5;
-				u24();
+				v8(l__reasons__16[u17 + 1]);
+				u18 = u18 + l__reasons__16[u17 + 1].experience;
+				v10(u18);
+				u19 = u19 + l__reasons__16[u17 + 1].experience;
+				v12(u19);
+				u20:Play();
 				v1.Promise.fromEvent(u20.Completed):andThen(function()
 					wait(1.1);
 					if u17 ~= #l__reasons__16 then
-						u25:Play();
+						u24:Play();
 						return;
 					end;
 					local v13 = p1.AliveSecsAfterEnd;
@@ -78,8 +74,8 @@ u13 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u
 						v13 = 4;
 					end;
 					wait(v13);
-					u26:Play();
-					u26.Completed:Connect(function()
+					u25:Play();
+					u25.Completed:Connect(function()
 						l__ClientSyncEvents__5.MatchEndScreenEnd:fire(0);
 						l__KnitClient__6.Controllers.MatchEndController:unmountPostGameBattlePassProgressApp();
 					end);

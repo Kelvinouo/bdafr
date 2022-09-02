@@ -16,6 +16,7 @@ function v1.new()
 			v3:Destroy();
 		end;
 		v3 = Instance.new("StringValue");
+		assert(v3, "");
 		v3.Name = "BoundKeys";
 		v3.Value = "LeftShift,RightShift";
 		v3.Parent = script;
@@ -55,6 +56,7 @@ function v1.GetMouseLockOffset(p5)
 		l__CameraOffset__4:Destroy();
 	end;
 	local v5 = Instance.new("Vector3Value");
+	assert(v5, "");
 	v5.Name = "CameraOffset";
 	v5.Value = Vector3.new(1.75, 0, 0);
 	v5.Parent = script;
@@ -99,6 +101,7 @@ function v1.OnMouseLockToggled(p9)
 				l__CursorImage__13:Destroy();
 			end;
 			local v14 = Instance.new("StringValue");
+			assert(v14, "");
 			v14.Name = "CursorImage";
 			v14.Value = "rbxasset://textures/MouseLockedCursor.png";
 			v14.Parent = script;

@@ -1,4 +1,3 @@
--- Script Hash: c9e8792671aa23d39f7141feda2d6e6b3aef497e15106458a00f1806e71634bb28f9dd0efe7924dd8a8d335e7c438ede
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
@@ -38,7 +37,13 @@ local u1 = {
 };
 function v3.changeAngelAppearance(p1, p2)
 	local v4 = u1[p2];
-	for v5, v6 in ipairs(p1:GetDescendants()) do
+	local v5, v6, v7 = ipairs(p1:GetDescendants());
+	while true do
+		v5(v6, v7);
+		if not v5 then
+			break;
+		end;
+		v7 = v5;
 		if v6:IsA("MeshPart") then
 			if v6.Name == "Mesh/Neon" then
 				if v4.neon then
@@ -62,8 +67,8 @@ function v3.changeAngelAppearance(p1, p2)
 					v6.Transparency = 1;
 				end;
 			else
-				local l__TextureID__7 = v6.TextureID;
-				if l__TextureID__7 ~= "" and l__TextureID__7 then
+				local l__TextureID__8 = v6.TextureID;
+				if l__TextureID__8 ~= "" and l__TextureID__8 then
 					v6.TextureID = v4.texture;
 				end;
 			end;
@@ -76,12 +81,12 @@ function v3.changeAngelAppearance(p1, p2)
 				v6:SetAttribute("FirstPersonVisible", nil);
 				v6.Enabled = false;
 			end;
-		end;
+		end;	
 	end;
 end;
-local v8 = {};
-u1 = 3;
-v8.ANGEL_KILL_REQUIREMENT = u1;
-v8.AngelType = v2;
-v8.AngelKitUtil = v3;
-return v8;
+u1 = {
+	ANGEL_KILL_REQUIREMENT = 3, 
+	AngelType = v2, 
+	AngelKitUtil = v3
+};
+return u1;

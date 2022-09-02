@@ -1,4 +1,3 @@
--- Script Hash: d5efaf75156e772d83a52ab882692f8dbd451b6444fc2c0c52ed4583958db2380c4d8cc9de3d239aba9ed236b4505958
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "util", "typesafe-attributes");
@@ -15,8 +14,14 @@ end;
 function v2.constructor(p1, p2, p3)
 	p1.instance = p2;
 	p1.Values = {};
-	for v4, v5 in ipairs(p3) do
-		p1:handleAttribute(v5);
+	local v4, v5, v6 = ipairs(p3);
+	while true do
+		v4(v5, v6);
+		if not v4 then
+			break;
+		end;
+		v6 = v4;
+		p1:handleAttribute(v5);	
 	end;
 end;
 local l__GetAttribute__1 = v1.GetAttribute;

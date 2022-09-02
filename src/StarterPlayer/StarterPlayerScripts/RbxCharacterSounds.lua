@@ -324,15 +324,27 @@ local function v88(p18)
 	table.insert(v89, p18.CharacterAdded:Connect(u10));
 	table.insert(v89, p18.CharacterRemoving:Connect(u11));
 end;
-for v90, v91 in ipairs(l__Players__1:GetPlayers()) do
+local v90, v91, v92 = ipairs(l__Players__1:GetPlayers());
+while true do
+	v90(v91, v92);
+	if not v90 then
+		break;
+	end;
+	v92 = v90;
 	task.spawn(v88, v91);
 end;
 l__Players__1.PlayerAdded:Connect(v88);
 l__Players__1.PlayerRemoving:Connect(function(p19)
-	local v92 = u9[p19];
-	if v92 then
-		for v93, v94 in ipairs(v92) do
-			v94:Disconnect();
+	local v93 = u9[p19];
+	if v93 then
+		local v94, v95, v96 = ipairs(v93);
+		while true do
+			v94(v95, v96);
+			if not v94 then
+				break;
+			end;
+			v96 = v94;
+			v95:Disconnect();		
 		end;
 		u9[p19] = nil;
 	end;

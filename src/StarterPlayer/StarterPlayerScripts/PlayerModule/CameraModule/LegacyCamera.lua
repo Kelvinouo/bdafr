@@ -22,7 +22,7 @@ local l__Players__1 = game:GetService("Players");
 local u2 = require(script.Parent:WaitForChild("CameraInput"));
 function v4.Update(p4, p5)
 	if not p4.cameraType then
-		return;
+		return nil, nil;
 	end;
 	local v6 = tick();
 	local l__CurrentCamera__7 = workspace.CurrentCamera;

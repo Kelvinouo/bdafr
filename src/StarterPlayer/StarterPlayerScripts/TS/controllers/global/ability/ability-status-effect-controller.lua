@@ -1,4 +1,3 @@
--- Script Hash: 68ad0674651426522eee8e95dbbd48bc42055b560dffa3bea00907f0e4a0bc427badc98d33ab4f914ba52416b576565a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,72 +13,70 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = l__KnitController__2;
 function v3.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__2.constructor(p1);
 	p1.Name = "AbilityStatusEffectController";
 end;
-local l__ClientSyncEvents__2 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
-local l__Players__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
-local u4 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
-local l__AbilityId__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "ability", "ability-id").AbilityId;
-local l__getAbilityMeta__6 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).getAbilityMeta;
-local l__Flamework__7 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
-local l__SyncEventPriority__8 = v1.import(script, v1.getModule(script, "@easy-games", "sync-event").out).SyncEventPriority;
-local l__EntityUtil__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
-local l__StatusEffectUtil__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "status-effect", "status-effect-util").StatusEffectUtil;
+local l__ClientSyncEvents__1 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
+local l__Players__2 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
+local l__AbilityId__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "ability", "ability-id").AbilityId;
+local l__getAbilityMeta__5 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).getAbilityMeta;
+local l__Flamework__6 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
+local l__SyncEventPriority__7 = v1.import(script, v1.getModule(script, "@easy-games", "sync-event").out).SyncEventPriority;
+local l__EntityUtil__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
+local l__StatusEffectUtil__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "status-effect", "status-effect-util").StatusEffectUtil;
 function v3.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__ClientSyncEvents__2.StatusEffectAdded:connect(function(p3)
-		if p3.entityInstance ~= l__Players__3.LocalPlayer.Character then
+	l__KnitController__2.KnitStart(p2);
+	l__ClientSyncEvents__1.StatusEffectAdded:connect(function(p3)
+		if p3.entityInstance ~= l__Players__2.LocalPlayer.Character then
 			return nil;
 		end;
-		local v5, v6, v7 = ipairs(u4.values(l__AbilityId__5));
+		local v5, v6, v7 = ipairs(u3.values(l__AbilityId__4));
 		while true do
-			local v8, v9 = v5(v6, v7);
+			v5(v6, v7);
+			if not v5 then
+				break;
+			end;
+			if table.find(l__getAbilityMeta__5(v6).blockingStatusEffects or {}, p3.statusEffect) ~= nil then
+				l__Flamework__6.resolveDependency("@easy-games/game-core:client/controllers/ability/ability-controller@AbilityController"):blockAbility(v6, "status-effect:" .. p3.statusEffect);
+			end;		
+		end;
+	end);
+	l__ClientSyncEvents__1.StatusEffectRemoved:connect(function(p4)
+		if p4.entityInstance ~= l__Players__2.LocalPlayer.Character then
+			return nil;
+		end;
+		local v8, v9, v10 = ipairs(u3.values(l__AbilityId__4));
+		while true do
+			v8(v9, v10);
 			if not v8 then
 				break;
 			end;
-			if table.find(l__getAbilityMeta__6(v9).blockingStatusEffects or {}, p3.statusEffect) ~= nil then
-				l__Flamework__7.resolveDependency("@easy-games/game-core:client/controllers/ability/ability-controller@AbilityController"):blockAbility(v9, "status-effect:" .. p3.statusEffect);
+			if table.find(l__getAbilityMeta__5(v9).blockingStatusEffects or {}, p4.statusEffect) ~= nil then
+				l__Flamework__6.resolveDependency("@easy-games/game-core:client/controllers/ability/ability-controller@AbilityController"):unblockAbility(v9, "status-effect:" .. p4.statusEffect);
 			end;		
 		end;
 	end);
-	l__ClientSyncEvents__2.StatusEffectRemoved:connect(function(p4)
-		if p4.entityInstance ~= l__Players__3.LocalPlayer.Character then
-			return nil;
-		end;
-		local v10, v11, v12 = ipairs(u4.values(l__AbilityId__5));
-		while true do
-			local v13, v14 = v10(v11, v12);
-			if not v13 then
-				break;
-			end;
-			if table.find(l__getAbilityMeta__6(v14).blockingStatusEffects or {}, p4.statusEffect) ~= nil then
-				l__Flamework__7.resolveDependency("@easy-games/game-core:client/controllers/ability/ability-controller@AbilityController"):unblockAbility(v14, "status-effect:" .. p4.statusEffect);
-			end;		
-		end;
-	end);
-	l__ClientSyncEvents__2.CanUseLocalAbility:setPriority(l__SyncEventPriority__8.HIGHEST):connect(function(p5)
+	l__ClientSyncEvents__1.CanUseLocalAbility:setPriority(l__SyncEventPriority__7.HIGHEST):connect(function(p5)
 		if p5:isCancelled() then
 			return nil;
 		end;
-		local v15 = l__getAbilityMeta__6(p5.ability);
-		if not v15.blockingStatusEffects then
+		local v11 = l__getAbilityMeta__5(p5.ability);
+		if not v11.blockingStatusEffects then
 			return nil;
 		end;
-		local v16 = l__EntityUtil__9:getEntity(l__Players__3.LocalPlayer);
-		if v16 ~= nil then
-			v16 = v16:getInstance();
+		local v12 = l__EntityUtil__8:getEntity(l__Players__2.LocalPlayer);
+		if v12 ~= nil then
+			v12 = v12:getInstance();
 		end;
-		if not v16 then
+		if not v12 then
 			return nil;
 		end;
-		if l__StatusEffectUtil__10:hasAnyActive(v16, v15.blockingStatusEffects) then
+		if l__StatusEffectUtil__9:hasAnyActive(v12, v11.blockingStatusEffects) then
 			p5:setCancelled(true);
 		end;
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@rbxts", "knit").src).KnitClient.CreateController;
-u1 = u1(v3.new());
+local v13 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v3.new());
 return nil;

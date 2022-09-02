@@ -1,4 +1,3 @@
--- Script Hash: de3057671a01361c94777c2da330c3c8d3569ed5d808d2e67c49fe534c03a387ea6d97ebe1d48e69d409752426bc2dc6
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -38,13 +37,7 @@ return {
 				end;
 				return p1.TotalProgressExp - v13;
 			end;
-			local function u8(p3)
-				v8(v7 + 1);
-				v12(v11 + 1);
-				v10(p3);
-				l__SoundManager__3:playSound(l__GameSound__4.BATTLE_PASS_PROGRESS_LEVEL_UP);
-			end;
-			local function u9()
+			local function u8()
 				local v18 = 0;
 				local v19 = v7 - v11;
 				local v20 = false;
@@ -61,16 +54,17 @@ return {
 				end;
 				return p1.TotalProgressExp - v18;
 			end;
-			local v21 = (function()
-				return l__BattlePassUtils__2.getTotalExperienceForLevel(v7 + 1) - l__BattlePassUtils__2.getTotalExperienceForLevel(v7 - v11);
-			end)();
+			local v21 = l__BattlePassUtils__2.getTotalExperienceForLevel(v7 + 1) - l__BattlePassUtils__2.getTotalExperienceForLevel(v7 - v11);
 			if v21 < p1.TotalProgressExp and p1.PastTotalProgressExp < v21 then
 				(function()
 					local v22 = u7();
 					local v23 = l__TweenService__5:Create(v4:getValue(), TweenInfo.new(0.125, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
 						Size = UDim2.fromScale(1, 1)
 					});
-					u8(v22);
+					v8(v7 + 1);
+					v12(v11 + 1);
+					v10(v22);
+					l__SoundManager__3:playSound(l__GameSound__4.BATTLE_PASS_PROGRESS_LEVEL_UP);
 					local v24 = l__TweenService__5:Create(v4:getValue(), TweenInfo.new(0.001), {
 						Size = UDim2.fromScale(0, 1)
 					});
@@ -89,7 +83,7 @@ return {
 				return;
 			end;
 			(function()
-				local v26 = u9();
+				local v26 = u8();
 				local v27 = l__TweenService__5:Create(v4:getValue(), TweenInfo.new(0.25, Enum.EasingStyle.Cubic, Enum.EasingDirection.Out), {
 					Size = UDim2.fromScale(math.min(v26 / l__BattlePassUtils__2.getExperienceForLevel(v7 + 1), 1), 1)
 				});
@@ -143,9 +137,7 @@ return {
 					LayoutOrder = 2
 				}, {
 					CurrProgress = u1.createElement("Frame", {
-						Size = UDim2.fromScale((function()
-							return math.min(p1.MatchExperienceEarned.startingExperience / l__BattlePassUtils__2.getExperienceForLevel(l__BattlePassUtils__2.getLevelFromExperience(p1.MatchExperienceEarned.startingExperience + p1.MatchExperienceEarned.totalExperienceEarned) + 1), 1);
-						end)(), 1), 
+						Size = UDim2.fromScale(math.min(p1.MatchExperienceEarned.startingExperience / l__BattlePassUtils__2.getExperienceForLevel(l__BattlePassUtils__2.getLevelFromExperience(p1.MatchExperienceEarned.startingExperience + p1.MatchExperienceEarned.totalExperienceEarned) + 1), 1), 1), 
 						BackgroundColor3 = l__ColorUtil__6.hexColor(16773227), 
 						BorderSizePixel = 0, 
 						BackgroundTransparency = 0, 

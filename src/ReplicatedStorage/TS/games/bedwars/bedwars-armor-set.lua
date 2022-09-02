@@ -1,4 +1,3 @@
--- Script Hash: a025c9bfabc5c5e2a6e37bd66a40fd1851b399a50f7e839da9579449c5f59dcc661df4c6ad4a6c4092affac12bf054ed
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__ItemType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;

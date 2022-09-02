@@ -433,6 +433,12 @@ return {
 			flightRotation = Vector3.new(-math.pi / 2, 0, 0), 
 			impactSound = { l__GameSound__1.BOBA_IMPACT }
 		}, 
+		detonated_bomb = {
+			launchVelocity = 180, 
+			gravitationalAcceleration = 90, 
+			flightRotation = Vector3.new(-math.pi / 2, 0, 0), 
+			impactSound = { l__GameSound__1.BOBA_IMPACT }
+		}, 
 		portal_projectile = {
 			launchVelocity = 45, 
 			gravitationalAcceleration = 0, 
@@ -511,6 +517,43 @@ return {
 			impactSound = { l__GameSound__1.SNOWBALL_HIT }, 
 			impactParticles = "default", 
 			armorMultiplier = 0.8
+		}, 
+		volley_arrow = {
+			launchVelocity = 1, 
+			gravitationalAcceleration = 35, 
+			lifetimeSec = 2.8, 
+			predictionLifetimeSec = 2, 
+			flightRotation = Vector3.new(-math.pi / 2, 0, 0), 
+			combat = {
+				damage = 20, 
+				ignoreDamageTakenCooldown = true, 
+				noApplyDamageCooldown = true
+			}, 
+			knockbackMultiplier = {
+				vertical = 0.02, 
+				horizontal = 0.05
+			}, 
+			impactSound = { l__GameSound__1.ARROW_HIT }, 
+			impactParticles = "default", 
+			noLaunchCooldownProtection = true, 
+			noAmmoValidation = true, 
+			ignoreMaxVelocityCheck = true
+		}, 
+		blunderbuss_bullet = {
+			launchVelocity = 400, 
+			gravitationalAcceleration = 0, 
+			lifetimeSec = 3, 
+			combat = {
+				damage = 20, 
+				ignoreDamageTakenCooldown = true, 
+				noApplyDamageCooldown = true
+			}, 
+			knockbackMultiplier = {
+				vertical = 0.05, 
+				horizontal = 0.18
+			}, 
+			impactParticles = "default", 
+			noAmmoValidation = true
 		}
 	}
 };

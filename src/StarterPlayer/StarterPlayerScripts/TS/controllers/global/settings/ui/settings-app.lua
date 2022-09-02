@@ -14,8 +14,9 @@ local l__KnitClient__9 = v1.import(script, v1.getModule(script, "@easy-games", "
 local l__ToggleButton__10 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "components", "settings", "toggle-button").ToggleButton;
 local l__HostPanelToggleValue__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "host-panel", "host-panel-settings.dto").HostPanelToggleValue;
 local l__SettingSlider__12 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "components", "settings", "setting-slider").SettingSlider;
-local l__WidgetComponent__13 = v2.WidgetComponent;
-local l__SlideIn__14 = v2.SlideIn;
+local l__AutoCanvasScrollingFrame__13 = v2.AutoCanvasScrollingFrame;
+local l__WidgetComponent__14 = v2.WidgetComponent;
+local l__SlideIn__15 = v2.SlideIn;
 return {
 	SettingsApp = v1.import(script, v1.getModule(script, "@rbxts", "roact-rodux").src).connect(function(p1, p2)
 		local v3 = {};
@@ -56,50 +57,61 @@ return {
 		function v12.OnClose()
 			l__Flamework__5.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):closeApp(p3.AppId);
 		end;
-		local v13 = { u2.createElement("UIListLayout", {
+		local v13 = {};
+		local v14 = {
+			AdditionalSpace = 10, 
+			ScrollingFrameProps = {
+				Size = UDim2.new(1, 0, 1, 0), 
+				ScrollingDirection = Enum.ScrollingDirection.Y, 
+				ScrollBarThickness = 8, 
+				BorderSizePixel = 0, 
+				LayoutOrder = 1
+			}
+		};
+		local v15 = { u2.createElement("UIListLayout", {
 				FillDirection = "Vertical", 
 				SortOrder = "LayoutOrder", 
 				Padding = UDim.new(0.05, 0)
 			}) };
-		local v14 = l__DeviceUtil__1.isMobileControls();
-		if v14 then
-			local v15 = {};
-			local v16 = {};
+		local v16 = l__DeviceUtil__1.isMobileControls();
+		if v16 then
+			local v17 = {};
+			local v18 = {};
 			if p3.Settings.mobileShiftLock then
-				local v17 = "on";
+				local v19 = "on";
 			else
-				v17 = "false";
+				v19 = "false";
 			end;
-			v16.Value = v17;
-			function v16.OnChange(p5)
+			v18.Value = v19;
+			function v18.OnChange(p5)
 				if not l__DeviceUtil__1.isHoarceKat() then
 					l__KnitClient__9.Controllers.SettingsController:setSetting("mobileShiftLock", p5 == "on");
 				end;
 			end;
-			v15[1] = u2.createElement(l__ToggleButtonGroup__8, v16, { u2.createElement(l__ToggleButton__10, {
+			v17[1] = u2.createElement(l__ToggleButtonGroup__8, v18, { u2.createElement(l__ToggleButton__10, {
 					Value = l__HostPanelToggleValue__11.ON, 
 					Text = "On"
 				}), u2.createElement(l__ToggleButton__10, {
 					Value = l__HostPanelToggleValue__11.OFF, 
 					Text = "Off"
 				}) });
-			v14 = u2.createElement(l__SettingRow__6, {
+			v16 = u2.createElement(l__SettingRow__6, {
 				Name = "Mobile Shift Lock", 
 				ThemeColor = l__Theme__7.backgroundPrimary, 
 				FrameProps = {
-					Size = UDim2.fromScale(0.98, 0.2)
+					Size = UDim2.new(0.98, 0, 0, 51)
 				}
-			}, v15);
+			}, v17);
 		end;
-		if v14 then
-			v13[#v13 + 1] = v14;
+		if v16 then
+			v15[#v15 + 1] = v16;
 		end;
-		local v18 = #v13;
-		v13[v18 + 1] = u2.createElement(l__SettingRow__6, {
+		local v20 = #v15;
+		v15[v20 + 1] = u2.createElement(l__SettingRow__6, {
 			Name = "Lobby Background Music Volume", 
 			ThemeColor = l__Theme__7.backgroundPrimary, 
 			FrameProps = {
-				Size = UDim2.fromScale(0.98, 0.2)
+				Size = UDim2.new(0.98, 0, 0, 51)
 			}
 		}, { u2.createElement(l__SettingSlider__12, {
 				Value = p3.Settings.backgroundMusicVolume, 
@@ -112,11 +124,11 @@ return {
 				Max = 1, 
 				StepSize = 0.01
 			}) });
-		v13[v18 + 2] = u2.createElement(l__SettingRow__6, {
+		v15[v20 + 2] = u2.createElement(l__SettingRow__6, {
 			Name = "Game Background Music Volume", 
 			ThemeColor = l__Theme__7.backgroundPrimary, 
 			FrameProps = {
-				Size = UDim2.fromScale(0.98, 0.2)
+				Size = UDim2.new(0.98, 0, 0, 51)
 			}
 		}, { u2.createElement(l__SettingSlider__12, {
 				Value = p3.Settings.backgroundMusicVolumeGame, 
@@ -129,12 +141,12 @@ return {
 				Max = 1, 
 				StepSize = 0.01
 			}) });
-		v13[v18 + 3] = u2.createElement(l__SettingRow__6, {
+		v15[v20 + 3] = u2.createElement(l__SettingRow__6, {
 			Name = "FOV", 
 			Hint = "(Field of view. Default: 80)", 
 			ThemeColor = l__Theme__7.backgroundPrimary, 
 			FrameProps = {
-				Size = UDim2.fromScale(0.98, 0.2)
+				Size = UDim2.new(0.98, 0, 0, 51)
 			}
 		}, { u2.createElement(l__SettingSlider__12, {
 				Value = p3.Settings.fov, 
@@ -147,20 +159,20 @@ return {
 				Max = 100, 
 				StepSize = 1
 			}) });
-		local v19 = {};
-		local v20 = {};
+		local v21 = {};
+		local v22 = {};
 		if p3.Settings.pictureMode then
-			local v21 = "on";
+			local v23 = "on";
 		else
-			v21 = "off";
+			v23 = "off";
 		end;
-		v20.Value = v21;
-		function v20.OnChange(p9)
+		v22.Value = v23;
+		function v22.OnChange(p9)
 			if not l__DeviceUtil__1.isHoarceKat() then
 				l__KnitClient__9.Controllers.SettingsController:setSetting("pictureMode", p9 == "on");
 			end;
 		end;
-		v19[1] = u2.createElement(l__ToggleButtonGroup__8, v20, { u2.createElement(l__ToggleButton__10, {
+		v21[1] = u2.createElement(l__ToggleButtonGroup__8, v22, { u2.createElement(l__ToggleButton__10, {
 				Value = "on", 
 				Text = "On"
 			}), u2.createElement(l__ToggleButton__10, {
@@ -168,16 +180,17 @@ return {
 				Text = "Off", 
 				ActiveColor = l__Theme__7.mcRed
 			}) });
-		v13[v18 + 4] = u2.createElement(l__SettingRow__6, {
+		v15[v20 + 4] = u2.createElement(l__SettingRow__6, {
 			Name = "Picture Mode", 
 			ThemeColor = l__Theme__7.backgroundPrimary, 
 			FrameProps = {
-				Size = UDim2.fromScale(0.98, 0.2)
+				Size = UDim2.new(0.98, 0, 0, 51)
 			}
-		}, v19);
-		v11[#v11 + 1] = u2.createElement(l__WidgetComponent__13, v12, v13);
+		}, v21);
+		v13.SettingsList = u2.createElement(l__AutoCanvasScrollingFrame__13, v14, v15);
+		v11[#v11 + 1] = u2.createElement(l__WidgetComponent__14, v12, v13);
 		v9[#v9 + 1] = u2.createElement("Frame", v10, v11);
-		v8[#v8 + 1] = u2.createElement(l__SlideIn__14, {}, v9);
+		v8[#v8 + 1] = u2.createElement(l__SlideIn__15, {}, v9);
 		return u2.createFragment({
 			SettingsAppGui = u2.createElement("ScreenGui", v7, v8)
 		});

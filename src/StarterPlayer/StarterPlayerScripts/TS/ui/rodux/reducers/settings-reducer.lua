@@ -21,8 +21,14 @@ return {
 			return p1;
 		end;
 		local v2 = u2.deepCopy(p1);
-		for v3, v4 in ipairs(u2.keys(p2.settings)) do
-			v2[v4] = p2.settings[v4];
+		local v3, v4, v5 = ipairs(u2.keys(p2.settings));
+		while true do
+			v3(v4, v5);
+			if not v3 then
+				break;
+			end;
+			v5 = v3;
+			v2[v4] = p2.settings[v4];		
 		end;
 		return v2;
 	end

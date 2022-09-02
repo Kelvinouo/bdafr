@@ -76,11 +76,23 @@ return {
 			});
 		end;
 		local v22 = table.create(#l__Tabs__15);
-		for v23, v24 in ipairs(l__Tabs__15) do
-			v22[v23] = v16(v24, v23 - 1, l__Tabs__15);
+		local v23, v24, v25 = ipairs(l__Tabs__15);
+		while true do
+			v23(v24, v25);
+			if not v23 then
+				break;
+			end;
+			v25 = v23;
+			v22[v23] = v16(v24, v23 - 1, l__Tabs__15);		
 		end;
-		for v25, v26 in ipairs(v22) do
-			v10[v11 + 1 + v25] = v26;
+		local v26, v27, v28 = ipairs(v22);
+		while true do
+			v26(v27, v28);
+			if not v26 then
+				break;
+			end;
+			v28 = v26;
+			v10[v11 + 1 + v26] = v27;		
 		end;
 		return u1.createElement(l__Empty__4, v6, v10);
 	end)

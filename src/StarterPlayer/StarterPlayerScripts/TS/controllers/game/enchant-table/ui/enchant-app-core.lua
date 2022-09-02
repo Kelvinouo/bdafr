@@ -1,4 +1,3 @@
--- Script Hash: 054c393583de6dee1a8ee02a577682cb453e6f547202398f97d268e2125dfa033e93750b9f5139b9dff4eb6e76fd96c1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -128,16 +127,19 @@ return {
 				Size = UDim2.fromScale(1, 0.725), 
 				LayoutOrder = 1
 			}) };
-		local function v16(p3, p4)
-			return u4.createElement(l__EnchantActionButton__13, {
-				ResearchData = p3, 
+		local v16 = table.create(#v4);
+		local v17, v18, v19 = ipairs(v4);
+		while true do
+			v17(v18, v19);
+			if not v17 then
+				break;
+			end;
+			v19 = v17;
+			v16[v17] = u4.createElement(l__EnchantActionButton__13, {
+				ResearchData = v18, 
 				Size = UDim2.fromScale(1, 0.2), 
 				LayoutOrder = 2
-			});
-		end;
-		local v17 = table.create(#v4);
-		for v18, v19 in ipairs(v4) do
-			v17[v18] = v16(v19, v18 - 1, v4);
+			});		
 		end;
 		local v20 = {
 			Size = UDim2.fromScale(1, 0.2), 
@@ -151,8 +153,14 @@ return {
 				Padding = UDim.new(0.05, 0)
 			}) };
 		local v22 = #v21;
-		for v23, v24 in ipairs(v17) do
-			v21[v22 + v23] = v24;
+		local v23, v24, v25 = ipairs(v16);
+		while true do
+			v23(v24, v25);
+			if not v23 then
+				break;
+			end;
+			v25 = v23;
+			v21[v22 + v23] = v24;		
 		end;
 		v15.EnchantActionButtons = u4.createElement(l__Empty__8, v20, v21);
 		v13.Right = u4.createElement(l__Empty__8, v14, v15);

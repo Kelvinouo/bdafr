@@ -1,4 +1,3 @@
--- Script Hash: 3fabd78c8e04d52cfbf236d6cc4fc459ff430b1bcfdcb7f7cbc39e533b9e274d30f127d7db41e6f30cb5d1297deca6fa
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__BPRewardDisplayType__1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-reward", "battle-pass-reward-display-type").BPRewardDisplayType;

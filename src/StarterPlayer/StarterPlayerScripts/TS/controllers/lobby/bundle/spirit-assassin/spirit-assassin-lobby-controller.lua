@@ -13,31 +13,29 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = l__KnitController__2;
 function v3.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__2.constructor(p1);
 	p1.Name = "SpiritAssassinLobbyController";
 end;
-local l__WatchCollectionTag__2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchCollectionTag;
-local l__TweenService__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).TweenService;
+local l__WatchCollectionTag__1 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchCollectionTag;
+local l__TweenService__2 = v1.import(script, v1.getModule(script, "@rbxts", "services")).TweenService;
 function v3.KnitStart(p2)
-	u1.KnitStart(p2);
-	local u4 = { Color3.fromRGB(255, 89, 89), Color3.fromRGB(218, 133, 65), Color3.fromRGB(91, 154, 76), Color3.fromRGB(82, 124, 174), Color3.fromRGB(180, 128, 255) };
-	l__WatchCollectionTag__2("prismatic-text", function(p3)
+	l__KnitController__2.KnitStart(p2);
+	local u3 = { Color3.fromRGB(255, 89, 89), Color3.fromRGB(218, 133, 65), Color3.fromRGB(91, 154, 76), Color3.fromRGB(82, 124, 174), Color3.fromRGB(180, 128, 255) };
+	l__WatchCollectionTag__1("prismatic-text", function(p3)
 		local v5 = 1;
 		while p3.Parent ~= nil do
-			local v6 = l__TweenService__3:Create(p3, TweenInfo.new(1), {
-				TextColor3 = u4[v5 + 1]
+			local v6 = l__TweenService__2:Create(p3, TweenInfo.new(1), {
+				TextColor3 = u3[v5 + 1]
 			});
 			v6:Play();
 			v6.Completed:Wait();
 			v5 = v5 + 1;
-			if #u4 <= v5 then
+			if #u3 <= v5 then
 				v5 = 0;
 			end;		
 		end;
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1(v3.new());
+local v7 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v3.new());
 return nil;

@@ -1,4 +1,3 @@
--- Script Hash: 7802a604a550ec2f9a1fcbb7f2aae63d59c47444711f721fb23a680de4676f5db6e3dab3f6becc260195fb2087302be2
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -15,7 +14,7 @@ return {
 			Position = UDim2.fromScale(0.5, 0.895), 
 			AnchorPoint = Vector2.new(0.5, 1), 
 			BackgroundColor3 = l__Theme__3.backgroundSuccess, 
-			Selectable = false
+			Selectable = true
 		};
 		function v4.OnClick()
 			p1.Purchase();

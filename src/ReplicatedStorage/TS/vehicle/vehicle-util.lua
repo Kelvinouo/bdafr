@@ -1,4 +1,3 @@
--- Script Hash: d2017b84e9b581bfba5b7ea5bbc603b26129cc275e2bbde00de1b10e91558ce7783a0f0ae7496a58b3a4053e6cdc5f5e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = setmetatable({}, {
@@ -15,30 +14,48 @@ function v1.constructor(p1)
 
 end;
 function v1.isInVehicle(p2, p3, p4)
-	for v3, v4 in ipairs(p4:GetDescendants()) do
+	local v3, v4, v5 = ipairs(p4:GetDescendants());
+	while true do
+		v3(v4, v5);
+		if not v3 then
+			break;
+		end;
+		v5 = v3;
 		if v4:IsA("Seat") and v4.Occupant and v4.Occupant:IsDescendantOf(p3) then
 			return true;
-		end;
+		end;	
 	end;
 	return false;
 end;
 function v1.getOccupants(p5, p6)
-	local v5 = {};
-	for v6, v7 in ipairs(p6:GetDescendants()) do
-		if v7:IsA("Seat") and v7.Occupant then
-			table.insert(v5, v7.Occupant);
+	local v6 = {};
+	local v7, v8, v9 = ipairs(p6:GetDescendants());
+	while true do
+		v7(v8, v9);
+		if not v7 then
+			break;
 		end;
+		v9 = v7;
+		if v8:IsA("Seat") and v8.Occupant then
+			table.insert(v6, v8.Occupant);
+		end;	
 	end;
-	return v5;
+	return v6;
 end;
 function v1.getSeats(p7, p8)
-	local v8 = {};
-	for v9, v10 in ipairs(p8:GetDescendants()) do
-		if v10:IsA("Seat") then
-			table.insert(v8, v10);
+	local v10 = {};
+	local v11, v12, v13 = ipairs(p8:GetDescendants());
+	while true do
+		v11(v12, v13);
+		if not v11 then
+			break;
 		end;
+		v13 = v11;
+		if v12:IsA("Seat") then
+			table.insert(v10, v12);
+		end;	
 	end;
-	return v8;
+	return v10;
 end;
 function v1.isDriver(p9, p10, p11)
 	if p10.Character and p11.Driver.Occupant ~= nil and p11.Driver.Occupant:IsDescendantOf(p10.Character) then

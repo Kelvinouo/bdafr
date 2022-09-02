@@ -1,4 +1,3 @@
--- Script Hash: 39c1a9208a2ce99f37dae53bfd7126bf215aec17f69fe30ceef95b78592cad0ce35df4ff45473a4e7f77f637b3cfa1c0
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -77,7 +76,7 @@ local v5 = {
 		layer = l__UILayers__3.MAIN
 	}, 
 	RANKED_PAID_RESTRICTION = {
-		app = v1.import(script, script.Parent.Parent, "controllers", "global", "paid-player-player", "ui", "paid-player-restriction-app").PaidPlayerRestrictionApp, 
+		app = v1.import(script, script.Parent.Parent, "controllers", "global", "rank-queue-restriction", "ui", "rank-queue-restriction-app").RankQueueRestrictionApp, 
 		appId = l__BedwarsAppIds__4.RANKED_PAID_RESTRICTION
 	}, 
 	RANKED_PROGRESS_BAR = {
@@ -122,6 +121,16 @@ local v5 = {
 		app = v1.import(script, script.Parent.Parent, "controllers", "lobby", "clan", "ui", "profile", "confirmation-modal", "confirmation-modal-base").ConfirmationModalApp, 
 		appId = l__BedwarsAppIds__4.CONFIRMATION_MODAL, 
 		layer = l__UILayers__3.OVERLAY
+	}, 
+	EVENT_APP = {
+		app = v1.import(script, script.Parent.Parent, "controllers", "lobby", "game-event", "event-app").EventApp, 
+		appId = l__BedwarsAppIds__4.EVENT_APP, 
+		layer = l__UILayers__3.MAIN
+	}, 
+	BOSS_BAR = {
+		app = v1.import(script, script.Parent.Parent, "controllers", "global", "combat", "boss-bar", "ui", "boss-bar").BossBarApp, 
+		appId = l__BedwarsAppIds__4.BOSS_BAR, 
+		layer = l__UILayers__3.HUD
 	}
 };
 for v6, v7 in pairs(v1.import(script, v1.getModule(script, "@easy-games", "lobby").out).LobbyDefaultAppConfiguration) do

@@ -1,4 +1,3 @@
--- Script Hash: ff3d2020e103f7185ac23bdca88688856468b6ad31bc126d19f32422b47d2a235cba3c0a37543e5c35556db60495f5c4
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -16,118 +15,121 @@ return {
 		local l__useState__3 = p2.useState;
 		local v4 = nil;
 		if p1.Team ~= nil then
-			local l__teams__5 = p1.QueueMeta.teams;
-			local function v6(p3)
-				return p3.id == p1.Team.id;
-			end;
-			local v7 = nil;
-			for v8, v9 in ipairs(l__teams__5) do
-				if v6(v9, v8 - 1, l__teams__5) == true then
-					v7 = v9;
+			local v5 = nil;
+			local v6, v7, v8 = ipairs(p1.QueueMeta.teams);
+			while true do
+				v6(v7, v8);
+				if not v6 then
 					break;
 				end;
+				v8 = v6;
+				if v7.id == p1.Team.id == true then
+					v5 = v7;
+					break;
+				end;			
 			end;
-			v4 = v7;
+			v4 = v5;
 		end;
-		local v10 = v4;
-		if v10 ~= nil then
-			v10 = v10.maxPlayers;
+		local v9 = v4;
+		if v9 ~= nil then
+			v9 = v9.maxPlayers;
 		end;
-		local v11 = v10;
-		if v11 == nil then
-			v11 = 20;
+		local v10 = v9;
+		if v10 == nil then
+			v10 = 20;
 		end;
-		local v12 = false;
-		local v13 = p1.Team;
-		if v13 then
-			local v14 = p1.store.Game.myTeam;
+		local v11 = false;
+		local v12 = p1.Team;
+		if v12 then
+			local v13 = p1.store.Game.myTeam;
+			if v13 ~= nil then
+				v13 = v13.id;
+			end;
+			local v14 = p1.Team;
 			if v14 ~= nil then
 				v14 = v14.id;
 			end;
-			local v15 = p1.Team;
-			if v15 ~= nil then
-				v15 = v15.id;
-			end;
-			v13 = v14 == v15;
+			v12 = v13 == v14;
 		end;
-		if v13 then
-			v12 = true;
+		if v12 then
+			v11 = true;
 		elseif p1.Team == nil and p1.store.Game.myTeam == nil then
-			v12 = true;
+			v11 = true;
 		end;
 		if v4 then
-			local v16 = l__ColorUtil__1.hexColor(v4.colorHex);
+			local v15 = l__ColorUtil__1.hexColor(v4.colorHex);
 		end;
-		local v17 = "Spectate";
+		local v16 = "Spectate";
 		if v4 then
-			v17 = v4.displayName;
+			v16 = v4.displayName;
 		end;
 		if p1.Team then
-			local v18 = 0;
-			for v19 in pairs(p1.Team.members) do
-				v18 = v18 + 1;
+			local v17 = 0;
+			for v18 in pairs(p1.Team.members) do
+				v17 = v17 + 1;
 			end;
-			local v20 = v18;
+			local v19 = v17;
 		else
-			local v21 = l__Players__2:GetPlayers();
-			local function v22(p4)
-				local v23 = true;
-				if p4.Team ~= nil then
-					v23 = p4.Team.Name == "Spectators";
+			local v20 = {};
+			local v21 = 0;
+			local v22, v23, v24 = ipairs((l__Players__2:GetPlayers()));
+			while true do
+				v22(v23, v24);
+				if not v22 then
+					break;
 				end;
-				return v23;
-			end;
-			local v24 = {};
-			local v25 = 0;
-			for v26, v27 in ipairs(v21) do
-				if v22(v27, v26 - 1, v21) == true then
-					v25 = v25 + 1;
-					v24[v25] = v27;
+				local v25 = true;
+				if v23.Team ~= nil then
+					v25 = v23.Team.Name == "Spectators";
 				end;
+				if v25 == true then
+					v21 = v21 + 1;
+					v20[v21] = v23;
+				end;			
 			end;
-			v20 = #v24;
+			v19 = #v20;
 		end;
-		local v28 = v17;
+		local v26 = v16;
 		if v4 then
-			v28 = v17 .. " (" .. tostring(v20) .. "/" .. tostring(v11) .. ")";
+			v26 = v16 .. " (" .. tostring(v19) .. "/" .. tostring(v10) .. ")";
 		end;
-		local v29 = {};
-		local v30 = {
-			Text = v28, 
+		local v27 = {};
+		local v28 = {
+			Text = v26, 
 			Size = UDim2.fromScale(1, 1)
 		};
-		function v30.OnClick()
+		function v28.OnClick()
 			l__SoundManager__5:playSound(l__GameSound__6.UI_CLICK);
-			local v31 = p1.Team;
-			if v31 ~= nil then
-				v31 = v31.name;
+			local v29 = p1.Team;
+			if v29 ~= nil then
+				v29 = v29.name;
 			end;
-			local v32 = v31;
-			if v32 == nil then
-				v32 = "spectators";
+			local v30 = v29;
+			if v30 == nil then
+				v30 = "spectators";
 			end;
-			l__default__7.Client:GetNamespace("CustomMatches"):Get("SelectTeam"):CallServerAsync(v32):andThen(function(p5)
+			l__default__7.Client:GetNamespace("CustomMatches"):Get("SelectTeam"):CallServerAsync(v30):andThen(function(p3)
 
 			end);
 		end;
-		v29[1] = u3.createElement("UIAspectRatioConstraint", {
+		v27[1] = u3.createElement("UIAspectRatioConstraint", {
 			AspectRatio = 3, 
 			DominantAxis = "Height"
 		});
-		v29[2] = u3.createElement(l__Button__4, v30);
-		local v33 = v12 and u3.createElement("Frame", {
+		v27[2] = u3.createElement(l__Button__4, v28);
+		local v31 = v11 and u3.createElement("Frame", {
 			Size = UDim2.new(1, 0, 0.05, 0), 
 			BackgroundColor3 = Color3.fromRGB(255, 255, 255), 
 			BorderSizePixel = 0, 
 			Position = UDim2.fromScale(0.5, -0.05), 
 			AnchorPoint = Vector2.new(0.5, 1)
 		});
-		if v33 then
-			v29[#v29 + 1] = v33;
+		if v31 then
+			v27[#v27 + 1] = v31;
 		end;
 		return u3.createElement(l__Empty__8, {
 			Size = UDim2.fromScale(1, 1), 
 			LayoutOrder = p1.LayoutOrder
-		}, v29);
+		}, v27);
 	end)
 };
