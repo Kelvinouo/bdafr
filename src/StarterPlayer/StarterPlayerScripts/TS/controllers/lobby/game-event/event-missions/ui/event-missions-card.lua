@@ -8,7 +8,7 @@ local l__DeviceUtil__3 = v2.DeviceUtil;
 local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__SoundManager__5 = v2.SoundManager;
 local l__GameSound__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__CollectAnimPlayer__7 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "components", "collect-anim-player").CollectAnimPlayer;
+local l__CollectorPlayer__7 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "components", "collector", "collector-player").CollectorPlayer;
 local u8 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
 local l__EventCurrencyMeta__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "event", "event-currency", "event-currency-metadata").EventCurrencyMeta;
 local l__ClientStore__10 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
@@ -161,7 +161,7 @@ return {
 		v13.BackgroundColor3 = v15;
 		local function u24(p3, p4, p5)
 			if not l__DeviceUtil__3.isHoarceKat() then
-				if not l__KnitClient__4.Controllers.EventMissionsController:claimMission(p1.MissionId, p1.EventType) then
+				if not l__KnitClient__4.Controllers.EventMissionsController:claimMission(p1.Mission, p1.EventType) then
 					return nil;
 				end;
 				l__SoundManager__5:playSound(l__GameSound__6.UI_REWARD);
@@ -175,13 +175,16 @@ return {
 					local v18 = v16.Parent;
 					if v18 ~= nil then
 						v18 = v18.Parent;
+						if v18 ~= nil then
+							v18 = v18.Parent;
+						end;
 					end;
 					local v19 = v18;
 				else
 					v19 = nil;
 				end;
 				v17.parent = v19;
-				l__CollectAnimPlayer__7:create(u8("ImageLabel", {
+				l__CollectorPlayer__7:create(u8("ImageLabel", {
 					Size = UDim2.fromOffset(30, 30), 
 					Image = l__EventCurrencyMeta__9[p1.Mission.reward].icon, 
 					BackgroundTransparency = 1
@@ -197,14 +200,14 @@ return {
 					end;
 					local v25 = {};
 					local v26 = {};
-					local v27 = l__ClientStore__10:getState().Event.eventData.currencies[l__EventCurrencyType__12.DOUBLOONS];
+					local v27 = l__ClientStore__10:getState().Event.profileData.currencies[l__EventCurrencyType__12.DOUBLOONS];
 					v27.currAmount = v27.currAmount + 300;
 					v26.currAmount = v27.currAmount;
 					v26.amountEarned = 0;
 					v26.amountSpent = 0;
 					v25[l__EventCurrencyType__12.DOUBLOONS] = v26;
 					v22.currencies = v25;
-					v21.eventData = v22;
+					v21.profileData = v22;
 					v20.data = v21;
 					l__ClientStore__10:dispatch(v20);
 				end;

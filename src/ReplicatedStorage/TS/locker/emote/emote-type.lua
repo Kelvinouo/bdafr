@@ -352,6 +352,8 @@ v4.SMOKE_DUDE = "smoke_dude";
 v3.smoke_dude = "SMOKE_DUDE";
 v4.GHOST_DAVEY = "ghost_davey";
 v3.ghost_davey = "GHOST_DAVEY";
+v4.COIN_TOSS = "coin_toss";
+v3.coin_toss = "COIN_TOSS";
 return {
 	EmoteDisplayType = v2, 
 	EmoteType = v4

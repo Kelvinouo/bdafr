@@ -580,6 +580,18 @@ return {
 		[l__TitleType__6.CORSAIR] = {
 			name = "Corsair", 
 			text = "Corsair"
+		}, 
+		[l__TitleType__6.QUARTERMASTER] = {
+			name = "Quartermaster", 
+			text = "Quartermaster"
+		}, 
+		[l__TitleType__6.FIRST_MATE] = {
+			name = "First Mate", 
+			text = "First Mate"
+		}, 
+		[l__TitleType__6.SAILOR] = {
+			name = "Sailor", 
+			text = "Sailor"
 		}
 	}
 };

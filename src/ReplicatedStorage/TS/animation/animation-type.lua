@@ -440,6 +440,8 @@ v2.HANNAH_ATTACK = 216;
 v1[216] = "HANNAH_ATTACK";
 v2.FP_HANNAH_ATTACK = 217;
 v1[217] = "FP_HANNAH_ATTACK";
+v2.COIN_TOSS = 218;
+v1[218] = "COIN_TOSS";
 return {
 	AnimationType = v2
 };

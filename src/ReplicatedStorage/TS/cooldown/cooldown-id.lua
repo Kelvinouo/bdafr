@@ -66,6 +66,10 @@ v2.VOLLEY = "volley";
 v1.volley = "VOLLEY";
 v2.TNT_WARS_DRONE = "tnt_wars_drone";
 v1.tnt_wars_drone = "TNT_WARS_DRONE";
+v2.PIRATE_TELESCOPE = "pirate_telescope";
+v1.pirate_telescope = "PIRATE_TELESCOPE";
+v2.FISH_NET_THROW = "fish_net_throw";
+v1.fish_net_throw = "FISH_NET_THROW";
 return {
 	CooldownId = v2
 };

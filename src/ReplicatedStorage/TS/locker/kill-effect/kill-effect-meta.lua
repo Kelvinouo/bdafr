@@ -82,6 +82,10 @@ return {
 		[l__KillEffectType__1.PIRATE_SHIP_ATTACK] = {
 			name = "Pirate Ship Attack", 
 			image = "rbxassetid://10717445476"
+		}, 
+		[l__KillEffectType__1.GHOST] = {
+			name = "Ghost", 
+			image = "rbxassetid://10726577552"
 		}
 	}
 };

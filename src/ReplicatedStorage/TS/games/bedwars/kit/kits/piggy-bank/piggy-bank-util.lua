@@ -47,6 +47,16 @@ function v1.getRewardsFromCoins(p2, p3)
 			amount = v5
 		});
 	end;
+	local v8, v9, v10 = ipairs(v3);
+	while true do
+		v8(v9, v10);
+		if not v8 then
+			break;
+		end;
+		v10 = v8;
+		v9.amount = math.ceil(v9.amount * 1.15);
+		local l__amount__11 = v9.amount;	
+	end;
 	return v3;
 end;
 function v1.getStageFromCoins(p4, p5)

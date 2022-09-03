@@ -42,6 +42,9 @@ function u1.KnitStart(p2)
 			if p6.Locker.selectedSpray == l__EmoteType__5.ROCK_PAPER_SCISSORS then
 				l__preloadImages__6({ l__BedwarsImageId__7.HAND_FIST_ICON, l__BedwarsImageId__7.HAND_SCISSOR_ICON, l__BedwarsImageId__7.HAND_STOP_ICON });
 			end;
+			if p6.Locker.selectedSpray == l__EmoteType__5.COIN_TOSS then
+				l__preloadImages__6({ l__BedwarsImageId__7.COIN_TOSS_SKULL, l__BedwarsImageId__7.COIN_TOSS_BONES });
+			end;
 		end;
 	end);
 	l__default__8.Client:OnEvent("RemoteName", function(p8)

@@ -36,7 +36,7 @@ return {
 		local function u18(p7)
 			local v7 = l__EventShopItemMeta__1[p7];
 			l__SoundManager__3:playSound(l__GameSound__4.UI_OPEN);
-			local v8 = v7.price <= l__ClientStore__5:getState().Event.eventData.currencies[v7.currency].currAmount;
+			local v8 = v7.price <= l__ClientStore__5:getState().Event.profileData.currencies[v7.currency].currAmount;
 			local v9 = {
 				Title = "Purchase " .. v7.name .. "?", 
 				Body = "Are you sure you want to purchase the <font transparency=\"0\" color=\"" .. l__ColorUtil__8.richTextColor(l__GameEventUtil__9.getItemColorRarity(v7.price)) .. "\"><b>[" .. v7.name .. "]</b></font> for <font color=\"" .. l__ColorUtil__8.richTextColor(l__Theme__10.mcGold) .. "\"><b>" .. tostring(v7.price) .. " " .. l__EventCurrencyMeta__2[v7.currency].name .. "</b></font>?"

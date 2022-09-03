@@ -419,7 +419,10 @@ local v4 = {
 	PIRATE_CANNON_EXPLODE_1 = "rbxassetid://10726009638", 
 	PIRATE_CANNON_EXPLODE_2 = "rbxassetid://10726009571", 
 	PIRATE_CANNON_EXPLODE_3 = "rbxassetid://10726009318", 
-	PIRATE_EVENT_BIRD_LOOP = "rbxassetid://10726009761"
+	PIRATE_EVENT_BIRD_LOOP = "rbxassetid://10726009761", 
+	PIRATE_SHOVEL_DIG = "rbxassetid://10797428588", 
+	PIRATE_SHOVEL_DIG_TREASURE_HIT = "rbxassetid://10797432885", 
+	PIRATE_SHOVEL_DIG_TREASURE_FOUND = "rbxassetid://10797437266"
 };
 l__SoundManager__3:registerSound(v4.VENDING_ROLL_TICK, {
 	preload = false

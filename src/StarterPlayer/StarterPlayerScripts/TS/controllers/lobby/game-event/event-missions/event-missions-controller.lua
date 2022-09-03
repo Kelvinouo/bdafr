@@ -18,12 +18,22 @@ function v3.constructor(p1)
 	l__KnitController__2.constructor(p1);
 	p1.Name = "EventMissionsController";
 	p1.eventRemotes = l__default__1.Client:GetNamespace("Event");
+	p1.missionsUpdate = p1.eventRemotes:Get("ActiveEventMissionsUpdate");
 end;
+local l__ClientStore__2 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function v3.KnitStart(p2)
 	l__KnitController__2.KnitStart(p2);
+	p2.missionsUpdate:Connect(function(p3)
+		l__ClientStore__2:dispatch({
+			type = "SetEventPartial", 
+			data = {
+				activeMissions = p3
+			}
+		});
+	end);
 end;
-function v3.claimMission(p3, p4, p5)
-	return p3.eventRemotes:Get("ClaimMission"):CallServer(p4, p5);
+function v3.claimMission(p4, p5, p6)
+	return p4.eventRemotes:Get("ClaimMission"):CallServer(p5, p6);
 end;
 local v5 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v3.new());
 return nil;

@@ -93,6 +93,13 @@ return {
 				id = l__CooldownId__3.DETONATE_BOMB, 
 				duration = 1
 			}
+		}, 
+		[l__AbilityId__5.PIRATE_TELESCOPE] = {
+			actionBarName = "Telescope", 
+			cooldown = {
+				id = l__CooldownId__3.PIRATE_TELESCOPE, 
+				duration = 20
+			}
 		}
 	}
 };

@@ -172,6 +172,10 @@ v5.MOVEMENT_KIT_ICON = "rbxassetid://9964937845";
 v5.DESTROYER_KIT_ICON = "rbxassetid://9964937712";
 v5.ECONOMY_KIT_ICON = "rbxassetid://9964937630";
 v5.SUPPORT_KIT_ICON = "rbxassetid://9964937010";
+v5.EYE_ICON_1 = "rbxassetid://10791586247";
+v5.EYE_ICON_2 = "rbxassetid://10791586332";
+v5.COIN_TOSS_SKULL = "rbxassetid://10787634941";
+v5.COIN_TOSS_BONES = "rbxassetid://10787635081";
 return {
 	BedwarsImageId = v5
 };

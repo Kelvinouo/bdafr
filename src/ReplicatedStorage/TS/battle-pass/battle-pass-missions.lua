@@ -16,7 +16,7 @@ end;
 function v3.getWeek()
 	return math.ceil(math.ceil(math.max(DateTime.now().UnixTimestamp - u1.UnixTimestamp, 0) / 86400) / 7);
 end;
-local l__MissionGiver__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "mission", "mission-giver-type").MissionGiver;
+local l__MissionGenerator__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "mission", "mission-generator-type").MissionGenerator;
 u1 = function(p1, p2, p3, p4, p5, p6)
 	local v5 = {};
 	local v6 = Random.new(p4);
@@ -46,7 +46,7 @@ u1 = function(p1, p2, p3, p4, p5, p6)
 		end;
 		local v12 = {
 			id = "BATTLE_PASS_" .. tostring(v3.SEASON_ID) .. "_" .. string.upper(p2) .. "_" .. tostring(p3) .. "_MISSION_" .. tostring(v8), 
-			giver = l__MissionGiver__2.BATTLEPASS
+			generator = l__MissionGenerator__2.BATTLEPASS
 		};
 		for v13, v14 in pairs(v10) do
 			v12[v13] = v14;

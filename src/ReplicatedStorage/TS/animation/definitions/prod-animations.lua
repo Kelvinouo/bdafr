@@ -219,6 +219,7 @@ return {
 		[l__AnimationType__1.PIRATE_SHIP_FLY] = "rbxassetid://10562148548", 
 		[l__AnimationType__1.SEARCHING_FAR_AWAY] = "rbxassetid://10715396337", 
 		[l__AnimationType__1.PIRATES_GOODBYE] = "rbxassetid://10715398768", 
+		[l__AnimationType__1.COIN_TOSS] = "rbxassetid://10797836355", 
 		[l__AnimationType__1.HANNAH_JUMP_DOWN] = "rbxassetid://10725339583", 
 		[l__AnimationType__1.DAVEY_JUMP_DOWN] = "rbxassetid://10725343381", 
 		[l__AnimationType__1.SMOKE_JUMP_DOWN] = "rbxassetid://10725374175", 

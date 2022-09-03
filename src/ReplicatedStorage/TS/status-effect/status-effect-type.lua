@@ -86,6 +86,8 @@ v2.SNOW_CONE = "snow_cone";
 v1.snow_cone = "SNOW_CONE";
 v2.VOLLEY = "volley";
 v1.volley = "VOLLEY";
+v2.ENHANCED_PROJECTILE = "enhanced_projectile";
+v1.enhanced_projectile = "ENHANCED_PROJECTILE";
 return {
 	StatusEffectType = v2
 };

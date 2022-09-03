@@ -686,6 +686,13 @@ return {
 				looped = false
 			}
 		}, 
+		[l__EmoteType__6.COIN_TOSS] = {
+			name = "Coin Toss", 
+			animation = {
+				type = l__AnimationType__2.COIN_TOSS, 
+				looped = false
+			}
+		}, 
 		[l__EmoteType__6.BAKER_PIECE_OF_CAKE] = {
 			name = "Piece of Cake", 
 			image = l__getEmoteAsset__3(l__EmoteType__6.BAKER_PIECE_OF_CAKE)

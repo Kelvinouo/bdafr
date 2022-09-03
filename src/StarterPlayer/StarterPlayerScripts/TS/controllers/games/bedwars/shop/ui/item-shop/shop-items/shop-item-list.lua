@@ -1,88 +1,92 @@
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
-local v3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "shop", "bedwars-shop-types");
-local v4 = v2.Component:extend("ShopItemList");
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
+local v3 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
+local v4 = v3.Component:extend("ShopItemList");
 function v4.init(p1, p2)
-	p1:setState({
-		wrapperSize = Vector2.new(694, 523)
-	});
+
 end;
-local l__DeviceUtil__1 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).DeviceUtil;
-local l__BedwarsShop__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "shop", "bedwars-shop").BedwarsShop;
-local l__Players__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
-local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
-local l__ItemType__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
-local u6 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
-local l__BedwarsShopItemCategory__7 = v3.BedwarsShopItemCategory;
-local l__VoidWorldUtil__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "world", "void", "void-world-util").VoidWorldUtil;
-local u9 = v3.BedwarsShopCategoryPanels;
-local l__Theme__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
-local u11 = v1.import(script, script.Parent, "shop-item-default-categories").ShopItemDefaultCategories;
-local u12 = v1.import(script, script.Parent, "shop-item-unlockable-categories").ShopItemUnlockableCategories;
+local l__BedwarsShop__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "shop", "bedwars-shop").BedwarsShop;
+local l__Players__2 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
+local l__ClientStore__3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
+local l__ItemType__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
+local l__DeviceUtil__5 = v2.DeviceUtil;
+local l__Theme__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
+local u7 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
+local l__BedwarsShopCategory__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "shop", "shop-category", "bedwars-shop-category-types").BedwarsShopCategory;
+local l__BedwarsShopCategoryMeta__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "shop", "shop-category", "bedwars-shop-category-meta").BedwarsShopCategoryMeta;
+local l__ShopCategoryDefault__10 = v1.import(script, script.Parent, "shop-category-default").ShopCategoryDefault;
+local l__Empty__11 = v2.Empty;
+local u12 = v1.import(script, script.Parent, "shop-category-unlockable-list").ShopCategoryUnlockableList;
+local l__AutoCanvasScrollingFrame__13 = v2.AutoCanvasScrollingFrame;
 function v4.render(p3)
-	local v5 = nil;
-	local v6 = nil;
-	local v7 = nil;
-	if l__DeviceUtil__1.isSmallScreen() then
-		local v8 = 79;
-	else
-		v8 = 69;
-	end;
-	local v9 = math.floor(p3.state.wrapperSize.X * (v8 / 694));
-	local v10 = math.floor(p3.state.wrapperSize.X * 0.01488095238095238);
-	local v11 = {};
-	local v12 = 0;
-	local v13, v14, v15 = ipairs((l__BedwarsShop__2.getShop(l__Players__3.LocalPlayer)));
+	local v5 = {};
+	local v6 = 0;
+	local v7, v8, v9 = ipairs((l__BedwarsShop__1.getShop(l__Players__2.LocalPlayer)));
 	while true do
-		v13(v14, v15);
-		if not v13 then
+		v7(v8, v9);
+		if not v7 then
 			break;
 		end;
-		v15 = v13;
-		if not v14.tiered == true then
-			v12 = v12 + 1;
-			v11[v12] = v14;
+		v9 = v7;
+		if not v8.tiered == true then
+			v6 = v6 + 1;
+			v5[v6] = v8;
 		end;	
 	end;
-	local function v16(p4)
+	local function v10(p4)
 		if p4.requiresKit then
-			local l__kit__17 = l__ClientStore__4:getState().Bedwars.kit;
-			if not l__kit__17 or table.find(p4.requiresKit, l__kit__17) == nil then
+			local l__kit__11 = l__ClientStore__3:getState().Bedwars.kit;
+			if not l__kit__11 or table.find(p4.requiresKit, l__kit__11) == nil then
 				return false;
 			end;
 		end;
 		if p4.ignoredByKit then
-			local l__kit__18 = l__ClientStore__4:getState().Bedwars.kit;
-			if l__kit__18 and table.find(p4.ignoredByKit, l__kit__18) ~= nil then
+			local l__kit__12 = l__ClientStore__3:getState().Bedwars.kit;
+			if l__kit__12 and table.find(p4.ignoredByKit, l__kit__12) ~= nil then
 				return false;
 			end;
 		end;
 		return true;
 	end;
+	local v13 = {};
+	local v14 = 0;
+	local v15, v16, v17 = ipairs(v5);
+	while true do
+		v15(v16, v17);
+		if not v15 then
+			break;
+		end;
+		v17 = v15;
+		if v10(v16, v15 - 1, v5) == true then
+			v14 = v14 + 1;
+			v13[v14] = v16;
+		end;	
+	end;
+	local function v18(p5)
+		while p5.nextTier and table.find(l__ClientStore__3:getState().Bedwars.itemTiersPurchased, p5.itemType) ~= nil do
+			p5 = l__BedwarsShop__1.getShopItem(p5.nextTier, l__Players__2.LocalPlayer);		
+		end;
+		return p5;
+	end;
 	local v19 = {};
 	local v20 = 0;
-	local v21, v22, v23 = ipairs(v11);
+	local v21, v22, v23 = ipairs(v13);
 	while true do
 		v21(v22, v23);
 		if not v21 then
 			break;
 		end;
 		v23 = v21;
-		if v16(v22, v21 - 1, v11) == true then
+		local v24 = v18(v22, v21 - 1, v13);
+		if v24 ~= nil then
 			v20 = v20 + 1;
-			v19[v20] = v22;
+			v19[v20] = v24;
 		end;	
 	end;
-	local function v24(p5)
-		while p5.nextTier and table.find(l__ClientStore__4:getState().Bedwars.itemTiersPurchased, p5.itemType) ~= nil do
-			p5 = l__BedwarsShop__2.getShopItem(p5.nextTier, l__Players__3.LocalPlayer);		
-		end;
-		return p5;
-	end;
 	local v25 = {};
-	local v26 = 0;
+	local v26 = table.create(#v19);
 	local v27, v28, v29 = ipairs(v19);
 	while true do
 		v27(v28, v29);
@@ -90,208 +94,153 @@ function v4.render(p3)
 			break;
 		end;
 		v29 = v27;
-		local v30 = v24(v28, v27 - 1, v19);
-		if v30 ~= nil then
-			v26 = v26 + 1;
-			v25[v26] = v30;
-		end;	
+		v26[v27] = v28.itemType;	
 	end;
-	local v31 = {};
-	local v32 = table.create(#v25);
-	local v33, v34, v35 = ipairs(v25);
+	local v30, v31, v32 = ipairs(v26);
 	while true do
-		v33(v34, v35);
-		if not v33 then
+		v30(v31, v32);
+		if not v30 then
 			break;
 		end;
-		v35 = v33;
-		v32[v33] = v34.itemType;	
+		v32 = v30;
+		v25[v31] = true;	
 	end;
-	local v36, v37, v38 = ipairs(v32);
+	local u14 = {};
+	local function v33(p6)
+		if u14[p6.itemType] ~= nil then
+			return false;
+		end;
+		u14[p6.itemType] = true;
+		while p6.nextTier and (p6.itemType ~= l__ItemType__4.VOID_CHESTPLATE or table.find(l__ClientStore__3:getState().Bedwars.itemTiersPurchased, p6.itemType) ~= nil) do
+			p6 = l__BedwarsShop__1.getShopItem(p6.nextTier, l__Players__2.LocalPlayer);
+			if v25[p6.itemType] ~= nil then
+				return false;
+			end;		
+		end;
+		return true;
+	end;
+	local v34 = {};
+	local v35 = 0;
+	local v36, v37, v38 = ipairs(v19);
 	while true do
 		v36(v37, v38);
 		if not v36 then
 			break;
 		end;
 		v38 = v36;
-		v31[v37] = true;	
+		if v33(v37, v36 - 1, v19) == true then
+			v35 = v35 + 1;
+			v34[v35] = v37;
+		end;	
 	end;
-	local u13 = {};
-	local function v39(p6)
-		if u13[p6.itemType] ~= nil then
-			return false;
+	local v39 = {};
+	if l__DeviceUtil__5.isSmallScreen() then
+		local v40 = 10;
+	else
+		v40 = 20;
+	end;
+	v39.AdditionalSpace = v40;
+	v39.WaitForAbsoluteSize = true;
+	v39.ScrollingFrameProps = {
+		Size = p3.props.Size or UDim2.fromScale(1, 1), 
+		Position = p3.props.Position, 
+		BackgroundColor3 = l__Theme__6.backgroundPrimary, 
+		BackgroundTransparency = 0, 
+		BorderSizePixel = 0
+	};
+	local v41 = {};
+	local v42 = {};
+	if l__DeviceUtil__5.isSmallScreen() then
+		local v43 = 10;
+	else
+		v43 = 20;
+	end;
+	v42.PaddingTop = UDim.new(0, v43);
+	v42.PaddingLeft = UDim.new(0.03, 0);
+	v42.PaddingRight = UDim.new(0.03, 0);
+	v41.ScrollingFramePadding = v3.createElement("UIPadding", v42);
+	v41.ScrollingFrameListLayout = v3.createElement("UIListLayout", {
+		VerticalAlignment = "Top", 
+		HorizontalAlignment = "Left", 
+		FillDirection = "Vertical", 
+		Padding = UDim.new(0, 18), 
+		SortOrder = "LayoutOrder"
+	});
+	local v44 = #v41;
+	local v45 = u7.values(l__BedwarsShopCategory__8);
+	local function v46(p7)
+		local v47 = l__BedwarsShopCategoryMeta__9[p7];
+		if v47.disabled or v47.unlockable then
+			return nil;
 		end;
-		u13[p6.itemType] = true;
-		while p6.nextTier and (p6.itemType ~= l__ItemType__5.VOID_CHESTPLATE or table.find(l__ClientStore__4:getState().Bedwars.itemTiersPurchased, p6.itemType) ~= nil) do
-			p6 = l__BedwarsShop__2.getShopItem(p6.nextTier, l__Players__3.LocalPlayer);
-			if v31[p6.itemType] ~= nil then
-				return false;
+		local v48 = {
+			Category = p7
+		};
+		local v49 = {};
+		local v50 = 0;
+		local v51, v52, v53 = ipairs(v34);
+		while true do
+			v51(v52, v53);
+			if not v51 then
+				break;
+			end;
+			if v52.category == p7 == true then
+				v50 = v50 + 1;
+				v49[v50] = v52;
 			end;		
 		end;
-		return true;
+		v48.ShopItems = v49;
+		v48.SelectedItem = p3.props.SelectedItem;
+		v48.SetSelectedShopItem = p3.props.SetSelectedShopItem;
+		v48.LayoutOrder = 1;
+		return v3.createElement(l__ShopCategoryDefault__10, v48);
 	end;
-	local v40 = {};
-	local v41 = 0;
-	local v42, v43, v44 = ipairs(v25);
+	local v54 = {};
+	local v55 = 0;
+	local v56, v57, v58 = ipairs(v45);
 	while true do
-		v42(v43, v44);
-		if not v42 then
+		v56(v57, v58);
+		if not v56 then
 			break;
 		end;
-		v44 = v42;
-		if v39(v43, v42 - 1, v25) == true then
-			v41 = v41 + 1;
-			v40[v41] = v43;
+		v58 = v56;
+		local v59 = v46(v57, v56 - 1, v45);
+		if v59 ~= nil then
+			v55 = v55 + 1;
+			v54[v55] = v59;
 		end;	
 	end;
-	local v45 = u6.keys(l__BedwarsShopItemCategory__7);
-	local function v46(p7, p8)
-		local v47 = {};
-		for v48, v49 in pairs(p7) do
-			v47[v48] = v49;
-		end;
-		v47[p8] = {};
-		return v47;
-	end;
-	v5 = {};
-	for v50 = 1, #v45 do
-		v5 = v46(v5, v45[v50], v50 - 1, v45);
-	end;
-	local function v51(p9, p10)
-		if p10.category == l__BedwarsShopItemCategory__7.Void and not l__VoidWorldUtil__8.VOID_ENABLED then
-			return p9;
-		end;
-		local v52 = p9[p10.category];
-		if v52 ~= nil then
-			v52 = #v52 == 0;
-		end;
-		if v52 then
-			p9[p10.category] = { p10 };
-			return p9;
-		end;
-		local v53 = p9[p10.category];
-		if v53 ~= nil then
-			table.insert(v53, p10);
-		end;
-		return p9;
-	end;
-	v6 = local v54;
-	for v55 = 1, #v40 do
-		v6 = v51(v6, v40[v55], v55 - 1, v40);
-	end;
-	local v56 = {};
-	local v57 = 0;
-	local v58, v59, v60 = ipairs((u6.entries(local v61)));
-	while true do
-		v58(v59, v60);
-		if not v58 then
-			break;
-		end;
-		local v62 = v59[2];
-		if table.find(u9, v59[1]) == nil == true then
-			v57 = v57 + 1;
-			v56[v57] = v59;
-		end;	
-	end;
-	local v63 = {};
-	local v64 = 0;
-	local v65, v66, v67 = ipairs((u6.entries(v61)));
-	while true do
-		v65(v66, v67);
-		if not v65 then
-			break;
-		end;
-		local v68 = v66[2];
-		if table.find(u9, v66[1]) ~= nil == true then
-			v64 = v64 + 1;
-			v63[v64] = v66;
-		end;	
-	end;
-	local v69 = #u6.keys(l__BedwarsShopItemCategory__7);
-	local v70 = #u6.keys(v56);
-	local v71 = math.ceil(#u6.keys(v63) / 2);
-	local v72 = u6.entries(v61);
-	local u14 = 0;
-	v7 = 0;
-	for v73 = 1, #v72 do
-		local v74 = v72[v73];
-		local v75 = 8;
-		if table.find(u9, v74[1]) ~= nil then
-			v75 = 4;
-		end;
-		local v76 = math.ceil(#v74[2] / v75);
-		if v76 > 1 then
-			u14 = u14 + 1;
-		end;
-		v7 = v7 + v76;
-	end;
-	if l__DeviceUtil__1.isSmallScreen() then
-		local v77 = 8;
-	else
-		v77 = 14;
-	end;
-	local v78 = v77 + 2;
-	if l__DeviceUtil__1.isSmallScreen() then
-		local v79 = 4;
-	else
-		v79 = 8;
-	end;
-	if l__DeviceUtil__1.isSmallScreen() then
-		local v80 = 10;
-	else
-		v80 = 20;
-	end;
-	local v81 = {
-		CanvasSize = UDim2.new(p3.props.Size.X.Scale, 0, 0, v9 * local v82 + v10 * u14 + (v70 * (v78 + v79) + v71 * (v78 * 3 + v79)) + v69 * p3.state.wrapperSize.Y * 0.025 + v80 * 2), 
-		Size = p3.props.Size, 
-		Position = p3.props.Position, 
-		BackgroundColor3 = l__Theme__10.backgroundPrimary, 
-		ScrollBarThickness = 5, 
-		BorderSizePixel = 0, 
-		ScrollingDirection = "Y", 
-		Selectable = false
+	local v60 = {
+		Size = UDim2.fromScale(1, 0), 
+		AutomaticSize = "Y", 
+		LayoutOrder = 1
 	};
-	v81[v2.Change.AbsoluteSize] = function(p11)
-		p3:setState({
-			wrapperSize = p11.AbsoluteSize
-		});
-	end;
-	return v2.createElement("ScrollingFrame", v81, {
-		ScrollingFramePadding = v2.createElement("UIPadding", {
-			PaddingTop = UDim.new(0, v80), 
-			PaddingLeft = UDim.new(0.03, 0), 
-			PaddingRight = UDim.new(0.03, 0)
-		}), 
-		ScrollingFrameListLayout = v2.createElement("UIListLayout", {
+	local v61 = { v3.createElement("UIListLayout", {
 			VerticalAlignment = "Top", 
 			HorizontalAlignment = "Left", 
 			FillDirection = "Vertical", 
-			Padding = UDim.new(0.025, 0), 
+			Padding = UDim.new(0, 18), 
 			SortOrder = "LayoutOrder"
-		}),
-		v2.createElement(u11, {
-			ShopCategories = v56, 
-			SelectedItem = p3.props.SelectedItem, 
-			SetSelectedShopItem = p3.props.SetSelectedShopItem, 
-			CategoriesPadding = p3.state.wrapperSize.Y * 0.025, 
-			TitlePadding = v79, 
-			CategoryTitleTextSize = v78, 
-			CellWidth = v9, 
-			CellPadding = v10, 
-			LayoutOrder = 1
-		}), v2.createElement(u12, {
-			ShopCategories = v63, 
-			SelectedItem = p3.props.SelectedItem, 
-			SetSelectedShopItem = p3.props.SetSelectedShopItem, 
-			CategoriesPadding = p3.state.wrapperSize.Y * 0.025, 
-			TitlePadding = v79, 
-			CategoryTitleTextSize = v78, 
-			CellWidth = v9, 
-			CellPadding = v10, 
-			store = p3.props.store, 
-			LayoutOrder = 2
-		})
+		}) };
+	local v62 = #v61;
+	local v63, v64, v65 = ipairs(v54);
+	while true do
+		v63(v64, v65);
+		if not v63 then
+			break;
+		end;
+		v65 = v63;
+		v61[v62 + v63] = v64;	
+	end;
+	v41[v44 + 1] = v3.createElement(l__Empty__11, v60, v61);
+	v41[v44 + 2] = v3.createElement(u12, {
+		ShopItems = v34, 
+		SelectedItem = p3.props.SelectedItem, 
+		SetSelectedShopItem = p3.props.SetSelectedShopItem, 
+		store = p3.props.store, 
+		LayoutOrder = 2
 	});
+	return v3.createElement(l__AutoCanvasScrollingFrame__13, v39, v41);
 end;
 return {
 	ShopItemList = v4

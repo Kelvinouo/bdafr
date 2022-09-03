@@ -172,6 +172,11 @@ return {
 			displayName = "Volley", 
 			description = "Fire a volley of arrows", 
 			image = l__BedwarsImageId__2.VOLLEY_ELEMENT
+		}, 
+		[l__StatusEffectType__4.ENHANCED_PROJECTILE] = {
+			displayName = "ENHANCED_PROJECTILE", 
+			description = "Fire a volley of arrows", 
+			image = l__BedwarsImageId__2.EYE_ICON_1
 		}
 	}
 };

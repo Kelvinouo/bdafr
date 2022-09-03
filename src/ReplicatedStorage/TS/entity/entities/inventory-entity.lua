@@ -205,7 +205,7 @@ function v4.setAccessoryVisibility(p22, p23, p24)
 		if v34 ~= nil then
 			v34 = v34:FindFirstChildOfClass("Attachment");
 		end;
-		if l__Handle__33 and v34 and not l__ReplicatedStorage__4.Assets.Armor:FindFirstChild(v31.Name, true) then
+		if l__Handle__33 and v34 and (not l__ReplicatedStorage__4.Assets.Armor:FindFirstChild(v31.Name, true) and v31:GetAttribute("NoArmorHide") ~= true) then
 			local v35 = false;
 			local v36, v37, v38 = ipairs(l__AccessoriesCovered__8[p23]);
 			while true do

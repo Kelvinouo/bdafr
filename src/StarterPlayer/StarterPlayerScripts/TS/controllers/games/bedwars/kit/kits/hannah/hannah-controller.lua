@@ -20,229 +20,276 @@ function v6.constructor(p1)
 	l__KnitController__5.constructor(p1);
 	p1.Name = "HannahController";
 end;
-local l__default__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__ClientSyncEvents__1 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
 local l__Players__2 = v4.Players;
-local u3 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-local l__Theme__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
-local l__DeviceUtil__5 = v2.DeviceUtil;
-local l__BedwarsImageId__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "image", "image-id").BedwarsImageId;
-local l__SoundManager__7 = v2.SoundManager;
-local l__GameSound__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local l__BedwarsKit__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
+local l__Flamework__4 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
+local l__HannahCombo__5 = v1.import(script, script.Parent, "ui", "hannah-combo").HannahCombo;
+local l__default__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__EntityUtil__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
+local u8 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
+local l__Theme__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
+local l__DeviceUtil__10 = v2.DeviceUtil;
+local l__BedwarsImageId__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "image", "image-id").BedwarsImageId;
+local l__ClientStore__12 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
+local l__BalanceFile__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "balance", "balance-file").BalanceFile;
+local l__SoundManager__14 = v2.SoundManager;
+local l__GameSound__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function v6.KnitStart(p2)
 	l__KnitController__5.KnitStart(p2);
-	l__default__1.Client:Get("RemoteName"):Connect(function(p3)
-		if l__Players__2:GetPlayerFromCharacter(p3.entity) == l__Players__2.LocalPlayer then
+	l__ClientSyncEvents__1.KitEquip:connect(function(p3)
+		if p3.player ~= l__Players__2.LocalPlayer then
 			return nil;
 		end;
-		local v8 = u3("ProximityPrompt", {
+		if p3.kit ~= l__BedwarsKit__3.HANNAH then
+			return nil;
+		end;
+		l__Flamework__4.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addApp({
+			appId = "HannahCombo", 
+			app = l__HannahCombo__5
+		}, {});
+	end);
+	l__default__6.Client:Get("RemoteName"):Connect(function(p4)
+		if l__Players__2:GetPlayerFromCharacter(p4.entity) == l__Players__2.LocalPlayer then
+			return nil;
+		end;
+		local v8 = l__EntityUtil__7:getLocalPlayerEntity();
+		local v9 = l__EntityUtil__7:getEntity(p4.entity);
+		if v8 and v9 and not v8:canAttack(v9) then
+			return nil;
+		end;
+		local v10 = u8("ProximityPrompt", {
 			ActionText = "Blood For Blood!", 
 			ObjectText = "Execute", 
 			HoldDuration = 0, 
-			KeyboardKeyCode = l__Theme__4.promptKeyboardKey, 
+			KeyboardKeyCode = l__Theme__9.promptKeyboardKey, 
 			RequiresLineOfSight = false, 
 			MaxActivationDistance = 30, 
-			Parent = p3.entity, 
-			ClickablePrompt = l__DeviceUtil__5.isMobileControls()
+			Parent = p4.entity, 
+			ClickablePrompt = l__DeviceUtil__10.isMobileControls()
 		});
-		local u9 = u3("BillboardGui", {
-			Parent = p3.entity, 
-			Adornee = p3.entity.Head, 
+		local u16 = u8("BillboardGui", {
+			Name = "Hannah Execution Icon", 
+			Parent = p4.entity, 
+			Adornee = p4.entity.Head, 
 			AlwaysOnTop = true, 
 			MaxDistance = 100, 
 			Size = UDim2.fromScale(1, 1), 
 			StudsOffset = Vector3.new(-1.5, 7, 0), 
-			Children = { u3("ImageLabel", {
-					Image = l__BedwarsImageId__6.PIRATE_SKULL_ICON, 
+			Children = { u8("ImageLabel", {
+					Image = l__BedwarsImageId__11.PIRATE_SKULL_ICON, 
 					Size = UDim2.fromScale(3, 3), 
 					ScaleType = Enum.ScaleType.Fit, 
 					BackgroundTransparency = 1
 				}) }
 		});
-		v8.Triggered:Connect(function(p4)
-			local v9 = l__default__1.Client:Get("RemoteName"):CallServer({
+		v10.Triggered:Connect(function(p5)
+			local v11 = l__default__6.Client:Get("RemoteName"):CallServer({
 				user = l__Players__2.LocalPlayer, 
-				victimEntity = p3.entity
+				victimEntity = p4.entity
 			});
-			v8:Destroy();
-			if v9 then
-				v8:Destroy();
-				u9:Destroy();
+			v10:Destroy();
+			if v11 then
+				v10:Destroy();
+				u16:Destroy();
 			end;
 		end);
 	end);
-	l__default__1.Client:Get("RemoteName"):Connect(function(p5)
-		local l__ProximityPrompt__10 = p5.entity:FindFirstChild("ProximityPrompt");
-		local l__BillboardGui__11 = p5.entity:FindFirstChild("BillboardGui");
-		if l__BillboardGui__11 then
-			l__BillboardGui__11:Destroy();
-		end;
-		if l__ProximityPrompt__10 and l__ProximityPrompt__10.ObjectText == "Execute" then
-			l__ProximityPrompt__10:Destroy();
-		end;
-	end);
-	l__default__1.Client:Get("RemoteName"):Connect(function(p6)
-		local l__ProximityPrompt__12 = p6.entityInstance:FindFirstChild("ProximityPrompt");
-		local l__BillboardGui__13 = p6.entityInstance:FindFirstChild("BillboardGui");
-		if l__BillboardGui__13 then
-			l__BillboardGui__13:Destroy();
+	l__default__6.Client:Get("RemoteName"):Connect(function(p6)
+		local l__ProximityPrompt__12 = p6.entity:FindFirstChild("ProximityPrompt");
+		local l__Hannah_Execution_Icon__13 = p6.entity:FindFirstChild("Hannah Execution Icon");
+		if l__Hannah_Execution_Icon__13 then
+			l__Hannah_Execution_Icon__13:Destroy();
 		end;
 		if l__ProximityPrompt__12 and l__ProximityPrompt__12.ObjectText == "Execute" then
 			l__ProximityPrompt__12:Destroy();
 		end;
 	end);
-	l__default__1.Client:Get("RemoteName"):Connect(function(p7)
-		local v14 = {};
-		local v15 = p7.player.Character;
-		if v15 ~= nil then
-			v15 = v15:GetPrimaryPartCFrame().Position;
+	l__default__6.Client:Get("RemoteName"):Connect(function(p7)
+		local l__ProximityPrompt__14 = p7.entityInstance:FindFirstChild("ProximityPrompt");
+		local l__Hannah_Execution_Icon__15 = p7.entityInstance:FindFirstChild("Hannah Execution Icon");
+		if l__Hannah_Execution_Icon__15 then
+			l__Hannah_Execution_Icon__15:Destroy();
 		end;
-		v14.position = v15;
-		v14.rollOffMaxDistance = 45;
-		v14.volumeMultiplier = 0.7;
-		l__SoundManager__7:playSound(l__GameSound__8.HANNAH_UNSHEATH_SWORD, v14);
-		task.delay(0.3, function()
-			local v16 = p7.player.Character;
-			if v16 ~= nil then
-				v16 = v16:GetPrimaryPartCFrame();
+		if l__ProximityPrompt__14 and l__ProximityPrompt__14.ObjectText == "Execute" then
+			l__ProximityPrompt__14:Destroy();
+		end;
+	end);
+	local u17 = tick();
+	l__default__6.Client:Get("RemoteName"):Connect(function(p8)
+		local v16 = p8.player == l__Players__2.LocalPlayer;
+		if v16 then
+			local v17 = tick();
+			u17 = v17;
+			l__ClientStore__12:dispatch({
+				type = "KitHannahSetCombo", 
+				combo = p8.comboSize
+			});
+			task.delay(l__BalanceFile__13.HANNAH_COMBO_EXPIRATION_SEC, function()
+				if u17 == v17 then
+					l__ClientStore__12:dispatch({
+						type = "KitHannahSetCombo", 
+						combo = 0
+					});
+				end;
+			end);
+		end;
+		local v18 = {};
+		if v16 then
+			local v19 = nil;
+		else
+			local v20 = p8.player.Character;
+			if v20 ~= nil then
+				v20 = v20:GetPrimaryPartCFrame().Position;
 			end;
-			if v16 then
-				l__SoundManager__7:playSound(l__GameSound__8.HANNAH_EXECUTE, {
-					position = v16.Position, 
+			v19 = v20;
+		end;
+		v18.position = v19;
+		v18.rollOffMaxDistance = 45;
+		v18.volumeMultiplier = 0.7;
+		l__SoundManager__14:playSound(l__GameSound__15.HANNAH_UNSHEATH_SWORD, v18);
+		task.delay(0.3, function()
+			local v21 = p8.player.Character;
+			if v21 ~= nil then
+				v21 = v21:GetPrimaryPartCFrame();
+			end;
+			if v21 then
+				l__SoundManager__14:playSound(l__GameSound__15.HANNAH_EXECUTE, {
+					position = v21.Position, 
 					rollOffMaxDistance = 45, 
 					volumeMultiplier = 0.7
 				});
 			end;
 		end);
-		p2:pullOutSword(p7.player, p7.targetPosition);
+		p2:pullOutSword(p8.player, p8.targetPosition);
 	end);
 end;
-local l__GameAnimationUtil__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
-local l__AnimationType__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
-local l__ItemUtil__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-util").ItemUtil;
-local l__ItemType__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
-local l__KnitClient__14 = v3.KnitClient;
-local l__EntityUtil__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
-local l__WeldUtil__16 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "weld-util").WeldUtil;
-local l__ReplicatedStorage__17 = v4.ReplicatedStorage;
-function v6.pullOutSword(p8, p9, p10)
-	if not p9.Character then
+local l__GameAnimationUtil__18 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
+local l__AnimationType__19 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
+local l__ItemUtil__20 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-util").ItemUtil;
+local l__ItemType__21 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
+local l__KnitClient__22 = v3.KnitClient;
+local l__WeldUtil__23 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "weld-util").WeldUtil;
+local l__ReplicatedStorage__24 = v4.ReplicatedStorage;
+function v6.pullOutSword(p9, p10, p11)
+	if not p10.Character then
 		return nil;
 	end;
 	task.delay(0.5, function()
-		local v17 = p9.Character;
-		if v17 ~= nil then
-			v17 = v17:GetPrimaryPartCFrame();
+		local v22 = p10.Character;
+		if v22 ~= nil then
+			v22 = v22:GetPrimaryPartCFrame();
 		end;
-		if v17 then
-			p8:playSlashEffect(v17, p9);
+		if v22 then
+			p9:playSlashEffect(v22, p10);
 		end;
 	end);
-	local v18 = l__GameAnimationUtil__10.playAnimation(p9, l__AnimationType__11.HANNAH_ATTACK, {
+	local v23 = l__GameAnimationUtil__18.playAnimation(p10, l__AnimationType__19.HANNAH_ATTACK, {
 		looped = false
 	});
-	if p9 == l__Players__2.LocalPlayer then
-		l__KnitClient__14.Controllers.ViewmodelController:setHeldItem((l__ItemUtil__12.createItemInstance(l__ItemType__13.PIRATE_SWORD_FP)));
-		l__KnitClient__14.Controllers.ViewmodelController:playAnimation(l__AnimationType__11.FP_HANNAH_ATTACK);
+	if p10 == l__Players__2.LocalPlayer then
+		l__KnitClient__22.Controllers.ViewmodelController:setHeldItem((l__ItemUtil__20.createItemInstance(l__ItemType__21.PIRATE_SWORD_FP)));
+		l__KnitClient__22.Controllers.ViewmodelController:playAnimation(l__AnimationType__19.FP_HANNAH_ATTACK);
 	end;
-	local v19 = p9.Character;
-	if v19 ~= nil then
-		v19 = v19:FindFirstChild("pirate_sword_back");
+	local v24 = p10.Character;
+	if v24 ~= nil then
+		v24 = v24:FindFirstChild("pirate_sword_back");
 	end;
-	local v20 = l__EntityUtil__15:getEntity(p9);
-	if v20 ~= nil then
-		v20 = v20:getHandItemInstanceFromCharacter();
-		if v20 ~= nil then
-			v20 = v20:WaitForChild("Handle", 3);
+	local v25 = l__EntityUtil__7:getEntity(p10);
+	if v25 ~= nil then
+		v25 = v25:getHandItemInstanceFromCharacter();
+		if v25 ~= nil then
+			v25 = v25:WaitForChild("Handle", 3);
 		end;
 	end;
-	v20.Transparency = 1;
-	if v19 then
-		local v21 = p9.Character;
-		if v21 ~= nil then
-			v21 = v21:WaitForChild("pirate_sword_back"):Clone();
+	v25.Transparency = 1;
+	if v24 then
+		local v26 = p10.Character;
+		if v26 ~= nil then
+			v26 = v26:WaitForChild("pirate_sword_back"):Clone();
 		end;
-		local v22, v23, v24 = ipairs(v19:GetChildren());
+		local v27, v28, v29 = ipairs(v24:GetChildren());
 		while true do
-			v22(v23, v24);
-			if not v22 then
+			v27(v28, v29);
+			if not v27 then
 				break;
 			end;
-			v24 = v22;
-			if v23:IsA("BasePart") then
-				v23.Transparency = 1;
+			v29 = v27;
+			if v28:IsA("BasePart") then
+				v28.Transparency = 1;
 			end;		
 		end;
-		local l__Handle__25 = v21:WaitForChild("Handle");
-		local v26 = v21:FindFirstChild("Handle");
-		if v26 ~= nil then
-			v26 = v26:FindFirstChild("SwordAttachment");
+		local l__Handle__30 = v26:WaitForChild("Handle");
+		local v31 = v26:FindFirstChild("Handle");
+		if v31 ~= nil then
+			v31 = v31:FindFirstChild("SwordAttachment");
 		end;
-		local v27 = v26.CFrame * CFrame.Angles(0, 3.141592653589793, 0);
-		l__Handle__25:ClearAllChildren();
-		u3("Attachment", {
+		local v32 = v31.CFrame * CFrame.Angles(0, 3.141592653589793, 0);
+		l__Handle__30:ClearAllChildren();
+		u8("Attachment", {
 			Name = "RightGripAttachment", 
-			Parent = l__Handle__25, 
-			CFrame = v27
+			Parent = l__Handle__30, 
+			CFrame = v32
 		});
-		local v28.Parent = p9.Character;
-		l__WeldUtil__16.weldCharacterAccessories(p9.Character);
+		local v33.Parent = p10.Character;
+		l__WeldUtil__23.weldCharacterAccessories(p10.Character);
 	else
-		v28 = l__ReplicatedStorage__17.Assets.Effects.PirateSword:Clone();
-		v28.Parent = p9.Character;
-		l__WeldUtil__16.weldCharacterAccessories(p9.Character);
+		v33 = l__ReplicatedStorage__24.Assets.Effects.PirateSword:Clone();
+		v33.Parent = p10.Character;
+		l__WeldUtil__23.weldCharacterAccessories(p10.Character);
 	end;
-	if v18 then
-		v18:GetMarkerReachedSignal("start"):Connect(function()
-			p8:createTrail(p9, p10);
+	if v23 then
+		v23:GetMarkerReachedSignal("start"):Connect(function()
+			p9:createTrail(p10, p11);
 		end);
-		v18:GetMarkerReachedSignal("end"):Connect(function()
-			if v28 then
-				p8:putSwordBack(p9, v28);
+		v23:GetMarkerReachedSignal("end"):Connect(function()
+			if v33 then
+				p9:putSwordBack(p10, v33);
 			end;
-			if v18 ~= nil then
-				v18:Stop();
+			if v23 ~= nil then
+				v23:Stop();
 			end;
-			if v18 ~= nil then
-				v18:Destroy();
+			if v23 ~= nil then
+				v23:Destroy();
 			end;
 		end);
 	end;
 end;
-local l__InventoryUtil__18 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "inventory", "inventory-util").InventoryUtil;
-function v6.putSwordBack(p11, p12, p13)
-	p13:Destroy();
-	local v29 = l__EntityUtil__15:getEntity(p12);
-	if v29 ~= nil then
-		v29 = v29:getHandItemInstanceFromCharacter();
-		if v29 ~= nil then
-			v29 = v29:WaitForChild("Handle", 3);
+local l__InventoryUtil__25 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "inventory", "inventory-util").InventoryUtil;
+function v6.putSwordBack(p12, p13, p14)
+	p14:Destroy();
+	local v34 = l__EntityUtil__7:getEntity(p13);
+	if v34 ~= nil then
+		v34 = v34:getHandItemInstanceFromCharacter();
+		if v34 ~= nil then
+			v34 = v34:WaitForChild("Handle", 3);
 		end;
 	end;
-	v29.Transparency = 0;
-	local v30 = p12.Character;
-	if v30 ~= nil then
-		v30 = v30:WaitForChild("pirate_sword_back");
+	v34.Transparency = 0;
+	local v35 = p13.Character;
+	if v35 ~= nil then
+		v35 = v35:WaitForChild("pirate_sword_back");
 	end;
-	if v30 then
-		local v31, v32, v33 = ipairs(v30:GetChildren());
+	if v35 then
+		local v36, v37, v38 = ipairs(v35:GetChildren());
 		while true do
-			v31(v32, v33);
-			if not v31 then
+			v36(v37, v38);
+			if not v36 then
 				break;
 			end;
-			v33 = v31;
-			if v32:IsA("BasePart") then
-				v32.Transparency = 0;
+			v38 = v36;
+			if v37:IsA("BasePart") then
+				v37.Transparency = 0;
 			end;		
 		end;
 	end;
-	if p12 == l__Players__2.LocalPlayer then
-		local v34 = l__InventoryUtil__18.getInventory(p12).hand;
-		if v34 ~= nil then
-			v34 = v34.itemType;
+	if p13 == l__Players__2.LocalPlayer then
+		local v39 = l__InventoryUtil__25.getInventory(p13).hand;
+		if v39 ~= nil then
+			v39 = v39.itemType;
 		end;
-		if v34 then
-			l__KnitClient__14.Controllers.ViewmodelController:setHeldItem((l__ItemUtil__12.createItemInstance(v34)));
+		if v39 then
+			l__KnitClient__22.Controllers.ViewmodelController:setHeldItem((l__ItemUtil__20.createItemInstance(v39)));
 			return;
 		end;
 	else
@@ -250,71 +297,71 @@ function v6.putSwordBack(p11, p12, p13)
 	end;
 	return nil;
 end;
-local l__Workspace__19 = v4.Workspace;
-local l__TweenService__20 = v4.TweenService;
-function v6.createTrail(p14, p15, p16)
-	local v35 = p15.Character;
-	if v35 ~= nil then
-		v35 = v35:Clone();
+local l__Workspace__26 = v4.Workspace;
+local l__TweenService__27 = v4.TweenService;
+function v6.createTrail(p15, p16, p17)
+	local v40 = p16.Character;
+	if v40 ~= nil then
+		v40 = v40:Clone();
 	end;
-	if not v35 then
+	if not v40 then
 		print("CLONE FAILED!");
 		return nil;
 	end;
-	local l__Character__36 = p15.Character;
-	if not v35.PrimaryPart then
+	local l__Character__41 = p16.Character;
+	if not v40.PrimaryPart then
 		return nil;
 	end;
-	if p15 == l__Players__2.LocalPlayer then
-		if v35.Humanoid == nil or not l__Character__36 then
+	if p16 == l__Players__2.LocalPlayer then
+		if v40.Humanoid == nil or not l__Character__41 then
 			return nil;
 		end;
-		l__Workspace__19.CurrentCamera.CameraSubject = v35.Humanoid;
+		l__Workspace__26.CurrentCamera.CameraSubject = v40.Humanoid;
 	end;
-	local l__Character__37 = p15.Character;
-	if l__Character__37 ~= nil then
-		l__Character__37:SetAttribute("Transparency", 1);
+	local l__Character__42 = p16.Character;
+	if l__Character__42 ~= nil then
+		l__Character__42:SetAttribute("Transparency", 1);
 	end;
-	v35:SetPrimaryPartCFrame(CFrame.new(l__Character__36:GetPrimaryPartCFrame().Position, p16));
-	v35.Parent = l__Workspace__19;
-	v35.Humanoid.Animator:LoadAnimation(u3("Animation", {
+	v40:SetPrimaryPartCFrame(CFrame.new(l__Character__41:GetPrimaryPartCFrame().Position, p17));
+	v40.Parent = l__Workspace__26;
+	v40.Humanoid.Animator:LoadAnimation(u8("Animation", {
 		AnimationId = "rbxassetid://10727303147"
 	})):Play();
-	local v38 = l__TweenService__20:Create(v35.PrimaryPart, TweenInfo.new(0.6), {
-		CFrame = CFrame.new(p16)
+	local v43 = l__TweenService__27:Create(v40.PrimaryPart, TweenInfo.new(0.6), {
+		CFrame = CFrame.new(p17)
 	});
-	v38:Play();
-	v38.Completed:Connect(function()
-		v35:Destroy();
-		local l__Character__39 = p15.Character;
-		if l__Character__39 ~= nil then
-			l__Character__39:SetAttribute("Transparency", 0);
+	v43:Play();
+	v43.Completed:Connect(function()
+		v40:Destroy();
+		local l__Character__44 = p16.Character;
+		if l__Character__44 ~= nil then
+			l__Character__44:SetAttribute("Transparency", 0);
 		end;
-		if p15 == l__Players__2.LocalPlayer then
-			l__Workspace__19.CurrentCamera.CameraSubject = p15.Character.Humanoid;
+		if p16 == l__Players__2.LocalPlayer then
+			l__Workspace__26.CurrentCamera.CameraSubject = p16.Character.Humanoid;
 		end;
 	end);
 end;
-local l__KnitClient__21 = v3.KnitClient;
-local l__BedwarsKitSkin__22 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit-skin", "bedwars-kit-skin").BedwarsKitSkin;
-function v6.playSlashEffect(p17, p18, p19)
-	if not p18 or not p19.Character then
+local l__KnitClient__28 = v3.KnitClient;
+local l__BedwarsKitSkin__29 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit-skin", "bedwars-kit-skin").BedwarsKitSkin;
+function v6.playSlashEffect(p18, p19, p20)
+	if not p19 or not p20.Character then
 		return nil;
 	end;
-	local v40 = l__ReplicatedStorage__17.Assets.Effects.HannahSwordSwing:Clone();
-	local v41 = v40:FindFirstChild("Main");
-	if v41 ~= nil then
-		v41 = v41:FindFirstChild("Color");
+	local v45 = l__ReplicatedStorage__24.Assets.Effects.HannahSwordSwing:Clone();
+	local v46 = v45:FindFirstChild("Main");
+	if v46 ~= nil then
+		v46 = v46:FindFirstChild("Color");
 	end;
-	if v41 and l__KnitClient__21.Controllers.KitController:getKitSkin(p19.Character) == l__BedwarsKitSkin__22.HANNAH_GHOST then
-		v41.Color = Color3.fromRGB(5, 161, 107);
+	if v46 and l__KnitClient__28.Controllers.KitController:getKitSkin(p20.Character) == l__BedwarsKitSkin__29.HANNAH_GHOST then
+		v46.Color = Color3.fromRGB(5, 161, 107);
 	end;
-	v40:SetPrimaryPartCFrame(p18);
-	v40.Parent = l__Workspace__19;
-	v40:SetPrimaryPartCFrame(p18 * CFrame.new(0, 0, -2));
+	v45:SetPrimaryPartCFrame(p19);
+	v45.Parent = l__Workspace__26;
+	v45:SetPrimaryPartCFrame(p19 * CFrame.new(0, 0, -2));
 	task.delay(0.15, function()
-		v40:Destroy();
+		v45:Destroy();
 	end);
 end;
-local v42 = l__KnitClient__21.CreateController(v6.new());
+local v47 = l__KnitClient__28.CreateController(v6.new());
 return nil;

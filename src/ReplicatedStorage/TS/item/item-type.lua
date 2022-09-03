@@ -614,6 +614,18 @@ v2.PIRATE_SWORD_FP = "pirate_sword_fp";
 v1.pirate_sword_fp = "PIRATE_SWORD_FP";
 v2.CUTLASS_GHOST = "cutlass_ghost";
 v1.cutlass_ghost = "CUTLASS_GHOST";
+v2.PIRATE_FLAG = "pirate_flag";
+v1.pirate_flag = "PIRATE_FLAG";
+v2.PIRATE_SHOVEL = "pirate_shovel";
+v1.pirate_shovel = "PIRATE_SHOVEL";
+v2.PIRATE_TELESCOPE = "pirate_telescope";
+v1.pirate_telescope = "PIRATE_TELESCOPE";
+v2.FISH_NET = "fish_net";
+v1.fish_net = "FISH_NET";
+v2.PIRATE_HAT = "pirate_hat";
+v1.pirate_hat = "PIRATE_HAT";
+v2.PARROT = "parrot";
+v1.parrot = "PARROT";
 return {
 	ItemType = v2
 };

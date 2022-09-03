@@ -1,7 +1,8 @@
 -- Decompiled with the Synapse X Luau decompiler.
 
 local u1 = {
-	eventData = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "event", "game-event-utils").GameEventUtil.makeStarterEventData(), 
+	profileData = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "event", "game-event-utils").GameEventUtil.makeStarterEventData(), 
+	activeMissions = {}, 
 	currencyGuiLocations = {}
 };
 return {
@@ -14,7 +15,7 @@ return {
 			for v2, v3 in pairs(p1) do
 				v1[v2] = v3;
 			end;
-			v1.eventData = p2.eventData;
+			v1.profileData = p2.eventData;
 			return v1;
 		end;
 		if p2.type ~= "SetEventDataSome" then
@@ -36,13 +37,13 @@ return {
 			v9[v10] = v11;
 		end;
 		local v12 = {};
-		for v13, v14 in pairs(p1.eventData) do
+		for v13, v14 in pairs(p1.profileData) do
 			v12[v13] = v14;
 		end;
 		for v15, v16 in pairs(p2.eventData) do
 			v12[v15] = v16;
 		end;
-		v9.eventData = v12;
+		v9.profileData = v12;
 		return v9;
 	end
 };

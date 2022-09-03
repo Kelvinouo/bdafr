@@ -7,8 +7,8 @@ local v4 = {};
 if not v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "place-util").PlaceUtil.isProduction() then
 
 end;
-v4.FreeKits = { l__BedwarsKit__2.FARMER_CLETUS, l__BedwarsKit__2.COWGIRL, l__BedwarsKit__2.MELODY };
-v4.UpdateTimeEpoch = 1662156000;
+v4.FreeKits = { l__BedwarsKit__2.CONQUEROR, l__BedwarsKit__2.ARCHER, l__BedwarsKit__2.BUILDER };
+v4.UpdateTimeEpoch = 1662760800;
 local v5 = { l__BedwarsKit__2.REGENT };
 local v6 = #v5;
 local l__season5__7 = l__BedwarsBPKits__3.season5;

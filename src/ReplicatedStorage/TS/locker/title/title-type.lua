@@ -316,6 +316,12 @@ v2.PIRATE = "pirate";
 v1.pirate = "PIRATE";
 v2.CORSAIR = "corsair";
 v1.corsair = "CORSAIR";
+v2.QUARTERMASTER = "quartermaster";
+v1.quartermaster = "QUARTERMASTER";
+v2.FIRST_MATE = "first_mate";
+v1.first_mate = "FIRST_MATE";
+v2.SAILOR = "sailor";
+v1.sailor = "SAILOR";
 return {
 	TitleType = v2
 };

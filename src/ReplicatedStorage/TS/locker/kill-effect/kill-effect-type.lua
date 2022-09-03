@@ -48,6 +48,8 @@ v2.BEACH_BALL = "beachball";
 v1.beachball = "BEACH_BALL";
 v2.PIRATE_SHIP_ATTACK = "pirateshipattack";
 v1.pirateshipattack = "PIRATE_SHIP_ATTACK";
+v2.GHOST = "ghost";
+v1.ghost = "GHOST";
 return {
 	KillEffectType = v2
 };

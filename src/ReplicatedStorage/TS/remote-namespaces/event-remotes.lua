@@ -6,6 +6,7 @@ return {
 	EventRemotes = v2.Definitions.Namespace({
 		PurchaseShopItem = v2.Definitions.ServerFunction(), 
 		ClaimMission = v2.Definitions.ServerFunction(), 
-		EventDataUpdate = v2.Definitions.ServerToClientEvent()
+		EventDataUpdate = v2.Definitions.ServerToClientEvent(), 
+		ActiveEventMissionsUpdate = v2.Definitions.ServerToClientEvent()
 	})
 };

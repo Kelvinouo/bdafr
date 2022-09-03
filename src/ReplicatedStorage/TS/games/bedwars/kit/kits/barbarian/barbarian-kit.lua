@@ -6,10 +6,10 @@ local v3 = { {
 		rage = 0, 
 		item = l__ItemType__1.WOOD_SWORD
 	}, {
-		rage = 150, 
+		rage = 120, 
 		item = l__ItemType__1.STONE_SWORD
 	}, {
-		rage = 400, 
+		rage = 350, 
 		item = l__ItemType__1.IRON_SWORD
 	}, {
 		rage = 750, 

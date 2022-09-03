@@ -554,6 +554,14 @@ return {
 			}, 
 			impactParticles = "default", 
 			noAmmoValidation = true
+		}, 
+		fish_net = {
+			projectileModel = "fish_net_flat", 
+			launchVelocity = 110, 
+			gravitationalAcceleration = 40, 
+			predictionLifetimeSec = 1.5, 
+			lifetimeSec = 1.5, 
+			flightRotation = Vector3.new(-math.pi / 4, 0, math.pi / 4)
 		}
 	}
 };

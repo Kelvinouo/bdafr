@@ -64,13 +64,14 @@ function v3.render(p3)
 	});
 end;
 local l__ClientSyncEvents__1 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
+local l__ORB_DECAY_SECONDS__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "kits", "wind-walker", "wind-walker-util").WindWalkerUtil.ORB_DECAY_SECONDS;
 function v3.didMount(p4)
 	l__ClientSyncEvents__1.WindWalkerOrbUpdate:connect(function(p5)
 		local v4 = {
 			stack = p5.orbCount
 		};
 		if p5.orbCount > 0 then
-			local v5 = 65;
+			local v5 = l__ORB_DECAY_SECONDS__2;
 		else
 			v5 = 0;
 		end;
@@ -79,13 +80,13 @@ function v3.didMount(p4)
 	end);
 	p4:startTimer();
 end;
-local l__RunService__2 = v1.import(script, v1.getModule(script, "@rbxts", "services")).RunService;
+local l__RunService__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).RunService;
 function v3.startTimer(p6)
-	local u3 = 0;
-	l__RunService__2.Heartbeat:Connect(function(p7)
-		u3 = u3 + p7;
-		if u3 >= 1 then
-			u3 = 0;
+	local u4 = 0;
+	l__RunService__3.Heartbeat:Connect(function(p7)
+		u4 = u4 + p7;
+		if u4 >= 1 then
+			u4 = 0;
 			if p6.state.time > 0 then
 				p6:setState({
 					time = p6.state.time - 1

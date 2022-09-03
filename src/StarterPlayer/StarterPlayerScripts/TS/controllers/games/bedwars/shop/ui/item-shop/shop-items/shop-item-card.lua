@@ -26,22 +26,29 @@ function v5.didMount(p2)
 		end;
 	end;
 end;
-local l__KnitClient__5 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
-local l__discountImage__6 = v4.discountImage;
-local l__ColorUtil__7 = v2.ColorUtil;
-local l__discountColor__8 = v4.discountColor;
-local l__Theme__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
-local l__ItemViewport__10 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "global", "inventory", "ui", "item-viewport").ItemViewport;
-function v5.render(p3)
+local l__DeviceUtil__5 = v2.DeviceUtil;
+local l__KnitClient__6 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
+function v5.getDiscountedItems(p3)
+	if l__DeviceUtil__5.isHoarceKat() then
+		return {};
+	end;
+	return l__KnitClient__6.Controllers.MerchantKitController.discountedItems;
+end;
+local l__discountImage__7 = v4.discountImage;
+local l__ColorUtil__8 = v2.ColorUtil;
+local l__discountColor__9 = v4.discountColor;
+local l__Theme__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
+local l__ItemViewport__11 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "global", "inventory", "ui", "item-viewport").ItemViewport;
+function v5.render(p4)
 	local v7 = nil;
-	local v8, v9, v10 = ipairs(l__KnitClient__5.Controllers.MerchantKitController.discountedItems);
+	local v8, v9, v10 = ipairs((p4:getDiscountedItems()));
 	while true do
 		v8(v9, v10);
 		if not v8 then
 			break;
 		end;
 		v10 = v8;
-		if v9.item.itemType == p3.props.ShopItem.itemType == true then
+		if v9.item.itemType == p4.props.ShopItem.itemType == true then
 			v7 = v9;
 			break;
 		end;	
@@ -51,29 +58,29 @@ function v5.render(p3)
 		v11 = v11.tier;
 	end;
 	if v11 ~= nil then
-		local v12 = l__discountImage__6[v11];
+		local v12 = l__discountImage__7[v11];
 	else
 		v12 = nil;
 	end;
 	local v13 = {
-		[v3.Ref] = p3.ref, 
+		[v3.Ref] = p4.ref, 
 		Size = UDim2.fromScale(1, 1), 
-		BackgroundColor3 = l__ColorUtil__7.BLACK, 
+		BackgroundColor3 = l__ColorUtil__8.BLACK, 
 		BackgroundTransparency = 0.6, 
-		LayoutOrder = p3.props.LayoutOrder, 
+		LayoutOrder = p4.props.LayoutOrder, 
 		[v3.Event.Activated] = function()
-			if p3.props.Selected then
-				p3.props.OnRightClick();
+			if p4.props.Selected then
+				p4.props.OnRightClick();
 				return nil;
 			end;
 			l__SoundManager__2:playSound(l__GameSound__3.UI_CLICK);
-			p3.props.OnClick();
+			p4.props.OnClick();
 		end, 
 		[v3.Event.MouseButton2Click] = function()
-			if p3.props.Locked then
+			if p4.props.Locked then
 				return nil;
 			end;
-			p3.props.OnRightClick();
+			p4.props.OnRightClick();
 		end, 
 		[v3.Event.MouseEnter] = function()
 
@@ -87,9 +94,9 @@ function v5.render(p3)
 	local v16 = {};
 	local v17 = v7 and v7.tier;
 	if v17 ~= 0 and v17 == v17 and v17 then
-		local v18 = l__discountColor__8[v7.tier];
+		local v18 = l__discountColor__9[v7.tier];
 	else
-		v18 = l__Theme__9.textPrimary;
+		v18 = l__Theme__10.textPrimary;
 	end;
 	v16.Color = v18;
 	if v7 then
@@ -98,7 +105,7 @@ function v5.render(p3)
 		v19 = 1;
 	end;
 	v16.Thickness = v19;
-	if p3.props.Locked then
+	if p4.props.Locked then
 		local v20 = 0.6;
 	else
 		v20 = 0;
@@ -106,11 +113,11 @@ function v5.render(p3)
 	v16.Transparency = v20;
 	v14[v15 + 1] = v3.createElement("UIStroke", v16);
 	local v21 = false;
-	if p3.props.ShopItem ~= nil then
+	if p4.props.ShopItem ~= nil then
 		local v22 = {
-			ItemType = p3.props.ShopItem.itemType
+			ItemType = p4.props.ShopItem.itemType
 		};
-		if p3.props.Locked then
+		if p4.props.Locked then
 			local v23 = 0.6;
 		else
 			v23 = 0;
@@ -122,15 +129,15 @@ function v5.render(p3)
 		v22.AnchorPoint = Vector2.new(0.5, 0.5);
 		v22.IgnoreInitialPop = true;
 		v22.ShowCooldownBar = false;
-		v21 = v3.createElement(l__ItemViewport__10, v22);
+		v21 = v3.createElement(l__ItemViewport__11, v22);
 	end;
 	if v21 then
 		v14[v15 + 2] = v21;
 	end;
 	local v24 = false;
-	if p3.props.ShopItem ~= nil then
+	if p4.props.ShopItem ~= nil then
 		v24 = false;
-		if p3.props.ShopItem.requiresKit ~= nil then
+		if p4.props.ShopItem.requiresKit ~= nil then
 			v24 = v3.createElement("ImageLabel", {
 				Size = UDim2.fromScale(0.35, 0.35), 
 				Position = UDim2.fromScale(-0.08, 1.08), 
@@ -147,8 +154,8 @@ function v5.render(p3)
 		v14[#v14 + 1] = v24;
 	end;
 	local v25 = false;
-	if p3.props.ShopItem ~= nil then
-		v25 = p3.props.ShopItem.limitedTimeItem and v3.createElement("ImageLabel", {
+	if p4.props.ShopItem ~= nil then
+		v25 = p4.props.ShopItem.limitedTimeItem and v3.createElement("ImageLabel", {
 			Size = UDim2.fromScale(0.35, 0.35), 
 			Position = UDim2.fromScale(-0.08, 1.08), 
 			AnchorPoint = Vector2.new(0, 1), 
