@@ -79,7 +79,7 @@ function v4.KnitStart(p2)
 			end;		
 		end;
 		v15.Parent = p6;
-		l__WeldUtil__8.weldCharacterAccessories(p6);
+		l__WeldUtil__8:weldCharacterAccessories(p6);
 		p4.maid:GiveTask(function()
 			v14:Destroy();
 			v15:Destroy();

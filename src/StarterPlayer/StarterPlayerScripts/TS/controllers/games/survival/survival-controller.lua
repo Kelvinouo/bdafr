@@ -252,7 +252,7 @@ function v6.KnitStart(p2)
 			end;		
 		end;
 		v21.Parent = p10;
-		l__WeldUtil__21.weldPartsWithJoint(p10.PrimaryPart, v21.PrimaryPart, "Motor6D");
+		l__WeldUtil__21:weldPartsWithJoint(p10.PrimaryPart, v21.PrimaryPart, "Motor6D");
 		v21.PrimaryPart.Name = "Main";
 		local v26, v27, v28 = ipairs(v21:GetChildren());
 		while true do

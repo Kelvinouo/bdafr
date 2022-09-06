@@ -77,7 +77,7 @@ function v5.KnitStart(p2)
 					v8.CFrame = CFrame.new(v16.Position, v16.Position + v16.Normal);
 				end;
 			end;
-			v7:GiveTask(l__WeldUtil__6.weldParts(p3.hitPart, v8));
+			v7:GiveTask(l__WeldUtil__6:weldParts(p3.hitPart, v8));
 			task.wait(l__StickyFireworkConstants__7.TIME_TO_LAUNCH_SEC);
 			local v18 = false;
 			if p3.hitEntity == l__Players__8.LocalPlayer.Character then

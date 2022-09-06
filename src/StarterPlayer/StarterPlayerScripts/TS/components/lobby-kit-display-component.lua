@@ -88,7 +88,7 @@ function v4.constructor(p1, p2)
 					v15.Parent = v11;
 				end;			
 			end;
-			l__WeldUtil__10.weldCharacterAccessories(v11);
+			l__WeldUtil__10:weldCharacterAccessories(v11);
 		end;
 		if v6 == l__BedwarsKit__11.ANGEL then
 			task.defer(function()

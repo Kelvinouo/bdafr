@@ -41,10 +41,9 @@ function v5.KnitStart(p2)
 		end;
 	end);
 	l__WatchCharacter__5(function(p4, p5)
-		if p4:GetAttribute("HasPirateUnlock") ~= true then
-			return nil;
+		if p4:GetAttribute("HasPirateUnlock") == true then
+			p2:equipPirateHat(p4);
 		end;
-		p2:equipPirateHat(p4);
 	end);
 end;
 local l__EntityUtil__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
@@ -93,10 +92,10 @@ function v5.equipPirateHat(p6, p7)
 			end;
 			v21 = v19;
 			v12:AddAccessory(v20);
-			l__WeldUtil__8.weldCharacterAccessories(l__Character__10);		
+			l__WeldUtil__8:weldCharacterAccessories(l__Character__10);		
 		end;
 	end);
-	l__WeldUtil__8.weldCharacterAccessories(l__Character__10);
+	l__WeldUtil__8:weldCharacterAccessories(l__Character__10);
 end;
 local v22 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v5.new());
 return nil;

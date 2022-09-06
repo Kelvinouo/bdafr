@@ -122,7 +122,7 @@ function v5.KnitStart(p2)
 							if v19 ~= nil then
 								v19:AddAccessory(u12);
 							end;
-							l__WeldUtil__10.weldCharacterAccessories(p6);
+							l__WeldUtil__10:weldCharacterAccessories(p6);
 						end);
 					end;
 				end;

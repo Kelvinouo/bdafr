@@ -1,126 +1,305 @@
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = {};
+local v2 = setmetatable({}, {
+	__tostring = function()
+		return "WeldUtil";
+	end
+});
+v2.__index = v2;
+function v2.new(...)
+	local v3 = setmetatable({}, v2);
+	return v3:constructor(...) and v3;
+end;
+function v2.constructor(p1)
+
+end;
 local u1 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-function v2.weldAttachments(p1, p2)
+function v2.weldAttachments(p2, p3, p4)
 	return u1("Weld", {
 		Name = "AccessoryAttachment", 
-		Part0 = p1.Parent, 
-		Part1 = p2.Parent, 
-		C0 = p1.CFrame, 
-		C1 = p2.CFrame, 
-		Parent = p1.Parent
+		Part0 = p3.Parent, 
+		Part1 = p4.Parent, 
+		C0 = p3.CFrame, 
+		C1 = p4.CFrame, 
+		Parent = p3.Parent
 	});
 end;
-function v2.weldParts(p3, p4)
+function v2.weldParts(p5, p6, p7)
 	return u1("WeldConstraint", {
-		Name = p4.Name, 
-		Part0 = p3, 
-		Part1 = p4, 
-		Parent = p3
+		Name = p7.Name, 
+		Part0 = p6, 
+		Part1 = p7, 
+		Parent = p6
 	});
 end;
-function v2.weldPartsWithJoint(p5, p6, p7)
-	local v3 = Instance.new(p7);
-	v3.Part0 = p5;
-	v3.Part1 = p6;
-	v3.C0 = CFrame.new();
-	v3.C1 = p6.CFrame:ToObjectSpace(p5.CFrame);
-	v3.Parent = p5;
-	return v3;
+function v2.weldPartsWithJoint(p8, p9, p10, p11)
+	local v4 = Instance.new(p11);
+	v4.Part0 = p9;
+	v4.Part1 = p10;
+	v4.C0 = CFrame.new();
+	v4.C1 = p10.CFrame:ToObjectSpace(p9.CFrame);
+	v4.Parent = p9;
+	return v4;
 end;
 local u2 = v1.import(script, v1.getModule(script, "@rbxts", "string-utils"));
-local function u3(p8, p9)
-	local v4, v5, v6 = ipairs(p8:GetChildren());
+local l__MapUtil__3 = v1.import(script, v1.getModule(script, "@easy-games", "data-structure").out).MapUtil;
+local u4 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+function v2.findFirstMatchAttachment(p12, p13, p14)
+	local v5 = p12.firstMatchAttachment[p13];
+	if v5 then
+		local v6 = v5[p14];
+		if v6 then
+			return v6;
+		end;
+	end;
+	local v7 = nil;
+	local v8, v9, v10 = ipairs(p13:GetChildren());
 	while true do
-		v4(v5, v6);
-		if not v4 then
+		v8(v9, v10);
+		if not v8 then
 			break;
 		end;
-		v6 = v4;
-		if v5:IsA("Attachment") and v5.Name == p9 then
-			local v7 = u2.endsWith(v5.Name, "KneeRigAttachment");
-			if v7 then
-				local v8 = v5.Parent;
-				if v8 ~= nil then
-					v8 = v8.Name;
+		v10 = v8;
+		if v9:IsA("Attachment") and v9.Name == p14 then
+			local v11 = u2.endsWith(v9.Name, "KneeRigAttachment");
+			if v11 then
+				local v12 = v9.Parent;
+				if v12 ~= nil then
+					v12 = v12.Name;
 				end;
-				local v9 = v8;
-				if v9 == nil then
-					v9 = "";
+				local v13 = v12;
+				if v13 == nil then
+					v13 = "";
 				end;
-				v7 = u2.includes(v9, "Upper");
+				v11 = u2.includes(v13, "Upper");
 			end;
-			if not v7 then
-				return v5;
+			if not v11 then
+				v7 = v9;
+				break;
 			end;
-		elseif not v5:IsA("Accoutrement") and not v5:IsA("Tool") then
-			local v10 = u3(v5, p9);
-			if v10 then
-				return v10;
+		elseif not v9:IsA("Accoutrement") and not v9:IsA("Tool") then
+			local v14 = p12:findFirstMatchAttachment(v9, p14);
+			if v14 then
+				v7 = v14;
+				break;
 			end;
 		end;	
 	end;
-	return nil;
+	if v7 then
+		local v15 = l__MapUtil__3.getOrCreate(p12.firstMatchAttachment, p13, {});
+		v15[p14] = v7;
+		local v16 = u4.new();
+		v16:GiveTask(function()
+			v15[p14] = nil;
+		end);
+		v16:GiveTask(v7:GetPropertyChangedSignal("Name"):Connect(function()
+			v16:DoCleaning();
+		end));
+		v16:GiveTask(v7.AncestryChanged:Connect(function()
+			v16:DoCleaning();
+		end));
+	end;
+	return v7;
 end;
-local u4 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
-function v2.weldCharacterAccessories(p10)
-	local v11, v12, v13 = ipairs(p10:GetChildren());
+function v2.weldCharacterAccessories(p15, p16)
+	local v17, v18, v19 = ipairs(p16:GetChildren());
 	while true do
-		v11(v12, v13);
-		if not v11 then
+		local v20 = nil;
+		local v21 = nil;
+		local v22 = nil;
+		local v23 = nil;
+		local v24 = nil;
+		local v25 = nil;
+		local v26 = nil;
+		local v27 = nil;
+		local v28 = nil;
+		local v29 = nil;
+		local v30 = nil;
+		v17(v18, v19);
+		if not v17 then
 			break;
 		end;
-		if v12:IsA("Accessory") then
-			local l__Handle__14 = v12:FindFirstChild("Handle");
-			if l__Handle__14 then
-				local v15, v16, v17 = ipairs(l__Handle__14:GetChildren());
-				while true do
-					v15(v16, v17);
-					if not v15 then
-						break;
-					end;
-					v17 = v15;
-					if v16:IsA("Attachment") then
-						local v18 = u3(p10, v16.Name);
-						if v18 then
-							local v19 = u4.new();
-							local u5 = u1("Weld", {
-								Name = "AccessoryAttachment", 
-								Part0 = v18.Parent, 
-								Part1 = v16.Parent, 
-								C0 = v18.CFrame, 
-								C1 = v16.CFrame, 
-								Parent = v18.Parent
-							});
-							v19:GiveTask(function()
-								u5:Destroy();
-							end);
-							v19:GiveTask(v16.AncestryChanged:Connect(function(p11, p12)
-								if p12 == nil then
-									v19:DoCleaning();
+		v19 = v17;
+		if v18:IsA("Accessory") then
+			local v31 = nil;
+			local v32 = nil;
+			local v33 = nil;
+			local v34 = nil;
+			local v35 = nil;
+			local v36 = nil;
+			local v37 = nil;
+			local v38 = nil;
+			local v39 = nil;
+			local v40 = nil;
+			local v41 = nil;
+			local v42 = p15.characterAccessoryWelds[v18];
+			local v43 = v42;
+			if v43 ~= nil then
+				v43 = v43.Parent;
+			end;
+			if v43 ~= nil then
+				if not v42.Part0 or not v42.Part1 then
+					v42:Destroy();
+					v37 = "Handle";
+					v32 = "FindFirstChild";
+					v31 = v18;
+					v36 = v31;
+					v33 = v18;
+					v34 = v32;
+					v35 = v33[v34];
+					v38 = v35;
+					v39 = v36;
+					v40 = v37;
+					local v44 = v38(v39, v40);
+					v41 = v44;
+					if v41 then
+						local v45, v46, v47 = ipairs(v44:GetChildren());
+						while true do
+							v45(v46, v47);
+							if not v45 then
+								break;
+							end;
+							v47 = v45;
+							if v46:IsA("Attachment") then
+								local v48 = p15:findFirstMatchAttachment(p16, v46.Name);
+								if v48 then
+									local v49 = p15:weldAttachments(v48, v46);
+									p15.characterAccessoryWelds[v18] = v49;
+									local v50 = u4.new();
+									v50:GiveTask(function()
+										p15.characterAccessoryWelds[v18] = nil;
+									end);
+									v50:GiveTask(function()
+										v49:Destroy();
+									end);
+									v50:GiveTask(v46.AncestryChanged:Connect(function(p17, p18)
+										if p18 == nil then
+											v50:DoCleaning();
+										end;
+									end));
+									break;
 								end;
-							end));
+							end;						
+						end;
+					end;
+					v28 = ipairs;
+					v21 = "GetDescendants";
+					v20 = v18;
+					v25 = v20;
+					v22 = v18;
+					v23 = v21;
+					v24 = v22[v23];
+					v26 = v24;
+					v27 = v25;
+					v30 = v26(v27);
+					v29 = v28;
+					local v51, v52, v53 = v29(v30);
+					while true do
+						v51(v52, v53);
+						if not v51 then
 							break;
 						end;
+						v53 = v51;
+						if v52:IsA("BasePart") then
+							v52.CanCollide = false;
+						end;					
+					end;
+				end;
+			else
+				v37 = "Handle";
+				v32 = "FindFirstChild";
+				v31 = v18;
+				v36 = v31;
+				v33 = v18;
+				v34 = v32;
+				v35 = v33[v34];
+				v38 = v35;
+				v39 = v36;
+				v40 = v37;
+				v44 = v38(v39, v40);
+				v41 = v44;
+				if v41 then
+					v45, v46, v47 = ipairs(v44:GetChildren());
+					while true do
+						v45(v46, v47);
+						if not v45 then
+							break;
+						end;
+						v47 = v45;
+						if v46:IsA("Attachment") then
+							v48 = p15:findFirstMatchAttachment(p16, v46.Name);
+							if v48 then
+								v49 = p15:weldAttachments(v48, v46);
+								p15.characterAccessoryWelds[v18] = v49;
+								v50 = u4.new();
+								v50:GiveTask(function()
+									p15.characterAccessoryWelds[v18] = nil;
+								end);
+								v50:GiveTask(function()
+									v49:Destroy();
+								end);
+								v50:GiveTask(v46.AncestryChanged:Connect(function(p17, p18)
+									if p18 == nil then
+										v50:DoCleaning();
+									end;
+								end));
+								break;
+							end;
+						end;					
+					end;
+				end;
+				v28 = ipairs;
+				v21 = "GetDescendants";
+				v20 = v18;
+				v25 = v20;
+				v22 = v18;
+				v23 = v21;
+				v24 = v22[v23];
+				v26 = v24;
+				v27 = v25;
+				v30 = v26(v27);
+				v29 = v28;
+				v51, v52, v53 = v29(v30);
+				while true do
+					v51(v52, v53);
+					if not v51 then
+						break;
+					end;
+					v53 = v51;
+					if v52:IsA("BasePart") then
+						v52.CanCollide = false;
 					end;				
 				end;
 			end;
-		end;
-		local v20, v21, v22 = ipairs(v12:GetDescendants());
-		while true do
-			v20(v21, v22);
-			if not v20 then
-				break;
+		else
+			v28 = ipairs;
+			v21 = "GetDescendants";
+			v20 = v18;
+			v25 = v20;
+			v22 = v18;
+			v23 = v21;
+			v24 = v22[v23];
+			v26 = v24;
+			v27 = v25;
+			v30 = v26(v27);
+			v29 = v28;
+			v51, v52, v53 = v29(v30);
+			while true do
+				v51(v52, v53);
+				if not v51 then
+					break;
+				end;
+				v53 = v51;
+				if v52:IsA("BasePart") then
+					v52.CanCollide = false;
+				end;			
 			end;
-			v22 = v20;
-			if v21:IsA("BasePart") then
-				v21.CanCollide = false;
-			end;		
 		end;	
 	end;
 end;
+v2.characterAccessoryWelds = {};
+v2.firstMatchAttachment = {};
 return {
 	WeldUtil = v2
 };

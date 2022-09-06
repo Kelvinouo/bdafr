@@ -144,7 +144,7 @@ function u1.KnitStart(p2)
 							p11:GetMarkerReachedSignal("spawn_blowtorch"):Wait();
 							local v19 = l__ReplicatedStorage__4:WaitForChild("Assets"):WaitForChild("Effects"):WaitForChild("BlowTorch"):Clone();
 							v19.Parent = p8;
-							l__WeldUtil__11.weldCharacterAccessories(p8);
+							l__WeldUtil__11:weldCharacterAccessories(p8);
 							p11:GetMarkerReachedSignal("activate_blowtorch"):Wait();
 							local v20, v21, v22 = ipairs((v19:GetDescendants()));
 							while true do

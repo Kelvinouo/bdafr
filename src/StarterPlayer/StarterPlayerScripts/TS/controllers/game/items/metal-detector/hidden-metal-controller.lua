@@ -74,7 +74,7 @@ function v5.KnitStart(p2)
 					p2.animationPlayingCooldowns:add(p5.UserId);
 					local v12 = l__ReplicatedStorage__10.Assets.Effects.Shovel:Clone();
 					v12.Parent = p6;
-					l__WeldUtil__11.weldCharacterAccessories(p6);
+					l__WeldUtil__11:weldCharacterAccessories(p6);
 					local l__metal_detector__13 = p6:FindFirstChild("metal_detector");
 					if l__metal_detector__13 then
 						local v14, v15, v16 = ipairs(l__metal_detector__13:GetChildren());

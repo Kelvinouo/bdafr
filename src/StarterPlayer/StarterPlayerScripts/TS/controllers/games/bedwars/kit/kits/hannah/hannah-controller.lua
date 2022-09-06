@@ -232,11 +232,11 @@ function v6.pullOutSword(p9, p10, p11)
 			CFrame = v32
 		});
 		local v33.Parent = p10.Character;
-		l__WeldUtil__23.weldCharacterAccessories(p10.Character);
+		l__WeldUtil__23:weldCharacterAccessories(p10.Character);
 	else
 		v33 = l__ReplicatedStorage__24.Assets.Effects.PirateSword:Clone();
 		v33.Parent = p10.Character;
-		l__WeldUtil__23.weldCharacterAccessories(p10.Character);
+		l__WeldUtil__23:weldCharacterAccessories(p10.Character);
 	end;
 	if v23 then
 		v23:GetMarkerReachedSignal("start"):Connect(function()

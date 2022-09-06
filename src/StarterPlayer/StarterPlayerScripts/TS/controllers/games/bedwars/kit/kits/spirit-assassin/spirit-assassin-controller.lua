@@ -125,7 +125,7 @@ function v6.playChargeAnimation(p7, p8, p9)
 	v16.Destroying:Connect(function()
 		v15:Destroy();
 	end);
-	l__WeldUtil__15.weldCharacterAccessories(p9.Character);
+	l__WeldUtil__15:weldCharacterAccessories(p9.Character);
 	if v13 ~= nil then
 		v13:AdjustSpeed(0.8);
 	end;
@@ -152,7 +152,7 @@ function v6.playChargeAnimation(p7, p8, p9)
 					v26:AddAccessory(v24);
 				end;
 			end;
-			l__WeldUtil__15.weldCharacterAccessories(p9.Character);
+			l__WeldUtil__15:weldCharacterAccessories(p9.Character);
 		end;
 	end);
 end;

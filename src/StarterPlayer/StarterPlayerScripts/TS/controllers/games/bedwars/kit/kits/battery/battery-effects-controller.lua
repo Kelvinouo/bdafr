@@ -59,7 +59,7 @@ function v5.KnitStart(p2)
 		v8:GiveTask(l__WatchPlayerCharacter__5(p5, function(p7, p8)
 			local v9 = l__ReplicatedStorage__6.Assets.Misc.Battery.battery_pack:Clone();
 			v9.Parent = p7;
-			l__WeldUtil__7.weldCharacterAccessories(p7);
+			l__WeldUtil__7:weldCharacterAccessories(p7);
 			p8:GiveTask(p7:GetAttributeChangedSignal("ActiveBatteries"):Connect(function()
 				local v10 = p7:GetAttribute("ActiveBatteries");
 				if v10 == nil then

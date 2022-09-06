@@ -39,7 +39,7 @@ function v3.func(p1, p2, p3)
 					return nil;
 				end;
 				v8.Rope.CFrame = l__UpperTorso__9.CFrame * CFrame.Angles(0, math.pi / 2, 0);
-				l__WeldUtil__5.weldParts(v8.Rope, l__UpperTorso__9);
+				l__WeldUtil__5:weldParts(v8.Rope, l__UpperTorso__9);
 			end;		
 		end;
 	end;

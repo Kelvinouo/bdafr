@@ -37,7 +37,7 @@ function v4.KnitStart(p2)
 			return nil;
 		end;
 		v6.Rope.CFrame = l__UpperTorso__7.CFrame * CFrame.Angles(0, math.pi / 2, 0);
-		l__WeldUtil__3.weldParts(v6.Rope, l__UpperTorso__7);
+		l__WeldUtil__3:weldParts(v6.Rope, l__UpperTorso__7);
 		local v8 = u4.new();
 		v8:GiveTask(v6);
 		v8:GiveTask(p3.Destroying:Connect(function()

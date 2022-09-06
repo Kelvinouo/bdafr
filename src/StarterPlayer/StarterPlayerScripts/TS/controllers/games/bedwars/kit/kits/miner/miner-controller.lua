@@ -231,7 +231,7 @@ function v7.KnitStart(p2)
 						v43 = l__ReplicatedStorage__25.Assets.Effects.MinerPickaxe:Clone();
 					end;
 					v43.Parent = p8;
-					l__WeldUtil__26.weldCharacterAccessories(p8);
+					l__WeldUtil__26:weldCharacterAccessories(p8);
 					local v44 = l__ReplicatedStorage__25.Assets.Effects.MinerStoneHit:Clone();
 					local v45 = v37.PrimaryPart;
 					if v45 ~= nil then

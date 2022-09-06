@@ -110,7 +110,7 @@ function v5.KnitStart(p2)
 				if v11 == l__GameAnimationUtil__8.getAssetId(l__AnimationType__9.SHOVEL_DIG) then
 					local v12 = l__ReplicatedStorage__2.Assets.Effects.Shovel:Clone();
 					v12.Parent = p7;
-					l__WeldUtil__16.weldCharacterAccessories(p7);
+					l__WeldUtil__16:weldCharacterAccessories(p7);
 					local v13 = l__EntityUtil__12:getEntity(p6);
 					if v13 ~= nil then
 						v13 = v13:getHandItemInstanceFromCharacter();

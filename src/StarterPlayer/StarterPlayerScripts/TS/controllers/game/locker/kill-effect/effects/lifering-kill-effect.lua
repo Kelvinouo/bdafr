@@ -97,7 +97,7 @@ function v5.onKill(p3, p4, p5, p6)
 				v18.Anchored = false;
 			end;		
 		end;
-		l__WeldUtil__8.weldParts(v8.PrimaryPart, l__PrimaryPart__11);
+		l__WeldUtil__8:weldParts(v8.PrimaryPart, l__PrimaryPart__11);
 		task.wait(2);
 		l__PrimaryPart__11.Anchored = false;
 		v14.Force = Vector3.new(0, -1000 * l__PrimaryPart__11.AssemblyMass, 0);

@@ -217,7 +217,7 @@ function v5.updateReleaseUi(p7, p8, p9, p10)
 		local v22 = l__ItemUtil__21.createItemInstance(p8, 1);
 		v22:SetAttribute("DroneAccessory", true);
 		v21:AddAccessory(v22);
-		l__WeldUtil__22.weldCharacterAccessories(p10);
+		l__WeldUtil__22:weldCharacterAccessories(p10);
 	end;
 	if p7.heldItemUIMaid then
 		p7.heldItemUIMaid:DoCleaning();

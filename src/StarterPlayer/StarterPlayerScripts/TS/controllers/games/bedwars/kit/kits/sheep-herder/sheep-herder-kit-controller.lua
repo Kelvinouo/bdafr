@@ -55,7 +55,7 @@ function v5.KnitStart(p2)
 					local v9 = u8.new();
 					local v10 = l__ReplicatedStorage__9.Assets.Effects.Crook:Clone();
 					v10.Parent = p4;
-					l__WeldUtil__10.weldCharacterAccessories(p4);
+					l__WeldUtil__10:weldCharacterAccessories(p4);
 					p6.Stopped:Connect(function()
 						v10:Destroy();
 						v9:DoCleaning();

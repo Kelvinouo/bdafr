@@ -253,7 +253,7 @@ function u1.setHeldItem(p14, p15)
 		p14.heldItem = p15;
 		p14.itemMeta = v28;
 		p14.viewmodel:FindFirstChild("Humanoid"):AddAccessory(p15);
-		l__WeldUtil__20.weldCharacterAccessories(p14.viewmodel);
+		l__WeldUtil__20:weldCharacterAccessories(p14.viewmodel);
 		local v34 = u2.new();
 		p14.heldItemMaid:GiveTask(v34);
 		local v35 = l__ClientSyncEvents__21.ViewModelItemAdded:fire(p15, v34);

@@ -256,7 +256,7 @@ function v5.KnitStart(p2)
 					end;
 					local v31 = l__ReplicatedStorage__17.Assets.Effects.RepairEnchantTableHammer:Clone();
 					v31.Parent = p9;
-					l__WeldUtil__26.weldCharacterAccessories(p9);
+					l__WeldUtil__26:weldCharacterAccessories(p9);
 					local u32 = p9 == l__Players__16.LocalPlayer.Character;
 					p11:GetMarkerReachedSignal("hammer_1"):Connect(function()
 						l__EffectUtil__18:playEffects(v25.HammerEffect:GetChildren(), nil);

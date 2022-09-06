@@ -39,7 +39,7 @@ function v5.onKill(p3, p4, p5, p6)
 		v9:SetPrimaryPartCFrame(p7);
 	end, v8, v7:GetPrimaryPartCFrame() * CFrame.new(0.076, 3.698, 0.488)):Wait();
 	v7.HumanoidRootPart.Anchored = false;
-	l__WeldUtil__5.weldPartsWithJoint(v7.HumanoidRootPart, v9.PrimaryPart, "Weld");
+	l__WeldUtil__5:weldPartsWithJoint(v7.HumanoidRootPart, v9.PrimaryPart, "Weld");
 	wait(0.5);
 	l__default__3(1, l__OutSine__4, function(p8)
 		v9:SetPrimaryPartCFrame(p8);

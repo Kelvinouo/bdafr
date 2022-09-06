@@ -83,7 +83,7 @@ function v6.KnitStart(p2)
 				v8.CFrame = CFrame.new(v16.Position, v16.Position + v16.Normal);
 			end;
 		end;
-		l__WeldUtil__5.weldParts(p3.hitPart, v8);
+		l__WeldUtil__5:weldParts(p3.hitPart, v8);
 		local v18 = false;
 		while time() - time() < 3 do
 			if v18 then

@@ -257,7 +257,7 @@ function v4.equipArmorItem(p25, p26, p27)
 		end;
 		p25:setAccessoryVisibility(p27, false);	
 	end;
-	l__WeldUtil__9.weldCharacterAccessories(p25.instance);
+	l__WeldUtil__9:weldCharacterAccessories(p25.instance);
 	if p25:isAlive() and l__Players__2.LocalPlayer.Character == p25.instance then
 		local v49 = p25.instance:FindFirstChild("ArmorInvItem_" .. tostring(p27));
 		if v49 then
@@ -311,7 +311,7 @@ function v4.equipBackpack(p30, p31)
 	if v60 ~= nil then
 		v60:AddAccessory(v59);
 	end;
-	l__WeldUtil__9.weldCharacterAccessories(p30.instance);
+	l__WeldUtil__9:weldCharacterAccessories(p30.instance);
 	if p30:isAlive() and l__Players__2.LocalPlayer.Character == p30.instance then
 		local l__Backpack__61 = p30.instance:FindFirstChild("Backpack");
 		if l__Backpack__61 then
@@ -393,7 +393,7 @@ function v4.equipItem(p33, p34)
 			end;		
 		end;
 	end;
-	l__WeldUtil__9.weldCharacterAccessories(p33.instance);
+	l__WeldUtil__9:weldCharacterAccessories(p33.instance);
 	if p33:isAlive() and l__Players__2.LocalPlayer.Character == p33.instance and p33.instance:FindFirstChild("HandInvItem") then
 		p33.instance.HandInvItem.Value = p34;
 		task.spawn(function()

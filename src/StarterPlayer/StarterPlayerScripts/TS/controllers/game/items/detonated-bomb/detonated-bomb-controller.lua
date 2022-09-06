@@ -83,7 +83,7 @@ function v4.attachBomb(p10, p11, p12, p13, p14)
 		p12 = p12 * CFrame.Angles(0, math.pi / 2, 0);
 	end;
 	v14:SetPrimaryPartCFrame(p12);
-	l__WeldUtil__4.weldParts(p11, v14.PrimaryPart);
+	l__WeldUtil__4:weldParts(p11, v14.PrimaryPart);
 	p10:registerBomb(p14, v14);
 end;
 local v16 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v4.new());
