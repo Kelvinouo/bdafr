@@ -14,17 +14,16 @@ function u1.new(...)
 	local v4 = setmetatable({}, u1);
 	return v4:constructor(...) and v4;
 end;
-local u2 = l__KnitController__2;
 function u1.constructor(p1)
-	u2.constructor(p1);
+	l__KnitController__2.constructor(p1);
 	p1.Name = "StatsController";
 end;
-local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
+local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__ClientStore__3 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function u1.KnitStart(p2)
-	l__default__3.Client:WaitFor("RemoteName"):andThen(function(p3)
+	l__default__2.Client:WaitFor("RemoteName"):andThen(function(p3)
 		local v5 = p3:CallServer();
-		l__ClientStore__4:dispatch({
+		l__ClientStore__3:dispatch({
 			type = "SetStats", 
 			globalStats = v5.globalStats, 
 			queues = v5.queues, 
@@ -32,8 +31,6 @@ function u1.KnitStart(p2)
 		});
 	end);
 end;
-u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1.new;
-u2 = u2(u1());
-u1 = nil;
-return u1;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
+u1 = u1(u1.new());
+return nil;

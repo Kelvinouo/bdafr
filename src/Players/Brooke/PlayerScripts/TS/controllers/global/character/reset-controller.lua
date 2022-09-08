@@ -15,36 +15,34 @@ function u1.new(...)
 	local v5 = setmetatable({}, u1);
 	return v5:constructor(...) and v5;
 end;
-local u2 = l__KnitController__3;
 function u1.constructor(p1, ...)
-	u2.constructor(p1, ...);
+	l__KnitController__3.constructor(p1, ...);
 	p1.Name = "ResetController";
 end;
-local l__StarterGui__3 = v2.StarterGui;
-local l__RunService__4 = v2.RunService;
+local l__StarterGui__2 = v2.StarterGui;
+local l__RunService__3 = v2.RunService;
 function u1.KnitStart(p2)
 	local v6 = u1:createBindable();
 	while not false do
-		local u5 = false;
+		local u4 = false;
 		v1.try(function()
-			l__StarterGui__3:SetCore("ResetButtonCallback", v6);
-			u5 = true;
+			l__StarterGui__2:SetCore("ResetButtonCallback", v6);
+			u4 = true;
 		end, function(p3)
 
 		end);
-		l__RunService__4.Stepped:Wait();	
+		l__RunService__3.Stepped:Wait();	
 	end;
 end;
-local l__default__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__default__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function u1.createBindable(p4)
 	local v7 = Instance.new("BindableEvent");
 	v7.Event:Connect(function()
-		l__default__6.Client:Get("RemoteName"):SendToServer();
+		l__default__5.Client:Get("RemoteName"):SendToServer();
 	end);
 	return v7;
 end;
-u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1.new;
-u2(u1());
-u2 = nil;
-return u2;
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
+u1(u1.new());
+u1 = nil;
+return u1;

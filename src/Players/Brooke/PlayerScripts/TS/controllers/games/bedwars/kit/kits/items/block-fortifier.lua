@@ -83,10 +83,16 @@ function v4.hasEnoughMaterialsToUpgrade(p9, p10)
 	if not v9 then
 		return false;
 	end;
-	for v10, v11 in ipairs(v9) do
+	local v10, v11, v12 = ipairs(v9);
+	while true do
+		v10(v11, v12);
+		if not v10 then
+			break;
+		end;
+		v12 = v10;
 		if not l__InventoryUtil__11.hasEnough(l__Players__9.LocalPlayer, v11.currency, v11.amount) then
 			return false;
-		end;
+		end;	
 	end;
 	return true;
 end;
@@ -95,30 +101,30 @@ local l__SoundManager__13 = v2.SoundManager;
 local l__GameSound__14 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function v4.playFortifyEffect(p11, p12, p13)
 	if l__Players__9.LocalPlayer:DistanceFromCharacter(l__BlockEngine__12:getWorldPosition(p13)) < 50 then
-		local v12 = {};
+		local v13 = {};
 		if l__Players__9.LocalPlayer == p12 then
-			local v13 = nil;
+			local v14 = nil;
 		else
-			v13 = l__BlockEngine__12:getWorldPosition(p13);
+			v14 = l__BlockEngine__12:getWorldPosition(p13);
 		end;
-		v12.position = v13;
-		l__SoundManager__13:playSound(l__GameSound__14.FORTIFY_BLOCK, v12);
+		v13.position = v14;
+		l__SoundManager__13:playSound(l__GameSound__14.FORTIFY_BLOCK, v13);
 	end;
 end;
 function v4.canHighlight(p14, p15)
-	local v14 = p15;
-	if v14 ~= nil then
-		v14 = v14:GetAttribute("PlacedByUserId");
+	local v15 = p15;
+	if v15 ~= nil then
+		v15 = v15:GetAttribute("PlacedByUserId");
 	end;
-	if v14 ~= 0 and v14 == v14 and v14 and v14 ~= 0 then
-		local v15 = false;
+	if v15 ~= 0 and v15 == v15 and v15 and v15 ~= 0 then
+		local v16 = false;
 		if p15 ~= nil then
-			v15 = false;
+			v16 = false;
 			if p15:GetAttribute("Fortified") ~= true then
-				v15 = l__BuilderKit__7.getFortificationCost(p15.Name) ~= nil;
+				v16 = l__BuilderKit__7.getFortificationCost(p15.Name) ~= nil;
 			end;
 		end;
-		return v15;
+		return v16;
 	end;
 	return false;
 end;
@@ -148,28 +154,28 @@ function v4.enable(p19)
 		if p21 then
 			return nil;
 		end;
-		local v16 = l__ClientBlockEngine__4:getBlockSelector():getMouseInfo(l__BlockSelectorMode__5.SELECT, {
+		local v17 = l__ClientBlockEngine__4:getBlockSelector():getMouseInfo(l__BlockSelectorMode__5.SELECT, {
 			ray = l__Workspace__19.CurrentCamera:ViewportPointToRay(p20.X, p20.Y)
 		});
-		local v17 = v16;
-		if v17 ~= nil then
-			v17 = v17.target;
+		local v18 = v17;
+		if v18 ~= nil then
+			v18 = v18.target;
 		end;
-		if v17 and p19:canHighlight(v16.target.blockInstance) and p19:hasEnoughMaterialsToUpgrade(v16.target.blockInstance.Name) then
-			p19:fortifyBlock(v16.target.blockRef.blockPosition);
+		if v18 and p19:canHighlight(v17.target.blockInstance) and p19:hasEnoughMaterialsToUpgrade(v17.target.blockInstance.Name) then
+			p19:fortifyBlock(v17.target.blockRef.blockPosition);
 		end;
 	end));
 	l__ContextActionService__20:BindAction("fortify-block", function(p22, p23, p24)
 		if p23 ~= Enum.UserInputState.Begin then
 			return nil;
 		end;
-		local v18 = l__ClientBlockEngine__4:getBlockSelector():getMouseInfo(l__BlockSelectorMode__5.SELECT);
-		local v19 = v18;
-		if v19 ~= nil then
-			v19 = v19.target;
+		local v19 = l__ClientBlockEngine__4:getBlockSelector():getMouseInfo(l__BlockSelectorMode__5.SELECT);
+		local v20 = v19;
+		if v20 ~= nil then
+			v20 = v20.target;
 		end;
-		if v19 and p19:canHighlight(v18.target.blockInstance) and p19:hasEnoughMaterialsToUpgrade(v18.target.blockInstance.Name) then
-			p19:fortifyBlock(v18.target.blockRef.blockPosition);
+		if v20 and p19:canHighlight(v19.target.blockInstance) and p19:hasEnoughMaterialsToUpgrade(v19.target.blockInstance.Name) then
+			p19:fortifyBlock(v19.target.blockRef.blockPosition);
 		end;
 	end, false, Enum.UserInputType.MouseButton1);
 	p19.maid:GiveTask(function()

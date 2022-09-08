@@ -1,47 +1,52 @@
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
-local l__HandKnitController__3 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
-local v4 = setmetatable({}, {
+local l__HandKnitController__2 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "hand-knit-controller").HandKnitController;
+local v3 = setmetatable({}, {
 	__tostring = function()
 		return "CannonHandController";
 	end, 
-	__index = l__HandKnitController__3
+	__index = l__HandKnitController__2
 });
-v4.__index = v4;
-local u1 = v4;
+v3.__index = v3;
+local u1 = v3;
 function u1.new(...)
-	local v5 = setmetatable({}, u1);
-	return v5:constructor(...) and v5;
+	local v4 = setmetatable({}, u1);
+	return v4:constructor(...) and v4;
 end;
-local u2 = l__HandKnitController__3;
 function u1.constructor(p1)
-	u2.constructor(p1);
+	l__HandKnitController__2.constructor(p1);
 	p1.Name = "CannonHandController";
 end;
 function u1.KnitStart(p2)
-	u2.KnitStart(p2);
+	l__HandKnitController__2.KnitStart(p2);
 end;
-local l__ItemType__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
+local l__ItemType__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
 function u1.isRelevantItem(p3, p4)
-	return p4.itemType == l__ItemType__3.TNT;
+	return p4.itemType == l__ItemType__2.TNT;
 end;
+local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 function u1.onEnable(p5, p6)
-	l__KnitClient__2.Controllers.CannonController:stopAiming();
+	l__KnitClient__3.Controllers.CannonController:stopAiming();
 	p5:updateAllCannonPrompts();
 end;
 function u1.onDisable(p7)
 	p7:updateAllCannonPrompts();
 end;
 function u1.updateAllCannonPrompts(p8)
-	for v6, v7 in ipairs((l__KnitClient__2.Controllers.CannonController:getCannons())) do
-		p8:updateCannonPrompts(v7);
+	local v5, v6, v7 = ipairs((l__KnitClient__3.Controllers.CannonController:getCannons()));
+	while true do
+		v5(v6, v7);
+		if not v5 then
+			break;
+		end;
+		v7 = v5;
+		p8:updateCannonPrompts(v6);	
 	end;
 end;
 local l__getItemMeta__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
 function u1.updateCannonPrompts(p9, p10)
-	if l__KnitClient__2.Controllers.CannonController:isAiming() then
+	if l__KnitClient__3.Controllers.CannonController:isAiming() then
 		p10.AimPrompt.Enabled = false;
 		p10.StopAimingPrompt.Enabled = true;
 		p10.FirePrompt.Enabled = false;
@@ -112,8 +117,6 @@ function u1.launchSelf(p13, p14)
 	end;
 	v10:ApplyImpulse(v11 * v13 * 200);
 end;
-u2 = l__KnitClient__2.CreateController;
-u1 = u1.new;
-u2 = u2(u1());
-u1 = nil;
-return u1;
+u1 = l__KnitClient__3.CreateController;
+u1 = u1(u1.new());
+return nil;

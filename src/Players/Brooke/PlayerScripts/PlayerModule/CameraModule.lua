@@ -1,431 +1,391 @@
--- Script Hash: 147c26ccd017927b8814144365aed4b5a631fe24149adfc231bce91a592a5d4fa5492586dabadb9acbaf164adeee3acb
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
 v1.__index = v1;
-local v2, v3 = pcall(function()
-	return UserSettings():IsUserFeatureEnabled("UserRemoveTheCameraApi");
-end);
-local v4, v5 = pcall(function()
-	return UserSettings():IsUserFeatureEnabled("UserFixCameraSelectModuleWarning");
-end);
-local v6, v7 = pcall(function()
-	return UserSettings():IsUserFeatureEnabled("UserFlagEnableNewVRSystem");
-end);
-local v8, v9 = pcall(function()
-	return UserSettings():IsUserFeatureEnabled("UserCameraToggleDontSetMouseBehaviorOrRotationTypeEveryFrame");
-end);
-local v10, v11 = pcall(function()
-	return UserSettings():IsUserFeatureEnabled("UserCameraControlLastInputTypeUpdate");
-end);
-local l__Players__12 = game:GetService("Players");
-local l__RunService__13 = game:GetService("RunService");
-local l__UserInputService__14 = game:GetService("UserInputService");
-local l__VRService__15 = game:GetService("VRService");
-local l__UserGameSettings__16 = UserSettings():GetService("UserGameSettings");
-local v17 = require(script:WaitForChild("CameraUtils"));
-local v18 = require(script:WaitForChild("CameraInput"));
-local v19 = require(script:WaitForChild("ClassicCamera"));
-local v20 = require(script:WaitForChild("OrbitalCamera"));
-local v21 = require(script:WaitForChild("LegacyCamera"));
-local v22 = require(script:WaitForChild("VehicleCamera"));
-local v23 = require(script:WaitForChild("VRCamera"));
-local v24 = require(script:WaitForChild("VRVehicleCamera"));
-local v25 = require(script:WaitForChild("Invisicam"));
-local v26 = require(script:WaitForChild("Poppercam"));
-local v27 = require(script:WaitForChild("TransparencyController"));
-local v28 = require(script:WaitForChild("MouseLockController"));
-local l__PlayerScripts__29 = l__Players__12.LocalPlayer:WaitForChild("PlayerScripts");
-l__PlayerScripts__29:RegisterTouchCameraMovementMode(Enum.TouchCameraMovementMode.Default);
-l__PlayerScripts__29:RegisterTouchCameraMovementMode(Enum.TouchCameraMovementMode.Follow);
-l__PlayerScripts__29:RegisterTouchCameraMovementMode(Enum.TouchCameraMovementMode.Classic);
-l__PlayerScripts__29:RegisterComputerCameraMovementMode(Enum.ComputerCameraMovementMode.Default);
-l__PlayerScripts__29:RegisterComputerCameraMovementMode(Enum.ComputerCameraMovementMode.Follow);
-l__PlayerScripts__29:RegisterComputerCameraMovementMode(Enum.ComputerCameraMovementMode.Classic);
-l__PlayerScripts__29:RegisterComputerCameraMovementMode(Enum.ComputerCameraMovementMode.CameraToggle);
+local l__Players__2 = game:GetService("Players");
+local l__RunService__3 = game:GetService("RunService");
+local l__UserInputService__4 = game:GetService("UserInputService");
+local l__VRService__5 = game:GetService("VRService");
+local l__UserGameSettings__6 = UserSettings():GetService("UserGameSettings");
+local v7 = require(script:WaitForChild("CameraUtils"));
+local v8 = require(script:WaitForChild("CameraInput"));
+local v9 = require(script:WaitForChild("ClassicCamera"));
+local v10 = require(script:WaitForChild("OrbitalCamera"));
+local v11 = require(script:WaitForChild("LegacyCamera"));
+local v12 = require(script:WaitForChild("VehicleCamera"));
+local v13 = require(script:WaitForChild("VRCamera"));
+local v14 = require(script:WaitForChild("VRVehicleCamera"));
+local v15 = require(script:WaitForChild("Invisicam"));
+local v16 = require(script:WaitForChild("Poppercam"));
+local v17 = require(script:WaitForChild("TransparencyController"));
+local v18 = require(script:WaitForChild("MouseLockController"));
+local l__PlayerScripts__19 = l__Players__2.LocalPlayer:WaitForChild("PlayerScripts");
+l__PlayerScripts__19:RegisterTouchCameraMovementMode(Enum.TouchCameraMovementMode.Default);
+l__PlayerScripts__19:RegisterTouchCameraMovementMode(Enum.TouchCameraMovementMode.Follow);
+l__PlayerScripts__19:RegisterTouchCameraMovementMode(Enum.TouchCameraMovementMode.Classic);
+l__PlayerScripts__19:RegisterComputerCameraMovementMode(Enum.ComputerCameraMovementMode.Default);
+l__PlayerScripts__19:RegisterComputerCameraMovementMode(Enum.ComputerCameraMovementMode.Follow);
+l__PlayerScripts__19:RegisterComputerCameraMovementMode(Enum.ComputerCameraMovementMode.Classic);
+l__PlayerScripts__19:RegisterComputerCameraMovementMode(Enum.ComputerCameraMovementMode.CameraToggle);
 local u1 = { "CameraMinZoomDistance", "CameraMaxZoomDistance", "CameraMode", "DevCameraOcclusionMode", "DevComputerCameraMode", "DevTouchCameraMode", "DevComputerMovementMode", "DevTouchMovementMode", "DevEnableMouseLock" };
 local u2 = { "ComputerCameraMovementMode", "ComputerMovementMode", "ControlMode", "GamepadCameraSensitivity", "MouseSensitivity", "RotationType", "TouchCameraMovementMode", "TouchMovementMode" };
-local u3 = v10 or v11;
 function v1.new()
-	local v30 = setmetatable({}, v1);
-	v30.activeCameraController = nil;
-	v30.activeOcclusionModule = nil;
-	v30.activeTransparencyController = nil;
-	v30.activeMouseLockController = nil;
-	v30.currentComputerCameraMovementMode = nil;
-	v30.cameraSubjectChangedConn = nil;
-	v30.cameraTypeChangedConn = nil;
-	for v31, v32 in pairs(l__Players__12:GetPlayers()) do
-		v30:OnPlayerAdded(v32);
+	local v20 = setmetatable({}, v1);
+	v20.activeCameraController = nil;
+	v20.activeOcclusionModule = nil;
+	v20.activeTransparencyController = nil;
+	v20.activeMouseLockController = nil;
+	v20.currentComputerCameraMovementMode = nil;
+	v20.cameraSubjectChangedConn = nil;
+	v20.cameraTypeChangedConn = nil;
+	for v21, v22 in pairs(l__Players__2:GetPlayers()) do
+		v20:OnPlayerAdded(v22);
 	end;
-	l__Players__12.PlayerAdded:Connect(function(p1)
-		v30:OnPlayerAdded(p1);
+	l__Players__2.PlayerAdded:Connect(function(p1)
+		v20:OnPlayerAdded(p1);
 	end);
-	v30.activeTransparencyController = v27.new();
-	v30.activeTransparencyController:Enable(true);
-	if not l__UserInputService__14.TouchEnabled then
-		v30.activeMouseLockController = v28.new();
-		local v33 = v30.activeMouseLockController:GetBindableToggleEvent();
-		if v33 then
-			v33:Connect(function()
-				v30:OnMouseLockToggled();
+	v20.activeTransparencyController = v17.new();
+	v20.activeTransparencyController:Enable(true);
+	if not l__UserInputService__4.TouchEnabled then
+		v20.activeMouseLockController = v18.new();
+		local v23 = v20.activeMouseLockController:GetBindableToggleEvent();
+		if v23 then
+			v23:Connect(function()
+				v20:OnMouseLockToggled();
 			end);
 		end;
 	end;
-	v30:ActivateCameraController(v30:GetCameraControlChoice());
-	v30:ActivateOcclusionModule(l__Players__12.LocalPlayer.DevCameraOcclusionMode);
-	v30:OnCurrentCameraChanged();
-	l__RunService__13:BindToRenderStep("cameraRenderUpdate", Enum.RenderPriority.Camera.Value, function(p2)
-		v30:Update(p2);
+	v20:ActivateCameraController(v20:GetCameraControlChoice());
+	v20:ActivateOcclusionModule(l__Players__2.LocalPlayer.DevCameraOcclusionMode);
+	v20:OnCurrentCameraChanged();
+	l__RunService__3:BindToRenderStep("cameraRenderUpdate", Enum.RenderPriority.Camera.Value, function(p2)
+		v20:Update(p2);
 	end);
-	for v34, v35 in pairs(u1) do
-		l__Players__12.LocalPlayer:GetPropertyChangedSignal(v35):Connect(function()
-			v30:OnLocalPlayerCameraPropertyChanged(v35);
+	for v24, v25 in pairs(u1) do
+		l__Players__2.LocalPlayer:GetPropertyChangedSignal(v25):Connect(function()
+			v20:OnLocalPlayerCameraPropertyChanged(v25);
 		end);
 	end;
-	for v36, v37 in pairs(u2) do
-		l__UserGameSettings__16:GetPropertyChangedSignal(v37):Connect(function()
-			v30:OnUserGameSettingsPropertyChanged(v37);
+	for v26, v27 in pairs(u2) do
+		l__UserGameSettings__6:GetPropertyChangedSignal(v27):Connect(function()
+			v20:OnUserGameSettingsPropertyChanged(v27);
 		end);
 	end;
 	game.Workspace:GetPropertyChangedSignal("CurrentCamera"):Connect(function()
-		v30:OnCurrentCameraChanged();
+		v20:OnCurrentCameraChanged();
 	end);
-	if not u3 then
-		v30.lastInputType = l__UserInputService__14:GetLastInputType();
-		l__UserInputService__14.LastInputTypeChanged:Connect(function(p3)
-			v30.lastInputType = p3;
-		end);
-	end;
-	return v30;
+	return v20;
 end;
-function v1.GetCameraMovementModeFromSettings(p4)
-	if l__Players__12.LocalPlayer.CameraMode == Enum.CameraMode.LockFirstPerson then
-		return v17.ConvertCameraModeEnumToStandard(Enum.ComputerCameraMovementMode.Classic);
+function v1.GetCameraMovementModeFromSettings(p3)
+	if l__Players__2.LocalPlayer.CameraMode == Enum.CameraMode.LockFirstPerson then
+		return v7.ConvertCameraModeEnumToStandard(Enum.ComputerCameraMovementMode.Classic);
 	end;
-	if l__UserInputService__14.TouchEnabled then
-		local v38 = v17.ConvertCameraModeEnumToStandard(l__Players__12.LocalPlayer.DevTouchCameraMode);
-		local v39 = v17.ConvertCameraModeEnumToStandard(l__UserGameSettings__16.TouchCameraMovementMode);
+	if l__UserInputService__4.TouchEnabled then
+		local v28 = v7.ConvertCameraModeEnumToStandard(l__Players__2.LocalPlayer.DevTouchCameraMode);
+		local v29 = v7.ConvertCameraModeEnumToStandard(l__UserGameSettings__6.TouchCameraMovementMode);
 	else
-		v38 = v17.ConvertCameraModeEnumToStandard(l__Players__12.LocalPlayer.DevComputerCameraMode);
-		v39 = v17.ConvertCameraModeEnumToStandard(l__UserGameSettings__16.ComputerCameraMovementMode);
+		v28 = v7.ConvertCameraModeEnumToStandard(l__Players__2.LocalPlayer.DevComputerCameraMode);
+		v29 = v7.ConvertCameraModeEnumToStandard(l__UserGameSettings__6.ComputerCameraMovementMode);
 	end;
-	if v38 == Enum.DevComputerCameraMovementMode.UserChoice then
-		return v39;
+	if v28 == Enum.DevComputerCameraMovementMode.UserChoice then
+		return v29;
 	end;
-	return v38;
+	return v28;
 end;
-local u4 = {};
-function v1.ActivateOcclusionModule(p5, p6)
-	if p6 == Enum.DevCameraOcclusionMode.Zoom then
-		local v40 = v26;
+local u3 = {};
+function v1.ActivateOcclusionModule(p4, p5)
+	if p5 == Enum.DevCameraOcclusionMode.Zoom then
+		local v30 = v16;
 	else
-		if p6 ~= Enum.DevCameraOcclusionMode.Invisicam then
+		if p5 ~= Enum.DevCameraOcclusionMode.Invisicam then
 			warn("CameraScript ActivateOcclusionModule called with unsupported mode");
 			return;
 		end;
-		v40 = v25;
+		v30 = v15;
 	end;
-	p5.occlusionMode = p6;
-	if p5.activeOcclusionModule and p5.activeOcclusionModule:GetOcclusionMode() == p6 then
-		if not p5.activeOcclusionModule:GetEnabled() then
-			p5.activeOcclusionModule:Enable(true);
+	p4.occlusionMode = p5;
+	if p4.activeOcclusionModule and p4.activeOcclusionModule:GetOcclusionMode() == p5 then
+		if not p4.activeOcclusionModule:GetEnabled() then
+			p4.activeOcclusionModule:Enable(true);
 		end;
 		return;
 	end;
-	local l__activeOcclusionModule__41 = p5.activeOcclusionModule;
-	p5.activeOcclusionModule = u4[v40];
-	if not p5.activeOcclusionModule then
-		p5.activeOcclusionModule = v40.new();
-		if p5.activeOcclusionModule then
-			u4[v40] = p5.activeOcclusionModule;
+	local l__activeOcclusionModule__31 = p4.activeOcclusionModule;
+	p4.activeOcclusionModule = u3[v30];
+	if not p4.activeOcclusionModule then
+		p4.activeOcclusionModule = v30.new();
+		if p4.activeOcclusionModule then
+			u3[v30] = p4.activeOcclusionModule;
 		end;
 	end;
-	if p5.activeOcclusionModule then
-		if p5.activeOcclusionModule:GetOcclusionMode() ~= p6 then
-			warn("CameraScript ActivateOcclusionModule mismatch: ", p5.activeOcclusionModule:GetOcclusionMode(), "~=", p6);
+	if p4.activeOcclusionModule then
+		if p4.activeOcclusionModule:GetOcclusionMode() ~= p5 then
+			warn("CameraScript ActivateOcclusionModule mismatch: ", p4.activeOcclusionModule:GetOcclusionMode(), "~=", p5);
 		end;
-		if l__activeOcclusionModule__41 then
-			if l__activeOcclusionModule__41 ~= p5.activeOcclusionModule then
-				l__activeOcclusionModule__41:Enable(false);
+		if l__activeOcclusionModule__31 then
+			if l__activeOcclusionModule__31 ~= p4.activeOcclusionModule then
+				l__activeOcclusionModule__31:Enable(false);
 			else
 				warn("CameraScript ActivateOcclusionModule failure to detect already running correct module");
 			end;
 		end;
-		if p6 == Enum.DevCameraOcclusionMode.Invisicam then
-			if l__Players__12.LocalPlayer.Character then
-				p5.activeOcclusionModule:CharacterAdded(l__Players__12.LocalPlayer.Character, l__Players__12.LocalPlayer);
+		if p5 == Enum.DevCameraOcclusionMode.Invisicam then
+			if l__Players__2.LocalPlayer.Character then
+				p4.activeOcclusionModule:CharacterAdded(l__Players__2.LocalPlayer.Character, l__Players__2.LocalPlayer);
 			end;
 		else
-			for v42, v43 in pairs(l__Players__12:GetPlayers()) do
-				if v43 and v43.Character then
-					p5.activeOcclusionModule:CharacterAdded(v43.Character, v43);
+			for v32, v33 in pairs(l__Players__2:GetPlayers()) do
+				if v33 and v33.Character then
+					p4.activeOcclusionModule:CharacterAdded(v33.Character, v33);
 				end;
 			end;
-			p5.activeOcclusionModule:OnCameraSubjectChanged(game.Workspace.CurrentCamera.CameraSubject);
+			p4.activeOcclusionModule:OnCameraSubjectChanged(game.Workspace.CurrentCamera.CameraSubject);
 		end;
-		p5.activeOcclusionModule:Enable(true);
+		p4.activeOcclusionModule:Enable(true);
 	end;
 end;
-function v1.ShouldUseVehicleCamera(p7)
-	local l__CurrentCamera__44 = workspace.CurrentCamera;
-	if not l__CurrentCamera__44 then
+function v1.ShouldUseVehicleCamera(p6)
+	local l__CurrentCamera__34 = workspace.CurrentCamera;
+	if not l__CurrentCamera__34 then
 		return false;
 	end;
-	local l__CameraType__45 = l__CurrentCamera__44.CameraType;
-	local l__CameraSubject__46 = l__CurrentCamera__44.CameraSubject;
-	local v47 = true;
-	if l__CameraType__45 ~= Enum.CameraType.Custom then
-		v47 = l__CameraType__45 == Enum.CameraType.Follow;
+	local l__CameraType__35 = l__CurrentCamera__34.CameraType;
+	local l__CameraSubject__36 = l__CurrentCamera__34.CameraSubject;
+	local v37 = true;
+	if l__CameraType__35 ~= Enum.CameraType.Custom then
+		v37 = l__CameraType__35 == Enum.CameraType.Follow;
 	end;
-	return (l__CameraSubject__46 and l__CameraSubject__46:IsA("VehicleSeat") or false) and (v47 and p7.occlusionMode ~= Enum.DevCameraOcclusionMode.Invisicam);
+	return (l__CameraSubject__36 and l__CameraSubject__36:IsA("VehicleSeat") or false) and (v37 and p6.occlusionMode ~= Enum.DevCameraOcclusionMode.Invisicam);
 end;
-local u5 = v4 or v5;
-local u6 = v6 or v7;
-local u7 = {};
-function v1.ActivateCameraController(p8, p9, p10)
-	local v48 = nil;
-	if p10 ~= nil then
-		if p10 == Enum.CameraType.Scriptable then
-			if u5 then
-				if p8.activeCameraController then
-					p8.activeCameraController:Enable(false);
-					p8.activeCameraController = nil;
-				end;
-				return;
+local u4 = {};
+function v1.ActivateCameraController(p7, p8, p9)
+	local v38 = nil;
+	if p9 ~= nil then
+		if p9 == Enum.CameraType.Scriptable then
+			if p7.activeCameraController then
+				p7.activeCameraController:Enable(false);
+				p7.activeCameraController = nil;
 			end;
-			if p8.activeCameraController then
-				p8.activeCameraController:Enable(false);
-				p8.activeCameraController = nil;
-				return;
-			end;
-		elseif p10 == Enum.CameraType.Custom then
-			p9 = p8:GetCameraMovementModeFromSettings();
-		elseif p10 == Enum.CameraType.Track then
-			p9 = Enum.ComputerCameraMovementMode.Classic;
-		elseif p10 == Enum.CameraType.Follow then
-			p9 = Enum.ComputerCameraMovementMode.Follow;
-		elseif p10 == Enum.CameraType.Orbital then
-			p9 = Enum.ComputerCameraMovementMode.Orbital;
-		elseif p10 == Enum.CameraType.Attach or p10 == Enum.CameraType.Watch or p10 == Enum.CameraType.Fixed then
-			v48 = v21;
+			return;
+		end;
+		if p9 == Enum.CameraType.Custom then
+			p8 = p7:GetCameraMovementModeFromSettings();
+		elseif p9 == Enum.CameraType.Track then
+			p8 = Enum.ComputerCameraMovementMode.Classic;
+		elseif p9 == Enum.CameraType.Follow then
+			p8 = Enum.ComputerCameraMovementMode.Follow;
+		elseif p9 == Enum.CameraType.Orbital then
+			p8 = Enum.ComputerCameraMovementMode.Orbital;
+		elseif p9 == Enum.CameraType.Attach or p9 == Enum.CameraType.Watch or p9 == Enum.CameraType.Fixed then
+			v38 = v11;
 		else
-			warn("CameraScript encountered an unhandled Camera.CameraType value: ", p10);
+			warn("CameraScript encountered an unhandled Camera.CameraType value: ", p9);
 		end;
 	end;
-	if not v48 then
-		if u6 and l__VRService__15.VREnabled then
-			v48 = v23;
-		elseif p9 == Enum.ComputerCameraMovementMode.Classic or p9 == Enum.ComputerCameraMovementMode.Follow or p9 == Enum.ComputerCameraMovementMode.Default or p9 == Enum.ComputerCameraMovementMode.CameraToggle then
-			v48 = v19;
+	if not v38 then
+		if l__VRService__5.VREnabled then
+			v38 = v13;
+		elseif p8 == Enum.ComputerCameraMovementMode.Classic or p8 == Enum.ComputerCameraMovementMode.Follow or p8 == Enum.ComputerCameraMovementMode.Default or p8 == Enum.ComputerCameraMovementMode.CameraToggle then
+			v38 = v9;
 		else
-			if p9 ~= Enum.ComputerCameraMovementMode.Orbital then
+			if p8 ~= Enum.ComputerCameraMovementMode.Orbital then
 				warn("ActivateCameraController did not select a module.");
 				return;
 			end;
-			v48 = v20;
+			v38 = v10;
 		end;
 	end;
-	if p8:ShouldUseVehicleCamera() then
-		if u6 and l__VRService__15.VREnabled then
-			v48 = v24;
+	if p7:ShouldUseVehicleCamera() then
+		if l__VRService__5.VREnabled then
+			v38 = v14;
 		else
-			v48 = v22;
+			v38 = v12;
 		end;
 	end;
-	if not u7[v48] then
-		local v49 = v48.new();
-		u7[v48] = v49;
+	if not u4[v38] then
+		local v39 = v38.new();
+		u4[v38] = v39;
 	else
-		v49 = u7[v48];
-		if v49.Reset then
-			v49:Reset();
+		v39 = u4[v38];
+		if v39.Reset then
+			v39:Reset();
 		end;
 	end;
-	if p8.activeCameraController then
-		if p8.activeCameraController ~= v49 then
-			p8.activeCameraController:Enable(false);
-			p8.activeCameraController = v49;
-			p8.activeCameraController:Enable(true);
-		elseif not p8.activeCameraController:GetEnabled() then
-			p8.activeCameraController:Enable(true);
+	if p7.activeCameraController then
+		if p7.activeCameraController ~= v39 then
+			p7.activeCameraController:Enable(false);
+			p7.activeCameraController = v39;
+			p7.activeCameraController:Enable(true);
+		elseif not p7.activeCameraController:GetEnabled() then
+			p7.activeCameraController:Enable(true);
 		end;
-	elseif v49 ~= nil then
-		p8.activeCameraController = v49;
-		p8.activeCameraController:Enable(true);
+	elseif v39 ~= nil then
+		p7.activeCameraController = v39;
+		p7.activeCameraController:Enable(true);
 	end;
-	if p8.activeCameraController then
-		if p9 == nil then
-			if p10 ~= nil then
-				p8.activeCameraController:SetCameraType(p10);
+	if p7.activeCameraController then
+		if p8 == nil then
+			if p9 ~= nil then
+				p7.activeCameraController:SetCameraType(p9);
 			end;
 			return;
 		end;
 	else
 		return;
 	end;
-	p8.activeCameraController:SetCameraMovementMode(p9);
+	p7.activeCameraController:SetCameraMovementMode(p8);
 end;
-function v1.OnCameraSubjectChanged(p11)
-	local l__CurrentCamera__50 = workspace.CurrentCamera;
-	local v51 = l__CurrentCamera__50 and l__CurrentCamera__50.CameraSubject;
-	if p11.activeTransparencyController then
-		p11.activeTransparencyController:SetSubject(v51);
+function v1.OnCameraSubjectChanged(p10)
+	local l__CurrentCamera__40 = workspace.CurrentCamera;
+	local v41 = l__CurrentCamera__40 and l__CurrentCamera__40.CameraSubject;
+	if p10.activeTransparencyController then
+		p10.activeTransparencyController:SetSubject(v41);
 	end;
-	if p11.activeOcclusionModule then
-		p11.activeOcclusionModule:OnCameraSubjectChanged(v51);
+	if p10.activeOcclusionModule then
+		p10.activeOcclusionModule:OnCameraSubjectChanged(v41);
 	end;
-	p11:ActivateCameraController(nil, l__CurrentCamera__50.CameraType);
+	p10:ActivateCameraController(nil, l__CurrentCamera__40.CameraType);
 end;
-local u8 = v8 or v9;
-function v1.OnCameraTypeChanged(p12, p13)
-	if p13 == Enum.CameraType.Scriptable and l__UserInputService__14.MouseBehavior == Enum.MouseBehavior.LockCenter then
-		if u8 then
-			v17.restoreMouseBehavior();
-		else
-			l__UserInputService__14.MouseBehavior = Enum.MouseBehavior.Default;
-		end;
+function v1.OnCameraTypeChanged(p11, p12)
+	if p12 == Enum.CameraType.Scriptable and l__UserInputService__4.MouseBehavior == Enum.MouseBehavior.LockCenter then
+		v7.restoreMouseBehavior();
 	end;
-	p12:ActivateCameraController(nil, p13);
+	p11:ActivateCameraController(nil, p12);
 end;
-function v1.OnCurrentCameraChanged(p14)
-	local l__CurrentCamera__52 = game.Workspace.CurrentCamera;
-	if not l__CurrentCamera__52 then
+function v1.OnCurrentCameraChanged(p13)
+	local l__CurrentCamera__42 = game.Workspace.CurrentCamera;
+	if not l__CurrentCamera__42 then
 		return;
 	end;
-	if p14.cameraSubjectChangedConn then
-		p14.cameraSubjectChangedConn:Disconnect();
+	if p13.cameraSubjectChangedConn then
+		p13.cameraSubjectChangedConn:Disconnect();
 	end;
-	if p14.cameraTypeChangedConn then
-		p14.cameraTypeChangedConn:Disconnect();
+	if p13.cameraTypeChangedConn then
+		p13.cameraTypeChangedConn:Disconnect();
 	end;
-	p14.cameraSubjectChangedConn = l__CurrentCamera__52:GetPropertyChangedSignal("CameraSubject"):Connect(function()
-		p14:OnCameraSubjectChanged(l__CurrentCamera__52.CameraSubject);
+	p13.cameraSubjectChangedConn = l__CurrentCamera__42:GetPropertyChangedSignal("CameraSubject"):Connect(function()
+		p13:OnCameraSubjectChanged(l__CurrentCamera__42.CameraSubject);
 	end);
-	p14.cameraTypeChangedConn = l__CurrentCamera__52:GetPropertyChangedSignal("CameraType"):Connect(function()
-		p14:OnCameraTypeChanged(l__CurrentCamera__52.CameraType);
+	p13.cameraTypeChangedConn = l__CurrentCamera__42:GetPropertyChangedSignal("CameraType"):Connect(function()
+		p13:OnCameraTypeChanged(l__CurrentCamera__42.CameraType);
 	end);
-	p14:OnCameraSubjectChanged(l__CurrentCamera__52.CameraSubject);
-	p14:OnCameraTypeChanged(l__CurrentCamera__52.CameraType);
+	p13:OnCameraSubjectChanged(l__CurrentCamera__42.CameraSubject);
+	p13:OnCameraTypeChanged(l__CurrentCamera__42.CameraType);
 end;
-function v1.OnLocalPlayerCameraPropertyChanged(p15, p16)
-	if p16 == "CameraMode" then
-		if l__Players__12.LocalPlayer.CameraMode ~= Enum.CameraMode.LockFirstPerson then
-			if l__Players__12.LocalPlayer.CameraMode == Enum.CameraMode.Classic then
-				p15:ActivateCameraController(v17.ConvertCameraModeEnumToStandard((p15:GetCameraMovementModeFromSettings())));
+function v1.OnLocalPlayerCameraPropertyChanged(p14, p15)
+	if p15 == "CameraMode" then
+		if l__Players__2.LocalPlayer.CameraMode ~= Enum.CameraMode.LockFirstPerson then
+			if l__Players__2.LocalPlayer.CameraMode == Enum.CameraMode.Classic then
+				p14:ActivateCameraController(v7.ConvertCameraModeEnumToStandard((p14:GetCameraMovementModeFromSettings())));
 				return;
 			else
-				warn("Unhandled value for property player.CameraMode: ", l__Players__12.LocalPlayer.CameraMode);
+				warn("Unhandled value for property player.CameraMode: ", l__Players__2.LocalPlayer.CameraMode);
 				return;
 			end;
 		end;
-		if not p15.activeCameraController or p15.activeCameraController:GetModuleName() ~= "ClassicCamera" then
-			p15:ActivateCameraController(v17.ConvertCameraModeEnumToStandard(Enum.DevComputerCameraMovementMode.Classic));
+		if not p14.activeCameraController or p14.activeCameraController:GetModuleName() ~= "ClassicCamera" then
+			p14:ActivateCameraController(v7.ConvertCameraModeEnumToStandard(Enum.DevComputerCameraMovementMode.Classic));
 		end;
-		if p15.activeCameraController then
-			p15.activeCameraController:UpdateForDistancePropertyChange();
+		if p14.activeCameraController then
+			p14.activeCameraController:UpdateForDistancePropertyChange();
 			return;
 		end;
 	else
-		if p16 == "DevComputerCameraMode" or p16 == "DevTouchCameraMode" then
-			p15:ActivateCameraController(v17.ConvertCameraModeEnumToStandard((p15:GetCameraMovementModeFromSettings())));
+		if p15 == "DevComputerCameraMode" or p15 == "DevTouchCameraMode" then
+			p14:ActivateCameraController(v7.ConvertCameraModeEnumToStandard((p14:GetCameraMovementModeFromSettings())));
 			return;
 		end;
-		if p16 == "DevCameraOcclusionMode" then
-			p15:ActivateOcclusionModule(l__Players__12.LocalPlayer.DevCameraOcclusionMode);
+		if p15 == "DevCameraOcclusionMode" then
+			p14:ActivateOcclusionModule(l__Players__2.LocalPlayer.DevCameraOcclusionMode);
 			return;
 		end;
-		if p16 == "CameraMinZoomDistance" or p16 == "CameraMaxZoomDistance" then
-			if p15.activeCameraController then
-				p15.activeCameraController:UpdateForDistancePropertyChange();
+		if p15 == "CameraMinZoomDistance" or p15 == "CameraMaxZoomDistance" then
+			if p14.activeCameraController then
+				p14.activeCameraController:UpdateForDistancePropertyChange();
 				return;
 			end;
 		else
-			if p16 == "DevTouchMovementMode" then
+			if p15 == "DevTouchMovementMode" then
 				return;
 			end;
-			if p16 == "DevComputerMovementMode" then
+			if p15 == "DevComputerMovementMode" then
 				return;
 			end;
-			if p16 == "DevEnableMouseLock" then
+			if p15 == "DevEnableMouseLock" then
 
 			end;
 		end;
 	end;
 end;
-function v1.OnUserGameSettingsPropertyChanged(p17, p18)
-	if p18 == "ComputerCameraMovementMode" then
-		p17:ActivateCameraController(v17.ConvertCameraModeEnumToStandard((p17:GetCameraMovementModeFromSettings())));
+function v1.OnUserGameSettingsPropertyChanged(p16, p17)
+	if p17 == "ComputerCameraMovementMode" then
+		p16:ActivateCameraController(v7.ConvertCameraModeEnumToStandard((p16:GetCameraMovementModeFromSettings())));
 	end;
 end;
-function v1.Update(p19, p20)
-	if p19.activeCameraController then
-		p19.activeCameraController:UpdateMouseBehavior();
-		local v53, v54 = p19.activeCameraController:Update(p20);
-		if not u6 then
-			p19.activeCameraController:ApplyVRTransform();
+function v1.Update(p18, p19)
+	if p18.activeCameraController then
+		p18.activeCameraController:UpdateMouseBehavior();
+		local v43, v44 = p18.activeCameraController:Update(p19);
+		if p18.activeOcclusionModule then
+			local v45, v46 = p18.activeOcclusionModule:Update(p19, v43, v44);
+			v43 = v45;
+			v44 = v46;
 		end;
-		if p19.activeOcclusionModule then
-			local v55, v56 = p19.activeOcclusionModule:Update(p20, v53, v54);
-			v53 = v55;
-			v54 = v56;
+		local l__CurrentCamera__47 = game.Workspace.CurrentCamera;
+		l__CurrentCamera__47.CFrame = v43;
+		l__CurrentCamera__47.Focus = v44;
+		if p18.activeTransparencyController then
+			p18.activeTransparencyController:Update(p19);
 		end;
-		game.Workspace.CurrentCamera.CFrame = v53;
-		game.Workspace.CurrentCamera.Focus = v54;
-		if p19.activeTransparencyController then
-			p19.activeTransparencyController:Update();
-		end;
-		if v18.getInputEnabled() then
-			v18.resetInputForFrameEnd();
+		if v8.getInputEnabled() then
+			v8.resetInputForFrameEnd();
 		end;
 	end;
 end;
-function v1.GetCameraControlChoice(p21)
-	local l__LocalPlayer__57 = l__Players__12.LocalPlayer;
-	if not l__LocalPlayer__57 then
+function v1.GetCameraControlChoice(p20)
+	local l__LocalPlayer__48 = l__Players__2.LocalPlayer;
+	if not l__LocalPlayer__48 then
 		return;
 	end;
-	if (not u3 or l__UserInputService__14:GetLastInputType() ~= Enum.UserInputType.Touch) and (u3 or p21.lastInputType ~= Enum.UserInputType.Touch) and not l__UserInputService__14.TouchEnabled then
-		if l__LocalPlayer__57.DevComputerCameraMode == Enum.DevComputerCameraMovementMode.UserChoice then
-			return v17.ConvertCameraModeEnumToStandard((v17.ConvertCameraModeEnumToStandard(l__UserGameSettings__16.ComputerCameraMovementMode)));
+	if l__UserInputService__4:GetLastInputType() == Enum.UserInputType.Touch or l__UserInputService__4.TouchEnabled then
+		if l__LocalPlayer__48.DevTouchCameraMode == Enum.DevTouchCameraMovementMode.UserChoice then
+			return v7.ConvertCameraModeEnumToStandard(l__UserGameSettings__6.TouchCameraMovementMode);
 		else
-			return v17.ConvertCameraModeEnumToStandard(l__LocalPlayer__57.DevComputerCameraMode);
+			return v7.ConvertCameraModeEnumToStandard(l__LocalPlayer__48.DevTouchCameraMode);
 		end;
 	end;
-	if l__LocalPlayer__57.DevTouchCameraMode == Enum.DevTouchCameraMovementMode.UserChoice then
-		return v17.ConvertCameraModeEnumToStandard(l__UserGameSettings__16.TouchCameraMovementMode);
+	if l__LocalPlayer__48.DevComputerCameraMode ~= Enum.DevComputerCameraMovementMode.UserChoice then
+		return v7.ConvertCameraModeEnumToStandard(l__LocalPlayer__48.DevComputerCameraMode);
 	end;
-	return v17.ConvertCameraModeEnumToStandard(l__LocalPlayer__57.DevTouchCameraMode);
+	return v7.ConvertCameraModeEnumToStandard((v7.ConvertCameraModeEnumToStandard(l__UserGameSettings__6.ComputerCameraMovementMode)));
 end;
-function v1.OnCharacterAdded(p22, p23, p24)
-	if p22.activeOcclusionModule then
-		p22.activeOcclusionModule:CharacterAdded(p23, p24);
-	end;
-end;
-function v1.OnCharacterRemoving(p25, p26, p27)
-	if p25.activeOcclusionModule then
-		p25.activeOcclusionModule:CharacterRemoving(p26, p27);
+function v1.OnCharacterAdded(p21, p22, p23)
+	if p21.activeOcclusionModule then
+		p21.activeOcclusionModule:CharacterAdded(p22, p23);
 	end;
 end;
-function v1.OnPlayerAdded(p28, p29)
-	p29.CharacterAdded:Connect(function(p30)
-		p28:OnCharacterAdded(p30, p29);
+function v1.OnCharacterRemoving(p24, p25, p26)
+	if p24.activeOcclusionModule then
+		p24.activeOcclusionModule:CharacterRemoving(p25, p26);
+	end;
+end;
+function v1.OnPlayerAdded(p27, p28)
+	p28.CharacterAdded:Connect(function(p29)
+		p27:OnCharacterAdded(p29, p28);
 	end);
-	p29.CharacterRemoving:Connect(function(p31)
-		p28:OnCharacterRemoving(p31, p29);
+	p28.CharacterRemoving:Connect(function(p30)
+		p27:OnCharacterRemoving(p30, p28);
 	end);
 end;
-function v1.OnMouseLockToggled(p32)
-	if p32.activeMouseLockController then
-		local v58 = p32.activeMouseLockController:GetIsMouseLocked();
-		local v59 = p32.activeMouseLockController:GetMouseLockOffset();
-		if p32.activeCameraController then
-			p32.activeCameraController:SetIsMouseLocked(v58);
-			p32.activeCameraController:SetMouseLockOffset(v59);
+function v1.OnMouseLockToggled(p31)
+	if p31.activeMouseLockController then
+		local v49 = p31.activeMouseLockController:GetIsMouseLocked();
+		local v50 = p31.activeMouseLockController:GetMouseLockOffset();
+		if p31.activeCameraController then
+			p31.activeCameraController:SetIsMouseLocked(v49);
+			p31.activeCameraController:SetMouseLockOffset(v50);
 		end;
 	end;
 end;
-if v2 or v3 then
-	return {};
-end;
-return v1.new();
+local v51 = v1.new();
+return {};

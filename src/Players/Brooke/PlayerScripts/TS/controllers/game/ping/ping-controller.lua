@@ -109,15 +109,15 @@ function v7.createIndicator(p8, p9, p10)
 		local u21 = u20(p12);
 		local v18, v19, v20 = ipairs((p11:GetDescendants()));
 		while true do
-			local v21, v22 = v18(v19, v20);
-			if not v21 then
+			v18(v19, v20);
+			if not v18 then
 				break;
 			end;
-			if v22:IsA("TextLabel") then
-				v22.TextTransparency = u21;
+			if v19:IsA("TextLabel") then
+				v19.TextTransparency = u21;
 			end;
-			if v22:IsA("ImageLabel") then
-				v22.ImageTransparency = u21;
+			if v19:IsA("ImageLabel") then
+				v19.ImageTransparency = u21;
 			end;		
 		end;
 		return u21;
@@ -127,22 +127,22 @@ function v7.createIndicator(p8, p9, p10)
 	v17.scaleOnFade = false;
 	v17.easeOutOnAppoach = false;
 	function v17.onEnterAnimation(p14)
-		local v23 = p14:FindFirstChild("PingIcon");
-		if v23 ~= nil then
-			v23 = v23:Clone();
+		local v21 = p14:FindFirstChild("PingIcon");
+		if v21 ~= nil then
+			v21 = v21:Clone();
 		end;
-		if not v23 then
+		if not v21 then
 			return nil;
 		end;
-		v23.Parent = p14;
-		local v24 = l__TweenService__18:Create(v23, TweenInfo.new(0.15), {
+		v21.Parent = p14;
+		local v22 = l__TweenService__18:Create(v21, TweenInfo.new(0.15), {
 			Size = UDim2.fromScale(1.5, 1.5), 
 			ImageTransparency = 1
 		});
-		v24:Play();
-		v24.Completed:Connect(function()
-			v24:Destroy();
-			v23:Destroy();
+		v22:Play();
+		v22.Completed:Connect(function()
+			v22:Destroy();
+			v21:Destroy();
 		end);
 	end;
 	v16.uiConfig = v17;
@@ -150,23 +150,23 @@ function v7.createIndicator(p8, p9, p10)
 	v16.attachTo = p9;
 	v16.constraintType = l__ConstraintType__19.Constrained;
 	function v16.onUpdateProperties(p15, p16, p17, p18, p19)
+		local v23 = p18:FindFirstChild("Container");
+		if v23 ~= nil then
+			v23 = v23:FindFirstChild("PingCreatorAvatar");
+		end;
+		if v23 and p19 then
+			local v24 = p19;
+			if v24 ~= nil then
+				v24 = v24.UserId;
+			end;
+			v23.Image = l__Players__8:GetUserThumbnailAsync(v24, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size352x352);
+		end;
 		local v25 = p18:FindFirstChild("Container");
 		if v25 ~= nil then
-			v25 = v25:FindFirstChild("PingCreatorAvatar");
+			v25 = v25:FindFirstChild("DistanceTracker");
 		end;
-		if v25 and p19 then
-			local v26 = p19;
-			if v26 ~= nil then
-				v26 = v26.UserId;
-			end;
-			v25.Image = l__Players__8:GetUserThumbnailAsync(v26, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size352x352);
-		end;
-		local v27 = p18:FindFirstChild("Container");
-		if v27 ~= nil then
-			v27 = v27:FindFirstChild("DistanceTracker");
-		end;
-		if v27 then
-			v27.Text = "<b>" .. l__StringUtil__13.roundNumber(p15 / 3, 0) .. "m</b>";
+		if v25 then
+			v25.Text = "<b>" .. l__StringUtil__13.roundNumber(p15 / 3, 0) .. "m</b>";
 		end;
 	end;
 	local u22 = l__Flamework__15.resolveDependency("@easy-games/game-core:client/controllers/indicators/world-indicator-controller@WorldIndicatorController"):addIndicator(v16);

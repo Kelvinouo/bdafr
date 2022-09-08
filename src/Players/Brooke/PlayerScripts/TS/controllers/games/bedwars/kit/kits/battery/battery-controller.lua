@@ -14,28 +14,27 @@ function v4.new(...)
 	local v5 = setmetatable({}, v4);
 	return v5:constructor(...) and v5;
 end;
-local u1 = l__KnitController__3;
-local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v4.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__3.constructor(p1);
 	p1.Name = "BatteryController";
-	p1.maid = u2.new();
+	p1.maid = u1.new();
 end;
-local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
-local l__BedwarsKit__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
-local l__RunService__5 = v2.RunService;
-local l__Players__6 = v2.Players;
-local l__Workspace__7 = v2.Workspace;
-local l__default__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
+local l__BedwarsKit__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
+local l__RunService__4 = v2.RunService;
+local l__Players__5 = v2.Players;
+local l__Workspace__6 = v2.Workspace;
+local l__default__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function v4.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__KnitClient__3.Controllers.KitController:watchLocalKit(function(p3)
+	l__KnitController__3.KnitStart(p2);
+	l__KnitClient__2.Controllers.KitController:watchLocalKit(function(p3)
 		p2.maid:DoCleaning();
-		if p3 ~= l__BedwarsKit__4.BATTERY then
+		if p3 ~= l__BedwarsKit__3.BATTERY then
 			return nil;
 		end;
-		p2.maid:GiveTask(l__RunService__5.Heartbeat:Connect(function()
-			local v6 = l__Players__6.LocalPlayer.Character;
+		p2.maid:GiveTask(l__RunService__4.Heartbeat:Connect(function()
+			local v6 = l__Players__5.LocalPlayer.Character;
 			if v6 ~= nil then
 				v6 = v6.PrimaryPart;
 			end;
@@ -44,24 +43,29 @@ function v4.KnitStart(p2)
 			end;
 			local v7 = OverlapParams.new();
 			v7.MaxParts = 0;
-			for v8, v9 in ipairs((l__Workspace__7:GetPartBoundsInRadius(l__Players__6.LocalPlayer.Character:GetPrimaryPartCFrame().Position, 6, v7))) do
+			local v8, v9, v10 = ipairs((l__Workspace__6:GetPartBoundsInRadius(l__Players__5.LocalPlayer.Character:GetPrimaryPartCFrame().Position, 6, v7)));
+			while true do
+				v8(v9, v10);
+				if not v8 then
+					break;
+				end;
+				v10 = v8;
 				if v9:IsA("BasePart") then
-					local v10 = l__KnitClient__3.Controllers.BatteryEffectsController:getBatteryIdFromPart(v9);
-					if v10 ~= 0 and v10 == v10 and v10 then
-						local v11 = l__KnitClient__3.Controllers.BatteryEffectsController:getBatteryInfo(v10);
-						if v11 and v11.activateTime < l__Workspace__7:GetServerTimeNow() and v11.consumeTime + 0.5 < l__Workspace__7:GetServerTimeNow() then
-							v11.consumeTime = l__Workspace__7:GetServerTimeNow();
-							l__default__8.Client:Get("RemoteName"):SendToServer({
-								batteryId = v10
+					local v11 = l__KnitClient__2.Controllers.BatteryEffectsController:getBatteryIdFromPart(v9);
+					if v11 ~= 0 and v11 == v11 and v11 then
+						local v12 = l__KnitClient__2.Controllers.BatteryEffectsController:getBatteryInfo(v11);
+						if v12 and v12.activateTime < l__Workspace__6:GetServerTimeNow() and v12.consumeTime + 0.5 < l__Workspace__6:GetServerTimeNow() then
+							v12.consumeTime = l__Workspace__6:GetServerTimeNow();
+							l__default__7.Client:Get("RemoteName"):SendToServer({
+								batteryId = v11
 							});
 							return;
 						end;
 					end;
-				end;
+				end;			
 			end;
 		end));
 	end);
 end;
-u1 = l__KnitClient__3.CreateController;
-u1 = u1(v4.new());
+local v13 = l__KnitClient__2.CreateController(v4.new());
 return nil;

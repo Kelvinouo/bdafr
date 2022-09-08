@@ -1,4 +1,3 @@
--- Script Hash: feb690316cbacef01aa273565758888720e9d325025db68096f46cf3803422e9c7db9e2a88f07e7d542e6b3b9a63a194
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1, v2 = pcall(function()

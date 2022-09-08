@@ -1,437 +1,354 @@
 -- Decompiled with the Synapse X Luau decompiler.
 
-local v1 = nil;
-local l__Players__2 = game:GetService("Players");
-local l__RunService__3 = game:GetService("RunService");
-local v4 = require(script:WaitForChild("AtomicBinding"));
-local v5, v6 = pcall(function()
-	return UserSettings():IsUserFeatureEnabled("UserAtomicCharacterSounds2");
+local l__Players__1 = game:GetService("Players");
+local l__RunService__2 = game:GetService("RunService");
+local v3 = require(script:WaitForChild("AtomicBinding"));
+local u1 = "UserAtomicCharacterSoundsUnparent";
+local v4, v5 = pcall(function()
+	return UserSettings():IsUserFeatureEnabled(u1);
 end);
-local u1 = {
-	Climbing = {
-		SoundId = "rbxasset://sounds/action_footsteps_plastic.mp3", 
-		Looped = true
-	}, 
-	Died = {
-		SoundId = "rbxasset://sounds/uuhhh.mp3"
-	}, 
-	FreeFalling = {
-		SoundId = "rbxasset://sounds/action_falling.mp3", 
-		Looped = true
-	}, 
-	GettingUp = {
-		SoundId = "rbxasset://sounds/action_get_up.mp3"
-	}, 
-	Jumping = {
-		SoundId = "rbxasset://sounds/action_jump.mp3"
-	}, 
-	Landing = {
-		SoundId = "rbxasset://sounds/action_jump_land.mp3"
-	}, 
-	Running = {
-		SoundId = "rbxasset://sounds/action_footsteps_plastic.mp3", 
-		Looped = true, 
-		Pitch = 1.85
-	}, 
-	Splash = {
-		SoundId = "rbxasset://sounds/impact_water.mp3"
-	}, 
-	Swimming = {
-		SoundId = "rbxasset://sounds/action_swim.mp3", 
-		Looped = true, 
-		Pitch = 1.6
-	}
-};
-local u2 = v5 or v6;
-v1 = function(p1)
-	local l__rootPart__7 = p1.rootPart;
-	local v8 = {};
-	for v9, v10 in pairs(u1) do
-		local v11 = Instance.new("Sound");
-		v11.Name = v9;
-		v11.Archivable = false;
-		v11.RollOffMinDistance = 5;
-		v11.RollOffMaxDistance = 150;
-		v11.Volume = 0.65;
-		for v12, v13 in pairs(v10) do
-			v11[v12] = v13;
+local v6 = {};
+local v7 = {};
+u1 = "rbxasset://sounds/action_footsteps_plastic.mp3";
+v7.SoundId = u1;
+u1 = true;
+v7.Looped = u1;
+v6.Climbing = v7;
+local v8 = {};
+u1 = "rbxasset://sounds/uuhhh.mp3";
+v8.SoundId = u1;
+v6.Died = v8;
+local v9 = {};
+u1 = "rbxasset://sounds/action_falling.mp3";
+v9.SoundId = u1;
+u1 = true;
+v9.Looped = u1;
+v6.FreeFalling = v9;
+local v10 = {};
+u1 = "rbxasset://sounds/action_get_up.mp3";
+v10.SoundId = u1;
+v6.GettingUp = v10;
+local v11 = {};
+u1 = "rbxasset://sounds/action_jump.mp3";
+v11.SoundId = u1;
+v6.Jumping = v11;
+local v12 = {};
+u1 = "rbxasset://sounds/action_jump_land.mp3";
+v12.SoundId = u1;
+v6.Landing = v12;
+local v13 = {};
+u1 = "rbxasset://sounds/action_footsteps_plastic.mp3";
+v13.SoundId = u1;
+u1 = true;
+v13.Looped = u1;
+u1 = 1.85;
+v13.Pitch = u1;
+v6.Running = v13;
+local v14 = {};
+u1 = "rbxasset://sounds/impact_water.mp3";
+v14.SoundId = u1;
+v6.Splash = v14;
+local v15 = {};
+u1 = "rbxasset://sounds/action_swim.mp3";
+v15.SoundId = u1;
+u1 = true;
+v15.Looped = u1;
+u1 = 1.6;
+v15.Pitch = u1;
+v6.Swimming = v15;
+u1 = function(p1)
+	p1.TimePosition = 0;
+	p1.Playing = true;
+end;
+local u2 = v4 or v5;
+local u3 = v3.new({
+	humanoid = "Humanoid", 
+	rootPart = "HumanoidRootPart"
+}, function(p2)
+	local l__player__16 = p2.player;
+	local l__rootPart__17 = p2.rootPart;
+	local v18 = {};
+	for v19, v20 in pairs(v6) do
+		local v21 = Instance.new("Sound");
+		v21.Name = v19;
+		v21.Archivable = false;
+		v21.RollOffMinDistance = 5;
+		v21.RollOffMaxDistance = 150;
+		v21.Volume = 0.65;
+		for v22, v23 in pairs(v20) do
+			v21[v22] = v23;
 		end;
-		v11.Parent = l__rootPart__7;
-		v8[v9] = v11;
+		v21.Parent = l__rootPart__17;
+		v18[v19] = v21;
 	end;
-	local u3 = {};
-	local v14 = {
+	local u4 = {};
+	local v24 = {
 		[Enum.HumanoidStateType.FallingDown] = function()
-			local v15 = {};
-			for v16, v17 in pairs(u3) do
-				v15[v16] = v17;
+			local v25 = {};
+			for v26, v27 in pairs(u4) do
+				v25[v26] = v27;
 			end;
-			for v18 in pairs(v15) do
-				if v18 ~= nil then
-					v18.Playing = false;
-					u3[v18] = nil;
+			for v28 in pairs(v25) do
+				if v28 ~= nil then
+					v28.Playing = false;
+					u4[v28] = nil;
 				end;
 			end;
 		end
 	};
-	v14[Enum.HumanoidStateType.GettingUp] = function()
-		local v19 = {};
-		for v20, v21 in pairs(u3) do
-			v19[v20] = v21;
+	v24[Enum.HumanoidStateType.GettingUp] = function()
+		local v29 = {};
+		for v30, v31 in pairs(u4) do
+			v29[v30] = v31;
 		end;
-		for v22 in pairs(v19) do
-			if v22 ~= nil then
-				v22.Playing = false;
-				u3[v22] = nil;
+		for v32 in pairs(v29) do
+			if v32 ~= nil then
+				v32.Playing = false;
+				u4[v32] = nil;
 			end;
 		end;
-		local l__GettingUp__23 = v8.GettingUp;
-		l__GettingUp__23.TimePosition = 0;
-		l__GettingUp__23.Playing = true;
+		local l__GettingUp__33 = v18.GettingUp;
+		l__GettingUp__33.TimePosition = 0;
+		l__GettingUp__33.Playing = true;
 	end;
-	v14[Enum.HumanoidStateType.Jumping] = function()
-		local v24 = {};
-		for v25, v26 in pairs(u3) do
-			v24[v25] = v26;
+	v24[Enum.HumanoidStateType.Jumping] = function()
+		local v34 = {};
+		for v35, v36 in pairs(u4) do
+			v34[v35] = v36;
 		end;
-		for v27 in pairs(v24) do
-			if v27 ~= nil then
-				v27.Playing = false;
-				u3[v27] = nil;
+		for v37 in pairs(v34) do
+			if v37 ~= nil then
+				v37.Playing = false;
+				u4[v37] = nil;
 			end;
 		end;
-		local l__Jumping__28 = v8.Jumping;
-		l__Jumping__28.TimePosition = 0;
-		l__Jumping__28.Playing = true;
+		local l__Jumping__38 = v18.Jumping;
+		l__Jumping__38.TimePosition = 0;
+		l__Jumping__38.Playing = true;
 	end;
-	v14[Enum.HumanoidStateType.Swimming] = function()
-		local v29 = math.abs(l__rootPart__7.AssemblyLinearVelocity.Y);
-		if v29 > 0.1 then
-			v8.Splash.Volume = math.clamp((v29 - 100) * 0.72 / 250 + 0.28, 0, 1);
-			local l__Splash__30 = v8.Splash;
-			l__Splash__30.TimePosition = 0;
-			l__Splash__30.Playing = true;
+	v24[Enum.HumanoidStateType.Swimming] = function()
+		local v39 = math.abs(l__rootPart__17.AssemblyLinearVelocity.Y);
+		if v39 > 0.1 then
+			v18.Splash.Volume = math.clamp((v39 - 100) * 0.72 / 250 + 0.28, 0, 1);
+			local l__Splash__40 = v18.Splash;
+			l__Splash__40.TimePosition = 0;
+			l__Splash__40.Playing = true;
 		end;
-		local l__Swimming__31 = v8.Swimming;
-		local v32 = {};
-		for v33, v34 in pairs(u3) do
-			v32[v33] = v34;
+		local l__Swimming__41 = v18.Swimming;
+		local v42 = {};
+		for v43, v44 in pairs(u4) do
+			v42[v43] = v44;
 		end;
-		for v35 in pairs(v32) do
-			if v35 ~= l__Swimming__31 then
-				v35.Playing = false;
-				u3[v35] = nil;
+		for v45 in pairs(v42) do
+			if v45 ~= l__Swimming__41 then
+				v45.Playing = false;
+				u4[v45] = nil;
 			end;
 		end;
-		v8.Swimming.Playing = true;
-		u3[v8.Swimming] = true;
+		v18.Swimming.Playing = true;
+		u4[v18.Swimming] = true;
 	end;
-	v14[Enum.HumanoidStateType.Freefall] = function()
-		v8.FreeFalling.Volume = 0;
-		local l__FreeFalling__36 = v8.FreeFalling;
-		local v37 = {};
-		for v38, v39 in pairs(u3) do
-			v37[v38] = v39;
+	v24[Enum.HumanoidStateType.Freefall] = function()
+		v18.FreeFalling.Volume = 0;
+		local l__FreeFalling__46 = v18.FreeFalling;
+		local v47 = {};
+		for v48, v49 in pairs(u4) do
+			v47[v48] = v49;
 		end;
-		for v40 in pairs(v37) do
-			if v40 ~= l__FreeFalling__36 then
-				v40.Playing = false;
-				u3[v40] = nil;
+		for v50 in pairs(v47) do
+			if v50 ~= l__FreeFalling__46 then
+				v50.Playing = false;
+				u4[v50] = nil;
 			end;
 		end;
-		u3[v8.FreeFalling] = true;
+		u4[v18.FreeFalling] = true;
 	end;
-	v14[Enum.HumanoidStateType.Landed] = function()
-		local v41 = {};
-		for v42, v43 in pairs(u3) do
-			v41[v42] = v43;
+	v24[Enum.HumanoidStateType.Landed] = function()
+		local v51 = {};
+		for v52, v53 in pairs(u4) do
+			v51[v52] = v53;
 		end;
-		for v44 in pairs(v41) do
-			if v44 ~= nil then
-				v44.Playing = false;
-				u3[v44] = nil;
+		for v54 in pairs(v51) do
+			if v54 ~= nil then
+				v54.Playing = false;
+				u4[v54] = nil;
 			end;
 		end;
-		local v45 = math.abs(l__rootPart__7.AssemblyLinearVelocity.Y);
-		if v45 > 75 then
-			v8.Landing.Volume = math.clamp((v45 - 50) * 1 / 50 + 0, 0, 1);
-			local l__Landing__46 = v8.Landing;
-			l__Landing__46.TimePosition = 0;
-			l__Landing__46.Playing = true;
+		local v55 = math.abs(l__rootPart__17.AssemblyLinearVelocity.Y);
+		if v55 > 75 then
+			v18.Landing.Volume = math.clamp((v55 - 50) * 1 / 50 + 0, 0, 1);
+			local l__Landing__56 = v18.Landing;
+			l__Landing__56.TimePosition = 0;
+			l__Landing__56.Playing = true;
 		end;
 	end;
-	v14[Enum.HumanoidStateType.Running] = function()
-		local l__Running__47 = v8.Running;
-		local v48 = {};
-		for v49, v50 in pairs(u3) do
-			v48[v49] = v50;
+	v24[Enum.HumanoidStateType.Running] = function()
+		local l__Running__57 = v18.Running;
+		local v58 = {};
+		for v59, v60 in pairs(u4) do
+			v58[v59] = v60;
 		end;
-		for v51 in pairs(v48) do
-			if v51 ~= l__Running__47 then
-				v51.Playing = false;
-				u3[v51] = nil;
+		for v61 in pairs(v58) do
+			if v61 ~= l__Running__57 then
+				v61.Playing = false;
+				u4[v61] = nil;
 			end;
 		end;
-		v8.Running.Playing = true;
-		u3[v8.Running] = true;
+		v18.Running.Playing = true;
+		u4[v18.Running] = true;
 	end;
-	v14[Enum.HumanoidStateType.Climbing] = function()
-		local l__Climbing__52 = v8.Climbing;
-		if math.abs(l__rootPart__7.AssemblyLinearVelocity.Y) > 0.1 then
-			l__Climbing__52.Playing = true;
-			local v53 = {};
-			for v54, v55 in pairs(u3) do
-				v53[v54] = v55;
+	v24[Enum.HumanoidStateType.Climbing] = function()
+		local l__Climbing__62 = v18.Climbing;
+		if math.abs(l__rootPart__17.AssemblyLinearVelocity.Y) > 0.1 then
+			l__Climbing__62.Playing = true;
+			local v63 = {};
+			for v64, v65 in pairs(u4) do
+				v63[v64] = v65;
 			end;
-			for v56 in pairs(v53) do
-				if v56 ~= l__Climbing__52 then
-					v56.Playing = false;
-					u3[v56] = nil;
+			for v66 in pairs(v63) do
+				if v66 ~= l__Climbing__62 then
+					v66.Playing = false;
+					u4[v66] = nil;
 				end;
 			end;
 		else
-			local v57 = {};
-			for v58, v59 in pairs(u3) do
-				v57[v58] = v59;
+			local v67 = {};
+			for v68, v69 in pairs(u4) do
+				v67[v68] = v69;
 			end;
-			for v60 in pairs(v57) do
-				if v60 ~= nil then
-					v60.Playing = false;
-					u3[v60] = nil;
+			for v70 in pairs(v67) do
+				if v70 ~= nil then
+					v70.Playing = false;
+					u4[v70] = nil;
 				end;
 			end;
 		end;
-		u3[l__Climbing__52] = true;
+		u4[l__Climbing__62] = true;
 	end;
-	v14[Enum.HumanoidStateType.Seated] = function()
-		local v61 = {};
-		for v62, v63 in pairs(u3) do
-			v61[v62] = v63;
+	v24[Enum.HumanoidStateType.Seated] = function()
+		local v71 = {};
+		for v72, v73 in pairs(u4) do
+			v71[v72] = v73;
 		end;
-		for v64 in pairs(v61) do
-			if v64 ~= nil then
-				v64.Playing = false;
-				u3[v64] = nil;
+		for v74 in pairs(v71) do
+			if v74 ~= nil then
+				v74.Playing = false;
+				u4[v74] = nil;
 			end;
 		end;
 	end;
-	v14[Enum.HumanoidStateType.Dead] = function()
-		local v65 = {};
-		for v66, v67 in pairs(u3) do
-			v65[v66] = v67;
+	v24[Enum.HumanoidStateType.Dead] = function()
+		local v75 = {};
+		for v76, v77 in pairs(u4) do
+			v75[v76] = v77;
 		end;
-		for v68 in pairs(v65) do
-			if v68 ~= nil then
-				v68.Playing = false;
-				u3[v68] = nil;
+		for v78 in pairs(v75) do
+			if v78 ~= nil then
+				v78.Playing = false;
+				u4[v78] = nil;
 			end;
 		end;
-		local l__Died__69 = v8.Died;
-		l__Died__69.TimePosition = 0;
-		l__Died__69.Playing = true;
+		local l__Died__79 = v18.Died;
+		l__Died__79.TimePosition = 0;
+		l__Died__79.Playing = true;
 	end;
-	local v70 = {
-		[v8.Climbing] = function(p2, p3, p4)
-			p3.Playing = p4.Magnitude > 0.1;
+	local v80 = {
+		[v18.Climbing] = function(p3, p4, p5)
+			p4.Playing = p5.Magnitude > 0.1;
 		end, 
-		[v8.FreeFalling] = function(p5, p6, p7)
-			if not (p7.Magnitude > 75) then
-				p6.Volume = 0;
+		[v18.FreeFalling] = function(p6, p7, p8)
+			if not (p8.Magnitude > 75) then
+				p7.Volume = 0;
 				return;
 			end;
-			p6.Volume = math.clamp(p6.Volume + 0.9 * p5, 0, 1);
+			p7.Volume = math.clamp(p7.Volume + 0.9 * p6, 0, 1);
 		end
 	};
-	local l__humanoid__4 = p1.humanoid;
-	v70[v8.Running] = function(p8, p9, p10)
-		local v71 = false;
-		if p10.Magnitude > 0.5 then
-			v71 = l__humanoid__4.MoveDirection.Magnitude > 0.5;
+	local l__humanoid__5 = p2.humanoid;
+	v80[v18.Running] = function(p9, p10, p11)
+		local v81 = false;
+		if p11.Magnitude > 0.5 then
+			v81 = l__humanoid__5.MoveDirection.Magnitude > 0.5;
 		end;
-		p9.Playing = v71;
+		p10.Playing = v81;
 	end;
-	local v72 = {
+	local v82 = {
 		[Enum.HumanoidStateType.RunningNoPhysics] = Enum.HumanoidStateType.Running
 	};
-	local u5 = v72[l__humanoid__4:GetState()] or l__humanoid__4:GetState();
-	local u6 = l__humanoid__4.StateChanged:Connect(function(p11, p12)
-		p12 = v72[p12] and p12;
-		if p12 ~= u5 then
-			local v73 = v14[p12];
-			if v73 then
-				v73();
+	local u6 = v82[l__humanoid__5:GetState()] or l__humanoid__5:GetState();
+	local u7 = l__humanoid__5.StateChanged:Connect(function(p12, p13)
+		p13 = v82[p13] and p13;
+		if p13 ~= u6 then
+			local v83 = v24[p13];
+			if v83 then
+				v83();
 			end;
-			u5 = p12;
+			u6 = p13;
 		end;
 	end);
-	local u7 = l__RunService__3.Stepped:Connect(function(p13, p14)
-		for v74 in pairs(u3) do
-			local v75 = v70[v74];
-			if v75 then
-				v75(p14, v74, l__rootPart__7.AssemblyLinearVelocity);
+	local u8 = l__RunService__2.Stepped:Connect(function(p14, p15)
+		for v84 in pairs(u4) do
+			local v85 = v80[v84];
+			if v85 then
+				v85(p15, v84, l__rootPart__17.AssemblyLinearVelocity);
 			end;
 		end;
 	end);
-	local u8 = nil;
-	local u9 = nil;
-	local u10 = nil;
-	local function v76()
-		u6:Disconnect();
+	return function()
 		u7:Disconnect();
-		if not u2 then
-			u8:Disconnect();
-			u9:Disconnect();
-			u10:Disconnect();
+		u8:Disconnect();
+		if u2 then
+			for v86, v87 in pairs(v18) do
+				v87:Destroy();
+			end;
+			table.clear(v18);
 		end;
 	end;
-	if not u2 then
-		u8 = l__humanoid__4.AncestryChanged:Connect(function(p15, p16)
-			if not p16 then
-				u6:Disconnect();
-				u7:Disconnect();
-				if not u2 then
-					u8:Disconnect();
-					u9:Disconnect();
-					u10:Disconnect();
-				end;
-			end;
-		end);
-		u9 = l__rootPart__7.AncestryChanged:Connect(function(p17, p18)
-			if not p18 then
-				u6:Disconnect();
-				u7:Disconnect();
-				if not u2 then
-					u8:Disconnect();
-					u9:Disconnect();
-					u10:Disconnect();
-				end;
-			end;
-		end);
-		u10 = p1.player.CharacterAdded:Connect(v76);
-	end;
-	return v76;
+end);
+local u9 = {};
+local function u10(p16)
+	u3:bindRoot(p16);
 end;
-if u2 then
-	local u11 = v4.new({
-		humanoid = "Humanoid", 
-		rootPart = "HumanoidRootPart"
-	}, v1);
-	local u12 = {};
-	local function u13(p19)
-		u11:bindRoot(p19);
-	end;
-	local function u14(p20)
-		u11:unbindRoot(p20);
-	end;
-	local function v77(p21)
-		local v78 = u12[p21];
-		if not v78 then
-			v78 = {};
-			u12[p21] = v78;
-		end;
-		if p21.Character then
-			u11:bindRoot(p21.Character);
-		end;
-		table.insert(v78, p21.CharacterAdded:Connect(u13));
-		table.insert(v78, p21.CharacterRemoving:Connect(u14));
-	end;
-	for v79, v80 in ipairs(l__Players__2:GetPlayers()) do
-		task.spawn(v77, v80);
-	end;
-	l__Players__2.PlayerAdded:Connect(v77);
-	l__Players__2.PlayerRemoving:Connect(function(p22)
-		local v81 = u12[p22];
-		if v81 then
-			for v82, v83 in ipairs(v81) do
-				v83:Disconnect();
-			end;
-			u12[p22] = nil;
-		end;
-		if p22.Character then
-			u11:unbindRoot(p22.Character);
-		end;
-	end);
-else
-	local function u15(...)
-		local u16 = { ... };
-		local u17 = Instance.new("BindableEvent");
-		local function v84(...)
-			for v85 = 1, #u16 do
-				u16[v85]:Disconnect();
-			end;
-			return u17:Fire(...);
-		end;
-		for v86 = 1, #u16 do
-			u16[v86] = u16[v86]:Connect(v84);
-		end;
-		return u17.Event:Wait();
-	end;
-	l__Players__2.PlayerAdded:Connect(function(p23)
-		local function v87(p24)
-			if not p24.Parent then
-				u15(p24.AncestryChanged, p23.CharacterAdded);
-			end;
-			if p23.Character ~= p24 or not p24.Parent then
-				return;
-			end;
-			local v88 = p24:FindFirstChildOfClass("Humanoid");
-			while p24:IsDescendantOf(game) and not v88 do
-				u15(p24.ChildAdded, p24.AncestryChanged, p23.CharacterAdded);
-				v88 = p24:FindFirstChildOfClass("Humanoid");			
-			end;
-			if p23.Character ~= p24 or not p24:IsDescendantOf(game) then
-				return;
-			end;
-			local v89 = p24:FindFirstChild("HumanoidRootPart");
-			while p24:IsDescendantOf(game) and not v89 do
-				u15(p24.ChildAdded, p24.AncestryChanged, v88.AncestryChanged, p23.CharacterAdded);
-				v89 = p24:FindFirstChild("HumanoidRootPart");			
-			end;
-			if v89 and v88:IsDescendantOf(game) and p24:IsDescendantOf(game) and p23.Character == p24 then
-				v1({
-					player = p23, 
-					humanoid = v88, 
-					rootPart = v89
-				});
-			end;
-		end;
-		if p23.Character then
-			v87(p23.Character);
-		end;
-		p23.CharacterAdded:Connect(v87);
-	end);
-	for v90, v91 in ipairs(l__Players__2:GetPlayers()) do
-		local function v92(p25)
-			if not p25.Parent then
-				u15(p25.AncestryChanged, v91.CharacterAdded);
-			end;
-			if v91.Character ~= p25 or not p25.Parent then
-				return;
-			end;
-			local v93 = p25:FindFirstChildOfClass("Humanoid");
-			while p25:IsDescendantOf(game) and not v93 do
-				u15(p25.ChildAdded, p25.AncestryChanged, v91.CharacterAdded);
-				v93 = p25:FindFirstChildOfClass("Humanoid");			
-			end;
-			if v91.Character ~= p25 or not p25:IsDescendantOf(game) then
-				return;
-			end;
-			local v94 = p25:FindFirstChild("HumanoidRootPart");
-			while p25:IsDescendantOf(game) and not v94 do
-				u15(p25.ChildAdded, p25.AncestryChanged, v93.AncestryChanged, v91.CharacterAdded);
-				v94 = p25:FindFirstChild("HumanoidRootPart");			
-			end;
-			if v94 and v93:IsDescendantOf(game) and p25:IsDescendantOf(game) and v91.Character == p25 then
-				v1({
-					player = v91, 
-					humanoid = v93, 
-					rootPart = v94
-				});
-			end;
-		end;
-		if v91.Character then
-			v92(v91.Character);
-		end;
-		v91.CharacterAdded:Connect(v92);
-	end;
+local function u11(p17)
+	u3:unbindRoot(p17);
 end;
+local function v88(p18)
+	local v89 = u9[p18];
+	if not v89 then
+		v89 = {};
+		u9[p18] = v89;
+	end;
+	if p18.Character then
+		u3:bindRoot(p18.Character);
+	end;
+	table.insert(v89, p18.CharacterAdded:Connect(u10));
+	table.insert(v89, p18.CharacterRemoving:Connect(u11));
+end;
+local v90, v91, v92 = ipairs(l__Players__1:GetPlayers());
+while true do
+	v90(v91, v92);
+	if not v90 then
+		break;
+	end;
+	v92 = v90;
+	task.spawn(v88, v91);
+end;
+l__Players__1.PlayerAdded:Connect(v88);
+l__Players__1.PlayerRemoving:Connect(function(p19)
+	local v93 = u9[p19];
+	if v93 then
+		local v94, v95, v96 = ipairs(v93);
+		while true do
+			v94(v95, v96);
+			if not v94 then
+				break;
+			end;
+			v96 = v94;
+			v95:Disconnect();		
+		end;
+		u9[p19] = nil;
+	end;
+	if p19.Character then
+		u3:unbindRoot(p19.Character);
+	end;
+end);

@@ -14,41 +14,40 @@ function v4.new(...)
 	local v5 = setmetatable({}, v4);
 	return v5:constructor(...) and v5;
 end;
-local u1 = l__KnitController__3;
 function v4.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__3.constructor(p1);
 	p1.Name = "MountController";
 	p1.activeMounts = {};
 end;
-local l__RunService__2 = v2.RunService;
-local l__Workspace__3 = v2.Workspace;
-local l__default__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-local l__MountMeta__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "mount", "mount-meta").MountMeta;
-local l__default__6 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
-local u7 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
-local l__ReplicatedStorage__8 = v2.ReplicatedStorage;
-local u9 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-local l__Players__10 = v2.Players;
-local l__Flamework__11 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
-local u12 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
-local l__ActionButton__13 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).ActionButton;
-local l__ClientSyncEvents__14 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
+local l__RunService__1 = v2.RunService;
+local l__Workspace__2 = v2.Workspace;
+local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__MountMeta__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "mount", "mount-meta").MountMeta;
+local l__default__5 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
+local u6 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+local l__ReplicatedStorage__7 = v2.ReplicatedStorage;
+local u8 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
+local l__Players__9 = v2.Players;
+local l__Flamework__10 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
+local u11 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
+local l__ActionButton__12 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).ActionButton;
+local l__ClientSyncEvents__13 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
 function v4.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__RunService__2.Heartbeat:Connect(function()
+	l__KnitController__3.KnitStart(p2);
+	l__RunService__1.Heartbeat:Connect(function()
 		debug.profilebegin("mount-controller");
 		for v6, v7 in pairs(p2:getActiveMounts()) do
-			if not v7.model:IsDescendantOf(l__Workspace__3) then
+			if not v7.model:IsDescendantOf(l__Workspace__2) then
 				p2:removeMount(v6);
 			end;
 		end;
 		debug.profileend();
 	end);
-	l__default__4.Client:OnEvent("RemoteName", function(p3)
-		local v8 = l__MountMeta__5[p3.mountType];
+	l__default__3.Client:OnEvent("RemoteName", function(p3)
+		local v8 = l__MountMeta__4[p3.mountType];
 		local l__Character__9 = p3.player.Character;
 		if l__Character__9 == nil then
-			l__default__6.Warn("Mounting player has no character");
+			l__default__5.Warn("Mounting player has no character");
 			return nil;
 		end;
 		if p3.action ~= "Mount" then
@@ -57,9 +56,9 @@ function v4.KnitStart(p2)
 			end;
 			return;
 		end;
-		local v10 = u7.new();
+		local v10 = u6.new();
 		if type(v8.model) == "string" then
-			local v11 = l__ReplicatedStorage__8.Assets.Mounts:FindFirstChild(v8.model);
+			local v11 = l__ReplicatedStorage__7.Assets.Mounts:FindFirstChild(v8.model);
 			if v11 ~= nil then
 				v11 = v11:Clone();
 			end;
@@ -68,26 +67,26 @@ function v4.KnitStart(p2)
 			v12 = v8.model();
 		end;
 		if v12 == nil or v12.PrimaryPart == nil then
-			l__default__6.Error("Error creating mount {mountType}. model not found", p3.mountType);
+			l__default__5.Error("Error creating mount {mountType}. model not found", p3.mountType);
 			return nil;
 		end;
 		v12:SetPrimaryPartCFrame(l__Character__9:GetPrimaryPartCFrame() * CFrame.new(0, -v12.PrimaryPart.Size.Y, 0));
 		local l__Humanoid__13 = l__Character__9.Humanoid;
 		l__Humanoid__13.HipHeight = l__Humanoid__13.HipHeight + (v12.PrimaryPart.Size.Y / 2 - 0.1);
-		u9("WeldConstraint", {
+		u8("WeldConstraint", {
 			Part0 = l__Character__9.HumanoidRootPart, 
 			Part1 = v12.PrimaryPart, 
 			Parent = v12.PrimaryPart
 		});
 		v12.Parent = l__Character__9;
 		v10:GiveTask(v12);
-		if p3.player == l__Players__10.LocalPlayer then
-			v10:GiveTask((l__Flamework__11.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(u12.createElement(l__ActionButton__13, {
+		if p3.player == l__Players__9.LocalPlayer then
+			v10:GiveTask((l__Flamework__10.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(u11.createElement(l__ActionButton__12, {
 				actionName = "dismount-" .. p3.mountType, 
 				interactionKey = Enum.KeyCode.B, 
 				gamepadInteractionKey = Enum.KeyCode.ButtonB, 
 				onActivated = function()
-					l__default__4.Client:Get("RemoteName"):SendToServer();
+					l__default__3.Client:Get("RemoteName"):SendToServer();
 				end, 
 				text = "Dismount " .. v8.displayName
 			}))));
@@ -97,7 +96,7 @@ function v4.KnitStart(p2)
 			mountType = p3.mountType, 
 			model = v12
 		};
-		l__ClientSyncEvents__14.GenericMountMounted:fire(p3.player, p3.mountType, v12, l__Character__9);
+		l__ClientSyncEvents__13.GenericMountMounted:fire(p3.player, p3.mountType, v12, l__Character__9);
 	end);
 end;
 function v4.removeMount(p4, p5)
@@ -108,7 +107,7 @@ function v4.removeMount(p4, p5)
 		if v16 ~= nil then
 			v16 = v16.mountType;
 		end;
-		l__ClientSyncEvents__14.GenericMountDismounted:fire(p5, v16);
+		l__ClientSyncEvents__13.GenericMountDismounted:fire(p5, v16);
 		if v14.model and l__Character__15 and l__Character__15.Humanoid then
 			local l__Humanoid__17 = l__Character__15.Humanoid;
 			l__Humanoid__17.HipHeight = l__Humanoid__17.HipHeight - (v14.model.PrimaryPart.Size.Y / 2 - 0.1);
@@ -122,6 +121,5 @@ end;
 function v4.getActiveMounts(p6)
 	return p6.activeMounts;
 end;
-u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1(v4.new());
+local v19 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v4.new());
 return nil;

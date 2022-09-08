@@ -7,137 +7,149 @@ local function u1(p1, p2)
 	p1.instance = nil;
 	local l__connections__1 = p1.connections;
 	if l__connections__1 then
-		for v2, v3 in ipairs(l__connections__1) do
-			v3:Disconnect();
+		local v2, v3, v4 = ipairs(l__connections__1);
+		while true do
+			v2(v3, v4);
+			if not v2 then
+				break;
+			end;
+			v4 = v2;
+			v3:Disconnect();		
 		end;
 		table.clear(l__connections__1);
 	end;
 	if p2 and p1.alias then
 		p2[p1.alias] = nil;
 	end;
-	local l__children__4 = p1.children;
-	if l__children__4 then
-		for v5, v6 in pairs(l__children__4) do
-			u1(v6, p2);
+	local l__children__5 = p1.children;
+	if l__children__5 then
+		for v6, v7 in pairs(l__children__5) do
+			u1(v7, p2);
 		end;
 	end;
 end;
-local v7 = {};
-v7.__index = v7;
+local v8 = {};
+v8.__index = v8;
 local function u2(p3)
-	local v8 = string.split(p3, "/");
-	for v9 = #v8, 1, -1 do
-		if v8[v9] == "" then
-			table.remove(v8, v9);
+	local v9 = string.split(p3, "/");
+	for v10 = #v9, 1, -1 do
+		if v9[v10] == "" then
+			table.remove(v9, v10);
 		end;
 	end;
-	return v8;
+	return v9;
 end;
-function v7.new(p4, p5)
-	local v10 = {};
-	local v11 = 1;
-	for v12, v13 in pairs(p4) do
-		v10[v12] = u2(v13);
-		v11 = v11 + 1;
+function v8.new(p4, p5)
+	local v11 = {};
+	local v12 = 1;
+	for v13, v14 in pairs(p4) do
+		v11[v13] = u2(v14);
+		v12 = v12 + 1;
 	end;
 	return setmetatable({
 		_boundFn = p5, 
-		_parsedManifest = v10, 
-		_manifestSizeTarget = v11, 
+		_parsedManifest = v11, 
+		_manifestSizeTarget = v12, 
 		_dtorMap = {}, 
 		_connections = {}, 
 		_rootInstToRootNode = {}, 
 		_rootInstToManifest = {}
-	}, v7);
+	}, v8);
 end;
-function v7._startBoundFn(p6, p7, p8)
-	local l___dtorMap__14 = p6._dtorMap;
-	local v15 = l___dtorMap__14[p7];
-	if v15 then
-		v15();
-		l___dtorMap__14[p7] = nil;
-	end;
-	local v16 = p6._boundFn(p8);
+function v8._startBoundFn(p6, p7, p8)
+	local l___dtorMap__15 = p6._dtorMap;
+	local v16 = l___dtorMap__15[p7];
 	if v16 then
-		l___dtorMap__14[p7] = v16;
+		v16();
+		l___dtorMap__15[p7] = nil;
+	end;
+	local v17 = p6._boundFn(p8);
+	if v17 then
+		l___dtorMap__15[p7] = v17;
 	end;
 end;
-function v7._stopBoundFn(p9, p10)
-	local l___dtorMap__17 = p9._dtorMap;
-	local v18 = l___dtorMap__17[p10];
-	if v18 then
-		v18();
-		l___dtorMap__17[p10] = nil;
+function v8._stopBoundFn(p9, p10)
+	local l___dtorMap__18 = p9._dtorMap;
+	local v19 = l___dtorMap__18[p10];
+	if v19 then
+		v19();
+		l___dtorMap__18[p10] = nil;
 	end;
 end;
-function v7.bindRoot(p11, p12)
+function v8.bindRoot(p11, p12)
 	debug.profilebegin("AtomicBinding:BindRoot");
-	local l___parsedManifest__19 = p11._parsedManifest;
-	local l___rootInstToManifest__20 = p11._rootInstToManifest;
-	assert(l___rootInstToManifest__20[p12] == nil);
-	local v21 = {};
-	l___rootInstToManifest__20[p12] = v21;
+	local l___parsedManifest__20 = p11._parsedManifest;
+	local l___rootInstToManifest__21 = p11._rootInstToManifest;
+	assert(l___rootInstToManifest__21[p12] == nil);
+	local v22 = {};
+	l___rootInstToManifest__21[p12] = v22;
 	debug.profilebegin("BuildTree");
-	local v22 = {
+	local v23 = {
 		alias = "root", 
 		instance = p12
 	};
-	if next(l___parsedManifest__19) then
-		v22.children = {};
-		v22.connections = {};
+	if next(l___parsedManifest__20) then
+		v23.children = {};
+		v23.connections = {};
 	end;
-	p11._rootInstToRootNode[p12] = v22;
-	for v23, v24 in pairs(l___parsedManifest__19) do
-		local v25 = v22;
-		local v26, v27, v28 = ipairs(v24);
+	p11._rootInstToRootNode[p12] = v23;
+	for v24, v25 in pairs(l___parsedManifest__20) do
+		local v26 = v23;
+		local v27, v28, v29 = ipairs(v25);
 		while true do
-			local v29, v30 = v26(v27, v28);
-			if not v29 then
+			v27(v28, v29);
+			if not v27 then
 				break;
 			end;
-			local v31 = v25.children[v30] or {};
-			if v29 == #v24 then
-				if v31.alias ~= nil then
+			local v30 = v26.children[v28] or {};
+			if v27 == #v25 then
+				if v30.alias ~= nil then
 					error("Multiple aliases assigned to one instance");
 				end;
-				v31.alias = v23;
+				v30.alias = v24;
 			else
-				v31.children = v31.children or {};
-				v31.connections = v31.connections or {};
+				v30.children = v30.children or {};
+				v30.connections = v30.connections or {};
 			end;
-			v25.children[v30] = v31;
-			v25 = v31;		
+			v26.children[v28] = v30;
+			v26 = v30;		
 		end;
 	end;
 	debug.profileend();
 	local l___manifestSizeTarget__3 = p11._manifestSizeTarget;
 	local function u4(p13)
-		local v32 = assert(p13.instance);
-		local l__children__33 = p13.children;
-		local l__alias__34 = p13.alias;
-		local v35 = not l__children__33;
-		if l__alias__34 then
-			v21[l__alias__34] = v32;
+		local v31 = assert(p13.instance);
+		local l__children__32 = p13.children;
+		local l__alias__33 = p13.alias;
+		local v34 = not l__children__32;
+		if l__alias__33 then
+			v22[l__alias__33] = v31;
 		end;
-		if not v35 then
-			for v36, v37 in ipairs(v32:GetChildren()) do
-				local v38 = l__children__33[v37.Name];
-				if v38 and v38.instance == nil then
-					v38.instance = v37;
-					u4(v38);
+		if not v34 then
+			local v35, v36, v37 = ipairs(v31:GetChildren());
+			while true do
+				v35(v36, v37);
+				if not v35 then
+					break;
 				end;
+				v37 = v35;
+				local v38 = l__children__32[v36.Name];
+				if v38 and v38.instance == nil then
+					v38.instance = v36;
+					u4(v38);
+				end;			
 			end;
-			table.insert(p13.connections, v32.ChildAdded:Connect(function(p14)
-				local v39 = l__children__33[p14.Name];
+			table.insert(p13.connections, v31.ChildAdded:Connect(function(p14)
+				local v39 = l__children__32[p14.Name];
 				if not v39 or v39.instance ~= nil then
 					return;
 				end;
 				v39.instance = p14;
 				u4(v39);
 			end));
-			table.insert(p13.connections, v32.ChildRemoved:Connect(function(p15)
+			table.insert(p13.connections, v31.ChildRemoved:Connect(function(p15)
 				local l__Name__40 = p15.Name;
-				local v41 = l__children__33[l__Name__40];
+				local v41 = l__children__32[l__Name__40];
 				if not v41 then
 					return;
 				end;
@@ -145,11 +157,11 @@ function v7.bindRoot(p11, p12)
 					return;
 				end;
 				p11:_stopBoundFn(p12);
-				u1(v41, v21);
+				u1(v41, v22);
 				assert(v41.instance == nil);
-				local v42 = v32:FindFirstChild(l__Name__40);
+				local v42 = v31:FindFirstChild(l__Name__40);
 				if v42 then
-					local v43 = l__children__33[v42.Name];
+					local v43 = l__children__32[v42.Name];
 					if v43 then
 						if v43.instance ~= nil then
 							return;
@@ -160,23 +172,23 @@ function v7.bindRoot(p11, p12)
 				end;
 			end));
 		end;
-		if v35 then
+		if v34 then
 			local v44 = 0;
-			for v45 in pairs(v21) do
+			for v45 in pairs(v22) do
 				v44 = v44 + 1;
 			end;
 			assert(v44 <= l___manifestSizeTarget__3, v44);
 			if v44 == l___manifestSizeTarget__3 then
-				p11:_startBoundFn(p12, v21);
+				p11:_startBoundFn(p12, v22);
 			end;
 		end;
 	end;
 	debug.profilebegin("ResolveTree");
-	u4(v22);
+	u4(v23);
 	debug.profileend();
 	debug.profileend();
 end;
-function v7.unbindRoot(p16, p17)
+function v8.unbindRoot(p16, p17)
 	local l___rootInstToRootNode__46 = p16._rootInstToRootNode;
 	local l___rootInstToManifest__47 = p16._rootInstToManifest;
 	p16:_stopBoundFn(p17);
@@ -187,22 +199,28 @@ function v7.unbindRoot(p16, p17)
 	end;
 	l___rootInstToManifest__47[p17] = nil;
 end;
-function v7.destroy(p18)
+function v8.destroy(p18)
 	debug.profilebegin("AtomicBinding:destroy");
 	for v49, v50 in pairs(p18._dtorMap) do
 		v50:destroy();
 	end;
 	table.clear(p18._dtorMap);
-	for v51, v52 in ipairs(p18._connections) do
-		v52:Disconnect();
+	local v51, v52, v53 = ipairs(p18._connections);
+	while true do
+		v51(v52, v53);
+		if not v51 then
+			break;
+		end;
+		v53 = v51;
+		v52:Disconnect();	
 	end;
 	table.clear(p18._connections);
-	local l___rootInstToManifest__53 = p18._rootInstToManifest;
-	for v54, v55 in pairs(p18._rootInstToRootNode) do
-		u1(v55, (assert(l___rootInstToManifest__53[v54])));
+	local l___rootInstToManifest__54 = p18._rootInstToManifest;
+	for v55, v56 in pairs(p18._rootInstToRootNode) do
+		u1(v56, (assert(l___rootInstToManifest__54[v55])));
 	end;
 	table.clear(p18._rootInstToManifest);
 	table.clear(p18._rootInstToRootNode);
 	debug.profileend();
 end;
-return v7;
+return v8;

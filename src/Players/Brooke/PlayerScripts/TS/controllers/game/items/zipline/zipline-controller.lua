@@ -17,43 +17,42 @@ function u1.new(...)
 	local v7 = setmetatable({}, u1);
 	return v7:constructor(...) and v7;
 end;
-local u2 = l__KnitController__5;
 function u1.constructor(p1)
-	u2.constructor(p1);
+	l__KnitController__5.constructor(p1);
 	p1.Name = "ZiplineController";
 end;
-local l__CollectionTagAdded__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "collection", "collection-util").CollectionTagAdded;
-local u4 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-local l__Theme__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
-local l__DeviceUtil__6 = v2.DeviceUtil;
-local l__Players__7 = v4.Players;
-local l__ClientSyncEvents__8 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
-local l__default__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-local l__BlockEngine__10 = v1.import(script, v1.getModule(script, "@easy-games", "block-engine").out).BlockEngine;
-local u11 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
-local l__KnitClient__12 = v3.KnitClient;
-local l__RunService__13 = v4.RunService;
-local l__Workspace__14 = v4.Workspace;
-local l__GameQueryUtil__15 = v2.GameQueryUtil;
-local l__SoundManager__16 = v2.SoundManager;
-local l__GameSound__17 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__CollectionService__18 = v4.CollectionService;
+local l__CollectionTagAdded__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "collection", "collection-util").CollectionTagAdded;
+local u3 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
+local l__Theme__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
+local l__DeviceUtil__5 = v2.DeviceUtil;
+local l__Players__6 = v4.Players;
+local l__ClientSyncEvents__7 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
+local l__default__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__BlockEngine__9 = v1.import(script, v1.getModule(script, "@easy-games", "block-engine").out).BlockEngine;
+local u10 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+local l__KnitClient__11 = v3.KnitClient;
+local l__RunService__12 = v4.RunService;
+local l__Workspace__13 = v4.Workspace;
+local l__GameQueryUtil__14 = v2.GameQueryUtil;
+local l__SoundManager__15 = v2.SoundManager;
+local l__GameSound__16 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local l__CollectionService__17 = v4.CollectionService;
 function u1.KnitStart(p2)
-	l__CollectionTagAdded__3("zipline", function(p3)
+	l__CollectionTagAdded__2("zipline", function(p3)
 		if p3:GetAttribute("ZiplineDepart") == false then
 			return nil;
 		end;
-		u4("ProximityPrompt", {
-			KeyboardKeyCode = l__Theme__5.promptKeyboardKey, 
+		u3("ProximityPrompt", {
+			KeyboardKeyCode = l__Theme__4.promptKeyboardKey, 
 			HoldDuration = 0, 
 			ActionText = "Zipline", 
 			RequiresLineOfSight = false, 
 			MaxActivationDistance = 10, 
-			ClickablePrompt = l__DeviceUtil__6.isMobileControls(), 
+			ClickablePrompt = l__DeviceUtil__5.isMobileControls(), 
 			Parent = p3
 		}).Triggered:Connect(function(p4)
-			if p4 == l__Players__7.LocalPlayer then
-				if l__ClientSyncEvents__8.ZiplineMount:fire():isCancelled() then
+			if p4 == l__Players__6.LocalPlayer then
+				if l__ClientSyncEvents__7.ZiplineMount:fire():isCancelled() then
 					return nil;
 				end;
 				local l__Character__8 = p4.Character;
@@ -64,8 +63,8 @@ function u1.KnitStart(p2)
 				if l__Character__8 and v9 then
 					local l__Value__10 = p3.ZiplineDestination.Value;
 					if l__Value__10 then
-						local v11 = l__default__9.Client:Get("RemoteName"):CallServer({
-							ziplineBasePosition = l__BlockEngine__10:getBlockPosition(p3.Position)
+						local v11 = l__default__8.Client:Get("RemoteName"):CallServer({
+							ziplineBasePosition = l__BlockEngine__9:getBlockPosition(p3.Position)
 						});
 						if v11 then
 							local v12 = CFrame.new(p3.Position, l__Value__10.Position);
@@ -74,85 +73,97 @@ function u1.KnitStart(p2)
 								v9.Sit = false;
 								return nil;
 							end;
-							local u19 = true;
-							local u20 = u11.new();
-							u20:GiveTask(v9.Jumping:Connect(function()
-								u19 = false;
-								u20:DoCleaning();
+							local u18 = true;
+							local u19 = u10.new();
+							u19:GiveTask(v9.Jumping:Connect(function()
+								u18 = false;
+								u19:DoCleaning();
 							end));
-							local u21 = l__KnitClient__12.Controllers.JumpHeightController:getJumpModifier():addModifier({
+							local u20 = l__KnitClient__11.Controllers.JumpHeightController:getJumpModifier():addModifier({
 								airJumps = 2, 
 								jumpHeightMultiplier = 2, 
 								deleteWhenLanded = true
 							});
-							u20:GiveTask(function()
+							u19:GiveTask(function()
 								task.delay(3, function()
-									u21.Destroy();
+									u20.Destroy();
 								end);
 							end);
-							u20:GiveTask(function()
-								if not u19 then
+							u19:GiveTask(function()
+								if not u18 then
 									return nil;
 								end;
 								v9.Sit = false;
 							end);
 							v11.CFrame = v12;
-							local u22 = (l__Character__8:GetPrimaryPartCFrame().Position - l__Value__10.Position).Magnitude;
-							local u23 = tick();
-							l__RunService__13:BindToRenderStep("zipline", Enum.RenderPriority.Character.Value, function(p5)
+							local u21 = (l__Character__8:GetPrimaryPartCFrame().Position - l__Value__10.Position).Magnitude;
+							local u22 = tick();
+							l__RunService__12:BindToRenderStep("zipline", Enum.RenderPriority.Character.Value, function(p5)
 								v11.Velocity = (v13.Position - v12.Position).Unit * 40;
 								if (v11.Position - v13.Position).Magnitude <= 1 then
-									u20:DoCleaning();
+									u19:DoCleaning();
 									return nil;
 								end;
 								local function v14(p6)
-									if not p6:IsDescendantOf(v11) and not p6:IsDescendantOf(l__Character__8) and not p6:IsDescendantOf(p3) and not p6:IsDescendantOf(l__Workspace__14.CurrentCamera) and not l__GameQueryUtil__15:isQueryIgnored(p6) and (p6.Position - p3.Position).Magnitude > 5 then
+									if not p6:IsDescendantOf(v11) and not p6:IsDescendantOf(l__Character__8) and not p6:IsDescendantOf(p3) and not p6:IsDescendantOf(l__Workspace__13.CurrentCamera) and not l__GameQueryUtil__14:isQueryIgnored(p6) and (p6.Position - p3.Position).Magnitude > 5 then
 										return true;
 									end;
 									return false;
 								end;
-								for v15, v16 in ipairs(v11:GetTouchingParts()) do
-									if v14(v16) then
-										u20:DoCleaning();
-										return nil;
+								local v15, v16, v17 = ipairs(v11:GetTouchingParts());
+								while true do
+									v15(v16, v17);
+									if not v15 then
+										break;
 									end;
+									v17 = v15;
+									if v14(v16) then
+										u19:DoCleaning();
+										return nil;
+									end;								
 								end;
 								if l__Character__8.PrimaryPart then
-									for v17, v18 in ipairs(l__Character__8.PrimaryPart:GetTouchingParts()) do
-										if v14(v18) then
-											u20:DoCleaning();
-											return nil;
+									local v18, v19, v20 = ipairs(l__Character__8.PrimaryPart:GetTouchingParts());
+									while true do
+										v18(v19, v20);
+										if not v18 then
+											break;
 										end;
+										v20 = v18;
+										if v14(v19) then
+											u19:DoCleaning();
+											return nil;
+										end;									
 									end;
 								end;
-								local l__Magnitude__19 = (v11.Position - v13.Position).Magnitude;
-								if u22 < l__Magnitude__19 and tick() - u23 > 1.5 then
-									u20:DoCleaning();
+								local l__Magnitude__21 = (v11.Position - v13.Position).Magnitude;
+								if u21 < l__Magnitude__21 and tick() - u22 > 1.5 then
+									u19:DoCleaning();
 									return nil;
 								end;
-								u22 = l__Magnitude__19;
+								u21 = l__Magnitude__21;
 								if not (math.abs(v11.RotVelocity.Y) > 1) then
 									return;
 								end;
-								u20:DoCleaning();
+								u19:DoCleaning();
 								return nil;
 							end);
-							u20:GiveTask(function()
-								l__RunService__13:UnbindFromRenderStep("zipline");
+							u19:GiveTask(function()
+								l__RunService__12:UnbindFromRenderStep("zipline");
 							end);
-							u20:GiveTask(l__default__9.Client:Get("RemoteName"):Connect(function(p7)
-								if p7.entityInstance == l__Players__7.LocalPlayer.Character then
-									u20:DoCleaning();
+							u19:GiveTask(l__default__8.Client:Get("RemoteName"):Connect(function(p7)
+								if p7.entityInstance == l__Players__6.LocalPlayer.Character then
+									u19:DoCleaning();
 								end;
 							end));
-							u20:GiveTask(l__Value__10.AncestryChanged:Connect(function(p8, p9)
+							u19:GiveTask(l__Value__10.AncestryChanged:Connect(function(p8, p9)
 								if p9 == nil then
-									u20:DoCleaning();
+									u19:DoCleaning();
 								end;
 							end));
 							v11.AncestryChanged:Connect(function(p10, p11)
 								if p11 == nil then
-									u20:DoCleaning();
+									u19:DoCleaning();
 								end;
 							end);
 						end;
@@ -161,58 +172,56 @@ function u1.KnitStart(p2)
 			end;
 		end);
 	end);
-	l__CollectionTagAdded__3("zipline-attached", function(p12)
-		local v20 = l__Players__7.LocalPlayer.Character == p12;
-		local v21 = {};
-		if v20 then
-			local v22 = nil;
+	l__CollectionTagAdded__2("zipline-attached", function(p12)
+		local v22 = l__Players__6.LocalPlayer.Character == p12;
+		local v23 = {};
+		if v22 then
+			local v24 = nil;
 		else
-			v22 = p12:GetPrimaryPartCFrame().Position;
+			v24 = p12:GetPrimaryPartCFrame().Position;
 		end;
-		v21.position = v22;
-		l__SoundManager__16:playSound(l__GameSound__17.ZIPLINE_LATCH, v21);
-		local v23 = u11.new();
+		v23.position = v24;
+		l__SoundManager__15:playSound(l__GameSound__16.ZIPLINE_LATCH, v23);
+		local v25 = u10.new();
 		if p12.PrimaryPart then
-			local v24 = {};
-			if v20 then
-				local v25 = nil;
+			local v26 = {};
+			if v22 then
+				local v27 = nil;
 			else
-				v25 = p12:GetPrimaryPartCFrame().Position;
+				v27 = p12:GetPrimaryPartCFrame().Position;
 			end;
-			v24.position = v25;
-			v24.parent = p12.PrimaryPart;
-			local v26 = l__SoundManager__16:playSound(l__GameSound__17.ZIPLINE_TRAVEL, v24);
-			if v26 then
-				v26.Looped = true;
-				v23:GiveTask(function()
-					v26:Stop();
+			v26.position = v27;
+			v26.parent = p12.PrimaryPart;
+			local v28 = l__SoundManager__15:playSound(l__GameSound__16.ZIPLINE_TRAVEL, v26);
+			if v28 then
+				v28.Looped = true;
+				v25:GiveTask(function()
+					v28:Stop();
 				end);
 			end;
 		end;
-		v23:GiveTask(l__CollectionService__18:GetInstanceRemovedSignal("zipline-attached"):Connect(function(p13)
+		v25:GiveTask(l__CollectionService__17:GetInstanceRemovedSignal("zipline-attached"):Connect(function(p13)
 			if p13 == p12 then
-				local v27 = {};
-				if v20 then
-					local v28 = nil;
+				local v29 = {};
+				if v22 then
+					local v30 = nil;
 				else
-					v28 = p12:GetPrimaryPartCFrame().Position;
+					v30 = p12:GetPrimaryPartCFrame().Position;
 				end;
-				v27.position = v28;
-				l__SoundManager__16:playSound(l__GameSound__17.ZIPLINE_UNLATCH, v27);
-				v23:DoCleaning();
+				v29.position = v30;
+				l__SoundManager__15:playSound(l__GameSound__16.ZIPLINE_UNLATCH, v29);
+				v25:DoCleaning();
 			end;
 		end));
-		v23:GiveTask(p12.AncestryChanged:Connect(function(p14, p15)
+		v25:GiveTask(p12.AncestryChanged:Connect(function(p14, p15)
 			if p15 == nil then
-				v23:DoCleaning();
+				v25:DoCleaning();
 			end;
 		end));
 	end);
 end;
-u2 = v3.KnitClient.CreateController;
-u1 = u1.new;
-u2 = u2(u1());
-u1 = {
-	ZiplineController = u2
+u1 = v3.KnitClient.CreateController;
+u1 = u1(u1.new());
+return {
+	ZiplineController = u1
 };
-return u1;

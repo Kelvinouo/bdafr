@@ -1,4 +1,3 @@
--- Script Hash: 686ac69092c7e63960981647d2c022173e4df8f76bbb3b3794ff44dfeb728e0a74364d067ae7d33ba55394b467aec04d
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(script.Parent:WaitForChild("BaseCharacterController"));

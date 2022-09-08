@@ -156,7 +156,7 @@ function v32.new(p14, p15, p16)
 	local v36 = setmetatable({}, v32);
 	v36.DisplayModel = v36:NewDisplayModel(p14);
 	v36.Destroyed = false;
-	if p16 and (p16 - p14).magnitude > 5 then
+	if p16 and (p16 - p14).Magnitude > 5 then
 		v36.Tween = v36:TweenInFrom(p16);
 		coroutine.wrap(function()
 			v36.Tween.Completed:Wait();
@@ -245,7 +245,7 @@ local function u14(p23, p24)
 	for v54 = 1, #p23 - 1 do
 		local v55 = false;
 		if v54 % 2 == 0 then
-			v55 = not ((p23[v54].Position - p23[#p23].Position).magnitude < 3);
+			v55 = not ((p23[v54].Position - p23[#p23].Position).Magnitude < 3);
 		end;
 		if v55 then
 			v52[v53] = v24.new(p23[v54].Position, v54);
@@ -274,7 +274,7 @@ function v1.CreatePathDisplay(p25, p26)
 		for v60 = 1, #u15 do
 			local l__TrailDotImage__61 = u15[v60].DisplayModel:FindFirstChild("TrailDotImage");
 			if l__TrailDotImage__61 then
-				l__TrailDotImage__61.Size = u1 * (1 + 1.5 * (math.clamp((u15[v60].DisplayModel.Position - l__p__59).magnitude - 10, 0, 90) / 90));
+				l__TrailDotImage__61.Size = u1 * (1 + 1.5 * (math.clamp((u15[v60].DisplayModel.Position - l__p__59).Magnitude - 10, 0, 90) / 90));
 			end;
 		end;
 	end);
@@ -321,6 +321,7 @@ function v1.PlayFailureAnimation()
 			local v67 = u12;
 		else
 			u12 = v66:LoadAnimation(v51);
+			assert(u12, "");
 			u12.Priority = Enum.AnimationPriority.Action;
 			u12.Looped = false;
 			v67 = u12;

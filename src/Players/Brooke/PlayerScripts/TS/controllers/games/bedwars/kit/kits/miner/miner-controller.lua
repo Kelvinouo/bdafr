@@ -17,43 +17,42 @@ function v7.new(...)
 	local v8 = setmetatable({}, v7);
 	return v8:constructor(...) and v8;
 end;
-local u1 = l__LegacyKitKnitController__6;
-local l__BedwarsKit__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
-local l__ExpireList__3 = v2.ExpireList;
+local l__BedwarsKit__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
+local l__ExpireList__2 = v2.ExpireList;
 function v7.constructor(p1)
-	u1.constructor(p1, { l__BedwarsKit__2.MINER });
+	l__LegacyKitKnitController__6.constructor(p1, { l__BedwarsKit__1.MINER });
 	p1.Name = "MinerController";
-	p1.mineCooldowns = l__ExpireList__3.new(2);
+	p1.mineCooldowns = l__ExpireList__2.new(2);
 end;
-local l__default__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-local l__Players__5 = v5.Players;
-local l__default__6 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
-local l__KnitClient__7 = v3.KnitClient;
-local l__EntityUtil__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
-local l__Workspace__9 = v5.Workspace;
-local l__CollectionService__10 = v5.CollectionService;
-local l__GameQueryUtil__11 = v2.GameQueryUtil;
-local l__SoundManager__12 = v2.SoundManager;
-local l__GameSound__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__KnitClient__14 = v3.KnitClient;
-local u15 = Color3.fromRGB(120, 120, 120);
-local l__ArmorSlot__16 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "inventory", "armor-slot").ArmorSlot;
-local l__default__17 = v1.import(script, v1.getModule(script, "@rbxts", "tween")).default;
-local l__InOutQuart__18 = v4.InOutQuart;
-local l__Linear__19 = v4.Linear;
-local l__WatchCharacter__20 = v2.WatchCharacter;
-local l__AnimatorAdded__21 = v2.AnimatorAdded;
-local l__GameAnimationUtil__22 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
-local l__AnimationType__23 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
-local u24 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
-local l__BedwarsKitSkin__25 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit-skin", "bedwars-kit-skin").BedwarsKitSkin;
-local l__ReplicatedStorage__26 = v5.ReplicatedStorage;
-local l__WeldUtil__27 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "weld-util").WeldUtil;
-local l__EffectUtil__28 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "effect", "effect-util").EffectUtil;
+local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__Players__4 = v5.Players;
+local l__default__5 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
+local l__KnitClient__6 = v3.KnitClient;
+local l__EntityUtil__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "entity-util").EntityUtil;
+local l__Workspace__8 = v5.Workspace;
+local l__CollectionService__9 = v5.CollectionService;
+local l__GameQueryUtil__10 = v2.GameQueryUtil;
+local l__SoundManager__11 = v2.SoundManager;
+local l__GameSound__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local l__KnitClient__13 = v3.KnitClient;
+local u14 = Color3.fromRGB(120, 120, 120);
+local l__ArmorSlot__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "inventory", "armor-slot").ArmorSlot;
+local l__default__16 = v1.import(script, v1.getModule(script, "@rbxts", "tween")).default;
+local l__InOutQuart__17 = v4.InOutQuart;
+local l__Linear__18 = v4.Linear;
+local l__WatchCharacter__19 = v2.WatchCharacter;
+local l__AnimatorAdded__20 = v2.AnimatorAdded;
+local l__GameAnimationUtil__21 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
+local l__AnimationType__22 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
+local u23 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+local l__BedwarsKitSkin__24 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit-skin", "bedwars-kit-skin").BedwarsKitSkin;
+local l__ReplicatedStorage__25 = v5.ReplicatedStorage;
+local l__WeldUtil__26 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "weld-util").WeldUtil;
+local l__EffectUtil__27 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "effect", "effect-util").EffectUtil;
 function v7.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__default__4.Client:OnEvent("RemoteName", function(p3)
-		l__default__6.Debug("Petrified player was destroyed");
+	l__LegacyKitKnitController__6.KnitStart(p2);
+	l__default__3.Client:OnEvent("RemoteName", function(p3)
+		l__default__5.Debug("Petrified player was destroyed");
 		local v9 = p2:getPetrifyModel(p3.petrifyId);
 		local v10 = v9;
 		if v10 ~= nil then
@@ -63,14 +62,14 @@ function v7.KnitStart(p2)
 			return nil;
 		end;
 		if p3.destroyer then
-			local l__destroyer__29 = p3.destroyer;
-			if p3.destroyer == l__Players__5.LocalPlayer then
+			local l__destroyer__28 = p3.destroyer;
+			if p3.destroyer == l__Players__4.LocalPlayer then
 				local v11 = "PlayLocally";
 			else
 				v11 = "PlayGlobally";
 			end;
-			l__KnitClient__7.Controllers.ReceiveItemEffectController:playEffectForItems(p3.rewards, v9.PrimaryPart.Position, function()
-				local v12 = l__EntityUtil__8:getEntity(l__destroyer__29);
+			l__KnitClient__6.Controllers.ReceiveItemEffectController:playEffectForItems(p3.rewards, v9.PrimaryPart.Position, function()
+				local v12 = l__EntityUtil__7:getEntity(l__destroyer__28);
 				if v12 == nil then
 					return nil;
 				end;
@@ -79,146 +78,188 @@ function v7.KnitStart(p2)
 		end;
 		p2:destroyPetrifyModel(v9, p3.destroyer);
 	end);
-	l__default__4.Client:OnEvent("RemoteName", function(p4)
+	l__default__3.Client:OnEvent("RemoteName", function(p4)
 		p4.to.Archivable = true;
 		local v13 = p4.to:Clone();
-		v13.Parent = l__Workspace__9;
+		v13.Parent = l__Workspace__8;
 		v13.HumanoidRootPart.Anchored = true;
 		v13:SetAttribute("Team", p4.to:GetAttribute("Team"));
 		v13:SetAttribute("PetrifyId", p4.petrifyId);
-		l__CollectionService__10:AddTag(v13, "petrified-player");
-		l__CollectionService__10:AddTag(v13, "petrified-player:" .. p4.petrifyId);
-		for v14, v15 in ipairs(p4.to:GetDescendants()) do
+		l__CollectionService__9:AddTag(v13, "petrified-player");
+		l__CollectionService__9:AddTag(v13, "petrified-player:" .. p4.petrifyId);
+		local v14, v15, v16 = ipairs(p4.to:GetDescendants());
+		while true do
+			v14(v15, v16);
+			if not v14 then
+				break;
+			end;
+			v16 = v14;
 			if v15:IsA("BasePart") then
 				v15.Transparency = 1;
-			end;
+			end;		
 		end;
-		for v16, v17 in ipairs(v13:GetDescendants()) do
-			if v17:IsA("BasePart") then
-				v17.CanCollide = false;
-				l__GameQueryUtil__11:setQueryIgnored(v17, true);
+		local v17, v18, v19 = ipairs(v13:GetDescendants());
+		while true do
+			v17(v18, v19);
+			if not v17 then
+				break;
 			end;
+			v19 = v17;
+			if v18:IsA("BasePart") then
+				v18.CanCollide = false;
+				l__GameQueryUtil__10:setQueryIgnored(v18, true);
+			end;		
 		end;
-		for v18, v19 in ipairs(v13:GetDescendants()) do
-			if v19:IsA("BillboardGui") then
-				v19:Destroy();
+		local v20, v21, v22 = ipairs(v13:GetDescendants());
+		while true do
+			v20(v21, v22);
+			if not v20 then
+				break;
 			end;
+			v22 = v20;
+			if v21:IsA("BillboardGui") then
+				v21:Destroy();
+			end;		
 		end;
-		l__SoundManager__12:playSound(l__GameSound__13.TURN_TO_STONE, {
+		l__SoundManager__11:playSound(l__GameSound__12.TURN_TO_STONE, {
 			position = v13:GetPrimaryPartCFrame().Position
 		});
-		l__KnitClient__14.Controllers.EntityHighlightController:highlight(v13, {
-			color = u15, 
+		l__KnitClient__13.Controllers.EntityHighlightController:highlight(v13, {
+			color = u14, 
 			transparency = 0, 
 			fadeInTime = 1, 
 			lastsForever = true, 
 			shouldApplyToPart = function(p5)
-				local v20 = p5:FindFirstAncestorWhichIsA("Accessory");
-				if not v20 or v20:GetAttribute("ArmorSlot") ~= l__ArmorSlot__16.HELMET then
+				local v23 = p5:FindFirstAncestorWhichIsA("Accessory");
+				if not v23 or v23:GetAttribute("ArmorSlot") ~= l__ArmorSlot__15.HELMET then
 					return true;
 				end;
-				for v21, v22 in ipairs((v20:GetDescendants())) do
-					if v22:IsA("Texture") then
-						v22.Transparency = 1;
+				local v24, v25, v26 = ipairs((v23:GetDescendants()));
+				while true do
+					v24(v25, v26);
+					if not v24 then
+						break;
 					end;
+					v26 = v24;
+					if v25:IsA("Texture") then
+						v25.Transparency = 1;
+					end;				
 				end;
 				return false;
 			end
 		});
-		local v23 = {};
-		for v24, v25 in ipairs((p4.to.Humanoid.Animator:GetPlayingAnimationTracks())) do
-			if v25.Animation then
-				local v26 = v13.Humanoid.Animator:LoadAnimation(v25.Animation);
-				v26:AdjustWeight(v25.WeightTarget);
-				v26:AdjustSpeed(v25.Speed);
-				v26:Play();
-				v26.TimePosition = v25.TimePosition;
-				table.insert(v23, {
-					startingSpeed = v25.Speed, 
-					animationTrack = v26
-				});
+		local v27 = {};
+		local v28, v29, v30 = ipairs((p4.to.Humanoid.Animator:GetPlayingAnimationTracks()));
+		while true do
+			v28(v29, v30);
+			if not v28 then
+				break;
 			end;
+			v30 = v28;
+			if v29.Animation then
+				local v31 = v13.Humanoid.Animator:LoadAnimation(v29.Animation);
+				v31:AdjustWeight(v29.WeightTarget);
+				v31:AdjustSpeed(v29.Speed);
+				v31:Play();
+				v31.TimePosition = v29.TimePosition;
+				table.insert(v27, {
+					startingSpeed = v29.Speed, 
+					animationTrack = v31
+				});
+			end;		
 		end;
-		l__default__17(1, l__InOutQuart__18, function(p6)
-			for v27, v28 in ipairs(v23) do
-				v28.animationTrack:AdjustSpeed(l__Linear__19(1 - p6, v28.startingSpeed, -v28.startingSpeed, 1));
+		l__default__16(1, l__InOutQuart__17, function(p6)
+			local v32, v33, v34 = ipairs(v27);
+			while true do
+				v32(v33, v34);
+				if not v32 then
+					break;
+				end;
+				v34 = v32;
+				v33.animationTrack:AdjustSpeed(l__Linear__18(1 - p6, v33.startingSpeed, -v33.startingSpeed, 1));			
 			end;
 		end, 1, 0);
 	end);
-	l__WatchCharacter__20(function(p7, p8)
-		l__AnimatorAdded__21(p8:WaitForChild("Humanoid"), function(p9)
+	l__WatchCharacter__19(function(p7, p8)
+		l__AnimatorAdded__20(p8:WaitForChild("Humanoid"), function(p9)
 			p9.AnimationPlayed:Connect(function(p10)
-				local v29 = p10.Animation;
-				if v29 ~= nil then
-					v29 = v29.AnimationId;
+				local v35 = p10.Animation;
+				if v35 ~= nil then
+					v35 = v35.AnimationId;
 				end;
-				if v29 == l__GameAnimationUtil__22.getAssetId(l__AnimationType__23.MINER_MINE_STONE) then
-					if p2.mineCooldowns:has(p7.UserId) and p7.UserId ~= l__Players__5.LocalPlayer.UserId then
+				if v35 == l__GameAnimationUtil__21.getAssetId(l__AnimationType__22.MINER_MINE_STONE) then
+					if p2.mineCooldowns:has(p7.UserId) and p7.UserId ~= l__Players__4.LocalPlayer.UserId then
 						return nil;
 					end;
 					p2.mineCooldowns:add(p7.UserId);
-					local v30 = p8.PrimaryPart;
-					if v30 ~= nil then
-						v30 = v30.Position;
+					local v36 = p8.PrimaryPart;
+					if v36 ~= nil then
+						v36 = v36.Position;
 					end;
-					if not v30 then
+					if not v36 then
 						return nil;
 					end;
-					local v31 = p2:getClosestPetrifiedPlayer(v30);
-					if not v31 then
+					local v37 = p2:getClosestPetrifiedPlayer(v36);
+					if not v37 then
 						return nil;
 					end;
-					local v32 = u24.new();
-					local v33 = l__EntityUtil__8:getEntity(p7);
-					if v33 ~= nil then
-						v33 = v33:getItemInHandClient();
+					local v38 = u23.new();
+					local v39 = l__EntityUtil__7:getEntity(p7);
+					if v39 ~= nil then
+						v39 = v39:getItemInHandClient();
 					end;
-					if v33 then
-						for v34, v35 in ipairs(v33:GetDescendants()) do
-							if v35:IsA("BasePart") then
-								v35.Transparency = 1;
-								local l__Transparency__30 = v35.Transparency;
-								v32:GiveTask(function()
-									v35.Transparency = l__Transparency__30;
-								end);
+					if v39 then
+						local v40, v41, v42 = ipairs(v39:GetDescendants());
+						while true do
+							v40(v41, v42);
+							if not v40 then
+								break;
 							end;
+							v42 = v40;
+							if v41:IsA("BasePart") then
+								v41.Transparency = 1;
+								local l__Transparency__29 = v41.Transparency;
+								v38:GiveTask(function()
+									v41.Transparency = l__Transparency__29;
+								end);
+							end;						
 						end;
 					end;
-					if l__KnitClient__14.Controllers.KitController:getKitSkin(p8) == l__BedwarsKitSkin__25.MINER_SPACE then
-						local v36 = l__ReplicatedStorage__26.Assets.Effects.MinerPickaxeSpace:Clone();
+					if l__KnitClient__13.Controllers.KitController:getKitSkin(p8) == l__BedwarsKitSkin__24.MINER_SPACE then
+						local v43 = l__ReplicatedStorage__25.Assets.Effects.MinerPickaxeSpace:Clone();
 					else
-						v36 = l__ReplicatedStorage__26.Assets.Effects.MinerPickaxe:Clone();
+						v43 = l__ReplicatedStorage__25.Assets.Effects.MinerPickaxe:Clone();
 					end;
-					v36.Parent = p8;
-					l__WeldUtil__27.weldCharacterAccessories(p8);
-					local v37 = l__ReplicatedStorage__26.Assets.Effects.MinerStoneHit:Clone();
-					local v38 = v31.PrimaryPart;
-					if v38 ~= nil then
-						v38 = v38.CFrame;
+					v43.Parent = p8;
+					l__WeldUtil__26:weldCharacterAccessories(p8);
+					local v44 = l__ReplicatedStorage__25.Assets.Effects.MinerStoneHit:Clone();
+					local v45 = v37.PrimaryPart;
+					if v45 ~= nil then
+						v45 = v45.CFrame;
 					end;
-					local v39 = v38;
-					if v39 == nil then
-						v39 = CFrame.new();
+					local v46 = v45;
+					if v46 == nil then
+						v46 = CFrame.new();
 					end;
-					v37.CFrame = v39;
-					v37.Anchored = true;
-					v37.Parent = l__Workspace__9;
-					l__GameQueryUtil__11:setQueryIgnored(v37, true);
-					v32:GiveTask(function()
+					v44.CFrame = v46;
+					v44.Anchored = true;
+					v44.Parent = l__Workspace__8;
+					l__GameQueryUtil__10:setQueryIgnored(v44, true);
+					v38:GiveTask(function()
 						task.delay(3, function()
-							v37:Destroy();
+							v44:Destroy();
 						end);
 					end);
-					local u31 = p8 == l__Players__5.LocalPlayer.Character;
-					local l__Position__32 = p8.PrimaryPart.Position;
-					local function u33(p11)
-						if u31 then
-							local v40 = p8.PrimaryPart;
-							if v40 ~= nil then
-								v40 = v40.CFrame;
+					local u30 = p8 == l__Players__4.LocalPlayer.Character;
+					local l__Position__31 = p8.PrimaryPart.Position;
+					local function u32(p11)
+						if u30 then
+							local v47 = p8.PrimaryPart;
+							if v47 ~= nil then
+								v47 = v47.CFrame;
 							end;
-							if v40 then
-								l__KnitClient__7.Controllers.ScreenShakeController:shake(v40.Position, v40 * Vector3.new(-0.25, -1, -1) - v40.Position, {
+							if v47 then
+								l__KnitClient__6.Controllers.ScreenShakeController:shake(v47.Position, v47 * Vector3.new(-0.25, -1, -1) - v47.Position, {
 									magnitude = 0.07 * p11, 
 									duration = 0.15, 
 									cycles = 2
@@ -227,78 +268,78 @@ function v7.KnitStart(p2)
 						end;
 					end;
 					p10:GetMarkerReachedSignal("hammer_1"):Connect(function()
-						p2:detachParts(l__Position__32, { v31:FindFirstChild("Head") });
-						l__EffectUtil__28:playEffects({ v37 }, nil);
-						local v41 = {};
-						if u31 then
-							local v42 = nil;
+						p2:detachParts(l__Position__31, { v37:FindFirstChild("Head") });
+						l__EffectUtil__27:playEffects({ v44 }, nil);
+						local v48 = {};
+						if u30 then
+							local v49 = nil;
 						else
-							local v43 = p8.PrimaryPart;
-							if v43 ~= nil then
-								v43 = v43.Position;
+							local v50 = p8.PrimaryPart;
+							if v50 ~= nil then
+								v50 = v50.Position;
 							end;
-							v42 = v43;
+							v49 = v50;
 						end;
-						v41.position = v42;
-						l__SoundManager__12:playSound(l__GameSound__13.MINER_STONE_HIT_1, v41);
-						u33(1);
+						v48.position = v49;
+						l__SoundManager__11:playSound(l__GameSound__12.MINER_STONE_HIT_1, v48);
+						u32(1);
 					end);
 					p10:GetMarkerReachedSignal("hammer_2"):Connect(function()
-						p2:detachParts(l__Position__32, { v31:FindFirstChild("RightUpperArm"), v31:FindFirstChild("LeftUpperArm") });
-						l__EffectUtil__28:playEffects({ v37 }, nil);
-						local v44 = {};
-						if u31 then
-							local v45 = nil;
+						p2:detachParts(l__Position__31, { v37:FindFirstChild("RightUpperArm"), v37:FindFirstChild("LeftUpperArm") });
+						l__EffectUtil__27:playEffects({ v44 }, nil);
+						local v51 = {};
+						if u30 then
+							local v52 = nil;
 						else
-							local v46 = p8.PrimaryPart;
-							if v46 ~= nil then
-								v46 = v46.Position;
+							local v53 = p8.PrimaryPart;
+							if v53 ~= nil then
+								v53 = v53.Position;
 							end;
-							v45 = v46;
+							v52 = v53;
 						end;
-						v44.position = v45;
-						l__SoundManager__12:playSound(l__GameSound__13.MINER_STONE_HIT_2, v44);
-						u33(1.25);
+						v51.position = v52;
+						l__SoundManager__11:playSound(l__GameSound__12.MINER_STONE_HIT_2, v51);
+						u32(1.25);
 					end);
 					p10:GetMarkerReachedSignal("hammer_3"):Connect(function()
-						p2:detachParts(l__Position__32, { v31:FindFirstChild("UpperTorso") });
-						l__EffectUtil__28:playEffects({ v37 }, nil);
-						local v47 = {};
-						if u31 then
-							local v48 = nil;
+						p2:detachParts(l__Position__31, { v37:FindFirstChild("UpperTorso") });
+						l__EffectUtil__27:playEffects({ v44 }, nil);
+						local v54 = {};
+						if u30 then
+							local v55 = nil;
 						else
-							local v49 = p8.PrimaryPart;
-							if v49 ~= nil then
-								v49 = v49.Position;
+							local v56 = p8.PrimaryPart;
+							if v56 ~= nil then
+								v56 = v56.Position;
 							end;
-							v48 = v49;
+							v55 = v56;
 						end;
-						v47.position = v48;
-						l__SoundManager__12:playSound(l__GameSound__13.MINER_STONE_HIT_3, v47);
-						u33(1.25);
+						v54.position = v55;
+						l__SoundManager__11:playSound(l__GameSound__12.MINER_STONE_HIT_3, v54);
+						u32(1.25);
 					end);
 					p10:GetMarkerReachedSignal("hammer_4"):Connect(function()
-						p2:detachParts(l__Position__32, { v31:FindFirstChild("LeftLowerLeg"), v31:FindFirstChild("RightLowerLeg"), v31:FindFirstChild("LowerTorso") });
-						l__EffectUtil__28:playEffects({ v37 }, nil, {
+						p2:detachParts(l__Position__31, { v37:FindFirstChild("LeftLowerLeg"), v37:FindFirstChild("RightLowerLeg"), v37:FindFirstChild("LowerTorso") });
+						l__EffectUtil__27:playEffects({ v44 }, nil, {
 							particleMultiplier = 3
 						});
-						local v50 = {};
-						if u31 then
-							local v51 = nil;
+						local v57 = {};
+						if u30 then
+							local v58 = nil;
 						else
-							local v52 = p8.PrimaryPart;
-							if v52 ~= nil then
-								v52 = v52.Position;
+							local v59 = p8.PrimaryPart;
+							if v59 ~= nil then
+								v59 = v59.Position;
 							end;
-							v51 = v52;
+							v58 = v59;
 						end;
-						v50.position = v51;
-						l__SoundManager__12:playSound(l__GameSound__13.MINER_STONE_BREAK, v50);
-						u33(2);
+						v57.position = v58;
+						l__SoundManager__11:playSound(l__GameSound__12.MINER_STONE_BREAK, v57);
+						u32(2);
 					end);
 					p10.Stopped:Connect(function()
-						v36:Destroy();
-						v32:DoCleaning();
+						v43:Destroy();
+						v38:DoCleaning();
 					end);
 				end;
 			end);
@@ -306,52 +347,64 @@ function v7.KnitStart(p2)
 	end);
 end;
 function v7.detachParts(p12, p13, p14)
-	local v53, v54, v55 = ipairs(p14);
+	local v60, v61, v62 = ipairs(p14);
 	while true do
-		local v56, v57 = v53(v54, v55);
-		if not v56 then
+		v60(v61, v62);
+		if not v60 then
 			break;
 		end;
-		local v58 = v57;
-		if v58 ~= nil then
-			v58 = v58:IsA("BasePart");
+		local v63 = v61;
+		if v63 ~= nil then
+			v63 = v63:IsA("BasePart");
 		end;
-		if v58 then
-			for v59, v60 in ipairs(v57:GetChildren()) do
-				if v60:IsA("Motor6D") then
-					v60:Destroy();
+		if v63 then
+			local v64, v65, v66 = ipairs(v61:GetChildren());
+			while true do
+				v64(v65, v66);
+				if not v64 then
+					break;
 				end;
+				v66 = v64;
+				if v65:IsA("Motor6D") then
+					v65:Destroy();
+				end;			
 			end;
-			local v61 = v57.Position - p13;
-			v57:ApplyImpulse((Vector3.new(v61.X, 0, v61.Z).Unit * 20 + Vector3.new(0, 30, 0)) * v57.AssemblyMass);
-			v57:ApplyAngularImpulse(Vector3.new(5, 10, 5) * v57.AssemblyMass);
-			v57.Touched:Connect(function(p15)
-				if v57.Parent and p15:IsDescendantOf(v57.Parent) then
+			local v67 = v61.Position - p13;
+			v61:ApplyImpulse((Vector3.new(v67.X, 0, v67.Z).Unit * 20 + Vector3.new(0, 30, 0)) * v61.AssemblyMass);
+			v61:ApplyAngularImpulse(Vector3.new(5, 10, 5) * v61.AssemblyMass);
+			v61.Touched:Connect(function(p15)
+				if v61.Parent and p15:IsDescendantOf(v61.Parent) then
 					return nil;
 				end;
-				if l__GameQueryUtil__11:isQueryIgnored(p15) then
+				if l__GameQueryUtil__10:isQueryIgnored(p15) then
 					return nil;
 				end;
 				wait(0.15);
-				p12:despawnPart(v57);
+				p12:despawnPart(v61);
 			end);
 		end;	
 	end;
 end;
-local l__RandomUtil__34 = v2.RandomUtil;
+local l__RandomUtil__33 = v2.RandomUtil;
 function v7.despawnPart(p16, p17)
 	if not p17.Parent then
 		return nil;
 	end;
-	l__SoundManager__12:playSound(l__RandomUtil__34.fromList(l__GameSound__13.ROCK_CRUMBLE_1, l__GameSound__13.ROCK_CRUMBLE_2, l__GameSound__13.ROCK_CRUMBLE_3), {
+	l__SoundManager__11:playSound(l__RandomUtil__33.fromList(l__GameSound__12.ROCK_CRUMBLE_1, l__GameSound__12.ROCK_CRUMBLE_2, l__GameSound__12.ROCK_CRUMBLE_3), {
 		position = p17.Position, 
 		volumeMultiplier = 0.2
 	});
-	local v62 = p17:GetConnectedParts(false);
+	local v68 = p17:GetConnectedParts(false);
 	p17:Destroy();
 	task.delay(0.12, function()
-		for v63, v64 in ipairs(v62) do
-			p16:despawnPart(v64);
+		local v69, v70, v71 = ipairs(v68);
+		while true do
+			v69(v70, v71);
+			if not v69 then
+				break;
+			end;
+			v71 = v69;
+			p16:despawnPart(v70);		
 		end;
 	end);
 end;
@@ -359,62 +412,68 @@ function v7.destroyPetrifyModel(p18, p19, p20)
 	p19:Destroy();
 end;
 function v7.getPetrifyModel(p21, p22)
-	for v65, v66 in ipairs((l__CollectionService__10:GetTagged("petrified-player:" .. p22))) do
-		if true == true then
-			return v66;
+	local v72, v73, v74 = ipairs((l__CollectionService__9:GetTagged("petrified-player:" .. p22)));
+	while true do
+		v72(v73, v74);
+		if not v72 then
+			break;
 		end;
+		v74 = v72;
+		if true == true then
+			return v73;
+		end;	
 	end;
 	return nil;
 end;
-local l__CollectionTagAdded__35 = v2.CollectionTagAdded;
-local u36 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-local l__Theme__37 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
-local l__DeviceUtil__38 = v2.DeviceUtil;
-local l__ClientStore__39 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
-local l__Flamework__40 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
+local l__CollectionTagAdded__34 = v2.CollectionTagAdded;
+local u35 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
+local l__Theme__36 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
+local l__DeviceUtil__37 = v2.DeviceUtil;
+local l__ClientStore__38 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
+local l__Flamework__39 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 function v7.onKitEnabled(p23)
-	l__CollectionTagAdded__35("petrified-player", function(p24)
+	l__CollectionTagAdded__34("petrified-player", function(p24)
 		if p24.PrimaryPart == nil then
 			p24:GetPropertyChangedSignal("PrimaryPart"):Wait();
 		end;
-		local v67 = u36("ProximityPrompt", {
+		local v75 = u35("ProximityPrompt", {
 			Parent = p24.PrimaryPart, 
 			ActionText = "Gather", 
 			ObjectText = "Petrified Player", 
-			KeyboardKeyCode = l__Theme__37.promptKeyboardKey, 
+			KeyboardKeyCode = l__Theme__36.promptKeyboardKey, 
 			RequiresLineOfSight = false, 
 			MaxActivationDistance = 6, 
 			HoldDuration = 3.68, 
-			ClickablePrompt = l__DeviceUtil__38.isMobileControls()
+			ClickablePrompt = l__DeviceUtil__37.isMobileControls()
 		});
-		v67.PromptButtonHoldBegan:Connect(function(p25)
-			local v68 = l__ClientStore__39:getState().Game.myTeam;
-			if v68 ~= nil then
-				v68 = v68.id;
+		v75.PromptButtonHoldBegan:Connect(function(p25)
+			local v76 = l__ClientStore__38:getState().Game.myTeam;
+			if v76 ~= nil then
+				v76 = v76.id;
 			end;
-			if p24:GetAttribute("Team") == v68 then
-				v67:InputHoldEnd();
-				l__Flamework__40.resolveDependency("@easy-games/game-core:client/controllers/notification-controller@NotificationController"):sendErrorNotification({
+			if p24:GetAttribute("Team") == v76 then
+				v75:InputHoldEnd();
+				l__Flamework__39.resolveDependency("@easy-games/game-core:client/controllers/notification-controller@NotificationController"):sendErrorNotification({
 					message = "You cannot mine your teammates!"
 				});
 				return nil;
 			end;
-			local v69 = u24.new();
-			local u41 = l__GameAnimationUtil__22.playAnimation(l__Players__5.LocalPlayer, l__AnimationType__23.MINER_MINE_STONE);
-			v69:GiveTask(function()
-				if u41 ~= nil then
-					u41:Stop();
+			local v77 = u23.new();
+			local u40 = l__GameAnimationUtil__21.playAnimation(l__Players__4.LocalPlayer, l__AnimationType__22.MINER_MINE_STONE);
+			v77:GiveTask(function()
+				if u40 ~= nil then
+					u40:Stop();
 				end;
-				if u41 ~= nil then
-					u41:Destroy();
+				if u40 ~= nil then
+					u40:Destroy();
 				end;
 			end);
-			v67.PromptButtonHoldEnded:Connect(function()
-				v69:DoCleaning();
+			v75.PromptButtonHoldEnded:Connect(function()
+				v77:DoCleaning();
 			end);
 		end);
-		v67.Triggered:Connect(function(p26)
-			l__default__4.Client:Get("RemoteName"):SendToServer({
+		v75.Triggered:Connect(function(p26)
+			l__default__3.Client:Get("RemoteName"):SendToServer({
 				petrifyId = p24:GetAttribute("PetrifyId")
 			});
 		end);
@@ -424,31 +483,36 @@ function v7.onKitDisabled(p27)
 
 end;
 function v7.getClosestPetrifiedPlayer(p28, p29)
-	local v70 = {};
-	local v71 = 0;
-	local v72, v73, v74 = ipairs((l__CollectionService__10:GetTagged("petrified-player")));
+	local v78 = {};
+	local v79 = 0;
+	local v80, v81, v82 = ipairs((l__CollectionService__9:GetTagged("petrified-player")));
 	while true do
-		local v75, v76 = v72(v73, v74);
-		if not v75 then
+		v80(v81, v82);
+		if not v80 then
 			break;
 		end;
-		if v76.PrimaryPart ~= nil == true then
-			v71 = v71 + 1;
-			v70[v71] = v76;
+		if v81.PrimaryPart ~= nil == true then
+			v79 = v79 + 1;
+			v78[v79] = v81;
 		end;	
 	end;
-	table.sort(v70, function(p30, p31)
+	table.sort(v78, function(p30, p31)
 		return (p30.PrimaryPart.Position - p29).Magnitude < (p31.PrimaryPart.Position - p29).Magnitude;
 	end);
-	local v77 = nil;
-	for v78, v79 in ipairs(v70) do
-		if true == true then
-			v77 = v79;
+	local v83 = nil;
+	local v84, v85, v86 = ipairs(v78);
+	while true do
+		v84(v85, v86);
+		if not v84 then
 			break;
 		end;
+		v86 = v84;
+		if true == true then
+			v83 = v85;
+			break;
+		end;	
 	end;
-	return v77;
+	return v83;
 end;
-u1 = l__KnitClient__14.CreateController;
-u1 = u1(v7.new());
+local v87 = l__KnitClient__13.CreateController(v7.new());
 return nil;
