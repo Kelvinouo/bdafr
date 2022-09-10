@@ -35,6 +35,7 @@ local l__GameSound__11 = v1.import(script, game:GetService("ReplicatedStorage"),
 local l__BlockEngine__12 = v1.import(script, v1.getModule(script, "@easy-games", "block-engine").out).BlockEngine;
 function u1.KnitStart(p2)
 	l__CollectionTagAdded__3("cannon", function(p3)
+		local v7 = p3:GetAttribute("BlockSkin");
 		u4("ProximityPrompt", {
 			Name = "AimPrompt", 
 			KeyboardKeyCode = l__Theme__5.promptKeyboardKey, 
@@ -94,16 +95,20 @@ function u1.KnitStart(p2)
 				l__KnitClient__7.Controllers.CannonHandController:launchSelf(p3);
 			end;
 		end);
+		local v8 = -90;
+		if v7 == "ghost" then
+			v8 = 90;
+		end;
 		local function u13()
-			local v7 = p3:GetAttribute("LookVector") or Vector3.new();
+			local v9 = p3:GetAttribute("LookVector") or Vector3.new();
 			if p3:FindFirstChild("Base") then
 				l__TweenService__8:Create(p3.Base, TweenInfo.new(0.2, Enum.EasingStyle.Linear), {
-					CFrame = CFrame.new(p3.Base.Position, p3.Base.Position + v7 * (Vector3.new(1, 0, 1) * 5)) * CFrame.Angles(0, -1.5707963267948966, 0)
+					CFrame = CFrame.new(p3.Base.Position, p3.Base.Position + v9 * (Vector3.new(1, 0, 1) * 5)) * CFrame.Angles(0, math.rad(v8), 0)
 				}):Play();
 			end;
 			if p3:FindFirstChild("Barrel") then
 				l__TweenService__8:Create(p3.Barrel, TweenInfo.new(0.2, Enum.EasingStyle.Linear), {
-					CFrame = CFrame.new(p3.Barrel.Position, p3.Barrel.Position + v7 * 5) * CFrame.Angles(0, -1.5707963267948966, 0)
+					CFrame = CFrame.new(p3.Barrel.Position, p3.Barrel.Position + v9 * 5) * CFrame.Angles(0, math.rad(v8), 0)
 				}):Play();
 			end;
 		end;
@@ -114,15 +119,15 @@ function u1.KnitStart(p2)
 	end);
 	l__default__9.Client:WaitFor("RemoteName"):andThen(function(p8)
 		p8:Connect(function(p9)
-			local v8 = {};
+			local v10 = {};
 			if p9.player == l__Players__6.LocalPlayer then
-				local v9 = nil;
+				local v11 = nil;
 			else
-				v9 = l__BlockEngine__12:getWorldPosition(p9.cannonBlockPos);
+				v11 = l__BlockEngine__12:getWorldPosition(p9.cannonBlockPos);
 			end;
-			v8.position = v9;
-			v8.rollOffMaxDistance = 220;
-			l__SoundManager__10:playSound(l__GameSound__11.CANNON_FIRE, v8);
+			v10.position = v11;
+			v10.rollOffMaxDistance = 220;
+			l__SoundManager__10:playSound(l__GameSound__11.CANNON_FIRE, v10);
 		end);
 	end);
 end;
@@ -147,21 +152,21 @@ function u1.startAiming(p10, p11)
 	l__Players__6.LocalPlayer.CameraMinZoomDistance = 6.5;
 	l__Players__6.LocalPlayer.CameraMaxZoomDistance = 6.5;
 	p10.aimingMaid:GiveTask(function()
-		local v10 = l__Players__6.LocalPlayer.Character;
-		if v10 ~= nil then
-			v10 = v10:FindFirstChild("Humanoid");
+		local v12 = l__Players__6.LocalPlayer.Character;
+		if v12 ~= nil then
+			v12 = v12:FindFirstChild("Humanoid");
 		end;
-		l__Workspace__14.CurrentCamera.CameraSubject = v10;
+		l__Workspace__14.CurrentCamera.CameraSubject = v12;
 		l__Players__6.LocalPlayer.CameraMinZoomDistance = 0;
 		l__Players__6.LocalPlayer.CameraMaxZoomDistance = 14;
 	end);
 	v1.Promise.defer(function()
 		while true do
-			local l__CurrentCamera__11 = l__Workspace__14.CurrentCamera;
-			if l__CurrentCamera__11 then
+			local l__CurrentCamera__13 = l__Workspace__14.CurrentCamera;
+			if l__CurrentCamera__13 then
 				l__default__9.Client:Get("RemoteName"):SendToServer({
 					cannonBlockPos = l__BlockEngine__12:getBlockPosition(p11.Position), 
-					lookVector = l__CurrentCamera__11.CFrame.LookVector
+					lookVector = l__CurrentCamera__13.CFrame.LookVector
 				});
 			end;
 			if not { wait(0.2) } then
@@ -182,15 +187,15 @@ function u1.startAiming(p10, p11)
 		local l__Position__16 = l__Players__6.LocalPlayer.Character:GetPrimaryPartCFrame().Position;
 		v1.Promise.defer(function()
 			while { wait(0.2) } and p10.aiming do
-				local v12 = l__Players__6.LocalPlayer.Character;
-				if v12 ~= nil then
-					v12 = v12:GetPrimaryPartCFrame().Position;
+				local v14 = l__Players__6.LocalPlayer.Character;
+				if v14 ~= nil then
+					v14 = v14:GetPrimaryPartCFrame().Position;
 				end;
-				local v13 = v12;
-				if v13 == nil then
-					v13 = Vector3.new();
+				local v15 = v14;
+				if v15 == nil then
+					v15 = Vector3.new();
 				end;
-				if (v13 - l__Position__16).Magnitude > 6 then
+				if (v15 - l__Position__16).Magnitude > 6 then
 					p10:stopAiming();
 				end;			
 			end;

@@ -210,6 +210,11 @@ return {
 			gravitationalAcceleration = 60, 
 			impactSound = { l__GameSound__1.ARROW_IMPACT }
 		}, 
+		glitch_stun_grenade = {
+			launchVelocity = 120, 
+			gravitationalAcceleration = 60, 
+			impactSound = { l__GameSound__1.ARROW_IMPACT }
+		}, 
 		sleep_splash_potion = {
 			launchVelocity = 70, 
 			gravitationalAcceleration = 90
@@ -555,13 +560,62 @@ return {
 			impactParticles = "default", 
 			noAmmoValidation = true
 		}, 
-		fish_net = {
-			projectileModel = "fish_net_flat", 
-			launchVelocity = 110, 
-			gravitationalAcceleration = 40, 
-			predictionLifetimeSec = 1.5, 
-			lifetimeSec = 1.5, 
-			flightRotation = Vector3.new(-math.pi / 4, 0, math.pi / 4)
+		glitch_snowball = {
+			launchVelocity = 240, 
+			gravitationalAcceleration = 35, 
+			lifetimeSec = 2.8, 
+			predictionLifetimeSec = 2, 
+			flightRotation = Vector3.new(-math.pi / 2, 0, 0), 
+			combat = {
+				damage = 8
+			}, 
+			knockbackMultiplier = {
+				horizontal = 0.7
+			}, 
+			impactSound = { l__GameSound__1.SPIRIT_EXPLODE }
+		}, 
+		glitch_popup_cube = {
+			launchVelocity = 120, 
+			gravitationalAcceleration = 120, 
+			flightRotation = Vector3.new(0, math.pi / 2, 0)
+		}, 
+		glitch_robbery_ball = {
+			launchVelocity = 140, 
+			gravitationalAcceleration = 65, 
+			lifetimeSec = 2.8, 
+			combat = {
+				damage = 5
+			}, 
+			predictionLifetimeSec = 2, 
+			flightRotation = Vector3.new(0, math.pi, 0)
+		}, 
+		glitch_throwable_bridge = {
+			launchVelocity = 140, 
+			gravitationalAcceleration = 65, 
+			lifetimeSec = 2.8, 
+			predictionLifetimeSec = 2, 
+			flightRotation = Vector3.new(-math.pi / 2, 0, 0), 
+			impactSound = { l__GameSound__1.FORTIFY_BLOCK }, 
+			projectileModel = "arrow"
+		}, 
+		glitch_arrow = {
+			launchVelocity = 100, 
+			gravitationalAcceleration = 80, 
+			lifetimeSec = 0.01, 
+			predictionLifetimeSec = 0.5, 
+			flightRotation = Vector3.new(-math.pi / 2, 0, 0), 
+			knockbackMultiplier = {
+				horizontal = 0, 
+				vertical = 0
+			}, 
+			projectileModel = "arrow"
+		}, 
+		glitch_tactical_arrow = {
+			launchVelocity = 60, 
+			gravitationalAcceleration = 0, 
+			lifetimeSec = 3, 
+			projectileModel = "raven", 
+			impactSound = { l__GameSound__1.SPIRIT_EXPLODE }
 		}
 	}
 };

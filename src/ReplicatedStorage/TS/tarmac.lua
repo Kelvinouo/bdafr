@@ -216,6 +216,11 @@ return {
 			s = "rbxassetid://7843683271", 
 			td = "rbxassetid://7884366353"
 		}, 
+		bookshelf = {
+			icon = "rbxassetid://10866360547", 
+			s = "rbxassetid://10866119486", 
+			td = "rbxassetid://10866360672"
+		}, 
 		brick = {
 			icon = "rbxassetid://7884366460", 
 			s = "rbxassetid://7843690742"
@@ -300,6 +305,10 @@ return {
 			icon = "rbxassetid://8537949134", 
 			s = "rbxassetid://8537949581"
 		}, 
+		copper_block = {
+			icon = "rbxassetid://10859696115", 
+			s = "rbxassetid://10859696172"
+		}, 
 		diamond_block = {
 			icon = "rbxassetid://7884368860", 
 			s = "rbxassetid://7861529819"
@@ -332,6 +341,10 @@ return {
 			icon = "rbxassetid://9839888714", 
 			s = "rbxassetid://9839888790"
 		}, 
+		glitched_lucky_block = {
+			icon = "rbxassetid://10866119664", 
+			s = "rbxassetid://10849259593"
+		}, 
 		granite = {
 			icon = "rbxassetid://9072553261", 
 			s = "rbxassetid://9072525939"
@@ -345,6 +358,10 @@ return {
 			icon = "rbxassetid://7911370722", 
 			s = "rbxassetid://7911371120", 
 			t = "rbxassetid://7911371279"
+		}, 
+		guilded_iron = {
+			icon = "rbxassetid://10859696266", 
+			s = "rbxassetid://10859696347"
 		}, 
 		hickory_log = {
 			icon = "rbxassetid://7884369330", 
@@ -401,6 +418,10 @@ return {
 			s = "rbxassetid://7843819529", 
 			td = "rbxassetid://7843830538"
 		}, 
+		moss_block = {
+			icon = "rbxassetid://10866497548", 
+			s = "rbxassetid://10866261237"
+		}, 
 		oak_log = {
 			icon = "rbxassetid://7884370279", 
 			s = "rbxassetid://7843832942", 
@@ -428,6 +449,14 @@ return {
 			icon = "rbxassetid://7884370687", 
 			s = "rbxassetid://7843853920"
 		}, 
+		red_sandstone_polished = {
+			icon = "rbxassetid://10859696978", 
+			s = "rbxassetid://10859697059"
+		}, 
+		red_sandstone_smooth = {
+			icon = "rbxassetid://10859697143", 
+			s = "rbxassetid://10859697202"
+		}, 
 		sand = {
 			icon = "rbxassetid://7884370902", 
 			s = "rbxassetid://7843856590"
@@ -436,9 +465,21 @@ return {
 			icon = "rbxassetid://7884371048", 
 			s = "rbxassetid://7872908360"
 		}, 
+		sandstone_polished = {
+			icon = "rbxassetid://10859697278", 
+			s = "rbxassetid://10859697352"
+		}, 
+		sandstone_smooth = {
+			icon = "rbxassetid://10859697439", 
+			s = "rbxassetid://10859697497"
+		}, 
 		slate_brick = {
 			icon = "rbxassetid://9072553631", 
 			s = "rbxassetid://9072526507"
+		}, 
+		slate_tiles = {
+			icon = "rbxassetid://10859697544", 
+			s = "rbxassetid://10859697603"
 		}, 
 		slime_block = {
 			icon = "rbxassetid://7884371303", 
@@ -457,6 +498,10 @@ return {
 			s = "rbxassetid://7843877369", 
 			td = "rbxassetid://7884371731"
 		}, 
+		steel_block = {
+			icon = "rbxassetid://10859697667", 
+			s = "rbxassetid://10859697716"
+		}, 
 		stone = {
 			icon = "rbxassetid://7884371892", 
 			s = "rbxassetid://7861533820"
@@ -465,9 +510,18 @@ return {
 			icon = "rbxassetid://7884372079", 
 			s = "rbxassetid://7843883344"
 		}, 
+		stone_pillar = {
+			icon = "rbxassetid://10859697750", 
+			s = "rbxassetid://10859697821", 
+			tb = "rbxassetid://10859697871"
+		}, 
 		stone_slab = {
 			icon = "rbxassetid://8105570787", 
 			s = "rbxassetid://8105570960"
+		}, 
+		stone_tiles = {
+			icon = "rbxassetid://10859697942", 
+			s = "rbxassetid://10859698016"
 		}, 
 		tnt = {
 			icon = "rbxassetid://7884372237", 
@@ -557,11 +611,6 @@ return {
 		}
 	}, 
 	emotes = {
-		hannah_fear = "rbxassetid://10733652820", 
-		hannah_fired_up = "rbxassetid://10733621576", 
-		hannah_ghost_moment = "rbxassetid://10707558462", 
-		hannah_ghosted = "rbxassetid://10729114155", 
-		hannah_sorry_not = "rbxassetid://10707558734", 
 		season3 = {
 			angry_builder = "rbxassetid://9122597567", 
 			archer = "rbxassetid://9122597665", 
@@ -661,10 +710,7 @@ return {
 			tiger_well_played = "rbxassetid://9869094059", 
 			vulcan_overheat = "rbxassetid://9877588678"
 		}, 
-		smoke_again = "rbxassetid://10707560478", 
-		victorious_beta = "rbxassetid://9197101063", 
-		zephyr_begone = "rbxassetid://10707560648", 
-		zephyr_going_fast = "rbxassetid://10707560892"
+		victorious_beta = "rbxassetid://9197101063"
 	}, 
 	healthbarfill = "rbxassetid://10013722579", 
 	healthbarstroke = "rbxassetid://10013722726"

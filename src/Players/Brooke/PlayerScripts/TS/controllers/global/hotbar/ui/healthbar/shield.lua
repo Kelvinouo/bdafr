@@ -1,4 +1,3 @@
--- Script Hash: cd0f8564a1e7dd56d132548b80e06ada78d729f4fbe5b66a2583a853d0d92707056f69f85b63d378f73a19cefe1f426d
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -57,7 +56,7 @@ return {
 		if v12 == nil then
 			v12 = 100;
 		end;
-		v10.Size = UDim2.fromScale(v3 / v12, 1);
+		v10.Size = UDim2.fromScale(math.min(1, v3 / v12), 1);
 		v10.FillRatio = 1;
 		v10.FillColor = ColorSequence.new(Color3.fromRGB(240, 240, 240), Color3.fromRGB(199, 199, 199));
 		v10.BackgroundColor = ColorSequence.new(Color3.fromRGB(0, 0, 0));

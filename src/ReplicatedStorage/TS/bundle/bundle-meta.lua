@@ -120,7 +120,8 @@ return {
 			kitShopBundle = {
 				name = "Hannah Bundle", 
 				image = "rbxassetid://10726577232", 
-				description = "This bundle unlocks the following:\n\240\159\143\180\226\128\141\226\152\160\239\184\143\194\160<b>Hannah (Kit)</b>\n\240\159\145\187\194\160<b>Ghost Hannah (Kit Skin)</b>\n\240\159\143\180\226\128\141\226\152\160\239\184\143\194\160<b>Corsair (Title)</b>\n\240\159\151\161\239\184\143\194\160<b>Ghost Cutlass (Lobby Gadget)</b>\n\240\159\151\161\239\184\143\194\160<b>Ghosted Hannah (Title)</b>"
+				description = "This bundle unlocks the following:\n\240\159\143\180\226\128\141\226\152\160\239\184\143\194\160<b>Hannah (Kit)</b>\n\240\159\145\187\194\160<b>Ghost Hannah (Kit Skin)</b>\n\240\159\143\180\226\128\141\226\152\160\239\184\143\194\160<b>Corsair (Title)</b>\n\240\159\151\161\239\184\143\194\160<b>Ghost Cutlass (Lobby Gadget)</b>\n\240\159\151\161\239\184\143\194\160<b>Ghosted Hannah (Emote)</b>", 
+				disabled = true
 			}
 		}
 	}

@@ -160,6 +160,12 @@ function v5.setupGuidedProjectileMaid(p6, p7, p8, p9)
 	}));
 	l__UserInputService__6.MouseBehavior = Enum.MouseBehavior.LockCenter;
 	l__UserInputService__6.MouseIconEnabled = false;
+	l__RunService__4:BindToRenderStep("KeepMouseLocked", Enum.RenderPriority.Camera.Value - 1, function()
+		l__UserInputService__6.MouseBehavior = Enum.MouseBehavior.LockCenter;
+	end);
+	v25:GiveTask(function()
+		return l__RunService__4:UnbindFromRenderStep("KeepMouseLocked");
+	end);
 	v25:GiveTask(function()
 		l__UserInputService__6.MouseBehavior = Enum.MouseBehavior.Default;
 		l__UserInputService__6.MouseIconEnabled = true;

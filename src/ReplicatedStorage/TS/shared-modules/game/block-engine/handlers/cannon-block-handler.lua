@@ -31,6 +31,7 @@ function v5.createNewInstance(p2, p3)
 			end;
 		end;
 		if v7 then
+			v7:SetAttribute("BlockSkin", "ghost");
 			v7.Name = p2:getBlockType();
 			if l__RunService__2:IsServer() and l__RunService__2:IsRunning() then
 				l__PhysicsService__3:SetPartCollisionGroup(v7, "Blocks");

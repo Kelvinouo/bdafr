@@ -1,4 +1,3 @@
--- Script Hash: 81c6db32eb7e7c5a0c3ed2226b82e5854bbbe032a441aa90c869fc1862ce03b0287e5631629dcfd2a2c12615be9d260d
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -49,7 +48,8 @@ function v3.popImage(p5)
 end;
 local l__getItemMeta__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
 local l__ItemUtil__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-util").ItemUtil;
-local l__CooldownBar__4 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).CooldownBar;
+local l__UIGlitchEffect__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "components", "glitch-effect", "ui-glitch-effect").UIGlitchEffect;
+local l__CooldownBar__5 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).CooldownBar;
 function v3.render(p6)
 	local v10 = {};
 	for v11, v12 in pairs(p6.props) do
@@ -95,19 +95,26 @@ function v3.render(p6)
 			end;		
 		end;
 	end;
+	local v28 = #v20;
+	local v29 = {};
 	if l__image__14 ~= nil then
-		local v28 = v2.createElement("ImageLabel", {
-			[v2.Ref] = p6.imageRef, 
-			Size = p6.props.ImageSize, 
-			Position = UDim2.fromScale(0.5, 0.5), 
-			AnchorPoint = Vector2.new(0.5, 0.5), 
-			BorderSizePixel = 0, 
-			BackgroundTransparency = 1, 
-			Image = l__image__14, 
-			ImageTransparency = p6.props.ImageTransparency
-		});
+		local v30 = {};
+		if not v13.glitched then
+			local v31 = p6.imageRef;
+		else
+			v31 = nil;
+		end;
+		v30[v2.Ref] = v31;
+		v30.Size = p6.props.ImageSize;
+		v30.Position = UDim2.fromScale(0.5, 0.5);
+		v30.AnchorPoint = Vector2.new(0.5, 0.5);
+		v30.BorderSizePixel = 0;
+		v30.BackgroundTransparency = 1;
+		v30.Image = l__image__14;
+		v30.ImageTransparency = p6.props.ImageTransparency;
+		local v32 = v2.createElement("ImageLabel", v30);
 	else
-		v28 = v2.createElement("TextLabel", {
+		v32 = v2.createElement("TextLabel", {
 			Text = v15, 
 			Font = "RobotoMono", 
 			RichText = true, 
@@ -120,12 +127,15 @@ function v3.render(p6)
 			AnchorPoint = Vector2.new(0.5, 0.5)
 		});
 	end;
-	v20[#v20 + 1] = v28;
-	local v29 = false;
+	v29[1] = v32;
+	v20[v28 + 1] = v2.createElement(l__UIGlitchEffect__4, {
+		Disabled = not v13.glitched
+	}, v29);
+	local v33 = false;
 	if p6.props.ShowCooldownBar == true then
-		v29 = false;
+		v33 = false;
 		if l__cooldownId__16 ~= nil then
-			v29 = v2.createElement(l__CooldownBar__4, {
+			v33 = v2.createElement(l__CooldownBar__5, {
 				cooldownId = l__cooldownId__16, 
 				Position = UDim2.fromScale(0.5, 0.96), 
 				AnchorPoint = Vector2.new(0.5, 0.96), 
@@ -133,13 +143,13 @@ function v3.render(p6)
 			});
 		end;
 	end;
-	if v29 then
-		v20[#v20 + 1] = v29;
+	if v33 then
+		v20[v28 + 2] = v33;
 	end;
-	local v30 = false;
+	local v34 = false;
 	if p6.props.Amount ~= nil then
 		if not (p6.props.Amount > 1) then
-			v30 = p6.props.DisplayOneAmount and v2.createElement("TextLabel", {
+			v34 = p6.props.DisplayOneAmount and v2.createElement("TextLabel", {
 				Text = "<b>" .. tostring(p6.props.Amount) .. "</b>", 
 				Font = "RobotoMono", 
 				RichText = true, 
@@ -154,7 +164,7 @@ function v3.render(p6)
 				TextXAlignment = "Right"
 			});
 		else
-			v30 = v2.createElement("TextLabel", {
+			v34 = v2.createElement("TextLabel", {
 				Text = "<b>" .. tostring(p6.props.Amount) .. "</b>", 
 				Font = "RobotoMono", 
 				RichText = true, 
@@ -170,8 +180,8 @@ function v3.render(p6)
 			});
 		end;
 	end;
-	if v30 then
-		v20[#v20 + 1] = v30;
+	if v34 then
+		v20[#v20 + 1] = v34;
 	end;
 	return v2.createElement("Frame", v17, v20);
 end;

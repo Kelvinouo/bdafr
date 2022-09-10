@@ -205,7 +205,11 @@ return {
 		[l__BedwarsKitSkin__5.DAVEY_GHOST] = {
 			name = "Ghost Davey", 
 			kit = l__BedwarsKit__4.DAVEY, 
-			renderImage = "rbxassetid://10736244575"
+			renderImage = "rbxassetid://10736244575", 
+			itemSkins = { {
+					itemType = l__ItemType__2.CANNON, 
+					name = "ghost"
+				} }
 		}
 	}
 };

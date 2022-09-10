@@ -24,7 +24,16 @@ v4.NEUTRAL = "neutral";
 v3.neutral = "NEUTRAL";
 v4.NEGATIVE = "negative";
 v3.negative = "NEGATIVE";
+local v5 = {};
+local v6 = setmetatable({}, {
+	__index = v5
+});
+v6.NORMAL = "normal";
+v5.normal = "NORMAL";
+v6.GLITCHED = "glitched";
+v5.glitched = "GLITCHED";
 return {
 	LuckyBlockRarity = v2, 
-	LuckyBlockPolarity = v4
+	LuckyBlockPolarity = v4, 
+	LuckyBlockCategory = v6
 };

@@ -422,7 +422,12 @@ local v4 = {
 	PIRATE_EVENT_BIRD_LOOP = "rbxassetid://10726009761", 
 	PIRATE_SHOVEL_DIG = "rbxassetid://10797428588", 
 	PIRATE_SHOVEL_DIG_TREASURE_HIT = "rbxassetid://10797432885", 
-	PIRATE_SHOVEL_DIG_TREASURE_FOUND = "rbxassetid://10797437266"
+	PIRATE_SHOVEL_DIG_TREASURE_FOUND = "rbxassetid://10797437266", 
+	TRUMPET_PLAY = "rbxassetid://10726798946", 
+	GLITCHED_LUCKY_BLOCK_TELEPORT = "rbxassetid://10857877299", 
+	GLITCHED_LUCKY_BLOCK_DAMAGE = "rbxassetid://10857877357", 
+	GLITCH_OVERLAY = "rbxassetid://10859056155", 
+	GLITCH_OVERLAY_2 = "rbxassetid://10859056835"
 };
 l__SoundManager__3:registerSound(v4.VENDING_ROLL_TICK, {
 	preload = false
@@ -698,6 +703,10 @@ l__SoundManager__3:registerSound(v4.FOREST_AMBIENCE, {
 l__SoundManager__3:registerSound(v4.PIRATE_EVENT_LOBBY_MUSIC, {
 	preload = false, 
 	volume = 0.3
+});
+l__SoundManager__3:registerSound(v4.TRUMPET_PLAY, {
+	preload = false, 
+	volume = 0.7
 });
 if not v2.DeviceUtil.isHoarceKat() then
 	l__SoundManager__3:preload();

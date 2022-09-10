@@ -54,6 +54,8 @@ v2.VOID_LASER = "void_laser";
 v1.void_laser = "VOID_LASER";
 v2.GRENADE_LAUNCHER = "grenade_launcher";
 v1.grenade_launcher = "GRENADE_LAUNCHER";
+v2.GLITCH_GRENADE_LAUNCHER = "glitch_grenade_launcher";
+v1.glitch_grenade_launcher = "GLITCH_GRENADE_LAUNCHER";
 v2.ROCKET_BELT = "rocket_belt";
 v1.rocket_belt = "ROCKET_BELT";
 v2.HEALING_BELT = "healing_belt";
@@ -70,6 +72,10 @@ v2.PIRATE_TELESCOPE = "pirate_telescope";
 v1.pirate_telescope = "PIRATE_TELESCOPE";
 v2.FISH_NET_THROW = "fish_net_throw";
 v1.fish_net_throw = "FISH_NET_THROW";
+v2.TRUMPET = "trumpet";
+v1.trumpet = "TRUMPET";
+v2.GLITCH_TRUMPET = "glitch_trumpet";
+v1.glitch_trumpet = "GLITCH_TRUMPET";
 return {
 	CooldownId = v2
 };

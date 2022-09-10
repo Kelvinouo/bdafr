@@ -14,6 +14,20 @@ return {
 				duration = 3
 			}
 		}, 
+		[l__AbilityId__5.TRUMPET_PLAY] = {
+			actionBarName = "Trumpet Play", 
+			cooldown = {
+				id = l__CooldownId__3.TRUMPET, 
+				duration = 1
+			}
+		}, 
+		[l__AbilityId__5.GLITCH_TRUMPET_PLAY] = {
+			actionBarName = "Trumpet Play", 
+			cooldown = {
+				id = l__CooldownId__3.GLITCH_TRUMPET, 
+				duration = 1
+			}
+		}, 
 		[l__AbilityId__5.SELF_DAMAGE] = {
 			actionBarName = "Self Damage", 
 			usableProgress = {

@@ -16,6 +16,7 @@ else
 	v6 = 0.05;
 end;
 v5.YTargetOffset = v6;
+v5.BeamGrowthMultiplier = 0.08;
 local v7 = setmetatable({}, {
 	__tostring = function()
 		return "ProjectileController";
@@ -383,16 +384,21 @@ function u1.enableBeam(p43, p44, p45, p46)
 			p43:disableTargeting();
 			return nil;
 		end;
-		local l__deltaT__67 = v66.deltaT;
-		local l__initialVelocity__25 = v66.initialVelocity;
-		local l__positionFrom__26 = v66.positionFrom;
-		local u27 = v66.gravitationalAcceleration;
-		local v68 = l__deltaT__67 / 2;
-		local v69 = Vector3.new(l__initialVelocity__25.X * l__deltaT__67 + l__positionFrom__26.X, -0.5 * u27 * l__deltaT__67 ^ 2 + l__initialVelocity__25.Y * l__deltaT__67 + l__positionFrom__26.Y, l__initialVelocity__25.Z * l__deltaT__67 + l__positionFrom__26.Z);
-		local v70 = (Vector3.new(l__initialVelocity__25.X * (l__deltaT__67 / 2) + l__positionFrom__26.X, -0.5 * u27 * v68 ^ 2 + l__initialVelocity__25.Y * v68 + l__positionFrom__26.Y, l__initialVelocity__25.Z * (l__deltaT__67 / 2) + l__positionFrom__26.Z) - l__positionFrom__26 * 0.25 - v69 * 0.25) * 2;
-		v63.CFrame = CFrame.new(l__positionFrom__26, v70) * CFrame.new(Vector3.new(u21.RelX, u21.RelY, u21.RelZ)) * CFrame.Angles(0, math.pi / 2, 0);
-		v64.CFrame = CFrame.new(v69) * (v63.CFrame - v63.Position);
-		v65.CurveSize0 = (v70 - v63.Position).Magnitude;
+		local l__initialVelocity__67 = v66.initialVelocity;
+		local l__positionFrom__68 = v66.positionFrom;
+		local l__deltaT__69 = v66.deltaT;
+		local l__Position__25 = (CFrame.new(l__positionFrom__68, l__positionFrom__68 + l__initialVelocity__67) * CFrame.new(Vector3.new(u21.RelX, u21.RelY, u21.RelZ))).Position;
+		local u26 = v66.gravitationalAcceleration;
+		local v70 = l__deltaT__69 / 2;
+		local v71 = Vector3.new(l__initialVelocity__67.X * l__deltaT__69 + l__Position__25.X, -0.5 * u26 * l__deltaT__69 ^ 2 + l__initialVelocity__67.Y * l__deltaT__69 + l__Position__25.Y, l__initialVelocity__67.Z * l__deltaT__69 + l__Position__25.Z);
+		local v72 = (Vector3.new(l__initialVelocity__67.X * (l__deltaT__69 / 2) + l__Position__25.X, -0.5 * u26 * v70 ^ 2 + l__initialVelocity__67.Y * v70 + l__Position__25.Y, l__initialVelocity__67.Z * (l__deltaT__69 / 2) + l__Position__25.Z) - l__Position__25 * 0.25 - v71 * 0.25) * 2;
+		local v73 = v72 * 0.6666666666666666 + l__Position__25 * 0.3333333333333333;
+		local v74 = v72 * 0.6666666666666666 + v71 * 0.3333333333333333;
+		v63.CFrame = CFrame.new(l__Position__25, v73) * CFrame.Angles(0, math.pi / 2, 0);
+		v64.CFrame = CFrame.new(v71, v74) * CFrame.Angles(0, -math.pi / 2, 0);
+		v65.CurveSize0 = (v73 - v63.Position).Magnitude;
+		v65.CurveSize1 = (v74 - v64.Position).Magnitude;
+		v65.Width1 = 0.08 + u21.BeamGrowthMultiplier * ((v63.Position - v64.Position).Magnitude / 100);
 	end));
 end;
 u1 = l__KnitClient__8.CreateController;

@@ -15,16 +15,16 @@ function v5.new(...)
 	local v6 = setmetatable({}, v5);
 	return v6:constructor(...) and v6;
 end;
-local u1 = l__KnitController__4;
 function v5.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__4.constructor(p1);
 	p1.Name = "LobbyBundleController";
 end;
-local l__WatchCollectionTag__2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchCollectionTag;
+local l__WatchCollectionTag__1 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchCollectionTag;
+local l__BedwarsKit__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit;
 function v5.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__WatchCollectionTag__2("holiday-bundle-prompt", function(p3)
-		p2:setupBattlePassPrompt(p3);
+	l__KnitController__4.KnitStart(p2);
+	l__WatchCollectionTag__1("holiday-bundle-prompt", function(p3)
+		p2:setupKitPrompt(p3, l__BedwarsKit__2.HANNAH);
 	end);
 end;
 local l__BundleMeta__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "bundle", "bundle-meta").BundleMeta;
@@ -78,16 +78,16 @@ end;
 local l__getBedwarsKitMeta__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit-meta").getBedwarsKitMeta;
 local l__KnitClient__13 = v2.KnitClient;
 function v5.setupKitPrompt(p11, p12, p13)
+	local v8 = l__getBedwarsKitMeta__12(p13);
 	u4("ProximityPrompt", {
 		ActionText = "Purchase", 
-		ObjectText = "Cyber Kit", 
+		ObjectText = v8.name .. " Kit", 
 		HoldDuration = 0, 
 		MaxActivationDistance = 18, 
 		RequiresLineOfSight = false, 
 		KeyboardKeyCode = l__Theme__5.promptKeyboardKey, 
 		Parent = p12
 	}).Triggered:Connect(function(p14)
-		local v8 = l__getBedwarsKitMeta__12(p13);
 		if l__KnitClient__13.Controllers.UnlockController:isKitOwned(p13) then
 			l__Flamework__6.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__7.GIFTING, {
 				GiftType = p13
@@ -117,11 +117,17 @@ function v5.setupKitSkinPrompt(p15, p16, p17)
 		Parent = p16
 	}).Triggered:Connect(function(p18)
 		local v11 = nil;
-		for v12, v13 in ipairs(l__ClientStore__10:getState().Bedwars.ownedKitSkins) do
+		local v12, v13, v14 = ipairs(l__ClientStore__10:getState().Bedwars.ownedKitSkins);
+		while true do
+			v12(v13, v14);
+			if not v12 then
+				break;
+			end;
+			v14 = v12;
 			if v13 == p17 == true then
 				v11 = v13;
 				break;
-			end;
+			end;		
 		end;
 		if not v11 then
 			if v10.kit then
@@ -129,27 +135,26 @@ function v5.setupKitSkinPrompt(p15, p16, p17)
 			end;
 			return;
 		end;
-		local v14 = {
+		local v15 = {
 			GiftType = p17
 		};
-		local v15 = {};
-		for v16, v17 in pairs(l__GiftMeta__15[p17]) do
-			v15[v16] = v17;
+		local v16 = {};
+		for v17, v18 in pairs(l__GiftMeta__15[p17]) do
+			v16[v17] = v18;
 		end;
-		v15.customImage = u16.createElement(l__KitViewport__17, {
+		v16.customImage = u16.createElement(l__KitViewport__17, {
 			Kit = v10.kit, 
 			Skin = p17, 
 			Size = UDim2.fromScale(1, 1), 
 			SizeConstraint = "RelativeYY"
 		});
-		v14.Gift = v15;
-		l__Flamework__6.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__7.GIFTING, v14);
+		v15.Gift = v16;
+		l__Flamework__6.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):openApp(l__BedwarsAppIds__7.GIFTING, v15);
 	end);
 end;
 local l__Players__19 = v3.Players;
 function v5.purchaseBundle(p19, p20)
 	l__MarketplaceService__8:PromptGamePassPurchase(l__Players__19.LocalPlayer, l__BundleMeta__3[p20].gamepassId);
 end;
-u1 = l__KnitClient__13.CreateController;
-u1 = u1(v5.new());
+local v19 = l__KnitClient__13.CreateController(v5.new());
 return nil;

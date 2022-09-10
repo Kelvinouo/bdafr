@@ -582,6 +582,8 @@ v11[l__BedwarsKit__9.HANNAH] = {
 	skins = { l__BedwarsKitSkin__8.HANNAH_GHOST }, 
 	unlockedInBattlePass = false, 
 	kitClass = l__BedwarsClass__10.FIGHTER, 
+	priceRobux = 399, 
+	gamepassId = 83730490, 
 	featured = true
 };
 local v34 = v3.values(l__BattlePassSeason__4);

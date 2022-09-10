@@ -1,4 +1,3 @@
--- Script Hash: feddf88bca79c74c22095da5456e9d5fe5fd2d81d349f68966ca03b8c73f49a03b629564a97698d7681498c145aca8cf
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -21,7 +20,8 @@ function v4.render(p3)
 		}, { v2.createElement("ColorCorrectionEffect", {
 				Contrast = 0.2, 
 				Saturation = -0.3, 
-				TintColor = p3.props.color or Color3.fromRGB(74, 107, 135)
+				TintColor = p3.props.color or Color3.fromRGB(74, 107, 135), 
+				Enabled = p3.props.transparency ~= 1
 			}) }), v2.createElement("ImageLabel", {
 			Size = UDim2.fromScale(1.5, 1.5), 
 			AnchorPoint = Vector2.new(0.5, 0.5), 
