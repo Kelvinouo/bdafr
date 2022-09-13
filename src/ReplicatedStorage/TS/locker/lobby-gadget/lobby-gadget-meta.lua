@@ -118,10 +118,6 @@ return {
 			items = { {
 					itemType = l__ItemType__3.BLUNDERBUSS, 
 					amount = 1
-				}, {
-					itemType = l__ItemType__3.BLUNDERBUSS_BULLET, 
-					amount = 10, 
-					refillable = true
 				} }
 		}, 
 		[l__LobbyGadgetType__4.CUTLASS_GHOST] = {

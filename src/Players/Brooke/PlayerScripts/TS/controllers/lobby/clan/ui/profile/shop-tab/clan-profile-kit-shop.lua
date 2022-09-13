@@ -1,4 +1,3 @@
--- Script Hash: 7a11334d899c3ab9e071f99d43e2f26e6387094cfaa890d56abb5a06223e98c049500d21bf540458bd0fcab252b672e6
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -27,7 +26,7 @@ return {
 		v8.store = nil;
 		v8.Clan = nil;
 		p2.useEffect(function()
-			v7((l__ClanUtil__2.getUpcomingWeeklyResetTime()));
+			v7((l__ClanUtil__2.resetTime:getNextWeeklyResetTime()));
 		end, { p1.Clan.kitShop.id });
 		local v11 = l__ClanKitShop__3.reqClanLevel <= p1.Clan.level;
 		local v12 = {};
@@ -132,29 +131,35 @@ return {
 		end;
 		local function v20(p5, p6)
 			local v21 = 0;
-			for v22, v23 in pairs(p1.Clan.members) do
+			for v22 in pairs(p1.Clan.members) do
 				v21 = v21 + 1;
 			end;
-			local v24 = math.ceil(l__ClanKitShop__3.getKitShopKitPrice(v21));
-			local v25 = false;
+			local v23 = math.ceil(l__ClanKitShop__3.getKitShopKitPrice(v21));
+			local v24 = false;
 			if p1.store.Clans.myClanMember and not l__DeviceUtil__10.isHoarceKat() then
-				v25 = l__ClanUtil__2.hasClanRank(p1.store.Clans.myClanMember, l__ClanMemberRank__11.ADMIN);
+				v24 = l__ClanUtil__2.hasClanRank(p1.store.Clans.myClanMember, l__ClanMemberRank__11.ADMIN);
 			end;
 			return u4.createElement(l__ClanProfileKitShopCard__12, {
 				Kit = p5, 
-				Price = v24, 
+				Price = v23, 
 				Purchased = p1.Clan.kitShop.unlocks[p5] ~= nil, 
-				CantBuy = not v11 and p1.Clan.coins < v24, 
-				Disabled = not v11 or not v25, 
+				CantBuy = not v11 and p1.Clan.coins < v23, 
+				Disabled = not v11 or not v24, 
 				OnPurchase = u13, 
 				Locked = p1.Clan.kitShop.stock < p6 + 1, 
 				Loading = v4, 
 				Index = p6 + 1
 			});
 		end;
-		local v26 = table.create(#l__kits__19);
-		for v27, v28 in ipairs(l__kits__19) do
-			v26[v27] = v20(v28, v27 - 1, l__kits__19);
+		local v25 = table.create(#l__kits__19);
+		local v26, v27, v28 = ipairs(l__kits__19);
+		while true do
+			v26(v27, v28);
+			if not v26 then
+				break;
+			end;
+			v28 = v26;
+			v25[v26] = v20(v27, v26 - 1, l__kits__19);		
 		end;
 		local v29 = {
 			Size = UDim2.fromScale(1, 1), 
@@ -167,8 +172,14 @@ return {
 				HorizontalAlignment = "Left"
 			}) };
 		local v31 = #v30;
-		for v32, v33 in ipairs(v26) do
-			v30[v31 + v32] = v33;
+		local v32, v33, v34 = ipairs(v25);
+		while true do
+			v32(v33, v34);
+			if not v32 then
+				break;
+			end;
+			v34 = v32;
+			v30[v31 + v32] = v33;		
 		end;
 		v17.KitShopCards = u4.createElement(l__Empty__8, v29, v30);
 		v15[#v15 + 1] = u4.createElement(l__Empty__8, v16, v17);
