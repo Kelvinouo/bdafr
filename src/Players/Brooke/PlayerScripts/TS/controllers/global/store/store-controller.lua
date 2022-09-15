@@ -1,4 +1,3 @@
--- Script Hash: nil
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -15,27 +14,25 @@ function v4.new(...)
 	local v5 = setmetatable({}, v4);
 	return v5:constructor(...) and v5;
 end;
-local u1 = l__KnitController__3;
 function v4.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__3.constructor(p1);
 	p1.Name = "StoreController";
 end;
-local l__MarketplaceService__2 = v2.MarketplaceService;
-local l__Players__3 = v2.Players;
-local l__SoundManager__4 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).SoundManager;
-local l__GameSound__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__default__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__MarketplaceService__1 = v2.MarketplaceService;
+local l__Players__2 = v2.Players;
+local l__SoundManager__3 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).SoundManager;
+local l__GameSound__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local l__default__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function v4.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__MarketplaceService__2.PromptGamePassPurchaseFinished:Connect(function(p3, p4, p5)
-		if p3 == l__Players__3.LocalPlayer and p5 then
-			l__SoundManager__4:playSound(l__GameSound__5.BEDWARS_UPGRADE_SUCCESS);
+	l__KnitController__3.KnitStart(p2);
+	l__MarketplaceService__1.PromptGamePassPurchaseFinished:Connect(function(p3, p4, p5)
+		if p3 == l__Players__2.LocalPlayer and p5 then
+			l__SoundManager__3:playSound(l__GameSound__4.BEDWARS_UPGRADE_SUCCESS);
 		end;
 	end);
-	l__default__6.Client:OnEvent("RemoteName", function(p6)
-		l__SoundManager__4:playSound(l__GameSound__5.BEDWARS_UPGRADE_SUCCESS);
+	l__default__5.Client:OnEvent("RemoteName", function(p6)
+		l__SoundManager__3:playSound(l__GameSound__4.BEDWARS_UPGRADE_SUCCESS);
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1(v4.new());
+local v6 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v4.new());
 return nil;

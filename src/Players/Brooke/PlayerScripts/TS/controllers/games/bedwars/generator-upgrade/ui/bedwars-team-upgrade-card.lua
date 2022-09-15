@@ -48,15 +48,21 @@ function v4.hasEnough(p5)
 	if v8 then
 		local u6 = p5.props.Upgrade.tiers[v7 + 1];
 		local v10 = nil;
-		for v11, v12 in ipairs(p5.props.store.Inventory.observedInventory.inventory.items) do
-			local v13 = false;
-			if v12.itemType == u6.currency then
-				v13 = u6.price <= v12.amount;
-			end;
-			if v13 == true then
-				v10 = v12;
+		local v11, v12, v13 = ipairs(p5.props.store.Inventory.observedInventory.inventory.items);
+		while true do
+			v11(v12, v13);
+			if not v11 then
 				break;
 			end;
+			v13 = v11;
+			local v14 = false;
+			if v12.itemType == u6.currency then
+				v14 = u6.price <= v12.amount;
+			end;
+			if v14 == true then
+				v10 = v12;
+				break;
+			end;		
 		end;
 		v9 = v10 ~= nil;
 	end;
@@ -68,58 +74,82 @@ local l__ItemUtil__9 = v1.import(script, game:GetService("ReplicatedStorage"), "
 local l__getItemMeta__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
 local l__Button__11 = v2.Button;
 function v4.render(p6)
-	local v14 = p6.props.store.Bedwars.teamUpgrades[p6.props.Upgrade.id];
-	if v14 == nil then
-		v14 = -1;
+	local v15 = p6.props.store.Bedwars.teamUpgrades[p6.props.Upgrade.id];
+	if v15 == nil then
+		v15 = -1;
 	end;
-	local v15 = v14 + 1;
-	local v16 = p6.props.Upgrade.tiers;
-	if v16 ~= nil then
-		v16 = v16[v15 + 1];
+	local v16 = v15 + 1;
+	local v17 = p6.props.Upgrade.tiers;
+	if v17 ~= nil then
+		v17 = v17[v16 + 1];
 	end;
-	local v17 = true;
-	if v16 then
-		local u12 = p6.props.Upgrade.tiers[v15 + 1];
-		local v18 = nil;
-		for v19, v20 in ipairs(p6.props.store.Inventory.observedInventory.inventory.items) do
-			local v21 = false;
-			if v20.itemType == u12.currency then
-				v21 = u12.price <= v20.amount;
-			end;
-			if v21 == true then
-				v18 = v20;
+	local v18 = false;
+	if v17 then
+		local u12 = p6.props.Upgrade.tiers[v16 + 1];
+		local v19 = nil;
+		local v20, v21, v22 = ipairs(p6.props.store.Inventory.observedInventory.inventory.items);
+		while true do
+			v20(v21, v22);
+			if not v20 then
 				break;
 			end;
+			v22 = v20;
+			local v23 = false;
+			if v21.itemType == u12.currency then
+				v23 = u12.price <= v21.amount;
+			end;
+			if v23 == true then
+				v19 = v21;
+				break;
+			end;		
 		end;
-		v17 = v18 ~= nil;
-	end;
-	local v22 = "";
-	local v23 = 0;
-	local v24 = false;
-	while true do
-		if v24 then
-			v23 = v23 + 1;
+		if u12.disabledInQueue ~= nil then
+			local v24 = nil;
+			local v25, v26, v27 = ipairs(u12.disabledInQueue);
+			while true do
+				v25(v26, v27);
+				if not v25 then
+					break;
+				end;
+				v27 = v25;
+				if v26 == p6.props.store.Game.queueType == true then
+					v24 = v26;
+					break;
+				end;			
+			end;
+			local v28 = v24 ~= nil;
 		else
-			v24 = true;
+			v28 = false;
 		end;
-		if not (v23 < 4) then
+		v18 = v28;
+	end;
+	local v29 = "";
+	local v30 = 0;
+	local v31 = false;
+	while true do
+		if v31 then
+			v30 = v30 + 1;
+		else
+			v31 = true;
+		end;
+		if not (v30 < 4) then
 			break;
 		end;
-		local v25 = p6.props.Upgrade.tiers;
-		if v25 ~= nil then
-			v25 = v25[v23 + 1];
+		local v32 = p6.props.Upgrade.tiers;
+		if v32 ~= nil then
+			v32 = v32[v30 + 1];
 		end;
-		if v25 then
-			if v23 <= v14 then
-				v22 = v22 .. "<font color=\"#ffffff\"><b>" .. v25.name .. "</b></font><br/>";
+		if v32 then
+			if v30 <= v15 then
+				v29 = v29 .. "<font color=\"#ffffff\"><b>" .. v32.name .. "</b></font><br/>";
 			else
-				v22 = v22 .. v25.name .. "<br/>";
+				v29 = v29 .. v32.name .. "<br/>";
 			end;
 		else
-			v22 = v22 .. "<br/>";
+			v29 = v29 .. "<br/>";
 		end;	
 	end;
-	local v26 = {
+	local v33 = {
 		[v3.Ref] = p6.ref, 
 		Size = p6.props.Size or UDim2.fromScale(0.2, 1), 
 		Position = UDim2.fromScale(0.5, 0.15), 
@@ -131,19 +161,19 @@ function v4.render(p6)
 		Selectable = true, 
 		Modal = true
 	};
-	local v27 = { v3.createElement("UICorner", {
+	local v34 = { v3.createElement("UICorner", {
 			CornerRadius = UDim.new(0.01, 0)
 		}) };
-	local v28 = #v27;
-	local v29 = {};
-	local v30 = p6.props.AspectRatio;
-	if v30 == nil then
-		v30 = 0.8275862068965517;
+	local v35 = #v34;
+	local v36 = {};
+	local v37 = p6.props.AspectRatio;
+	if v37 == nil then
+		v37 = 0.8275862068965517;
 	end;
-	v29.AspectRatio = v30;
-	v29.DominantAxis = "Height";
-	v27[v28 + 1] = v3.createElement("UIAspectRatioConstraint", v29);
-	v27[v28 + 2] = v3.createElement("Frame", {
+	v36.AspectRatio = v37;
+	v36.DominantAxis = "Height";
+	v34[v35 + 1] = v3.createElement("UIAspectRatioConstraint", v36);
+	v34[v35 + 2] = v3.createElement("Frame", {
 		Size = UDim2.fromScale(0.95, 0.12), 
 		Position = UDim2.fromScale(0.5, 0.015), 
 		AnchorPoint = Vector2.new(0.5, 0), 
@@ -163,7 +193,7 @@ function v4.render(p6)
 			RichText = true, 
 			Font = "Roboto"
 		}) });
-	v27[v28 + 3] = v3.createElement("ImageLabel", {
+	v34[v35 + 3] = v3.createElement("ImageLabel", {
 		Image = p6.props.Upgrade.image, 
 		Size = UDim2.fromScale(0.18, 0.18), 
 		SizeConstraint = "RelativeYY", 
@@ -172,8 +202,8 @@ function v4.render(p6)
 		BackgroundTransparency = 1, 
 		BorderSizePixel = 0
 	});
-	v27[v28 + 4] = v3.createElement("TextLabel", {
-		Text = v22, 
+	v34[v35 + 4] = v3.createElement("TextLabel", {
+		Text = v29, 
 		Size = UDim2.fromScale(0.94, 0.325), 
 		Position = UDim2.fromScale(0.5, 0.42), 
 		AnchorPoint = Vector2.new(0.5, 0), 
@@ -186,10 +216,10 @@ function v4.render(p6)
 		TextXAlignment = "Center", 
 		TextYAlignment = "Top"
 	});
-	local v31 = false;
-	if v16 ~= nil then
-		v31 = v3.createElement("TextLabel", {
-			Text = "<b>" .. tostring(v16.price) .. " " .. l__ItemUtil__9.getDisplayName(v16.currency) .. "</b>", 
+	local v38 = false;
+	if v17 ~= nil then
+		v38 = v3.createElement("TextLabel", {
+			Text = "<b>" .. tostring(v17.price) .. " " .. l__ItemUtil__9.getDisplayName(v17.currency) .. "</b>", 
 			Size = UDim2.fromScale(0.9, 0.06), 
 			Position = UDim2.fromScale(0.5, 0.78), 
 			AnchorPoint = Vector2.new(0.5, 0), 
@@ -198,35 +228,35 @@ function v4.render(p6)
 			Font = "Roboto", 
 			TextScaled = true, 
 			RichText = true, 
-			TextColor3 = l__getItemMeta__10(v16.currency).displayNameColor or Color3.fromRGB(255, 255, 255)
+			TextColor3 = l__getItemMeta__10(v17.currency).displayNameColor or Color3.fromRGB(255, 255, 255)
 		});
 	end;
-	if v31 then
-		v27[v28 + 5] = v31;
+	if v38 then
+		v34[v35 + 5] = v38;
 	end;
-	if v16 ~= nil then
-		if v17 then
-			local v32 = {
+	if v17 ~= nil and not v18 then
+		if true then
+			local v39 = {
 				Size = UDim2.fromScale(0.92, 0.125), 
 				Position = UDim2.fromScale(0.5, 0.855), 
 				AnchorPoint = Vector2.new(0.5, 0), 
 				BackgroundColor3 = l__Theme__7.backgroundSuccess
 			};
-			local v33 = p6.props.ButtonTextOverride;
-			if v33 == nil then
-				v33 = "<b>Purchase Upgrade</b>";
+			local v40 = p6.props.ButtonTextOverride;
+			if v40 == nil then
+				v40 = "<b>Purchase Upgrade</b>";
 			end;
-			v32.Text = v33;
-			v32.Selectable = false;
-			function v32.OnClick()
+			v39.Text = v40;
+			v39.Selectable = false;
+			function v39.OnClick()
 				p6:purchase();
 			end;
-			v32[v3.Event.MouseButton2Click] = function()
+			v39[v3.Event.MouseButton2Click] = function()
 				p6:purchase();
 			end;
-			local v34 = v3.createElement(l__Button__11, v32);
+			local v41 = v3.createElement(l__Button__11, v39);
 		else
-			v34 = v3.createElement(l__Button__11, {
+			v41 = v3.createElement(l__Button__11, {
 				Size = UDim2.fromScale(0.92, 0.125), 
 				Position = UDim2.fromScale(0.5, 0.855), 
 				AnchorPoint = Vector2.new(0.5, 0), 
@@ -238,9 +268,9 @@ function v4.render(p6)
 				end
 			});
 		end;
-		local v35 = v34;
+		local v42 = v41;
 	else
-		v35 = v3.createElement(l__Button__11, {
+		v42 = v3.createElement(l__Button__11, {
 			Size = UDim2.fromScale(0.92, 0.125), 
 			Position = UDim2.fromScale(0.5, 0.855), 
 			AnchorPoint = Vector2.new(0.5, 0), 
@@ -252,8 +282,8 @@ function v4.render(p6)
 			end
 		});
 	end;
-	v27[#v27 + 1] = v35;
-	return v3.createElement("ImageButton", v26, v27);
+	v34[#v34 + 1] = v42;
+	return v3.createElement("ImageButton", v33, v34);
 end;
 return {
 	BedwarsTeamUpgradeCard = v4

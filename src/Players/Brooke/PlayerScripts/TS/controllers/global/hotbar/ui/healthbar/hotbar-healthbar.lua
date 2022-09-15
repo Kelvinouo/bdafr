@@ -61,29 +61,35 @@ function v5.hookCharacter(p5, p6)
 	end));
 	local v9 = l__EntityUtil__4:getEntity(p6);
 	if v9 then
-		for v10, v11 in ipairs((u5.values(l__ShieldType__6))) do
+		local v10, v11, v12 = ipairs((u5.values(l__ShieldType__6)));
+		while true do
+			v10(v11, v12);
+			if not v10 then
+				break;
+			end;
+			v12 = v10;
 			p5.maid:GiveTask(v9:onShieldChanged(v11):Connect(function()
 				local u9 = 0;
-				local v12, v13, v14 = ipairs((u5.values(l__ShieldType__6)));
+				local v13, v14, v15 = ipairs((u5.values(l__ShieldType__6)));
 				while true do
-					local v15, v16 = v12(v13, v14);
-					if not v15 then
+					v13(v14, v15);
+					if not v13 then
 						break;
 					end;
-					local v17 = v9;
-					if v17 ~= nil then
-						v17 = v17:getShield(v16);
+					local v16 = v9;
+					if v16 ~= nil then
+						v16 = v16:getShield(v14);
 					end;
-					local v18 = v17;
-					if v18 == nil then
-						v18 = 0;
+					local v17 = v16;
+					if v17 == nil then
+						v17 = 0;
 					end;
-					u9 = u9 + v18;				
+					u9 = u9 + v17;				
 				end;
 				p5:setState({
 					shield = u9
 				});
-			end));
+			end));		
 		end;
 	end;
 end;
@@ -93,15 +99,21 @@ local l__StatusEffectUtil__12 = v1.import(script, game:GetService("ReplicatedSto
 local l__StatusEffectType__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "status-effect", "status-effect-type").StatusEffectType;
 local l__Empty__14 = v2.Empty;
 function v5.render(p9)
-	local v19 = l__EntityUtil__4:getLocalPlayerEntity();
-	local v20 = u5.values(l__ShieldType__6);
-	local v21 = table.create(#v20);
-	for v22, v23 in ipairs(v20) do
-		v21[v22] = v3.createElement(l__Shield__10, {
-			ShieldType = v23
-		});
+	local v18 = l__EntityUtil__4:getLocalPlayerEntity();
+	local v19 = u5.values(l__ShieldType__6);
+	local v20 = table.create(#v19);
+	local v21, v22, v23 = ipairs(v19);
+	while true do
+		v21(v22, v23);
+		if not v21 then
+			break;
+		end;
+		v23 = v21;
+		v20[v21] = v3.createElement(l__Shield__10, {
+			ShieldType = v22
+		});	
 	end;
-	local v24 = v19;
+	local v24 = v18;
 	if v24 ~= nil then
 		v24 = v24:getMaxHealth();
 	end;
@@ -110,7 +122,7 @@ function v5.render(p9)
 		v25 = 100;
 	end;
 	local v26 = l__ColorUtil__11.hexColor(13317668);
-	local v27 = v19;
+	local v27 = v18;
 	if v27 ~= nil then
 		v27 = v27:getInstance();
 	end;
@@ -125,53 +137,65 @@ function v5.render(p9)
 				VerticalAlignment = "Center"
 			}) };
 		local v30 = #v29;
-		for v31, v32 in ipairs(v21) do
-			v29[v30 + v31] = v32;
+		local v31, v32, v33 = ipairs(v20);
+		while true do
+			v31(v32, v33);
+			if not v31 then
+				break;
+			end;
+			v33 = v31;
+			v29[v30 + v31] = v32;		
 		end;
-		local v33 = v3.createFragment(v29);
+		local v34 = v3.createFragment(v29);
 	else
-		local v34 = {
+		local v35 = {
 			Size = UDim2.fromScale(1, 1)
 		};
-		local v35 = { v3.createElement("UIListLayout", {
+		local v36 = { v3.createElement("UIListLayout", {
 				FillDirection = "Horizontal", 
 				HorizontalAlignment = "Right"
 			}) };
-		local v36 = #v35;
-		for v37, v38 in ipairs(v21) do
-			v35[v36 + v37] = v38;
+		local v37 = #v36;
+		local v38, v39, v40 = ipairs(v20);
+		while true do
+			v38(v39, v40);
+			if not v38 then
+				break;
+			end;
+			v40 = v38;
+			v36[v37 + v38] = v39;		
 		end;
-		v33 = v3.createElement(l__Empty__14, v34, v35);
+		v34 = v3.createElement(l__Empty__14, v35, v36);
 	end;
-	local v39 = { v3.createElement("Frame", {
+	local v41 = { v3.createElement("Frame", {
 			[v3.Ref] = p9.progressFrame, 
 			Size = UDim2.fromScale(1, 1), 
 			BackgroundColor3 = v26, 
 			BorderSizePixel = 0, 
 			LayoutOrder = 0
 		}) };
-	v39[#v39 + 1] = v33;
+	v41[#v41 + 1] = v34;
 	v28.HealthbarProgressWrapper = v3.createElement(l__Empty__14, {
 		Size = UDim2.fromScale(1, 1)
-	}, v39);
-	local v40 = {};
+	}, v41);
+	local v42 = {};
 	if p9.state.shield > 0 then
-		local v41 = "(+" .. tostring(math.round(p9.state.shield)) .. ")";
+		local v43 = "(+" .. tostring(math.round(p9.state.shield)) .. ")";
 	else
-		v41 = "";
+		v43 = "";
 	end;
-	v40.Text = tostring(math.round(p9.state.health)) .. " " .. v41;
-	v40.Size = UDim2.fromScale(0.3, 1.4);
-	v40.Position = UDim2.fromScale(0.5, 0);
-	v40.AnchorPoint = Vector2.new(0.5, 0.35);
-	v40.BorderSizePixel = 0;
-	v40.BackgroundTransparency = 1;
-	v40.TextColor3 = Color3.fromRGB(255, 255, 255);
-	v40.RichText = true;
-	v40.TextScaled = true;
-	v40.Font = "LuckiestGuy";
-	v40.ZIndex = 11;
-	v28[#v28 + 1] = v3.createElement("TextLabel", v40);
+	v42.Text = tostring(math.round(p9.state.health)) .. " " .. v43;
+	v42.Size = UDim2.fromScale(0.3, 1.4);
+	v42.Position = UDim2.fromScale(0.5, 0);
+	v42.AnchorPoint = Vector2.new(0.5, 0.35);
+	v42.BorderSizePixel = 0;
+	v42.BackgroundTransparency = 1;
+	v42.TextColor3 = Color3.fromRGB(255, 255, 255);
+	v42.RichText = true;
+	v42.TextScaled = true;
+	v42.Font = "LuckiestGuy";
+	v42.ZIndex = 11;
+	v28[#v28 + 1] = v3.createElement("TextLabel", v42);
 	return v3.createFragment({
 		HotbarHealthbarContainer = v3.createElement("Frame", {
 			Size = UDim2.fromScale(0.85, 0.2), 

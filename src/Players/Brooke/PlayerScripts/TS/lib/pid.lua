@@ -31,9 +31,10 @@ function v1.SetMinMax(p11, p12, p13)
 	p11._min = p12;
 	p11._max = p13;
 end;
-local l__CollectionService__1 = game:GetService("CollectionService");
+local l__RunService__1 = game:GetService("RunService");
+local l__CollectionService__2 = game:GetService("CollectionService");
 function v1.Debug(p14, p15, p16)
-	if p14._debug then
+	if p14._debug or not l__RunService__1:IsStudio() then
 		return;
 	end;
 	local v5 = Instance.new("Folder");
@@ -42,62 +43,67 @@ function v1.Debug(p14, p15, p16)
 	v6.Name = "Min";
 	v6.Value = p14._min;
 	v6.Parent = v5;
-	local u2 = "_min";
-	local u3 = v6;
+	local u3 = "_min";
+	local u4 = v6;
 	v6.Changed:Connect(function()
-		p14[u2] = u3.Value;
+		p14[u3] = u4.Value;
 		p14:Reset();
 	end);
-	u3 = Instance.new;
-	u3 = u3("NumberValue");
-	u3.Name = "Max";
-	u3.Value = p14._max;
-	u3.Parent = v5;
-	u2 = "_max";
-	u3.Changed:Connect(function()
-		p14[u2] = u3.Value;
+	u4 = Instance.new;
+	u4 = u4("NumberValue");
+	u4.Name = "Max";
+	u4.Value = p14._max;
+	u4.Parent = v5;
+	u3 = "_max";
+	u4.Changed:Connect(function()
+		p14[u3] = u4.Value;
 		p14:Reset();
 	end);
-	u3 = Instance.new;
-	u3 = u3("NumberValue");
-	u3.Name = "KP";
-	u3.Value = p14._kp;
-	u3.Parent = v5;
-	u2 = "_kp";
-	u3.Changed:Connect(function()
-		p14[u2] = u3.Value;
+	u4 = Instance.new;
+	u4 = u4("NumberValue");
+	u4.Name = "KP";
+	u4.Value = p14._kp;
+	u4.Parent = v5;
+	u3 = "_kp";
+	u4.Changed:Connect(function()
+		p14[u3] = u4.Value;
 		p14:Reset();
 	end);
-	u3 = Instance.new;
-	u3 = u3("NumberValue");
-	u3.Name = "KI";
-	u3.Value = p14._ki;
-	u3.Parent = v5;
-	u2 = "_ki";
-	u3.Changed:Connect(function()
-		p14[u2] = u3.Value;
+	u4 = Instance.new;
+	u4 = u4("NumberValue");
+	u4.Name = "KI";
+	u4.Value = p14._ki;
+	u4.Parent = v5;
+	u3 = "_ki";
+	u4.Changed:Connect(function()
+		p14[u3] = u4.Value;
 		p14:Reset();
 	end);
-	u3 = Instance.new;
-	u3 = u3("NumberValue");
-	u3.Name = "KD";
-	u3.Value = p14._kd;
-	u3.Parent = v5;
-	u2 = "_kd";
-	u3.Changed:Connect(function()
-		p14[u2] = u3.Value;
+	u4 = Instance.new;
+	u4 = u4("NumberValue");
+	u4.Name = "KD";
+	u4.Value = p14._kd;
+	u4.Parent = v5;
+	u3 = "_kd";
+	u4.Changed:Connect(function()
+		p14[u3] = u4.Value;
 		p14:Reset();
 	end);
-	u3 = Instance.new;
-	u3 = u3("NumberValue");
-	u3.Name = "Output";
-	u3.Value = 0;
-	u3.Parent = v5;
-	p14._out = u3;
+	u4 = Instance.new;
+	u4 = u4("NumberValue");
+	u4.Name = "Output";
+	u4.Value = 0;
+	u4.Parent = v5;
+	p14._out = u4;
 	p14._debug = v5;
-	u3 = l__CollectionService__1;
-	u3 = u3.AddTag;
-	u3(u3, v5, "__pidebug__");
+	u4 = l__CollectionService__2;
+	u4 = u4.AddTag;
+	u4(u4, v5, "__pidebug__");
 	v5.Parent = p16;
+end;
+function v1.Destroy(p17)
+	if p17._debug then
+		p17._debug:Destroy();
+	end;
 end;
 return v1;

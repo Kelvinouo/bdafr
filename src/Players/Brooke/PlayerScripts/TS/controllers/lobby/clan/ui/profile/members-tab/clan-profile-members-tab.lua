@@ -43,33 +43,39 @@ return {
 			v10[v11] = { v12, v13 };
 		end;
 		local v14 = {};
-		for v15, v16 in ipairs(v10) do
-			v14[v16[1]] = v16[2];
+		local v15, v16, v17 = ipairs(v10);
+		while true do
+			v15(v16, v17);
+			if not v15 then
+				break;
+			end;
+			v17 = v15;
+			v14[v16[1]] = v16[2];		
 		end;
 		if not v8 and p1.store.Clans.myClanMember then
 			v14[tostring(p1.store.Clans.myClanMember.offlinePlayer.userId)] = nil;
 		end;
-		local v17 = {};
-		local v18 = #v17;
-		for v19, v20 in pairs(v14) do
-			v18 = v18 + 1;
-			v17[v18] = { v19, v20 };
+		local v18 = {};
+		local v19 = #v18;
+		for v20, v21 in pairs(v14) do
+			v19 = v19 + 1;
+			v18[v19] = { v20, v21 };
 		end;
-		local v21 = u2.values(v17);
-		table.sort(v21, function(p3, p4)
+		local v22 = u2.values(v18);
+		table.sort(v22, function(p3, p4)
 			return string.lower(p3[2].offlinePlayer.displayName) < string.lower(p4[2].offlinePlayer.displayName);
 		end);
-		local v22 = { u3.createElement("UIListLayout", {
+		local v23 = { u3.createElement("UIListLayout", {
 				FillDirection = "Vertical", 
 				HorizontalAlignment = "Left", 
 				Padding = UDim.new(0, 10), 
 				SortOrder = "LayoutOrder"
 			}) };
-		local v23 = {
+		local v24 = {
 			Size = UDim2.new(0.95, 0, 0, 20), 
 			LayoutOrder = 3
 		};
-		local v24 = { u3.createElement("UIListLayout", {
+		local v25 = { u3.createElement("UIListLayout", {
 				FillDirection = "Horizontal", 
 				Padding = UDim.new(0, 12), 
 				VerticalAlignment = "Center", 
@@ -78,58 +84,70 @@ return {
 				PaddingLeft = UDim.new(0.03, 0), 
 				PaddingRight = UDim.new(0.03, 0)
 			}) };
-		local function v25(p5)
-			local v26 = {
+		local function v26(p5)
+			local v27 = {
 				Size = UDim2.new(p5.width - u4, 0, 1, 0)
 			};
-			local l__text__27 = p5.text;
-			if l__text__27 ~= "" and l__text__27 then
-				local v28 = "<b>" .. p5.text .. "</b>";
+			local l__text__28 = p5.text;
+			if l__text__28 ~= "" and l__text__28 then
+				local v29 = "<b>" .. p5.text .. "</b>";
 			else
-				v28 = "";
+				v29 = "";
 			end;
-			v26.Text = v28;
-			v26.TextScaled = true;
-			v26.RichText = true;
-			v26.Font = "Roboto";
-			v26.TextColor3 = l__ColorUtil__5.WHITE;
-			v26.TextXAlignment = "Left";
-			v26.TextYAlignment = "Bottom";
-			v26.BackgroundTransparency = 1;
-			v26.LayoutOrder = 1;
-			return u3.createElement("TextLabel", v26, { u3.createElement("UITextSizeConstraint", {
+			v27.Text = v29;
+			v27.TextScaled = true;
+			v27.RichText = true;
+			v27.Font = "Roboto";
+			v27.TextColor3 = l__ColorUtil__5.WHITE;
+			v27.TextXAlignment = "Left";
+			v27.TextYAlignment = "Bottom";
+			v27.BackgroundTransparency = 1;
+			v27.LayoutOrder = 1;
+			return u3.createElement("TextLabel", v27, { u3.createElement("UITextSizeConstraint", {
 					MaxTextSize = 18
 				}) });
 		end;
-		local v29 = table.create(#v6);
-		for v30, v31 in ipairs(v6) do
-			v29[v30] = v25(v31, v30 - 1, v6);
+		local v30 = table.create(#v6);
+		local v31, v32, v33 = ipairs(v6);
+		while true do
+			v31(v32, v33);
+			if not v31 then
+				break;
+			end;
+			v33 = v31;
+			v30[v31] = v26(v32, v31 - 1, v6);		
 		end;
-		local v32 = {
+		local v34 = {
 			Size = UDim2.new(1, 0, 1, 0), 
 			LayoutOrder = 2
 		};
-		local v33 = { u3.createElement("UIListLayout", {
+		local v35 = { u3.createElement("UIListLayout", {
 				FillDirection = "Horizontal", 
 				Padding = UDim.new(0.05, 0), 
 				HorizontalAlignment = "Left", 
 				VerticalAlignment = "Bottom", 
 				SortOrder = "LayoutOrder"
 			}) };
-		local v34 = #v33;
-		for v35, v36 in ipairs(v29) do
-			v33[v34 + v35] = v36;
+		local v36 = #v35;
+		local v37, v38, v39 = ipairs(v30);
+		while true do
+			v37(v38, v39);
+			if not v37 then
+				break;
+			end;
+			v39 = v37;
+			v35[v36 + v37] = v38;		
 		end;
-		v24[#v24 + 1] = u3.createElement(l__Empty__6, v32, v33);
-		v22.TableColumnHeaders = u3.createElement(l__Empty__6, v23, v24);
-		local v37 = {
+		v25[#v25 + 1] = u3.createElement(l__Empty__6, v34, v35);
+		v23.TableColumnHeaders = u3.createElement(l__Empty__6, v24, v25);
+		local v40 = {
 			AdditionalSpace = 120, 
 			ScrollingFrameProps = {
 				Size = UDim2.new(1, 0, 1, -30), 
 				LayoutOrder = 4
 			}
 		};
-		local v38 = { u3.createElement("UIPadding", {
+		local v41 = { u3.createElement("UIPadding", {
 				PaddingTop = UDim.new(0, 2), 
 				PaddingLeft = UDim.new(0, 2)
 			}), u3.createElement("UIListLayout", {
@@ -138,7 +156,7 @@ return {
 				HorizontalAlignment = "Left", 
 				SortOrder = "LayoutOrder"
 			}) };
-		local v39 = not v8 and (p1.store.Clans.myClanMember and u3.createElement(l__ClanProfileMembersRow__5, {
+		local v42 = not v8 and (p1.store.Clans.myClanMember and u3.createElement(l__ClanProfileMembersRow__5, {
 			Columns = v6, 
 			ClanMember = p1.store.Clans.myClanMember, 
 			AdminView = v9, 
@@ -146,27 +164,39 @@ return {
 			IsMyClanMemberRow = true, 
 			store = p1.store
 		}));
-		if v39 then
-			v38[#v38 + 1] = v39;
+		if v42 then
+			v41[#v41 + 1] = v42;
 		end;
-		local v40 = #v38;
-		local v41 = table.create(#v21);
-		for v42, v43 in ipairs(v21) do
-			local v44 = v43[1];
-			v41[v42] = u3.createElement(l__ClanProfileMembersRow__5, {
+		local v43 = #v41;
+		local v44 = table.create(#v22);
+		local v45, v46, v47 = ipairs(v22);
+		while true do
+			v45(v46, v47);
+			if not v45 then
+				break;
+			end;
+			v47 = v45;
+			local v48 = v46[1];
+			v44[v45] = u3.createElement(l__ClanProfileMembersRow__5, {
 				Columns = v6, 
-				ClanMember = v43[2], 
+				ClanMember = v46[2], 
 				AdminView = v9, 
-				Index = v42 - 1, 
+				Index = v45 - 1, 
 				store = p1.store
-			});
+			});		
 		end;
-		for v45, v46 in ipairs(v41) do
-			v38[v40 + v45] = v46;
+		local v49, v50, v51 = ipairs(v44);
+		while true do
+			v49(v50, v51);
+			if not v49 then
+				break;
+			end;
+			v51 = v49;
+			v41[v43 + v49] = v50;		
 		end;
-		v22[#v22 + 1] = u3.createElement(l__AutoCanvasScrollingFrame__7, v37, v38);
+		v23[#v23 + 1] = u3.createElement(l__AutoCanvasScrollingFrame__7, v40, v41);
 		return u3.createElement(l__ClanProfilePageLayout__4, {
 			Title = "MEMBERS"
-		}, v22);
+		}, v23);
 	end)
 };

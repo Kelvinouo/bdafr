@@ -16,114 +16,120 @@ return {
 		local v4 = nil;
 		if p1.Team ~= nil then
 			local v5 = nil;
-			for v6, v7 in ipairs(p1.QueueMeta.teams) do
+			local v6, v7, v8 = ipairs(p1.QueueMeta.teams);
+			while true do
+				v6(v7, v8);
+				if not v6 then
+					break;
+				end;
+				v8 = v6;
 				if v7.id == p1.Team.id == true then
 					v5 = v7;
 					break;
-				end;
+				end;			
 			end;
 			v4 = v5;
 		end;
-		local v8 = v4;
-		if v8 ~= nil then
-			v8 = v8.maxPlayers;
+		local v9 = v4;
+		if v9 ~= nil then
+			v9 = v9.maxPlayers;
 		end;
-		local v9 = v8;
-		if v9 == nil then
-			v9 = 20;
+		local v10 = v9;
+		if v10 == nil then
+			v10 = 20;
 		end;
-		local v10 = false;
-		local v11 = p1.Team;
-		if v11 then
-			local v12 = p1.store.Game.myTeam;
-			if v12 ~= nil then
-				v12 = v12.id;
-			end;
-			local v13 = p1.Team;
+		local v11 = false;
+		local v12 = p1.Team;
+		if v12 then
+			local v13 = p1.store.Game.myTeam;
 			if v13 ~= nil then
 				v13 = v13.id;
 			end;
-			v11 = v12 == v13;
+			local v14 = p1.Team;
+			if v14 ~= nil then
+				v14 = v14.id;
+			end;
+			v12 = v13 == v14;
 		end;
-		if v11 then
-			v10 = true;
+		if v12 then
+			v11 = true;
 		elseif p1.Team == nil and p1.store.Game.myTeam == nil then
-			v10 = true;
+			v11 = true;
 		end;
 		if v4 then
-			local v14 = l__ColorUtil__1.hexColor(v4.colorHex);
+			local v15 = l__ColorUtil__1.hexColor(v4.colorHex);
 		end;
-		local v15 = "Spectate";
+		local v16 = "Spectate";
 		if v4 then
-			v15 = v4.displayName;
+			v16 = v4.displayName;
 		end;
 		if p1.Team then
-			local v16 = 0;
-			for v17 in pairs(p1.Team.members) do
-				v16 = v16 + 1;
+			local v17 = 0;
+			for v18 in pairs(p1.Team.members) do
+				v17 = v17 + 1;
 			end;
-			local v18 = v16;
+			local v19 = v17;
 		else
-			local v19 = {};
-			local v20 = 0;
-			local v21, v22, v23 = ipairs((l__Players__2:GetPlayers()));
+			local v20 = {};
+			local v21 = 0;
+			local v22, v23, v24 = ipairs((l__Players__2:GetPlayers()));
 			while true do
-				local v24, v25 = v21(v22, v23);
-				if not v24 then
+				v22(v23, v24);
+				if not v22 then
 					break;
 				end;
-				local v26 = true;
-				if v25.Team ~= nil then
-					v26 = v25.Team.Name == "Spectators";
+				local v25 = true;
+				if v23.Team ~= nil then
+					v25 = v23.Team.Name == "Spectators";
 				end;
-				if v26 == true then
-					v20 = v20 + 1;
-					v19[v20] = v25;
+				if v25 == true then
+					v21 = v21 + 1;
+					v20[v21] = v23;
 				end;			
 			end;
-			v18 = #v19;
+			v19 = #v20;
 		end;
-		local v27 = v15;
+		local v26 = v16;
 		if v4 then
-			v27 = v15 .. " (" .. tostring(v18) .. "/" .. tostring(v9) .. ")";
+			v26 = v16 .. " (" .. tostring(v19) .. "/" .. tostring(v10) .. ")";
 		end;
-		local v28 = {};
-		local v29 = {
-			Text = v27, 
+		local v27 = {};
+		local v28 = {
+			Text = v26, 
 			Size = UDim2.fromScale(1, 1)
 		};
-		function v29.OnClick()
+		function v28.OnClick()
 			l__SoundManager__5:playSound(l__GameSound__6.UI_CLICK);
-			local v30 = p1.Team;
-			if v30 ~= nil then
-				v30 = v30.name;
+			local v29 = p1.Team;
+			if v29 ~= nil then
+				v29 = v29.name;
 			end;
-			local v31 = v30;
-			if v31 == nil then
-				v31 = "spectators";
+			local v30 = v29;
+			if v30 == nil then
+				v30 = "spectators";
 			end;
-			l__default__7.Client:GetNamespace("CustomMatches"):Get("SelectTeam"):CallServerAsync(v31):andThen(function(p3)
+			l__default__7.Client:GetNamespace("CustomMatches"):Get("SelectTeam"):CallServerAsync(v30):andThen(function(p3)
 
 			end);
 		end;
-		v28[1] = u3.createElement("UIAspectRatioConstraint", {
+		v27[1] = u3.createElement("UIAspectRatioConstraint", {
 			AspectRatio = 3, 
 			DominantAxis = "Height"
 		});
-		v28[2] = u3.createElement(l__Button__4, v29);
-		local v32 = v10 and u3.createElement("Frame", {
+		v27[2] = u3.createElement(l__Button__4, v28);
+		local v31 = v11 and u3.createElement("Frame", {
 			Size = UDim2.new(1, 0, 0.05, 0), 
 			BackgroundColor3 = Color3.fromRGB(255, 255, 255), 
 			BorderSizePixel = 0, 
 			Position = UDim2.fromScale(0.5, -0.05), 
 			AnchorPoint = Vector2.new(0.5, 1)
 		});
-		if v32 then
-			v28[#v28 + 1] = v32;
+		if v31 then
+			v27[#v27 + 1] = v31;
 		end;
 		return u3.createElement(l__Empty__8, {
 			Size = UDim2.fromScale(1, 1), 
 			LayoutOrder = p1.LayoutOrder
-		}, v28);
+		}, v27);
 	end)
 };

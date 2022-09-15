@@ -1,4 +1,3 @@
--- Script Hash: 8bc1e6ee8236228be4cef158b0b62fd0ace18f6a65d19f979c7c4170fb7ec0f2ed25bd7dcafc865b20959987eb38ba3f
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,12 +13,10 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = l__CancellableEvent__2;
 function v3.constructor(p1, p2)
-	u1.constructor(p1);
+	l__CancellableEvent__2.constructor(p1);
 	p1.state = p2;
 end;
-u1 = {
+return {
 	MobileSwordButtonPressedEvent = v3
 };
-return l__CancellableEvent__2;

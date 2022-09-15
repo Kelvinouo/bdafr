@@ -30,37 +30,55 @@ function v3.isPlayDefaultKillEffect(p10)
 	return p10.playDefaultKillEffect;
 end;
 function v3.hideCharacter(p11, p12)
-	for v5, v6 in ipairs((p12:GetDescendants())) do
+	local v5, v6, v7 = ipairs((p12:GetDescendants()));
+	while true do
+		v5(v6, v7);
+		if not v5 then
+			break;
+		end;
+		v7 = v5;
 		if v6:IsA("BasePart") then
 			v6.Transparency = 1;
 		elseif v6:IsA("Decal") then
 			v6.Transparency = 1;
 		elseif v6:IsA("BillboardGui") then
 			v6:Destroy();
-		end;
+		end;	
 	end;
 end;
 function v3.anchorCharacter(p13, p14)
-	for v7, v8 in ipairs((p14:GetDescendants())) do
-		if v8:IsA("BasePart") then
-			v8.Anchored = true;
+	local v8, v9, v10 = ipairs((p14:GetDescendants()));
+	while true do
+		v8(v9, v10);
+		if not v8 then
+			break;
 		end;
+		v10 = v8;
+		if v9:IsA("BasePart") then
+			v9.Anchored = true;
+		end;	
 	end;
 end;
 local l__TweenService__2 = v2.TweenService;
 function v3.scaleModel(p15, p16, p17, p18)
-	local l__PrimaryPart__9 = p16.PrimaryPart;
-	local v10 = nil;
-	for v11, v12 in ipairs(p16:GetDescendants()) do
-		if v12:IsA("BasePart") then
-			v10 = l__TweenService__2:Create(v12, p18, {
-				CFrame = l__PrimaryPart__9.CFrame:Lerp(v12.CFrame, p17), 
-				Size = v12.Size * p17
-			});
-			v10:Play();
+	local l__PrimaryPart__11 = p16.PrimaryPart;
+	local v12 = nil;
+	local v13, v14, v15 = ipairs(p16:GetDescendants());
+	while true do
+		v13(v14, v15);
+		if not v13 then
+			break;
 		end;
+		v15 = v13;
+		if v14:IsA("BasePart") then
+			v12 = l__TweenService__2:Create(v14, p18, {
+				CFrame = l__PrimaryPart__11.CFrame:Lerp(v14.CFrame, p17), 
+				Size = v14.Size * p17
+			});
+			v12:Play();
+		end;	
 	end;
-	return v10;
+	return v12;
 end;
 return {
 	KillEffect = v3

@@ -1,11 +1,9 @@
--- Script Hash: 19e860f963399e987fa0fd94b3d4292a15bef7109e1216b0798b67cdd92e698b030cbabe1212541238014624ddeede7a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = {};
 v1.__index = v1;
 function v1.new()
 	local v2 = setmetatable({}, v1);
-	v2.lastUpdate = tick();
 	v2.transparencyDirty = false;
 	v2.enabled = false;
 	v2.lastTransparency = nil;
@@ -20,6 +18,7 @@ function v1.HasToolAncestor(p1, p2)
 	if p2.Parent == nil then
 		return false;
 	end;
+	assert(p2.Parent, "");
 	return p2.Parent:IsA("Tool") or p1:HasToolAncestor(p2.Parent);
 end;
 function v1.IsValidPartToModify(p3, p4)
@@ -110,7 +109,6 @@ end;
 function v1.Enable(p14, p15)
 	if p14.enabled ~= p15 then
 		p14.enabled = p15;
-		p14:Update();
 	end;
 end;
 function v1.SetSubject(p16, p17)
@@ -128,37 +126,28 @@ function v1.SetSubject(p16, p17)
 	p16:SetupTransparency(v11);
 end;
 local u1 = require(script.Parent:WaitForChild("CameraUtils"));
-function v1.Update(p18)
-	local v12 = tick();
-	local l__CurrentCamera__13 = workspace.CurrentCamera;
-	if l__CurrentCamera__13 then
-		local v14 = 0;
-		if p18.enabled then
-			local l__magnitude__15 = (l__CurrentCamera__13.Focus.p - l__CurrentCamera__13.CoordinateFrame.p).magnitude;
-			local v16 = l__magnitude__15 < 2 and 1 - (l__magnitude__15 - 0.5) / 1.5 or 0;
-			if v16 < 0.5 then
-				v16 = 0;
-			end;
-			if p18.lastTransparency then
-				local v17 = v16 - p18.lastTransparency;
-				if not false and v16 < 1 and p18.lastTransparency < 0.95 then
-					local v18 = 2.8 * (v12 - p18.lastUpdate);
-					v17 = math.clamp(v17, -v18, v18);
-				end;
-				v16 = p18.lastTransparency + v17;
-			else
-				p18.transparencyDirty = true;
-			end;
-			v14 = math.clamp(u1.Round(v16, 2), 0, 1);
+function v1.Update(p18, p19)
+	local l__CurrentCamera__12 = workspace.CurrentCamera;
+	if l__CurrentCamera__12 and p18.enabled then
+		local l__magnitude__13 = (l__CurrentCamera__12.Focus.p - l__CurrentCamera__12.CoordinateFrame.p).magnitude;
+		local v14 = l__magnitude__13 < 2 and 1 - (l__magnitude__13 - 0.5) / 1.5 or 0;
+		if v14 < 0.5 then
+			v14 = 0;
 		end;
-		if p18.transparencyDirty or p18.lastTransparency ~= v14 then
-			for v19, v20 in pairs(p18.cachedParts) do
-				v19.LocalTransparencyModifier = v14;
+		if p18.lastTransparency and v14 < 1 and p18.lastTransparency < 0.95 then
+			local v15 = 2.8 * p19;
+			v14 = p18.lastTransparency + math.clamp(v14 - p18.lastTransparency, -v15, v15);
+		else
+			p18.transparencyDirty = true;
+		end;
+		local v16 = math.clamp(u1.Round(v14, 2), 0, 1);
+		if p18.transparencyDirty or p18.lastTransparency ~= v16 then
+			for v17, v18 in pairs(p18.cachedParts) do
+				v17.LocalTransparencyModifier = v16;
 			end;
 			p18.transparencyDirty = false;
-			p18.lastTransparency = v14;
+			p18.lastTransparency = v16;
 		end;
 	end;
-	p18.lastUpdate = v12;
 end;
 return v1;

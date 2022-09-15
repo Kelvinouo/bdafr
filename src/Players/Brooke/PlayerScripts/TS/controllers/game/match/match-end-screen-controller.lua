@@ -39,67 +39,79 @@ function v4.isMatchEndScreenCompleted(p5, p6)
 	local v7 = p5.matchEndScreens[l__MatchEndScreensMeta__2[p6].displayOrder];
 	if v7 ~= nil then
 		local v8 = nil;
-		for v9, v10 in ipairs(v7) do
+		local v9, v10, v11 = ipairs(v7);
+		while true do
+			v9(v10, v11);
+			if not v9 then
+				break;
+			end;
+			v11 = v9;
 			if v10.matchEndScreenType == p6 == true then
 				v8 = v10;
 				break;
-			end;
+			end;		
 		end;
 		v7 = v8;
 	end;
-	local v11 = v7;
-	if v11 ~= nil then
-		v11 = v11.completed;
+	local v12 = v7;
+	if v12 ~= nil then
+		v12 = v12.completed;
 	end;
-	return v11;
+	return v12;
 end;
 function v4.waitUntilDisplay(p7, p8)
-	local v12 = l__MatchEndScreensMeta__2[p8];
-	if v12.displayAfterScreen ~= nil then
-		while not p7:isMatchEndScreenCompleted(v12.displayAfterScreen) and p7.currDisplayOrder ~= v12.displayOrder do
+	local v13 = l__MatchEndScreensMeta__2[p8];
+	if v13.displayAfterScreen ~= nil then
+		while not p7:isMatchEndScreenCompleted(v13.displayAfterScreen) and p7.currDisplayOrder ~= v13.displayOrder do
 			wait(0.5);		
 		end;
 	else
-		while p7.currDisplayOrder ~= v12.displayOrder do
+		while p7.currDisplayOrder ~= v13.displayOrder do
 			wait(0.5);		
 		end;
 	end;
 end;
 local u3 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
 function v4.getMatchScreensInDisplayOrder(p9, p10)
-	local v13 = {};
-	local v14 = u3.entries(l__MatchEndScreensMeta__2);
-	table.move(v14, 1, #v14, #v13 + 1, v13);
-	local v15 = {};
-	local v16 = 0;
-	local v17, v18, v19 = ipairs(v13);
+	local v14 = {};
+	local v15 = u3.entries(l__MatchEndScreensMeta__2);
+	table.move(v15, 1, #v15, #v14 + 1, v14);
+	local v16 = {};
+	local v17 = 0;
+	local v18, v19, v20 = ipairs(v14);
 	while true do
-		local v20, v21 = v17(v18, v19);
-		if not v20 then
+		v18(v19, v20);
+		if not v18 then
 			break;
 		end;
-		local v22 = v21[1];
-		if v21[2].displayOrder == p10 == true then
-			v16 = v16 + 1;
-			v15[v16] = v21;
+		local v21 = v19[1];
+		if v19[2].displayOrder == p10 == true then
+			v17 = v17 + 1;
+			v16[v17] = v19;
 		end;	
 	end;
-	return v15;
+	return v16;
 end;
 function v4.totalCompletedInDisplayOrder(p11, p12)
-	local v23 = p11.matchEndScreens[p12];
-	if not v23 then
+	local v22 = p11.matchEndScreens[p12];
+	if not v22 then
 		return nil;
 	end;
 	local u4 = 0;
-	for v24, v25 in ipairs(v23) do
-		if v25.completed then
-			u4 = u4 + 1;
+	local v23, v24, v25 = ipairs(v22);
+	while true do
+		v23(v24, v25);
+		if not v23 then
+			break;
 		end;
+		v25 = v23;
+		if v24.completed then
+			u4 = u4 + 1;
+		end;	
 	end;
 	return {
 		playCount = u4, 
-		finished = #v23 == u4
+		finished = #v22 == u4
 	};
 end;
 function v4.setMatchEndScreenCompleted(p13, p14)
@@ -109,79 +121,91 @@ function v4.setMatchEndScreenCompleted(p13, p14)
 		return nil;
 	end;
 	local v28 = nil;
-	for v29, v30 in ipairs(v27) do
+	local v29, v30, v31 = ipairs(v27);
+	while true do
+		v29(v30, v31);
+		if not v29 then
+			break;
+		end;
+		v31 = v29;
 		if v30.matchEndScreenType == p14 == true then
 			v28 = v30;
 			break;
-		end;
+		end;	
 	end;
 	if v28 then
-		local v31 = {};
-		local v32 = 0;
-		local v33, v34, v35 = ipairs(v27);
+		local v32 = {};
+		local v33 = 0;
+		local v34, v35, v36 = ipairs(v27);
 		while true do
-			local v36, v37 = v33(v34, v35);
-			if not v36 then
+			v34(v35, v36);
+			if not v34 then
 				break;
 			end;
-			if v37.matchEndScreenType ~= p14 == true then
-				v32 = v32 + 1;
-				v31[v32] = v37;
+			if v35.matchEndScreenType ~= p14 == true then
+				v33 = v33 + 1;
+				v32[v33] = v35;
 			end;		
 		end;
-		local v38 = {};
-		local v39 = #v38;
-		local v40 = #v31;
-		table.move(v31, 1, v40, v39 + 1, v38);
-		v38[v39 + v40 + 1] = {
+		local v37 = {};
+		local v38 = #v37;
+		local v39 = #v32;
+		table.move(v32, 1, v39, v38 + 1, v37);
+		v37[v38 + v39 + 1] = {
 			matchEndScreenType = p14, 
 			completed = true
 		};
-		p13.matchEndScreens[v26.displayOrder] = v38;
+		p13.matchEndScreens[v26.displayOrder] = v37;
 	end;
 end;
 function v4.displayNextDisplayOrder(p15)
 	p15.currDisplayOrder = p15.currDisplayOrder + 1;
-	local v41 = 0;
-	for v42 in pairs(p15.matchEndScreens) do
-		v41 = v41 + 1;
+	local v40 = 0;
+	for v41 in pairs(p15.matchEndScreens) do
+		v40 = v40 + 1;
 	end;
-	if not p15.matchEndScreens[p15.currDisplayOrder] and p15.currDisplayOrder <= v41 then
+	if not p15.matchEndScreens[p15.currDisplayOrder] and p15.currDisplayOrder <= v40 then
 		p15:displayNextDisplayOrder();
 	end;
 end;
 local l__ClientStore__5 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function v4.setupIMatchEndScreens(p16)
-	local l__queueType__43 = l__ClientStore__5:getState().Game.queueType;
-	local v44 = {};
-	local v45 = u3.entries(l__MatchEndScreensMeta__2);
-	table.move(v45, 1, #v45, #v44 + 1, v44);
-	local function v46(p17)
-		local v47 = p17[1];
-		local v48 = p17[2];
-		local v49 = p16.matchEndScreens[v48.displayOrder];
-		if v48.enabledQueues and table.find(v48.enabledQueues, l__queueType__43) == nil then
+	local l__queueType__42 = l__ClientStore__5:getState().Game.queueType;
+	local v43 = {};
+	local v44 = u3.entries(l__MatchEndScreensMeta__2);
+	table.move(v44, 1, #v44, #v43 + 1, v43);
+	local function v45(p17)
+		local v46 = p17[1];
+		local v47 = p17[2];
+		local v48 = p16.matchEndScreens[v47.displayOrder];
+		if v47.enabledQueues and table.find(v47.enabledQueues, l__queueType__42) == nil then
 			return nil;
 		end;
-		if not v49 then
-			p16.matchEndScreens[v48.displayOrder] = { {
-					matchEndScreenType = v47, 
+		if not v48 then
+			p16.matchEndScreens[v47.displayOrder] = { {
+					matchEndScreenType = v46, 
 					completed = false
 				} };
 			return;
 		end;
-		local v50 = {};
-		local v51 = #v50;
-		local v52 = #v49;
-		table.move(v49, 1, v52, v51 + 1, v50);
-		v50[v51 + v52 + 1] = {
-			matchEndScreenType = v47, 
+		local v49 = {};
+		local v50 = #v49;
+		local v51 = #v48;
+		table.move(v48, 1, v51, v50 + 1, v49);
+		v49[v50 + v51 + 1] = {
+			matchEndScreenType = v46, 
 			completed = false
 		};
-		p16.matchEndScreens[v48.displayOrder] = v50;
+		p16.matchEndScreens[v47.displayOrder] = v49;
 	end;
-	for v53, v54 in ipairs(v44) do
-		v46(v54, v53 - 1, v44);
+	local v52, v53, v54 = ipairs(v43);
+	while true do
+		v52(v53, v54);
+		if not v52 then
+			break;
+		end;
+		v54 = v52;
+		v45(v53, v52 - 1, v43);	
 	end;
 end;
 l__Reflect__2.defineMetadata(v4, "identifier", "client/controllers/game/match/match-end-screen-controller@MatchEndScreenController");

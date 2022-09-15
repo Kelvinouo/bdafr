@@ -34,40 +34,50 @@ function v5.render(p3)
 	end;
 	local v8 = {};
 	local v9 = nil;
-	for v10, v11 in ipairs(l__ClientStore__6:getState().Game.teams) do
+	local v10, v11, v12 = ipairs(l__ClientStore__6:getState().Game.teams);
+	while true do
+		v10(v11, v12);
+		if not v10 then
+			break;
+		end;
+		v12 = v10;
 		if v11.id == p3.props.WinningTeamId == true then
 			v9 = v11;
 			break;
-		end;
+		end;	
 	end;
 	if v9 then
 		v6 = "Team " .. v9.name .. " Wins!";
-		local v12 = {};
-		local v13 = 0;
-		local v14, v15, v16 = ipairs((l__Players__7:GetPlayers()));
+		local v13 = {};
+		local v14 = 0;
+		local v15, v16, v17 = ipairs((l__Players__7:GetPlayers()));
 		while true do
-			local v17, v18 = v14(v15, v16);
-			if not v17 then
+			v15(v16, v17);
+			if not v15 then
 				break;
 			end;
-			if v9.members[v18.UserId] ~= nil == true then
-				v13 = v13 + 1;
-				v12[v13] = v18;
+			if v9.members[v16.UserId] ~= nil == true then
+				v14 = v14 + 1;
+				v13[v14] = v16;
 			end;		
 		end;
-		v8 = v12;
+		v8 = v13;
 	end;
 	if l__queueType__7 and l__Flamework__4.resolveDependency("@easy-games/lobby:client/controllers/lobby-client-controller@LobbyClientController"):getQueueMeta(l__queueType__7).game == l__GameType__5.GUN_GAME then
-		local v19 = v9;
-		if v19 ~= nil then
-			v19 = v19.members;
+		local v18 = v9;
+		if v18 ~= nil then
+			v18 = v18.members;
 		end;
-		if v19 then
-			local v20 = l__values__8(v19)[1];
-			if v20 then
-				v6 = v20.name .. " Wins!";
+		if v18 then
+			local v19 = l__values__8(v18)[1];
+			if v19 then
+				v6 = v19.name .. " Wins!";
 			end;
 		end;
+	end;
+	local l__CustomTitleMessage__20 = p3.props.CustomTitleMessage;
+	if l__CustomTitleMessage__20 ~= "" and l__CustomTitleMessage__20 then
+		v6 = p3.props.CustomTitleMessage;
 	end;
 	local v21 = true;
 	local l__myTeam__22 = l__ClientStore__6:getState().Game.myTeam;
@@ -113,24 +123,36 @@ function v5.render(p3)
 		});
 	end;
 	local v27 = table.create(#v8);
-	for v28, v29 in ipairs(v8) do
-		v27[v28] = v26(v29, v28 - 1, v8);
+	local v28, v29, v30 = ipairs(v8);
+	while true do
+		v28(v29, v30);
+		if not v28 then
+			break;
+		end;
+		v30 = v28;
+		v27[v28] = v26(v29, v28 - 1, v8);	
 	end;
-	local v30 = {
+	local v31 = {
 		Size = UDim2.fromScale(1, 0.5), 
 		Position = UDim2.fromScale(0.5, 0.5), 
 		AnchorPoint = Vector2.new(0.5, 0)
 	};
-	local v31 = { v3.createElement("UIListLayout", {
+	local v32 = { v3.createElement("UIListLayout", {
 			FillDirection = "Horizontal", 
 			HorizontalAlignment = "Center", 
 			Padding = UDim.new(0.03, 0)
 		}) };
-	local v32 = #v31;
-	for v33, v34 in ipairs(v27) do
-		v31[v32 + v33] = v34;
+	local v33 = #v32;
+	local v34, v35, v36 = ipairs(v27);
+	while true do
+		v34(v35, v36);
+		if not v34 then
+			break;
+		end;
+		v36 = v34;
+		v32[v33 + v34] = v35;	
 	end;
-	v25.PlayerRenderList = v3.createElement(l__Empty__12, v30, v31);
+	v25.PlayerRenderList = v3.createElement(l__Empty__12, v31, v32);
 	v23.VictorySection = v3.createFragment({
 		VictorySection = v3.createElement(l__Empty__12, v24, v25)
 	});

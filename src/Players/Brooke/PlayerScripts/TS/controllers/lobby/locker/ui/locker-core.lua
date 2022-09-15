@@ -51,121 +51,129 @@ return {
 				end;
 				local v17 = {};
 				local v18 = 0;
-				for v19, v20 in ipairs(l__sprays__11) do
-					local v21 = v12(v20, v19 - 1, l__sprays__11);
-					if v21 ~= nil then
-						v18 = v18 + 1;
-						v17[v18] = v21;
+				local v19, v20, v21 = ipairs(l__sprays__11);
+				while true do
+					v19(v20, v21);
+					if not v19 then
+						break;
 					end;
+					v21 = v19;
+					local v22 = v12(v20, v19 - 1, l__sprays__11);
+					if v22 ~= nil then
+						v18 = v18 + 1;
+						v17[v18] = v22;
+					end;				
 				end;
 				return v17;
 			end;
 			if v5 == l__LockerTab__1.KILL_EFFECTS then
-				local l__killEffects__22 = p1.store.Locker.killEffects;
-				local function v23(p4)
-					local v24 = l__KillEffectMeta__3[p4];
-					local v25 = {};
-					local v26 = {
-						name = v24.name
+				local l__killEffects__23 = p1.store.Locker.killEffects;
+				local function v24(p4)
+					local v25 = l__KillEffectMeta__3[p4];
+					local v26 = {};
+					local v27 = {
+						name = v25.name
 					};
-					local v27 = v24.image;
-					if v27 == nil then
-						v27 = "";
+					local v28 = v25.image;
+					if v28 == nil then
+						v28 = "";
 					end;
-					v26.imageId = v27;
-					v25.image = v26;
-					v25.itemEnum = p4;
-					v25.type = l__LockerTab__1.KILL_EFFECTS;
-					return v25;
+					v27.imageId = v28;
+					v26.image = v27;
+					v26.itemEnum = p4;
+					v26.type = l__LockerTab__1.KILL_EFFECTS;
+					return v26;
 				end;
-				local v28 = table.create(#l__killEffects__22);
-				for v29, v30 in ipairs(l__killEffects__22) do
-					v28[v29] = v23(v30, v29 - 1, l__killEffects__22);
+				local v29 = table.create(#l__killEffects__23);
+				local v30, v31, v32 = ipairs(l__killEffects__23);
+				while true do
+					v30(v31, v32);
+					if not v30 then
+						break;
+					end;
+					v32 = v30;
+					v29[v30] = v24(v31, v30 - 1, l__killEffects__23);				
 				end;
-				return v28;
+				return v29;
 			end;
 			if v5 == l__LockerTab__1.TITLES then
-				local l__titles__31 = p1.store.Locker.titles;
-				local function v32(p5)
-					local v33 = l__TitleMeta__4[p5];
-					local v34 = v33.text;
-					if v33.name == "None" then
-						v34 = "None";
+				local l__titles__33 = p1.store.Locker.titles;
+				local function v34(p5)
+					local v35 = l__TitleMeta__4[p5];
+					local v36 = v35.text;
+					if v35.name == "None" then
+						v36 = "None";
 					end;
-					local v35 = {
+					local v37 = {
 						image = {
-							name = v34, 
+							name = v36, 
 							imageId = ""
 						}
 					};
-					local v36 = {};
-					for v37, v38 in pairs(v33) do
-						v36[v37] = v38;
+					local v38 = {};
+					for v39, v40 in pairs(v35) do
+						v38[v39] = v40;
 					end;
-					v35.title = v36;
-					v35.itemEnum = p5;
-					v35.type = l__LockerTab__1.TITLES;
-					return v35;
+					v37.title = v38;
+					v37.itemEnum = p5;
+					v37.type = l__LockerTab__1.TITLES;
+					return v37;
 				end;
-				local v39 = table.create(#l__titles__31);
-				for v40, v41 in ipairs(l__titles__31) do
-					v39[v40] = v32(v41, v40 - 1, l__titles__31);
+				local v41 = table.create(#l__titles__33);
+				local v42, v43, v44 = ipairs(l__titles__33);
+				while true do
+					v42(v43, v44);
+					if not v42 then
+						break;
+					end;
+					v44 = v42;
+					v41[v42] = v34(v43, v42 - 1, l__titles__33);				
 				end;
-				return v39;
+				return v41;
 			end;
-			local l__lobbyGadgets__42 = p1.store.Locker.lobbyGadgets;
-			local function v43(p6)
-				local v44 = l__LobbyGadgetMeta__5[p6];
-				local v45 = nil;
-				if v44.items then
-					local v46 = l__getLobbyGadgetImage__6(p6);
-					if v46 == nil then
-						v46 = "";
-					end;
-					v45 = v46;
-				end;
-				local v47 = {};
-				local v48 = {
-					name = v44.name
-				};
-				local v49 = v44.image;
-				if v49 == nil then
-					v49 = v45;
+			local l__lobbyGadgets__45 = p1.store.Locker.lobbyGadgets;
+			local function v46(p6)
+				local v47 = l__LobbyGadgetMeta__5[p6];
+				local v48 = nil;
+				if v47.items then
+					local v49 = l__getLobbyGadgetImage__6(p6);
 					if v49 == nil then
 						v49 = "";
 					end;
+					v48 = v49;
 				end;
-				v48.imageId = v49;
-				v47.image = v48;
-				v47.itemEnum = p6;
-				v47.type = l__LockerTab__1.LOBBY_GADGETS;
-				return v47;
+				local v50 = {};
+				local v51 = {
+					name = v47.name
+				};
+				local v52 = v47.image;
+				if v52 == nil then
+					v52 = v48;
+					if v52 == nil then
+						v52 = "";
+					end;
+				end;
+				v51.imageId = v52;
+				v50.image = v51;
+				v50.itemEnum = p6;
+				v50.type = l__LockerTab__1.LOBBY_GADGETS;
+				return v50;
 			end;
-			local v50 = table.create(#l__lobbyGadgets__42);
-			for v51, v52 in ipairs(l__lobbyGadgets__42) do
-				v50[v51] = v43(v52, v51 - 1, l__lobbyGadgets__42);
+			local v53 = table.create(#l__lobbyGadgets__45);
+			local v54, v55, v56 = ipairs(l__lobbyGadgets__45);
+			while true do
+				v54(v55, v56);
+				if not v54 then
+					break;
+				end;
+				v56 = v54;
+				v53[v54] = v46(v55, v54 - 1, l__lobbyGadgets__45);			
 			end;
-			return v50;
+			return v53;
 		end;
 		local function u17()
 			if v5 == l__LockerTab__1.EMOTES then
-				local v53 = l__EmoteMeta__2[p1.store.Locker.selectedSpray];
-				local v54 = {};
-				local v55 = {
-					name = v53.name
-				};
-				local v56 = v53.image;
-				if v56 == nil then
-					v56 = "";
-				end;
-				v55.imageId = v56;
-				v54.image = v55;
-				v54.itemEnum = p1.store.Locker.selectedSpray;
-				v54.type = l__LockerTab__1.EMOTES;
-				return v54;
-			end;
-			if v5 == l__LockerTab__1.KILL_EFFECTS then
-				local v57 = l__KillEffectMeta__3[p1.store.Locker.selectedKillEffect];
+				local v57 = l__EmoteMeta__2[p1.store.Locker.selectedSpray];
 				local v58 = {};
 				local v59 = {
 					name = v57.name
@@ -176,43 +184,59 @@ return {
 				end;
 				v59.imageId = v60;
 				v58.image = v59;
-				v58.itemEnum = p1.store.Locker.selectedKillEffect;
-				v58.type = l__LockerTab__1.KILL_EFFECTS;
+				v58.itemEnum = p1.store.Locker.selectedSpray;
+				v58.type = l__LockerTab__1.EMOTES;
 				return v58;
 			end;
+			if v5 == l__LockerTab__1.KILL_EFFECTS then
+				local v61 = l__KillEffectMeta__3[p1.store.Locker.selectedKillEffect];
+				local v62 = {};
+				local v63 = {
+					name = v61.name
+				};
+				local v64 = v61.image;
+				if v64 == nil then
+					v64 = "";
+				end;
+				v63.imageId = v64;
+				v62.image = v63;
+				v62.itemEnum = p1.store.Locker.selectedKillEffect;
+				v62.type = l__LockerTab__1.KILL_EFFECTS;
+				return v62;
+			end;
 			if v5 ~= l__LockerTab__1.TITLES then
-				local v61 = {};
-				local v62 = {
+				local v65 = {};
+				local v66 = {
 					name = l__LobbyGadgetMeta__5[p1.store.Locker.selectedLobbyGadget].name
 				};
-				local v63 = l__getLobbyGadgetImage__6(p1.store.Locker.selectedLobbyGadget);
-				if v63 == nil then
-					v63 = "";
+				local v67 = l__getLobbyGadgetImage__6(p1.store.Locker.selectedLobbyGadget);
+				if v67 == nil then
+					v67 = "";
 				end;
-				v62.imageId = v63;
-				v61.image = v62;
-				v61.itemEnum = p1.store.Locker.selectedLobbyGadget;
-				v61.type = l__LockerTab__1.LOBBY_GADGETS;
-				return v61;
+				v66.imageId = v67;
+				v65.image = v66;
+				v65.itemEnum = p1.store.Locker.selectedLobbyGadget;
+				v65.type = l__LockerTab__1.LOBBY_GADGETS;
+				return v65;
 			end;
-			local v64 = l__TitleMeta__4[p1.store.Locker.selectedTitle];
-			local v65 = {};
-			local v66 = {};
-			local v67 = v64.name;
-			if v67 == nil then
-				v67 = v64.text;
+			local v68 = l__TitleMeta__4[p1.store.Locker.selectedTitle];
+			local v69 = {};
+			local v70 = {};
+			local v71 = v68.name;
+			if v71 == nil then
+				v71 = v68.text;
 			end;
-			v66.name = v67;
-			v66.imageId = "";
-			v65.image = v66;
-			local v68 = {};
-			for v69, v70 in pairs(v64) do
-				v68[v69] = v70;
+			v70.name = v71;
+			v70.imageId = "";
+			v69.image = v70;
+			local v72 = {};
+			for v73, v74 in pairs(v68) do
+				v72[v73] = v74;
 			end;
-			v65.title = v68;
-			v65.itemEnum = p1.store.Locker.selectedTitle;
-			v65.type = l__LockerTab__1.TITLES;
-			return v65;
+			v69.title = v72;
+			v69.itemEnum = p1.store.Locker.selectedTitle;
+			v69.type = l__LockerTab__1.TITLES;
+			return v69;
 		end;
 		l__useEffect__4(function()
 			v8((u16()));
@@ -221,12 +245,12 @@ return {
 		l__useEffect__4(function()
 			v10((u17()));
 		end, { p1.store.Locker });
-		local v71 = {};
-		local v72 = { u8.createElement(l__ScaleComponent__9, {
+		local v75 = {};
+		local v76 = { u8.createElement(l__ScaleComponent__9, {
 				MaximumSize = Vector2.new(1008, 660), 
 				ScreenPadding = Vector2.new(24, 24)
 			}) };
-		local v73 = v7 and (v9 and u8.createElement(l__WidgetComponent__10, {
+		local v77 = v7 and (v9 and u8.createElement(l__WidgetComponent__10, {
 			AppId = p1.AppId, 
 			AnchorPoint = Vector2.new(0.5, 0.5), 
 			Position = UDim2.fromScale(0.5, 0.5), 
@@ -275,15 +299,15 @@ return {
 				Direction = "Y"
 			}))
 		}));
-		if v73 then
-			v72[#v72 + 1] = v73;
+		if v77 then
+			v76[#v76 + 1] = v77;
 		end;
-		v71[#v71 + 1] = u8.createElement("Frame", {
+		v75[#v75 + 1] = u8.createElement("Frame", {
 			AnchorPoint = Vector2.new(0.5, 0.5), 
 			Position = UDim2.fromScale(0.5, 0.5), 
 			Size = UDim2.fromOffset(840, 550), 
 			BackgroundTransparency = 1
-		}, v72);
-		return u8.createElement(l__SlideIn__15, {}, v71);
+		}, v76);
+		return u8.createElement(l__SlideIn__15, {}, v75);
 	end)
 };

@@ -15,50 +15,49 @@ function v5.new(...)
 	local v6 = setmetatable({}, v5);
 	return v6:constructor(...) and v6;
 end;
-local u1 = l__KnitController__4;
-local u2 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-local l__Workspace__3 = v3.Workspace;
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
+local l__Workspace__2 = v3.Workspace;
 function v5.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__4.constructor(p1);
 	p1.Name = "AxolotlController";
-	p1.axolotlModelFolder = u2("Folder", {
+	p1.axolotlModelFolder = u1("Folder", {
 		Name = "AxolotlModel", 
-		Parent = l__Workspace__3
+		Parent = l__Workspace__2
 	});
 end;
-local l__PlaceUtil__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "place-util").PlaceUtil;
-local l__CollectionTagAdded__5 = v2.CollectionTagAdded;
+local l__PlaceUtil__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "place-util").PlaceUtil;
+local l__CollectionTagAdded__4 = v2.CollectionTagAdded;
 function v5.KnitStart(p2)
-	u1.KnitStart(p2);
-	if l__PlaceUtil__4.isGameServer() then
-		p2.axolotlDataFolder = l__Workspace__3:WaitForChild("AxolotlData");
+	l__KnitController__4.KnitStart(p2);
+	if l__PlaceUtil__3.isGameServer() then
+		p2.axolotlDataFolder = l__Workspace__2:WaitForChild("AxolotlData");
 	else
-		p2.axolotlDataFolder = u2("Folder", {
+		p2.axolotlDataFolder = u1("Folder", {
 			Name = "AxolotlData", 
-			Parent = l__Workspace__3
+			Parent = l__Workspace__2
 		});
 	end;
-	l__CollectionTagAdded__5("axolotl_data", function(p3)
+	l__CollectionTagAdded__4("axolotl_data", function(p3)
 		p2:createAxolotlModel(p3);
 	end);
-	l__CollectionTagAdded__5("axolotl_model", function(p4)
+	l__CollectionTagAdded__4("axolotl_model", function(p4)
 
 	end);
 end;
-local u6 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
-local l__BedwarsKitSkin__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit-skin", "bedwars-kit-skin").BedwarsKitSkin;
-local l__ReplicatedStorage__8 = v3.ReplicatedStorage;
-local l__AxolotlType__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "kits", "axolotl", "axolotl-type").AxolotlType;
-local l__CollectionService__10 = v3.CollectionService;
-local l__AnimationType__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
-local l__GameAnimationUtil__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
-local l__AxolotlState__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "kits", "axolotl", "axolotl-state").AxolotlState;
-local l__TweenService__14 = v3.TweenService;
-local l__SoundManager__15 = v2.SoundManager;
-local l__GameSound__16 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__GameQueryUtil__17 = v2.GameQueryUtil;
-local l__RunService__18 = v3.RunService;
-local l__AxolotlKit__19 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "kits", "axolotl", "axolotl-kit").AxolotlKit;
+local u5 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+local l__BedwarsKitSkin__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit-skin", "bedwars-kit-skin").BedwarsKitSkin;
+local l__ReplicatedStorage__7 = v3.ReplicatedStorage;
+local l__AxolotlType__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "kits", "axolotl", "axolotl-type").AxolotlType;
+local l__CollectionService__9 = v3.CollectionService;
+local l__AnimationType__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
+local l__GameAnimationUtil__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
+local l__AxolotlState__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "kits", "axolotl", "axolotl-state").AxolotlState;
+local l__TweenService__13 = v3.TweenService;
+local l__SoundManager__14 = v2.SoundManager;
+local l__GameSound__15 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local l__GameQueryUtil__16 = v2.GameQueryUtil;
+local l__RunService__17 = v3.RunService;
+local l__AxolotlKit__18 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "kits", "axolotl", "axolotl-kit").AxolotlKit;
 function v5.createAxolotlModel(p5, p6)
 	p6:WaitForChild("AttachedTo");
 	p6:WaitForChild("AxolotlModel");
@@ -69,192 +68,214 @@ function v5.createAxolotlModel(p5, p6)
 	end;
 	local v8 = p6:GetAttribute("RandomFloat");
 	local v9 = p6:GetAttribute("AxolotlType");
-	local u20 = u6.new();
+	local u19 = u5.new();
 	p6.AncestryChanged:Connect(function(p7, p8)
 		if p8 == nil then
-			u20:DoCleaning();
+			u19:DoCleaning();
 		end;
 	end);
-	print("axolotl kit skin:", v7);
-	if v7 == l__BedwarsKitSkin__7.AXOLOTL_REINDEER then
-		local v10 = l__ReplicatedStorage__8.Assets.Misc.Axolotl.ReindeerAxolotl:Clone();
-	elseif v7 == l__BedwarsKitSkin__7.AXOLOTL_EASTER_BUNNY then
-		if v9 == l__AxolotlType__9.BREAK_SPEED then
-			v10 = l__ReplicatedStorage__8.Assets.Misc.AxolotlEaster.BreakSpeedAxolotl:Clone();
-		elseif v9 == l__AxolotlType__9.DAMAGE then
-			v10 = l__ReplicatedStorage__8.Assets.Misc.AxolotlEaster.DamageAxolotl:Clone();
-		elseif v9 == l__AxolotlType__9.HEALTH_REGEN then
-			v10 = l__ReplicatedStorage__8.Assets.Misc.AxolotlEaster.HealthRegenAxolotl:Clone();
+	if v7 == l__BedwarsKitSkin__6.AXOLOTL_REINDEER then
+		local v10 = l__ReplicatedStorage__7.Assets.Misc.Axolotl.ReindeerAxolotl:Clone();
+	elseif v7 == l__BedwarsKitSkin__6.AXOLOTL_EASTER_BUNNY then
+		if v9 == l__AxolotlType__8.BREAK_SPEED then
+			v10 = l__ReplicatedStorage__7.Assets.Misc.AxolotlEaster.BreakSpeedAxolotl:Clone();
+		elseif v9 == l__AxolotlType__8.DAMAGE then
+			v10 = l__ReplicatedStorage__7.Assets.Misc.AxolotlEaster.DamageAxolotl:Clone();
+		elseif v9 == l__AxolotlType__8.HEALTH_REGEN then
+			v10 = l__ReplicatedStorage__7.Assets.Misc.AxolotlEaster.HealthRegenAxolotl:Clone();
 		else
-			if v9 == l__AxolotlType__9.SHIELD then
+			if v9 == l__AxolotlType__8.SHIELD then
 
 			end;
-			v10 = l__ReplicatedStorage__8.Assets.Misc.AxolotlEaster.ShieldAxolotl:Clone();
+			v10 = l__ReplicatedStorage__7.Assets.Misc.AxolotlEaster.ShieldAxolotl:Clone();
 		end;
-	elseif v9 == l__AxolotlType__9.BREAK_SPEED then
-		v10 = l__ReplicatedStorage__8.Assets.Misc.Axolotl.BreakSpeedAxolotl:Clone();
-	elseif v9 == l__AxolotlType__9.DAMAGE then
-		v10 = l__ReplicatedStorage__8.Assets.Misc.Axolotl.DamageAxolotl:Clone();
-	elseif v9 == l__AxolotlType__9.HEALTH_REGEN then
-		v10 = l__ReplicatedStorage__8.Assets.Misc.Axolotl.HealthRegenAxolotl:Clone();
+	elseif v9 == l__AxolotlType__8.BREAK_SPEED then
+		v10 = l__ReplicatedStorage__7.Assets.Misc.Axolotl.BreakSpeedAxolotl:Clone();
+	elseif v9 == l__AxolotlType__8.DAMAGE then
+		v10 = l__ReplicatedStorage__7.Assets.Misc.Axolotl.DamageAxolotl:Clone();
+	elseif v9 == l__AxolotlType__8.HEALTH_REGEN then
+		v10 = l__ReplicatedStorage__7.Assets.Misc.Axolotl.HealthRegenAxolotl:Clone();
 	else
-		if v9 == l__AxolotlType__9.SHIELD then
+		if v9 == l__AxolotlType__8.SHIELD then
 
 		end;
-		v10 = l__ReplicatedStorage__8.Assets.Misc.Axolotl.ShieldAxolotl:Clone();
+		v10 = l__ReplicatedStorage__7.Assets.Misc.Axolotl.ShieldAxolotl:Clone();
 	end;
-	u2("ObjectValue", {
+	local v11, v12, v13 = ipairs((v10:GetDescendants()));
+	while true do
+		v11(v12, v13);
+		if not v11 then
+			break;
+		end;
+		v13 = v11;
+		if v12:IsA("BasePart") then
+			v12.CastShadow = false;
+		end;	
+	end;
+	u1("ObjectValue", {
 		Name = "AxolotlData", 
 		Value = p6, 
 		Parent = v10
 	});
 	v10.Parent = p5.axolotlModelFolder;
-	l__CollectionService__10:AddTag(v10, "axolotl_model");
-	u20:GiveTask(function()
+	l__CollectionService__9:AddTag(v10, "axolotl_model");
+	u19:GiveTask(function()
 		v10:Destroy();
 	end);
-	local l__Animator__11 = v10.AnimationController.Animator;
-	u20:GiveTask(function()
+	local l__Animator__14 = v10.AnimationController.Animator;
+	u19:GiveTask(function()
 		v10:Destroy();
 	end);
-	for v12, v13 in ipairs((v10:GetDescendants())) do
-		if v13:IsA("BasePart") then
-			u20:GiveTask(v13.AncestryChanged:Connect(function(p9, p10)
+	local v15, v16, v17 = ipairs((v10:GetDescendants()));
+	while true do
+		v15(v16, v17);
+		if not v15 then
+			break;
+		end;
+		v17 = v15;
+		if v16:IsA("BasePart") then
+			u19:GiveTask(v16.AncestryChanged:Connect(function(p9, p10)
 				if p10 == nil then
-					u20:DoCleaning();
+					u19:DoCleaning();
 				end;
 			end));
+		end;	
+	end;
+	local v18 = l__AnimationType__10.AXOLOTL_IDLE;
+	local v19 = l__AnimationType__10.AXOLOTL_SWIM;
+	local v20 = l__AnimationType__10.AXOLOTL_ABILITY;
+	if v7 == l__BedwarsKitSkin__6.AXOLOTL_REINDEER then
+		v18 = l__AnimationType__10.AXOLOTL_REINDEER_IDLE;
+		v19 = l__AnimationType__10.AXOLOTL_REINDEER_SWIM;
+		v20 = l__AnimationType__10.AXOLOTL_REINDEER_ABILITY;
+	elseif v7 == l__BedwarsKitSkin__6.AXOLOTL_EASTER_BUNNY then
+		v18 = l__AnimationType__10.AXOLOTL_EASTER_IDLE;
+		v19 = l__AnimationType__10.AXOLOTL_EASTER_SWIM;
+		v20 = l__AnimationType__10.AXOLOTL_EASTER_ABILITY;
+	end;
+	local v21 = nil;
+	local v22 = nil;
+	local v23 = nil;
+	if v18 then
+		v21 = l__Animator__14:LoadAnimation(l__GameAnimationUtil__11.getAnimation(v18));
+		v21.Priority = Enum.AnimationPriority.Movement;
+	end;
+	if v19 then
+		v22 = l__Animator__14:LoadAnimation(l__GameAnimationUtil__11.getAnimation(v19));
+		v22.Priority = Enum.AnimationPriority.Movement;
+		v22:AdjustSpeed(2);
+	end;
+	if v20 then
+		v23 = l__Animator__14:LoadAnimation(l__GameAnimationUtil__11.getAnimation(v20));
+		v23.Priority = Enum.AnimationPriority.Action;
+	end;
+	local v24 = v10.PrimaryPart;
+	if v24 ~= nil then
+		v24 = v24.CFrame;
+	end;
+	local v25 = v24;
+	if v25 == nil then
+		v25 = CFrame.new();
+	end;
+	local v26 = "torso.001";
+	if v7 == l__BedwarsKitSkin__6.AXOLOTL_EASTER_BUNNY then
+		v26 = "egg";
+	end;
+	local u20 = 0;
+	local u21 = p6:GetAttribute("AxolotlState");
+	local u22 = v25;
+	local u23 = u5.new();
+	local u24 = 0;
+	local function u25(p11)
+		u20 = tick();
+		u21 = p11;
+		local v27 = v10.PrimaryPart;
+		if v27 ~= nil then
+			v27 = v27.CFrame;
 		end;
-	end;
-	local v14 = l__AnimationType__11.AXOLOTL_IDLE;
-	local v15 = l__AnimationType__11.AXOLOTL_SWIM;
-	local v16 = l__AnimationType__11.AXOLOTL_ABILITY;
-	if v7 == l__BedwarsKitSkin__7.AXOLOTL_REINDEER then
-		v14 = l__AnimationType__11.AXOLOTL_REINDEER_IDLE;
-		v15 = l__AnimationType__11.AXOLOTL_REINDEER_SWIM;
-		v16 = l__AnimationType__11.AXOLOTL_REINDEER_ABILITY;
-	elseif v7 == l__BedwarsKitSkin__7.AXOLOTL_EASTER_BUNNY then
-		v14 = l__AnimationType__11.AXOLOTL_EASTER_IDLE;
-		v15 = l__AnimationType__11.AXOLOTL_EASTER_SWIM;
-		v16 = l__AnimationType__11.AXOLOTL_EASTER_ABILITY;
-	end;
-	local v17 = nil;
-	local v18 = nil;
-	local v19 = nil;
-	if v14 then
-		v17 = l__Animator__11:LoadAnimation(l__GameAnimationUtil__12.getAnimation(v14));
-		v17.Priority = Enum.AnimationPriority.Movement;
-	end;
-	if v15 then
-		v18 = l__Animator__11:LoadAnimation(l__GameAnimationUtil__12.getAnimation(v15));
-		v18.Priority = Enum.AnimationPriority.Movement;
-		v18:AdjustSpeed(2);
-	end;
-	if v16 then
-		v19 = l__Animator__11:LoadAnimation(l__GameAnimationUtil__12.getAnimation(v16));
-		v19.Priority = Enum.AnimationPriority.Action;
-	end;
-	local v20 = v10.PrimaryPart;
-	if v20 ~= nil then
-		v20 = v20.CFrame;
-	end;
-	local v21 = v20;
-	if v21 == nil then
-		v21 = CFrame.new();
-	end;
-	local v22 = "torso.001";
-	if v7 == l__BedwarsKitSkin__7.AXOLOTL_EASTER_BUNNY then
-		v22 = "egg";
-	end;
-	local u21 = 0;
-	local u22 = p6:GetAttribute("AxolotlState");
-	local u23 = v21;
-	local u24 = u6.new();
-	local u25 = 0;
-	local function u26(p11)
-		u21 = tick();
-		u22 = p11;
-		local v23 = v10.PrimaryPart;
-		if v23 ~= nil then
-			v23 = v23.CFrame;
+		local v28 = v27;
+		if v28 == nil then
+			v28 = CFrame.new();
 		end;
-		local v24 = v23;
-		if v24 == nil then
-			v24 = CFrame.new();
-		end;
-		u23 = v24;
-		u24:DoCleaning();
-		if p11 == l__AxolotlState__13.IDLE then
-			if v17 then
-				v17:Play();
-				v17.TimePosition = math.random() * 5;
-				u24:GiveTask(function()
-					if v17 ~= nil then
-						v17:Stop();
+		u22 = v28;
+		u23:DoCleaning();
+		if p11 == l__AxolotlState__12.IDLE then
+			if v21 then
+				v21:Play();
+				v21.TimePosition = math.random() * 5;
+				u23:GiveTask(function()
+					if v21 ~= nil then
+						v21:Stop();
 					end;
 				end);
 			end;
-		elseif p11 == l__AxolotlState__13.SWIMMING_TO_ATTACHED then
-			if v18 ~= nil then
-				v18:Play();
+		elseif p11 == l__AxolotlState__12.SWIMMING_TO_ATTACHED then
+			if v22 ~= nil then
+				v22:Play();
 			end;
-			u24:GiveTask(function()
-				if v18 ~= nil then
-					v18:Stop();
+			u23:GiveTask(function()
+				if v22 ~= nil then
+					v22:Stop();
 				end;
 			end);
-		elseif p11 == l__AxolotlState__13.ACTIVE then
-			if v19 ~= nil then
-				v19:Play();
+		elseif p11 == l__AxolotlState__12.ACTIVE then
+			if v23 ~= nil then
+				v23:Play();
 			end;
-			if v17 ~= nil then
-				v17:Play();
+			if v21 ~= nil then
+				v21:Play();
 			end;
 			if p6.AttachedTo.Value then
 				v10.Beam.Attachment1 = p6.AttachedTo.Value.UpperTorso.BodyFrontAttachment;
 				v10.Beam.Enabled = true;
-				local u27 = true;
-				u24:GiveTask(function()
-					u27 = false;
+				local u26 = true;
+				u23:GiveTask(function()
+					u26 = false;
 					v10.Beam.Enabled = false;
 				end);
 				task.spawn(function()
-					local v25 = 1;
-					while u27 do
-						local v26 = l__TweenService__14:Create(v10.Beam, TweenInfo.new(0.4 + 0.2 * math.random()), {
-							CurveSize0 = -0.3 * v25, 
-							CurveSize1 = 0.3 * v25
+					local v29 = 1;
+					while u26 do
+						local v30 = l__TweenService__13:Create(v10.Beam, TweenInfo.new(0.4 + 0.2 * math.random()), {
+							CurveSize0 = -0.3 * v29, 
+							CurveSize1 = 0.3 * v29
 						});
-						v26:Play();
-						v26.Completed:Wait();
-						v25 = v25 * -1;					
+						v30:Play();
+						v30.Completed:Wait();
+						v29 = v29 * -1;					
 					end;
 				end);
 			end;
-			u24:GiveTask(function()
-				if v17 ~= nil then
-					v17:Stop();
+			u23:GiveTask(function()
+				if v21 ~= nil then
+					v21:Stop();
 				end;
 			end);
-			local v27 = nil;
-			for v28, v29 in ipairs((v10:GetDescendants())) do
-				if v29.Name == v22 == true then
-					v27 = v29;
+			local v31 = nil;
+			local v32, v33, v34 = ipairs((v10:GetDescendants()));
+			while true do
+				v32(v33, v34);
+				if not v32 then
 					break;
 				end;
+				v34 = v32;
+				if v33.Name == v26 == true then
+					v31 = v33;
+					break;
+				end;			
 			end;
-			local v30 = "Shield!";
-			if v9 == l__AxolotlType__9.DAMAGE then
-				v30 = "Damage!";
-			elseif v9 == l__AxolotlType__9.BREAK_SPEED then
-				v30 = "Break Speed!";
-			elseif v9 == l__AxolotlType__9.HEALTH_REGEN then
-				v30 = "Health Regen!";
+			local v35 = "Shield!";
+			if v9 == l__AxolotlType__8.DAMAGE then
+				v35 = "Damage!";
+			elseif v9 == l__AxolotlType__8.BREAK_SPEED then
+				v35 = "Break Speed!";
+			elseif v9 == l__AxolotlType__8.HEALTH_REGEN then
+				v35 = "Health Regen!";
 			end;
-			local u28 = u2("TextLabel", {
-				Parent = u2("BillboardGui", {
+			local u27 = u1("TextLabel", {
+				Parent = u1("BillboardGui", {
 					Parent = v10.PrimaryPart, 
-					Adornee = v27, 
+					Adornee = v31, 
 					Size = UDim2.fromScale(5, 0.55), 
 					LightInfluence = 0, 
 					MaxDistance = 60, 
@@ -266,160 +287,165 @@ function v5.createAxolotlModel(p5, p6)
 				TextColor3 = Color3.fromRGB(255, 255, 255), 
 				Font = Enum.Font.LuckiestGuy, 
 				TextScaled = true, 
-				Text = v30
+				Text = v35
 			});
 			task.spawn(function()
 				wait(1.1);
-				l__TweenService__14:Create(u28, TweenInfo.new(1), {
+				l__TweenService__13:Create(u27, TweenInfo.new(1), {
 					TextTransparency = 1
 				}):Play();
 			end);
 		end;
-		if (p11 == l__AxolotlState__13.SWIMMING_TO_ATTACHED or p11 == l__AxolotlState__13.ACTIVE) and tick() - u25 > 1 then
-			u25 = tick();
-			local v31 = {};
-			local v32 = v10.PrimaryPart;
-			if v32 ~= nil then
-				v32 = v32.Position;
+		if (p11 == l__AxolotlState__12.SWIMMING_TO_ATTACHED or p11 == l__AxolotlState__12.ACTIVE) and tick() - u24 > 1 then
+			u24 = tick();
+			local v36 = {};
+			local v37 = v10.PrimaryPart;
+			if v37 ~= nil then
+				v37 = v37.Position;
 			end;
-			local v33 = v32;
-			if v33 == nil then
-				v33 = Vector3.new();
+			local v38 = v37;
+			if v38 == nil then
+				v38 = Vector3.new();
 			end;
-			v31.position = v33;
-			v31.parent = v10.PrimaryPart;
-			local v34 = l__SoundManager__15:playSound(l__GameSound__16.AXOLOTL_SWITCH_TARGETS, v31);
-			if v34 then
-				v34.Ended:Connect(function()
-					v34:Destroy();
+			v36.position = v38;
+			v36.parent = v10.PrimaryPart;
+			local v39 = l__SoundManager__14:playSound(l__GameSound__15.AXOLOTL_SWITCH_TARGETS, v36);
+			if v39 then
+				v39.Ended:Connect(function()
+					v39:Destroy();
 				end);
 			end;
 		end;
 	end;
-	u20:GiveTask(p6:GetAttributeChangedSignal("AxolotlState"):Connect(function()
-		u26(p6:GetAttribute("AxolotlState"));
+	u19:GiveTask(p6:GetAttributeChangedSignal("AxolotlState"):Connect(function()
+		u25(p6:GetAttribute("AxolotlState"));
 	end));
-	u26(p6:GetAttribute("AxolotlState"));
-	local u29 = p6.AttachedTo.Value;
+	u25(p6:GetAttribute("AxolotlState"));
+	local u28 = p6.AttachedTo.Value;
 	p6.AttachedTo.Changed:Connect(function()
-		u29 = p6.AttachedTo.Value;
+		u28 = p6.AttachedTo.Value;
 	end);
-	local v35 = u2("Part", {
+	local v40 = u1("Part", {
 		Size = Vector3.new(0, 0, 0), 
 		Transparency = 1, 
 		CanCollide = false, 
 		Anchored = true, 
 		Parent = v10, 
-		Children = { u2("Attachment", {
+		Children = { u1("Attachment", {
 				Name = "Attachment"
 			}) }
 	});
 	v10:WaitForChild("Beam");
-	v10.Beam.Attachment0 = v35:FindFirstChild("Attachment");
-	l__GameQueryUtil__17:setQueryIgnored(v35, true);
-	local v36 = nil;
-	for v37, v38 in ipairs((v10:GetDescendants())) do
-		if v38.Name == v22 == true then
-			v36 = v38;
+	v10.Beam.Attachment0 = v40:FindFirstChild("Attachment");
+	l__GameQueryUtil__16:setQueryIgnored(v40, true);
+	local v41 = nil;
+	local v42, v43, v44 = ipairs((v10:GetDescendants()));
+	while true do
+		v42(v43, v44);
+		if not v42 then
 			break;
 		end;
+		v44 = v42;
+		if v43.Name == v26 == true then
+			v41 = v43;
+			break;
+		end;	
 	end;
-	u20:GiveTask(l__RunService__18.RenderStepped:Connect(function(p12)
-		local v39 = u29;
-		if v39 ~= nil then
-			v39 = v39.PrimaryPart;
+	u19:GiveTask(l__RunService__17.RenderStepped:Connect(function(p12)
+		local v45 = u28;
+		if v45 ~= nil then
+			v45 = v45.PrimaryPart;
 		end;
-		if v39 and v10.PrimaryPart then
-			local v40 = nil;
-			local v41 = nil;
-			local v42 = p5:getAngleFromAxolotlType(v9) + tick() % 6 / 6 * (-2 * math.pi);
-			v40 = u29.PrimaryPart.CFrame + Vector3.new(math.cos(v42) * 3.5, 0.1, math.sin(v42) * 3.5);
-			v41 = tick() - u21;
-			if u22 == l__AxolotlState__13.IDLE then
-				v10:SetPrimaryPartCFrame((u23:Lerp(v40, math.clamp(v41 / 0.3, 0, 1))));
-			elseif u22 == l__AxolotlState__13.SWIMMING_TO_ATTACHED then
-				local v43 = u23:Lerp(v40, math.clamp(v41 / l__AxolotlKit__19.SWIM_TO_CHARACTER_TIME, 0, 1));
-				if (v43.Position - v40.Position).Magnitude > 0.01 then
-					v43 = CFrame.new(v43.Position, v40.Position);
+		if v45 and v10.PrimaryPart then
+			local v46 = nil;
+			local v47 = nil;
+			local v48 = p5:getAngleFromAxolotlType(v9) + tick() % 6 / 6 * (-2 * math.pi);
+			v46 = u28.PrimaryPart.CFrame + Vector3.new(math.cos(v48) * 3.5, 0.1, math.sin(v48) * 3.5);
+			v47 = tick() - u20;
+			if u21 == l__AxolotlState__12.IDLE then
+				v10:SetPrimaryPartCFrame((u22:Lerp(v46, math.clamp(v47 / 0.3, 0, 1))));
+			elseif u21 == l__AxolotlState__12.SWIMMING_TO_ATTACHED then
+				local v49 = u22:Lerp(v46, math.clamp(v47 / l__AxolotlKit__18.SWIM_TO_CHARACTER_TIME, 0, 1));
+				if (v49.Position - v46.Position).Magnitude > 0.01 then
+					v49 = CFrame.new(v49.Position, v46.Position);
 				end;
-				v10:SetPrimaryPartCFrame(v43);
-			elseif u22 == l__AxolotlState__13.ACTIVE then
-				v10:SetPrimaryPartCFrame((u23:Lerp(v40 + Vector3.new(0, 1.8, 0), math.clamp(v41 / 0.3, 0, 1))));
+				v10:SetPrimaryPartCFrame(v49);
+			elseif u21 == l__AxolotlState__12.ACTIVE then
+				v10:SetPrimaryPartCFrame((u22:Lerp(v46 + Vector3.new(0, 1.8, 0), math.clamp(v47 / 0.3, 0, 1))));
 			end;
-			v35.CFrame = v36.TransformedWorldCFrame;
+			v40.CFrame = v41.TransformedWorldCFrame;
 		end;
 	end));
 	return v10;
 end;
 function v5.getAngleFromAxolotlType(p13, p14)
-	local v44 = 0;
-	if p14 == l__AxolotlType__9.SHIELD then
+	local v50 = 0;
+	if p14 == l__AxolotlType__8.SHIELD then
 		return 0;
 	end;
-	if p14 == l__AxolotlType__9.DAMAGE then
+	if p14 == l__AxolotlType__8.DAMAGE then
 		return 0.5 * math.pi;
 	end;
-	if p14 == l__AxolotlType__9.BREAK_SPEED then
+	if p14 == l__AxolotlType__8.BREAK_SPEED then
 		return math.pi;
 	end;
-	if p14 == l__AxolotlType__9.HEALTH_REGEN then
-		v44 = 1.5 * math.pi;
+	if p14 == l__AxolotlType__8.HEALTH_REGEN then
+		v50 = 1.5 * math.pi;
 	end;
-	return v44;
+	return v50;
 end;
 function v5.createClientOnlyAxolotlData(p15, p16, p17)
-	local v45 = u2("ObjectValue", {
+	local v51 = u1("ObjectValue", {
 		Name = p16.Name .. "_Axolotl", 
 		Parent = p15.axolotlDataFolder, 
-		Children = { u2("ObjectValue", {
+		Children = { u1("ObjectValue", {
 				Name = "AxolotlModel"
-			}), u2("ObjectValue", {
+			}), u1("ObjectValue", {
 				Name = "Owner", 
 				Value = p16
-			}), u2("ObjectValue", {
+			}), u1("ObjectValue", {
 				Name = "AttachedTo", 
 				Value = p16
 			}) }
 	});
-	v45:SetAttribute("AxolotlState", l__AxolotlState__13.IDLE);
-	v45:SetAttribute("RandomFloat", math.random());
-	v45:SetAttribute("AxolotlType", p17);
-	v45:SetAttribute("AxolotlLastActiveTime", 0);
-	l__CollectionService__10:AddTag(v45, "axolotl_data");
-	return v45;
+	v51:SetAttribute("AxolotlState", l__AxolotlState__12.IDLE);
+	v51:SetAttribute("RandomFloat", math.random());
+	v51:SetAttribute("AxolotlType", p17);
+	v51:SetAttribute("AxolotlLastActiveTime", 0);
+	l__CollectionService__9:AddTag(v51, "axolotl_data");
+	return v51;
 end;
 function v5.getAttachedAxolotls(p18, p19)
-	local v46 = {};
-	local v47 = 0;
-	local v48, v49, v50 = ipairs((l__CollectionService__10:GetTagged("axolotl_data")));
+	local v52 = {};
+	local v53 = 0;
+	local v54, v55, v56 = ipairs((l__CollectionService__9:GetTagged("axolotl_data")));
 	while true do
-		local v51, v52 = v48(v49, v50);
-		if not v51 then
+		v54(v55, v56);
+		if not v54 then
 			break;
 		end;
-		if v52.AttachedTo.Value == p19 == true then
-			v47 = v47 + 1;
-			v46[v47] = v52;
+		if v55.AttachedTo.Value == p19 == true then
+			v53 = v53 + 1;
+			v52[v53] = v55;
 		end;	
 	end;
-	return v46;
+	return v52;
 end;
 function v5.getOwnedAxolotls(p20, p21)
-	local v53 = {};
-	local v54 = 0;
-	local v55, v56, v57 = ipairs((l__CollectionService__10:GetTagged("axolotl_data")));
+	local v57 = {};
+	local v58 = 0;
+	local v59, v60, v61 = ipairs((l__CollectionService__9:GetTagged("axolotl_data")));
 	while true do
-		local v58, v59 = v55(v56, v57);
-		if not v58 then
+		v59(v60, v61);
+		if not v59 then
 			break;
 		end;
-		if v59.Owner.Value == p21 == true then
-			v54 = v54 + 1;
-			v53[v54] = v59;
+		if v60.Owner.Value == p21 == true then
+			v58 = v58 + 1;
+			v57[v58] = v60;
 		end;	
 	end;
-	return v53;
+	return v57;
 end;
-u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1(v5.new());
+local v62 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v5.new());
 return nil;

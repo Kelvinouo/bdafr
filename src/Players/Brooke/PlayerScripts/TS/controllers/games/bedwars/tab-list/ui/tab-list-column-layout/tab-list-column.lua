@@ -15,45 +15,57 @@ return {
 			local v7 = 0;
 			local v8, v9, v10 = ipairs(v2);
 			while true do
-				local v11, v12 = v8(v9, v10);
-				if not v11 then
+				v8(v9, v10);
+				if not v8 then
 					break;
 				end;
-				local v13 = v12[1];
-				if table.find(p1.ColumnData.children, v12[2].props.Team.id) ~= nil == true then
+				local v11 = v9[1];
+				if table.find(p1.ColumnData.children, v9[2].props.Team.id) ~= nil == true then
 					v7 = v7 + 1;
-					v6[v7] = v12;
+					v6[v7] = v9;
 				end;			
 			end;
-			local v14 = table.create(#v6);
-			for v15, v16 in ipairs(v6) do
-				local v17 = v16[1];
-				v14[v15] = v16[2];
+			local v12 = table.create(#v6);
+			local v13, v14, v15 = ipairs(v6);
+			while true do
+				v13(v14, v15);
+				if not v13 then
+					break;
+				end;
+				v15 = v13;
+				local v16 = v14[1];
+				v12[v13] = v14[2];			
 			end;
-			local v18 = v14;
+			local v17 = v12;
 		else
-			v18 = nil;
+			v17 = nil;
 		end;
-		local v19 = {
+		local v18 = {
 			Size = UDim2.fromScale(1 / p1.Columns, 1), 
 			AutomaticSize = "Y", 
 			BorderSizePixel = 0, 
 			BackgroundTransparency = 1, 
 			LayoutOrder = p1.ColumnData.columnId
 		};
-		local v20 = { u1.createElement("UIListLayout", {
+		local v19 = { u1.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Vertical, 
 				VerticalAlignment = Enum.VerticalAlignment.Top, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0, 0)
 			}) };
-		local v21 = #v20;
-		if v18 then
-			for v22, v23 in ipairs(v18) do
-				v20[v21 + v22] = v23;
+		local v20 = #v19;
+		if v17 then
+			local v21, v22, v23 = ipairs(v17);
+			while true do
+				v21(v22, v23);
+				if not v21 then
+					break;
+				end;
+				v23 = v21;
+				v19[v20 + v21] = v22;			
 			end;
 		end;
-		return u1.createElement("Frame", v19, v20);
+		return u1.createElement("Frame", v18, v19);
 	end)
 };

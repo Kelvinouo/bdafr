@@ -79,75 +79,84 @@ local l__ItemToolTip__8 = v1.import(script, script.Parent.Parent.Parent.Parent.P
 local l__ItemViewport__9 = v1.import(script, script.Parent.Parent.Parent, "inventory", "ui", "item-viewport").ItemViewport;
 local l__Empty__10 = v2.Empty;
 function v4.render(p10)
-	local v9 = {};
-	local v10 = {
+	local v9 = {
+		Size = UDim2.fromScale(1, 1), 
+		SizeConstraint = "RelativeYY"
+	};
+	local v10 = {};
+	local v11 = {
 		[v3.Ref] = p10.frameRef, 
 		Size = UDim2.fromScale(1, 1), 
 		SizeConstraint = "RelativeYY", 
 		BackgroundColor3 = l__ColorUtil__4.hexColor(1909806)
 	};
 	if p10.props.Selected then
-		local v11 = 0.2;
+		local v12 = 0.2;
 	else
-		v11 = 0.4;
+		v12 = 0.4;
 	end;
-	v10.BackgroundTransparency = v11;
-	v10.BorderMode = "Inset";
+	v11.BackgroundTransparency = v12;
+	v11.BorderMode = "Inset";
 	if p10.props.Selected then
-		local v12 = 1;
+		local v13 = 1;
 	else
-		v12 = 1;
+		v13 = 1;
 	end;
-	v10.BorderSizePixel = v12;
+	v11.BorderSizePixel = v13;
 	if p10.props.Selected then
-		local v13 = Color3.fromRGB(255, 255, 255);
+		local v14 = Color3.fromRGB(255, 255, 255);
 	else
-		v13 = l__ColorUtil__4.hexColor(7503788);
+		v14 = l__ColorUtil__4.hexColor(7503788);
 	end;
-	v10.BorderColor3 = v13;
-	v10.LayoutOrder = p10.props.LayoutOrder;
-	v10.Image = nil;
-	v10.Selectable = table.find(p10.props.store.AppInfo.openApps, l__BedwarsAppIds__5.INVENTORY) ~= nil;
-	v10[v3.Event.MouseButton1Click] = function()
+	v11.BorderColor3 = v14;
+	v11.LayoutOrder = p10.props.LayoutOrder;
+	v11.Image = nil;
+	v11.Selectable = table.find(p10.props.store.AppInfo.openApps, l__BedwarsAppIds__5.INVENTORY) ~= nil;
+	v11[v3.Event.MouseButton1Click] = function()
 		p10.props.OnClick();
 	end;
-	v10[v3.Event.MouseEnter] = function(p11)
+	v11[v3.Event.MouseEnter] = function(p11)
 		l__SoundManager__6:playSound(l__GameSound__7.UI_HOVER);
 	end;
-	local v14 = {};
-	local v15 = {
+	local v15 = {};
+	local v16 = {
 		Text = "<b>" .. tostring(p10.props.SlotNumber + 1) .. "</b>", 
 		Size = UDim2.fromScale(0.23, 0.23), 
 		Position = UDim2.fromScale(0, 0)
 	};
 	if p10.props.Selected then
-		local v16 = Color3.fromRGB(255, 255, 255);
+		local v17 = Color3.fromRGB(255, 255, 255);
 	else
-		v16 = l__ColorUtil__4.hexColor(7503788);
+		v17 = l__ColorUtil__4.hexColor(7503788);
 	end;
-	v15.BackgroundColor3 = v16;
-	v15.BorderSizePixel = 0;
+	v16.BackgroundColor3 = v17;
+	v16.BorderSizePixel = 0;
 	if p10.props.Selected then
-		local v17 = Color3.fromRGB(0, 0, 0);
+		local v18 = Color3.fromRGB(0, 0, 0);
 	else
-		v17 = Color3.fromRGB(255, 255, 255);
+		v18 = Color3.fromRGB(255, 255, 255);
 	end;
-	v15.TextColor3 = v17;
-	v15.Font = "Roboto";
-	v15.TextScaled = true;
-	v15.RichText = true;
-	v14[1] = v3.createElement("TextLabel", v15, { v3.createElement("UICorner", {
+	v16.TextColor3 = v18;
+	v16.Font = "Roboto";
+	v16.TextScaled = true;
+	v16.RichText = true;
+	v15[1] = v3.createElement("TextLabel", v16, { v3.createElement("UICorner", {
 			CornerRadius = UDim.new(0.1, 0)
 		}), v3.createElement("UIPadding", {
 			PaddingTop = UDim.new(0.15, 0), 
 			PaddingBottom = UDim.new(0.15, 0)
 		}) });
-	v14[2] = v3.createElement(l__ItemToolTip__8, {
-		item = p10.props.HotbarSlot.item
-	});
-	local v18 = false;
+	local v19 = #v15;
+	local v20 = {};
+	local v21 = p10.props.HotbarSlot.item;
+	if v21 ~= nil then
+		v21 = v21.itemType;
+	end;
+	v20.item = v21;
+	v15[v19 + 1] = v3.createElement(l__ItemToolTip__8, v20);
+	local v22 = false;
 	if p10.props.HotbarSlot.item ~= nil then
-		v18 = v3.createElement(l__ItemViewport__9, {
+		v22 = v3.createElement(l__ItemViewport__9, {
 			ItemType = p10.props.HotbarSlot.item.itemType, 
 			Amount = p10.props.HotbarSlot.item.amount, 
 			Size = UDim2.fromScale(0.8, 0.8), 
@@ -155,14 +164,11 @@ function v4.render(p10)
 			AnchorPoint = Vector2.new(0.5, 0)
 		});
 	end;
-	if v18 then
-		v14[#v14 + 1] = v18;
+	if v22 then
+		v15[v19 + 2] = v22;
 	end;
-	v9[#v9 + 1] = v3.createElement("ImageButton", v10, v14);
-	return v3.createElement(l__Empty__10, {
-		Size = UDim2.fromScale(1, 1), 
-		SizeConstraint = "RelativeYY"
-	}, v9);
+	v10[#v10 + 1] = v3.createElement("ImageButton", v11, v15);
+	return v3.createElement(l__Empty__10, v9, v10);
 end;
 return {
 	HotbarTile = v4

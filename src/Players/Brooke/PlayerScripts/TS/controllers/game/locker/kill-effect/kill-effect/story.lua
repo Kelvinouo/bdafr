@@ -1,17 +1,21 @@
--- Script Hash: 46e85b17c37303c746f1e45b43e19490ad8a9068a990fae525822c9c9b0a3c64a4af1ed433da5c5569b8582e09a6c054
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
+local v2 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
 local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
-local l__RunService__2 = v1.import(script, v1.getModule(script, "@rbxts", "services")).RunService;
+local l__ServerStorage__2 = v2.ServerStorage;
+local l__Workspace__3 = v2.Workspace;
+local u4 = v1.import(script, script.Parent, "effects", "ghost-kill-effect");
 return function(p1)
-	local v2 = u1.new();
-	v2:GiveTask(l__RunService__2.RenderStepped:Connect(function()
-		if os.clock() - -1 > 8 then
-
-		end;
-	end));
+	local v3 = u1.new();
+	local v4 = {};
+	local v5 = l__ServerStorage__2.Assets.Villagers.barbarian:Clone();
+	v5.Name = "KillEffectCharacter";
+	v5.Parent = l__Workspace__3;
+	local v6 = u4.new(v4):onKill(v4, v5, v5:GetPrimaryPartCFrame());
+	v6:GiveTask(v5);
+	v3:GiveTask(v6);
 	return function()
-		v2:DoCleaning();
+		v3:DoCleaning();
 	end;
 end;

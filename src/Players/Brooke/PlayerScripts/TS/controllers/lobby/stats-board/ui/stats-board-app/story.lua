@@ -25,8 +25,14 @@ return function(p1)
 		finalKills = 533
 	};
 	local v3 = table.create(#v2);
-	for v4, v5 in ipairs(v2) do
-		v3[v4] = { v5, u7 };
+	local v4, v5, v6 = ipairs(v2);
+	while true do
+		v4(v5, v6);
+		if not v4 then
+			break;
+		end;
+		v6 = v4;
+		v3[v4] = { v5, u7 };	
 	end;
 	l__ClientStore__3:dispatch({
 		type = "SetStats", 
@@ -53,18 +59,18 @@ return function(p1)
 		}
 	});
 	local u8 = l__CreateRoduxApp__6("stats-board", function(p2)
-		local v6 = {};
 		local v7 = {};
-		for v8, v9 in pairs(p2) do
-			v7[v8] = v9;
+		local v8 = {};
+		for v9, v10 in pairs(p2) do
+			v8[v9] = v10;
 		end;
-		v6[#v6 + 1] = u4.createElement(l__StatsBoard__5, v7);
+		v7[#v7 + 1] = u4.createElement(l__StatsBoard__5, v8);
 		return u4.createElement("Frame", {
 			AnchorPoint = Vector2.new(0.5, 0.5), 
 			Position = UDim2.fromScale(0.5, 0.5), 
 			Size = UDim2.fromOffset(437, 700), 
 			BackgroundTransparency = 1
-		}, v6);
+		}, v7);
 	end, {}, {}, {
 		Parent = p1
 	});

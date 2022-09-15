@@ -1,4 +1,3 @@
--- Script Hash: ded72485d3667b82d8bea28e71f982bbe72a13d53d732793ca55bbeb7751a016f1dfaddd50377306d6a92f6823bb940c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -6,7 +5,8 @@ local l__EmoteMeta__1 = v1.import(script, game:GetService("ReplicatedStorage"), 
 local u2 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__DeviceUtil__3 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).DeviceUtil;
 local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
-local l__KitViewport__5 = v1.import(script, script.Parent.Parent.Parent.Parent, "kit-shop", "ui", "misc", "kit-viewport").KitViewport;
+local l__PlayerViewport__5 = v1.import(script, script.Parent.Parent.Parent.Parent, "kit-shop", "ui", "misc", "player-viewport").PlayerViewport;
+local l__GameAnimationUtil__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-util").GameAnimationUtil;
 return {
 	EmoteShowcase = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u2)(function(p1, p2)
 		local v2 = l__EmoteMeta__1[p1.Emote];
@@ -45,9 +45,10 @@ return {
 			});
 		elseif v2.animation then
 			v5 = u2.createFragment({
-				RewardShowcase = u2.createElement(l__KitViewport__5, {
+				RewardShowcase = u2.createElement(l__PlayerViewport__5, {
 					AnchorPoint = Vector2.new(0.5, 0.5), 
 					Position = UDim2.fromScale(0.5, 0.5), 
+					Animation = l__GameAnimationUtil__6.getAssetId(v2.animation.type), 
 					Size = p1.Size, 
 					LayoutOrder = p1.LayoutOrder, 
 					ZIndex = p1.ZIndex, 

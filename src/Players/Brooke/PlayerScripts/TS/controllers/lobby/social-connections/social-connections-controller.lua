@@ -15,23 +15,22 @@ function v5.new(...)
 	local v6 = setmetatable({}, v5);
 	return v6:constructor(...) and v6;
 end;
-local u1 = l__KnitController__4;
-local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__default__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function v5.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__4.constructor(p1);
 	p1.Name = "SocialConnectionsController";
-	p1.remotes = l__default__2.Client:GetNamespace("SocialConnections");
+	p1.remotes = l__default__1.Client:GetNamespace("SocialConnections");
 	p1.policyDiscordAllowed = true;
 	p1.completed = false;
 end;
-local l__PolicyService__3 = v3.PolicyService;
-local l__Players__4 = v3.Players;
-local l__preloadImages__5 = v2.preloadImages;
-local l__ImageId__6 = v2.ImageId;
+local l__PolicyService__2 = v3.PolicyService;
+local l__Players__3 = v3.Players;
+local l__preloadImages__4 = v2.preloadImages;
+local l__ImageId__5 = v2.ImageId;
 function v5.KnitStart(p2)
-	u1.KnitStart(p2);
+	l__KnitController__4.KnitStart(p2);
 	v1.Promise.defer(function()
-		p2.policyDiscordAllowed = table.find(l__PolicyService__3:GetPolicyInfoForPlayerAsync(l__Players__4.LocalPlayer).AllowedExternalLinkReferences, "Discord") ~= nil;
+		p2.policyDiscordAllowed = table.find(l__PolicyService__2:GetPolicyInfoForPlayerAsync(l__Players__3.LocalPlayer).AllowedExternalLinkReferences, "Discord") ~= nil;
 	end);
 	p2.remotes:WaitFor("GetSocialConnections"):andThen(function(p3)
 		p2:updateSocialConnectionsReducer((p3:CallServer()));
@@ -41,12 +40,12 @@ function v5.KnitStart(p2)
 			p2:updateSocialConnectionsReducer(p5);
 		end);
 	end);
-	l__preloadImages__5({ l__ImageId__6.CHECK_CIRCLE_SOLID, l__ImageId__6.UNLOCK_SOLID });
+	l__preloadImages__4({ l__ImageId__5.CHECK_CIRCLE_SOLID, l__ImageId__5.UNLOCK_SOLID });
 end;
 function v5.getDiscordValidationStatus(p6)
 	p6.remotes:WaitFor("QueueValidationStatus"):andThen(function(p7)
 		p7:SendToServer({
-			player = l__Players__4.LocalPlayer
+			player = l__Players__3.LocalPlayer
 		});
 	end);
 end;
@@ -57,24 +56,24 @@ v5.getJoinedGroupStatus = v1.async(function(p8)
 		return v7;
 	end));
 end);
-local l__ClientStore__7 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
+local l__ClientStore__6 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function v5.updateSocialConnectionsReducer(p10, p11)
-	l__ClientStore__7:dispatch({
+	l__ClientStore__6:dispatch({
 		type = "SocialConnectionsSetAll", 
 		supportTasks = p11.supportTasks, 
 		connections = p11.connections
 	});
 end;
-local l__SoundManager__8 = v2.SoundManager;
-local l__GameSound__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local l__SoundManager__7 = v2.SoundManager;
+local l__GameSound__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 function v5.updateJoinedGroupStore(p12, p13)
-	if l__ClientStore__7:getState().SocialConnections.supportTasks.joinedGroup ~= p13 then
+	if l__ClientStore__6:getState().SocialConnections.supportTasks.joinedGroup ~= p13 then
 		return nil;
 	end;
 	if p13 == true then
-		l__SoundManager__8:playSound(l__GameSound__9.INFO_NOTIFICATION);
+		l__SoundManager__7:playSound(l__GameSound__8.INFO_NOTIFICATION);
 	end;
-	l__ClientStore__7:dispatch({
+	l__ClientStore__6:dispatch({
 		type = "SetSomeSupportTasks", 
 		supportTasks = {
 			joinedGroup = p13
@@ -85,7 +84,7 @@ function v5.updateJoinedGroupStore(p12, p13)
 	end;
 end;
 function v5.updateDiscordStore(p14, p15)
-	l__ClientStore__7:dispatch({
+	l__ClientStore__6:dispatch({
 		type = "SetSomeConnections", 
 		connections = {
 			discord = {
@@ -99,36 +98,47 @@ function v5.updateDiscordStore(p14, p15)
 		p14:giveCompletedReward();
 	end;
 end;
-local u10 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
+local u9 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
 function v5.isSocialConnectionsCompleted(p16, p17)
 	if p17 then
 		local v8 = p17.supportTasks;
 		local v9 = p17.connections;
 	else
-		local l__SocialConnections__10 = l__ClientStore__7:getState().SocialConnections;
+		local l__SocialConnections__10 = l__ClientStore__6:getState().SocialConnections;
 		v8 = l__SocialConnections__10.supportTasks;
 		v9 = l__SocialConnections__10.connections;
 	end;
 	local v11 = true;
-	for v12, v13 in ipairs((u10.values(v8))) do
+	local v12, v13, v14 = ipairs((u9.values(v8)));
+	while true do
+		v12(v13, v14);
+		if not v12 then
+			break;
+		end;
+		v14 = v12;
 		if v13 ~= true then
 			v11 = false;
 			break;
-		end;
+		end;	
 	end;
-	local v14 = true;
-	for v15, v16 in ipairs((u10.values(v9))) do
-		if v16.validated ~= true then
-			v14 = false;
+	local v15 = true;
+	local v16, v17, v18 = ipairs((u9.values(v9)));
+	while true do
+		v16(v17, v18);
+		if not v16 then
 			break;
 		end;
+		v18 = v16;
+		if v17.validated ~= true then
+			v15 = false;
+			break;
+		end;	
 	end;
-	return v11 or v14;
+	return v11 or v15;
 end;
 function v5.giveCompletedReward(p18)
-	l__SoundManager__8:playSound(l__GameSound__9.BEDWARS_UPGRADE_SUCCESS);
+	l__SoundManager__7:playSound(l__GameSound__8.BEDWARS_UPGRADE_SUCCESS);
 	p18.completed = true;
 end;
-u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1(v5.new());
+local v19 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v5.new());
 return nil;

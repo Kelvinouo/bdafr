@@ -121,6 +121,16 @@ local v5 = {
 		app = v1.import(script, script.Parent.Parent, "controllers", "lobby", "clan", "ui", "profile", "confirmation-modal", "confirmation-modal-base").ConfirmationModalApp, 
 		appId = l__BedwarsAppIds__4.CONFIRMATION_MODAL, 
 		layer = l__UILayers__3.OVERLAY
+	}, 
+	EVENT_APP = {
+		app = v1.import(script, script.Parent.Parent, "controllers", "lobby", "game-event", "event-app").EventApp, 
+		appId = l__BedwarsAppIds__4.EVENT_APP, 
+		layer = l__UILayers__3.MAIN
+	}, 
+	BOSS_BAR = {
+		app = v1.import(script, script.Parent.Parent, "controllers", "global", "combat", "boss-bar", "ui", "boss-bar").BossBarApp, 
+		appId = l__BedwarsAppIds__4.BOSS_BAR, 
+		layer = l__UILayers__3.HUD
 	}
 };
 for v6, v7 in pairs(v1.import(script, v1.getModule(script, "@easy-games", "lobby").out).LobbyDefaultAppConfiguration) do

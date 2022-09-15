@@ -79,18 +79,24 @@ return {
 		}, v15);
 		local l__teams__16 = p1.store.Game.teams;
 		local v17 = table.create(#l__teams__16);
-		for v18, v19 in ipairs(l__teams__16) do
+		local v18, v19, v20 = ipairs(l__teams__16);
+		while true do
+			v18(v19, v20);
+			if not v18 then
+				break;
+			end;
+			v20 = v18;
 			v17[v18] = u1.createElement(l__CustomMatchTeam__8, {
 				Team = v19, 
 				QueueMeta = v4, 
 				LayoutOrder = v18 - 1, 
 				store = p1.store
-			});
+			});		
 		end;
-		local v20 = {
+		local v21 = {
 			Size = UDim2.fromScale(1, 1)
 		};
-		local v21 = { u1.createElement("UIListLayout", {
+		local v22 = { u1.createElement("UIListLayout", {
 				FillDirection = "Horizontal", 
 				HorizontalAlignment = "Center", 
 				VerticalAlignment = "Center", 
@@ -102,11 +108,17 @@ return {
 				LayoutOrder = -1, 
 				store = p1.store
 			}) };
-		local v22 = #v21;
-		for v23, v24 in ipairs(v17) do
-			v21[v22 + v23] = v24;
+		local v23 = #v22;
+		local v24, v25, v26 = ipairs(v17);
+		while true do
+			v24(v25, v26);
+			if not v24 then
+				break;
+			end;
+			v26 = v24;
+			v22[v23 + v24] = v25;		
 		end;
-		v9[v10 + 2] = u1.createElement(l__Empty__2, v20, v21);
+		v9[v10 + 2] = u1.createElement(l__Empty__2, v21, v22);
 		v7[#v7 + 1] = u1.createElement("Frame", v8, v9);
 		return u1.createFragment(v7);
 	end)

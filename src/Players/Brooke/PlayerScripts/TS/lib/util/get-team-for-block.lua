@@ -12,16 +12,16 @@ return {
 		local v3 = nil;
 		local v4, v5, v6 = ipairs(l__ClientStore__2:getState().Game.teams);
 		while true do
-			local v7, v8 = v4(v5, v6);
-			if not v7 then
+			v4(v5, v6);
+			if not v4 then
 				break;
 			end;
-			local v9 = v2.Team;
-			if v9 ~= nil then
-				v9 = v9.Name;
+			local v7 = v2.Team;
+			if v7 ~= nil then
+				v7 = v7.Name;
 			end;
-			if v8.name == v9 == true then
-				v3 = v8;
+			if v5.name == v7 == true then
+				v3 = v5;
 				break;
 			end;		
 		end;

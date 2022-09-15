@@ -86,22 +86,28 @@ function v4.render(p7)
 		}), v3.createElement("UIStroke", {
 			Color = p7.props.TileBorderColor or l__ColorUtil__6.brighten(v5, 0.1), 
 			Thickness = 1.5
-		}), v3.createElement(l__ItemToolTip__9, {
-			item = p7.props.InvItem
 		}) };
-	local v8 = p7.state.loading and v3.createElement(l__CircularProgress__10, {
+	local v8 = #v7;
+	local v9 = {};
+	local v10 = p7.props.InvItem;
+	if v10 ~= nil then
+		v10 = v10.itemType;
+	end;
+	v9.item = v10;
+	v7[v8 + 1] = v3.createElement(l__ItemToolTip__9, v9);
+	local v11 = p7.state.loading and v3.createElement(l__CircularProgress__10, {
 		Time = 0.2, 
 		Transparency = 0.3, 
 		Size = UDim2.fromScale(0.45, 0.45), 
 		Position = UDim2.fromScale(0.5, 0.5), 
 		AnchorPoint = Vector2.new(0.5, 0.5)
 	});
-	if v8 then
-		v7[#v7 + 1] = v8;
+	if v11 then
+		v7[v8 + 2] = v11;
 	end;
-	local v9 = false;
+	local v12 = false;
 	if p7.props.InvItem ~= nil then
-		v9 = v3.createElement(l__ItemViewport__11, {
+		v12 = v3.createElement(l__ItemViewport__11, {
 			ItemType = p7.props.InvItem.itemType, 
 			Amount = p7.props.InvItem.amount, 
 			Size = UDim2.fromScale(0.8, 0.8), 
@@ -109,8 +115,8 @@ function v4.render(p7)
 			AnchorPoint = Vector2.new(0.5, 0.5)
 		});
 	end;
-	if v9 then
-		v7[#v7 + 1] = v9;
+	if v12 then
+		v7[#v7 + 1] = v12;
 	end;
 	return v3.createElement("ImageButton", v6, v7);
 end;

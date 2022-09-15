@@ -15,22 +15,21 @@ function u1.new(...)
 	local v5 = setmetatable({}, u1);
 	return v5:constructor(...) and v5;
 end;
-local u2 = l__KnitController__3;
 function u1.constructor(p1)
-	u2.constructor(p1);
+	l__KnitController__3.constructor(p1);
 	p1.Name = "KnockbackController";
 	p1.lastKnockbackTime = 0;
 end;
-local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-local l__DamageType__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "damage", "damage-type").DamageType;
-local l__Players__5 = v2.Players;
-local l__Workspace__6 = v2.Workspace;
-local l__KnockbackUtil__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "damage", "knockback-util").KnockbackUtil;
+local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__DamageType__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "damage", "damage-type").DamageType;
+local l__Players__4 = v2.Players;
+local l__Workspace__5 = v2.Workspace;
+local l__KnockbackUtil__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "damage", "knockback-util").KnockbackUtil;
 function u1.KnitStart(p2)
-	l__default__3.Client:WaitFor("RemoteName"):andThen(function(p3)
+	l__default__2.Client:WaitFor("RemoteName"):andThen(function(p3)
 		p3:Connect(function(p4)
 			debug.profilebegin("knockback");
-			if p4.damageType ~= l__DamageType__4.FALL and p4.entityInstance == l__Players__5.LocalPlayer.Character then
+			if p4.damageType ~= l__DamageType__3.FALL and p4.entityInstance == l__Players__4.LocalPlayer.Character then
 				local l__PrimaryPart__6 = p4.entityInstance.PrimaryPart;
 				if l__PrimaryPart__6 then
 					local v7 = nil;
@@ -45,7 +44,7 @@ function u1.KnitStart(p2)
 						v8 = v8.disabled;
 					end;
 					if not v8 then
-						local v9 = l__Players__5.LocalPlayer.Character.PrimaryPart;
+						local v9 = l__Players__4.LocalPlayer.Character.PrimaryPart;
 						if v9 ~= nil then
 							v9 = v9.AssemblyMass;
 						end;
@@ -53,11 +52,11 @@ function u1.KnitStart(p2)
 						if v10 == 0 or v10 ~= v10 or not v10 then
 							v10 = 0;
 						end;
-						if l__Workspace__6:GetServerTimeNow() - p2.lastKnockbackTime <= 0.05 then
+						if l__Workspace__5:GetServerTimeNow() - p2.lastKnockbackTime <= 0.05 then
 							return nil;
 						end;
-						p2.lastKnockbackTime = l__Workspace__6:GetServerTimeNow();
-						l__KnockbackUtil__7.applyKnockback(l__PrimaryPart__6, v10, v7, p4.knockbackMultiplier);
+						p2.lastKnockbackTime = l__Workspace__5:GetServerTimeNow();
+						l__KnockbackUtil__6.applyKnockback(l__PrimaryPart__6, v10, v7, p4.knockbackMultiplier);
 					end;
 				end;
 			end;
@@ -68,10 +67,8 @@ end;
 function u1.getLastKnockbackTime(p5)
 	return p5.lastKnockbackTime;
 end;
-u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1.new;
-u2 = u2(u1());
-u1 = {
-	KnockbackController = u2
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
+u1 = u1(u1.new());
+return {
+	KnockbackController = u1
 };
-return u1;

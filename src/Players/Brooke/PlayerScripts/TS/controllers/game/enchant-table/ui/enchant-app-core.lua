@@ -128,29 +128,41 @@ return {
 				LayoutOrder = 1
 			}) };
 		local v16 = table.create(#v4);
-		for v17, v18 in ipairs(v4) do
+		local v17, v18, v19 = ipairs(v4);
+		while true do
+			v17(v18, v19);
+			if not v17 then
+				break;
+			end;
+			v19 = v17;
 			v16[v17] = u4.createElement(l__EnchantActionButton__13, {
 				ResearchData = v18, 
 				Size = UDim2.fromScale(1, 0.2), 
 				LayoutOrder = 2
-			});
+			});		
 		end;
-		local v19 = {
+		local v20 = {
 			Size = UDim2.fromScale(1, 0.2), 
 			LayoutOrder = 2
 		};
-		local v20 = { u4.createElement("UIListLayout", {
+		local v21 = { u4.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Center, 
 				VerticalAlignment = Enum.VerticalAlignment.Center, 
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0.05, 0)
 			}) };
-		local v21 = #v20;
-		for v22, v23 in ipairs(v16) do
-			v20[v21 + v22] = v23;
+		local v22 = #v21;
+		local v23, v24, v25 = ipairs(v16);
+		while true do
+			v23(v24, v25);
+			if not v23 then
+				break;
+			end;
+			v25 = v23;
+			v21[v22 + v23] = v24;		
 		end;
-		v15.EnchantActionButtons = u4.createElement(l__Empty__8, v19, v20);
+		v15.EnchantActionButtons = u4.createElement(l__Empty__8, v20, v21);
 		v13.Right = u4.createElement(l__Empty__8, v14, v15);
 		v11[#v11 + 1] = u4.createElement(l__Empty__8, v12, v13);
 		v9[#v9 + 1] = u4.createElement(l__WidgetComponent__14, v10, v11);

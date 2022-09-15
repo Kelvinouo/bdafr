@@ -48,8 +48,14 @@ return {
 				CellPadding = UDim2.fromScale(0.02)
 			}) };
 		local v12 = #v11;
-		for v13, v14 in ipairs(v3) do
-			v11[v12 + v13] = v14;
+		local v13, v14, v15 = ipairs(v3);
+		while true do
+			v13(v14, v15);
+			if not v13 then
+				break;
+			end;
+			v15 = v13;
+			v11[v12 + v13] = v14;		
 		end;
 		v8[v9 + 1] = u2.createElement("Frame", v10, v11);
 		v8[v9 + 2] = u2.createElement("TextLabel", {

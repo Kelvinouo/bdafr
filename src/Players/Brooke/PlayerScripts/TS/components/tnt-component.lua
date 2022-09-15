@@ -36,25 +36,37 @@ function v3.constructor(p1, p2)
 		end;
 	end;
 	local v7 = p2:GetChildren();
-	for v8, v9 in ipairs(v7) do
-		v6(v9, v8 - 1, v7);
+	local v8, v9, v10 = ipairs(v7);
+	while true do
+		v8(v9, v10);
+		if not v8 then
+			break;
+		end;
+		v10 = v8;
+		v6(v9, v8 - 1, v7);	
 	end;
 	p2.ChildAdded:Connect(v6);
 	v1.Promise.defer(function()
-		local v10 = false;
+		local v11 = false;
 		while { wait(0.25) } and p2.Parent ~= nil do
-			v10 = not v10;
-			for v11, v12 in ipairs((p2:GetChildren())) do
-				if v12:IsA("Texture") then
-					if v10 then
-						v12.Texture = l__ImageId__4.PIXEL;
+			v11 = not v11;
+			local v12, v13, v14 = ipairs((p2:GetChildren()));
+			while true do
+				v12(v13, v14);
+				if not v12 then
+					break;
+				end;
+				v14 = v12;
+				if v13:IsA("Texture") then
+					if v11 then
+						v13.Texture = l__ImageId__4.PIXEL;
 					else
-						local v13 = u5[v12.Face];
-						if v13 ~= "" and v13 then
-							v12.Texture = v13;
+						local v15 = u5[v13.Face];
+						if v15 ~= "" and v15 then
+							v13.Texture = v15;
 						end;
 					end;
-				end;
+				end;			
 			end;		
 		end;
 	end);

@@ -58,13 +58,19 @@ return {
 			l__Flamework__5.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):closeApp(l__BedwarsAppIds__6.QUEUE_SELECTION);
 		end;
 		local v12 = table.create(#l__queues__11);
-		for v13, v14 in ipairs(l__queues__11) do
+		local v13, v14, v15 = ipairs(l__queues__11);
+		while true do
+			v13(v14, v15);
+			if not v13 then
+				break;
+			end;
+			v15 = v13;
 			v12[v13] = u7.createElement(u9, {
 				QueueButtonData = v14, 
 				OnClick = u17
-			});
+			});		
 		end;
-		local v15 = {
+		local v16 = {
 			ScrollingFrameProps = {
 				Size = UDim2.fromScale(0.55, 1), 
 				LayoutOrder = 1, 
@@ -73,51 +79,57 @@ return {
 				Selectable = false
 			}
 		};
-		local v16 = { u7.createElement("UICorner", {
+		local v17 = { u7.createElement("UICorner", {
 				CornerRadius = UDim.new(1, 6)
 			}), u7.createElement("UIListLayout", {
 				FillDirection = "Vertical", 
 				HorizontalAlignment = "Center", 
 				Padding = UDim.new(0.025, 0)
 			}) };
-		local v17 = #v16;
-		for v18, v19 in ipairs(v12) do
-			v16[v17 + v18] = v19;
+		local v18 = #v17;
+		local v19, v20, v21 = ipairs(v12);
+		while true do
+			v19(v20, v21);
+			if not v19 then
+				break;
+			end;
+			v21 = v19;
+			v17[v18 + v19] = v20;		
 		end;
-		v9[v10 + 1] = u7.createElement(l__AutoCanvasScrollingFrame__10, v15, v16);
-		local v20 = {};
-		local v21 = {};
+		v9[v10 + 1] = u7.createElement(l__AutoCanvasScrollingFrame__10, v16, v17);
 		local v22 = {};
 		local v23 = {};
-		if l__DeviceUtil__14.isSmallScreen() then
-			local v24 = 14;
-		else
-			v24 = 18;
-		end;
-		v23.MaxTextSize = v24;
-		v22[1] = u7.createElement("UITextSizeConstraint", v23);
+		local v24 = {};
 		local v25 = {};
-		local v26 = {};
 		if l__DeviceUtil__14.isSmallScreen() then
-			local v27 = 14;
+			local v26 = 14;
 		else
-			v27 = 18;
+			v26 = 18;
 		end;
-		v26.MaxTextSize = v27;
-		v25[1] = u7.createElement("UITextSizeConstraint", v26);
-		v21[1] = u7.createElement("UICorner", {
+		v25.MaxTextSize = v26;
+		v24[1] = u7.createElement("UITextSizeConstraint", v25);
+		local v27 = {};
+		local v28 = {};
+		if l__DeviceUtil__14.isSmallScreen() then
+			local v29 = 14;
+		else
+			v29 = 18;
+		end;
+		v28.MaxTextSize = v29;
+		v27[1] = u7.createElement("UITextSizeConstraint", v28);
+		v23[1] = u7.createElement("UICorner", {
 			CornerRadius = UDim.new(0, 6)
 		});
-		v21[2] = u7.createElement("UIPadding", {
+		v23[2] = u7.createElement("UIPadding", {
 			PaddingTop = UDim.new(0.05, 0), 
 			PaddingLeft = UDim.new(0.06, 0), 
 			PaddingRight = UDim.new(0.06, 0)
 		});
-		v21[3] = u7.createElement("UIListLayout", {
+		v23[3] = u7.createElement("UIListLayout", {
 			FillDirection = "Vertical", 
 			Padding = UDim.new(0.025, 0)
 		});
-		v21[4] = u7.createElement("TextLabel", {
+		v23[4] = u7.createElement("TextLabel", {
 			Size = UDim2.fromScale(1, 0), 
 			SizeConstraint = "RelativeXX", 
 			AutomaticSize = "Y", 
@@ -130,8 +142,8 @@ return {
 			TextColor3 = l__ColorUtil__13.WHITE, 
 			Text = "<b>Description</b>", 
 			LayoutOrder = 1
-		}, v22);
-		v21[5] = u7.createElement("TextLabel", {
+		}, v24);
+		v23[5] = u7.createElement("TextLabel", {
 			Size = UDim2.fromScale(1, 0.8), 
 			BackgroundTransparency = 1, 
 			Font = Enum.Font.Roboto, 
@@ -142,21 +154,21 @@ return {
 			TextColor3 = l__ColorUtil__13.WHITE, 
 			Text = v4.description, 
 			LayoutOrder = 2
-		}, v25);
-		v20[1] = u7.createElement("UIListLayout", {
+		}, v27);
+		v22[1] = u7.createElement("UIListLayout", {
 			FillDirection = "Vertical", 
 			Padding = UDim.new(0.025, 0)
 		});
-		v20[2] = u7.createElement("Frame", {
+		v22[2] = u7.createElement("Frame", {
 			Size = UDim2.fromScale(1, 1), 
 			BackgroundColor3 = l__Theme__12.backgroundTertiary, 
 			BorderSizePixel = 0, 
 			LayoutOrder = 1
-		}, v21);
+		}, v23);
 		v9[v10 + 2] = u7.createElement(l__Empty__11, {
 			Size = UDim2.fromScale(0.425, 1), 
 			LayoutOrder = 2
-		}, v20);
+		}, v22);
 		v7[#v7 + 1] = u7.createElement(l__WidgetComponent__15, v8, v9);
 		v5[#v5 + 1] = u7.createElement("Frame", v6, v7);
 		return u7.createElement(l__SlideIn__16, {}, v5);

@@ -51,27 +51,39 @@ return {
 		}, v5);
 		local l__Missions__7 = p1.Missions;
 		local v8 = table.create(#l__Missions__7);
-		for v9, v10 in ipairs(l__Missions__7) do
+		local v9, v10, v11 = ipairs(l__Missions__7);
+		while true do
+			v9(v10, v11);
+			if not v9 then
+				break;
+			end;
+			v11 = v9;
 			v8[v9] = u1.createElement(l__Mission__4, {
 				Mission = v10
-			});
+			});		
 		end;
-		local v11 = {
+		local v12 = {
 			Size = UDim2.fromScale(1, 0), 
 			AutomaticSize = Enum.AutomaticSize.Y, 
 			BackgroundTransparency = 1
 		};
-		local v12 = { u1.createElement("UIListLayout", {
+		local v13 = { u1.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Vertical, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				VerticalAlignment = Enum.VerticalAlignment.Top, 
 				Padding = UDim.new(0, 8)
 			}) };
-		local v13 = #v12;
-		for v14, v15 in ipairs(v8) do
-			v12[v13 + v14] = v15;
+		local v14 = #v13;
+		local v15, v16, v17 = ipairs(v8);
+		while true do
+			v15(v16, v17);
+			if not v15 then
+				break;
+			end;
+			v17 = v15;
+			v13[v14 + v15] = v16;		
 		end;
-		v3[v4 + 2] = u1.createElement("Frame", v11, v12);
+		v3[v4 + 2] = u1.createElement("Frame", v12, v13);
 		return u1.createFragment({
 			PassMissionLists = u1.createElement("Frame", v2, v3)
 		});

@@ -28,10 +28,16 @@ return {
 			v16 = false;
 		end;
 		local function u7(p3)
-			for v17, v18 in ipairs(p1.Items) do
+			local v17, v18, v19 = ipairs(p1.Items);
+			while true do
+				v17(v18, v19);
+				if not v17 then
+					break;
+				end;
+				v19 = v17;
 				if string.sub(string.lower(v18), 1, #p3) == string.lower(p3) == true then
 					return v18;
-				end;
+				end;			
 			end;
 			return nil;
 		end;
@@ -51,27 +57,27 @@ return {
 				v11(true);
 			end;
 		end, { p1.InputText });
-		local v19 = {};
-		for v20, v21 in pairs(p1) do
-			v19[v20] = v21;
+		local v20 = {};
+		for v21, v22 in pairs(p1) do
+			v20[v21] = v22;
 		end;
-		v19.MaxCharLength = nil;
-		v19.Items = nil;
-		v19.InputText = nil;
-		v19.OnTextChange = nil;
-		v19.ShowImage = nil;
-		v19.PlaceHolderText = nil;
-		local v22 = {
+		v20.MaxCharLength = nil;
+		v20.Items = nil;
+		v20.InputText = nil;
+		v20.OnTextChange = nil;
+		v20.ShowImage = nil;
+		v20.PlaceHolderText = nil;
+		local v23 = {
 			Size = UDim2.new(1, 0, 1, -26), 
 			BackgroundTransparency = 0, 
 			BorderSizePixel = 0, 
 			BackgroundColor3 = l__Theme__3.backgroundTertiary, 
 			LayoutOrder = 1
 		};
-		for v23, v24 in pairs(v19) do
-			v22[v23] = v24;
+		for v24, v25 in pairs(v20) do
+			v23[v24] = v25;
 		end;
-		local v25 = { u1.createElement("UICorner", {
+		local v26 = { u1.createElement("UICorner", {
 				CornerRadius = UDim.new(0, 5)
 			}), u1.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
@@ -80,8 +86,8 @@ return {
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0, 0)
 			}) };
-		local v26 = #v25;
-		local v27 = { u1.createElement("UIListLayout", {
+		local v27 = #v26;
+		local v28 = { u1.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				VerticalAlignment = Enum.VerticalAlignment.Center, 
@@ -93,55 +99,55 @@ return {
 				PaddingLeft = UDim.new(0, 10), 
 				PaddingRight = UDim.new(0, 10)
 			}) };
-		local v28 = v16;
-		if v28 then
-			local v29 = {};
-			local v30 = {
+		local v29 = v16;
+		if v29 then
+			local v30 = {};
+			local v31 = {
 				Size = UDim2.fromScale(1, 1), 
 				Image = v8, 
 				ScaleType = "Fit", 
 				SizeConstraint = "RelativeYY"
 			};
 			if v10 then
-				local v31 = 0;
+				local v32 = 0;
 			else
-				v31 = 0.6;
+				v32 = 0.6;
 			end;
-			v30.ImageTransparency = v31;
-			v30.BackgroundTransparency = 0;
-			v30.BackgroundColor3 = l__Theme__3.interactionPrimary;
-			v30.BorderColor3 = l__Theme__3.textPrimary;
-			v30.BorderSizePixel = 1;
-			v30.LayoutOrder = 1;
-			v29.UserAvatar = u1.createElement("ImageLabel", v30, { u1.createElement("UICorner", {
+			v31.ImageTransparency = v32;
+			v31.BackgroundTransparency = 0;
+			v31.BackgroundColor3 = l__Theme__3.interactionPrimary;
+			v31.BorderColor3 = l__Theme__3.textPrimary;
+			v31.BorderSizePixel = 1;
+			v31.LayoutOrder = 1;
+			v30.UserAvatar = u1.createElement("ImageLabel", v31, { u1.createElement("UICorner", {
 					CornerRadius = UDim.new(0, 5)
 				}) });
-			v28 = u1.createFragment(v29);
+			v29 = u1.createFragment(v30);
 		end;
-		if v28 then
-			v27[#v27 + 1] = v28;
+		if v29 then
+			v28[#v28 + 1] = v29;
 		end;
-		local v32 = {};
+		local v33 = {};
 		if l__DeviceUtil__4.isSmallScreen() then
-			local v33 = 0.8;
+			local v34 = 0.8;
 		else
-			v33 = 0.6;
+			v34 = 0.6;
 		end;
-		v32.Size = UDim2.fromScale(1, v33);
-		v32.Image = l__BedwarsImageId__5.SEARCH_SOLID;
-		v32.ScaleType = "Fit";
-		v32.SizeConstraint = "RelativeYY";
-		v32.ImageTransparency = 0.3;
-		v32.BackgroundTransparency = 1;
-		v32.LayoutOrder = 2;
-		v27[#v27 + 1] = u1.createElement("ImageLabel", v32);
-		v25[v26 + 1] = u1.createElement("Frame", {
+		v33.Size = UDim2.fromScale(1, v34);
+		v33.Image = l__BedwarsImageId__5.SEARCH_SOLID;
+		v33.ScaleType = "Fit";
+		v33.SizeConstraint = "RelativeYY";
+		v33.ImageTransparency = 0.3;
+		v33.BackgroundTransparency = 1;
+		v33.LayoutOrder = 2;
+		v28[#v28 + 1] = u1.createElement("ImageLabel", v33);
+		v26[v27 + 1] = u1.createElement("Frame", {
 			Size = UDim2.fromScale(0, 1), 
 			AutomaticSize = "X", 
 			BackgroundTransparency = 1, 
 			LayoutOrder = 1
-		}, v27);
-		v25[v26 + 2] = u1.createElement("Frame", {
+		}, v28);
+		v26[v27 + 2] = u1.createElement("Frame", {
 			Size = UDim2.fromScale(0.85, 1), 
 			BackgroundTransparency = 1, 
 			LayoutOrder = 3
@@ -174,13 +180,13 @@ return {
 						p1.OnTextChange(p6.Text, p1.Items);
 						return;
 					end;
-					local v34 = u7(p6.Text);
-					if v34 ~= "" and v34 then
-						local v35 = p6.Text .. string.sub(v34, #p6.Text + 1);
-						u8(v34, p6);
-						v5(v34);
-						v7(v35);
-						if v4 ~= v34 then
+					local v35 = u7(p6.Text);
+					if v35 ~= "" and v35 then
+						local v36 = p6.Text .. string.sub(v35, #p6.Text + 1);
+						u8(v35, p6);
+						v5(v35);
+						v7(v36);
+						if v4 ~= v35 then
 
 						end;
 					else
@@ -222,6 +228,6 @@ return {
 			}, { u1.createElement("UITextSizeConstraint", {
 					MaxTextSize = 20
 				}) }) });
-		return u1.createElement("Frame", v22, v25);
+		return u1.createElement("Frame", v23, v26);
 	end)
 };

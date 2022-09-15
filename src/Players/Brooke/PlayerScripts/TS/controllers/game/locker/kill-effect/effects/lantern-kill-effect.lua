@@ -1,4 +1,3 @@
--- Script Hash: bc7a8e8b38c2f5e47fdecabd876e9fc57a57cc0ac5ef02135e1b6a2f4e9b300f1199cb819eac07271c2ba1411cd6223a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -76,18 +75,30 @@ function v5.onKill(p3, p4, p5, p6)
 		end;
 	end);
 	v7:GiveTask(l__RunService__6.Heartbeat:Connect(function(p7)
-		for v15, v16 in ipairs(u11) do
+		local v15, v16, v17 = ipairs(u11);
+		while true do
+			v15(v16, v17);
+			if not v15 then
+				break;
+			end;
+			v17 = v15;
 			v16.elapsedTime = v16.elapsedTime + p7;
 			v16.part:SetPrimaryPartCFrame(CFrame.new(p6.Position + Vector3.new(math.sin(v16.elapsedTime * v16.speed + v16.offset) * v16.radius, 0, math.cos(v16.elapsedTime * v16.speed + v16.offset) * v16.radius) + Vector3.new(0, l__Linear__7(v16.elapsedTime, v16.start, v16.goalYPos, 3), 0) + Vector3.new(math.noise(v16.elapsedTime * 0.5, 0, v16.seed) * 3, math.noise(v16.elapsedTime * 0.5, 0, -v16.seed) * 3, math.noise(v16.elapsedTime * 0.5, 0, v16.seed + v16.seed) * 3)) * CFrame.Angles(math.noise(v16.elapsedTime * 2, 0, v16.seed) * 0.3, math.noise(v16.elapsedTime, 0, -v16.seed) * 2, math.noise(v16.elapsedTime * 2, 0, v16.seed + v16.seed) * 0.3));
 			if v16.elapsedTime > 4 and v16.dead == false then
 				v16.dead = true;
 				l__ModelUtil__8.tweenModelSize(v16.part, 0.4, l__InOutExpo__9, 0);
-			end;
+			end;		
 		end;
 	end));
 	v7:GiveTask(function()
-		for v17, v18 in ipairs(u11) do
-			v18.part:Destroy();
+		local v18, v19, v20 = ipairs(u11);
+		while true do
+			v18(v19, v20);
+			if not v18 then
+				break;
+			end;
+			v20 = v18;
+			v19.part:Destroy();		
 		end;
 	end);
 	v7:GiveTask(function()

@@ -1,4 +1,3 @@
--- Script Hash: d61a267d7f96767656c60eaff861f9f5f57f9a4ef2e8ad32c0e50a28a3e2451bcc4194b808238ddb6503566f199f5b80
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -51,14 +50,14 @@ function v5.onKill(p3, p4, p5, p6)
 	local l__CFrame__10 = v9.Door.CFrame;
 	l__default__5(0.4, l__SoftSpring__7, function(p8)
 		v9.Door.CFrame = p8;
-	end, l__CFrame__10, l__CFrame__10 * CFrame.new(0, 0, -3) * CFrame.Angles(0, math.rad(-20), 0)):Wait();
+	end, l__CFrame__10, l__CFrame__10 * CFrame.new(0, 0, -3) * CFrame.Angles(0, -0.3490658503988659, 0)):Wait();
 	l__default__5(0.3, l__OutExpo__6, function(p9)
 		return v7:SetPrimaryPartCFrame(p9);
-	end, v8, v9:GetPrimaryPartCFrame() * CFrame.new(0, 3, 0) * CFrame.Angles(math.rad(90), 0, 0)):Wait();
+	end, v8, v9:GetPrimaryPartCFrame() * CFrame.new(0, 3, 0) * CFrame.Angles(1.5707963267948966, 0, 0)):Wait();
 	task.wait(0.1);
 	l__default__5(0.3, l__OutQuart__8, function(p10)
 		return v7:SetPrimaryPartCFrame(p10);
-	end, v7:GetPrimaryPartCFrame(), v9:GetPrimaryPartCFrame() * CFrame.new(0, -1, 0) * CFrame.Angles(math.rad(90), 0, 0)):Wait();
+	end, v7:GetPrimaryPartCFrame(), v9:GetPrimaryPartCFrame() * CFrame.new(0, -1, 0) * CFrame.Angles(1.5707963267948966, 0, 0)):Wait();
 	task.wait(0.25);
 	l__default__5(0.3, l__SoftSpring__7, function(p11)
 		v9.Door.CFrame = p11;

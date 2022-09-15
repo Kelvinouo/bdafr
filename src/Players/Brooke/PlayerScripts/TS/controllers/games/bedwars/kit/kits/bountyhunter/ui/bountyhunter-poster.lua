@@ -22,41 +22,41 @@ function v4.render(p2)
 	local v6 = nil;
 	local v7, v8, v9 = ipairs(p2.props.store.Game.teams);
 	while true do
-		local v10, v11 = v7(v8, v9);
-		if not v10 then
+		v7(v8, v9);
+		if not v7 then
 			break;
 		end;
-		local v12 = l__bountyHunterTarget__5.Team;
-		if v12 ~= nil then
-			v12 = v12.Name;
+		local v10 = l__bountyHunterTarget__5.Team;
+		if v10 ~= nil then
+			v10 = v10.Name;
 		end;
-		if v11.name == v12 == true then
-			v6 = v11;
+		if v8.name == v10 == true then
+			v6 = v8;
 			break;
 		end;	
 	end;
-	local v13 = v6;
-	if v13 ~= nil then
-		v13 = v13.color;
+	local v11 = v6;
+	if v11 ~= nil then
+		v11 = v11.color;
 	end;
-	local v14 = v13;
-	if v14 == nil then
-		v14 = Color3.fromRGB(255, 255, 255);
+	local v12 = v11;
+	if v12 == nil then
+		v12 = Color3.fromRGB(255, 255, 255);
 	end;
-	local v15 = {};
-	local v16 = {
+	local v13 = {};
+	local v14 = {
 		AnchorPoint = Vector2.new(0, 0.5)
 	};
 	if l__DeviceUtil__3.isSmallScreen() then
-		local v17 = 0.4;
+		local v15 = 0.4;
 	else
-		v17 = 0.5;
+		v15 = 0.5;
 	end;
-	v16.Position = UDim2.new(0, 16, v17, 0);
-	v16.Size = UDim2.fromScale(0.35, 0.35);
-	v16.BorderSizePixel = 0;
-	v16.BackgroundColor3 = l__Theme__4.backgroundSecondary;
-	v15.BountyHunterPoster = v3.createElement("Frame", v16, {
+	v14.Position = UDim2.new(0, 16, v15, 0);
+	v14.Size = UDim2.fromScale(0.35, 0.35);
+	v14.BorderSizePixel = 0;
+	v14.BackgroundColor3 = l__Theme__4.backgroundSecondary;
+	v13.BountyHunterPoster = v3.createElement("Frame", v14, {
 		Header = v3.createElement("Frame", {
 			ZIndex = 2, 
 			Size = UDim2.new(1, 0, 0.15, 0), 
@@ -74,7 +74,7 @@ function v4.render(p2)
 				Size = UDim2.fromScale(1, 0.6), 
 				BackgroundTransparency = 1, 
 				Font = "Roboto", 
-				Text = "<b>Target:</b> <b><font face=\"RobotoMono\" color=\"" .. l__ColorUtil__1.richTextColor(v14) .. "\">" .. l__bountyHunterTarget__5.DisplayName .. "</font></b>", 
+				Text = "<b>Target:</b> <b><font face=\"RobotoMono\" color=\"" .. l__ColorUtil__1.richTextColor(v12) .. "\">" .. l__bountyHunterTarget__5.DisplayName .. "</font></b>", 
 				TextColor3 = Color3.fromRGB(255, 255, 255), 
 				TextScaled = true, 
 				RichText = true, 
@@ -131,7 +131,7 @@ function v4.render(p2)
 			CornerRadius = UDim.new(0, 4)
 		}))
 	});
-	return v3.createElement(l__SlideIn__2, {}, v15);
+	return v3.createElement(l__SlideIn__2, {}, v13);
 end;
 function v4.shouldUpdate(p3, p4)
 	return p3.props.store.Kit.bountyHunterTarget ~= p4.store.Kit.bountyHunterTarget;

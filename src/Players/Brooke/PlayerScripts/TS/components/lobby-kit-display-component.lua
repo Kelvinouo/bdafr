@@ -1,4 +1,3 @@
--- Script Hash: e3e38dfd59b09edc443741dce12162a4e74ada904ae4381055b015824c15675f175dd537b9f2ba2b3f4ec58744400784
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -74,42 +73,42 @@ function v4.constructor(p1, p2)
 		if v7.previewItems then
 			local v12, v13, v14 = ipairs(v7.previewItems);
 			while true do
-				local v15, v16 = v12(v13, v14);
-				if not v15 then
+				v12(v13, v14);
+				if not v12 then
 					break;
 				end;
-				local v17 = l__ReplicatedStorage__9:FindFirstChild("Items");
-				if v17 ~= nil then
-					v17 = v17:FindFirstChild(v16);
-					if v17 ~= nil then
-						v17 = v17:Clone();
+				local v15 = l__ReplicatedStorage__9:FindFirstChild("Items");
+				if v15 ~= nil then
+					v15 = v15:FindFirstChild(v13);
+					if v15 ~= nil then
+						v15 = v15:Clone();
 					end;
 				end;
-				if v17 then
-					v17.Parent = v11;
+				if v15 then
+					v15.Parent = v11;
 				end;			
 			end;
-			l__WeldUtil__10.weldCharacterAccessories(v11);
+			l__WeldUtil__10:weldCharacterAccessories(v11);
 		end;
 		if v6 == l__BedwarsKit__11.ANGEL then
 			task.defer(function()
-				local v18 = true;
+				local v16 = true;
 				while true do
-					if v18 then
-						local v19 = l__AngelType__12.LIGHT;
+					if v16 then
+						local v17 = l__AngelType__12.LIGHT;
 					else
-						v19 = l__AngelType__12.VOID;
+						v17 = l__AngelType__12.VOID;
 					end;
-					l__AngelKitUtil__13.changeAngelAppearance(v11, v19);
-					v18 = not v18;
-					local v20 = wait(3);
-					if v20 == 0 then
+					l__AngelKitUtil__13.changeAngelAppearance(v11, v17);
+					v16 = not v16;
+					local v18 = wait(3);
+					if v18 == 0 then
 						break;
 					end;
-					if v20 ~= v20 then
+					if v18 ~= v18 then
 						break;
 					end;
-					if not v20 then
+					if not v18 then
 						break;
 					end;				
 				end;
@@ -121,39 +120,52 @@ function v4.constructor(p1, p2)
 			return;
 		end;
 		if v6 == l__BedwarsKit__11.AXOLOTL then
-			for v21, v22 in ipairs(u15.values(l__AxolotlType__16)) do
-				local v23 = l__KnitClient__17.Controllers.AxolotlController:createClientOnlyAxolotlData(v11, v22);
+			local v19, v20, v21 = ipairs(u15.values(l__AxolotlType__16));
+			while true do
+				v19(v20, v21);
+				if not v19 then
+					break;
+				end;
+				v21 = v19;
+				local v22 = l__KnitClient__17.Controllers.AxolotlController:createClientOnlyAxolotlData(v11, v20);			
 			end;
 			return;
 		end;
 		if v6 == l__BedwarsKit__11.CYBER then
-			local v24 = { Vector3.new(2, 3, 2), Vector3.new(-2.5, 5, -2), Vector3.new(2, 1, -3.4), Vector3.new(-2.9, -1.3, 2.4) };
-			local v25 = 0;
-			local v26 = false;
+			local v23 = { Vector3.new(2, 3, 2), Vector3.new(-2.5, 5, -2), Vector3.new(2, 1, -3.4), Vector3.new(-2.9, -1.3, 2.4) };
+			local v24 = 0;
+			local v25 = false;
 			while true do
-				if v26 then
-					v25 = v25 + 1;
+				if v25 then
+					v24 = v24 + 1;
 				else
-					v26 = true;
+					v25 = true;
 				end;
-				if not (v25 < #v24) then
+				if not (v24 < #v23) then
 					break;
 				end;
-				local v27 = l__ReplicatedStorage__9.Assets:WaitForChild("Projectiles"):WaitForChild("drone"):Clone();
-				local l__Humanoid__28 = v27:FindFirstChild("Humanoid");
-				if l__Humanoid__28 ~= nil then
-					l__Humanoid__28:Destroy();
+				local v26 = l__ReplicatedStorage__9.Assets:WaitForChild("Projectiles"):WaitForChild("drone"):Clone();
+				local l__Humanoid__27 = v26:FindFirstChild("Humanoid");
+				if l__Humanoid__27 ~= nil then
+					l__Humanoid__27:Destroy();
 				end;
-				for v29, v30 in ipairs(v27:GetDescendants()) do
-					if v30:IsA("BasePart") then
-						v30.Anchored = true;
-						v30.CanCollide = false;
-						l__GameQueryUtil__18:setQueryIgnored(v30, true);
+				local v28, v29, v30 = ipairs(v26:GetDescendants());
+				while true do
+					v28(v29, v30);
+					if not v28 then
+						break;
 					end;
+					v30 = v28;
+					if v29:IsA("BasePart") then
+						v29.Anchored = true;
+						v29.CanCollide = false;
+						v29.CastShadow = false;
+						l__GameQueryUtil__18:setQueryIgnored(v29, true);
+					end;				
 				end;
-				v27:SetPrimaryPartCFrame(v11:GetPrimaryPartCFrame() + v24[v25 + 1]);
-				v27.Parent = l__Workspace__19;
-				l__CollectionService__20:AddTag(v27, "LobbyDrone");			
+				v26:SetPrimaryPartCFrame(v11:GetPrimaryPartCFrame() + v23[v24 + 1]);
+				v26.Parent = l__Workspace__19;
+				l__CollectionService__20:AddTag(v26, "LobbyDrone");			
 			end;
 		end;
 	end);

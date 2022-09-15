@@ -1,4 +1,3 @@
--- Script Hash: 9167cc864a2886977c792913d5f36cdbbdf6d72c2058d900a60fff0a9069595778e3cf35c2151adbeeb15f26fe9829c9
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -51,7 +50,7 @@ function v5.render(p4)
 	local v7 = false;
 	local v8 = {};
 	local v9 = l__BundleMeta__6[p4.props.Bundle];
-	local l__kits__10 = v9.kits;
+	local l__kits__10 = v9.rewards.kits;
 	if l__kits__10 ~= nil then
 		local u20 = {};
 		local function v11(p5)
@@ -69,44 +68,50 @@ function v5.render(p4)
 			end;
 			table.insert(u20, p5);
 		end;
-		for v12, v13 in ipairs(l__kits__10) do
-			v11(v13, v12 - 1, l__kits__10);
+		local v12, v13, v14 = ipairs(l__kits__10);
+		while true do
+			v12(v13, v14);
+			if not v12 then
+				break;
+			end;
+			v14 = v12;
+			v11(v13, v12 - 1, l__kits__10);		
 		end;
 	end;
-	if v8 == v9.kits then
+	if v8 == v9.rewards.kits then
 		v7 = true;
 	end;
-	local v14 = v9.battlepass;
-	if v14 == nil then
-		v14 = false;
+	local v15 = v9.battlepass;
+	if v15 == nil then
+		v15 = false;
 	end;
-	local v15 = {
+	local v16 = {
 		[v3.Ref] = p4.ref, 
 		Size = UDim2.fromScale(1, 1)
 	};
 	if p4.props.Selected then
-		local v16 = l__ColorUtil__10.hexColor(2500410);
+		local v17 = l__ColorUtil__10.hexColor(2500410);
 	else
-		v16 = l__Theme__11.backgroundSecondary;
+		v17 = l__Theme__11.backgroundSecondary;
 	end;
-	v15.BackgroundColor3 = v16;
+	v16.BackgroundColor3 = v17;
 	if p4.props.Selected then
-		local v17 = 0;
+		local v18 = 0;
 	else
-		v17 = 0;
+		v18 = 0;
 	end;
-	v15.BackgroundTransparency = v17;
-	v15.BorderSizePixel = 0;
-	v15.BorderMode = "Outline";
-	v15.BorderColor3 = l__ColorUtil__10.hexColor(16771973);
-	v15.LayoutOrder = p4.props.LayoutOrder;
-	v15.AutoButtonColor = false;
-	v15.Selectable = true;
-	v15[v3.Event.MouseButton1Click] = function()
+	v16.BackgroundTransparency = v18;
+	v16.BorderSizePixel = 0;
+	v16.BorderMode = "Outline";
+	v16.BorderColor3 = l__ColorUtil__10.hexColor(16771973);
+	v16.LayoutOrder = p4.props.LayoutOrder;
+	v16.AutoButtonColor = false;
+	v16.Selectable = true;
+	v16[v3.Event.MouseButton1Click] = function()
 		l__SoundManager__3:playSound(l__GameSound__4.UI_CLICK);
 		p4.props.OnClick();
 	end;
-	v15[v3.Event.MouseEnter] = function(p6)
+	v16[v3.Event.MouseEnter] = function(p6)
 		p4.hoverMaid:DoCleaning();
 		if not p4.props.Selected then
 			local u21 = l__TweenService__12:Create(p6, TweenInfo.new(0.12), {
@@ -118,7 +123,7 @@ function v5.render(p4)
 			u21:Play();
 		end;
 	end;
-	v15[v3.Event.MouseLeave] = function(p7)
+	v16[v3.Event.MouseLeave] = function(p7)
 		p4.hoverMaid:DoCleaning();
 		if not p4.props.Selected then
 			local u22 = l__TweenService__12:Create(p7, TweenInfo.new(0.12), {
@@ -130,13 +135,13 @@ function v5.render(p4)
 			u22:Play();
 		end;
 	end;
-	local v18 = { v3.createElement("UICorner", {
+	local v19 = { v3.createElement("UICorner", {
 			CornerRadius = UDim.new(0.03, 0)
 		}), v3.createElement("UIStroke", {
 			Color = Color3.fromRGB(70, 72, 117), 
 			Thickness = 2
 		}) };
-	local v19 = v9.limitedTime and v3.createElement("ImageLabel", {
+	local v20 = v9.limitedTime and v3.createElement("ImageLabel", {
 		Size = UDim2.fromScale(1, 0.22), 
 		Image = l__ImageId__13.BANNER_HORIZONTAL, 
 		Position = UDim2.fromScale(0.5, -0.01), 
@@ -158,23 +163,23 @@ function v5.render(p4)
 			BorderSizePixel = 0, 
 			TextColor3 = Color3.fromRGB(255, 255, 255)
 		}) });
-	if v19 then
-		v18[#v18 + 1] = v19;
+	if v20 then
+		v19[#v19 + 1] = v20;
 	end;
-	local v20 = {
+	local v21 = {
 		Size = UDim2.fromScale(1, 0.16), 
 		AnchorPoint = Vector2.new(1, 0), 
 		Position = UDim2.fromScale(0.97, 0.03), 
 		BackgroundTransparency = 1
 	};
-	local v21 = { v3.createElement("UIListLayout", {
+	local v22 = { v3.createElement("UIListLayout", {
 			FillDirection = "Horizontal", 
 			HorizontalAlignment = "Right", 
 			VerticalAlignment = "Center", 
 			Padding = UDim.new(0.05, 0)
 		}) };
-	local v22 = #v21;
-	v21[v22 + 1] = v3.createElement("ImageLabel", {
+	local v23 = #v22;
+	v22[v23 + 1] = v3.createElement("ImageLabel", {
 		Size = UDim2.fromScale(1, 1), 
 		SizeConstraint = "RelativeYY", 
 		Image = l__EmoteAssets__15[l__EmoteType__14.LUCKY_GIFT], 
@@ -186,8 +191,8 @@ function v5.render(p4)
 				TextSize = 16, 
 				Limits = Vector2.new(300, 60)
 			}) }) });
-	if not v7 and not v14 then
-		local v23 = v3.createElement("ImageLabel", {
+	if not v7 and not v15 then
+		local v24 = v3.createElement("ImageLabel", {
 			Size = UDim2.fromScale(1, 1), 
 			SizeConstraint = "RelativeYY", 
 			Image = l__ImageId__13.GEM, 
@@ -200,67 +205,67 @@ function v5.render(p4)
 					Limits = Vector2.new(300, 60)
 				}) }) });
 	else
-		local v24 = v9.battlepass;
-		if v24 ~= nil then
-			v24 = v24.season;
+		local v25 = v9.battlepass;
+		if v25 ~= nil then
+			v25 = v25.season;
 		end;
-		if v24 then
-			local v25 = {
+		if v25 then
+			local v26 = {
 				Size = UDim2.fromScale(1, 1), 
 				SizeConstraint = "RelativeYY"
 			};
-			local v26 = v9.battlepass;
-			if v26 ~= nil then
-				v26 = v26.season;
+			local v27 = v9.battlepass;
+			if v27 ~= nil then
+				v27 = v27.season;
 			end;
-			v25.Image = l__BedwarsImageId__18.BattlePassIcons[v26];
-			v25.ScaleType = "Fit";
-			v25.BackgroundTransparency = 1;
-			local v27 = {};
+			v26.Image = l__BedwarsImageId__18.BattlePassIcons[v27];
+			v26.ScaleType = "Fit";
+			v26.BackgroundTransparency = 1;
 			local v28 = {};
 			local v29 = {};
-			local v30 = l__BundleMeta__6[p4.props.Bundle].battlepass;
-			if v30 ~= nil then
-				v30 = string.gsub(v30.season, "season", "");
+			local v30 = {};
+			local v31 = l__BundleMeta__6[p4.props.Bundle].battlepass;
+			if v31 ~= nil then
+				v31 = string.gsub(v31.season, "season", "");
 			end;
-			v29.Text = "BP Season " .. tostring(v30);
-			v29.Font = Enum.Font.SourceSansBold;
-			v29.TextSize = 16;
-			v29.Limits = Vector2.new(300, 60);
-			v28[#v28 + 1] = v3.createElement(l__AutoSizedText__17, v29);
-			v27[#v27 + 1] = v3.createElement(l__TooltipContainer__16, {}, v28);
-			local v31 = v3.createElement("ImageLabel", v25, v27);
+			v30.Text = "BP Season " .. tostring(v31);
+			v30.Font = Enum.Font.SourceSansBold;
+			v30.TextSize = 16;
+			v30.Limits = Vector2.new(300, 60);
+			v29[#v29 + 1] = v3.createElement(l__AutoSizedText__17, v30);
+			v28[#v28 + 1] = v3.createElement(l__TooltipContainer__16, {}, v29);
+			local v32 = v3.createElement("ImageLabel", v26, v28);
 		else
-			v31 = v3.createFragment();
+			v32 = v3.createFragment();
 		end;
-		v23 = v31;
+		v24 = v32;
 	end;
-	v21[v22 + 2] = v23;
-	v18.KitCategoryIcons = v3.createElement("Frame", v20, v21);
-	local v32 = v9;
-	if v32 then
-		local v33 = { v3.createElement("UICorner", {
+	v22[v23 + 2] = v24;
+	v19.KitCategoryIcons = v3.createElement("Frame", v21, v22);
+	local v33 = v9;
+	if v33 then
+		local v34 = { v3.createElement("UICorner", {
 				CornerRadius = UDim.new(0.03, 0)
 			}) };
-		local v34 = {
+		local v35 = {
 			AnchorPoint = Vector2.new(0.5, 0.5), 
 			Position = UDim2.fromScale(0.5, 0.5), 
 			Size = UDim2.fromScale(0.8, 0.8)
 		};
-		local v35 = v9.kitShopBundle;
-		if v35 ~= nil then
-			v35 = v35.name;
+		local v36 = v9.kitShopBundle;
+		if v36 ~= nil then
+			v36 = v36.name;
 		end;
-		v34.Text = "<b>" .. tostring(v35) .. "</b>";
-		v34.TextScaled = true;
-		v34.RichText = true;
-		v34.TextColor3 = l__ColorUtil__10.WHITE;
-		v34.TextXAlignment = "Center";
-		v34.Font = "Roboto";
-		v34.BackgroundTransparency = 1;
-		v34.ZIndex = 10;
-		v33[#v33 + 1] = v3.createElement("TextLabel", v34);
-		v32 = v3.createFragment({
+		v35.Text = "<b>" .. tostring(v36) .. "</b>";
+		v35.TextScaled = true;
+		v35.RichText = true;
+		v35.TextColor3 = l__ColorUtil__10.WHITE;
+		v35.TextXAlignment = "Center";
+		v35.Font = "Roboto";
+		v35.BackgroundTransparency = 1;
+		v35.ZIndex = 10;
+		v34[#v34 + 1] = v3.createElement("TextLabel", v35);
+		v33 = v3.createFragment({
 			KitNameTag = v3.createElement("Frame", {
 				Size = UDim2.fromScale(1, 0.16), 
 				Position = UDim2.fromScale(0, 1), 
@@ -268,29 +273,29 @@ function v5.render(p4)
 				BackgroundTransparency = 0.55, 
 				BackgroundColor3 = l__ColorUtil__10.BLACK, 
 				ZIndex = 10
-			}, v33)
+			}, v34)
 		});
 	end;
-	v18[#v18 + 1] = v32;
-	local v36 = {};
+	v19[#v19 + 1] = v33;
 	local v37 = {};
-	local v38 = v9.kitShopBundle;
-	if v38 ~= nil then
-		v38 = v38.image;
+	local v38 = {};
+	local v39 = v9.kitShopBundle;
+	if v39 ~= nil then
+		v39 = v39.image;
 	end;
-	v37.Image = v38;
-	v37.ScaleType = "Crop";
-	v37.Size = UDim2.fromScale(1, 1);
-	v37.BackgroundColor3 = Color3.fromRGB(0, 0, 0);
-	v37.BorderSizePixel = 0;
-	v37.BackgroundTransparency = 1;
-	v36[#v36 + 1] = v3.createElement("ImageLabel", v37);
-	v18[#v18 + 1] = v3.createElement(l__Empty__19, {
+	v38.Image = v39;
+	v38.ScaleType = "Crop";
+	v38.Size = UDim2.fromScale(1, 1);
+	v38.BackgroundColor3 = Color3.fromRGB(0, 0, 0);
+	v38.BorderSizePixel = 0;
+	v38.BackgroundTransparency = 1;
+	v37[#v37 + 1] = v3.createElement("ImageLabel", v38);
+	v19[#v19 + 1] = v3.createElement(l__Empty__19, {
 		Size = UDim2.fromScale(0.92, 0.92), 
 		Position = UDim2.fromScale(0.5, 0.5), 
 		AnchorPoint = Vector2.new(0.5, 0.5)
-	}, v36);
-	return v3.createElement("ImageButton", v15, v18);
+	}, v37);
+	return v3.createElement("ImageButton", v16, v19);
 end;
 return {
 	KitShopBundleCard = v5

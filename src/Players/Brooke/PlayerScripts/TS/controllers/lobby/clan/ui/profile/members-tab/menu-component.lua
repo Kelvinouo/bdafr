@@ -41,31 +41,43 @@ return {
 				return u1.createElement(l__ButtonComponent__2, v17);
 			end;
 			local v18 = table.create(#l__Items__16);
-			for v19, v20 in ipairs(l__Items__16) do
+			local v19, v20, v21 = ipairs(l__Items__16);
+			while true do
+				v19(v20, v21);
+				if not v19 then
+					break;
+				end;
+				v21 = v19;
 				v18[v19] = u1.createElement(u5, {
 					Text = v20.text, 
 					OnClick = v20.callback
-				});
+				});			
 			end;
-			local v21 = {
+			local v22 = {
 				Size = UDim2.new(1, 0, 0, 0), 
 				AutomaticSize = Enum.AutomaticSize.Y, 
 				Position = UDim2.fromScale(0, 1.1), 
 				AnchorPoint = Vector2.new(0, 0), 
 				BackgroundTransparency = 1
 			};
-			local v22 = { u1.createElement("UIListLayout", {
+			local v23 = { u1.createElement("UIListLayout", {
 					FillDirection = "Vertical"
 				}) };
-			local v23 = #v22;
-			for v24, v25 in ipairs(v18) do
-				v22[v23 + v24] = v25;
+			local v24 = #v23;
+			local v25, v26, v27 = ipairs(v18);
+			while true do
+				v25(v26, v27);
+				if not v25 then
+					break;
+				end;
+				v27 = v25;
+				v23[v24 + v25] = v26;			
 			end;
 			v15 = u1.createFragment({
-				Menu = u1.createElement("Frame", v21, v22)
+				Menu = u1.createElement("Frame", v22, v23)
 			});
 		end;
-		local v26 = { u1.createElement(l__ButtonComponent__2, {
+		local v28 = { u1.createElement(l__ButtonComponent__2, {
 				Text = p1.ButtonText, 
 				Size = UDim2.new(1, 0, 1, 0), 
 				OnClick = function()
@@ -73,8 +85,8 @@ return {
 				end
 			}) };
 		if v15 then
-			v26[#v26 + 1] = v15;
+			v28[#v28 + 1] = v15;
 		end;
-		return u1.createElement(l__Empty__4, v12, v26);
+		return u1.createElement(l__Empty__4, v12, v28);
 	end)
 };

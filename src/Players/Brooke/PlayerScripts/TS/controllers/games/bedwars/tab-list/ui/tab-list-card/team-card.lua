@@ -25,70 +25,76 @@ return {
 		local v11 = 0;
 		local v12, v13, v14 = ipairs(v6);
 		while true do
-			local v15, v16 = v12(v13, v14);
-			if not v15 then
+			v12(v13, v14);
+			if not v12 then
 				break;
 			end;
-			local v17 = v16[1];
-			local v18 = v16[2];
-			if p1.store.Bedwars.finalDeaths[v18.userId] then
-				local v19 = not p1.store.Bedwars.finalDeaths[v18.userId];
+			local v15 = v13[1];
+			local v16 = v13[2];
+			if p1.store.Bedwars.finalDeaths[v16.userId] then
+				local v17 = not p1.store.Bedwars.finalDeaths[v16.userId];
 			else
-				v19 = true;
+				v17 = true;
 			end;
-			if v19 == true then
+			if v17 == true then
 				v11 = v11 + 1;
-				v10[v11] = v16;
+				v10[v11] = v13;
 			end;		
 		end;
-		local v20 = {};
-		local v21 = #v20;
-		for v22, v23 in pairs(p1.Team.members) do
-			v21 = v21 + 1;
-			v20[v21] = { v22, v23 };
+		local v18 = {};
+		local v19 = #v18;
+		for v20, v21 in pairs(p1.Team.members) do
+			v19 = v19 + 1;
+			v18[v19] = { v20, v21 };
 		end;
 		if l__Players__1.LocalPlayer then
-			local v24 = l__Players__1.LocalPlayer.UserId;
+			local v22 = l__Players__1.LocalPlayer.UserId;
 		else
-			v24 = l__OfflinePlayerUtil__2.Dummy.oiogy.userId;
+			v22 = l__OfflinePlayerUtil__2.Dummy.oiogy.userId;
 		end;
 		local u9 = l__CardDimensions__4[1];
-		local u10 = p1.store.Bedwars.finalDeaths[v24] or p1.store.Game.matchState == l__MatchState__3.POST;
+		local u10 = p1.store.Bedwars.finalDeaths[v22] or p1.store.Game.matchState == l__MatchState__3.POST;
 		local function u11(p3)
 			table.sort(p3, function(p4, p5)
-				local v25 = p4[1];
-				local v26 = p5[1];
-				local v27 = p1.store.Bedwars.kills[p4[2].userId];
-				if v27 == nil then
-					v27 = 0;
+				local v23 = p4[1];
+				local v24 = p5[1];
+				local v25 = p1.store.Bedwars.kills[p4[2].userId];
+				if v25 == nil then
+					v25 = 0;
 				end;
-				local v28 = p1.store.Bedwars.kills[p5[2].userId];
-				if v28 == nil then
-					v28 = 0;
+				local v26 = p1.store.Bedwars.kills[p5[2].userId];
+				if v26 == nil then
+					v26 = 0;
 				end;
-				return v28 < v27;
+				return v26 < v25;
 			end);
-			local function v29(p6, p7)
-				local v30 = p6[1];
-				local v31 = {};
-				local v32 = 0;
-				for v33 in pairs(p1.Team.members) do
-					v32 = v32 + 1;
+			local function v27(p6, p7)
+				local v28 = p6[1];
+				local v29 = {};
+				local v30 = 0;
+				for v31 in pairs(p1.Team.members) do
+					v30 = v30 + 1;
 				end;
-				v31.LastRow = p7 == v32 - 1;
-				v31.LayoutOrder = p7;
-				v31.Player = p6[2];
-				v31.Team = p1.Team;
-				v31.RowWidth = u9;
-				v31.RowHeight = l__tabListLayout__4.maxRowSizeY;
-				v31.store = p1.store;
-				return u5.createElement(l__PlayerRow__6, v31);
+				v29.LastRow = p7 == v30 - 1;
+				v29.LayoutOrder = p7;
+				v29.Player = p6[2];
+				v29.Team = p1.Team;
+				v29.RowWidth = u9;
+				v29.RowHeight = l__tabListLayout__4.maxRowSizeY;
+				v29.store = p1.store;
+				return u5.createElement(l__PlayerRow__6, v29);
 			end;
-			local v34 = table.create(#p3);
-			for v35, v36 in ipairs(p3) do
-				v34[v35] = v29(v36, v35 - 1, p3);
+			local v32 = table.create(#p3);
+			local v33, v34, v35 = ipairs(p3);
+			while true do
+				v33(v34, v35);
+				if not v33 then
+					break;
+				end;
+				v35 = v33;
+				v32[v33] = v27(v34, v33 - 1, p3);			
 			end;
-			return v34;
+			return v32;
 		end;
 		return u5.createElement("Frame", {
 			Size = UDim2.new(1, 0, l__tabListLayout__4.rows.cards.card.height, 0), 
@@ -107,30 +113,36 @@ return {
 				RowWidth = u9, 
 				store = p1.store
 			}), u5.createElement(function()
-				local v37 = {
+				local v36 = {
 					Size = UDim2.fromScale(1, 0), 
 					AutomaticSize = "Y", 
 					BorderSizePixel = 0, 
 					BackgroundTransparency = 1, 
 					BackgroundColor3 = l__Theme__7.backgroundPrimary
 				};
-				local v38 = { u5.createElement("UIListLayout", {
+				local v37 = { u5.createElement("UIListLayout", {
 						FillDirection = Enum.FillDirection.Vertical, 
 						VerticalAlignment = Enum.VerticalAlignment.Top, 
 						HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 						SortOrder = Enum.SortOrder.LayoutOrder, 
 						Padding = UDim.new(0, 0)
 					}) };
-				local v39 = #v38;
+				local v38 = #v37;
 				if u10 then
-					local v40 = u11(v20);
+					local v39 = u11(v18);
 				else
-					v40 = u11(v10);
+					v39 = u11(v10);
 				end;
-				for v41, v42 in ipairs(v40) do
-					v38[v39 + v41] = v42;
+				local v40, v41, v42 = ipairs(v39);
+				while true do
+					v40(v41, v42);
+					if not v40 then
+						break;
+					end;
+					v42 = v40;
+					v37[v38 + v40] = v41;				
 				end;
-				return u5.createElement("Frame", v37, v38);
+				return u5.createElement("Frame", v36, v37);
 			end) });
 	end)
 };

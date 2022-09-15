@@ -14,11 +14,21 @@ return function(p1)
 		equippedKitSkins = (function()
 			local v2 = u1.values(l__BedwarsKit__2);
 			local v3 = table.create(#v2);
-			for v4, v5 in ipairs(v2) do
-				v3[v4] = { v5, l__BedwarsKitSkin__3.DEFAULT };
+			local v4, v5, v6 = ipairs(v2);
+			while true do
+				v4(v5, v6);
+				if not v4 then
+					break;
+				end;
+				v6 = v4;
+				v3[v4] = { v5, l__BedwarsKitSkin__3.DEFAULT };			
 			end;
 			return u1.fromEntries(v3);
 		end)()
+	});
+	l__ClientStore__4:dispatch({
+		type = "AddOwnedKits", 
+		kits = u1.values(l__BedwarsKit__2)
 	});
 	local u8 = l__CreateRoduxApp__5("KitShop", l__KitShopApp__6, {}, {}, {
 		Parent = p1

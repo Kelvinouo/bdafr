@@ -1,4 +1,3 @@
--- Script Hash: cb0bf3fba2c0446504166942fdf8a09ba6c0f24834c058dc3e07f04365c4b316f1690246f96fafec0b54a4fe94b02504
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -29,24 +28,36 @@ return {
 				return u2.createElement(l__TeamCard__3, v5);
 			end;
 			local v8 = table.create(#l__teams__3);
-			for v9, v10 in ipairs(l__teams__3) do
-				v8[v9] = v4(v10, v9 - 1, l__teams__3);
+			local v9, v10, v11 = ipairs(l__teams__3);
+			while true do
+				v9(v10, v11);
+				if not v9 then
+					break;
+				end;
+				v11 = v9;
+				v8[v9] = v4(v10, v9 - 1, l__teams__3);			
 			end;
-			local v11 = {
+			local v12 = {
 				Columns = 2, 
 				Size = UDim2.fromScale(1, 1), 
 				store = p1.store
 			};
-			local v12 = {};
-			local v13 = #v12;
-			for v14, v15 in ipairs(v8) do
-				v12[v13 + v14] = v15;
+			local v13 = {};
+			local v14 = #v13;
+			local v15, v16, v17 = ipairs(v8);
+			while true do
+				v15(v16, v17);
+				if not v15 then
+					break;
+				end;
+				v17 = v15;
+				v13[v14 + v15] = v16;			
 			end;
-			v2 = u2.createElement(l__TabListColumnLayout__4, v11, v12);
+			v2 = u2.createElement(l__TabListColumnLayout__4, v12, v13);
 		end;
-		local v16 = {};
+		local v18 = {};
 		if v2 then
-			v16[#v16 + 1] = v2;
+			v18[#v18 + 1] = v2;
 		end;
 		return u2.createElement("ScrollingFrame", {
 			Size = UDim2.fromScale(1, l__tabListLayout__1.rows.cards.height), 
@@ -56,6 +67,6 @@ return {
 			BackgroundTransparency = 1, 
 			ScrollingDirection = Enum.ScrollingDirection.Y, 
 			ScrollBarThickness = 0
-		}, v16);
+		}, v18);
 	end)
 };

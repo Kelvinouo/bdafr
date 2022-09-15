@@ -38,11 +38,15 @@ function v4.constructor(p1, p2)
 	end;
 	p1.humanoid = p2:WaitForChild("Humanoid");
 	p1.npcRoot = p2.PrimaryPart;
-	p1.npcNeck = p2:WaitForChild("Head"):WaitForChild("Neck");
-	p1.originalNeckC0 = p1.npcNeck.C0;
+	p1.npcNeck = p2:WaitForChild("Head"):FindFirstChild("Neck");
+	local v7 = p1.npcNeck;
+	if v7 ~= nil then
+		v7 = v7.C0;
+	end;
+	p1.originalNeckC0 = v7;
 	p1.maid:GiveTask(p2);
-	local l__NpcAnimation__7 = p1.config.Values.NpcAnimation;
-	if l__NpcAnimation__7 ~= "" and l__NpcAnimation__7 then
+	local l__NpcAnimation__8 = p1.config.Values.NpcAnimation;
+	if l__NpcAnimation__8 ~= "" and l__NpcAnimation__8 then
 		v1.Promise.defer(function()
 			p1:applyAnimation();
 		end);
@@ -53,32 +57,32 @@ function v4.constructor(p1, p2)
 	end);
 end;
 v4.getLocalCharacterRoot = v1.async(function(p3)
-	local l__Character__8 = l__Players__13.LocalPlayer.Character;
-	if not l__Character__8 then
+	local l__Character__9 = l__Players__13.LocalPlayer.Character;
+	if not l__Character__9 then
 		return nil;
 	end;
-	p3.localCharacterRoot = l__Character__8:FindFirstChild("HumanoidRootPart");
+	p3.localCharacterRoot = l__Character__9:FindFirstChild("HumanoidRootPart");
 end);
 local u14 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
 function v4.applyAnimation(p4)
-	local l__Animator__9 = p4.humanoid:WaitForChild("Animator");
-	if not l__Animator__9 then
+	local l__Animator__10 = p4.humanoid:WaitForChild("Animator");
+	if not l__Animator__10 then
 		error("Humanoid for NPC " .. p4.npcModel.Name .. " has no Animator child");
 	end;
-	local v10 = u14("Animation", {
+	local v11 = u14("Animation", {
 		AnimationId = p4.config.Values.NpcAnimation
 	});
-	local l__NpcSecondaryAnimation__11 = p4.config.Values.NpcSecondaryAnimation;
-	if l__NpcSecondaryAnimation__11 ~= "" and l__NpcSecondaryAnimation__11 then
-		local v12 = u14("Animation", {
+	local l__NpcSecondaryAnimation__12 = p4.config.Values.NpcSecondaryAnimation;
+	if l__NpcSecondaryAnimation__12 ~= "" and l__NpcSecondaryAnimation__12 then
+		local v13 = u14("Animation", {
 			AnimationId = p4.config.Values.NpcSecondaryAnimation
 		});
-		local v13 = l__Animator__9:LoadAnimation(v12);
-		v13.Looped = true;
-		v13:Play();
-		p4.maid:GiveTask(v12);
+		local v14 = l__Animator__10:LoadAnimation(v13);
+		v14.Looped = true;
+		v14:Play();
+		p4.maid:GiveTask(v13);
 	end;
-	local u15 = l__Animator__9:LoadAnimation(v10);
+	local u15 = l__Animator__10:LoadAnimation(v11);
 	v1.Promise.defer(function()
 		while p4.humanoid.Parent ~= nil do
 			u15:Play();
@@ -86,67 +90,70 @@ function v4.applyAnimation(p4)
 			wait(3);		
 		end;
 	end);
-	p4.maid:GiveTask(v10);
+	p4.maid:GiveTask(v11);
 end;
 local function u16(p5, p6)
-	local v14 = p6 - p5.Position;
-	if v14.X > 0 then
-		local v15 = math.pi;
+	local v15 = p6 - p5.Position;
+	if v15.X > 0 then
+		local v16 = math.pi;
 	else
-		v15 = 0;
+		v16 = 0;
 	end;
-	local v16 = (-(math.atan(v14.Z / v14.X) + v15) + math.pi / 2 - select(2, (p5 - p5.Position):ToEulerAnglesYXZ()) + math.pi / 2) % (math.pi * 2) - math.pi / 2;
-	if math.pi / 2 * 1.1 < math.abs(v16) then
+	local v17 = (-(math.atan(v15.Z / v15.X) + v16) + math.pi / 2 - select(2, (p5 - p5.Position):ToEulerAnglesYXZ()) + math.pi / 2) % (math.pi * 2) - math.pi / 2;
+	if math.pi / 2 * 1.1 < math.abs(v17) then
 		return 0, math.pi;
 	end;
-	return math.clamp(math.atan(v14.Y / math.sqrt(math.pow(v14.X, 2) + math.pow(v14.Z, 2))) - (p5 - p5.Position):ToEulerAnglesYXZ(), -0.2 * math.pi / 2, 0.2 * math.pi / 2), math.clamp(v16, -0.82 * math.pi / 2, 0.82 * math.pi / 2) + math.pi;
+	return math.clamp(math.atan(v15.Y / math.sqrt(math.pow(v15.X, 2) + math.pow(v15.Z, 2))) - (p5 - p5.Position):ToEulerAnglesYXZ(), -0.2 * math.pi / 2, 0.2 * math.pi / 2), math.clamp(v17, -0.82 * math.pi / 2, 0.82 * math.pi / 2) + math.pi;
 end;
 local l__TweenService__17 = v2.TweenService;
 local u18 = TweenInfo.new(0.085, Enum.EasingStyle.Linear);
 function v4.HeartbeatUpdate(p7)
-	local v17 = nil;
 	local v18 = nil;
+	local v19 = nil;
 	if os.clock() - p7.lastUpdate < 0.1 then
 		return nil;
 	end;
 	p7.lastUpdate = os.clock();
+	if not p7.npcNeck or not p7.originalNeckC0 then
+		return nil;
+	end;
 	if p7.config.Values.NpcLookAtPlayer ~= true then
 		return nil;
 	end;
 	if not p7.localCharacterRoot then
 		return nil;
 	end;
-	local l__npcRoot__19 = p7.npcRoot;
-	local v20 = p7.config.Values.NpcLookMinimumDistance;
-	if v20 == 0 or v20 ~= v20 or not v20 then
-		v20 = 10;
+	local l__npcRoot__20 = p7.npcRoot;
+	local v21 = p7.config.Values.NpcLookMinimumDistance;
+	if v21 == 0 or v21 ~= v21 or not v21 then
+		v21 = 10;
 	end;
-	local v21 = CFrame.new();
-	if (p7.localCharacterRoot.Position - l__npcRoot__19.Position).Magnitude <= v20 then
-		local v22, v23 = u16(l__npcRoot__19.CFrame, p7.localCharacterRoot.Position);
-		v21 = CFrame.new(0, 0, 0) * CFrame.Angles(v22, -math.pi + v23, 0);
+	local v22 = CFrame.new();
+	if (p7.localCharacterRoot.Position - l__npcRoot__20.Position).Magnitude <= v21 then
+		local v23, v24 = u16(l__npcRoot__20.CFrame, p7.localCharacterRoot.Position);
+		v22 = CFrame.new(0, 0, 0) * CFrame.Angles(v23, -math.pi + v24, 0);
 	end;
-	local v24 = { p7.npcNeck.C0:ToEulerAnglesXYZ() };
-	if #v24 == 0 then
+	local v25 = { p7.npcNeck.C0:ToEulerAnglesXYZ() };
+	if #v25 == 0 then
 		error("Attempted to call `ReadonlyArray.reduce()` on an empty array without an initialValue.");
 	end;
-	v17 = v24[1];
-	for v25 = 2, #v24 do
-		v17 = v17 + v24[v25];
+	v18 = v25[1];
+	for v26 = 2, #v25 do
+		v18 = v18 + v25[v26];
 	end;
-	local v26 = { v21:ToEulerAnglesXYZ() };
-	if #v26 == 0 then
+	local v27 = { v22:ToEulerAnglesXYZ() };
+	if #v27 == 0 then
 		error("Attempted to call `ReadonlyArray.reduce()` on an empty array without an initialValue.");
 	end;
-	v18 = v26[1];
-	for v27 = 2, #v26 do
-		v18 = v18 + v26[v27];
+	v19 = v27[1];
+	for v28 = 2, #v27 do
+		v19 = v19 + v27[v28];
 	end;
-	if math.abs(local v28 - local v29) < 1E-06 then
+	if math.abs(local v29 - local v30) < 1E-06 then
 		return nil;
 	end;
 	l__TweenService__17:Create(p7.npcNeck, u18, {
-		C0 = p7.originalNeckC0 * v21
+		C0 = p7.originalNeckC0 * v22
 	}):Play();
 end;
 function v4.Destroy(p8)

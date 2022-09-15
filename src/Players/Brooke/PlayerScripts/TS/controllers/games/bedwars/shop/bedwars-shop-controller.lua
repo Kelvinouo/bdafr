@@ -1,7 +1,7 @@
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
 local l__KnitController__3 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
 local v4 = setmetatable({}, {
 	__tostring = function()
@@ -15,13 +15,13 @@ function u1.new(...)
 	local v5 = setmetatable({}, u1);
 	return v5:constructor(...) and v5;
 end;
-local u2 = l__KnitController__3;
 function u1.constructor(p1)
-	u2.constructor(p1);
+	l__KnitController__3.constructor(p1);
 	p1.Name = "BedwarsShopController";
 	p1.alreadyPurchasedMap = {};
 end;
-local l__DeviceUtil__3 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).DeviceUtil;
+local l__KnitClient__2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
+local l__DeviceUtil__3 = v2.DeviceUtil;
 local l__Flamework__4 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 local l__BedwarsAppIds__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "ui", "types", "app-config").BedwarsAppIds;
 local l__default__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
@@ -73,11 +73,26 @@ function u1.KnitStart(p2)
 			end;
 		end;
 	end);
+	l__default__6.Client:Get("RemoteName"):Connect(function(p6)
+		l__ClientStore__7:dispatch({
+			type = "GameSetUnlockedShopCategories", 
+			unlockedShopCategories = p6.unlockedShopCategories
+		});
+	end);
 end;
-u2 = l__KnitClient__2.CreateController;
-u1 = u1.new;
-u2 = u2(u1());
-u1 = {
-	BedwarsShopController = u2
+local l__SoundManager__11 = v2.SoundManager;
+local l__GameSound__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+function u1.purchaseShopCategory(p7, p8)
+	l__default__6.Client:Get("RemoteName"):CallServerAsync({
+		category = p8
+	}):andThen(function(p9)
+		if p9 then
+			l__SoundManager__11:playSound(l__GameSound__12.BEDWARS_UPGRADE_SUCCESS);
+		end;
+	end);
+end;
+u1 = l__KnitClient__2.CreateController;
+u1 = u1(u1.new());
+return {
+	BedwarsShopController = u1
 };
-return u1;

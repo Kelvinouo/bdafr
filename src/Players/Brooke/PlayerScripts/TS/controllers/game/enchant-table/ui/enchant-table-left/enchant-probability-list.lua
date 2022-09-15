@@ -15,24 +15,36 @@ return {
 		end;
 		local v6 = u1.values(l__EnchantResearchType__2);
 		local v7 = table.create(#v6);
-		for v8, v9 in ipairs(v6) do
+		local v8, v9, v10 = ipairs(v6);
+		while true do
+			v8(v9, v10);
+			if not v8 then
+				break;
+			end;
+			v10 = v8;
 			v7[v8] = u3.createElement(l__EnchantProbabilityCard__4, {
 				ResearchType = v9
-			});
+			});		
 		end;
-		local v10 = { u3.createElement("UIListLayout", {
+		local v11 = { u3.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Center, 
 				VerticalAlignment = Enum.VerticalAlignment.Center, 
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0.05, 0)
 			}) };
-		local v11 = #v10;
-		for v12, v13 in ipairs(v7) do
-			v10[v11 + v12] = v13;
+		local v12 = #v11;
+		local v13, v14, v15 = ipairs(v7);
+		while true do
+			v13(v14, v15);
+			if not v13 then
+				break;
+			end;
+			v15 = v13;
+			v11[v12 + v13] = v14;		
 		end;
 		return u3.createFragment({
-			ProbabilityCards = u3.createElement(l__Empty__5, v3, v10)
+			ProbabilityCards = u3.createElement(l__Empty__5, v3, v11)
 		});
 	end)
 };

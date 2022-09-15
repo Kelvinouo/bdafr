@@ -1,4 +1,3 @@
--- Script Hash: ed801537559461e3375f2571eba132780356e77f48aba53c6a718041b3e3fa722e7460e2f9324da4370e05af9ea714f2
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -37,9 +36,9 @@ return {
 						BannerImage = "rbxassetid://9135987193", 
 						PromoItemImage = l__BattlePassUtils__7.BATTLE_PASS_ICON, 
 						ItemType = "BattlePass", 
-						Name = "Season 4", 
+						Name = "Season " .. tostring(l__BattlePassUtils__7.BATTLE_PASS_SEASON_NUMBER), 
 						Price = 799, 
-						Description = "Unlock the full Battle Pass for Season 4. This gives you access to tons of limited edition content! Owning the Battle Pass also gives a 20% experience bonus.", 
+						Description = "Unlock the full Battle Pass for Season " .. tostring(l__BattlePassUtils__7.BATTLE_PASS_SEASON_NUMBER) .. ". This gives you access to tons of limited edition content! Owning the Battle Pass also gives a 20% experience bonus.", 
 						OnClick = function()
 							l__KnitClient__8.Controllers.BattlePassController:promptBattlePassPurchase();
 						end, 

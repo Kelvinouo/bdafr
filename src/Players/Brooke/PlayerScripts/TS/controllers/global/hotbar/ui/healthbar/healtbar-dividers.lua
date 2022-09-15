@@ -1,4 +1,3 @@
--- Script Hash: e968e361ad2bc1607eba8b65cf066f538e92d83aca874fe7a0f6b8e6e94798b4cf265c8b9caa94ab1b12ba671876b9d8
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -62,8 +61,14 @@ return {
 				FillDirection = "Horizontal"
 			}) };
 		local v16 = #v15;
-		for v17, v18 in ipairs(v11) do
-			v15[v16 + v17] = v18;
+		local v17, v18, v19 = ipairs(v11);
+		while true do
+			v17(v18, v19);
+			if not v17 then
+				break;
+			end;
+			v19 = v17;
+			v15[v16 + v17] = v18;		
 		end;
 		return u2.createFragment({
 			Dividers = u2.createElement("Frame", v14, v15)

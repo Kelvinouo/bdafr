@@ -15,10 +15,16 @@ return {
 		local v5, v6 = l__useState__2("");
 		local v7, v8 = l__useState__2(false);
 		local function u5(p3)
-			for v9, v10 in ipairs(p1.Friends) do
+			local v9, v10, v11 = ipairs(p1.Friends);
+			while true do
+				v9(v10, v11);
+				if not v9 then
+					break;
+				end;
+				v11 = v9;
 				if string.sub(string.lower(v10.username), 1, #p3) == string.lower(p3) == true then
 					return v10;
-				end;
+				end;			
 			end;
 			return nil;
 		end;
@@ -26,11 +32,11 @@ return {
 		local u7 = nil;
 		u7 = function(p4)
 			v1.Promise.defer(function()
-				local v11, v12 = l__Players__2:GetUserThumbnailAsync(p4, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size48x48);
-				if not v12 then
+				local v12, v13 = l__Players__2:GetUserThumbnailAsync(p4, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size48x48);
+				if not v13 then
 					return;
 				end;
-				return v6(v11);
+				return v6(v12);
 			end);
 		end;
 		u6 = function(p5, p6)
@@ -43,9 +49,9 @@ return {
 		local u8 = u1.createRef();
 		local function u9(p7, p8)
 			v1.Promise.defer(function(p9, p10)
-				local v13 = l__Players__2:GetUserIdFromNameAsync(p8);
-				if v13 ~= 0 and v13 == v13 and v13 then
-					p9(v13);
+				local v14 = l__Players__2:GetUserIdFromNameAsync(p8);
+				if v14 ~= 0 and v14 == v14 and v14 then
+					p9(v14);
 					return;
 				end;
 				p10();
@@ -66,9 +72,9 @@ return {
 				v8(true);
 			end;
 		end, { p1.FriendsListUser });
-		local v14 = {};
 		local v15 = {};
-		local v16 = { u1.createElement("UIListLayout", {
+		local v16 = {};
+		local v17 = { u1.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				VerticalAlignment = Enum.VerticalAlignment.Center, 
@@ -80,27 +86,27 @@ return {
 				PaddingLeft = UDim.new(0, 10), 
 				PaddingRight = UDim.new(0, 10)
 			})) };
-		local v17 = {
+		local v18 = {
 			Size = UDim2.fromScale(1, 1), 
 			Image = v5, 
 			ScaleType = "Fit", 
 			SizeConstraint = "RelativeYY"
 		};
 		if v7 then
-			local v18 = 0;
+			local v19 = 0;
 		else
-			v18 = 0.6;
+			v19 = 0.6;
 		end;
-		v17.ImageTransparency = v18;
-		v17.BackgroundTransparency = 0;
-		v17.BackgroundColor3 = l__Theme__4.interactionPrimary;
-		v17.BorderColor3 = l__Theme__4.textPrimary;
-		v17.BorderSizePixel = 1;
-		v17.LayoutOrder = 1;
-		v16.UserAvatar = u1.createElement("ImageLabel", v17, { u1.createElement("UICorner", {
+		v18.ImageTransparency = v19;
+		v18.BackgroundTransparency = 0;
+		v18.BackgroundColor3 = l__Theme__4.interactionPrimary;
+		v18.BorderColor3 = l__Theme__4.textPrimary;
+		v18.BorderSizePixel = 1;
+		v18.LayoutOrder = 1;
+		v17.UserAvatar = u1.createElement("ImageLabel", v18, { u1.createElement("UICorner", {
 				CornerRadius = UDim.new(0, 5)
 			}) });
-		v16[3] = u1.createElement("TextLabel", {
+		v17[3] = u1.createElement("TextLabel", {
 			Text = "<b>@</b>", 
 			Size = UDim2.new(0, 0, 0, 14), 
 			AutomaticSize = Enum.AutomaticSize.X, 
@@ -112,22 +118,22 @@ return {
 			BackgroundTransparency = 1, 
 			LayoutOrder = 2
 		});
-		v15[1] = u1.createElement("UICorner", {
+		v16[1] = u1.createElement("UICorner", {
 			CornerRadius = UDim.new(0, 5)
 		});
-		v15[2] = u1.createElement("UIListLayout", {
+		v16[2] = u1.createElement("UIListLayout", {
 			FillDirection = Enum.FillDirection.Horizontal, 
 			HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 			VerticalAlignment = Enum.VerticalAlignment.Center, 
 			SortOrder = Enum.SortOrder.LayoutOrder, 
 			Padding = UDim.new(0, 0)
 		});
-		v15[3] = u1.createElement("Frame", {
+		v16[3] = u1.createElement("Frame", {
 			Size = UDim2.fromScale(0.2, 1), 
 			BackgroundTransparency = 1, 
 			LayoutOrder = 1
-		}, v16);
-		v15[4] = u1.createElement("Frame", {
+		}, v17);
+		v16[4] = u1.createElement("Frame", {
 			Size = UDim2.fromScale(0.8, 1), 
 			BackgroundTransparency = 1, 
 			LayoutOrder = 3
@@ -159,25 +165,25 @@ return {
 						v6("");
 						return nil;
 					end;
-					local v19 = u5(p13.Text);
-					if v19 then
-						u6(v19.username, p13);
-						local v20 = {};
-						for v21, v22 in pairs(v3) do
-							v20[v21] = v22;
+					local v20 = u5(p13.Text);
+					if v20 then
+						u6(v20.username, p13);
+						local v21 = {};
+						for v22, v23 in pairs(v3) do
+							v21[v22] = v23;
 						end;
-						v20.user = {
-							username = v19.username, 
-							userId = v19.userId
+						v21.user = {
+							username = v20.username, 
+							userId = v20.userId
 						};
-						v20.usernameFormatted = p13.Text .. string.sub(v19.username, #p13.Text + 1);
-						v4(v20);
-						local v23 = v3.user;
-						if v23 ~= nil then
-							v23 = v23.userId;
+						v21.usernameFormatted = p13.Text .. string.sub(v20.username, #p13.Text + 1);
+						v4(v21);
+						local v24 = v3.user;
+						if v24 ~= nil then
+							v24 = v24.userId;
 						end;
-						if v23 ~= v19.userId then
-							u7(v19.userId);
+						if v24 ~= v20.userId then
+							u7(v20.userId);
 						end;
 					else
 						v4({
@@ -195,12 +201,12 @@ return {
 						return;
 					end;
 					u8:getValue().Text = v3.user.username;
-					local v24 = {};
-					for v25, v26 in pairs(v3) do
-						v24[v25] = v26;
+					local v25 = {};
+					for v26, v27 in pairs(v3) do
+						v25[v26] = v27;
 					end;
-					v24.usernameFormatted = v3.user.username;
-					v4(v24);
+					v25.usernameFormatted = v3.user.username;
+					v4(v25);
 					v8(true);
 				end
 			}), u1.createElement("TextLabel", {
@@ -216,14 +222,14 @@ return {
 				TextColor3 = Color3.fromRGB(255, 255, 255), 
 				AutoLocalize = false
 			}) });
-		v14[1] = u1.createElement("UIListLayout", {
+		v15[1] = u1.createElement("UIListLayout", {
 			FillDirection = Enum.FillDirection.Vertical, 
 			HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 			VerticalAlignment = Enum.VerticalAlignment.Top, 
 			SortOrder = Enum.SortOrder.LayoutOrder, 
 			Padding = UDim.new(0, 12)
 		});
-		v14[2] = u1.createElement("TextLabel", {
+		v15[2] = u1.createElement("TextLabel", {
 			Text = "Recipient Username", 
 			Size = UDim2.new(1, 0, 0, 14), 
 			TextXAlignment = Enum.TextXAlignment.Left, 
@@ -235,17 +241,17 @@ return {
 			Font = Enum.Font.Roboto, 
 			BackgroundTransparency = 1
 		});
-		v14[3] = u1.createElement("Frame", {
+		v15[3] = u1.createElement("Frame", {
 			Size = UDim2.new(1, 0, 1, -26), 
 			BackgroundTransparency = 0, 
 			BorderSizePixel = 0, 
 			BackgroundColor3 = l__Theme__4.backgroundTertiary, 
 			LayoutOrder = 1
-		}, v15);
+		}, v16);
 		return u1.createElement("Frame", {
 			Size = p1.Size, 
 			BackgroundTransparency = 1, 
 			LayoutOrder = p1.LayoutOrder
-		}, v14);
+		}, v15);
 	end)
 };

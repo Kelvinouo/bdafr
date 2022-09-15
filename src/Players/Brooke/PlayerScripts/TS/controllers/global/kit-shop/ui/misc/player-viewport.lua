@@ -21,77 +21,90 @@ function v4.updateViewport(p2)
 	if l__Kit__6 ~= nil then
 		l__Kit__6:Destroy();
 	end;
-	local v7 = l__Players__2.LocalPlayer;
-	if v7 ~= nil then
-		v7 = v7.Character;
-	end;
-	if v7 ~= nil then
-		l__Players__2.LocalPlayer.Character:WaitForChild("HumanoidRootPart");
-		l__Players__2.LocalPlayer.Character.Archivable = true;
-		local v8 = l__Players__2.LocalPlayer.Character:Clone();
-		for v9, v10 in ipairs((l__CollectionService__3:GetTags(v8))) do
-			if v8 then
-				l__CollectionService__3:RemoveTag(v8, v10);
-			end;
-		end;
-	else
-		v8 = l__ReplicatedStorage__4.Assets.Effects.BeastActivated:Clone();
-	end;
-	if not v8 then
-		return nil;
-	end;
-	for v11, v12 in ipairs((v8:GetDescendants())) do
-		if v12:IsA("LocalScript") then
-			v12:Destroy();
-		end;
-	end;
-	local l__Animation__13 = p2.props.Animation;
-	if l__Animation__13 ~= "" and l__Animation__13 then
-		v8.AncestryChanged:Connect(function(p3, p4)
-			if p4 ~= nil and p4:IsDescendantOf(game) then
-				local v14 = v8;
-				if v14 ~= nil then
-					v14 = v14:FindFirstChild("Humanoid");
-					if v14 ~= nil then
-						v14 = v14:FindFirstChild("Animator");
-					end;
-				end;
-				local v15 = v14;
-				if not v15 then
-					local v16 = {};
-					local v17 = v8;
-					if v17 ~= nil then
-						v17 = v17:FindFirstChild("Humanoid");
-					end;
-					v16.Parent = v17;
-					v15 = u1("Animator", v16);
-				end;
-				local v18 = v15:LoadAnimation(u1("Animation", {
-					AnimationId = p2.props.Animation
-				}));
-				if p2.props.AnimationSpeed ~= nil then
-					v18:AdjustSpeed(p2.props.AnimationSpeed);
-				end;
-				v18.Looped = true;
-				v18:Play();
-			end;
-		end);
-	end;
-	v8.Name = "Kit";
-	v8.Parent = u1("WorldModel", {
+	local v7 = u1("WorldModel", {
 		Name = "Kit", 
 		Parent = v5
 	});
-	if v8.PrimaryPart then
-		v8:SetPrimaryPartCFrame(CFrame.new() * CFrame.Angles(0, math.rad(-20), 0));
+	local v8 = l__Players__2.LocalPlayer;
+	if v8 ~= nil then
+		v8 = v8.Character;
+	end;
+	if v8 ~= nil then
+		l__Players__2.LocalPlayer.Character:WaitForChild("HumanoidRootPart");
+		l__Players__2.LocalPlayer.Character.Archivable = true;
+		local v9 = l__Players__2.LocalPlayer.Character:Clone();
+		local v10, v11, v12 = ipairs((l__CollectionService__3:GetTags(v9)));
+		while true do
+			v10(v11, v12);
+			if not v10 then
+				break;
+			end;
+			v12 = v10;
+			if v9 then
+				l__CollectionService__3:RemoveTag(v9, v11);
+			end;		
+		end;
+	else
+		v9 = l__ReplicatedStorage__4.Assets.Effects.BeastActivated:Clone();
+	end;
+	if not v9 then
+		return nil;
+	end;
+	local v13, v14, v15 = ipairs((v9:GetDescendants()));
+	while true do
+		v13(v14, v15);
+		if not v13 then
+			break;
+		end;
+		v15 = v13;
+		if v14:IsA("LocalScript") then
+			v14:Destroy();
+		end;	
+	end;
+	local l__Animation__16 = p2.props.Animation;
+	if l__Animation__16 ~= "" and l__Animation__16 then
+		v9.AncestryChanged:Connect(function(p3, p4)
+			if p4 ~= nil and p4:IsDescendantOf(game) then
+				local v17 = v9;
+				if v17 ~= nil then
+					v17 = v17:FindFirstChild("Humanoid");
+					if v17 ~= nil then
+						v17 = v17:FindFirstChild("Animator");
+					end;
+				end;
+				local v18 = v17;
+				if not v18 then
+					local v19 = {};
+					local v20 = v9;
+					if v20 ~= nil then
+						v20 = v20:FindFirstChild("Humanoid");
+					end;
+					v19.Parent = v20;
+					v18 = u1("Animator", v19);
+				end;
+				local v21 = v18:LoadAnimation(u1("Animation", {
+					AnimationId = p2.props.Animation
+				}));
+				if p2.props.AnimationSpeed ~= nil then
+					v21:AdjustSpeed(p2.props.AnimationSpeed);
+				end;
+				v21.Looped = true;
+				v21:Play();
+			end;
+		end);
+	end;
+	v9.Name = "Kit";
+	v9.Parent = v7;
+	if v9.PrimaryPart then
+		v9:SetPrimaryPartCFrame(CFrame.new() * CFrame.Angles(0, -0.3490658503988659, 0));
 	else
 		print("No primary part found when mounting kit model. Are your assets out of date?");
 	end;
-	local v19, v20 = v8:GetBoundingBox();
-	local l__Position__21 = v19.Position;
-	p2.cameraRef:getValue().CFrame = CFrame.new(l__Position__21 + Vector3.new(0, 0.8 * 50, (-1 * math.max(v20.X, v20.Y, v20.Z) / 1.3 - 3) * 50), l__Position__21);
+	local v22, v23 = v9:GetBoundingBox();
+	local l__Position__24 = v22.Position;
+	p2.cameraRef:getValue().CFrame = CFrame.new(l__Position__24 + Vector3.new(0, 0.8 * 50, (-1 * math.max(v23.X, v23.Y, v23.Z) / 1.3 - 3) * 50), l__Position__24);
 	if p2.props.Rotate then
-		p2:rotateKit(v8);
+		p2:rotateKit(v9);
 	end;
 end;
 local l__TweenService__5 = v3.TweenService;
@@ -99,33 +112,33 @@ function v4.rotateKit(p5, p6)
 	if not p6.PrimaryPart then
 		return nil;
 	end;
-	local v22 = TweenInfo.new(3, Enum.EasingStyle.Linear);
-	local v23 = l__TweenService__5:Create(p6.PrimaryPart, v22, {
-		CFrame = p6.PrimaryPart.CFrame * CFrame.Angles(0, math.rad(120), 0)
+	local v25 = TweenInfo.new(3, Enum.EasingStyle.Linear);
+	local v26 = l__TweenService__5:Create(p6.PrimaryPart, v25, {
+		CFrame = p6.PrimaryPart.CFrame * CFrame.Angles(0, 2.0943951023931953, 0)
 	});
-	local v24 = l__TweenService__5:Create(p6.PrimaryPart, v22, {
-		CFrame = p6.PrimaryPart.CFrame * CFrame.Angles(0, math.rad(240), 0)
+	local v27 = l__TweenService__5:Create(p6.PrimaryPart, v25, {
+		CFrame = p6.PrimaryPart.CFrame * CFrame.Angles(0, 4.1887902047863905, 0)
 	});
-	local v25 = l__TweenService__5:Create(p6.PrimaryPart, v22, {
-		CFrame = p6.PrimaryPart.CFrame * CFrame.Angles(0, math.rad(360), 0)
+	local v28 = l__TweenService__5:Create(p6.PrimaryPart, v25, {
+		CFrame = p6.PrimaryPart.CFrame * CFrame.Angles(0, 6.283185307179586, 0)
 	});
-	v23:Play();
-	v23.Completed:Connect(function()
-		v24:Play();
+	v26:Play();
+	v26.Completed:Connect(function()
+		v27:Play();
 	end);
-	v24.Completed:Connect(function()
-		v25:Play();
+	v27.Completed:Connect(function()
+		v28:Play();
 	end);
-	v25.Completed:Connect(function()
-		v23:Play();
+	v28.Completed:Connect(function()
+		v26:Play();
 	end);
 end;
 function v4.didMount(p7)
-	local v26 = p7.viewportRef:getValue();
-	v26.Ambient = Color3.fromRGB(162, 162, 162);
-	v26.LightColor = Color3.fromRGB(255, 255, 255);
-	v26.LightDirection = Vector3.new(0, -1, 0);
-	v26.CurrentCamera = p7.cameraRef:getValue();
+	local v29 = p7.viewportRef:getValue();
+	v29.Ambient = Color3.fromRGB(162, 162, 162);
+	v29.LightColor = Color3.fromRGB(255, 255, 255);
+	v29.LightDirection = Vector3.new(0, -1, 0);
+	v29.CurrentCamera = p7.cameraRef:getValue();
 	task.spawn(function()
 		p7:updateViewport();
 	end);
@@ -138,55 +151,55 @@ function v4.didUpdate(p8, p9)
 	end;
 end;
 function v4.render(p10)
-	local v27 = {};
-	for v28, v29 in pairs(p10.props) do
-		v27[v28] = v29;
+	local v30 = {};
+	for v31, v32 in pairs(p10.props) do
+		v30[v31] = v32;
 	end;
-	v27[v2.Children] = nil;
-	v27.PreviewItemTypes = nil;
-	v27.PreviewAccesories = nil;
-	v27.Animation = nil;
-	v27.AnimationSpeed = nil;
-	v27.Rotate = nil;
-	local v30 = {
+	v30[v2.Children] = nil;
+	v30.PreviewItemTypes = nil;
+	v30.PreviewAccesories = nil;
+	v30.Animation = nil;
+	v30.AnimationSpeed = nil;
+	v30.Rotate = nil;
+	local v33 = {
 		Size = UDim2.fromScale(1, 1), 
 		BackgroundColor3 = Color3.fromRGB(0, 0, 0), 
 		BorderSizePixel = 0, 
 		BackgroundTransparency = 1
 	};
-	local v31 = p10.props.ImageTransparency;
-	if v31 == nil then
-		v31 = 0;
+	local v34 = p10.props.ImageTransparency;
+	if v34 == nil then
+		v34 = 0;
 	end;
-	v30.ImageTransparency = v31;
-	v30[v2.Ref] = p10.viewportRef;
-	for v32, v33 in pairs(v27) do
-		v30[v32] = v33;
+	v33.ImageTransparency = v34;
+	v33[v2.Ref] = p10.viewportRef;
+	for v35, v36 in pairs(v30) do
+		v33[v35] = v36;
 	end;
-	local v34 = { v2.createElement("Camera", {
+	local v37 = { v2.createElement("Camera", {
 			FieldOfView = 1, 
 			[v2.Ref] = p10.cameraRef
 		}) };
-	local v35 = #v34;
-	local v36 = p10.props[v2.Children];
-	if v36 then
-		local v37, v38, v39 = pairs(v36);
+	local v38 = #v37;
+	local v39 = p10.props[v2.Children];
+	if v39 then
+		local v40, v41, v42 = pairs(v39);
 		while true do
-			local v40 = nil;
-			local v41 = nil;
-			v41, v40 = v37(v38, v39);
-			if not v41 then
+			local v43 = nil;
+			local v44 = nil;
+			v44, v43 = v40(v41, v42);
+			if not v44 then
 				break;
 			end;
-			v39 = v41;
-			if type(v41) == "number" then
-				v34[v35 + v41] = v40;
+			v42 = v44;
+			if type(v44) == "number" then
+				v37[v38 + v44] = v43;
 			else
-				v34[v41] = v40;
+				v37[v44] = v43;
 			end;		
 		end;
 	end;
-	return v2.createElement("ViewportFrame", v30, v34);
+	return v2.createElement("ViewportFrame", v33, v37);
 end;
 return {
 	PlayerViewport = v4

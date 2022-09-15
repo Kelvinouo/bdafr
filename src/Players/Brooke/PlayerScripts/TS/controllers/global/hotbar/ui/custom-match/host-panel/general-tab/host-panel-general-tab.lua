@@ -229,6 +229,22 @@ return {
 					Value = l__HostPanelToggleValue__10.HOST_ONLY, 
 					Text = "Host Only"
 				}) }) });
+		v5[14] = u1.createElement(l__HostPanelSetting__4, {
+			Name = "Keep Inventory on Death", 
+			Size = u5
+		}, { u1.createElement(l__ToggleButtonGroup__6, {
+				Value = p1.store.CustomMatch.generalToggles[l__HostPanelGeneralToggle__7.KeepInventoryOnDeath], 
+				OnChange = function(p13)
+					l__KnitClient__8.Controllers.CustomMatchController:setToggle(l__HostPanelGeneralToggle__7.KeepInventoryOnDeath, p13);
+				end
+			}, { u1.createElement(l__ToggleButton__9, {
+					Value = l__HostPanelToggleValue__10.ON, 
+					Text = "On"
+				}), u1.createElement(l__ToggleButton__9, {
+					Value = l__HostPanelToggleValue__10.OFF, 
+					Text = "Off", 
+					ActiveColor = l__Theme__3.backgroundError
+				}) }) });
 		return u1.createElement(l__AutoCanvasScrollingFrame__2, {
 			AdditionalSpace = 40, 
 			ScrollingFrameProps = {

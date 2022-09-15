@@ -18,13 +18,19 @@ function v3.render(p2)
 		});
 	end;
 	local v6 = table.create(#v4);
-	for v7, v8 in ipairs(v4) do
+	local v7, v8, v9 = ipairs(v4);
+	while true do
+		v7(v8, v9);
+		if not v7 then
+			break;
+		end;
+		v9 = v7;
 		v6[v7] = v2.createElement(l__HotbarPartyMember__2, {
 			Member = v8, 
 			LayoutOrder = v7 - 1
-		});
+		});	
 	end;
-	local v9 = {
+	local v10 = {
 		AnchorPoint = p2.props.AnchorPoint, 
 		Position = p2.props.Position, 
 		Size = UDim2.fromScale(0.1, 0.1), 
@@ -33,7 +39,7 @@ function v3.render(p2)
 		BorderSizePixel = 1, 
 		LayoutOrder = p2.props.LayoutOrder
 	};
-	local v10 = { v2.createElement("UIGridLayout", {
+	local v11 = { v2.createElement("UIGridLayout", {
 			CellSize = UDim2.fromScale(0.45, 0.45), 
 			CellPadding = UDim2.fromScale(0.05, 0.05), 
 			FillDirection = "Horizontal", 
@@ -41,11 +47,17 @@ function v3.render(p2)
 			StartCorner = "BottomRight", 
 			VerticalAlignment = "Bottom"
 		}) };
-	local v11 = #v10;
-	for v12, v13 in ipairs(v6) do
-		v10[v11 + v12] = v13;
+	local v12 = #v11;
+	local v13, v14, v15 = ipairs(v6);
+	while true do
+		v13(v14, v15);
+		if not v13 then
+			break;
+		end;
+		v15 = v13;
+		v11[v12 + v13] = v14;	
 	end;
-	return v2.createElement("Frame", v9, v10);
+	return v2.createElement("Frame", v10, v11);
 end;
 return {
 	HotbarPartyMemberList = v3

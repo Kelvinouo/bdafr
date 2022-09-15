@@ -1,4 +1,3 @@
--- Script Hash: d37a1208d37cf878126bd1d255f9b10e3c339d32fb2293acbd0b3f8a853fea40f7a5f1ccb3ae39f552e56d45b3f3b4f1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = Vector2.new();
@@ -21,10 +20,9 @@ function v4.SetCameraToSubjectDistance(p2, p3)
 end;
 local l__Players__1 = game:GetService("Players");
 local u2 = require(script.Parent:WaitForChild("CameraInput"));
-local u3 = math.rad(80);
 function v4.Update(p4, p5)
 	if not p4.cameraType then
-		return;
+		return nil, nil;
 	end;
 	local v6 = tick();
 	local l__CurrentCamera__7 = workspace.CurrentCamera;
@@ -44,7 +42,7 @@ function v4.Update(p4, p5)
 		local v12 = p4:GetSubjectCFrame();
 		local v13 = l__CurrentCamera__7.CFrame:ToEulerAnglesYXZ();
 		local v14, v15 = v12:ToEulerAnglesYXZ();
-		v9 = CFrame.new(v12.p) * CFrame.fromEulerAnglesYXZ(math.clamp(v13 - u2.getRotation().Y, -u3, u3), v15, 0);
+		v9 = CFrame.new(v12.p) * CFrame.fromEulerAnglesYXZ(math.clamp(v13 - u2.getRotation().Y, -1.3962634015954636, 1.3962634015954636), v15, 0);
 		v8 = v9 * CFrame.new(0, 0, p4:StepZoom());
 	else
 		if p4.cameraType ~= Enum.CameraType.Watch then

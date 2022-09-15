@@ -174,20 +174,32 @@ return {
 			});
 		end;
 		local v22 = table.create(#l__users__8);
-		for v23, v24 in ipairs(l__users__8) do
-			v22[v23] = v9(v24, v23 - 1, l__users__8);
+		local v23, v24, v25 = ipairs(l__users__8);
+		while true do
+			v23(v24, v25);
+			if not v23 then
+				break;
+			end;
+			v25 = v23;
+			v22[v23] = v9(v24, v23 - 1, l__users__8);		
 		end;
-		local v25 = { u1.createElement("UIListLayout", {
+		local v26 = { u1.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Vertical, 
 				VerticalAlignment = Enum.VerticalAlignment.Top, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0, 10)
 			}) };
-		local v26 = #v25;
-		for v27, v28 in ipairs(v22) do
-			v25[v26 + v27] = v28;
+		local v27 = #v26;
+		local v28, v29, v30 = ipairs(v22);
+		while true do
+			v28(v29, v30);
+			if not v28 then
+				break;
+			end;
+			v30 = v28;
+			v26[v27 + v28] = v29;		
 		end;
-		return u1.createElement(l__AutoCanvasScrollingFrame__8, v4, v25);
+		return u1.createElement(l__AutoCanvasScrollingFrame__8, v4, v26);
 	end)
 };

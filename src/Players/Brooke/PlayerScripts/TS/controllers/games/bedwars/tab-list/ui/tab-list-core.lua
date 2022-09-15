@@ -16,45 +16,63 @@ return {
 		local v4 = #v3;
 		local v5 = u4.values(p1.store.Bedwars.kills);
 		local v6 = table.create(#v5);
-		for v7, v8 in ipairs(v5) do
-			v6[v7] = v8;
+		local v7, v8, v9 = ipairs(v5);
+		while true do
+			v7(v8, v9);
+			if not v7 then
+				break;
+			end;
+			v9 = v7;
+			v6[v7] = v8;		
 		end;
-		local v9 = #v6;
-		table.move(v6, 1, v9, v4 + 1, v3);
-		local v10 = v4 + v9;
-		local v11 = u4.values(p1.store.Bedwars.finalDeaths);
-		local v12 = table.create(#v11);
-		for v13, v14 in ipairs(v11) do
-			v12[v13] = v14;
+		local v10 = #v6;
+		table.move(v6, 1, v10, v4 + 1, v3);
+		local v11 = v4 + v10;
+		local v12 = u4.values(p1.store.Bedwars.finalDeaths);
+		local v13 = table.create(#v12);
+		local v14, v15, v16 = ipairs(v12);
+		while true do
+			v14(v15, v16);
+			if not v14 then
+				break;
+			end;
+			v16 = v14;
+			v13[v14] = v15;		
 		end;
-		local v15 = #v12;
-		table.move(v12, 1, v15, v10 + 1, v3);
-		local v16 = v10 + v15;
-		local v17 = u4.values(p1.store.Bedwars.teamBedAlive);
-		local v18 = table.create(#v17);
-		for v19, v20 in ipairs(v17) do
-			v18[v19] = v20;
+		local v17 = #v13;
+		table.move(v13, 1, v17, v11 + 1, v3);
+		local v18 = v11 + v17;
+		local v19 = u4.values(p1.store.Bedwars.teamBedAlive);
+		local v20 = table.create(#v19);
+		local v21, v22, v23 = ipairs(v19);
+		while true do
+			v21(v22, v23);
+			if not v21 then
+				break;
+			end;
+			v23 = v21;
+			v20[v21] = v22;		
 		end;
-		local v21 = #v18;
-		table.move(v18, 1, v21, v16 + 1, v3);
-		local v22 = v16 + v21;
-		v3[v22 + 1] = p1.store.Game.earlyLeaves;
-		v3[v22 + 2] = p1.store.Game.matchState;
-		v3[v22 + 3] = p1.store.Bedwars.kits;
-		local v23 = {};
-		local v24 = {
+		local v24 = #v20;
+		table.move(v20, 1, v24, v18 + 1, v3);
+		local v25 = v18 + v24;
+		v3[v25 + 1] = p1.store.Game.earlyLeaves;
+		v3[v25 + 2] = p1.store.Game.matchState;
+		v3[v25 + 3] = p1.store.Bedwars.kits;
+		local v26 = {};
+		local v27 = {
 			Size = UDim2.fromScale(l__tabListLayout__5.heightScale, l__tabListLayout__5.widthScale), 
 			AnchorPoint = Vector2.new(0.5, 0)
 		};
 		if l__DeviceUtil__6.isHoarceKat() then
-			local v25 = UDim2.new(l__tabListLayout__5.openedPositionX, 0, l__tabListLayout__5.openedPositionY, 0);
+			local v28 = UDim2.new(l__tabListLayout__5.openedPositionX, 0, l__tabListLayout__5.openedPositionY, 0);
 		else
-			v25 = UDim2.new(l__tabListLayout__5.closedPositionX, 0, l__tabListLayout__5.closedPositionX, 0);
+			v28 = UDim2.new(l__tabListLayout__5.closedPositionX, 0, l__tabListLayout__5.closedPositionX, 0);
 		end;
-		v24.Position = v25;
-		v24.BorderSizePixel = 0;
-		v24.BackgroundTransparency = 1;
-		v23.TabListFrame = u2.createElement("Frame", v24, { u2.createElement("UISizeConstraint", {
+		v27.Position = v28;
+		v27.BorderSizePixel = 0;
+		v27.BackgroundTransparency = 1;
+		v26.TabListFrame = u2.createElement("Frame", v27, { u2.createElement("UISizeConstraint", {
 				MaxSize = Vector2.new(960, 540), 
 				MinSize = Vector2.new(16, 9)
 			}), u2.createElement("UIListLayout", {
@@ -69,6 +87,6 @@ return {
 					CardDimensions = u8
 				});
 			end, v3)) });
-		return u2.createFragment(v23);
+		return u2.createFragment(v26);
 	end)
 };

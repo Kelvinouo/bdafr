@@ -1,4 +1,3 @@
--- Script Hash: 62528fb779609c2035759c2d0e8f6cd47172f53102c1a710eadacf958ae72d4bd6cc8284808f5f50d8dd04681e617b66
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -29,7 +28,13 @@ function v4.onKill(p3, p4, p5, p6)
 	print("statue character:", p5);
 	p5.Archivable = true;
 	local v6 = p5:Clone();
-	for v7, v8 in ipairs(v6:GetDescendants()) do
+	local v7, v8, v9 = ipairs(v6:GetDescendants());
+	while true do
+		v7(v8, v9);
+		if not v7 then
+			break;
+		end;
+		v9 = v7;
 		if v8:IsA("BasePart") then
 			v8.Material = Enum.Material.Glass;
 			v8.Color = Color3.fromRGB(255, 215, 0);
@@ -40,7 +45,7 @@ function v4.onKill(p3, p4, p5, p6)
 			v8:Destroy();
 		elseif v8:IsA("Shirt") then
 			v8:Destroy();
-		end;
+		end;	
 	end;
 	v6.Parent = l__Workspace__1;
 	l__KillEffect__3.hideCharacter(p3, p5);

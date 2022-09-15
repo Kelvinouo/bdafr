@@ -36,11 +36,17 @@ function v4.render(p2)
 		if v7 < #p2.props.Inventory.observedInventory.inventory.items then
 			local u13 = p2.props.Inventory.observedInventory.inventory.items[v7 + 1];
 			local v9 = nil;
-			for v10, v11 in ipairs(p2.props.Inventory.observedInventory.hotbar) do
+			local v10, v11, v12 = ipairs(p2.props.Inventory.observedInventory.hotbar);
+			while true do
+				v10(v11, v12);
+				if not v10 then
+					break;
+				end;
+				v12 = v10;
 				if v11.item == u13 == true then
 					v9 = v11;
 					break;
-				end;
+				end;			
 			end;
 			if v9 then
 				u13 = nil;
@@ -53,93 +59,93 @@ function v4.render(p2)
 	table.sort(v6, function(p3, p4)
 		return p3.addedToBackpackTime < p4.addedToBackpackTime;
 	end);
-	local v12 = 0;
-	local v13 = false;
+	local v13 = 0;
+	local v14 = false;
 	while true do
-		if v13 then
-			v12 = v12 + 1;
+		if v14 then
+			v13 = v13 + 1;
 		else
-			v13 = true;
+			v14 = true;
 		end;
-		if not (v12 < 24) then
+		if not (v13 < 24) then
 			break;
 		end;
-		local v14 = nil;
-		if v12 < #v6 then
-			v14 = v6[v12 + 1];
+		local v15 = nil;
+		if v13 < #v6 then
+			v15 = v6[v13 + 1];
 		end;
-		local v15 = {};
-		local v16 = {
-			InvItem = v14, 
-			AutoSelect = v12 == 0, 
-			LayoutOrder = v12
+		local v16 = {};
+		local v17 = {
+			InvItem = v15, 
+			AutoSelect = v13 == 0, 
+			LayoutOrder = v13
 		};
-		v16.OnClick = v1.async(function()
-			if v14 and v14.tool then
-				local v17 = l__Players__3.LocalPlayer.Character;
-				if v17 ~= nil then
-					v17 = v17:FindFirstChild("ObservedChestFolder");
+		v17.OnClick = v1.async(function()
+			if v15 and v15.tool then
+				local v18 = l__Players__3.LocalPlayer.Character;
+				if v18 ~= nil then
+					v18 = v18:FindFirstChild("ObservedChestFolder");
 				end;
-				local v18 = v1.await(v17);
-				local v19 = v18;
-				if v19 ~= nil then
-					v19 = v19.Value;
+				local v19 = v1.await(v18);
+				local v20 = v19;
+				if v20 ~= nil then
+					v20 = v20.Value;
 				end;
-				if v19 then
-					return v1.await(l__default__4.Client:GetNamespace("Inventory"):Get("ChestGiveItem"):CallServer(v18.Value, v14.tool));
+				if v20 then
+					return v1.await(l__default__4.Client:GetNamespace("Inventory"):Get("ChestGiveItem"):CallServer(v19.Value, v15.tool));
 				end;
 			end;
 		end);
-		function v16.SendToHotbarSlot(p5)
-			if v14 then
+		function v17.SendToHotbarSlot(p5)
+			if v15 then
 				l__ClientStore__5:dispatch({
 					type = "InventoryAddToHotbar", 
 					slot = p5, 
-					item = v14
+					item = v15
 				});
 			end;
 		end;
-		v16.TileBorderColor = l__ColorUtil__6.hexColor(5331056);
-		v16.ItemClickLoadingProgress = true;
-		v15[1] = v3.createElement("UIPadding", {
+		v17.TileBorderColor = l__ColorUtil__6.hexColor(5331056);
+		v17.ItemClickLoadingProgress = true;
+		v16[1] = v3.createElement("UIPadding", {
 			PaddingTop = UDim.new(0.025), 
 			PaddingBottom = UDim.new(0.025), 
 			PaddingLeft = UDim.new(0.025), 
 			PaddingRight = UDim.new(0.025)
 		});
-		v15[2] = v3.createElement(l__InventoryTile__2, v16);
+		v16[2] = v3.createElement(l__InventoryTile__2, v17);
 		table.insert(v5, (v3.createElement(l__Empty__1, {
 			Size = UDim2.fromScale(1, 1), 
-			LayoutOrder = v12
-		}, v15)));	
+			LayoutOrder = v13
+		}, v16)));	
 	end;
-	local v20 = { v3.createElement(l__DarkBackground__7, {
+	local v21 = { v3.createElement(l__DarkBackground__7, {
 			Transparent = false, 
 			AppId = p2.props.AppId
 		}) };
-	local v21 = {};
 	local v22 = {};
+	local v23 = {};
 	if l__DeviceUtil__8.isSmallScreen() then
-		local v23 = 0.45;
+		local v24 = 0.45;
 	else
-		v23 = 0.5;
+		v24 = 0.5;
 	end;
 	if l__DeviceUtil__8.isSmallScreen() then
-		local v24 = 0.5;
+		local v25 = 0.5;
 	else
-		v24 = 0.4;
+		v25 = 0.4;
 	end;
-	v22.Size = UDim2.fromScale(v23, v24);
+	v23.Size = UDim2.fromScale(v24, v25);
 	if l__DeviceUtil__8.isSmallScreen() then
-		local v25 = 0.68;
+		local v26 = 0.68;
 	else
-		v25 = 0.72;
+		v26 = 0.72;
 	end;
-	v22.Position = UDim2.fromScale(0.5, v25);
-	v22.AnchorPoint = Vector2.new(0.5, 1);
-	v22.BorderSizePixel = 0;
-	v22.BackgroundTransparency = 1;
-	local v26 = { v3.createElement("UIAspectRatioConstraint", {
+	v23.Position = UDim2.fromScale(0.5, v26);
+	v23.AnchorPoint = Vector2.new(0.5, 1);
+	v23.BorderSizePixel = 0;
+	v23.BackgroundTransparency = 1;
+	local v27 = { v3.createElement("UIAspectRatioConstraint", {
 			AspectRatio = 1.5
 		}), v3.createElement("UIListLayout", {
 			FillDirection = "Horizontal", 
@@ -150,27 +156,27 @@ function v4.render(p2)
 		}), v3.createElement(l__Empty__1, {
 			Size = UDim2.fromScale(0.08, 0)
 		}) };
-	local v27 = {
+	local v28 = {
 		Size = UDim2.fromScale(1, 1)
 	};
-	local v28 = { v3.createElement("UIListLayout", {
+	local v29 = { v3.createElement("UIListLayout", {
 			FillDirection = "Vertical"
 		}), v3.createElement(l__InventoryHeader__10, {
 			Title = "Inventory"
 		}), v3.createElement(l__Empty__1, {
 			Size = UDim2.fromScale(0, 0.01)
 		}) };
-	local v29 = {
+	local v30 = {
 		Size = UDim2.fromScale(1, 1)
 	};
-	local v30 = {};
-	local v31 = {
+	local v31 = {};
+	local v32 = {
 		Size = UDim2.fromScale(1, 1), 
 		BackgroundTransparency = 0, 
 		BackgroundColor3 = l__ColorUtil__6.hexColor(1713718), 
 		BorderSizePixel = 0
 	};
-	local v32 = { v3.createElement("UICorner", {
+	local v33 = { v3.createElement("UICorner", {
 			CornerRadius = UDim.new(0, 6)
 		}), v3.createElement("UIPadding", {
 			PaddingLeft = UDim.new(0.02, 0), 
@@ -185,18 +191,24 @@ function v4.render(p2)
 			CellPadding = UDim2.fromScale(0.02, 0.02), 
 			SortOrder = "LayoutOrder"
 		}) };
-	local v33 = #v32;
-	for v34, v35 in ipairs(v5) do
-		v32[v33 + v34] = v35;
+	local v34 = #v33;
+	local v35, v36, v37 = ipairs(v5);
+	while true do
+		v35(v36, v37);
+		if not v35 then
+			break;
+		end;
+		v37 = v35;
+		v33[v34 + v35] = v36;	
 	end;
-	v30[#v30 + 1] = v3.createElement("Frame", v31, v32);
-	v28[#v28 + 1] = v3.createElement(l__EmptyButton__11, v29, v30);
-	v26[#v26 + 1] = v3.createElement(l__Empty__1, v27, v28);
-	v21[#v21 + 1] = v3.createElement("Frame", v22, v26);
-	v20[#v20 + 1] = v3.createElement(l__SlideIn__12, {}, v21);
+	v31[#v31 + 1] = v3.createElement("Frame", v32, v33);
+	v29[#v29 + 1] = v3.createElement(l__EmptyButton__11, v30, v31);
+	v27[#v27 + 1] = v3.createElement(l__Empty__1, v28, v29);
+	v22[#v22 + 1] = v3.createElement("Frame", v23, v27);
+	v21[#v21 + 1] = v3.createElement(l__SlideIn__12, {}, v22);
 	return v3.createElement("ScreenGui", {
 		DisplayOrder = 1
-	}, v20);
+	}, v21);
 end;
 function v4.willUnmount(p6)
 	task.spawn(function()
@@ -205,12 +217,12 @@ function v4.willUnmount(p6)
 end;
 return {
 	ChestInventoryApp = v1.import(script, v1.getModule(script, "@rbxts", "roact-rodux").src).connect(function(p7, p8)
-		local v36 = {
+		local v38 = {
 			Inventory = p7.Inventory
 		};
-		for v37, v38 in pairs(p8) do
-			v36[v37] = v38;
+		for v39, v40 in pairs(p8) do
+			v38[v39] = v40;
 		end;
-		return v36;
+		return v38;
 	end)(v4)
 };

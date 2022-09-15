@@ -33,12 +33,18 @@ function v3.render(p2)
 			u8 = u8 + p3.amount;
 		end;
 	end;
-	for v6, v7 in ipairs(l__items__4) do
-		v5(v7, v6 - 1, l__items__4);
+	local v6, v7, v8 = ipairs(l__items__4);
+	while true do
+		v6(v7, v8);
+		if not v6 then
+			break;
+		end;
+		v8 = v6;
+		v5(v7, v6 - 1, l__items__4);	
 	end;
-	local v8 = "    <font color=\"#FF55FF\">" .. tostring(u8) .. " Void Crystal</font>";
+	local v9 = "    <font color=\"#FF55FF\">" .. tostring(u8) .. " Void Crystal</font>";
 	if not l__VoidWorldUtil__3.VOID_ENABLED then
-		v8 = "";
+		v9 = "";
 	end;
 	return v2.createElement("Frame", {
 		Size = p2.props.Size, 
@@ -57,7 +63,7 @@ function v3.render(p2)
 			TextXAlignment = "Left", 
 			TextColor3 = Color3.fromRGB(255, 255, 255)
 		}), v2.createElement("TextLabel", {
-			Text = "<b>" .. tostring(u5) .. " Iron    <font color=\"#55FFFF\">" .. tostring(u6) .. " Diamond</font>    <font color=\"#55FF99\">" .. tostring(u7) .. " Emerald</font>" .. v8 .. "</b>", 
+			Text = "<b>" .. tostring(u5) .. " Iron    <font color=\"#55FFFF\">" .. tostring(u6) .. " Diamond</font>    <font color=\"#55FF99\">" .. tostring(u7) .. " Emerald</font>" .. v9 .. "</b>", 
 			Size = UDim2.fromScale(0.97, 0.4), 
 			Position = UDim2.fromScale(0.95, 0.5), 
 			AnchorPoint = Vector2.new(1, 0.5), 

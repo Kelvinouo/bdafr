@@ -22,23 +22,23 @@ local u8 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).
 	local v6 = nil;
 	local v7, v8, v9 = ipairs(p1.store.Game.teams);
 	while true do
-		local v10, v11 = v7(v8, v9);
-		if not v10 then
+		v7(v8, v9);
+		if not v7 then
 			break;
 		end;
-		local v12 = v5;
-		if v12 ~= nil then
-			v12 = v12.Team;
-			if v12 ~= nil then
-				v12 = v12.Name;
+		local v10 = v5;
+		if v10 ~= nil then
+			v10 = v10.Team;
+			if v10 ~= nil then
+				v10 = v10.Name;
 			end;
 		end;
-		if v11.id == v12 == true then
-			v6 = v11;
+		if v8.id == v10 == true then
+			v6 = v8;
 			break;
 		end;	
 	end;
-	local v13 = {
+	local v11 = {
 		Size = UDim2.fromScale(0.13, 0.13), 
 		Position = UDim2.fromScale(0.02, 0.7), 
 		ImageTransparency = 1, 
@@ -50,70 +50,70 @@ local u8 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).
 			l__KnitClient__5.Controllers.SpectateController:switchSpectateTargets("next");
 		end
 	};
-	local v14 = { u4.createElement("UIAspectRatioConstraint", {
+	local v12 = { u4.createElement("UIAspectRatioConstraint", {
 			AspectRatio = 3.1192660550458715
 		}), u4.createElement("UIListLayout", {
 			FillDirection = "Horizontal", 
 			HorizontalAlignment = "Left"
 		}) };
-	local v15 = #v14;
-	local v16 = {};
-	local v17 = false;
+	local v13 = #v12;
+	local v14 = {};
+	local v15 = false;
 	if p1.store.Game.spectatingPlayer ~= nil then
-		v17 = u4.createElement(l__PlayerRender__6, {
+		v15 = u4.createElement(l__PlayerRender__6, {
 			Size = UDim2.fromScale(1, 1), 
 			Player = p1.store.Game.spectatingPlayer, 
 			BackgroundTransparency = 1, 
 			BorderSizePixel = 0
 		});
 	end;
-	if v17 then
-		v16[#v16 + 1] = v17;
+	if v15 then
+		v14[#v14 + 1] = v15;
 	end;
-	v14[v15 + 1] = u4.createElement(l__Empty__7, {
+	v12[v13 + 1] = u4.createElement(l__Empty__7, {
 		Size = UDim2.fromScale(1, 1), 
 		SizeConstraint = "RelativeYY"
-	}, v16);
-	local v18 = {
+	}, v14);
+	local v16 = {
 		Size = UDim2.fromScale(2.1192660550458715, 1), 
 		SizeConstraint = "RelativeYY"
 	};
+	local v17 = {};
+	local v18 = #v17;
 	local v19 = {};
-	local v20 = #v19;
-	local v21 = {};
-	local v22 = v5;
+	local v20 = v5;
+	if v20 ~= nil then
+		v20 = v20.DisplayName;
+	end;
+	local v21 = v20;
+	if v21 == nil then
+		v21 = "Unknown";
+	end;
+	v19.Text = v21;
+	v19.Size = UDim2.fromScale(1, 0.6);
+	v19.Position = UDim2.fromScale(0, 0);
+	v19.BackgroundTransparency = 1;
+	v19.BorderSizePixel = 0;
+	v19.Font = "LuckiestGuy";
+	v19.TextScaled = true;
+	v19.RichText = true;
+	v19.TextXAlignment = "Left";
+	local v22 = v6;
 	if v22 ~= nil then
-		v22 = v22.DisplayName;
+		v22 = v22.color;
 	end;
 	local v23 = v22;
 	if v23 == nil then
-		v23 = "Unknown";
+		v23 = Color3.fromRGB(255, 255, 255);
 	end;
-	v21.Text = v23;
-	v21.Size = UDim2.fromScale(1, 0.6);
-	v21.Position = UDim2.fromScale(0, 0);
-	v21.BackgroundTransparency = 1;
-	v21.BorderSizePixel = 0;
-	v21.Font = "LuckiestGuy";
-	v21.TextScaled = true;
-	v21.RichText = true;
-	v21.TextXAlignment = "Left";
-	local v24 = v6;
-	if v24 ~= nil then
-		v24 = v24.color;
-	end;
-	local v25 = v24;
-	if v25 == nil then
-		v25 = Color3.fromRGB(255, 255, 255);
-	end;
-	v21.TextColor3 = v25;
-	v21.AutoLocalize = false;
-	v19[v20 + 1] = u4.createElement("TextLabel", v21, { u4.createElement("UIPadding", {
+	v19.TextColor3 = v23;
+	v19.AutoLocalize = false;
+	v17[v18 + 1] = u4.createElement("TextLabel", v19, { u4.createElement("UIPadding", {
 			PaddingLeft = UDim.new(0.1, 0), 
 			PaddingTop = UDim.new(0.2), 
 			PaddingBottom = UDim.new(0.1)
 		}) });
-	v19[v20 + 2] = u4.createElement(l__Empty__7, {
+	v17[v18 + 2] = u4.createElement(l__Empty__7, {
 		Size = UDim2.fromScale(1, 0.4), 
 		Position = UDim2.fromScale(0, 1), 
 		AnchorPoint = Vector2.new(0, 1)
@@ -146,8 +146,8 @@ local u8 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).
 				PaddingTop = UDim.new(0.22), 
 				PaddingBottom = UDim.new(0.22)
 			}) }) });
-	v14[v15 + 2] = u4.createElement(l__Empty__7, v18, v19);
-	return u4.createElement("ImageButton", v13, v14);
+	v12[v13 + 2] = u4.createElement(l__Empty__7, v16, v17);
+	return u4.createElement("ImageButton", v11, v12);
 end);
 return {
 	SpectateSelectorWrapper = function(p3)

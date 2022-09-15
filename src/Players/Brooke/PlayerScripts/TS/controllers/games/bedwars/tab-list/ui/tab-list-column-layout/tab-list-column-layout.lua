@@ -44,13 +44,13 @@ return {
 			local v8 = 0;
 			local v9, v10, v11 = ipairs((u2.values(p5)));
 			while true do
-				local v12, v13 = v9(v10, v11);
-				if not v12 then
+				v9(v10, v11);
+				if not v9 then
 					break;
 				end;
-				if v13.totalRows < u7 then
-					u7 = v13.totalRows;
-					u8 = v13;
+				if v10.totalRows < u7 then
+					u7 = v10.totalRows;
+					u8 = v10;
 				end;
 				if nil ~= nil then
 					v8 = v8 + 1;
@@ -60,39 +60,51 @@ return {
 			return u8.columnId;
 		end;
 		local function u9()
-			local v14 = u5();
-			local function v15(p6)
-				local v16 = u6(u4);
-				table.insert(u4[v16].children, p6[2].props.Team.id);
-				local v17 = 0;
-				for v18 in pairs(p6[2].props.Team.members) do
-					v17 = v17 + 1;
+			local v12 = u5();
+			local function v13(p6)
+				local v14 = u6(u4);
+				table.insert(u4[v14].children, p6[2].props.Team.id);
+				local v15 = 0;
+				for v16 in pairs(p6[2].props.Team.members) do
+					v15 = v15 + 1;
 				end;
-				local v19 = v17;
-				if v19 == nil then
-					v19 = 0;
+				local v17 = v15;
+				if v17 == nil then
+					v17 = 0;
 				end;
-				local v20 = u4[v16];
-				v20.totalRows = v20.totalRows + v19;
+				local v18 = u4[v14];
+				v18.totalRows = v18.totalRows + v17;
 				return 0;
 			end;
-			local v21 = table.create(#v14);
-			for v22, v23 in ipairs(v14) do
-				v21[v22] = v15(v23, v22 - 1, v14);
+			local v19 = table.create(#v12);
+			local v20, v21, v22 = ipairs(v12);
+			while true do
+				v20(v21, v22);
+				if not v20 then
+					break;
+				end;
+				v22 = v20;
+				v19[v20] = v13(v21, v20 - 1, v12);			
 			end;
 			return u4;
 		end;
 		local function u10(p7)
-			local v24 = u2.values(p7);
-			local v25 = table.create(#v24);
-			for v26, v27 in ipairs(v24) do
-				v25[v26] = u1.createElement(l__TabListColumn__3, {
+			local v23 = u2.values(p7);
+			local v24 = table.create(#v23);
+			local v25, v26, v27 = ipairs(v23);
+			while true do
+				v25(v26, v27);
+				if not v25 then
+					break;
+				end;
+				v27 = v25;
+				v24[v25] = u1.createElement(l__TabListColumn__3, {
 					Columns = p1.Columns, 
-					ColumnData = v27, 
+					ColumnData = v26, 
 					AllElements = p1[u1.Children]
-				});
+				});			
 			end;
-			return v25;
+			return v24;
 		end;
 		local u11 = l__useMemo__2(function()
 			return u9();
@@ -101,50 +113,74 @@ return {
 		local v29 = #v28;
 		local v30 = u2.values(p1.store.Bedwars.kills);
 		local v31 = table.create(#v30);
-		for v32, v33 in ipairs(v30) do
-			v31[v32] = v33;
+		local v32, v33, v34 = ipairs(v30);
+		while true do
+			v32(v33, v34);
+			if not v32 then
+				break;
+			end;
+			v34 = v32;
+			v31[v32] = v33;		
 		end;
-		local v34 = #v31;
-		table.move(v31, 1, v34, v29 + 1, v28);
-		local v35 = v29 + v34;
-		local v36 = u2.values(p1.store.Bedwars.finalDeaths);
-		local v37 = table.create(#v36);
-		for v38, v39 in ipairs(v36) do
-			v37[v38] = v39;
+		local v35 = #v31;
+		table.move(v31, 1, v35, v29 + 1, v28);
+		local v36 = v29 + v35;
+		local v37 = u2.values(p1.store.Bedwars.finalDeaths);
+		local v38 = table.create(#v37);
+		local v39, v40, v41 = ipairs(v37);
+		while true do
+			v39(v40, v41);
+			if not v39 then
+				break;
+			end;
+			v41 = v39;
+			v38[v39] = v40;		
 		end;
-		local v40 = #v37;
-		table.move(v37, 1, v40, v35 + 1, v28);
-		local v41 = v35 + v40;
-		local v42 = u2.values(p1.store.Bedwars.teamBedAlive);
-		local v43 = table.create(#v42);
-		for v44, v45 in ipairs(v42) do
-			v43[v44] = v45;
+		local v42 = #v38;
+		table.move(v38, 1, v42, v36 + 1, v28);
+		local v43 = v36 + v42;
+		local v44 = u2.values(p1.store.Bedwars.teamBedAlive);
+		local v45 = table.create(#v44);
+		local v46, v47, v48 = ipairs(v44);
+		while true do
+			v46(v47, v48);
+			if not v46 then
+				break;
+			end;
+			v48 = v46;
+			v45[v46] = v47;		
 		end;
-		local v46 = #v43;
-		table.move(v43, 1, v46, v41 + 1, v28);
-		local v47 = v41 + v46;
-		v28[v47 + 1] = p1.store.Game.earlyLeaves;
-		v28[v47 + 2] = p1.store.Game.matchState;
-		v28[v47 + 3] = p1.store.Bedwars.kits;
-		v28[v47 + 4] = u11;
-		local v48 = l__useMemo__2(function()
+		local v49 = #v45;
+		table.move(v45, 1, v49, v43 + 1, v28);
+		local v50 = v43 + v49;
+		v28[v50 + 1] = p1.store.Game.earlyLeaves;
+		v28[v50 + 2] = p1.store.Game.matchState;
+		v28[v50 + 3] = p1.store.Bedwars.kits;
+		v28[v50 + 4] = u11;
+		local v51 = l__useMemo__2(function()
 			return u10(u11);
 		end, v28);
-		local v49 = { u1.createElement("UIListLayout", {
+		local v52 = { u1.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
 				VerticalAlignment = Enum.VerticalAlignment.Top, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0, 0)
 			}) };
-		local v50 = #v49;
-		for v51, v52 in ipairs(v48) do
-			v49[v50 + v51] = v52;
+		local v53 = #v52;
+		local v54, v55, v56 = ipairs(v51);
+		while true do
+			v54(v55, v56);
+			if not v54 then
+				break;
+			end;
+			v56 = v54;
+			v52[v53 + v54] = v55;		
 		end;
 		return u1.createElement("Frame", {
 			Size = p1.Size, 
 			BorderSizePixel = 0, 
 			BackgroundTransparency = 1
-		}, v49);
+		}, v52);
 	end)
 };

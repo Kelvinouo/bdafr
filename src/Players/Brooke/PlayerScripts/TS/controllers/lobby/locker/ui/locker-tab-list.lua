@@ -1,4 +1,3 @@
--- Script Hash: 3b807fa205dc782f9f9920b7e8fa1fa3326ad4d45f975513b4fc3a9ec9121c301b9b4d76c174359483620baf153ada6e
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -24,14 +23,20 @@ return {
 			return u3.createElement(l__ButtonComponent__4, v5);
 		end;
 		local v6 = table.create(#v2);
-		for v7, v8 in ipairs(v2) do
-			v6[v7] = v3(v8, v7 - 1, v2);
+		local v7, v8, v9 = ipairs(v2);
+		while true do
+			v7(v8, v9);
+			if not v7 then
+				break;
+			end;
+			v9 = v7;
+			v6[v7] = v3(v8, v7 - 1, v2);		
 		end;
-		local v9 = {
+		local v10 = {
 			Size = UDim2.fromScale(1, 0.08), 
 			BackgroundTransparency = 1
 		};
-		local v10 = { u3.createElement("UISizeConstraint", {
+		local v11 = { u3.createElement("UISizeConstraint", {
 				MinSize = Vector2.new(0, p1.MinSize), 
 				MaxSize = Vector2.new(math.huge, p1.MaxSize)
 			}), u3.createElement("UIListLayout", {
@@ -40,12 +45,18 @@ return {
 				VerticalAlignment = Enum.VerticalAlignment.Top, 
 				Padding = UDim.new(0, 10)
 			}) };
-		local v11 = #v10;
-		for v12, v13 in ipairs(v6) do
-			v10[v11 + v12] = v13;
+		local v12 = #v11;
+		local v13, v14, v15 = ipairs(v6);
+		while true do
+			v13(v14, v15);
+			if not v13 then
+				break;
+			end;
+			v15 = v13;
+			v11[v12 + v13] = v14;		
 		end;
 		return u3.createFragment({
-			Tabs = u3.createElement("Frame", v9, v10)
+			Tabs = u3.createElement("Frame", v10, v11)
 		});
 	end)
 };

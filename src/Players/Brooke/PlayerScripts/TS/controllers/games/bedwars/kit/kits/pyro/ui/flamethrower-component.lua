@@ -33,13 +33,19 @@ function v4.render(p4)
 		});
 	end;
 	local v8 = nil;
-	for v9, v10 in ipairs((l__MapUtil__4.values(p4.state.upgrades))) do
+	local v9, v10, v11 = ipairs((l__MapUtil__4.values(p4.state.upgrades)));
+	while true do
+		v9(v10, v11);
+		if not v9 then
+			break;
+		end;
+		v11 = v9;
 		if v10 >= 3 == true then
 			v8 = v10;
 			break;
-		end;
+		end;	
 	end;
-	local v11 = v8 ~= nil;
+	local v12 = v8 ~= nil;
 	return v3.createElement("Frame", {
 		AnchorPoint = Vector2.new(0.5, 0.5), 
 		Position = UDim2.fromScale(0.5, 0.5), 
@@ -106,7 +112,7 @@ function v4.render(p4)
 					Position = UDim2.fromScale(0.5953405017921147, 0.04748982360922659), 
 					Upgrade = l__FlamethrowerUpgrade__9.HEAT, 
 					SetUpgrades = v7, 
-					Locked = v11, 
+					Locked = v12, 
 					UpgradeMap = p4.state.upgrades
 				}), v3.createElement("ImageLabel", {
 					BackgroundTransparency = 1, 
@@ -119,7 +125,7 @@ function v4.render(p4)
 					Position = UDim2.fromScale(0.1867383512544803, 0.7055630936227951), 
 					Upgrade = l__FlamethrowerUpgrade__9.RANGE, 
 					SetUpgrades = v7, 
-					Locked = v11, 
+					Locked = v12, 
 					UpgradeMap = p4.state.upgrades
 				}), v3.createElement("ImageLabel", {
 					BackgroundTransparency = 1, 
@@ -132,7 +138,7 @@ function v4.render(p4)
 					Position = UDim2.fromScale(0.13010752688172045, 0.04748982360922659), 
 					Upgrade = l__FlamethrowerUpgrade__9.POWER, 
 					SetUpgrades = v7, 
-					Locked = v11, 
+					Locked = v12, 
 					UpgradeMap = p4.state.upgrades
 				}), v3.createElement("ImageLabel", {
 					BackgroundTransparency = 1, 

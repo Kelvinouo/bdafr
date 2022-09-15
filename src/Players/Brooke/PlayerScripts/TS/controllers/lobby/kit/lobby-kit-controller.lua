@@ -1,4 +1,3 @@
--- Script Hash: 193a42f86a0a4215e78dbcd9beb1c891643fa160b68d166f747a5c6638d3d4b792a84ec0ef6f4fd7128ec5e41734f702
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,18 +13,16 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = l__KnitController__2;
 function v3.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__2.constructor(p1);
 	p1.Name = "LobbyKitController";
 end;
-local l__CollectionTagAdded__2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).CollectionTagAdded;
+local l__CollectionTagAdded__1 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).CollectionTagAdded;
 function v3.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__CollectionTagAdded__2("NpcSpawn", function(p3)
+	l__KnitController__2.KnitStart(p2);
+	l__CollectionTagAdded__1("NpcSpawn", function(p3)
 		p3.Transparency = 1;
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1(v3.new());
+local v5 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v3.new());
 return nil;

@@ -1,4 +1,3 @@
--- Script Hash: a9e07254e6b72d398067b2ee62db4becfb843146046f6b957790fb552f3b607323d7fab479ea2458b93c8338558abd28
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -27,7 +26,6 @@ function v3.constructor(p1, p2)
 	if not p2:IsA("BasePart") then
 		error("Any instance with BedwarsQueue tag must be a BasePart");
 	end;
-	print((p2:GetAttribute("QueueSelectionMenu")));
 	local v5 = p2:GetAttribute("QueueSelectionMenu");
 	if v5 ~= 0 and v5 == v5 and v5 ~= "" and v5 then
 		local v6 = l__QueueSelectionMeta__1[p2.Name];

@@ -1,4 +1,3 @@
--- Script Hash: f8aa88d746a4586a12307e7b98424a250cceb66c608fd24b846d2972f524c0f2cbf77fdbb667101183067ceb4af37c43
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -7,9 +6,12 @@ local l__OfflinePlayerUtil__1 = v2.OfflinePlayerUtil;
 local l__ColorUtil__2 = v2.ColorUtil;
 local l__TeamColorHex__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "game", "team", "team-color-hex").TeamColorHex;
 local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
-local l__CreateRoduxApp__5 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "rodux", "create-rodux-app").CreateRoduxApp;
-local l__CustomMatchHostPanelApp__6 = v1.import(script, script.Parent, "custom-match-host-panel-app").CustomMatchHostPanelApp;
-local u7 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
+local l__getEmoteAsset__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "emote", "emote-assets").getEmoteAsset;
+local l__EmoteType__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "locker", "emote", "emote-type").EmoteType;
+local l__QueueType__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "game", "queue-type").QueueType;
+local l__CreateRoduxApp__8 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "ui", "rodux", "create-rodux-app").CreateRoduxApp;
+local l__CustomMatchHostPanelApp__9 = v1.import(script, script.Parent, "custom-match-host-panel-app").CustomMatchHostPanelApp;
+local u10 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 return function(p1)
 	l__ClientStore__4:dispatch({
 		type = "GameSetTeams", 
@@ -60,10 +62,34 @@ return function(p1)
 				color = l__ColorUtil__2.hexColor(l__TeamColorHex__3.cyan)
 			} }
 	});
-	local u8 = l__CreateRoduxApp__5("CustomMatchHostPanelApp", l__CustomMatchHostPanelApp__6, {}, {}, {
+	l__ClientStore__4:dispatch({
+		type = "CustomMatchSetMapSaves", 
+		mapSaves = { {
+				name = "Aqua 2v2", 
+				description = "nothing", 
+				image = l__getEmoteAsset__5(l__EmoteType__6.YUZI_HYPE), 
+				creator = l__OfflinePlayerUtil__1.Dummy.oiogy.userId, 
+				code = "1234ABCD5678", 
+				isPublic = false, 
+				queueType = l__QueueType__7.BEDWARS_TO4, 
+				dateCreated = os.time(), 
+				lastUpdated = os.time()
+			}, {
+				name = "Maze Map", 
+				description = "nothing", 
+				image = l__getEmoteAsset__5(l__EmoteType__6.LASSY_CELEBRATION), 
+				creator = l__OfflinePlayerUtil__1.Dummy.oiogy.userId, 
+				code = "1234ABCD5678", 
+				isPublic = false, 
+				queueType = l__QueueType__7.BEDWARS_20v20, 
+				dateCreated = os.time(), 
+				lastUpdated = os.time()
+			} }
+	});
+	local u11 = l__CreateRoduxApp__8("CustomMatchHostPanelApp", l__CustomMatchHostPanelApp__9, {}, {}, {
 		Parent = p1
 	});
 	return function()
-		return u7.unmount(u8);
+		return u10.unmount(u11);
 	end;
 end;

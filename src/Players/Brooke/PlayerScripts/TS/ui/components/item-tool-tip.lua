@@ -11,14 +11,11 @@ local l__getItemMeta__1 = v1.import(script, game:GetService("ReplicatedStorage")
 local l__AutoSizedText__2 = v2.AutoSizedText;
 local l__TooltipContainer__3 = v2.TooltipContainer;
 function v4.render(p3)
-	local v5 = p3.props.item;
-	if v5 ~= nil then
-		v5 = v5.itemType;
-	end;
-	if v5 == nil then
+	local l__item__5 = p3.props.item;
+	if l__item__5 == nil then
 		return nil;
 	end;
-	local v6 = l__getItemMeta__1(v5);
+	local v6 = l__getItemMeta__1(l__item__5);
 	local v7 = v6;
 	if v7 ~= nil then
 		v7 = v7.description;

@@ -1,4 +1,3 @@
--- Script Hash: 0b996ba6f3fb2d2f297ef5a9a9a1bbb52eafb806162da4f70d1d073f8b9cc0c123e3d8c47f68eb623428a5f1a318e84c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = Vector2.new(0, 0);
@@ -32,12 +31,10 @@ function v3.SetCameraMovementMode(p3, p4)
 	p3.isFollowCamera = p4 == Enum.ComputerCameraMovementMode.Follow;
 	p3.isCameraToggle = p4 == Enum.ComputerCameraMovementMode.CameraToggle;
 end;
-local u3 = CFrame.fromOrientation(math.rad(-15), 0, 0);
+local u3 = CFrame.fromOrientation(-0.2617993877991494, 0, 0);
 local l__Players__4 = game:GetService("Players");
-local u5 = math.rad(0);
-local u6 = math.rad(220);
-local u7 = math.rad(250);
-local l__VRService__8 = game:GetService("VRService");
+local u5 = 0;
+local l__VRService__6 = game:GetService("VRService");
 function v3.Update(p5)
 	local v6 = tick();
 	local v7 = v6 - p5.lastUpdate;
@@ -79,7 +76,7 @@ function v3.Update(p5)
 		if p5:GetIsMouseLocked() and not p5:IsInFirstPerson() then
 			local v23 = p5:CalculateNewLookCFrameFromArg(v11, v18);
 			local v24 = p5:GetMouseLockOffset();
-			local v25 = v24.X * v23.rightVector + v24.Y * v23.upVector + v24.Z * v23.lookVector;
+			local v25 = v24.X * v23.RightVector + v24.Y * v23.UpVector + v24.Z * v23.LookVector;
 			if u1.IsFiniteVector3(v25) then
 				v21 = v21 + v25;
 			end;
@@ -96,7 +93,7 @@ function v3.Update(p5)
 							u5 = 0;
 						end;
 					elseif not v20 then
-						u5 = math.clamp(u5 + u6 * v7, 0, u7);
+						u5 = math.clamp(u5 + 3.839724354387525 * v7, 0, 4.363323129985824);
 						local v28 = math.clamp(u5 * v7, 0, 1);
 						if p5:IsInFirstPerson() and (not p5.isFollowCamera or not p5.isClimbing) then
 							v28 = 1;
@@ -106,7 +103,7 @@ function v3.Update(p5)
 							v18 = v18 + Vector2.new(v29 * v28, 0);
 						end;
 					end;
-				elseif p5.isFollowCamera and not v26 and not v20 and not l__VRService__8.VREnabled then
+				elseif p5.isFollowCamera and not v26 and not v20 and not l__VRService__6.VREnabled then
 					local v30 = u1.GetAngleBetweenXZVectors(-(p5.lastCameraTransform.p - v21), p5:GetCameraLookVector());
 					if u1.IsFinite(v30) and math.abs(v30) > 0.0001 and 0.4 * v7 < math.abs(v30) then
 						v18 = v18 + Vector2.new(v30, 0);
@@ -122,7 +119,7 @@ function v3.Update(p5)
 						u5 = 0;
 					end;
 				elseif not v20 then
-					u5 = math.clamp(u5 + u6 * v7, 0, u7);
+					u5 = math.clamp(u5 + 3.839724354387525 * v7, 0, 4.363323129985824);
 					v28 = math.clamp(u5 * v7, 0, 1);
 					if p5:IsInFirstPerson() and (not p5.isFollowCamera or not p5.isClimbing) then
 						v28 = 1;
@@ -132,7 +129,7 @@ function v3.Update(p5)
 						v18 = v18 + Vector2.new(v29 * v28, 0);
 					end;
 				end;
-			elseif p5.isFollowCamera and not v26 and not v20 and not l__VRService__8.VREnabled then
+			elseif p5.isFollowCamera and not v26 and not v20 and not l__VRService__6.VREnabled then
 				v30 = u1.GetAngleBetweenXZVectors(-(p5.lastCameraTransform.p - v21), p5:GetCameraLookVector());
 				if u1.IsFinite(v30) and math.abs(v30) > 0.0001 and 0.4 * v7 < math.abs(v30) then
 					v18 = v18 + Vector2.new(v30, 0);
@@ -140,7 +137,7 @@ function v3.Update(p5)
 			end;
 		end;
 		if not p5.isFollowCamera then
-			local l__VREnabled__31 = l__VRService__8.VREnabled;
+			local l__VREnabled__31 = l__VRService__6.VREnabled;
 			if l__VREnabled__31 then
 				local v32 = p5:GetVRFocus(v21, v7);
 			else
@@ -162,7 +159,7 @@ function v3.Update(p5)
 				v38 = CFrame.new(l__p__33 - v22 * p5:CalculateNewLookVectorFromArg(v11, v18), l__p__33);
 			end;
 		else
-			if l__VRService__8.VREnabled then
+			if l__VRService__6.VREnabled then
 				v32 = p5:GetVRFocus(v21, v7);
 			else
 				v32 = CFrame.new(v21);

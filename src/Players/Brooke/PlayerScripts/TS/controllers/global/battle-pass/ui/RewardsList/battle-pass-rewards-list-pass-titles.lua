@@ -15,17 +15,23 @@ return {
 				local v5 = u4:getValue();
 				local v6 = l__GetUIScaleAncestors__2(v5);
 				local v7 = table.create(#v6);
-				for v8, v9 in ipairs(v6) do
-					v7[v8] = v9.Scale;
+				local v8, v9, v10 = ipairs(v6);
+				while true do
+					v8(v9, v10);
+					if not v8 then
+						break;
+					end;
+					v10 = v8;
+					v7[v8] = v9.Scale;				
 				end;
 				v4 = 1;
-				for v10 = 1, #v7 do
-					v4 = v4 * v7[v10];
+				for v11 = 1, #v7 do
+					v4 = v4 * v7[v11];
 				end;
 				if v5 then
-					local v11 = v5.Parent.AbsoluteSize.Y * p1.Size.Y.Scale / local v12;
-					v5.Position = UDim2.new(0, (-v5.AbsoluteSize.X + 8) / 2 / v12, 0, (v11 - 11) / 2);
-					v5.Size = UDim2.new(0, v11, 0, 16);
+					local v12 = v5.Parent.AbsoluteSize.Y * p1.Size.Y.Scale / local v13;
+					v5.Position = UDim2.new(0, (-v5.AbsoluteSize.X + 8) / 2 / v13, 0, (v12 - 11) / 2);
+					v5.Size = UDim2.new(0, v12, 0, 16);
 				end;
 			end;
 			local u6 = u4:getValue():GetPropertyChangedSignal("AbsoluteSize"):Connect(function()

@@ -1,4 +1,3 @@
--- Script Hash: 18589ce5044d909a729286262ee30cf9e132c97da51464dfe275a6833e435a38a3a10702e73c5c495d2af2ff916f3db1
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -10,18 +9,17 @@ local v3 = setmetatable({}, {
 	__index = l__KnitController__2
 });
 v3.__index = v3;
-local u1 = l__KnitController__2;
-local u2 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
+local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v3.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__2.constructor(p1);
 	p1.Name = "Controller";
 	p1.enabled = false;
 	p1.enableSession = math.random();
-	p1.sessionMaid = u2.new();
+	p1.sessionMaid = u1.new();
 end;
-local l__ClientStore__3 = v1.import(script, script.Parent.Parent.Parent, "ui", "store").ClientStore;
+local l__ClientStore__2 = v1.import(script, script.Parent.Parent.Parent, "ui", "store").ClientStore;
 function v3.KnitStart(p2)
-	local function u4(p3)
+	local function u3(p3)
 		if not p3.Inventory.observedInventory.inventory.hand or not p2:isRelevantItem(p3.Inventory.observedInventory.inventory.hand) then
 			p2.sessionMaid:DoCleaning();
 			p2.enabled = false;
@@ -50,12 +48,12 @@ function v3.KnitStart(p2)
 		end);
 		return nil;
 	end;
-	l__ClientStore__3.changed:connect(function(p4, p5)
+	l__ClientStore__2.changed:connect(function(p4, p5)
 		if p4.Inventory.observedInventory.inventory.hand ~= p5.Inventory.observedInventory.inventory.hand then
-			u4(p4);
+			u3(p4);
 		end;
 	end);
-	u4(l__ClientStore__3:getState());
+	u3(l__ClientStore__2:getState());
 end;
 function v3.isInputMouseButton1Equivalent(p6, p7)
 	local v8 = false;
@@ -73,11 +71,11 @@ function v3.isInputMouseButton1Equivalent(p6, p7)
 	return v10;
 end;
 function v3.setupYield(p8, p9)
-	local l__enableSession__5 = p8.enableSession;
+	local l__enableSession__4 = p8.enableSession;
 	task.spawn(function()
 		local v11 = nil;
 		v11 = p9();
-		if p8.enableSession ~= l__enableSession__5 then
+		if p8.enableSession ~= l__enableSession__4 then
 			v11();
 			return;
 		end;
@@ -94,7 +92,6 @@ end;
 function v3.getHandItem(p11)
 	return p11.handItem;
 end;
-u1 = {
+return {
 	HandKnitController = v3
 };
-return u1;

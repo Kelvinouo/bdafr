@@ -30,21 +30,21 @@ return {
 			local v8, v9, v10 = ipairs(v6);
 			while true do
 				local v11 = nil;
-				local v12, v13 = v8(v9, v10);
-				if not v12 then
+				v8(v9, v10);
+				if not v8 then
 					break;
 				end;
-				v10 = v12;
-				v11 = v13[2];
-				local v14 = tonumber(v13[1]);
-				if v2.players[v14] then
-					v2.players[v14].team = v11;
+				v10 = v8;
+				v11 = v9[2];
+				local v12 = tonumber(v9[1]);
+				if v2.players[v12] then
+					v2.players[v12].team = v11;
 				else
-					v2.players[v14] = {
+					v2.players[v12] = {
 						team = v11
 					};
 				end;
-				v7[v12] = 0;			
+				v7[v8] = 0;			
 			end;
 			return v2;
 		end;
@@ -59,26 +59,26 @@ return {
 				return v2;
 			end;
 		end;
-		local v15 = u2.entries(p2.avatarAssetIds);
-		local v16 = table.create(#v15);
-		local v17, v18, v19 = ipairs(v15);
+		local v13 = u2.entries(p2.avatarAssetIds);
+		local v14 = table.create(#v13);
+		local v15, v16, v17 = ipairs(v13);
 		while true do
-			local v20 = nil;
-			local v21, v22 = v17(v18, v19);
-			if not v21 then
+			local v18 = nil;
+			v15(v16, v17);
+			if not v15 then
 				break;
 			end;
-			v19 = v21;
-			v20 = v22[2];
-			local v23 = tonumber(v22[1]);
-			if v2.players[v23] then
-				v2.players[v23].avatarAssetId = v20;
+			v17 = v15;
+			v18 = v16[2];
+			local v19 = tonumber(v16[1]);
+			if v2.players[v19] then
+				v2.players[v19].avatarAssetId = v18;
 			else
-				v2.players[v23] = {
-					avatarAssetId = v20
+				v2.players[v19] = {
+					avatarAssetId = v18
 				};
 			end;
-			v16[v21] = 0;		
+			v14[v15] = 0;		
 		end;
 		return v2;
 	end

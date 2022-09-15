@@ -1,4 +1,3 @@
--- Script Hash: 448775127aabcdfd7547cfaaa59f0cde549eec1f0ebf7207fec762f4364d50f5874c06de116239e373ee0a18445eb5bc
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -7,6 +6,7 @@ local l__StatusEffectMeta__2 = v1.import(script, game:GetService("ReplicatedStor
 local l__getItemMeta__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
 local u4 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__ColorUtil__5 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).ColorUtil;
+local l__Theme__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 return {
 	StatusEffectHudTile = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u4)(function(p1, p2)
 		local l__useState__2 = p2.useState;
@@ -28,14 +28,14 @@ return {
 		end;
 		p2.useEffect(function()
 			if p1.ActiveStatusEffect.expireTime ~= nil then
-				local u6 = true;
+				local u7 = true;
 				task.spawn(function()
 					while true do
 						local v13 = math.floor((math.max(0, p1.ActiveStatusEffect.expireTime - l__Workspace__1:GetServerTimeNow())));
-						if u6 then
+						if u7 then
 							v7(v13);
 						end;
-						local v14 = u6 and task.wait(1);
+						local v14 = u7 and task.wait(1);
 						if v14 == 0 then
 							break;
 						end;
@@ -48,9 +48,9 @@ return {
 					end;
 				end);
 			end;
-			local u7 = true;
+			local u8 = true;
 			return function()
-				u7 = false;
+				u8 = false;
 			end;
 		end, { p1.ActiveStatusEffect });
 		local v15 = v6;
@@ -75,11 +75,12 @@ return {
 			v4(false);
 		end;
 		local v18 = { u4.createElement("UICorner", {
-				CornerRadius = UDim.new(0.1, 0)
+				CornerRadius = UDim.new(0.05, 0)
 			}), u4.createElement("UIStroke", {
-				Color = Color3.fromRGB(255, 255, 255)
+				Color = Color3.fromRGB(255, 255, 255), 
+				Transparency = 0.5
 			}), u4.createElement("ImageLabel", {
-				Size = UDim2.new(0.8, 0, 0.8, 0), 
+				Size = UDim2.new(0.75, 0, 0.75, 0), 
 				BackgroundTransparency = 1, 
 				BorderSizePixel = 1, 
 				Image = v11, 
@@ -90,7 +91,7 @@ return {
 		if v19 then
 			local v20 = {
 				Position = UDim2.fromScale(0.6666666666666666, 0.6875), 
-				Size = UDim2.fromScale(0.2708333333333333, 0.25), 
+				Size = UDim2.fromScale(0.3, 0.25), 
 				Text = tostring(v15)
 			};
 			if v8 then
@@ -109,7 +110,24 @@ return {
 		if v19 then
 			v18[#v18 + 1] = v19;
 		end;
-		local v22 = v3 and u4.createElement("Frame", {
+		local v22 = p1.ActiveStatusEffect.stacks > 1 and u4.createElement("TextLabel", {
+			Position = UDim2.fromScale(0.5, -0.25), 
+			Size = UDim2.fromScale(0.75, 0.5), 
+			AnchorPoint = Vector2.new(0.5, 0), 
+			Text = "<b>" .. tostring(p1.ActiveStatusEffect.stacks) .. "</b>", 
+			TextColor3 = l__Theme__6.mcGold, 
+			BackgroundTransparency = 1, 
+			Font = "RobotoMono", 
+			TextXAlignment = "Center", 
+			TextYAlignment = "Top", 
+			TextScaled = true, 
+			RichText = true, 
+			TextStrokeTransparency = 0
+		});
+		if v22 then
+			v18[#v18 + 1] = v22;
+		end;
+		local v23 = v3 and u4.createElement("Frame", {
 			Size = UDim2.new(2, 0, 0.3, 0), 
 			AnchorPoint = Vector2.new(0.5, 0), 
 			Position = UDim2.new(0.5, 0, 1.2, 0), 
@@ -129,8 +147,8 @@ return {
 				TextColor3 = Color3.fromRGB(255, 255, 255), 
 				BackgroundTransparency = 1
 			}) });
-		if v22 then
-			v18[#v18 + 1] = v22;
+		if v23 then
+			v18[#v18 + 1] = v23;
 		end;
 		return u4.createElement("Frame", v17, v18);
 	end)

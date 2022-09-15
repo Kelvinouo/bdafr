@@ -112,10 +112,16 @@ return {
 				}) });
 		end;
 		local v22 = table.create(#l__newUpdates__19);
-		for v23, v24 in ipairs(l__newUpdates__19) do
-			v22[v23] = v21(v24, v23 - 1, l__newUpdates__19);
+		local v23, v24, v25 = ipairs(l__newUpdates__19);
+		while true do
+			v23(v24, v25);
+			if not v23 then
+				break;
+			end;
+			v25 = v23;
+			v22[v23] = v21(v24, v23 - 1, l__newUpdates__19);		
 		end;
-		local v25 = {
+		local v26 = {
 			GameUpdateCardsListLayout = u4.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Vertical, 
 				VerticalAlignment = Enum.VerticalAlignment.Top, 
@@ -124,12 +130,18 @@ return {
 				Padding = UDim.new(0, 12)
 			})
 		};
-		local v26 = #v25;
-		for v27, v28 in ipairs(v22) do
-			v25[v26 + v27] = v28;
+		local v27 = #v26;
+		local v28, v29, v30 = ipairs(v22);
+		while true do
+			v28(v29, v30);
+			if not v28 then
+				break;
+			end;
+			v30 = v28;
+			v26[v27 + v28] = v29;		
 		end;
-		local v29 = #v25;
-		v25[v29 + 1] = u4.createElement(l__DividerComponent__7, {
+		local v31 = #v26;
+		v26[v31 + 1] = u4.createElement(l__DividerComponent__7, {
 			LengthScale = 0.97, 
 			BarColor = {
 				Color = Color3.fromRGB(255, 59, 59), 
@@ -142,8 +154,8 @@ return {
 			}, 
 			LayoutOrder = u11 + 1
 		});
-		local l__oldUpdates__30 = v20.oldUpdates;
-		local function v31(p5, p6)
+		local l__oldUpdates__32 = v20.oldUpdates;
+		local function v33(p5, p6)
 			return u4.createElement(l__Empty__5, {
 				Size = UDim2.fromScale(1, 0), 
 				AutomaticSize = "Y", 
@@ -161,18 +173,30 @@ return {
 					LayoutOrder = 2
 				}) });
 		end;
-		local v32 = table.create(#l__oldUpdates__30);
-		for v33, v34 in ipairs(l__oldUpdates__30) do
-			v32[v33] = v31(v34, v33 - 1, l__oldUpdates__30);
+		local v34 = table.create(#l__oldUpdates__32);
+		local v35, v36, v37 = ipairs(l__oldUpdates__32);
+		while true do
+			v35(v36, v37);
+			if not v35 then
+				break;
+			end;
+			v37 = v35;
+			v34[v35] = v33(v36, v35 - 1, l__oldUpdates__32);		
 		end;
-		for v35, v36 in ipairs(v32) do
-			v25[v29 + 1 + v35] = v36;
+		local v38, v39, v40 = ipairs(v34);
+		while true do
+			v38(v39, v40);
+			if not v38 then
+				break;
+			end;
+			v40 = v38;
+			v26[v31 + 1 + v38] = v39;		
 		end;
 		v18[#v18 + 1] = u4.createElement(l__AutoCanvasScrollingFrame__8, {
 			ScrollingFrameProps = {
 				LayoutOrder = 2
 			}
-		}, v25);
+		}, v26);
 		v16.UpdateContents = u4.createElement(l__Empty__5, v17, v18);
 		v16[#v16 + 1] = u4.createElement(l__GameUpdatePromoCardsList__9, {
 			store = p1.store, 

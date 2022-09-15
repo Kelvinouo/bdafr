@@ -73,28 +73,40 @@ local u10 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src)
 	local v7 = { u3.createElement(l__StatsBoardHeader__4) };
 	local v8 = {};
 	local v9 = 0;
-	for v10, v11 in ipairs((u5.entries(v2))) do
-		local v12 = v11[1];
+	local v10, v11, v12 = ipairs((u5.entries(v2)));
+	while true do
+		v10(v11, v12);
+		if not v10 then
+			break;
+		end;
+		v12 = v10;
+		local v13 = v11[1];
 		if v11[2].visible == true then
 			v9 = v9 + 1;
 			v8[v9] = v11;
+		end;	
+	end;
+	local v14 = table.create(#v8);
+	local v15, v16, v17 = ipairs(v8);
+	while true do
+		v15(v16, v17);
+		if not v15 then
+			break;
 		end;
-	end;
-	local v13 = table.create(#v8);
-	for v14, v15 in ipairs(v8) do
-		v13[v14] = u3.createElement(l__QueueStats__6, {
+		v17 = v15;
+		v14[v15] = u3.createElement(l__QueueStats__6, {
 			store = p1.store, 
-			QueueType = v15[1], 
-			LayoutOrder = v15[2].layoutOrder
-		});
+			QueueType = v16[1], 
+			LayoutOrder = v16[2].layoutOrder
+		});	
 	end;
-	local v16 = {
+	local v18 = {
 		ScrollingFrameProps = {
 			Size = UDim2.fromScale(1, 0.9), 
 			Position = UDim2.fromScale(0, 0.1)
 		}
 	};
-	local v17 = { u3.createElement("UIListLayout", {
+	local v19 = { u3.createElement("UIListLayout", {
 			FillDirection = Enum.FillDirection.Vertical, 
 			VerticalAlignment = Enum.VerticalAlignment.Top, 
 			HorizontalAlignment = Enum.HorizontalAlignment.Center, 
@@ -110,33 +122,39 @@ local u10 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src)
 		}), u3.createElement(l__GlobalStats__8, {
 			store = p1.store
 		}) };
-	local v18 = #v17;
-	for v19, v20 in ipairs(v13) do
-		v17[v18 + v19] = v20;
+	local v20 = #v19;
+	local v21, v22, v23 = ipairs(v14);
+	while true do
+		v21(v22, v23);
+		if not v21 then
+			break;
+		end;
+		v23 = v21;
+		v19[v20 + v21] = v22;	
 	end;
-	v7[#v7 + 1] = u3.createElement(l__AutoCanvasScrollingFrame__9, v16, v17);
+	v7[#v7 + 1] = u3.createElement(l__AutoCanvasScrollingFrame__9, v18, v19);
 	return u3.createElement("Frame", v6, v7);
 end);
 return {
 	StatsBoardUIWrapper = function(p3)
-		local v21 = {};
-		local v22 = {};
-		local v23 = {};
-		for v24, v25 in pairs(p3) do
-			v23[v24] = v25;
+		local v24 = {};
+		local v25 = {};
+		local v26 = {};
+		for v27, v28 in pairs(p3) do
+			v26[v27] = v28;
 		end;
-		v22[#v22 + 1] = u3.createElement(u10, v23);
-		v21[#v21 + 1] = u3.createElement("Frame", {
+		v25[#v25 + 1] = u3.createElement(u10, v26);
+		v24[#v24 + 1] = u3.createElement("Frame", {
 			AnchorPoint = Vector2.new(0.5, 0.5), 
 			Position = UDim2.fromScale(0.5, 0.5), 
 			Size = UDim2.new(1, -30, 1, -30), 
 			BackgroundTransparency = 1
-		}, v22);
+		}, v25);
 		return u3.createElement("SurfaceGui", {
 			Face = Enum.NormalId.Back, 
 			LightInfluence = 0.25, 
 			SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
-		}, v21);
+		}, v24);
 	end, 
 	StatsBoard = u10
 };

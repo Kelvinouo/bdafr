@@ -78,42 +78,54 @@ return function(p1)
 		return 0;
 	end;
 	local v6 = table.create(#v2);
-	for v7, v8 in ipairs(v2) do
-		v6[v7] = v3(v8, v7 - 1, v2);
-	end;
-	local v9 = {};
-	local v10 = 0;
-	local v11, v12, v13 = ipairs((u7.entries(l__OfflinePlayerUtil__1.Dummy)));
+	local v7, v8, v9 = ipairs(v2);
 	while true do
-		local v14, v15 = v11(v12, v13);
-		if not v14 then
+		v7(v8, v9);
+		if not v7 then
 			break;
 		end;
-		local v16 = v15[1];
-		local v17 = v15[2];
-		if v14 - 1 < 4 == true then
-			v10 = v10 + 1;
-			v9[v10] = v15;
+		v9 = v7;
+		v6[v7] = v3(v8, v7 - 1, v2);	
+	end;
+	local v10 = {};
+	local v11 = 0;
+	local v12, v13, v14 = ipairs((u7.entries(l__OfflinePlayerUtil__1.Dummy)));
+	while true do
+		v12(v13, v14);
+		if not v12 then
+			break;
+		end;
+		local v15 = v13[1];
+		local v16 = v13[2];
+		if v12 - 1 < 4 == true then
+			v11 = v11 + 1;
+			v10[v11] = v13;
 		end;	
 	end;
-	local function v18(p3)
-		local v19 = p3[1];
-		local v20 = p3[2];
+	local function v17(p3)
+		local v18 = p3[1];
+		local v19 = p3[2];
 		l__ClientStore__6:dispatch({
 			type = "BedwarsSetKills", 
-			userId = v20.userId, 
+			userId = v19.userId, 
 			kills = 420
 		});
 		l__ClientStore__6:dispatch({
 			type = "BedwarsSetFinalDeaths", 
-			userId = tonumber(v20.userId), 
+			userId = tonumber(v19.userId), 
 			dead = true
 		});
 		return 0;
 	end;
-	local v21 = table.create(#v9);
-	for v22, v23 in ipairs(v9) do
-		v21[v22] = v18(v23, v22 - 1, v9);
+	local v20 = table.create(#v10);
+	local v21, v22, v23 = ipairs(v10);
+	while true do
+		v21(v22, v23);
+		if not v21 then
+			break;
+		end;
+		v23 = v21;
+		v20[v21] = v17(v22, v21 - 1, v10);	
 	end;
 	local v24 = u7.entries({
 		[l__OfflinePlayerUtil__1.Dummy.SnickTrix.userId] = l__BedwarsKit__3.ARCHER, 
@@ -128,13 +140,19 @@ return function(p1)
 		[l__OfflinePlayerUtil__1.Dummy.Rascal.userId] = l__BedwarsKit__3.COWGIRL
 	});
 	local v25 = table.create(#v24);
-	for v26, v27 in ipairs(v24) do
+	local v26, v27, v28 = ipairs(v24);
+	while true do
+		v26(v27, v28);
+		if not v26 then
+			break;
+		end;
+		v28 = v26;
 		l__ClientStore__6:dispatch({
 			type = "BedwarsSetKits", 
 			userId = v27[1], 
 			kit = v27[2]
 		});
-		v25[v26] = 0;
+		v25[v26] = 0;	
 	end;
 	l__ClientStore__6:dispatch({
 		type = "TabListSetRanksBulk", 

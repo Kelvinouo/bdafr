@@ -17,35 +17,34 @@ function u1.new(...)
 	local v7 = setmetatable({}, u1);
 	return v7:constructor(...) and v7;
 end;
-local u2 = l__KnitController__5;
 function u1.constructor(p1)
-	u2.constructor(p1);
+	l__KnitController__5.constructor(p1);
 	p1.Name = "DamageIndicatorController";
 end;
-local l__ReplicatedStorage__3 = v4.ReplicatedStorage;
-local l__Workspace__4 = v4.Workspace;
-local l__GameQueryUtil__5 = v2.GameQueryUtil;
-local l__default__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-local l__Players__7 = v4.Players;
-local l__DamageType__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "damage", "damage-type").DamageType;
-local l__EffectUtil__9 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "effect", "effect-util").EffectUtil;
+local l__ReplicatedStorage__2 = v4.ReplicatedStorage;
+local l__Workspace__3 = v4.Workspace;
+local l__GameQueryUtil__4 = v2.GameQueryUtil;
+local l__default__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__Players__6 = v4.Players;
+local l__DamageType__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "damage", "damage-type").DamageType;
+local l__EffectUtil__8 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "effect", "effect-util").EffectUtil;
 function u1.KnitStart(p2)
 	task.spawn(function()
-		l__ReplicatedStorage__3:WaitForChild("Assets"):WaitForChild("Effects"):WaitForChild("HitEffect");
-		p2.hitEffectPart = l__ReplicatedStorage__3.Assets.Effects.HitEffect:Clone();
+		l__ReplicatedStorage__2:WaitForChild("Assets"):WaitForChild("Effects"):WaitForChild("HitEffect");
+		p2.hitEffectPart = l__ReplicatedStorage__2.Assets.Effects.HitEffect:Clone();
 		p2.hitEffectPart.Anchored = true;
-		p2.hitEffectPart.Parent = l__Workspace__4;
-		l__GameQueryUtil__5:setQueryIgnored(p2.hitEffectPart, true);
+		p2.hitEffectPart.Parent = l__Workspace__3;
+		l__GameQueryUtil__4:setQueryIgnored(p2.hitEffectPart, true);
 	end);
-	l__default__6.Client:OnEvent("RemoteName", function(p3)
+	l__default__5.Client:OnEvent("RemoteName", function(p3)
 		if p3.entityInstance.PrimaryPart then
-			local v8 = l__Workspace__4.CurrentCamera;
+			local v8 = l__Workspace__3.CurrentCamera;
 			if v8 then
-				v8 = (l__Workspace__4.CurrentCamera.CFrame.Position - p3.entityInstance:GetPrimaryPartCFrame().Position).Magnitude >= 60;
+				v8 = (l__Workspace__3.CurrentCamera.CFrame.Position - p3.entityInstance:GetPrimaryPartCFrame().Position).Magnitude >= 60;
 				if v8 then
 					local v9 = false;
-					if p3.entityInstance ~= l__Players__7.LocalPlayer.Character then
-						v9 = p3.fromEntity ~= l__Players__7.LocalPlayer.Character;
+					if p3.entityInstance ~= l__Players__6.LocalPlayer.Character then
+						v9 = p3.fromEntity ~= l__Players__6.LocalPlayer.Character;
 					end;
 					v8 = v9;
 				end;
@@ -54,58 +53,64 @@ function u1.KnitStart(p2)
 				return nil;
 			end;
 			local v10 = p3.entityInstance:GetPrimaryPartCFrame().Position + Vector3.new(0, 2.5, 0);
-			local v11 = p3.fromEntity == l__Players__7.LocalPlayer.Character;
+			local v11 = p3.fromEntity == l__Players__6.LocalPlayer.Character;
 			local v12 = p3.damage;
 			if p3.extraDamageIndicators then
-				for v13, v14 in ipairs(p3.extraDamageIndicators) do
+				local v13, v14, v15 = ipairs(p3.extraDamageIndicators);
+				while true do
+					v13(v14, v15);
+					if not v13 then
+						break;
+					end;
+					v15 = v13;
 					v12 = v12 - v14.damage;
 					p2:spawnDamageIndicator(v10, v14.damage, {
 						damageType = p3.damageType, 
 						infiniteRange = v11
-					});
+					});				
 				end;
 			end;
-			local v15 = p3.customDamageIndicator;
-			if v15 ~= nil then
-				v15 = v15.damage;
+			local v16 = p3.customDamageIndicator;
+			if v16 ~= nil then
+				v16 = v16.damage;
 			end;
-			local v16 = v15;
-			if v16 == nil then
-				v16 = p3.damage;
+			local v17 = v16;
+			if v17 == nil then
+				v17 = p3.damage;
 			end;
-			local v17 = {
+			local v18 = {
 				damageType = p3.damageType, 
 				shieldHit = p3.shieldHit
 			};
-			local v18 = p3.customDamageIndicator;
-			if v18 ~= nil then
-				v18 = v18.color;
-			end;
-			v17.color = v18;
 			local v19 = p3.customDamageIndicator;
 			if v19 ~= nil then
-				v19 = v19.image;
+				v19 = v19.color;
 			end;
-			v17.image = v19;
+			v18.color = v19;
 			local v20 = p3.customDamageIndicator;
 			if v20 ~= nil then
-				v20 = v20.imageColor;
+				v20 = v20.image;
 			end;
-			v17.imageColor = v20;
+			v18.image = v20;
 			local v21 = p3.customDamageIndicator;
 			if v21 ~= nil then
-				v21 = v21.gradientRotation;
+				v21 = v21.imageColor;
 			end;
-			v17.gradientRotation = v21;
-			v17.infiniteRange = v11;
-			p2:spawnDamageIndicator(v10, v16, v17);
-			if (p3.damageType == l__DamageType__8.SWORD or p3.damageType == l__DamageType__8.PROJECTILE) and p2.hitEffectPart then
+			v18.imageColor = v21;
+			local v22 = p3.customDamageIndicator;
+			if v22 ~= nil then
+				v22 = v22.gradientRotation;
+			end;
+			v18.gradientRotation = v22;
+			v18.infiniteRange = v11;
+			p2:spawnDamageIndicator(v10, v17, v18);
+			if (p3.damageType == l__DamageType__7.SWORD or p3.damageType == l__DamageType__7.PROJECTILE) and p2.hitEffectPart then
 				p2.hitEffectPart.CFrame = p3.entityInstance.PrimaryPart.CFrame;
-				l__EffectUtil__9:playEffects({ p2.hitEffectPart }, p3.entityInstance);
+				l__EffectUtil__8:playEffects({ p2.hitEffectPart }, p3.entityInstance);
 			end;
 		end;
 	end);
-	l__default__6.Client:OnEvent("RemoteName", function(p4)
+	l__default__5.Client:OnEvent("RemoteName", function(p4)
 		if p4.noHealIndicator then
 			return nil;
 		end;
@@ -116,7 +121,7 @@ function u1.KnitStart(p2)
 		end;
 	end);
 end;
-local u10 = v2.ConstantManager.registerConstants(script, {
+local u9 = v2.ConstantManager.registerConstants(script, {
 	velX = 5, 
 	velY = 9, 
 	velZ = 5, 
@@ -130,208 +135,206 @@ local u10 = v2.ConstantManager.registerConstants(script, {
 	strokeThickness = 1.5, 
 	baseColor = Color3.fromRGB(255, 81, 68)
 });
-local u11 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-local l__ColorUtil__12 = v2.ColorUtil;
-local l__Theme__13 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
-local l__HEALTHBAR_SHIELD_COLOR__14 = v1.import(script, script.Parent.Parent, "hotbar", "ui", "healthbar", "shield").HEALTHBAR_SHIELD_COLOR;
-local l__default__15 = v1.import(script, v1.getModule(script, "@rbxts", "tween")).default;
-local l__Linear__16 = v3.Linear;
-local l__TweenService__17 = v4.TweenService;
-local l__OutQuad__18 = v3.OutQuad;
-local l__Debris__19 = v4.Debris;
+local u10 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
+local l__ColorUtil__11 = v2.ColorUtil;
+local l__Theme__12 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
+local l__HEALTHBAR_SHIELD_COLOR__13 = v1.import(script, script.Parent.Parent, "hotbar", "ui", "healthbar", "shield").HEALTHBAR_SHIELD_COLOR;
+local l__default__14 = v1.import(script, v1.getModule(script, "@rbxts", "tween")).default;
+local l__Linear__15 = v3.Linear;
+local l__TweenService__16 = v4.TweenService;
+local l__OutQuad__17 = v3.OutQuad;
+local l__Debris__18 = v4.Debris;
 function u1.spawnDamageIndicator(p5, p6, p7, p8)
-	local v22 = (l__Workspace__4.CurrentCamera.CFrame.Position - p6).Magnitude > 200;
-	if v22 then
-		local v23 = p8;
-		if v23 ~= nil then
-			v23 = v23.infiniteRange;
+	local v23 = (l__Workspace__3.CurrentCamera.CFrame.Position - p6).Magnitude > 200;
+	if v23 then
+		local v24 = p8;
+		if v24 ~= nil then
+			v24 = v24.infiniteRange;
 		end;
-		v22 = not v23;
+		v23 = not v24;
 	end;
-	if v22 then
+	if v23 then
 		return nil;
 	end;
 	p7 = math.ceil(p7);
-	local v24 = p8;
-	if v24 ~= nil then
-		v24 = v24.heal;
+	local v25 = p8;
+	if v25 ~= nil then
+		v25 = v25.heal;
 	end;
-	local v25 = v24;
-	if v25 == nil then
-		v25 = false;
+	local v26 = v25;
+	if v26 == nil then
+		v26 = false;
 	end;
-	local v26 = Instance.new("Part");
-	v26.Size = Vector3.new(1, 1, 1);
-	v26.Transparency = 1;
-	v26.CanCollide = false;
-	v26.CFrame = CFrame.new(p6);
-	v26.Anchored = true;
-	task.delay(u10.anchoredDuration, function()
-		v26.Anchored = false;
+	local v27 = Instance.new("Part");
+	v27.Size = Vector3.new(1, 1, 1);
+	v27.Transparency = 1;
+	v27.CanCollide = false;
+	v27.CFrame = CFrame.new(p6);
+	v27.Anchored = true;
+	task.delay(u9.anchoredDuration, function()
+		v27.Anchored = false;
 	end);
-	local v27 = Instance.new("BodyForce");
+	local v28 = Instance.new("BodyForce");
 	if p7 < 0 then
-		local v28 = u10.gravityHeal;
+		local v29 = u9.gravityHeal;
 	else
-		v28 = u10.gravityDamage;
+		v29 = u9.gravityDamage;
 	end;
-	v27.Force = Vector3.new(0, v26:GetMass() * l__Workspace__4.Gravity * v28, 0);
-	v27.Parent = v26;
-	v26.Velocity = Vector3.new(math.random(-50, 50) / 100 * u10.velX, 0, math.random(-50, 50) / 100 * u10.velZ);
-	local v29 = Instance.new("BillboardGui");
-	local v30 = 2.1 + 0.7 * (math.min(p7, 100) / 100);
-	v29.Size = UDim2.new(v30 * 2.1, 0, v30, 0);
-	v29.AlwaysOnTop = true;
-	local v31 = p8;
-	if v31 ~= nil then
-		v31 = v31.infiniteRange;
+	v28.Force = Vector3.new(0, v27:GetMass() * l__Workspace__3.Gravity * v29, 0);
+	v28.Parent = v27;
+	v27.Velocity = Vector3.new(math.random(-50, 50) / 100 * u9.velX, 0, math.random(-50, 50) / 100 * u9.velZ);
+	local v30 = Instance.new("BillboardGui");
+	local v31 = 2.1 + 0.7 * (math.min(p7, 100) / 100);
+	v30.Size = UDim2.new(v31 * 2.1, 0, v31, 0);
+	v30.AlwaysOnTop = true;
+	local v32 = p8;
+	if v32 ~= nil then
+		v32 = v32.infiniteRange;
 	end;
-	if v31 then
-		local v32 = math.huge;
+	if v32 then
+		local v33 = math.huge;
 	else
-		v32 = 100;
+		v33 = 100;
 	end;
-	v29.MaxDistance = v32;
-	local v33 = u11("Frame", {
+	v30.MaxDistance = v33;
+	local v34 = u10("Frame", {
 		Size = UDim2.fromScale(1, 1), 
 		Position = UDim2.fromScale(0.5, 0.5), 
 		AnchorPoint = Vector2.new(0.5, 0.5), 
 		BackgroundTransparency = 1, 
-		Parent = v29
+		Parent = v30
 	});
-	local v34 = nil;
-	local v35 = p8;
-	if v35 ~= nil then
-		v35 = v35.image;
+	local v35 = nil;
+	local v36 = p8;
+	if v36 ~= nil then
+		v36 = v36.image;
 	end;
-	if v35 ~= "" and v35 then
-		local v36 = {
+	if v36 ~= "" and v36 then
+		local v37 = {
 			BackgroundTransparency = 1
 		};
-		local v37 = p8;
-		if v37 ~= nil then
-			v37 = v37.image;
+		local v38 = p8;
+		if v38 ~= nil then
+			v38 = v38.image;
 		end;
-		v36.Image = v37;
-		v36.ImageColor3 = p8.imageColor;
-		v36.Position = UDim2.fromScale(0.25, 0.5);
-		v36.AnchorPoint = Vector2.new(0, 0.5);
-		v36.Size = UDim2.fromScale(0.25, 1);
-		v36.Parent = v33;
-		v34 = u11("ImageLabel", v36);
-		u11("UIAspectRatioConstraint", {
+		v37.Image = v38;
+		v37.ImageColor3 = p8.imageColor;
+		v37.Position = UDim2.fromScale(0.25, 0.5);
+		v37.AnchorPoint = Vector2.new(0, 0.5);
+		v37.Size = UDim2.fromScale(0.25, 1);
+		v37.Parent = v34;
+		v35 = u10("ImageLabel", v37);
+		u10("UIAspectRatioConstraint", {
 			DominantAxis = Enum.DominantAxis.Width, 
 			AspectRatio = 1, 
-			Parent = v34
+			Parent = v35
 		});
 	end;
-	local v38 = Instance.new("TextLabel");
-	v38.Text = tostring(p7);
-	v38.Size = UDim2.new(0.5, 0, 1, 0);
-	v38.BackgroundTransparency = 1;
-	v38.BorderSizePixel = 0;
-	v38.Font = Enum.Font.GothamBlack;
-	v38.Position = UDim2.fromScale(0.5, 0.5);
-	v38.AnchorPoint = Vector2.new(0, 0.5);
-	v38.TextSize = 25;
-	v38.TextXAlignment = Enum.TextXAlignment.Left;
-	local v39 = nil;
-	local v40 = p8;
-	if v40 ~= nil then
-		v40 = v40.color;
-	end;
-	if v40 then
-		if typeof(p8.color) == "Color3" then
-			v39 = p8.color;
-		else
-			v39 = l__ColorUtil__12.WHITE;
-		end;
-	end;
-	v38.TextColor3 = v39 or u10.baseColor;
+	local v39 = Instance.new("TextLabel");
+	v39.Text = tostring(p7);
+	v39.Size = UDim2.new(0.5, 0, 1, 0);
+	v39.BackgroundTransparency = 1;
+	v39.BorderSizePixel = 0;
+	v39.Font = Enum.Font.GothamBlack;
+	v39.Position = UDim2.fromScale(0.5, 0.5);
+	v39.AnchorPoint = Vector2.new(0, 0.5);
+	v39.TextSize = 25;
+	v39.TextXAlignment = Enum.TextXAlignment.Left;
+	local v40 = nil;
 	local v41 = p8;
 	if v41 ~= nil then
 		v41 = v41.color;
 	end;
-	local v42 = v41 and typeof(p8.color) == "ColorSequence";
-	if v42 then
-		u11("UIGradient", {
+	if v41 then
+		if typeof(p8.color) == "Color3" then
+			v40 = p8.color;
+		else
+			v40 = l__ColorUtil__11.WHITE;
+		end;
+	end;
+	v39.TextColor3 = v40 or u9.baseColor;
+	local v42 = p8;
+	if v42 ~= nil then
+		v42 = v42.color;
+	end;
+	local v43 = v42 and typeof(p8.color) == "ColorSequence";
+	if v43 then
+		u10("UIGradient", {
 			Color = p8.color, 
 			Rotation = p8.gradientRotation, 
-			Parent = v38
+			Parent = v39
 		});
 	end;
-	local v43 = u11("UIStroke", {
-		Parent = v38, 
-		Thickness = u10.strokeThickness, 
+	local v44 = u10("UIStroke", {
+		Parent = v39, 
+		Thickness = u9.strokeThickness, 
 		Color = Color3.fromRGB(0, 0, 0)
 	});
-	local v44 = Color3.fromRGB(255, 255, 255);
-	if v25 then
-		v38.Text = "+" .. tostring(p7);
-		v38.TextColor3 = l__Theme__13.mcGreen;
+	local v45 = Color3.fromRGB(255, 255, 255);
+	if v26 then
+		v39.Text = "+" .. tostring(p7);
+		v39.TextColor3 = l__Theme__12.mcGreen;
 	else
-		local v45 = p8;
-		if v45 ~= nil then
-			v45 = v45.shieldHit;
+		local v46 = p8;
+		if v46 ~= nil then
+			v46 = v46.shieldHit;
 		end;
-		if v45 then
-			v38.TextColor3 = l__HEALTHBAR_SHIELD_COLOR__14;
+		if v46 then
+			v39.TextColor3 = l__HEALTHBAR_SHIELD_COLOR__13;
 		end;
 	end;
-	local v46 = p8;
-	if v46 ~= nil then
-		v46 = v46.damageType;
+	local v47 = p8;
+	if v47 ~= nil then
+		v47 = v47.damageType;
 	end;
-	if v46 == l__DamageType__8.POISON then
-		local v47 = l__ColorUtil__12.hexColor(0);
-		v38.TextColor3 = l__ColorUtil__12.hexColor(5025629);
+	if v47 == l__DamageType__7.POISON then
+		local v48 = l__ColorUtil__11.hexColor(0);
+		v39.TextColor3 = l__ColorUtil__11.hexColor(5025629);
 	end;
-	v38.Parent = v33;
-	v29.Parent = v26;
-	v26.Parent = l__Workspace__4;
+	v39.Parent = v34;
+	v30.Parent = v27;
+	v27.Parent = l__Workspace__3;
 	task.spawn(function()
-		local l__TextSize__48 = v38.TextSize;
-		local u20 = l__TextSize__48;
-		local u21 = v33.Size;
-		local u22 = u10.blowUpSize / l__TextSize__48;
-		local v49 = l__default__15(u10.blowUpDuration, l__Linear__16, function(p9)
-			v38.TextSize = u20 * (1 - p9) + p9 * u10.blowUpSize;
-			local v50 = 1 - p9;
-			local v51 = UDim2.new(u21.X.Scale * v50, u21.X.Offset * v50, u21.Y.Scale * v50, u21.Y.Offset * v50);
-			local v52 = p9 * u22;
-			v33.Size = v51 + UDim2.new(u21.X.Scale * v52, u21.X.Offset * v52, u21.Y.Scale * v52, u21.Y.Offset * v52);
+		local l__TextSize__49 = v39.TextSize;
+		local u19 = l__TextSize__49;
+		local u20 = v34.Size;
+		local u21 = u9.blowUpSize / l__TextSize__49;
+		local v50 = l__default__14(u9.blowUpDuration, l__Linear__15, function(p9)
+			v39.TextSize = u19 * (1 - p9) + p9 * u9.blowUpSize;
+			local v51 = 1 - p9;
+			local v52 = UDim2.new(u20.X.Scale * v51, u20.X.Offset * v51, u20.Y.Scale * v51, u20.Y.Offset * v51);
+			local v53 = p9 * u21;
+			v34.Size = v52 + UDim2.new(u20.X.Scale * v53, u20.X.Offset * v53, u20.Y.Scale * v53, u20.Y.Offset * v53);
 		end, 0, 1);
-		v49:Play();
-		v49:Wait();
-		u20 = v38.TextSize;
-		u21 = v33.Size;
-		local u23 = u10.textSize / u20;
-		l__default__15(u10.blowUpCompleteDuration, l__Linear__16, function(p10)
-			v38.TextSize = u20 * (1 - p10) + p10 * u10.textSize;
-			local v53 = 1 - p10;
-			local v54 = UDim2.new(u21.X.Scale * v53, u21.X.Offset * v53, u21.Y.Scale * v53, u21.Y.Offset * v53);
-			local v55 = p10 * u23;
-			v33.Size = v54 + UDim2.new(u21.X.Scale * v55, u21.X.Offset * v55, u21.Y.Scale * v55, u21.Y.Offset * v55);
+		v50:Play();
+		v50:Wait();
+		u19 = v39.TextSize;
+		u20 = v34.Size;
+		local u22 = u9.textSize / u19;
+		l__default__14(u9.blowUpCompleteDuration, l__Linear__15, function(p10)
+			v39.TextSize = u19 * (1 - p10) + p10 * u9.textSize;
+			local v54 = 1 - p10;
+			local v55 = UDim2.new(u20.X.Scale * v54, u20.X.Offset * v54, u20.Y.Scale * v54, u20.Y.Offset * v54);
+			local v56 = p10 * u22;
+			v34.Size = v55 + UDim2.new(u20.X.Scale * v56, u20.X.Offset * v56, u20.Y.Scale * v56, u20.Y.Offset * v56);
 		end, 0, 1):Play();
 	end);
-	local u24 = l__TweenService__17:Create(v43, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+	local u23 = l__TweenService__16:Create(v44, TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
 		Transparency = 1
 	});
-	v1.Promise.delay(u10.anchoredDuration + 0.3):andThen(function()
-		l__default__15(0.2, l__OutQuad__18, function(p11)
-			v38.TextTransparency = p11;
-			if v34 then
-				v34.ImageTransparency = p11;
+	v1.Promise.delay(u9.anchoredDuration + 0.3):andThen(function()
+		l__default__14(0.2, l__OutQuad__17, function(p11)
+			v39.TextTransparency = p11;
+			if v35 then
+				v35.ImageTransparency = p11;
 			end;
 		end, 0, 1);
-		u24:Play();
+		u23:Play();
 	end);
-	l__Debris__19:AddItem(v26, 1.5);
+	l__Debris__18:AddItem(v27, 1.5);
 end;
-u2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1.new;
-u2 = u2(u1());
-u1 = {
-	DamageIndicatorController = u2
+u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
+u1 = u1(u1.new());
+return {
+	DamageIndicatorController = u1
 };
-return u1;

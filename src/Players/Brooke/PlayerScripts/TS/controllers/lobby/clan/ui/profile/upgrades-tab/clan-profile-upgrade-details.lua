@@ -52,18 +52,24 @@ return {
 			local v12 = v5.prerequisites;
 			if v12 ~= nil then
 				local v13 = true;
-				for v14, v15 in ipairs(v12) do
-					local v16 = l__ClanUpgradeMeta__1[v15];
-					local v17 = p1.Clan.upgrades[v16.type];
-					if not v17 then
-						local v18 = false;
-					else
-						v18 = v16.level <= l__ClanUpgradeMeta__1[v17].level;
-					end;
-					if not v18 then
-						v13 = false;
+				local v14, v15, v16 = ipairs(v12);
+				while true do
+					v14(v15, v16);
+					if not v14 then
 						break;
 					end;
+					v16 = v14;
+					local v17 = l__ClanUpgradeMeta__1[v15];
+					local v18 = p1.Clan.upgrades[v17.type];
+					if not v18 then
+						local v19 = false;
+					else
+						v19 = v17.level <= l__ClanUpgradeMeta__1[v18].level;
+					end;
+					if not v19 then
+						v13 = false;
+						break;
+					end;				
 				end;
 				v12 = v13;
 			end;
@@ -72,7 +78,7 @@ return {
 			end;
 		end;
 		if v5 and v7 then
-			local v19 = { u3.createElement(function(p3)
+			local v20 = { u3.createElement(function(p3)
 					if not v7 or not v5 then
 						return u3.createFragment();
 					end;
@@ -126,7 +132,7 @@ return {
 				end, {
 					Size = UDim2.fromScale(1, 0.3)
 				}) };
-			local v20 = { u3.createElement("UIPadding", {
+			local v21 = { u3.createElement("UIPadding", {
 					PaddingTop = UDim.new(0.05, 0), 
 					PaddingBottom = UDim.new(0.05, 0), 
 					PaddingLeft = UDim.new(0.06, 0), 
@@ -137,7 +143,7 @@ return {
 					VerticalAlignment = "Center", 
 					SortOrder = "LayoutOrder"
 				}) };
-			local v21 = { u3.createElement("UIListLayout", {
+			local v22 = { u3.createElement("UIListLayout", {
 					FillDirection = "Vertical", 
 					Padding = UDim.new(0.05, 0), 
 					VerticalAlignment = "Top", 
@@ -146,7 +152,7 @@ return {
 					if not v7 or not v5 then
 						return u3.createFragment();
 					end;
-					local v22 = {
+					local v23 = {
 						RewardTitle = u3.createElement("TextLabel", {
 							Size = UDim2.fromScale(0, 0), 
 							AutomaticSize = "XY", 
@@ -172,8 +178,8 @@ return {
 							Margin = 0
 						})
 					};
-					local l__rewards__23 = v5.rewards;
-					local function v24(p5)
+					local l__rewards__24 = v5.rewards;
+					local function v25(p5)
 						return u3.createFragment({
 							Reward = u3.createElement("TextLabel", {
 								Size = UDim2.new(1, 0, 0, 16), 
@@ -190,39 +196,51 @@ return {
 								}) })
 						});
 					end;
-					local v25 = table.create(#l__rewards__23);
-					for v26, v27 in ipairs(l__rewards__23) do
-						v25[v26] = v24(v27, v26 - 1, l__rewards__23);
+					local v26 = table.create(#l__rewards__24);
+					local v27, v28, v29 = ipairs(l__rewards__24);
+					while true do
+						v27(v28, v29);
+						if not v27 then
+							break;
+						end;
+						v29 = v27;
+						v26[v27] = v25(v28, v27 - 1, l__rewards__24);					
 					end;
-					local v28 = {
+					local v30 = {
 						Size = UDim2.new(1, 0, 0.7, 0), 
 						LayoutOrder = 3, 
 						BackgroundTransparency = 1
 					};
-					local v29 = { u3.createElement("UIListLayout", {
+					local v31 = { u3.createElement("UIListLayout", {
 							FillDirection = "Vertical", 
 							Padding = UDim.new(0.05, 0), 
 							VerticalAlignment = "Top"
 						}) };
-					local v30 = #v29;
-					for v31, v32 in ipairs(v25) do
-						v29[v30 + v31] = v32;
+					local v32 = #v31;
+					local v33, v34, v35 = ipairs(v26);
+					while true do
+						v33(v34, v35);
+						if not v33 then
+							break;
+						end;
+						v35 = v33;
+						v31[v32 + v33] = v34;					
 					end;
-					v22[#v22 + 1] = u3.createElement(l__Empty__7, v28, v29);
+					v23[#v23 + 1] = u3.createElement(l__Empty__7, v30, v31);
 					return u3.createFragment({
 						Rewards = u3.createElement(l__Empty__7, {
 							Size = p4.Size, 
 							LayoutOrder = 2
-						}, v22)
+						}, v23)
 					});
 				end, {
 					Size = UDim2.fromScale(1, 0.45)
 				}) };
-			local v33 = v5.prerequisites and u3.createElement(function(p6)
+			local v36 = v5.prerequisites and u3.createElement(function(p6)
 				if not v7 or not v5 then
 					return u3.createFragment();
 				end;
-				local v34 = {
+				local v37 = {
 					PreReqTitle = u3.createElement("TextLabel", {
 						Size = UDim2.fromScale(0, 0), 
 						AutomaticSize = "XY", 
@@ -248,137 +266,149 @@ return {
 						Margin = 0
 					})
 				};
-				local v35 = v5.prerequisites;
-				if v35 ~= nil then
-					local function v36(p7)
-						local v37 = l__ClanUpgradeMeta__1[p7];
-						local v38 = false;
-						local v39 = p1.Clan.upgrades[v37.type];
-						if v39 then
-							v38 = v37.level <= l__ClanUpgradeMeta__1[v39].level;
+				local v38 = v5.prerequisites;
+				if v38 ~= nil then
+					local function v39(p7)
+						local v40 = l__ClanUpgradeMeta__1[p7];
+						local v41 = false;
+						local v42 = p1.Clan.upgrades[v40.type];
+						if v42 then
+							v41 = v40.level <= l__ClanUpgradeMeta__1[v42].level;
 						end;
-						local v40 = {};
-						local v41 = {
+						local v43 = {};
+						local v44 = {
 							Size = UDim2.new(1, 0, 0, 16)
 						};
-						if v38 then
-							local v42 = "<font color=\"" .. l__ColorUtil__5.richTextColor(l__Theme__4.mcGreen) .. "\">  (Completed)</font>";
+						if v41 then
+							local v45 = "<font color=\"" .. l__ColorUtil__5.richTextColor(l__Theme__4.mcGreen) .. "\">  (Completed)</font>";
 						else
-							v42 = "<font color=\"" .. l__ColorUtil__5.richTextColor(l__Theme__4.mcRed) .. "\">  (Not Completed)</font>";
+							v45 = "<font color=\"" .. l__ColorUtil__5.richTextColor(l__Theme__4.mcRed) .. "\">  (Not Completed)</font>";
 						end;
-						v41.Text = "<b>\226\128\162 " .. l__ClanUpgradeTypeMeta__2[v37.type].name .. " Lv." .. tostring(v37.level) .. "</b>" .. v42;
-						v41.TextScaled = true;
-						v41.RichText = true;
-						v41.Font = "Roboto";
-						v41.TextColor3 = l__ColorUtil__5.WHITE;
-						v41.TextXAlignment = "Left";
-						if v38 then
-							local v43 = 0;
+						v44.Text = "<b>\226\128\162 " .. l__ClanUpgradeTypeMeta__2[v40.type].name .. " Lv." .. tostring(v40.level) .. "</b>" .. v45;
+						v44.TextScaled = true;
+						v44.RichText = true;
+						v44.Font = "Roboto";
+						v44.TextColor3 = l__ColorUtil__5.WHITE;
+						v44.TextXAlignment = "Left";
+						if v41 then
+							local v46 = 0;
 						else
-							v43 = 0.2;
+							v46 = 0.2;
 						end;
-						v41.TextTransparency = v43;
-						v41.BackgroundTransparency = 1;
-						v40.PreReqEntry = u3.createElement("TextLabel", v41, { u3.createElement("UITextSizeConstraint", {
+						v44.TextTransparency = v46;
+						v44.BackgroundTransparency = 1;
+						v43.PreReqEntry = u3.createElement("TextLabel", v44, { u3.createElement("UITextSizeConstraint", {
 								MaxTextSize = 16
 							}) });
-						return u3.createFragment(v40);
+						return u3.createFragment(v43);
 					end;
-					local v44 = table.create(#v35);
-					for v45, v46 in ipairs(v35) do
-						v44[v45] = v36(v46, v45 - 1, v35);
+					local v47 = table.create(#v38);
+					local v48, v49, v50 = ipairs(v38);
+					while true do
+						v48(v49, v50);
+						if not v48 then
+							break;
+						end;
+						v50 = v48;
+						v47[v48] = v39(v49, v48 - 1, v38);					
 					end;
-					v35 = v44;
+					v38 = v47;
 				end;
-				local v47 = {
+				local v51 = {
 					Size = UDim2.new(1, 0, 0.7, 0), 
 					LayoutOrder = 3, 
 					BackgroundTransparency = 1
 				};
-				local v48 = { u3.createElement("UIListLayout", {
+				local v52 = { u3.createElement("UIListLayout", {
 						FillDirection = "Vertical", 
 						Padding = UDim.new(0.05, 0), 
 						VerticalAlignment = "Top"
 					}) };
-				local v49 = #v48;
-				if v35 then
-					for v50, v51 in ipairs(v35) do
-						v48[v49 + v50] = v51;
+				local v53 = #v52;
+				if v38 then
+					local v54, v55, v56 = ipairs(v38);
+					while true do
+						v54(v55, v56);
+						if not v54 then
+							break;
+						end;
+						v56 = v54;
+						v52[v53 + v54] = v55;					
 					end;
 				end;
-				v34[#v34 + 1] = u3.createElement(l__Empty__7, v47, v48);
+				v37[#v37 + 1] = u3.createElement(l__Empty__7, v51, v52);
 				return u3.createFragment({
 					PreReqs = u3.createElement(l__Empty__7, {
 						Size = p6.Size, 
 						LayoutOrder = 3
-					}, v34)
+					}, v37)
 				});
 			end, {
 				Size = UDim2.fromScale(1, 0.45)
 			});
-			if v33 then
-				v21[#v21 + 1] = v33;
+			if v36 then
+				v22[#v22 + 1] = v36;
 			end;
-			v20.Body = u3.createElement(l__Empty__7, {
+			v21.Body = u3.createElement(l__Empty__7, {
 				Size = UDim2.fromScale(1, 0.8), 
 				LayoutOrder = 1
-			}, v21);
+			}, v22);
 			if not v8 then
-				local v52 = {
+				local v57 = {
 					AnchorPoint = Vector2.new(0.5, 1), 
 					Position = UDim2.fromScale(0.5, 1), 
 					Size = UDim2.fromScale(1, 0.15), 
 					Text = l__StringUtil__9.formatNumberWithCommas(v5.cost) .. " coins"
 				};
 				if v9 then
-					local v53 = l__Theme__4.backgroundError;
+					local v58 = l__Theme__4.backgroundError;
 				else
-					v53 = l__Theme__4.backgroundSuccess;
+					v58 = l__Theme__4.backgroundSuccess;
 				end;
-				v52.BackgroundColor3 = v53;
-				function v52.OnClick()
+				v57.BackgroundColor3 = v58;
+				function v57.OnClick()
 					if not v9 and not p1.Loading then
 						p1.OnUpgrade();
 						return;
 					end;
 					return nil;
 				end;
-				v52.Disabled = p1.Disabled;
-				v52.Loading = p1.Loading;
-				v52.LayoutOrder = 2;
-				local v54 = u3.createElement(l__ButtonComponent__8, v52);
+				v57.Disabled = p1.Disabled;
+				v57.Loading = p1.Loading;
+				v57.LayoutOrder = 2;
+				local v59 = u3.createElement(l__ButtonComponent__8, v57);
 			else
-				local v55 = {
+				local v60 = {
 					AnchorPoint = Vector2.new(0.5, 1), 
 					Position = UDim2.fromScale(0.5, 1), 
 					Size = UDim2.fromScale(1, 0.15), 
 					BackgroundColor3 = l__Theme__4.backgroundPrimary
 				};
 				if not v5.nextUpgrade then
-					local v56 = " - Max Level Reached";
+					local v61 = " - Max Level Reached";
 				else
-					v56 = "";
+					v61 = "";
 				end;
-				v55.Text = "Purchased" .. v56;
-				v55.Disabled = true;
-				function v55.OnClick()
+				v60.Text = "Purchased" .. v61;
+				v60.Disabled = true;
+				function v60.OnClick()
 
 				end;
-				v55.LayoutOrder = 2;
-				v54 = u3.createElement(l__ButtonComponent__8, v55);
+				v60.LayoutOrder = 2;
+				v59 = u3.createElement(l__ButtonComponent__8, v60);
 			end;
-			v20[#v20 + 1] = v54;
-			v19.Content = u3.createFragment({
+			v21[#v21 + 1] = v59;
+			v20.Content = u3.createFragment({
 				Content = u3.createElement(l__Empty__7, {
 					AnchorPoint = Vector2.new(0, 0), 
 					Position = UDim2.fromScale(0, 0.3), 
 					Size = UDim2.fromScale(1, 0.7), 
 					LayoutOrder = 2
-				}, v20)
+				}, v21)
 			});
-			local v57 = u3.createFragment(v19);
+			local v62 = u3.createFragment(v20);
 		else
-			v57 = u3.createElement("TextLabel", {
+			v62 = u3.createElement("TextLabel", {
 				Size = UDim2.fromScale(1, 1), 
 				Text = "<b>Select an upgrade\n\n <font transparency=\"0.3\" size=\"16\">From the list on the left</font></b>", 
 				TextScaled = true, 
@@ -393,15 +423,15 @@ return {
 					MaxTextSize = 20
 				}) });
 		end;
-		local v58 = {};
-		v58[#v58 + 1] = v57;
+		local v63 = {};
+		v63[#v63 + 1] = v62;
 		return u3.createFragment({
 			UpgradeDetails = u3.createElement("Frame", {
 				Size = UDim2.new(0.6, 0, 1, 0), 
 				BackgroundColor3 = l__Theme__4.backgroundTertiary, 
 				BorderSizePixel = 0, 
 				LayoutOrder = 2
-			}, v58)
+			}, v63)
 		});
 	end)
 };

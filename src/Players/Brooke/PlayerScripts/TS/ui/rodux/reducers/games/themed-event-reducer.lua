@@ -1,4 +1,3 @@
--- Script Hash: aa1c0d8c3db2c3a9e0889e6d179873f429165171782afa767ea3d617da8340097cbf67a7449ae87f8f47491e7a90e443
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "themed-event", "themed-event-types");

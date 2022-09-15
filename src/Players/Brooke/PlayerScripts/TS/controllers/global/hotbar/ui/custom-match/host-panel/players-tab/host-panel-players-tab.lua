@@ -30,34 +30,40 @@ return {
 		if not l__DeviceUtil__1.isHoarceKat() then
 			local v6 = l__Players__2:GetPlayers();
 			local v7 = table.create(#v6);
-			for v8, v9 in ipairs(v6) do
-				v7[v8] = l__OfflinePlayerUtil__3.getOfflinePlayer(v9);
+			local v8, v9, v10 = ipairs(v6);
+			while true do
+				v8(v9, v10);
+				if not v8 then
+					break;
+				end;
+				v10 = v8;
+				v7[v8] = l__OfflinePlayerUtil__3.getOfflinePlayer(v9);			
 			end;
-			local v10 = v7;
+			local v11 = v7;
 		else
-			v10 = { l__OfflinePlayerUtil__3.Dummy.oiogy, l__OfflinePlayerUtil__3.Dummy.spleenhook, l__OfflinePlayerUtil__3.Dummy.LongNameMan, l__OfflinePlayerUtil__3.Dummy.DVwastaken, l__OfflinePlayerUtil__3.Dummy.spleenhook, l__OfflinePlayerUtil__3.Dummy.leoduquartier, l__OfflinePlayerUtil__3.Dummy.SnickTrix, l__OfflinePlayerUtil__3.Dummy.Bryan3838 };
+			v11 = { l__OfflinePlayerUtil__3.Dummy.oiogy, l__OfflinePlayerUtil__3.Dummy.spleenhook, l__OfflinePlayerUtil__3.Dummy.LongNameMan, l__OfflinePlayerUtil__3.Dummy.DVwastaken, l__OfflinePlayerUtil__3.Dummy.spleenhook, l__OfflinePlayerUtil__3.Dummy.leoduquartier, l__OfflinePlayerUtil__3.Dummy.SnickTrix, l__OfflinePlayerUtil__3.Dummy.Bryan3838 };
 		end;
-		local v11, v12 = l__useState__5(v10);
+		local v12, v13 = l__useState__5(v11);
 		if not l__DeviceUtil__1.isHoarceKat() then
-			local v13 = {};
+			local v14 = {};
 		else
-			v13 = u3;
+			v14 = u3;
 		end;
-		local v14, v15 = l__useState__5(v13);
-		local v16, v17 = l__useState__5(false);
+		local v15, v16 = l__useState__5(v14);
+		local v17, v18 = l__useState__5(false);
 		p2.useEffect(function()
 			if l__DeviceUtil__1.isHoarceKat() then
 				return nil;
 			end;
-			local v18 = l__KnitClient__4.Controllers.TeamController:getPlayerTeamMap();
-			if v18 then
-				v15(v18);
+			local v19 = l__KnitClient__4.Controllers.TeamController:getPlayerTeamMap();
+			if v19 then
+				v16(v19);
 			end;
 			if not l__DeviceUtil__1.isHoarceKat() and l__KnitClient__4.Controllers.PermissionController:playerHasAnyPermissions(l__Players__2.LocalPlayer, { 2, 0, 4, 6 }) then
-				v17(true);
+				v18(true);
 			end;
 		end, {});
-		local v19 = { u5.createElement("UIListLayout", {
+		local v20 = { u5.createElement("UIListLayout", {
 				FillDirection = "Vertical", 
 				Padding = UDim.new(0, 10), 
 				SortOrder = "LayoutOrder"
@@ -77,42 +83,42 @@ return {
 			}, { u5.createElement("UITextSizeConstraint", {
 					MaxTextSize = 20
 				}) }) };
-		local v20 = #v19;
-		local v21 = {
+		local v21 = #v20;
+		local v22 = {
 			Size = UDim2.new(1, 0, 0, 30)
 		};
 		v4 = {};
-		for v22 = 1, #v10 do
-			local v23 = v10[v22];
-			table.insert(v4, v23.name);
-			table.insert(v4, v23.displayName);
+		for v23 = 1, #v11 do
+			local v24 = v11[v23];
+			table.insert(v4, v24.name);
+			table.insert(v4, v24.displayName);
 			v4 = v4;
 		end;
-		v21.Items = local v24;
-		v21.InputText = "";
-		function v21.OnTextChange(p3, p4)
+		v22.Items = local v25;
+		v22.InputText = "";
+		function v22.OnTextChange(p3, p4)
 			if p3 == "" then
-				return v12(v10);
+				return v13(v11);
 			end;
-			local v25 = {};
-			local v26 = 0;
-			local v27, v28, v29 = ipairs(v10);
+			local v26 = {};
+			local v27 = 0;
+			local v28, v29, v30 = ipairs(v11);
 			while true do
-				local v30, v31 = v27(v28, v29);
-				if not v30 then
+				v28(v29, v30);
+				if not v28 then
 					break;
 				end;
-				if (table.find(p4, v31.displayName) ~= nil or table.find(p4, v31.name) ~= nil) == true then
-					v26 = v26 + 1;
-					v25[v26] = v31;
+				if (table.find(p4, v29.displayName) ~= nil or table.find(p4, v29.name) ~= nil) == true then
+					v27 = v27 + 1;
+					v26[v27] = v29;
 				end;			
 			end;
-			v12(v25);
+			v13(v26);
 		end;
-		v21.PlaceHolderText = "Search User";
-		v21.LayoutOrder = 2;
-		v19[v20 + 1] = u5.createElement(l__AutoCompleteSearchbar__7, v21);
-		v19.ColumnHeaders = u5.createFragment({
+		v22.PlaceHolderText = "Search User";
+		v22.LayoutOrder = 2;
+		v20[v21 + 1] = u5.createElement(l__AutoCompleteSearchbar__7, v22);
+		v20.ColumnHeaders = u5.createFragment({
 			ColumnHeaders = u5.createElement(l__Empty__8, {
 				Size = UDim2.new(1, 0, 0, 20), 
 				LayoutOrder = 3
@@ -187,22 +193,28 @@ return {
 							MaxTextSize = 18
 						}) }) }) })
 		});
-		local v32 = next(v14) ~= nil;
-		if v32 then
-			table.sort(v11, function(p5, p6)
+		local v31 = next(v15) ~= nil;
+		if v31 then
+			table.sort(v12, function(p5, p6)
 				return string.lower(p5.displayName) < string.lower(p6.displayName);
 			end);
-			local v33 = table.create(#v11);
-			for v34, v35 in ipairs(v11) do
-				v33[v34] = u5.createElement(l__HostPanelPlayerRow__10, {
-					OfflinePlayer = v35, 
-					Index = v34 - 1, 
-					Team = v14[v35.userId], 
-					HasGameBanPermission = v16, 
+			local v32 = table.create(#v12);
+			local v33, v34, v35 = ipairs(v12);
+			while true do
+				v33(v34, v35);
+				if not v33 then
+					break;
+				end;
+				v35 = v33;
+				v32[v33] = u5.createElement(l__HostPanelPlayerRow__10, {
+					OfflinePlayer = v34, 
+					Index = v33 - 1, 
+					Team = v15[v34.userId], 
+					HasGameBanPermission = v17, 
 					store = p1.store
-				});
+				});			
 			end;
-			v32 = v33;
+			v31 = v32;
 		end;
 		local v36 = {
 			AdditionalSpace = 40, 
@@ -216,12 +228,18 @@ return {
 				Padding = UDim.new(0, 4)
 			}) };
 		local v38 = #v37;
-		if v32 then
-			for v39, v40 in ipairs(v32) do
-				v37[v38 + v39] = v40;
+		if v31 then
+			local v39, v40, v41 = ipairs(v31);
+			while true do
+				v39(v40, v41);
+				if not v39 then
+					break;
+				end;
+				v41 = v39;
+				v37[v38 + v39] = v40;			
 			end;
 		end;
-		v19[v20 + 2] = u5.createElement(l__AutoCanvasScrollingFrame__11, v36, v37);
-		return u5.createFragment(v19);
+		v20[v21 + 2] = u5.createElement(l__AutoCanvasScrollingFrame__11, v36, v37);
+		return u5.createFragment(v20);
 	end)
 };

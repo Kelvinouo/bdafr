@@ -17,13 +17,13 @@ local v13 = {};
 local v14 = 0;
 local v15, v16, v17 = ipairs((v1.import(script, v1.getModule(script, "@rbxts", "object-utils")).values(l__BedwarsKit__8)));
 while true do
-	local v18, v19 = v15(v16, v17);
-	if not v18 then
+	v15(v16, v17);
+	if not v15 then
 		break;
 	end;
-	if table.find(u1, v19) == nil == true then
+	if table.find(u1, v16) == nil == true then
 		v14 = v14 + 1;
-		v13[v14] = v19;
+		v13[v14] = v16;
 	end;
 end;
 table.sort(v13, function(p1, p2)
@@ -34,8 +34,8 @@ local l__ColorUtil__3 = v2.ColorUtil;
 local l__AutoCanvasScrollingFrame__4 = v2.AutoCanvasScrollingFrame;
 return {
 	HostPanelKitsTab = v5.new(v4)(function(p3, p4)
-		local v20, v21 = p4.useState(true);
-		local v22 = { v4.createElement("UIListLayout", {
+		local v18, v19 = p4.useState(true);
+		local v20 = { v4.createElement("UIListLayout", {
 				FillDirection = "Vertical", 
 				Padding = UDim.new(0, 10)
 			}), v4.createElement("TextLabel", {
@@ -53,39 +53,39 @@ return {
 			}, { v4.createElement("UITextSizeConstraint", {
 					MaxTextSize = 20
 				}) }) };
-		local function v23(p5)
-			local v24 = {
+		local function v21(p5)
+			local v22 = {
 				Size = UDim2.fromScale(1, 1), 
 				BackgroundColor3 = l__Theme__12.backgroundPrimary, 
 				BorderSizePixel = 0, 
 				Text = ""
 			};
-			v24[v4.Event.Activated] = function()
-				local v25 = p3.store.CustomMatch.disabledKits[p5];
-				if v25 == nil then
-					v25 = false;
+			v22[v4.Event.Activated] = function()
+				local v23 = p3.store.CustomMatch.disabledKits[p5];
+				if v23 == nil then
+					v23 = false;
 				end;
-				l__KnitClient__3.Controllers.CustomMatchController:setKitDisabled(p5, not v25);
+				l__KnitClient__3.Controllers.CustomMatchController:setKitDisabled(p5, not v23);
 				l__SoundManager__2:playSound(l__GameSound__11.UI_CLICK);
 			end;
-			local v26 = {};
-			local v27 = {};
+			local v24 = {};
+			local v25 = {};
 			if not p3.store.CustomMatch.disabledKits[p5] then
-				local v28 = "on";
+				local v26 = "on";
 			else
-				v28 = "off";
+				v26 = "off";
 			end;
-			v27.Value = v28;
-			function v27.OnChange(p6)
+			v25.Value = v26;
+			function v25.OnChange(p6)
 				l__KnitClient__3.Controllers.CustomMatchController:setKitDisabled(p5, p6 == "off");
 				l__SoundManager__2:playSound(l__GameSound__11.UI_CLICK);
 			end;
-			v27.FrameProps = {
+			v25.FrameProps = {
 				Size = UDim2.fromScale(1, 0.4), 
 				AnchorPoint = Vector2.new(0, 0), 
 				Position = UDim2.fromScale(0, 0.6)
 			};
-			v26[1] = v4.createElement("TextLabel", {
+			v24[1] = v4.createElement("TextLabel", {
 				Size = UDim2.fromScale(1, 0.6), 
 				Text = "<b>" .. l__getBedwarsKitMeta__9(p5).name .. "</b>", 
 				TextScaled = true, 
@@ -103,7 +103,7 @@ return {
 				}), v4.createElement("UITextSizeConstraint", {
 					MaxTextSize = 18
 				}) });
-			v26[2] = v4.createElement(l__ToggleButtonGroup__7, v27, { v4.createElement(l__ToggleButton__6, {
+			v24[2] = v4.createElement(l__ToggleButtonGroup__7, v25, { v4.createElement(l__ToggleButton__6, {
 					Value = l__HostPanelToggleValue__10.ON, 
 					Text = "On"
 				}), v4.createElement(l__ToggleButton__6, {
@@ -111,48 +111,54 @@ return {
 					Text = "Off", 
 					ActiveColor = l__Theme__12.backgroundError
 				}) });
-			return v4.createElement("TextButton", v24, v26);
+			return v4.createElement("TextButton", v22, v24);
 		end;
-		local v29 = table.create(#v13);
-		for v30, v31 in ipairs(v13) do
-			v29[v30] = v23(v31, v30 - 1, v13);
+		local v27 = table.create(#v13);
+		local v28, v29, v30 = ipairs(v13);
+		while true do
+			v28(v29, v30);
+			if not v28 then
+				break;
+			end;
+			v30 = v28;
+			v27[v28] = v21(v29, v28 - 1, v13);		
 		end;
-		local v32 = {
+		local v31 = {
 			AdditionalSpace = 40, 
 			ScrollingFrameProps = {
 				Size = UDim2.new(1, 0, 0.9, 0)
 			}
 		};
-		local v33 = {};
-		local v34 = {
+		local v32 = {};
+		local v33 = {
 			Size = UDim2.fromScale(1, 1), 
 			BackgroundColor3 = l__Theme__12.backgroundTertiary, 
 			BorderSizePixel = 0, 
 			Text = ""
 		};
-		v34[v4.Event.Activated] = function()
-			l__KnitClient__3.Controllers.CustomMatchController:setAllKitsDisabled(v20);
+		v33[v4.Event.Activated] = function()
+			l__KnitClient__3.Controllers.CustomMatchController:setAllKitsDisabled(v18);
 			l__SoundManager__2:playSound(l__GameSound__11.UI_CLICK);
-			v21(not v20);
+			v19(not v18);
 		end;
-		local v35 = {};
-		local v36 = {
+		local v34 = {};
+		local v35 = {
 			Size = UDim2.fromScale(1, 1)
 		};
-		if v20 then
-			local v37 = "<b>Disable All</b>";
+		if v18 then
+			local v36 = "<b>Disable All</b>";
 		else
-			v37 = "<b>Enable All</b>";
+			v36 = "<b>Enable All</b>";
 		end;
-		v36.Text = v37;
-		v36.TextScaled = true;
-		v36.RichText = true;
-		v36.Font = "Roboto";
-		v36.TextColor3 = l__ColorUtil__3.WHITE;
-		v36.TextXAlignment = "Center";
-		v36.TextYAlignment = "Center";
-		v36.BackgroundTransparency = 1;
-		v35[1] = v4.createElement("TextLabel", v36, { v4.createElement("UIPadding", {
+		v35.Text = v36;
+		v35.TextScaled = true;
+		v35.RichText = true;
+		v35.Font = "Roboto";
+		v35.TextColor3 = l__ColorUtil__3.WHITE;
+		v35.TextXAlignment = "Center";
+		v35.TextYAlignment = "Center";
+		v35.BackgroundTransparency = 1;
+		v34[1] = v4.createElement("TextLabel", v35, { v4.createElement("UIPadding", {
 				PaddingTop = UDim.new(0.15, 0), 
 				PaddingBottom = UDim.new(0.15, 0), 
 				PaddingLeft = UDim.new(0.1, 0), 
@@ -160,19 +166,25 @@ return {
 			}), v4.createElement("UITextSizeConstraint", {
 				MaxTextSize = 18
 			}) });
-		v33[1] = v4.createElement("UIGridLayout", {
+		v32[1] = v4.createElement("UIGridLayout", {
 			CellSize = UDim2.fromOffset(90, 70), 
 			HorizontalAlignment = "Left", 
 			VerticalAlignment = "Top", 
 			SortOrder = "LayoutOrder", 
 			FillDirectionMaxCells = 6
 		});
-		v33[2] = v4.createElement("TextButton", v34, v35);
-		local v38 = #v33;
-		for v39, v40 in ipairs(v29) do
-			v33[v38 + v39] = v40;
+		v32[2] = v4.createElement("TextButton", v33, v34);
+		local v37 = #v32;
+		local v38, v39, v40 = ipairs(v27);
+		while true do
+			v38(v39, v40);
+			if not v38 then
+				break;
+			end;
+			v40 = v38;
+			v32[v37 + v38] = v39;		
 		end;
-		v22[#v22 + 1] = v4.createElement(l__AutoCanvasScrollingFrame__4, v32, v33);
-		return v4.createFragment(v22);
+		v20[#v20 + 1] = v4.createElement(l__AutoCanvasScrollingFrame__4, v31, v32);
+		return v4.createFragment(v20);
 	end)
 };

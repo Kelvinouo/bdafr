@@ -19,11 +19,17 @@ v1.Promise.defer(function()
 		}) };
 	l__ContentProvider__3:PreloadAsync(v11, function(p1)
 		local v12 = nil;
-		for v13, v14 in ipairs(v11) do
+		local v13, v14, v15 = ipairs(v11);
+		while true do
+			v13(v14, v15);
+			if not v13 then
+				break;
+			end;
+			v15 = v13;
 			if v14.Image == p1 == true then
 				v12 = v14;
 				break;
-			end;
+			end;		
 		end;
 		if v12 ~= nil then
 			v12:Destroy();
@@ -39,26 +45,26 @@ local l__DividerComponent__9 = v2.DividerComponent;
 local l__ButtonComponent__10 = v2.ButtonComponent;
 return {
 	GiftingForm = v4.new(v3)(function(p2, p3)
-		local l__useState__15 = p3.useState;
-		local l__useMemo__16 = p3.useMemo;
-		local v17, v18 = l__useState__15("");
-		local v19, v20 = l__useState__15("");
-		local v21, v22 = l__useState__15("");
-		local v23, v24 = l__useState__15("");
-		local v25 = l__useMemo__16(function()
+		local l__useState__16 = p3.useState;
+		local l__useMemo__17 = p3.useMemo;
+		local v18, v19 = l__useState__16("");
+		local v20, v21 = l__useState__16("");
+		local v22, v23 = l__useState__16("");
+		local v24, v25 = l__useState__16("");
+		local v26 = l__useMemo__17(function()
 			return v3.createElement(l__GiftingRecipientInput__10, {
 				FriendsListUser = p2.FriendsListUser, 
 				Friends = p2.Friends, 
 				Size = UDim2.fromScale(1, 0.15), 
 				LayoutOrder = 3, 
-				SetRecipient = v22
+				SetRecipient = v23
 			});
 		end, { p2.Friends, p2.FriendsListUser });
-		local v26 = l__useMemo__16(function()
+		local v27 = l__useMemo__17(function()
 			return v3.createElement(l__GiftingMessageInput__9, {
 				Size = UDim2.fromScale(1, 0.35), 
 				LayoutOrder = 4, 
-				SetMessage = v24
+				SetMessage = v25
 			});
 		end, {});
 		p3.useEffect(function()
@@ -70,8 +76,8 @@ return {
 					local u12 = p5.giftedPlayerUserId;
 					u12 = function(p6)
 						l__SoundManager__5:playSound(l__GameSound__7.BEDWARS_UPGRADE_SUCCESS);
-						v20("");
-						v18("Your gift of the <font color=\"#FFFFFF\"><b>" .. p5.gift.name .. "</b></font> has been sent to <font color=\"#FFFFFF\"><b>" .. tostring(p6) .. "</b></font>!");
+						v21("");
+						v19("Your gift of the <font color=\"#FFFFFF\"><b>" .. p5.gift.name .. "</b></font> has been sent to <font color=\"#FFFFFF\"><b>" .. tostring(p6) .. "</b></font>!");
 					end;
 					v1.Promise.defer(function(p7, p8)
 						p7(l__Players__7:GetNameFromUserIdAsync(u12));
@@ -84,24 +90,24 @@ return {
 				end);
 			end;
 		end, {});
-		local v27 = { v3.createElement("UIListLayout", {
+		local v28 = { v3.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Vertical, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				VerticalAlignment = Enum.VerticalAlignment.Top, 
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0, 14)
 			}) };
-		local v28 = #v27;
-		local v29 = { v3.createElement("UIListLayout", {
+		local v29 = #v28;
+		local v30 = { v3.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				VerticalAlignment = Enum.VerticalAlignment.Center, 
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0, 10)
 			}) };
-		local v30 = false;
+		local v31 = false;
 		if p2.Gift.imageId ~= nil then
-			v30 = v3.createFragment({
+			v31 = v3.createFragment({
 				GiftImage = v3.createElement("ImageLabel", {
 					Size = UDim2.fromScale(0.2, 1), 
 					Image = p2.Gift.imageId, 
@@ -111,19 +117,19 @@ return {
 				})
 			});
 		end;
-		if v30 then
-			v29[#v29 + 1] = v30;
+		if v31 then
+			v30[#v30 + 1] = v31;
 		end;
-		local v31 = p2.Gift.customImage and v3.createFragment({
+		local v32 = p2.Gift.customImage and v3.createFragment({
 			GiftImageCustom = v3.createElement("Frame", {
 				Size = UDim2.fromScale(0.2, 1), 
 				BackgroundTransparency = 1
 			}, { p2.Gift.customImage })
 		});
-		if v31 then
-			v29[#v29 + 1] = v31;
+		if v32 then
+			v30[#v30 + 1] = v32;
 		end;
-		v29[#v29 + 1] = v3.createElement("Frame", {
+		v30[#v30 + 1] = v3.createElement("Frame", {
 			Size = UDim2.fromScale(0.75, 0.9), 
 			BackgroundTransparency = 1, 
 			LayoutOrder = 1
@@ -155,42 +161,42 @@ return {
 				BackgroundTransparency = 1, 
 				RichText = true
 			}) });
-		v27.GiftingItemHeader = v3.createElement("Frame", {
+		v28.GiftingItemHeader = v3.createElement("Frame", {
 			Size = UDim2.fromScale(1, 0.13), 
 			BackgroundTransparency = 1, 
 			LayoutOrder = 1
-		}, v29);
-		v27[v28 + 1] = v3.createElement(l__DividerComponent__9, {
+		}, v30);
+		v28[v29 + 1] = v3.createElement(l__DividerComponent__9, {
 			Margin = 0, 
 			Thickness = 1.5, 
 			LayoutOrder = 2
 		});
-		v27[v28 + 2] = v25;
-		v27[#v27 + 1] = v26;
-		v27.FormSubmit = v3.createElement(l__ButtonComponent__10, {
+		v28[v29 + 2] = v26;
+		v28[#v28 + 1] = v27;
+		v28.FormSubmit = v3.createElement(l__ButtonComponent__10, {
 			Text = "Gift " .. p2.Gift.name, 
 			OnClick = function()
 				u4:WaitFor("SendGift"):andThen(function(p10)
-					local v32 = {};
-					for v33, v34 in pairs(p2.Gift) do
-						v32[v33] = v34;
+					local v33 = {};
+					for v34, v35 in pairs(p2.Gift) do
+						v33[v34] = v35;
 					end;
-					v32.customImage = nil;
-					local v35 = p10:CallServer({
-						username = v21, 
-						message = v23, 
-						gift = v32, 
+					v33.customImage = nil;
+					local v36 = p10:CallServer({
+						username = v22, 
+						message = v24, 
+						gift = v33, 
 						giftType = p2.GiftType
 					});
-					local l__errorMessage__36 = v35.errorMessage;
-					if v35.success then
-						v20("");
-						v18("Confirm the purchase to gift the <font color=\"#FFFFFF\"><b>" .. p2.Gift.name .. "</b></font> to <font color=\"#FFFFFF\"><b>" .. v21 .. "</b></font>");
+					local l__errorMessage__37 = v36.errorMessage;
+					if v36.success then
+						v21("");
+						v19("Confirm the purchase to gift the <font color=\"#FFFFFF\"><b>" .. p2.Gift.name .. "</b></font> to <font color=\"#FFFFFF\"><b>" .. v22 .. "</b></font>");
 					end;
-					if l__errorMessage__36 ~= "" and l__errorMessage__36 then
+					if l__errorMessage__37 ~= "" and l__errorMessage__37 then
 						l__SoundManager__5:playSound(l__GameSound__7.ERROR_NOTIFICATION);
-						v18("");
-						v20(l__errorMessage__36);
+						v19("");
+						v21(l__errorMessage__37);
 					end;
 				end);
 			end, 
@@ -198,9 +204,9 @@ return {
 			TextSize = 18, 
 			LayoutOrder = 5
 		});
-		local v37 = false;
-		if v19 ~= "" then
-			v37 = v3.createFragment({
+		local v38 = false;
+		if v20 ~= "" then
+			v38 = v3.createFragment({
 				ErrorMsgWrapper = v3.createElement("Frame", {
 					Size = UDim2.fromScale(1, 0.15), 
 					BackgroundTransparency = 1, 
@@ -216,7 +222,7 @@ return {
 						LayoutOrder = 1
 					}), 
 					ErrorMsg = v3.createElement("TextLabel", {
-						Text = v19, 
+						Text = v20, 
 						AnchorPoint = Vector2.new(0.5, 0.5), 
 						Position = UDim2.fromScale(0.5, 0.5), 
 						Size = UDim2.new(0.8, 0, 0, 40), 
@@ -240,12 +246,12 @@ return {
 				})
 			});
 		end;
-		if v37 then
-			v27[#v27 + 1] = v37;
+		if v38 then
+			v28[#v28 + 1] = v38;
 		end;
-		local v38 = false;
-		if v17 ~= "" then
-			v38 = v3.createFragment({
+		local v39 = false;
+		if v18 ~= "" then
+			v39 = v3.createFragment({
 				SuccessMsgWrapper = v3.createElement("Frame", {
 					Size = UDim2.fromScale(1, 0.15), 
 					BackgroundTransparency = 1, 
@@ -261,7 +267,7 @@ return {
 						LayoutOrder = 1
 					}), 
 					SuccessMsg = v3.createElement("TextLabel", {
-						Text = v17, 
+						Text = v18, 
 						AnchorPoint = Vector2.new(0.5, 0.5), 
 						Position = UDim2.fromScale(0.5, 0.5), 
 						Size = UDim2.new(0.8, 0, 0, 40), 
@@ -284,13 +290,13 @@ return {
 				})
 			});
 		end;
-		if v38 then
-			v27[#v27 + 1] = v38;
+		if v39 then
+			v28[#v28 + 1] = v39;
 		end;
 		return v3.createElement("Frame", {
 			Size = p2.Size, 
 			BackgroundTransparency = 1, 
 			LayoutOrder = 1
-		}, v27);
+		}, v28);
 	end)
 };

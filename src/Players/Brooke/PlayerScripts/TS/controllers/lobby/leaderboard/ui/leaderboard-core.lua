@@ -166,7 +166,6 @@ function v5.render(p12)
 		v22 = v22 + 1;
 		v21[v22] = { v23, v24 };
 	end;
-	v12 = {};
 	local function v25(p13, p14)
 		local l__displayName__26 = p14[2].displayName;
 		local v27 = {};
@@ -179,6 +178,7 @@ function v5.render(p12)
 		};
 		return v27;
 	end;
+	v12 = {};
 	for v30 = 1, #v21 do
 		v12 = v25(v12, v21[v30], v30 - 1, v21);
 	end;
@@ -191,22 +191,28 @@ function v5.render(p12)
 		local v35 = 0;
 		local v36, v37, v38 = ipairs(v32);
 		while true do
-			local v39, v40 = v36(v37, v38);
-			if not v39 then
+			v36(v37, v38);
+			if not v36 then
 				break;
 			end;
-			local v41 = v40[1];
-			if v40[2].displayName == p15 == true then
+			local v39 = v37[1];
+			if v37[2].displayName == p15 == true then
 				v35 = v35 + 1;
-				v34[v35] = v40;
+				v34[v35] = v37;
 			end;		
 		end;
-		local v42 = table.create(#v34);
-		for v43, v44 in ipairs(v34) do
-			local v45 = v44[2];
-			v42[v43] = v44[1];
+		local v40 = table.create(#v34);
+		local v41, v42, v43 = ipairs(v34);
+		while true do
+			v41(v42, v43);
+			if not v41 then
+				break;
+			end;
+			v43 = v41;
+			local v44 = v42[2];
+			v40[v41] = v42[1];		
 		end;
-		p12:handleSelectLeaderboard(v42[1]);
+		p12:handleSelectLeaderboard(v40[1]);
 	end;
 	v17[v18 + 1] = v3.createElement(l__DropdownComponent__8, v19);
 	v17[v18 + 2] = p12.resetsInText and v3.createElement("TextLabel", {
@@ -222,8 +228,8 @@ function v5.render(p12)
 		TextTransparency = 0.3, 
 		TextColor3 = Color3.fromRGB(255, 255, 255)
 	});
-	local v46 = #v17;
-	v17[v46 + 1] = v3.createElement(l__LeaderboardList__9, {
+	local v45 = #v17;
+	v17[v45 + 1] = v3.createElement(l__LeaderboardList__9, {
 		LeaderboardData = l__leaderboardData__13, 
 		FrameProps = {
 			Size = UDim2.new(1, 0, 0.9, -38), 
@@ -231,38 +237,38 @@ function v5.render(p12)
 			BackgroundTransparency = 1
 		}
 	});
-	local v47 = {
+	local v46 = {
 		AnchorPoint = Vector2.new(0, 1), 
 		Position = UDim2.fromScale(0, 1), 
 		Size = UDim2.fromScale(1, 0.1), 
 		BackgroundTransparency = 1
 	};
-	local v48 = { v3.createElement("UIListLayout", {
+	local v47 = { v3.createElement("UIListLayout", {
 			FillDirection = Enum.FillDirection.Vertical, 
 			VerticalAlignment = Enum.VerticalAlignment.Bottom, 
 			HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 			SortOrder = Enum.SortOrder.LayoutOrder, 
 			Padding = UDim.new(0, 2)
 		}) };
-	local v49 = #v48;
-	local v50 = {};
-	local l__leaderboardPosition__51 = l__leaderboardData__13.leaderboardPosition;
-	if l__leaderboardPosition__51 ~= 0 and l__leaderboardPosition__51 == l__leaderboardPosition__51 and l__leaderboardPosition__51 then
-		local v52 = string.gsub(string.reverse((string.gsub(string.reverse((tostring(l__leaderboardData__13.leaderboardPosition))), "%d%d%d", "%1,"))), "^,", "");
+	local v48 = #v47;
+	local v49 = {};
+	local l__leaderboardPosition__50 = l__leaderboardData__13.leaderboardPosition;
+	if l__leaderboardPosition__50 ~= 0 and l__leaderboardPosition__50 == l__leaderboardPosition__50 and l__leaderboardPosition__50 then
+		local v51 = string.gsub(string.reverse((string.gsub(string.reverse((tostring(l__leaderboardData__13.leaderboardPosition))), "%d%d%d", "%1,"))), "^,", "");
 	else
-		v52 = "Not Placed";
+		v51 = "Not Placed";
 	end;
-	v50.Text = "<b>Your position:</b> <font color=\"rgb(185, 188, 255)\">" .. v52 .. "</font>";
-	v50.Size = UDim2.new(1, 0, 0, 20);
-	v50.BackgroundTransparency = 1;
-	v50.Font = Enum.Font.RobotoMono;
-	v50.TextSize = 20;
-	v50.RichText = true;
-	v50.TextXAlignment = Enum.TextXAlignment.Left;
-	v50.TextColor3 = Color3.fromRGB(255, 255, 255);
-	v50.LayoutOrder = 1;
-	v48[v49 + 1] = v3.createElement("TextLabel", v50);
-	local v53 = { v3.createElement("UIListLayout", {
+	v49.Text = "<b>Your position:</b> <font color=\"rgb(185, 188, 255)\">" .. v51 .. "</font>";
+	v49.Size = UDim2.new(1, 0, 0, 20);
+	v49.BackgroundTransparency = 1;
+	v49.Font = Enum.Font.RobotoMono;
+	v49.TextSize = 20;
+	v49.RichText = true;
+	v49.TextXAlignment = Enum.TextXAlignment.Left;
+	v49.TextColor3 = Color3.fromRGB(255, 255, 255);
+	v49.LayoutOrder = 1;
+	v47[v48 + 1] = v3.createElement("TextLabel", v49);
+	local v52 = { v3.createElement("UIListLayout", {
 			FillDirection = Enum.FillDirection.Horizontal, 
 			VerticalAlignment = Enum.VerticalAlignment.Center, 
 			HorizontalAlignment = Enum.HorizontalAlignment.Left, 
@@ -280,40 +286,40 @@ function v5.render(p12)
 			TextColor3 = Color3.fromRGB(255, 255, 255), 
 			LayoutOrder = 1
 		}) };
-	local v54 = l__leaderboardData__13.localStatRank and v3.createElement(l__StatRankElement__10, {
+	local v53 = l__leaderboardData__13.localStatRank and v3.createElement(l__StatRankElement__10, {
 		StatRank = l__leaderboardData__13.localStatRank, 
 		LayoutOrder = 2
 	});
-	if v54 then
-		v53[#v53 + 1] = v54;
+	if v53 then
+		v52[#v52 + 1] = v53;
 	end;
-	local v55 = {};
+	local v54 = {};
 	if l__leaderboardData__13.localStatRank then
-		local v56 = l__leaderboardData__13.localStatRank.rankStatValue;
+		local v55 = l__leaderboardData__13.localStatRank.rankStatValue;
 	else
-		v56 = l__leaderboardData__13.localStatValue;
+		v55 = l__leaderboardData__13.localStatValue;
 	end;
 	if l__leaderboardData__13.localStatRank then
-		local v57 = l__leaderboardData__13.metric;
+		local v56 = l__leaderboardData__13.metric;
 	else
-		v57 = "";
+		v56 = "";
 	end;
-	v55.Text = "<font color=\"rgb(185, 188, 255)\">" .. string.gsub(string.reverse((string.gsub(string.reverse((tostring(v56))), "%d%d%d", "%1,"))), "^,", "") .. " " .. v57 .. "</font>";
-	v55.Size = UDim2.new(0, 0, 1, 0);
-	v55.AutomaticSize = "X";
-	v55.BackgroundTransparency = 1;
-	v55.Font = Enum.Font.RobotoMono;
-	v55.TextSize = 20;
-	v55.RichText = true;
-	v55.TextXAlignment = Enum.TextXAlignment.Left;
-	v55.TextColor3 = Color3.fromRGB(255, 255, 255);
-	v55.LayoutOrder = 3;
-	v53[#v53 + 1] = v3.createElement("TextLabel", v55);
-	v48[v49 + 2] = v3.createElement(l__Empty__11, {
+	v54.Text = "<font color=\"rgb(185, 188, 255)\">" .. string.gsub(string.reverse((string.gsub(string.reverse((tostring(v55))), "%d%d%d", "%1,"))), "^,", "") .. " " .. v56 .. "</font>";
+	v54.Size = UDim2.new(0, 0, 1, 0);
+	v54.AutomaticSize = "X";
+	v54.BackgroundTransparency = 1;
+	v54.Font = Enum.Font.RobotoMono;
+	v54.TextSize = 20;
+	v54.RichText = true;
+	v54.TextXAlignment = Enum.TextXAlignment.Left;
+	v54.TextColor3 = Color3.fromRGB(255, 255, 255);
+	v54.LayoutOrder = 3;
+	v52[#v52 + 1] = v3.createElement("TextLabel", v54);
+	v47[v48 + 2] = v3.createElement(l__Empty__11, {
 		Size = UDim2.new(1, 0, 0, 18), 
 		LayoutOrder = 2
-	}, v53);
-	v17[v46 + 2] = v3.createElement("Frame", v47, v48);
+	}, v52);
+	v17[v45 + 2] = v3.createElement("Frame", v46, v47);
 	v15[#v15 + 1] = v3.createElement("Frame", v16, v17);
 	return v3.createElement("Frame", v14, v15);
 end;
@@ -322,24 +328,24 @@ function v5.willUnmount(p16)
 end;
 return {
 	LeaderboardUIWrapper = function(p17)
+		local v57 = {};
 		local v58 = {};
 		local v59 = {};
-		local v60 = {};
-		for v61, v62 in pairs(p17) do
-			v60[v61] = v62;
+		for v60, v61 in pairs(p17) do
+			v59[v60] = v61;
 		end;
-		v59[#v59 + 1] = v3.createElement(v5, v60);
-		v58[#v58 + 1] = v3.createElement("Frame", {
+		v58[#v58 + 1] = v3.createElement(v5, v59);
+		v57[#v57 + 1] = v3.createElement("Frame", {
 			AnchorPoint = Vector2.new(0.5, 0.5), 
 			Position = UDim2.fromScale(0.5, 0.5), 
 			Size = UDim2.new(1, -30, 1, -30), 
 			BackgroundTransparency = 1
-		}, v59);
+		}, v58);
 		return v3.createElement("SurfaceGui", {
 			Face = Enum.NormalId.Back, 
 			LightInfluence = 0.25, 
 			SizingMode = Enum.SurfaceGuiSizingMode.PixelsPerStud
-		}, v58);
+		}, v57);
 	end, 
 	LeaderboardCore = v5
 };

@@ -21,42 +21,48 @@ return {
 		local v3 = u1.createRef();
 		local v4 = u1.createRef();
 		local v5 = nil;
-		for v6, v7 in ipairs(l__ClientStore__2:getState().Game.teams) do
+		local v6, v7, v8 = ipairs(l__ClientStore__2:getState().Game.teams);
+		while true do
+			v6(v7, v8);
+			if not v6 then
+				break;
+			end;
+			v8 = v6;
 			if v7.members[tostring(p1.card.player.userId)] ~= nil then
 				v5 = v7;
 				break;
-			end;
+			end;		
 		end;
-		local v8 = p2.useValue(4);
-		local v9, v10 = l__useSpring__3(p2, 0.8);
-		local v11, v12 = p2.useState(0.8);
+		local v9 = p2.useValue(4);
+		local v10, v11 = l__useSpring__3(p2, 0.8);
+		local v12, v13 = p2.useState(0.8);
 		p2.useEffect(function()
-			local v13 = v4:getValue();
-			if v13 then
-				v13.Image = l__Players__4:GetUserThumbnailAsync(p1.card.player.userId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size352x352);
+			local v14 = v4:getValue();
+			if v14 then
+				v14.Image = l__Players__4:GetUserThumbnailAsync(p1.card.player.userId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size352x352);
 			end;
 			local u15 = nil;
-			u15 = v10:onStep(function(p3)
-				if p3 == v11 then
+			u15 = v11:onStep(function(p3)
+				if p3 == v12 then
 					u15:disconnect();
 				end;
-				v12(p3);
+				v13(p3);
 			end);
-			local v14 = v3:getValue();
-			if v14 then
-				local u16 = l__UIUtil__5:setContainerTransparency(v14, 1, {
+			local v15 = v3:getValue();
+			if v15 then
+				local u16 = l__UIUtil__5:setContainerTransparency(v15, 1, {
 					onCleanUpTweenInfo = TweenInfo.new(0.2)
 				});
 				task.delay(p1.index * 0.5, function()
 					l__SoundManager__6:playSound(l__GameSound__7.EMOTE_OPEN);
 					u16:DoCleaning();
-					v10:setGoal(u8.Spring.new(1, {
-						frequency = v8.value, 
+					v11:setGoal(u8.Spring.new(1, {
+						frequency = v9.value, 
 						dampingRatio = 0.7
 					}));
 				end);
 			end;
-			local u17 = v10:onComplete(function()
+			local u17 = v11:onComplete(function()
 				u15:disconnect();
 			end);
 			return function()
@@ -64,8 +70,8 @@ return {
 				u17:disconnect();
 			end;
 		end, {});
-		local v15 = {};
-		local v16 = { u1.createElement("UIAspectRatioConstraint", {
+		local v16 = {};
+		local v17 = { u1.createElement("UIAspectRatioConstraint", {
 				AspectRatio = 0.7824897400820794
 			}), u1.createElement("UICorner"), u1.createElement("UIListLayout", {
 				Padding = UDim.new(0), 
@@ -74,7 +80,7 @@ return {
 				VerticalAlignment = Enum.VerticalAlignment.Center, 
 				SortOrder = "LayoutOrder"
 			}) };
-		local v17 = {
+		local v18 = {
 			AvatarWrapper = u1.createElement(l__Empty__11, {
 				Size = UDim2.fromScale(1, 0.6), 
 				LayoutOrder = 1
@@ -101,7 +107,7 @@ return {
 				SortOrder = "LayoutOrder"
 			}))
 		};
-		local v18 = {
+		local v19 = {
 			DisplayName = u1.createElement("TextLabel", {
 				Size = UDim2.fromScale(1, 0.45), 
 				Text = "<b>" .. p1.card.player.displayName .. "</b>", 
@@ -122,9 +128,9 @@ return {
 				SortOrder = "LayoutOrder"
 			}))
 		};
-		local v19 = false;
+		local v20 = false;
 		if v5 ~= nil then
-			v19 = u1.createFragment({
+			v20 = u1.createFragment({
 				TeamName = u1.createElement("TextLabel", {
 					Size = UDim2.fromScale(1, 0.45), 
 					Text = "<b>" .. string.upper(v5.name) .. "</b>", 
@@ -138,18 +144,18 @@ return {
 				})
 			});
 		end;
-		if v19 then
-			v18[#v18 + 1] = v19;
+		if v20 then
+			v19[#v19 + 1] = v20;
 		end;
-		v17.PlayerInfoContainer = u1.createElement(l__Empty__11, {
+		v18.PlayerInfoContainer = u1.createElement(l__Empty__11, {
 			Size = UDim2.fromScale(1, 0.35), 
 			LayoutOrder = 2
-		}, v18);
-		v16.TopSection = u1.createElement(l__Empty__11, {
+		}, v19);
+		v17.TopSection = u1.createElement(l__Empty__11, {
 			Size = UDim2.fromScale(1, 0.55), 
 			LayoutOrder = 1
-		}, v17);
-		v16.BottomSection = u1.createElement("Frame", {
+		}, v18);
+		v17.BottomSection = u1.createElement("Frame", {
 			Size = UDim2.fromScale(1, 0.45), 
 			BackgroundColor3 = l__Theme__9.backgroundPrimary, 
 			BorderSizePixel = 0, 
@@ -178,19 +184,19 @@ return {
 				TextColor3 = l__Theme__9.textPrimary, 
 				BackgroundTransparency = 1
 			}) });
-		v15.StatCard = u1.createElement("Frame", {
-			Size = UDim2.fromScale(v11, v11), 
+		v16.StatCard = u1.createElement("Frame", {
+			Size = UDim2.fromScale(v12, v12), 
 			Position = UDim2.fromScale(0.5, 0.5), 
 			AnchorPoint = Vector2.new(0.5, 0.5), 
 			[u1.Ref] = v3, 
 			BackgroundColor3 = l__Theme__9.backgroundSecondary, 
 			BackgroundTransparency = 0.15, 
 			LayoutOrder = p1.index
-		}, v16);
+		}, v17);
 		return u1.createFragment({
 			StatCardWrapper = u1.createElement(l__Empty__11, {
 				Size = UDim2.fromScale(0.2, 0.5)
-			}, v15)
+			}, v16)
 		});
 	end)
 };

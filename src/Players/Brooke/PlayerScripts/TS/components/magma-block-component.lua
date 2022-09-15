@@ -1,4 +1,3 @@
--- Script Hash: 4ca4c1b68cb8ae9f6867562a518dfcf925c6e46f42eb23fbcbb10cd1ee08f631d6a8c256380fc4133bd72f3f2f3d23df
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -32,7 +31,7 @@ function v2.constructor(p1, p2)
 				v6 = v6:isAlive();
 			end;
 			if v6 then
-				l__KnitClient__3.Controllers.DamageController:requestSelfDamage(math.huge, l__DamageType__4.MAGMA_BLOCK, "69");
+				l__KnitClient__3.Controllers.DamageController:requestSelfDeath(l__DamageType__4.MAGMA_BLOCK);
 			end;
 		end;
 	end);

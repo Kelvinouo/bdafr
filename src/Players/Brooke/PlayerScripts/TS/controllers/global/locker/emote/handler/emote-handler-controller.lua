@@ -13,58 +13,57 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = l__KnitController__2;
 function v3.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__2.constructor(p1);
 	p1.Name = "EmoteHandlerController";
 	p1.handlers = {};
 end;
-local l__WatchCharacter__2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchCharacter;
+local l__WatchCharacter__1 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).WatchCharacter;
 function v3.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__WatchCharacter__2(function(p3, p4, p5)
+	l__KnitController__2.KnitStart(p2);
+	l__WatchCharacter__1(function(p3, p4, p5)
 		local l__handlers__5 = p2.handlers;
 		local function v6(p6, p7)
-			local u3 = false;
-			local u4 = p6.new();
+			local u2 = false;
+			local u3 = p6.new();
 			if p4:GetAttribute("PlayingEmote") == p7 then
-				u3 = true;
-				if u4 ~= nil then
-					u4:enable(p3, p4, p7);
+				u2 = true;
+				if u3 ~= nil then
+					u3:enable(p3, p4, p7);
 				end;
-			elseif u3 then
-				if u4 ~= nil then
-					u4:disable(p3, p4, p7);
+			elseif u2 then
+				if u3 ~= nil then
+					u3:disable(p3, p4, p7);
 				end;
-				u3 = false;
+				u2 = false;
 			end;
 			p4:GetAttributeChangedSignal("PlayingEmote"):Connect(function()
 				if p4:GetAttribute("PlayingEmote") == p7 then
-					u3 = true;
-					if u4 ~= nil then
-						u4:enable(p3, p4, p7);
+					u2 = true;
+					if u3 ~= nil then
+						u3:enable(p3, p4, p7);
 						return;
 					end;
-				elseif u3 then
-					if u4 ~= nil then
-						u4:disable(p3, p4, p7);
+				elseif u2 then
+					if u3 ~= nil then
+						u3:disable(p3, p4, p7);
 					end;
-					u3 = false;
+					u2 = false;
 				end;
 			end);
 			p5:GiveTask(function()
 				if p7 == nil then
-					u3 = true;
-					if u4 ~= nil then
-						u4:enable(p3, p4, p7);
+					u2 = true;
+					if u3 ~= nil then
+						u3:enable(p3, p4, p7);
 					end;
-				elseif u3 then
-					if u4 ~= nil then
-						u4:disable(p3, p4, p7);
+				elseif u2 then
+					if u3 ~= nil then
+						u3:disable(p3, p4, p7);
 					end;
-					u3 = false;
+					u2 = false;
 				end;
-				u4 = nil;
+				u3 = nil;
 			end);
 		end;
 		for v7, v8 in pairs(l__handlers__5) do
@@ -75,6 +74,5 @@ end;
 function v3.registerHandler(p8, p9, p10)
 	p8.handlers[p9] = p10;
 end;
-u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1(v3.new());
+local v9 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v3.new());
 return nil;

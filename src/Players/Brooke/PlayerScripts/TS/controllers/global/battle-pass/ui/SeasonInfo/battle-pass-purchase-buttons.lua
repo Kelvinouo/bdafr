@@ -1,12 +1,11 @@
--- Script Hash: c5cd47a8e3302c4c096c62333a810a197000663b8b720421ebd9098d7b874ee3a586e382477de0b82187bf5d73540c83
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
 local u1 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__ColorUtil__2 = v2.ColorUtil;
-local l__BPRewardDisplayMeta__3 = v1.import(script, script.Parent.Parent.Parent, "battle-pass-reward-display-meta").BPRewardDisplayMeta;
-local l__BPRewardDisplayType__4 = v1.import(script, script.Parent.Parent.Parent, "battle-pass-reward-display-type").BPRewardDisplayType;
+local l__BPRewardDisplayMeta__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-reward", "battle-pass-reward-display-meta").BPRewardDisplayMeta;
+local l__BPRewardDisplayType__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-reward", "battle-pass-reward-display-type").BPRewardDisplayType;
 local l__ButtonComponent__5 = v2.ButtonComponent;
 local l__KnitClient__6 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
 local l__Theme__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
@@ -35,7 +34,7 @@ return {
 				Padding = UDim.new(0, 6)
 			}), u1.createElement("TextLabel", {
 				Size = UDim2.fromScale(1, 0.4), 
-				Text = "<b><font color=\"" .. l__ColorUtil__2.richTextColor(l__BPRewardDisplayMeta__3[l__BPRewardDisplayType__4.KIT].borderColor) .. "\">5 Kits</font>, <font color=\"" .. l__ColorUtil__2.richTextColor(l__BPRewardDisplayMeta__3[l__BPRewardDisplayType__4.KILL_EFFECT].borderColor) .. "\">3 Kill Effects</font>, <font color=\"" .. l__ColorUtil__2.richTextColor(l__BPRewardDisplayMeta__3[l__BPRewardDisplayType__4.KIT_SKIN].borderColor) .. "\">2 Kit Skins</font>, <font color=\"" .. l__ColorUtil__2.richTextColor(l__BPRewardDisplayMeta__3[l__BPRewardDisplayType__4.LOBBY_GADGET].borderColor) .. "\">3 Lobby Gadgets</font>, 3 Dance Emotes, 35 Image Emotes, & 21 Titles!</b>", 
+				Text = "<b><font color=\"" .. l__ColorUtil__2.richTextColor(l__BPRewardDisplayMeta__3[l__BPRewardDisplayType__4.KIT].borderColor) .. "\">6 Kits</font>, <font color=\"" .. l__ColorUtil__2.richTextColor(l__BPRewardDisplayMeta__3[l__BPRewardDisplayType__4.KILL_EFFECT].borderColor) .. "\">3 Kill Effects</font>, <font color=\"" .. l__ColorUtil__2.richTextColor(l__BPRewardDisplayMeta__3[l__BPRewardDisplayType__4.LOBBY_GADGET].borderColor) .. "\">3 Lobby Gadgets</font>, <font color=\"" .. l__ColorUtil__2.richTextColor(l__BPRewardDisplayMeta__3[l__BPRewardDisplayType__4.EMOTE].borderColor) .. "\">3 Animated Emotes</font>, 27 Image Emotes, & 16 Titles!</b>", 
 				TextXAlignment = "Center", 
 				TextScaled = true, 
 				RichText = true, 

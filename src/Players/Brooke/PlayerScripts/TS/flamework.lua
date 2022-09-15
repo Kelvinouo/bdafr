@@ -5,8 +5,14 @@ local l__Flamework__1 = v1.import(script, v1.getModule(script, "@flamework", "co
 local l__PlaceUtil__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "place-util").PlaceUtil;
 return {
 	setup = function(p1)
-		for v2, v3 in ipairs(p1) do
-			l__Flamework__1.registerExternalClass(v3);
+		local v2, v3, v4 = ipairs(p1);
+		while true do
+			v2(v3, v4);
+			if not v2 then
+				break;
+			end;
+			v4 = v2;
+			l__Flamework__1.registerExternalClass(v3);		
 		end;
 		l__Flamework__1._addPaths({ "StarterPlayer", "StarterPlayerScripts", "TS", "controllers", "global" });
 		l__Flamework__1._addPaths({ "ReplicatedStorage", "TS", "strollers" });

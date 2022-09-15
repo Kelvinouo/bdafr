@@ -16,7 +16,8 @@ local u1 = {
 	customMatch = nil, 
 	sprayModeEnabled = false, 
 	teamScores = {}, 
-	serverRegion = ""
+	serverRegion = "", 
+	unlockedShopCategories = {}
 };
 local l__Players__2 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 return {
@@ -25,187 +26,207 @@ return {
 			p1 = u1;
 		end;
 		local l__type__3 = p2.type;
-		if l__type__3 == "GameSetTeams" then
-			local v4 = l__Players__2.LocalPlayer;
-			if v4 ~= nil then
-				v4 = v4:GetAttribute("Team");
+		if l__type__3 == "GameSetUnlockedShopCategories" then
+			local v4 = {};
+			for v5, v6 in pairs(p1) do
+				v4[v5] = v6;
 			end;
-			local v5 = nil;
-			for v6, v7 in ipairs(p2.teams) do
-				if v7.id == v4 == true then
-					v5 = v7;
+			v4.unlockedShopCategories = p2.unlockedShopCategories;
+			return v4;
+		end;
+		if l__type__3 == "GameSetTeams" then
+			local v7 = l__Players__2.LocalPlayer;
+			if v7 ~= nil then
+				v7 = v7:GetAttribute("Team");
+			end;
+			local v8 = nil;
+			local v9, v10, v11 = ipairs(p2.teams);
+			while true do
+				v9(v10, v11);
+				if not v9 then
 					break;
 				end;
+				v11 = v9;
+				if v10.id == v7 == true then
+					v8 = v10;
+					break;
+				end;			
 			end;
-			local v8 = {};
-			for v9, v10 in pairs(p1) do
-				v8[v9] = v10;
+			local v12 = {};
+			for v13, v14 in pairs(p1) do
+				v12[v13] = v14;
 			end;
-			v8.teams = p2.teams;
-			v8.myTeam = v5;
-			return v8;
+			v12.teams = p2.teams;
+			v12.myTeam = v8;
+			return v12;
 		end;
 		if l__type__3 == "GameSetEndTime" then
-			local v11 = {};
-			for v12, v13 in pairs(p1) do
-				v11[v12] = v13;
-			end;
-			v11.endTime = p2.endTime;
-			return v11;
-		end;
-		if l__type__3 == "GameSetMatchState" then
-			local v14 = p1.teleportingToLobbyAtTime;
-			if p2.matchState == l__MatchState__2.POST then
-				v14 = tick() + 10;
-			end;
 			local v15 = {};
 			for v16, v17 in pairs(p1) do
 				v15[v16] = v17;
 			end;
-			v15.matchState = p2.matchState;
-			v15.teleportingToLobbyAtTime = v14;
+			v15.endTime = p2.endTime;
 			return v15;
 		end;
-		if l__type__3 == "GameSetQueueType" then
-			local v18 = {};
-			for v19, v20 in pairs(p1) do
-				v18[v19] = v20;
+		if l__type__3 == "GameSetMatchState" then
+			local v18 = p1.teleportingToLobbyAtTime;
+			if p2.matchState == l__MatchState__2.POST then
+				v18 = tick() + 10;
 			end;
-			v18.queueType = p2.queueType;
-			return v18;
+			local v19 = {};
+			for v20, v21 in pairs(p1) do
+				v19[v20] = v21;
+			end;
+			v19.matchState = p2.matchState;
+			v19.teleportingToLobbyAtTime = v18;
+			return v19;
+		end;
+		if l__type__3 == "GameSetQueueType" then
+			local v22 = {};
+			for v23, v24 in pairs(p1) do
+				v22[v23] = v24;
+			end;
+			v22.queueType = p2.queueType;
+			return v22;
 		end;
 		if l__type__3 == "GameSetSpectator" then
-			local v21 = {};
-			for v22, v23 in pairs(p1) do
-				v21[v22] = v23;
+			local v25 = {};
+			for v26, v27 in pairs(p1) do
+				v25[v26] = v27;
 			end;
-			v21.spectating = p2.spectating;
-			v21.spectatingPlayer = p2.spectatingPlayer;
-			return v21;
+			v25.spectating = p2.spectating;
+			v25.spectatingPlayer = p2.spectatingPlayer;
+			return v25;
 		end;
 		if l__type__3 == "GameSetStartTime" then
-			local v24 = {};
-			for v25, v26 in pairs(p1) do
-				v24[v25] = v26;
+			local v28 = {};
+			for v29, v30 in pairs(p1) do
+				v28[v29] = v30;
 			end;
-			v24.startTime = p2.startTime;
-			return v24;
+			v28.startTime = p2.startTime;
+			return v28;
 		end;
 		if l__type__3 == "SetCustomMatchData" then
-			local v27 = {};
-			for v28, v29 in pairs(p1) do
-				v27[v28] = v29;
+			local v31 = {};
+			for v32, v33 in pairs(p1) do
+				v31[v32] = v33;
 			end;
-			v27.customMatch = {
+			v31.customMatch = {
 				joinCode = p2.customMatch.joinCode, 
 				hostUserId = p2.customMatch.hostUserId
 			};
-			return v27;
+			return v31;
 		end;
 		if l__type__3 == "SetSpectatedTurret" then
-			local v30 = {};
-			for v31, v32 in pairs(p1) do
-				v30[v31] = v32;
+			local v34 = {};
+			for v35, v36 in pairs(p1) do
+				v34[v35] = v36;
 			end;
-			v30.selectedTurret = p2.selectedTurret;
-			return v30;
+			v34.selectedTurret = p2.selectedTurret;
+			return v34;
 		end;
 		if l__type__3 == "SetCustomMatchData" then
-			local v33 = {};
-			for v34, v35 in pairs(p1) do
-				v33[v34] = v35;
+			local v37 = {};
+			for v38, v39 in pairs(p1) do
+				v37[v38] = v39;
 			end;
-			v33.customMatch = {
+			v37.customMatch = {
 				joinCode = p2.customMatch.joinCode, 
 				hostUserId = p2.customMatch.hostUserId
 			};
-			return v33;
+			return v37;
 		end;
 		if l__type__3 == "GameSetEarlyLeaves" then
-			local v36 = {};
-			for v37, v38 in pairs(p1) do
-				v36[v37] = v38;
+			local v40 = {};
+			for v41, v42 in pairs(p1) do
+				v40[v41] = v42;
 			end;
-			local v39 = {};
-			for v40, v41 in pairs(p1.earlyLeaves) do
-				v39[v40] = v41;
+			local v43 = {};
+			for v44, v45 in pairs(p1.earlyLeaves) do
+				v43[v44] = v45;
 			end;
-			v39[p2.userId] = {
+			v43[p2.userId] = {
 				earlyLeave = p2.earlyLeaveData.earlyLeave, 
 				time = p2.earlyLeaveData.time
 			};
-			v36.earlyLeaves = v39;
-			return v36;
+			v40.earlyLeaves = v43;
+			return v40;
 		end;
 		if l__type__3 == "GameSetSprayModeEnabled" then
-			local v42 = {};
-			for v43, v44 in pairs(p1) do
-				v42[v43] = v44;
+			local v46 = {};
+			for v47, v48 in pairs(p1) do
+				v46[v47] = v48;
 			end;
-			v42.sprayModeEnabled = p2.sprayModeEnabled;
-			return v42;
+			v46.sprayModeEnabled = p2.sprayModeEnabled;
+			return v46;
 		end;
 		if l__type__3 == "GameSetTeamScores" then
-			local v45 = {};
-			for v46, v47 in pairs(p1) do
-				v45[v46] = v47;
+			local v49 = {};
+			for v50, v51 in pairs(p1) do
+				v49[v50] = v51;
 			end;
-			local v48 = {};
-			local l__teamScores__49 = p2.teamScores;
-			table.move(l__teamScores__49, 1, #l__teamScores__49, #v48 + 1, v48);
-			v45.teamScores = v48;
-			return v45;
+			local v52 = {};
+			local l__teamScores__53 = p2.teamScores;
+			table.move(l__teamScores__53, 1, #l__teamScores__53, #v52 + 1, v52);
+			v49.teamScores = v52;
+			return v49;
 		end;
 		if l__type__3 == "GameAddTeamScore" then
-			local v50 = {};
-			for v51, v52 in pairs(p1) do
-				v50[v51] = v52;
+			local v54 = {};
+			for v55, v56 in pairs(p1) do
+				v54[v55] = v56;
 			end;
-			local v53 = {};
-			local v54 = #v53;
-			local l__teamScores__55 = p1.teamScores;
-			local v56 = #l__teamScores__55;
-			table.move(l__teamScores__55, 1, v56, v54 + 1, v53);
-			v53[v54 + v56 + 1] = {
+			local v57 = {};
+			local v58 = #v57;
+			local l__teamScores__59 = p1.teamScores;
+			local v60 = #l__teamScores__59;
+			table.move(l__teamScores__59, 1, v60, v58 + 1, v57);
+			v57[v58 + v60 + 1] = {
 				teamId = p2.teamId, 
 				score = p2.score
 			};
-			v50.teamScores = v53;
-			return v50;
+			v54.teamScores = v57;
+			return v54;
 		end;
 		if l__type__3 ~= "GameUpdateTeamScore" then
 			if l__type__3 == "SetServerRegion" then
-				local v57 = {};
-				for v58, v59 in pairs(p1) do
-					v57[v58] = v59;
+				local v61 = {};
+				for v62, v63 in pairs(p1) do
+					v61[v62] = v63;
 				end;
-				v57.serverRegion = p2.serverRegion;
-				return v57;
+				v61.serverRegion = p2.serverRegion;
+				return v61;
 			else
 				return p1;
 			end;
 		end;
-		local v60 = {};
-		for v61, v62 in pairs(p1) do
-			v60[v61] = v62;
+		local v64 = {};
+		for v65, v66 in pairs(p1) do
+			v64[v65] = v66;
 		end;
-		local l__teamScores__63 = p1.teamScores;
-		local function v64(p3)
+		local l__teamScores__67 = p1.teamScores;
+		local function v68(p3)
 			if p3.teamId ~= p2.teamId then
 				return p3;
 			end;
-			local v65 = {};
-			for v66, v67 in pairs(p3) do
-				v65[v66] = v67;
+			local v69 = {};
+			for v70, v71 in pairs(p3) do
+				v69[v70] = v71;
 			end;
-			v65.score = p2.score;
-			return v65;
+			v69.score = p2.score;
+			return v69;
 		end;
-		local v68 = table.create(#l__teamScores__63);
-		for v69, v70 in ipairs(l__teamScores__63) do
-			v68[v69] = v64(v70, v69 - 1, l__teamScores__63);
+		local v72 = table.create(#l__teamScores__67);
+		local v73, v74, v75 = ipairs(l__teamScores__67);
+		while true do
+			v73(v74, v75);
+			if not v73 then
+				break;
+			end;
+			v75 = v73;
+			v72[v73] = v68(v74, v73 - 1, l__teamScores__67);		
 		end;
-		v60.teamScores = v68;
-		return v60;
+		v64.teamScores = v72;
+		return v64;
 	end
 };

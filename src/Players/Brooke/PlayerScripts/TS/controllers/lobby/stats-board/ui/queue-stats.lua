@@ -46,17 +46,23 @@ return {
 		local function v9(p7)
 			local l__statElements__10 = p7.statElements;
 			local v11 = table.create(#l__statElements__10);
-			for v12, v13 in ipairs(l__statElements__10) do
-				v11[v12] = v13;
+			local v12, v13, v14 = ipairs(l__statElements__10);
+			while true do
+				v12(v13, v14);
+				if not v12 then
+					break;
+				end;
+				v14 = v12;
+				v11[v12] = v13;			
 			end;
-			local v14 = {
+			local v15 = {
 				Size = UDim2.new(p7.xSize, 0, 0, 0), 
 				AutomaticSize = Enum.AutomaticSize.XY, 
 				BackgroundColor3 = l__ColorUtil__4.hexColor(7567033), 
 				BackgroundTransparency = 0, 
 				BorderSizePixel = 0
 			};
-			local v15 = { u2.createElement("UIListLayout", {
+			local v16 = { u2.createElement("UIListLayout", {
 					FillDirection = Enum.FillDirection.Vertical, 
 					VerticalAlignment = Enum.VerticalAlignment.Center, 
 					HorizontalAlignment = Enum.HorizontalAlignment.Left, 
@@ -70,11 +76,17 @@ return {
 					PaddingLeft = UDim.new(0, 16), 
 					PaddingRight = UDim.new(0, 16)
 				}) };
-			local v16 = #v15;
-			for v17, v18 in ipairs(v11) do
-				v15[v16 + v17] = v18;
+			local v17 = #v16;
+			local v18, v19, v20 = ipairs(v11);
+			while true do
+				v18(v19, v20);
+				if not v18 then
+					break;
+				end;
+				v20 = v18;
+				v16[v17 + v18] = v19;			
 			end;
-			return u2.createElement("Frame", v14, v15);
+			return u2.createElement("Frame", v15, v16);
 		end;
 		return u2.createElement(l__Empty__5, {
 			Size = UDim2.new(1, 0, 0, 0), 

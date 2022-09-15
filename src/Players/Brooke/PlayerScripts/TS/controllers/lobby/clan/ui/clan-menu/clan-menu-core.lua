@@ -1,4 +1,3 @@
--- Script Hash: e5195bd35976bed894ab2594f77ddd3814ab2dc1006045b9bf0de67a9778a082c812a14687f69fa86ca686f3ab1a430a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -103,54 +102,66 @@ return {
 				}) });
 		end;
 		local v20 = table.create(#v13);
-		for v21, v22 in ipairs(v13) do
-			v20[v21] = v14(v22, v21 - 1, v13);
+		local v21, v22, v23 = ipairs(v13);
+		while true do
+			v21(v22, v23);
+			if not v21 then
+				break;
+			end;
+			v23 = v21;
+			v20[v21] = v14(v22, v21 - 1, v13);		
 		end;
-		local v23 = {
+		local v24 = {
 			Size = UDim2.new(1, 0, 0, 30)
 		};
-		local v24 = { u1.createElement("UIListLayout", {
+		local v25 = { u1.createElement("UIListLayout", {
 				FillDirection = "Horizontal", 
 				SortOrder = "LayoutOrder", 
 				Padding = UDim.new(0, 0), 
 				HorizontalAlignment = "Center"
 			}) };
-		local v25 = #v24;
-		for v26, v27 in ipairs(v20) do
-			v24[v25 + v26] = v27;
+		local v26 = #v25;
+		local v27, v28, v29 = ipairs(v20);
+		while true do
+			v27(v28, v29);
+			if not v27 then
+				break;
+			end;
+			v29 = v27;
+			v25[v26 + v27] = v28;		
 		end;
-		v11[v12 + 1] = u1.createElement(l__Empty__9, v23, v24);
+		v11[v12 + 1] = u1.createElement(l__Empty__9, v24, v25);
 		v11[v12 + 2] = u1.createElement(l__DividerComponent__10, {
 			LengthScale = 0.7
 		});
-		local v28 = { u1.createElement("UIPadding", {
+		local v30 = { u1.createElement("UIPadding", {
 				PaddingTop = UDim.new(0, 15), 
 				PaddingLeft = UDim.new(0.075, 0), 
 				PaddingRight = UDim.new(0.075, 0)
 			}) };
-		local v29 = false;
+		local v31 = false;
 		if v6 == v4.INVITES then
-			v29 = u1.createElement(l__ClanInvites__11, {
+			v31 = u1.createElement(l__ClanInvites__11, {
 				store = p1.store
 			});
 		end;
-		if v29 then
-			v28[#v28 + 1] = v29;
+		if v31 then
+			v30[#v30 + 1] = v31;
 		end;
-		local v30 = false;
+		local v32 = false;
 		if v6 == v4.CREATE then
-			v30 = u1.createElement(l__ClanCreateTab__12, {
+			v32 = u1.createElement(l__ClanCreateTab__12, {
 				store = p1.store
 			});
 		end;
-		if v30 then
-			v28[#v28 + 1] = v30;
+		if v32 then
+			v30[#v30 + 1] = v32;
 		end;
 		v11[v12 + 3] = u1.createElement(l__Empty__9, {
 			Size = UDim2.fromScale(1, 0.9), 
 			LayoutOrder = 2, 
 			BackgroundTransparency = 1
-		}, v28);
+		}, v30);
 		v9[#v9 + 1] = u1.createElement(l__WidgetComponent__13, v10, v11);
 		return u1.createElement("Frame", v8, v9);
 	end)

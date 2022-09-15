@@ -24,30 +24,42 @@ return {
 			local v7 = 0;
 			local v8, v9, v10 = ipairs((l__Players__3:GetPlayers()));
 			while true do
-				local v11, v12 = v8(v9, v10);
-				if not v11 then
+				v8(v9, v10);
+				if not v8 then
 					break;
 				end;
-				if v12 ~= l__Players__3.LocalPlayer == true then
+				if v9 ~= l__Players__3.LocalPlayer == true then
 					v7 = v7 + 1;
-					v6[v7] = v12;
+					v6[v7] = v9;
 				end;			
 			end;
-			local v13 = table.create(#v6);
-			for v14, v15 in ipairs(v6) do
-				v13[v14] = l__OfflinePlayerUtil__2.getOfflinePlayer(v15);
+			local v11 = table.create(#v6);
+			local v12, v13, v14 = ipairs(v6);
+			while true do
+				v12(v13, v14);
+				if not v12 then
+					break;
+				end;
+				v14 = v12;
+				v11[v12] = l__OfflinePlayerUtil__2.getOfflinePlayer(v13);			
 			end;
-			table.sort(v13, function(p5, p6)
+			table.sort(v11, function(p5, p6)
 				return p5.displayName < p6.displayName;
 			end);
-			v5 = v13;
+			v5 = v11;
 		end;
 		if #v5 ~= 0 then
-			local v16 = table.create(#v5);
-			for v17, v18 in ipairs(v5) do
-				v16[v17] = u4.createElement(l__ClanProfileInviteEntry__5, {
-					Player = v18
-				});
+			local v15 = table.create(#v5);
+			local v16, v17, v18 = ipairs(v5);
+			while true do
+				v16(v17, v18);
+				if not v16 then
+					break;
+				end;
+				v18 = v16;
+				v15[v16] = u4.createElement(l__ClanProfileInviteEntry__5, {
+					Player = v17
+				});			
 			end;
 			local v19 = { u4.createElement("UIListLayout", {
 					FillDirection = "Vertical", 
@@ -55,17 +67,23 @@ return {
 					SortOrder = "LayoutOrder"
 				}) };
 			local v20 = #v19;
-			for v21, v22 in ipairs(v16) do
-				v19[v20 + v21] = v22;
+			local v21, v22, v23 = ipairs(v15);
+			while true do
+				v21(v22, v23);
+				if not v21 then
+					break;
+				end;
+				v23 = v21;
+				v19[v20 + v21] = v22;			
 			end;
-			local v23 = u4.createElement(l__AutoCanvasScrollingFrame__6, {
+			local v24 = u4.createElement(l__AutoCanvasScrollingFrame__6, {
 				AdditionalSpace = 80, 
 				ScrollingFrameProps = {
 					LayoutOrder = 2
 				}
 			}, v19);
 		else
-			v23 = u4.createElement("TextLabel", {
+			v24 = u4.createElement("TextLabel", {
 				Size = UDim2.fromScale(1, 0.9), 
 				Text = "<b>No players in your current server to invite.</b>", 
 				TextColor3 = l__Theme__7.textPrimary, 
@@ -82,10 +100,10 @@ return {
 					MaxTextSize = 24
 				}) });
 		end;
-		local v24 = {};
-		v24[#v24 + 1] = v23;
+		local v25 = {};
+		v25[#v25 + 1] = v24;
 		return u4.createElement(l__ClanProfilePageLayout__8, {
 			Title = "INVITE TO CLAN"
-		}, v24);
+		}, v25);
 	end)
 };

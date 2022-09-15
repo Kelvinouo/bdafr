@@ -1,4 +1,3 @@
--- Script Hash: deefa1a89f29281d019d865594a48e778ee5f627ca46cde7f309a3533a728069f008a03cabb1c677bc73eac6b6db6e75
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -25,7 +24,7 @@ local l__SoundManager__4 = v1.import(script, v1.getModule(script, "@easy-games",
 local l__GameSound__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 local l__TweenService__6 = v4.TweenService;
 function v5.onStart(p2)
-	l__default__1.Client:OnEvent("Nuke", function(p3)
+	l__default__1.Client:OnEvent("RemoteName", function(p3)
 		local v7 = u2("Part", {
 			Name = "NukePart", 
 			Anchored = true, 

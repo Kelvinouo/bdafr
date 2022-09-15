@@ -1,4 +1,3 @@
--- Script Hash: d21d6a2222625e3375382035c77faeeb1f005772507d7aecc5ef760f942980f42db9d1facd72ccda06d066d5ceebf370
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -9,7 +8,8 @@ return function(p1)
 	local u4 = u1.mount(u1.createElement(u2, {
 		StatusEffects = { {
 				statusEffect = l__StatusEffectType__3.FORCEFIELD, 
-				expireTime = 90
+				expireTime = 90, 
+				stacks = 2
 			} }
 	}), p1);
 	return function()

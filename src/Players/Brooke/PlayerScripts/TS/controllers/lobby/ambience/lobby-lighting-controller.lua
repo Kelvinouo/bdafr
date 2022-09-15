@@ -1,80 +1,93 @@
--- Script Hash: 01f59f4b14c6b53bc00de2f6338b3fcf7662f897c0b5d696b335909800db1155c59a78fc6ebaf21bf3d66d0c9599efdc
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
-local v2 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
-local l__KnitController__3 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
-local v4 = setmetatable({}, {
+local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
+local v3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src);
+local l__KnitController__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "lib", "knit", "knit-controller").KnitController;
+local v5 = setmetatable({}, {
 	__tostring = function()
 		return "LobbyLightingController";
 	end, 
-	__index = l__KnitController__3
+	__index = l__KnitController__4
 });
-v4.__index = v4;
-function v4.new(...)
-	local v5 = setmetatable({}, v4);
-	return v5:constructor(...) and v5;
+v5.__index = v5;
+function v5.new(...)
+	local v6 = setmetatable({}, v5);
+	return v6:constructor(...) and v6;
 end;
-local u1 = l__KnitController__3;
+local l__ModifierGroup__1 = v2.ModifierGroup;
 local l__Lighting__2 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Lighting;
 local u3 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-function v4.constructor(p1)
-	u1.constructor(p1);
+local l__GroupModifierBehavior__4 = v2.GroupModifierBehavior;
+function v5.constructor(p1)
+	l__KnitController__4.constructor(p1);
 	p1.Name = "LobbyLightingController";
-	local l__Sky__6 = l__Lighting__2:FindFirstChild("Sky");
-	l__Sky__6.CelestialBodiesShown = false;
-	l__Sky__6.MoonAngularSize = 30;
-	l__Sky__6.MoonTextureId = "rbxasset://sky/moon.jpg";
-	l__Sky__6.SkyboxBk = "rbxassetid://9122141090";
-	l__Sky__6.SkyboxDn = "rbxassetid://9122141778";
-	l__Sky__6.SkyboxFt = "rbxassetid://9122142359";
-	l__Sky__6.SkyboxLf = "rbxassetid://9122142961";
-	l__Sky__6.SkyboxRt = "rbxassetid://9122143459";
-	l__Sky__6.SkyboxUp = "rbxassetid://9122144063";
-	l__Sky__6.StarCount = 3000;
-	l__Sky__6.SunAngularSize = 21;
-	l__Sky__6.SunTextureId = "rbxasset://sky/sun.jpg";
-	u3("Atmosphere", {
+	p1.colorCorrectionModifier = l__ModifierGroup__1.new(l__Lighting__2:FindFirstChildOfClass("ColorCorrectionEffect") or u3("ColorCorrectionEffect", {
+		Parent = l__Lighting__2
+	}), {
+		baseProperties = {
+			TintColor = Color3.fromRGB(255, 255, 255), 
+			Contrast = 0.05, 
+			Saturation = 0
+		}, 
+		behavior = l__GroupModifierBehavior__4.Merge
+	});
+	u3("BloomEffect", {
+		Enabled = true, 
+		Intensity = 0.8, 
+		Size = 6, 
+		Threshold = 2, 
+		Parent = l__Lighting__2
+	});
+end;
+local l__KnitClient__5 = v3.KnitClient;
+function v5.KnitStart(p2)
+	l__KnitController__4.KnitStart(p2);
+	l__KnitClient__5.Controllers.LightingController.lightingModifier:addModifier(10, {
+		Ambient = Color3.fromRGB(131, 102, 89), 
+		Brightness = 2, 
+		ColorShift_Bottom = Color3.fromRGB(146, 190, 255), 
+		ColorShift_Top = Color3.fromRGB(228, 249, 255), 
+		EnvironmentDiffuseScale = 0.2, 
+		EnvironmentSpecularScale = 0.4, 
+		OutdoorAmbient = Color3.fromRGB(104, 104, 104), 
+		ShadowSoftness = 0, 
+		ClockTime = 12.93, 
+		GeographicLatitude = 35, 
+		ExposureCompensation = 0
+	});
+	l__KnitClient__5.Controllers.LightingController.atmosphereModifier:addModifier(10, {
 		Density = 0.171, 
 		Offset = 0.09200000017881393, 
 		Color = Color3.fromRGB(198, 198, 198), 
 		Decay = Color3.fromRGB(104, 112, 124), 
 		Glare = 0, 
-		Haze = 0, 
-		Parent = l__Lighting__2
+		Haze = 0
 	});
-	u3("BloomEffect", {
-		Enabled = true, 
-		Intensity = 1, 
-		Size = 24, 
-		Threshold = 2, 
-		Parent = l__Lighting__2
+	l__KnitClient__5.Controllers.LightingController.skyModifier:addModifier(10, {
+		CelestialBodiesShown = true, 
+		MoonAngularSize = 30, 
+		MoonTextureId = "rbxasset://sky/moon.jpg", 
+		SkyboxBk = "rbxassetid://9122141090", 
+		SkyboxDn = "rbxassetid://9122141778", 
+		SkyboxFt = "rbxassetid://9122142359", 
+		SkyboxLf = "rbxassetid://9122142961", 
+		SkyboxRt = "rbxassetid://9122143459", 
+		SkyboxUp = "rbxassetid://9122144063", 
+		StarCount = 3000, 
+		SunAngularSize = 21, 
+		SunTextureId = "rbxasset://sky/sun.jpg"
 	});
-	u3("ColorCorrectionEffect", {
+	l__KnitClient__5.Controllers.LightingController.sunRayModifier:addModifier(10, {
+		Intensity = 0.04, 
+		Spread = 1
+	});
+	p2.colorCorrectionModifier:addModifier(10, {
 		Brightness = 0.1, 
 		Contrast = 0.2, 
-		Saturation = 0.02, 
-		TintColor = Color3.fromRGB(255, 255, 255), 
-		Parent = l__Lighting__2
+		Saturation = 0.1, 
+		TintColor = Color3.fromRGB(255, 255, 255)
 	});
 end;
-local l__KnitClient__4 = v2.KnitClient;
-function v4.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__KnitClient__4.Controllers.LightingController.lightingModifier:addModifier(10, {
-		Ambient = Color3.fromRGB(91, 91, 91), 
-		Brightness = 2, 
-		ColorShift_Bottom = Color3.fromRGB(0, 0, 0), 
-		ColorShift_Top = Color3.fromRGB(0, 0, 0), 
-		EnvironmentDiffuseScale = 0, 
-		EnvironmentSpecularScale = 0.1, 
-		OutdoorAmbient = Color3.fromRGB(201, 201, 201), 
-		ShadowSoftness = 0.1, 
-		ClockTime = 12.856, 
-		GeographicLatitude = 40.118, 
-		ExposureCompensation = 0
-	});
-end;
-u1 = v2.KnitClient.CreateController;
-u1 = u1(v4.new());
+local v7 = v3.KnitClient.CreateController(v5.new());
 return nil;

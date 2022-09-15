@@ -1,4 +1,3 @@
--- Script Hash: ee358b2fb519b0bd61df5b8d81905a50ec52aa863db272e47595bbd36efc6dce4ac3b5b9903fa75f49464deeb199431c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -90,37 +89,49 @@ return {
 			});
 		end;
 		local v17 = table.create(#v12);
-		for v18, v19 in ipairs(v12) do
-			v17[v18] = v13(v19, v18 - 1, v12);
+		local v18, v19, v20 = ipairs(v12);
+		while true do
+			v18(v19, v20);
+			if not v18 then
+				break;
+			end;
+			v20 = v18;
+			v17[v18] = v13(v19, v18 - 1, v12);		
 		end;
-		local v20 = {
+		local v21 = {
 			ScrollingFrameProps = {
 				Size = UDim2.new(0.35, 0, 1, 0), 
 				LayoutOrder = 1
 			}
 		};
-		local v21 = { u1.createElement("UIListLayout", {
+		local v22 = { u1.createElement("UIListLayout", {
 				FillDirection = "Vertical", 
 				Padding = UDim.new(0, 6), 
 				VerticalAlignment = "Top"
 			}) };
-		local v22 = #v21;
-		for v23, v24 in ipairs(v17) do
-			v21[v22 + v23] = v24;
+		local v23 = #v22;
+		local v24, v25, v26 = ipairs(v17);
+		while true do
+			v24(v25, v26);
+			if not v24 then
+				break;
+			end;
+			v26 = v24;
+			v22[v23 + v24] = v25;		
 		end;
-		v11.UpgradesList = u1.createElement(l__AutoCanvasScrollingFrame__17, v20, v21);
+		v11.UpgradesList = u1.createElement(l__AutoCanvasScrollingFrame__17, v21, v22);
 		v11[#v11 + 1] = u1.createElement(u18, {
 			SelectedUpgrade = v7, 
 			Clan = p1.Clan, 
 			OnUpgrade = function()
 				if v7 and v9 then
 					v6(true);
-					local v25 = l__ClanUpgradeMeta__5[v7];
-					l__KnitClient__6.Controllers.ClanController:upgrade(v25.type, p1.store.Clans.myClanId):andThen(function(p4)
+					local v27 = l__ClanUpgradeMeta__5[v7];
+					l__KnitClient__6.Controllers.ClanController:upgrade(v27.type, p1.store.Clans.myClanId):andThen(function(p4)
 						v6(false);
-						if p4 and v25.nextUpgrade then
+						if p4 and v27.nextUpgrade then
 							l__SoundManager__7:playSound(l__GameSound__8.BEDWARS_UPGRADE_SUCCESS);
-							v8(v25.nextUpgrade);
+							v8(v27.nextUpgrade);
 						end;
 					end);
 				end;

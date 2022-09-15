@@ -1,4 +1,3 @@
--- Script Hash: f365b67ff85679de5921bd59dbf20ae247c0e3bbc8bfacb98b5ad529eac93ae2b04a5619609110eb8e4e112f5ae92f20
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -17,28 +16,27 @@ function v6.new(...)
 	local v7 = setmetatable({}, v6);
 	return v7:constructor(...) and v7;
 end;
-local u1 = v5;
 function v6.constructor(p1, ...)
-	u1.constructor(p1, ...);
+	v5.constructor(p1, ...);
 end;
-local l__Players__2 = v4.Players;
-local l__SoundManager__3 = v2.SoundManager;
-local l__GameSound__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__ReplicatedStorage__5 = v4.ReplicatedStorage;
-local l__scaleModel__6 = v1.import(script, v1.getModule(script, "@rbxts", "scale-model").out).scaleModel;
-local l__Workspace__7 = v4.Workspace;
-local l__ModelUtil__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "model-util").ModelUtil;
-local l__InOutExpo__9 = v3.InOutExpo;
-local l__GameQueryUtil__10 = v2.GameQueryUtil;
-local l__KnitClient__11 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
-local l__CameraPerspective__12 = v1.import(script, script.Parent.Parent.Parent.Parent, "global", "first-person", "camera-perspective").CameraPerspective;
-local l__RunService__13 = v4.RunService;
-local l__default__14 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
-local l__OutExpo__15 = v3.OutExpo;
+local l__Players__1 = v4.Players;
+local l__SoundManager__2 = v2.SoundManager;
+local l__GameSound__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local l__ReplicatedStorage__4 = v4.ReplicatedStorage;
+local l__scaleModel__5 = v1.import(script, v1.getModule(script, "@rbxts", "scale-model").out).scaleModel;
+local l__Workspace__6 = v4.Workspace;
+local l__ModelUtil__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "model-util").ModelUtil;
+local l__InOutExpo__8 = v3.InOutExpo;
+local l__GameQueryUtil__9 = v2.GameQueryUtil;
+local l__KnitClient__10 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
+local l__CameraPerspective__11 = v1.import(script, script.Parent.Parent.Parent.Parent, "global", "first-person", "camera-perspective").CameraPerspective;
+local l__RunService__12 = v4.RunService;
+local l__default__13 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
+local l__OutExpo__14 = v3.OutExpo;
 function v6.onApply(p2, p3, p4)
 	local v8 = false;
-	if p3 == l__Players__2.LocalPlayer.Character then
-		v8 = l__Players__2.LocalPlayer.Character;
+	if p3 == l__Players__1.LocalPlayer.Character then
+		v8 = l__Players__1.LocalPlayer.Character;
 	end;
 	local v9 = {};
 	if v8 then
@@ -51,45 +49,51 @@ function v6.onApply(p2, p3, p4)
 		v10 = v11;
 	end;
 	v9.position = v10;
-	l__SoundManager__3:playSound(l__GameSound__4.USE_SMOKE_CHARGE, v9);
-	local v12 = l__ReplicatedStorage__5.Assets.Effects.AntiKnockbackBubble:Clone();
+	l__SoundManager__2:playSound(l__GameSound__3.USE_SMOKE_CHARGE, v9);
+	local v12 = l__ReplicatedStorage__4.Assets.Effects.AntiKnockbackBubble:Clone();
 	v12:SetPrimaryPartCFrame(p3.HumanoidRootPart.CFrame);
-	l__scaleModel__6(v12, 0.1);
-	v12.Parent = l__Workspace__7;
-	l__ModelUtil__8.tweenModelSize(v12, 0.2, l__InOutExpo__9, 10);
-	for v13, v14 in ipairs(v12:GetChildren()) do
-		if v14:IsA("BasePart") then
-			l__GameQueryUtil__10:setQueryIgnored(v14, true);
+	l__scaleModel__5(v12, 0.1);
+	v12.Parent = l__Workspace__6;
+	l__ModelUtil__7.tweenModelSize(v12, 0.2, l__InOutExpo__8, 10);
+	local v13, v14, v15 = ipairs(v12:GetChildren());
+	while true do
+		v13(v14, v15);
+		if not v13 then
+			break;
 		end;
+		v15 = v13;
+		if v14:IsA("BasePart") then
+			l__GameQueryUtil__9:setQueryIgnored(v14, true);
+		end;	
 	end;
 	if v8 then
-		p2:updateShieldTransparency(v12, l__KnitClient__11.Controllers.CameraPerspectiveController:getCameraPerspective());
-		p2.maid:GiveTask(l__KnitClient__11.Controllers.CameraPerspectiveController.PerspectiveChanged:Connect(function(p5)
+		p2:updateShieldTransparency(v12, l__KnitClient__10.Controllers.CameraPerspectiveController:getCameraPerspective());
+		p2.maid:GiveTask(l__KnitClient__10.Controllers.CameraPerspectiveController.PerspectiveChanged:Connect(function(p5)
 			p2:updateShieldTransparency(v12, p5);
 		end));
-		p2.maid:GiveTask(l__KnitClient__11.Controllers.VignetteController:createVignette({
-			particleEmitters = { l__ReplicatedStorage__5.Assets.Effects.AntiKnockbackVignette }, 
+		p2.maid:GiveTask(l__KnitClient__10.Controllers.VignetteController:createVignette({
+			particleEmitters = { l__ReplicatedStorage__4.Assets.Effects.AntiKnockbackVignette }, 
 			shouldShow = function()
-				return l__KnitClient__11.Controllers.CameraPerspectiveController:getCameraPerspective() == l__CameraPerspective__12.FIRST_PERSON;
+				return l__KnitClient__10.Controllers.CameraPerspectiveController:getCameraPerspective() == l__CameraPerspective__11.FIRST_PERSON;
 			end
 		}));
 	end;
-	local u16 = 0;
-	p2.maid:GiveTask(l__RunService__13.Heartbeat:Connect(function(p6)
-		u16 = u16 + p6;
-		local l__HumanoidRootPart__15 = p3.HumanoidRootPart;
-		if l__HumanoidRootPart__15 == nil then
+	local u15 = 0;
+	p2.maid:GiveTask(l__RunService__12.Heartbeat:Connect(function(p6)
+		u15 = u15 + p6;
+		local l__HumanoidRootPart__16 = p3.HumanoidRootPart;
+		if l__HumanoidRootPart__16 == nil then
 			return nil;
 		end;
 		if v12.PrimaryPart == nil then
-			l__default__14.Error("Shield effect has no primary part");
+			l__default__13.Error("Shield effect has no primary part");
 			return nil;
 		end;
-		v12:SetPrimaryPartCFrame(CFrame.new(l__HumanoidRootPart__15.Position) * CFrame.Angles(u16 * -0.6, u16 * 1.5, u16 * -0.6));
-		v12.Shields.CFrame = CFrame.new(v12.Shields.Position) * CFrame.Angles(0, u16 * 2, 0);
+		v12:SetPrimaryPartCFrame(CFrame.new(l__HumanoidRootPart__16.Position) * CFrame.Angles(u15 * -0.6, u15 * 1.5, u15 * -0.6));
+		v12.Shields.CFrame = CFrame.new(v12.Shields.Position) * CFrame.Angles(0, u15 * 2, 0);
 	end));
 	p2.maid:GiveTask(function()
-		l__ModelUtil__8.tweenModelSize(v12, 0.15, l__OutExpo__15, 0):andThen(function()
+		l__ModelUtil__7.tweenModelSize(v12, 0.15, l__OutExpo__14, 0):andThen(function()
 			v12:Destroy();
 		end);
 	end);
@@ -98,18 +102,23 @@ function v6.onRemove(p7, p8, p9)
 
 end;
 function v6.updateShieldTransparency(p10, p11, p12)
-	if p12 == l__CameraPerspective__12.FIRST_PERSON then
-		local v16 = 1;
+	if p12 == l__CameraPerspective__11.FIRST_PERSON then
+		local v17 = 1;
 	else
-		v16 = 0;
+		v17 = 0;
 	end;
-	for v17, v18 in ipairs(p11:GetChildren()) do
-		if v18:IsA("BasePart") then
-			v18.LocalTransparencyModifier = v16;
+	local v18, v19, v20 = ipairs(p11:GetChildren());
+	while true do
+		v18(v19, v20);
+		if not v18 then
+			break;
 		end;
+		v20 = v18;
+		if v19:IsA("BasePart") then
+			v19.LocalTransparencyModifier = v17;
+		end;	
 	end;
 end;
-u1 = {
+return {
 	NoKnockbackStatusEffectHandler = v6
 };
-return v5;

@@ -1,4 +1,3 @@
--- Script Hash: 230eabd89b942a3b910347d20d4e67b56176e3a4ff1bc34d62abb129d0869b82ad973241881e5058ba240cd924f63164
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -39,7 +38,7 @@ return {
 			p1.OnClick();
 		end;
 		v4.AutoButtonColor = false;
-		return u1.createElement("ImageButton", v4, { u1.createElement("UIAspectRatioConstraint", {
+		local v7 = { u1.createElement("UIAspectRatioConstraint", {
 				AspectRatio = p1.AspectRatio
 			}), u1.createElement("UICorner", {
 				CornerRadius = UDim.new(0.1, 0)
@@ -78,6 +77,26 @@ return {
 				}), u1.createElement(l__Empty__7, {
 					Size = UDim2.fromScale(0.2, 0), 
 					SizeConstraint = "RelativeYY"
-				}) }) });
+				}) }) };
+		local v8 = #v7;
+		local v9 = p1[u1.Children];
+		if v9 then
+			local v10, v11, v12 = pairs(v9);
+			while true do
+				local v13 = nil;
+				local v14 = nil;
+				v14, v13 = v10(v11, v12);
+				if not v14 then
+					break;
+				end;
+				v12 = v14;
+				if type(v14) == "number" then
+					v7[v8 + v14] = v13;
+				else
+					v7[v14] = v13;
+				end;			
+			end;
+		end;
+		return u1.createElement("ImageButton", v4, v7);
 	end)
 };

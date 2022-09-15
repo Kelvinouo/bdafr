@@ -1,4 +1,3 @@
--- Script Hash: 9b681a799b0d424e8f63f750930893538df0780e24fdffe8be387ded3df70f25f45b3eb0f079f796327e611f78f80c36
 -- Decompiled with the Synapse X Luau decompiler.
 
 local l__Players__1 = game:GetService("Players");
@@ -14,206 +13,232 @@ local function v2()
 end;
 l__CurrentCamera__1:GetPropertyChangedSignal("FieldOfView"):Connect(v2);
 l__CurrentCamera__1:GetPropertyChangedSignal("ViewportSize"):Connect(v2);
-v2();
+local l__ViewportSize__4 = l__CurrentCamera__1.ViewportSize;
+u3 = 2 * l__math_tan__4(l__math_rad__2(l__CurrentCamera__1.FieldOfView) / 2);
+u5 = l__ViewportSize__4.X / l__ViewportSize__4.Y * u3;
 local u6 = l__CurrentCamera__1.NearPlaneZ;
 l__CurrentCamera__1:GetPropertyChangedSignal("NearPlaneZ"):Connect(function()
 	u6 = l__CurrentCamera__1.NearPlaneZ;
 end);
 local u7 = {};
 local u8 = {};
-local u9 = function()
-	local v4 = 1;
-	u7 = {};
-	for v5, v6 in pairs(u8) do
-		u7[v4] = v6;
-		v4 = v4 + 1;
-	end;
-end;
-local function v7(p1)
-	local function v8(p2)
+local function v5(p1)
+	p1.CharacterAdded:Connect(function(p2)
 		u8[p1] = p2;
-		u9();
-	end;
-	p1.CharacterAdded:Connect(v8);
+		local v6 = 1;
+		u7 = {};
+		for v7, v8 in pairs(u8) do
+			u7[v6] = v8;
+			v6 = v6 + 1;
+		end;
+	end);
 	p1.CharacterRemoving:Connect(function()
 		u8[p1] = nil;
-		u9();
+		local v9 = 1;
+		u7 = {};
+		for v10, v11 in pairs(u8) do
+			u7[v9] = v11;
+			v9 = v9 + 1;
+		end;
 	end);
 	if p1.Character then
-		v8(p1.Character);
+		u8[p1] = p1.Character;
+		local v12 = 1;
+		u7 = {};
+		for v13, v14 in pairs(u8) do
+			u7[v12] = v14;
+			v12 = v12 + 1;
+		end;
 	end;
 end;
-l__Players__1.PlayerAdded:Connect(v7);
+l__Players__1.PlayerAdded:Connect(v5);
 l__Players__1.PlayerRemoving:Connect(function(p3)
 	u8[p3] = nil;
-	u9();
+	local v15 = 1;
+	u7 = {};
+	for v16, v17 in pairs(u8) do
+		u7[v15] = v17;
+		v15 = v15 + 1;
+	end;
 end);
-for v9, v10 in ipairs(l__Players__1:GetPlayers()) do
-	v7(v10);
+local v18, v19, v20 = ipairs(l__Players__1:GetPlayers());
+while true do
+	v18(v19, v20);
+	if not v18 then
+		break;
+	end;
+	v20 = v18;
+	v5(v19);
 end;
-u9();
+local v21 = 1;
+u7 = {};
+for v22, v23 in pairs(u8) do
+	u7[v21] = v23;
+	v21 = v21 + 1;
+end;
 u8 = nil;
-u9 = nil;
+local u9 = nil;
 l__CurrentCamera__1:GetPropertyChangedSignal("CameraSubject"):Connect(function()
-	local l__CameraSubject__11 = l__CurrentCamera__1.CameraSubject;
-	if l__CameraSubject__11:IsA("Humanoid") then
-		u9 = l__CameraSubject__11.RootPart;
+	local l__CameraSubject__24 = l__CurrentCamera__1.CameraSubject;
+	if l__CameraSubject__24:IsA("Humanoid") then
+		u9 = l__CameraSubject__24.RootPart;
 		return;
 	end;
-	if l__CameraSubject__11:IsA("BasePart") then
-		u9 = l__CameraSubject__11;
+	if l__CameraSubject__24:IsA("BasePart") then
+		u9 = l__CameraSubject__24;
 		return;
 	end;
 	u9 = nil;
 end);
-local function u10(p4)
-	return 1 - (1 - p4.Transparency) * (1 - p4.LocalTransparencyModifier);
-end;
-local l__Ray_new__11 = Ray.new;
-local function u12(p5, p6)
-	for v12 = #p5, p6 + 1, -1 do
-		p5[v12] = nil;
-	end;
-end;
-local l__math_huge__13 = math.huge;
-local function u14(p7)
-	local v13 = false;
-	if u10(p7) < 0.25 then
-		v13 = p7.CanCollide;
-		if v13 then
-			v13 = false;
-			if u8 ~= (p7:GetRootPart() and p7) then
-				v13 = not p7:IsA("TrussPart");
-			end;
-		end;
-	end;
-	return v13;
-end;
-local function u15(p8, p9, p10, p11)
+local l__Ray_new__10 = Ray.new;
+local l__math_huge__11 = math.huge;
+local function u12(p4, p5, p6, p7)
 	debug.profilebegin("queryPoint");
-	p10 = p10 + u6;
-	local v14 = p8 + p9 * p10;
-	local v15 = l__math_huge__13;
-	local v16 = l__math_huge__13;
-	local v17 = p8;
-	local v18 = 0;
+	p6 = p6 + u6;
+	local v25 = p4 + p5 * p6;
+	local v26 = l__math_huge__11;
+	local v27 = l__math_huge__11;
+	local v28 = p4;
+	local v29 = 0;
 	while true do
-		local v19, v20 = workspace:FindPartOnRayWithIgnoreList(l__Ray_new__11(v17, v14 - v17), u7, false, true);
-		v18 = v18 + 1;
-		if v19 then
-			local v21 = v18 >= 64;
-			if u14(v19) or v21 then
-				local v22 = { v19 };
-				local l__Magnitude__23 = (v20 - p8).Magnitude;
-				if workspace:FindPartOnRayWithWhitelist(l__Ray_new__11(v14, v20 - v14), v22, true) and not v21 then
-					local v24 = false;
-					if p11 then
-						v24 = workspace:FindPartOnRayWithWhitelist(l__Ray_new__11(p11, v14 - p11), v22, true) or workspace:FindPartOnRayWithWhitelist(l__Ray_new__11(v14, p11 - v14), v22, true);
+		local v30, v31 = workspace:FindPartOnRayWithIgnoreList(l__Ray_new__10(v28, v25 - v28), u7, false, true);
+		v29 = v29 + 1;
+		if v30 then
+			local v32 = v29 >= 64;
+			local v33 = false;
+			if 1 - (1 - v30.Transparency) * (1 - v30.LocalTransparencyModifier) < 0.25 then
+				v33 = v30.CanCollide;
+				if v33 then
+					v33 = false;
+					if u8 ~= (v30:GetRootPart() and v30) then
+						v33 = not v30:IsA("TrussPart");
 					end;
-					if v24 then
-						v16 = l__Magnitude__23;
-					elseif p10 < v15 then
-						v15 = l__Magnitude__23;
-					end;
-				else
-					v16 = l__Magnitude__23;
 				end;
 			end;
-			u7[#u7 + 1] = v19;
-			v17 = v20 - p9 * 0.001;
+			if v33 or v32 then
+				local v34 = { v30 };
+				local l__Magnitude__35 = (v31 - p4).Magnitude;
+				if workspace:FindPartOnRayWithWhitelist(l__Ray_new__10(v25, v31 - v25), v34, true) and not v32 then
+					local v36 = false;
+					if p7 then
+						v36 = workspace:FindPartOnRayWithWhitelist(l__Ray_new__10(p7, v25 - p7), v34, true) or workspace:FindPartOnRayWithWhitelist(l__Ray_new__10(v25, p7 - v25), v34, true);
+					end;
+					if v36 then
+						v27 = l__Magnitude__35;
+					elseif p6 < v26 then
+						v26 = l__Magnitude__35;
+					end;
+				else
+					v27 = l__Magnitude__35;
+				end;
+			end;
+			u7[#u7 + 1] = v30;
+			v28 = v31 - p5 * 0.001;
 		end;
-		if v16 < l__math_huge__13 then
+		if v27 < l__math_huge__11 then
 			break;
 		end;
-		if not v19 then
+		if not v30 then
 			break;
 		end;	
 	end;
-	u12(u7, #u7);
+	for v37 = #u7, #u7 + 1, -1 do
+		u7[v37] = nil;
+	end;
 	debug.profileend();
-	return v15 - u6, v16 - u6;
+	return v26 - u6, v27 - u6;
 end;
-local function u16(p12, p13)
-	local v25 = #u7;
+local function u13(p8, p9)
+	local v38 = #u7;
 	while true do
-		local v26, v27 = workspace:FindPartOnRayWithIgnoreList(l__Ray_new__11(p12, p13), u7, false, true);
-		if v26 then
-			if v26.CanCollide then
-				u12(u7, v25);
-				return v27, true;
+		local v39, v40 = workspace:FindPartOnRayWithIgnoreList(l__Ray_new__10(p8, p9), u7, false, true);
+		if v39 then
+			if v39.CanCollide then
+				for v41 = #u7, v38 + 1, -1 do
+					u7[v41] = nil;
+				end;
+				return v40, true;
 			end;
-			u7[#u7 + 1] = v26;
+			u7[#u7 + 1] = v39;
 		end;
-		if not v26 then
+		if not v39 then
 			break;
 		end;	
 	end;
-	u12(u7, v25);
-	return p12 + p13, false;
+	for v42 = #u7, v38 + 1, -1 do
+		u7[v42] = nil;
+	end;
+	return p8 + p9, false;
 end;
-local l__math_min__17 = math.min;
-local u18 = { Vector2.new(0.4, 0), Vector2.new(-0.4, 0), Vector2.new(0, -0.4), Vector2.new(0, 0.4), Vector2.new(0, 0.2) };
-local function u19(p14, p15)
+local l__math_min__14 = math.min;
+local u15 = { Vector2.new(0.4, 0), Vector2.new(-0.4, 0), Vector2.new(0, -0.4), Vector2.new(0, 0.4), Vector2.new(0, 0.2) };
+local function u16(p10, p11)
 	debug.profilebegin("queryViewport");
-	local l__p__28 = p14.p;
-	local l__rightVector__29 = p14.rightVector;
-	local l__upVector__30 = p14.upVector;
-	local v31 = -p14.lookVector;
-	local l__ViewportSize__32 = l__CurrentCamera__1.ViewportSize;
-	local v33 = l__math_huge__13;
-	local v34 = l__math_huge__13;
-	for v35 = 0, 1 do
-		local v36 = l__rightVector__29 * ((v35 - 0.5) * u5);
-		for v37 = 0, 1 do
-			local v38, v39 = u15(l__p__28 + u6 * (v36 + l__upVector__30 * ((v37 - 0.5) * u3)), v31, p15, l__CurrentCamera__1:ViewportPointToRay(l__ViewportSize__32.x * v35, l__ViewportSize__32.y * v37).Origin);
-			if v39 < v33 then
-				v33 = v39;
+	local l__p__43 = p10.p;
+	local l__rightVector__44 = p10.rightVector;
+	local l__upVector__45 = p10.upVector;
+	local v46 = -p10.lookVector;
+	local l__ViewportSize__47 = l__CurrentCamera__1.ViewportSize;
+	local v48 = l__math_huge__11;
+	local v49 = l__math_huge__11;
+	for v50 = 0, 1 do
+		local v51 = l__rightVector__44 * ((v50 - 0.5) * u5);
+		for v52 = 0, 1 do
+			local v53, v54 = u12(l__p__43 + u6 * (v51 + l__upVector__45 * ((v52 - 0.5) * u3)), v46, p11, l__CurrentCamera__1:ViewportPointToRay(l__ViewportSize__47.x * v50, l__ViewportSize__47.y * v52).Origin);
+			if v54 < v48 then
+				v48 = v54;
 			end;
-			if v38 < v34 then
-				v34 = v38;
+			if v53 < v49 then
+				v49 = v53;
 			end;
 		end;
 	end;
 	debug.profileend();
-	return v34, v33;
+	return v49, v48;
 end;
-local function u20(p16, p17, p18)
+local function u17(p12, p13, p14)
 	debug.profilebegin("testPromotion");
-	local l__p__40 = p16.p;
-	local l__rightVector__41 = p16.rightVector;
-	local l__upVector__42 = p16.upVector;
-	local v43 = -p16.lookVector;
+	local l__p__55 = p12.p;
+	local l__rightVector__56 = p12.rightVector;
+	local l__upVector__57 = p12.upVector;
+	local v58 = -p12.lookVector;
 	debug.profilebegin("extrapolate");
-	for v44 = 0, l__math_min__17(1.25, p18.rotVelocity.magnitude + (u16(l__p__40, p18.posVelocity * 1.25) - l__p__40).Magnitude / p18.posVelocity.magnitude), 0.0625 do
-		local v45 = p18.extrapolate(v44);
-		if p17 <= u15(v45.p, -v45.lookVector, p17) then
+	for v59 = 0, l__math_min__14(1.25, p14.rotVelocity.magnitude + (u13(l__p__55, p14.posVelocity * 1.25) - l__p__55).Magnitude / p14.posVelocity.magnitude), 0.0625 do
+		local v60 = p14.extrapolate(v59);
+		if p13 <= u12(v60.p, -v60.lookVector, p13) then
 			return false;
 		end;
 	end;
 	debug.profileend();
 	debug.profilebegin("testOffsets");
-	for v46, v47 in ipairs(u18) do
-		local v48 = u16(l__p__40, l__rightVector__41 * v47.x + l__upVector__42 * v47.y);
-		if u15(v48, (l__p__40 + v43 * p17 - v48).Unit, p17) == l__math_huge__13 then
-			return false;
+	local v61, v62, v63 = ipairs(u15);
+	while true do
+		v61(v62, v63);
+		if not v61 then
+			break;
 		end;
+		v63 = v61;
+		local v64 = u13(l__p__55, l__rightVector__56 * v62.x + l__upVector__57 * v62.y);
+		if u12(v64, (l__p__55 + v58 * p13 - v64).Unit, p13) == l__math_huge__11 then
+			return false;
+		end;	
 	end;
 	debug.profileend();
 	debug.profileend();
 	return true;
 end;
-return function(p19, p20, p21)
+return function(p15, p16, p17)
 	debug.profilebegin("popper");
 	u8 = u9 and u9:GetRootPart() or u9;
-	local v49 = p20;
-	local v50, v51 = u19(p19, p20);
-	if v51 < v49 then
-		v49 = v51;
+	local v65 = p16;
+	local v66, v67 = u16(p15, p16);
+	if v67 < v65 then
+		v65 = v67;
 	end;
-	if v50 < v49 and u20(p19, p20, p21) then
-		v49 = v50;
+	if v66 < v65 and u17(p15, p16, p17) then
+		v65 = v66;
 	end;
 	u8 = nil;
 	debug.profileend();
-	return v49;
+	return v65;
 end;

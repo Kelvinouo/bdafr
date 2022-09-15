@@ -3,8 +3,8 @@
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "services"));
-local l__Linear__1 = v1.import(script, v1.getModule(script, "@rbxts", "easing-functions")).Linear;
 local l__KillEffect__4 = v1.import(script, script.Parent.Parent, "kill-effect").KillEffect;
+local l__Linear__1 = v1.import(script, v1.getModule(script, "@rbxts", "easing-functions")).Linear;
 local v5 = setmetatable({}, {
 	__tostring = function()
 		return "BirdKillEffect";
@@ -86,7 +86,7 @@ function v5.onKill(p3, p4, p5, p6)
 					rollOffMaxDistance = 100
 				});
 			end;
-			local v16, v17, v18 = (v9:GetPrimaryPartCFrame() * CFrame.Angles(0, math.rad(180), 0)):ToOrientation();
+			local v16, v17, v18 = (v9:GetPrimaryPartCFrame() * CFrame.Angles(0, 3.141592653589793, 0)):ToOrientation();
 			u12:setGoal({
 				x = u4.Spring.new(v16, {
 					frequency = 2, 

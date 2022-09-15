@@ -1,4 +1,3 @@
--- Script Hash: 8921c094c4c86274b5edec46c7857f6abd0929a79b628bcb7723cef5ea4a49bb2587282dd2a396a0e43be3e1af2f8735
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -40,14 +39,14 @@ function v5.onKill(p3, p4, p5, p6)
 		v9:SetPrimaryPartCFrame(p7);
 	end, v8, v7:GetPrimaryPartCFrame() * CFrame.new(0.076, 3.698, 0.488)):Wait();
 	v7.HumanoidRootPart.Anchored = false;
-	l__WeldUtil__5.weldPartsWithJoint(v7.HumanoidRootPart, v9.PrimaryPart, "Weld");
+	l__WeldUtil__5:weldPartsWithJoint(v7.HumanoidRootPart, v9.PrimaryPart, "Weld");
 	wait(0.5);
 	l__default__3(1, l__OutSine__4, function(p8)
 		v9:SetPrimaryPartCFrame(p8);
 	end, v9:GetPrimaryPartCFrame(), v7:GetPrimaryPartCFrame() * CFrame.new(0, 100, 0)):Wait();
 	l__default__3(1, l__InSine__6, function(p9)
 		v9:SetPrimaryPartCFrame(p9);
-	end, v9:GetPrimaryPartCFrame(), v9:GetPrimaryPartCFrame() * CFrame.new(0, 0, -50) * CFrame.Angles(math.rad(-4), 0, 0)):Wait();
+	end, v9:GetPrimaryPartCFrame(), v9:GetPrimaryPartCFrame() * CFrame.new(0, 0, -50) * CFrame.Angles(-0.06981317007977318, 0, 0)):Wait();
 	v9:Destroy();
 	v7:Destroy();
 end;

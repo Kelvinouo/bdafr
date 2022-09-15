@@ -25,25 +25,37 @@ return {
 		local l__useMemo__4 = p2.useMemo;
 		local l__useEffect__5 = p2.useEffect;
 		local v6 = true;
-		for v7, v8 in ipairs((u1.values(p1.store.SocialConnections.supportTasks))) do
+		local v7, v8, v9 = ipairs((u1.values(p1.store.SocialConnections.supportTasks)));
+		while true do
+			v7(v8, v9);
+			if not v7 then
+				break;
+			end;
+			v9 = v7;
 			if v8 ~= true then
 				v6 = false;
 				break;
-			end;
+			end;		
 		end;
-		local v9, v10 = l__useState__3(v6);
-		local v11 = true;
-		for v12, v13 in ipairs((u1.values(p1.store.SocialConnections.connections))) do
-			if v13.validated ~= true then
-				v11 = false;
+		local v10, v11 = l__useState__3(v6);
+		local v12 = true;
+		local v13, v14, v15 = ipairs((u1.values(p1.store.SocialConnections.connections)));
+		while true do
+			v13(v14, v15);
+			if not v13 then
 				break;
 			end;
+			v15 = v13;
+			if v14.validated ~= true then
+				v12 = false;
+				break;
+			end;		
 		end;
-		local v14, v15 = l__useState__3(v11);
-		local v16 = {};
-		local v17 = {};
+		local v16, v17 = l__useState__3(v12);
 		local v18 = {};
-		local v19 = {
+		local v19 = {};
+		local v20 = {};
+		local v21 = {
 			AppId = p1.AppId, 
 			AnchorPoint = Vector2.new(0.5, 0.5), 
 			Position = UDim2.fromScale(0.5, 0.5), 
@@ -54,22 +66,22 @@ return {
 		};
 		if not l__DeviceUtil__3.isHoarceKat() then
 			if l__KnitClient__4.Controllers.SocialConnectionsController.policyDiscordAllowed then
-				local v20 = "Complete support & verify discord for a reward";
+				local v22 = "Complete support & verify discord for a reward";
 			else
-				v20 = "Complete support section for a reward";
+				v22 = "Complete support section for a reward";
 			end;
 		else
-			v20 = "Complete support & verify discord for a reward";
+			v22 = "Complete support & verify discord for a reward";
 		end;
-		v19.SubTitle = v20;
-		function v19.OnClose()
+		v21.SubTitle = v22;
+		function v21.OnClose()
 			l__Flamework__2.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):closeApp(p1.AppId);
 		end;
-		v18[1] = u5.createElement(l__ScaleComponent__11, {
+		v20[1] = u5.createElement(l__ScaleComponent__11, {
 			MaximumSize = Vector2.new(550, 630), 
 			ScreenPadding = Vector2.new(24, 24)
 		});
-		v18[2] = u5.createElement(l__WidgetComponent__12, v19, {
+		v20[2] = u5.createElement(l__WidgetComponent__12, v21, {
 			SupportConnections = u5.createElement("Frame", {
 				Size = UDim2.new(1, 0, 0, 0), 
 				AutomaticSize = "Y", 
@@ -83,7 +95,7 @@ return {
 					Padding = UDim.new(0, 8)
 				}), u5.createElement(u7, {
 					Title = "<b>1. Support The Game</b>", 
-					Completed = v9, 
+					Completed = v10, 
 					LayoutOrder = 1
 				}), u5.createElement(u14, {
 					Size = UDim2.new(1, 0, 0, 46), 
@@ -121,14 +133,14 @@ return {
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0, 10)
 			}), l__useMemo__4(function()
-				local v21 = {};
+				local v23 = {};
 				if not l__DeviceUtil__3.isHoarceKat() then
-					local v22 = l__KnitClient__4.Controllers.SocialConnectionsController.policyDiscordAllowed;
+					local v24 = l__KnitClient__4.Controllers.SocialConnectionsController.policyDiscordAllowed;
 				else
-					v22 = true;
+					v24 = true;
 				end;
-				if v22 then
-					v22 = u5.createFragment({
+				if v24 then
+					v24 = u5.createFragment({
 						ExternalConnections = u5.createElement("Frame", {
 							Size = UDim2.new(1, 0, 0, 0), 
 							AutomaticSize = "Y", 
@@ -142,7 +154,7 @@ return {
 								Padding = UDim.new(0, 10)
 							}), u5.createElement(u7, {
 								Title = "<b>2. Verify Discord</b>", 
-								Completed = v14, 
+								Completed = v16, 
 								LayoutOrder = 1
 							}), u5.createElement(l__SocialConnectionsDiscord__8, {
 								LayoutOrder = 2, 
@@ -150,49 +162,49 @@ return {
 							}) })
 					});
 				end;
-				if v22 then
-					v21[#v21 + 1] = v22;
+				if v24 then
+					v23[#v23 + 1] = v24;
 				end;
-				return u5.createFragment(v21);
+				return u5.createFragment(v23);
 			end, { p1.store.SocialConnections.connections.discord.verificationCode, p1.store.SocialConnections.connections.discord.validated }), u5.createElement(l__DividerComponent__17, {
 				Margin = 2, 
 				LayoutOrder = 3
 			}), (l__useMemo__4(function()
-				local v23 = {};
+				local v25 = {};
 				if not l__DeviceUtil__3.isHoarceKat() and not l__KnitClient__4.Controllers.SocialConnectionsController.policyDiscordAllowed then
-					if v9 then
-						local v24 = 1;
-					else
-						v24 = 0;
-					end;
-				else
-					if v9 then
-						local v25 = 1;
-					else
-						v25 = 0;
-					end;
-					if v14 then
+					if v10 then
 						local v26 = 1;
 					else
 						v26 = 0;
 					end;
-					v24 = v25 + v26;
+				else
+					if v10 then
+						local v27 = 1;
+					else
+						v27 = 0;
+					end;
+					if v16 then
+						local v28 = 1;
+					else
+						v28 = 0;
+					end;
+					v26 = v27 + v28;
 				end;
-				v23.CompletedCount = v24;
-				v23.LayoutOrder = 4;
-				return u5.createElement(u6, v23);
-			end, { v9, v14 }))
+				v25.CompletedCount = v26;
+				v25.LayoutOrder = 4;
+				return u5.createElement(u6, v25);
+			end, { v10, v16 }))
 		});
-		v17[1] = u5.createElement("Frame", {
+		v19[1] = u5.createElement("Frame", {
 			AnchorPoint = Vector2.new(0.5, 0.5), 
 			Position = UDim2.fromScale(0.5, 0.5), 
 			Size = UDim2.fromOffset(440, 510), 
 			BackgroundTransparency = 1
-		}, v18);
-		v16[1] = u5.createElement(l__DarkBackground__9, {
+		}, v20);
+		v18[1] = u5.createElement(l__DarkBackground__9, {
 			AppId = p1.AppId
 		});
-		v16[2] = u5.createElement(l__SlideIn__10, {}, v17);
-		return u5.createFragment(v16);
+		v18[2] = u5.createElement(l__SlideIn__10, {}, v19);
+		return u5.createFragment(v18);
 	end)
 };

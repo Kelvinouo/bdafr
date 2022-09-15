@@ -1,4 +1,3 @@
--- Script Hash: d023366582974f9dd97cbb8508753f4372cf018f4bd71eeb7e3731e3ef5d2ab19f662a59835339920efd5c60d9520a55
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -33,7 +32,7 @@ function v4.onKill(p3, p4, p5, p6)
 		u9:DoCleaning();
 	end);
 	local v6 = p6 * CFrame.new(0, 5, 0);
-	local v7 = v6 * CFrame.Angles(0, math.rad(-90), 0);
+	local v7 = v6 * CFrame.Angles(0, -1.5707963267948966, 0);
 	p5.Archivable = true;
 	local v8 = p5:Clone();
 	v8.HumanoidRootPart.Anchored = true;

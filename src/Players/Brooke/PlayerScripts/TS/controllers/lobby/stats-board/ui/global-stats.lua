@@ -5,10 +5,16 @@ local function u1(p1)
 	local u2 = 0;
 	local u3 = 0;
 	local v2 = table.create(#p1);
-	for v3, v4 in ipairs(p1) do
+	local v3, v4, v5 = ipairs(p1);
+	while true do
+		v3(v4, v5);
+		if not v3 then
+			break;
+		end;
+		v5 = v3;
 		u2 = u2 + v4[2].bedBreaks;
 		u3 = u3 + v4[2].finalKills;
-		v2[v3] = 0;
+		v2[v3] = 0;	
 	end;
 	return {
 		globalBedBreaks = u2, 
@@ -22,16 +28,16 @@ local l__SectionTitle__7 = v1.import(script, script.Parent, "section-title").Sec
 local l__Empty__8 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).Empty;
 return {
 	GlobalStats = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u5)(function(p2, p3)
-		local v5 = u1(u4.entries(p2.store.Leaderboard.queues));
-		local v6 = p2.store.Leaderboard.globalStats;
-		if v6 ~= nil then
-			v6 = v6.wins;
+		local v6 = u1(u4.entries(p2.store.Leaderboard.queues));
+		local v7 = p2.store.Leaderboard.globalStats;
+		if v7 ~= nil then
+			v7 = v7.wins;
 		end;
-		local v7 = {
+		local v8 = {
 			Size = UDim2.new(1, 0, 0, 0), 
 			AutomaticSize = Enum.AutomaticSize.Y
 		};
-		local v8 = { u5.createElement("UIListLayout", {
+		local v9 = { u5.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Vertical, 
 				VerticalAlignment = Enum.VerticalAlignment.Top, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
@@ -41,29 +47,29 @@ return {
 				title = "Global Totals", 
 				SectionDivider = true
 			}) };
-		local v9 = {
+		local v10 = {
 			Size = UDim2.new(1, 0, 0, 0), 
 			AutomaticSize = Enum.AutomaticSize.Y
 		};
-		local v10 = { u5.createElement("UIListLayout", {
+		local v11 = { u5.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Vertical, 
 				VerticalAlignment = Enum.VerticalAlignment.Center, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Center, 
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0, 8)
 			}) };
-		local v11 = u4.entries({
+		local v12 = u4.entries({
 			Wins = {
 				layoutOrder = 1, 
-				value = v6
+				value = v7
 			}, 
 			["Bed Breaks"] = {
 				layoutOrder = 2, 
-				value = v5.globalBedBreaks
+				value = v6.globalBedBreaks
 			}, 
 			["Final Kills"] = {
 				layoutOrder = 3, 
-				value = v5.globalFinalKills
+				value = v6.globalFinalKills
 			}
 		});
 		local function u9(p4, p5, p6)
@@ -111,32 +117,44 @@ return {
 					TextColor3 = Color3.fromRGB(255, 255, 255)
 				}) });
 		end;
-		local v12 = table.create(#v11);
-		for v13, v14 in ipairs(v11) do
-			local v15 = v14[2];
-			local v16 = v15.value;
-			if v16 == nil then
-				v16 = 0;
+		local v13 = table.create(#v12);
+		local v14, v15, v16 = ipairs(v12);
+		while true do
+			v14(v15, v16);
+			if not v14 then
+				break;
 			end;
-			v12[v13] = u9(v14[1], v16, v15.layoutOrder);
+			v16 = v14;
+			local v17 = v15[2];
+			local v18 = v17.value;
+			if v18 == nil then
+				v18 = 0;
+			end;
+			v13[v14] = u9(v15[1], v18, v17.layoutOrder);		
 		end;
-		local v17 = {
+		local v19 = {
 			Size = UDim2.new(1, 0, 0, 0), 
 			AutomaticSize = Enum.AutomaticSize.Y
 		};
-		local v18 = { u5.createElement("UIListLayout", {
+		local v20 = { u5.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
 				VerticalAlignment = Enum.VerticalAlignment.Center, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				SortOrder = Enum.SortOrder.LayoutOrder, 
 				Padding = UDim.new(0, 8)
 			}) };
-		local v19 = #v18;
-		for v20, v21 in ipairs(v12) do
-			v18[v19 + v20] = v21;
+		local v21 = #v20;
+		local v22, v23, v24 = ipairs(v13);
+		while true do
+			v22(v23, v24);
+			if not v22 then
+				break;
+			end;
+			v24 = v22;
+			v20[v21 + v22] = v23;		
 		end;
-		v10[#v10 + 1] = u5.createElement(l__Empty__8, v17, v18);
-		v8[#v8 + 1] = u5.createElement(l__Empty__8, v9, v10);
-		return u5.createElement(l__Empty__8, v7, v8);
+		v11[#v11 + 1] = u5.createElement(l__Empty__8, v19, v20);
+		v9[#v9 + 1] = u5.createElement(l__Empty__8, v10, v11);
+		return u5.createElement(l__Empty__8, v8, v9);
 	end)
 };

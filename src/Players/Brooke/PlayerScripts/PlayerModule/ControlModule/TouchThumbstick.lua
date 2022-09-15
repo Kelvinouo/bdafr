@@ -66,7 +66,7 @@ function v3.Create(p5, p6)
 			p5.onTouchEndedConn = nil;
 		end;
 	end;
-	local v6 = math.min(p6.AbsoluteSize.x, p6.AbsoluteSize.y) <= 500;
+	local v6 = math.min(p6.AbsoluteSize.X, p6.AbsoluteSize.Y) <= 500;
 	if v6 then
 		local v7 = 70;
 	else
@@ -106,32 +106,32 @@ function v3.Create(p5, p6)
 			return;
 		end;
 		p5.moveTouchObject = p7;
-		p5.thumbstickFrame.Position = UDim2.new(0, p7.Position.x - p5.thumbstickFrame.Size.X.Offset / 2, 0, p7.Position.y - p5.thumbstickFrame.Size.Y.Offset / 2);
-		u4 = Vector2.new(p5.thumbstickFrame.AbsolutePosition.x + p5.thumbstickFrame.AbsoluteSize.x / 2, p5.thumbstickFrame.AbsolutePosition.y + p5.thumbstickFrame.AbsoluteSize.y / 2);
-		local v9 = Vector2.new(p7.Position.x - u4.x, p7.Position.y - u4.y);
+		p5.thumbstickFrame.Position = UDim2.new(0, p7.Position.X - p5.thumbstickFrame.Size.X.Offset / 2, 0, p7.Position.Y - p5.thumbstickFrame.Size.Y.Offset / 2);
+		u4 = Vector2.new(p5.thumbstickFrame.AbsolutePosition.X + p5.thumbstickFrame.AbsoluteSize.X / 2, p5.thumbstickFrame.AbsolutePosition.Y + p5.thumbstickFrame.AbsoluteSize.Y / 2);
+		local v9 = Vector2.new(p7.Position.X - u4.X, p7.Position.Y - u4.Y);
 	end);
 	local function u5(p8)
-		local v10 = Vector2.new(p8.x - u4.x, p8.y - u4.y);
+		local v10 = Vector2.new(p8.X - u4.X, p8.Y - u4.Y);
 		local l__magnitude__11 = v10.magnitude;
-		local v12 = p5.thumbstickFrame.AbsoluteSize.x / 2;
+		local v12 = p5.thumbstickFrame.AbsoluteSize.X / 2;
 		if p5.isFollowStick and v12 < l__magnitude__11 then
 			local v13 = v10.unit * v12;
-			p5.thumbstickFrame.Position = UDim2.new(0, p8.x - p5.thumbstickFrame.AbsoluteSize.x / 2 - v13.x, 0, p8.y - p5.thumbstickFrame.AbsoluteSize.y / 2 - v13.y);
+			p5.thumbstickFrame.Position = UDim2.new(0, p8.X - p5.thumbstickFrame.AbsoluteSize.X / 2 - v13.X, 0, p8.Y - p5.thumbstickFrame.AbsoluteSize.Y / 2 - v13.Y);
 		else
 			v10 = v10.unit * math.min(l__magnitude__11, v12);
 		end;
-		p5.stickImage.Position = UDim2.new(0, v10.x + p5.stickImage.AbsoluteSize.x / 2, 0, v10.y + p5.stickImage.AbsoluteSize.y / 2);
+		p5.stickImage.Position = UDim2.new(0, v10.X + p5.stickImage.AbsoluteSize.X / 2, 0, v10.Y + p5.stickImage.AbsoluteSize.Y / 2);
 	end;
 	p5.onTouchMovedConn = l__UserInputService__2.TouchMoved:Connect(function(p9, p10)
 		if p9 == p5.moveTouchObject then
-			u4 = Vector2.new(p5.thumbstickFrame.AbsolutePosition.x + p5.thumbstickFrame.AbsoluteSize.x / 2, p5.thumbstickFrame.AbsolutePosition.y + p5.thumbstickFrame.AbsoluteSize.y / 2);
-			local v14 = Vector2.new(p9.Position.x - u4.x, p9.Position.y - u4.y) / (p5.thumbstickSize / 2);
+			u4 = Vector2.new(p5.thumbstickFrame.AbsolutePosition.X + p5.thumbstickFrame.AbsoluteSize.X / 2, p5.thumbstickFrame.AbsolutePosition.Y + p5.thumbstickFrame.AbsoluteSize.Y / 2);
+			local v14 = Vector2.new(p9.Position.X - u4.X, p9.Position.Y - u4.Y) / (p5.thumbstickSize / 2);
 			local l__magnitude__15 = v14.magnitude;
 			if l__magnitude__15 < 0.05 then
 				local v16 = Vector3.new();
 			else
 				local v17 = v14.unit * ((l__magnitude__15 - 0.05) / 0.95);
-				v16 = Vector3.new(v17.x, 0, v17.y);
+				v16 = Vector3.new(v17.X, 0, v17.Y);
 			end;
 			p5.moveVector = v16;
 			u5(p9.Position);

@@ -1,32 +1,34 @@
--- Script Hash: 41b89c6a5981a2caefc497f26ce24dab2e4a76d753408ae804556d7f7b755ac29e8f0929f71da90a0c182bc8fc56424a
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local v2 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out);
 local v3 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local v4 = v3.Component:extend("BedwarsItemShopAppBase");
-local l__BedwarsShop__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "shop", "bedwars-shop").BedwarsShop;
-local l__Players__2 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
+local l__DeviceUtil__1 = v2.DeviceUtil;
+local l__BedwarsShop__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "shop", "bedwars-shop").BedwarsShop;
+local l__Players__3 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 function v4.init(p1, p2)
 	p1.alive = true;
-	p1:setState({
-		selectedItem = l__BedwarsShop__1.getShop(l__Players__2.LocalPlayer)[1]
-	});
+	if not l__DeviceUtil__1.isHoarceKat() then
+		p1:setState({
+			selectedItem = l__BedwarsShop__2.getShop(l__Players__3.LocalPlayer)[1]
+		});
+	end;
 end;
-local l__SoundManager__3 = v2.SoundManager;
-local l__GameSound__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
-local l__Flamework__5 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
+local l__SoundManager__4 = v2.SoundManager;
+local l__GameSound__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local l__Flamework__6 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 function v4.didMount(p3)
-	l__SoundManager__3:playSound(l__GameSound__4.UI_OPEN);
-	local v5 = l__Players__2.LocalPlayer;
+	l__SoundManager__4:playSound(l__GameSound__5.UI_OPEN);
+	local v5 = l__Players__3.LocalPlayer;
 	if v5 ~= nil then
 		v5 = v5.Character;
 	end;
 	if v5 then
-		local l__Position__6 = l__Players__2.LocalPlayer.Character:GetPrimaryPartCFrame().Position;
+		local l__Position__7 = l__Players__3.LocalPlayer.Character:GetPrimaryPartCFrame().Position;
 		v1.Promise.defer(function()
 			while { wait(0.2) } and p3.alive do
-				local v6 = l__Players__2.LocalPlayer.Character;
+				local v6 = l__Players__3.LocalPlayer.Character;
 				if v6 ~= nil then
 					v6 = v6:GetPrimaryPartCFrame().Position;
 				end;
@@ -34,8 +36,8 @@ function v4.didMount(p3)
 				if v7 == nil then
 					v7 = Vector3.new();
 				end;
-				if (v7 - l__Position__6).Magnitude > 6 then
-					l__Flamework__5.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):closeApp(p3.props.AppId);
+				if (v7 - l__Position__7).Magnitude > 6 then
+					l__Flamework__6.resolveDependency("@easy-games/game-core:client/controllers/app-controller@AppController"):closeApp(p3.props.AppId);
 				end;			
 			end;
 		end);
@@ -44,10 +46,9 @@ end;
 function v4.willUnmount(p4)
 	p4.alive = false;
 end;
-local l__DarkBackground__7 = v2.DarkBackground;
-local l__SlideIn__8 = v2.SlideIn;
-local l__EmptyButton__9 = v2.EmptyButton;
-local l__DeviceUtil__10 = v2.DeviceUtil;
+local l__DarkBackground__8 = v2.DarkBackground;
+local l__SlideIn__9 = v2.SlideIn;
+local l__EmptyButton__10 = v2.EmptyButton;
 local l__BedwarsItemShopLeft__11 = v1.import(script, script.Parent, "shop-left", "shop-left").BedwarsItemShopLeft;
 local l__Empty__12 = v2.Empty;
 local l__ShopToolbar__13 = v1.import(script, script.Parent, "toolbar", "shop-toolbar").ShopToolbar;
@@ -56,13 +57,13 @@ function v4.render(p5)
 	local v8 = {};
 	local v9 = {};
 	local v10 = {};
-	if l__DeviceUtil__10.isSmallScreen() then
+	if l__DeviceUtil__1.isSmallScreen() then
 		local v11 = UDim2.fromScale(0.7, 0.7);
 	else
 		v11 = UDim2.fromScale(0.65, 0.65);
 	end;
 	v10.Size = v11;
-	if l__DeviceUtil__10.isSmallScreen() then
+	if l__DeviceUtil__1.isSmallScreen() then
 		local v12 = 0.03;
 	else
 		v12 = 0.05;
@@ -108,11 +109,11 @@ function v4.render(p5)
 				});
 			end
 		}) });
-	v9[1] = v3.createElement(l__EmptyButton__9, v10, v13);
-	v8[1] = v3.createElement(l__DarkBackground__7, {
+	v9[1] = v3.createElement(l__EmptyButton__10, v10, v13);
+	v8[1] = v3.createElement(l__DarkBackground__8, {
 		AppId = p5.props.AppId
 	});
-	v8[2] = v3.createElement(l__SlideIn__8, {}, v9);
+	v8[2] = v3.createElement(l__SlideIn__9, {}, v9);
 	return v3.createElement("ScreenGui", {}, v8);
 end;
 return {

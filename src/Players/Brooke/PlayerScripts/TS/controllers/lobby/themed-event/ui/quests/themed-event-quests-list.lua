@@ -41,29 +41,41 @@ return {
 			v6[#v6 + 1] = v7;
 		end;
 		local v8 = table.create(#l__quests__4);
-		for v9, v10 in ipairs(l__quests__4) do
+		local v9, v10, v11 = ipairs(l__quests__4);
+		while true do
+			v9(v10, v11);
+			if not v9 then
+				break;
+			end;
+			v11 = v9;
 			v8[v9] = u2.createElement(l__ThemedEventQuestCard__4, {
 				ThemedEventType = p1.ThemedEventType, 
 				Quest = v10, 
 				PersonalCollectables = p1.PersonalCollectables
-			});
+			});		
 		end;
-		local v11 = {
+		local v12 = {
 			ScrollingFrameProps = {
 				Size = UDim2.fromScale(1, 0.9)
 			}
 		};
-		local v12 = { u2.createElement("UIListLayout", {
+		local v13 = { u2.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Vertical, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				VerticalAlignment = Enum.VerticalAlignment.Top, 
 				Padding = UDim.new(0.03, 0)
 			}) };
-		local v13 = #v12;
-		for v14, v15 in ipairs(v8) do
-			v12[v13 + v14] = v15;
+		local v14 = #v13;
+		local v15, v16, v17 = ipairs(v8);
+		while true do
+			v15(v16, v17);
+			if not v15 then
+				break;
+			end;
+			v17 = v15;
+			v13[v14 + v15] = v16;		
 		end;
-		v6[#v6 + 1] = u2.createElement(l__AutoCanvasScrollingFrame__5, v11, v12);
+		v6[#v6 + 1] = u2.createElement(l__AutoCanvasScrollingFrame__5, v12, v13);
 		return u2.createFragment({
 			QuestsList = u2.createElement(l__Empty__6, v5, v6)
 		});

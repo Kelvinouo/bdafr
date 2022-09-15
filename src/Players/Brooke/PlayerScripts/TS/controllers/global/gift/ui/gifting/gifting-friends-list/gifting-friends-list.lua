@@ -19,59 +19,71 @@ return {
 		if l__DeviceUtil__2.isHoarceKat() then
 			local v5 = u3.values(l__OfflinePlayerUtil__4.Dummy);
 			local v6 = table.create(#v5);
-			for v7, v8 in ipairs(v5) do
+			local v7, v8, v9 = ipairs(v5);
+			while true do
+				v7(v8, v9);
+				if not v7 then
+					break;
+				end;
+				v9 = v7;
 				v6[v7] = {
 					username = v8.name, 
 					userId = v8.userId, 
 					isOnline = false
-				};
+				};			
 			end;
-			local v9 = v6;
+			local v10 = v6;
 		else
-			v9 = p1.Friends;
+			v10 = p1.Friends;
 		end;
-		local v10, v11 = p2.useState(v9);
-		local v12 = v10;
-		if v12 then
-			local v13 = {};
-			local v14 = 0;
-			local v15, v16, v17 = ipairs(v10);
+		local v11, v12 = p2.useState(v10);
+		local v13 = v11;
+		if v13 then
+			local v14 = {};
+			local v15 = 0;
+			local v16, v17, v18 = ipairs(v11);
 			while true do
-				local v18, v19 = v15(v16, v17);
-				if not v18 then
+				v16(v17, v18);
+				if not v16 then
 					break;
 				end;
-				if v18 - 1 >= 50 then
-					local v20 = nil;
+				if v16 - 1 >= 50 then
+					local v19 = nil;
 				else
-					v20 = u1.createElement(u6, {
-						Friend = v19, 
+					v19 = u1.createElement(u6, {
+						Friend = v17, 
 						SetFriendsListUser = p1.SetFriendsListUser
 					});
 				end;
-				if v20 ~= nil then
-					v14 = v14 + 1;
-					v13[v14] = v20;
+				if v19 ~= nil then
+					v15 = v15 + 1;
+					v14[v15] = v19;
 				end;			
 			end;
-			local v21 = {
+			local v20 = {
 				ScrollingFrameProps = {
 					Size = UDim2.new(1, 0, 1, -70), 
 					LayoutOrder = 2
 				}
 			};
-			local v22 = { u1.createElement("UIListLayout", {
+			local v21 = { u1.createElement("UIListLayout", {
 					FillDirection = Enum.FillDirection.Vertical, 
 					HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 					VerticalAlignment = Enum.VerticalAlignment.Top, 
 					SortOrder = Enum.SortOrder.LayoutOrder, 
 					Padding = UDim.new(0, 6)
 				}) };
-			local v23 = #v22;
-			for v24, v25 in ipairs(v13) do
-				v22[v23 + v24] = v25;
+			local v22 = #v21;
+			local v23, v24, v25 = ipairs(v14);
+			while true do
+				v23(v24, v25);
+				if not v23 then
+					break;
+				end;
+				v25 = v23;
+				v21[v22 + v23] = v24;			
 			end;
-			v12 = u1.createElement(l__AutoCanvasScrollingFrame__7, v21, v22);
+			v13 = u1.createElement(l__AutoCanvasScrollingFrame__7, v20, v21);
 		end;
 		local v26 = {};
 		local v27 = {
@@ -118,12 +130,12 @@ return {
 				return nil;
 			end;
 			if not (#p3.Text > 0) then
-				v11(p1.Friends);
+				v12(p1.Friends);
 				return;
 			end;
 			l__KnitClient__5.Controllers.FriendController:fuzzySearchFriends(p3.Text):andThen(function(p4)
 				if p4 then
-					v11(p4);
+					v12(p4);
 				end;
 			end);
 		end;
@@ -175,8 +187,8 @@ return {
 			BorderSizePixel = 0, 
 			LayoutOrder = 1
 		}, v27);
-		if v12 then
-			v26[#v26 + 1] = v12;
+		if v13 then
+			v26[#v26 + 1] = v13;
 		end;
 		return u1.createElement("Frame", {
 			Size = p1.Size, 

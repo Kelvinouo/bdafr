@@ -1,4 +1,3 @@
--- Script Hash: 2bc89dd8b23c6b8dec310c56fbe406775738541a8a4873f0462818176cec88543814645c4a4f28a7fe10ca188e172d6c
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -18,7 +17,8 @@ local v3 = {
 	GameUpdates = v1.import(script, script.Parent, "rodux", "reducers", "game-updates-reducer").GameUpdatesReducer, 
 	CustomMatch = v1.import(script, script.Parent, "rodux", "reducers", "games", "custom-match-reducer").CustomMatchReducer, 
 	Clans = v1.import(script, script.Parent, "rodux", "reducers", "clan-reducer").ClansReducer, 
-	ThemedEvent = v1.import(script, script.Parent, "rodux", "reducers", "games", "themed-event-reducer").ThemedEventReducer
+	ThemedEvent = v1.import(script, script.Parent, "rodux", "reducers", "games", "themed-event-reducer").ThemedEventReducer, 
+	Event = v1.import(script, script.Parent, "rodux", "reducers", "event-reducer").EventReducer
 };
 for v4, v5 in pairs(v1.import(script, v1.getModule(script, "@easy-games", "lobby").out).LobbyClientReducerMap) do
 	v3[v4] = v5;

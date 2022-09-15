@@ -28,7 +28,17 @@ local l__GameSound__6 = v1.import(script, game:GetService("ReplicatedStorage"), 
 function v4.KnitStart(p2)
 	l__KnitController__3.KnitStart(p2);
 	v1.Promise.defer(function()
-		while { wait(3) } do
+		while true do
+			local v6 = task.wait(3);
+			if v6 == 0 then
+				break;
+			end;
+			if v6 ~= v6 then
+				break;
+			end;
+			if not v6 then
+				break;
+			end;
 			v1.Promise.defer(function()
 				p2:checkForPickUp();
 			end);		
@@ -44,14 +54,14 @@ function v4.KnitStart(p2)
 		if p3.placer == l__Players__3.LocalPlayer then
 			table.insert(p2.flagList, (l__BlockEngine__4:getWorldPosition(p3.flagPosition)));
 		end;
-		local v6 = {};
+		local v7 = {};
 		if p3.placer == l__Players__3.LocalPlayer then
-			local v7 = nil;
+			local v8 = nil;
 		else
-			v7 = p3.flagPosition;
+			v8 = p3.flagPosition;
 		end;
-		v6.position = v7;
-		l__SoundManager__5:playSound(l__GameSound__6.FLAG_DROP, v6);
+		v7.position = v8;
+		l__SoundManager__5:playSound(l__GameSound__6.FLAG_DROP, v7);
 	end);
 end;
 local l__CollectionService__7 = v2.CollectionService;
@@ -60,169 +70,169 @@ local l__Workspace__9 = v2.Workspace;
 local l__getItemMeta__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-meta").getItemMeta;
 local l__InventoryUtil__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "inventory", "inventory-util").InventoryUtil;
 function v4.checkForPickUp(p4)
-	local v8 = 0;
-	local v9 = false;
+	local v9 = 0;
+	local v10 = false;
 	while true do
-		if v9 then
-			v8 = v8 + 1;
+		if v10 then
+			v9 = v9 + 1;
 		else
-			v9 = true;
+			v10 = true;
 		end;
-		if not (v8 < #p4.flagList) then
+		if not (v9 < #p4.flagList) then
 			break;
 		end;
-		local v10 = p4.flagList[v8 + 1];
-		if not l__BlockEngine__4:getStore():getBlockAt((l__BlockEngine__4:getBlockPosition(v10))) then
-			table.remove(p4.flagList, v8 + 1);
+		local v11 = p4.flagList[v9 + 1];
+		if not l__BlockEngine__4:getStore():getBlockAt((l__BlockEngine__4:getBlockPosition(v11))) then
+			table.remove(p4.flagList, v9 + 1);
 		else
-			local v11 = {};
-			local v12 = 0;
-			local v13, v14, v15 = ipairs((l__CollectionService__7:GetTagged("ItemDrop")));
+			local v12 = {};
+			local v13 = 0;
+			local v14, v15, v16 = ipairs((l__CollectionService__7:GetTagged("ItemDrop")));
 			while true do
-				v13(v14, v15);
-				if not v13 then
+				v14(v15, v16);
+				if not v14 then
 					break;
 				end;
-				if (v10 - v14.Position).Magnitude <= l__BalanceFile__8.PIRATE_FLAG_RANGE == true then
-					v12 = v12 + 1;
-					v11[v12] = v14;
+				if (v11 - v15.Position).Magnitude <= l__BalanceFile__8.PIRATE_FLAG_RANGE == true then
+					v13 = v13 + 1;
+					v12[v13] = v15;
 				end;			
 			end;
-			local v16 = {};
-			local v17 = 0;
-			local v18, v19, v20 = ipairs(v11);
+			local v17 = {};
+			local v18 = 0;
+			local v19, v20, v21 = ipairs(v12);
 			while true do
-				v18(v19, v20);
-				if not v18 then
+				v19(v20, v21);
+				if not v19 then
 					break;
 				end;
-				if v19:GetAttribute("PickupReadyTime") < l__Workspace__9:GetServerTimeNow() == true then
-					v17 = v17 + 1;
-					v16[v17] = v19;
+				if v20:GetAttribute("PickupReadyTime") < l__Workspace__9:GetServerTimeNow() == true then
+					v18 = v18 + 1;
+					v17[v18] = v20;
 				end;			
 			end;
-			local v21 = {};
-			local v22 = 0;
-			local v23, v24, v25 = ipairs(v16);
+			local v22 = {};
+			local v23 = 0;
+			local v24, v25, v26 = ipairs(v17);
 			while true do
-				v23(v24, v25);
-				if not v23 then
+				v24(v25, v26);
+				if not v24 then
 					break;
 				end;
-				local v26 = v24:GetAttribute("ClientPickupAttemptTime");
-				if v26 ~= nil then
-					local v27 = tick() - v26 > 5;
+				local v27 = v25:GetAttribute("ClientPickupAttemptTime");
+				if v27 ~= nil then
+					local v28 = tick() - v27 > 5;
 				else
-					v27 = true;
+					v28 = true;
 				end;
-				if v27 == true then
-					v22 = v22 + 1;
-					v21[v22] = v24;
+				if v28 == true then
+					v23 = v23 + 1;
+					v22[v23] = v25;
 				end;			
 			end;
-			local v28 = {};
-			local v29 = 0;
-			local v30, v31, v32 = ipairs(v21);
+			local v29 = {};
+			local v30 = 0;
+			local v31, v32, v33 = ipairs(v22);
 			while true do
-				v30(v31, v32);
-				if not v30 then
+				v31(v32, v33);
+				if not v31 then
 					break;
 				end;
-				local v33 = v31:GetAttribute("ClientDropTime");
-				if v33 ~= 0 and v33 == v33 and v33 ~= "" and v33 then
-					local v34 = false;
+				local v34 = v32:GetAttribute("ClientDropTime");
+				if v34 ~= 0 and v34 == v34 and v34 ~= "" and v34 then
+					local v35 = false;
 				else
-					v34 = true;
+					v35 = true;
 				end;
-				if v34 == true then
-					v29 = v29 + 1;
-					v28[v29] = v31;
+				if v35 == true then
+					v30 = v30 + 1;
+					v29[v30] = v32;
 				end;			
 			end;
-			local function v35(p5)
-				local v36 = l__getItemMeta__10(p5.Name);
-				local v37 = v36;
-				if v37 ~= nil then
-					v37 = v37.maxStackSize;
+			local function v36(p5)
+				local v37 = l__getItemMeta__10(p5.Name);
+				local v38 = v37;
+				if v38 ~= nil then
+					v38 = v38.maxStackSize;
 				end;
-				if v37 ~= nil then
-					local v38 = l__InventoryUtil__11.getToolFromInventory(l__Players__3.LocalPlayer, p5.Name);
-					local v39 = v38;
-					if v39 ~= nil then
-						v39 = v39.amount;
+				if v38 ~= nil then
+					local v39 = l__InventoryUtil__11.getToolFromInventory(l__Players__3.LocalPlayer, p5.Name);
+					local v40 = v39;
+					if v40 ~= nil then
+						v40 = v40.amount;
 					end;
-					if v39 ~= nil and v36.maxStackSize <= v38.amount then
+					if v40 ~= nil and v37.maxStackSize <= v39.amount then
 						return false;
 					end;
 				end;
 				return true;
 			end;
-			local v40 = {};
-			local v41 = 0;
-			local v42, v43, v44 = ipairs(v28);
+			local v41 = {};
+			local v42 = 0;
+			local v43, v44, v45 = ipairs(v29);
 			while true do
-				v42(v43, v44);
-				if not v42 then
+				v43(v44, v45);
+				if not v43 then
 					break;
 				end;
-				v44 = v42;
-				if v35(v43, v42 - 1, v28) == true then
-					v41 = v41 + 1;
-					v40[v41] = v43;
+				v45 = v43;
+				if v36(v44, v43 - 1, v29) == true then
+					v42 = v42 + 1;
+					v41[v42] = v44;
 				end;			
 			end;
-			local function v45(p6)
-				local v46 = l__getItemMeta__10(p6.Name);
-				local v47 = v46;
-				if v47 ~= nil then
-					v47 = v47.maxStackSize;
+			local function v46(p6)
+				local v47 = l__getItemMeta__10(p6.Name);
+				local v48 = v47;
+				if v48 ~= nil then
+					v48 = v48.maxStackSize;
 				end;
-				if v47 ~= nil then
-					local v48 = l__InventoryUtil__11.getToolFromInventory(l__Players__3.LocalPlayer, p6.Name);
-					local v49 = v48;
-					if v49 ~= nil then
-						v49 = v49.amount;
+				if v48 ~= nil then
+					local v49 = l__InventoryUtil__11.getToolFromInventory(l__Players__3.LocalPlayer, p6.Name);
+					local v50 = v49;
+					if v50 ~= nil then
+						v50 = v50.amount;
 					end;
-					if v49 ~= nil and v46.maxStackSize <= v48.amount then
+					if v50 ~= nil and v47.maxStackSize <= v49.amount then
 						return false;
 					end;
 				end;
 				return true;
 			end;
-			local v50 = {};
-			local v51 = 0;
-			local v52, v53, v54 = ipairs(v40);
+			local v51 = {};
+			local v52 = 0;
+			local v53, v54, v55 = ipairs(v41);
 			while true do
-				v52(v53, v54);
-				if not v52 then
+				v53(v54, v55);
+				if not v53 then
 					break;
 				end;
-				v54 = v52;
-				if v45(v53, v52 - 1, v40) == true then
-					v51 = v51 + 1;
-					v50[v51] = v53;
+				v55 = v53;
+				if v46(v54, v53 - 1, v41) == true then
+					v52 = v52 + 1;
+					v51[v52] = v54;
 				end;			
 			end;
-			local v55 = 0;
-			local v56 = false;
+			local v56 = 0;
+			local v57 = false;
 			while true do
-				if v56 then
-					v55 = v55 + 1;
+				if v57 then
+					v56 = v56 + 1;
 				else
-					v56 = true;
+					v57 = true;
 				end;
-				if not (v55 < math.min(5, #v50)) then
+				if not (v56 < math.min(5, #v51)) then
 					break;
 				end;
-				local v57 = v50[v55 + 1];
-				v57:SetAttribute("ClientPickupAttemptTime", tick());
+				local v58 = v51[v56 + 1];
+				v58:SetAttribute("ClientPickupAttemptTime", tick());
 				l__default__1.Client:Get("RemoteName"):CallServerAsync({
-					itemDrop = v57, 
-					flagPosition = v10
+					itemDrop = v58, 
+					flagPosition = v11
 				});			
 			end;
 		end;	
 	end;
 end;
-local v58 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v4.new());
+local v59 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v4.new());
 return nil;

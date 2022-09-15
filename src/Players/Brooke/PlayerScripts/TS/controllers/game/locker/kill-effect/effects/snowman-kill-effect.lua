@@ -32,66 +32,96 @@ function v5.animateSnowman(p6, p7, p8)
 	local l__SnowmanBottom__8 = p7.SnowmanBottom;
 	if p8 == l__Players__1.LocalPlayer.Character then
 		p8:BreakJoints();
-		for v9, v10 in ipairs(p8:GetDescendants()) do
+		local v9, v10, v11 = ipairs(p8:GetDescendants());
+		while true do
+			v9(v10, v11);
+			if not v9 then
+				break;
+			end;
+			v11 = v9;
 			if v10:IsA("BasePart") then
 				v10.CanCollide = false;
-			end;
+			end;		
 		end;
 	end;
-	local v11 = {};
-	local v12 = p7:GetChildren();
-	for v13, v14 in ipairs(v12) do
-		local l__CFrame__15 = v14.CFrame;
-		v11[v14] = l__CFrame__15;
-		v14.CFrame = l__CFrame__15 * CFrame.new(0, 5, 0);
-		v14.Transparency = 1;
+	local v12 = {};
+	local v13 = p7:GetChildren();
+	local v14, v15, v16 = ipairs(v13);
+	while true do
+		v14(v15, v16);
+		if not v14 then
+			break;
+		end;
+		v16 = v14;
+		local l__CFrame__17 = v15.CFrame;
+		v12[v15] = l__CFrame__17;
+		v15.CFrame = l__CFrame__17 * CFrame.new(0, 5, 0);
+		v15.Transparency = 1;	
 	end;
-	for v16, v17 in ipairs(u2) do
-		local v18, v19, v20 = ipairs(v17);
+	local v18, v19, v20 = ipairs(u2);
+	while true do
+		v18(v19, v20);
+		if not v18 then
+			break;
+		end;
+		v20 = v18;
+		local v21, v22, v23 = ipairs(v19);
 		while true do
-			local v21, v22 = v18(v19, v20);
+			v21(v22, v23);
 			if not v21 then
 				break;
 			end;
-			local v23 = nil;
-			for v24, v25 in ipairs(v12) do
-				if v25.Name == v22 == true then
-					v23 = v25;
+			local v24 = nil;
+			local v25, v26, v27 = ipairs(v13);
+			while true do
+				v25(v26, v27);
+				if not v25 then
 					break;
 				end;
+				v27 = v25;
+				if v26.Name == v22 == true then
+					v24 = v26;
+					break;
+				end;			
 			end;
-			if v23 then
-				local v26 = v11[v23];
-				if v26 then
-					l__TweenService__3:Create(v23, u4, {
-						CFrame = v26, 
+			if v24 then
+				local v28 = v12[v24];
+				if v28 then
+					l__TweenService__3:Create(v24, u4, {
+						CFrame = v28, 
 						Transparency = 0
 					}):Play();
 				end;
 			end;		
 		end;
-		task.wait(0.2);
+		task.wait(0.2);	
 	end;
-	for v27, v28 in ipairs(p7:GetChildren()) do
-		if v28:IsA("BasePart") and v28 ~= l__SnowmanBottom__8 then
+	local v29, v30, v31 = ipairs(p7:GetChildren());
+	while true do
+		v29(v30, v31);
+		if not v29 then
+			break;
+		end;
+		v31 = v29;
+		if v30:IsA("BasePart") and v30 ~= l__SnowmanBottom__8 then
 			u5("WeldConstraint", {
 				Part0 = l__SnowmanBottom__8, 
-				Part1 = v28, 
+				Part1 = v30, 
 				Parent = l__SnowmanBottom__8
 			});
-			v28.Anchored = false;
-		end;
+			v30.Anchored = false;
+		end;	
 	end;
-	local v29 = l__TweenService__3:Create(l__SnowmanBottom__8, TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
+	local v32 = l__TweenService__3:Create(l__SnowmanBottom__8, TweenInfo.new(0.35, Enum.EasingStyle.Back, Enum.EasingDirection.In), {
 		CFrame = l__SnowmanBottom__8.CFrame * CFrame.Angles(0, math.pi, 0)
 	});
-	v29:Play();
-	v29.Completed:Wait();
-	local v30 = l__TweenService__3:Create(l__SnowmanBottom__8, TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
+	v32:Play();
+	v32.Completed:Wait();
+	local v33 = l__TweenService__3:Create(l__SnowmanBottom__8, TweenInfo.new(0.35, Enum.EasingStyle.Quad, Enum.EasingDirection.Out), {
 		CFrame = l__SnowmanBottom__8.CFrame * CFrame.new(0, 2, 0) * CFrame.Angles(0, math.pi, 0)
 	});
-	v30:Play();
-	v30.Completed:Wait();
+	v33:Play();
+	v33.Completed:Wait();
 	l__TweenService__3:Create(l__SnowmanBottom__8, TweenInfo.new(0.4, Enum.EasingStyle.Bounce, Enum.EasingDirection.Out), {
 		CFrame = l__SnowmanBottom__8.CFrame * CFrame.new(0, -2, 0)
 	}):Play();
@@ -99,32 +129,38 @@ function v5.animateSnowman(p6, p7, p8)
 		p7.SnowmanBottom.Attachment.ParticleEmitter:Emit(300);
 	end);
 	task.wait(1);
-	local v31 = nil;
-	local v32 = TweenInfo.new(1.5, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut);
-	for v33, v34 in ipairs(p7:GetChildren()) do
-		if v34:IsA("BasePart") then
-			v31 = l__TweenService__3:Create(v34, v32, {
+	local v34 = nil;
+	local v35 = TweenInfo.new(1.5, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut);
+	local v36, v37, v38 = ipairs(p7:GetChildren());
+	while true do
+		v36(v37, v38);
+		if not v36 then
+			break;
+		end;
+		v38 = v36;
+		if v37:IsA("BasePart") then
+			v34 = l__TweenService__3:Create(v37, v35, {
 				Transparency = 1
 			});
-			v31:Play();
-		end;
+			v34:Play();
+		end;	
 	end;
-	v31.Completed:Wait();
+	v34.Completed:Wait();
 	p7:Destroy();
 end;
 local l__ReplicatedStorage__6 = v2.ReplicatedStorage;
 local l__CurrentCamera__7 = l__Workspace__3.CurrentCamera;
 function v5.buildSnowman(p9, p10)
-	local v35 = l__ReplicatedStorage__6.Assets.Misc.Snowman:Clone();
-	local v36 = RaycastParams.new();
-	v36.FilterDescendantsInstances = { l__Workspace__3.Map };
-	v36.FilterType = Enum.RaycastFilterType.Whitelist;
-	local v37 = l__Workspace__3:Raycast(p10.Position, Vector3.new(0, -10, 0), v36);
-	if v37 ~= nil then
-		v37 = v37.Position;
+	local v39 = l__ReplicatedStorage__6.Assets.Misc.Snowman:Clone();
+	local v40 = RaycastParams.new();
+	v40.FilterDescendantsInstances = { l__Workspace__3.Map };
+	v40.FilterType = Enum.RaycastFilterType.Whitelist;
+	local v41 = l__Workspace__3:Raycast(p10.Position, Vector3.new(0, -10, 0), v40);
+	if v41 ~= nil then
+		v41 = v41.Position;
 	end;
-	local v38 = v37 or p10.Position;
-	v35:PivotTo(CFrame.new(v38, v38 + (v38 - l__CurrentCamera__7.CFrame.Position).Unit * Vector3.new(1, 0, 1)) * CFrame.Angles(0, math.pi, 0));
-	return v35;
+	local v42 = v41 or p10.Position;
+	v39:PivotTo(CFrame.new(v42, v42 + (v42 - l__CurrentCamera__7.CFrame.Position).Unit * Vector3.new(1, 0, 1)) * CFrame.Angles(0, math.pi, 0));
+	return v39;
 end;
 return v5;

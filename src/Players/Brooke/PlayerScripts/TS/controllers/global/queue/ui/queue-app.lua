@@ -1,4 +1,3 @@
--- Script Hash: 3d409a352a993785a06856c1f5c719cfd0d8f30aa5a619e26fac5b18fd328c751fe8245a3ebf1fd5e82ea7a5896a37a2
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -35,6 +34,7 @@ return {
 		return v2.createFragment({
 			QueueApp = v2.createElement("ScreenGui", {
 				IgnoreGuiInset = true, 
+				DisplayOrder = 1000, 
 				ResetOnSpawn = false
 			}, { v2.createElement(v3, {
 					store = p3.store

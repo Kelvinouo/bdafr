@@ -1,4 +1,3 @@
--- Script Hash: nil
 --[[VARIABLE DEFINITION ANOMALY DETECTED, DECOMPILATION OUTPUT POTENTIALLY INCORRECT]]--
 -- Decompiled with the Synapse X Luau decompiler.
 
@@ -145,14 +144,11 @@ function v5.render(p17)
 	local v15 = false;
 	if p17.props.SelectedKit == l__BedwarsKit__11.NONE then
 		v10 = true;
-	else
-		local v16 = p17.props.SelectedKit and table.find(p17.props.store.Bedwars.ownedKits, p17.props.SelectedKit) ~= nil;
-		if v16 then
-			v10 = true;
-		end;
+	elseif p17.props.SelectedKit and table.find(p17.props.store.Bedwars.ownedKits, p17.props.SelectedKit) ~= nil then
+		v10 = true;
 	end;
-	local l__myClan__17 = p17.props.store.Clans.myClan;
-	if p17.props.SelectedKit and l__myClan__17 and l__myClan__17.kitShop.unlocks[p17.props.SelectedKit] ~= nil then
+	local l__myClan__16 = p17.props.store.Clans.myClan;
+	if p17.props.SelectedKit and l__myClan__16 and l__myClan__16.kitShop.unlocks[p17.props.SelectedKit] ~= nil then
 		v10 = true;
 	end;
 	if not l__DeviceUtil__4.isHoarceKat() and l__KnitClient__5.Controllers.UnlockController.allKitsUnlocked then
@@ -164,95 +160,115 @@ function v5.render(p17)
 	if p17.props.SelectedKit then
 		v11 = table.find(l__BedwarsKitShop__3.FreeKits, p17.props.SelectedKit) ~= nil;
 	end;
-	local v18 = l__Players__14.LocalPlayer;
-	if v18 ~= nil then
-		v18 = v18.DisplayName;
+	local v17 = l__Players__14.LocalPlayer;
+	if v17 ~= nil then
+		v17 = v17.DisplayName;
+	end;
+	local v18 = v17;
+	if v18 == nil then
+		v18 = "SnickTrix";
 	end;
 	local v19 = v18;
-	if v19 == nil then
-		v19 = "SnickTrix";
-	end;
-	local v20 = v19;
-	local v21 = "Opt out of using a kit and play as yourself!";
-	local v22 = 0;
+	local v20 = "Opt out of using a kit and play as yourself!";
+	local v21 = 0;
 	if p17.props.SelectedKit and p17.props.SelectedKit ~= l__BedwarsKit__11.NONE then
-		local v23 = l__getBedwarsKitMeta__12(p17.props.SelectedKit);
-		local l__name__24 = v23.name;
-		local l__description__25 = v23.description;
-		local v26 = v23.priceRobux;
+		local v22 = l__getBedwarsKitMeta__12(p17.props.SelectedKit);
+		local l__name__23 = v22.name;
+		local l__description__24 = v22.description;
+		local v25 = v22.priceRobux;
+		if v25 == nil then
+			v25 = 0;
+		end;
+		local v26 = v22.unlockedInBattlePass;
 		if v26 == nil then
-			v26 = 0;
+			v26 = false;
 		end;
-		local v27 = v23.unlockedInBattlePass;
-		if v27 == nil then
-			v27 = false;
-		end;
-		local v28 = not v27;
-		if v28 then
-			local v29 = not v23.notGiftable;
-			if v29 == nil then
-				v29 = false;
+		local v27 = not v26;
+		if v27 then
+			local v28 = not v22.notGiftable;
+			if v28 == nil then
+				v28 = false;
 			end;
-			v28 = v29;
-			if v28 then
-				local v30 = true;
-				if v23.devProductId == nil then
-					v30 = v23.gamepassId ~= nil;
+			v27 = v28;
+			if v27 then
+				local v29 = true;
+				if v22.devProductId == nil then
+					v29 = v22.gamepassId ~= nil;
 				end;
-				v28 = v30;
+				v27 = v29;
 			end;
 		end;
-		v13 = v28;
+		v13 = v27;
 		v15 = true;
 		if (nil).forceSkin then
 			v15 = false;
 		end;
-		if v22 == 0 or not (not false) or v10 then
+		if v21 == 0 or not (not false) or v10 then
 			v14 = false;
 		end;
 	end;
 	if p17.state.selectedSkin and p17.state.selectedSkin ~= l__BedwarsKitSkin__15.DEFAULT then
-		v20 = l__BedwarsKitSkinMeta__16[p17.state.selectedSkin].name;
+		v19 = l__BedwarsKitSkinMeta__16[p17.state.selectedSkin].name;
 	end;
 	if p17.props.SelectedBundle then
-		local v31 = l__BundleMeta__17[p17.props.SelectedBundle];
-		if v31.kitShopBundle then
-			v20 = v31.kitShopBundle.name;
-			v21 = v31.kitShopBundle.description;
-			v22 = v31.price;
+		local v30 = l__BundleMeta__17[p17.props.SelectedBundle];
+		if v30.kitShopBundle then
+			v19 = v30.kitShopBundle.name;
+			v20 = v30.kitShopBundle.description;
+			v21 = v30.price;
 			v13 = true;
 			v14 = true;
 			v10 = false;
 			v11 = false;
 			v12 = false;
 		end;
+		local v31 = v30.rewards.kits;
+		if v31 ~= nil then
+			local v32 = true;
+			local v33, v34, v35 = ipairs(v31);
+			while true do
+				v33(v34, v35);
+				if not v33 then
+					break;
+				end;
+				v35 = v33;
+				if table.find(p17.props.store.Bedwars.ownedKits, v34) == nil then
+					v32 = false;
+					break;
+				end;			
+			end;
+			v31 = v32;
+		end;
+		if v31 then
+			v14 = false;
+		end;
 	end;
-	local v32 = { v3.createElement("UIListLayout", {
+	local v36 = { v3.createElement("UIListLayout", {
 			FillDirection = "Vertical", 
 			SortOrder = "LayoutOrder"
 		}) };
-	local v33 = {
+	local v37 = {
 		Size = UDim2.fromScale(1, 0.34), 
 		SelectedKit = p17.props.SelectedKit and nil, 
 		SelectedSkin = p17.state.selectedSkin
 	};
 	if p17.props.SelectedBundle then
-		local v34 = l__BundleMeta__17[p17.props.SelectedBundle].kitShopBundle;
-		if v34 ~= nil then
-			v34 = v34.image;
+		local v38 = l__BundleMeta__17[p17.props.SelectedBundle].kitShopBundle;
+		if v38 ~= nil then
+			v38 = v38.image;
 		end;
-		local v35 = v34;
+		local v39 = v38;
 	else
-		v35 = nil;
+		v39 = nil;
 	end;
-	v33.ItemImage = v35;
-	v33.store = p17.props.store;
-	v32[#v32 + 1] = v3.createElement(l__KitShopShowcase__19, v33);
-	local v36 = {
+	v37.ItemImage = v39;
+	v37.store = p17.props.store;
+	v36[#v36 + 1] = v3.createElement(l__KitShopShowcase__19, v37);
+	local v40 = {
 		Size = UDim2.fromScale(1, 0.66), 
 		LayoutOrder = 2
 	};
-	local v37 = { v3.createElement("UIPadding", {
+	local v41 = { v3.createElement("UIPadding", {
 			PaddingTop = UDim.new(0.02, 0), 
 			PaddingBottom = UDim.new(0.03, 0), 
 			PaddingLeft = UDim.new(0.05, 0), 
@@ -264,9 +280,33 @@ function v5.render(p17)
 			Padding = UDim.new(0.03, 0), 
 			SortOrder = "LayoutOrder"
 		})) };
-	local v38 = {};
-	local v39 = {
-		Text = "<b>" .. v20 .. "</b>", 
+	local v42 = {};
+	local v43 = {};
+	local v44 = {};
+	if l__DeviceUtil__4.isSmallScreen() then
+		local v45 = 20;
+	else
+		v45 = 28;
+	end;
+	v44.MaxTextSize = v45;
+	v43[1] = v3.createElement("UITextSizeConstraint", v44);
+	local v46 = {};
+	local v47 = {};
+	if l__DeviceUtil__4.isSmallScreen() then
+		local v48 = 14;
+	else
+		v48 = 22;
+	end;
+	v47.MaxTextSize = v48;
+	v46[1] = v3.createElement("UITextSizeConstraint", v47);
+	v42[1] = v3.createElement("UIListLayout", {
+		FillDirection = "Vertical", 
+		HorizontalAlignment = "Left", 
+		VerticalAlignment = "Top", 
+		Padding = UDim.new(0.03, 0)
+	});
+	v42[2] = v3.createElement("TextLabel", {
+		Text = "<b>" .. v19 .. "</b>", 
 		Size = UDim2.fromScale(1, 0.15), 
 		SizeConstraint = "RelativeXX", 
 		BackgroundTransparency = 1, 
@@ -274,41 +314,11 @@ function v5.render(p17)
 		TextScaled = true, 
 		RichText = true, 
 		TextColor3 = Color3.fromRGB(255, 255, 255), 
-		TextXAlignment = "Left"
-	};
-	if p17.props.SelectedKit then
-		local v40 = true;
-	else
-		v40 = false;
-	end;
-	v39.AutoLocalize = v40;
-	local v41 = {};
-	local v42 = {};
-	if l__DeviceUtil__4.isSmallScreen() then
-		local v43 = 20;
-	else
-		v43 = 28;
-	end;
-	v42.MaxTextSize = v43;
-	v41[1] = v3.createElement("UITextSizeConstraint", v42);
-	local v44 = {};
-	local v45 = {};
-	if l__DeviceUtil__4.isSmallScreen() then
-		local v46 = 14;
-	else
-		v46 = 22;
-	end;
-	v45.MaxTextSize = v46;
-	v44[1] = v3.createElement("UITextSizeConstraint", v45);
-	v38[1] = v3.createElement("UIListLayout", {
-		FillDirection = "Vertical", 
-		HorizontalAlignment = "Left", 
-		VerticalAlignment = "Top", 
-		Padding = UDim.new(0.03, 0)
-	});
-	v38[2] = v3.createElement("TextLabel", v39, v41);
-	v38[3] = v3.createElement("TextLabel", {
-		Text = v21, 
+		TextXAlignment = "Left", 
+		AutoLocalize = p17.props.SelectedKit ~= l__BedwarsKit__11.NONE
+	}, v43);
+	v42[3] = v3.createElement("TextLabel", {
+		Text = v20, 
 		Size = UDim2.fromScale(1, 0.77), 
 		BackgroundTransparency = 1, 
 		Font = "Roboto", 
@@ -318,65 +328,65 @@ function v5.render(p17)
 		TextTransparency = 0.3, 
 		TextXAlignment = "Left", 
 		TextYAlignment = "Top"
-	}, v44);
-	v37.KitInfo = v3.createElement(l__Empty__20, {
+	}, v46);
+	v41.KitInfo = v3.createElement(l__Empty__20, {
 		Size = UDim2.fromScale(1, 0.4), 
 		LayoutOrder = 1
-	}, v38);
-	local v47 = nil;
-	if v47 ~= nil then
-		v47 = v47.skins;
+	}, v42);
+	local v49 = nil;
+	if v49 ~= nil then
+		v49 = v49.skins;
 	end;
-	local v48 = v47;
-	if v48 then
-		local v49 = p17.props.SelectedKit;
-		if v49 then
-			local v50 = {
+	local v50 = v49;
+	if v50 then
+		local v51 = p17.props.SelectedKit;
+		if v51 then
+			local v52 = {
 				Size = UDim2.fromScale(1, 0.47), 
 				Kit = p17.props.SelectedKit, 
 				Skins = (nil).skins, 
 				SelectedSkin = p17.state.selectedSkin
 			};
-			function v50.SetSelectedSkin(p18)
+			function v52.SetSelectedSkin(p18)
 				p17:setState({
 					selectedSkin = p18
 				});
 			end;
-			v50.store = p17.props.store;
-			v49 = v3.createElement(l__KitSkinList__21, v50);
+			v52.store = p17.props.store;
+			v51 = v3.createElement(l__KitSkinList__21, v52);
 		end;
-		v48 = v49;
+		v50 = v51;
 	end;
-	local v51 = {
+	local v53 = {
 		Size = UDim2.fromScale(1, 0.57), 
 		LayoutOrder = 2
 	};
-	local v52 = { v3.createElement("UIListLayout", {
+	local v54 = { v3.createElement("UIListLayout", {
 			FillDirection = "Vertical", 
 			HorizontalAlignment = "Center", 
 			VerticalAlignment = "Bottom", 
 			Padding = UDim.new(0.03, 0), 
 			SortOrder = "LayoutOrder"
 		}) };
-	if v48 then
-		v52[#v52 + 1] = v48;
+	if v50 then
+		v54[#v54 + 1] = v50;
 	end;
-	local v53 = false;
+	local v55 = false;
 	if p17.props.SelectedKit ~= l__BedwarsKit__11.NONE then
-		v53 = v15 and v3.createElement(l__KitShopKitSkinToggle__22, {
+		v55 = v15 and v3.createElement(l__KitShopKitSkinToggle__22, {
 			Size = UDim2.fromScale(1, 0.1), 
 			LayoutOrder = 2, 
 			UseKitSkin = p17.props.store.Bedwars.useKitSkin
 		});
 	end;
-	if v53 then
-		v52[#v52 + 1] = v53;
+	if v55 then
+		v54[#v54 + 1] = v55;
 	end;
-	local v54 = #v52;
-	local v55 = {};
+	local v56 = #v54;
+	local v57 = {};
 	if v10 or v11 then
 		if v12 then
-			local v56 = v3.createElement(l__Button__23, {
+			local v58 = v3.createElement(l__Button__23, {
 				Text = "<b>EQUIPPED</b>", 
 				Size = UDim2.fromScale(1, 1), 
 				BackgroundColor3 = l__Theme__18.backgroundSuccess, 
@@ -387,83 +397,83 @@ function v5.render(p17)
 				LayoutOrder = 3
 			});
 		else
-			local v57 = {};
+			local v59 = {};
 			if l__UserInputService__2.GamepadEnabled then
-				local v58 = " (A)";
+				local v60 = " (A)";
 			else
-				v58 = "";
+				v60 = "";
 			end;
-			v57.Text = "<b>EQUIP" .. v58 .. "</b>";
-			v57.Size = UDim2.fromScale(1, 1);
-			v57.BackgroundColor3 = l__Theme__18.backgroundSuccess;
-			v57.Selectable = false;
-			function v57.OnClick()
+			v59.Text = "<b>EQUIP" .. v60 .. "</b>";
+			v59.Size = UDim2.fromScale(1, 1);
+			v59.BackgroundColor3 = l__Theme__18.backgroundSuccess;
+			v59.Selectable = false;
+			function v59.OnClick()
 				p17:equip();
 			end;
-			v57.LayoutOrder = 3;
-			v56 = v3.createElement(l__Button__23, v57);
+			v59.LayoutOrder = 3;
+			v58 = v3.createElement(l__Button__23, v59);
 		end;
 	else
-		v56 = false and v3.createElement(l__KitShopBattlePassButton__24, {
+		v58 = false and v3.createElement(l__KitShopBattlePassButton__24, {
 			Size = UDim2.fromScale(1, 1), 
 			LayoutOrder = 3
 		});
 	end;
-	if v56 then
-		v55[#v55 + 1] = v56;
+	if v58 then
+		v57[#v57 + 1] = v58;
 	end;
-	v52[v54 + 1] = v3.createElement(l__Empty__20, {
+	v54[v56 + 1] = v3.createElement(l__Empty__20, {
 		Size = UDim2.fromScale(1, 0.17), 
 		LayoutOrder = 3
-	}, v55);
-	local v59 = { v3.createElement("UIListLayout", {
+	}, v57);
+	local v61 = { v3.createElement("UIListLayout", {
 			FillDirection = "Horizontal", 
 			HorizontalAlignment = "Right", 
 			VerticalAlignment = "Center", 
 			Padding = UDim.new(0.04, 0), 
 			SortOrder = "LayoutOrder"
 		}) };
-	local v60 = v14 and v3.createElement(l__KitShopPurchaseButton__25, {
+	local v62 = v14 and v3.createElement(l__KitShopPurchaseButton__25, {
 		Size = UDim2.fromScale(0.8, 1), 
 		LayoutOrder = 1, 
 		Purchase = function()
 			p17:purchase();
 		end, 
-		PriceRobux = v22
+		PriceRobux = v21
 	});
-	if v60 then
-		v59[#v59 + 1] = v60;
+	if v62 then
+		v61[#v61 + 1] = v62;
 	end;
-	local v61 = v13;
-	if v61 then
-		local v62 = {
+	local v63 = v13;
+	if v63 then
+		local v64 = {
 			Size = UDim2.fromScale(0.15, 0.9), 
 			LayoutOrder = 2
 		};
 		if p17.props.SelectedKit ~= l__BedwarsKit__11.NONE then
-			local v63 = p17.props.SelectedKit;
+			local v65 = p17.props.SelectedKit;
 		else
-			v63 = p17.props.SelectedBundle or l__BedwarsKit__11.NONE;
+			v65 = p17.props.SelectedBundle or l__BedwarsKit__11.NONE;
 		end;
-		v62.GiftType = v63;
-		v61 = v3.createElement(l__KitShopGiftButton__26, v62);
+		v64.GiftType = v65;
+		v63 = v3.createElement(l__KitShopGiftButton__26, v64);
 	end;
-	if v61 then
-		v59[#v59 + 1] = v61;
+	if v63 then
+		v61[#v61 + 1] = v63;
 	end;
-	v52[v54 + 2] = v3.createElement(l__Empty__20, {
+	v54[v56 + 2] = v3.createElement(l__Empty__20, {
 		Size = UDim2.fromScale(1, 0.17), 
 		LayoutOrder = 4
-	}, v59);
-	v37.KitActions = v3.createElement(l__Empty__20, v51, v52);
-	v32.BottomSection = v3.createElement(l__Empty__20, v36, v37);
+	}, v61);
+	v41.KitActions = v3.createElement(l__Empty__20, v53, v54);
+	v36.BottomSection = v3.createElement(l__Empty__20, v40, v41);
 	return v3.createFragment({
 		KitShopRight = v3.createElement("Frame", {
 			Size = p17.props.Size, 
 			Position = p17.props.Position, 
 			BackgroundColor3 = l__Theme__18.backgroundSecondary, 
 			BorderSizePixel = 0
-		}, v32)
+		}, v36)
 	});
 end;
 return {

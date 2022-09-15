@@ -9,7 +9,8 @@ local u1 = {
 	emberProgress = 0, 
 	pigsyResources = {
 		coin = 0
-	}
+	}, 
+	hannahCombo = 0
 };
 return {
 	KitReducer = function(p1, p2)
@@ -81,27 +82,34 @@ return {
 			v21.lumenProgress = v24 + p2.progress;
 			return v21;
 		end;
-		if l__type__1 ~= "KitEmberIncrementProgress" then
-			if l__type__1 == "KitPigsyIncrementResource" then
-				local v25 = {};
-				for v26, v27 in pairs(p1) do
-					v25[v26] = v27;
-				end;
-				v25.pigsyResources = p2.progress;
-				return v25;
-			else
-				return p1;
+		if l__type__1 == "KitEmberIncrementProgress" then
+			local v25 = {};
+			for v26, v27 in pairs(p1) do
+				v25[v26] = v27;
 			end;
+			local v28 = p1.emberProgress;
+			if v28 == nil then
+				v28 = 0;
+			end;
+			v25.emberProgress = v28 + p2.progress;
+			return v25;
 		end;
-		local v28 = {};
-		for v29, v30 in pairs(p1) do
-			v28[v29] = v30;
+		if l__type__1 == "KitPigsyIncrementResource" then
+			local v29 = {};
+			for v30, v31 in pairs(p1) do
+				v29[v30] = v31;
+			end;
+			v29.pigsyResources = p2.progress;
+			return v29;
 		end;
-		local v31 = p1.emberProgress;
-		if v31 == nil then
-			v31 = 0;
+		if l__type__1 ~= "KitHannahSetCombo" then
+			return p1;
 		end;
-		v28.emberProgress = v31 + p2.progress;
-		return v28;
+		local v32 = {};
+		for v33, v34 in pairs(p1) do
+			v32[v33] = v34;
+		end;
+		v32.hannahCombo = p2.combo;
+		return v32;
 	end
 };

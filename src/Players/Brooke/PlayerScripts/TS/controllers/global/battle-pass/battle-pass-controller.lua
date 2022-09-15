@@ -1,4 +1,3 @@
--- Script Hash: 714d22965eaed2d68bd043f963f322e8fdcde20f1c3552134c66b6e4b91ada890acb1efe31e6fe0180a4514b01f8e540
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -15,49 +14,47 @@ function v4.new(...)
 	local v5 = setmetatable({}, v4);
 	return v5:constructor(...) and v5;
 end;
-local u1 = l__KnitController__3;
-local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__default__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function v4.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__3.constructor(p1);
 	p1.Name = "BattlePassController";
-	p1.remotes = l__default__2.Client:GetNamespace("BattlePass");
+	p1.remotes = l__default__1.Client:GetNamespace("BattlePass");
 end;
-local l__ClientStore__3 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
-local l__Players__4 = v2.Players;
+local l__ClientStore__2 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
+local l__Players__3 = v2.Players;
 function v4.KnitStart(p2)
 	p2.remotes:WaitFor("GetBattlePass"):andThen(function(p3)
-		l__ClientStore__3:dispatch({
+		l__ClientStore__2:dispatch({
 			type = "BattlePassUpdateAll", 
 			battlePass = p3:CallServer()
 		});
 	end);
-	l__Players__4.LocalPlayer:GetAttributeChangedSignal("BattlePassXP"):Connect(function()
-		l__ClientStore__3:dispatch({
+	l__Players__3.LocalPlayer:GetAttributeChangedSignal("BattlePassXP"):Connect(function()
+		l__ClientStore__2:dispatch({
 			type = "BattlePassSetXP", 
-			experience = l__Players__4.LocalPlayer:GetAttribute("BattlePassXP")
+			experience = l__Players__3.LocalPlayer:GetAttribute("BattlePassXP")
 		});
 	end);
-	l__Players__4.LocalPlayer:GetAttributeChangedSignal("BattlePassPaid"):Connect(function()
-		l__ClientStore__3:dispatch({
+	l__Players__3.LocalPlayer:GetAttributeChangedSignal("BattlePassPaid"):Connect(function()
+		l__ClientStore__2:dispatch({
 			type = "BattlePassSetPaid", 
-			paid = l__Players__4.LocalPlayer:GetAttribute("BattlePassPaid")
+			paid = l__Players__3.LocalPlayer:GetAttribute("BattlePassPaid")
 		});
 	end);
 end;
-local u5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-dev-products").BattlePassLevelDevProducts;
-local l__MarketplaceService__6 = v2.MarketplaceService;
+local u4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-dev-products").BattlePassLevelDevProducts;
+local l__MarketplaceService__5 = v2.MarketplaceService;
 function v4.promptPurchaseToLevel(p4, p5)
-	local v6 = p5 - l__ClientStore__3:getState().BattlePass.level;
-	if v6 > 0 and v6 - 1 < #u5 then
-		l__MarketplaceService__6:PromptProductPurchase(l__Players__4.LocalPlayer, u5[v6 - 1 + 1]);
+	local v6 = p5 - l__ClientStore__2:getState().BattlePass.level;
+	if v6 > 0 and v6 - 1 < #u4 then
+		l__MarketplaceService__5:PromptProductPurchase(l__Players__3.LocalPlayer, u4[v6 - 1 + 1]);
 	end;
 end;
-local l__Gamepass__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "place", "gamepass").Gamepass;
+local l__BattlePassUtils__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-utils").BattlePassUtils;
 function v4.promptBattlePassPurchase(p6)
-	if not l__ClientStore__3:getState().BattlePass.paid then
-		l__MarketplaceService__6:PromptGamePassPurchase(l__Players__4.LocalPlayer, l__Gamepass__7.BATTLE_PASS_S4);
+	if not l__ClientStore__2:getState().BattlePass.paid then
+		l__MarketplaceService__5:PromptGamePassPurchase(l__Players__3.LocalPlayer, l__BattlePassUtils__6.BATTLE_PASS_GAMEPASS);
 	end;
 end;
-u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1(v4.new());
+local v7 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v4.new());
 return nil;

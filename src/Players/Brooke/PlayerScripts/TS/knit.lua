@@ -1,4 +1,3 @@
--- Script Hash: a58e185c1fefba1568318937ff09cdf83279b19e4d550a97b7e181eab5a80c9d4c4e5a2e943668b02f6668103bc1f5f2
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -26,25 +25,33 @@ return {
 			if p2 == nil then
 				p2 = false;
 			end;
-			for v2, v3 in ipairs(p1:GetChildren()) do
+			local v2, v3, v4 = ipairs(p1:GetChildren());
+			while true do
+				v2(v3, v4);
+				if not v2 then
+					break;
+				end;
+				v4 = v2;
 				if v3:IsA("ModuleScript") and u7.includes(v3.Name, "controller") then
 					require(v3);
 					u9 = u9 + 1;
 				elseif p2 and v3:IsA("Folder") then
 					u10(v3, true);
-				end;
+				end;			
 			end;
 		end;
-		local l__controllers__4 = script.Parent:FindFirstChild("controllers");
-		u10(l__controllers__4:FindFirstChild("global"), true);
+		local l__controllers__5 = script.Parent:FindFirstChild("controllers");
+		u10(l__controllers__5:FindFirstChild("global"), true);
 		if l__PlaceUtil__4.isLobbyServer() then
-			u10(l__controllers__4:FindFirstChild("lobby"), true);
+			u10(l__controllers__5:FindFirstChild("lobby"), true);
 		end;
 		if l__PlaceUtil__4.isGameServer() then
-			u10(l__controllers__4:FindFirstChild("game"), true);
-			u10(l__controllers__4:FindFirstChild("games"):FindFirstChild("bedwars"), true);
-			u10(l__controllers__4:FindFirstChild("games"):FindFirstChild("gun-game"), true);
-			u10(l__controllers__4:FindFirstChild("games"):FindFirstChild("capture-flag"), true);
+			u10(l__controllers__5:FindFirstChild("game"), true);
+			u10(l__controllers__5:FindFirstChild("games"):FindFirstChild("bedwars"), true);
+			u10(l__controllers__5:FindFirstChild("games"):FindFirstChild("gun-game"), true);
+			u10(l__controllers__5:FindFirstChild("games"):FindFirstChild("tnt-wars"), true);
+			u10(l__controllers__5:FindFirstChild("games"):FindFirstChild("capture-flag"), true);
+			u10(l__controllers__5:FindFirstChild("games"):FindFirstChild("survival"), true);
 		end;
 		u10(script.Parent.Parent:FindFirstChild("Modules"):FindFirstChild("anticheat"), true);
 		local u11 = os.clock();

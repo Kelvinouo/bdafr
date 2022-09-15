@@ -1,4 +1,3 @@
--- Script Hash: 0ca81b1b9d0fb086f7831ffa8ab0ab59ea92cb24bc23f34935fb1268820e2746da82da10d21d704c11e64ac6868954fb
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -152,7 +151,7 @@ return {
 			Stat = "Members"
 		};
 		local v16 = 0;
-		for v17, v18 in pairs(p1.Clan.members) do
+		for v17 in pairs(p1.Clan.members) do
 			v16 = v16 + 1;
 		end;
 		v15.Value = tostring(v16) .. "/" .. tostring(p1.Clan.maxMembers);

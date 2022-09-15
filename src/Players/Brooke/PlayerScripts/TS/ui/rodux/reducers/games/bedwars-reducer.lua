@@ -139,118 +139,144 @@ return {
 		if p2.type == "BedwarsSetBedAliveSuddenDeath" then
 			print("Reducer: Before", p1.teamBedAlive);
 			local u3 = {};
-			for v54, v55 in ipairs((u2.keys(p1.teamBedAlive))) do
+			local v54, v55, v56 = ipairs((u2.keys(p1.teamBedAlive)));
+			while true do
+				v54(v55, v56);
+				if not v54 then
+					break;
+				end;
+				v56 = v54;
 				u3[v55] = false;
-				local v56 = u3[v55];
+				local v57 = u3[v55];			
 			end;
 			print("Reducer: After", p1.teamBedAlive);
-			local v57 = {};
-			for v58, v59 in pairs(p1) do
-				v57[v58] = v59;
+			local v58 = {};
+			for v59, v60 in pairs(p1) do
+				v58[v59] = v60;
 			end;
-			v57.teamBedAlive = u3;
-			return v57;
+			v58.teamBedAlive = u3;
+			return v58;
 		end;
 		if p2.type == "BedwarsAddItemPurchased" then
-			local v60 = {};
-			for v61, v62 in pairs(p1) do
-				v60[v61] = v62;
+			local v61 = {};
+			for v62, v63 in pairs(p1) do
+				v61[v62] = v63;
 			end;
-			local v63 = {};
-			local v64 = #v63;
-			local l__itemTiersPurchased__65 = p1.itemTiersPurchased;
-			local v66 = #l__itemTiersPurchased__65;
-			table.move(l__itemTiersPurchased__65, 1, v66, v64 + 1, v63);
-			v63[v64 + v66 + 1] = p2.itemType;
-			v60.itemTiersPurchased = v63;
-			return v60;
+			local v64 = {};
+			local v65 = #v64;
+			local l__itemTiersPurchased__66 = p1.itemTiersPurchased;
+			local v67 = #l__itemTiersPurchased__66;
+			table.move(l__itemTiersPurchased__66, 1, v67, v65 + 1, v64);
+			v64[v65 + v67 + 1] = p2.itemType;
+			v61.itemTiersPurchased = v64;
+			return v61;
 		end;
 		if p2.type == "BedwarsSetTeamUpgradeTier" then
-			local v67 = {};
-			for v68, v69 in pairs(p1) do
-				v67[v68] = v69;
+			local v68 = {};
+			for v69, v70 in pairs(p1) do
+				v68[v69] = v70;
 			end;
-			local v70 = {};
-			for v71, v72 in pairs(p1.teamUpgrades) do
-				v70[v71] = v72;
+			local v71 = {};
+			for v72, v73 in pairs(p1.teamUpgrades) do
+				v71[v72] = v73;
 			end;
 			if p2.tier > -1 then
-				local v73 = p2.tier;
+				local v74 = p2.tier;
 			else
-				v73 = nil;
+				v74 = nil;
 			end;
-			v70[p2.upgradeId] = v73;
-			v67.teamUpgrades = v70;
-			return v67;
+			v71[p2.upgradeId] = v74;
+			v68.teamUpgrades = v71;
+			return v68;
 		end;
 		if p2.type == "BedwarsSetAllTeamUpgrades" then
-			local v74 = {};
-			for v75, v76 in pairs(p1) do
-				v74[v75] = v76;
+			local v75 = {};
+			for v76, v77 in pairs(p1) do
+				v75[v76] = v77;
 			end;
-			v74.teamUpgrades = p2.teamUpgrades;
-			return v74;
+			v75.teamUpgrades = p2.teamUpgrades;
+			return v75;
 		end;
 		if p2.type == "SetBedwarsKit" then
-			local v77 = {};
-			for v78, v79 in pairs(p1) do
-				v77[v78] = v79;
+			local v78 = {};
+			for v79, v80 in pairs(p1) do
+				v78[v79] = v80;
 			end;
-			v77.kit = p2.kit;
-			return v77;
+			v78.kit = p2.kit;
+			return v78;
 		end;
 		if p2.type == "AddOwnedKits" then
-			local v80 = {};
-			for v81, v82 in pairs(p1) do
-				v80[v81] = v82;
+			local v81 = {};
+			for v82, v83 in pairs(p1) do
+				v81[v82] = v83;
 			end;
-			local v83 = {};
-			local v84 = #v83;
-			local l__ownedKits__85 = p1.ownedKits;
-			local v86 = #l__ownedKits__85;
-			table.move(l__ownedKits__85, 1, v86, v84 + 1, v83);
-			local l__kits__87 = p2.kits;
-			table.move(l__kits__87, 1, #l__kits__87, v84 + v86 + 1, v83);
-			v80.ownedKits = v83;
-			return v80;
+			local v84 = {};
+			local v85 = #v84;
+			local l__ownedKits__86 = p1.ownedKits;
+			local v87 = #l__ownedKits__86;
+			table.move(l__ownedKits__86, 1, v87, v85 + 1, v84);
+			local l__kits__88 = p2.kits;
+			table.move(l__kits__88, 1, #l__kits__88, v85 + v87 + 1, v84);
+			v81.ownedKits = v84;
+			return v81;
 		end;
 		if p2.type == "SetOwnedKitSkins" then
-			local v88 = {};
-			for v89, v90 in pairs(p1) do
-				v88[v89] = v90;
+			local v89 = {};
+			for v90, v91 in pairs(p1) do
+				v89[v90] = v91;
 			end;
-			v88.ownedKitSkins = p2.ownedKitSkins;
-			return v88;
+			v89.ownedKitSkins = p2.ownedKitSkins;
+			return v89;
 		end;
 		if p2.type == "SetUseKitSkin" then
-			local v91 = {};
-			for v92, v93 in pairs(p1) do
-				v91[v92] = v93;
+			local v92 = {};
+			for v93, v94 in pairs(p1) do
+				v92[v93] = v94;
 			end;
-			v91.useKitSkin = p2.useKitSkin;
-			return v91;
+			v92.useKitSkin = p2.useKitSkin;
+			return v92;
 		end;
 		if p2.type == "SetEquippedKitSkins" then
-			local v94 = {};
-			for v95, v96 in pairs(p1) do
-				v94[v95] = v96;
+			local v95 = {};
+			for v96, v97 in pairs(p1) do
+				v95[v96] = v97;
 			end;
-			v94.equippedKitSkins = p2.equippedKitSkins;
-			return v94;
+			v95.equippedKitSkins = p2.equippedKitSkins;
+			return v95;
 		end;
-		if p2.type ~= "EquipKitSkin" then
+		if p2.type == "EquipKitSkin" then
+			local v98 = {};
+			for v99, v100 in pairs(p1) do
+				v98[v99] = v100;
+			end;
+			local v101 = {};
+			for v102, v103 in pairs(p1.equippedKitSkins) do
+				v101[v102] = v103;
+			end;
+			v101[p2.kit] = p2.kitSkin;
+			v98.equippedKitSkins = v101;
+			return v98;
+		end;
+		if p2.type ~= "BedwarsUpdateBossBar" then
 			return p1;
 		end;
-		local v97 = {};
-		for v98, v99 in pairs(p1) do
-			v97[v98] = v99;
+		local v104 = {};
+		for v105, v106 in pairs(p1) do
+			v104[v105] = v106;
 		end;
-		local v100 = {};
-		for v101, v102 in pairs(p1.equippedKitSkins) do
-			v100[v101] = v102;
+		local v107 = {
+			health = p2.health
+		};
+		local v108 = p2.maxHealth;
+		if v108 == nil then
+			local v109 = p1.bossBar;
+			if v109 ~= nil then
+				v109 = v109.maxHealth;
+			end;
+			v108 = v109;
 		end;
-		v100[p2.kit] = p2.kitSkin;
-		v97.equippedKitSkins = v100;
-		return v97;
+		v107.maxHealth = v108;
+		v104.bossBar = v107;
+		return v104;
 	end
 };

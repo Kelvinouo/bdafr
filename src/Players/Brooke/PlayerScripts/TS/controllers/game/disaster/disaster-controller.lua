@@ -1,4 +1,3 @@
--- Script Hash: 5cd1239e155d3a2f7a7a655425b036c5fa0207c3dad8c81ea853598f9240e51c3e01f4f815a208223ef59d228e891b92
 -- Decompiled with the Synapse X Luau decompiler.
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
@@ -14,21 +13,19 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = l__KnitController__2;
 function v3.constructor(p1)
-	u1.constructor(p1);
+	l__KnitController__2.constructor(p1);
 	p1.Name = "DisasterController";
 end;
-local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-local l__default__3 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
-local l__ClientSyncEvents__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
+local l__default__1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__default__2 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;
+local l__ClientSyncEvents__3 = v1.import(script, script.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
 function v3.KnitStart(p2)
-	u1.KnitStart(p2);
-	l__default__2.Client:GetNamespace("Disaster"):OnEvent("DisasterBegan", function(p3)
-		l__default__3.Debug("Received disaster {disastertype}", p3.disasterType);
-		l__ClientSyncEvents__4.DisasterBegan:fire(p3.disasterType, p3.endTime);
+	l__KnitController__2.KnitStart(p2);
+	l__default__1.Client:GetNamespace("Disaster"):OnEvent("DisasterBegan", function(p3)
+		l__default__2.Debug("Received disaster {disastertype}", p3.disasterType);
+		l__ClientSyncEvents__3.DisasterBegan:fire(p3.disasterType, p3.endTime);
 	end);
 end;
-u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
-u1 = u1(v3.new());
+local v5 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v3.new());
 return nil;
