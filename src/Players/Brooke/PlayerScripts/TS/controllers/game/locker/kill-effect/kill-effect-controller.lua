@@ -25,6 +25,7 @@ local u4 = v1.import(script, script.Parent, "effects", "default-kill-effect");
 local l__default__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 local l__Players__6 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
 local l__ClientSyncEvents__7 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
+local l__DamageType__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "damage", "damage-type").DamageType;
 function u1.KnitStart(p2)
 	local v5, v6, v7 = ipairs(u2.values(l__KillEffectType__3));
 	while true do
@@ -54,37 +55,29 @@ function u1.KnitStart(p2)
 		if l__ClientSyncEvents__7.KillEffect:fire(p3.entityInstance, p3.fromEntity):isCancelled() then
 			return nil;
 		end;
-		local v11 = v10;
-		if v11 ~= nil then
-			v11 = v11.Character;
+		if p3.damageType == l__DamageType__8.VOID then
+			return nil;
 		end;
-		print("dead player character:", v11);
 		if v10 and v10.Character then
-			print("1");
-			if p3.finalKill then
-				print("2");
-				if v9 then
-					print("3");
-					local v12 = v9:GetAttribute("KillEffectType");
-					if v12 and v9 ~= v10 then
-						print("kill has kill effect:", v12);
-						local v13 = p2.killEffects[v12].new(v9);
-						v13:onKill(v10, v10.Character, p3.cframe);
-						if v13:isPlayDefaultKillEffect() then
-							local u8 = u4.new(v9);
-							v1.try(function()
-								u8:onKill(v10, v10.Character, p3.cframe);
-							end, function(p4)
-								warn(p4);
-							end);
-						end;
-						return nil;
+			if p3.finalKill and v9 then
+				local v11 = v9:GetAttribute("KillEffectType");
+				if v11 and v9 ~= v10 then
+					local v12 = p2.killEffects[v11].new(v9);
+					v12:onKill(v10, v10.Character, p3.cframe);
+					if v12:isPlayDefaultKillEffect() then
+						local u9 = u4.new(v9);
+						v1.try(function()
+							u9:onKill(v10, v10.Character, p3.cframe);
+						end, function(p4)
+							warn(p4);
+						end);
 					end;
+					return nil;
 				end;
 			end;
-			local u9 = u4.new(v9 and v10);
+			local u10 = u4.new(v9 and v10);
 			v1.try(function()
-				u9:onKill(v10, v10.Character, p3.cframe);
+				u10:onKill(v10, v10.Character, p3.cframe);
 			end, function(p5)
 				warn(p5);
 			end);

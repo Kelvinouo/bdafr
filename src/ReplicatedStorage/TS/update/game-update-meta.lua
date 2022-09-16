@@ -12,6 +12,17 @@ return {
 		newestKitBG = "rbxassetid://8795128315"
 	}, 
 	GameUpdateMeta = { {
+			updateLogId = 50, 
+			visible = true, 
+			title = "Free Ares + 3x XP Weekend", 
+			date = "9/16/2022", 
+			body = "<font color=\"" .. (l__ColorUtil__2.richTextColor(l__Theme__6.mcRed) .. "\"><b>\240\159\148\165 TRIPLE XP WEEK \240\159\148\165</b></font>\n\n") .. "\226\140\155 <b>Season 6 Countdown</b>\n" .. "Season 5 has been a huge, but we\226\128\153re now at the final week before Season 6 begins! This week\226\128\153s update is light while the entire team is focused on making Season 6 great! \240\159\148\165\n\n" .. "<b>\240\159\142\159\239\184\143 Season 5 Missions</b>\n" .. "The XP given from daily and weekly missions has been doubled!\n\n" .. "<b>\240\159\143\180\226\128\141\226\152\160\239\184\143 Pirate Event Ends</b>\n" .. "The pirate event has come to a close.  You can no longer earn Doubloons for the event, but the event shop will remain open for another week so you can spend any leftover currency!\n" .. "- Disabled the \226\128\156Become a Pirate\226\128\157 section of the item shop\n" .. "- Disabled treasure chests from spawning in games\n\n" .. "<b>\240\159\134\147 Free Kits of The Week</b>\n" .. ("\240\159\148\177 Ares <font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__6.mcYellow) .. "\"><b>(FIRST TIME FREE)</b></font>\n") .. "\240\159\155\161\239\184\143 Shielder\n\240\159\164\160 Lassy\n\n\240\159\147\139 <b>Other Changes</b>\n\240\159\154\129\194\160When you kill Cyber\226\128\153s Drone you get its held items\n\226\152\160\239\184\143 Disable playing kill effects when dying to the void\n\240\159\142\174 Fixed team upgrade display when unlocking the Armory\n\240\159\148\177 Added new explosion effects for Ares' spear\n", 
+			image = {
+				assetId = "rbxassetid://10928528924", 
+				aspectRatio = 1, 
+				height = 150
+			}
+		}, {
 			updateLogId = 49, 
 			visible = true, 
 			title = "Glitched LuckyBlocks + 2x XP Weekend", 

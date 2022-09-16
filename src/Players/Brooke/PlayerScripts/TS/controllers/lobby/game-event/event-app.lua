@@ -22,15 +22,34 @@ return {
 		v3.activeMissions = p1.Event.activeMissions[p2.event];
 		return v3;
 	end)((v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u2)(function(p3, p4)
-		local v6 = p3.tab;
-		if v6 == nil then
-			v6 = "missions";
+		local v6 = l__EventMeta__1[p3.event];
+		local v7 = v6.endDate < os.time();
+		if v7 then
+			local v8 = "shop";
+		else
+			local v9 = p3.tab;
+			if v9 == nil then
+				v9 = "missions";
+			end;
+			v8 = v9;
 		end;
-		local v7, v8 = p4.useState(v6);
-		local v9 = { u2.createElement(l__DarkBackground__3, {
+		local v10, v11 = p4.useState(v8);
+		local v12 = { u2.createElement(l__DarkBackground__3, {
 				AppId = p3.AppId
 			}) };
-		local v10 = { u2.createElement(l__ScaleComponent__5, {
+		local v13 = {
+			Size = UDim2.fromOffset(690, 480), 
+			AnchorPoint = Vector2.new(0.5, 0.5), 
+			Position = UDim2.fromScale(0.5, 0.5), 
+			BackgroundTransparency = 0.05, 
+			BackgroundColor3 = l__Theme__4.backgroundSecondary, 
+			ScaleType = Enum.ScaleType.Crop, 
+			Selectable = false, 
+			AutoButtonColor = false, 
+			Active = true, 
+			Modal = true
+		};
+		local v14 = { u2.createElement(l__ScaleComponent__5, {
 				MaximumSize = Vector2.new(1035, 720), 
 				ScreenPadding = Vector2.new(80, 80)
 			}), u2.createElement("UICorner", {
@@ -42,10 +61,14 @@ return {
 			}), u2.createElement(l__EventAppNavbar__6, {
 				EventDataProfile = p3.eventDataProfile, 
 				EventType = p3.event, 
-				Page = v7, 
-				SetPage = v8
+				Page = v10, 
+				SetPage = v11
 			}) };
-		local v11 = { u2.createElement(l__Padding__7, {
+		local v15 = {
+			Size = UDim2.fromScale(1, 0.9), 
+			LayoutOrder = 2
+		};
+		local v16 = { u2.createElement(l__Padding__7, {
 				Padding = {
 					Vertical = 8, 
 					Horizontal = 14
@@ -55,77 +78,67 @@ return {
 				Padding = UDim.new(0.02, 0), 
 				SortOrder = "LayoutOrder"
 			})) };
-		local v12 = {
+		local v17 = {
 			Size = UDim2.fromScale(1, 0.04), 
 			AnchorPoint = Vector2.new(0, 1), 
 			Position = UDim2.fromScale(0, 1)
 		};
-		local v13 = string.lower(v7);
-		if v13 == "shop" then
-			local v14 = "The shop will stay open for a week after the event ends.";
-		elseif v13 == "missions" then
-			v14 = "Complete Missions or find Treasure Chests in matches to earn currency to spend in the Event Shop!";
+		local v18 = string.lower(v10);
+		if v18 == "shop" then
+			local v19 = "The shop will stay open for a week after the event ends.";
+		elseif v18 == "missions" then
+			v19 = "Complete Missions or find Treasure Chests in matches to earn currency to spend in the Event Shop!";
 		else
-			v14 = "";
+			v19 = "";
 		end;
-		v12.Text = v14;
-		v12.TextScaled = true;
-		v12.RichText = true;
-		v12.Font = "Roboto";
-		v12.TextColor3 = Color3.fromRGB(255, 255, 255);
-		v12.TextTransparency = 0.3;
-		v12.TextXAlignment = "Left";
-		v12.BackgroundTransparency = 1;
-		v12.LayoutOrder = 2;
-		v11.PageDescription = u2.createElement("TextLabel", v12);
-		local v15 = {};
-		local v16 = false;
-		if string.lower(v7) == "shop" then
-			v16 = u2.createElement(l__EventShop__8, {
-				Shop = l__EventMeta__1[p3.event].shops[1], 
+		v17.Text = v19;
+		v17.TextScaled = true;
+		v17.RichText = true;
+		v17.Font = "Roboto";
+		v17.TextColor3 = Color3.fromRGB(255, 255, 255);
+		v17.TextTransparency = 0.3;
+		v17.TextXAlignment = "Left";
+		v17.BackgroundTransparency = 1;
+		v17.LayoutOrder = 2;
+		v16.PageDescription = u2.createElement("TextLabel", v17);
+		local v20 = {
+			Size = UDim2.fromScale(1, 0.94), 
+			LayoutOrder = 3
+		};
+		local v21 = {};
+		local v22 = false;
+		if string.lower(v10) == "shop" then
+			v22 = u2.createElement(l__EventShop__8, {
+				Shop = v6.shops[1], 
 				ItemsPurchased = p3.eventDataProfile.events[p3.event].itemsPurchased, 
 				EventType = p3.event
 			});
 		end;
-		if v16 then
-			v15[#v15 + 1] = v16;
+		if v22 then
+			v21[#v21 + 1] = v22;
 		end;
-		local v17 = false;
-		if string.lower(v7) == "missions" then
-			v17 = p3.activeMissions and u2.createElement(l__EventMissions__9, {
-				MissionsMap = p3.activeMissions, 
-				ClaimedMissions = p3.eventDataProfile.events[p3.event].missionsClaimed, 
-				EventType = p3.event
-			});
+		local v23 = not v7;
+		if v23 then
+			v23 = false;
+			if string.lower(v10) == "missions" then
+				v23 = p3.activeMissions and u2.createElement(l__EventMissions__9, {
+					MissionsMap = p3.activeMissions, 
+					ClaimedMissions = p3.eventDataProfile.events[p3.event].missionsClaimed, 
+					EventType = p3.event
+				});
+			end;
 		end;
-		if v17 then
-			v15[#v15 + 1] = v17;
+		if v23 then
+			v21[#v21 + 1] = v23;
 		end;
-		v11[#v11 + 1] = u2.createElement(l__Empty__10, {
-			Size = UDim2.fromScale(1, 0.94), 
-			LayoutOrder = 3
-		}, v15);
-		v10.Content = u2.createElement(l__Empty__10, {
-			Size = UDim2.fromScale(1, 0.9), 
-			LayoutOrder = 2
-		}, v11);
-		v9.KitShopApp = u2.createElement("ImageButton", {
-			Size = UDim2.fromOffset(690, 480), 
-			AnchorPoint = Vector2.new(0.5, 0.5), 
-			Position = UDim2.fromScale(0.5, 0.5), 
-			BackgroundTransparency = 0.05, 
-			BackgroundColor3 = l__Theme__4.backgroundSecondary, 
-			ScaleType = Enum.ScaleType.Crop, 
-			Selectable = false, 
-			AutoButtonColor = false, 
-			Active = true, 
-			Modal = true
-		}, v10);
+		v16[#v16 + 1] = u2.createElement(l__Empty__10, v20, v21);
+		v14.Content = u2.createElement(l__Empty__10, v15, v16);
+		v12.KitShopApp = u2.createElement("ImageButton", v13, v14);
 		return u2.createFragment({
 			EventShop = u2.createElement("ScreenGui", {
 				DisplayOrder = 20, 
 				ResetOnSpawn = false
-			}, v9)
+			}, v12)
 		});
 	end)))
 };

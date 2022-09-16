@@ -2,13 +2,11 @@
 
 local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
 local l__ItemType__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType;
-local v3 = {
-	SEASON_ID = 1
-};
+local v3 = {};
 local v4 = DateTime.fromUniversalTime(2021, 8, 27, 19);
 v3.SEASON_START_DATE = v4;
-v3.DAILY_MISSION_XP = 3000;
-v3.WEEKLY_MISSION_XP = 12000;
+v3.DAILY_MISSION_XP = 6000;
+v3.WEEKLY_MISSION_XP = 24000;
 local u1 = v4;
 function v3.getDay()
 	return math.ceil(math.max(DateTime.now().UnixTimestamp - u1.UnixTimestamp, 0) / 86400);
@@ -16,7 +14,8 @@ end;
 function v3.getWeek()
 	return math.ceil(math.ceil(math.max(DateTime.now().UnixTimestamp - u1.UnixTimestamp, 0) / 86400) / 7);
 end;
-local l__MissionGenerator__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "mission", "mission-generator-type").MissionGenerator;
+local l__BattlePassUtils__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-utils").BattlePassUtils;
+local l__MissionGenerator__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "mission", "mission-generator-type").MissionGenerator;
 u1 = function(p1, p2, p3, p4, p5, p6)
 	local v5 = {};
 	local v6 = Random.new(p4);
@@ -45,8 +44,8 @@ u1 = function(p1, p2, p3, p4, p5, p6)
 			end;		
 		end;
 		local v12 = {
-			id = "BATTLE_PASS_" .. tostring(v3.SEASON_ID) .. "_" .. string.upper(p2) .. "_" .. tostring(p3) .. "_MISSION_" .. tostring(v8), 
-			generator = l__MissionGenerator__2.BATTLEPASS
+			id = "BATTLE_PASS_" .. tostring(l__BattlePassUtils__2.BATTLE_PASS_SEASON_NUMBER) .. "_" .. string.upper(p2) .. "_" .. tostring(p3) .. "_MISSION_" .. tostring(v8), 
+			generator = l__MissionGenerator__3.BATTLEPASS
 		};
 		for v13, v14 in pairs(v10) do
 			v12[v13] = v14;
@@ -62,28 +61,28 @@ return {
 	BattlePassMissionsContext = (function(p7, p8)
 		local v15 = v3.getDay();
 		local v16 = v3.getWeek();
-		local u3 = v3.getDay();
-		local u4 = u1(p7, "daily", v15, v15, 2, v3.DAILY_MISSION_XP);
-		local u5 = v3.getWeek();
-		local u6 = u1(p8, "weekly", v16, v16 * 100, 3, v3.WEEKLY_MISSION_XP);
+		local u4 = v3.getDay();
+		local u5 = u1(p7, "daily", v15, v15, 2, v3.DAILY_MISSION_XP);
+		local u6 = v3.getWeek();
+		local u7 = u1(p8, "weekly", v16, v16 * 100, 3, v3.WEEKLY_MISSION_XP);
 		return {
 			getDailyMissions = function()
 				local v17 = v3.getDay();
-				if v17 ~= u3 then
+				if v17 ~= u4 then
 					local v18 = v3.getDay();
-					u4 = u1(p7, "daily", v18, v18, 2, v3.DAILY_MISSION_XP);
-					u3 = v17;
+					u5 = u1(p7, "daily", v18, v18, 2, v3.DAILY_MISSION_XP);
+					u4 = v17;
 				end;
-				return u4;
+				return u5;
 			end, 
 			getWeeklyMissions = function()
 				local v19 = v3.getWeek();
-				if v19 ~= u5 then
+				if v19 ~= u6 then
 					local v20 = v3.getWeek();
-					u6 = u1(p8, "weekly", v20, v20 * 100, 3, v3.WEEKLY_MISSION_XP);
-					u5 = v19;
+					u7 = u1(p8, "weekly", v20, v20 * 100, 3, v3.WEEKLY_MISSION_XP);
+					u6 = v19;
 				end;
-				return u6;
+				return u7;
 			end
 		};
 	end)({ {

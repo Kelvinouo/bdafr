@@ -36,6 +36,7 @@ return {
 		[l__BedwarsShopCategory__4.Pirate] = {
 			name = "Become a Pirate", 
 			icon = l__BedwarsImageId__2.PIRATE_SKULL_ICON, 
+			disabled = true, 
 			unlockable = true, 
 			layoutOrder = 2, 
 			purchase = {

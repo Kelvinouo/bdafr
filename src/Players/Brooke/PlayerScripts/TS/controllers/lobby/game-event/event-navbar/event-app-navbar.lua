@@ -76,38 +76,7 @@ return {
 						Bottom = 8
 					}
 				}))
-			}), 
-			NavLinks = u5.createElement(l__Empty__7, {
-				Size = UDim2.fromScale(0.33, 1), 
-				LayoutOrder = 2
-			}, { u5.createElement("UIListLayout", {
-					FillDirection = "Horizontal", 
-					VerticalAlignment = "Top"
-				}), u5.createElement(l__EventAppNavlink__9, {
-					Icon = l__BedwarsImageId__10.CLIPBOARD_SOLID, 
-					Text = "Missions", 
-					Page = "missions", 
-					ActivePage = p1.Page, 
-					OnClick = function()
-						l__SoundManager__2:playSound(l__GameSound__3.UI_CLICK);
-						if p1.Page == "missions" then
-							return;
-						end;
-						p1.SetPage("missions");
-					end
-				}), u5.createElement(l__EventAppNavlink__9, {
-					Icon = l__BedwarsImageId__10.SHOPPING_CART_SOLID, 
-					Text = "Shop", 
-					Page = "shop", 
-					ActivePage = p1.Page, 
-					OnClick = function()
-						l__SoundManager__2:playSound(l__GameSound__3.UI_CLICK);
-						if p1.Page == "shop" then
-							return;
-						end;
-						p1.SetPage("shop");
-					end
-				}) }),
+			}),
 			u5.createElement("UIGradient", {
 				Color = ColorSequence.new({ ColorSequenceKeypoint.new(0, Color3.fromHex("#5659A4")), ColorSequenceKeypoint.new(1, Color3.fromHex("#5659A4")) }), 
 				Transparency = NumberSequence.new({ NumberSequenceKeypoint.new(0, 0.1), NumberSequenceKeypoint.new(1, 0.4) }), 
@@ -121,9 +90,47 @@ return {
 		};
 		local v10 = {
 			Size = UDim2.fromScale(0.33, 1), 
+			LayoutOrder = 2
+		};
+		local v11 = { u5.createElement("UIListLayout", {
+				FillDirection = "Horizontal", 
+				VerticalAlignment = "Top"
+			}) };
+		local v12 = not (v5.endDate < os.time()) and u5.createElement(l__EventAppNavlink__9, {
+			Icon = l__BedwarsImageId__10.CLIPBOARD_SOLID, 
+			Text = "Missions", 
+			Page = "missions", 
+			ActivePage = p1.Page, 
+			OnClick = function()
+				l__SoundManager__2:playSound(l__GameSound__3.UI_CLICK);
+				if p1.Page == "missions" then
+					return;
+				end;
+				p1.SetPage("missions");
+			end
+		});
+		if v12 then
+			v11[#v11 + 1] = v12;
+		end;
+		v11[#v11 + 1] = u5.createElement(l__EventAppNavlink__9, {
+			Icon = l__BedwarsImageId__10.SHOPPING_CART_SOLID, 
+			Text = "Shop", 
+			Page = "shop", 
+			ActivePage = p1.Page, 
+			OnClick = function()
+				l__SoundManager__2:playSound(l__GameSound__3.UI_CLICK);
+				if p1.Page == "shop" then
+					return;
+				end;
+				p1.SetPage("shop");
+			end
+		});
+		v9.NavLinks = u5.createElement(l__Empty__7, v10, v11);
+		local v13 = {
+			Size = UDim2.fromScale(0.33, 1), 
 			LayoutOrder = 3
 		};
-		local v11 = { u5.createElement(l__Padding__8, {
+		local v14 = { u5.createElement(l__Padding__8, {
 				Padding = {
 					Right = 14, 
 					Top = 10, 
@@ -136,40 +143,40 @@ return {
 				Padding = UDim.new(0, 6), 
 				SortOrder = "LayoutOrder"
 			}) };
-		local l__currencies__12 = v5.currencies;
-		local v13 = table.create(#l__currencies__12);
-		local v14, v15, v16 = ipairs(l__currencies__12);
+		local l__currencies__15 = v5.currencies;
+		local v16 = table.create(#l__currencies__15);
+		local v17, v18, v19 = ipairs(l__currencies__15);
 		while true do
-			v14(v15, v16);
-			if not v14 then
+			v17(v18, v19);
+			if not v17 then
 				break;
 			end;
-			v16 = v14;
-			v13[v14] = u5.createElement(l__EventAppCurrencyPill__11, {
-				Currency = v15, 
-				CurrAmount = p1.EventDataProfile.currencies[v15].currAmount
+			v19 = v17;
+			v16[v17] = u5.createElement(l__EventAppCurrencyPill__11, {
+				Currency = v18, 
+				CurrAmount = p1.EventDataProfile.currencies[v18].currAmount
 			});		
 		end;
-		local v17 = {
+		local v20 = {
 			Size = UDim2.new(0.85, -6, 0.9, 0), 
 			LayoutOrder = 2
 		};
-		local v18 = { u5.createElement("UIListLayout", {
+		local v21 = { u5.createElement("UIListLayout", {
 				FillDirection = "Horizontal", 
 				HorizontalAlignment = "Right"
 			}) };
-		local v19 = #v18;
-		local v20, v21, v22 = ipairs(v13);
+		local v22 = #v21;
+		local v23, v24, v25 = ipairs(v16);
 		while true do
-			v20(v21, v22);
-			if not v20 then
+			v23(v24, v25);
+			if not v23 then
 				break;
 			end;
-			v22 = v20;
-			v18[v19 + v20] = v21;		
+			v25 = v23;
+			v21[v22 + v23] = v24;		
 		end;
-		v11.CurrencyList = u5.createElement(l__Empty__7, v17, v18);
-		v11.CloseAppButton = u5.createElement(l__IconButton__12, {
+		v14.CurrencyList = u5.createElement(l__Empty__7, v20, v21);
+		v14.CloseAppButton = u5.createElement(l__IconButton__12, {
 			Size = UDim2.fromScale(0.15, 1), 
 			Image = l__BedwarsImageId__10.X, 
 			OnClick = function()
@@ -179,7 +186,7 @@ return {
 		}, { u5.createElement("UIAspectRatioConstraint", {
 				AspectRatio = 1
 			}) });
-		v9.HeaderRightSide = u5.createElement(l__Empty__7, v10, v11);
+		v9.HeaderRightSide = u5.createElement(l__Empty__7, v13, v14);
 		v7.Wrapper = u5.createElement("Frame", v8, v9);
 		return u5.createFragment({
 			NavBar = u5.createElement("ImageLabel", v6, v7)

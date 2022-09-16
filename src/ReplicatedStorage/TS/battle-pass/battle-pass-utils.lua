@@ -5,8 +5,8 @@ local v2 = {
 	MAX_LEVEL = 50, 
 	PAID_MULTIPLIER = 1.2, 
 	SOCIAL_CONNECTIONS_MULTIPLIER = 1.2, 
-	EXPERIENCE_BOOST_ENABLED = false, 
-	EXPERIENCE_BOOST_MULT = 2
+	EXPERIENCE_BOOST_ENABLED = true, 
+	EXPERIENCE_BOOST_MULT = 3
 };
 local l__season5__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-seasons").BattlePassSeason.season5;
 v2.BATTLE_PASS_SEASON = l__season5__3;
