@@ -36,6 +36,14 @@ v2.BLUNDERBUSS = "blunderbuss";
 v1.blunderbuss = "BLUNDERBUSS";
 v2.CUTLASS_GHOST = "cutlass_ghost";
 v1.cutlass_ghost = "CUTLASS_GHOST";
+v2.TOY_HAMMER = "toy_hammer";
+v1.toy_hammer = "TOY_HAMMER";
+v2.TWIRL_BLADE = "twirl_blade";
+v1.twirl_blade = "TWIRL_BLADE";
+v2.GRENADE_LAUNCHER = "grenade_launcher";
+v1.grenade_launcher = "GRENADE_LAUNCHER";
+v2.ROCKET_BELT = "rocket_belt";
+v1.rocket_belt = "ROCKET_BELT";
 return {
 	LobbyGadgetType = v2
 };

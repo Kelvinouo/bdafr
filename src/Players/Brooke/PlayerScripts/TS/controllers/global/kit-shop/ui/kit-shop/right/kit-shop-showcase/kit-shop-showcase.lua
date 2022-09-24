@@ -92,10 +92,11 @@ return {
 			end;
 		end;
 		local v21 = {
-			Image = "rbxassetid://7993278185", 
+			Image = "rbxassetid://10983634478", 
 			ImageTransparency = 0.7, 
 			BackgroundColor3 = l__ColorUtil__11.hexColor(3092567), 
 			BorderSizePixel = 0, 
+			ScaleType = "Stretch", 
 			LayoutOrder = 1
 		};
 		for v22, v23 in pairs(v14) do

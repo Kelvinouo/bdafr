@@ -17,7 +17,7 @@ function v6.new(...)
 	return v7:constructor(...) and v7;
 end;
 local u1 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
-local u2 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent, "lib", "pid");
+local u2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "pid");
 local l__Workspace__3 = v2.Workspace;
 local l__Players__4 = v2.Players;
 local u5 = v1.import(script, v1.getModule(script, "@rbxts", "make"));

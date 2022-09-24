@@ -50,6 +50,12 @@ v2.PIRATE_SHIP_ATTACK = "pirateshipattack";
 v1.pirateshipattack = "PIRATE_SHIP_ATTACK";
 v2.GHOST = "ghost";
 v1.ghost = "GHOST";
+v2.KNIFE_RAIN = "kniferain";
+v1.kniferain = "KNIFE_RAIN";
+v2.MIRROR = "mirror";
+v1.mirror = "MIRROR";
+v2.BUTTERFLY = "butterfly";
+v1.butterfly = "BUTTERFLY";
 return {
 	KillEffectType = v2
 };

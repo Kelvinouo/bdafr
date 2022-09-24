@@ -8,9 +8,10 @@ local u3 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local l__ColorUtil__4 = v2.ColorUtil;
 local l__BedwarsShopItemCard__5 = v1.import(script, script.Parent, "shop-item-card").BedwarsShopItemCard;
 local l__shopPurchaseItem__6 = v1.import(script, script.Parent.Parent, "api", "purchase-item").shopPurchaseItem;
-local l__BedwarsShop__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "shop", "bedwars-shop").BedwarsShop;
-local l__Players__8 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
-local l__Empty__9 = v2.Empty;
+local l__KnitClient__7 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
+local l__BedwarsShop__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "shop", "bedwars-shop").BedwarsShop;
+local l__Players__9 = v1.import(script, v1.getModule(script, "@rbxts", "services")).Players;
+local l__Empty__10 = v2.Empty;
 return {
 	ShopCategoryDefault = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u3)(function(p1, p2)
 		local l__useEffect__3 = p2.useEffect;
@@ -75,8 +76,11 @@ return {
 						p1.SetSelectedShopItem(p4);
 						return;
 					end;
+					if p4.tiered then
+						l__KnitClient__7.Controllers.BedwarsShopController.alreadyPurchasedMap[p4.itemType] = true;
+					end;
 					if p4.nextTier then
-						local v18 = l__BedwarsShop__7.getShopItem(p4.nextTier, l__Players__8.LocalPlayer);
+						local v18 = l__BedwarsShop__8.getShopItem(p4.nextTier, l__Players__9.LocalPlayer);
 					else
 						v18 = p4;
 					end;
@@ -118,7 +122,7 @@ return {
 			v28 = v26;
 			v24[v25 + v26] = v27;		
 		end;
-		v12[#v12 + 1] = u3.createElement(l__Empty__9, v23, v24);
-		return u3.createElement(l__Empty__9, v11, v12);
+		v12[#v12 + 1] = u3.createElement(l__Empty__10, v23, v24);
+		return u3.createElement(l__Empty__10, v11, v12);
 	end)
 };

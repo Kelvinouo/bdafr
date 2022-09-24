@@ -616,6 +616,64 @@ return {
 			lifetimeSec = 3, 
 			projectileModel = "raven", 
 			impactSound = { l__GameSound__1.SPIRIT_EXPLODE }
+		}, 
+		mage_spell_base = {
+			launchVelocity = 100, 
+			gravitationalAcceleration = 20, 
+			flightRotation = Vector3.new(0, 0, 0), 
+			combat = {
+				damage = 8
+			}, 
+			knockbackMultiplier = {
+				horizontal = 0.2
+			}, 
+			impactSound = { l__GameSound__1.NEW_ARROW_IMPACT }
+		}, 
+		mage_spell_fire = {
+			launchVelocity = 100, 
+			gravitationalAcceleration = 20, 
+			flightRotation = Vector3.new(0, 0, 0), 
+			combat = {
+				damage = 30, 
+				armorMultiplier = 0.7
+			}, 
+			knockbackMultiplier = {
+				horizontal = 0.2
+			}, 
+			impactSound = { l__GameSound__1.FIRE_ASPECT_HIT }
+		}, 
+		mage_spell_ice = {
+			launchVelocity = 100, 
+			gravitationalAcceleration = 20, 
+			flightRotation = Vector3.new(0, 0, 0), 
+			combat = {
+				damage = 25, 
+				armorMultiplier = 0.3
+			}, 
+			knockbackMultiplier = {
+				horizontal = 0.2
+			}, 
+			impactSound = { l__GameSound__1.SNOW_CONE_MACHINE_MAKING_FINISH }
+		}, 
+		mage_spell_nature = {
+			launchVelocity = 100, 
+			gravitationalAcceleration = 20, 
+			flightRotation = Vector3.new(0, 0, 0), 
+			combat = {
+				damage = 30, 
+				armorMultiplier = 0.7
+			}, 
+			knockbackMultiplier = {
+				horizontal = 0.2
+			}, 
+			impactSound = { l__GameSound__1.SNOWBALL_HIT }
+		}, 
+		dragon_breath = {
+			launchVelocity = 60, 
+			gravitationalAcceleration = 0, 
+			lifetimeSec = 3, 
+			projectileModel = "raven", 
+			impactSound = { l__GameSound__1.SPIRIT_EXPLODE }
 		}
 	}
 };

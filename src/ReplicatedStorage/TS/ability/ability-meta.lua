@@ -114,6 +114,13 @@ return {
 				id = l__CooldownId__3.PIRATE_TELESCOPE, 
 				duration = 20
 			}
+		}, 
+		[l__AbilityId__5.END_DRAGON] = {
+			actionBarName = "Exit Dragon Form", 
+			cooldown = {
+				id = l__CooldownId__3.DRAGON_BREATH, 
+				duration = 5
+			}
 		}
 	}
 };

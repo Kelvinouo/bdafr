@@ -46,6 +46,8 @@ v2.TNT_BALLOON_TNT = "tnt_balloon_tnt";
 v1.tnt_balloon_tnt = "TNT_BALLOON_TNT";
 v2.TNT_WARS_CANNON_TNT = "tnt_wars_cannon_tnt";
 v1.tnt_wars_cannon_tnt = "TNT_WARS_CANNON_TNT";
+v2.LAUNCHED_PLAYER = "launched_player";
+v1.launched_player = "LAUNCHED_PLAYER";
 return {
 	ExplosionType = v2
 };

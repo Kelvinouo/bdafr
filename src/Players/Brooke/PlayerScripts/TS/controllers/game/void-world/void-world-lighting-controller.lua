@@ -53,13 +53,19 @@ function v4.applyVoidLighting(p4)
 		ClockTime = 6.3, 
 		ExposureCompensation = 0.62
 	})));
-	table.insert(v10, (l__KnitClient__4.Controllers.LightingController.atmosphereModifier:addModifier(20, {
-		Density = 0.45, 
-		Offset = 0, 
-		Color = Color3.fromRGB(193, 193, 193), 
-		Glare = 0, 
-		Haze = 0
-	})));
+	local v11 = l__KnitClient__4.Controllers.LightingController.atmosphereModifier;
+	if v11 ~= nil then
+		v11 = v11:addModifier(20, {
+			Density = 0.45, 
+			Offset = 0, 
+			Color = Color3.fromRGB(193, 193, 193), 
+			Glare = 0, 
+			Haze = 0
+		});
+	end;
+	if v11 then
+		table.insert(v10, v11);
+	end;
 	table.insert(v10, (l__KnitClient__4.Controllers.LightingController.sunRayModifier:addModifier(20, {
 		Intensity = 0.005
 	})));
@@ -75,5 +81,5 @@ function v4.applyVoidLighting(p4)
 	})));
 	return v10;
 end;
-local v11 = l__KnitClient__2.CreateController(v4.new());
+local v12 = l__KnitClient__2.CreateController(v4.new());
 return nil;

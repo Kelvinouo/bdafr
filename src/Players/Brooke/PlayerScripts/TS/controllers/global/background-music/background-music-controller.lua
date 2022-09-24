@@ -27,13 +27,14 @@ function v4.constructor(p1)
 	p1.isLobbyServer = l__PlaceUtil__3.isLobbyServer();
 	p1.isGameServer = l__PlaceUtil__3.isGameServer();
 end;
-local l__ClientStore__4 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
+local l__GameSound__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
+local l__ClientStore__5 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
 function v4.KnitStart(p2)
 	l__KnitController__3.KnitStart(p2);
 	if p2.isLobbyServer then
-
+		p2:startMusic(l__GameSound__4.KINGDOM_MUSIC);
 	end;
-	l__ClientStore__4.changed:connect(function(p3, p4)
+	l__ClientStore__5.changed:connect(function(p3, p4)
 		if p2.isLobbyServer then
 			if p3.Settings.backgroundMusicVolume ~= p4.Settings.backgroundMusicVolume then
 				p2.backgroundMusicGroup.Volume = p3.Settings.backgroundMusicVolume;
@@ -45,14 +46,13 @@ function v4.KnitStart(p2)
 	end);
 	p2:handleRoactStore();
 end;
-local l__GameSound__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 local l__SoundManager__6 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).SoundManager;
 local l__Workspace__7 = v2.Workspace;
 local u8 = v1.import(script, v1.getModule(script, "@rbxts", "maid").Maid);
 function v4.startMusic(p5, p6)
 	local v6 = p6;
 	if v6 == nil then
-		v6 = l__GameSound__5.SUSPENSE_MUSIC;
+		v6 = l__GameSound__4.SUSPENSE_MUSIC;
 	end;
 	p5:stopMusic();
 	local v7 = l__SoundManager__6:playSound(v6, {
@@ -65,9 +65,9 @@ function v4.startMusic(p5, p6)
 		v7.TimePosition = l__Workspace__7:GetServerTimeNow() % v7.TimeLength;
 	end;
 	if p5.isLobbyServer then
-		local v8 = l__ClientStore__4:getState().Settings.backgroundMusicVolume;
+		local v8 = l__ClientStore__5:getState().Settings.backgroundMusicVolume;
 	else
-		v8 = l__ClientStore__4:getState().Settings.backgroundMusicVolumeGame;
+		v8 = l__ClientStore__5:getState().Settings.backgroundMusicVolumeGame;
 	end;
 	p5.backgroundMusicGroup.Volume = v8;
 	print("VOLUME AT " .. tostring(p5.backgroundMusicGroup.Volume));
@@ -108,7 +108,7 @@ function v4.stopMusic(p7, p8)
 	end;
 end;
 function v4.mute(p10)
-	l__ClientStore__4:dispatch({
+	l__ClientStore__5:dispatch({
 		type = "SettingsUpdateSome", 
 		settings = {
 			backgroundMusicVolume = 0
@@ -196,7 +196,7 @@ v4.handleRoactStore = v1.async(function(p11)
 	end;
 end);
 function v4.unmute(p12)
-	l__ClientStore__4:dispatch({
+	l__ClientStore__5:dispatch({
 		type = "SettingsUpdateSome", 
 		settings = {
 			backgroundMusicVolume = 1

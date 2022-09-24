@@ -51,6 +51,7 @@ return {
 					Animation = l__GameAnimationUtil__6.getAssetId(v2.animation.type), 
 					Size = p1.Size, 
 					LayoutOrder = p1.LayoutOrder, 
+					PreviewItemTypes = v2.animation.previewItems, 
 					ZIndex = p1.ZIndex, 
 					ImageTransparency = 0
 				})

@@ -127,6 +127,39 @@ return {
 					itemType = l__ItemType__3.CUTLASS_GHOST, 
 					amount = 1
 				} }
+		}, 
+		[l__LobbyGadgetType__4.TOY_HAMMER] = {
+			name = "Toy Hammer", 
+			items = { {
+					itemType = l__ItemType__3.TOY_HAMMER, 
+					amount = 1
+				} }
+		}, 
+		[l__LobbyGadgetType__4.TWIRL_BLADE] = {
+			name = "Twirl Blade", 
+			items = { {
+					itemType = l__ItemType__3.TWIRLBLADE, 
+					amount = 1
+				} }
+		}, 
+		[l__LobbyGadgetType__4.GRENADE_LAUNCHER] = {
+			name = "Grenade Launcher", 
+			items = { {
+					itemType = l__ItemType__3.GRENADE_LAUNCHER, 
+					amount = 1
+				}, {
+					itemType = l__ItemType__3.STUN_GRENADE, 
+					amount = 5, 
+					refillable = true, 
+					refillCooldown = 8
+				} }
+		}, 
+		[l__LobbyGadgetType__4.ROCKET_BELT] = {
+			name = "Rocket Belt", 
+			items = { {
+					itemType = l__ItemType__3.ROCKET_BELT, 
+					amount = 1
+				} }
 		}
 	}
 };

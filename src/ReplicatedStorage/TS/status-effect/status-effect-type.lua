@@ -88,6 +88,18 @@ v2.VOLLEY = "volley";
 v1.volley = "VOLLEY";
 v2.ENHANCED_PROJECTILE = "enhanced_projectile";
 v1.enhanced_projectile = "ENHANCED_PROJECTILE";
+v2.MAGE_FIRE_ELEMENT = "mage_fire_element";
+v1.mage_fire_element = "MAGE_FIRE_ELEMENT";
+v2.MAGE_ICE_ELEMENT = "mage_ice_element";
+v1.mage_ice_element = "MAGE_ICE_ELEMENT";
+v2.MAGE_NATURE_ELEMENT = "mage_nature_element";
+v1.mage_nature_element = "MAGE_NATURE_ELEMENT";
+v2.MAGE_BURN = "mage_burn";
+v1.mage_burn = "MAGE_BURN";
+v2.DAMAGE_BOOST = "damage_boost";
+v1.damage_boost = "DAMAGE_BOOST";
+v2.DOUBLE_HIT_RELIC = "double_hit_relic";
+v1.double_hit_relic = "DOUBLE_HIT_RELIC";
 return {
 	StatusEffectType = v2
 };

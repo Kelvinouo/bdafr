@@ -204,6 +204,9 @@ return {
 						p1.SetSelectedShopItem(p4);
 						return;
 					end;
+					if p4.tiered then
+						l__KnitClient__11.Controllers.BedwarsShopController.alreadyPurchasedMap[p4.itemType] = true;
+					end;
 					if p4.nextTier then
 						local v35 = l__BedwarsShop__14.getShopItem(p4.nextTier, l__Players__4.LocalPlayer);
 					else

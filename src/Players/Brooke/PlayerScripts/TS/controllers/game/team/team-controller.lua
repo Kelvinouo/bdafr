@@ -34,102 +34,119 @@ function u1.KnitStart(p2)
 	end);
 	l__default__2.Client:Get("RemoteName"):SendToServer();
 end;
-function u1.getPlayerTeamMap(p4)
-	local v5 = nil;
+function u1.getPlayerTeam(p4, p5)
 	if not p4.teams then
 		return nil;
 	end;
-	local l__teams__6 = p4.teams;
-	local function v7(p5, p6)
-		for v8, v9 in pairs(p6.members) do
-			p5[v9.userId] = p6.name;
-		end;
-		return p5;
-	end;
-	v5 = {};
-	for v10 = 1, #l__teams__6 do
-		v5 = v7(v5, l__teams__6[v10], v10 - 1, l__teams__6);
-	end;
-	return local v11;
-end;
-function u1.getTeamNames(p7, p8)
-	if #p7.teamNames ~= 0 then
-		return p7.teamNames;
-	end;
-	if not p7.teams then
-		return nil;
-	end;
-	local l__teams__12 = p7.teams;
-	local v13 = table.create(#l__teams__12);
-	local v14, v15, v16 = ipairs(l__teams__12);
+	local v5, v6, v7 = ipairs(p4.teams);
 	while true do
-		v14(v15, v16);
-		if not v14 then
+		v5(v6, v7);
+		if not v5 then
 			break;
 		end;
-		v16 = v14;
-		v13[v14] = v15.name;	
+		v7 = v5;
+		if v6.members[tostring(p5.UserId)] ~= nil == true then
+			return v6;
+		end;	
 	end;
-	table.sort(v13);
-	p7.teamNames = v13;
-	if p8 then
-		table.insert(p7.teamNames, 1, "Spectator");
-	end;
-	return p7.teamNames;
+	return nil;
 end;
-local l__ColorUtil__4 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).ColorUtil;
-local u5 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
-function u1.getTeamDropdown(p9, p10)
-	local v17 = nil;
-	if p9.teamDropdown.dropDownItems then
-		return p9.teamDropdown;
+function u1.getPlayerTeamNameMap(p6)
+	local v8 = nil;
+	if not p6.teams then
+		return nil;
+	end;
+	local l__teams__9 = p6.teams;
+	local function v10(p7, p8)
+		for v11, v12 in pairs(p8.members) do
+			p7[v12.userId] = p8.name;
+		end;
+		return p7;
+	end;
+	v8 = {};
+	for v13 = 1, #l__teams__9 do
+		v8 = v10(v8, l__teams__9[v13], v13 - 1, l__teams__9);
+	end;
+	return local v14;
+end;
+function u1.getTeamNames(p9, p10)
+	if #p9.teamNames ~= 0 then
+		return p9.teamNames;
 	end;
 	if not p9.teams then
 		return nil;
 	end;
-	local l__teams__18 = p9.teams;
-	v17 = {};
-	for v19 = 1, #l__teams__18 do
-		local v20 = l__teams__18[v19];
-		v17[v20.name] = {
-			text = "<font color=\"" .. (l__ColorUtil__4.richTextColor(v20.color) .. "\">") .. v20.name .. "</font>", 
-			value = v20.name
-		};
-		v17 = v17;
-	end;
-	p9.teamDropdown.map = local v21;
-	local v22 = {};
-	local v23 = #v22;
-	for v24, v25 in pairs(p9.teamDropdown.map) do
-		v23 = v23 + 1;
-		v22[v23] = { v24, v25 };
-	end;
-	local v26 = u5.values(v22);
-	local v27 = table.create(#v26);
-	local v28, v29, v30 = ipairs(v26);
+	local l__teams__15 = p9.teams;
+	local v16 = table.create(#l__teams__15);
+	local v17, v18, v19 = ipairs(l__teams__15);
 	while true do
-		v28(v29, v30);
-		if not v28 then
+		v17(v18, v19);
+		if not v17 then
 			break;
 		end;
-		v30 = v28;
-		v27[v28] = v29[2];	
+		v19 = v17;
+		v16[v17] = v18.name;	
 	end;
-	table.sort(v27, function(p11, p12)
-		return p11.value < p12.value;
-	end);
-	p9.teamDropdown.dropDownItems = v27;
+	table.sort(v16);
+	p9.teamNames = v16;
 	if p10 then
-		p9.teamDropdown.map.Spectator = {
+		table.insert(p9.teamNames, 1, "Spectator");
+	end;
+	return p9.teamNames;
+end;
+local l__ColorUtil__4 = v1.import(script, v1.getModule(script, "@easy-games", "game-core").out).ColorUtil;
+local u5 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
+function u1.getTeamDropdown(p11, p12)
+	local v20 = nil;
+	if p11.teamDropdown.dropDownItems then
+		return p11.teamDropdown;
+	end;
+	if not p11.teams then
+		return nil;
+	end;
+	local l__teams__21 = p11.teams;
+	v20 = {};
+	for v22 = 1, #l__teams__21 do
+		local v23 = l__teams__21[v22];
+		v20[v23.name] = {
+			text = "<font color=\"" .. (l__ColorUtil__4.richTextColor(v23.color) .. "\">") .. v23.name .. "</font>", 
+			value = v23.name
+		};
+		v20 = v20;
+	end;
+	p11.teamDropdown.map = local v24;
+	local v25 = {};
+	local v26 = #v25;
+	for v27, v28 in pairs(p11.teamDropdown.map) do
+		v26 = v26 + 1;
+		v25[v26] = { v27, v28 };
+	end;
+	local v29 = u5.values(v25);
+	local v30 = table.create(#v29);
+	local v31, v32, v33 = ipairs(v29);
+	while true do
+		v31(v32, v33);
+		if not v31 then
+			break;
+		end;
+		v33 = v31;
+		v30[v31] = v32[2];	
+	end;
+	table.sort(v30, function(p13, p14)
+		return p13.value < p14.value;
+	end);
+	p11.teamDropdown.dropDownItems = v30;
+	if p12 then
+		p11.teamDropdown.map.Spectator = {
 			text = "Spectator", 
 			value = "Spectator"
 		};
-		table.insert(p9.teamDropdown.dropDownItems, 1, {
+		table.insert(p11.teamDropdown.dropDownItems, 1, {
 			text = "Spectator", 
 			value = "Spectator"
 		});
 	end;
-	return p9.teamDropdown;
+	return p11.teamDropdown;
 end;
 u1 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController;
 u1 = u1(u1.new());

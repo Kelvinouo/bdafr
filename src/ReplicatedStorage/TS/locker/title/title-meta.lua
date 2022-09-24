@@ -552,6 +552,63 @@ return {
 		[l__TitleType__6.SHARK] = {
 			text = "Shark"
 		}, 
+		[l__TitleType__6.MAGE] = {
+			text = "Mage"
+		}, 
+		[l__TitleType__6.KNIGHT] = {
+			text = "Knight"
+		}, 
+		[l__TitleType__6.PALADIN] = {
+			text = "Paladin"
+		}, 
+		[l__TitleType__6.DRAGON] = {
+			text = "<font color=\"" .. l__ColorUtil__2.richTextColor(Color3.fromRGB(255, 148, 71)) .. "\">Dragon</font>"
+		}, 
+		[l__TitleType__6.DRAGON_EMOJI] = {
+			text = "\240\159\144\178"
+		}, 
+		[l__TitleType__6.SHAPE_SHIFTER] = {
+			text = "Shape Shifter"
+		}, 
+		[l__TitleType__6.QUEEN] = {
+			text = "<font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__5.mcYellow) .. "\">Queen</font>"
+		}, 
+		[l__TitleType__6.KING] = {
+			text = "<font color=\"" .. l__ColorUtil__2.richTextColor(l__Theme__5.mcYellow) .. "\">King</font>"
+		}, 
+		[l__TitleType__6.CROWN_EMOJI] = {
+			text = "\240\159\145\145"
+		}, 
+		[l__TitleType__6.RULER] = {
+			text = "<font color=\"" .. l__ColorUtil__2.richTextColor(Color3.fromRGB(255, 69, 69)) .. "\">Ruler</font>"
+		}, 
+		[l__TitleType__6.FANCY] = {
+			text = "Fancy"
+		}, 
+		[l__TitleType__6.CLEAN] = {
+			text = "Clean"
+		}, 
+		[l__TitleType__6.MID] = {
+			text = "Mid"
+		}, 
+		[l__TitleType__6.SCARED] = {
+			text = "Scared"
+		}, 
+		[l__TitleType__6.BAIT] = {
+			text = "Bait"
+		}, 
+		[l__TitleType__6.GENERATOR] = {
+			text = "Generator"
+		}, 
+		[l__TitleType__6.NOOB] = {
+			text = "Noob"
+		}, 
+		[l__TitleType__6.CASUAL] = {
+			text = "CASUAL"
+		}, 
+		[l__TitleType__6.COMPETITIVE] = {
+			text = "Competitive"
+		}, 
 		[l__TitleType__6.VERIFIED] = {
 			name = "Verified", 
 			text = "Verified", 

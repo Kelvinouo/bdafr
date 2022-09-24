@@ -120,6 +120,12 @@ v2.BATTERY = "battery";
 v1.battery = "BATTERY";
 v2.HANNAH = "hannah";
 v1.hannah = "HANNAH";
+v2.MAGE = "mage";
+v1.mage = "MAGE";
+v2.DRAGON_SLAYER = "dragon_slayer";
+v1.dragon_slayer = "DRAGON_SLAYER";
+v2.VOID_DRAGON = "void_dragon";
+v1.void_dragon = "VOID_DRAGON";
 return {
 	BedwarsKit = v2
 };

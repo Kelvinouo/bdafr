@@ -16,7 +16,8 @@ local v2 = {
 	SimulateFinalKill = false, 
 	KillEffectType = "", 
 	DisableSaving = false, 
-	SimulateRankPromotion = false
+	SimulateRankPromotion = false, 
+	RelicType = ""
 };
 local l___config__1 = v1.import(script, v1.getModule(script, "@rbxts", "services")).ReplicatedStorage:WaitForChild("TS"):WaitForChild("_config");
 return {

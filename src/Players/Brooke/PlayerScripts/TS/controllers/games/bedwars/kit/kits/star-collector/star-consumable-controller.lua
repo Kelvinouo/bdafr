@@ -28,8 +28,9 @@ local l__Players__7 = v2.Players;
 local l__Flamework__8 = v1.import(script, v1.getModule(script, "@flamework", "core").out).Flamework;
 local u9 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
 local u10 = v1.import(script, script.Parent, "ui", "star-collector-notification").StarCollectorNotification;
-local l__StarCollectorDisplay__11 = v1.import(script, script.Parent, "ui", "star-collector-display").StarCollectorDisplay;
-local l__EffectUtil__12 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "effect", "effect-util").EffectUtil;
+local l__KnitClient__11 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
+local l__StarCollectorDisplay__12 = v1.import(script, script.Parent, "ui", "star-collector-display").StarCollectorDisplay;
+local l__EffectUtil__13 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "effect", "effect-util").EffectUtil;
 function v4.KnitStart(p2)
 	l__KnitController__3.KnitStart(p2);
 	l__default__1.Client:OnEvent("RemoteName", function(p3)
@@ -76,12 +77,12 @@ function v4.KnitStart(p2)
 				end;			
 			end;
 			if p3.player == l__Players__7.LocalPlayer then
-				local u13 = l__Flamework__8.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(u9.createElement(u10, {
+				local u14 = l__Flamework__8.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(u9.createElement(u10, {
 					text = "health +1!", 
 					textColor3 = Color3.fromRGB(85, 255, 127)
 				}));
 				task.delay(3, function()
-					u13:DoCleaning();
+					u14:DoCleaning();
 				end);
 			end;
 		elseif p3.starType == l__ItemType__6.CRIT_STAR then
@@ -105,36 +106,32 @@ function v4.KnitStart(p2)
 				end;			
 			end;
 			if p3.player == l__Players__7.LocalPlayer then
-				local u14 = l__Flamework__8.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(u9.createElement(u10, {
+				local u15 = l__Flamework__8.resolveDependency("@easy-games/game-core:client/controllers/action-bar/action-bar-controller@ActionBarController"):addComponent(u9.createElement(u10, {
 					text = "crit +1!", 
 					textColor3 = Color3.fromRGB(253, 166, 91)
 				}));
 				task.delay(3, function()
-					u14:DoCleaning();
+					u15:DoCleaning();
 				end);
 			end;
 		end;
 		if p3.player == l__Players__7.LocalPlayer then
 			if not p2.starCollectorTree then
-				p2.starCollectorTree = u9.mount(u9.createElement("ScreenGui", {
-					ResetOnSpawn = false
-				}, { u9.createElement(l__StarCollectorDisplay__11, {
-						greenStars = p3.stats.greenStars, 
-						yellowStars = p3.stats.yellowStars
-					}) }), l__Players__7.LocalPlayer:FindFirstChildOfClass("PlayerGui"));
+				p2.starCollectorTree = l__KnitClient__11.Controllers.StatusInfoListController:waitForSetupAddElement(u9.createElement(l__StarCollectorDisplay__12, {
+					greenStars = p3.stats.greenStars, 
+					yellowStars = p3.stats.yellowStars
+				}));
 			else
-				u9.update(p2.starCollectorTree, u9.createElement("ScreenGui", {
-					ResetOnSpawn = false
-				}, { u9.createElement(l__StarCollectorDisplay__11, {
-						greenStars = p3.stats.greenStars, 
-						yellowStars = p3.stats.yellowStars
-					}) }));
+				u9.update(p2.starCollectorTree, u9.createElement(l__StarCollectorDisplay__12, {
+					greenStars = p3.stats.greenStars, 
+					yellowStars = p3.stats.yellowStars
+				}));
 			end;
 		end;
-		l__EffectUtil__12:playEffects(v8, v7, {
+		l__EffectUtil__13:playEffects(v8, v7, {
 			destroyAfterSec = 2
 		});
 	end);
 end;
-local v24 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient.CreateController(v4.new());
+local v24 = l__KnitClient__11.CreateController(v4.new());
 return nil;

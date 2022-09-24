@@ -43,7 +43,7 @@ function v7.KnitStart(p2)
 			v9.Volume = p4;
 			return v9.Volume;
 		end, 0, 0.3);
-		local u13 = l__KnitClient__6.Controllers.LightingController.atmosphereModifier:addModifier(30, {
+		local u13 = l__KnitClient__6.Controllers.LightingController:getAtmosphereModifier():addModifier(30, {
 			Color = Color3.fromRGB(0, 0, 0), 
 			Density = 0, 
 			Haze = 0

@@ -10,7 +10,8 @@ local u1 = {
 	pigsyResources = {
 		coin = 0
 	}, 
-	hannahCombo = 0
+	hannahCombo = 0, 
+	voidDragonProgress = 0
 };
 return {
 	KitReducer = function(p1, p2)
@@ -102,14 +103,26 @@ return {
 			v29.pigsyResources = p2.progress;
 			return v29;
 		end;
-		if l__type__1 ~= "KitHannahSetCombo" then
+		if l__type__1 == "KitHannahSetCombo" then
+			local v32 = {};
+			for v33, v34 in pairs(p1) do
+				v32[v33] = v34;
+			end;
+			v32.hannahCombo = p2.combo;
+			return v32;
+		end;
+		if l__type__1 ~= "KitVoidDragonIncrementProgress" then
 			return p1;
 		end;
-		local v32 = {};
-		for v33, v34 in pairs(p1) do
-			v32[v33] = v34;
+		local v35 = p1.voidDragonProgress;
+		if v35 == nil then
+			v35 = 0;
 		end;
-		v32.hannahCombo = p2.combo;
-		return v32;
+		local v36 = {};
+		for v37, v38 in pairs(p1) do
+			v36[v37] = v38;
+		end;
+		v36.voidDragonProgress = math.max(0, (math.min(1, v35 + p2.progress)));
+		return v36;
 	end
 };

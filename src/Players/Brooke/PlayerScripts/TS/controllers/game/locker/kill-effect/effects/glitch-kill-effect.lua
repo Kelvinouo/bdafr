@@ -61,134 +61,117 @@ local l__Players__9 = v4.Players;
 local l__SoundManager__10 = v2.SoundManager;
 local l__GameSound__11 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "sound", "game-sound").GameSound;
 local l__RunService__12 = v4.RunService;
-local function u13(p5)
-	local l__Adornee__12 = p5.Adornee;
-	if l__Adornee__12 == nil then
-		return nil;
-	end;
-	local v13 = Vector3.FromNormalId(p5.Face) * -1;
-	if math.abs(v13.Y) == 1 then
-		local v14 = Vector3.new(v13.Y, 0, 0);
-	else
-		v14 = Vector3.new(0, 1, 0);
-	end;
-	local v15 = CFrame.fromAxisAngle(v14, math.pi / 2) * v13;
-	local l__Unit__16 = v13:Cross(v15).Unit;
-	return {
-		cf = l__Adornee__12.CFrame * CFrame.fromMatrix(v13 * -1 * (l__Adornee__12.Size / 2), v15, l__Unit__16, v13), 
-		size = Vector2.new((l__Adornee__12.Size * v15).Magnitude, (l__Adornee__12.Size * l__Unit__16).Magnitude)
-	};
-end;
+local l__getSurfaceInfo__13 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent, "lib", "viewport-portal-magic", "viewport-portal-magic").getSurfaceInfo;
 local l__default__14 = v1.import(script, v1.getModule(script, "@rbxts", "tween")).default;
 local l__OutBack__15 = v3.OutBack;
 local l__OutExpo__16 = v3.OutExpo;
-function v6.onKill(p6, p7, p8, p9)
-	local v17 = u4.new();
-	local v18 = u1("Part", {
+function v6.onKill(p5, p6, p7, p8)
+	local v12 = u4.new();
+	local v13 = u1("Part", {
 		Size = Vector3.new(7, 7, 7), 
 		Rotation = Vector3.new(45, 0, 0), 
 		CanCollide = false, 
 		Anchored = true, 
 		Transparency = 1, 
-		Position = p9.Position + Vector3.new(0, 0, 0), 
+		Position = p8.Position + Vector3.new(0, 0, 0), 
 		Parent = l__Workspace__2
 	});
-	l__GameQueryUtil__5:setQueryIgnored(v18, true);
-	local v19 = {};
-	local v20, v21, v22 = ipairs(Enum.NormalId:GetEnumItems());
+	l__GameQueryUtil__5:setQueryIgnored(v13, true);
+	local v14 = {};
+	local v15, v16, v17 = ipairs(Enum.NormalId:GetEnumItems());
 	while true do
-		v20(v21, v22);
-		if not v20 then
+		v15(v16, v17);
+		if not v15 then
 			break;
 		end;
-		v22 = v20;
-		local v23 = u6(p8, p9);
-		local v24 = {};
-		local v25 = {
+		v17 = v15;
+		local v18 = u6(p7, p8);
+		local v19 = {};
+		local v20 = {
 			ResetOnSpawn = false, 
-			Adornee = v18, 
-			Face = v21, 
+			Adornee = v13, 
+			Face = v16, 
 			SizingMode = Enum.SurfaceGuiSizingMode.FixedSize, 
 			CanvasSize = Vector2.new(800, 800), 
-			Children = { v23.viewportFrame }, 
+			Children = { v18.viewportFrame }, 
 			ClipsDescendants = true
 		};
 		if l__DeviceUtil__7.isHoarceKat() then
-			local v26 = l__StarterGui__8;
+			local v21 = l__StarterGui__8;
 		else
-			v26 = l__Players__9.LocalPlayer:FindFirstChildOfClass("PlayerGui");
+			v21 = l__Players__9.LocalPlayer:FindFirstChildOfClass("PlayerGui");
 		end;
-		v25.Parent = v26;
-		v24.surfaceGui = u1("SurfaceGui", v25);
-		v24.slice = v23;
-		v19[v21] = v24;	
+		v20.Parent = v21;
+		v19.surfaceGui = u1("SurfaceGui", v20);
+		v19.slice = v18;
+		v14[v16] = v19;	
 	end;
-	l__KillEffect__5.hideCharacter(p6, p8);
+	l__KillEffect__5.hideCharacter(p5, p7);
 	l__SoundManager__10:playSound(l__GameSound__11.GLITCH_KILL_EFFECT, {
-		position = p9.Position
+		position = p8.Position
 	});
-	local l__Position__17 = v18.Position;
-	v17:GiveTask(l__RunService__12.RenderStepped:Connect(function()
-		local v27 = math.noise(os.clock() * 8) + 0.05;
-		local v28 = math.noise(0, os.clock() * 18) * 10;
-		local v29 = math.noise(os.clock() * 18) * 5;
-		local v30 = math.noise(0, 0, os.clock() * 18) * 5;
-		v18.Rotation = Vector3.new(25 + v28, v29, v30);
-		v18.Position = l__Position__17 + Vector3.new(math.noise(os.clock() * 15) * 0.5, math.noise(0, 0, -os.clock() * 15) * 0.5, math.noise(os.clock() * -15) * 0.5);
-		for v31, v32 in pairs(v19) do
-			local l__surfaceGui__33 = v32.surfaceGui;
-			local l__slice__34 = v32.slice;
-			local v35 = u13(l__surfaceGui__33);
-			if v35 ~= nil then
-				l__slice__34.clone:SetPrimaryPartCFrame(p9 * CFrame.Angles(-math.rad(v28) / 2, -math.rad(v29) / 2, -math.rad(v30) / 2));
-				l__slice__34.viewportFrame.Ambient = Color3.fromRGB(255, 255, 255):Lerp(Color3.fromRGB(170, 85, 255), math.clamp(0.9 + v27, 0, 1));
-				local l__Y__36 = l__Workspace__2.CurrentCamera.ViewportSize.Y;
-				local v37 = v35.cf:PointToObjectSpace(l__Workspace__2.CurrentCamera.CFrame.Position);
-				local v38 = v37.X / v35.size.X;
-				local v39 = v37.Y / v35.size.Y;
-				local v40 = 1 + math.abs(v38) * 2;
-				local v41 = 1 + math.abs(v39) * 2;
-				local v42 = math.sqrt(v40 * v40 + v41 * v41);
-				local v43 = (l__Workspace__2.CurrentCamera.CFrame.Position - v35.cf.Position):Dot(v35.cf.LookVector);
-				local v44 = 2 * math.atan2(v35.size.Y / 2, v43);
-				local v45 = math.clamp(math.deg(v44), 1, 120);
-				local v46 = math.tan(math.rad(v45) / 2);
-				if v44 > 2.0943951023931953 then
-					local v47 = v43 / (v35.size.Y / 2 / v46);
+	local l__Position__17 = v13.Position;
+	v12:GiveTask(l__RunService__12.RenderStepped:Connect(function()
+		local v22 = math.noise(os.clock() * 8) + 0.05;
+		local v23 = math.noise(0, os.clock() * 18) * 10;
+		local v24 = math.noise(os.clock() * 18) * 5;
+		local v25 = math.noise(0, 0, os.clock() * 18) * 5;
+		v13.Rotation = Vector3.new(25 + v23, v24, v25);
+		v13.Position = l__Position__17 + Vector3.new(math.noise(os.clock() * 15) * 0.5, math.noise(0, 0, -os.clock() * 15) * 0.5, math.noise(os.clock() * -15) * 0.5);
+		for v26, v27 in pairs(v14) do
+			local l__surfaceGui__28 = v27.surfaceGui;
+			local l__slice__29 = v27.slice;
+			local v30 = l__getSurfaceInfo__13(l__surfaceGui__28);
+			if v30 ~= nil then
+				l__slice__29.clone:SetPrimaryPartCFrame(p8 * CFrame.Angles(-math.rad(v23) / 2, -math.rad(v24) / 2, -math.rad(v25) / 2));
+				l__slice__29.viewportFrame.Ambient = Color3.fromRGB(255, 255, 255):Lerp(Color3.fromRGB(170, 85, 255), math.clamp(0.9 + v22, 0, 1));
+				local l__Y__31 = l__Workspace__2.CurrentCamera.ViewportSize.Y;
+				local v32 = v30.cf:PointToObjectSpace(l__Workspace__2.CurrentCamera.CFrame.Position);
+				local v33 = v32.X / v30.size.X;
+				local v34 = v32.Y / v30.size.Y;
+				local v35 = 1 + math.abs(v33) * 2;
+				local v36 = 1 + math.abs(v34) * 2;
+				local v37 = math.sqrt(v35 * v35 + v36 * v36);
+				local v38 = (l__Workspace__2.CurrentCamera.CFrame.Position - v30.cf.Position):Dot(v30.cf.LookVector);
+				local v39 = 2 * math.atan2(v30.size.Y / 2, v38);
+				local v40 = math.clamp(math.deg(v39), 1, 120);
+				local v41 = math.tan(math.rad(v40) / 2);
+				if v39 > 2.0943951023931953 then
+					local v42 = v38 / (v30.size.Y / 2 / v41);
 				else
-					v47 = 1;
+					v42 = 1;
 				end;
-				local v48 = v47 / v42;
-				l__slice__34.viewportFrame.Position = UDim2.new(l__slice__34.viewportFrame.AnchorPoint.X - v38, 0, l__slice__34.viewportFrame.AnchorPoint.Y - v39, 0);
-				l__slice__34.viewportFrame.Size = UDim2.new(v42, 0, v42, 0);
-				l__surfaceGui__33.CanvasSize = Vector2.new(l__Y__36 * (v35.size.X / v35.size.Y), l__Y__36);
-				l__slice__34.camera.FieldOfView = v45;
-				l__slice__34.camera.CFrame = CFrame.new(l__Workspace__2.CurrentCamera.CFrame.Position) * (v35.cf - v35.cf.Position) * CFrame.Angles(0, math.pi, 0) * CFrame.new(0, 0, 0, v48, 0, 0, 0, v48, 0, 0, 0, 1);
+				local v43 = v42 / v37;
+				l__slice__29.viewportFrame.Position = UDim2.new(l__slice__29.viewportFrame.AnchorPoint.X - v33, 0, l__slice__29.viewportFrame.AnchorPoint.Y - v34, 0);
+				l__slice__29.viewportFrame.Size = UDim2.new(v37, 0, v37, 0);
+				l__surfaceGui__28.CanvasSize = Vector2.new(l__Y__31 * (v30.size.X / v30.size.Y), l__Y__31);
+				l__slice__29.camera.FieldOfView = v40;
+				l__slice__29.camera.CFrame = CFrame.new(l__Workspace__2.CurrentCamera.CFrame.Position) * (v30.cf - v30.cf.Position) * CFrame.Angles(0, math.pi, 0) * CFrame.new(0, 0, 0, v43, 0, 0, 0, v43, 0, 0, 0, 1);
 			end;
 		end;
 	end));
-	local l__Size__18 = v18.Size;
+	local l__Size__18 = v13.Size;
 	task.spawn(function()
 		task.wait(0.5);
-		l__default__14(2, l__OutBack__15, function(p10)
-			local v49 = math.noise(os.clock() * 15) * 1.5;
-			v18.Size = Vector3.new((l__Size__18.X + v49) * p10, (l__Size__18.Y + v49) * p10, l__Size__18.Z);
+		l__default__14(2, l__OutBack__15, function(p9)
+			local v44 = math.noise(os.clock() * 15) * 1.5;
+			v13.Size = Vector3.new((l__Size__18.X + v44) * p9, (l__Size__18.Y + v44) * p9, l__Size__18.Z);
 		end, 1, 0.3):Wait();
 		task.wait(0.2);
-		l__default__14(0.2, l__OutExpo__16, function(p11)
-			local v50 = math.random() * 3;
-			v18.Size = Vector3.new((l__Size__18.X + v50) * p11, (l__Size__18.Y + v50) * p11, l__Size__18.Z);
+		l__default__14(0.2, l__OutExpo__16, function(p10)
+			local v45 = math.random() * 3;
+			v13.Size = Vector3.new((l__Size__18.X + v45) * p10, (l__Size__18.Y + v45) * p10, l__Size__18.Z);
 		end, 0.3, 0);
 	end);
-	v17:GiveTask(function()
-		for v51, v52 in pairs(v19) do
-			v52.surfaceGui:Destroy();
+	v12:GiveTask(function()
+		for v46, v47 in pairs(v14) do
+			v47.surfaceGui:Destroy();
 		end;
 	end);
-	v17:GiveTask(v18);
+	v12:GiveTask(v13);
 	task.delay(5, function()
-		v17:DoCleaning();
+		v12:DoCleaning();
 	end);
-	return v17;
+	return v12;
 end;
 return v6;

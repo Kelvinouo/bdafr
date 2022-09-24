@@ -12,7 +12,7 @@ local l__RankMeta__6 = v1.import(script, game:GetService("ReplicatedStorage"), "
 local l__HostPanelGeneralToggle__7 = v3.HostPanelGeneralToggle;
 local l__HostPanelToggleValue__8 = v3.HostPanelToggleValue;
 local u9 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
-local l__NameTagWinStreak__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "nametag", "nametag-winStreak").NameTagWinStreak;
+local l__NameTagWinStreak__10 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "entity", "nametag", "nametag-winstreak").NameTagWinStreak;
 return {
 	NameTag = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u9)(function(p1, p2)
 		local l__useState__4 = p2.useState;

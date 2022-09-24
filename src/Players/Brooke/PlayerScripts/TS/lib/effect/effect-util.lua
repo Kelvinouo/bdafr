@@ -128,6 +128,36 @@ function v2.scaleInstance(p13, p14, p15)
 		p14.Speed = NumberRange.new(p14.Speed.Min * p15, p14.Speed.Max * p15);
 	end;
 end;
+function v2.disableEffects(p16, p17)
+	local v30, v31, v32 = ipairs(p17);
+	while true do
+		v30(v31, v32);
+		if not v30 then
+			break;
+		end;
+		v32 = v30;
+		if v31:IsA("ParticleEmitter") then
+			v31.Enabled = false;
+		elseif v31:IsA("Light") then
+			v31.Enabled = false;
+		end;	
+	end;
+end;
+function v2.enableEffects(p18, p19)
+	local v33, v34, v35 = ipairs(p19);
+	while true do
+		v33(v34, v35);
+		if not v33 then
+			break;
+		end;
+		v35 = v33;
+		if v34:IsA("ParticleEmitter") then
+			v34.Enabled = true;
+		elseif v34:IsA("Light") then
+			v34.Enabled = true;
+		end;	
+	end;
+end;
 return {
 	EffectUtil = v2
 };

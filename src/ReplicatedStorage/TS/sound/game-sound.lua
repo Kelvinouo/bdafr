@@ -8,6 +8,7 @@ local v4 = {
 	QUEUE_MATCH_FOUND = "rbxassetid://6768247187", 
 	UI_HOVER = "", 
 	UI_CLICK = "rbxassetid://6732690176", 
+	UI_CLICK_2 = "rbxassetid://10968829209", 
 	UI_OPEN = "rbxassetid://6732607930", 
 	UI_REWARD = "rbxassetid://10715051012", 
 	PARTY_INCOMING_INVITE = "rbxassetid://6732495464", 
@@ -141,6 +142,7 @@ local v4 = {
 	AXOLOTL_SWITCH_TARGETS = "rbxassetid://7344278405", 
 	CHRISTMAS_MUSIC = "", 
 	SUSPENSE_MUSIC = "", 
+	KINGDOM_MUSIC = "rbxassetid://11000339846", 
 	SNAP_TRAP_SETUP = "rbxassetid://7796078515", 
 	SNAP_TRAP_CLOSE = "rbxassetid://7796078695", 
 	SNAP_TRAP_CONSUME_MARK = "rbxassetid://7796078825", 
@@ -427,8 +429,61 @@ local v4 = {
 	GLITCHED_LUCKY_BLOCK_TELEPORT = "rbxassetid://10857877299", 
 	GLITCHED_LUCKY_BLOCK_DAMAGE = "rbxassetid://10857877357", 
 	GLITCH_OVERLAY = "rbxassetid://10859056155", 
-	GLITCH_OVERLAY_2 = "rbxassetid://10859056835"
+	GLITCH_OVERLAY_2 = "rbxassetid://10859056835", 
+	MAGE_CAST_BASE_1 = "rbxassetid://10969529727", 
+	MAGE_CAST_BASE_2 = "rbxassetid://10969529817", 
+	MAGE_CAST_BASE_3 = "rbxassetid://10969529761", 
+	MAGE_CAST_FIRE_1 = "rbxassetid://10969529606", 
+	MAGE_CAST_FIRE_2 = "rbxassetid://10969529694", 
+	MAGE_CAST_FIRE_3 = "rbxassetid://10969529644", 
+	MAGE_CAST_ICE_1 = "rbxassetid://10969529576", 
+	MAGE_CAST_ICE_2 = "rbxassetid://10969529368", 
+	MAGE_CAST_ICE_3 = "rbxassetid://10969529454", 
+	MAGE_CAST_NATURE_1 = "rbxassetid://10969529190", 
+	MAGE_CAST_NATURE_2 = "rbxassetid://10969529321", 
+	MAGE_CAST_NATURE_3 = "rbxassetid://10969529409", 
+	MAGE_LEARN_FIRE = "rbxassetid://10969529529", 
+	MAGE_LEARN_ICE = "rbxassetid://10969529502", 
+	MAGE_LEARN_NATURE = "rbxassetid://10969529255", 
+	FIRE_ASPECT_HIT = "rbxassetid://10975357070", 
+	GLITCH_AMBIENT_1 = "rbxassetid://10900040727", 
+	GLITCH_AMBIENT_2 = "rbxassetid://10900041085", 
+	GLITCH_PARTICLE = "rbxassetid://10900041447", 
+	GLITCH_SCREEN_GLITCH = "rbxassetid://10900043671", 
+	GLITCH_ETABLE_IMPLOSION = "rbxassetid://10908288731", 
+	GLITCH_ETABLE_ORB_CONSUME = "rbxassetid://10908290369", 
+	GLITCH_ETABLE_REPAIR_HAMMER_1 = "rbxassetid://10908290801", 
+	GLITCH_ETABLE_REPAIR_HAMMER_2 = "rbxassetid://10908291717", 
+	GLITCH_ETABLE_REPAIR_HAMMER_3 = "rbxassetid://10908292488", 
+	GLITCH_ETABLE_REPAIR_HAMMER_4 = "rbxassetid://10908292667", 
+	STOMPER_HIT = "rbxassetid://11003762139", 
+	VOID_DRAGON_TRANSFORM = "rbxassetid://10989757268", 
+	VOID_DRAGON_BREATH = "rbxassetid://10989749756", 
+	VOID_DRAGON_FLAP_WING_1 = "rbxassetid://10989731366", 
+	VOID_DRAGON_FLAP_WING_2 = "rbxassetid://10989742694", 
+	RECORD_PLAYER_LOOP = "rbxassetid://11003756834", 
+	BLACKHOLE_END = "rbxassetid://11003745581", 
+	DRAGON_SLAYER_WALL_HIT = "rbxassetid://10998427869", 
+	DRAGON_SLAYER_PUNCH = "rbxassetid://10999699309", 
+	DRAGON_SLAYER_BLOCK_BREAK = "rbxassetid://10998428703", 
+	DRAGON_SLAYER_EXPLOSION = "rbxassetid://10998429062", 
+	DRAGON_ROAR = "rbxassetid://10996667854", 
+	DRAGON_WING_FLAP_1 = "rbxassetid://10996671495", 
+	DRAGON_WING_FLAP_2 = "rbxassetid://10996674295", 
+	KNIFE_RAIN_EFFECT = "rbxassetid://10999083570", 
+	MIRROR_EFFECT = "rbxassetid://10999189219", 
+	SPIRIT_EFFECT = "rbxassetid://10999499246", 
+	SPIRITORB_PULL_1 = "rbxassetid://10999341919", 
+	SPIRITORB_PULL_2 = "rbxassetid://10999343727", 
+	SPIRITORB_PULL_3 = "rbxassetid://10999346283", 
+	SPIRITORB_ABSORB_1 = "rbxassetid://10999348553", 
+	SPIRITORB_ABSORB_2 = "rbxassetid://10999350862", 
+	SPIRITORB_ABSORB_3 = "rbxassetid://10999352924"
 };
+l__SoundManager__3:registerSound(v4.RECORD_PLAYER_LOOP, {
+	volume = 0.3, 
+	rollOffMaxDistance = 70
+});
 l__SoundManager__3:registerSound(v4.VENDING_ROLL_TICK, {
 	preload = false
 });
@@ -597,6 +652,10 @@ l__SoundManager__3:registerSound(v4.SUSPENSE_MUSIC, {
 	preload = false, 
 	volume = 0.35
 });
+l__SoundManager__3:registerSound(v4.KINGDOM_MUSIC, {
+	preload = false, 
+	volume = 0.2
+});
 l__SoundManager__3:registerSound(v4.FISHERMAN_GAME_PULLING_LOOP, {
 	volume = 0.3
 });
@@ -707,6 +766,14 @@ l__SoundManager__3:registerSound(v4.PIRATE_EVENT_LOBBY_MUSIC, {
 l__SoundManager__3:registerSound(v4.TRUMPET_PLAY, {
 	preload = false, 
 	volume = 0.7
+});
+l__SoundManager__3:registerSound(v4.DRAGON_SLAYER_EXPLOSION, {
+	preload = false, 
+	volume = 1.2
+});
+l__SoundManager__3:registerSound(v4.DRAGON_SLAYER_PUNCH, {
+	preload = false, 
+	volume = 0.8
 });
 if not v2.DeviceUtil.isHoarceKat() then
 	l__SoundManager__3:preload();

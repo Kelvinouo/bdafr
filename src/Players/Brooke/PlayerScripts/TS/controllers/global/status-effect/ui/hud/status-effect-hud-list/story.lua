@@ -10,7 +10,15 @@ return function(p1)
 				statusEffect = l__StatusEffectType__3.FORCEFIELD, 
 				expireTime = 90, 
 				stacks = 2
-			} }
+			}, {
+				statusEffect = l__StatusEffectType__3.ENCHANT_FIRE_3, 
+				stacks = 0
+			}, {
+				statusEffect = l__StatusEffectType__3.GIANT, 
+				expireTime = 15, 
+				stacks = 0
+			} }, 
+		Position = UDim2.fromScale(0.5, 0.1)
 	}), p1);
 	return function()
 		return u1.unmount(u4);

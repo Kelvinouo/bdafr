@@ -602,7 +602,8 @@ local u1 = {
 		glickoCategory = l__GlickoCategory__4.RANKED_S5, 
 		rankCategory = l__RankCategory__5.RANKED_S5, 
 		placeId = l__PlaceId__3.GAME, 
-		game = l__GameType__7.BEDWARS
+		game = l__GameType__7.BEDWARS, 
+		disableRelics = true
 	}, 
 	[l__QueueType__10.BEDWARS_VOICE_CHAT] = {
 		title = "BedWars (Squads)", 
@@ -662,7 +663,8 @@ local u1 = {
 		ignorePlayFabTeamMatching = true, 
 		ignoreBaseStats = true, 
 		placeId = l__PlaceId__3.GAME_MEGA, 
-		winConInfoHud = "Win at 12:00"
+		winConInfoHud = "Win at 12:00", 
+		disableRelics = true
 	}, 
 	[l__QueueType__10.SKYWARS_TO2] = {
 		title = "SkyWars (Doubles)", 
@@ -737,7 +739,8 @@ local u1 = {
 		game = l__GameType__7.SKYWARS, 
 		noKits = true, 
 		alivePlayersCountHud = true, 
-		placeId = l__PlaceId__3.GAME
+		placeId = l__PlaceId__3.GAME, 
+		disableRelics = true
 	}, 
 	[l__QueueType__10.SKYWARS_TO4] = {
 		title = "SkyWars (Squads)", 
@@ -792,7 +795,8 @@ local u1 = {
 		game = l__GameType__7.SKYWARS, 
 		noKits = true, 
 		alivePlayersCountHud = true, 
-		placeId = l__PlaceId__3.GAME
+		placeId = l__PlaceId__3.GAME, 
+		disableRelics = true
 	}, 
 	[l__QueueType__10.SURVIVAL] = {
 		title = "Penguin Survival V2", 
@@ -816,7 +820,8 @@ local u1 = {
 		ignoreBaseStats = true, 
 		placeId = l__PlaceId__3.GAME, 
 		winConInfoHud = "Win at Wave 10", 
-		disableInCustom = false
+		disableInCustom = false, 
+		disableRelics = true
 	}, 
 	[l__QueueType__10.JUGGERNAUT_TDM] = {
 		title = "Juggernaut TDM", 
@@ -976,7 +981,8 @@ local u1 = {
 		placeId = l__PlaceId__3.GAME, 
 		game = l__GameType__7.GUN_GAME, 
 		noTopHud = true, 
-		autoQueue = true
+		autoQueue = true, 
+		disableRelics = true
 	}, 
 	[l__QueueType__10.ROYALE] = {
 		title = "Battle Royale", 
@@ -1016,7 +1022,8 @@ local u1 = {
 			max = 8
 		}, 
 		noKits = true, 
-		noTopHud = true
+		noTopHud = true, 
+		disableRelics = true
 	}
 };
 return {

@@ -8,10 +8,12 @@ local l__Players__3 = v1.import(script, v1.getModule(script, "@rbxts", "services
 local l__StatusEffectUtil__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "status-effect", "status-effect-util").StatusEffectUtil;
 local l__StatusEffectMeta__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "status-effect", "status-effect-meta").StatusEffectMeta;
 local l__ClientSyncEvents__6 = v1.import(script, script.Parent.Parent.Parent.Parent.Parent.Parent, "client-sync-events").ClientSyncEvents;
-local u7 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
-local l__StatusEffectHudTile__8 = v1.import(script, script.Parent, "status-effect-hud-tile").StatusEffectHudTile;
-local l__Empty__9 = v2.Empty;
-local u10 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u7)(function(p1, p2)
+local l__StatusEffectCategory__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "status-effect", "status-effect-category").StatusEffectCategory;
+local u8 = v1.import(script, v1.getModule(script, "@rbxts", "roact").src);
+local u9 = v1.import(script, script.Parent, "status-effect-hud-enchant-tile").StatusEffectHudEnchantTile;
+local l__StatusEffectHudTile__10 = v1.import(script, script.Parent, "status-effect-hud-tile").StatusEffectHudTile;
+local l__Empty__11 = v2.Empty;
+local u12 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src).new(u8)(function(p1, p2)
 	local l__useMemo__3 = p2.useMemo;
 	local v4, v5 = p2.useState(p1.StatusEffects or {});
 	p2.useEffect(function()
@@ -19,7 +21,7 @@ local u10 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src)
 			return nil;
 		end;
 		local v6 = u2.new();
-		local function u11()
+		local function u13()
 			if not l__Players__3.LocalPlayer.Character then
 				v5({});
 				return;
@@ -47,28 +49,35 @@ local u10 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src)
 		v6:GiveTask(l__ClientSyncEvents__6.StatusEffectAdded:connect(function(p3)
 			if p3.entityInstance == l__Players__3.LocalPlayer.Character then
 				task.spawn(function()
-					u11();
+					u13();
 				end);
 			end;
 		end));
 		v6:GiveTask(l__ClientSyncEvents__6.StatusEffectRemoved:connect(function(p4)
 			if p4.entityInstance == l__Players__3.LocalPlayer.Character then
 				task.spawn(function()
-					u11();
+					u13();
 				end);
 			end;
 		end));
 		v6:GiveTask(l__ClientSyncEvents__6.StatusEffectChanged:connect(function(p5)
 			if p5.entityInstance == l__Players__3.LocalPlayer.Character then
 				task.spawn(function()
-					u11();
+					u13();
 				end);
 			end;
 		end));
 	end, {});
 	local function v13(p6, p7)
-		return u7.createFragment({
-			[l__StatusEffectMeta__5[p6.statusEffect].displayName] = u7.createElement(l__StatusEffectHudTile__8, {
+		if l__StatusEffectMeta__5[p6.statusEffect].category == l__StatusEffectCategory__7.ENCHANT then
+			return u8.createFragment({
+				[l__StatusEffectMeta__5[p6.statusEffect].displayName] = u8.createElement(u9, {
+					ActiveStatusEffect = p6
+				})
+			});
+		end;
+		return u8.createFragment({
+			[l__StatusEffectMeta__5[p6.statusEffect].displayName] = u8.createElement(l__StatusEffectHudTile__10, {
 				ActiveStatusEffect = p6
 			})
 		});
@@ -85,10 +94,10 @@ local u10 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src)
 	end;
 	local v18 = {
 		Size = UDim2.new(0.7, 0, 0.06, 0), 
-		Position = UDim2.new(0.5, 0, 0, 0), 
+		Position = p1.Position or UDim2.new(0.5, 0, 0, 0), 
 		AnchorPoint = Vector2.new(0.5, 0)
 	};
-	local v19 = { u7.createElement("UIListLayout", {
+	local v19 = { u8.createElement("UIListLayout", {
 			FillDirection = "Horizontal", 
 			HorizontalAlignment = "Center", 
 			VerticalAlignment = "Center", 
@@ -104,21 +113,21 @@ local u10 = v1.import(script, v1.getModule(script, "@rbxts", "roact-hooks").src)
 		v23 = v21;
 		v19[v20 + v21] = v22;	
 	end;
-	return u7.createFragment({
-		StatusEffectHud = u7.createElement(l__Empty__9, v18, v19)
+	return u8.createFragment({
+		StatusEffectHud = u8.createElement(l__Empty__11, v18, v19)
 	});
 end);
 return {
-	StatusEffectHudList = u10, 
+	StatusEffectHudList = u12, 
 	StatusEffectHudListScreen = function(p8)
 		local v24 = {};
 		local v25 = {};
 		for v26, v27 in pairs(p8) do
 			v25[v26] = v27;
 		end;
-		v24[#v24 + 1] = u7.createElement(u10, v25);
-		return u7.createFragment({
-			StatusEffectHudScreen = u7.createElement("ScreenGui", {
+		v24[#v24 + 1] = u8.createElement(u12, v25);
+		return u8.createFragment({
+			StatusEffectHudScreen = u8.createElement("ScreenGui", {
 				ResetOnSpawn = false
 			}, v24)
 		});

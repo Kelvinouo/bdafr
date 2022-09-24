@@ -116,13 +116,19 @@ function v4.applyVoidCameraLighting(p8)
 		Brightness = 0, 
 		ClockTime = 6.3
 	})));
-	table.insert(v8, (l__KnitClient__4.Controllers.LightingController.atmosphereModifier:addModifier(20, {
-		Density = 0.45, 
-		Offset = 0, 
-		Color = Color3.fromRGB(193, 193, 193), 
-		Glare = 0, 
-		Haze = 0
-	})));
+	local v9 = l__KnitClient__4.Controllers.LightingController.atmosphereModifier;
+	if v9 ~= nil then
+		v9 = v9:addModifier(20, {
+			Density = 0.45, 
+			Offset = 0, 
+			Color = Color3.fromRGB(193, 193, 193), 
+			Glare = 0, 
+			Haze = 0
+		});
+	end;
+	if v9 then
+		table.insert(v8, v9);
+	end;
 	table.insert(v8, (l__KnitClient__4.Controllers.LightingController.sunRayModifier:addModifier(20, {
 		Intensity = 0.005
 	})));

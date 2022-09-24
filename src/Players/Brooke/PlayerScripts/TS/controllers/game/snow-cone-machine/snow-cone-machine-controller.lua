@@ -21,12 +21,12 @@ function v5.constructor(p1)
 	p1.Name = "SnowConeMachineController";
 	p1.upgradeCooldowns = l__ExpireList__1.new(2);
 end;
-local l__default__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
-local l__KnitClient__3 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
-local l__AnimationType__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
-local l__WatchCollectionTag__5 = v2.WatchCollectionTag;
-local u6 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
-local l__BalanceFile__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "balance", "balance-file").BalanceFile;
+local l__BalanceFile__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "balance", "balance-file").BalanceFile;
+local l__default__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
+local l__KnitClient__4 = v1.import(script, v1.getModule(script, "@easy-games", "knit").src).KnitClient;
+local l__AnimationType__5 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "animation", "animation-type").AnimationType;
+local l__WatchCollectionTag__6 = v2.WatchCollectionTag;
+local u7 = v1.import(script, v1.getModule(script, "@rbxts", "make"));
 local l__Theme__8 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 local l__DeviceUtil__9 = v2.DeviceUtil;
 local l__ClientStore__10 = v1.import(script, script.Parent.Parent.Parent.Parent, "ui", "store").ClientStore;
@@ -48,17 +48,20 @@ local l__EntityUtil__25 = v1.import(script, game:GetService("ReplicatedStorage")
 local l__WeldUtil__26 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "weld-util").WeldUtil;
 function v5.KnitStart(p2)
 	l__KnitController__4.KnitStart(p2);
-	local v7 = l__default__2.Client:Get("RemoteName");
-	local v8 = l__default__2.Client:Get("RemoteName");
+	if l__BalanceFile__2.SNOW_CONE_MACHINE_DISABLED then
+		return nil;
+	end;
+	local v7 = l__default__3.Client:Get("RemoteName");
+	local v8 = l__default__3.Client:Get("RemoteName");
 	task.spawn(function()
-		l__KnitClient__3.Controllers.PreloadController:runPreload({
-			animations = { l__AnimationType__4.REPAIR_SNOW_CONE_MACHINE }
+		l__KnitClient__4.Controllers.PreloadController:runPreload({
+			animations = { l__AnimationType__5.REPAIR_SNOW_CONE_MACHINE }
 		});
 	end);
-	l__WatchCollectionTag__5("BrokenSnowConeMachine", function(p3)
-		local v9 = u6("ProximityPrompt", {
+	l__WatchCollectionTag__6("BrokenSnowConeMachine", function(p3)
+		local v9 = u7("ProximityPrompt", {
 			Parent = p3, 
-			ActionText = tostring(l__BalanceFile__7.RepairSnowConeMachinePrice) .. " Diamonds", 
+			ActionText = tostring(l__BalanceFile__2.RepairSnowConeMachinePrice) .. " Diamonds", 
 			ObjectText = "Repair Snow Cone Machine", 
 			KeyboardKeyCode = l__Theme__8.promptKeyboardKey, 
 			RequiresLineOfSight = false, 
@@ -78,9 +81,9 @@ function v5.KnitStart(p2)
 				});
 				return nil;
 			end;
-			if l__InventoryUtil__12.hasEnough(p4, l__ItemType__13.DIAMOND, l__BalanceFile__7.RepairSnowConeMachinePrice) then
+			if l__InventoryUtil__12.hasEnough(p4, l__ItemType__13.DIAMOND, l__BalanceFile__2.RepairSnowConeMachinePrice) then
 				local v11 = u14.new();
-				local u27 = l__GameAnimationUtil__15.playAnimation(l__Players__16.LocalPlayer, l__AnimationType__4.REPAIR_SNOW_CONE_MACHINE);
+				local u27 = l__GameAnimationUtil__15.playAnimation(l__Players__16.LocalPlayer, l__AnimationType__5.REPAIR_SNOW_CONE_MACHINE);
 				v11:GiveTask(function()
 					if u27 ~= nil then
 						u27:Stop();
@@ -96,7 +99,7 @@ function v5.KnitStart(p2)
 			end;
 			v9:InputHoldEnd();
 			l__Flamework__11.resolveDependency("@easy-games/game-core:client/controllers/notification-controller@NotificationController"):sendErrorNotification({
-				message = "You need " .. tostring(l__BalanceFile__7.RepairSnowConeMachinePrice) .. " diamonds to repair the Snow Cone Machine."
+				message = "You need " .. tostring(l__BalanceFile__2.RepairSnowConeMachinePrice) .. " diamonds to repair the Snow Cone Machine."
 			});
 			return nil;
 		end);
@@ -104,7 +107,7 @@ function v5.KnitStart(p2)
 			v8:CallServer(p3);
 		end);
 	end);
-	l__WatchCollectionTag__5("SnowConeMachine", function(p6)
+	l__WatchCollectionTag__6("SnowConeMachine", function(p6)
 		local v12 = l__ReplicatedStorage__17.Assets.Effects.SnowBlast:Clone();
 		v12.Parent = p6;
 		v12.Position = p6.Position + Vector3.new(0, 2.75, 0);
@@ -114,7 +117,7 @@ function v5.KnitStart(p2)
 				sizeMultiplier = 2
 			});
 		end);
-		local v13 = u6("ProximityPrompt", {
+		local v13 = u7("ProximityPrompt", {
 			Parent = p6, 
 			ActionText = "1 Emerald", 
 			ObjectText = "Make Snow Cone", 
@@ -215,7 +218,7 @@ function v5.KnitStart(p2)
 				if v22 ~= nil then
 					v22 = v22.AnimationId;
 				end;
-				if v22 == l__GameAnimationUtil__15.getAssetId(l__AnimationType__4.REPAIR_SNOW_CONE_MACHINE) then
+				if v22 == l__GameAnimationUtil__15.getAssetId(l__AnimationType__5.REPAIR_SNOW_CONE_MACHINE) then
 					if p2.upgradeCooldowns:has(p8.UserId) and p8.UserId ~= l__Players__16.LocalPlayer.UserId then
 						return nil;
 					end;
@@ -326,7 +329,7 @@ function v5.KnitStart(p2)
 			end);
 		end);
 	end);
-	l__default__2.Client:OnEvent("RemoteName", function(p12)
+	l__default__3.Client:OnEvent("RemoteName", function(p12)
 		task.spawn(function()
 			local v44 = l__ReplicatedStorage__17.Assets.Effects.SnowBlast:Clone();
 			v44.Parent = p12.snowConeMachine;
@@ -396,9 +399,9 @@ function v5.makeSnowCone(p21, p22)
 	if not v55 then
 		return nil;
 	end;
-	l__default__2.Client:Get("RemoteName"):CallServer({
+	l__default__3.Client:Get("RemoteName"):CallServer({
 		snowConeMachine = p22
 	});
 end;
-local v56 = l__KnitClient__3.CreateController(v5.new());
+local v56 = l__KnitClient__4.CreateController(v5.new());
 return nil;

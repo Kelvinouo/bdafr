@@ -61,7 +61,7 @@ function v5.KnitStart(p2)
 				Ambient = Color3.fromRGB(81, 68, 149), 
 				OutdoorAmbient = Color3.fromRGB(110, 138, 198)
 			});
-			local u13 = l__KnitClient__9.Controllers.LightingController.atmosphereModifier:addModifier(60, {
+			local u13 = l__KnitClient__9.Controllers.LightingController:getAtmosphereModifier():addModifier(60, {
 				Density = 0.52, 
 				Offset = 0, 
 				Color = Color3.fromRGB(71, 216, 95), 

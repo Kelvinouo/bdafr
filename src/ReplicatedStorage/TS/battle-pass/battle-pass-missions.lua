@@ -5,8 +5,8 @@ local l__ItemType__2 = v1.import(script, game:GetService("ReplicatedStorage"), "
 local v3 = {};
 local v4 = DateTime.fromUniversalTime(2021, 8, 27, 19);
 v3.SEASON_START_DATE = v4;
-v3.DAILY_MISSION_XP = 6000;
-v3.WEEKLY_MISSION_XP = 24000;
+v3.DAILY_MISSION_XP = 2000;
+v3.WEEKLY_MISSION_XP = 8000;
 local u1 = v4;
 function v3.getDay()
 	return math.ceil(math.max(DateTime.now().UnixTimestamp - u1.UnixTimestamp, 0) / 86400);

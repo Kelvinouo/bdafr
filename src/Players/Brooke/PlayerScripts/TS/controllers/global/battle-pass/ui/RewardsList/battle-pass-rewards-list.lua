@@ -28,37 +28,44 @@ return {
 		end;
 		local v9, v10 = p2.useState(v5);
 		local v11 = l__useMemo__4(function()
-			local v12 = l__BattlePassRewards__1[l__BattlePassUtils__2.BATTLE_PASS_SEASON];
-			local u8 = {};
-			local function v13(p3)
-				if u8[p3.level] == nil then
-					u8[p3.level] = { p3 };
-					return;
-				end;
-				local v14 = {};
-				local v15 = #v14;
-				local v16 = u8[p3.level];
-				local v17 = #v16;
-				table.move(v16, 1, v17, v15 + 1, v14);
-				v14[v15 + v17 + 1] = p3;
-				u8[p3.level] = v14;
-			end;
-			local v18 = {};
-			local v19 = 0;
-			local v20, v21, v22 = ipairs(v12);
+			local v12 = {};
+			local v13 = 1;
+			local v14 = false;
 			while true do
-				v20(v21, v22);
-				if not v20 then
+				if v14 then
+					v13 = v13 + 1;
+				else
+					v14 = true;
+				end;
+				if not (v13 <= l__BattlePassUtils__2.MAX_LEVEL) then
 					break;
 				end;
-				v22 = v20;
-				local v23 = v13(v21, v20 - 1, v12);
-				if v23 ~= nil then
-					v19 = v19 + 1;
-					v18[v19] = v23;
-				end;			
+				v12[v13] = {};			
 			end;
-			return u8;
+			local v15 = l__BattlePassRewards__1[l__BattlePassUtils__2.BATTLE_PASS_SEASON];
+			local function v16(p3)
+				if v12[p3.level] == nil then
+					v12[p3.level] = { p3 };
+					return;
+				end;
+				local v17 = {};
+				local v18 = #v17;
+				local v19 = v12[p3.level];
+				local v20 = #v19;
+				table.move(v19, 1, v20, v18 + 1, v17);
+				v17[v18 + v20 + 1] = p3;
+				v12[p3.level] = v17;
+			end;
+			local v21, v22, v23 = ipairs(v15);
+			while true do
+				v21(v22, v23);
+				if not v21 then
+					break;
+				end;
+				v23 = v21;
+				v16(v22, v21 - 1, v15);			
+			end;
+			return v12;
 		end, {});
 		local v24 = { u3.createElement(l__Empty__5, {
 				Size = UDim2.new(1, 0, 0.95, 0)
@@ -75,27 +82,29 @@ return {
 			v25[v26] = { v27, v28 };
 		end;
 		local function v29(p4)
+			local v30 = p4[1];
 			return u3.createElement(u6, {
+				Level = v30, 
 				BattlePass = p1.store.BattlePass, 
 				Size = UDim2.new(0, 90, 0.95, 0), 
 				SetReward = p1.SetReward, 
 				LevelRewards = p4[2], 
-				LayoutOrder = p4[1], 
+				LayoutOrder = v30, 
 				SetActive = v10, 
 				Active = v9
 			});
 		end;
-		local v30 = table.create(#v25);
-		local v31, v32, v33 = ipairs(v25);
+		local v31 = table.create(#v25);
+		local v32, v33, v34 = ipairs(v25);
 		while true do
-			v31(v32, v33);
-			if not v31 then
+			v32(v33, v34);
+			if not v32 then
 				break;
 			end;
-			v33 = v31;
-			v30[v31] = v29(v32, v31 - 1, v25);		
+			v34 = v32;
+			v31[v32] = v29(v33, v32 - 1, v25);		
 		end;
-		local v34 = {
+		local v35 = {
 			AdditionalSpace = 50, 
 			ScrollingFrameProps = {
 				Position = UDim2.new(0, 24, 0, 0), 
@@ -106,7 +115,7 @@ return {
 				LayoutOrder = 1
 			}
 		};
-		local v35 = { u3.createElement("UIListLayout", {
+		local v36 = { u3.createElement("UIListLayout", {
 				FillDirection = Enum.FillDirection.Horizontal, 
 				HorizontalAlignment = Enum.HorizontalAlignment.Left, 
 				VerticalAlignment = Enum.VerticalAlignment.Center, 
@@ -118,17 +127,17 @@ return {
 				PaddingLeft = UDim.new(0, 2), 
 				PaddingRight = UDim.new(0, 2)
 			}) };
-		local v36 = #v35;
-		local v37, v38, v39 = ipairs(v30);
+		local v37 = #v36;
+		local v38, v39, v40 = ipairs(v31);
 		while true do
-			v37(v38, v39);
-			if not v37 then
+			v38(v39, v40);
+			if not v38 then
 				break;
 			end;
-			v39 = v37;
-			v35[v36 + v37] = v38;		
+			v40 = v38;
+			v36[v37 + v38] = v39;		
 		end;
-		v24.BattlePassRewardsList = u3.createElement(l__AutoCanvasScrollingFrame__7, v34, v35);
+		v24.BattlePassRewardsList = u3.createElement(l__AutoCanvasScrollingFrame__7, v35, v36);
 		return u3.createFragment({
 			BattlePassRewardsListContainer = u3.createElement("Frame", {
 				Size = p1.Size, 

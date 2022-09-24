@@ -9,6 +9,271 @@ local l__LobbyGadgetType__6 = v1.import(script, game:GetService("ReplicatedStora
 local l__TitleType__7 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "locker", "title", "title-type").TitleType;
 return {
 	BattlePassRewards = {
+		season6 = { {
+				paid = false, 
+				level = 10, 
+				comingSoon = {
+					kit = true
+				}
+			}, {
+				paid = false, 
+				level = 25, 
+				kit = l__BedwarsKit__3.MAGE
+			}, {
+				paid = true, 
+				level = 35, 
+				kit = l__BedwarsKit__3.VOID_DRAGON
+			}, {
+				paid = false, 
+				level = 45, 
+				comingSoon = {
+					kit = true
+				}
+			}, {
+				paid = true, 
+				level = 50, 
+				kit = l__BedwarsKit__3.DRAGON_SLAYER
+			}, {
+				paid = false, 
+				level = 15, 
+				killEffect = l__KillEffectType__5.KNIFE_RAIN
+			}, {
+				paid = true, 
+				level = 30, 
+				killEffect = l__KillEffectType__5.BUTTERFLY
+			}, {
+				paid = true, 
+				level = 40, 
+				killEffect = l__KillEffectType__5.MIRROR
+			}, {
+				paid = false, 
+				level = 5, 
+				lobbyGadget = l__LobbyGadgetType__6.TOY_HAMMER
+			}, {
+				paid = true, 
+				level = 1, 
+				lobbyGadget = l__LobbyGadgetType__6.TWIRL_BLADE
+			}, {
+				paid = true, 
+				level = 20, 
+				lobbyGadget = l__LobbyGadgetType__6.GRENADE_LAUNCHER
+			}, {
+				paid = true, 
+				level = 49, 
+				lobbyGadget = l__LobbyGadgetType__6.ROCKET_BELT
+			}, {
+				paid = true, 
+				level = 1, 
+				emote = l__EmoteType__4.KNIGHTS_BOW
+			}, {
+				paid = true, 
+				level = 48, 
+				emote = l__EmoteType__4.ZEN_HOVER
+			}, {
+				paid = false, 
+				level = 37, 
+				emote = l__EmoteType__4.BOOK_READ
+			}, {
+				paid = false, 
+				level = 6, 
+				emote = l__EmoteType__4.ALCHEMIST_SAD
+			}, {
+				paid = false, 
+				level = 14, 
+				emote = l__EmoteType__4.AMY_SILENT
+			}, {
+				paid = true, 
+				level = 26, 
+				emote = l__EmoteType__4.AMY_EASTER_NO_IRON
+			}, {
+				paid = false, 
+				level = 8, 
+				emote = l__EmoteType__4.BAKER_PROFIT
+			}, {
+				paid = false, 
+				level = 11, 
+				emote = l__EmoteType__4.BEE_KEEPER_THANKS
+			}, {
+				paid = true, 
+				level = 19, 
+				emote = l__EmoteType__4.BUILDER_LEAVE_DOOR
+			}, {
+				paid = false, 
+				level = 39, 
+				emote = l__EmoteType__4.BUILDER_SHEESH
+			}, {
+				paid = false, 
+				level = 21, 
+				emote = l__EmoteType__4.COBALT_CHARGED
+			}, {
+				paid = false, 
+				level = 17, 
+				emote = l__EmoteType__4.CROCOWOLF_YOU_CANT_RUN
+			}, {
+				paid = true, 
+				level = 28, 
+				emote = l__EmoteType__4.FARMER_CRY
+			}, {
+				paid = true, 
+				level = 13, 
+				emote = l__EmoteType__4.DOM_IM_DONE
+			}, {
+				paid = false, 
+				level = 2, 
+				emote = l__EmoteType__4.FARMER_NOT_BAD
+			}, {
+				paid = true, 
+				level = 25, 
+				emote = l__EmoteType__4.MAGE_ELEMENTAL
+			}, {
+				paid = false, 
+				level = 29, 
+				emote = l__EmoteType__4.FIRE_DRAGON_SIP
+			}, {
+				paid = true, 
+				level = 50, 
+				emote = l__EmoteType__4.FIRE_DRAGON_WHAT
+			}, {
+				paid = true, 
+				level = 38, 
+				emote = l__EmoteType__4.FIRE_DRAGON_WIN_STREAK
+			}, {
+				paid = false, 
+				level = 32, 
+				emote = l__EmoteType__4.FISHERMAN_GOLD
+			}, {
+				paid = true, 
+				level = 9, 
+				emote = l__EmoteType__4.FREIYA_POP_CAT
+			}, {
+				paid = true, 
+				level = 4, 
+				emote = l__EmoteType__4.GHOST_CATCHER_IN_LOVE
+			}, {
+				paid = true, 
+				level = 44, 
+				emote = l__EmoteType__4.LUCIA_PATHETIC
+			}, {
+				paid = false, 
+				level = 37, 
+				emote = l__EmoteType__4.MARCO_VILLAGER
+			}, {
+				paid = true, 
+				level = 34, 
+				emote = l__EmoteType__4.MELODY_FACE_PALM
+			}, {
+				paid = true, 
+				level = 10, 
+				emote = l__EmoteType__4.MELODY_PEACE_OUT
+			}, {
+				paid = true, 
+				level = 22, 
+				emote = l__EmoteType__4.METAL_DETECTOR_BORING
+			}, {
+				paid = true, 
+				level = 45, 
+				emote = l__EmoteType__4.PENGUIN_SLEEP
+			}, {
+				paid = true, 
+				level = 5, 
+				emote = l__EmoteType__4.PINANTA_PARTY_TIME
+			}, {
+				paid = true, 
+				level = 15, 
+				emote = l__EmoteType__4.STELLA_HEART
+			}, {
+				paid = true, 
+				level = 35, 
+				emote = l__EmoteType__4.VOID_DRAGON_ANGRY
+			}, {
+				paid = true, 
+				level = 1, 
+				emote = l__EmoteType__4.VOID_DRAGON_ART
+			}, {
+				paid = false, 
+				level = 43, 
+				emote = l__EmoteType__4.YUZI_ANGRY
+			}, {
+				paid = true, 
+				level = 47, 
+				emote = l__EmoteType__4.ZEPHYR_SMUG
+			}, {
+				paid = false, 
+				level = 18, 
+				title = l__TitleType__7.MAGE
+			}, {
+				paid = false, 
+				level = 3, 
+				title = l__TitleType__7.KNIGHT
+			}, {
+				paid = true, 
+				level = 50, 
+				title = l__TitleType__7.DRAGON
+			}, {
+				paid = false, 
+				level = 12, 
+				title = l__TitleType__7.PALADIN
+			}, {
+				paid = true, 
+				level = 43, 
+				title = l__TitleType__7.DRAGON_EMOJI
+			}, {
+				paid = false, 
+				level = 36, 
+				title = l__TitleType__7.SHAPE_SHIFTER
+			}, {
+				paid = true, 
+				level = 42, 
+				title = l__TitleType__7.QUEEN
+			}, {
+				paid = true, 
+				level = 39, 
+				title = l__TitleType__7.KING
+			}, {
+				paid = true, 
+				level = 24, 
+				title = l__TitleType__7.CROWN_EMOJI
+			}, {
+				paid = true, 
+				level = 48, 
+				title = l__TitleType__7.RULER
+			}, {
+				paid = false, 
+				level = 41, 
+				title = l__TitleType__7.FANCY
+			}, {
+				paid = false, 
+				level = 46, 
+				title = l__TitleType__7.CLEAN
+			}, {
+				paid = false, 
+				level = 23, 
+				title = l__TitleType__7.MID
+			}, {
+				paid = true, 
+				level = 29, 
+				title = l__TitleType__7.SCARED
+			}, {
+				paid = true, 
+				level = 33, 
+				title = l__TitleType__7.BAIT
+			}, {
+				paid = false, 
+				level = 27, 
+				title = l__TitleType__7.GENERATOR
+			}, {
+				paid = false, 
+				level = 31, 
+				title = l__TitleType__7.NOOB
+			}, {
+				paid = true, 
+				level = 16, 
+				title = l__TitleType__7.CASUAL
+			}, {
+				paid = true, 
+				level = 7, 
+				title = l__TitleType__7.COMPETITIVE
+			} }, 
 		season5 = { {
 				paid = false, 
 				level = 10, 

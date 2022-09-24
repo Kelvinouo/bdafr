@@ -54,6 +54,9 @@ v7.ChangeWorld = l__SyncEvent__2.new(v1.import(script, script.Parent, "controlle
 v7.EntityChangeHeldItem = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "global", "inventory", "event", "item-hold-event").ItemHoldEvent);
 v7.BackpackEquipEvent = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "global", "backpack", "backpack-equip-event").BackpackEquipEvent);
 v7.ItemConsumed = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "global", "consume", "event", "item-consumed-event").ItemConsumedEvent);
+v7.StartEnchantRepair = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "game", "enchant-table", "event", "start-enchant-repair-event").StartEnchantRepairEvent);
+v7.MatchStateChange = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "global", "connect", "event", "match-state-change-event").MatchStateChangeEvent);
+v7.NewHandItem = l__SyncEvent__2.new(v1.import(script, script.Parent, "controllers", "global", "inventory", "event", "new-hand-item-event").NewHandItemEvent);
 return {
 	ClientSyncEvents = v7
 };

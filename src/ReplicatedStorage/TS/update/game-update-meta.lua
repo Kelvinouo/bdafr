@@ -8,10 +8,21 @@ local l__EmoteType__5 = v1.import(script, game:GetService("ReplicatedStorage"), 
 local l__Theme__6 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "theme", "theme").Theme;
 return {
 	GameUpdateButtons = {
-		newestKit = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit.DASHER, 
-		newestKitBG = "rbxassetid://8795128315"
+		newestKit = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "bedwars-kit").BedwarsKit.HANNAH, 
+		newestKitBG = "rbxassetid://10983634478"
 	}, 
 	GameUpdateMeta = { {
+			updateLogId = 51, 
+			visible = true, 
+			title = "Season 6 Battle Pass - Dragon Kingdoms!", 
+			date = "9/23/2022", 
+			body = "<b>Welcome to the start of Season 6! \240\159\143\176\240\159\144\137 </b> \nDragons, magic, and mystical crystals have changed the world of BedWars, forging newly found Relics in all game modes.\n\n\240\159\143\176\240\159\142\159\239\184\143 <b>Battle Pass Season 6</b>\nThe Battle Pass gives you access to tons of limited edition content! Owning the Battle Pass also gives a 20% experience bonus.\n\n\240\159\165\135 <b>Battle Pass Rewards</b>\n\240\159\140\159 5 Kits (3 out now, 2 Coming Soon)\nLV 50 - \240\159\148\165 Dragon Warrior Kaliyah\nLV 45 - \226\157\148 Coming Soon\nLV 35 - \240\159\144\178 Void Dragon Xu'rot\nLV 25 - \240\159\167\153 Mage Whim\nLV 10 - \226\157\148 Coming Soon\n\n\240\159\148\170 3 kill effects\n\240\159\167\184 3 lobby gadgets\n\240\159\167\184 25 image emotes\n\240\159\146\131\194\1603 Animated Emotes\n\240\159\143\183\239\184\143 19 lobby titles\n\n\240\159\146\171 <b>Relics</b> \nNew this season: each team votes for a relic to augment their team\226\128\153s gameplay.\n\n\240\159\159\168 3 Legendary Relics\n\240\159\159\170 3 Corrupt Relics\n\240\159\159\166 21 Other Relics\n\n\240\159\143\134 <b>Season 5 Ranked Season</b>\nSeason 5 Ranked will be ending shortly. The newly added Relics system will not be activated in the Season 5 Ranked queue. We\226\128\153ll be spending some time on new changes to ranked for Season 6.\n\240\159\142\129\194\160<b>Ranked Rewards</b>\n- Title of the rank you reached\n- Exclusive Victorious Skin for Nightmare-ranked players\n\n\240\159\134\147 <b>Free Kits of the Week</b>\n\226\154\148\239\184\143 Barbarian\n\240\159\146\163 Davey\n\240\159\148\168 Builder\n\n\240\159\151\186\239\184\143 <b>New Maps</b>\n\240\159\170\168 Craglands (Doubles, Squads)\n\240\159\154\169\194\160Arena (Doubles, Squads)\n\240\159\140\145\194\160Darkholm (Doubles, Squads)\n\240\159\140\136\194\160Skybound (Squads)\n\240\159\143\156\239\184\143\194\160Canyon (Squads)\n\240\159\166\180\194\160Catacombs (Doubles)\n\226\152\162\194\160Wasteland (Sky Wars)\n\240\159\140\178\194\160Pinewood (Sky Wars)\n\240\159\140\179\194\160Tree Temple (Duels)\n\226\154\153\239\184\143 <b>Other Changes</b>\n\240\159\143\180\226\128\141\226\152\160\239\184\143 Removed the Pirate Event Shop\n\240\159\142\146 Removed Backpacks from the in-match shop\n\240\159\146\142 Added an atmospheric particle effect for Diamond & Emerald generators\n\240\159\146\165 Added a new default explosion effect", 
+			image = {
+				assetId = "rbxassetid://11003936249", 
+				aspectRatio = 1, 
+				height = 150
+			}
+		}, {
 			updateLogId = 50, 
 			visible = true, 
 			title = "Free Ares + 3x XP Weekend", 

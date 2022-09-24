@@ -81,15 +81,7 @@ v3.rows = {
 u2 = v3;
 return {
 	calcCardsDimensions = function()
-		local v10 = l__Workspace__1.CurrentCamera;
-		if v10 ~= nil then
-			v10 = v10.ViewportSize.X;
-		end;
-		local v11 = l__Workspace__1.CurrentCamera;
-		if v11 ~= nil then
-			v11 = v11.ViewportSize.Y;
-		end;
-		return { v10 * u2.widthScale / 2, v11 * u2.heightScale * u2.rows.cards.height };
+		return { l__Workspace__1.CurrentCamera.ViewportSize.X * u2.widthScale / 2, l__Workspace__1.CurrentCamera.ViewportSize.Y * u2.heightScale * u2.rows.cards.height };
 	end, 
 	tabListLayout = u2
 };

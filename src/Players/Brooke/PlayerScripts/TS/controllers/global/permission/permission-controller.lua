@@ -95,6 +95,7 @@ end;
 function v3.playerIsStaffMember(p14, p15)
 	return p14:playerHasAnyPermissions(p15, { 0, 2, 4, 6, 5, 1 });
 end;
+local l__PlaceUtil__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "place-util").PlaceUtil;
 function v3.hasAllKitsUnlocked(p16, p17)
 	local v18 = p16:getPlayerPermissions(p17.UserId);
 	if v18 and table.find(v18, 9) ~= nil then
@@ -104,6 +105,9 @@ function v3.hasAllKitsUnlocked(p16, p17)
 		return true;
 	end;
 	if p17:GetRankInGroup(5774246) >= 100 then
+		return true;
+	end;
+	if l__PlaceUtil__2.isStaging() then
 		return true;
 	end;
 	return false;

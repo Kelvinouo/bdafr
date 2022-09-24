@@ -26,7 +26,7 @@ function v4.equip(p2)
 	local u4 = l__Flamework__2.resolveDependency("@easy-games/game-core:client/controllers/ability/ability-controller@AbilityController"):enableAbility(l__AbilityId__3.HEALING_BACKPACK, {
 		text = "first aid", 
 		interactionKey = Enum.KeyCode.R, 
-		gamepadInteractionKey = Enum.KeyCode.R
+		gamepadInteractionKey = Enum.KeyCode.ButtonL2
 	});
 	p2.abilityMaid:GiveTask(function()
 		u4.Destroy();

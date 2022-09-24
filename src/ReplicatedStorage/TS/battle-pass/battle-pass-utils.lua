@@ -5,15 +5,15 @@ local v2 = {
 	MAX_LEVEL = 50, 
 	PAID_MULTIPLIER = 1.2, 
 	SOCIAL_CONNECTIONS_MULTIPLIER = 1.2, 
-	EXPERIENCE_BOOST_ENABLED = true, 
-	EXPERIENCE_BOOST_MULT = 3
+	EXPERIENCE_BOOST_ENABLED = false, 
+	EXPERIENCE_BOOST_MULT = 2
 };
-local l__season5__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-seasons").BattlePassSeason.season5;
-v2.BATTLE_PASS_SEASON = l__season5__3;
-v2.BATTLE_PASS_ICON = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "image", "image-id").BedwarsImageId.BattlePassIcons[l__season5__3];
-v2.BATTLE_PASS_SEASON_NUMBER = tonumber(string.split(l__season5__3, "season")[2]);
-v2.BATTLE_PASS_GAMEPASS = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "place", "gamepass").Gamepass.BATTLE_PASS_S5;
-v2.BATTLE_PASS_END_TIME = 1663970400;
+local l__season6__3 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-seasons").BattlePassSeason.season6;
+v2.BATTLE_PASS_SEASON = l__season6__3;
+v2.BATTLE_PASS_ICON = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "image", "image-id").BedwarsImageId.BattlePassIcons[l__season6__3];
+v2.BATTLE_PASS_SEASON_NUMBER = tonumber(string.split(l__season6__3, "season")[2]);
+v2.BATTLE_PASS_GAMEPASS = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "place", "gamepass").Gamepass.BATTLE_PASS_S6;
+v2.BATTLE_PASS_END_TIME = 1674860400;
 local u1 = nil;
 function v2.getLevelFromExperience(p1)
 	local v4 = 0;

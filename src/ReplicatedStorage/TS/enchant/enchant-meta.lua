@@ -50,32 +50,32 @@ return {
 		[l__EnchantType__10.SHIELD_GEN_1] = {
 			name = "Shield Gen I", 
 			statusEffect = l__StatusEffectType__5.SHIELD_GEN_1, 
-			element = l__EnchantElement__8.FIRE
+			element = l__EnchantElement__8.SHIELD_GEN
 		}, 
 		[l__EnchantType__10.SHIELD_GEN_2] = {
 			name = "Shield Gen II", 
 			statusEffect = l__StatusEffectType__5.SHIELD_GEN_2, 
-			element = l__EnchantElement__8.FIRE
+			element = l__EnchantElement__8.SHIELD_GEN
 		}, 
 		[l__EnchantType__10.SHIELD_GEN_3] = {
 			name = "Shield Gen III", 
 			statusEffect = l__StatusEffectType__5.SHIELD_GEN_3, 
-			element = l__EnchantElement__8.FIRE
+			element = l__EnchantElement__8.SHIELD_GEN
 		}, 
 		[l__EnchantType__10.RAPID_REGEN_1] = {
 			name = "Rapid Heal I", 
 			statusEffect = l__StatusEffectType__5.RAPID_REGEN_1, 
-			element = l__EnchantElement__8.FIRE
+			element = l__EnchantElement__8.RAPID_REGEN
 		}, 
 		[l__EnchantType__10.RAPID_REGEN_2] = {
 			name = "Rapid Heal II", 
 			statusEffect = l__StatusEffectType__5.RAPID_REGEN_2, 
-			element = l__EnchantElement__8.FIRE
+			element = l__EnchantElement__8.RAPID_REGEN
 		}, 
 		[l__EnchantType__10.RAPID_REGEN_3] = {
 			name = "Rapid Heal III", 
 			statusEffect = l__StatusEffectType__5.RAPID_REGEN_3, 
-			element = l__EnchantElement__8.FIRE
+			element = l__EnchantElement__8.RAPID_REGEN
 		}, 
 		[l__EnchantType__10.PLUNDER_2] = {
 			name = "Plunder II", 
@@ -85,12 +85,12 @@ return {
 		[l__EnchantType__10.ANTI_KNOCKBACK_2] = {
 			name = "Anti Knockback II", 
 			statusEffect = l__StatusEffectType__5.ENCHANT_ANTI_KNOCKBACK_2, 
-			element = l__EnchantElement__8.FIRE
+			element = l__EnchantElement__8.ANTI_KNOCKBACK
 		}, 
 		[l__EnchantType__10.UPDRAFT_2] = {
 			name = "Updraft II", 
 			statusEffect = l__StatusEffectType__5.ENCHANT_UPDRAFT_2, 
-			element = l__EnchantElement__8.FIRE
+			element = l__EnchantElement__8.ANTI_KNOCKBACK
 		}, 
 		[l__EnchantType__10.CLINGY_2] = {
 			name = "Clingy II", 
@@ -126,54 +126,66 @@ return {
 	EnchantElementMeta = {
 		[l__EnchantElement__8.FIRE] = {
 			name = "Fire", 
+			description = "All attacks apply a burn status effect to enemies", 
 			image = l__BedwarsImageId__3.FIRE_ELEMENT
 		}, 
 		[l__EnchantElement__8.STATIC] = {
 			name = "Static", 
+			description = "Attacking an enemy will apply extra static damage and chain hit to nearby enemies", 
 			image = l__BedwarsImageId__3.STATIC_ELEMENT
 		}, 
 		[l__EnchantElement__8.EXECUTE] = {
 			name = "Execute", 
+			description = "Attacks on an enemy increases the threshold at which an enemy will instantly die", 
 			image = l__BedwarsImageId__3.VOID_ELEMENT
 		}, 
 		[l__EnchantElement__8.SHIELD_GEN] = {
 			name = "Shield Gen", 
+			description = "", 
 			image = l__BedwarsImageId__3.SHIELD_GEN_ELEMENT, 
 			disabled = true
 		}, 
 		[l__EnchantElement__8.RAPID_REGEN] = {
 			name = "Rapid Heal", 
+			description = "", 
 			image = l__BedwarsImageId__3.RAPID_REGEN_ELEMENT, 
 			disabled = true
 		}, 
 		[l__EnchantElement__8.PLUNDER] = {
 			name = "Plunder", 
+			description = "Attacking an enemy has a chance of stealing an item from their inventory", 
 			image = l__BedwarsImageId__3.PLUNDER_ELEMENT
 		}, 
 		[l__EnchantElement__8.ANTI_KNOCKBACK] = {
 			name = "Anti Knockback", 
+			description = "You're immune to knockback", 
 			image = l__BedwarsImageId__3.ANTI_KB_ELEMENT, 
 			disabled = true
 		}, 
 		[l__EnchantElement__8.UPDRAFT] = {
 			name = "Updraft", 
+			description = "", 
 			image = l__BedwarsImageId__3.UPDRAFT_ELEMENT, 
 			disabled = true
 		}, 
 		[l__EnchantElement__8.CLINGY] = {
 			name = "Clingy", 
+			description = "Upon death you'll keep certain items", 
 			image = l__BedwarsImageId__3.CLINGY_ELEMENT
 		}, 
 		[l__EnchantElement__8.CRITICAL] = {
 			name = "Critical", 
+			description = "Your attacks now have a chance to critically strike an enemy for more damage", 
 			image = l__BedwarsImageId__3.CRITICAL_STRIKE_1_ELEMENT
 		}, 
 		[l__EnchantElement__8.LIFE_STEAL] = {
 			name = "Life Steal", 
+			description = "Attacks will on enemies will heal you over time", 
 			image = l__BedwarsImageId__3.LIFE_STEAL_ELEMENT
 		}, 
 		[l__EnchantElement__8.VOLLEY] = {
 			name = "Volley", 
+			description = "Arrow based items can be charged up to release a volley of arrows", 
 			image = l__BedwarsImageId__3.VOLLEY_ELEMENT
 		}
 	}, 

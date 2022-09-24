@@ -63,6 +63,7 @@ return {
 			v11 = l__ColorUtil__7.darken(v4.buttonColor, 0.2);
 		end;
 		v10.BackgroundColor3 = v11;
+		v10.hoverBrightness = 0.2;
 		v10.Selectable = true;
 		local v12 = {};
 		local v13 = v6 and u2.createElement("UIGradient", {

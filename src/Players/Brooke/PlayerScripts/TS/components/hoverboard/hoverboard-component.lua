@@ -12,7 +12,7 @@ function v3.new(...)
 	local v4 = setmetatable({}, v3);
 	return v4:constructor(...) and v4;
 end;
-local u1 = v1.import(script, script.Parent.Parent.Parent, "lib", "pid");
+local u1 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "pid");
 local u2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "util", "draw");
 local u3 = { CFrame.new(-2, 0, 0), CFrame.new(0, 0, 0), CFrame.new(2, 0, 0) };
 local l__default__4 = v1.import(script, v1.getModule(script, "@rbxts", "log").out).default;

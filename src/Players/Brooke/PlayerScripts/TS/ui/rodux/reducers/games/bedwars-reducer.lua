@@ -257,26 +257,70 @@ return {
 			v98.equippedKitSkins = v101;
 			return v98;
 		end;
-		if p2.type ~= "BedwarsUpdateBossBar" then
+		if p2.type == "BedwarsUpdateBossBar" then
+			local v104 = {};
+			for v105, v106 in pairs(p1) do
+				v104[v105] = v106;
+			end;
+			local v107 = {
+				health = p2.health
+			};
+			local v108 = p2.maxHealth;
+			if v108 == nil then
+				local v109 = p1.bossBar;
+				if v109 ~= nil then
+					v109 = v109.maxHealth;
+				end;
+				v108 = v109;
+			end;
+			v107.maxHealth = v108;
+			v104.bossBar = v107;
+			return v104;
+		end;
+		if p2.type == "BedwarsSetRelicVoteState" then
+			local v110 = {};
+			for v111, v112 in pairs(p1) do
+				v110[v111] = v112;
+			end;
+			if not v110.relic then
+				v110.relic = {};
+			end;
+			v110.relic.voteState = p2.voteState;
+			return v110;
+		end;
+		if p2.type == "BedwarsSetRelicVote" then
+			local v113 = {};
+			for v114, v115 in pairs(p1) do
+				v113[v114] = v115;
+			end;
+			if not v113.relic then
+				v113.relic = {};
+			end;
+			v113.relic.selectedRelic = p2.relic;
+			return v113;
+		end;
+		if p2.type == "BedwarsSetRelicWon" then
+			local v116 = {};
+			for v117, v118 in pairs(p1) do
+				v116[v117] = v118;
+			end;
+			if not v116.relic then
+				v116.relic = {};
+			end;
+			v116.relic.winningRelic = p2.winningRelic;
+			return v116;
+		end;
+		if p2.type ~= "BedwarsSetRelicVoteEndTime" then
 			return p1;
 		end;
-		local v104 = {};
-		for v105, v106 in pairs(p1) do
-			v104[v105] = v106;
+		local v119 = {};
+		for v120, v121 in pairs(p1) do
+			v119[v120] = v121;
 		end;
-		local v107 = {
-			health = p2.health
-		};
-		local v108 = p2.maxHealth;
-		if v108 == nil then
-			local v109 = p1.bossBar;
-			if v109 ~= nil then
-				v109 = v109.maxHealth;
-			end;
-			v108 = v109;
+		if not v119.relic then
+			v119.relic = {};
 		end;
-		v107.maxHealth = v108;
-		v104.bossBar = v107;
-		return v104;
+		v119.relic.relicVoteEndTime = p2.voteEndTime;
+		return v119;
 	end
 };

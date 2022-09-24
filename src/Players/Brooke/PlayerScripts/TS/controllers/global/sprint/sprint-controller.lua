@@ -131,6 +131,7 @@ function u1.KnitStart(p3)
 			end;
 			p3:stopSprinting();
 		end, false, Enum.KeyCode.ButtonL3);
+		l__ContextActionService__6:UnbindAction("id");
 	end;
 	l__WatchCharacter__11(function(p10, p11)
 		if p10 == l__Players__5.LocalPlayer then

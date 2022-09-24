@@ -76,6 +76,8 @@ v2.TRUMPET = "trumpet";
 v1.trumpet = "TRUMPET";
 v2.GLITCH_TRUMPET = "glitch_trumpet";
 v1.glitch_trumpet = "GLITCH_TRUMPET";
+v2.DRAGON_BREATH = "dragon_breath";
+v1.dragon_breath = "DRAGON_BREATH";
 return {
 	CooldownId = v2
 };

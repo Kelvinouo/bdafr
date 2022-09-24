@@ -54,7 +54,7 @@ function v6.func(p1, p2, p3)
 				behavior = l__GroupModifierBehavior__6.Merge
 			});
 		else
-			v8 = l__KnitClient__7.Controllers.LightingController.atmosphereModifier;
+			v8 = l__KnitClient__7.Controllers.LightingController:getAtmosphereModifier();
 		end;
 		u1 = v8;
 	end;

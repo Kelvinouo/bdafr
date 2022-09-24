@@ -1,7 +1,10 @@
 -- Decompiled with the Synapse X Luau decompiler.
 
+local v1 = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib"));
+local l__MageElement__2 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "games", "bedwars", "kit", "kits", "mage", "mage-kit-util").MageElement;
 return {
 	BalanceFile = {
+		SNOW_CONE_MACHINE_DISABLED = true, 
 		SNOW_CONE_ARROW_COST = 1, 
 		SNOW_CONE_BLOCK_COST = 3, 
 		SNOW_CONE_SWORD_COST = 5, 
@@ -12,7 +15,7 @@ return {
 		SNOW_CONE_SWORD_BASE_DMG = 1.3, 
 		SNOW_CONE_SWORD_STACK_BONUS = 0.04, 
 		RepairSnowConeMachinePrice = 5, 
-		RepairSnowConeMachineCurrency = require(game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("RuntimeLib")).import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType.DIAMOND, 
+		RepairSnowConeMachineCurrency = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "item", "item-type").ItemType.DIAMOND, 
 		VOLLEY_ENCHANT_COOLDOWN = 2.75, 
 		VOLLEY_ENCHANT_ARROW_COUNT = 4, 
 		WALL_HEIGHT = 5, 
@@ -36,6 +39,19 @@ return {
 		HANNAH_EXECUTE_THRESHOLD = 0.2, 
 		GLITCH_LB_TELEPORT_DURATION = 0.05, 
 		CLONE_GLITCH_LB_CHANCE = 0.01, 
-		GLITCH_LB_ANNOUNCEMENT_DURATION = 2
+		GLITCH_LB_ANNOUNCEMENT_DURATION = 2, 
+		LEARN_TOME_DURATION = 2, 
+		MAGE_SWORD_DAMAGE_MULTIPLIER = 0.5, 
+		MAGE_ARMOR_MULTIPLIER = 0.9, 
+		MAGE_TOME_INITIAL_DELAY = 30, 
+		MAGE_TOME_INTERVAL_DURATION = 360, 
+		MAGE_ELEMENT_CYCLE = { l__MageElement__2.FIRE, l__MageElement__2.ICE, l__MageElement__2.NATURE }, 
+		TOTAL_TOME_COUNT = 3, 
+		MAGE_BURN_DURATION = 4, 
+		MAGE_BURN_DAMAGE = 5, 
+		MAGE_BURN_INTERVAL = 0.5, 
+		MAGE_ICE_ARMOR_MULTIPLIER = 0.8, 
+		MAGE_LIFE_STEAL_PERCENTAGE = 0.3, 
+		MAGE_LIFE_STEAL_DURATION = 2
 	}
 };

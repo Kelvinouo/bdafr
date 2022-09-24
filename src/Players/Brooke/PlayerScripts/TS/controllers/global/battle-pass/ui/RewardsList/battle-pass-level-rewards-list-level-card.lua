@@ -8,7 +8,7 @@ function v4.init(p1)
 
 end;
 function v4.shouldUpdate(p2, p3, p4)
-	if p2.props.BattlePass.experience ~= p3.BattlePass.experience and p2.props.BattlePass.level <= p2.props.LevelRewards[1].level and p2.props.LevelRewards[1].level <= p3.BattlePass.level then
+	if p2.props.BattlePass.experience ~= p3.BattlePass.experience and p2.props.BattlePass.level <= p2.props.Level and p2.props.Level <= p3.BattlePass.level then
 		return true;
 	end;
 	if p2.props.Active == p3.Active then
@@ -27,8 +27,8 @@ local u8 = v1.import(script, v1.getModule(script, "@rbxts", "object-utils"));
 local l__BPRewardDisplayType__9 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "battle-pass", "battle-pass-reward", "battle-pass-reward-display-type").BPRewardDisplayType;
 local u10 = v1.import(script, script.Parent, "battle-pass-rewards-list-reward").BattlePassRewardsListReward;
 function v4.render(p5)
-	local v5 = p5.props.BattlePass.level == p5.props.LevelRewards[1].level;
-	local v6 = p5.props.BattlePass.level < p5.props.LevelRewards[1].level;
+	local v5 = p5.props.BattlePass.level == p5.props.Level;
+	local v6 = p5.props.BattlePass.level < p5.props.Level;
 	local v7 = {};
 	local v8 = 0;
 	local v9, v10, v11 = ipairs(p5.props.LevelRewards);
@@ -258,7 +258,7 @@ function v4.render(p5)
 		v47 = 0;
 	end;
 	v46.TextTransparency = v47;
-	v46.Text = "<b>" .. tostring(p5.props.LevelRewards[1].level) .. "</b>";
+	v46.Text = "<b>" .. tostring(p5.props.Level) .. "</b>";
 	v46.TextXAlignment = Enum.TextXAlignment.Center;
 	v46.TextYAlignment = Enum.TextYAlignment.Center;
 	v46.TextColor3 = l__ColorUtil__4.WHITE;

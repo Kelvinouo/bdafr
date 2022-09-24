@@ -109,7 +109,8 @@ function v6.create(p2, p3, p4, p5, p6)
 		end;
 		local v29 = {
 			Name = "CollectEffectScreen", 
-			DisplayOrder = 200
+			DisplayOrder = 200, 
+			ResetOnSpawn = false
 		};
 		local v30 = p6;
 		if v30 ~= nil then
@@ -146,61 +147,67 @@ function v6.create(p2, p3, p4, p5, p6)
 			});
 			table.insert(u14, v38);
 			v38:Play();
-			l__SoundManager__8:playSound(l__RandomUtil__9.randomArraySelectN(u10, 1)[1]);
+			local v39 = p6;
+			if v39 ~= nil then
+				v39 = v39.disableSounds;
+			end;
+			if not v39 then
+				l__SoundManager__8:playSound(l__RandomUtil__9.randomArraySelectN(u10, 1)[1]);
+			end;
 			wait(v23);
 		end;
-		local v39 = 0;
-		local v40 = false;
+		local v40 = 0;
+		local v41 = false;
 		while true do
-			if v40 then
-				v39 = v39 + 1;
+			if v41 then
+				v40 = v40 + 1;
 			else
-				v40 = true;
+				v41 = true;
 			end;
-			local v41 = p6;
-			if v41 ~= nil then
-				v41 = v41.amount;
+			local v42 = p6;
+			if v42 ~= nil then
+				v42 = v42.amount;
 			end;
-			local v42 = v41;
-			if v42 == nil then
-				v42 = 1;
+			local v43 = v42;
+			if v43 == nil then
+				v43 = 1;
 			end;
-			if not (v39 < v42) then
+			if not (v40 < v43) then
 				break;
 			end;
-			local v43 = p3:Clone();
-			v43.Position = UDim2.fromOffset(p4.X, p4.Y);
-			v43.Parent = v32;
-			table.insert(v33, v43);
-			v34(v43);		
+			local v44 = p3:Clone();
+			v44.Position = UDim2.fromOffset(p4.X, p4.Y);
+			v44.Parent = v32;
+			table.insert(v33, v44);
+			v34(v44);		
 		end;
-		local v44, v45, v46 = ipairs(u14);
+		local v45, v46, v47 = ipairs(u14);
 		while true do
-			v44(v45, v46);
-			if not v44 then
+			v45(v46, v47);
+			if not v45 then
 				break;
 			end;
-			v46 = v44;
-			v45:Pause();
-			v45:Destroy();		
+			v47 = v45;
+			v46:Pause();
+			v46:Destroy();		
 		end;
-		local v47, v48, v49 = ipairs(v33);
+		local v48, v49, v50 = ipairs(v33);
 		while true do
-			v47(v48, v49);
-			if not v47 then
+			v48(v49, v50);
+			if not v48 then
 				break;
 			end;
-			v49 = v47;
+			v50 = v48;
 			task.spawn(function()
 				l__default__6(u13:NextNumber() * (v25 - v24) + v24, v28, function(p9)
-					v48.Position = p9;
-					return v48.Position;
-				end, UDim2.fromOffset(v48.AbsolutePosition.X, v48.AbsolutePosition.Y), UDim2.fromOffset(p5.X, p5.Y)):Wait();
-				l__UIUtil__11:setContainerTransparency(v48, 1, {
+					v49.Position = p9;
+					return v49.Position;
+				end, UDim2.fromOffset(v49.AbsolutePosition.X, v49.AbsolutePosition.Y), UDim2.fromOffset(p5.X, p5.Y)):Wait();
+				l__UIUtil__11:setContainerTransparency(v49, 1, {
 					onSetTweenInfo = TweenInfo.new(0.2)
 				});
 				wait(v26);
-				v48:Destroy();
+				v49:Destroy();
 			end);		
 		end;
 		task.delay(2, function()

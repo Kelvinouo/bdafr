@@ -233,6 +233,16 @@ local u1 = {
 		explodePower = 3, 
 		explodeRadius = 4, 
 		damageRadius = 8 * l__BLOCK_SIZE__2
+	}, 
+	[l__ExplosionType__4.LAUNCHED_PLAYER] = {
+		displayName = "Dragon Punch", 
+		knockbackMultiplier = {
+			horizontal = 1.5, 
+			vertical = 1.5
+		}, 
+		explodePower = 2, 
+		explodeRadius = 3, 
+		damageRadius = 5 * l__BLOCK_SIZE__2
 	}
 };
 return {

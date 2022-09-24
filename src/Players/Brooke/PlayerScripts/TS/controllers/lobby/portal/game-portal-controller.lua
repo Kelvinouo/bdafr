@@ -22,14 +22,14 @@ function u1.constructor(p1)
 end;
 local l__Workspace__2 = v2.Workspace;
 function u1.KnitStart(p2)
-	p2:hookPortal(l__Workspace__2:WaitForChild("Lobby"):WaitForChild("GamePortals"):WaitForChild("Islands"));
+	local l__GamePortals__6 = l__Workspace__2:WaitForChild("Lobby"):WaitForChild("GamePortals");
 end;
 local l__Players__3 = v2.Players;
 local l__default__4 = v1.import(script, game:GetService("ReplicatedStorage"), "TS", "remotes").default;
 function u1.hookPortal(p3, p4)
-	local l__Portal__6 = p4:FindFirstChild("Portal");
-	if l__Portal__6 then
-		l__Portal__6.Touched:Connect(function(p5)
+	local l__Portal__7 = p4:FindFirstChild("Portal");
+	if l__Portal__7 then
+		l__Portal__7.Touched:Connect(function(p5)
 			if l__Players__3.LocalPlayer.Character and p5.Parent == l__Players__3.LocalPlayer.Character and u1.TELEPORT_COOLDOWN <= tick() - p3.teleportTime then
 				p3.teleportTime = tick();
 				l__default__4.Client:Get("RemoteName"):SendToServer({

@@ -102,6 +102,20 @@ return {
 		[l__AnimationType__1.PIRATE_SHIP_FLY] = "rbxassetid://10562309123", 
 		[l__AnimationType__1.HANNAH_JUMP_DOWN] = "rbxassetid://10695417052", 
 		[l__AnimationType__1.DAVEY_JUMP_DOWN] = "rbxassetid://10696584641", 
-		[l__AnimationType__1.SMOKE_JUMP_DOWN] = "rbxassetid://10696586540"
+		[l__AnimationType__1.SMOKE_JUMP_DOWN] = "rbxassetid://10696586540", 
+		[l__AnimationType__1.MIRROR_KILL_EFFECT] = "rbxassetid://10839556043", 
+		[l__AnimationType__1.BLACKHOLE_CONSUME] = "rbxassetid://10330414101", 
+		[l__AnimationType__1.DRAGON_FLYING] = "rbxassetid://10974619315", 
+		[l__AnimationType__1.DRAGON_BREATH] = "rbxassetid://10974620511", 
+		[l__AnimationType__1.VOID_DRAGON_WINGS_FLAP] = "rbxassetid://10967390363", 
+		[l__AnimationType__1.VOID_DRAGON_GLIDE] = "rbxassetid://10967393413", 
+		[l__AnimationType__1.VOID_DRAGON_WING_TRANSFORM] = "rbxassetid://10967403161", 
+		[l__AnimationType__1.VOID_DRAGON_BREATH] = "rbxassetid://10967408759", 
+		[l__AnimationType__1.VOID_DRAGON_BREATH_CHARGE] = "rbxassetid://10971149413", 
+		[l__AnimationType__1.VOID_DRAGON_BREATH_FIRE] = "rbxassetid://10971167460", 
+		[l__AnimationType__1.VOID_DRAGON_IDLE] = "rbxassetid://10967395596", 
+		[l__AnimationType__1.VOID_DRAGON_RUNNING] = "rbxassetid://10967398521", 
+		[l__AnimationType__1.VOID_DRAGON_FLYING] = "rbxassetid://10967430892", 
+		[l__AnimationType__1.VOID_DRAGON_TRANSFORM] = "rbxassetid://10967424821"
 	}
 };

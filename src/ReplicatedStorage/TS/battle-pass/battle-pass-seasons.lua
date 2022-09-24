@@ -14,6 +14,8 @@ v2.season4 = "season4";
 v1.season4 = "season4";
 v2.season5 = "season5";
 v1.season5 = "season5";
+v2.season6 = "season6";
+v1.season6 = "season6";
 return {
 	BattlePassSeason = v2
 };

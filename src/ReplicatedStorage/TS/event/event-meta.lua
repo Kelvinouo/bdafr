@@ -11,7 +11,7 @@ return {
 	EventMeta = {
 		[v5.EventType.PIRATE_EVENT_2022] = {
 			name = "Pirate Event 2022", 
-			active = true, 
+			active = false, 
 			currencies = { l__EventCurrencyType__6.DOUBLOONS }, 
 			startDate = 1661616000, 
 			endDate = 1663365600, 

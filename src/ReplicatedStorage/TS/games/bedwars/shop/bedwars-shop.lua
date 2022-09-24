@@ -264,24 +264,6 @@ u2 = { {
 		category = l__BedwarsShopCategory__9.Armory, 
 		disabledInQueue = { l__QueueType__3.TNT_WARS }
 	}, {
-		itemType = l__ItemType__6.ROCKET_BELT, 
-		amount = 1, 
-		price = 4, 
-		currency = l__ItemType__6.EMERALD, 
-		category = l__BedwarsShopCategory__9.Armory
-	}, {
-		itemType = l__ItemType__6.TURTLE_BACKPACK, 
-		amount = 1, 
-		price = 4, 
-		currency = l__ItemType__6.EMERALD, 
-		category = l__BedwarsShopCategory__9.Armory
-	}, {
-		itemType = l__ItemType__6.HEALING_BACKPACK, 
-		amount = 1, 
-		price = 4, 
-		currency = l__ItemType__6.EMERALD, 
-		category = l__BedwarsShopCategory__9.Armory
-	}, {
 		itemType = l__ItemType__6.VOID_SWORD, 
 		amount = 1, 
 		price = 10, 

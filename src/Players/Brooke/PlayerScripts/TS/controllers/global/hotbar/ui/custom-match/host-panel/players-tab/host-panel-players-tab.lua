@@ -55,7 +55,7 @@ return {
 			if l__DeviceUtil__1.isHoarceKat() then
 				return nil;
 			end;
-			local v19 = l__KnitClient__4.Controllers.TeamController:getPlayerTeamMap();
+			local v19 = l__KnitClient__4.Controllers.TeamController:getPlayerTeamNameMap();
 			if v19 then
 				v16(v19);
 			end;
